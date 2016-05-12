@@ -40,7 +40,6 @@ import org.miradi.views.umbrella.DeleteResourceDoer;
 import org.miradi.views.umbrella.UmbrellaView;
 import org.miradi.views.umbrella.doers.TaskMoveDownDoer;
 import org.miradi.views.umbrella.doers.TaskMoveUpDoer;
-import org.miradi.views.umbrella.doers.TreeNodeShareActivityDoer;
 import org.miradi.views.umbrella.doers.TreeNodeShareMethodDoer;
 import org.miradi.views.workplan.doers.*;
 
@@ -220,7 +219,6 @@ public class WorkPlanView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionCreateChildTask.class, new CreateChildTaskDoer());
 		addDoerToMap(ActionCreateSameLevelTask.class, new CreateSameLevelTaskDoer());
 
-		addDoerToMap(ActionTreeShareActivity.class, new TreeNodeShareActivityDoer());
 		addDoerToMap(ActionTreeShareMethod.class, new TreeNodeShareMethodDoer());
 
 		addDoerToMap(ActionTreeCreateResourceAssignment.class, new TreeNodeCreateResourceAssignmentDoer());

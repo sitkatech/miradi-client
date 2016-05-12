@@ -32,7 +32,6 @@ public class SharedWorkPlanningTreeNodeCreationMenuDoer extends AbstractPopDownM
 				ActionTreeCreateIndicator.class,
 				null,
 				ActionTreeCreateActivity.class,
-				ActionTreeShareActivity.class,
 				null,
 				ActionTreeCreateMethod.class,
 				ActionTreeShareMethod.class,

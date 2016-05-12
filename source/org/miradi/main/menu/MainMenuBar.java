@@ -324,7 +324,6 @@ public class MainMenuBar extends JMenuBar
 		menu.addSeparator();
 
 		addMenuItem(actions, menu, ActionTreeCreateActivity.class);
-		addMenuItem(actions, menu, ActionTreeShareActivity.class);
 
 		menu.addSeparator();
 
@@ -349,7 +348,6 @@ public class MainMenuBar extends JMenuBar
 		JMenu menu = createEmptyActionsMenu();
 		
 		addMenuItem(actions, menu, ActionTreeCreateActivity.class);
-		addMenuItem(actions, menu, ActionTreeShareActivity.class);
 
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionTreeCreateResourceAssignment.class);

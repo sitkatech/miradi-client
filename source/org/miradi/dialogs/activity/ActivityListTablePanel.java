@@ -23,7 +23,6 @@ import org.miradi.actions.ActionActivityMoveDown;
 import org.miradi.actions.ActionActivityMoveUp;
 import org.miradi.actions.ActionCreateActivity;
 import org.miradi.actions.ActionDeleteActivity;
-import org.miradi.actions.ActionShareActivity;
 import org.miradi.dialogs.base.ObjectListTablePanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
@@ -41,7 +40,6 @@ public class ActivityListTablePanel extends ObjectListTablePanel
 		
 		addObjectActionButton(ActionCreateActivity.class, getParentPicker());
 		addUnknownTypeOfButton(ActionDeleteActivity.class);
-		addObjectActionButton(ActionShareActivity.class, getParentPicker());
 		addUnknownTypeOfButton(ActionActivityMoveUp.class);
 		addUnknownTypeOfButton(ActionActivityMoveDown.class);
 	}

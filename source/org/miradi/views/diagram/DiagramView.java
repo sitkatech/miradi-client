@@ -109,7 +109,6 @@ import org.miradi.views.umbrella.DeleteActivityDoer;
 import org.miradi.views.umbrella.UmbrellaView;
 import org.miradi.views.umbrella.doers.TaskMoveDownDoer;
 import org.miradi.views.umbrella.doers.TaskMoveUpDoer;
-import org.miradi.views.umbrella.doers.TreeNodeShareActivityDoer;
 
 
 public class DiagramView extends TabbedView implements CommandExecutedListener
@@ -218,7 +217,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		addDoerToMap(ActionCreateActivity.class, new CreateActivityDoer());
 		addDoerToMap(ActionDeleteActivity.class, new DeleteActivityDoer());
-		addDoerToMap(ActionShareActivity.class, new TreeNodeShareActivityDoer());
 		addDoerToMap(ActionTreeCreateRelevancyActivity.class, new CreateRelevancyActivityDoer());
 		addDoerToMap(ActionDeletePlanningViewTreeNode.class, new TreeNodeDeleteDoer());
 
