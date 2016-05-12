@@ -45,7 +45,6 @@ import org.miradi.actions.ActionTreeCreateObjective;
 import org.miradi.actions.ActionTreeCreateRelevancyActivity;
 import org.miradi.actions.ActionTreeNodeDown;
 import org.miradi.actions.ActionTreeNodeUp;
-import org.miradi.actions.ActionTreeShareMethod;
 import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.dialogs.planning.EmptyRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
@@ -77,7 +76,6 @@ import org.miradi.views.umbrella.DeleteResourceDoer;
 import org.miradi.views.umbrella.UmbrellaView;
 import org.miradi.views.umbrella.doers.TaskMoveDownDoer;
 import org.miradi.views.umbrella.doers.TaskMoveUpDoer;
-import org.miradi.views.umbrella.doers.TreeNodeShareMethodDoer;
 import org.miradi.views.workplan.WorkPlanBudgetCategoryManagementPanel;
 
 public class PlanningView extends TabbedView
@@ -173,8 +171,6 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionCreateSameLevelTask.class, new CreateSameLevelTaskDoer());
 		addDoerToMap(ActionTreeCreateRelevancyActivity.class, new CreateRelevancyActivityDoer());
 				
-		addDoerToMap(ActionTreeShareMethod.class, new TreeNodeShareMethodDoer());
-
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
 		addDoerToMap(ActionDeleteResource.class, new DeleteResourceDoer());
 

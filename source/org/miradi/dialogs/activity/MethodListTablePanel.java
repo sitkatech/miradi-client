@@ -21,7 +21,6 @@ package org.miradi.dialogs.activity;
 
 import org.miradi.actions.ActionCreateMethod;
 import org.miradi.actions.ActionDeleteMethod;
-import org.miradi.actions.ActionShareMethod;
 import org.miradi.dialogs.base.ObjectListTablePanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
@@ -35,6 +34,5 @@ public class MethodListTablePanel extends ObjectListTablePanel
 		
 		addObjectActionButton(ActionCreateMethod.class, getParentPicker());
 		addUnknownTypeOfButton(ActionDeleteMethod.class);
-		addObjectActionButton(ActionShareMethod.class, getParentPicker());
 	}
 }

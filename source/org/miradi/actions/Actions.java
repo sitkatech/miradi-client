@@ -165,8 +165,6 @@ public class Actions
 		registerAction(new ActionDeleteActivity(mainWindow));
 		registerAction(new ActionCreateResource(mainWindow));
 		registerAction(new ActionDeleteResource(mainWindow));
-		registerAction(new ActionShareMethod(mainWindow));
-		registerAction(new ActionTreeShareMethod(mainWindow));
 		registerAction(new ActionPlanningCreationMenu(mainWindow));
 		registerAction(new ActionSharedWorkPlanningCreationMenu(mainWindow));
 		registerAction(new ActionPlanningRowsEditor(mainWindow));
