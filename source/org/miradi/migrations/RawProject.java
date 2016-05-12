@@ -20,9 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Set;
+import java.util.*;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
@@ -218,8 +216,8 @@ public class RawProject implements ProjectInterface
 			return;
 
 		RawPool rawPool = getRawPoolForType(objectType);
-		Set<ORef> refs = rawPool.keySet();
-		for(ORef ref : refs)
+		ORefList refList = rawPool.getSortedReflist();
+		for (ORef ref : refList)
 		{
 			RawObject rawObject = rawPool.get(ref);
 			visitor.visit(rawObject);
@@ -233,8 +231,8 @@ public class RawProject implements ProjectInterface
 			return;
 
 		RawPool rawPool = getRawPoolForType(objectType);
-		Set<ORef> refs = rawPool.keySet();
-		for(ORef ref : refs)
+		ORefList refList = rawPool.getSortedReflist();
+		for (ORef ref : refList)
 		{
 			visitor.visit(ref);
 		}

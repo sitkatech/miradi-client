@@ -130,7 +130,7 @@ public class TestMigrationTo30 extends AbstractTestMigration
 		verifyRawObjectMatchesBaseObject(activity1, rawAddedActivity);
 	}
 
-	private void verifyRawObjectMatchesBaseObject(BaseObject baseObject, RawObject rawObject) throws Exception
+	public static void verifyRawObjectMatchesBaseObject(BaseObject baseObject, RawObject rawObject) throws Exception
 	{
 		Vector<String> storedTags = baseObject.getStoredFieldTags();
 
@@ -168,7 +168,7 @@ public class TestMigrationTo30 extends AbstractTestMigration
 		}
 	}
 
-	private ORefList safeGetORefList(RawObject rawObject, String tag) throws Exception
+	private static ORefList safeGetORefList(RawObject rawObject, String tag) throws Exception
 	{
 		ORefList refList = new ORefList(){};
 
@@ -178,7 +178,7 @@ public class TestMigrationTo30 extends AbstractTestMigration
 		return refList;
 	}
 
-	private IdList safeGetIdList(BaseObject baseObject, RawObject rawObject, String tag) throws Exception
+	private static IdList safeGetIdList(BaseObject baseObject, RawObject rawObject, String tag) throws Exception
 	{
 		IdList idList = new IdList(baseObject.getType()){};
 

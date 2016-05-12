@@ -2758,14 +2758,19 @@ public class ProjectForTesting extends ProjectWithHelpers
 		appendTaskToParentIdList(strategy, activity, Strategy.TAG_ACTIVITY_IDS);	
 	}
 	
+	public Task createMethod(Indicator indicator) throws Exception
+	{
+		return createTask(indicator);
+	}
+	
 	public Task createMethod() throws Exception
 	{
 		Indicator indicator = createIndicatorWithCauseParent();
-		Task method = createTask(indicator);
-		
+		Task method = createMethod(indicator);
+
 		return method;
 	}
-	
+
 	public void appendMethodToIndicator(Indicator indicator, Task method) throws Exception
 	{
 		appendTaskToParentIdList(indicator, method, Indicator.TAG_METHOD_IDS);
