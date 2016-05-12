@@ -153,7 +153,7 @@ public class Actions
 		registerAction(new ActionTreeCreateActivity(mainWindow));
 		registerAction(new ActionTreeCreateRelevancyActivity(mainWindow));
 		registerAction(new ActionTreeCreateMethod(mainWindow));
-		registerAction(new ActionCreateChildTask(mainWindow));
+		registerAction(new ActionCreateTask(mainWindow));
 		registerAction(new ActionCreateSameLevelTask(mainWindow));
 		registerAction(new ActionTreeCreateIndicator(mainWindow));
 		registerAction(new ActionTreeCreateObjective(mainWindow));

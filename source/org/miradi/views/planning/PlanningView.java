@@ -22,7 +22,7 @@ package org.miradi.views.planning;
 
 import java.util.HashMap;
 
-import org.miradi.actions.ActionCreateChildTask;
+import org.miradi.actions.ActionCreateTask;
 import org.miradi.actions.ActionCreateCustomFromCurrentTreeTableConfiguration;
 import org.miradi.actions.ActionCreateFutureStatus;
 import org.miradi.actions.ActionCreateIndicatorMeasurement;
@@ -56,7 +56,7 @@ import org.miradi.project.Project;
 import org.miradi.views.TabbedView;
 import org.miradi.views.diagram.doers.CreateFutureStatusDoer;
 import org.miradi.views.planning.doers.CreateActivityNodeDoer;
-import org.miradi.views.planning.doers.CreateChildTaskDoer;
+import org.miradi.views.planning.doers.CreateTaskDoer;
 import org.miradi.views.planning.doers.CreateCustomFromCurrentTreeTableConfigurationDoer;
 import org.miradi.views.planning.doers.CreateMethodNodeDoer;
 import org.miradi.views.planning.doers.CreatePlanningViewConfigurationMenuDoer;
@@ -169,7 +169,7 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionDeletePlanningViewTreeNode.class, new TreeNodeDeleteDoer());
 		addDoerToMap(ActionTreeCreateActivity.class, new CreateActivityNodeDoer());
 		addDoerToMap(ActionTreeCreateMethod.class, new CreateMethodNodeDoer());	
-		addDoerToMap(ActionCreateChildTask.class, new CreateChildTaskDoer());
+		addDoerToMap(ActionCreateTask.class, new CreateTaskDoer());
 		addDoerToMap(ActionCreateSameLevelTask.class, new CreateSameLevelTaskDoer());
 		addDoerToMap(ActionTreeCreateRelevancyActivity.class, new CreateRelevancyActivityDoer());
 				

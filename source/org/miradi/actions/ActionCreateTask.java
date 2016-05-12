@@ -23,21 +23,21 @@ import org.miradi.icons.TaskIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionCreateChildTask extends ObjectsAction
+public class ActionCreateTask extends ObjectsAction
 {
-	public ActionCreateChildTask(MainWindow mainWindowToUse)
+	public ActionCreateTask(MainWindow mainWindowToUse)
 	{
 		this(mainWindowToUse, getLabel());
 	}
 
-	public ActionCreateChildTask(MainWindow mainWindowToUse, String labelToUse)
+	public ActionCreateTask(MainWindow mainWindowToUse, String labelToUse)
 	{
 		super(mainWindowToUse, labelToUse, new TaskIcon());
 	}
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Create Child Task");
+		return EAM.text("Action|Manage|Create Task");
 	}
 
 	@Override

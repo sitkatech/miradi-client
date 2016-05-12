@@ -17,33 +17,39 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
+
 package org.miradi.views.planning.doers;
 
-import org.miradi.actions.*;
-import org.miradi.views.umbrella.doers.AbstractPopDownMenuDoer;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.Task;
 
-public class SharedWorkPlanningTreeNodeCreationMenuDoer extends AbstractPopDownMenuDoer
+public class CreateTaskDoer extends AbstractCreateTaskNodeDoer
 {
 	@Override
-	protected Class[] getAllPossibleActionClasses()
+	public boolean isAvailable()
 	{
-		return new Class[] {
-				ActionTreeCreateObjective.class,
-				ActionTreeCreateIndicator.class,
-				null,
-				ActionTreeCreateActivity.class,
-				null,
-				ActionTreeCreateMethod.class,
-				ActionTreeShareMethod.class,
-				null,
-				ActionCreateTask.class,
-				ActionCreateSameLevelTask.class,
-				null,
-				ActionTreeCreateResourceAssignment.class,
-				ActionTreeCreateExpenseAssignment.class,
-				null,
-				ActionCreateIndicatorMeasurement.class,
-				ActionCreateFutureStatus.class,
-			};
+		if (!super.isAvailable())
+			return false;
+
+		final ORef selectedRef = getSelectedRef();
+		return Task.isActivity(getProject(), selectedRef);
+	}
+
+	@Override
+	protected ORef getParentRef()
+	{
+		ORefList selectionHierarchy = getSelectionHierarchy();
+		if (selectionHierarchy.isEmpty())
+			return ORef.INVALID;
+
+		ORef selectedRef = selectionHierarchy.getFirstElement();
+		if (selectedRef.isInvalid())
+			return ORef.INVALID;
+		
+		if (Task.is(selectedRef))
+			return selectedRef;
+		
+		return ORef.INVALID;
 	}
 }

@@ -216,7 +216,7 @@ public class WorkPlanView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionDeletePlanningViewTreeNode.class, new TreeNodeDeleteDoer());
 		addDoerToMap(ActionTreeCreateActivity.class, new CreateActivityNodeDoer());
 		addDoerToMap(ActionTreeCreateMethod.class, new CreateMethodNodeDoer());
-		addDoerToMap(ActionCreateChildTask.class, new CreateChildTaskDoer());
+		addDoerToMap(ActionCreateTask.class, new CreateTaskDoer());
 		addDoerToMap(ActionCreateSameLevelTask.class, new CreateSameLevelTaskDoer());
 
 		addDoerToMap(ActionTreeShareMethod.class, new TreeNodeShareMethodDoer());
