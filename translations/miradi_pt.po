@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-10 00:51-0700\n"
+"POT-Creation-Date: 2016-05-12 02:06-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/miradi-client/"
@@ -297,7 +297,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:153
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:154
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr ""
@@ -1591,10 +1591,6 @@ msgstr "Criar Item de Categoria No. 1"
 msgid "Action|Manage|Create Category #2 Item"
 msgstr "Criar Item de Categoria No. 2"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateChildTask.java:40
-msgid "Action|Manage|Create Child Task"
-msgstr "Criar Tarefa Filhote"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateFundingSource.java:35
 msgid "Action|Manage|Create Funding Source"
 msgstr "Criar Fonte de Recursos"
@@ -1660,6 +1656,10 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateResource.java:35
 msgid "Action|Manage|Create Resource"
 msgstr "Criar Recurso"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateTask.java:40
+msgid "Action|Manage|Create Task"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateSameLevelTask.java:36
 msgid "Action|Manage|Create Task at Same Level"
@@ -1881,11 +1881,6 @@ msgstr "Selecionar Todos"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionSelectChain.java:34
 msgid "Action|Select Factor Chain"
 msgstr "Selecionar Cadeia de Fatores"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeShareActivity.java:35
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShareActivity.java:35
-msgid "Action|Share Activity"
-msgstr "Compartilhar Atividade"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeShareMethod.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShareMethod.java:35
@@ -4046,7 +4041,7 @@ msgstr "Floresta - Subtropical/Tropical Pântano"
 msgid "Forest - Temperate"
 msgstr "Floresta - Temperada"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:385
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:383
 msgid "Found Corrupted Data:"
 msgstr "Dados Corrompidos Encontrados:"
 
@@ -5292,15 +5287,15 @@ msgstr "Editar"
 msgid "MenuBar|File"
 msgstr "Arquivo"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:588
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:586
 msgid "MenuBar|Help"
 msgstr "Ajuda"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:520
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:518
 msgid "MenuBar|Step-by-Step"
 msgstr "Passo a Passo"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:447
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:445
 msgid "MenuBar|View"
 msgstr "Visão"
 
@@ -5337,7 +5332,7 @@ msgid "Menu|Export Current Project as..."
 msgstr "Exportar Projeto Atual Como..."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:243
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:435
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:433
 msgid "Menu|Group Box"
 msgstr "Caixa de Grupo"
 
@@ -6686,10 +6681,6 @@ msgstr ""
 msgid "Share"
 msgstr "Compartilhar"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/TreeNodeShareActivityDoer.java:65
-msgid "Share Activity"
-msgstr "Compartilhar Atividade"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:54
 msgid "Share Method"
 msgstr "Compartilhar Método"
@@ -7223,7 +7214,7 @@ msgstr "Criar um Estresse de um Atributo Ecológico Chave"
 msgid "TT|Create a Tag"
 msgstr "Criar um 'Tag'"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateChildTask.java:46
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateTask.java:46
 msgid "TT|Create a child Task for the selected item"
 msgstr "Criar Tarefa filho para o item selecionado"
 
@@ -7781,11 +7772,6 @@ msgstr "Salvar o diagrama ou a área de cima da tabela como uma imagem de PNG"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionSelectChain.java:40
 msgid "TT|Select the entire chain related to this Direct Threat"
 msgstr "Selecionar a cadeia inteira relacionada a esta Ameaça Direta"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeShareActivity.java:41
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShareActivity.java:41
-msgid "TT|Share an existing Activity into this Strategy"
-msgstr "Compartilhar uma Atividade existente para incluir nesta Estratégia"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeShareMethod.java:41
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShareMethod.java:41
@@ -8434,6 +8420,11 @@ msgid ""
 "for the total planned who and effort dates."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo30.java:98
+msgid ""
+"This migration splits shared activities out to separate activity entries."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:89
 msgid ""
 "This model is not for a single assignment and has no assignment information"
@@ -8697,7 +8688,7 @@ msgstr ""
 msgid "Title|Export Image Scale"
 msgstr "Exportar Escala de Imagem"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:870
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:868
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Propriedades de Fatores"
@@ -9027,7 +9018,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "Código Desconhecido"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:312
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:310
 msgid "Unknown error displaying diagram"
 msgstr "Erro desconhecido exibindo o diagrama"
 
@@ -28328,6 +28319,18 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "Action|Manage|Create Child Task"
+#~ msgstr "Criar Tarefa Filhote"
+
+#~ msgid "Action|Share Activity"
+#~ msgstr "Compartilhar Atividade"
+
+#~ msgid "Share Activity"
+#~ msgstr "Compartilhar Atividade"
+
+#~ msgid "TT|Share an existing Activity into this Strategy"
+#~ msgstr "Compartilhar uma Atividade existente para incluir nesta Estratégia"
 
 #~ msgid "Daily Rate"
 #~ msgstr "Taixa Diária"

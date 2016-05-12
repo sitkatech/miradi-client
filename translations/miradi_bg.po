@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-10 00:51-0700\n"
+"POT-Creation-Date: 2016-05-12 02:06-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -300,7 +300,7 @@ msgstr "%s "
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%ОтИме' -> '%ЗаИме'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:153
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:154
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr "(%s)"
@@ -1630,10 +1630,6 @@ msgstr "Action|Manage|Създаване на елемент от Категор
 msgid "Action|Manage|Create Category #2 Item"
 msgstr "Action|Manage|Създаване на елемент от Категория #2"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateChildTask.java:40
-msgid "Action|Manage|Create Child Task"
-msgstr "Action|Manage|Създаване на малка задача"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateFundingSource.java:35
 msgid "Action|Manage|Create Funding Source"
 msgstr "Action|Manage|Създаване на източник на финансиране"
@@ -1699,6 +1695,10 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateResource.java:35
 msgid "Action|Manage|Create Resource"
 msgstr "Action|Manage|Създаване на ресурс"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateTask.java:40
+msgid "Action|Manage|Create Task"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateSameLevelTask.java:36
 msgid "Action|Manage|Create Task at Same Level"
@@ -1920,11 +1920,6 @@ msgstr "Action|Маркиране на всички"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionSelectChain.java:34
 msgid "Action|Select Factor Chain"
 msgstr "Action|Маркиране на верига на фактори"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeShareActivity.java:35
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShareActivity.java:35
-msgid "Action|Share Activity"
-msgstr "Action|Споделяне на дейност"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeShareMethod.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShareMethod.java:35
@@ -4073,7 +4068,7 @@ msgstr "Гора - Субтропическа/тропическа блатна"
 msgid "Forest - Temperate"
 msgstr "Гора - Умерена"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:385
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:383
 msgid "Found Corrupted Data:"
 msgstr "Октрита е повредена информация:"
 
@@ -5312,15 +5307,15 @@ msgstr "MenuBar|Редактиране"
 msgid "MenuBar|File"
 msgstr "MenuBar|Файл"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:588
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:586
 msgid "MenuBar|Help"
 msgstr "MenuBar|Помощ"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:520
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:518
 msgid "MenuBar|Step-by-Step"
 msgstr "MenuBar|Стъпка по стъпка"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:447
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:445
 msgid "MenuBar|View"
 msgstr "MenuBar|Изглед"
 
@@ -5357,7 +5352,7 @@ msgid "Menu|Export Current Project as..."
 msgstr "Menu|Експортиране на текущ проект като..."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:243
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:435
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:433
 msgid "Menu|Group Box"
 msgstr "Menu|Кутия за групиране"
 
@@ -6704,10 +6699,6 @@ msgstr ""
 msgid "Share"
 msgstr "Сподели"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/TreeNodeShareActivityDoer.java:65
-msgid "Share Activity"
-msgstr "Споделяне на дейност"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:54
 msgid "Share Method"
 msgstr "Споделяне на метод "
@@ -7241,7 +7232,7 @@ msgstr "TT|Създаване на стрес от ключова екологи
 msgid "TT|Create a Tag"
 msgstr "TT|Създаване на етикет"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateChildTask.java:46
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateTask.java:46
 msgid "TT|Create a child Task for the selected item"
 msgstr "TT|Създаване на малка задача за избрания елемент"
 
@@ -7796,11 +7787,6 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionSelectChain.java:40
 msgid "TT|Select the entire chain related to this Direct Threat"
 msgstr "TT|Избиране на цялата верига, свързвана с тази пряка заплаха"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeShareActivity.java:41
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShareActivity.java:41
-msgid "TT|Share an existing Activity into this Strategy"
-msgstr "TT|Споделяне на съществуваща дейност в тази стратегия"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeShareMethod.java:41
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShareMethod.java:41
@@ -8442,6 +8428,11 @@ msgid ""
 "for the total planned who and effort dates."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo30.java:98
+msgid ""
+"This migration splits shared activities out to separate activity entries."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:89
 msgid ""
 "This model is not for a single assignment and has no assignment information"
@@ -8703,7 +8694,7 @@ msgstr ""
 msgid "Title|Export Image Scale"
 msgstr "Title|Експортиране на мащаб на изображение"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:870
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:868
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Title|Свойства на фактор"
@@ -9031,7 +9022,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "Неизвестен код:"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:312
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:310
 msgid "Unknown error displaying diagram"
 msgstr "Непозната грешка при показване на диаграма"
 
@@ -33210,6 +33201,18 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Морски___Западен тропически "
 "Атлантически океан___Североизточен бразилски шелф___Бразилия"
+
+#~ msgid "Action|Manage|Create Child Task"
+#~ msgstr "Action|Manage|Създаване на малка задача"
+
+#~ msgid "Action|Share Activity"
+#~ msgstr "Action|Споделяне на дейност"
+
+#~ msgid "Share Activity"
+#~ msgstr "Споделяне на дейност"
+
+#~ msgid "TT|Share an existing Activity into this Strategy"
+#~ msgstr "TT|Споделяне на съществуваща дейност в тази стратегия"
 
 #~ msgid "Daily Rate"
 #~ msgstr "Дневна ставка"

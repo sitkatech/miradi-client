@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-10 00:51-0700\n"
+"POT-Creation-Date: 2016-05-12 02:06-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -293,7 +293,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%нэрээс' -> '%нэрэнд'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:153
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:154
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr ""
@@ -1551,10 +1551,6 @@ msgstr ""
 msgid "Action|Manage|Create Category #2 Item"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateChildTask.java:40
-msgid "Action|Manage|Create Child Task"
-msgstr "Арга хэмжээ|Удирдах|Хүүхдэд зориулсан даалгавар үүсгэх"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateFundingSource.java:35
 msgid "Action|Manage|Create Funding Source"
 msgstr "Арга хэмжээ|Удирдах|Санхүүжилтийн эх үүсвэрийг үүсгэх"
@@ -1620,6 +1616,10 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateResource.java:35
 msgid "Action|Manage|Create Resource"
 msgstr "Арга хэмжээ|Удирдах|Нөөцийг үүсгэх"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateTask.java:40
+msgid "Action|Manage|Create Task"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateSameLevelTask.java:36
 msgid "Action|Manage|Create Task at Same Level"
@@ -1841,11 +1841,6 @@ msgstr "Арга хэмжээ|Бүгдийг сонгох"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionSelectChain.java:34
 msgid "Action|Select Factor Chain"
 msgstr "Арга хэмжээ|Хүчин зүйлийн хэлхээг сонгох"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeShareActivity.java:35
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShareActivity.java:35
-msgid "Action|Share Activity"
-msgstr "Арга хэмжээ|Үйл ажиллагааг солилцох"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeShareMethod.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShareMethod.java:35
@@ -3969,7 +3964,7 @@ msgstr "Ой - Субтропикийн/Тропикийн Намаг"
 msgid "Forest - Temperate"
 msgstr "Ой- Сэрүүн бүсийн"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:385
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:383
 msgid "Found Corrupted Data:"
 msgstr "Эвдэрсэн мэдээлэл олдсон:"
 
@@ -5191,15 +5186,15 @@ msgstr "Цэсийн системийн команд|Засах"
 msgid "MenuBar|File"
 msgstr "Цэсийн системийн команд|Файл"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:588
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:586
 msgid "MenuBar|Help"
 msgstr "Цэсийн системийн команд|Тусламж"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:520
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:518
 msgid "MenuBar|Step-by-Step"
 msgstr "Цэсийн системийн команд|Алхам алхамаар"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:447
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:445
 msgid "MenuBar|View"
 msgstr "Цэсийн системийн команд|Харах"
 
@@ -5236,7 +5231,7 @@ msgid "Menu|Export Current Project as..."
 msgstr "Цэс|Одоогийн төсөлд экспорт хийх (Export)"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:243
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:435
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:433
 msgid "Menu|Group Box"
 msgstr "Цэс|Бүлгийн хайрцаг"
 
@@ -6567,10 +6562,6 @@ msgstr ""
 msgid "Share"
 msgstr "Солилцох"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/TreeNodeShareActivityDoer.java:65
-msgid "Share Activity"
-msgstr "Солилцох Үйл Ажиллагаа"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:54
 msgid "Share Method"
 msgstr "Солилцох Арга Зүй"
@@ -7103,7 +7094,7 @@ msgstr "TT|Экологийн чухал хүчин зүйлээс дарамт 
 msgid "TT|Create a Tag"
 msgstr "TT|Тэмдэглэгээ үүсгэх"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateChildTask.java:46
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateTask.java:46
 msgid "TT|Create a child Task for the selected item"
 msgstr "TT|Сонгосон зүйлээр хүүхдэд зориулсан даалгавар үүсгэх"
 
@@ -7652,11 +7643,6 @@ msgstr "TT|Диаграмм буюу хүснэгтийн дээд хэсгий�
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionSelectChain.java:40
 msgid "TT|Select the entire chain related to this Direct Threat"
 msgstr "TT|Энэ шууд аюул заналтай холбоотой гинжин холбоог бүхэлд нь сонгох"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeShareActivity.java:41
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShareActivity.java:41
-msgid "TT|Share an existing Activity into this Strategy"
-msgstr "TT|Одоогийн үйл ажиллагааг энэ стратегид оруулах"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeShareMethod.java:41
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShareMethod.java:41
@@ -8285,6 +8271,11 @@ msgid ""
 "for the total planned who and effort dates."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo30.java:98
+msgid ""
+"This migration splits shared activities out to separate activity entries."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:89
 msgid ""
 "This model is not for a single assignment and has no assignment information"
@@ -8544,7 +8535,7 @@ msgstr ""
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:870
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:868
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Гарчиг|Хүчин зүйлийн агуулга"
@@ -8871,7 +8862,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "Тодорхой бус код: "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:312
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:310
 msgid "Unknown error displaying diagram"
 msgstr "Тодорхой бус шалтгаанаар диаграммыг үзүүлэх боломжгүй"
 
@@ -32394,6 +32385,18 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Action|Manage|Create Child Task"
+#~ msgstr "Арга хэмжээ|Удирдах|Хүүхдэд зориулсан даалгавар үүсгэх"
+
+#~ msgid "Action|Share Activity"
+#~ msgstr "Арга хэмжээ|Үйл ажиллагааг солилцох"
+
+#~ msgid "Share Activity"
+#~ msgstr "Солилцох Үйл Ажиллагаа"
+
+#~ msgid "TT|Share an existing Activity into this Strategy"
+#~ msgstr "TT|Одоогийн үйл ажиллагааг энэ стратегид оруулах"
 
 #~ msgid "Daily Rate"
 #~ msgstr "Өдрийн ханш"
