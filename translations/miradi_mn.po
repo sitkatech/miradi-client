@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-12 02:06-0700\n"
+"POT-Creation-Date: 2016-05-13 03:21-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -293,7 +293,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%нэрээс' -> '%нэрэнд'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:154
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:155
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr ""
@@ -1841,11 +1841,6 @@ msgstr "Арга хэмжээ|Бүгдийг сонгох"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionSelectChain.java:34
 msgid "Action|Select Factor Chain"
 msgstr "Арга хэмжээ|Хүчин зүйлийн хэлхээг сонгох"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeShareMethod.java:35
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShareMethod.java:35
-msgid "Action|Share Method"
-msgstr "Арга хэмжээ|Арга зүй солилцох"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShowActivityBubble.java:34
 msgid "Action|Show Activity on this page"
@@ -5186,15 +5181,15 @@ msgstr "Цэсийн системийн команд|Засах"
 msgid "MenuBar|File"
 msgstr "Цэсийн системийн команд|Файл"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:586
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:584
 msgid "MenuBar|Help"
 msgstr "Цэсийн системийн команд|Тусламж"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:518
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:516
 msgid "MenuBar|Step-by-Step"
 msgstr "Цэсийн системийн команд|Алхам алхамаар"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:445
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:443
 msgid "MenuBar|View"
 msgstr "Цэсийн системийн команд|Харах"
 
@@ -5231,7 +5226,7 @@ msgid "Menu|Export Current Project as..."
 msgstr "Цэс|Одоогийн төсөлд экспорт хийх (Export)"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:243
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:433
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:431
 msgid "Menu|Group Box"
 msgstr "Цэс|Бүлгийн хайрцаг"
 
@@ -5869,14 +5864,6 @@ msgid ""
 msgstr ""
 "Энэ хүчин зүйлд ямар зүйл агуулагдах ёстойг  үүсгэн сонгоно уу, үүний дараа "
 "байгаа товчлуур дундаас үүсгэх товчлуурыг дарна уу"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ShareSelectionDialog.java:43
-msgid ""
-"Please select which item should be shared to this factor, then press the "
-"Share button"
-msgstr ""
-"Ямар зүйл энэ хүчин зүйлтэй хамт хэрэглэгдэх ёстойг сонгоно уу, дараа нь "
-"Share товчлуурыг дар"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ProjectFocusQuestion.java:37
 msgid "Policy and Practice"
@@ -6557,14 +6544,6 @@ msgstr ""
 "цар хүрээн доторхи хамгаалах зүйлийн сүйрэл эсвэл доройтлын зэргээр "
 "ерөнхийдөө хэмжигддэг.  Төрөл зүйлийн хувьд ихэвчлэн цар хүрээн дэх "
 "хамгаалах зүйлийн тоо толгойн бууралтын зэргээр хэмжигддэг."
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ShareSelectionDialog.java:37
-msgid "Share"
-msgstr "Солилцох"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:54
-msgid "Share Method"
-msgstr "Солилцох Арга Зүй"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:47
 msgid "Share feedback formally or informally"
@@ -7644,11 +7623,6 @@ msgstr "TT|Диаграмм буюу хүснэгтийн дээд хэсгий�
 msgid "TT|Select the entire chain related to this Direct Threat"
 msgstr "TT|Энэ шууд аюул заналтай холбоотой гинжин холбоог бүхэлд нь сонгох"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeShareMethod.java:41
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShareMethod.java:41
-msgid "TT|Share an existing Method into this Indicator"
-msgstr "TT|Одоогийн аргагчлалыг энэ шалгуур үзүүлэлтэнд оруулах"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDiagramProperties.java:40
 msgid "TT|Show the diagram properties"
 msgstr "TT|Диаграммын агуулгуудыг харуулах"
@@ -8271,9 +8245,13 @@ msgid ""
 "for the total planned who and effort dates."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo30.java:98
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo30.java:90
 msgid ""
 "This migration splits shared activities out to separate activity entries."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo31.java:90
+msgid "This migration splits shared methods out to separate method entries."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:89
@@ -32385,6 +32363,25 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Action|Share Method"
+#~ msgstr "Арга хэмжээ|Арга зүй солилцох"
+
+#~ msgid ""
+#~ "Please select which item should be shared to this factor, then press the "
+#~ "Share button"
+#~ msgstr ""
+#~ "Ямар зүйл энэ хүчин зүйлтэй хамт хэрэглэгдэх ёстойг сонгоно уу, дараа нь "
+#~ "Share товчлуурыг дар"
+
+#~ msgid "Share"
+#~ msgstr "Солилцох"
+
+#~ msgid "Share Method"
+#~ msgstr "Солилцох Арга Зүй"
+
+#~ msgid "TT|Share an existing Method into this Indicator"
+#~ msgstr "TT|Одоогийн аргагчлалыг энэ шалгуур үзүүлэлтэнд оруулах"
 
 #~ msgid "Action|Manage|Create Child Task"
 #~ msgstr "Арга хэмжээ|Удирдах|Хүүхдэд зориулсан даалгавар үүсгэх"

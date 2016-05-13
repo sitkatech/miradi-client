@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-12 02:06-0700\n"
+"POT-Creation-Date: 2016-05-13 03:21-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/miradi-client/"
@@ -297,7 +297,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:154
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:155
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr ""
@@ -1881,11 +1881,6 @@ msgstr "Selecionar Todos"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionSelectChain.java:34
 msgid "Action|Select Factor Chain"
 msgstr "Selecionar Cadeia de Fatores"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeShareMethod.java:35
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShareMethod.java:35
-msgid "Action|Share Method"
-msgstr "Compartilhar Método"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShowActivityBubble.java:34
 msgid "Action|Show Activity on this page"
@@ -5287,15 +5282,15 @@ msgstr "Editar"
 msgid "MenuBar|File"
 msgstr "Arquivo"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:586
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:584
 msgid "MenuBar|Help"
 msgstr "Ajuda"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:518
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:516
 msgid "MenuBar|Step-by-Step"
 msgstr "Passo a Passo"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:445
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:443
 msgid "MenuBar|View"
 msgstr "Visão"
 
@@ -5332,7 +5327,7 @@ msgid "Menu|Export Current Project as..."
 msgstr "Exportar Projeto Atual Como..."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:243
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:433
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:431
 msgid "Menu|Group Box"
 msgstr "Caixa de Grupo"
 
@@ -5989,14 +5984,6 @@ msgid ""
 msgstr ""
 "Por favor selecione qual item deve ser criado dentro deste fator, depois "
 "pressione o botão Criar de Existente"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ShareSelectionDialog.java:43
-msgid ""
-"Please select which item should be shared to this factor, then press the "
-"Share button"
-msgstr ""
-"Por favor selecione o item que deveria ser compartilhado com este fator, "
-"depois pressione o botão Compartilhar"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ProjectFocusQuestion.java:37
 msgid "Policy and Practice"
@@ -6676,14 +6663,6 @@ msgstr ""
 "ecológicas, típicamente medido como o grau de destrução ou degradação do "
 "alvo dento da abrangência.  Para espécies, normalmente medido como o grau de "
 "redução da população do alvo dentro da abrangência."
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ShareSelectionDialog.java:37
-msgid "Share"
-msgstr "Compartilhar"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:54
-msgid "Share Method"
-msgstr "Compartilhar Método"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:47
 msgid "Share feedback formally or informally"
@@ -7773,11 +7752,6 @@ msgstr "Salvar o diagrama ou a área de cima da tabela como uma imagem de PNG"
 msgid "TT|Select the entire chain related to this Direct Threat"
 msgstr "Selecionar a cadeia inteira relacionada a esta Ameaça Direta"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeShareMethod.java:41
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShareMethod.java:41
-msgid "TT|Share an existing Method into this Indicator"
-msgstr "Compartilhar um Método existente para incluir neste Indicador"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDiagramProperties.java:40
 msgid "TT|Show the diagram properties"
 msgstr "Exibir as propriedades do diagrama"
@@ -8420,9 +8394,13 @@ msgid ""
 "for the total planned who and effort dates."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo30.java:98
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo30.java:90
 msgid ""
 "This migration splits shared activities out to separate activity entries."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo31.java:90
+msgid "This migration splits shared methods out to separate method entries."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:89
@@ -28319,6 +28297,25 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "Action|Share Method"
+#~ msgstr "Compartilhar Método"
+
+#~ msgid ""
+#~ "Please select which item should be shared to this factor, then press the "
+#~ "Share button"
+#~ msgstr ""
+#~ "Por favor selecione o item que deveria ser compartilhado com este fator, "
+#~ "depois pressione o botão Compartilhar"
+
+#~ msgid "Share"
+#~ msgstr "Compartilhar"
+
+#~ msgid "Share Method"
+#~ msgstr "Compartilhar Método"
+
+#~ msgid "TT|Share an existing Method into this Indicator"
+#~ msgstr "Compartilhar um Método existente para incluir neste Indicador"
 
 #~ msgid "Action|Manage|Create Child Task"
 #~ msgstr "Criar Tarefa Filhote"

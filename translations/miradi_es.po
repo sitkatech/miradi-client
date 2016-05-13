@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-12 02:06-0700\n"
+"POT-Creation-Date: 2016-05-13 03:21-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/miradi-client/"
@@ -302,7 +302,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:154
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:155
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr ""
@@ -1804,11 +1804,6 @@ msgstr "Seleccionar todos"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionSelectChain.java:34
 msgid "Action|Select Factor Chain"
 msgstr "Seleccionar cadena de factores"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeShareMethod.java:35
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShareMethod.java:35
-msgid "Action|Share Method"
-msgstr "Compartir método"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShowActivityBubble.java:34
 msgid "Action|Show Activity on this page"
@@ -5212,15 +5207,15 @@ msgstr "Editar"
 msgid "MenuBar|File"
 msgstr "Archivo"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:586
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:584
 msgid "MenuBar|Help"
 msgstr "Ayuda"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:518
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:516
 msgid "MenuBar|Step-by-Step"
 msgstr "Paso a paso"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:445
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:443
 msgid "MenuBar|View"
 msgstr "Ver"
 
@@ -5257,7 +5252,7 @@ msgid "Menu|Export Current Project as..."
 msgstr "Exportar proyecto actual como..."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:243
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:433
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:431
 msgid "Menu|Group Box"
 msgstr "Cuadro de grupo"
 
@@ -5894,14 +5889,6 @@ msgid ""
 msgstr ""
 "Seleccione el elemento que se debe crear en este factor y oprima el botón "
 "Crear desde existente"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ShareSelectionDialog.java:43
-msgid ""
-"Please select which item should be shared to this factor, then press the "
-"Share button"
-msgstr ""
-"Seleccione el elemento que se debe compartir con este factor y oprima el "
-"botón Compartir."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ProjectFocusQuestion.java:37
 msgid "Policy and Practice"
@@ -6582,14 +6569,6 @@ msgstr ""
 "generalmente se mide como el grado de destrucción o degradación del objeto "
 "dentro del alcance. Para las especies, generalmente se mide como el grado de "
 "reducción de la población del objeto dentro del alcance."
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ShareSelectionDialog.java:37
-msgid "Share"
-msgstr "Compartir"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/TreeNodeShareMethodDoer.java:54
-msgid "Share Method"
-msgstr "Compartir método"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:47
 msgid "Share feedback formally or informally"
@@ -7662,11 +7641,6 @@ msgstr "Grabar el diagrama o el área superior de la tabla como imagen PNG"
 msgid "TT|Select the entire chain related to this Direct Threat"
 msgstr "Seleccionar toda la cadena relacionada con esta amenaza directa"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeShareMethod.java:41
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShareMethod.java:41
-msgid "TT|Share an existing Method into this Indicator"
-msgstr "Compartir un método existente en este indicador"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDiagramProperties.java:40
 msgid "TT|Show the diagram properties"
 msgstr "Mostrar las propiedades del diagrama"
@@ -8291,9 +8265,13 @@ msgid ""
 "for the total planned who and effort dates."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo30.java:98
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo30.java:90
 msgid ""
 "This migration splits shared activities out to separate activity entries."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo31.java:90
+msgid "This migration splits shared methods out to separate method entries."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:89
@@ -31774,6 +31752,25 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Action|Share Method"
+#~ msgstr "Compartir método"
+
+#~ msgid ""
+#~ "Please select which item should be shared to this factor, then press the "
+#~ "Share button"
+#~ msgstr ""
+#~ "Seleccione el elemento que se debe compartir con este factor y oprima el "
+#~ "botón Compartir."
+
+#~ msgid "Share"
+#~ msgstr "Compartir"
+
+#~ msgid "Share Method"
+#~ msgstr "Compartir método"
+
+#~ msgid "TT|Share an existing Method into this Indicator"
+#~ msgstr "Compartir un método existente en este indicador"
 
 #~ msgid "Action|Share Activity"
 #~ msgstr "Compartir actividad"
