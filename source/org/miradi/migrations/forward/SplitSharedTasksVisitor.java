@@ -372,6 +372,7 @@ public class SplitSharedTasksVisitor extends AbstractMigrationORefVisitor
 		ORef newExpenseRef = getRawProject().createObject(ObjectType.EXPENSE_ASSIGNMENT);
 		RawObject newExpense = getRawProject().findObject(newExpenseRef);
 
+		newExpense.setData(TAG_LABEL, safeGetTag(expenseToClone, TAG_LABEL));
 		newExpense.setData(TAG_DATEUNIT_EFFORTS, safeGetTag(expenseToClone, TAG_DATEUNIT_EFFORTS));
 		proportionDateUnitEfforts(newExpense, proportionShare);
 
