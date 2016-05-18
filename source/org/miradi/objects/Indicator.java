@@ -449,49 +449,15 @@ public class Indicator extends BaseObject implements StrategyActivityRelevancyIn
 		return getRelevantStrategyAndActivityRefs().getFilteredBy(StrategySchema.getObjectType());
 	}
 
-	// TODO: MRD-5987 - need to implement cache for these...short-term call local static helpers...
-
-	// start
-
 	public static ORefList findRelevantIndicators(Project projectToUse, ORef strategyRef) throws Exception
 	{
-		return getRelevantIndicatorsForStrategy(projectToUse, strategyRef);
+		return projectToUse.getRelevantIndicatorsCache().getRelevantIndicatorsForStrategy(strategyRef);
 	}
 
 	public static ORefList findAllRelevantIndicators(Project projectToUse, ORef strategyOrActivityRef) throws Exception
 	{
-		return getAllRelevantIndicatorsForStrategyOrActivity(projectToUse, strategyOrActivityRef);
+		return projectToUse.getRelevantIndicatorsCache().getAllRelevantIndicatorsForStrategyOrActivity(strategyOrActivityRef);
 	}
-
-	private static ORefList getRelevantIndicatorsForStrategy(Project projectToUse, ORef strategyRef) throws Exception
-	{
-		ORefSet indicatorRefs = projectToUse.getPool(IndicatorSchema.getObjectType()).getRefSet();
-		ORefList result = new ORefList();
-		for(ORef indicatorRef: indicatorRefs)
-		{
-			Indicator indicator = Indicator.find(projectToUse, indicatorRef);
-			if(indicator.getRelevantStrategyRefs().contains(strategyRef))
-				result.add(indicator.getRef());
-		}
-
-		return result;
-	}
-
-	private static ORefList getAllRelevantIndicatorsForStrategyOrActivity(Project projectToUse, ORef strategyOrActivityRef) throws Exception
-	{
-		ORefSet indicatorRefs = projectToUse.getPool(IndicatorSchema.getObjectType()).getRefSet();
-		ORefList result = new ORefList();
-		for(ORef indicatorRef: indicatorRefs)
-		{
-			Indicator indicator = Indicator.find(projectToUse, indicatorRef);
-			if(indicator.getRelevantStrategyAndActivityRefs().contains(strategyOrActivityRef))
-				result.add(indicator.getRef());
-		}
-
-		return result;
-	}
-
-	// end
 
 	public ORefList getRelevantActivityRefs() throws Exception
 	{

@@ -83,6 +83,7 @@ public class Project implements ProjectInterface
 		dashboardStatusMapsCache = new DashboardStatusMapsCache(this);
 		timePeriodCostsMapsCache = new TimePeriodCostsMapsCache(this);
 		relevantDesiresCache = new RelevantDesiresCache(this);
+		relevantIndicatorsCache = new RelevantIndicatorsCache(this);
 
 		clear();
 
@@ -109,6 +110,7 @@ public class Project implements ProjectInterface
 		dashboardStatusMapsCache.clear();
 		timePeriodCostsMapsCache.clear();
 		relevantDesiresCache.clear();
+		relevantIndicatorsCache.clear();
 		projectCalendar.clear();
 
 		quarantine = new StringBuilder();
@@ -494,6 +496,11 @@ public class Project implements ProjectInterface
 		return relevantDesiresCache;
 	}
 
+	public RelevantIndicatorsCache getRelevantIndicatorsCache()
+	{
+		return relevantIndicatorsCache;
+	}
+
 	public BaseObject findObject(ORef ref)
 	{
 		return objectManager.findObject(ref);
@@ -847,6 +854,7 @@ public class Project implements ProjectInterface
 		dashboardStatusMapsCache.enable();
 		timePeriodCostsMapsCache.enable();
 		relevantDesiresCache.enable();
+		relevantIndicatorsCache.enable();
 		projectCalendar.enable();
 	}
 
@@ -978,6 +986,7 @@ public class Project implements ProjectInterface
 		dashboardStatusMapsCache.disable();
 		timePeriodCostsMapsCache.disable();
 		relevantDesiresCache.disable();
+		relevantIndicatorsCache.disable();
 		projectCalendar.disable();
 	}
 
@@ -1446,12 +1455,13 @@ public class Project implements ProjectInterface
 	private DashboardStatusMapsCache dashboardStatusMapsCache;
 	private TimePeriodCostsMapsCache timePeriodCostsMapsCache;
 	private RelevantDesiresCache relevantDesiresCache;
+	private RelevantIndicatorsCache relevantIndicatorsCache;
 
 	// FIXME low: This should go away, but it's difficult
 	private String currentViewName;
 	
 	public CommandExecutor commandExecutor;
 	
-	public static final int VERSION_LOW = 31;
-	public static final int VERSION_HIGH = 31;
+	public static final int VERSION_LOW = 32;
+	public static final int VERSION_HIGH = 32;
 }
