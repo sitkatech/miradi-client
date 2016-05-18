@@ -21,13 +21,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.objectExporters;
 
 import org.miradi.objecthelpers.CodeToUserStringMap;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Desire;
 import org.miradi.objects.Indicator;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
@@ -47,6 +51,10 @@ public class IndicatorExporter extends BaseObjectWithLeaderResourceFieldExporter
 		writeMethodRefs(baseObjectSchema, indicator);
 		writeThreshold(indicator);
 		writeOptionalCalculatedTimePeriodCosts(indicator, baseObjectSchema);
+
+		final String objectName = baseObjectSchema.getObjectName();
+		writeRelevantStrategyIds(objectName, indicator);
+		writeRelevantActivityIds(objectName, indicator);
 	}
 
 	private void writeMethodRefs(BaseObjectSchema baseObjectSchema, final Indicator indicator) throws Exception
@@ -65,7 +73,10 @@ public class IndicatorExporter extends BaseObjectWithLeaderResourceFieldExporter
 		
 		if (tag.equals(Indicator.TAG_METHOD_IDS))
 			return true;
-		
+
+		if (tag.equals(Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
+			return true;
+
 		return super.doesFieldRequireSpecialHandling(tag);
 	}
 	
@@ -94,5 +105,17 @@ public class IndicatorExporter extends BaseObjectWithLeaderResourceFieldExporter
 		}
 		
 		getWriter().writeEndElement(elementName);
+	}
+
+	private void writeRelevantStrategyIds(final String objectName, Indicator indicator) throws Exception
+	{
+		ORefList relevantStrategyRefs = indicator.getRelevantStrategyAndActivityRefs().getFilteredBy(StrategySchema.getObjectType());
+		getWriter().writeReflist(objectName, RELEVANT_STRATEGY_IDS, StrategySchema.OBJECT_NAME, relevantStrategyRefs);
+	}
+
+	private void writeRelevantActivityIds(final String objectName, Indicator indicator) throws Exception
+	{
+		ORefList relevantActivityRefs = indicator.getRelevantStrategyAndActivityRefs().getFilteredBy(TaskSchema.getObjectType());
+		getWriter().writeReflist(objectName, RELEVANT_ACTIVITY_IDS, ACTIVITY, relevantActivityRefs);
 	}
 }

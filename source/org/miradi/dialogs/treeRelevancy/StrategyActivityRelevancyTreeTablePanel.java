@@ -25,24 +25,25 @@ import org.miradi.dialogs.base.EditableBaseObjectTable;
 import org.miradi.dialogs.base.SingleBooleanColumnEditableModel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.MainWindow;
-import org.miradi.objects.Desire;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.StrategyActivityRelevancyInterface;
 
 public class StrategyActivityRelevancyTreeTablePanel extends AbstractEditableTreeTablePanel
 {
-	public static StrategyActivityRelevancyTreeTablePanel createTreeTablePanel(MainWindow mainWindowToUse, Desire desire, StrategyActivityRelevancyTreeTableModel treeTableModel, StrategyActivityRelevancyTreeTable treeTable) throws Exception
+	public static StrategyActivityRelevancyTreeTablePanel createTreeTablePanel(MainWindow mainWindowToUse, BaseObject baseObject, StrategyActivityRelevancyTreeTableModel treeTableModel, StrategyActivityRelevancyTreeTable treeTable) throws Exception
 	{
-		return new StrategyActivityRelevancyTreeTablePanel(mainWindowToUse, treeTableModel, treeTable, desire);
+		return new StrategyActivityRelevancyTreeTablePanel(mainWindowToUse, treeTableModel, treeTable, baseObject);
 	}
 	
-	private StrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, StrategyActivityRelevancyTreeTableModel modelToUse, TreeTableWithStateSaving treeTable, Desire desire) throws Exception
+	private StrategyActivityRelevancyTreeTablePanel(MainWindow mainWindowToUse, StrategyActivityRelevancyTreeTableModel modelToUse, TreeTableWithStateSaving treeTable, BaseObject baseObject) throws Exception
 	{
-		super(mainWindowToUse, modelToUse, treeTable, desire, getButtonActionClasses());		
+		super(mainWindowToUse, modelToUse, treeTable, baseObject, getButtonActionClasses());
 	}
 	
 	@Override
 	protected SingleBooleanColumnEditableModel createEditableTableModel()
 	{
-		return new StrategyActivityRelevancyTableModel(getProject(), getTree(),  (Desire)getBaseObjectForPanel());
+		return new StrategyActivityRelevancyTableModel(getProject(), getTree(), (StrategyActivityRelevancyInterface) getBaseObjectForPanel());
 	}
 	
 	@Override

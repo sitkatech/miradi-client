@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella.doers;
 
 import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.dialogs.base.RelevancyGoalPanel;
+import org.miradi.dialogs.base.RelevancyGoalOverridePanel;
 import org.miradi.main.EAM;
 import org.miradi.schemas.StrategySchema;
 
@@ -36,7 +36,7 @@ public class EditStrategyGoalRelevancyListDoer extends AbstractEditListDoer
 	@Override
 	protected DisposablePanel createEditPanel() throws Exception
 	{
-		return new RelevancyGoalPanel(getProject(), getSelectedRef(), EAM.text("Select the Goals which this Strategy helps to achieve"));
+		return new RelevancyGoalOverridePanel(getProject(), getSelectedRef(), EAM.text("Select the Goals which this Strategy helps to achieve"));
 	}
 
 	@Override

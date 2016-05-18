@@ -194,24 +194,22 @@ public class Strategy extends Factor
 	}
 
 	@Override
-	protected RelevancyOverrideSet getIndicatorRelevancyOverrideSet()
-	{
-		return getRawRelevancyOverrideData(TAG_RELEVANT_INDICATOR_SET);
-	}
-
-	@Override
 	public ORefList getIndicatorsOnSameFactor()
 	{
 		return getOnlyDirectIndicatorRefs();
 	}
 
+	@Override
+	public ORefList getRelevantIndicatorRefList() throws Exception
+	{
+		return getRelevantIndicatorRefs();
+	}
+
 	protected String getRelevantIndicatorRefsAsString()
 	{
-		ORefList refList;
 		try
 		{
-			refList = getRelevantIndicatorRefList();
-			return refList.toString();
+			return getRelevantIndicatorRefs().toString();
 		}
 		catch(Exception e)
 		{
@@ -233,6 +231,14 @@ public class Strategy extends Factor
 		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
 	
 		return calculateRelevantRefList(relevantGoals, relevantOverrides);
+	}
+
+	public ORefList getRelevantIndicatorRefs() throws Exception
+	{
+		ORefSet relevantIndicators = new ORefSet(AbstractTreeRebuilder.findRelevantIndicators(getProject(), getRef()));
+		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
+
+		return calculateRelevantRefList(relevantIndicators, relevantOverrides);
 	}
 
 	public String getTaxonomyCode()
@@ -344,7 +350,6 @@ public class Strategy extends Factor
 	public static final String TAG_IMPACT_RATING = "ImpactRating";
 	public static final String TAG_FEASIBILITY_RATING = "FeasibilityRating";
 	public static final String TAG_LEGACY_TNC_STRATEGY_RANKING = "LegacyTncStrategyRanking";
-	public static final String TAG_RELEVANT_INDICATOR_SET = "RelevantIndicatorSet";
 
 	public static final String PSEUDO_TAG_RATING_SUMMARY = "RatingSummary";
 	public static final String PSEUDO_TAG_IMPACT_RATING_VALUE = "ImpactRatingValue";

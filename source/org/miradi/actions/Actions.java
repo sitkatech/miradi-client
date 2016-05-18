@@ -414,6 +414,7 @@ public class Actions
 		registerAction(new ActionEditGoalIndicatorRelevancyList(mainWindow));
 		registerAction(new ActionEditObjectiveStrategyActivityRelevancyList(mainWindow));
 		registerAction(new ActionEditGoalStrategyActivityRelevancyList(mainWindow));
+		registerAction(new ActionEditIndicatorStrategyActivityRelevancyList(mainWindow));
 		registerAction(new ActionEditStrategyGoalRelevancyList(mainWindow));
 		registerAction(new ActionEditStrategyObjectiveRelevancyList(mainWindow));
 		registerAction(new ActionEditStrategyIndicatorRelevancyList(mainWindow));

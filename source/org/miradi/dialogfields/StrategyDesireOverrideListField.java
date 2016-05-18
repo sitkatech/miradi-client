@@ -21,12 +21,31 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.Desire;
 import org.miradi.project.Project;
+import org.miradi.utils.CommandVector;
 
-public class StrategyObjectiveOverrideListField extends StrategyDesireOverrideListField
+public class StrategyDesireOverrideListField extends AbstractRelevancyOverrideListField
 {
-	public StrategyObjectiveOverrideListField(Project projectToUse, ORef strategyRef, int objectTypeToUpdate)
+	public StrategyDesireOverrideListField(Project projectToUse, ORef strategyRef, int objectTypeToUpdate)
 	{
 		super(projectToUse, strategyRef, objectTypeToUpdate);
+	}
+
+	@Override
+	protected CommandVector getCommandsToEnsureProperRelevancy(ORefList selectedObjectRefs, ORef objectRef) throws Exception
+	{
+		Desire desire = Desire.findDesire(getProject(), objectRef);
+		if (selectedObjectRefs.contains(objectRef))
+			return desire.createCommandsToEnsureStrategyOrActivityIsRelevant(getORef());
+
+		return desire.createCommandsToEnsureStrategyOrActivityIsIrrelevant(getORef());
+	}
+
+	@Override
+	protected ORefList findAllRelevantObjects(int objectTypeToUpdate) throws Exception
+	{
+		return Desire.findAllRelevantDesires(getProject(), getORef(), objectTypeToUpdate);
 	}
 }

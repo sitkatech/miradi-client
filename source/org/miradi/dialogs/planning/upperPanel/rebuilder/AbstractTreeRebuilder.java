@@ -133,7 +133,12 @@ abstract public class AbstractTreeRebuilder
 	{
 		return Desire.findRelevantDesires(projectToUse, strategyRef, ObjectiveSchema.getObjectType());
 	}
-	
+
+	public static ORefList findRelevantIndicators(Project projectToUse, ORef strategyRef) throws Exception
+	{
+		return Indicator.findRelevantIndicators(projectToUse, strategyRef);
+	}
+
 	private void createAndAddChildren(AbstractPlanningTreeNode parent, ORefList childRefsToAdd) throws Exception
 	{
 		for(int index = 0; index < childRefsToAdd.size(); ++index)

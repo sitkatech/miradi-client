@@ -204,7 +204,7 @@ public class TestXmpz2XmlExporter extends TestCaseForXmpz2ExportAndImport
 		{
 			xmlImporter.importProjectXml(stringInputStream);
 			verifyCalculatedCostsElement(xmlImporter, new TaskImporter(xmlImporter), 5);
-			verifyCalculatedCostsElement(xmlImporter, new IndicatorImporter(xmlImporter), 4);
+			verifyCalculatedCostsElement(xmlImporter, new IndicatorImporter(xmlImporter), 3);
 			verifyCalculatedCostsElement(xmlImporter, new StrategyImporter(xmlImporter), 3);
 		}
 		finally

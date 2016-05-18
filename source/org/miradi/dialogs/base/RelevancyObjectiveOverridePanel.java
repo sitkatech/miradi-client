@@ -18,36 +18,26 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.views.umbrella.doers;
+package org.miradi.dialogs.base;
 
-import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.dialogs.base.RelevancyObjectiveOverridePanel;
 import org.miradi.main.EAM;
-import org.miradi.schemas.TaskSchema;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.project.Project;
 
-public class EditActivityObjectiveRelevancyListDoer extends	AbstractEditListDoer
+public class RelevancyObjectiveOverridePanel extends ObjectDataInputPanel
 {
-	@Override
-	protected int getObjectType()
+	public RelevancyObjectiveOverridePanel(Project projectToUse, ORef orefToUse, String description)
 	{
-		return TaskSchema.getObjectType();
+		super(projectToUse, orefToUse);
+		
+		addFieldWithDescriptionOnly(createStrategyObjectiveRelevancyOverrideListField(orefToUse.getObjectType()), description);
+		
+		updateFieldsFromProject();
 	}
 
 	@Override
-	protected DisposablePanel createEditPanel() throws Exception
+	public String getPanelDescription()
 	{
-		return new RelevancyObjectiveOverridePanel(getProject(), getSelectedRef(), EAM.text("Select the Objectives which this Activity helps to achieve"));
-	}
-
-	@Override
-	protected String getDialogTitle()
-	{
-		return EAM.text("Choose Relevant Objective(s)");
-	}
-	
-	@Override
-	protected boolean shouldHaveScrollBars()
-	{
-		return true;
+		return EAM.text("Objective Relevancy Panel");
 	}
 }

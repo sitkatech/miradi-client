@@ -41,8 +41,6 @@ public class StrategySchema extends FactorSchema
 		
 		createFieldSchemaRequiredChoice(Strategy.TAG_STATUS, StrategyStatusQuestion.class);
 		createFieldSchemaIdList(Strategy.TAG_ACTIVITY_IDS, TaskSchema.getObjectType());
-		createFieldSchemaRelevancyOverrideSet(Strategy.TAG_RELEVANT_INDICATOR_SET);
-
 		createFieldSchemaChoice(Strategy.TAG_TAXONOMY_CODE, StrategyTaxonomyQuestion.class);
 		createFieldSchemaChoice(Strategy.TAG_IMPACT_RATING, StrategyImpactQuestion.class);
 		createFieldSchemaChoice(Strategy.TAG_FEASIBILITY_RATING, StrategyFeasibilityQuestion.class);

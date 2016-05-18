@@ -353,15 +353,9 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 				return true;
 		}
 
-		if(Strategy.is(ref))
+		if(Indicator.is(ref))
 		{
-			if(tag.equals(Strategy.TAG_RELEVANT_INDICATOR_SET))
-				return true;
-		}
-
-		if(Task.is(ref))
-		{
-			if(tag.equals(Task.TAG_RELEVANT_INDICATOR_SET))
+			if(tag.equals(Indicator.TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
 				return true;
 		}
 

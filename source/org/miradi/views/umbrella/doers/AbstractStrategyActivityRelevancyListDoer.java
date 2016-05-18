@@ -19,12 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import java.awt.Dimension;
-
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.treeRelevancy.StrategyActivityRelevancyManagementPanel;
 import org.miradi.main.EAM;
-import org.miradi.objects.Desire;
+import org.miradi.objects.BaseObject;
+
+import java.awt.*;
 
 abstract public class AbstractStrategyActivityRelevancyListDoer extends AbstractEditListDoer
 {
@@ -43,8 +43,8 @@ abstract public class AbstractStrategyActivityRelevancyListDoer extends Abstract
 	@Override
 	protected DisposablePanel createEditPanel() throws Exception
 	{
-		Desire desire = (Desire) getSelectedObject();
-		return StrategyActivityRelevancyManagementPanel.createManagementPanel(getMainWindow(), desire);
+		BaseObject selectedObject = getSelectedObject();
+		return StrategyActivityRelevancyManagementPanel.createManagementPanel(getMainWindow(), selectedObject);
 	}
 
 	@Override

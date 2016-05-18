@@ -17,37 +17,15 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.dialogs.base.RelevancyObjectiveOverridePanel;
-import org.miradi.main.EAM;
-import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.IndicatorSchema;
 
-public class EditActivityObjectiveRelevancyListDoer extends	AbstractEditListDoer
+public class EditIndicatorStrategyActivityRelevancyListDoer extends AbstractStrategyActivityRelevancyListDoer
 {
 	@Override
 	protected int getObjectType()
 	{
-		return TaskSchema.getObjectType();
-	}
-
-	@Override
-	protected DisposablePanel createEditPanel() throws Exception
-	{
-		return new RelevancyObjectiveOverridePanel(getProject(), getSelectedRef(), EAM.text("Select the Objectives which this Activity helps to achieve"));
-	}
-
-	@Override
-	protected String getDialogTitle()
-	{
-		return EAM.text("Choose Relevant Objective(s)");
-	}
-	
-	@Override
-	protected boolean shouldHaveScrollBars()
-	{
-		return true;
+		return IndicatorSchema.getObjectType();
 	}
 }

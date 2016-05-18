@@ -20,10 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.xmpz2schema;
 
-import java.util.Vector;
-
 import org.miradi.objects.Indicator;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.FieldSchemaRelevancyOverrideSetData;
+
+import java.util.Vector;
 
 public class IndicatorSchemaWriter extends BaseObjectSchemaWriterWithCalculatedCostsElement
 {
@@ -37,7 +38,9 @@ public class IndicatorSchemaWriter extends BaseObjectSchemaWriterWithCalculatedC
 	{
 		Vector<String> schemaElements = super.createCustomSchemaFields();
 		schemaElements.add(getXmpz2XmlSchemaCreator().createThresholdsSchemaElement(getBaseObjectSchema()));
-		
+		schemaElements.add(getXmpz2XmlSchemaCreator().createRelevantSchemaElement(getBaseObjectSchema(), new FieldSchemaRelevancyOverrideSetData(RELEVANT_STRATEGY_IDS)));
+		schemaElements.add(getXmpz2XmlSchemaCreator().createRelevantSchemaElement(getBaseObjectSchema(), new FieldSchemaRelevancyOverrideSetData(RELEVANT_ACTIVITY_IDS)));
+
 		return schemaElements;
 	}
 
@@ -49,7 +52,10 @@ public class IndicatorSchemaWriter extends BaseObjectSchemaWriterWithCalculatedC
 		
 		if (tag.equals(Indicator.TAG_THRESHOLD_DETAILS_MAP))
 			return true;
-		
+
+		if (tag.equals(Indicator.TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
+			return true;
+
 		return super.doesFieldRequireSpecialHandling(tag);
 	}	
 }

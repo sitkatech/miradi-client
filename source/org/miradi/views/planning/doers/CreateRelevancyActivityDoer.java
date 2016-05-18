@@ -24,32 +24,35 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objects.Desire;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.StrategyActivityRelevancyInterface;
 
 public class CreateRelevancyActivityDoer extends CreateActivityNodeDoer
 {
 	@Override
-	protected void doWork(ORefList selectionHiearchy, ORef newTaskRef) throws Exception
+	protected void doWork(ORefList selectionHierarchy, ORef newTaskRef) throws Exception
 	{
-		ORef desireRef = findDesireRef(selectionHiearchy);
-		if (desireRef.isInvalid())
+		ORef parentObjectRef = findParentObjectRef(selectionHierarchy);
+		if (parentObjectRef.isInvalid())
 			return;
-		
-		Desire desire = Desire.findDesire(getProject(), desireRef);
-		ORefList strategyAndActivityRefs = desire.getRelevantStrategyAndActivityRefs();
+
+		StrategyActivityRelevancyInterface parentObject = (StrategyActivityRelevancyInterface) getProject().findObject(parentObjectRef);
+		ORefList strategyAndActivityRefs = parentObject.getRelevantStrategyAndActivityRefs();
 		strategyAndActivityRefs.add(newTaskRef);
-		RelevancyOverrideSet relevancySet = desire.getCalculatedRelevantStrategyActivityOverrides(strategyAndActivityRefs);
+		RelevancyOverrideSet relevancySet = parentObject.getCalculatedRelevantStrategyActivityOverrides(strategyAndActivityRefs);
 		
-		CommandSetObjectData addNewActivityToRelevancyList = new CommandSetObjectData(desireRef, Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevancySet.toString());
+		CommandSetObjectData addNewActivityToRelevancyList = new CommandSetObjectData(parentObjectRef, parentObject.getRelevantStrategyActivitySetTag(), relevancySet.toString());
 		getProject().executeCommand(addNewActivityToRelevancyList);
 	}
 	
-	private ORef findDesireRef(ORefList selectionHierarchy)
+	private ORef findParentObjectRef(ORefList selectionHierarchy)
 	{
 		for (int index = 0; index < selectionHierarchy.size(); ++index)
 		{
 			ORef ref = selectionHierarchy.get(index);
-			if (Desire.isDesire(ref))
+			BaseObject parentObject = getProject().findObject(ref);
+
+			if (parentObject instanceof StrategyActivityRelevancyInterface)
 				return ref;
 		}
 		

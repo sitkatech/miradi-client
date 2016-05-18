@@ -331,8 +331,9 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 	private void verifyRelevancy(ORef indicatorRef, Task activity, boolean overrideBoolean, int expectedValue) throws Exception
 	{
 		RelevancyOverrideSet relevancyOverrides = new RelevancyOverrideSet();
-		relevancyOverrides.add(new RelevancyOverride(indicatorRef, overrideBoolean));
-		activity.setData(Task.TAG_RELEVANT_INDICATOR_SET, relevancyOverrides.toString());
+		relevancyOverrides.add(new RelevancyOverride(activity.getRef(), overrideBoolean));
+		Indicator indicator = Indicator.find(getProject(), indicatorRef);
+		indicator.setData(Indicator.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevancyOverrides.toString());
 		assertEquals("wrong indicator count?", expectedValue, activity.getRelevantIndicatorRefList().size());
 	}
 

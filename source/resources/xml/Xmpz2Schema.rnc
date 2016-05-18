@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue Mar 15 14:46:40 GMT 2016 $
+# $LastChangedDate: Tue May 17 13:20:42 BST 2016 $
 # $LastChangedRevision: 236 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/236'
 start = ConservationProject.element
@@ -260,7 +260,6 @@ Task.element = element miradi:Task
   element miradi:TaskOrderedSubTaskIds { SubTaskId.element* }? &
   element miradi:TaskPlannedLeaderResourceId { ResourceId.element }? &
   element miradi:TaskProgressReportIds { ProgressReportId.element* }? &
-  element miradi:TaskRelevantIndicatorIds { IndicatorId.element* }? &
   element miradi:TaskResourceAssignmentIds { ResourceAssignmentId.element* }? &
   element miradi:TaskResourcePlanIds { ResourcePlanId.element* }? &
   TaxonomyClassificationContainer.element?
@@ -313,6 +312,8 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorPriority { vocabulary_priority_rating_code }? &
   element miradi:IndicatorProgressReportIds { ProgressReportId.element* }? &
   element miradi:IndicatorRatingSource { vocabulary_rating_source }? &
+  element miradi:IndicatorRelevantActivityIds { ActivityId.element* }? &
+  element miradi:IndicatorRelevantStrategyIds { StrategyId.element* }? &
   element miradi:IndicatorResourceAssignmentIds { ResourceAssignmentId.element* }? &
   element miradi:IndicatorResourcePlanIds { ResourcePlanId.element* }? &
   element miradi:IndicatorThresholds { IndicatorThreshold.element* }? &
@@ -472,7 +473,6 @@ Strategy.element = element miradi:Strategy
   element miradi:StrategyOrderedActivityIds { ActivityId.element* }? &
   element miradi:StrategyPlannedLeaderResourceId { ResourceId.element }? &
   element miradi:StrategyProgressReportIds { ProgressReportId.element* }? &
-  element miradi:StrategyRelevantIndicatorIds { IndicatorId.element* }? &
   element miradi:StrategyResourceAssignmentIds { ResourceAssignmentId.element* }? &
   element miradi:StrategyResourcePlanIds { ResourcePlanId.element* }? &
   element miradi:StrategyStandardClassification { vocabulary_strategy_taxonomy_code }? &

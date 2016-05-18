@@ -232,7 +232,6 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	{
 		HashMap<String, String> map = createFactorMap();
 		map.put(Task.TAG_SUBTASK_IDS, SUB_TASK_IDS);
-		map.put(Task.TAG_RELEVANT_INDICATOR_SET, RELEVANT_INDICATOR_IDS);
 		return map;
 	}
 
@@ -245,6 +244,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(Indicator.TAG_VIABILITY_RATINGS_COMMENTS, VIABILITY_RATINGS_COMMENTS);
 		map.put(Indicator.TAG_MEASUREMENT_REFS, MEASUREMENT_IDS);
 		map.put(Indicator.TAG_FUTURE_STATUS_REFS, FUTURE_STATUS_IDS);
+		map.put(Indicator.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, RELEVANT_STRATEGY_IDS);
 		
 		return map;
 	}
@@ -312,8 +312,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		HashMap<String, String> map = createFactorMap();
 		map.put(Strategy.TAG_TAXONOMY_CODE, STANDARD_CLASSIFICATION);
 		map.put(Strategy.TAG_ACTIVITY_IDS, ORDERED_ACTIVITY_IDS);
-		map.put(Strategy.TAG_RELEVANT_INDICATOR_SET, RELEVANT_INDICATOR_IDS);
-		
+
 		return map;
 	}
 	

@@ -20,12 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objects;
 
-import org.miradi.commands.CommandSetObjectData;
-import org.miradi.objecthelpers.RelevancyOverride;
-import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
-import org.miradi.utils.CommandVector;
 
 public class TestDesire extends ObjectTestCase
 {
@@ -38,10 +34,13 @@ public class TestDesire extends ObjectTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		
+
+		strategyActivityRelevancy = new TestStrategyActivityRelevancy(getName(), getProject());
+
 		DiagramFactor strategyDiagramFactor = getProject().createAndAddFactorToDiagram(StrategySchema.getObjectType());
 		strategy = (Strategy) strategyDiagramFactor.getWrappedFactor();
-		
+		otherActivity = getProject().createTask(strategy);
+
 		DiagramFactor strategyWithObjectiveDiagramFactor = getProject().createAndAddFactorToDiagram(StrategySchema.getObjectType());
 		strategyWithObjective = (Strategy) strategyWithObjectiveDiagramFactor.getWrappedFactor();
 		activity = getProject().createTask(strategyWithObjective);
@@ -56,282 +55,127 @@ public class TestDesire extends ObjectTestCase
     //region Strategy Relevancy tests
     public void testStrategyDefaultRelevantNoOverridesMakeIrrelevant() throws Exception
 	{
-		verifyStrategyDefaultRelevantNoOverridesMakeIrrelevant(goal);
-		verifyStrategyDefaultRelevantNoOverridesMakeIrrelevant(objective);
+		strategyActivityRelevancy.verifyStrategyDefaultRelevantNoOverridesMakeIrrelevant(strategyWithObjective, goal);
+		strategyActivityRelevancy.verifyStrategyDefaultRelevantNoOverridesMakeIrrelevant(strategyWithObjective, objective);
 	}
 
 	public void testStrategyDefaultRelevantNoOverrideMakeRelevant() throws Exception
 	{
-		verifyStrategyDefaultRelevantNoOverrideMakeRelevant(objective);
-		verifyStrategyDefaultRelevantNoOverrideMakeRelevant(goal);
+		strategyActivityRelevancy.verifyStrategyDefaultRelevantNoOverrideMakeRelevant(strategyWithObjective, objective);
+		strategyActivityRelevancy.verifyStrategyDefaultRelevantNoOverrideMakeRelevant(strategyWithObjective, goal);
 	}
 	
 	public void testStrategyDefaultRelevantOverrideIrrelevantMakeRelevant() throws Exception
 	{
-		verifyStrategyDefaultRelevantOverrideIrrelevantMakeRelevant(objective);
-		verifyStrategyDefaultRelevantOverrideIrrelevantMakeRelevant(goal);
+		strategyActivityRelevancy.verifyStrategyDefaultRelevantOverrideIrrelevantMakeRelevant(strategyWithObjective, objective);
+		strategyActivityRelevancy.verifyStrategyDefaultRelevantOverrideIrrelevantMakeRelevant(strategyWithObjective, goal);
 	}
 	
 	public void testStrategyDefaultRelevantOverrideIrrelevantMakeIrrelevant() throws Exception
 	{
-		verifyStrategyDefaultRelevantOverrideIrrelevantMakeIrrelevant(objective);
-		verifyStrategyDefaultRelevantOverrideIrrelevantMakeIrrelevant(goal);
+		strategyActivityRelevancy.verifyStrategyDefaultRelevantOverrideIrrelevantMakeIrrelevant(strategyWithObjective, objective);
+		strategyActivityRelevancy.verifyStrategyDefaultRelevantOverrideIrrelevantMakeIrrelevant(strategyWithObjective, goal);
 	}
 	
 	public void testStrategyDefaultRelevantOverrideRelevantMakeIrrelevant() throws Exception
 	{
-		verifyStrategyDefaultRelevantOverrideRelevantMakeIrrelevant(objective);
-		verifyStrategyDefaultRelevantOverrideRelevantMakeIrrelevant(goal);
+		strategyActivityRelevancy.verifyStrategyDefaultRelevantOverrideRelevantMakeIrrelevant(strategyWithObjective, objective);
+		strategyActivityRelevancy.verifyStrategyDefaultRelevantOverrideRelevantMakeIrrelevant(strategyWithObjective, goal);
 	}
 
 	public void testStrategyDefaultIrrelevantNoOverrideMakeRelevant() throws Exception
 	{
-		verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeRelevant(strategy, objective);
-		verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeRelevant(strategy, goal);
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeRelevant(strategy, objective);
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeRelevant(strategy, goal);
 	}
 
     public void testStrategyDefaultIrrelevantNoOverrideMakeIrrelevant() throws Exception
     {
-        verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeIrrelevant(strategy, objective);
-        verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeIrrelevant(strategy, goal);
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeIrrelevant(strategy, objective);
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeIrrelevant(strategy, goal);
     }
 
     public void testStrategyDefaultIrrelevantRelevantOverrideMakeIrrelevant() throws Exception
     {
-        verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(strategy, objective);
-        verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(strategy, goal);
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(strategy, objective);
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(strategy, goal);
     }
 
     public void testStrategyDefaultIrrelevantOverrideRelevantMakeRelevant() throws Exception
     {
-        verifyStrategyOrActivityDefaultIrrelevantOverrideRelevantMakeRelevant(strategy, objective);
-        verifyStrategyOrActivityDefaultIrrelevantOverrideRelevantMakeRelevant(strategy, goal);
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantOverrideRelevantMakeRelevant(strategy, objective);
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantOverrideRelevantMakeRelevant(strategy, goal);
     }
     //endregion
 
     //region Activity Relevancy tests
     public void testActivityDefaultRelevantNoOverridesMakeIrrelevant() throws Exception
     {
-        verifyActivityDefaultRelevantNoOverridesMakeIrrelevant(goal);
-        verifyActivityDefaultRelevantNoOverridesMakeIrrelevant(objective);
+		strategyActivityRelevancy.verifyActivityDefaultRelevantNoOverridesMakeIrrelevant(activity, goal);
+		strategyActivityRelevancy.verifyActivityDefaultRelevantNoOverridesMakeIrrelevant(activity, objective);
     }
 
     public void testActivityDefaultRelevantNoOverrideMakeRelevant() throws Exception
     {
-        verifyActivityDefaultRelevantNoOverrideMakeRelevant(objective);
-        verifyActivityDefaultRelevantNoOverrideMakeRelevant(goal);
+		strategyActivityRelevancy.verifyActivityDefaultRelevantNoOverrideMakeRelevant(activity, objective);
+		strategyActivityRelevancy.verifyActivityDefaultRelevantNoOverrideMakeRelevant(activity, goal);
     }
 
     public void testActivityDefaultRelevantOverrideIrrelevantMakeRelevant() throws Exception
     {
-        verifyActivityDefaultRelevantOverrideIrrelevantMakeRelevant(objective);
-        verifyActivityDefaultRelevantOverrideIrrelevantMakeRelevant(goal);
+		strategyActivityRelevancy.verifyActivityDefaultRelevantOverrideIrrelevantMakeRelevant(activity, objective);
+		strategyActivityRelevancy.verifyActivityDefaultRelevantOverrideIrrelevantMakeRelevant(activity, goal);
     }
 
     public void testActivityDefaultRelevantOverrideIrrelevantMakeIrrelevant() throws Exception
     {
-        verifyActivityDefaultRelevantOverrideIrrelevantMakeIrrelevant(objective);
-        verifyActivityDefaultRelevantOverrideIrrelevantMakeIrrelevant(goal);
+		strategyActivityRelevancy.verifyActivityDefaultRelevantOverrideIrrelevantMakeIrrelevant(activity, objective);
+		strategyActivityRelevancy.verifyActivityDefaultRelevantOverrideIrrelevantMakeIrrelevant(activity, goal);
     }
 
     public void testActivityDefaultRelevantOverrideRelevantMakeIrrelevant() throws Exception
     {
-        verifyActivityDefaultRelevantOverrideRelevantMakeIrrelevant(objective);
-        verifyActivityDefaultRelevantOverrideRelevantMakeIrrelevant(goal);
+		strategyActivityRelevancy.verifyActivityDefaultRelevantOverrideRelevantMakeIrrelevant(activity, objective);
+		strategyActivityRelevancy.verifyActivityDefaultRelevantOverrideRelevantMakeIrrelevant(activity, goal);
     }
 
     public void testActivityDefaultIrrelevantNoOverrideMakeRelevant() throws Exception
     {
-        verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeRelevant(strategy, objective);
-        verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeRelevant(strategy, goal);
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeRelevant(otherActivity, objective);
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeRelevant(otherActivity, goal);
     }
 
     public void testActivityDefaultIrrelevantNoOverrideMakeIrrelevant() throws Exception
     {
-        verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeIrrelevant(strategy, objective);
-        verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeIrrelevant(strategy, goal);
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeIrrelevant(otherActivity, objective);
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeIrrelevant(otherActivity, goal);
     }
 
     public void testActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant() throws Exception
     {
-        verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(strategy, objective);
-        verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(strategy, goal);
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(otherActivity, objective);
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(otherActivity, goal);
     }
 
     public void testActivityDefaultIrrelevantOverrideRelevantMakeRelevant() throws Exception
     {
-        verifyStrategyOrActivityDefaultIrrelevantOverrideRelevantMakeRelevant(strategy, objective);
-        verifyStrategyOrActivityDefaultIrrelevantOverrideRelevantMakeRelevant(strategy, goal);
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantOverrideRelevantMakeRelevant(otherActivity, objective);
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantOverrideRelevantMakeRelevant(otherActivity, goal);
     }
     //endregion
 
-	private void verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeRelevant(Factor strategyOrActivityRef, Desire desireToUse) throws Exception
-	{
-		CommandVector commandsToMakeRelevant = desireToUse.createCommandsToEnsureStrategyOrActivityIsRelevant(strategyOrActivityRef.getRef());
-		assertEquals("Should contain exactly one command to make irrelevant factor with no override, relevant with override?", 1, commandsToMakeRelevant.size());
-		CommandSetObjectData makeRlevantCommand = (CommandSetObjectData) commandsToMakeRelevant.get(0);
-		RelevancyOverrideSet overrides = new RelevancyOverrideSet();
-		overrides.add(new RelevancyOverride(strategyOrActivityRef.getRef(), true));
-		CommandSetObjectData expectedMakeRelevantCommand = new CommandSetObjectData(desireToUse.getRef(), Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, overrides.toString());
-		assertEquals("Incorrect method to make irrelevant factor with no override, relevant with override?", makeRlevantCommand, expectedMakeRelevantCommand);
-	}
 
-	private void verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeIrrelevant(Factor strategyOrActivityRef, Desire desireToUse) throws Exception
-	{
-		CommandVector commands = desireToUse.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyOrActivityRef.getRef());
-		assertTrue("Should not make already irrelevant factor irrelevant again?", commands.isEmpty());
-	}
-	
-	private void verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(Factor strategyOrActivityRef, Desire desireToUse) throws Exception
-	{
-		CommandVector makeRelevantCommands = desireToUse.createCommandsToEnsureStrategyOrActivityIsRelevant(strategyOrActivityRef.getRef());
-		getProject().executeCommands(makeRelevantCommands);
-		
-		assertTrue("Irrelevant factor should be relevant?", desireToUse.getRelevantStrategyAndActivityRefs().contains(strategyOrActivityRef.getRef()));
-		
-		CommandVector makeIrrelevantCommands = desireToUse.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyOrActivityRef.getRef());
-		assertEquals("Should contain one command to make relevant factor irrelevant?", 1, makeIrrelevantCommands.size());
-		CommandSetObjectData makeIrrelevantCommand = (CommandSetObjectData) makeIrrelevantCommands.get(0);
-		RelevancyOverrideSet overrides = new RelevancyOverrideSet();
-		CommandSetObjectData expectedMakeIrrelevantCommand = new CommandSetObjectData(desireToUse.getRef(), Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, overrides.toString());
-		assertEquals("incorrect command to ensure already relevant factor?", expectedMakeIrrelevantCommand, makeIrrelevantCommand);
-	}
-	
-	private void verifyStrategyOrActivityDefaultIrrelevantOverrideRelevantMakeRelevant(Factor strategyOrActivityRef, Desire desireToUse) throws Exception
-	{
-		getProject().executeCommands(desireToUse.createCommandsToEnsureStrategyOrActivityIsRelevant(strategyOrActivityRef.getRef()));
-		CommandVector commands = desireToUse.createCommandsToEnsureStrategyOrActivityIsRelevant(strategyOrActivityRef.getRef());
-		assertTrue("Should not make already relevant factor relevant again?", commands.isEmpty());
-	}
-	
-	private void verifyStrategyDefaultRelevantNoOverridesMakeIrrelevant(Desire desireToUse) throws Exception
-	{
-		CommandVector createCommandsToEnsureStrategyIsRelevant = desireToUse.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef());
-		assertEquals("Should contain one command to make default strategy irrelevant?", 1, createCommandsToEnsureStrategyIsRelevant.size());
-		CommandSetObjectData expectedMakeIrrelevantCommand = (CommandSetObjectData) createCommandsToEnsureStrategyIsRelevant.get(0);
-		CommandSetObjectData makeIrrelevantCommand = createExpectedRelevancyOverrideCommand(strategyWithObjective, desireToUse, false);
-		assertEquals("incorrect command to ensure already relevant strategy?", expectedMakeIrrelevantCommand, makeIrrelevantCommand);
-	}
-	
-	private void verifyStrategyDefaultRelevantNoOverrideMakeRelevant(Desire desire) throws Exception
-	{
-		CommandVector commands = desire.createCommandsToEnsureStrategyOrActivityIsRelevant(strategyWithObjective.getRef());
-		assertTrue("Should not make already relevant strategy relevant again", commands.isEmpty());
-	}
-	
-	private void verifyStrategyDefaultRelevantOverrideIrrelevantMakeRelevant(Desire desire) throws Exception
-	{
-		CommandVector commandsToMakeDefaultStrategyIrrelevant = desire.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef());
-		getProject().executeCommands(commandsToMakeDefaultStrategyIrrelevant);
-		
-		CommandVector commandsToMakeIrrelevantStrategyRelevant = desire.createCommandsToEnsureStrategyOrActivityIsRelevant(strategyWithObjective.getRef());
-		assertEquals("Should contain one command to make irrelevant strategy relevant by default?", 1, commandsToMakeIrrelevantStrategyRelevant.size());
-		CommandSetObjectData makeRelevantCommand = (CommandSetObjectData) commandsToMakeIrrelevantStrategyRelevant.get(0);
-		RelevancyOverrideSet overrides = new RelevancyOverrideSet();
-		CommandSetObjectData expectedMakeRelevantCommand = new CommandSetObjectData(desire.getRef(), Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, overrides.toString());
-		assertEquals("incorrect command to ensure already relevant strategy?", expectedMakeRelevantCommand, makeRelevantCommand);
-	}
-	
-	private void verifyStrategyDefaultRelevantOverrideIrrelevantMakeIrrelevant(Desire desire) throws Exception
-	{
-		getProject().executeCommands(desire.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef()));
-		
-		assertFalse("default relevant strategy should be irrelevant override?", desire.getRelevantStrategyRefs().contains(strategyWithObjective.getRef()));
-		
-		CommandVector commands = desire.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef());
-		assertTrue("Should not make already irrelevant strategy irrelevant again", commands.isEmpty());
-	}
-
-	private void verifyStrategyDefaultRelevantOverrideRelevantMakeIrrelevant(Desire desire) throws Exception
-	{
-		forceRelevancyForDefaultRelevantStrategyOrActivity(strategyWithObjective, desire);
-		CommandVector commandsToEnsureDefaultRelevantIsIrrelevant = desire.createCommandsToEnsureStrategyOrActivityIsIrrelevant(strategyWithObjective.getRef());
-		assertEquals("Should contain one command to remove incorrect relevant override for default relevant", 1, commandsToEnsureDefaultRelevantIsIrrelevant.size());
-		
-		CommandSetObjectData setCommand = (CommandSetObjectData) commandsToEnsureDefaultRelevantIsIrrelevant.get(0);
-		CommandSetObjectData expectedCommand = createExpectedRelevancyOverrideCommand(strategyWithObjective, desire, false);
-		assertEquals("Command should only make strategy default relevant, irrelevant?", expectedCommand, setCommand);
-	}
-
-    private void verifyActivityDefaultRelevantNoOverridesMakeIrrelevant(Desire desireToUse) throws Exception
-    {
-        CommandVector createCommandsToEnsureActivityIsRelevant = desireToUse.createCommandsToEnsureStrategyOrActivityIsIrrelevant(activity.getRef());
-        assertEquals("Should contain one command to make default activity irrelevant?", 1, createCommandsToEnsureActivityIsRelevant.size());
-        CommandSetObjectData expectedMakeIrrelevantCommand = (CommandSetObjectData) createCommandsToEnsureActivityIsRelevant.get(0);
-        CommandSetObjectData makeIrrelevantCommand = createExpectedRelevancyOverrideCommand(activity, desireToUse, false);
-        assertEquals("incorrect command to ensure already relevant activity?", expectedMakeIrrelevantCommand, makeIrrelevantCommand);
-    }
-
-    private void verifyActivityDefaultRelevantNoOverrideMakeRelevant(Desire desire) throws Exception
-    {
-        CommandVector commands = desire.createCommandsToEnsureStrategyOrActivityIsRelevant(activity.getRef());
-        assertTrue("Should not make already relevant activity relevant again", commands.isEmpty());
-    }
-
-    private void verifyActivityDefaultRelevantOverrideIrrelevantMakeRelevant(Desire desire) throws Exception
-    {
-        CommandVector commandsToMakeDefaultActivityIrrelevant = desire.createCommandsToEnsureStrategyOrActivityIsIrrelevant(activity.getRef());
-        getProject().executeCommands(commandsToMakeDefaultActivityIrrelevant);
-
-        CommandVector commandsToMakeIrrelevantActivityRelevant = desire.createCommandsToEnsureStrategyOrActivityIsRelevant(activity.getRef());
-        assertEquals("Should contain one command to make irrelevant activity relevant by default?", 1, commandsToMakeIrrelevantActivityRelevant.size());
-        CommandSetObjectData makeRelevantCommand = (CommandSetObjectData) commandsToMakeIrrelevantActivityRelevant.get(0);
-        RelevancyOverrideSet overrides = new RelevancyOverrideSet();
-        CommandSetObjectData expectedMakeRelevantCommand = new CommandSetObjectData(desire.getRef(), Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, overrides.toString());
-        assertEquals("incorrect command to ensure already relevant activity?", expectedMakeRelevantCommand, makeRelevantCommand);
-    }
-
-    private void verifyActivityDefaultRelevantOverrideIrrelevantMakeIrrelevant(Desire desire) throws Exception
-    {
-        getProject().executeCommands(desire.createCommandsToEnsureStrategyOrActivityIsIrrelevant(activity.getRef()));
-
-        assertFalse("default relevant activity should be irrelevant override?", desire.getRelevantActivityRefs().contains(activity.getRef()));
-
-        CommandVector commands = desire.createCommandsToEnsureStrategyOrActivityIsIrrelevant(activity.getRef());
-        assertTrue("Should not make already irrelevant activity irrelevant again", commands.isEmpty());
-    }
-
-    private void verifyActivityDefaultRelevantOverrideRelevantMakeIrrelevant(Desire desire) throws Exception
-    {
-        forceRelevancyForDefaultRelevantStrategyOrActivity(activity, desire);
-        CommandVector commandsToEnsureDefaultRelevantIsIrrelevant = desire.createCommandsToEnsureStrategyOrActivityIsIrrelevant(activity.getRef());
-        assertEquals("Should contain one command to remove incorrect relevant override for default relevant", 1, commandsToEnsureDefaultRelevantIsIrrelevant.size());
-
-        CommandSetObjectData setCommand = (CommandSetObjectData) commandsToEnsureDefaultRelevantIsIrrelevant.get(0);
-        CommandSetObjectData expectedCommand = createExpectedRelevancyOverrideCommand(activity, desire, false);
-        assertEquals("Command should only make activity default relevant, irrelevant?", expectedCommand, setCommand);
-    }
-
-    private void forceRelevancyForDefaultRelevantStrategyOrActivity(Factor strategyOrActivityRef, Desire desireToUse) throws Exception
-	{
-		forceOverride(strategyOrActivityRef, desireToUse, true);
-	}
-	
-	private void forceOverride(Factor strategyOrActivityRef, Desire desireToUse, boolean isRelevant) throws Exception
-	{
-		RelevancyOverrideSet overrideSet = desireToUse.getStrategyActivityRelevancyOverrideSet();		
-		overrideSet.add(new RelevancyOverride(strategyOrActivityRef.getRef(), isRelevant));
-		CommandSetObjectData forceRelevancyOverrideOnDefaultRelevantFactor = new CommandSetObjectData(desireToUse.getRef(), Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, overrideSet.toString());
-		getProject().executeCommand(forceRelevancyOverrideOnDefaultRelevantFactor);
-	}
-	
-	private CommandSetObjectData createExpectedRelevancyOverrideCommand(Factor strategyOrActivityRef, Desire desireToUse, boolean isRelevant)
-	{
-		RelevancyOverrideSet expectedRelevancyOverride = new RelevancyOverrideSet();
-		expectedRelevancyOverride.add(new RelevancyOverride(strategyOrActivityRef.getRef(), isRelevant));
-		CommandSetObjectData expectedCommand = new CommandSetObjectData(desireToUse.getRef(), Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, expectedRelevancyOverride.toString());
-		return expectedCommand;
-	}
-	
 	protected Desire createObjective(Factor owner) throws Exception
 	{
 		return getProject().createObjective(owner);
 	}
 
+	private TestStrategyActivityRelevancy strategyActivityRelevancy;
 	private Target targetWithGoal;
 	private Strategy strategy;
 	private Strategy strategyWithObjective;
 	private Desire objective;
 	private Desire goal;
 	private Task activity;
+	private Task otherActivity;
 }

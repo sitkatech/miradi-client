@@ -23,7 +23,7 @@ package org.miradi.dialogfields;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 
-public class StrategyGoalOverrideListField extends AbstractRelevancyOverrideListField
+public class StrategyGoalOverrideListField extends StrategyDesireOverrideListField
 {
 	public StrategyGoalOverrideListField(Project projectToUse, ORef strategyRef, int objectTypeToUpdate)
 	{

@@ -27,7 +27,7 @@ import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPa
 import org.miradi.dialogs.strategicPlan.ActionPlanMultiPropertiesPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Desire;
+import org.miradi.objects.BaseObject;
 
 public class StrategyActivityRelevancyManagementPanel extends ObjectManagementPanel
 {
@@ -36,12 +36,12 @@ public class StrategyActivityRelevancyManagementPanel extends ObjectManagementPa
 		super(mainWindowToUse, tablePanelToUse, propertiesPanelToUse);
 	}
 	
-	public static StrategyActivityRelevancyManagementPanel createManagementPanel(MainWindow mainWindow, Desire desire) throws Exception
+	public static StrategyActivityRelevancyManagementPanel createManagementPanel(MainWindow mainWindow, BaseObject baseObject) throws Exception
 	{
-		RootRelevancyTreeTableNode rootNode = new RootRelevancyTreeTableNode(mainWindow.getProject(), desire);
+		RootRelevancyTreeTableNode rootNode = new RootRelevancyTreeTableNode(mainWindow.getProject(), baseObject);
 		StrategyActivityRelevancyTreeTableModel treeTableModel = new StrategyActivityRelevancyTreeTableModel(rootNode); 
 		StrategyActivityRelevancyTreeTable treeTable = new StrategyActivityRelevancyTreeTable(mainWindow, treeTableModel);
-		StrategyActivityRelevancyTreeTablePanel treeTablePanel = StrategyActivityRelevancyTreeTablePanel.createTreeTablePanel(mainWindow, desire, treeTableModel, treeTable);
+		StrategyActivityRelevancyTreeTablePanel treeTablePanel = StrategyActivityRelevancyTreeTablePanel.createTreeTablePanel(mainWindow, baseObject, treeTableModel, treeTable);
 		PlanningTreeMultiPropertiesPanel multiPropertiesPanel = new ActionPlanMultiPropertiesPanel(mainWindow, ORef.INVALID);
 		
 		return new StrategyActivityRelevancyManagementPanel(mainWindow, treeTablePanel, multiPropertiesPanel);

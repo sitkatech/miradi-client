@@ -125,6 +125,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		addImporterToMap(typeToImporterMap, new ResultsChainDiagramImporter(this));
 		addImporterToMap(typeToImporterMap, new DiagramFactorImporter(this));
 		addImporterToMap(typeToImporterMap, new DiagramLinkImporter(this));
+		addImporterToMap(typeToImporterMap, new StrategyImporter(this));
 
 		// NOTE: Must import all factor types before importing objectives, for relevancy
 		addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, new CauseSchema()));
@@ -137,10 +138,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		// NOTE: Must import all KEA's before importing objectives/goals, for relevancy
 		addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, new KeyEcologicalAttributeSchema()));
 
-		// NOTE: Must import all indicators before importing strategies, for relevancy
 		addImporterToMap(typeToImporterMap, new IndicatorImporter(this));
-		addImporterToMap(typeToImporterMap, new StrategyImporter(this));
-
 		addImporterToMap(typeToImporterMap, new ResourcePlanImporter(this));
 		addImporterToMap(typeToImporterMap, new ResourceAssignmentImporter(this));
 		addImporterToMap(typeToImporterMap, new ExpenseAssignmentImporter(this));

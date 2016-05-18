@@ -270,30 +270,29 @@ public class Task extends Factor
 	}
 
 	@Override
-	protected RelevancyOverrideSet getIndicatorRelevancyOverrideSet()
+	public ORefList getRelevantIndicatorRefList() throws Exception
 	{
-		return getRawRelevancyOverrideData(TAG_RELEVANT_INDICATOR_SET);
-	}
-
-	@Override
-	protected ORefSet getDefaultRelevantIndicatorRefs()
-	{
-		return new ORefSet();
+		return getRelevantIndicatorRefs();
 	}
 
 	protected String getRelevantIndicatorRefsAsString()
 	{
-		ORefList refList;
 		try
 		{
-			refList = getRelevantIndicatorRefList();
-			return refList.toString();
+			return getRelevantIndicatorRefs().toString();
 		}
 		catch(Exception e)
 		{
 			EAM.logException(e);
 			return "";
 		}
+	}
+
+	public ORefList getRelevantIndicatorRefs() throws Exception
+	{
+		ORefSet relevantIndicators = new ORefSet(Indicator.findAllRelevantIndicators(getProject(), getRef()));
+		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
+		return calculateRelevantRefList(relevantIndicators, relevantOverrides);
 	}
 
 	public boolean hasSubTasks()
@@ -504,7 +503,6 @@ public class Task extends Factor
 	public final static String TAG_SUBTASK_IDS = "SubtaskIds";
 	public final static String TAG_DETAILS = "Details";
 	public final static String TAG_IS_MONITORING_ACTIVITY = "IsMonitoringActivity";
-	public static final String TAG_RELEVANT_INDICATOR_SET = "RelevantIndicatorSet";
 
 	public final static String PSEUDO_TAG_STRATEGY_LABEL = "StrategyLabel";
 	public final static String PSEUDO_TAG_INDICATOR_LABEL = "IndicatorLabel";

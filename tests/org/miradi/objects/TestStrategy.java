@@ -19,14 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.objects;
 
-import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.objectdata.RelevancyOverrideSetData;
 import org.miradi.objecthelpers.*;
 import org.miradi.questions.StrategyStatusQuestion;
-import org.miradi.schemas.*;
+import org.miradi.schemas.ProgressReportSchema;
+import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
 
 public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
@@ -125,7 +126,7 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 		Strategy strategy = getProject().createStrategy();
 		Cause cause = getProject().createCause();
 		Objective objective = getProject().createObjective(cause);
-		verifyRelevancyIsUpdatedAfterActivityIsDeleted(strategy, cause, objective);
+		verifyRelevancyIsUpdatedAfterStrategyOrActivityIsDeleted(strategy, objective);
 	}
 	
 	public void testStrategyIsRemovedFromGoalRelevancyListWhenDeleted() throws Exception
@@ -133,30 +134,45 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 		Strategy strategy = getProject().createStrategy();
 		Target goalOwner = getProject().createTarget();
 		Goal goal = getProject().createGoal(goalOwner);
-		verifyRelevancyIsUpdatedAfterActivityIsDeleted(strategy, goalOwner, goal);
+		verifyRelevancyIsUpdatedAfterStrategyOrActivityIsDeleted(strategy, goal);
 	}
 	
+	public void testStrategyIsRemovedFromIndicatorRelevancyListWhenDeleted() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		Indicator indicator = getProject().createIndicator(strategy);
+		verifyRelevancyIsUpdatedAfterStrategyOrActivityIsDeleted(strategy, indicator);
+	}
+
 	public void testActivityIsRemovedFromObjectiveRelevancyListWhenDeleted() throws Exception
 	{
-		Task activitiy = getProject().createActivity();
+		Task activity = getProject().createActivity();
 		Strategy objectiveOwner = getProject().createStrategy();
 		Objective objective = getProject().createObjective(objectiveOwner);
-		verifyRelevancyIsUpdatedAfterActivityIsDeleted(activitiy, objectiveOwner, objective);
+		verifyRelevancyIsUpdatedAfterStrategyOrActivityIsDeleted(activity, objective);
 	}
 
 	public void testActivityIsRemovedFromGoalRelevancyListWhenDeleted() throws Exception
 	{
-		Task activitiy = getProject().createActivity();
+		Task activity = getProject().createActivity();
 		Target goalOwner = getProject().createTarget();
 		Goal goal = getProject().createGoal(goalOwner);
-		verifyRelevancyIsUpdatedAfterActivityIsDeleted(activitiy, goalOwner, goal);
+		verifyRelevancyIsUpdatedAfterStrategyOrActivityIsDeleted(activity, goal);
 	}
 
-	private void verifyRelevancyIsUpdatedAfterActivityIsDeleted(BaseObject itemInRelevancyListToBeDeleted, Factor desireOwner, Desire desire) throws Exception, CommandFailedException
+	public void testActivityIsRemovedFromIndicatorRelevancyListWhenDeleted() throws Exception
 	{
-		RelevancyOverrideSet relevantActivities = new RelevancyOverrideSet();
-		relevantActivities.add(new RelevancyOverride(itemInRelevancyListToBeDeleted.getRef(), true));
-		getProject().fillObjectUsingCommand(desire, Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantActivities.toString());
+		Strategy strategy = getProject().createStrategy();
+		Task activity = getProject().createActivity(strategy);
+		Indicator indicator = getProject().createIndicator(strategy);
+		verifyRelevancyIsUpdatedAfterStrategyOrActivityIsDeleted(activity, indicator);
+	}
+
+	private void verifyRelevancyIsUpdatedAfterStrategyOrActivityIsDeleted(BaseObject itemInRelevancyListToBeDeleted, Desire desire) throws Exception
+	{
+		RelevancyOverrideSet relevancyOverrides = new RelevancyOverrideSet();
+		relevancyOverrides.add(new RelevancyOverride(itemInRelevancyListToBeDeleted.getRef(), true));
+		getProject().fillObjectUsingCommand(desire, Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevancyOverrides.toString());
 
 		ORefList relevantStrategyAndActivityRefs = new ORefList(getAllStrategyAndActivityRefsFromRelevancyOverrides(desire));
 		ORefList relevantActivityRefs = relevantStrategyAndActivityRefs.getFilteredBy(itemInRelevancyListToBeDeleted.getType());
@@ -166,14 +182,38 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 		getProject().executeCommands(commandsToDelete);
 		
 		ORefList relevantStrategyAndActivityRefsAfterDelete = new ORefList(getAllStrategyAndActivityRefsFromRelevancyOverrides(desire));
-		ORefList relevantActivityRefsAfterDelete = relevantStrategyAndActivityRefsAfterDelete.getFilteredBy(itemInRelevancyListToBeDeleted.getType());
+		ORefList relevantRefsAfterDelete = relevantStrategyAndActivityRefsAfterDelete.getFilteredBy(itemInRelevancyListToBeDeleted.getType());
 		
-		assertEquals("Activity was not removed from Desire relevancy list?", 0, relevantActivityRefsAfterDelete.size());
+		assertEquals("Strategy / Activity was not removed from Desire relevancy list?", 0, relevantRefsAfterDelete.size());
+	}
+
+	private void verifyRelevancyIsUpdatedAfterStrategyOrActivityIsDeleted(BaseObject itemInRelevancyListToBeDeleted, Indicator indicator) throws Exception
+	{
+		RelevancyOverrideSet relevancyOverrides = new RelevancyOverrideSet();
+		relevancyOverrides.add(new RelevancyOverride(itemInRelevancyListToBeDeleted.getRef(), true));
+		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevancyOverrides.toString());
+
+		ORefList relevantStrategyAndActivityRefs = new ORefList(getAllStrategyAndActivityRefsFromRelevancyOverrides(indicator));
+		ORefList relevantRefs = relevantStrategyAndActivityRefs.getFilteredBy(itemInRelevancyListToBeDeleted.getType());
+		assertEquals("Indicator's activity relevancy list was not updated?", 1, relevantRefs.size());
+
+		CommandVector commandsToDelete = itemInRelevancyListToBeDeleted.createCommandsToDeleteChildrenAndObject();
+		getProject().executeCommands(commandsToDelete);
+
+		ORefList relevantStrategyAndActivityRefsAfterDelete = new ORefList(getAllStrategyAndActivityRefsFromRelevancyOverrides(indicator));
+		ORefList relevantRefsAfterDelete = relevantStrategyAndActivityRefsAfterDelete.getFilteredBy(itemInRelevancyListToBeDeleted.getType());
+
+		assertEquals("Strategy / Activity was not removed from Indicator relevancy list?", 0, relevantRefsAfterDelete.size());
 	}
 
 	public ORefSet getAllStrategyAndActivityRefsFromRelevancyOverrides(Desire desire) throws Exception
 	{
 		return ((RelevancyOverrideSetData)desire.getField(desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET)).extractRelevantRefs();
+	}
+
+	public ORefSet getAllStrategyAndActivityRefsFromRelevancyOverrides(Indicator indicator) throws Exception
+	{
+		return ((RelevancyOverrideSetData)indicator.getField(indicator.TAG_RELEVANT_STRATEGY_ACTIVITY_SET)).extractRelevantRefs();
 	}
 
 	public void testGetRelevantIndicatorRefList() throws Exception
@@ -191,15 +231,9 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 	private void verifyRelevancy(ORef indicatorRef, Strategy strategy, boolean overrideBoolean, int expectedValue) throws Exception
 	{
 		RelevancyOverrideSet relevancyOverrides = new RelevancyOverrideSet();
-		relevancyOverrides.add(new RelevancyOverride(indicatorRef, overrideBoolean));
-		strategy.setData(Strategy.TAG_RELEVANT_INDICATOR_SET, relevancyOverrides.toString());
+		relevancyOverrides.add(new RelevancyOverride(strategy.getRef(), overrideBoolean));
+		Indicator indicator = Indicator.find(getProject(), indicatorRef);
+		indicator.setData(Indicator.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevancyOverrides.toString());
 		assertEquals("wrong indicator count?", expectedValue, strategy.getRelevantIndicatorRefList().size());
 	}
-	
-	static final BaseId criterionId1 = new BaseId(17);
-	static final BaseId criterionId2 = new BaseId(952);
-	static final BaseId criterionId3 = new BaseId(2833);
-	static final BaseId valueId1 = new BaseId(85);
-	static final BaseId valueId2 = new BaseId(2398);
-	static final BaseId defaultValueId = new BaseId(7272);
 }

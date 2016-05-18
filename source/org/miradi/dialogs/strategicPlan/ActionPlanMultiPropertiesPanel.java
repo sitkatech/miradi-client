@@ -45,7 +45,7 @@ public class ActionPlanMultiPropertiesPanel extends	PlanningTreeMultiPropertiesP
 	@Override
 	protected AbstractIndicatorPropertiesPanel createIndicatorPropertiesPanel() throws Exception
 	{
-		return new IndicatorPropertiesPanelWithoutBudgetPanels(getProject());
+		return new IndicatorPropertiesPanelWithoutBudgetPanels(getProject(), getMainWindow());
 	}
 	
 	@Override

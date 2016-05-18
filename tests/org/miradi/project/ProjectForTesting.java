@@ -1548,30 +1548,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		addExpenseWithValue(strategy);
 		addProgressReport(strategy);
-		fillRelevantIndicators(strategy);
-	}
-
-	private void fillRelevantIndicators(Strategy strategy) throws Exception
-	{
-		Cause cause = createCause();
-		Indicator indicator = createIndicator(cause);
-		addSingleItemRelevantBaseObject(strategy, indicator, Strategy.TAG_RELEVANT_INDICATOR_SET);
-	}
-
-	public void addSingleItemRelevantBaseObject(Strategy strategy, BaseObject baseObject, final String relevancyTag) throws Exception
-	{
-		addRelevantBaseObjects(strategy, new ORefList(baseObject), relevancyTag);
-	}
-
-	public void addRelevantBaseObjects(Strategy strategy, ORefList relevantBaseObjectRefs, final String relevancyTag) throws Exception
-	{
-		RelevancyOverrideSet relevantBaseObjects = new RelevancyOverrideSet();
-		for (int index = 0; index < relevantBaseObjectRefs.size(); ++index)
-		{
-			relevantBaseObjects.add(new RelevancyOverride(relevantBaseObjectRefs.get(index), true));
-		}
-
-		fillObjectUsingCommand(strategy, relevancyTag, relevantBaseObjects.toString());
 	}
 
 	public void createAndPopulateThreatReductionResult() throws Exception

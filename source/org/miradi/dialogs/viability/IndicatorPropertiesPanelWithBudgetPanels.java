@@ -28,7 +28,7 @@ public class IndicatorPropertiesPanelWithBudgetPanels extends AbstractIndicatorP
 {
 	public IndicatorPropertiesPanelWithBudgetPanels(MainWindow mainWindow) throws Exception
 	{
-		super(mainWindow.getProject());
+		super(mainWindow.getProject(), mainWindow.getActions());
 	}
 	
 	@Override

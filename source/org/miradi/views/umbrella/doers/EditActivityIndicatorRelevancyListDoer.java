@@ -19,11 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.objects.Task;
+import org.miradi.dialogs.base.DisposablePanel;
+import org.miradi.dialogs.base.RelevancyIndicatorOverridePanel;
+import org.miradi.main.EAM;
 import org.miradi.schemas.TaskSchema;
-import org.miradi.views.umbrella.AbstractRelevancyEditListDoer;
 
-public class EditActivityIndicatorRelevancyListDoer extends AbstractRelevancyEditListDoer
+public class EditActivityIndicatorRelevancyListDoer extends AbstractEditListDoer
 {
 	@Override
 	protected int getObjectType()
@@ -32,8 +33,20 @@ public class EditActivityIndicatorRelevancyListDoer extends AbstractRelevancyEdi
 	}
 
 	@Override
-	protected String getIndicatorSetTag()
+	protected DisposablePanel createEditPanel() throws Exception
 	{
-		return Task.TAG_RELEVANT_INDICATOR_SET;
+		return new RelevancyIndicatorOverridePanel(getProject(), getSelectedRef(), EAM.text("Select the Indicators relevant to this Activity"));
+	}
+
+	@Override
+	protected String getDialogTitle()
+	{
+		return EAM.text("Choose Relevant Indicator(s)");
+	}
+
+	@Override
+	protected boolean shouldHaveScrollBars()
+	{
+		return true;
 	}
 }

@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.viability;
 
+import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.diagram.IndicatorSubPanel;
 import org.miradi.dialogs.diagram.WorkPlanPanelPropertiesPanel;
@@ -35,12 +36,12 @@ import org.miradi.schemas.IndicatorSchema;
 
 abstract public class AbstractIndicatorPropertiesPanel extends ObjectDataInputPanelWithSections
 {
-	public AbstractIndicatorPropertiesPanel(Project projectToUse) throws Exception
+	public AbstractIndicatorPropertiesPanel(Project projectToUse, Actions actionsToUse) throws Exception
 	{
 		super(projectToUse, IndicatorSchema.getObjectType());
 		
 		setLayout(new OneColumnGridLayout());
-		addSubPanelWithTitledBorder(new IndicatorSubPanel(getProject(), getInvalidTargetRef()));
+		addSubPanelWithTitledBorder(new IndicatorSubPanel(getProject(), getInvalidTargetRef(), actionsToUse));
 		
 		viabilityRatingsSubPanel = new IndicatorViabilityRatingsSubPanel(getProject(), getInvalidTargetRef());
 		addSubPanelWithTitledBorder(viabilityRatingsSubPanel);

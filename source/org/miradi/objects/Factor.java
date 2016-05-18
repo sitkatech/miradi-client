@@ -426,13 +426,14 @@ abstract public class Factor extends BaseObject
 	{
 		return findObjectsThatReferToUs(TaggedObjectSetSchema.getObjectType());
 	}
-	
+
 	protected CommandVector buildRemoveFromRelevancyListCommands(ORef relevantObjectRefToRemove) throws Exception
 	{
 		CommandVector removeFromRelevancyListCommands = new CommandVector();
 		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), ObjectiveSchema.getObjectType(), Objective.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
 		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), GoalSchema.getObjectType(), Goal.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
-		
+		removeFromRelevancyListCommands.addAll(Indicator.buildRemoveObjectFromRelevancyListCommands(getProject(), IndicatorSchema.getObjectType(), Indicator.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevantObjectRefToRemove));
+
 		return removeFromRelevancyListCommands;
 	}
 

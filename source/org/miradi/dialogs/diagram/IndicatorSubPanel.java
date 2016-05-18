@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.diagram;
 
+import org.miradi.actions.ActionEditIndicatorStrategyActivityRelevancyList;
+import org.miradi.actions.Actions;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.viability.ViabilityTreeModel;
@@ -33,7 +35,7 @@ import org.miradi.schemas.IndicatorSchema;
 
 public class IndicatorSubPanel extends ObjectDataInputPanel
 {
-	public IndicatorSubPanel(Project projectToUse, ORef orefToUse) throws Exception
+	public IndicatorSubPanel(Project projectToUse, ORef orefToUse, Actions actionsToUse) throws Exception
 	{
 		super(projectToUse, orefToUse);
 
@@ -46,7 +48,9 @@ public class IndicatorSubPanel extends ObjectDataInputPanel
 		addField(createMultilineField(IndicatorSchema.getObjectType(), Indicator.TAG_DETAIL, COLUMNS));
 		addTaxonomyFields(IndicatorSchema.getObjectType());
 		addField(createMultilineField(IndicatorSchema.getObjectType(), Indicator.TAG_COMMENTS, COLUMNS));
-		
+
+		addFieldWithEditButton(EAM.text("Strategies And Activities"), createReadOnlyObjectList(IndicatorSchema.getObjectType(), Indicator.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditIndicatorStrategyActivityRelevancyList.class), getPicker()));
+
 		updateFieldsFromProject();
 	}
 
@@ -68,6 +72,6 @@ public class IndicatorSubPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Indicator");
+		return EAM.text("Summary");
 	}
 }

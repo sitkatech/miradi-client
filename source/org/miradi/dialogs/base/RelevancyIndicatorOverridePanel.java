@@ -24,13 +24,13 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 
-public class RelevancyObjectivePanel extends ObjectDataInputPanel
+public class RelevancyIndicatorOverridePanel extends ObjectDataInputPanel
 {
-	public RelevancyObjectivePanel(Project projectToUse, ORef orefToUse, String description)
+	public RelevancyIndicatorOverridePanel(Project projectToUse, ORef orefToUse, String description)
 	{
 		super(projectToUse, orefToUse);
-		
-		addFieldWithDescriptionOnly(createObjectiveRelevancyOverrideListField(orefToUse.getObjectType()), description);
+
+		addFieldWithDescriptionOnly(createStrategyActivityIndicatorRelevancyOverrideListField(orefToUse.getObjectType()), description);
 		
 		updateFieldsFromProject();
 	}
@@ -38,6 +38,6 @@ public class RelevancyObjectivePanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Objective Relevancy Panel");
+		return EAM.text("Indicator Relevancy Panel");
 	}
 }

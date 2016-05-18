@@ -51,6 +51,7 @@ public class IndicatorSchema extends BaseObjectSchema
 		createFieldSchemaOptionalRef(Indicator.TAG_ASSIGNED_LEADER_RESOURCE);
 		createFieldSchemaSingleLineUserText(Indicator.TAG_UNIT);
         createOwnedFieldSchemaReflist(Indicator.TAG_FUTURE_STATUS_REFS, FUTURE_STATUS);
+		createFieldSchemaRelevancyOverrideSet(Indicator.TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
 		createBudgetSchemas();
 		createProgressReportSchema();
 		createTaxonomyClassificationSchemaField();
@@ -62,6 +63,7 @@ public class IndicatorSchema extends BaseObjectSchema
 		createPseudoFieldSchemaString(Indicator.PSEUDO_TAG_FACTOR);
 		createPseudoFieldSchemaString(Indicator.PSEUDO_TAG_METHODS);
 		createPseudoFieldSchemaRefList(Indicator.PSEUDO_TAG_RELEVANT_ACTIVITY_REFS);
+		createPseudoFieldSchemaRefList(Indicator.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS);
 		createPseudoFieldSchemaQuestion(Indicator.PSEUDO_TAG_PRIORITY_VALUE);
 		createPseudoFieldSchemaQuestion(Indicator.PSEUDO_TAG_STATUS_VALUE);
 		createPseudoFieldSchemaQuestion(Indicator.PSEUDO_TAG_RATING_SOURCE_VALUE);

@@ -19,26 +19,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.objects;
 
-import java.util.Vector;
-
 import org.martus.util.MultiCalendar;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
-import org.miradi.objectdata.RelevancyOverrideSetData;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.RelevancyOverride;
-import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.project.ProjectForTesting;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.MeasurementSchema;
-import org.miradi.schemas.ResourceAssignmentSchema;
-import org.miradi.schemas.TaskSchema;
-import org.miradi.utils.CommandVector;
+import org.miradi.schemas.*;
+
+import java.util.Vector;
 
 
 public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
@@ -52,7 +44,18 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 	public void setUp() throws Exception
 	{
 		super.setUp();
+
 		project = ProjectForTesting.createProjectWithDefaultObjects(getName());
+		strategyActivityRelevancy = new TestStrategyActivityRelevancy(getName(), project);
+
+		DiagramFactor strategyDiagramFactor = project.createAndAddFactorToDiagram(StrategySchema.getObjectType());
+		strategy = (Strategy) strategyDiagramFactor.getWrappedFactor();
+		activity = project.createTask(strategy);
+		indicator = project.createIndicator(strategy);
+
+		DiagramFactor otherStrategyDiagramFactor = project.createAndAddFactorToDiagram(StrategySchema.getObjectType());
+		otherStrategy = (Strategy) otherStrategyDiagramFactor.getWrappedFactor();
+		otherIndicator = project.createIndicator(otherStrategy);
 	}
 
 	@Override
@@ -150,50 +153,6 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 		Indicator indicator = getProject().createIndicatorWithCauseParent();
 		TestTask.verifyIsAssignmentDataSuperseded(getProject(), indicator, Indicator.TAG_METHOD_IDS);
 	}
-	
-	public void testIndicatorIsRemovedFromRelevancyListWhenDeleted() throws Exception
-	{
-		Cause indicatorOwner = getProject().createCause();
-		Indicator indicator = getProject().createIndicator(indicatorOwner);
-		Strategy strategy = getProject().createStrategy();
-		Task activity = getProject().createActivity(strategy);
-		Objective objective = getProject().createObjective(strategy);
-
-		RelevancyOverrideSet relevantIndicatorsForStrategy = new RelevancyOverrideSet();
-		relevantIndicatorsForStrategy.add(new RelevancyOverride(indicator.getRef(), true));
-		getProject().fillObjectUsingCommand(strategy, Strategy.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorsForStrategy.toString());
-		assertEquals("Strategy's indicator relevancy list was not updated?", 1, getAllIndicatorRefsFromRelevancyOverrides(strategy).size());
-
-		RelevancyOverrideSet relevantIndicatorsForActivity = new RelevancyOverrideSet();
-		relevantIndicatorsForActivity.add(new RelevancyOverride(indicator.getRef(), true));
-		getProject().fillObjectUsingCommand(activity, Task.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorsForActivity.toString());
-		assertEquals("Activity's indicator relevancy list was not updated?", 1, getAllIndicatorRefsFromRelevancyOverrides(activity).size());
-
-		RelevancyOverrideSet relevantIndicatorsForObjective = new RelevancyOverrideSet();
-		relevantIndicatorsForObjective.add(new RelevancyOverride(indicator.getRef(), true));
-		getProject().fillObjectUsingCommand(objective, Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorsForObjective.toString());
-		assertEquals("Objective's indicator relevancy list was not updated?", 1, getAllIndicatorRefsFromRelevancyOverrides(objective).size());
-
-		CommandVector commandsToDeleteIndicator = indicator.createCommandsToDeleteChildrenAndObject();
-		getProject().executeCommands(commandsToDeleteIndicator);
-		
-		assertEquals("Indicator was not removed from objective relevancy list?", 0, getAllIndicatorRefsFromRelevancyOverrides(objective).size());
-	}
-	
-	public ORefSet getAllIndicatorRefsFromRelevancyOverrides(Strategy strategy) throws Exception
-	{
-		return ((RelevancyOverrideSetData)strategy.getField(strategy.TAG_RELEVANT_INDICATOR_SET)).extractRelevantRefs();
-	}
-	
-	public ORefSet getAllIndicatorRefsFromRelevancyOverrides(Task activity) throws Exception
-	{
-		return ((RelevancyOverrideSetData)activity.getField(activity.TAG_RELEVANT_INDICATOR_SET)).extractRelevantRefs();
-	}
-
-	public ORefSet getAllIndicatorRefsFromRelevancyOverrides(Desire desire) throws Exception
-	{
-		return ((RelevancyOverrideSetData)desire.getField(desire.TAG_RELEVANT_INDICATOR_SET)).extractRelevantRefs();
-	}
 
 	public void testCreateCommandsToClone() throws Exception
 	{
@@ -206,6 +165,100 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 		Vector<String> modifiedTags = extractSetDataCommands(commandsToClone, indicator.getRef());
 		assertNotContains(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, modifiedTags);
 	}
+
+	//region Strategy Relevancy tests
+	public void testStrategyDefaultRelevantNoOverridesMakeIrrelevant() throws Exception
+	{
+		strategyActivityRelevancy.verifyStrategyDefaultRelevantNoOverridesMakeIrrelevant(strategy, indicator);
+	}
+
+	public void testStrategyDefaultRelevantNoOverrideMakeRelevant() throws Exception
+	{
+		strategyActivityRelevancy.verifyStrategyDefaultRelevantNoOverrideMakeRelevant(strategy, indicator);
+	}
+
+	public void testStrategyDefaultRelevantOverrideIrrelevantMakeRelevant() throws Exception
+	{
+		strategyActivityRelevancy.verifyStrategyDefaultRelevantOverrideIrrelevantMakeRelevant(strategy, indicator);
+	}
+
+	public void testStrategyDefaultRelevantOverrideIrrelevantMakeIrrelevant() throws Exception
+	{
+		strategyActivityRelevancy.verifyStrategyDefaultRelevantOverrideIrrelevantMakeIrrelevant(strategy, indicator);
+	}
+
+	public void testStrategyDefaultRelevantOverrideRelevantMakeIrrelevant() throws Exception
+	{
+		strategyActivityRelevancy.verifyStrategyDefaultRelevantOverrideRelevantMakeIrrelevant(strategy, indicator);
+	}
+
+	public void testStrategyDefaultIrrelevantNoOverrideMakeRelevant() throws Exception
+	{
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeRelevant(strategy, otherIndicator);
+	}
+
+	public void testStrategyDefaultIrrelevantNoOverrideMakeIrrelevant() throws Exception
+	{
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeIrrelevant(strategy, otherIndicator);
+	}
+
+	public void testStrategyDefaultIrrelevantRelevantOverrideMakeIrrelevant() throws Exception
+	{
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(strategy, otherIndicator);
+	}
+
+	public void testStrategyDefaultIrrelevantOverrideRelevantMakeRelevant() throws Exception
+	{
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantOverrideRelevantMakeRelevant(strategy, otherIndicator);
+	}
+	//endregion
+
+	//region Activity Relevancy tests
+	public void testActivityDefaultRelevantNoOverridesMakeIrrelevant() throws Exception
+	{
+		strategyActivityRelevancy.verifyActivityDefaultRelevantNoOverridesMakeIrrelevant(activity, indicator);
+	}
+
+	public void testActivityDefaultRelevantNoOverrideMakeRelevant() throws Exception
+	{
+		strategyActivityRelevancy.verifyActivityDefaultRelevantNoOverrideMakeRelevant(activity, indicator);
+	}
+
+	public void testActivityDefaultRelevantOverrideIrrelevantMakeRelevant() throws Exception
+	{
+		strategyActivityRelevancy.verifyActivityDefaultRelevantOverrideIrrelevantMakeRelevant(activity, indicator);
+	}
+
+	public void testActivityDefaultRelevantOverrideIrrelevantMakeIrrelevant() throws Exception
+	{
+		strategyActivityRelevancy.verifyActivityDefaultRelevantOverrideIrrelevantMakeIrrelevant(activity, indicator);
+	}
+
+	public void testActivityDefaultRelevantOverrideRelevantMakeIrrelevant() throws Exception
+	{
+		strategyActivityRelevancy.verifyActivityDefaultRelevantOverrideRelevantMakeIrrelevant(activity, indicator);
+	}
+
+	public void testActivityDefaultIrrelevantNoOverrideMakeRelevant() throws Exception
+	{
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeRelevant(activity, otherIndicator);
+	}
+
+	public void testActivityDefaultIrrelevantNoOverrideMakeIrrelevant() throws Exception
+	{
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantNoOverrideMakeIrrelevant(activity, otherIndicator);
+	}
+
+	public void testActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant() throws Exception
+	{
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantRelevantOverrideMakeIrrelevant(activity, otherIndicator);
+	}
+
+	public void testActivityDefaultIrrelevantOverrideRelevantMakeRelevant() throws Exception
+	{
+		strategyActivityRelevancy.verifyStrategyOrActivityDefaultIrrelevantOverrideRelevantMakeRelevant(activity, otherIndicator);
+	}
+	//endregion
 
 	private Vector<String> extractSetDataCommands(Command[] commandsToClone, ORef ref)
 	{
@@ -223,4 +276,10 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 	}
 
 	private ProjectForTesting project;
+	private TestStrategyActivityRelevancy strategyActivityRelevancy;
+	private Strategy strategy;
+	private Task activity;
+	private Indicator indicator;
+	private Strategy otherStrategy;
+	private Indicator otherIndicator;
 }

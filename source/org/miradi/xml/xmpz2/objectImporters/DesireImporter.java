@@ -53,8 +53,7 @@ abstract public class DesireImporter extends BaseObjectImporter
 		
 		if (tag.equals(Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
 			return true;
-		
-		
+
 		return super.isCustomImportField(tag);
 	}
 	

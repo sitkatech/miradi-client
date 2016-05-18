@@ -21,8 +21,11 @@ package org.miradi.objects;
 
 import java.util.Vector;
 
+import org.miradi.commands.CommandSetObjectData;
+import org.miradi.diagram.ChainWalker;
 import org.miradi.ids.IdList;
 import org.miradi.ids.IndicatorId;
+import org.miradi.main.EAM;
 import org.miradi.objectdata.CodeToUserStringMapData;
 import org.miradi.objecthelpers.*;
 import org.miradi.project.ObjectManager;
@@ -31,7 +34,7 @@ import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.*;
 import org.miradi.utils.CommandVector;
 
-public class Indicator extends BaseObject
+public class Indicator extends BaseObject implements StrategyActivityRelevancyInterface
 {
 	public Indicator(final ObjectManager objectManager, final IndicatorId idToUse)
 	{
@@ -81,14 +84,12 @@ public class Indicator extends BaseObject
 		
 		return commandsToDereferences;
 	}
-	
+
 	private CommandVector buildRemoveIndicatorFromRelevancyListCommands(ORef relevantIndicatorRefToRemove) throws Exception
 	{
 		CommandVector removeFromRelevancyListCommands = new CommandVector();
 		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), ObjectiveSchema.getObjectType(), Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
 		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), GoalSchema.getObjectType(), Goal.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
-		removeFromRelevancyListCommands.addAll(Strategy.buildRemoveObjectFromRelevancyListCommands(getProject(), StrategySchema.getObjectType(), Strategy.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
-		removeFromRelevancyListCommands.addAll(Task.buildRemoveObjectFromRelevancyListCommands(getProject(), TaskSchema.getObjectType(), Task.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
 
 		return removeFromRelevancyListCommands;
 	}
@@ -150,6 +151,9 @@ public class Indicator extends BaseObject
 
 		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_ACTIVITY_REFS))
 			return getRelevantActivityRefsAsString();
+
+		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS))
+			return getRelevantStrategyActivityRefsAsString();
 
 		if(fieldTag.equals(PSEUDO_TAG_FACTOR))
 			return getSafeLabel(getDirectOrIndirectOwningFactor());
@@ -312,9 +316,186 @@ public class Indicator extends BaseObject
 		return relevantDesireRefs;
 	}
 
+	@Override
+	public String getRelevantStrategyActivitySetTag()
+	{
+		return TAG_RELEVANT_STRATEGY_ACTIVITY_SET;
+	}
+
+	protected String getRelevantStrategyActivityRefsAsString()
+	{
+		ORefList refList;
+		try
+		{
+			refList = getRelevantStrategyAndActivityRefs();
+			return refList.toString();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+	}
+
+	public ORefList getRelevantStrategyAndActivityRefs() throws Exception
+	{
+		ORefSet relevantRefList = new ORefSet(getDefaultRelevantStrategyAndActivityRefs());
+		RelevancyOverrideSet relevantOverrides = getStrategyActivityRelevancyOverrideSet();
+
+		return calculateRelevantRefList(relevantRefList, relevantOverrides);
+	}
+
+	private ORefList getDefaultRelevantStrategyAndActivityRefs() throws Exception
+	{
+		ORefList relevantRefList = new ORefList();
+
+		ORefList relevantStrategyRefList = getDirectlyUpstreamNonDraftStrategies();
+
+		for(ORef strategyRef : relevantStrategyRefList)
+		{
+			relevantRefList.add(strategyRef);
+			Strategy strategy = Strategy.find(getProject(), strategyRef);
+			relevantRefList.addAll(strategy.getActivityRefs());
+		}
+
+		return relevantRefList;
+	}
+
+	private ORefList getDirectlyUpstreamNonDraftStrategies() throws Exception
+	{
+		Factor owningFactor = getDirectOrIndirectOwningFactor();
+
+		return new ChainWalker().getDirectlyUpstreamNonDraftStrategies(owningFactor);
+	}
+
+	public RelevancyOverrideSet getStrategyActivityRelevancyOverrideSet()
+	{
+		return getRawRelevancyOverrideData(TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
+	}
+
+	public RelevancyOverrideSet getCalculatedRelevantStrategyActivityOverrides(ORefList selectedStrategyAndActivityRefs) throws Exception
+	{
+		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
+		ORefList defaultRelevantRefList = getDefaultRelevantStrategyAndActivityRefs();
+		relevantOverrides.addAll(computeRelevancyOverrides(selectedStrategyAndActivityRefs, defaultRelevantRefList, true));
+		relevantOverrides.addAll(computeRelevancyOverrides(defaultRelevantRefList, selectedStrategyAndActivityRefs , false));
+
+		return relevantOverrides;
+	}
+
+	public CommandVector createCommandsToEnsureStrategyOrActivityIsIrrelevant(ORef strategyOrActivityRef) throws Exception
+	{
+		boolean shouldBeRelevant = false;
+
+		return createCommandsToEnsureProperStrategyOrActivityRelevancy(strategyOrActivityRef, shouldBeRelevant);
+	}
+
+	public CommandVector createCommandsToEnsureStrategyOrActivityIsRelevant(ORef strategyOrActivityRef) throws Exception
+	{
+		boolean shouldBeRelevant = true;
+
+		return createCommandsToEnsureProperStrategyOrActivityRelevancy(strategyOrActivityRef, shouldBeRelevant);
+	}
+
+	private CommandVector createCommandsToEnsureProperStrategyOrActivityRelevancy(ORef strategyOrActivityRef, boolean shouldBeRelevant) throws Exception
+	{
+		String relevancyOverridesTag = TAG_RELEVANT_STRATEGY_ACTIVITY_SET;
+		return createCommandsToEnsureProperRelevancy(relevancyOverridesTag, strategyOrActivityRef, shouldBeRelevant);
+	}
+
+	private CommandVector createCommandsToEnsureProperRelevancy(String relevancyOverridesTag, ORef ref, boolean shouldBeRelevant) throws Exception
+	{
+		RelevancyOverrideSet relevancyOverrideSet = null;
+		if(relevancyOverridesTag.equals(TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
+			relevancyOverrideSet = getStrategyActivityRelevancyOverrideSet();
+		else
+			throw new RuntimeException("Unexpected relevancy request for: " + relevancyOverridesTag);
+
+		RelevancyOverride existingOverride = relevancyOverrideSet.find(ref);
+		if (isAlreadyCorrectlyOverridden(existingOverride, shouldBeRelevant))
+			return new CommandVector();
+
+		boolean isCorrectDefaultRelevancy = false;
+		if(relevancyOverridesTag.equals(TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
+			isCorrectDefaultRelevancy = isCorrectDefaultStrategyOrActivityRelevancy(ref, shouldBeRelevant);
+		else
+			throw new RuntimeException("Unexpected relevancy request for: " + relevancyOverridesTag);
+
+		if (isCorrectDefaultRelevancy && existingOverride == null)
+			return new CommandVector();
+
+		relevancyOverrideSet.remove(ref);
+		if (!isCorrectDefaultRelevancy)
+			relevancyOverrideSet.add(new RelevancyOverride(ref, shouldBeRelevant));
+
+		CommandSetObjectData commandToEnsureProperRelevancy = new CommandSetObjectData(getRef(), relevancyOverridesTag, relevancyOverrideSet.toString());
+		return new CommandVector(commandToEnsureProperRelevancy);
+	}
+
+	private boolean isAlreadyCorrectlyOverridden(RelevancyOverride existingOverride, boolean shouldBeRelevant)
+	{
+		return (existingOverride != null) && (existingOverride.isOverride() == shouldBeRelevant);
+	}
+
+	private boolean isCorrectDefaultStrategyOrActivityRelevancy(ORef strategyOrActivityRef, boolean shouldBeRelevant) throws Exception
+	{
+		ORefList defaultRelevantStrategyRefs = getDefaultRelevantStrategyAndActivityRefs();
+		boolean isRelevantByDefault = defaultRelevantStrategyRefs.contains(strategyOrActivityRef);
+		return isRelevantByDefault == shouldBeRelevant;
+	}
+
+	public ORefList getRelevantStrategyRefs() throws Exception
+	{
+		return getRelevantStrategyAndActivityRefs().getFilteredBy(StrategySchema.getObjectType());
+	}
+
+	// TODO: MRD-5987 - need to implement cache for these...short-term call local static helpers...
+
+	// start
+
+	public static ORefList findRelevantIndicators(Project projectToUse, ORef strategyRef) throws Exception
+	{
+		return getRelevantIndicatorsForStrategy(projectToUse, strategyRef);
+	}
+
+	public static ORefList findAllRelevantIndicators(Project projectToUse, ORef strategyOrActivityRef) throws Exception
+	{
+		return getAllRelevantIndicatorsForStrategyOrActivity(projectToUse, strategyOrActivityRef);
+	}
+
+	private static ORefList getRelevantIndicatorsForStrategy(Project projectToUse, ORef strategyRef) throws Exception
+	{
+		ORefSet indicatorRefs = projectToUse.getPool(IndicatorSchema.getObjectType()).getRefSet();
+		ORefList result = new ORefList();
+		for(ORef indicatorRef: indicatorRefs)
+		{
+			Indicator indicator = Indicator.find(projectToUse, indicatorRef);
+			if(indicator.getRelevantStrategyRefs().contains(strategyRef))
+				result.add(indicator.getRef());
+		}
+
+		return result;
+	}
+
+	private static ORefList getAllRelevantIndicatorsForStrategyOrActivity(Project projectToUse, ORef strategyOrActivityRef) throws Exception
+	{
+		ORefSet indicatorRefs = projectToUse.getPool(IndicatorSchema.getObjectType()).getRefSet();
+		ORefList result = new ORefList();
+		for(ORef indicatorRef: indicatorRefs)
+		{
+			Indicator indicator = Indicator.find(projectToUse, indicatorRef);
+			if(indicator.getRelevantStrategyAndActivityRefs().contains(strategyOrActivityRef))
+				result.add(indicator.getRef());
+		}
+
+		return result;
+	}
+
+	// end
+
 	public ORefList getRelevantActivityRefs() throws Exception
 	{
-		return getProject().getRelevantActivitiesCache().getRelevantActivitiesForIndicator(this.getRef());
+		return getRelevantStrategyAndActivityRefs().getFilteredBy(TaskSchema.getObjectType());
 	}
 
 	private ORefList extractRelevantDesireRefs(ORefSet desireRefs) throws Exception
@@ -398,7 +579,7 @@ public class Indicator extends BaseObject
 	public static final String TAG_COMMENTS = "Comments";
 	public static final String TAG_VIABILITY_RATINGS_COMMENTS = "ViabilityRatingsComment";
 	public static final String TAG_FUTURE_STATUS_REFS = "FutureStatusRefs";
-
+	public static final String TAG_RELEVANT_STRATEGY_ACTIVITY_SET = "RelevantStrategySet";
 	public static final String TAG_UNIT = "Unit";
 
 	public static final String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
@@ -414,6 +595,7 @@ public class Indicator extends BaseObject
 	public static final String PSEUDO_TAG_STATUS_VALUE  = "StatusValue";
 	public static final String PSEUDO_TAG_LATEST_MEASUREMENT_REF = "LatestMeasurementRef";
 	public static final String PSEUDO_TAG_RELEVANT_ACTIVITY_REFS = "PseudoRelevantActivityRefs";
+	public static final String PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS = "PseudoIndicatorRelevantStrategyRefs";
 
 	public static final String PSEUDO_TAG_RELATED_METHOD_OREF_LIST = "PseudoTagRelatedMethodORefList";
 

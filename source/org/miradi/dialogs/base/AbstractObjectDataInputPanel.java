@@ -41,6 +41,7 @@ import org.miradi.questions.*;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.schemas.AbstractAssignmentSchema;
 import org.miradi.schemas.GoalSchema;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.utils.*;
 import org.miradi.views.MiradiTabContentsPanelInterface;
@@ -537,14 +538,19 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new IndicatorRelevancyOverrideListField(project, getFirstSelectedRef().getObjectType(), getObjectIdForType(getFirstSelectedRef().getObjectType()), tagToUse, question);
 	}
 	
-	public ObjectDataField createGoalRelevancyOverrideListField(int objectType)
+	public ObjectDataField createStrategyGoalRelevancyOverrideListField(int objectType)
 	{
 		return new StrategyGoalOverrideListField(getProject(), getRefForType(objectType), GoalSchema.getObjectType());
 	}
 	
-	public ObjectDataField createObjectiveRelevancyOverrideListField(int objectType)
+	public ObjectDataField createStrategyObjectiveRelevancyOverrideListField(int objectType)
 	{
 		return new StrategyObjectiveOverrideListField(getProject(), getRefForType(objectType), ObjectiveSchema.getObjectType());
+	}
+
+	public ObjectDataField createStrategyActivityIndicatorRelevancyOverrideListField(int objectType)
+	{
+		return new StrategyActivityIndicatorOverrideListField(getProject(), getRefForType(objectType), IndicatorSchema.getObjectType());
 	}
 
 	public ObjectDataInputField createSingleColumnCodeListField(int objectType, String tagToUse, ChoiceQuestion question)

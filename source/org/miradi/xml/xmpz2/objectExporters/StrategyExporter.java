@@ -48,10 +48,6 @@ public class StrategyExporter extends BaseObjectWithLeaderResourceFieldExporter
 		getWriter().writeNonOptionalCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_TAXONOMY_CODE, new StrategyTaxonomyQuestion(), strategy.getTaxonomyCode());
 		getWriter().writeNonOptionalCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_IMPACT_RATING, new StrategyImpactQuestion(), strategy.getChoiceItemData(Strategy.TAG_IMPACT_RATING).getCode());
 		getWriter().writeNonOptionalCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_FEASIBILITY_RATING, new StrategyFeasibilityQuestion(), strategy.getChoiceItemData(Strategy.TAG_FEASIBILITY_RATING).getCode());
-
-		final String objectName = baseObjectSchema.getObjectName();
-
-		writeRelevantIndicatorIds(objectName, strategy);
 	}
 	
 	@Override
@@ -69,19 +65,11 @@ public class StrategyExporter extends BaseObjectWithLeaderResourceFieldExporter
 		if (tag.equals(Strategy.TAG_FEASIBILITY_RATING))
 			return true;
 
-		if (tag.equals(Strategy.TAG_RELEVANT_INDICATOR_SET))
-			return true;
-
 		return super.doesFieldRequireSpecialHandling(tag);
 	}
 	
 	private void writeMethodRefs(BaseObjectSchema baseObjectSchema, final Strategy strategy) throws Exception
 	{
 		getWriter().writeReflist(baseObjectSchema.getObjectName() + ORDERED_ACTIVITY_IDS, ACTIVITY, strategy.getActivityRefs());
-	}
-
-	private void writeRelevantIndicatorIds(final String objectName, Strategy strategy) throws Exception
-	{
-		getWriter().writeReflist(objectName, RELEVANT_INDICATOR_IDS, INDICATOR, strategy.getRelevantIndicatorRefList());
 	}
 }

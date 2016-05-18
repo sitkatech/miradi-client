@@ -21,12 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.strategicPlan;
 
 import org.miradi.dialogs.viability.AbstractIndicatorPropertiesPanel;
+import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 
 public class IndicatorPropertiesPanelWithoutBudgetPanels extends AbstractIndicatorPropertiesPanel
 {
-	public IndicatorPropertiesPanelWithoutBudgetPanels(Project projectToUse) throws Exception
+	public IndicatorPropertiesPanelWithoutBudgetPanels(Project projectToUse, MainWindow mainWindow) throws Exception
 	{
-		super(projectToUse);
+		super(projectToUse, mainWindow.getActions());
 	}
 }

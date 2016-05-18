@@ -25,16 +25,16 @@ import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objects.Desire;
+import org.miradi.objects.StrategyActivityRelevancyInterface;
 import org.miradi.project.Project;
 
 public class StrategyActivityRelevancyTableModel extends SingleBooleanColumnEditableModel
 {
-	public StrategyActivityRelevancyTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, Desire desireAsParentToUse)
+	public StrategyActivityRelevancyTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, StrategyActivityRelevancyInterface parentObjectToUse)
 	{
 		super(projectToUse, providerToUse);
 		
-		desireAsParent = desireAsParentToUse;
+		parentObject = parentObjectToUse;
 	}
 
 	@Override
@@ -55,8 +55,8 @@ public class StrategyActivityRelevancyTableModel extends SingleBooleanColumnEdit
 		try
 		{
 			ORefList selectedRefs = getCurrentlyCheckedRefs((Boolean) value, row);
-			RelevancyOverrideSet relevancySet = desireAsParent.getCalculatedRelevantStrategyActivityOverrides(selectedRefs);	
-			setValueUsingCommand(desireAsParent.getRef(), Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevancySet.toString());
+			RelevancyOverrideSet relevancySet = parentObject.getCalculatedRelevantStrategyActivityOverrides(selectedRefs);
+			setValueUsingCommand(parentObject.getRef(), parentObject.getRelevantStrategyActivitySetTag(), relevancySet.toString());
 		}
 		catch (Exception e)
 		{
@@ -66,7 +66,7 @@ public class StrategyActivityRelevancyTableModel extends SingleBooleanColumnEdit
 
 	private ORefList getRelevantStrategyActivityRefs() throws Exception
 	{
-		return new ORefList(desireAsParent.getRelevantStrategyAndActivityRefs());
+		return new ORefList(parentObject.getRelevantStrategyAndActivityRefs());
 	}
 	
 	@Override
@@ -89,5 +89,5 @@ public class StrategyActivityRelevancyTableModel extends SingleBooleanColumnEdit
 				
 	private static final String UNIQUE_MODEL_IDENTIFIER = "StrategyActivityRelevancyTableModel";
 	
-	private Desire desireAsParent;
+	private StrategyActivityRelevancyInterface parentObject;
 }

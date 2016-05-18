@@ -22,8 +22,11 @@ package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.Indicator;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
@@ -43,6 +46,7 @@ public class IndicatorImporter extends BaseObjectWithLeaderResourceFieldImporter
 		
 		importThresholds(baseObjectNode, refToUse);
 		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), Indicator.TAG_METHOD_IDS, METHOD, TaskSchema.getObjectType());
+		importRelevantStrategyAndActivityIds(baseObjectNode, refToUse);
 	}
 
 	@Override
@@ -56,7 +60,10 @@ public class IndicatorImporter extends BaseObjectWithLeaderResourceFieldImporter
 		
 		if (tag.equals(Indicator.TAG_METHOD_IDS))
 			return true;
-		
+
+		if (tag.equals(Indicator.TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
+			return true;
+
 		return false;
 	}
 	
@@ -84,5 +91,17 @@ public class IndicatorImporter extends BaseObjectWithLeaderResourceFieldImporter
 		
 		getImporter().setData(destinationRef, Indicator.TAG_THRESHOLDS_MAP, thresholdValuesMap.toJsonString());
 		getImporter().setData(destinationRef, Indicator.TAG_THRESHOLD_DETAILS_MAP, thresholdDetailsMap.toJsonString());
+	}
+
+	private void importRelevantStrategyAndActivityIds(Node node, ORef destinationRef) throws Exception
+	{
+		ORefList importedStrategyAndActivityRefs = new ORefList();
+		importedStrategyAndActivityRefs.addAll(getImporter().extractRefs(node, getXmpz2ElementName(), RELEVANT_STRATEGY_IDS, StrategySchema.OBJECT_NAME));
+		importedStrategyAndActivityRefs.addAll(getImporter().extractRefs(node, getXmpz2ElementName(), RELEVANT_ACTIVITY_IDS, ACTIVITY));
+
+		Indicator indicator = Indicator.find(getProject(), destinationRef);
+		RelevancyOverrideSet set = indicator.getCalculatedRelevantStrategyActivityOverrides(importedStrategyAndActivityRefs);
+
+		getImporter().setData(destinationRef, Indicator.TAG_RELEVANT_STRATEGY_ACTIVITY_SET, set.toString());
 	}
 }

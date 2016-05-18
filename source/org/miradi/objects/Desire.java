@@ -40,7 +40,7 @@ import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
 
-abstract public class Desire extends BaseObject
+abstract public class Desire extends BaseObject implements StrategyActivityRelevancyInterface
 {
 	public Desire(ObjectManager objectManager, BaseId idToUse, final BaseObjectSchema schemaToUse)
 	{
@@ -260,6 +260,12 @@ abstract public class Desire extends BaseObject
 	private boolean isAlreadyCorrectlyOverridden(RelevancyOverride existingOverride, boolean shouldBeRelevant)
 	{
 		return (existingOverride != null) && (existingOverride.isOverride() == shouldBeRelevant);
+	}
+
+	@Override
+	public String getRelevantStrategyActivitySetTag()
+	{
+		return TAG_RELEVANT_STRATEGY_ACTIVITY_SET;
 	}
 
 	public RelevancyOverrideSet getCalculatedRelevantStrategyActivityOverrides(ORefList selectedStrategyAndActivityRefs) throws Exception
