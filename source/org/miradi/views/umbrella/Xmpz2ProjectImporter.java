@@ -82,13 +82,16 @@ public class Xmpz2ProjectImporter extends AbstractProjectImporter
 
 			EAM.errorDialog(message);
 		}
+
+		// possible edge case where the xml forward migration / import added some data that will be lost by the reverse migration
+		// the premise is that the forward migration run as part of the open project process will compensate accordingly, but we log the details here just in case
 		if (migrationResult.didLoseData())
 		{
-			final String message = EAM.substituteSingleString(EAM.text("Unable to complete this migration.\n\n" +
+			final String message = EAM.substituteSingleString(EAM.text("Reverse migration completed but with data loss.\n\n" +
 					"Issues encountered:\n" +
 					"%s"), migrationResult.getUserFriendlyGroupedDataLossMessagesAsString());
 
-			EAM.errorDialog(message);
+			EAM.logWarning(message);
 		}
 
 		if (migrationResult.didFail())

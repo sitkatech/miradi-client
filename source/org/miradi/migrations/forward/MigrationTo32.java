@@ -21,9 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.migrations.forward;
 
 import org.miradi.main.EAM;
-import org.miradi.migrations.NewlyAddedFieldsMigration;
-import org.miradi.migrations.RawProject;
-import org.miradi.schemas.ProjectMetadataSchema;
+import org.miradi.migrations.*;
+import org.miradi.objecthelpers.ObjectType;
 
 import java.util.HashMap;
 
@@ -31,16 +30,22 @@ public class MigrationTo32 extends NewlyAddedFieldsMigration
 {
 	public MigrationTo32(RawProject rawProjectToUse)
 	{
-		super(rawProjectToUse, ProjectMetadataSchema.getObjectType());
+		super(rawProjectToUse, ObjectType.INDICATOR);
 	}
-	
+
 	@Override
 	protected HashMap<String, String> createFieldsToLabelMapToModify()
 	{
 		HashMap<String, String> fieldsToAdd = new HashMap<String, String>();
-		fieldsToAdd.put(TAG_RELEVANT_STRATEGY_ACTIVITY_SET, EAM.text("Indicator Relevant Strategy / Activity Set"));
-		
+		fieldsToAdd.put(TAG_RELEVANT_STRATEGY_ACTIVITY_SET, EAM.text("Indicator Relevant Strategies / Activities"));
+
 		return fieldsToAdd;
+	}
+
+	@Override
+	public AbstractMigrationVisitor createMigrateForwardVisitor() throws Exception
+	{
+		return new IndicatorVisitor(type);
 	}
 
 	@Override
@@ -58,9 +63,44 @@ public class MigrationTo32 extends NewlyAddedFieldsMigration
 	@Override
 	protected String getDescription()
 	{
-		return EAM.text("This migration adds a new field to the Indicator properties.");
+		return EAM.text("This migration adds a new field to the Indicator properties to track Strategy / Activity relevancy.");
 	}
-	
+
+	private class IndicatorVisitor extends AbstractMigrationVisitor
+	{
+		private IndicatorVisitor(int typeToVisit)
+		{
+			type = typeToVisit;
+		}
+
+		public int getTypeToVisit()
+		{
+			return type;
+		}
+
+		@Override
+		protected MigrationResult internalVisit(RawObject rawObject) throws Exception
+		{
+			MigrationResult migrationResult = MigrationResult.createUninitializedResult();
+
+			if (rawObject != null)
+				migrationResult = addFields(rawObject);
+
+			return migrationResult;
+		}
+
+		private MigrationResult addFields(RawObject rawObject) throws Exception
+		{
+			MigrationResult migrationResult = MigrationResult.createSuccess();
+
+			rawObject.setData(TAG_RELEVANT_STRATEGY_ACTIVITY_SET, "");
+
+			return migrationResult;
+		}
+
+		private int type;
+	}
+
 	public static final int VERSION_FROM = 31;
 	public static final int VERSION_TO = 32;
 
