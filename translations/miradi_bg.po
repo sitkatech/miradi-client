@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-13 03:21-0700\n"
+"POT-Creation-Date: 2016-05-19 04:51-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -300,7 +300,7 @@ msgstr "%s "
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%ОтИме' -> '%ЗаИме'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:155
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:156
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr "(%s)"
@@ -1186,7 +1186,7 @@ msgstr ""
 "\". Ако характеристиката се намира извън този допустим диапазон, тя се "
 "дефинира като \"деградирала\" характеристика."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:676
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:682
 msgid "Accounting"
 msgstr ""
 
@@ -1275,6 +1275,7 @@ msgstr "Action|Режим Обсъждане на идеи"
 msgid "Action|CMP Open Standards"
 msgstr "Action|\"Отворени стандарти\" на ПКМ"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditIndicatorStrategyActivityRelevancyList.java:34
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditActivityGoalRelevancyList.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditActivityIndicatorRelevancyList.java:34
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditObjectiveStrategyActivityRelevancyList.java:34
@@ -2964,6 +2965,8 @@ msgid "Choose Relevant Goal(s)"
 msgstr "Избор на уместна/и крайна(и) цел(и)"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractRelevancyEditListDoer.java:53
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/EditActivityIndicatorRelevancyListDoer.java:44
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/EditStrategyIndicatorRelevancyListDoer.java:44
 msgid "Choose Relevant Indicator(s)"
 msgstr "Избор на уместен/ни индикатор(и)"
 
@@ -2984,7 +2987,7 @@ msgstr "Избор на етикети"
 msgid "Choose the colors that look best on your system:"
 msgstr "Избор на най-подходящия за вашата система цвят:"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:662
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:668
 msgid "Classifications"
 msgstr ""
 
@@ -3152,7 +3155,7 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportMpzDoer.java:71
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf42VersionDoer.java:74
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/Xmpz2ProjectImporter.java:96
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/Xmpz2ProjectImporter.java:99
 msgid "Could not migrate!"
 msgstr ""
 
@@ -4170,7 +4173,7 @@ msgstr ""
 "прриродозащитните проекти то представлява желаното бъдещо състояние на "
 "обект. В Миради, крайната цел е представена като малък син овал."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/RelevancyGoalPanel.java:41
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/RelevancyGoalOverridePanel.java:41
 msgid "Goal Relevancy Panel"
 msgstr "Панел за приложимост на крайни цели"
 
@@ -4481,8 +4484,7 @@ msgstr ""
 "отколкото JPEG изображения при един и същ мащаб."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:139
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:43
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:71
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:45
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/IndicatorSubForm.java:33
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:51
 msgid "Indicator"
@@ -4503,8 +4505,13 @@ msgstr ""
 "са представени като лилав триъгълник."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/RelevancyIndicatorPanel.java:42
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/RelevancyIndicatorOverridePanel.java:41
 msgid "Indicator Relevancy Panel"
 msgstr "Панел за приложимост на индикатор"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:40
+msgid "Indicator Relevant Strategies / Activities"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:63
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:83
@@ -5713,7 +5720,7 @@ msgstr ""
 "ограничаване на критична заплаха, за проект. В Миради, междинните цели са "
 "представени като малък син правоъгълник."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/RelevancyObjectivePanel.java:41
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/RelevancyObjectiveOverridePanel.java:41
 msgid "Objective Relevancy Panel"
 msgstr "Панел за приложимост на междинни цели"
 
@@ -6411,6 +6418,14 @@ msgstr "Вериги на резултати"
 msgid "Retain"
 msgstr "Запази"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/Xmpz2ProjectImporter.java:90
+msgid ""
+"Reverse migration completed but with data loss.\n"
+"\n"
+"Issues encountered:\n"
+"%s"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpDiagramWizardReviewAndModifyTargetsStep.java:35
 msgid "Review and modify targets"
 msgstr "Преглед и модифициране на обекти"
@@ -6589,6 +6604,14 @@ msgstr "Изберете крайните цели, към които се ст�
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/EditStrategyGoalRelevancyListDoer.java:39
 msgid "Select the Goals which this Strategy helps to achieve"
 msgstr "Изберете крайните цели, към които се стреми тази стратегия"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/EditActivityIndicatorRelevancyListDoer.java:38
+msgid "Select the Indicators relevant to this Activity"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/EditStrategyIndicatorRelevancyListDoer.java:38
+msgid "Select the Indicators relevant to this Strategy"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/EditActivityObjectiveRelevancyListDoer.java:39
 msgid "Select the Objectives which this Activity helps to achieve"
@@ -6886,6 +6909,7 @@ msgstr ""
 "Стратегически план - Изложение, съдържащо крайни цели, междинни цели и "
 "стратегии на проект, на това как проектовия екип предлага промяна в светът,"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:52
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:55
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:50
 msgid "Strategies And Activities"
@@ -7001,6 +7025,7 @@ msgstr "Силно нарастване"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:153
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:69
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:142
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:75
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:38
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:144
@@ -7116,6 +7141,11 @@ msgstr "TT|Изберете кои междинни цели са подходя
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditGoalStrategyActivityRelevancyList.java:40
 msgid "TT|Choose which strategies and activities are relevant to this goal"
 msgstr "TT|Изберете кои стратегии и дейности са подходящи за тази крайна цел"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditIndicatorStrategyActivityRelevancyList.java:40
+msgid ""
+"TT|Choose which strategies and activities are relevant to this indicator"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditObjectiveStrategyActivityRelevancyList.java:40
 msgid ""
@@ -8051,7 +8081,7 @@ msgstr ""
 "При необходимост, задачите могат да бъдат разделени в подзадачи. В Миради, "
 "задачите са представени като сив плосък овал."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/Task.java:368
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/Task.java:367
 msgid "Task does not have a parent"
 msgstr "Задачата няма източник"
 
@@ -8295,6 +8325,12 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo16.java:61
 msgid "This migration adds a new field to the Diagram Factor properties."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:66
+msgid ""
+"This migration adds a new field to the Indicator properties to track "
+"Strategy / Activity relevancy."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo18.java:61
@@ -8701,7 +8737,7 @@ msgstr ""
 msgid "Title|IUCN Redlist Species"
 msgstr "Title|Вид от Червения списък на IUCN"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/AbstractIndicatorPropertiesPanel.java:74
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/AbstractIndicatorPropertiesPanel.java:75
 msgid "Title|Indicator Properties"
 msgstr "Title|Свойства на индикатор"
 
@@ -8898,7 +8934,6 @@ msgstr "Пълен мониторингов бюджет: %1 %2"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf42VersionDoer.java:59
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/Xmpz2ProjectImporter.java:79
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/Xmpz2ProjectImporter.java:87
 msgid ""
 "Unable to complete this migration.\n"
 "\n"
@@ -9604,9 +9639,6 @@ msgid "FieldLabel|3.MetaPlannedWhoTotal|Who Total"
 msgstr ""
 
 msgid "FieldLabel|3.IsMonitoringActivity|Monitoring Activity"
-msgstr ""
-
-msgid "FieldLabel|3.RelevantIndicatorSet|Relevant Indicators"
 msgstr ""
 
 msgid "FieldLabel|3.PseudoRelevantIndicatorRefs|Relevant Indicators"
@@ -10632,9 +10664,6 @@ msgid "FieldLabel|21.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
 msgid "FieldLabel|21.MetaPlannedWhoTotal|Who Total"
-msgstr ""
-
-msgid "FieldLabel|21.RelevantIndicatorSet|Relevant Indicators"
 msgstr ""
 
 msgid "FieldLabel|21.PseudoRelevantIndicatorRefs|Relevant Indicators"
