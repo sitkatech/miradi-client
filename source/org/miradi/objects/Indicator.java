@@ -317,6 +317,15 @@ public class Indicator extends BaseObject implements StrategyActivityRelevancyIn
 	}
 
 	@Override
+	public boolean isRelevancyOverrideSet(String tag)
+	{
+		if (tag.equals(TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
+			return true;
+
+		return false;
+	}
+
+	@Override
 	public String getRelevantStrategyActivitySetTag()
 	{
 		return TAG_RELEVANT_STRATEGY_ACTIVITY_SET;

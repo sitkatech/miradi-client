@@ -17,33 +17,29 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.planning.doers;
 
-import org.miradi.actions.*;
-import org.miradi.views.umbrella.doers.AbstractPopDownMenuDoer;
+package org.miradi.actions;
 
-public class SharedWorkPlanningTreeNodeCreationMenuDoer extends AbstractPopDownMenuDoer
+import org.miradi.icons.ActivityIcon;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
+
+abstract public class AbstractActionMoveActivity extends ObjectsAction
 {
-	@Override
-	protected Class[] getAllPossibleActionClasses()
+	public AbstractActionMoveActivity(MainWindow mainWindowToUse)
 	{
-		return new Class[] {
-				ActionTreeCreateObjective.class,
-				ActionTreeCreateIndicator.class,
-				null,
-				ActionTreeCreateActivity.class,
-				ActionTreeMoveActivity.class,
-				null,
-				ActionTreeCreateMethod.class,
-				null,
-				ActionCreateTask.class,
-				ActionCreateSameLevelTask.class,
-				null,
-				ActionTreeCreateResourceAssignment.class,
-				ActionTreeCreateExpenseAssignment.class,
-				null,
-				ActionCreateIndicatorMeasurement.class,
-				ActionCreateFutureStatus.class,
-			};
+		super(mainWindowToUse, getLabel(), new ActivityIcon());
+	}
+
+	private static String getLabel()
+	{
+		return EAM.text("Action|Manage|Move Activity");
+	}
+	
+
+	@Override
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Move the selected Activity to another Strategy");
 	}
 }

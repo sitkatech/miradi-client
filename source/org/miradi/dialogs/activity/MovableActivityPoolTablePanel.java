@@ -16,34 +16,18 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/ 
-package org.miradi.views.planning.doers;
+*/
+package org.miradi.dialogs.activity;
 
-import org.miradi.actions.*;
-import org.miradi.views.umbrella.doers.AbstractPopDownMenuDoer;
+import org.miradi.dialogs.base.ObjectPoolTablePanel;
+import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 
-public class SharedWorkPlanningTreeNodeCreationMenuDoer extends AbstractPopDownMenuDoer
+public class MovableActivityPoolTablePanel extends ObjectPoolTablePanel
 {
-	@Override
-	protected Class[] getAllPossibleActionClasses()
+	public MovableActivityPoolTablePanel(MainWindow mainWindowToUse, ORef parentRef)
 	{
-		return new Class[] {
-				ActionTreeCreateObjective.class,
-				ActionTreeCreateIndicator.class,
-				null,
-				ActionTreeCreateActivity.class,
-				ActionTreeMoveActivity.class,
-				null,
-				ActionTreeCreateMethod.class,
-				null,
-				ActionCreateTask.class,
-				ActionCreateSameLevelTask.class,
-				null,
-				ActionTreeCreateResourceAssignment.class,
-				ActionTreeCreateExpenseAssignment.class,
-				null,
-				ActionCreateIndicatorMeasurement.class,
-				ActionCreateFutureStatus.class,
-			};
+		super(mainWindowToUse, ObjectType.TASK, new MovableActivityPoolTableModel(mainWindowToUse.getProject(), parentRef));
 	}
 }

@@ -100,6 +100,7 @@ import org.miradi.views.diagram.doers.ZoomOut;
 import org.miradi.views.diagram.doers.ZoomToFitDoer;
 import org.miradi.views.planning.doers.CreateRelevancyActivityDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
+import org.miradi.views.planning.doers.TreeNodeMoveActivityDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
 import org.miradi.views.targetviability.doers.ExpandToIndicatorDoer;
 import org.miradi.views.targetviability.doers.ExpandToMeasurementDoer;
@@ -217,6 +218,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		addDoerToMap(ActionCreateActivity.class, new CreateActivityDoer());
 		addDoerToMap(ActionDeleteActivity.class, new DeleteActivityDoer());
+		addDoerToMap(ActionMoveActivity.class, new TreeNodeMoveActivityDoer());
 		addDoerToMap(ActionTreeCreateRelevancyActivity.class, new CreateRelevancyActivityDoer());
 		addDoerToMap(ActionDeletePlanningViewTreeNode.class, new TreeNodeDeleteDoer());
 

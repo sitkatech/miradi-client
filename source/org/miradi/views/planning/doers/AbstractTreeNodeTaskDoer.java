@@ -56,7 +56,7 @@ abstract public class AbstractTreeNodeTaskDoer extends AbstractTreeNodeDoer
 		}
 	}
 	
-	protected BaseObject extractParentFromSelectionHierarchy(ORefList selectionHierarchy)
+	private BaseObject extractParentFromSelectionHierarchy(ORefList selectionHierarchy)
 	{
 		for (int index = 0; index < selectionHierarchy.size(); ++index)
 		{

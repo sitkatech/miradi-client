@@ -152,6 +152,7 @@ public class Actions
 		registerAction(new ActionCreateDiagramMargin(mainWindow));
 		registerAction(new ActionTreeCreateActivity(mainWindow));
 		registerAction(new ActionTreeCreateRelevancyActivity(mainWindow));
+		registerAction(new ActionTreeMoveActivity(mainWindow));
 		registerAction(new ActionTreeCreateMethod(mainWindow));
 		registerAction(new ActionCreateTask(mainWindow));
 		registerAction(new ActionCreateSameLevelTask(mainWindow));
@@ -163,6 +164,7 @@ public class Actions
 
 		registerAction(new ActionCreateActivity(mainWindow));
 		registerAction(new ActionDeleteActivity(mainWindow));
+		registerAction(new ActionMoveActivity(mainWindow));
 		registerAction(new ActionCreateResource(mainWindow));
 		registerAction(new ActionDeleteResource(mainWindow));
 		registerAction(new ActionPlanningCreationMenu(mainWindow));
