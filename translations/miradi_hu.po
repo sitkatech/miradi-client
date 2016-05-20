@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-19 04:51-0700\n"
+"POT-Creation-Date: 2016-05-20 03:21-0700\n"
 "PO-Revision-Date: 2011-02-15 16:35-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1577,6 +1577,10 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionResourceListModify.java:34
 msgid "Action|Manage|Modify Resource"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/AbstractActionMoveActivity.java:36
+msgid "Action|Manage|Move Activity"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionResourceListRemove.java:34
@@ -3763,7 +3767,7 @@ msgstr ""
 msgid "Forest - Temperate"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:383
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:385
 msgid "Found Corrupted Data:"
 msgstr ""
 
@@ -4962,15 +4966,15 @@ msgstr ""
 msgid "MenuBar|File"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:584
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:586
 msgid "MenuBar|Help"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:516
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:518
 msgid "MenuBar|Step-by-Step"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:443
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:445
 msgid "MenuBar|View"
 msgstr ""
 
@@ -5007,7 +5011,7 @@ msgid "Menu|Export Current Project as..."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:243
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:431
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:433
 msgid "Menu|Group Box"
 msgstr ""
 
@@ -5177,6 +5181,14 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:122
 msgid "More Suggestions"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/MoveSelectionDialog.java:37
+msgid "Move"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/TreeNodeMoveActivityDoer.java:198
+msgid "Move Activity"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/projectlist/ProjectListMoveToDirectoryAction.java:32
@@ -5612,6 +5624,12 @@ msgstr ""
 msgid ""
 "Please select which item should be created into this factor, then press the "
 "Create from Existing  button"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/MoveSelectionDialog.java:43
+msgid ""
+"Please select which item should be move to this factor, then press the Move "
+"button"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ProjectFocusQuestion.java:37
@@ -7232,6 +7250,10 @@ msgstr ""
 msgid "TT|Move the selected Activity down"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/AbstractActionMoveActivity.java:43
+msgid "TT|Move the selected Activity to another Strategy"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionActivityMoveUp.java:41
 msgid "TT|Move the selected Activity up"
 msgstr ""
@@ -8164,7 +8186,7 @@ msgstr ""
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:868
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:870
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr ""
@@ -8481,7 +8503,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:310
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramView.java:312
 msgid "Unknown error displaying diagram"
 msgstr ""
 
