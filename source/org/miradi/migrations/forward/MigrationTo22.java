@@ -29,7 +29,7 @@ import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.schemas.ResourceAssignmentSchema;
-import org.miradi.schemas.ResourcePlanSchema;
+import org.miradi.schemas.TimeframeSchema;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
@@ -67,9 +67,9 @@ public class MigrationTo22 extends AbstractMigration
 		for(Integer typeToVisit : typesToVisit)
 		{
 			if (reverseMigration)
-				visitor = new RemoveResourcePlansVisitor(typeToVisit);
+				visitor = new RemoveTimeframesVisitor(typeToVisit);
 			else
-				visitor = new CreateResourcePlansForResourceAssignmentsVisitor(typeToVisit);
+				visitor = new CreateTimeframesForResourceAssignmentsVisitor(typeToVisit);
 			visitAllORefsInPool(visitor);
 			final MigrationResult thisMigrationResult = visitor.getMigrationResult();
 			if (migrationResult == null)
@@ -106,12 +106,12 @@ public class MigrationTo22 extends AbstractMigration
 	@Override
 	protected String getDescription()
 	{
-		return EAM.text("This migration creates resource plan entries for resource assignments (where a resource or date range is specified).");
+		return EAM.text("This migration creates timeframe entries for resource assignments (where a resource or date range is specified).");
 	}
 
-	private class CreateResourcePlansForResourceAssignmentsVisitor extends AbstractMigrationORefVisitor
+	private class CreateTimeframesForResourceAssignmentsVisitor extends AbstractMigrationORefVisitor
 	{
-		public CreateResourcePlansForResourceAssignmentsVisitor(int typeToVisit)
+		public CreateTimeframesForResourceAssignmentsVisitor(int typeToVisit)
 		{
 			type = typeToVisit;
 		}
@@ -127,30 +127,30 @@ public class MigrationTo22 extends AbstractMigration
 			RawObject rawObject = getRawProject().findObject(rawObjectRef);
 			if (rawObject != null && rawObject.containsKey(TAG_RESOURCE_ASSIGNMENT_IDS))
 			{
-				IdList resourcePlanIdList = new IdList(ResourcePlanSchema.getObjectType());
-				RawPool resourcePlanPool = getOrCreateResourcePlanPool();
+				IdList timeframeIdList = new IdList(TimeframeSchema.getObjectType());
+				RawPool timeframePool = getOrCreateTimeframePool();
 
 				ArrayList<RawObject> resourceAssignments = getResourceAssignments(rawObject);
 
-				DateUnitEffortList resourcePlanDateUnitEffortList = buildResourcePlanDateUnitEffortList(resourceAssignments);
+				DateUnitEffortList timeframeDateUnitEffortList = buildTimeframeDateUnitEffortList(resourceAssignments);
 
 				for (RawObject resourceAssignment : resourceAssignments)
 				{
 					if (resourceAssignment.containsKey(TAG_DATEUNIT_EFFORTS) || resourceAssignment.containsKey(TAG_RESOURCE_ID))
 					{
-						RawObject newResourcePlan = new RawObject(ResourcePlanSchema.getObjectType());
-						newResourcePlan.setData(TAG_DATEUNIT_EFFORTS, resourcePlanDateUnitEffortList.toJson().toString());
+						RawObject newTimeframe = new RawObject(TimeframeSchema.getObjectType());
+						newTimeframe.setData(TAG_DATEUNIT_EFFORTS, timeframeDateUnitEffortList.toJson().toString());
 						if (resourceAssignment.containsKey(TAG_RESOURCE_ID))
-							newResourcePlan.setData(TAG_RESOURCE_ID, resourceAssignment.getData(TAG_RESOURCE_ID));
+							newTimeframe.setData(TAG_RESOURCE_ID, resourceAssignment.getData(TAG_RESOURCE_ID));
 						final BaseId nextHighestId = getRawProject().getNextHighestId();
-						final ORef newResourcePlanRef = new ORef(ObjectType.RESOURCE_PLAN, nextHighestId);
-						resourcePlanPool.put(newResourcePlanRef, newResourcePlan);
-						resourcePlanIdList.add(nextHighestId);
+						final ORef newTimeframeRef = new ORef(ObjectType.TIMEFRAME, nextHighestId);
+						timeframePool.put(newTimeframeRef, newTimeframe);
+						timeframeIdList.add(nextHighestId);
 					}
 				}
 
-				if (!resourcePlanIdList.isEmpty())
-					rawObject.setData(TAG_RESOURCE_PLAN_IDS, resourcePlanIdList.toJson().toString());
+				if (!timeframeIdList.isEmpty())
+					rawObject.setData(TAG_TIMEFRAME_IDS, timeframeIdList.toJson().toString());
 			}
 
 			if (rawObject != null && rawObject.containsKey(TAG_ASSIGNED_LEADER_RESOURCE))
@@ -162,11 +162,11 @@ public class MigrationTo22 extends AbstractMigration
 			return MigrationResult.createSuccess();
 		}
 
-		private DateUnitEffortList buildResourcePlanDateUnitEffortList(ArrayList<RawObject> resourceAssignments) throws Exception
+		private DateUnitEffortList buildTimeframeDateUnitEffortList(ArrayList<RawObject> resourceAssignments) throws Exception
 		{
-			DateUnitEffortList resourcePlanDateUnitEffortList = new DateUnitEffortList();
+			DateUnitEffortList timeframeDateUnitEffortList = new DateUnitEffortList();
 
-			DateRange resourcePlanDateRange = null;
+			DateRange timeframeDateRange = null;
 			boolean foundAtLeastOneProjectTotalDateUnit = false;
 
 			for (RawObject resourceAssignment : resourceAssignments)
@@ -184,12 +184,12 @@ public class MigrationTo22 extends AbstractMigration
 						}
 						else if (resourceAssignmentDateUnitEffort.getDateUnit().isDay())
 						{
-							DateUnit resourcePlanDateUnit = createMonthDateUnit(resourceAssignmentDateUnitEffort.getDateUnit());
-							resourcePlanDateRange = addToDateRange(resourcePlanDateRange, resourcePlanDateUnit);
+							DateUnit timeframeDateUnit = createMonthDateUnit(resourceAssignmentDateUnitEffort.getDateUnit());
+							timeframeDateRange = addToDateRange(timeframeDateRange, timeframeDateUnit);
 						}
 						else
 						{
-							resourcePlanDateRange = addToDateRange(resourcePlanDateRange, resourceAssignmentDateUnitEffort.getDateUnit());
+							timeframeDateRange = addToDateRange(timeframeDateRange, resourceAssignmentDateUnitEffort.getDateUnit());
 						}
 					}
 				}
@@ -197,28 +197,28 @@ public class MigrationTo22 extends AbstractMigration
 
 			if (foundAtLeastOneProjectTotalDateUnit)
 			{
-				DateUnit resourcePlanDateUnit = new DateUnit();
-				DateUnitEffort resourcePlanDateUnitEffort = new DateUnitEffort(resourcePlanDateUnit, 0);
-				resourcePlanDateUnitEffortList.add(resourcePlanDateUnitEffort);
+				DateUnit timeframeDateUnit = new DateUnit();
+				DateUnitEffort timeframeDateUnitEffort = new DateUnitEffort(timeframeDateUnit, 0);
+				timeframeDateUnitEffortList.add(timeframeDateUnitEffort);
 			}
-			else if (resourcePlanDateRange != null)
+			else if (timeframeDateRange != null)
 			{
-				DateRange startDateRange = new DateRange(resourcePlanDateRange.getStartDate(), resourcePlanDateRange.getStartDate());
+				DateRange startDateRange = new DateRange(timeframeDateRange.getStartDate(), timeframeDateRange.getStartDate());
 				DateUnit startDateUnit = DateUnit.createFromDateRange(startDateRange);
 
-				DateUnit resourcePlanStartDateUnit = createMonthDateUnit(startDateUnit);
-				DateUnitEffort resourcePlanStartDateUnitEffort = new DateUnitEffort(resourcePlanStartDateUnit, 0);
-				resourcePlanDateUnitEffortList.add(resourcePlanStartDateUnitEffort);
+				DateUnit timeframeStartDateUnit = createMonthDateUnit(startDateUnit);
+				DateUnitEffort timeframeStartDateUnitEffort = new DateUnitEffort(timeframeStartDateUnit, 0);
+				timeframeDateUnitEffortList.add(timeframeStartDateUnitEffort);
 
-				DateRange endDateRange = new DateRange(resourcePlanDateRange.getEndDate(), resourcePlanDateRange.getEndDate());
+				DateRange endDateRange = new DateRange(timeframeDateRange.getEndDate(), timeframeDateRange.getEndDate());
 				DateUnit endDateUnit = DateUnit.createFromDateRange(endDateRange);
 
-				DateUnit resourcePlanEndDateUnit = createMonthDateUnit(endDateUnit);
-				DateUnitEffort resourcePlanEndDateUnitEffort = new DateUnitEffort(resourcePlanEndDateUnit, 0);
-				resourcePlanDateUnitEffortList.add(resourcePlanEndDateUnitEffort);
+				DateUnit timeframeEndDateUnit = createMonthDateUnit(endDateUnit);
+				DateUnitEffort timeframeEndDateUnitEffort = new DateUnitEffort(timeframeEndDateUnit, 0);
+				timeframeDateUnitEffortList.add(timeframeEndDateUnitEffort);
 			}
 
-			return resourcePlanDateUnitEffortList;
+			return timeframeDateUnitEffortList;
 		}
 
 		private DateUnit createMonthDateUnit(DateUnit dateUnit)
@@ -235,10 +235,10 @@ public class MigrationTo22 extends AbstractMigration
 				return DateRange.combine(dateRangeToAddTo, dateUnit.asDateRange());
 		}
 
-		private RawPool getOrCreateResourcePlanPool()
+		private RawPool getOrCreateTimeframePool()
 		{
-			getRawProject().ensurePoolExists(ResourcePlanSchema.getObjectType());
-			return getRawProject().getRawPoolForType(ResourcePlanSchema.getObjectType());
+			getRawProject().ensurePoolExists(TimeframeSchema.getObjectType());
+			return getRawProject().getRawPoolForType(TimeframeSchema.getObjectType());
 		}
 
 		private ArrayList<RawObject> getResourceAssignments(RawObject rawObject) throws Exception
@@ -261,9 +261,9 @@ public class MigrationTo22 extends AbstractMigration
 		private int type;
 	}
 
-	private class RemoveResourcePlansVisitor extends AbstractMigrationORefVisitor
+	private class RemoveTimeframesVisitor extends AbstractMigrationORefVisitor
 	{
-		public RemoveResourcePlansVisitor(int typeToVisit)
+		public RemoveTimeframesVisitor(int typeToVisit)
 		{
 			type = typeToVisit;
 		}
@@ -279,27 +279,27 @@ public class MigrationTo22 extends AbstractMigration
 			MigrationResult migrationResult = MigrationResult.createSuccess();
 
 			RawObject rawObject = getRawProject().findObject(rawObjectRef);
-			if (rawObject != null && rawObject.containsKey(TAG_RESOURCE_PLAN_IDS))
+			if (rawObject != null && rawObject.containsKey(TAG_TIMEFRAME_IDS))
 			{
-				IdList resourcePlanIdList = new IdList(ResourcePlanSchema.getObjectType(), rawObject.get(TAG_RESOURCE_PLAN_IDS));
+				IdList timeframeIdList = new IdList(TimeframeSchema.getObjectType(), rawObject.get(TAG_TIMEFRAME_IDS));
 
-				if (resourcePlanIdList.isEmpty())
+				if (timeframeIdList.isEmpty())
 					return MigrationResult.createSuccess();
 
-				for(BaseId resourcePlanId : resourcePlanIdList.asVector())
+				for(BaseId timeframeId : timeframeIdList.asVector())
 				{
-					ORef resourcePlanRef = new ORef(ResourcePlanSchema.getObjectType(), resourcePlanId);
-					getRawProject().deleteRawObject(resourcePlanRef);
+					ORef timeframeRef = new ORef(TimeframeSchema.getObjectType(), timeframeId);
+					getRawProject().deleteRawObject(timeframeRef);
 				}
 
-				rawObject.remove(TAG_RESOURCE_PLAN_IDS);
+				rawObject.remove(TAG_TIMEFRAME_IDS);
 
 				String label = HtmlUtilities.convertHtmlToPlainText(rawObject.get(TAG_LABEL));
 				String baseObjectLabel = createMessage(EAM.text("Label = %s"), label);
 
 				HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 				tokenReplacementMap.put("%label", baseObjectLabel);
-				tokenReplacementMap.put("%fieldName", TAG_RESOURCE_PLAN_IDS);
+				tokenReplacementMap.put("%fieldName", TAG_TIMEFRAME_IDS);
 				String dataLossMessage = EAM.substitute(EAM.text("%fieldName will be removed. %label"), tokenReplacementMap);
 				migrationResult.addDataLoss(dataLossMessage);
 			}
@@ -323,7 +323,7 @@ public class MigrationTo22 extends AbstractMigration
 	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
 	public static final String TAG_DATEUNIT_EFFORTS = "Details";
 	public static final String TAG_RESOURCE_ID = "ResourceId";
-	public static final String TAG_RESOURCE_PLAN_IDS = "PlanIds";
+	public static final String TAG_TIMEFRAME_IDS = "TimeframeIds";
 	public static final String TAG_LABEL = "Label";
 
 	public static final int VERSION_FROM = 21;

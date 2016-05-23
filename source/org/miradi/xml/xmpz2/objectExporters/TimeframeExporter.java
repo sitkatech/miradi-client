@@ -21,17 +21,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.objectExporters;
 
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ResourcePlan;
+import org.miradi.objects.Timeframe;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.schemas.ResourcePlanSchema;
+import org.miradi.schemas.TimeframeSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 
-public class ResourcePlanExporter extends AbstractPlanningObjectExporter
+public class TimeframeExporter extends AbstractPlanningObjectExporter
 {
-	public ResourcePlanExporter(Xmpz2XmlWriter writerToUse)
+	public TimeframeExporter(Xmpz2XmlWriter writerToUse)
 	{
-		super(writerToUse, ResourcePlanSchema.getObjectType());
+		super(writerToUse, TimeframeSchema.getObjectType());
 	}
 	
 	@Override
@@ -39,16 +39,16 @@ public class ResourcePlanExporter extends AbstractPlanningObjectExporter
 	{
 		super.writeFields(baseObject, baseObjectSchema);
 
-		ResourcePlan resourcePlan = (ResourcePlan) baseObject;
+		Timeframe timeframe = (Timeframe) baseObject;
 		String idElementName = RESOURCE_ID_ELEMENT_NAME + ID;
 
-		getWriter().writeRefIfValid(baseObjectSchema.getObjectName(), idElementName, resourcePlan.getResourceRef());
+		getWriter().writeRefIfValid(baseObjectSchema.getObjectName(), idElementName, timeframe.getResourceRef());
 	}
 	
 	@Override
 	protected boolean doesFieldRequireSpecialHandling(String tag)
 	{
-		if (tag.equals(ResourcePlan.TAG_RESOURCE_ID))
+		if (tag.equals(Timeframe.TAG_RESOURCE_ID))
 			return true;
 
 		return super.doesFieldRequireSpecialHandling(tag);
@@ -105,7 +105,7 @@ public class ResourcePlanExporter extends AbstractPlanningObjectExporter
 	@Override
 	protected String getPoolName()
 	{
-		return RESOURCE_PLAN;
+		return TIMEFRAME;
 	}
 
 }

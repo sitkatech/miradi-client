@@ -99,7 +99,7 @@ public class ObjectType
 	public static final int FUTURE_STATUS = 64;
 	public static final int BIOPHYSICAL_FACTOR = 65;
 	public static final int BIOPHYSICAL_RESULT = 66;
-	public static final int RESOURCE_PLAN = 67;
+	public static final int TIMEFRAME = 67;
 	public static final int ACCOUNTING_CLASSIFICATION_ASSOCIATION = 68;
 
 	// When you add a new type, be sure to:

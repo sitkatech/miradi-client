@@ -17,14 +17,46 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.ids;
 
-public class ResourcePlanId extends ObjectId
+package org.miradi.schemas;
+
+import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Timeframe;
+
+public class TimeframeSchema extends AbstractPlanningObjectSchema
 {
-
-	public ResourcePlanId(int idToUse)
+	public TimeframeSchema()
 	{
-		super(idToUse);
+		super();
+	}
+	
+	@Override
+	protected void fillFieldSchemas()
+	{
+		super.fillFieldSchemas();
+
+		createFieldSchemaOptionalBaseId(Timeframe.TAG_RESOURCE_ID, ProjectResourceSchema.getObjectType());
+
+		createPseudoFieldSchemaString(Timeframe.PSEUDO_TAG_PROJECT_RESOURCE_LABEL);
+		createPseudoFieldSchemaString(Timeframe.PSEUDO_TAG_OWNING_FACTOR_NAME);
 	}
 
+	public static int getObjectType()
+	{
+		return ObjectType.TIMEFRAME;
+	}
+	
+	@Override
+	public int getType()
+	{
+		return getObjectType();
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
+	
+	public static final String OBJECT_NAME = "Timeframe";
 }

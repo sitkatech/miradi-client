@@ -472,7 +472,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	@Override
 	protected TimePeriodCostsMap getTotalTimePeriodPlannedCostsMap(BaseObject baseObject) throws Exception
 	{
-		return baseObject.getResourcePlansTimePeriodCostsMap();
+		return baseObject.getTimeframesTimePeriodCostsMap();
 	}
 	
 	@Override
@@ -645,12 +645,12 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (columnTag.equals(Indicator.PSEUDO_TAG_FACTOR))
 				return ResourceAssignment.PSEUDO_TAG_OWNING_FACTOR_NAME;
 		}
-		if(ResourcePlan.is(nodeType))
+		if(Timeframe.is(nodeType))
 		{
 			if (isPlannedWhoColumn(columnTag))
-				return ResourcePlan.PSEUDO_TAG_PROJECT_RESOURCE_LABEL;
+				return Timeframe.PSEUDO_TAG_PROJECT_RESOURCE_LABEL;
 			if (columnTag.equals(Indicator.PSEUDO_TAG_FACTOR))
-				return ResourcePlan.PSEUDO_TAG_OWNING_FACTOR_NAME;
+				return Timeframe.PSEUDO_TAG_OWNING_FACTOR_NAME;
 		}
 		if(Factor.isFactor(nodeType))
 		{

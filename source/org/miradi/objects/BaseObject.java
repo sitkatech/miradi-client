@@ -396,8 +396,8 @@ abstract public class BaseObject
 		if (tag.equals(TAG_RESOURCE_ASSIGNMENT_IDS))
 			return ResourceAssignmentSchema.getObjectType();
 		
-		if (tag.equals(TAG_RESOURCE_PLAN_IDS))
-			return ResourcePlanSchema.getObjectType();
+		if (tag.equals(TAG_TIMEFRAME_IDS))
+			return TimeframeSchema.getObjectType();
 
 		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
 			return ProgressReportSchema.getObjectType();
@@ -638,7 +638,7 @@ abstract public class BaseObject
 
 	public TimePeriodCostsMap getTotalTimePeriodCostsForPlansWithoutRollup() throws Exception
 	{
-		TimePeriodCostsMap planTimePeriodCostsMap = getTimePeriodCostsMap(TAG_RESOURCE_PLAN_IDS);
+		TimePeriodCostsMap planTimePeriodCostsMap = getTimePeriodCostsMap(TAG_TIMEFRAME_IDS);
 
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
 		mergedTimePeriodCostsMap.mergeNonConflicting(planTimePeriodCostsMap);
@@ -648,7 +648,7 @@ abstract public class BaseObject
 
 	public TimePeriodCostsMap getTotalTimePeriodCostsMapForPlans() throws Exception
 	{
-		TimePeriodCostsMap planTimePeriodCostsMap = getResourcePlansTimePeriodCostsMap();
+		TimePeriodCostsMap planTimePeriodCostsMap = getTimeframesTimePeriodCostsMap();
 
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
 		mergedTimePeriodCostsMap.mergeAll(planTimePeriodCostsMap);
@@ -656,9 +656,9 @@ abstract public class BaseObject
 		return mergedTimePeriodCostsMap;
 	}
 
-	public TimePeriodCostsMap getResourcePlansTimePeriodCostsMap() throws Exception
+	public TimePeriodCostsMap getTimeframesTimePeriodCostsMap() throws Exception
 	{
-		return getTimePeriodCostsMap(TAG_RESOURCE_PLAN_IDS);
+		return getTimePeriodCostsMap(TAG_TIMEFRAME_IDS);
 	}
 
 	protected TimePeriodCostsMap getTimePeriodCostsMap(String tag) throws Exception
@@ -700,14 +700,14 @@ abstract public class BaseObject
 		return timePeriodCostsMap;
 	}
 
-	public boolean hasResourcePlansWithDifferentDateUnitEffortLists() throws Exception
+	public boolean hasTimeframesWithDifferentDateUnitEffortLists() throws Exception
 	{
-		ORefList resourcePlanRefs = getResourcePlanRefs();
+		ORefList timeframeRefs = getTimeframeRefs();
 		HashSet<DateUnitEffortList> dateUnitEffortLists = new HashSet<DateUnitEffortList>();
-		for (int index = 0; index < resourcePlanRefs.size(); ++index)
+		for (int index = 0; index < timeframeRefs.size(); ++index)
 		{
-			ResourcePlan resourcePlan = ResourcePlan.find(getProject(), resourcePlanRefs.get(index));
-			dateUnitEffortLists.add(resourcePlan.getDateUnitEffortList());
+			Timeframe timeframe = Timeframe.find(getProject(), timeframeRefs.get(index));
+			dateUnitEffortLists.add(timeframe.getDateUnitEffortList());
 			if (dateUnitEffortLists.size() > 1)
 				return true;
 		}
@@ -715,19 +715,19 @@ abstract public class BaseObject
 		return false;
 	}
 
-	public boolean hasResourcePlansWithUsableNumberOfDateUnitEfforts() throws Exception
+	public boolean hasTimeframesWithUsableNumberOfDateUnitEfforts() throws Exception
 	{
-		ORefList resourcePlanRefs = getResourcePlanRefs();
-		if (resourcePlanRefs != null && !resourcePlanRefs.isEmpty())
+		ORefList timeframeRefs = getTimeframeRefs();
+		if (timeframeRefs != null && !timeframeRefs.isEmpty())
 		{
-			ResourcePlan resourcePlan = ResourcePlan.find(getProject(), resourcePlanRefs.getFirstElement());
+			Timeframe timeframe = Timeframe.find(getProject(), timeframeRefs.getFirstElement());
 
-			TimePeriodCostsMap timePeriodCostsMap = resourcePlan.getResourcePlansTimePeriodCostsMap();
+			TimePeriodCostsMap timePeriodCostsMap = timeframe.getTimeframesTimePeriodCostsMap();
 			OptionalDouble totalWorkUnits = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit()).getTotalWorkUnits();
 			if (totalWorkUnits.hasNonZeroValue())
 				return false;
 
-			DateUnitEffortList effortList = resourcePlan.getDateUnitEffortList();
+			DateUnitEffortList effortList = timeframe.getDateUnitEffortList();
 			if (effortList.size() > 2)
 				return false;
 		}
@@ -875,12 +875,12 @@ abstract public class BaseObject
 		try
 		{
 			CodeList projectResourceCodes = new CodeList();
-			ORefList resourcePlanRefs = getResourcePlanRefs();
+			ORefList timeframeRefs = getTimeframeRefs();
 
-			for (ORef resourcePlanRef : resourcePlanRefs)
+			for (ORef timeframeRef : timeframeRefs)
 			{
-				ResourcePlan resourcePlan = ResourcePlan.find(getProject(), resourcePlanRef);
-				projectResourceCodes.add(resourcePlan.getResourceRef().toString());
+				Timeframe timeframe = Timeframe.find(getProject(), timeframeRef);
+				projectResourceCodes.add(timeframe.getResourceRef().toString());
 			}
 
 			return projectResourceCodes;
@@ -899,10 +899,10 @@ abstract public class BaseObject
 			if (!canOwnPlanningObjects(getRef()))
 				return false;
 
-			if (hasResourcePlansWithDifferentDateUnitEffortLists())
+			if (hasTimeframesWithDifferentDateUnitEffortLists())
 				return false;
 
-			if (hasResourcePlansWithUsableNumberOfDateUnitEfforts())
+			if (hasTimeframesWithUsableNumberOfDateUnitEfforts())
 				return true;
 
 			return false;
@@ -1464,9 +1464,9 @@ abstract public class BaseObject
 		return getSafeRefListData(TAG_EXPENSE_ASSIGNMENT_REFS);
 	}
 	
-	public ORefList getResourcePlanRefs()
+	public ORefList getTimeframeRefs()
 	{
-		return new ORefList(ResourcePlanSchema.getObjectType(), getSafeIdListData(TAG_RESOURCE_PLAN_IDS));
+		return new ORefList(TimeframeSchema.getObjectType(), getSafeIdListData(TAG_TIMEFRAME_IDS));
 	}
 	
 	public ORefList getResourceAssignmentRefs()
@@ -1664,7 +1664,7 @@ abstract public class BaseObject
 	public static final String TAG_ID = "Id";
 	public static final String TAG_LABEL = "Label";
 	public static final String TAG_EMPTY = "EMPTY";
-	public static final String TAG_RESOURCE_PLAN_IDS = "PlanIds";
+	public static final String TAG_TIMEFRAME_IDS = "TimeframeIds";
 	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
 	public static final String TAG_EXPENSE_ASSIGNMENT_REFS = "ExpenseRefs";
 	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";

@@ -16,20 +16,15 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/
-package org.miradi.objects;
+*/ 
+package org.miradi.ids;
 
-import org.miradi.objecthelpers.ObjectType;
-
-public class TestResourcePlan extends ObjectTestCase
+public class TimeframeId extends ObjectId
 {
-	public TestResourcePlan(String name)
+
+	public TimeframeId(int idToUse)
 	{
-		super(name);
+		super(idToUse);
 	}
-	
-	public void testFields() throws Exception
-	{
-		verifyFields(ObjectType.RESOURCE_PLAN);
-	}
+
 }

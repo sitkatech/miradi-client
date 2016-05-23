@@ -20,31 +20,31 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.ids.ResourcePlanId;
+import org.miradi.ids.TimeframeId;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.schemas.ResourcePlanSchema;
+import org.miradi.schemas.TimeframeSchema;
 import org.miradi.utils.OptionalDouble;
 
-public class ResourcePlan extends AbstractPlanningObject
+public class Timeframe extends AbstractPlanningObject
 {
-	public ResourcePlan(ObjectManager objectManager, BaseId idToUse)
+	public Timeframe(ObjectManager objectManager, BaseId idToUse)
 	{
-		super(objectManager, new ResourcePlanId(idToUse.asInt()), createSchema(objectManager));
+		super(objectManager, new TimeframeId(idToUse.asInt()), createSchema(objectManager));
 	}
 
-	public static ResourcePlanSchema createSchema(Project projectToUse)
+	public static TimeframeSchema createSchema(Project projectToUse)
 	{
 		return createSchema(projectToUse.getObjectManager());
 	}
 
-	public static ResourcePlanSchema createSchema(ObjectManager objectManager)
+	public static TimeframeSchema createSchema(ObjectManager objectManager)
 	{
-		return (ResourcePlanSchema) objectManager.getSchemas().get(ObjectType.RESOURCE_PLAN);
+		return (TimeframeSchema) objectManager.getSchemas().get(ObjectType.TIMEFRAME);
 	}
 
 	@Override
@@ -121,17 +121,17 @@ public class ResourcePlan extends AbstractPlanningObject
 	
 	public static boolean is(int objectType)
 	{
-		return objectType == ResourcePlanSchema.getObjectType();
+		return objectType == TimeframeSchema.getObjectType();
 	}
 	
-	public static ResourcePlan find(ObjectManager objectManager, ORef resourcePlanRef)
+	public static Timeframe find(ObjectManager objectManager, ORef timeframeRef)
 	{
-		return (ResourcePlan) objectManager.findObject(resourcePlanRef);
+		return (Timeframe) objectManager.findObject(timeframeRef);
 	}
 	
-	public static ResourcePlan find(Project project, ORef resourcePlanRef)
+	public static Timeframe find(Project project, ORef timeframeRef)
 	{
-		return find(project.getObjectManager(), resourcePlanRef);
+		return find(project.getObjectManager(), timeframeRef);
 	}
 
 	public static final String TAG_RESOURCE_ID = "ResourceId";

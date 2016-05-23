@@ -23,37 +23,37 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ResourcePlan;
+import org.miradi.objects.Timeframe;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.BaseObjectSchema;
 
-public class ResourcePlanPool extends BaseObjectPool
+public class TimeframePool extends BaseObjectPool
 {
-	public ResourcePlanPool(IdAssigner idAssignerToUse)
+	public TimeframePool(IdAssigner idAssignerToUse)
 	{
-		super(idAssignerToUse, ObjectType.RESOURCE_PLAN);
+		super(idAssignerToUse, ObjectType.TIMEFRAME);
 	}
 	
-	public void put(ResourcePlan resourcePlan) throws Exception
+	public void put(Timeframe timeframe) throws Exception
 	{
-		put(resourcePlan.getId(), resourcePlan);
+		put(timeframe.getId(), timeframe);
 	}
 	
-	public ResourcePlan find(BaseId id)
+	public Timeframe find(BaseId id)
 	{
-		return (ResourcePlan)getRawObject(id);
+		return (Timeframe)getRawObject(id);
 	}
 	
 	@Override
 	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId) throws Exception
 	{
-		return new ResourcePlan(objectManager, actualId);
+		return new Timeframe(objectManager, actualId);
 	}
 	
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		return ResourcePlan.createSchema(projectToUse);
+		return Timeframe.createSchema(projectToUse);
 	}
 }

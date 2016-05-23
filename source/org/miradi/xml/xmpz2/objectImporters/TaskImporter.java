@@ -24,7 +24,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 import org.miradi.schemas.ResourceAssignmentSchema;
-import org.miradi.schemas.ResourcePlanSchema;
+import org.miradi.schemas.TimeframeSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
@@ -42,7 +42,7 @@ public class TaskImporter extends BaseObjectWithLeaderResourceFieldImporter
 		super.importFields(baseObjectNode, refToUse);
 
 		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, RESOURCE_ASSIGNMENT, ResourceAssignmentSchema.getObjectType());
-		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), BaseObject.TAG_RESOURCE_PLAN_IDS, RESOURCE_PLAN, ResourcePlanSchema.getObjectType());
+		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), BaseObject.TAG_TIMEFRAME_IDS, TIMEFRAME, TimeframeSchema.getObjectType());
 		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), Task.TAG_SUBTASK_IDS, SUB_TASK, TaskSchema.getObjectType());
 	}
 	
@@ -52,7 +52,7 @@ public class TaskImporter extends BaseObjectWithLeaderResourceFieldImporter
 		if (tag.equals(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS))
 			return true;
 		
-		if (tag.equals(BaseObject.TAG_RESOURCE_PLAN_IDS))
+		if (tag.equals(BaseObject.TAG_TIMEFRAME_IDS))
 			return true;
 
 		return super.isCustomImportField(tag);

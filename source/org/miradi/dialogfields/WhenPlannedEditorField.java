@@ -27,7 +27,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ResourcePlan;
+import org.miradi.objects.Timeframe;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateUnitEffortList;
 
@@ -48,19 +48,19 @@ public class WhenPlannedEditorField extends ObjectDataField
 		{
 			CodeList whenStartEndCodes = whenPlannedEditor.getStartEndCodes();
 			DateUnitEffortList editorDateUnitEffortList = WhenPlannedEditorComponent.createDateUnitEffortList(whenStartEndCodes);
-			DateUnitEffortList resourcePlanDateUnitEffortList = new DateUnitEffortList();
+			DateUnitEffortList timeframeDateUnitEffortList = new DateUnitEffortList();
 
 			BaseObject baseObject = BaseObject.find(getProject(), getORef());
 
-			ORefList resourcePlansRefs = baseObject.getResourcePlanRefs();
-			if (!resourcePlansRefs.isEmpty())
+			ORefList timeframeRefs = baseObject.getTimeframeRefs();
+			if (!timeframeRefs.isEmpty())
 			{
-				ORef resourcePlanRef = baseObject.getResourcePlanRefs().getFirstElement();
-				ResourcePlan resourcePlan = ResourcePlan.find(getProject(), resourcePlanRef);
-				resourcePlanDateUnitEffortList = resourcePlan.getDateUnitEffortList();
+				ORef timeframeRef = baseObject.getTimeframeRefs().getFirstElement();
+				Timeframe timeframe = Timeframe.find(getProject(), timeframeRef);
+				timeframeDateUnitEffortList = timeframe.getDateUnitEffortList();
 			}
 
-			return !editorDateUnitEffortList.equals(resourcePlanDateUnitEffortList);
+			return !editorDateUnitEffortList.equals(timeframeDateUnitEffortList);
 		}
 		catch (Exception e)
 		{
@@ -90,7 +90,7 @@ public class WhenPlannedEditorField extends ObjectDataField
 		ignoreEditorActions = true;
 
 		BaseObject baseObject = BaseObject.find(getProject(), getORef());
-		ORefList planningObjectRefs = baseObject.getResourcePlanRefs();
+		ORefList planningObjectRefs = baseObject.getTimeframeRefs();
 		whenPlannedEditor.setPlanningObjectRefs(planningObjectRefs);
 
 		ignoreEditorActions = false;
@@ -151,7 +151,7 @@ public class WhenPlannedEditorField extends ObjectDataField
 			if (getORef().isValid())
 			{
 				BaseObject baseObject = BaseObject.find(getProject(), getORef());
-				planningObjectRefs = baseObject.getResourcePlanRefs();
+				planningObjectRefs = baseObject.getTimeframeRefs();
 			}
 
 			whenPlannedEditor = new WhenPlannedEditorComponent(getProject(), planningObjectRefs);

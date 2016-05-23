@@ -108,7 +108,7 @@ public interface Xmpz2XmlConstants
 	public static final String SUB_TASK = "SubTask";
 	public static final String PLANNED_LEADER_RESOURCE_ID = "PlannedLeaderResourceId";
 	public static final String ASSIGNED_LEADER_RESOURCE_ID = "AssignedLeaderResourceId";
-	public static final String RESOURCE_PLAN = "ResourcePlan";
+	public static final String TIMEFRAME = "Timeframe";
 	public static final String RESOURCE_ASSIGNMENT = "ResourceAssignment";
 	public static final String EXPENSE_ASSIGNMENT = "ExpenseAssignment";
 	public static final String PROGRESS_REPORT = "ProgressReport";

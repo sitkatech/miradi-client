@@ -29,7 +29,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.schemas.ResourceAssignmentSchema;
-import org.miradi.schemas.ResourcePlanSchema;
+import org.miradi.schemas.TimeframeSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DateUnitEffort;
@@ -47,7 +47,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 	{
 		ORef strategyRef = getProject().createStrategy().getRef();
 
-		ensureForwardMigrationResourcePlansNotAdded(strategyRef);
+		ensureForwardMigrationTimeframesNotAdded(strategyRef);
 	}
 
 	public void testStrategyForwardMigrationEmptyResourceAssignment() throws Exception
@@ -59,7 +59,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
-		ensureForwardMigrationResourcePlansNotAdded(strategy.getRef());
+		ensureForwardMigrationTimeframesNotAdded(strategy.getRef());
 	}
 
 	public void testStrategyForwardMigrationResourceAssignmentWithOnlyResourceId() throws Exception
@@ -70,7 +70,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
-		ensureForwardMigrationResourcePlansAdded(strategy.getRef(), resourceAssignment);
+		ensureForwardMigrationTimeframesAdded(strategy.getRef(), resourceAssignment);
 	}
 
 	public void testStrategyForwardMigrationWithNonZeroEffortResourceAssignment() throws Exception
@@ -80,7 +80,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
-		ensureForwardMigrationResourcePlansAdded(strategy.getRef(), resourceAssignment);
+		ensureForwardMigrationTimeframesAdded(strategy.getRef(), resourceAssignment);
 	}
 
 	public void testStrategyForwardMigrationWithZeroEffortResourceAssignment() throws Exception
@@ -94,7 +94,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
-		ensureForwardMigrationResourcePlansAdded(strategy.getRef(), resourceAssignment);
+		ensureForwardMigrationTimeframesAdded(strategy.getRef(), resourceAssignment);
 	}
 
 	public void testStrategyForwardMigrationWithMixedEffortResourceAssignments() throws Exception
@@ -121,20 +121,20 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		for(ORef ref : rawPoolForType.keySet())
 		{
 			RawObject rawObject = rawPoolForType.get(ref);
-			assertTrue("Field should have been added during forward migration?", rawObject.containsKey(MigrationTo22.TAG_RESOURCE_PLAN_IDS));
+			assertTrue("Field should have been added during forward migration?", rawObject.containsKey(MigrationTo22.TAG_TIMEFRAME_IDS));
 		}
 
-		RawPool rawResourcePlanPool = reverseMigratedProject.getRawPoolForType(ResourcePlanSchema.getObjectType());
-		assertFalse("Resource plans should have been added during forward migration", rawResourcePlanPool.isEmpty());
-		assertEquals("Two resource plans should have been added", rawResourcePlanPool.size(), 2);
+		RawPool rawTimeframePool = reverseMigratedProject.getRawPoolForType(TimeframeSchema.getObjectType());
+		assertFalse("Timeframes should have been added during forward migration", rawTimeframePool.isEmpty());
+		assertEquals("Two timeframes should have been added", rawTimeframePool.size(), 2);
 
-		ORef resourcePlanRef1 = rawResourcePlanPool.getSortedReflist().get(0);
-		RawObject resourcePlan1 = reverseMigratedProject.findObject(resourcePlanRef1);
-		verifyResourcePlanMatchesResourceAssignment(resourcePlan1, resourceAssignment1);
+		ORef timeframeRef1 = rawTimeframePool.getSortedReflist().get(0);
+		RawObject timeframe1 = reverseMigratedProject.findObject(timeframeRef1);
+		verifyTimeframeMatchesResourceAssignment(timeframe1, resourceAssignment1);
 
-		ORef resourcePlanRef2 = rawResourcePlanPool.getSortedReflist().get(1);
-		RawObject resourcePlan2 = reverseMigratedProject.findObject(resourcePlanRef2);
-		verifyResourcePlanMatchesResourceAssignment(resourcePlan2, resourceAssignment2);
+		ORef timeframeRef2 = rawTimeframePool.getSortedReflist().get(1);
+		RawObject timeframe2 = reverseMigratedProject.findObject(timeframeRef2);
+		verifyTimeframeMatchesResourceAssignment(timeframe2, resourceAssignment2);
 	}
 
 	public void testStrategyForwardMigrationWithMixedEffortResourceAssignment() throws Exception
@@ -149,7 +149,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
-		ensureForwardMigrationResourcePlansAdded(strategy.getRef(), resourceAssignment);
+		ensureForwardMigrationTimeframesAdded(strategy.getRef(), resourceAssignment);
 	}
 
 	public void testStrategyForwardMigrationWithZeroEffortResourceAssignments() throws Exception
@@ -182,37 +182,37 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		for(ORef ref : rawPoolForType.keySet())
 		{
 			RawObject rawObject = rawPoolForType.get(ref);
-			assertTrue("Field should have been added during forward migration?", rawObject.containsKey(MigrationTo22.TAG_RESOURCE_PLAN_IDS));
+			assertTrue("Field should have been added during forward migration?", rawObject.containsKey(MigrationTo22.TAG_TIMEFRAME_IDS));
 		}
 
-		RawPool rawResourcePlanPool = reverseMigratedProject.getRawPoolForType(ResourcePlanSchema.getObjectType());
-		assertFalse("Resource plans should have been added during forward migration", rawResourcePlanPool.isEmpty());
-		assertEquals("Two resource plans should have been added", rawResourcePlanPool.size(), 2);
+		RawPool rawTimeframePool = reverseMigratedProject.getRawPoolForType(TimeframeSchema.getObjectType());
+		assertFalse("Timeframes should have been added during forward migration", rawTimeframePool.isEmpty());
+		assertEquals("Two timeframes should have been added", rawTimeframePool.size(), 2);
 
-		ORef resourcePlanRef1 = rawResourcePlanPool.getSortedReflist().get(0);
-		RawObject resourcePlan1 = reverseMigratedProject.findObject(resourcePlanRef1);
+		ORef timeframeRef1 = rawTimeframePool.getSortedReflist().get(0);
+		RawObject timeframe1 = reverseMigratedProject.findObject(timeframeRef1);
 
-		assertEquals("Resource populated on resource plan should match that on resource assignment", resourcePlan1.getData(ResourcePlan.TAG_RESOURCE_ID), resourceAssignment1.getData(ResourcePlan.TAG_RESOURCE_ID));
+		assertEquals("Resource populated on timeframe should match that on resource assignment", timeframe1.getData(Timeframe.TAG_RESOURCE_ID), resourceAssignment1.getData(Timeframe.TAG_RESOURCE_ID));
 
-		DateUnitEffortList resourcePlanDateUnitEffortList1 = new DateUnitEffortList(resourcePlan1.getData(ResourcePlan.TAG_DATEUNIT_EFFORTS));
-		verifyResourcePlanDateUnitEffortListMatchesThatOfResourceAssignment(resourcePlanDateUnitEffortList1, combinedDateUnitEffortList);
+		DateUnitEffortList timeframeDateUnitEffortList1 = new DateUnitEffortList(timeframe1.getData(Timeframe.TAG_DATEUNIT_EFFORTS));
+		verifyTimeframeDateUnitEffortListMatchesThatOfResourceAssignment(timeframeDateUnitEffortList1, combinedDateUnitEffortList);
 
-		ORef resourcePlanRef2 = rawResourcePlanPool.getSortedReflist().get(1);
-		RawObject resourcePlan2 = reverseMigratedProject.findObject(resourcePlanRef2);
+		ORef timeframeRef2 = rawTimeframePool.getSortedReflist().get(1);
+		RawObject timeframe2 = reverseMigratedProject.findObject(timeframeRef2);
 
-		assertEquals("Resource populated on resource plan should match that on resource assignment", resourcePlan2.getData(ResourcePlan.TAG_RESOURCE_ID), resourceAssignment2.getData(ResourcePlan.TAG_RESOURCE_ID));
+		assertEquals("Resource populated on timeframe should match that on resource assignment", timeframe2.getData(Timeframe.TAG_RESOURCE_ID), resourceAssignment2.getData(Timeframe.TAG_RESOURCE_ID));
 
-		DateUnitEffortList resourcePlanDateUnitEffortList2 = new DateUnitEffortList(resourcePlan2.getData(ResourcePlan.TAG_DATEUNIT_EFFORTS));
-		verifyResourcePlanDateUnitEffortListMatchesThatOfResourceAssignment(resourcePlanDateUnitEffortList2, combinedDateUnitEffortList);
+		DateUnitEffortList timeframeDateUnitEffortList2 = new DateUnitEffortList(timeframe2.getData(Timeframe.TAG_DATEUNIT_EFFORTS));
+		verifyTimeframeDateUnitEffortListMatchesThatOfResourceAssignment(timeframeDateUnitEffortList2, combinedDateUnitEffortList);
 	}
 
-	private void verifyResourcePlanDateUnitEffortListMatchesThatOfResourceAssignment(DateUnitEffortList resourcePlanDateUnitEffortList, DateUnitEffortList resourceAssignmentDateUnitEffortList) throws Exception
+	private void verifyTimeframeDateUnitEffortListMatchesThatOfResourceAssignment(DateUnitEffortList timeframeDateUnitEffortList, DateUnitEffortList resourceAssignmentDateUnitEffortList) throws Exception
 	{
-		DateRange resourcePlanDateRange = getDateRange(resourcePlanDateUnitEffortList);
+		DateRange timeframeDateRange = getDateRange(timeframeDateUnitEffortList);
 		DateRange resourceAssignmentDateRange = getDateRange(resourceAssignmentDateUnitEffortList);
 
-		assertEquals("Quantity on resource plan date unit effort should be 0", resourcePlanDateUnitEffortList.getDateUnitEffort(0).getQuantity(), 0.0);
-		assertTrue("Resource plan date unit should encompass that on resource assignment", resourcePlanDateRange.contains(resourceAssignmentDateRange));
+		assertEquals("Quantity on timeframe date unit effort should be 0", timeframeDateUnitEffortList.getDateUnitEffort(0).getQuantity(), 0.0);
+		assertTrue("Timeframe date unit should encompass that on resource assignment", timeframeDateRange.contains(resourceAssignmentDateRange));
 	}
 
 	public void testStrategyForwardMigrationWithResourceAssignmentMultipleDays() throws Exception
@@ -238,24 +238,24 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		for(ORef ref : rawPoolForType.keySet())
 		{
 			RawObject rawObject = rawPoolForType.get(ref);
-			assertTrue("Field should have been added during forward migration?", rawObject.containsKey(MigrationTo22.TAG_RESOURCE_PLAN_IDS));
+			assertTrue("Field should have been added during forward migration?", rawObject.containsKey(MigrationTo22.TAG_TIMEFRAME_IDS));
 		}
 
-		RawPool rawResourcePlanPool = reverseMigratedProject.getRawPoolForType(ResourcePlanSchema.getObjectType());
-		assertFalse("Resource plans should have been added during forward migration", rawResourcePlanPool.isEmpty());
-		assertEquals("Only one resource plan should have been added", rawResourcePlanPool.size(), 1);
+		RawPool rawTimeframePool = reverseMigratedProject.getRawPoolForType(TimeframeSchema.getObjectType());
+		assertFalse("Timeframes should have been added during forward migration", rawTimeframePool.isEmpty());
+		assertEquals("Only one timeframe should have been added", rawTimeframePool.size(), 1);
 
-		ORef resourcePlanRef = rawResourcePlanPool.getSortedReflist().get(0);
-		RawObject resourcePlan = reverseMigratedProject.findObject(resourcePlanRef);
+		ORef timeframeRef = rawTimeframePool.getSortedReflist().get(0);
+		RawObject timeframe = reverseMigratedProject.findObject(timeframeRef);
 
-		DateUnitEffortList resourcePlanDateUnitEffortList = new DateUnitEffortList(resourcePlan.getData(ResourcePlan.TAG_DATEUNIT_EFFORTS));
-		DateRange resourcePlanDateRange = getDateRange(resourcePlanDateUnitEffortList);
+		DateUnitEffortList timeframeDateUnitEffortList = new DateUnitEffortList(timeframe.getData(Timeframe.TAG_DATEUNIT_EFFORTS));
+		DateRange timeframeDateRange = getDateRange(timeframeDateUnitEffortList);
 		DateUnitEffortList resourceAssignmentDateUnitEffortList = new DateUnitEffortList(resourceAssignment.getData(ResourceAssignment.TAG_DATEUNIT_EFFORTS));
 		DateRange resourceAssignmentDateRange = getDateRange(resourceAssignmentDateUnitEffortList);
 
-		assertEquals("Quantity on resource plan date unit effort should be 0", resourcePlanDateUnitEffortList.getDateUnitEffort(0).getQuantity(), 0.0);
-		assertTrue("Resource plan date unit should encompass that on resource assignment", resourcePlanDateRange.contains(resourceAssignmentDateRange));
-		assertEquals("Resource populated on resource plan should match that on resource assignment", resourcePlan.getData(ResourcePlan.TAG_RESOURCE_ID), resourceAssignment.getData(ResourcePlan.TAG_RESOURCE_ID));
+		assertEquals("Quantity on timeframe date unit effort should be 0", timeframeDateUnitEffortList.getDateUnitEffort(0).getQuantity(), 0.0);
+		assertTrue("Timeframe date unit should encompass that on resource assignment", timeframeDateRange.contains(resourceAssignmentDateRange));
+		assertEquals("Resource populated on timeframe should match that on resource assignment", timeframe.getData(Timeframe.TAG_RESOURCE_ID), resourceAssignment.getData(Timeframe.TAG_RESOURCE_ID));
 	}
 
 	public void testStrategyForwardMigrationWithResourceAssignmentMultipleMonths() throws Exception
@@ -281,23 +281,23 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		for(ORef ref : rawPoolForType.keySet())
 		{
 			RawObject rawObject = rawPoolForType.get(ref);
-			assertTrue("Field should have been added during forward migration?", rawObject.containsKey(MigrationTo22.TAG_RESOURCE_PLAN_IDS));
+			assertTrue("Field should have been added during forward migration?", rawObject.containsKey(MigrationTo22.TAG_TIMEFRAME_IDS));
 		}
 
-		RawPool rawResourcePlanPool = reverseMigratedProject.getRawPoolForType(ResourcePlanSchema.getObjectType());
-		assertFalse("Resource plans should have been added during forward migration", rawResourcePlanPool.isEmpty());
-		assertEquals("Only one resource plan should have been added", rawResourcePlanPool.size(), 1);
+		RawPool rawTimeframePool = reverseMigratedProject.getRawPoolForType(TimeframeSchema.getObjectType());
+		assertFalse("Timeframes should have been added during forward migration", rawTimeframePool.isEmpty());
+		assertEquals("Only one timeframe should have been added", rawTimeframePool.size(), 1);
 
-		ORef resourcePlanRef = rawResourcePlanPool.getSortedReflist().get(0);
-		RawObject resourcePlan = reverseMigratedProject.findObject(resourcePlanRef);
+		ORef timeframeRef = rawTimeframePool.getSortedReflist().get(0);
+		RawObject timeframe = reverseMigratedProject.findObject(timeframeRef);
 
-		DateUnitEffortList resourcePlanDateUnitEffortList = new DateUnitEffortList(resourcePlan.getData(ResourcePlan.TAG_DATEUNIT_EFFORTS));
-		DateRange resourcePlanDateRange = getDateRange(resourcePlanDateUnitEffortList);
+		DateUnitEffortList timeframeDateUnitEffortList = new DateUnitEffortList(timeframe.getData(Timeframe.TAG_DATEUNIT_EFFORTS));
+		DateRange timeframeDateRange = getDateRange(timeframeDateUnitEffortList);
 		DateUnitEffortList resourceAssignmentDateUnitEffortList = new DateUnitEffortList(resourceAssignment.getData(ResourceAssignment.TAG_DATEUNIT_EFFORTS));
 		DateRange resourceAssignmentDateRange = getDateRange(resourceAssignmentDateUnitEffortList);
 
-		assertEquals("Quantity on resource plan date unit effort should be 0", resourcePlanDateUnitEffortList.getDateUnitEffort(0).getQuantity(), 0.0);
-		assertTrue("Resource plan date unit should encompass that on resource assignment", resourcePlanDateRange.contains(resourceAssignmentDateRange));
+		assertEquals("Quantity on timeframe date unit effort should be 0", timeframeDateUnitEffortList.getDateUnitEffort(0).getQuantity(), 0.0);
+		assertTrue("Timeframe date unit should encompass that on resource assignment", timeframeDateRange.contains(resourceAssignmentDateRange));
 	}
 
 	public void testStrategyReverseMigration() throws Exception
@@ -311,14 +311,14 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
-		ensureReverseMigrationResourcePlansRemoved(strategy.getRef());
+		ensureReverseMigrationTimeframesRemoved(strategy.getRef());
 	}
 
 	public void testTaskForwardMigrationNoResourceAssignments() throws Exception
 	{
 		Strategy strategy = getProject().createStrategy();
 		ORef taskRef = getProject().createTask(strategy).getRef();
-		ensureForwardMigrationResourcePlansNotAdded(taskRef);
+		ensureForwardMigrationTimeframesNotAdded(taskRef);
 	}
 
 	public void testTaskForwardMigrationWithZeroEffortResourceAssignment() throws Exception
@@ -333,7 +333,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(task, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
-		ensureForwardMigrationResourcePlansAdded(task.getRef(), resourceAssignment);
+		ensureForwardMigrationTimeframesAdded(task.getRef(), resourceAssignment);
 	}
 
 	public void testTaskReverseMigration() throws Exception
@@ -348,14 +348,14 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(task, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
-		ensureReverseMigrationResourcePlansRemoved(task.getRef());
+		ensureReverseMigrationTimeframesRemoved(task.getRef());
 	}
 
 	public void testIndicatorForwardMigrationNoResourceAssignments() throws Exception
 	{
 		Strategy strategy = getProject().createStrategy();
 		ORef indicatorRef = getProject().createIndicator(strategy).getRef();
-		ensureForwardMigrationResourcePlansNotAdded(indicatorRef);
+		ensureForwardMigrationTimeframesNotAdded(indicatorRef);
 	}
 
 	public void testIndicatorForwardMigrationWithZeroEffortResourceAssignment() throws Exception
@@ -370,7 +370,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(indicator, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
-		ensureForwardMigrationResourcePlansAdded(indicator.getRef(), resourceAssignment);
+		ensureForwardMigrationTimeframesAdded(indicator.getRef(), resourceAssignment);
 	}
 
 	public void testIndicatorReverseMigration() throws Exception
@@ -385,10 +385,10 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(indicator, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
-		ensureReverseMigrationResourcePlansRemoved(indicator.getRef());
+		ensureReverseMigrationTimeframesRemoved(indicator.getRef());
 	}
 
-	private void ensureForwardMigrationResourcePlansNotAdded(ORef objectRef) throws Exception
+	private void ensureForwardMigrationTimeframesNotAdded(ORef objectRef) throws Exception
 	{
 		RawProject reverseMigratedProject = reverseMigrate(new VersionRange(MigrationTo22.VERSION_TO));
 		migrateProject(reverseMigratedProject, new VersionRange(Project.VERSION_HIGH));
@@ -397,14 +397,14 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		for(ORef ref : rawPoolForType.keySet())
 		{
 			RawObject rawObject = rawPoolForType.get(ref);
-			assertFalse("Field should not have been added during forward migration?", rawObject.containsKey(MigrationTo22.TAG_RESOURCE_PLAN_IDS));
+			assertFalse("Field should not have been added during forward migration?", rawObject.containsKey(MigrationTo22.TAG_TIMEFRAME_IDS));
 		}
 
-		RawPool rawResourcePlanPool = reverseMigratedProject.getRawPoolForType(ResourcePlanSchema.getObjectType());
-		assertTrue("No resource plans should have been added during forward migration", rawResourcePlanPool == null || rawResourcePlanPool.isEmpty());
+		RawPool rawTimeframePool = reverseMigratedProject.getRawPoolForType(TimeframeSchema.getObjectType());
+		assertTrue("No timeframes should have been added during forward migration", rawTimeframePool == null || rawTimeframePool.isEmpty());
 	}
 
-	private void ensureForwardMigrationResourcePlansAdded(ORef objectRef, ResourceAssignment resourceAssignment) throws Exception
+	private void ensureForwardMigrationTimeframesAdded(ORef objectRef, ResourceAssignment resourceAssignment) throws Exception
 	{
 		RawProject reverseMigratedProject = reverseMigrate(new VersionRange(MigrationTo22.VERSION_TO));
 		migrateProject(reverseMigratedProject, new VersionRange(Project.VERSION_HIGH));
@@ -413,39 +413,39 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		for(ORef ref : rawPoolForType.keySet())
 		{
 			RawObject rawObject = rawPoolForType.get(ref);
-			assertTrue("Field should have been added during forward migration?", rawObject.containsKey(MigrationTo22.TAG_RESOURCE_PLAN_IDS));
+			assertTrue("Field should have been added during forward migration?", rawObject.containsKey(MigrationTo22.TAG_TIMEFRAME_IDS));
 		}
 
-		RawPool rawResourcePlanPool = reverseMigratedProject.getRawPoolForType(ResourcePlanSchema.getObjectType());
-		assertFalse("Resource plans should have been added during forward migration", rawResourcePlanPool.isEmpty());
-		assertEquals("Only one resource plan should have been added", rawResourcePlanPool.size(), 1);
+		RawPool rawTimeframePool = reverseMigratedProject.getRawPoolForType(TimeframeSchema.getObjectType());
+		assertFalse("Timeframes should have been added during forward migration", rawTimeframePool.isEmpty());
+		assertEquals("Only one timeframe should have been added", rawTimeframePool.size(), 1);
 
-		ORef resourcePlanRef = rawResourcePlanPool.getSortedReflist().get(0);
-		RawObject resourcePlan = reverseMigratedProject.findObject(resourcePlanRef);
-		verifyResourcePlanMatchesResourceAssignment(resourcePlan, resourceAssignment);
+		ORef timeframeRef = rawTimeframePool.getSortedReflist().get(0);
+		RawObject timeframe = reverseMigratedProject.findObject(timeframeRef);
+		verifyTimeframeMatchesResourceAssignment(timeframe, resourceAssignment);
 	}
 
-	private void verifyResourcePlanMatchesResourceAssignment(RawObject resourcePlan, ResourceAssignment resourceAssignment) throws Exception
+	private void verifyTimeframeMatchesResourceAssignment(RawObject timeframe, ResourceAssignment resourceAssignment) throws Exception
 	{
 		if (!resourceAssignment.getData(ResourceAssignment.TAG_DATEUNIT_EFFORTS).isEmpty())
 		{
-			DateUnitEffortList resourcePlanDateUnitEffortList = new DateUnitEffortList(resourcePlan.getData(ResourcePlan.TAG_DATEUNIT_EFFORTS));
-			DateRange resourcePlanDateRange = getDateRange(resourcePlanDateUnitEffortList);
+			DateUnitEffortList timeframeDateUnitEffortList = new DateUnitEffortList(timeframe.getData(Timeframe.TAG_DATEUNIT_EFFORTS));
+			DateRange timeframeDateRange = getDateRange(timeframeDateUnitEffortList);
 
 			DateUnitEffortList resourceAssignmentDateUnitEffortList = new DateUnitEffortList(resourceAssignment.getData(ResourceAssignment.TAG_DATEUNIT_EFFORTS));
 			DateRange resourceAssignmentDateRange = getDateRange(resourceAssignmentDateUnitEffortList);
 
-			assertEquals("Quantity on resource plan date unit effort should be 0", resourcePlanDateUnitEffortList.getDateUnitEffort(0).getQuantity(), 0.0);
-			assertTrue("Resource plan date unit should encompass that on resource assignment", resourcePlanDateRange.contains(resourceAssignmentDateRange));
+			assertEquals("Quantity on timeframe date unit effort should be 0", timeframeDateUnitEffortList.getDateUnitEffort(0).getQuantity(), 0.0);
+			assertTrue("Timeframe date unit should encompass that on resource assignment", timeframeDateRange.contains(resourceAssignmentDateRange));
 		}
 
 		if (!resourceAssignment.getData(ResourceAssignment.TAG_RESOURCE_ID).isEmpty())
 		{
-			assertEquals("Resource populated on resource plan should match that on resource assignment", resourcePlan.getData(ResourcePlan.TAG_RESOURCE_ID), resourceAssignment.getData(ResourcePlan.TAG_RESOURCE_ID));
+			assertEquals("Resource populated on timeframe should match that on resource assignment", timeframe.getData(Timeframe.TAG_RESOURCE_ID), resourceAssignment.getData(Timeframe.TAG_RESOURCE_ID));
 		}
 	}
 
-	private void ensureReverseMigrationResourcePlansRemoved(ORef objectRef) throws Exception
+	private void ensureReverseMigrationTimeframesRemoved(ORef objectRef) throws Exception
 	{
 		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo22.VERSION_TO));
 
@@ -453,11 +453,11 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		for(ORef ref : rawPoolForType.keySet())
 		{
 			RawObject rawObject = rawPoolForType.get(ref);
-			assertFalse("Field should have been removed during reverse migration?", rawObject.containsKey(MigrationTo22.TAG_RESOURCE_PLAN_IDS));
+			assertFalse("Field should have been removed during reverse migration?", rawObject.containsKey(MigrationTo22.TAG_TIMEFRAME_IDS));
 		}
 
-		RawPool rawResourcePlanPool = rawProject.getRawPoolForType(ResourcePlanSchema.getObjectType());
-		assertTrue("Resource plans should have been removed during forward migration", rawResourcePlanPool == null || rawResourcePlanPool.isEmpty());
+		RawPool rawTimeframePool = rawProject.getRawPoolForType(TimeframeSchema.getObjectType());
+		assertTrue("Timeframes should have been removed during forward migration", rawTimeframePool == null || rawTimeframePool.isEmpty());
 	}
 
 	private DateRange getDateRange(DateUnitEffortList dateUnitEffortList) throws Exception

@@ -23,9 +23,9 @@ package org.miradi.xml.xmpz2.objectImporters;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
-abstract class AbstractResourcePlanImporter extends AbstractAssignmentImporter
+abstract class AbstractTimeframeImporter extends AbstractAssignmentImporter
 {
-	public AbstractResourcePlanImporter(Xmpz2XmlImporter importerToUse, BaseObjectSchema baseObjectSchemaToUse)
+	public AbstractTimeframeImporter(Xmpz2XmlImporter importerToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{
 		super(importerToUse, baseObjectSchemaToUse);
 	}

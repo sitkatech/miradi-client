@@ -30,11 +30,11 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.ResourcePlan;
+import org.miradi.objects.Timeframe;
 import org.miradi.project.Project;
 import org.miradi.questions.AbstractDateUnitTypeQuestion;
 import org.miradi.questions.PlannedDateUnitTypeQuestion;
-import org.miradi.schemas.ResourcePlanSchema;
+import org.miradi.schemas.TimeframeSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateUnitEffortList;
@@ -46,7 +46,7 @@ public class WhenPlannedEditorComponent extends WhenEditorComponent
 {
 	public WhenPlannedEditorComponent(Project project, BaseObject baseObjectToUse) throws Exception
 	{
-		this(project, baseObjectToUse.getResourcePlanRefs());
+		this(project, baseObjectToUse.getTimeframeRefs());
 	}
 
 	public WhenPlannedEditorComponent(Project project, ORefList planningObjectRefs) throws Exception
@@ -65,15 +65,15 @@ public class WhenPlannedEditorComponent extends WhenEditorComponent
 	@Override
 	public DateUnitEffortList getDateUnitEffortList(ORef planningObjectRef) throws Exception
 	{
-		ResourcePlan resourcePlan = ResourcePlan.find(getProject(), planningObjectRef);
-		return resourcePlan.getDateUnitEffortList();
+		Timeframe timeframe = Timeframe.find(getProject(), planningObjectRef);
+		return timeframe.getDateUnitEffortList();
 	}
 
 	@Override
 	protected TimePeriodCostsMap getTimePeriodCostsMap(ORef planningObjectRef) throws Exception
 	{
-		ResourcePlan resourcePlan = ResourcePlan.find(getProject(), planningObjectRef);
-		return resourcePlan.getResourcePlansTimePeriodCostsMap();
+		Timeframe timeframe = Timeframe.find(getProject(), planningObjectRef);
+		return timeframe.getTimeframesTimePeriodCostsMap();
 	}
 
 	@Override
@@ -83,8 +83,8 @@ public class WhenPlannedEditorComponent extends WhenEditorComponent
 			return AbstractDateUnitTypeQuestion.NONE_CODE;
 
 		ORef planningObjectRef = planningObjectRefsToUse.getFirstElement();
-		ResourcePlan resourcePlan = ResourcePlan.find(getProject(), planningObjectRef);
-		TimePeriodCostsMap timePeriodCostsMap = resourcePlan.convertAllDateUnitEffortList();
+		Timeframe timeframe = Timeframe.find(getProject(), planningObjectRef);
+		TimePeriodCostsMap timePeriodCostsMap = timeframe.convertAllDateUnitEffortList();
 
 		Set<DateUnit> dateUnits = timePeriodCostsMap.getDateUnits();
 		return getDateUnitCode(dateUnits);
@@ -95,21 +95,21 @@ public class WhenPlannedEditorComponent extends WhenEditorComponent
 		project.executeBeginTransaction();
 		try
 		{
-			clearResourcePlanDateUnitEfforts(project, baseObjectForRow);
+			clearTimeframeDateUnitEfforts(project, baseObjectForRow);
 
-			ORefList resourcePlanRefs = baseObjectForRow.getResourcePlanRefs();
+			ORefList timeframeRefs = baseObjectForRow.getTimeframeRefs();
 
-			if (datesAsCodeList.hasData() && resourcePlanRefs.isEmpty())
-				createResourcePlan(project, baseObjectForRow, datesAsCodeList);
+			if (datesAsCodeList.hasData() && timeframeRefs.isEmpty())
+				createTimeframe(project, baseObjectForRow, datesAsCodeList);
 
-			if (datesAsCodeList.hasData() && resourcePlanRefs.hasRefs())
-				updateResourcePlans(project, resourcePlanRefs, datesAsCodeList);
+			if (datesAsCodeList.hasData() && timeframeRefs.hasRefs())
+				updateTimeframe(project, timeframeRefs, datesAsCodeList);
 
-			if (datesAsCodeList.isEmpty() && resourcePlanRefs.size() == 1)
+			if (datesAsCodeList.isEmpty() && timeframeRefs.size() == 1)
 			{
-				ResourcePlan resourcePlan = ResourcePlan.find(project, resourcePlanRefs.getFirstElement());
-				if (resourcePlan.getResourceRef().isInvalid())
-					deleteEmptyResourcePlan(project, resourcePlanRefs.getFirstElement());
+				Timeframe timeframe = Timeframe.find(project, timeframeRefs.getFirstElement());
+				if (timeframe.getResourceRef().isInvalid())
+					deleteEmptyTimeframe(project, timeframeRefs.getFirstElement());
 			}
 		}
 		finally
@@ -118,52 +118,52 @@ public class WhenPlannedEditorComponent extends WhenEditorComponent
 		}
 	}
 
-	private static void updateResourcePlans(Project project, ORefList resourcePlanRefs, CodeList datesAsCodeList) throws Exception
+	private static void updateTimeframe(Project project, ORefList timeframeRefs, CodeList datesAsCodeList) throws Exception
 	{
 		DateUnitEffortList dateUnitEffortList = createDateUnitEffortList(datesAsCodeList);
-		for (int index = 0; index < resourcePlanRefs.size(); ++index)
+		for (int index = 0; index < timeframeRefs.size(); ++index)
 		{
-			setResourcePlanDateUnitEffortList(project, resourcePlanRefs.get(index), dateUnitEffortList);
+			setTimeframeDateUnitEffortList(project, timeframeRefs.get(index), dateUnitEffortList);
 		}
 	}
 
-	private static void clearResourcePlanDateUnitEfforts(Project project, BaseObject baseObjectForRow) throws Exception
+	private static void clearTimeframeDateUnitEfforts(Project project, BaseObject baseObjectForRow) throws Exception
 	{
-		ORefList resourcePlanRefs = baseObjectForRow.getResourcePlanRefs();
-		for (int index = 0; index < resourcePlanRefs.size(); ++index)
+		ORefList timeframeRefs = baseObjectForRow.getTimeframeRefs();
+		for (int index = 0; index < timeframeRefs.size(); ++index)
 		{
-			ResourcePlan resourcePlan = ResourcePlan.find(project, resourcePlanRefs.get(index));
-			Command clearDateUnitEffortList = new CommandSetObjectData(resourcePlan, ResourceAssignment.TAG_DATEUNIT_EFFORTS, new DateUnitEffortList().toString());
+			Timeframe timeframe = Timeframe.find(project, timeframeRefs.get(index));
+			Command clearDateUnitEffortList = new CommandSetObjectData(timeframe, ResourceAssignment.TAG_DATEUNIT_EFFORTS, new DateUnitEffortList().toString());
 			project.executeCommand(clearDateUnitEffortList);
 		}
 	}
 
-	private static void deleteEmptyResourcePlan(Project project, ORef resourcePlanRef) throws Exception
+	private static void deleteEmptyTimeframe(Project project, ORef timeframeRef) throws Exception
 	{
-		ResourcePlan resourcePlan = ResourcePlan.find(project, resourcePlanRef);
-		if (resourcePlan.isEmpty())
+		Timeframe timeframe = Timeframe.find(project, timeframeRef);
+		if (timeframe.isEmpty())
 		{
-			CommandVector removePlanCommands = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(project, resourcePlan, BaseObject.TAG_RESOURCE_PLAN_IDS);
-			project.executeCommands(removePlanCommands);
+			CommandVector removeTimeframeCommands = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(project, timeframe, BaseObject.TAG_TIMEFRAME_IDS);
+			project.executeCommands(removeTimeframeCommands);
 		}
 	}
 
-	private static void createResourcePlan(Project project, BaseObject baseObjectForRow, CodeList datesAsCodeList) throws Exception
+	private static void createTimeframe(Project project, BaseObject baseObjectForRow, CodeList datesAsCodeList) throws Exception
 	{
-		CommandCreateObject createResourcePlan = new CommandCreateObject(ResourcePlanSchema.getObjectType());
-		project.executeCommand(createResourcePlan);
+		CommandCreateObject createTimeframe = new CommandCreateObject(TimeframeSchema.getObjectType());
+		project.executeCommand(createTimeframe);
 
-		ORef resourcePlanRef = createResourcePlan.getObjectRef();
+		ORef timeframeRef = createTimeframe.getObjectRef();
 		DateUnitEffortList dateUnitEffortList = createDateUnitEffortList(datesAsCodeList);
-		setResourcePlanDateUnitEffortList(project, resourcePlanRef, dateUnitEffortList);
+		setTimeframeDateUnitEffortList(project, timeframeRef, dateUnitEffortList);
 
-		CommandSetObjectData appendResourcePlan = CommandSetObjectData.createAppendIdCommand(baseObjectForRow, BaseObject.TAG_RESOURCE_PLAN_IDS, resourcePlanRef);
-		project.executeCommand(appendResourcePlan);
+		CommandSetObjectData appendTimeframe = CommandSetObjectData.createAppendIdCommand(baseObjectForRow, BaseObject.TAG_TIMEFRAME_IDS, timeframeRef);
+		project.executeCommand(appendTimeframe);
 	}
 
-	private static void setResourcePlanDateUnitEffortList(Project project, ORef resourcePlanRef, DateUnitEffortList dateUnitEffortList) throws Exception
+	private static void setTimeframeDateUnitEffortList(Project project, ORef timeframeRef, DateUnitEffortList dateUnitEffortList) throws Exception
 	{
-		CommandSetObjectData addEffortList = new CommandSetObjectData(resourcePlanRef, ResourcePlan.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+		CommandSetObjectData addEffortList = new CommandSetObjectData(timeframeRef, Timeframe.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
 		project.executeCommand(addEffortList);
 	}
 }

@@ -325,9 +325,9 @@ public class Project implements ProjectInterface
 		return objectManager.getAssignmentPool();
 	}
 	
-	public ResourcePlanPool getResourcePlanPool()
+	public TimeframePool getTimeframePool()
 	{
-		return objectManager.getResourcePlanPool();
+		return objectManager.getTimeframePool();
 	}
 
 	public ExpenseAssignmentPool getExpenseAssignmentPool()

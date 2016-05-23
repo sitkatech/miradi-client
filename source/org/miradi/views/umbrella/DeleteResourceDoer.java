@@ -33,7 +33,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.ResourcePlan;
+import org.miradi.objects.Timeframe;
 import org.miradi.project.Project;
 import org.miradi.utils.CommandVector;
 import org.miradi.views.ObjectsDoer;
@@ -111,8 +111,8 @@ public class DeleteResourceDoer extends ObjectsDoer
 	private CommandVector removeFromReferrer(ORef ref)
 	{
 		CommandVector commands = new CommandVector();
-		if (ResourcePlan.is(ref))
-			commands.add(new CommandSetObjectData(ref, ResourcePlan.TAG_RESOURCE_ID, BaseId.INVALID.toString()));
+		if (Timeframe.is(ref))
+			commands.add(new CommandSetObjectData(ref, Timeframe.TAG_RESOURCE_ID, BaseId.INVALID.toString()));
 		if (ResourceAssignment.is(ref))
 			commands.add(new CommandSetObjectData(ref, ResourceAssignment.TAG_RESOURCE_ID, BaseId.INVALID.toString()));
 

@@ -29,8 +29,8 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ResourcePlan;
-import org.miradi.schemas.ResourcePlanSchema;
+import org.miradi.objects.Timeframe;
+import org.miradi.schemas.TimeframeSchema;
 
 public class LeaderPlannedEnsurer implements CommandExecutedListener
 {
@@ -53,11 +53,11 @@ public class LeaderPlannedEnsurer implements CommandExecutedListener
 	{
 		try
 		{
-			if (event.isSetDataCommandWithThisTypeAndTag(ResourcePlanSchema.getObjectType(), ResourcePlan.TAG_RESOURCE_ID))
-				possiblyClearResourceLeaderDueToResourcePlanResourceUpdate(event);
+			if (event.isSetDataCommandWithThisTypeAndTag(TimeframeSchema.getObjectType(), Timeframe.TAG_RESOURCE_ID))
+				possiblyClearResourceLeaderDueToResourceTimeframeUpdate(event);
 			
-			if (event.isSetDataCommandWithThisTag(BaseObject.TAG_RESOURCE_PLAN_IDS))
-				possiblyClearResourceLeaderDueToResourcePlanDeletion(event);
+			if (event.isSetDataCommandWithThisTag(BaseObject.TAG_TIMEFRAME_IDS))
+				possiblyClearResourceLeaderDueToTimeframeDeletion(event);
 		}
 		catch (Exception e)
 		{
@@ -66,11 +66,11 @@ public class LeaderPlannedEnsurer implements CommandExecutedListener
 		}
 	}
 
-	private void possiblyClearResourceLeaderDueToResourcePlanDeletion(CommandExecutedEvent event) throws Exception
+	private void possiblyClearResourceLeaderDueToTimeframeDeletion(CommandExecutedEvent event) throws Exception
 	{
 		CommandSetObjectData setCommand = event.getSetCommand();
-		ORefList currentList = new ORefList(new IdList(ResourcePlanSchema.getObjectType(), setCommand.getDataValue()));
-		ORefList previousList = new ORefList(new IdList(ResourcePlanSchema.getObjectType(), setCommand.getPreviousDataValue()));
+		ORefList currentList = new ORefList(new IdList(TimeframeSchema.getObjectType(), setCommand.getDataValue()));
+		ORefList previousList = new ORefList(new IdList(TimeframeSchema.getObjectType(), setCommand.getPreviousDataValue()));
 		if (previousList.size() <= currentList.size())
 			return;
 		
@@ -81,20 +81,20 @@ public class LeaderPlannedEnsurer implements CommandExecutedListener
 		ensureLeaderIsLegal(setCommand.getObjectORef());
 	}
 
-	private void possiblyClearResourceLeaderDueToResourcePlanResourceUpdate(CommandExecutedEvent event) throws Exception
+	private void possiblyClearResourceLeaderDueToResourceTimeframeUpdate(CommandExecutedEvent event) throws Exception
 	{
 		CommandSetObjectData setCommand = event.getSetCommand();
 		final String previousDataValue = setCommand.getPreviousDataValue();
 		if (previousDataValue.length() == 0)
 			return;
 
-		ResourcePlan resourcePlan = ResourcePlan.find(getProject(), setCommand.getObjectORef());
-		ORefList referrers = resourcePlan.findAllObjectsThatReferToUs();
+		Timeframe timeframe = Timeframe.find(getProject(), setCommand.getObjectORef());
+		ORefList referrers = timeframe.findAllObjectsThatReferToUs();
 		if (referrers.isEmpty())
 			return;
 		
 		if (referrers.size() > 1)
-			throw new Exception("ResourcePlans cannot be shared");
+			throw new Exception("Timeframes cannot be shared");
 		
 		ensureLeaderIsLegal(referrers.getFirstElement());
 	}

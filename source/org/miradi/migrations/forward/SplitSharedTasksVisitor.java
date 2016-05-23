@@ -30,7 +30,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.schemas.ResourceAssignmentSchema;
-import org.miradi.schemas.ResourcePlanSchema;
+import org.miradi.schemas.TimeframeSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
@@ -177,11 +177,11 @@ public class SplitSharedTasksVisitor extends AbstractMigrationORefVisitor
 			newTask.setData(TAG_SUBTASK_IDS, subTaskIdList.toJson().toString());
 		}
 
-		ORefList clonedResourcePlanRefs = cloneResourcePlans(taskToClone);
-		if (!clonedResourcePlanRefs.isEmpty())
+		ORefList clonedtimeframeRefs = cloneTimeframes(taskToClone);
+		if (!clonedtimeframeRefs.isEmpty())
 		{
-			IdList resourcePlanIdList = clonedResourcePlanRefs.convertToIdList(ObjectType.RESOURCE_PLAN);
-			newTask.setData(TAG_RESOURCE_PLAN_IDS, resourcePlanIdList.toJson().toString());
+			IdList timeframeIdList = clonedtimeframeRefs.convertToIdList(ObjectType.TIMEFRAME);
+			newTask.setData(TAG_TIMEFRAME_IDS, timeframeIdList.toJson().toString());
 		}
 
 		ORefList clonedProgressReportRefs = cloneProgressReports(taskToClone);
@@ -223,36 +223,36 @@ public class SplitSharedTasksVisitor extends AbstractMigrationORefVisitor
 		return subTaskRefs;
 	}
 
-	private ORefList cloneResourcePlans(RawObject taskToClone) throws Exception
+	private ORefList cloneTimeframes(RawObject taskToClone) throws Exception
 	{
-		ORefList resourcePlanRefs = new ORefList();
+		ORefList timeframeRefs = new ORefList();
 
-		if (taskToClone.hasValue(TAG_RESOURCE_PLAN_IDS))
+		if (taskToClone.hasValue(TAG_TIMEFRAME_IDS))
 		{
-			IdList resourcePlanIdList = new IdList(ResourcePlanSchema.getObjectType(), taskToClone.getData(TAG_RESOURCE_PLAN_IDS));
-			for (int i = 0; i < resourcePlanIdList.size(); i++)
+			IdList timeframeIdList = new IdList(TimeframeSchema.getObjectType(), taskToClone.getData(TAG_TIMEFRAME_IDS));
+			for (int i = 0; i < timeframeIdList.size(); i++)
 			{
-				BaseId resourcePlanId = resourcePlanIdList.get(i);
-				ORef resourcePlanRef = new ORef(ObjectType.RESOURCE_PLAN, resourcePlanId);
-				RawObject resourcePlanToClone = getRawProject().findObject(resourcePlanRef);
+				BaseId timeframeId = timeframeIdList.get(i);
+				ORef timeframeRef = new ORef(ObjectType.TIMEFRAME, timeframeId);
+				RawObject timeframeToClone = getRawProject().findObject(timeframeRef);
 
-				ORef newResourcePlanRef = cloneResourcePlan(resourcePlanToClone);
-				resourcePlanRefs.add(newResourcePlanRef);
+				ORef newTimeframeRef = cloneTimeframe(timeframeToClone);
+				timeframeRefs.add(newTimeframeRef);
 			}
 		}
 
-		return resourcePlanRefs;
+		return timeframeRefs;
 	}
 
-	private ORef cloneResourcePlan(RawObject resourcePlanToClone) throws Exception
+	private ORef cloneTimeframe(RawObject timeframeToClone) throws Exception
 	{
-		ORef newResourcePlanRef = getRawProject().createObject(ObjectType.RESOURCE_PLAN);
-		RawObject newResourcePlan = getRawProject().findObject(newResourcePlanRef);
+		ORef timeframePlanRef = getRawProject().createObject(ObjectType.TIMEFRAME);
+		RawObject newTimeframe = getRawProject().findObject(timeframePlanRef);
 
-		newResourcePlan.setData(TAG_RESOURCE_ID, safeGetTag(resourcePlanToClone, TAG_RESOURCE_ID));
-		newResourcePlan.setData(TAG_DATEUNIT_EFFORTS, safeGetTag(resourcePlanToClone, TAG_DATEUNIT_EFFORTS));
+		newTimeframe.setData(TAG_RESOURCE_ID, safeGetTag(timeframeToClone, TAG_RESOURCE_ID));
+		newTimeframe.setData(TAG_DATEUNIT_EFFORTS, safeGetTag(timeframeToClone, TAG_DATEUNIT_EFFORTS));
 
-		return newResourcePlanRef;
+		return timeframePlanRef;
 	}
 
 	private ORefList cloneProgressReports(RawObject taskToClone) throws Exception
@@ -477,7 +477,7 @@ public class SplitSharedTasksVisitor extends AbstractMigrationORefVisitor
 	public static final String TAG_SUBTASK_IDS = "SubtaskIds";
 	public static final String TAG_DETAILS = "Details";
 	public static final String TAG_IS_MONITORING_ACTIVITY = "IsMonitoringActivity";
-	public static final String TAG_RESOURCE_PLAN_IDS = "PlanIds";
+	public static final String TAG_TIMEFRAME_IDS = "TimeframeIds";
 	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
 	public static final String TAG_EXPENSE_ASSIGNMENT_REFS = "ExpenseRefs";
 	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";

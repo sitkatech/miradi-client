@@ -16,47 +16,20 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/ 
-
-package org.miradi.schemas;
+*/
+package org.miradi.objects;
 
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.ResourcePlan;
 
-public class ResourcePlanSchema extends AbstractPlanningObjectSchema
+public class TestTimeframe extends ObjectTestCase
 {
-	public ResourcePlanSchema()
+	public TestTimeframe(String name)
 	{
-		super();
+		super(name);
 	}
 	
-	@Override
-	protected void fillFieldSchemas()
+	public void testFields() throws Exception
 	{
-		super.fillFieldSchemas();
-
-		createFieldSchemaOptionalBaseId(ResourcePlan.TAG_RESOURCE_ID, ProjectResourceSchema.getObjectType());
-
-		createPseudoFieldSchemaString(ResourcePlan.PSEUDO_TAG_PROJECT_RESOURCE_LABEL);
-		createPseudoFieldSchemaString(ResourcePlan.PSEUDO_TAG_OWNING_FACTOR_NAME);
+		verifyFields(ObjectType.TIMEFRAME);
 	}
-
-	public static int getObjectType()
-	{
-		return ObjectType.RESOURCE_PLAN;
-	}
-	
-	@Override
-	public int getType()
-	{
-		return getObjectType();
-	}
-
-	@Override
-	public String getObjectName()
-	{
-		return OBJECT_NAME;
-	}
-	
-	public static final String OBJECT_NAME = "ResourcePlan";
 }

@@ -133,9 +133,9 @@ abstract public class DiagramPaster
 	
 	private Command[] getCommandToFixUpIdRefs(HashMap pastedObjectMap, BaseObject newObject, String tag) throws Exception
 	{
-		if (ResourcePlanSchema.getObjectType() == newObject.getType())
+		if (TimeframeSchema.getObjectType() == newObject.getType())
 		{
-			if (ResourcePlan.TAG_RESOURCE_ID.equals(tag))
+			if (Timeframe.TAG_RESOURCE_ID.equals(tag))
 				return getCommandToFixId(pastedObjectMap, newObject, ProjectResourceSchema.getObjectType(), tag);
 		}
 		
@@ -850,7 +850,7 @@ abstract public class DiagramPaster
 			final ORef assignedLeaderResourceRef = json.optRef(BaseObject.TAG_ASSIGNED_LEADER_RESOURCE);
 			if (assignedLeaderResourceRef.isValid())
 				return true;
-			if (ResourcePlanSchema.getObjectType() == type)
+			if (TimeframeSchema.getObjectType() == type)
 				return true;
 			if (ResourceAssignmentSchema.getObjectType() == type)
 				return true;

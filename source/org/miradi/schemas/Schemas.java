@@ -91,7 +91,7 @@ public class Schemas
 		registerSchema(new FutureStatusSchema());
 		registerSchema(new BiophysicalFactorSchema());
 		registerSchema(new BiophysicalResultSchema());
-		registerSchema(new ResourcePlanSchema());
+		registerSchema(new TimeframeSchema());
 		registerSchema(new AccountingClassificationAssociationSchema());
 	}
 	

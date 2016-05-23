@@ -27,7 +27,7 @@ import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.TableSettings;
-import org.miradi.schemas.ResourcePlanSchema;
+import org.miradi.schemas.TimeframeSchema;
 import org.miradi.utils.CodeList;
 
 import java.util.Vector;
@@ -127,9 +127,9 @@ public class MigrationTo23 extends AbstractMigration
 			return migrationResult;
 		}
 
-		private boolean projectHasResourcePlans()
+		private boolean projectHasTimeframes()
 		{
-			return getRawProject().containsAnyObjectsOfType(ResourcePlanSchema.getObjectType());
+			return getRawProject().containsAnyObjectsOfType(TimeframeSchema.getObjectType());
 		}
 
 		private MigrationResult addFields(RawObject rawObject) throws Exception
@@ -141,7 +141,7 @@ public class MigrationTo23 extends AbstractMigration
 			{
 				CodeList workPlanBudgetColumnCodeList = tableSettingsMap.getCodeList(WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 
-				if (projectHasResourcePlans())
+				if (projectHasTimeframes())
 				{
 					if (!workPlanBudgetColumnCodeList.contains(META_PLANNED_WHO_TOTAL))
 						workPlanBudgetColumnCodeList.add(META_PLANNED_WHO_TOTAL);

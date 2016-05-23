@@ -28,9 +28,9 @@ import java.util.Vector;
 
 public class PlannedDateUnitTypeQuestion extends AbstractDateUnitTypeQuestion
 {
-	public PlannedDateUnitTypeQuestion(Project projectToUse, ORefList resourcePlanRefsToUse)
+	public PlannedDateUnitTypeQuestion(Project projectToUse, ORefList timeframeRefsToUse)
 	{
-		super(projectToUse, resourcePlanRefsToUse);
+		super(projectToUse, timeframeRefsToUse);
 	}
 
 	@Override

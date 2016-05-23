@@ -23,7 +23,7 @@ package org.miradi.xml.xmpz2.objectImporters;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
-public class ResourceAssignmentImporter extends AbstractResourcePlanImporter
+public class ResourceAssignmentImporter extends AbstractTimeframeImporter
 {
 	public ResourceAssignmentImporter(Xmpz2XmlImporter importerToUse)
 	{

@@ -23,7 +23,7 @@ package org.miradi.dialogs.planning.upperPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ResourcePlan;
+import org.miradi.objects.Timeframe;
 import org.miradi.project.Project;
 import org.miradi.utils.DateUnitEffortList;
 
@@ -41,7 +41,7 @@ public class WhoPlannedStateLogic
 			if (!BaseObject.canOwnPlanningObjects(baseObjectToUse.getRef()))
 				return false;
 
-			return doAllResourcePlansHaveIdenticalWorkUnits(baseObjectToUse);
+			return doAllTimeframesHaveIdenticalWorkUnits(baseObjectToUse);
 		}
 		catch (Exception e)
 		{
@@ -50,14 +50,14 @@ public class WhoPlannedStateLogic
 		}
 	}
 
-	private boolean doAllResourcePlansHaveIdenticalWorkUnits(BaseObject baseObjectToUse) throws Exception
+	private boolean doAllTimeframesHaveIdenticalWorkUnits(BaseObject baseObjectToUse) throws Exception
 	{
-			ORefList resourcePlans = baseObjectToUse.getResourcePlanRefs();
+			ORefList timeframeRefs = baseObjectToUse.getTimeframeRefs();
 			DateUnitEffortList expectedDateUnitEffortList = null;
-			for (int index = 0; index < resourcePlans.size(); ++index)
+			for (int index = 0; index < timeframeRefs.size(); ++index)
 			{
-				ResourcePlan resourcePlan = ResourcePlan.find(getProject(), resourcePlans.get(index));
-				DateUnitEffortList thisDateUnitEffortList = resourcePlan.getDateUnitEffortList();
+				Timeframe timeframe = Timeframe.find(getProject(), timeframeRefs.get(index));
+				DateUnitEffortList thisDateUnitEffortList = timeframe.getDateUnitEffortList();
 				if (expectedDateUnitEffortList == null)
 					expectedDateUnitEffortList = thisDateUnitEffortList;
 				

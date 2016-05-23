@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue May 17 13:20:42 BST 2016 $
+# $LastChangedDate: Mon May 23 15:50:51 BST 2016 $
 # $LastChangedRevision: 236 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/236'
 start = ConservationProject.element
@@ -58,7 +58,7 @@ ConservationProject.element = element miradi:ConservationProject
   FutureStatusPool.element? &
   BiophysicalFactorPool.element? &
   BiophysicalResultPool.element? &
-  ResourcePlanPool.element? &
+  TimeframePool.element? &
   SimpleThreatRatingPool.element? &
   StressBasedThreatRatingPool.element? &
   MiradiShareProjectDataTaxonomyAssociationPool.element? &
@@ -261,7 +261,7 @@ Task.element = element miradi:Task
   element miradi:TaskPlannedLeaderResourceId { ResourceId.element }? &
   element miradi:TaskProgressReportIds { ProgressReportId.element* }? &
   element miradi:TaskResourceAssignmentIds { ResourceAssignmentId.element* }? &
-  element miradi:TaskResourcePlanIds { ResourcePlanId.element* }? &
+  element miradi:TaskTimeframeIds { TimeframeId.element* }? &
   TaxonomyClassificationContainer.element?
 }
 
@@ -315,8 +315,8 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorRelevantActivityIds { ActivityId.element* }? &
   element miradi:IndicatorRelevantStrategyIds { StrategyId.element* }? &
   element miradi:IndicatorResourceAssignmentIds { ResourceAssignmentId.element* }? &
-  element miradi:IndicatorResourcePlanIds { ResourcePlanId.element* }? &
   element miradi:IndicatorThresholds { IndicatorThreshold.element* }? &
+  element miradi:IndicatorTimeframeIds { TimeframeId.element* }? &
   element miradi:IndicatorUnit { text }? &
   element miradi:IndicatorViabilityRatingsComments { formatted_text }? &
   TaxonomyClassificationContainer.element?
@@ -474,9 +474,9 @@ Strategy.element = element miradi:Strategy
   element miradi:StrategyPlannedLeaderResourceId { ResourceId.element }? &
   element miradi:StrategyProgressReportIds { ProgressReportId.element* }? &
   element miradi:StrategyResourceAssignmentIds { ResourceAssignmentId.element* }? &
-  element miradi:StrategyResourcePlanIds { ResourcePlanId.element* }? &
   element miradi:StrategyStandardClassification { vocabulary_strategy_taxonomy_code }? &
   element miradi:StrategyStatus { vocabulary_strategy_status } &
+  element miradi:StrategyTimeframeIds { TimeframeId.element* }? &
   TaxonomyClassificationContainer.element?
 }
 
@@ -797,13 +797,13 @@ BiophysicalResult.element = element miradi:BiophysicalResult
   element miradi:BiophysicalResultObjectiveIds { ObjectiveId.element* }?
 }
 
-ResourcePlanPool.element = element miradi:ResourcePlanPool { ResourcePlan.element* }
-ResourcePlan.element = element miradi:ResourcePlan
+TimeframePool.element = element miradi:TimeframePool { Timeframe.element* }
+Timeframe.element = element miradi:Timeframe
 {
   attribute Id {xsd:integer} &
-  element miradi:ResourcePlanDetails { DateUnitWorkUnits.element* }? &
-  element miradi:ResourcePlanName { formatted_text }? &
-  element miradi:ResourcePlanResourceId { ResourceId.element }?
+  element miradi:TimeframeDetails { DateUnitWorkUnits.element* }? &
+  element miradi:TimeframeName { formatted_text }? &
+  element miradi:TimeframeResourceId { ResourceId.element }?
 }
 
 SimpleThreatRatingPool.element = element miradi:SimpleThreatRatingPool { SimpleThreatRating.element* }
@@ -1013,7 +1013,7 @@ ProgressReportId.element = element miradi:ProgressReportId { xsd:integer }
 ProgressPercentId.element = element miradi:ProgressPercentId { xsd:integer }
 ExpenseAssignmentId.element = element miradi:ExpenseAssignmentId { xsd:integer }
 ResourceAssignmentId.element = element miradi:ResourceAssignmentId { xsd:integer }
-ResourcePlanId.element = element miradi:ResourcePlanId { xsd:integer }
+TimeframeId.element = element miradi:TimeframeId { xsd:integer }
 ResourceId.element = element miradi:ResourceId { xsd:integer }
 MeasurementId.element = element miradi:MeasurementId { xsd:integer }
 MethodId.element = element miradi:MethodId { xsd:integer }

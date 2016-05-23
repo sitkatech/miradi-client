@@ -374,7 +374,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestBiDirectionalHashMap.class));
 		addTest(new TestSuite(TestBiophysicalResult.class));
 		addTest(new TestSuite(TestBiophysicalFactor.class));
-		addTest(new TestSuite(TestResourcePlan.class));
+		addTest(new TestSuite(TestTimeframe.class));
 		addTest(new TestSuite(TestMiradiShareAccountingClassificationAssociation.class));
 
 		// commands package

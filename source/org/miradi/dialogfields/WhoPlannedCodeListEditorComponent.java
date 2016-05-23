@@ -24,12 +24,12 @@ import org.miradi.commands.*;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ResourcePlan;
+import org.miradi.objects.Timeframe;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.ProjectResourceSchema;
-import org.miradi.schemas.ResourcePlanSchema;
+import org.miradi.schemas.TimeframeSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DateUnitEffort;
@@ -59,22 +59,22 @@ public class WhoPlannedCodeListEditorComponent extends AbstractQuestionBasedComp
 		ORef refCode = ORef.createFromString(choiceItem.getCode());
 		
 		if (needToDelete)
-			deleteMatchingResourcePlans(refCode);
+			deleteMatchingTimeframes(refCode);
 		if (needToCreate)
-			createResourcePlan(refCode);
+			createTimeframe(refCode);
 	}
 
-	private void deleteMatchingResourcePlans(ORef selectedResourceRef) throws Exception
+	private void deleteMatchingTimeframes(ORef selectedResourceRef) throws Exception
 	{
 		getProject().executeBeginTransaction();
 		try
 		{
-			int oldResourceRefsSize = getResourcePlanRefs().size();
-			DateUnitEffortList oldDateUnitEffortList = getDateUnitEffortListFromResourcePlan();
-			Vector<ResourcePlan> resourcePlansToDelete = extractResourcePlans(selectedResourceRef);
+			int oldTimeframeRefsSize = getTimeframeRefs().size();
+			DateUnitEffortList oldDateUnitEffortList = getDateUnitEffortListFromTimeframe();
+			Vector<Timeframe> timeframesToDelete = extractTimeframes(selectedResourceRef);
 			
-			removeResourcePlans(resourcePlansToDelete);
-			updateDividedDateUnitEffortList(oldResourceRefsSize, oldDateUnitEffortList);
+			removeTimeframes(timeframesToDelete);
+			updateDividedDateUnitEffortList(oldTimeframeRefsSize, oldDateUnitEffortList);
 		}
 		finally
 		{
@@ -82,46 +82,46 @@ public class WhoPlannedCodeListEditorComponent extends AbstractQuestionBasedComp
 		}
 	}
 
-	private void clearResourceRef(ResourcePlan resourcePlan) throws Exception
+	private void clearResourceRef(Timeframe timeframe) throws Exception
 	{
-		setResourcePlanResource(resourcePlan, ORef.INVALID);
+		setTimeframeResource(timeframe, ORef.INVALID);
 	}
 
-	private void setResourcePlanResource(ResourcePlan resourcePlan, ORef resourceRef) throws Exception
+	private void setTimeframeResource(Timeframe timeframe, ORef resourceRef) throws Exception
 	{
-		CommandSetObjectData setResourcePlanResourceRef = new CommandSetObjectData(resourcePlan, ResourcePlan.TAG_RESOURCE_ID, resourceRef.getObjectId().toString());
-		getProject().executeCommand(setResourcePlanResourceRef);
+		CommandSetObjectData setTimeframeResourceRef = new CommandSetObjectData(timeframe, Timeframe.TAG_RESOURCE_ID, resourceRef.getObjectId().toString());
+		getProject().executeCommand(setTimeframeResourceRef);
 	}
 
-	private void removeResourcePlans(Vector<ResourcePlan> resourcePlansToDelete) throws Exception
+	private void removeTimeframes(Vector<Timeframe> timeframesToDelete) throws Exception
 	{
-		for (int index = 0; index < resourcePlansToDelete.size(); ++index)
+		for (int index = 0; index < timeframesToDelete.size(); ++index)
 		{
-			ResourcePlan resourcePlan = resourcePlansToDelete.get(index);
-			clearResourceRef(resourcePlan);
-			if (getResourcePlanRefs().size() > 1)
+			Timeframe timeframe = timeframesToDelete.get(index);
+			clearResourceRef(timeframe);
+			if (getTimeframeRefs().size() > 1)
 			{
-				CommandVector deleteResourcePlan = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourcePlan, getResourcePlanTag());
-				getProject().executeCommands(deleteResourcePlan);
+				CommandVector deleteTimeframe = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), timeframe, getTimeframeTag());
+				getProject().executeCommands(deleteTimeframe);
 			}
 		}
 	}
 
-	private void createResourcePlan(ORef resourceRef) throws Exception
+	private void createTimeframe(ORef resourceRef) throws Exception
 	{
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			ORefList oldResourcePlanRefs = getResourcePlanRefs();
-			int oldResourcePlansCount = oldResourcePlanRefs.size();
-			DateUnitEffortList oldDateUnitEffortList = getDateUnitEffortListFromResourcePlan();
+			ORefList oldTimeframeRefs = getTimeframeRefs();
+			int oldTimeframesCount = oldTimeframeRefs.size();
+			DateUnitEffortList oldDateUnitEffortList = getDateUnitEffortListFromTimeframe();
 
-			ResourcePlan resourcePlanWithoutResource = findResourcePlanWithoutResource();
-			if (resourcePlanWithoutResource == null)
-				resourcePlanWithoutResource = createNewResourcePlan();
+			Timeframe timeframeWithoutResource = findTimeframeWithoutResource();
+			if (timeframeWithoutResource == null)
+				timeframeWithoutResource = createNewTimeframe();
 			
-			setResourcePlanResource(resourcePlanWithoutResource, resourceRef);
-			updateDividedDateUnitEffortList(oldResourcePlansCount, oldDateUnitEffortList);
+			setTimeframeResource(timeframeWithoutResource, resourceRef);
+			updateDividedDateUnitEffortList(oldTimeframesCount, oldDateUnitEffortList);
 		}
 		finally
 		{
@@ -129,58 +129,58 @@ public class WhoPlannedCodeListEditorComponent extends AbstractQuestionBasedComp
 		}
 	}
 
-	private ResourcePlan findResourcePlanWithoutResource() throws Exception
+	private Timeframe findTimeframeWithoutResource() throws Exception
 	{
 		ORef invalidResourceRef = ORef.createInvalidWithType(ProjectResourceSchema.getObjectType());
-		Vector<ResourcePlan> resourcePlansWithoutResource = extractResourcePlans(invalidResourceRef);
-		if (resourcePlansWithoutResource.size() == 0)
+		Vector<Timeframe> timeframesWithoutResource = extractTimeframes(invalidResourceRef);
+		if (timeframesWithoutResource.size() == 0)
 			return null;
 		
-		return resourcePlansWithoutResource.get(0);
+		return timeframesWithoutResource.get(0);
 	}
 	
-	private Vector<ResourcePlan> extractResourcePlans(ORef selectedResourceRef) throws Exception
+	private Vector<Timeframe> extractTimeframes(ORef selectedTimeframeRef) throws Exception
 	{
-		ORefList oldResourcePlanRefs = getResourcePlanRefs();
-		Vector<ResourcePlan> resourcePlansToDelete = new Vector<ResourcePlan>();
-		for (int index = 0; index < oldResourcePlanRefs.size(); ++index)
+		ORefList oldTimeframeRefs = getTimeframeRefs();
+		Vector<Timeframe> timeframesToDelete = new Vector<Timeframe>();
+		for (int index = 0; index < oldTimeframeRefs.size(); ++index)
 		{
-			ResourcePlan resourcePlan = ResourcePlan.find(getProject(), oldResourcePlanRefs.get(index));
-			ORef resourceRef = resourcePlan.getResourceRef();
-			if (resourceRef.equals(selectedResourceRef))
-				resourcePlansToDelete.add(resourcePlan);
+			Timeframe timeframe = Timeframe.find(getProject(), oldTimeframeRefs.get(index));
+			ORef resourceRef = timeframe.getResourceRef();
+			if (resourceRef.equals(selectedTimeframeRef))
+				timeframesToDelete.add(timeframe);
 		}
 		
-		return resourcePlansToDelete;
+		return timeframesToDelete;
 	}
 
-	private ResourcePlan createNewResourcePlan() throws Exception
+	private Timeframe createNewTimeframe() throws Exception
 	{
-		CommandCreateObject createCommand = new CommandCreateObject(ResourcePlanSchema.getObjectType());
+		CommandCreateObject createCommand = new CommandCreateObject(TimeframeSchema.getObjectType());
 		getProject().executeCommand(createCommand);
 
-		ORef newResourcePlanRef = createCommand.getObjectRef();
-		Command appendCommand = CreateAnnotationDoer.createAppendCommand(getBaseObject(), newResourcePlanRef, getResourcePlanTag());
+		ORef newTimeframeRef = createCommand.getObjectRef();
+		Command appendCommand = CreateAnnotationDoer.createAppendCommand(getBaseObject(), newTimeframeRef, getTimeframeTag());
 		getProject().executeCommand(appendCommand);
 		
-		return ResourcePlan.find(getProject(), newResourcePlanRef);
+		return Timeframe.find(getProject(), newTimeframeRef);
 	}
 
-	private void updateDividedDateUnitEffortList(int oldResourcePlanCount, DateUnitEffortList oldDateUnitEffortList) throws Exception
+	private void updateDividedDateUnitEffortList(int oldTimeframeCount, DateUnitEffortList oldDateUnitEffortList) throws Exception
 	{
-		ORefList newResourcePlanRefs = getResourcePlanRefs();
-		DateUnitEffortList templateDateUnitEffortList = createTemplateDateUnitEffortList(oldDateUnitEffortList, oldResourcePlanCount, newResourcePlanRefs.size());
-		updateDateUnitEffortLists(newResourcePlanRefs, templateDateUnitEffortList);
+		ORefList newTimeframeRefs = getTimeframeRefs();
+		DateUnitEffortList templateDateUnitEffortList = createTemplateDateUnitEffortList(oldDateUnitEffortList, oldTimeframeCount, newTimeframeRefs.size());
+		updateDateUnitEffortLists(newTimeframeRefs, templateDateUnitEffortList);
 	}
 
-	private DateUnitEffortList createTemplateDateUnitEffortList(DateUnitEffortList oldDateUnitEffortList, int oldResourcePlanCount, int newResourcePlanCount) throws Exception
+	private DateUnitEffortList createTemplateDateUnitEffortList(DateUnitEffortList oldDateUnitEffortList, int oldTimeframeCount, int newTimeframeCount) throws Exception
 	{
 		DateUnitEffortList newDateUnitEffortList = new DateUnitEffortList();
 		for (int index = 0; index < oldDateUnitEffortList.size(); ++index)
 		{
 			DateUnitEffort oldDateUnitEffort = oldDateUnitEffortList.getDateUnitEffort(index);
-			double oldTotalUnits = oldDateUnitEffort.getQuantity() * oldResourcePlanCount;
-			double newUnitQuantity = oldTotalUnits / newResourcePlanCount;
+			double oldTotalUnits = oldDateUnitEffort.getQuantity() * oldTimeframeCount;
+			double newUnitQuantity = oldTotalUnits / newTimeframeCount;
 			DateUnitEffort newDateUnitEffort = new DateUnitEffort(oldDateUnitEffort.getDateUnit(), newUnitQuantity);
 			newDateUnitEffortList.add(newDateUnitEffort);
 		}
@@ -188,34 +188,34 @@ public class WhoPlannedCodeListEditorComponent extends AbstractQuestionBasedComp
 		return newDateUnitEffortList;
 	}
 	
-	private void updateDateUnitEffortLists(ORefList newResourcePlanRefs, DateUnitEffortList templateDateUnitEffortList) throws Exception
+	private void updateDateUnitEffortLists(ORefList newTimeframeRefs, DateUnitEffortList templateDateUnitEffortList) throws Exception
 	{
-		for (int index = 0; index < newResourcePlanRefs.size(); ++index)
+		for (int index = 0; index < newTimeframeRefs.size(); ++index)
 		{
-			ResourcePlan resourcePlan = ResourcePlan.find(getProject(), newResourcePlanRefs.get(index));
-			CommandSetObjectData setDateUnitEffortList = new CommandSetObjectData(resourcePlan, ResourcePlan.TAG_DATEUNIT_EFFORTS, templateDateUnitEffortList.toString());
+			Timeframe timeframe = Timeframe.find(getProject(), newTimeframeRefs.get(index));
+			CommandSetObjectData setDateUnitEffortList = new CommandSetObjectData(timeframe, Timeframe.TAG_DATEUNIT_EFFORTS, templateDateUnitEffortList.toString());
 			getProject().executeCommand(setDateUnitEffortList);
 		}
 	}
 	
-	private DateUnitEffortList getDateUnitEffortListFromResourcePlan() throws Exception
+	private DateUnitEffortList getDateUnitEffortListFromTimeframe() throws Exception
 	{
-		ORefList existingResourcePlanRefs = getResourcePlanRefs();
-		if (existingResourcePlanRefs.isEmpty())
+		ORefList existingTimeframeRefs = getTimeframeRefs();
+		if (existingTimeframeRefs.isEmpty())
 			return new DateUnitEffortList();
 
-		ResourcePlan firstResourcePlan = ResourcePlan.find(getProject(), existingResourcePlanRefs.get(0));
-		return firstResourcePlan.getDateUnitEffortList();
+		Timeframe firstTimeframe = Timeframe.find(getProject(), existingTimeframeRefs.get(0));
+		return firstTimeframe.getDateUnitEffortList();
 	}
 	
-	private ORefList getResourcePlanRefs() throws Exception
+	private ORefList getTimeframeRefs() throws Exception
 	{
-		return getBaseObject().getSafeRefListData(getResourcePlanTag());
+		return getBaseObject().getSafeRefListData(getTimeframeTag());
 	}
 	
-	private String getResourcePlanTag()
+	private String getTimeframeTag()
 	{
-		return BaseObject.TAG_RESOURCE_PLAN_IDS;
+		return BaseObject.TAG_TIMEFRAME_IDS;
 	}
 	
 	private BaseObject getBaseObject()

@@ -55,7 +55,7 @@ public class ObjectManager
 		addNormalPool(new GoalPool(ida), GoalSchema.OBJECT_NAME);
 		addNormalPool(new ProjectMetadataPool(ida), ProjectMetadataSchema.OBJECT_NAME);
 		addNormalPool(new DiagramLinkPool(ida), DiagramLinkSchema.OBJECT_NAME);
-		addNormalPool(new ResourcePlanPool(ida), ResourcePlanSchema.OBJECT_NAME);
+		addNormalPool(new TimeframePool(ida), TimeframeSchema.OBJECT_NAME);
 		addNormalPool(new ResourceAssignmentPool(ida), ResourceAssignmentSchema.OBJECT_NAME);
 		addNormalPool(new AccountingCodePool(ida), AccountingCodeSchema.OBJECT_NAME);
 		addNormalPool(new FundingSourcePool(ida), FundingSourceSchema.OBJECT_NAME);
@@ -212,9 +212,9 @@ public class ObjectManager
 		return (ResourceAssignmentPool)getPool(ObjectType.RESOURCE_ASSIGNMENT);
 	}
 	
-	public ResourcePlanPool getResourcePlanPool()
+	public TimeframePool getTimeframePool()
 	{
-		return (ResourcePlanPool)getPool(ObjectType.RESOURCE_PLAN);
+		return (TimeframePool)getPool(ObjectType.TIMEFRAME);
 	}
 
 	public ExpenseAssignmentPool getExpenseAssignmentPool()
@@ -327,7 +327,7 @@ public class ObjectManager
 			ObjectType.PROJECT_METADATA,
 			ObjectType.DIAGRAM_LINK,
 			ObjectType.RESOURCE_ASSIGNMENT,
-			ObjectType.RESOURCE_PLAN,
+			ObjectType.TIMEFRAME,
 			ObjectType.ACCOUNTING_CODE,
 			ObjectType.FUNDING_SOURCE,
 			ObjectType.KEY_ECOLOGICAL_ATTRIBUTE,

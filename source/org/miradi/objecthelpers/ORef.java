@@ -80,8 +80,8 @@ public class ORef implements Comparable<ORef>
 				return new ProjectResourceId(idToUse);
 			case ObjectType.RESOURCE_ASSIGNMENT:
 				return new ResourceAssignmentId(idToUse);
-			case ObjectType.RESOURCE_PLAN:
-				return new ResourcePlanId(idToUse);
+			case ObjectType.TIMEFRAME:
+				return new TimeframeId(idToUse);
 			case ObjectType.TASK:
 				return new TaskId(idToUse);
 			case ObjectType.VIEW_DATA:

@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectImporters;
 
-import org.miradi.schemas.ResourcePlanSchema;
+import org.miradi.schemas.TimeframeSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
-public class ResourcePlanImporter extends AbstractResourcePlanImporter
+public class TimeframeImporter extends AbstractTimeframeImporter
 {
-	public ResourcePlanImporter(Xmpz2XmlImporter importerToUse)
+	public TimeframeImporter(Xmpz2XmlImporter importerToUse)
 	{
-		super(importerToUse, new ResourcePlanSchema());
+		super(importerToUse, new TimeframeSchema());
 	}
 }

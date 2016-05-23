@@ -119,7 +119,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(DIAGRAM_LINK, createDiagramLinkMap());
 		map.put(EXPENSE_ASSIGNMENT, createExpenseAssignmentMap());
 		map.put(RESOURCE_ASSIGNMENT, createResourceAssignmentMap());
-		map.put(RESOURCE_PLAN, createResourcePlanMap());
+		map.put(TIMEFRAME, createTimeframeMap());
 		map.put(IUCN_REDLIST_SPECIES, createBaseObjectMap());
 		map.put(OTHER_NOTABLE_SPECIES, createBaseObjectMap());
 		map.put(AUDIENCE, createBaseObjectMap());
@@ -186,7 +186,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(BaseObject.TAG_LABEL, NAME);
 		map.put(Target.TAG_SHORT_LABEL, IDENTIFIER);
 		map.put(BaseObject.TAG_PROGRESS_REPORT_REFS, PROGRESS_REPORT_IDS);
-		map.put(BaseObject.TAG_RESOURCE_PLAN_IDS, RESOURCE_PLAN + IDS);
+		map.put(BaseObject.TAG_TIMEFRAME_IDS, TIMEFRAME + IDS);
 		map.put(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, RESOURCE_ASSIGNMENT + IDS);
 		map.put(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT + IDS);
 		map.put(BaseObject.TAG_PLANNED_LEADER_RESOURCE, PLANNED_LEADER_RESOURCE_ID);
@@ -409,7 +409,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		return map;
 	}
 
-	private HashMap<String, String> createResourcePlanMap()
+	private HashMap<String, String> createTimeframeMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
 

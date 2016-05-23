@@ -139,7 +139,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, new KeyEcologicalAttributeSchema()));
 
 		addImporterToMap(typeToImporterMap, new IndicatorImporter(this));
-		addImporterToMap(typeToImporterMap, new ResourcePlanImporter(this));
+		addImporterToMap(typeToImporterMap, new TimeframeImporter(this));
 		addImporterToMap(typeToImporterMap, new ResourceAssignmentImporter(this));
 		addImporterToMap(typeToImporterMap, new ExpenseAssignmentImporter(this));
 		addImporterToMap(typeToImporterMap, new ObjectiveImporter(this));
