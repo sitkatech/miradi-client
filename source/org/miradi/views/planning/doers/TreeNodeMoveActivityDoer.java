@@ -82,6 +82,8 @@ public class TreeNodeMoveActivityDoer extends AbstractTreeNodeTaskDoer
 			BaseObject originalStrategy = activityToMove.getOwner();
 			BaseObject newStrategy = getProject().findObject(parentOfSelectedRef);
 
+			getProject().executeBeginTransaction();
+
 			// commands to move activity from old to new strategy
 			CommandVector commandsToMoveActivity  = new CommandVector();
 
@@ -123,10 +125,12 @@ public class TreeNodeMoveActivityDoer extends AbstractTreeNodeTaskDoer
 		}
 		catch (Exception e)
 		{
+			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}
 		finally
 		{
+			getProject().executeEndTransaction();
 			movableObjectPoolTablePanel.dispose();
 		}
 	}
