@@ -34,6 +34,6 @@ abstract public class AbstractPlanningObjectSchema extends BaseObjectSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaDateUnitEffortList(AbstractPlanningObject.TAG_DATEUNIT_EFFORTS);
+		createFieldSchemaDateUnitEffortList(AbstractPlanningObject.TAG_DATEUNIT_DETAILS);
 	}
 }

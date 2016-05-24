@@ -1764,7 +1764,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
 		dateUnitEffortList.add(createDateUnitEffort(2008, 2008, 10.0));
-		fillObjectUsingCommand(expenseAssignment, ExpenseAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+		fillObjectUsingCommand(expenseAssignment, ExpenseAssignment.TAG_DATEUNIT_DETAILS, dateUnitEffortList.toString());
 		fillObjectUsingCommand(expenseAssignment, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, createSampleTaxonomyClassificationsList());
 		fillObjectUsingCommand(expenseAssignment, ExpenseAssignmentSchema.TAG_ACCOUNTING_CLASSIFICATION_CONTAINER, createSampleAccountingClassificationsList());
 	}
@@ -1780,7 +1780,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
 		dateUnitEffortList.add(createDateUnitEffort(2007, 2008, 11.0));
-		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+		fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_DETAILS, dateUnitEffortList.toString());
 		fillObjectUsingCommand(resourceAssignment, BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER, createSampleTaxonomyClassificationsList());
 		fillObjectUsingCommand(resourceAssignment, ResourceAssignmentSchema.TAG_ACCOUNTING_CLASSIFICATION_CONTAINER, createSampleAccountingClassificationsList());
 	}
@@ -2539,7 +2539,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef expenseRef = createObject(ExpenseAssignmentSchema.getObjectType());
 		ExpenseAssignment assignment = ExpenseAssignment.find(this, expenseRef);
-		setObjectData(assignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+		setObjectData(assignment, ResourceAssignment.TAG_DATEUNIT_DETAILS, dateUnitEffortList.toString());
 		
 		ORefList currentAssignmentRefList = baseObject.getSafeRefListData(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS);
 		currentAssignmentRefList.add(assignment.getRef());
@@ -2613,7 +2613,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	public ResourceAssignment addResourceAssignment(BaseObject parentObject, ResourceAssignment assignment, DateUnitEffortList dateUnitEffortList) throws Exception
 	{
-		setObjectData(assignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+		setObjectData(assignment, ResourceAssignment.TAG_DATEUNIT_DETAILS, dateUnitEffortList.toString());
 		IdList currentAssignmentIdList = parentObject.getSafeIdListData(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
 		currentAssignmentIdList.add(assignment.getId());
 		setObjectData(parentObject, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, currentAssignmentIdList.toString());
@@ -2629,7 +2629,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(assignment, ResourceAssignment.TAG_RESOURCE_ID, projectResource.getId().toString());
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
 		dateUnitEffortList.add(dateUnitEffort);
-		setObjectData(assignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+		setObjectData(assignment, ResourceAssignment.TAG_DATEUNIT_DETAILS, dateUnitEffortList.toString());
 	}
 
 	public static MultiCalendar createStartYear(int startYear)

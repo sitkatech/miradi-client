@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import java.util.Vector;
-
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
@@ -33,10 +31,11 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.Timeframe;
 import org.miradi.project.Project;
 import org.miradi.utils.CommandVector;
 import org.miradi.views.ObjectsDoer;
+
+import java.util.Vector;
 
 public class DeleteResourceDoer extends ObjectsDoer
 {
@@ -111,8 +110,6 @@ public class DeleteResourceDoer extends ObjectsDoer
 	private CommandVector removeFromReferrer(ORef ref)
 	{
 		CommandVector commands = new CommandVector();
-		if (Timeframe.is(ref))
-			commands.add(new CommandSetObjectData(ref, Timeframe.TAG_RESOURCE_ID, BaseId.INVALID.toString()));
 		if (ResourceAssignment.is(ref))
 			commands.add(new CommandSetObjectData(ref, ResourceAssignment.TAG_RESOURCE_ID, BaseId.INVALID.toString()));
 

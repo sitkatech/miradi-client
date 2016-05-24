@@ -121,7 +121,7 @@ public class TestAssignment extends ObjectTestCase
 		dateUnitEffortList.add(createDateUnitEffort(2, dateUnit1));
 		dateUnitEffortList.add(createDateUnitEffort(5, dateUnit2));
 
-		getProject().fillObjectUsingCommand(assignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+		getProject().fillObjectUsingCommand(assignment, ResourceAssignment.TAG_DATEUNIT_DETAILS, dateUnitEffortList.toString());
 
 		assertEquals("wrong assignment work units?", 2.0, ProjectForTesting.calculateTimePeriodCosts(assignment, dateUnit1));
 		assertEquals("wrong assignment work units?", 5.0, ProjectForTesting.calculateTimePeriodCosts(assignment, dateUnit2));
@@ -175,7 +175,7 @@ public class TestAssignment extends ObjectTestCase
 	{
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
 		dateUnitEffortList.add(createDateUnitEffort(EFFORT_QUANTIGY, dateUnit));
-		getProject().fillObjectUsingCommand(assignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+		getProject().fillObjectUsingCommand(assignment, ResourceAssignment.TAG_DATEUNIT_DETAILS, dateUnitEffortList.toString());
 	}
 
 	public DateUnitEffort createDateUnitEffort(int unitQuantatiy, DateUnit dateUnit) throws Exception

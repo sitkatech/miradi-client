@@ -96,8 +96,8 @@ public class TestMigrationTo29 extends AbstractTestMigration
 		assertEquals(assignmentIdListForRawActivity1, new IdList(resourceAssignmentForActivity1));
 
 		RawObject rawAssignment1 = rawProject.findObject(resourceAssignmentForActivity1Ref);
-		assertTrue(rawAssignment1.containsKey(ResourceAssignment.TAG_DATEUNIT_EFFORTS));
-		DateUnitEffortList dateUnitEffortListForRawAssignment1 = new DateUnitEffortList(rawAssignment1.getData(ResourceAssignment.TAG_DATEUNIT_EFFORTS));
+		assertTrue(rawAssignment1.containsKey(ResourceAssignment.TAG_DATEUNIT_DETAILS));
+		DateUnitEffortList dateUnitEffortListForRawAssignment1 = new DateUnitEffortList(rawAssignment1.getData(ResourceAssignment.TAG_DATEUNIT_DETAILS));
 		assertEquals(dateUnitEffortListForRawAssignment1.size(), 1);
 		DateUnitEffort dateUnitEffortForRawAssignment1 = dateUnitEffortListForRawAssignment1.getDateUnitEffort(0);
 		assertEquals(dateUnitEffortForRawAssignment1.getQuantity(), numberOfUnits / 2);
@@ -121,8 +121,8 @@ public class TestMigrationTo29 extends AbstractTestMigration
 		BaseId addedAssignmentId = assignmentIdListForRawAddedActivity.get(0);
 		ORef addedAssignmentRef = new ORef(ObjectType.RESOURCE_ASSIGNMENT, addedAssignmentId);
 		RawObject rawAddedAssignment = rawProject.findObject(addedAssignmentRef);
-		assertTrue(rawAddedAssignment.containsKey(ResourceAssignment.TAG_DATEUNIT_EFFORTS));
-		DateUnitEffortList dateUnitEffortListForRawAddedAssignment1 = new DateUnitEffortList(rawAddedAssignment.getData(ResourceAssignment.TAG_DATEUNIT_EFFORTS));
+		assertTrue(rawAddedAssignment.containsKey(ResourceAssignment.TAG_DATEUNIT_DETAILS));
+		DateUnitEffortList dateUnitEffortListForRawAddedAssignment1 = new DateUnitEffortList(rawAddedAssignment.getData(ResourceAssignment.TAG_DATEUNIT_DETAILS));
 		assertEquals(dateUnitEffortListForRawAddedAssignment1.size(), 1);
 		DateUnitEffort dateUnitEffortForRawAddedAssignment1 = dateUnitEffortListForRawAddedAssignment1.getDateUnitEffort(0);
 		assertEquals(dateUnitEffortForRawAddedAssignment1.getQuantity(), numberOfUnits / 2);

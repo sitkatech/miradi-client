@@ -20,9 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectExporters;
 
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Timeframe;
-import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.TimeframeSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
@@ -35,71 +32,57 @@ public class TimeframeExporter extends AbstractPlanningObjectExporter
 	}
 	
 	@Override
-	protected void writeFields(BaseObject baseObject, final BaseObjectSchema baseObjectSchema) throws Exception
-	{
-		super.writeFields(baseObject, baseObjectSchema);
-
-		Timeframe timeframe = (Timeframe) baseObject;
-		String idElementName = RESOURCE_ID_ELEMENT_NAME + ID;
-
-		getWriter().writeRefIfValid(baseObjectSchema.getObjectName(), idElementName, timeframe.getResourceRef());
-	}
-	
-	@Override
-	protected boolean doesFieldRequireSpecialHandling(String tag)
-	{
-		if (tag.equals(Timeframe.TAG_RESOURCE_ID))
-			return true;
-
-		return super.doesFieldRequireSpecialHandling(tag);
-	}
-
-	@Override
 	protected String getDateUnitElementName()
 	{
-		return WORK_UNITS_DATE_UNIT;
+		return TIMEFRAMES_DATE_UNIT;
 	}
 
 	@Override
 	protected String getDayElementName()
 	{
-		return WORK_UNITS_DAY;
+		return TIMEFRAMES_DAY;
 	}
 
 	@Override
 	protected String getMonthElementName()
 	{
-		return WORK_UNITS_MONTH;
+		return TIMEFRAMES_MONTH;
 	}
 
 	@Override
 	protected String getQuarterElementName()
 	{
-		return WORK_UNITS_QUARTER;
+		return TIMEFRAMES_QUARTER;
 	}
 
 	@Override
 	protected String getYearElementName()
 	{
-		return WORK_UNITS_YEAR;
+		return TIMEFRAMES_YEAR;
 	}
 
 	@Override
 	protected String getFullProjectTimespanElementName()
 	{
-		return WORK_UNITS_FULL_PROJECT_TIMESPAN;
+		return TIMEFRAMES_FULL_PROJECT_TIMESPAN;
 	}
 
 	@Override
 	protected String getQuantityElementName()
 	{
-		return WORK_UNITS;
+		return "";
+	}
+
+	@Override
+	protected boolean supportsQuantityElement()
+	{
+		return false;
 	}
 
 	@Override
 	protected String getDateUnitsElementName()
 	{
-		return DATE_UNIT_WORK_UNITS;
+		return DATE_UNITS_TIMEFRAME;
 	}
 
 	@Override

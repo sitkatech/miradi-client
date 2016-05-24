@@ -103,7 +103,7 @@ public class WhenAssignedEditorComponent extends WhenEditorComponent
 		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
 		{
 			ResourceAssignment resourceAssignment = ResourceAssignment.find(project, resourceAssignmentRefs.get(index));
-			Command clearDateUnitEffortList = new CommandSetObjectData(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, new DateUnitEffortList().toString());
+			Command clearDateUnitEffortList = new CommandSetObjectData(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_DETAILS, new DateUnitEffortList().toString());
 			project.executeCommand(clearDateUnitEffortList);
 		}
 	}
@@ -133,7 +133,7 @@ public class WhenAssignedEditorComponent extends WhenEditorComponent
 
 	private static void setResourceAssignmentDateUnitEffortList(Project project, ORef resourceAssignmentRef, DateUnitEffortList dateUnitEffortList) throws Exception
 	{
-		CommandSetObjectData addEffortList = new CommandSetObjectData(resourceAssignmentRef, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+		CommandSetObjectData addEffortList = new CommandSetObjectData(resourceAssignmentRef, ResourceAssignment.TAG_DATEUNIT_DETAILS, dateUnitEffortList.toString());
 		project.executeCommand(addEffortList);
 	}
 

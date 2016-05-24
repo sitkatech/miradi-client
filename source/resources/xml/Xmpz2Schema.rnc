@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue May 24 10:08:56 BST 2016 $
+# $LastChangedDate: Tue May 24 12:09:12 BST 2016 $
 # $LastChangedRevision: 236 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/236'
 start = ConservationProject.element
@@ -798,9 +798,8 @@ TimeframePool.element = element miradi:TimeframePool { Timeframe.element* }
 Timeframe.element = element miradi:Timeframe
 {
   attribute Id {xsd:integer} &
-  element miradi:TimeframeDetails { DateUnitWorkUnits.element* }? &
-  element miradi:TimeframeName { formatted_text }? &
-  element miradi:TimeframeResourceId { ResourceId.element }?
+  element miradi:TimeframeDetails { DateUnitTimeframe.element* }? &
+  element miradi:TimeframeName { formatted_text }?
 }
 
 SimpleThreatRatingPool.element = element miradi:SimpleThreatRatingPool { SimpleThreatRating.element* }
@@ -1135,6 +1134,40 @@ ExpensesMonth.element = element miradi:ExpensesMonth
 }
 
 ExpensesDay.element = element miradi:ExpensesDay
+{
+  attribute Date { vocabulary_date }
+}
+
+DateUnitTimeframe.element = element miradi:DateUnitTimeframe
+{
+  element miradi:TimeframesDateUnit{  TimeframesDay.element|  TimeframesMonth.element|  TimeframesQuarter.element|  TimeframesYear.element|  TimeframesFullProjectTimespan.element
+  }
+}
+
+TimeframesFullProjectTimespan.element = element miradi:TimeframesFullProjectTimespan
+{
+  attribute FullProjectTimespan { vocabulary_full_project_timespan }
+}
+
+TimeframesYear.element = element miradi:TimeframesYear
+{
+  attribute StartYear { vocabulary_year } &
+  attribute StartMonth { vocabulary_month }
+}
+
+TimeframesQuarter.element = element miradi:TimeframesQuarter
+{
+  attribute Year { vocabulary_year } &
+  attribute StartMonth { vocabulary_month }
+}
+
+TimeframesMonth.element = element miradi:TimeframesMonth
+{
+  attribute Year { vocabulary_year } &
+  attribute Month { vocabulary_month }
+}
+
+TimeframesDay.element = element miradi:TimeframesDay
 {
   attribute Date { vocabulary_date }
 }

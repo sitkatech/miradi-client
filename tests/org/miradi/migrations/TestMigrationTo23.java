@@ -78,7 +78,7 @@ public class TestMigrationTo23 extends AbstractTestMigration
 		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
 		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2007, 0.0));
 
-		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toJson().toString());
+		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_DETAILS, dateUnitEffortList.toJson().toString());
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
@@ -105,7 +105,7 @@ public class TestMigrationTo23 extends AbstractTestMigration
 		DateUnit dateUnit = new DateUnit(cal.toIsoDateString());
 		dateUnitEffortList.add(new DateUnitEffort(dateUnit, 0.0));
 
-		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toJson().toString());
+		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_DETAILS, dateUnitEffortList.toJson().toString());
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
@@ -132,7 +132,7 @@ public class TestMigrationTo23 extends AbstractTestMigration
 		DateUnit dateUnit = new DateUnit(cal.toIsoDateString());
 		dateUnitEffortList.add(new DateUnitEffort(dateUnit, 0.0));
 
-		getProject().fillObjectUsingCommand(expenseAssignment, ExpenseAssignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toJson().toString());
+		getProject().fillObjectUsingCommand(expenseAssignment, ExpenseAssignment.TAG_DATEUNIT_DETAILS, dateUnitEffortList.toJson().toString());
 		IdList idList = new IdList(ExpenseAssignmentSchema.getObjectType(), new BaseId[]{expenseAssignment.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, idList.toJson().toString());
 

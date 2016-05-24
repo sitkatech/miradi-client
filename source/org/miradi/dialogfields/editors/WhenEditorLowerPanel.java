@@ -76,7 +76,7 @@ public class WhenEditorLowerPanel extends DisposablePanel
 			currentCard.setBackground(backgroundColor);
 	}
 
-	public void addActionListener(TimeframeEditorField.TimeframeEditorChangeHandler editorFieldChangeHandlerToUse)
+	public void addActionListener(TimeframeEditorField.WhenEditorChangeHandler editorFieldChangeHandlerToUse)
 	{
 		if (yearCard != null)
 			yearCard.addActionListener(editorFieldChangeHandlerToUse);

@@ -50,7 +50,7 @@ abstract public class DateUnitPanel extends OneRowPanel
 		dateUnitChooser.setProjectCalendar(projectCalendarToUse);
 	}
 
-	public void addActionListener(TimeframeEditorField.TimeframeEditorChangeHandler editorFieldChangeHandlerToUse)
+	public void addActionListener(TimeframeEditorField.WhenEditorChangeHandler editorFieldChangeHandlerToUse)
 	{
 		dateUnitChooser.addActionListener(editorFieldChangeHandlerToUse);
 	}

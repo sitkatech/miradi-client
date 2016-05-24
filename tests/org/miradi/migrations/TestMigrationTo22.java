@@ -49,7 +49,7 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		// create resource assignments so we have something to migrate
 		Strategy strategy = getProject().createStrategy();
 		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
-		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, "");
+		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_DETAILS, "");
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 

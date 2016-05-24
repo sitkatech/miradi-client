@@ -23,10 +23,58 @@ package org.miradi.xml.xmpz2.objectImporters;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
-public class ResourceAssignmentImporter extends AbstractTimeframeImporter
+public class ResourceAssignmentImporter extends AbstractAssignmentImporter
 {
 	public ResourceAssignmentImporter(Xmpz2XmlImporter importerToUse)
 	{
 		super(importerToUse, new ResourceAssignmentSchema());
+	}
+
+	@Override
+	protected String getDateUnitsElementName()
+	{
+		return DATE_UNIT_WORK_UNITS;
+	}
+
+	@Override
+	protected String getDateUnitElementName()
+	{
+		return WORK_UNITS_DATE_UNIT;
+	}
+
+	@Override
+	protected String getDayElementName()
+	{
+		return WORK_UNITS_DAY;
+	}
+
+	@Override
+	protected String getMonthElementName()
+	{
+		return WORK_UNITS_MONTH;
+	}
+
+	@Override
+	protected String getQuarterElementName()
+	{
+		return WORK_UNITS_QUARTER;
+	}
+
+	@Override
+	protected String getYearElementName()
+	{
+		return WORK_UNITS_YEAR;
+	}
+
+	@Override
+	protected String getFullProjectTimespanElementName()
+	{
+		return WORK_UNITS_FULL_PROJECT_TIMESPAN;
+	}
+
+	@Override
+	protected String getQuantityElementName()
+	{
+		return WORK_UNITS;
 	}
 }

@@ -140,8 +140,6 @@ public class MigrationTo21 extends AbstractMigration
 					{
 						RawObject newTimeframe = new RawObject(TimeframeSchema.getObjectType());
 						newTimeframe.setData(TAG_DATEUNIT_EFFORTS, timeframeDateUnitEffortList.toJson().toString());
-						if (resourceAssignment.containsKey(TAG_RESOURCE_ID))
-							newTimeframe.setData(TAG_RESOURCE_ID, resourceAssignment.getData(TAG_RESOURCE_ID));
 						final BaseId nextHighestId = getRawProject().getNextHighestId();
 						final ORef newTimeframeRef = new ORef(ObjectType.TIMEFRAME, nextHighestId);
 						timeframePool.put(newTimeframeRef, newTimeframe);

@@ -193,7 +193,7 @@ public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedCom
 		for (int index = 0; index < newResourceAssignmentRefs.size(); ++index)
 		{
 			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), newResourceAssignmentRefs.get(index));
-			CommandSetObjectData setDateUnitEffortList = new CommandSetObjectData(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_EFFORTS, templateDateUnitEffortList.toString());
+			CommandSetObjectData setDateUnitEffortList = new CommandSetObjectData(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_DETAILS, templateDateUnitEffortList.toString());
 			getProject().executeCommand(setDateUnitEffortList);
 		}
 	}

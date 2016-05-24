@@ -133,12 +133,6 @@ abstract public class DiagramPaster
 	
 	private Command[] getCommandToFixUpIdRefs(HashMap pastedObjectMap, BaseObject newObject, String tag) throws Exception
 	{
-		if (TimeframeSchema.getObjectType() == newObject.getType())
-		{
-			if (Timeframe.TAG_RESOURCE_ID.equals(tag))
-				return getCommandToFixId(pastedObjectMap, newObject, ProjectResourceSchema.getObjectType(), tag);
-		}
-		
 		if (ResourceAssignmentSchema.getObjectType() == newObject.getType())
 		{
 			if (ResourceAssignment.TAG_ACCOUNTING_CODE_ID.equals(tag))

@@ -601,9 +601,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (ResourceAssignment.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(ResourceAssignment.TAG_RESOURCE_ID))
 			return RESOURCE;
 		
-		if (Timeframe.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(Timeframe.TAG_RESOURCE_ID))
-			return RESOURCE;
-
 		if (DiagramLink.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID))
 			return LINKABLE_FACTOR;
 		
@@ -769,6 +766,13 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		defineQuarterElement(EXPENSES_QUARTER);
 		defineMonthElement(EXPENSES_MONTH);
 		defineDayElement(EXPENSES_DAY);
+
+		defineDateUnitTimeframe();
+		defineFullProjectTimeSpanElement(TIMEFRAMES_FULL_PROJECT_TIMESPAN);
+		defineYearElement(TIMEFRAMES_YEAR);
+		defineQuarterElement(TIMEFRAMES_QUARTER);
+		defineMonthElement(TIMEFRAMES_MONTH);
+		defineDayElement(TIMEFRAMES_DAY);
 	}
 	
 	private void defineDateUnitEfforts()
@@ -781,7 +785,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 				createElementName(WORK_UNITS_FULL_PROJECT_TIMESPAN),
 				};
 		
-		getSchemaWriter().defineBudgetElements(DATE_UNIT_WORK_UNITS, WORK_UNITS_DATE_UNIT, WORK_UNITS, elementTypes);
+		getSchemaWriter().defineBudgetElementsWithQuantity(DATE_UNIT_WORK_UNITS, WORK_UNITS_DATE_UNIT, WORK_UNITS, elementTypes);
 	}
 
 	private void defineDateUnitExpense()
@@ -794,9 +798,22 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 				createElementName(EXPENSES_FULL_PROJECT_TIMESPAN),
 		};
 		
-		getSchemaWriter().defineBudgetElements(DATE_UNITS_EXPENSE, EXPENSES_DATE_UNIT, EXPENSE, elementTypes);
+		getSchemaWriter().defineBudgetElementsWithQuantity(DATE_UNITS_EXPENSE, EXPENSES_DATE_UNIT, EXPENSE, elementTypes);
 	}
-	
+
+	private void defineDateUnitTimeframe()
+	{
+		final String[] elementTypes = new String[]{
+				createElementName(TIMEFRAMES_DAY),
+				createElementName(TIMEFRAMES_MONTH),
+				createElementName(TIMEFRAMES_QUARTER),
+				createElementName(TIMEFRAMES_YEAR),
+				createElementName(TIMEFRAMES_FULL_PROJECT_TIMESPAN),
+		};
+
+		getSchemaWriter().defineBudgetElementsWithoutQuantity(DATE_UNITS_TIMEFRAME, TIMEFRAMES_DATE_UNIT, elementTypes);
+	}
+
 	private void defineFullProjectTimeSpanElement(String fullProjectTimeSpanElementName)
 	{
 		final String[] subElements = new String[]{
@@ -1249,9 +1266,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (ExpenseAssignment.is(objectType))
 			return EXPENSE;
 		
-		if (ResourceAssignment.is(objectType) || Timeframe.is(objectType))
-			return "WorkUnits";
+		if (Timeframe.is(objectType))
+			return TIMEFRAME;
 		
+		if (ResourceAssignment.is(objectType))
+			return "WorkUnits";
+
 		throw new RuntimeException("Object type " + objectType + " cannot have a dateunitEffortsList field");
 	}
 	

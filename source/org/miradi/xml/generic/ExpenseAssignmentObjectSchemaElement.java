@@ -28,6 +28,6 @@ public class ExpenseAssignmentObjectSchemaElement extends AbstractAssignmentObje
 	{
 		super(XmlConstants.EXPENSE_ASSIGNMENT);
 		
-		createDateUnitExpenseField(ExpenseAssignment.TAG_DATEUNIT_EFFORTS);
+		createDateUnitExpenseField(ExpenseAssignment.TAG_DATEUNIT_DETAILS);
 	}
 }

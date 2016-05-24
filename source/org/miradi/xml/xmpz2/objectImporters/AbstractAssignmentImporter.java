@@ -50,7 +50,7 @@ abstract public class AbstractAssignmentImporter extends BaseObjectImporter
 	@Override
 	protected boolean isCustomImportField(String tag)
 	{
-		if (tag.equals(Assignment.TAG_DATEUNIT_EFFORTS))
+		if (tag.equals(Assignment.TAG_DATEUNIT_DETAILS))
 			return true;
 		
 		return super.isCustomImportField(tag);
@@ -58,7 +58,7 @@ abstract public class AbstractAssignmentImporter extends BaseObjectImporter
 	
 	private void importDateUnitEffortList(Node node, ORef destinationRef) throws Exception
 	{
-		Node dateUnitEffortsNode = getImporter().getNamedChildNode(node, getXmpz2ElementName() + Assignment.TAG_DATEUNIT_EFFORTS);
+		Node dateUnitEffortsNode = getImporter().getNamedChildNode(node, getXmpz2ElementName() + Assignment.TAG_DATEUNIT_DETAILS);
 		if (dateUnitEffortsNode == null)
 			return;
 		
@@ -69,14 +69,20 @@ abstract public class AbstractAssignmentImporter extends BaseObjectImporter
 			Node dateUnitEffortNode = dateUnitEffortNodes.item(index);
 			Node dateUnitNode = getImporter().getNamedChildNode(dateUnitEffortNode, getDateUnitElementName());
 			DateUnit dateUnit = extractDateUnit(dateUnitNode);
-			
-			Node quantityNode = getImporter().getNamedChildNode(dateUnitEffortNode, getQuantityElementName());
-			String quantityAsString = quantityNode.getTextContent();
-			DateUnitEffort dateUnitEffort = new DateUnitEffort(dateUnit, DoubleUtilities.toDoubleFromDataFormat(quantityAsString));
+
+			double quantity = 0.0;
+			if (supportsQuantityElement())
+			{
+				Node quantityNode = getImporter().getNamedChildNode(dateUnitEffortNode, getQuantityElementName());
+				String quantityAsString = quantityNode.getTextContent();
+				quantity = DoubleUtilities.toDoubleFromDataFormat(quantityAsString);
+			}
+
+			DateUnitEffort dateUnitEffort = new DateUnitEffort(dateUnit, quantity);
 			dateUnitEffortList.add(dateUnitEffort);
 		}
 		
-		getImporter().setData(destinationRef, Assignment.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+		getImporter().setData(destinationRef, Assignment.TAG_DATEUNIT_DETAILS, dateUnitEffortList.toString());
 	}
 
 	private DateUnit extractDateUnit(Node dateUnitNode) throws Exception
@@ -129,20 +135,25 @@ abstract public class AbstractAssignmentImporter extends BaseObjectImporter
 		String asString = getImporter().getAttributeValue(node, attributeName);
 		return Integer.parseInt(asString);
 	}
-	
+
 	abstract protected String getDateUnitsElementName();
 
 	abstract protected String getDateUnitElementName();
-	
+
 	abstract protected String getDayElementName();
-	
+
 	abstract protected String getMonthElementName();
-	
+
 	abstract protected String getQuarterElementName();
-	
+
 	abstract protected String getYearElementName();
-	
+
 	abstract protected String getFullProjectTimespanElementName();
-	
+
 	abstract protected String getQuantityElementName();
+
+	protected boolean supportsQuantityElement()
+	{
+		return true;
+	}
 }

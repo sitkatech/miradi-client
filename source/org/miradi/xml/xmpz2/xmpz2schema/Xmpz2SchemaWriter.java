@@ -218,7 +218,8 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 	{
 		return createXsdElement("integer");
 	}
-	public void defineBudgetElements(final String parentName, final String containerName, final String elementName, String[] elementTypes)
+
+	public void defineBudgetElementsWithQuantity(final String parentName, final String containerName, final String elementName, String[] elementTypes)
 	{
 		writeAlias(parentName);
 		startBlock();
@@ -226,6 +227,16 @@ public class Xmpz2SchemaWriter extends SchemaWriter implements Xmpz2XmlConstants
 		writeOredElements(Utility.convertToVector(elementTypes));
 		printlnIndented(" }? &");
 		printlnIndented(createOptionalSchemaElement(createSchemaElement(elementName, createDecimalType())));
+		endBlock();
+	}
+
+	public void defineBudgetElementsWithoutQuantity(final String parentName, final String containerName, String[] elementTypes)
+	{
+		writeAlias(parentName);
+		startBlock();
+		printIndented(ELEMENT_NAME + PREFIX + containerName + "{");
+		writeOredElements(Utility.convertToVector(elementTypes));
+		printlnIndented("}");
 		endBlock();
 	}
 

@@ -81,7 +81,7 @@ public class MonthDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	}
 
 	@Override
-	public void addActionListener(TimeframeEditorField.TimeframeEditorChangeHandler editorFieldChangeHandlerToUse)
+	public void addActionListener(TimeframeEditorField.WhenEditorChangeHandler editorFieldChangeHandlerToUse)
 	{
 		if (startMonthPanel != null)
 			startMonthPanel.addActionListener(editorFieldChangeHandlerToUse);

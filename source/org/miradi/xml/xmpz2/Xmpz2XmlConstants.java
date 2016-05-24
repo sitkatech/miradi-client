@@ -194,6 +194,13 @@ public interface Xmpz2XmlConstants
 	public static final String WORK_UNITS_MONTH = "WorkUnitsMonth";
 	public static final String WORK_UNITS_QUARTER = "WorkUnitsQuarter";
 	public static final String WORK_UNITS_YEAR = "WorkUnitsYear";
+	public static final String DATE_UNITS_TIMEFRAME = "DateUnitTimeframe";
+	public static final String TIMEFRAMES_DATE_UNIT = "TimeframesDateUnit";
+	public static final String TIMEFRAMES_FULL_PROJECT_TIMESPAN = "TimeframesFullProjectTimespan";
+	public static final String TIMEFRAMES_YEAR = "TimeframesYear";
+	public static final String TIMEFRAMES_QUARTER = "TimeframesQuarter";
+	public static final String TIMEFRAMES_MONTH = "TimeframesMonth";
+	public static final String TIMEFRAMES_DAY = "TimeframesDay";
 	public static final String STYLE = "Style";
 	public static final String CALCULATED_STRESS_RATING = "CalculatedStressRating";
 	public static final String CALCULATED_THREAT_STRESS_RATING = "CalculatedThreatStressRating";

@@ -43,7 +43,7 @@ abstract public class AbstractPlanningObject extends BaseObject
 	
 	public DateUnitEffortList getDateUnitEffortList() throws Exception
 	{
-		return new DateUnitEffortList(getData(TAG_DATEUNIT_EFFORTS));
+		return new DateUnitEffortList(getData(TAG_DATEUNIT_DETAILS));
 	}
 	
 	@Override
@@ -160,5 +160,5 @@ abstract public class AbstractPlanningObject extends BaseObject
 
 	abstract protected TimePeriodCosts createTimePeriodCosts(OptionalDouble quantity);
 	
-	public static final String TAG_DATEUNIT_EFFORTS = "Details";
+	public static final String TAG_DATEUNIT_DETAILS = "Details";
 }

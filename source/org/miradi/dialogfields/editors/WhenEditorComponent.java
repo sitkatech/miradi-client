@@ -80,7 +80,7 @@ abstract public class WhenEditorComponent extends DisposablePanel
 		dateUnitTypeCombo.setSelectedItem(dateUnitTypeQuestionToUse.findChoiceByCode(singleDateUnitTypeCode));
 	}
 
-	public void addActionListener(TimeframeEditorField.TimeframeEditorChangeHandler editorFieldChangeHandlerToUse)
+	public void addActionListener(TimeframeEditorField.WhenEditorChangeHandler editorFieldChangeHandlerToUse)
 	{
 		editorFieldChangeHandler = editorFieldChangeHandlerToUse;
 		if (lowerPanel != null)
@@ -268,7 +268,7 @@ abstract public class WhenEditorComponent extends DisposablePanel
 		}
 	}
 
-	private TimeframeEditorField.TimeframeEditorChangeHandler editorFieldChangeHandler;
+	private TimeframeEditorField.WhenEditorChangeHandler editorFieldChangeHandler;
 	private Project project;
 	private ORefList planningObjectRefs;
 	private AbstractDateUnitTypeQuestion dateUnitTypeQuestion;

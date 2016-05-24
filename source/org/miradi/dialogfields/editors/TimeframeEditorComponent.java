@@ -23,7 +23,6 @@ package org.miradi.dialogfields.editors;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -104,11 +103,7 @@ public class TimeframeEditorComponent extends WhenEditorComponent
 				updateTimeframe(project, timeframeRefs, datesAsCodeList);
 
 			if (datesAsCodeList.isEmpty() && timeframeRefs.size() == 1)
-			{
-				Timeframe timeframe = Timeframe.find(project, timeframeRefs.getFirstElement());
-				if (timeframe.getResourceRef().isInvalid())
-					deleteEmptyTimeframe(project, timeframeRefs.getFirstElement());
-			}
+				deleteEmptyTimeframe(project, timeframeRefs.getFirstElement());
 		}
 		finally
 		{
@@ -131,7 +126,7 @@ public class TimeframeEditorComponent extends WhenEditorComponent
 		for (int index = 0; index < timeframeRefs.size(); ++index)
 		{
 			Timeframe timeframe = Timeframe.find(project, timeframeRefs.get(index));
-			Command clearDateUnitEffortList = new CommandSetObjectData(timeframe, ResourceAssignment.TAG_DATEUNIT_EFFORTS, new DateUnitEffortList().toString());
+			Command clearDateUnitEffortList = new CommandSetObjectData(timeframe, ResourceAssignment.TAG_DATEUNIT_DETAILS, new DateUnitEffortList().toString());
 			project.executeCommand(clearDateUnitEffortList);
 		}
 	}
@@ -161,7 +156,7 @@ public class TimeframeEditorComponent extends WhenEditorComponent
 
 	private static void setTimeframeDateUnitEffortList(Project project, ORef timeframeRef, DateUnitEffortList dateUnitEffortList) throws Exception
 	{
-		CommandSetObjectData addEffortList = new CommandSetObjectData(timeframeRef, Timeframe.TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toString());
+		CommandSetObjectData addEffortList = new CommandSetObjectData(timeframeRef, Timeframe.TAG_DATEUNIT_DETAILS, dateUnitEffortList.toString());
 		project.executeCommand(addEffortList);
 	}
 }

@@ -50,7 +50,7 @@ abstract public class AbstractPlanningObjectExporter extends BaseObjectExporter
 	@Override
 	protected boolean doesFieldRequireSpecialHandling(String tag)
 	{
-		if (tag.equals(AbstractPlanningObject.TAG_DATEUNIT_EFFORTS))
+		if (tag.equals(AbstractPlanningObject.TAG_DATEUNIT_DETAILS))
 			return true;
 		
 		return super.doesFieldRequireSpecialHandling(tag);
@@ -58,7 +58,7 @@ abstract public class AbstractPlanningObjectExporter extends BaseObjectExporter
 	
 	private void exportDateUnitEffortList(DateUnitEffortList dateUnitEffortList, String dateUnitsElementName) throws Exception
 	{
-		final String dateUnitEffortsElementName = getPoolName() + AbstractPlanningObject.TAG_DATEUNIT_EFFORTS;
+		final String dateUnitEffortsElementName = getPoolName() + AbstractPlanningObject.TAG_DATEUNIT_DETAILS;
 		getWriter().writeStartElement(dateUnitEffortsElementName);
 		for (int index = 0; index < dateUnitEffortList.size(); ++index)
 		{
@@ -66,7 +66,9 @@ abstract public class AbstractPlanningObjectExporter extends BaseObjectExporter
 			getWriter().writeStartElement(dateUnitsElementName);
 			
 			writeDateUnit(dateUnitEffort.getDateUnit());
-			writeQuantity(dateUnitEffort.getQuantity());
+
+			if (supportsQuantityElement())
+				writeQuantity(dateUnitEffort.getQuantity());
 			
 			getWriter().writeEndElement(dateUnitsElementName);
 		}
@@ -118,7 +120,12 @@ abstract public class AbstractPlanningObjectExporter extends BaseObjectExporter
 	abstract protected String getFullProjectTimespanElementName();
 	
 	abstract protected String getQuantityElementName();
-	
+
+	protected boolean supportsQuantityElement()
+	{
+		return true;
+	}
+
 	abstract protected String getDateUnitsElementName();
 	
 	abstract protected String getPoolName();

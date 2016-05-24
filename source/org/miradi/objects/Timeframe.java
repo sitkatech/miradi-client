@@ -50,9 +50,6 @@ public class Timeframe extends AbstractPlanningObject
 	@Override
 	public String getPseudoData(String fieldTag)
 	{
-		if (fieldTag.equals(PSEUDO_TAG_PROJECT_RESOURCE_LABEL))
-			return getProjectResourceLabel();
-
 		if (fieldTag.equals(PSEUDO_TAG_OWNING_FACTOR_NAME))
 			return getOwningFactorName();
 
@@ -68,24 +65,10 @@ public class Timeframe extends AbstractPlanningObject
 		return owningFactor.toString();
 	}
 
-	private String getProjectResourceLabel()
-	{
-		ProjectResource projectResource = getProjectResource();
-		if (projectResource == null)
-			return "";
-
-		return projectResource.getInitials();
-	}
-
-	private ProjectResource getProjectResource()
-	{
-		return ProjectResource.find(getProject(), getResourceRef());
-	}
-
 	@Override
 	protected TimePeriodCosts createTimePeriodCosts(OptionalDouble quantity)
 	{
-		return new TimePeriodCosts(getResourceRef(), quantity);
+		return new TimePeriodCosts();
 	}
 
 	@Override
@@ -97,16 +80,7 @@ public class Timeframe extends AbstractPlanningObject
 	@Override
 	public String toString()
 	{
-		ProjectResource projectResource = getProjectResource();
-		if (projectResource == null)
-			return "";
-
-		return projectResource.getFullName();
-	}
-
-	public ORef getResourceRef()
-	{
-		return getRefData(TAG_RESOURCE_ID);
+		return getLabel();
 	}
 
 	public static boolean is(BaseObject baseObject)
@@ -134,7 +108,5 @@ public class Timeframe extends AbstractPlanningObject
 		return find(project.getObjectManager(), timeframeRef);
 	}
 
-	public static final String TAG_RESOURCE_ID = "ResourceId";
-	public static final String PSEUDO_TAG_PROJECT_RESOURCE_LABEL = "PseudoTagProjectResourceLabel";
 	public static final String PSEUDO_TAG_OWNING_FACTOR_NAME = "PseudoTagOwningFactorName";
 }

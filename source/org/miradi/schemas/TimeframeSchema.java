@@ -34,10 +34,6 @@ public class TimeframeSchema extends AbstractPlanningObjectSchema
 	protected void fillFieldSchemas()
 	{
 		super.fillFieldSchemas();
-
-		createFieldSchemaOptionalBaseId(Timeframe.TAG_RESOURCE_ID, ProjectResourceSchema.getObjectType());
-
-		createPseudoFieldSchemaString(Timeframe.PSEUDO_TAG_PROJECT_RESOURCE_LABEL);
 		createPseudoFieldSchemaString(Timeframe.PSEUDO_TAG_OWNING_FACTOR_NAME);
 	}
 

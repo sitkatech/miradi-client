@@ -23,10 +23,64 @@ package org.miradi.xml.xmpz2.objectImporters;
 import org.miradi.schemas.TimeframeSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
-public class TimeframeImporter extends AbstractTimeframeImporter
+public class TimeframeImporter extends AbstractAssignmentImporter
 {
 	public TimeframeImporter(Xmpz2XmlImporter importerToUse)
 	{
 		super(importerToUse, new TimeframeSchema());
+	}
+
+	@Override
+	protected String getDateUnitsElementName()
+	{
+		return DATE_UNITS_TIMEFRAME;
+	}
+
+	@Override
+	protected String getDayElementName()
+	{
+		return TIMEFRAMES_DAY;
+	}
+
+	@Override
+	protected String getMonthElementName()
+	{
+		return TIMEFRAMES_MONTH;
+	}
+
+	@Override
+	protected String getQuarterElementName()
+	{
+		return TIMEFRAMES_QUARTER;
+	}
+
+	@Override
+	protected String getYearElementName()
+	{
+		return TIMEFRAMES_YEAR;
+	}
+
+	@Override
+	protected String getFullProjectTimespanElementName()
+	{
+		return TIMEFRAMES_FULL_PROJECT_TIMESPAN;
+	}
+
+	@Override
+	protected String getDateUnitElementName()
+	{
+		return TIMEFRAMES_DATE_UNIT;
+	}
+
+	@Override
+	protected String getQuantityElementName()
+	{
+		return "";
+	}
+
+	@Override
+	protected boolean supportsQuantityElement()
+	{
+		return false;
 	}
 }

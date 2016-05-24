@@ -29,6 +29,6 @@ public class ResourceAssignmentObjectSchemaElement extends AbstractAssignmentObj
 		super(XmlConstants.RESOURCE_ASSIGNMENT);
 		
 		createOptionalIdField(ResourceAssignment.TAG_RESOURCE_ID, XmlSchemaCreator.RESOURCE_ID_ELEMENT_NAME);
-		createDateUnitEffortsField(ResourceAssignment.TAG_DATEUNIT_EFFORTS);
+		createDateUnitEffortsField(ResourceAssignment.TAG_DATEUNIT_DETAILS);
 	}
 }

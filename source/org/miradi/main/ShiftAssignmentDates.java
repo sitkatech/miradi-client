@@ -93,7 +93,7 @@ public class ShiftAssignmentDates
 			Assignment assignment = (Assignment) object;
 			DateUnitEffortList duel = assignment.getDateUnitEffortList();
 			DateUnitEffortList shifted = getShiftedOneYearLater(duel);
-			project.setObjectData(assignment, Assignment.TAG_DATEUNIT_EFFORTS, shifted.toString());
+			project.setObjectData(assignment, Assignment.TAG_DATEUNIT_DETAILS, shifted.toString());
 		}
 	}
 

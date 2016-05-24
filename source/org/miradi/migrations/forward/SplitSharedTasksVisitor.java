@@ -248,7 +248,6 @@ public class SplitSharedTasksVisitor extends AbstractMigrationORefVisitor
 		ORef timeframePlanRef = getRawProject().createObject(ObjectType.TIMEFRAME);
 		RawObject newTimeframe = getRawProject().findObject(timeframePlanRef);
 
-		newTimeframe.setData(TAG_RESOURCE_ID, safeGetTag(timeframeToClone, TAG_RESOURCE_ID));
 		newTimeframe.setData(TAG_DATEUNIT_EFFORTS, safeGetTag(timeframeToClone, TAG_DATEUNIT_EFFORTS));
 
 		return timeframePlanRef;
