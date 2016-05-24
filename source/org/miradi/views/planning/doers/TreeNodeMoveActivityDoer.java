@@ -20,19 +20,24 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning.doers;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogs.activity.MovableActivityPoolTablePanel;
 import org.miradi.dialogs.base.ObjectPoolTablePanel;
 import org.miradi.dialogs.diagram.MoveSelectionDialog;
 import org.miradi.exceptions.CommandFailedException;
+import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.*;
+import org.miradi.project.FactorCommandHelper;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
 
+import java.awt.*;
 import java.text.ParseException;
 import java.util.Vector;
 
@@ -121,6 +126,23 @@ public class TreeNodeMoveActivityDoer extends AbstractTreeNodeTaskDoer
 				}
 			}
 
+			// reposition activity if displayed in rc diagram
+			ORefList activityDiagramFactorRefs = activityToMove.findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());
+			if (activityDiagramFactorRefs.size() > 0)
+			{
+				ORefList newStrategyDiagramFactorRefs = newStrategy.findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());
+				FactorCommandHelper helper = new FactorCommandHelper(getProject(), getDiagramModel());
+				for (ORef activityDiagramFactorRef : activityDiagramFactorRefs)
+				{
+					DiagramFactorId activityDiagramFactorId = (DiagramFactorId) activityDiagramFactorRef.getObjectId();
+					for (ORef newStrategyDiagramFactorRef : newStrategyDiagramFactorRefs)
+					{
+						DiagramFactor strategyDiagramFactor = DiagramFactor.find(getProject(), newStrategyDiagramFactorRef);
+						setActivityDiagramLocation(helper, newStrategy, strategyDiagramFactor, activityToMove.getRef(), activityDiagramFactorId);
+					}
+				}
+			}
+
 			getProject().executeCommands(commandsToFixRelevancy);
 		}
 		catch (Exception e)
@@ -133,6 +155,21 @@ public class TreeNodeMoveActivityDoer extends AbstractTreeNodeTaskDoer
 			getProject().executeEndTransaction();
 			movableObjectPoolTablePanel.dispose();
 		}
+	}
+
+	private DiagramModel getDiagramModel()
+	{
+		return getDiagramView().getDiagramModel();
+	}
+
+	private void setActivityDiagramLocation(FactorCommandHelper helper, BaseObject newStrategy, DiagramFactor strategyDiagramFactor, ORef activityRef, DiagramFactorId activityDiagramFactorId) throws Exception
+	{
+		ORefList activityRefs = ((Strategy) newStrategy).getActivityRefs();
+		int offset = activityRefs.find(activityRef);
+		Point location = new Point(strategyDiagramFactor.getLocation());
+		location.x += (offset * getProject().getGridSize());
+		location.y += strategyDiagramFactor.getSize().height;
+		helper.setDiagramFactorLocation(activityDiagramFactorId, location);
 	}
 
 	private ORef getParentRefOfSelectedObject()
