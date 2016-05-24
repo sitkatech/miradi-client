@@ -99,7 +99,7 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return false;
 	}
 	
-	public boolean isPlannedWhenColumn(int modelColumn)
+	public boolean isTimeframeColumn(int modelColumn)
 	{
 		return false;
 	}

@@ -77,7 +77,6 @@ public class Project implements ProjectInterface
 		projectCalendar = new ProjectCalendar(this);
 		
 		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(this);
-		leaderPlannedEnsurer = new LeaderPlannedEnsurer(this);
 		leaderAssignedEnsurer = new LeaderAssignedEnsurer(this);
 		planningPreferencesChangeHandler = new PlanningPreferencesChangeHandler(this);
 		dashboardStatusMapsCache = new DashboardStatusMapsCache(this);
@@ -1002,13 +1001,11 @@ public class Project implements ProjectInterface
 	
 	public void disableLeaderEnsurers()
 	{
-		leaderPlannedEnsurer.disable();
 		leaderAssignedEnsurer.disable();
 	}
 	
 	public void enableLeaderEnsurers()
 	{
-		leaderPlannedEnsurer.enable();
 		leaderAssignedEnsurer.enable();
 	}
 	
@@ -1449,7 +1446,6 @@ public class Project implements ProjectInterface
 	private DiagramClipboard diagramClipboard;
 	private ProjectCalendar projectCalendar;
 	private ThreatStressRatingEnsurer threatStressRatingEnsurer;
-	private LeaderPlannedEnsurer leaderPlannedEnsurer;
 	private LeaderAssignedEnsurer leaderAssignedEnsurer;
 	private PlanningPreferencesChangeHandler planningPreferencesChangeHandler;
 	private DashboardStatusMapsCache dashboardStatusMapsCache;
@@ -1462,6 +1458,6 @@ public class Project implements ProjectInterface
 	
 	public CommandExecutor commandExecutor;
 	
-	public static final int VERSION_LOW = 32;
-	public static final int VERSION_HIGH = 32;
+	public static final int VERSION_LOW = 31;
+	public static final int VERSION_HIGH = 31;
 }

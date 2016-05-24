@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields.editors;
 
 import org.martus.swing.UiComboBox;
-import org.miradi.dialogfields.WhenPlannedEditorField;
+import org.miradi.dialogfields.TimeframeEditorField;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.TwoColumnPanel;
@@ -80,7 +80,7 @@ abstract public class WhenEditorComponent extends DisposablePanel
 		dateUnitTypeCombo.setSelectedItem(dateUnitTypeQuestionToUse.findChoiceByCode(singleDateUnitTypeCode));
 	}
 
-	public void addActionListener(WhenPlannedEditorField.WhenPlannedEditorChangeHandler editorFieldChangeHandlerToUse)
+	public void addActionListener(TimeframeEditorField.TimeframeEditorChangeHandler editorFieldChangeHandlerToUse)
 	{
 		editorFieldChangeHandler = editorFieldChangeHandlerToUse;
 		if (lowerPanel != null)
@@ -268,7 +268,7 @@ abstract public class WhenEditorComponent extends DisposablePanel
 		}
 	}
 
-	private WhenPlannedEditorField.WhenPlannedEditorChangeHandler editorFieldChangeHandler;
+	private TimeframeEditorField.TimeframeEditorChangeHandler editorFieldChangeHandler;
 	private Project project;
 	private ORefList planningObjectRefs;
 	private AbstractDateUnitTypeQuestion dateUnitTypeQuestion;

@@ -83,7 +83,7 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 		projectTotalCalculator.clear();
 		totalTimePeriodPlannedCostsMapsByBaseObject = new HashMap<ORef, TimePeriodCostsMap>();
 		totalTimePeriodAssignedCostsMapsByBaseObject = new HashMap<ORef, TimePeriodCostsMap>();
-		plannedWhenTotalAsStringByBaseObject = new HashMap<ORef, String>();
+		timeframeTotalAsStringByBaseObject = new HashMap<ORef, String>();
 		assignedWhenTotalAsStringByBaseObject = new HashMap<ORef, String>();
 		projectPlannedTotalsByBudgetMode = new HashMap<String, TimePeriodCostsMap>();
 		projectAssignedTotalsByBudgetMode = new HashMap<String, TimePeriodCostsMap>();
@@ -163,14 +163,14 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 		return result;
 	}
 
-	public String getPlannedWhenTotalAsString(BaseObject baseObject)
+	public String getTimeframeTotalAsString(BaseObject baseObject)
 	{
 		ORef ref = baseObject.getRef();
-		String result = plannedWhenTotalAsStringByBaseObject.get(ref);
+		String result = timeframeTotalAsStringByBaseObject.get(ref);
 		if(result == null)
 		{
-			result = getProjectTotalCalculator().getPlannedWhenRollupAsString(baseObject);
-			plannedWhenTotalAsStringByBaseObject.put(ref, result);
+			result = getProjectTotalCalculator().getTimeframeRollupAsString(baseObject);
+			timeframeTotalAsStringByBaseObject.put(ref, result);
 		}
 		
 		return result;
@@ -296,7 +296,7 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 	private ProjectTotalCalculator projectTotalCalculator;
 	private HashMap<ORef, TimePeriodCostsMap> totalTimePeriodPlannedCostsMapsByBaseObject;
 	private HashMap<ORef, TimePeriodCostsMap> totalTimePeriodAssignedCostsMapsByBaseObject;
-	private HashMap<ORef, String> plannedWhenTotalAsStringByBaseObject;
+	private HashMap<ORef, String> timeframeTotalAsStringByBaseObject;
 	private HashMap<ORef, String> assignedWhenTotalAsStringByBaseObject;
 	private HashMap<String, TimePeriodCostsMap> projectPlannedTotalsByBudgetMode;
 	private HashMap<String, TimePeriodCostsMap> projectAssignedTotalsByBudgetMode;

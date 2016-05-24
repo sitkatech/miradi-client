@@ -37,7 +37,6 @@ public class TaskSchema extends FactorSchema
 
 		createFieldSchemaBoolean(Task.TAG_IS_MONITORING_ACTIVITY);
 		createOwnedFieldSchemaIdList(Task.TAG_SUBTASK_IDS, TaskSchema.getObjectType());
-		createFieldSchemaOptionalRef(Task.TAG_PLANNED_LEADER_RESOURCE);
 		createFieldSchemaOptionalRef(Task.TAG_ASSIGNED_LEADER_RESOURCE);
 		createBudgetSchemas();
 		createProgressReportSchema();

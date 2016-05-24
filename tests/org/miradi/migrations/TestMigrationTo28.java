@@ -20,11 +20,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
+import org.miradi.ids.BaseId;
+import org.miradi.ids.IdList;
 import org.miradi.migrations.forward.MigrationTo28;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objectpools.AccountingClassificationAssociationPool;
-import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.ResourceAssignment;
+import org.miradi.objects.Strategy;
+import org.miradi.objects.Task;
+import org.miradi.project.Project;
+import org.miradi.schemas.TaskSchema;
+
+import static org.miradi.objects.Strategy.TAG_ACTIVITY_IDS;
 
 public class TestMigrationTo28 extends AbstractTestMigration
 {
@@ -33,42 +40,99 @@ public class TestMigrationTo28 extends AbstractTestMigration
 		super(name);
 	}
 	
-	public void testResourceAssignmentAccountingClassificationsRemovedAfterReverseMigration() throws Exception
+	public void testChildTasksMovedByForwardMigration() throws Exception
 	{
-		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
-		String accountingClassifications = resourceAssignment.getData(MigrationTo28.TAG_ACCOUNTING_CLASSIFICATION_CONTAINER);
-		assertNotNull(accountingClassifications);
+		Strategy strategy = getProject().createStrategy();
+		Task activity = getProject().createTask(strategy);
+		Task childTask = getProject().createTask(activity);
+		Task grandchildTask = getProject().createTask(childTask);
 
-		AccountingClassificationAssociationPool accountingClassificationPool = getProject().getAccountingClassificationAssociationPool();
-		assertNotNull(accountingClassificationPool);
+		assertEquals(strategy.getActivityRefs(), new ORefList(activity.getRef()));
+		assertEquals(activity.getChildTaskRefs(), new ORefList(childTask.getRef()));
+		assertEquals(childTask.getChildTaskRefs(), new ORefList(grandchildTask.getRef()));
 
 		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo28.VERSION_TO));
-        RawObject rawResourceAssignment = rawProject.findObject(resourceAssignment.getRef());
-        assertNotNull(rawResourceAssignment);
-		assertFalse("Field should have been removed during reverse migration?", rawResourceAssignment.containsKey(MigrationTo28.TAG_ACCOUNTING_CLASSIFICATION_CONTAINER));
+		migrateProject(rawProject, new VersionRange(Project.VERSION_HIGH));
 
-		RawPool rawAccountingClassificationPool = rawProject.getRawPoolForType(ObjectType.ACCOUNTING_CLASSIFICATION_ASSOCIATION);
-		assertNull(rawAccountingClassificationPool);
+		RawPool strategyPool = rawProject.getRawPoolForType(ObjectType.STRATEGY);
+		assertNotNull(strategyPool);
+		assertEquals(strategyPool.keySet().size(), 1);
+		RawObject rawStrategy = strategyPool.get(strategyPool.keySet().toArray()[0]);
+		assertNotNull(rawStrategy);
+		assertTrue(rawStrategy.containsKey(TAG_ACTIVITY_IDS));
+		IdList activityIdList = new IdList(TaskSchema.getObjectType(), rawStrategy.get(TAG_ACTIVITY_IDS));
+		assertEquals(activityIdList, new IdList(activity));
+
+		RawPool taskPool = rawProject.getRawPoolForType(ObjectType.TASK);
+		assertNotNull(taskPool);
+		assertEquals(taskPool.keySet().size(), 3);
+		for(ORef taskRef : taskPool.keySet())
+		{
+			RawObject rawTask = taskPool.get(taskRef);
+			BaseId taskId = taskRef.getObjectId();
+			if (taskId.equals(activity.getId()))
+			{
+				IdList childTaskIdList = new IdList(TaskSchema.getObjectType(), rawTask.get(MigrationTo28.TAG_SUBTASK_IDS));
+				assertEquals(childTaskIdList, new IdList(ObjectType.TASK, new BaseId[]{childTask.getId(), grandchildTask.getId()}));
+			}
+			if (taskId.equals(childTask.getId()))
+			{
+				IdList grandchildTaskIdList = new IdList(TaskSchema.getObjectType(), rawTask.get(MigrationTo28.TAG_SUBTASK_IDS));
+				assertEquals(grandchildTaskIdList, new IdList(ObjectType.TASK, new BaseId[]{}));
+			}
+			if (taskId.equals(grandchildTask.getId()))
+			{
+				assertFalse(rawTask.containsKey(MigrationTo28.TAG_SUBTASK_IDS));
+			}
+		}
 	}
-	
-	public void testExpenseAssignmentAccountingClassificationsRemovedAfterReverseMigration() throws Exception
-	{
-		ExpenseAssignment expenseAssignment = getProject().createAndPopulateExpenseAssignment();
-		String accountingClassifications = expenseAssignment.getData(MigrationTo28.TAG_ACCOUNTING_CLASSIFICATION_CONTAINER);
-		assertNotNull(accountingClassifications);
 
-		AccountingClassificationAssociationPool accountingClassificationPool = getProject().getAccountingClassificationAssociationPool();
-		assertNotNull(accountingClassificationPool);
+	public void testChildTasksNotMovedByReverseMigration() throws Exception
+	{
+		Strategy strategy = getProject().createStrategy();
+		Task activity = getProject().createTask(strategy);
+		Task childTask = getProject().createTask(activity);
+		Task grandchildTask = getProject().createTask(childTask);
+
+		assertEquals(strategy.getActivityRefs(), new ORefList(activity.getRef()));
+		assertEquals(activity.getChildTaskRefs(), new ORefList(childTask.getRef()));
+		assertEquals(childTask.getChildTaskRefs(), new ORefList(grandchildTask.getRef()));
 
 		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo28.VERSION_TO));
-        RawObject rawExpenseAssignment = rawProject.findObject(expenseAssignment.getRef());
-        assertNotNull(rawExpenseAssignment);
-		assertFalse("Field should have been removed during reverse migration?", rawExpenseAssignment.containsKey(MigrationTo28.TAG_ACCOUNTING_CLASSIFICATION_CONTAINER));
 
-		RawPool rawAccountingClassificationPool = rawProject.getRawPoolForType(ObjectType.ACCOUNTING_CLASSIFICATION_ASSOCIATION);
-		assertNull(rawAccountingClassificationPool);
+		RawPool strategyPool = rawProject.getRawPoolForType(ObjectType.STRATEGY);
+		assertNotNull(strategyPool);
+		assertEquals(strategyPool.keySet().size(), 1);
+		RawObject rawStrategy = strategyPool.get(strategyPool.keySet().toArray()[0]);
+		assertNotNull(rawStrategy);
+		assertTrue(rawStrategy.containsKey(TAG_ACTIVITY_IDS));
+		IdList activityIdList = new IdList(TaskSchema.getObjectType(), rawStrategy.get(TAG_ACTIVITY_IDS));
+		assertEquals(activityIdList, new IdList(activity));
+
+		RawPool taskPool = rawProject.getRawPoolForType(ObjectType.TASK);
+		assertNotNull(taskPool);
+		assertEquals(taskPool.keySet().size(), 3);
+		for(ORef taskRef : taskPool.keySet())
+		{
+			RawObject rawTask = taskPool.get(taskRef);
+			BaseId taskId = taskRef.getObjectId();
+			if (taskId.equals(activity.getId()))
+			{
+				IdList childTaskIdList = new IdList(TaskSchema.getObjectType(), rawTask.get(MigrationTo28.TAG_SUBTASK_IDS));
+				assertEquals(childTaskIdList, new IdList(ObjectType.TASK, new BaseId[]{childTask.getId()}));
+			}
+			if (taskId.equals(childTask.getId()))
+			{
+				IdList grandchildTaskIdList = new IdList(TaskSchema.getObjectType(), rawTask.get(MigrationTo28.TAG_SUBTASK_IDS));
+				assertEquals(grandchildTaskIdList, new IdList(ObjectType.TASK, new BaseId[]{grandchildTask.getId()}));
+			}
+			if (taskId.equals(grandchildTask.getId()))
+			{
+				assertFalse(rawTask.containsKey(MigrationTo28.TAG_SUBTASK_IDS));
+			}
+		}
 	}
-	
+
 	@Override
 	protected int getFromVersion()
 	{

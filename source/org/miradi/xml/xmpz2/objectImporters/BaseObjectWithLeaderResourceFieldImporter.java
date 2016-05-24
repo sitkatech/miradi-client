@@ -36,9 +36,6 @@ abstract public class BaseObjectWithLeaderResourceFieldImporter extends BaseObje
 	@Override
 	protected boolean isCustomImportField(String tag)
 	{
-		if (tag.equals(BaseObject.TAG_PLANNED_LEADER_RESOURCE))
-			return true;
-		
 		if (tag.equals(BaseObject.TAG_ASSIGNED_LEADER_RESOURCE))
 			return true;
 
@@ -50,7 +47,6 @@ abstract public class BaseObjectWithLeaderResourceFieldImporter extends BaseObje
 	{
 		super.importFields(baseObjectNode, refToUse);
 		
-		getImporter().importRefField(baseObjectNode, refToUse, getXmpz2ElementName(), BaseObject.TAG_PLANNED_LEADER_RESOURCE, RESOURCE_ID);
 		getImporter().importRefField(baseObjectNode, refToUse, getXmpz2ElementName(), BaseObject.TAG_ASSIGNED_LEADER_RESOURCE, RESOURCE_ID);
 	}
 }

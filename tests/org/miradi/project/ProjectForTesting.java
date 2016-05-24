@@ -1619,8 +1619,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 		CodeToCodeListMap tableSettingsMap = new CodeToCodeListMap();
 		CodeList colSettings = new CodeList();
-		colSettings.add(WorkPlanColumnConfigurationQuestion.META_PLANNED_WHO_TOTAL);
-		colSettings.add(WorkPlanColumnConfigurationQuestion.META_PLANNED_WHEN_TOTAL);
+		colSettings.add(WorkPlanColumnConfigurationQuestion.META_TIMEFRAME_TOTAL);
 		colSettings.add(WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHO_TOTAL);
 		colSettings.add(WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHEN_TOTAL);
 		colSettings.add(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);

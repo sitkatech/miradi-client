@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import org.miradi.dialogfields.editors.WhenPlannedEditorComponent;
+import org.miradi.dialogfields.editors.TimeframeEditorComponent;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -35,9 +35,9 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class WhenPlannedEditorField extends ObjectDataField
+public class TimeframeEditorField extends ObjectDataField
 {
-	public WhenPlannedEditorField(MainWindow mainWindow, ORef refToUse)
+	public TimeframeEditorField(MainWindow mainWindow, ORef refToUse)
 	{
 		super(mainWindow.getProject(), refToUse);
 	}
@@ -46,8 +46,8 @@ public class WhenPlannedEditorField extends ObjectDataField
 	{
 		try
 		{
-			CodeList whenStartEndCodes = whenPlannedEditor.getStartEndCodes();
-			DateUnitEffortList editorDateUnitEffortList = WhenPlannedEditorComponent.createDateUnitEffortList(whenStartEndCodes);
+			CodeList whenStartEndCodes = timeframeEditor.getStartEndCodes();
+			DateUnitEffortList editorDateUnitEffortList = TimeframeEditorComponent.createDateUnitEffortList(whenStartEndCodes);
 			DateUnitEffortList timeframeDateUnitEffortList = new DateUnitEffortList();
 
 			BaseObject baseObject = BaseObject.find(getProject(), getORef());
@@ -76,7 +76,7 @@ public class WhenPlannedEditorField extends ObjectDataField
 			return false;
 
 		BaseObject baseObject = BaseObject.find(getProject(), getORef());
-		return baseObject.isPlannedWhenEditable();
+		return baseObject.isTimeframeEditable();
 	}
 
 	@Override
@@ -91,7 +91,7 @@ public class WhenPlannedEditorField extends ObjectDataField
 
 		BaseObject baseObject = BaseObject.find(getProject(), getORef());
 		ORefList planningObjectRefs = baseObject.getTimeframeRefs();
-		whenPlannedEditor.setPlanningObjectRefs(planningObjectRefs);
+		timeframeEditor.setPlanningObjectRefs(planningObjectRefs);
 
 		ignoreEditorActions = false;
 	}
@@ -99,10 +99,10 @@ public class WhenPlannedEditorField extends ObjectDataField
 	@Override
 	public JComponent getComponent()
 	{
-		if (whenPlannedEditor == null)
+		if (timeframeEditor == null)
 			createEditorPanel();
 
-		return whenPlannedEditor;
+		return timeframeEditor;
 	}
 
 	@Override
@@ -117,8 +117,8 @@ public class WhenPlannedEditorField extends ObjectDataField
 		try
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), getORef());
-			CodeList whenStartEndCodes = whenPlannedEditor.getStartEndCodes();
-			WhenPlannedEditorComponent.setWhenPlannedValue(getProject(), baseObject, whenStartEndCodes);
+			CodeList whenStartEndCodes = timeframeEditor.getStartEndCodes();
+			TimeframeEditorComponent.setTimeframeValue(getProject(), baseObject, whenStartEndCodes);
 			updateFromObject();
 		}
 		catch (Exception e)
@@ -133,7 +133,7 @@ public class WhenPlannedEditorField extends ObjectDataField
 		return "";
 	}
 
-	public class WhenPlannedEditorChangeHandler implements ActionListener
+	public class TimeframeEditorChangeHandler implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)
 		{
@@ -146,18 +146,18 @@ public class WhenPlannedEditorField extends ObjectDataField
 	{
 		try
 		{
-			ORefList planningObjectRefs = new ORefList();
+			ORefList timeframeRefs = new ORefList();
 
 			if (getORef().isValid())
 			{
 				BaseObject baseObject = BaseObject.find(getProject(), getORef());
-				planningObjectRefs = baseObject.getTimeframeRefs();
+				timeframeRefs = baseObject.getTimeframeRefs();
 			}
 
-			whenPlannedEditor = new WhenPlannedEditorComponent(getProject(), planningObjectRefs);
-			whenPlannedEditor.setBackground(AppPreferences.getDataPanelBackgroundColor());
-			whenPlannedEditor.addActionListener(new WhenPlannedEditorChangeHandler());
-			whenPlannedEditor.setBorder(DataField.createLineBorderWithMargin());
+			timeframeEditor = new TimeframeEditorComponent(getProject(), timeframeRefs);
+			timeframeEditor.setBackground(AppPreferences.getDataPanelBackgroundColor());
+			timeframeEditor.addActionListener(new TimeframeEditorChangeHandler());
+			timeframeEditor.setBorder(DataField.createLineBorderWithMargin());
 		}
 		catch (Exception e)
 		{
@@ -166,5 +166,5 @@ public class WhenPlannedEditorField extends ObjectDataField
 	}
 
 	private boolean ignoreEditorActions;
-	private WhenPlannedEditorComponent whenPlannedEditor;
+	private TimeframeEditorComponent timeframeEditor;
 }

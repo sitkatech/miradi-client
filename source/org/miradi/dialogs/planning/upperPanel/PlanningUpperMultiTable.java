@@ -71,9 +71,8 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		appendedLabelsOnSingleLineRendererFactory = new SingleLineAppendedLabelsObjectTableCellRendererOnlyFactory(mainWindowToUse, this, fontProvider);
 		progressRendererFactory = new ProgressTableCellRendererFactory(this, fontProvider);
 		doubleRendererFactory = new NumericTableCellRendererFactory(this, fontProvider);
-		whoPlannedColumnTableCellEditorFactory = new WhoPlannedColumnTableCellEditorFactory(getMainWindow(), this);
 		whoAssignedColumnTableCellEditorFactory = new WhoAssignedColumnTableCellEditorFactory(getMainWindow(), this);
-		whenPlannedColumnTableCellEditorFactory = new WhenPlannedTableCellPopupEditorOrRendererFactory(mainWindowToUse, this, fontProvider);
+		timeframeColumnTableCellEditorFactory = new TimeframeTableCellPopupEditorOrRendererFactory(mainWindowToUse, this, fontProvider);
 		whenAssignedColumnTableCellEditorFactory = new WhenAssignedTableCellPopupEditorOrRendererFactory(mainWindowToUse, this, fontProvider);
 		singleLineTextCellEditorFactory = new SingleLineObjectTableCellEditorOrRendererFactory(this, fontProvider);
 		multiLineTextCellEditorFactor = new ExpandingReadonlyTableCellEditorOrRendererFactory(mainWindowToUse, this, fontProvider);
@@ -92,14 +91,11 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		int modelColumn = convertColumnIndexToModel(tableColumn);
 		String columnTag = getCastedModel().getColumnTag(modelColumn);
 
-		if (columnTag.equals(CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL))
-			return whoPlannedColumnTableCellEditorFactory;
-
 		if (columnTag.equals(CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL))
 			return whoAssignedColumnTableCellEditorFactory;
 		
-		if (getCastedModel().isPlannedWhenColumn(modelColumn))
-			return new WhenPlannedTableCellPopupEditorOrRendererFactory(getMainWindow(), this, new PlanningViewFontProvider(getMainWindow()));
+		if (getCastedModel().isTimeframeColumn(modelColumn))
+			return new TimeframeTableCellPopupEditorOrRendererFactory(getMainWindow(), this, new PlanningViewFontProvider(getMainWindow()));
 
 		if (getCastedModel().isAssignedWhenColumn(modelColumn))
 			return new WhenAssignedTableCellPopupEditorOrRendererFactory(getMainWindow(), this, new PlanningViewFontProvider(getMainWindow()));
@@ -153,8 +149,8 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 			factory = progressRendererFactory;
 		else if(getCastedModel().isDateUnitColumn(modelColumn))
 			factory = doubleRendererFactory;
-		else if (getCastedModel().isPlannedWhenColumn(modelColumn))
-			factory = whenPlannedColumnTableCellEditorFactory;
+		else if (getCastedModel().isTimeframeColumn(modelColumn))
+			factory = timeframeColumnTableCellEditorFactory;
 		else if (getCastedModel().isAssignedWhenColumn(modelColumn))
 			factory = whenAssignedColumnTableCellEditorFactory;
 		else if (getCastedModel().isAppendedLabelsOnSingleLineColumn(modelColumn))
@@ -269,9 +265,8 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private BasicTableCellEditorOrRendererFactory appendedLabelsOnSingleLineRendererFactory;
 	private BasicTableCellEditorOrRendererFactory progressRendererFactory;
 	private BasicTableCellEditorOrRendererFactory doubleRendererFactory;
-	private WhoPlannedColumnTableCellEditorFactory whoPlannedColumnTableCellEditorFactory;
 	private WhoAssignedColumnTableCellEditorFactory whoAssignedColumnTableCellEditorFactory;
-	private WhenPlannedTableCellPopupEditorOrRendererFactory whenPlannedColumnTableCellEditorFactory;
+	private TimeframeTableCellPopupEditorOrRendererFactory timeframeColumnTableCellEditorFactory;
 	private WhenAssignedTableCellPopupEditorOrRendererFactory whenAssignedColumnTableCellEditorFactory;
 	private SingleLineObjectTableCellEditorOrRendererFactory singleLineTextCellEditorFactory;
 	private ExpandingReadonlyTableCellEditorOrRendererFactory multiLineTextCellEditorFactor;

@@ -33,7 +33,7 @@ import org.miradi.exceptions.XmlVersionTooOldException;
 import org.miradi.migrations.forward.MigrationTo10;
 import org.miradi.migrations.forward.MigrationTo11;
 import org.miradi.migrations.forward.MigrationTo19;
-import org.miradi.migrations.forward.MigrationTo21;
+import org.miradi.migrations.forward.MigrationTo20;
 import org.miradi.questions.DayColumnsVisibilityQuestion;
 import org.miradi.utils.BiDirectionalHashMap;
 import org.miradi.utils.HtmlUtilities;
@@ -167,10 +167,8 @@ public class Xmpz2ForwardMigration
 					for (int i = 0; i < codeList.getLength(); ++i)
 					{
 						Node code = codeList.item(i);
-						if (code.getTextContent().equals(MigrationTo21.LEGACY_READABLE_ASSIGNED_WHO_TOTAL_CODE))
-							code.setTextContent(MigrationTo21.READABLE_PLANNED_WHO_TOTAL_CODE);
-						if (code.getTextContent().equals(MigrationTo21.LEGACY_READABLE_ASSIGNED_WHEN_TOTAL_CODE))
-							code.setTextContent(MigrationTo21.READABLE_PLANNED_WHEN_TOTAL_CODE);
+						if (code.getTextContent().equals(MigrationTo20.LEGACY_READABLE_ASSIGNED_WHEN_TOTAL_CODE))
+							code.setTextContent(MigrationTo20.READABLE_TIMEFRAME_TOTAL_CODE);
 					}
 				}
 			}

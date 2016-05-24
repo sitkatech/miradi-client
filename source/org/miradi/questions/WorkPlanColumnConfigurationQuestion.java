@@ -50,8 +50,7 @@ public class WorkPlanColumnConfigurationQuestion extends MultipleSelectStaticCho
 	protected Vector<ChoiceItem> createWhoWhenChoices()
 	{
 		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
-		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_PLANNED_WHO_TOTAL, WorkPlanColumnConfigurationQuestion.META_PLANNED_WHO_TOTAL_ALT));
-		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_PLANNED_WHEN_TOTAL, WorkPlanColumnConfigurationQuestion.META_PLANNED_WHEN_TOTAL_ALT));
+		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_TIMEFRAME_TOTAL, WorkPlanColumnConfigurationQuestion.META_TIMEFRAME_TOTAL_ALT));
 		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHO_TOTAL, WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHO_TOTAL_ALT));
 		choiceItems.add(createChoiceItem(WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHEN_TOTAL, WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHEN_TOTAL_ALT));
 
@@ -131,13 +130,9 @@ public class WorkPlanColumnConfigurationQuestion extends MultipleSelectStaticCho
 		return columnGroups;
 	}
 
-	public static final String META_PLANNED_WHO_TOTAL = CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL;
-	public static final String META_PLANNED_WHO_TOTAL_ALT = META_PLANNED_WHO_TOTAL + "Alt";
-	public static final String META_PLANNED_WHO_TOTAL_ALT_SHORT = META_PLANNED_WHO_TOTAL_ALT + "Short";
-
-	public static final String META_PLANNED_WHEN_TOTAL = BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL;
-	public static final String META_PLANNED_WHEN_TOTAL_ALT = META_PLANNED_WHEN_TOTAL + "Alt";
-	public static final String META_PLANNED_WHEN_TOTAL_ALT_SHORT = META_PLANNED_WHEN_TOTAL_ALT + "Short";
+	public static final String META_TIMEFRAME_TOTAL = BaseObject.PSEUDO_TAG_TIMEFRAME_TOTAL;
+	public static final String META_TIMEFRAME_TOTAL_ALT = META_TIMEFRAME_TOTAL + "Alt";
+	public static final String META_TIMEFRAME_TOTAL_ALT_SHORT = META_TIMEFRAME_TOTAL_ALT + "Short";
 
 	public static final String META_ASSIGNED_WHO_TOTAL = CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL;
 	public static final String META_ASSIGNED_WHO_TOTAL_ALT = META_ASSIGNED_WHO_TOTAL + "Alt";

@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogfields.editors.WhenAssignedEditorComponent;
-import org.miradi.dialogfields.editors.WhenPlannedEditorComponent;
+import org.miradi.dialogfields.editors.TimeframeEditorComponent;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
@@ -61,7 +61,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	{
 		String columnTag = getColumnTag(column);
 		
-		if (isPlannedWhoColumn(columnTag) || isPlannedWhenColumn(columnTag))
+		if (isTimeframeColumn(columnTag))
 			return AppPreferences.RESOURCE_TABLE_BACKGROUND;
 		
 		if(isAssignedWhoColumn(columnTag) || isAssignedWhenColumn(columnTag))
@@ -75,11 +75,8 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	{
 		String columnTag = getColumnTag(modelColumn);
 
-		if (isPlannedWhoColumn(columnTag))
-			return new WhoPlannedStateLogic(getProject()).isWhoCellEditable(getBaseObjectForRowColumn(row, modelColumn));
-		
-		if (isPlannedWhenColumn(columnTag))
-			return isPlannedWhenCellEditable(row, modelColumn);
+		if (isTimeframeColumn(columnTag))
+			return isTimeframeCellEditable(row, modelColumn);
 		
 		if (isAssignedWhoColumn(columnTag))
 			return new WhoAssignedStateLogic(getProject()).isWhoCellEditable(getBaseObjectForRowColumn(row, modelColumn));
@@ -113,14 +110,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return super.isFormattedColumn(modelColumn);
 	}
 
-	private boolean isPlannedWhoColumn(String columnTag)
+	private boolean isTimeframeColumn(String columnTag)
 	{
-		return columnTag.equals(CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL);
-	}
-
-	private boolean isPlannedWhenColumn(String columnTag)
-	{
-		return columnTag.equals(CustomPlanningColumnsQuestion.META_PLANNED_WHEN_TOTAL);
+		return columnTag.equals(CustomPlanningColumnsQuestion.META_TIMEFRAME_TOTAL);
 	}
 
 	private boolean isAssignedWhoColumn(String columnTag)
@@ -134,15 +126,15 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	}
 
 	@Override
-	public boolean isPlannedWhenColumn(int modelColumn)
+	public boolean isTimeframeColumn(int modelColumn)
 	{
-		return isPlannedWhenColumn(getColumnTag(modelColumn));
+		return isTimeframeColumn(getColumnTag(modelColumn));
 	}
 
-	private boolean isPlannedWhenCellEditable(int row, int modelColumn)
+	private boolean isTimeframeCellEditable(int row, int modelColumn)
 	{
 		BaseObject baseObjectForRow = getBaseObjectForRowColumn(row, modelColumn);
-		return baseObjectForRow.isPlannedWhenEditable();
+		return baseObjectForRow.isTimeframeEditable();
 	}
 
 	@Override
@@ -169,13 +161,13 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (value == null)
 				return;
 			
-			if (isPlannedWhenColumn(column))
+			if (isTimeframeColumn(column))
 			{
-				WhenPlannedEditorComponent.setWhenPlannedValue(getProject(), baseObjectForRow, WhenPlannedEditorComponent.createCodeList(value));
+				TimeframeEditorComponent.setTimeframeValue(getProject(), baseObjectForRow, TimeframeEditorComponent.createCodeList(value));
 			}
 			else if (isAssignedWhenColumn(column))
 			{
-				WhenAssignedEditorComponent.setWhenAssignedValue(getProject(), baseObjectForRow, WhenPlannedEditorComponent.createCodeList(value));
+				WhenAssignedEditorComponent.setWhenAssignedValue(getProject(), baseObjectForRow, TimeframeEditorComponent.createCodeList(value));
 			}
 			else if (isChoiceItemColumn(column))
 			{
@@ -332,9 +324,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		{	
 			String columnTag = getTagForCell(baseObject.getType(), column);
 
-			if(isPlannedWhoColumn(columnTag))
-				return getPlannedProjectResourcesAsChoiceItem(baseObject);
-
 			if(isAssignedWhoColumn(columnTag))
 				return getAssignedProjectResourcesAsChoiceItem(baseObject);
 
@@ -346,8 +335,8 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 
 			String rawValue;
 
-			if(columnTag.equals(BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL))
-				rawValue = getProject().getTimePeriodCostsMapsCache().getPlannedWhenTotalAsString(baseObject);
+			if(columnTag.equals(BaseObject.PSEUDO_TAG_TIMEFRAME_TOTAL))
+				rawValue = getProject().getTimePeriodCostsMapsCache().getTimeframeTotalAsString(baseObject);
 			else if (columnTag.equals(BaseObject.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL))
 				rawValue = getProject().getTimePeriodCostsMapsCache().getAssignedWhenTotalAsString(baseObject);
 			else if (baseObject.isPseudoField(columnTag))
@@ -382,7 +371,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (Task.is(baseObject.getRef()) && columnTag.equals(Task.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
 				return createAppendedRelevantIndicatorLabels(baseObject);
 
-			if(isPlannedWhenColumn(columnTag))
+			if(isTimeframeColumn(columnTag))
 				return getFilteredWhenForPlans(baseObject);
 
 			if(isAssignedWhenColumn(columnTag))
@@ -479,12 +468,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	protected TimePeriodCostsMap getTotalTimePeriodAssignedCostsMap(BaseObject baseObject) throws Exception
 	{
 		return baseObject.getResourceAssignmentsTimePeriodCostsMap();
-	}
-
-	private ChoiceItem getPlannedProjectResourcesAsChoiceItem(BaseObject baseObject) throws Exception
-	{
-		TimePeriodCosts timePeriodCosts = calculateTimePeriodPlannedCosts(baseObject, new DateUnit());
-		return getProjectResourcesAsChoiceItem(timePeriodCosts, baseObject, BaseObject.TAG_PLANNED_LEADER_RESOURCE);
 	}
 
 	private ChoiceItem getAssignedProjectResourcesAsChoiceItem(BaseObject baseObject) throws Exception
@@ -647,8 +630,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		}
 		if(Timeframe.is(nodeType))
 		{
-			if (isPlannedWhoColumn(columnTag))
-				return Timeframe.PSEUDO_TAG_PROJECT_RESOURCE_LABEL;
 			if (columnTag.equals(Indicator.PSEUDO_TAG_FACTOR))
 				return Timeframe.PSEUDO_TAG_OWNING_FACTOR_NAME;
 		}

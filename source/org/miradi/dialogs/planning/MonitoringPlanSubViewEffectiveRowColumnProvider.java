@@ -23,7 +23,6 @@ package org.miradi.dialogs.planning;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
 import org.miradi.project.Project;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
@@ -39,8 +38,7 @@ public class MonitoringPlanSubViewEffectiveRowColumnProvider extends AbstractPla
 	public CodeList getColumnCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
-				CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL,
-				BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL,
+				BaseObject.PSEUDO_TAG_TIMEFRAME_TOTAL,
 				Desire.TAG_FULL_TEXT,
 		});
 	}

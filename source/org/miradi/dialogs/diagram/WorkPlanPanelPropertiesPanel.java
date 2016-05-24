@@ -28,7 +28,6 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.schemas.ProjectMetadataSchema;
 
 import javax.swing.*;
@@ -46,10 +45,7 @@ public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 	@Override
 	protected boolean doesSectionContainFieldWithTag(String tag)
 	{
-		if (tag.equals(CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL))
-			return true;
-
-		if (tag.equals(BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL))
+		if (tag.equals(BaseObject.PSEUDO_TAG_TIMEFRAME_TOTAL))
 			return true;
 
 		return super.doesSectionContainFieldWithTag(tag);
@@ -58,7 +54,7 @@ public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Who and When");
+		return EAM.text("Timeframe");
 	}
 
 	@Override
@@ -85,19 +81,12 @@ public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 		removeAll();
 		getFields().clear();
 
-		add(new PanelTitleLabel(EAM.text("Who")));
-		addFieldWithoutLabel(createWhoPlannedEditorField(orefToUse));
-
-		addField(createReadonlyTextField(BaseObject.PSEUDO_TAG_PLANNED_WHO_TOTAL));
-
-		addField(createPlannedLeaderDropDownField(orefToUse.getObjectType(), BaseObject.TAG_PLANNED_LEADER_RESOURCE));
-
-		PanelTitleLabel label = new PanelTitleLabel(EAM.text("When"));
+		PanelTitleLabel label = new PanelTitleLabel(EAM.text("Timeframe"));
 		label.setVerticalAlignment(SwingConstants.TOP);
 		add(label);
-		addFieldWithoutLabel(createWhenPlannedEditorField(orefToUse));
+		addFieldWithoutLabel(createTimeframeEditorField(orefToUse));
 
-		addField(createReadonlyTextField(BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL));
+		addField(createReadonlyTextField(BaseObject.PSEUDO_TAG_TIMEFRAME_TOTAL));
 
 		updateFieldsFromProject();
 

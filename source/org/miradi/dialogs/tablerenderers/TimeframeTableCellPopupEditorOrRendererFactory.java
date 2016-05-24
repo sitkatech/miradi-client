@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.tablerenderers;
 
-import org.miradi.dialogfields.editors.WhenPlannedPopupEditorComponent;
+import org.miradi.dialogfields.editors.TimeframePopupEditorComponent;
 import org.miradi.dialogfields.editors.WhenPopupEditorComponent;
 import org.miradi.main.MainWindow;
 
-public class WhenPlannedTableCellPopupEditorOrRendererFactory extends WhenTableCellPopupEditorOrRendererFactory
+public class TimeframeTableCellPopupEditorOrRendererFactory extends WhenTableCellPopupEditorOrRendererFactory
 {
-	public WhenPlannedTableCellPopupEditorOrRendererFactory(MainWindow mainWindowToUse, RowColumnBaseObjectProvider objectProvider, FontForObjectProvider fontProvider)
+	public TimeframeTableCellPopupEditorOrRendererFactory(MainWindow mainWindowToUse, RowColumnBaseObjectProvider objectProvider, FontForObjectProvider fontProvider)
 	{
 		super(mainWindowToUse, objectProvider, fontProvider);
 	}
@@ -34,6 +34,6 @@ public class WhenPlannedTableCellPopupEditorOrRendererFactory extends WhenTableC
 	@Override
 	protected WhenPopupEditorComponent createWhenPopupEditorComponent(MainWindow mainWindowToUse)
 	{
-		return new WhenPlannedPopupEditorComponent(mainWindowToUse);
+		return new TimeframePopupEditorComponent(mainWindowToUse);
 	}
 }

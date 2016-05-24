@@ -47,7 +47,6 @@ public class IndicatorSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(Indicator.TAG_DETAIL);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_COMMENTS);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
-		createFieldSchemaOptionalRef(Indicator.TAG_PLANNED_LEADER_RESOURCE);
 		createFieldSchemaOptionalRef(Indicator.TAG_ASSIGNED_LEADER_RESOURCE);
 		createFieldSchemaSingleLineUserText(Indicator.TAG_UNIT);
         createOwnedFieldSchemaReflist(Indicator.TAG_FUTURE_STATUS_REFS, FUTURE_STATUS);

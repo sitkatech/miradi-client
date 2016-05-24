@@ -20,23 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations.forward;
 
-import org.martus.util.MultiCalendar;
-import org.miradi.ids.BaseId;
-import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.migrations.*;
-import org.miradi.objecthelpers.DateUnit;
+import org.miradi.objectdata.CodeToCodeListMapData;
+import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.objects.TableSettings;
 import org.miradi.schemas.TimeframeSchema;
-import org.miradi.utils.DateRange;
-import org.miradi.utils.DateUnitEffort;
-import org.miradi.utils.DateUnitEffortList;
-import org.miradi.utils.HtmlUtilities;
+import org.miradi.utils.CodeList;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Vector;
 
 public class MigrationTo22 extends AbstractMigration
@@ -61,15 +54,12 @@ public class MigrationTo22 extends AbstractMigration
 	private MigrationResult migrate(boolean reverseMigration) throws Exception
 	{
 		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
-		AbstractMigrationORefVisitor visitor;
+
 		Vector<Integer> typesToVisit = getTypesToMigrate();
 
 		for(Integer typeToVisit : typesToVisit)
 		{
-			if (reverseMigration)
-				visitor = new RemoveTimeframesVisitor(typeToVisit);
-			else
-				visitor = new CreateTimeframesForResourceAssignmentsVisitor(typeToVisit);
+			final WorkPlanBudgetColumnCodeListVisitor visitor = new WorkPlanBudgetColumnCodeListVisitor(typeToVisit, reverseMigration);
 			visitAllORefsInPool(visitor);
 			final MigrationResult thisMigrationResult = visitor.getMigrationResult();
 			if (migrationResult == null)
@@ -79,16 +69,6 @@ public class MigrationTo22 extends AbstractMigration
 		}
 
 		return migrationResult;
-	}
-
-	private Vector<Integer> getTypesToMigrate()
-	{
-		Vector<Integer> typesToMigrate = new Vector<Integer>();
-		typesToMigrate.add(ObjectType.STRATEGY);
-		typesToMigrate.add(ObjectType.TASK);
-		typesToMigrate.add(ObjectType.INDICATOR);
-
-		return typesToMigrate;
 	}
 
 	@Override
@@ -106,14 +86,23 @@ public class MigrationTo22 extends AbstractMigration
 	@Override
 	protected String getDescription()
 	{
-		return EAM.text("This migration creates timeframe entries for resource assignments (where a resource or date range is specified).");
+		return EAM.text("This migration adds new default columns to the work plan customize panel.");
 	}
 
-	private class CreateTimeframesForResourceAssignmentsVisitor extends AbstractMigrationORefVisitor
+	private Vector<Integer> getTypesToMigrate()
 	{
-		public CreateTimeframesForResourceAssignmentsVisitor(int typeToVisit)
+		Vector<Integer> typesToMigrate = new Vector<Integer>();
+		typesToMigrate.add(ObjectType.TABLE_SETTINGS);
+
+		return typesToMigrate;
+	}
+
+	private class WorkPlanBudgetColumnCodeListVisitor extends AbstractMigrationORefVisitor
+	{
+		public WorkPlanBudgetColumnCodeListVisitor(int typeToVisit, boolean reverseMigration)
 		{
 			type = typeToVisit;
+			isReverseMigration = reverseMigration;
 		}
 
 		public int getTypeToVisit()
@@ -124,208 +113,97 @@ public class MigrationTo22 extends AbstractMigration
 		@Override
 		public MigrationResult internalVisit(ORef rawObjectRef) throws Exception
 		{
-			RawObject rawObject = getRawProject().findObject(rawObjectRef);
-			if (rawObject != null && rawObject.containsKey(TAG_RESOURCE_ASSIGNMENT_IDS))
-			{
-				IdList timeframeIdList = new IdList(TimeframeSchema.getObjectType());
-				RawPool timeframePool = getOrCreateTimeframePool();
-
-				ArrayList<RawObject> resourceAssignments = getResourceAssignments(rawObject);
-
-				DateUnitEffortList timeframeDateUnitEffortList = buildTimeframeDateUnitEffortList(resourceAssignments);
-
-				for (RawObject resourceAssignment : resourceAssignments)
-				{
-					if (resourceAssignment.containsKey(TAG_DATEUNIT_EFFORTS) || resourceAssignment.containsKey(TAG_RESOURCE_ID))
-					{
-						RawObject newTimeframe = new RawObject(TimeframeSchema.getObjectType());
-						newTimeframe.setData(TAG_DATEUNIT_EFFORTS, timeframeDateUnitEffortList.toJson().toString());
-						if (resourceAssignment.containsKey(TAG_RESOURCE_ID))
-							newTimeframe.setData(TAG_RESOURCE_ID, resourceAssignment.getData(TAG_RESOURCE_ID));
-						final BaseId nextHighestId = getRawProject().getNextHighestId();
-						final ORef newTimeframeRef = new ORef(ObjectType.TIMEFRAME, nextHighestId);
-						timeframePool.put(newTimeframeRef, newTimeframe);
-						timeframeIdList.add(nextHighestId);
-					}
-				}
-
-				if (!timeframeIdList.isEmpty())
-					rawObject.setData(TAG_TIMEFRAME_IDS, timeframeIdList.toJson().toString());
-			}
-
-			if (rawObject != null && rawObject.containsKey(TAG_ASSIGNED_LEADER_RESOURCE))
-			{
-				String data = rawObject.get(TAG_ASSIGNED_LEADER_RESOURCE);
-				rawObject.setData(TAG_PLANNED_LEADER_RESOURCE, data);
-			}
-
-			return MigrationResult.createSuccess();
-		}
-
-		private DateUnitEffortList buildTimeframeDateUnitEffortList(ArrayList<RawObject> resourceAssignments) throws Exception
-		{
-			DateUnitEffortList timeframeDateUnitEffortList = new DateUnitEffortList();
-
-			DateRange timeframeDateRange = null;
-			boolean foundAtLeastOneProjectTotalDateUnit = false;
-
-			for (RawObject resourceAssignment : resourceAssignments)
-			{
-				if (resourceAssignment.containsKey(TAG_DATEUNIT_EFFORTS))
-				{
-					DateUnitEffortList resourceAssignmentDateUnitEffortList = new DateUnitEffortList(resourceAssignment.get(TAG_DATEUNIT_EFFORTS));
-
-					for (int index = 0; index < resourceAssignmentDateUnitEffortList.size(); ++index)
-					{
-						DateUnitEffort resourceAssignmentDateUnitEffort = resourceAssignmentDateUnitEffortList.getDateUnitEffort(index);
-						if (resourceAssignmentDateUnitEffort.getDateUnit().isProjectTotal())
-						{
-							foundAtLeastOneProjectTotalDateUnit = true;
-						}
-						else if (resourceAssignmentDateUnitEffort.getDateUnit().isDay())
-						{
-							DateUnit timeframeDateUnit = createMonthDateUnit(resourceAssignmentDateUnitEffort.getDateUnit());
-							timeframeDateRange = addToDateRange(timeframeDateRange, timeframeDateUnit);
-						}
-						else
-						{
-							timeframeDateRange = addToDateRange(timeframeDateRange, resourceAssignmentDateUnitEffort.getDateUnit());
-						}
-					}
-				}
-			}
-
-			if (foundAtLeastOneProjectTotalDateUnit)
-			{
-				DateUnit timeframeDateUnit = new DateUnit();
-				DateUnitEffort timeframeDateUnitEffort = new DateUnitEffort(timeframeDateUnit, 0);
-				timeframeDateUnitEffortList.add(timeframeDateUnitEffort);
-			}
-			else if (timeframeDateRange != null)
-			{
-				DateRange startDateRange = new DateRange(timeframeDateRange.getStartDate(), timeframeDateRange.getStartDate());
-				DateUnit startDateUnit = DateUnit.createFromDateRange(startDateRange);
-
-				DateUnit timeframeStartDateUnit = createMonthDateUnit(startDateUnit);
-				DateUnitEffort timeframeStartDateUnitEffort = new DateUnitEffort(timeframeStartDateUnit, 0);
-				timeframeDateUnitEffortList.add(timeframeStartDateUnitEffort);
-
-				DateRange endDateRange = new DateRange(timeframeDateRange.getEndDate(), timeframeDateRange.getEndDate());
-				DateUnit endDateUnit = DateUnit.createFromDateRange(endDateRange);
-
-				DateUnit timeframeEndDateUnit = createMonthDateUnit(endDateUnit);
-				DateUnitEffort timeframeEndDateUnitEffort = new DateUnitEffort(timeframeEndDateUnit, 0);
-				timeframeDateUnitEffortList.add(timeframeEndDateUnitEffort);
-			}
-
-			return timeframeDateUnitEffortList;
-		}
-
-		private DateUnit createMonthDateUnit(DateUnit dateUnit)
-		{
-			MultiCalendar cal = MultiCalendar.createFromGregorianYearMonthDay(dateUnit.getYear(), dateUnit.getMonth(), 1);
-			return DateUnit.createMonthDateUnit(cal.toIsoDateString());
-		}
-
-		private DateRange addToDateRange(DateRange dateRangeToAddTo, DateUnit dateUnit) throws Exception
-		{
-			if (dateRangeToAddTo == null)
-				return dateUnit.asDateRange();
-			else
-				return DateRange.combine(dateRangeToAddTo, dateUnit.asDateRange());
-		}
-
-		private RawPool getOrCreateTimeframePool()
-		{
-			getRawProject().ensurePoolExists(TimeframeSchema.getObjectType());
-			return getRawProject().getRawPoolForType(TimeframeSchema.getObjectType());
-		}
-
-		private ArrayList<RawObject> getResourceAssignments(RawObject rawObject) throws Exception
-		{
-			ArrayList<RawObject> resourceAssignments = new ArrayList<RawObject>();
-
-			IdList resourceAssignmentIdList = new IdList(ResourceAssignmentSchema.getObjectType(), rawObject.get(TAG_RESOURCE_ASSIGNMENT_IDS));
-
-			for(BaseId resourceAssignmentId : resourceAssignmentIdList.asVector())
-			{
-				ORef resourceAssignmentRef = new ORef(ResourceAssignmentSchema.getObjectType(), resourceAssignmentId);
-				RawObject rawResourceAssignment = getRawProject().findObject(resourceAssignmentRef);
-				if (rawResourceAssignment != null)
-					resourceAssignments.add(rawResourceAssignment);
-			}
-
-			return resourceAssignments;
-		}
-
-		private int type;
-	}
-
-	private class RemoveTimeframesVisitor extends AbstractMigrationORefVisitor
-	{
-		public RemoveTimeframesVisitor(int typeToVisit)
-		{
-			type = typeToVisit;
-		}
-
-		public int getTypeToVisit()
-		{
-			return type;
-		}
-
-		@Override
-		public MigrationResult internalVisit(ORef rawObjectRef) throws Exception
-		{
-			MigrationResult migrationResult = MigrationResult.createSuccess();
+			MigrationResult migrationResult = MigrationResult.createUninitializedResult();
 
 			RawObject rawObject = getRawProject().findObject(rawObjectRef);
-			if (rawObject != null && rawObject.containsKey(TAG_TIMEFRAME_IDS))
+			if (rawObject != null)
 			{
-				IdList timeframeIdList = new IdList(TimeframeSchema.getObjectType(), rawObject.get(TAG_TIMEFRAME_IDS));
-
-				if (timeframeIdList.isEmpty())
-					return MigrationResult.createSuccess();
-
-				for(BaseId timeframeId : timeframeIdList.asVector())
-				{
-					ORef timeframeRef = new ORef(TimeframeSchema.getObjectType(), timeframeId);
-					getRawProject().deleteRawObject(timeframeRef);
-				}
-
-				rawObject.remove(TAG_TIMEFRAME_IDS);
-
-				String label = HtmlUtilities.convertHtmlToPlainText(rawObject.get(TAG_LABEL));
-				String baseObjectLabel = createMessage(EAM.text("Label = %s"), label);
-
-				HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
-				tokenReplacementMap.put("%label", baseObjectLabel);
-				tokenReplacementMap.put("%fieldName", TAG_TIMEFRAME_IDS);
-				String dataLossMessage = EAM.substitute(EAM.text("%fieldName will be removed. %label"), tokenReplacementMap);
-				migrationResult.addDataLoss(dataLossMessage);
+				if (isReverseMigration)
+					migrationResult = removeFields(rawObject);
+				else
+					migrationResult = addFields(rawObject);
 			}
 
 			return migrationResult;
 		}
 
-		private String createMessage(String message, String label)
+		private boolean projectHasTimeframes()
 		{
-			if (label != null && label.length() > 0)
-				return EAM.substituteSingleString(message, label);
+			return getRawProject().containsAnyObjectsOfType(TimeframeSchema.getObjectType());
+		}
 
-			return "";
+		private MigrationResult addFields(RawObject rawObject) throws Exception
+		{
+			MigrationResult migrationResult = MigrationResult.createSuccess();
+
+			CodeToCodeListMap tableSettingsMap = getCodeToCodeListMapData(rawObject, TAG_TABLE_SETTINGS_MAP);
+			if (tableSettingsMap.contains(WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY))
+			{
+				CodeList workPlanBudgetColumnCodeList = tableSettingsMap.getCodeList(WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
+
+				if (projectHasTimeframes())
+				{
+					if (!workPlanBudgetColumnCodeList.contains(META_TIMEFRAME_TOTAL))
+						workPlanBudgetColumnCodeList.add(META_TIMEFRAME_TOTAL);
+				}
+
+				if (!workPlanBudgetColumnCodeList.contains(META_ASSIGNED_WHO_TOTAL))
+					workPlanBudgetColumnCodeList.add(META_ASSIGNED_WHO_TOTAL);
+				if (!workPlanBudgetColumnCodeList.contains(META_ASSIGNED_WHEN_TOTAL))
+					workPlanBudgetColumnCodeList.add(META_ASSIGNED_WHEN_TOTAL);
+
+				tableSettingsMap.putCodeList(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, workPlanBudgetColumnCodeList);
+
+				rawObject.setData(TAG_TABLE_SETTINGS_MAP, tableSettingsMap.toJsonString());
+			}
+
+			return migrationResult;
+		}
+
+		private MigrationResult removeFields(RawObject rawObject) throws Exception
+		{
+			MigrationResult migrationResult = MigrationResult.createSuccess();
+
+			CodeToCodeListMap tableSettingsMap = getCodeToCodeListMapData(rawObject, TAG_TABLE_SETTINGS_MAP);
+			if (tableSettingsMap.contains(WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY))
+			{
+				CodeList workPlanBudgetColumnCodeList = tableSettingsMap.getCodeList(WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
+
+				if (workPlanBudgetColumnCodeList.contains(META_TIMEFRAME_TOTAL))
+					workPlanBudgetColumnCodeList.removeCode(META_TIMEFRAME_TOTAL);
+				if (workPlanBudgetColumnCodeList.contains(META_ASSIGNED_WHO_TOTAL))
+					workPlanBudgetColumnCodeList.removeCode(META_ASSIGNED_WHO_TOTAL);
+				if (workPlanBudgetColumnCodeList.contains(META_ASSIGNED_WHEN_TOTAL))
+					workPlanBudgetColumnCodeList.removeCode(META_ASSIGNED_WHEN_TOTAL);
+
+				tableSettingsMap.putCodeList(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, workPlanBudgetColumnCodeList);
+
+				rawObject.setData(TAG_TABLE_SETTINGS_MAP, tableSettingsMap.toJsonString());
+			}
+
+			return migrationResult;
+		}
+
+		private CodeToCodeListMap getCodeToCodeListMapData(RawObject rawObject, String tag) throws Exception
+		{
+			String rawValue = rawObject.getData(tag);
+			CodeToCodeListMapData map = new CodeToCodeListMapData(tag);
+			if (rawValue != null)
+				map.set(rawValue);
+			return map.getStringToCodeListMap();
 		}
 
 		private int type;
+		private boolean isReverseMigration;
 	}
-
-	public static final String TAG_ASSIGNED_LEADER_RESOURCE = "AssignedLeaderResource";
-	public static final String TAG_PLANNED_LEADER_RESOURCE = "PlannedLeaderResource";
-	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
-	public static final String TAG_DATEUNIT_EFFORTS = "Details";
-	public static final String TAG_RESOURCE_ID = "ResourceId";
-	public static final String TAG_TIMEFRAME_IDS = "TimeframeIds";
-	public static final String TAG_LABEL = "Label";
 
 	public static final int VERSION_FROM = 21;
 	public static final int VERSION_TO = 22;
+
+	public static final String TAG_TABLE_SETTINGS_MAP = "TagTableSettingsMap";
+	public static final String WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY = "WorkPlanBudgetColumnCodeListKey";
+
+	public static final String META_TIMEFRAME_TOTAL = "TimeframeDatesTotal";
+	public static final String META_ASSIGNED_WHO_TOTAL = "MetaAssignedWhoTotal";
+	public static final String META_ASSIGNED_WHEN_TOTAL = "AssignedEffortDatesTotal";
 }

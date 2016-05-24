@@ -20,16 +20,23 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations.forward;
 
+import org.martus.util.MultiCalendar;
+import org.miradi.ids.BaseId;
+import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.migrations.*;
-import org.miradi.objectdata.CodeToCodeMapData;
-import org.miradi.objecthelpers.CodeToCodeMap;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.utils.BiDirectionalHashMap;
-import org.miradi.utils.CodeList;
+import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.schemas.TimeframeSchema;
+import org.miradi.utils.DateRange;
+import org.miradi.utils.DateUnitEffort;
+import org.miradi.utils.DateUnitEffortList;
+import org.miradi.utils.HtmlUtilities;
 
-import java.util.HashSet;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Vector;
 
 public class MigrationTo21 extends AbstractMigration
@@ -54,12 +61,15 @@ public class MigrationTo21 extends AbstractMigration
 	private MigrationResult migrate(boolean reverseMigration) throws Exception
 	{
 		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
-
+		AbstractMigrationORefVisitor visitor;
 		Vector<Integer> typesToVisit = getTypesToMigrate();
 
 		for(Integer typeToVisit : typesToVisit)
 		{
-			final RenameAssignmentRelatedCodeFieldsVisitor visitor = new RenameAssignmentRelatedCodeFieldsVisitor(typeToVisit, reverseMigration);
+			if (reverseMigration)
+				visitor = new RemoveTimeframesVisitor(typeToVisit);
+			else
+				visitor = new CreateTimeframesForResourceAssignmentsVisitor(typeToVisit);
 			visitAllORefsInPool(visitor);
 			final MigrationResult thisMigrationResult = visitor.getMigrationResult();
 			if (migrationResult == null)
@@ -69,6 +79,16 @@ public class MigrationTo21 extends AbstractMigration
 		}
 
 		return migrationResult;
+	}
+
+	private Vector<Integer> getTypesToMigrate()
+	{
+		Vector<Integer> typesToMigrate = new Vector<Integer>();
+		typesToMigrate.add(ObjectType.STRATEGY);
+		typesToMigrate.add(ObjectType.TASK);
+		typesToMigrate.add(ObjectType.INDICATOR);
+
+		return typesToMigrate;
 	}
 
 	@Override
@@ -86,27 +106,14 @@ public class MigrationTo21 extends AbstractMigration
 	@Override
 	protected String getDescription()
 	{
-		return EAM.text("This migration renames the total who and total effort dates 'meta' fields on the object tree table and table setting objects, and adds new 'meta' fields for the total planned who and effort dates.");
+		return EAM.text("This migration creates timeframe entries for resource assignments (where a resource or date range is specified).");
 	}
 
-	private Vector<Integer> getTypesToMigrate()
+	private class CreateTimeframesForResourceAssignmentsVisitor extends AbstractMigrationORefVisitor
 	{
-		Vector<Integer> typesToMigrate = new Vector<Integer>();
-		typesToMigrate.add(ObjectType.OBJECT_TREE_TABLE_CONFIGURATION);
-		typesToMigrate.add(ObjectType.TABLE_SETTINGS);
-
-		return typesToMigrate;
-	}
-
-	private class RenameAssignmentRelatedCodeFieldsVisitor extends AbstractMigrationORefVisitor
-	{
-		public RenameAssignmentRelatedCodeFieldsVisitor(int typeToVisit, boolean reverseMigration)
+		public CreateTimeframesForResourceAssignmentsVisitor(int typeToVisit)
 		{
 			type = typeToVisit;
-			isReverseMigration = reverseMigration;
-			oldToNewTagMap = createLegacyToNewMap();
-			codeListTagsToVisit = getCodeListTagsToVisit();
-			stringMapTagsToVisit = getStringMapTagsToVisit();
 		}
 
 		public int getTypeToVisit()
@@ -117,204 +124,200 @@ public class MigrationTo21 extends AbstractMigration
 		@Override
 		public MigrationResult internalVisit(ORef rawObjectRef) throws Exception
 		{
-			MigrationResult migrationResult = MigrationResult.createUninitializedResult();
-
 			RawObject rawObject = getRawProject().findObject(rawObjectRef);
-			if (rawObject != null)
+			if (rawObject != null && rawObject.containsKey(TAG_RESOURCE_ASSIGNMENT_IDS))
 			{
-				if (isReverseMigration)
+				IdList timeframeIdList = new IdList(TimeframeSchema.getObjectType());
+				RawPool timeframePool = getOrCreateTimeframePool();
+
+				ArrayList<RawObject> resourceAssignments = getResourceAssignments(rawObject);
+
+				DateUnitEffortList timeframeDateUnitEffortList = buildTimeframeDateUnitEffortList(resourceAssignments);
+
+				for (RawObject resourceAssignment : resourceAssignments)
 				{
-					migrationResult = renameFields(rawObject, codeListTagsToVisit, stringMapTagsToVisit, oldToNewTagMap.reverseMap());
-					final MigrationResult thisMigrationResult = removeFields(rawObject, codeListTagsToVisit);
-					migrationResult.merge(thisMigrationResult);
+					if (resourceAssignment.containsKey(TAG_DATEUNIT_EFFORTS) || resourceAssignment.containsKey(TAG_RESOURCE_ID))
+					{
+						RawObject newTimeframe = new RawObject(TimeframeSchema.getObjectType());
+						newTimeframe.setData(TAG_DATEUNIT_EFFORTS, timeframeDateUnitEffortList.toJson().toString());
+						if (resourceAssignment.containsKey(TAG_RESOURCE_ID))
+							newTimeframe.setData(TAG_RESOURCE_ID, resourceAssignment.getData(TAG_RESOURCE_ID));
+						final BaseId nextHighestId = getRawProject().getNextHighestId();
+						final ORef newTimeframeRef = new ORef(ObjectType.TIMEFRAME, nextHighestId);
+						timeframePool.put(newTimeframeRef, newTimeframe);
+						timeframeIdList.add(nextHighestId);
+					}
 				}
-				else
-				{
-					migrationResult = renameFields(rawObject, codeListTagsToVisit, stringMapTagsToVisit, oldToNewTagMap);
-					final MigrationResult thisMigrationResult = addFields(rawObject, codeListTagsToVisit);
-					migrationResult.merge(thisMigrationResult);
-				}
+
+				if (!timeframeIdList.isEmpty())
+					rawObject.setData(TAG_TIMEFRAME_IDS, timeframeIdList.toJson().toString());
 			}
 
-			return migrationResult;
+			return MigrationResult.createSuccess();
 		}
 
-		private MigrationResult renameFields(RawObject rawObject, Vector<String> codeListTagsToVisit, Vector<String> stringMapTagsToVisit, BiDirectionalHashMap oldToNewTagMapToUse) throws Exception
+		private DateUnitEffortList buildTimeframeDateUnitEffortList(ArrayList<RawObject> resourceAssignments) throws Exception
 		{
-			MigrationResult migrationResult = MigrationResult.createSuccess();
+			DateUnitEffortList timeframeDateUnitEffortList = new DateUnitEffortList();
 
-			HashSet<String> legacyTags = oldToNewTagMapToUse.getKeys();
+			DateRange timeframeDateRange = null;
+			boolean foundAtLeastOneProjectTotalDateUnit = false;
 
-			for(String codeListTag : codeListTagsToVisit)
+			for (RawObject resourceAssignment : resourceAssignments)
 			{
-				CodeList codeListToMigrate = getCodeList(rawObject, codeListTag);
-				CodeList codeListMigrated = new CodeList();
-
-				for (String code : codeListToMigrate)
+				if (resourceAssignment.containsKey(TAG_DATEUNIT_EFFORTS))
 				{
-					if (legacyTags.contains(code))
+					DateUnitEffortList resourceAssignmentDateUnitEffortList = new DateUnitEffortList(resourceAssignment.get(TAG_DATEUNIT_EFFORTS));
+
+					for (int index = 0; index < resourceAssignmentDateUnitEffortList.size(); ++index)
 					{
-						String newTag = oldToNewTagMapToUse.getValue(code);
-						codeListMigrated.add(newTag);
-					}
-					else
-					{
-						codeListMigrated.add(code);
-					}
-				}
-
-				rawObject.setData(codeListTag, codeListMigrated.toJsonString());
-			}
-
-			for(String stringMapTag : stringMapTagsToVisit)
-			{
-				CodeToCodeMap stringMapToMigrate = getStringMap(rawObject, stringMapTag);
-				for(String legacyTag : legacyTags)
-				{
-					if (stringMapToMigrate.contains(legacyTag))
-					{
-						String newTag = oldToNewTagMapToUse.getValue(legacyTag);
-						String data = stringMapToMigrate.getCode(legacyTag);
-						stringMapToMigrate.removeCode(legacyTag);
-						stringMapToMigrate.putCode(newTag, data);
-					}
-				}
-				rawObject.setData(stringMapTag, stringMapToMigrate.toJsonString());
-			}
-
-			return migrationResult;
-		}
-
-		private MigrationResult addFields(RawObject rawObject, Vector<String> codeListTagsToVisit) throws Exception
-		{
-			MigrationResult migrationResult = MigrationResult.createSuccess();
-
-			if (getTypeToVisit() == ObjectType.OBJECT_TREE_TABLE_CONFIGURATION)
-				return migrationResult;
-
-			String tableIdentifier = rawObject.getData(TAG_TABLE_IDENTIFIER);
-			if (tableIdentifier.equals(WORK_PLAN_MULTI_TABLE_MODEL_UNIQUE_TREE_TABLE_IDENTIFIER))
-			{
-				for(String codeListTag : codeListTagsToVisit)
-				{
-					CodeList codeListToMigrate = getCodeList(rawObject, codeListTag);
-
-					if (codeListTag.equals(TAG_COLUMN_SEQUENCE_CODES))
-					{
-						CodeList codeListMigrated = new CodeList();
-
-						codeListMigrated.add(META_PLANNED_WHO_TOTAL);
-						codeListMigrated.add(PSEUDO_TAG_PLANNED_WHEN_TOTAL);
-
-						for (String code : codeListToMigrate)
+						DateUnitEffort resourceAssignmentDateUnitEffort = resourceAssignmentDateUnitEffortList.getDateUnitEffort(index);
+						if (resourceAssignmentDateUnitEffort.getDateUnit().isProjectTotal())
 						{
-							codeListMigrated.add(code);
+							foundAtLeastOneProjectTotalDateUnit = true;
 						}
-
-						rawObject.setData(codeListTag, codeListMigrated.toJsonString());
+						else if (resourceAssignmentDateUnitEffort.getDateUnit().isDay())
+						{
+							DateUnit timeframeDateUnit = createMonthDateUnit(resourceAssignmentDateUnitEffort.getDateUnit());
+							timeframeDateRange = addToDateRange(timeframeDateRange, timeframeDateUnit);
+						}
+						else
+						{
+							timeframeDateRange = addToDateRange(timeframeDateRange, resourceAssignmentDateUnitEffort.getDateUnit());
+						}
 					}
 				}
 			}
 
-			return migrationResult;
-		}
-
-		private MigrationResult removeFields(RawObject rawObject, Vector<String> codeListTagsToVisit) throws Exception
-		{
-			MigrationResult migrationResult = MigrationResult.createSuccess();
-
-			for(String codeListTag : codeListTagsToVisit)
+			if (foundAtLeastOneProjectTotalDateUnit)
 			{
-				CodeList codeListToMigrate = getCodeList(rawObject, codeListTag);
+				DateUnit timeframeDateUnit = new DateUnit();
+				DateUnitEffort timeframeDateUnitEffort = new DateUnitEffort(timeframeDateUnit, 0);
+				timeframeDateUnitEffortList.add(timeframeDateUnitEffort);
+			}
+			else if (timeframeDateRange != null)
+			{
+				DateRange startDateRange = new DateRange(timeframeDateRange.getStartDate(), timeframeDateRange.getStartDate());
+				DateUnit startDateUnit = DateUnit.createFromDateRange(startDateRange);
 
-				if (codeListTag.equals(TAG_COLUMN_SEQUENCE_CODES))
-				{
-					if (codeListToMigrate.contains(META_PLANNED_WHO_TOTAL))
-						codeListToMigrate.removeCode(META_PLANNED_WHO_TOTAL);
+				DateUnit timeframeStartDateUnit = createMonthDateUnit(startDateUnit);
+				DateUnitEffort timeframeStartDateUnitEffort = new DateUnitEffort(timeframeStartDateUnit, 0);
+				timeframeDateUnitEffortList.add(timeframeStartDateUnitEffort);
 
-					if (codeListToMigrate.contains(PSEUDO_TAG_PLANNED_WHEN_TOTAL))
-						codeListToMigrate.removeCode(PSEUDO_TAG_PLANNED_WHEN_TOTAL);
+				DateRange endDateRange = new DateRange(timeframeDateRange.getEndDate(), timeframeDateRange.getEndDate());
+				DateUnit endDateUnit = DateUnit.createFromDateRange(endDateRange);
 
-					rawObject.setData(codeListTag, codeListToMigrate.toJsonString());
-				}
+				DateUnit timeframeEndDateUnit = createMonthDateUnit(endDateUnit);
+				DateUnitEffort timeframeEndDateUnitEffort = new DateUnitEffort(timeframeEndDateUnit, 0);
+				timeframeDateUnitEffortList.add(timeframeEndDateUnitEffort);
 			}
 
-			return migrationResult;
+			return timeframeDateUnitEffortList;
 		}
 
-		private CodeList getCodeList(RawObject rawObject, String tag) throws Exception
+		private DateUnit createMonthDateUnit(DateUnit dateUnit)
 		{
-			String data = rawObject.getData(tag);
-			if (data != null)
-				return new CodeList(data);
+			MultiCalendar cal = MultiCalendar.createFromGregorianYearMonthDay(dateUnit.getYear(), dateUnit.getMonth(), 1);
+			return DateUnit.createMonthDateUnit(cal.toIsoDateString());
+		}
+
+		private DateRange addToDateRange(DateRange dateRangeToAddTo, DateUnit dateUnit) throws Exception
+		{
+			if (dateRangeToAddTo == null)
+				return dateUnit.asDateRange();
 			else
-				return new CodeList();
+				return DateRange.combine(dateRangeToAddTo, dateUnit.asDateRange());
 		}
 
-		private CodeToCodeMap getStringMap(RawObject rawObject, String tag) throws Exception
+		private RawPool getOrCreateTimeframePool()
 		{
-			String rawValue = rawObject.getData(tag);
-			CodeToCodeMapData codeToCodeMapData = new CodeToCodeMapData(tag);
-			if (rawValue != null)
-				codeToCodeMapData.set(rawObject.getData(tag));
-			return codeToCodeMapData.getCodeToCodeMap();
+			getRawProject().ensurePoolExists(TimeframeSchema.getObjectType());
+			return getRawProject().getRawPoolForType(TimeframeSchema.getObjectType());
 		}
 
-		private Vector<String> getCodeListTagsToVisit()
+		private ArrayList<RawObject> getResourceAssignments(RawObject rawObject) throws Exception
 		{
-			Vector<String> codeListTagsToVisit = new Vector<String>();
-			codeListTagsToVisit.add(TAG_COL_CONFIGURATION);
-			codeListTagsToVisit.add(TAG_COLUMN_SEQUENCE_CODES);
+			ArrayList<RawObject> resourceAssignments = new ArrayList<RawObject>();
 
-			return codeListTagsToVisit;
-		}
+			IdList resourceAssignmentIdList = new IdList(ResourceAssignmentSchema.getObjectType(), rawObject.get(TAG_RESOURCE_ASSIGNMENT_IDS));
 
-		private Vector<String> getStringMapTagsToVisit()
-		{
-			Vector<String> stringMapTagsToVisit = new Vector<String>();
-			stringMapTagsToVisit.add(TAG_COLUMN_WIDTHS);
+			for(BaseId resourceAssignmentId : resourceAssignmentIdList.asVector())
+			{
+				ORef resourceAssignmentRef = new ORef(ResourceAssignmentSchema.getObjectType(), resourceAssignmentId);
+				RawObject rawResourceAssignment = getRawProject().findObject(resourceAssignmentRef);
+				if (rawResourceAssignment != null)
+					resourceAssignments.add(rawResourceAssignment);
+			}
 
-			return stringMapTagsToVisit;
-		}
-
-		protected BiDirectionalHashMap createLegacyToNewMap()
-		{
-			BiDirectionalHashMap oldToNewTagMap = new BiDirectionalHashMap();
-			oldToNewTagMap.put(LEGACY_META_ASSIGNED_WHO_TOTAL, META_ASSIGNED_WHO_TOTAL);
-			oldToNewTagMap.put(LEGACY_PSEUDO_TAG_ASSIGNED_WHEN_TOTAL, PSEUDO_TAG_ASSIGNED_WHEN_TOTAL);
-
-			return oldToNewTagMap;
+			return resourceAssignments;
 		}
 
 		private int type;
-		private boolean isReverseMigration;
-		private BiDirectionalHashMap oldToNewTagMap;
-		private Vector<String> codeListTagsToVisit;
-		private Vector<String> stringMapTagsToVisit;
 	}
+
+	private class RemoveTimeframesVisitor extends AbstractMigrationORefVisitor
+	{
+		public RemoveTimeframesVisitor(int typeToVisit)
+		{
+			type = typeToVisit;
+		}
+
+		public int getTypeToVisit()
+		{
+			return type;
+		}
+
+		@Override
+		public MigrationResult internalVisit(ORef rawObjectRef) throws Exception
+		{
+			MigrationResult migrationResult = MigrationResult.createSuccess();
+
+			RawObject rawObject = getRawProject().findObject(rawObjectRef);
+			if (rawObject != null && rawObject.containsKey(TAG_TIMEFRAME_IDS))
+			{
+				IdList timeframeIdList = new IdList(TimeframeSchema.getObjectType(), rawObject.get(TAG_TIMEFRAME_IDS));
+
+				if (timeframeIdList.isEmpty())
+					return MigrationResult.createSuccess();
+
+				for(BaseId timeframeId : timeframeIdList.asVector())
+				{
+					ORef timeframeRef = new ORef(TimeframeSchema.getObjectType(), timeframeId);
+					getRawProject().deleteRawObject(timeframeRef);
+				}
+
+				rawObject.remove(TAG_TIMEFRAME_IDS);
+
+				String label = HtmlUtilities.convertHtmlToPlainText(rawObject.get(TAG_LABEL));
+				String baseObjectLabel = createMessage(EAM.text("Label = %s"), label);
+
+				HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+				tokenReplacementMap.put("%label", baseObjectLabel);
+				tokenReplacementMap.put("%fieldName", TAG_TIMEFRAME_IDS);
+				String dataLossMessage = EAM.substitute(EAM.text("%fieldName will be removed. %label"), tokenReplacementMap);
+				migrationResult.addDataLoss(dataLossMessage);
+			}
+
+			return migrationResult;
+		}
+
+		private String createMessage(String message, String label)
+		{
+			if (label != null && label.length() > 0)
+				return EAM.substituteSingleString(message, label);
+
+			return "";
+		}
+
+		private int type;
+	}
+
+	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
+	public static final String TAG_DATEUNIT_EFFORTS = "Details";
+	public static final String TAG_RESOURCE_ID = "ResourceId";
+	public static final String TAG_TIMEFRAME_IDS = "TimeframeIds";
+	public static final String TAG_LABEL = "Label";
 
 	public static final int VERSION_FROM = 20;
 	public static final int VERSION_TO = 21;
-
-	public static final String TAG_TABLE_IDENTIFIER = "TableIdentifier";
-	public static final String WORK_PLAN_MULTI_TABLE_MODEL_UNIQUE_TREE_TABLE_IDENTIFIER = "MultiTableModelWorkPlanTreeTableModel";
-
-	public static final String TAG_COL_CONFIGURATION = "TagColConfiguration";
-	public static final String TAG_COLUMN_SEQUENCE_CODES = "ColumnSequenceCodes";
-	public static final String TAG_COLUMN_WIDTHS = "ColumnWidths";
-
-	public final static String LEGACY_META_ASSIGNED_WHO_TOTAL = "MetaWhoTotal";
-	public final static String META_ASSIGNED_WHO_TOTAL = "MetaAssignedWhoTotal";
-
-	public final static String LEGACY_PSEUDO_TAG_ASSIGNED_WHEN_TOTAL = "EffortDatesTotal";
-	public final static String PSEUDO_TAG_ASSIGNED_WHEN_TOTAL = "AssignedEffortDatesTotal";
-
-	public final static String LEGACY_READABLE_ASSIGNED_WHO_TOTAL_CODE = "WhoTotal";
-	public final static String LEGACY_READABLE_ASSIGNED_WHEN_TOTAL_CODE = "WhenTotal";
-
-	public final static String READABLE_PLANNED_WHO_TOTAL_CODE = "PlannedWhoTotal";
-	public final static String READABLE_PLANNED_WHEN_TOTAL_CODE = "PlannedWhenTotal";
-
-	public final static String META_PLANNED_WHO_TOTAL = "MetaPlannedWhoTotal";
-	public final static String PSEUDO_TAG_PLANNED_WHEN_TOTAL = "PlannedEffortDatesTotal";
 }

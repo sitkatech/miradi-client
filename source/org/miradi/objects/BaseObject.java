@@ -845,54 +845,7 @@ abstract public class BaseObject
 		return who;
 	}
 
-	public String getPlannedWhoRollupAsString()
-	{
-		try
-		{
-			ORefSet resourcesRefs = getTotalTimePeriodCostsMapForPlans().getAllProjectResourceRefs();
-			Vector<ProjectResource> projectResources = toProjectResources(getProject(), resourcesRefs);
-
-			ORef leaderResourceRef = ORef.INVALID;
-			if (doesFieldExist(TAG_PLANNED_LEADER_RESOURCE))
-			{
-				leaderResourceRef = getRef(TAG_PLANNED_LEADER_RESOURCE);
-				Collections.sort(projectResources, new ProjectResourceLeaderAtTopSorter(leaderResourceRef));
-			}
-
-			final ORefList sortedProjectResourceRefs = new ORefList(projectResources);
-			Vector<String> sortedNames = getResourceNames(getProject(), sortedProjectResourceRefs, leaderResourceRef);
-			return createAppendedResourceNames(sortedNames);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return "";
-		}
-	}
-
-	public CodeList getPlannedWhoResourcesAsCodeList()
-	{
-		try
-		{
-			CodeList projectResourceCodes = new CodeList();
-			ORefList timeframeRefs = getTimeframeRefs();
-
-			for (ORef timeframeRef : timeframeRefs)
-			{
-				Timeframe timeframe = Timeframe.find(getProject(), timeframeRef);
-				projectResourceCodes.add(timeframe.getResourceRef().toString());
-			}
-
-			return projectResourceCodes;
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return new CodeList();
-		}
-	}
-
-	public boolean isPlannedWhenEditable()
+	public boolean isTimeframeEditable()
 	{
 		try
 		{
@@ -914,11 +867,11 @@ abstract public class BaseObject
 		}
 	}
 
-	public String getPlannedWhenRollupAsString()
+	public String getTimeframeRollupAsString()
 	{
 		try
 		{
-			return getProject().getProjectCalendar().convertToSafeString(getPlannedWhenRollup());
+			return getProject().getProjectCalendar().convertToSafeString(getTimeframeRollup());
 		}
 		catch (Exception e)
 		{
@@ -927,7 +880,7 @@ abstract public class BaseObject
 		}
 	}
 
-	public DateRange getPlannedWhenRollup() throws Exception
+	private DateRange getTimeframeRollup() throws Exception
 	{
 		final DateRange projectStartEndDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
 		return getTotalTimePeriodCostsMapForPlans().getRolledUpDateRange(projectStartEndDateRange);
@@ -1510,11 +1463,8 @@ abstract public class BaseObject
 	
 	public String getPseudoData(String fieldTag)
 	{
-		if (fieldTag.equals(PSEUDO_TAG_PLANNED_WHO_TOTAL))
-			return getPlannedWhoRollupAsString();
-		
-		if (fieldTag.equals(PSEUDO_TAG_PLANNED_WHEN_TOTAL))
-			return getPlannedWhenRollupAsString();
+		if (fieldTag.equals(PSEUDO_TAG_TIMEFRAME_TOTAL))
+			return getTimeframeRollupAsString();
 
 		if (fieldTag.equals(PSEUDO_TAG_ASSIGNED_WHEN_TOTAL))
 			return getAssignedWhenRollupAsString();
@@ -1595,14 +1545,6 @@ abstract public class BaseObject
 		return null;
 	}
 	
-	public ORef getPlannedLeaderResourceRef()
-	{
-		if (getTags().contains(TAG_PLANNED_LEADER_RESOURCE))
-			return getRef(TAG_PLANNED_LEADER_RESOURCE);
-		
-		return ORef.INVALID;
-	}
-
 	public ORef getAssignedLeaderResourceRef()
 	{
 		if (getTags().contains(TAG_ASSIGNED_LEADER_RESOURCE))
@@ -1668,12 +1610,10 @@ abstract public class BaseObject
 	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
 	public static final String TAG_EXPENSE_ASSIGNMENT_REFS = "ExpenseRefs";
 	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
-	public static final String TAG_PLANNED_LEADER_RESOURCE = "PlannedLeaderResource";
 	public static final String TAG_ASSIGNED_LEADER_RESOURCE = "AssignedLeaderResource";
 	public static final String TAG_TAXONOMY_CLASSIFICATION_CONTAINER = "TaxonomyClassificationContainer";
 
-	public final static String PSEUDO_TAG_PLANNED_WHO_TOTAL = CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL;
-	public final static String PSEUDO_TAG_PLANNED_WHEN_TOTAL = "PlannedEffortDatesTotal";
+	public final static String PSEUDO_TAG_TIMEFRAME_TOTAL = "TimeframeDatesTotal";
 	public final static String PSEUDO_TAG_ASSIGNED_WHEN_TOTAL = "AssignedEffortDatesTotal";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS = "PseudoLatestProgressReportDetails";

@@ -20,17 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
-import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.migrations.forward.MigrationTo26;
-import org.miradi.objectdata.CodeToCodeListMapData;
-import org.miradi.objecthelpers.CodeToCodeListMap;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.TableSettings;
-import org.miradi.project.Project;
-import org.miradi.utils.CodeList;
-
-import java.util.Vector;
-
+import org.miradi.objects.ExpenseAssignment;
+import org.miradi.objects.ProjectResource;
+import org.miradi.objects.ResourceAssignment;
 
 public class TestMigrationTo26 extends AbstractTestMigration
 {
@@ -38,78 +31,43 @@ public class TestMigrationTo26 extends AbstractTestMigration
 	{
 		super(name);
 	}
-
-	public void testTableSettingsFieldsChangedByMigration() throws Exception
+	
+	public void testProjectResourceTaxonomyClassificationsRemovedAfterReverseMigration() throws Exception
 	{
-		Vector<String> newRowCodesBeingAdded = getNewRowCodesAddedByMigration();
+		ProjectResource projectResource = getProject().createAndPopulateProjectResource();
+		String taxonomyClassifications = projectResource.getData(MigrationTo26.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
+		assertNotNull(taxonomyClassifications);
 
-		TableSettings tableSettingsBefore = getProject().createAndPopulateTableSettings();
-
-		getProject().setObjectData(tableSettingsBefore, TableSettings.TAG_TABLE_IDENTIFIER, WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
-
-		CodeToCodeListMap tableSettingsMapBefore = tableSettingsBefore.getTableSettingsMap();
-
-		CodeList workPlanRowCodeListBefore = tableSettingsBefore.getCodeListFromTableSettingsMap(MigrationTo26.WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY);
-
-		for (String code : newRowCodesBeingAdded)
-		{
-			assertTrue("Prior to reverse migration work plan row code list should contain new codes", workPlanRowCodeListBefore.contains(code));
-		}
-
-		RawProject migratedProject = reverseMigrate(new VersionRange(MigrationTo26.VERSION_TO));
-
-		CodeToCodeListMap tableSettingsMapAfterReverseMigration = getCodeToCodeListMapData(migratedProject, tableSettingsBefore.getRef(), MigrationTo26.TAG_TABLE_SETTINGS_MAP);
-
-		assertTrue("Reverse migration should not have removed work plan budget row code list", tableSettingsMapAfterReverseMigration.contains(MigrationTo26.WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY));
-
-		assertTrue("Reverse migration should not have removed any codes from table settings map", tableSettingsMapBefore.getCodes().equals(tableSettingsMapAfterReverseMigration.getCodes()));
-
-		CodeList workPlanRowCodeListAfterReverseMigration = tableSettingsMapAfterReverseMigration.getCodeList(MigrationTo26.WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY);
-
-		for (String code : newRowCodesBeingAdded)
-		{
-			assertFalse("Reverse migration should have removed code from work plan budget row code list", workPlanRowCodeListAfterReverseMigration.contains(code));
-		}
-
-		assertEquals("Reverse migration should not have changed the number of codes (bar those removed)", workPlanRowCodeListAfterReverseMigration.size() + newRowCodesBeingAdded.size(), workPlanRowCodeListBefore.size());
-
-		migrateProject(migratedProject, new VersionRange(Project.VERSION_HIGH));
-
-		CodeToCodeListMap tableSettingsMapAfterForwardMigration = getCodeToCodeListMapData(migratedProject, tableSettingsBefore.getRef(), MigrationTo26.TAG_TABLE_SETTINGS_MAP);
-
-		assertTrue("Forward migration should not have removed work plan row code list", tableSettingsMapAfterForwardMigration.contains(MigrationTo26.WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY));
-
-		assertTrue("Forward migration should not have removed any codes from table settings map", tableSettingsMapBefore.getCodes().equals(tableSettingsMapAfterForwardMigration.getCodes()));
-
-		CodeList workPlanRowCodeListAfterForwardMigration = tableSettingsMapAfterForwardMigration.getCodeList(MigrationTo26.WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY);
-
-		for (String code : newRowCodesBeingAdded)
-		{
-			assertTrue("Forward migration should have added code to work plan row code list", workPlanRowCodeListAfterForwardMigration.contains(code));
-		}
-
-		assertEquals("Forward migration should have changed the number of codes", workPlanRowCodeListAfterForwardMigration.size(), workPlanRowCodeListAfterReverseMigration.size() + newRowCodesBeingAdded.size());
-
-		verifyFullCircleMigrations(new VersionRange(25, 26));
+		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo26.VERSION_TO));
+        RawObject rawProjectResource = rawProject.findObject(projectResource.getRef());
+        assertNotNull(rawProjectResource);
+		assertFalse("Field should have been removed during reverse migration?", rawProjectResource.containsKey(MigrationTo26.TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
 	}
-
-	private Vector<String> getNewRowCodesAddedByMigration()
+	
+	public void testResourceAssignmentTaxonomyClassificationsRemovedAfterReverseMigration() throws Exception
 	{
-		Vector<String> result = new Vector<String>();
-		result.add(MigrationTo26.RESOURCE_ASSIGNMENT);
-		result.add(MigrationTo26.EXPENSE_ASSIGNMENT);
-		return result;
-	}
+		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
+		String taxonomyClassifications = resourceAssignment.getData(MigrationTo26.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
+		assertNotNull(taxonomyClassifications);
 
-	private CodeToCodeListMap getCodeToCodeListMapData(RawProject rawProject, ORef oRef, String tag) throws Exception
+		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo26.VERSION_TO));
+        RawObject rawResourceAssignment = rawProject.findObject(resourceAssignment.getRef());
+        assertNotNull(rawResourceAssignment);
+		assertFalse("Field should have been removed during reverse migration?", rawResourceAssignment.containsKey(MigrationTo26.TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
+	}
+	
+	public void testExpenseAssignmentTaxonomyClassificationsRemovedAfterReverseMigration() throws Exception
 	{
-		String rawValue = rawProject.getData(oRef, tag);
-		CodeToCodeListMapData map = new CodeToCodeListMapData(tag);
-		if (rawValue != null)
-			map.set(rawValue);
-		return map.getStringToCodeListMap();
-	}
+		ExpenseAssignment expenseAssignment = getProject().createAndPopulateExpenseAssignment();
+		String taxonomyClassifications = expenseAssignment.getData(MigrationTo26.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
+		assertNotNull(taxonomyClassifications);
 
+		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo26.VERSION_TO));
+        RawObject rawExpenseAssignment = rawProject.findObject(expenseAssignment.getRef());
+        assertNotNull(rawExpenseAssignment);
+		assertFalse("Field should have been removed during reverse migration?", rawExpenseAssignment.containsKey(MigrationTo26.TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
+	}
+	
 	@Override
 	protected int getFromVersion()
 	{

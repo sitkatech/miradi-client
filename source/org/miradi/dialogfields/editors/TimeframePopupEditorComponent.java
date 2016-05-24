@@ -16,44 +16,31 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/ 
+ */ 
 
-package org.miradi.dialogs.tablerenderers;
+package org.miradi.dialogfields.editors;
 
-import org.miradi.dialogfields.WhoPlannedCodeListEditorComponent;
-import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
-import org.miradi.questions.ProjectResourceQuestion;
+import org.miradi.project.Project;
 
-public class WhoPlannedColumnTableCellEditorFactory extends AbstractPopupTableCellEditorFactory
+public class TimeframePopupEditorComponent extends WhenPopupEditorComponent
 {
-	public WhoPlannedColumnTableCellEditorFactory(MainWindow mainWindowToUse, RowColumnSelectionProvider tableToUse)
+	public TimeframePopupEditorComponent(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, tableToUse);
-	}	
-	
-	@Override
-	protected DisposablePanel createEditorComponent(BaseObject baseObjectForRow)
-	{
-		final ProjectResourceQuestion question = new ProjectResourceQuestion(getProject());
-
-		return new WhoPlannedCodeListEditorComponent(baseObjectForRow, question);
+		super(mainWindowToUse);
 	}
-	
+
+	@Override
+	protected WhenEditorComponent createWhenEditorComponent(Project projectToUse, BaseObject baseObjectForRow) throws Exception
+	{
+		return new TimeframeEditorComponent(getMainWindow().getProject(), baseObjectForRow);
+	}
+
 	@Override
 	protected String getDialogTitle()
 	{
-		return EAM.text("Who High-Level Planning");
+		return EAM.substituteSingleString(EAM.text("Timeframe - %s"), getBaseObjectForRowLabel());
 	}
-
-	@Override
-	protected String getDialogHelpText()
-	{
-		return EAM.text("<html>" +
-				"This is a high-level resource estimate that does not <br>" +
-				"create Work Unit Assignments.");
-	}
-
 }

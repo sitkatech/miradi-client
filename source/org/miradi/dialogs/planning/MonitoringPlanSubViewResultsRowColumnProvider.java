@@ -39,7 +39,6 @@ public class MonitoringPlanSubViewResultsRowColumnProvider extends AbstractPlann
 	public CodeList getColumnCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
-				CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL,
 				Measurement.META_COLUMN_TAG
 		});
 	}

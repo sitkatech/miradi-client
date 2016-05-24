@@ -35,9 +35,6 @@ abstract public class BaseObjectWithLeaderResourceFieldExporter extends BaseObje
 	@Override
 	protected boolean doesFieldRequireSpecialHandling(String tag)
 	{
-		if (tag.equals(BaseObject.TAG_PLANNED_LEADER_RESOURCE))
-			return true;
-		
 		if (tag.equals(BaseObject.TAG_ASSIGNED_LEADER_RESOURCE))
 			return true;
 
@@ -49,7 +46,6 @@ abstract public class BaseObjectWithLeaderResourceFieldExporter extends BaseObje
 	{
 		super.writeFields(baseObject, baseObjectSchema);
 		
-		getWriter().writeRef(baseObject.getRef(BaseObject.TAG_PLANNED_LEADER_RESOURCE), baseObjectSchema.getXmpz2ElementName() + PLANNED_LEADER_RESOURCE_ID, RESOURCE_ID);
 		getWriter().writeRef(baseObject.getRef(BaseObject.TAG_ASSIGNED_LEADER_RESOURCE), baseObjectSchema.getXmpz2ElementName() + ASSIGNED_LEADER_RESOURCE_ID, RESOURCE_ID);
 	}
 }

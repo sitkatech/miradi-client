@@ -31,7 +31,6 @@ import org.miradi.objects.Strategy;
 import org.miradi.objects.Target;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -156,8 +155,7 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 	private static CodeList getActivityColumns()
 	{
 		String[] list = {
-				CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL,
-				BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL,
+				BaseObject.PSEUDO_TAG_TIMEFRAME_TOTAL,
 				};
 			
 		return new CodeList(list);
@@ -176,8 +174,7 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 	private static CodeList getMethodColumns()
 	{
 		String[] list = {
-				CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL,
-				BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL,
+				BaseObject.PSEUDO_TAG_TIMEFRAME_TOTAL,
 				};
 	
 		return new CodeList(list);
@@ -186,8 +183,7 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 	private static CodeList getTaskColumns()
 	{		
 		String[] list = {
-				CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL,
-				BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL,
+				BaseObject.PSEUDO_TAG_TIMEFRAME_TOTAL,
 				};
 		
 		return new CodeList(list);

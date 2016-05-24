@@ -25,7 +25,7 @@ import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.migrations.forward.MigrationTo10;
 import org.miradi.migrations.forward.MigrationTo19;
-import org.miradi.migrations.forward.MigrationTo21;
+import org.miradi.migrations.forward.MigrationTo20;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.xml.xmpz2.*;
@@ -88,8 +88,8 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 		{
 			Node node = planningViewConfigurationColumnNamesNodes.item(index);
 
-			appendChildNodeWithSampleText(document, node, MigrationTo21.LEGACY_READABLE_ASSIGNED_WHO_TOTAL_CODE);
-			appendChildNodeWithSampleText(document, node, MigrationTo21.LEGACY_READABLE_ASSIGNED_WHEN_TOTAL_CODE);
+			appendChildNodeWithSampleText(document, node, MigrationTo20.LEGACY_READABLE_ASSIGNED_WHO_TOTAL_CODE);
+			appendChildNodeWithSampleText(document, node, MigrationTo20.LEGACY_READABLE_ASSIGNED_WHEN_TOTAL_CODE);
 		}
 
 		verifyMigratedXmpz2(document);

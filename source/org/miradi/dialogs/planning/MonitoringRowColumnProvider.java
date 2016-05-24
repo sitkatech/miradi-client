@@ -23,7 +23,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Indicator;
 import org.miradi.project.Project;
-import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -44,8 +43,7 @@ public class MonitoringRowColumnProvider extends AbstractPlanningTreeRowColumnPr
 		return new CodeList(new String[] {
 				Indicator.PSEUDO_TAG_METHODS,
 				Indicator.TAG_PRIORITY,
-				CustomPlanningColumnsQuestion.META_PLANNED_WHO_TOTAL,
-				BaseObject.PSEUDO_TAG_PLANNED_WHEN_TOTAL,
+				BaseObject.PSEUDO_TAG_TIMEFRAME_TOTAL,
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 				Desire.TAG_FULL_TEXT,
 		});

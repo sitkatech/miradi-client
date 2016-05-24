@@ -23,7 +23,7 @@ package org.miradi.dialogfields.editors;
 import java.awt.*;
 
 import org.miradi.dialogfields.FieldSaver;
-import org.miradi.dialogfields.WhenPlannedEditorField;
+import org.miradi.dialogfields.TimeframeEditorField;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.ProjectCalendar;
@@ -76,7 +76,7 @@ public class WhenEditorLowerPanel extends DisposablePanel
 			currentCard.setBackground(backgroundColor);
 	}
 
-	public void addActionListener(WhenPlannedEditorField.WhenPlannedEditorChangeHandler editorFieldChangeHandlerToUse)
+	public void addActionListener(TimeframeEditorField.TimeframeEditorChangeHandler editorFieldChangeHandlerToUse)
 	{
 		if (yearCard != null)
 			yearCard.addActionListener(editorFieldChangeHandlerToUse);

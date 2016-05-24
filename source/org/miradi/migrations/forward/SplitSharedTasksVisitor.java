@@ -160,7 +160,6 @@ public class SplitSharedTasksVisitor extends AbstractMigrationORefVisitor
 		newTask.setData(TAG_ID, safeGetTag(taskToClone, TAG_ID));
 		newTask.setData(TAG_DETAILS, safeGetTag(taskToClone, TAG_DETAILS));
 		newTask.setData(TAG_IS_MONITORING_ACTIVITY, safeGetTag(taskToClone, TAG_IS_MONITORING_ACTIVITY));
-		newTask.setData(TAG_PLANNED_LEADER_RESOURCE, safeGetTag(taskToClone, TAG_PLANNED_LEADER_RESOURCE));
 		newTask.setData(TAG_ASSIGNED_LEADER_RESOURCE, safeGetTag(taskToClone, TAG_ASSIGNED_LEADER_RESOURCE));
 		newTask.setData(TAG_TAXONOMY_CLASSIFICATION_CONTAINER, safeGetTag(taskToClone, TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
 
@@ -481,7 +480,6 @@ public class SplitSharedTasksVisitor extends AbstractMigrationORefVisitor
 	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
 	public static final String TAG_EXPENSE_ASSIGNMENT_REFS = "ExpenseRefs";
 	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
-	public static final String TAG_PLANNED_LEADER_RESOURCE = "PlannedLeaderResource";
 	public static final String TAG_ASSIGNED_LEADER_RESOURCE = "AssignedLeaderResource";
 	public static final String TAG_TAXONOMY_CLASSIFICATION_CONTAINER = "TaxonomyClassificationContainer";
 

@@ -111,9 +111,9 @@ public class ProjectTotalCalculator implements CommandExecutedListener
 		return baseObject.getTotalTimePeriodCostsMapForAssignments();
 	}
 
-	public String getPlannedWhenRollupAsString(BaseObject baseObject)
+	public String getTimeframeRollupAsString(BaseObject baseObject)
 	{
-		return baseObject.getPlannedWhenRollupAsString();
+		return baseObject.getTimeframeRollupAsString();
 	}
 
 	public String getAssignedWhenRollupAsString(BaseObject baseObject)

@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
-import org.miradi.dialogfields.WhenPlannedEditorField;
+import org.miradi.dialogfields.TimeframeEditorField;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.objecthelpers.DateUnit;
@@ -50,7 +50,7 @@ abstract public class DateUnitPanel extends OneRowPanel
 		dateUnitChooser.setProjectCalendar(projectCalendarToUse);
 	}
 
-	public void addActionListener(WhenPlannedEditorField.WhenPlannedEditorChangeHandler editorFieldChangeHandlerToUse)
+	public void addActionListener(TimeframeEditorField.TimeframeEditorChangeHandler editorFieldChangeHandlerToUse)
 	{
 		dateUnitChooser.addActionListener(editorFieldChangeHandlerToUse);
 	}

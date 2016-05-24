@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
-import org.miradi.dialogfields.WhenPlannedEditorField;
+import org.miradi.dialogfields.TimeframeEditorField;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
@@ -46,5 +46,5 @@ abstract public class DateUnitStartAndEndCard extends TwoColumnPanel
 
 	abstract public void setStartEndDateUnitProvider(ProjectCalendar projectCalendarToUse, StartEndDateUnitProvider startEndDateUnitProviderToUse);
 
-	public void addActionListener(WhenPlannedEditorField.WhenPlannedEditorChangeHandler editorFieldChangeHandlerToUse) {}
+	public void addActionListener(TimeframeEditorField.TimeframeEditorChangeHandler editorFieldChangeHandlerToUse) {}
 }

@@ -42,14 +42,14 @@ import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 
 import java.util.Set;
 
-public class WhenPlannedEditorComponent extends WhenEditorComponent
+public class TimeframeEditorComponent extends WhenEditorComponent
 {
-	public WhenPlannedEditorComponent(Project project, BaseObject baseObjectToUse) throws Exception
+	public TimeframeEditorComponent(Project project, BaseObject baseObjectToUse) throws Exception
 	{
 		this(project, baseObjectToUse.getTimeframeRefs());
 	}
 
-	public WhenPlannedEditorComponent(Project project, ORefList planningObjectRefs) throws Exception
+	public TimeframeEditorComponent(Project project, ORefList planningObjectRefs) throws Exception
 	{
 		super(project, planningObjectRefs, new PlannedDateUnitTypeQuestion(project, planningObjectRefs));
 	}
@@ -57,9 +57,7 @@ public class WhenPlannedEditorComponent extends WhenEditorComponent
 	@Override
 	protected String getPanelTitle()
 	{
-		return EAM.text("<html>" +
-				"This is a high-level time estimate that does not create <br>" +
-				"Work Unit Assignments.");
+		return "";
 	}
 
 	@Override
@@ -90,7 +88,7 @@ public class WhenPlannedEditorComponent extends WhenEditorComponent
 		return getDateUnitCode(dateUnits);
 	}
 
-	public static void setWhenPlannedValue(Project project, BaseObject baseObjectForRow, CodeList datesAsCodeList) throws Exception
+	public static void setTimeframeValue(Project project, BaseObject baseObjectForRow, CodeList datesAsCodeList) throws Exception
 	{
 		project.executeBeginTransaction();
 		try

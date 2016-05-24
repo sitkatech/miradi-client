@@ -45,8 +45,7 @@ public class WorkPlanAboveBudgetColumnsBar extends AboveBudgetColumnsBar
 		g.setColor(getBackground());
 		g.fillRect(getX(), getY(), getWidth(), getHeight());
 		DateUnit forever = new DateUnit();
-		drawColumnGroupHeader(g, findColumnGroupBounds(createColumnGroup(WorkPlanColumnConfigurationQuestion.META_PLANNED_WHEN_TOTAL)), getPlannedWhenAboveColumnLabelLocal(), AppPreferences.RESOURCE_TABLE_BACKGROUND);
-		drawColumnGroupHeader(g, findColumnGroupBounds(createColumnGroup(WorkPlanColumnConfigurationQuestion.META_PLANNED_WHO_TOTAL)), getPlannedWhoAboveColumnLabelLocal(), AppPreferences.RESOURCE_TABLE_BACKGROUND);
+		drawColumnGroupHeader(g, findColumnGroupBounds(createColumnGroup(WorkPlanColumnConfigurationQuestion.META_TIMEFRAME_TOTAL)), getTimeframeAboveColumnLabelLocal(), AppPreferences.RESOURCE_TABLE_BACKGROUND);
 		drawColumnGroupHeader(g, findColumnGroupBounds(createColumnGroup(WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHEN_TOTAL)), getAssignedWhenAboveColumnLabelLocal(), AppPreferences.getWorkUnitsBackgroundColor());
 		drawColumnGroupHeader(g, findColumnGroupBounds(createColumnGroup(WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHO_TOTAL)), getAssignedWhoAboveColumnLabelLocal(), AppPreferences.getWorkUnitsBackgroundColor());
 		drawColumnGroupHeader(g, findColumnGroupBounds(WorkPlanColumnConfigurationQuestion.getAllPossibleWorkUnitsColumnGroups()), getWorkUnitsAboveColumnLabelLocal(), AppPreferences.getWorkUnitsBackgroundColor(forever));
@@ -61,14 +60,9 @@ public class WorkPlanAboveBudgetColumnsBar extends AboveBudgetColumnsBar
 		return columnGroups;
 	}
 
-	protected String getPlannedWhenAboveColumnLabelLocal()
+	protected String getTimeframeAboveColumnLabelLocal()
 	{
-		return EAM.fieldLabel(ObjectType.FAKE, WorkPlanColumnConfigurationQuestion.META_PLANNED_WHEN_TOTAL_ALT_SHORT);
-	}
-
-	protected String getPlannedWhoAboveColumnLabelLocal()
-	{
-		return EAM.fieldLabel(ObjectType.FAKE, WorkPlanColumnConfigurationQuestion.META_PLANNED_WHO_TOTAL_ALT_SHORT);
+		return EAM.fieldLabel(ObjectType.FAKE, WorkPlanColumnConfigurationQuestion.META_TIMEFRAME_TOTAL_ALT_SHORT);
 	}
 
 	protected String getAssignedWhenAboveColumnLabelLocal()

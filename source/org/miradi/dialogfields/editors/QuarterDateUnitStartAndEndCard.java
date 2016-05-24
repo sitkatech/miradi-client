@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
-import org.miradi.dialogfields.WhenPlannedEditorField;
+import org.miradi.dialogfields.TimeframeEditorField;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
@@ -81,7 +81,7 @@ public class QuarterDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	}
 
 	@Override
-	public void addActionListener(WhenPlannedEditorField.WhenPlannedEditorChangeHandler editorFieldChangeHandlerToUse)
+	public void addActionListener(TimeframeEditorField.TimeframeEditorChangeHandler editorFieldChangeHandlerToUse)
 	{
 		if (startQuarterPanel != null)
 			startQuarterPanel.addActionListener(editorFieldChangeHandlerToUse);
