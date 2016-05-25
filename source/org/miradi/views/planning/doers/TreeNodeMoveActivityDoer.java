@@ -75,6 +75,8 @@ public class TreeNodeMoveActivityDoer extends AbstractTreeNodeTaskDoer
 
 		ObjectPoolTablePanel movableObjectPoolTablePanel = new MovableActivityPoolTablePanel(getMainWindow(), parentOfSelectedRef);
 
+		getProject().executeBeginTransaction();
+
 		try
 		{
 			MoveSelectionDialog listDialog = new MoveSelectionDialog(getMainWindow(), getShareDialogTitle(), movableObjectPoolTablePanel);
@@ -86,8 +88,6 @@ public class TreeNodeMoveActivityDoer extends AbstractTreeNodeTaskDoer
 
 			BaseObject originalStrategy = activityToMove.getOwner();
 			BaseObject newStrategy = getProject().findObject(parentOfSelectedRef);
-
-			getProject().executeBeginTransaction();
 
 			// commands to move activity from old to new strategy
 			CommandVector commandsToMoveActivity  = new CommandVector();
