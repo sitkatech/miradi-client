@@ -127,6 +127,9 @@ public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 			return ORef.INVALID;
 
 		ORefList selectedObjectRefs = getPicker().getSelectedHierarchies()[0];
+		if (selectedObjectRefs.size() == 0)
+			return ORef.INVALID;
+
 		ORef selectedObjectRef = selectedObjectRefs.get(0);
 		if (selectedObjectRef.isInvalid())
 			return ORef.INVALID;
