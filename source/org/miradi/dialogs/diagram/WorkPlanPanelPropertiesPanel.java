@@ -103,7 +103,7 @@ public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
 		addFieldWithoutLabel(createTimeframeEditorField(orefToUse));
 		add(new FillerLabel());
 
-		PanelTitleLabel totalLabel = new PanelTitleLabel(EAM.text("Timeframe of factor with nested actions"));
+		PanelTitleLabel totalLabel = new PanelTitleLabel(EAM.text("Timeframe with nested actions"));
 		addFieldsOnOneLine(totalLabel, new Object[]{});
 
 		addFieldWithoutLabel(createReadonlyTextField(BaseObject.PSEUDO_TAG_TIMEFRAME_TOTAL));
