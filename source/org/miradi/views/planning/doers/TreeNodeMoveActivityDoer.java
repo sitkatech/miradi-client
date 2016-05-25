@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning.doers;
 
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogs.activity.MovableActivityPoolTablePanel;
 import org.miradi.dialogs.base.ObjectPoolTablePanel;
 import org.miradi.dialogs.diagram.MoveSelectionDialog;
@@ -39,6 +38,7 @@ import org.miradi.utils.CommandVector;
 
 import java.awt.*;
 import java.text.ParseException;
+import java.util.HashSet;
 import java.util.Vector;
 
 
@@ -126,22 +126,8 @@ public class TreeNodeMoveActivityDoer extends AbstractTreeNodeTaskDoer
 				}
 			}
 
-			// reposition activity if displayed in rc diagram
-			ORefList activityDiagramFactorRefs = activityToMove.findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());
-			if (activityDiagramFactorRefs.size() > 0)
-			{
-				ORefList newStrategyDiagramFactorRefs = newStrategy.findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());
-				FactorCommandHelper helper = new FactorCommandHelper(getProject(), getDiagramModel());
-				for (ORef activityDiagramFactorRef : activityDiagramFactorRefs)
-				{
-					DiagramFactorId activityDiagramFactorId = (DiagramFactorId) activityDiagramFactorRef.getObjectId();
-					for (ORef newStrategyDiagramFactorRef : newStrategyDiagramFactorRefs)
-					{
-						DiagramFactor strategyDiagramFactor = DiagramFactor.find(getProject(), newStrategyDiagramFactorRef);
-						setActivityDiagramLocation(helper, newStrategy, strategyDiagramFactor, activityToMove.getRef(), activityDiagramFactorId);
-					}
-				}
-			}
+			// reposition activity if displayed in rc diagrams
+			repositionActivityInResultsChainDiagrams(activityToMove, newStrategy);
 
 			getProject().executeCommands(commandsToFixRelevancy);
 		}
@@ -157,9 +143,32 @@ public class TreeNodeMoveActivityDoer extends AbstractTreeNodeTaskDoer
 		}
 	}
 
-	private DiagramModel getDiagramModel()
+	private void repositionActivityInResultsChainDiagrams(BaseObject activityToMove, BaseObject newStrategy) throws Exception
 	{
-		return getDiagramView().getDiagramModel();
+		ORefList activityDiagramFactorRefs = activityToMove.findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());
+		if (activityDiagramFactorRefs.size() > 0)
+        {
+            ORefList resultsChainRefs = ((Strategy) newStrategy).getResultsChains();
+            for (ORef resultsChainRef : resultsChainRefs)
+            {
+                ResultsChainDiagram resultsChainDiagram = ResultsChainDiagram.find(getProject(), resultsChainRef);
+                FactorCommandHelper commandHelper = new FactorCommandHelper(getProject(), resultsChainDiagram);
+
+                HashSet<DiagramFactor> strategyDiagramFactors = resultsChainDiagram.getFactorsFromDiagram(StrategySchema.getObjectType());
+                for (DiagramFactor strategyDiagramFactor : strategyDiagramFactors)
+                {
+                    if (strategyDiagramFactor.getWrappedFactor().getRef().equals(newStrategy.getRef()))
+                    {
+                        for (ORef activityDiagramFactorRef : activityDiagramFactorRefs)
+                        {
+                            DiagramFactorId activityDiagramFactorId = (DiagramFactorId) activityDiagramFactorRef.getObjectId();
+                            if (resultsChainDiagram.containsDiagramFactor(activityDiagramFactorId))
+                                setActivityDiagramLocation(commandHelper, newStrategy, strategyDiagramFactor, activityToMove.getRef(), activityDiagramFactorId);
+                        }
+                    }
+                }
+            }
+        }
 	}
 
 	private void setActivityDiagramLocation(FactorCommandHelper helper, BaseObject newStrategy, DiagramFactor strategyDiagramFactor, ORef activityRef, DiagramFactorId activityDiagramFactorId) throws Exception
