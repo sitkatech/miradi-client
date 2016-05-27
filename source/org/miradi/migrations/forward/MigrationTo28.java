@@ -24,13 +24,18 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.migrations.*;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.TaskSchema;
+import org.miradi.utils.DateUnitEffort;
+import org.miradi.utils.DateUnitEffortList;
 
-import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 
 public class MigrationTo28 extends AbstractMigration
@@ -43,7 +48,7 @@ public class MigrationTo28 extends AbstractMigration
 	@Override
 	protected MigrationResult reverseMigrate() throws Exception
 	{
-		// decision made not to put child tasks back to their original place in the activity hierarchy
+		// decision made not to try and undo removal of superseded assignments
 		return MigrationResult.createSuccess();
 	}
 
@@ -56,7 +61,7 @@ public class MigrationTo28 extends AbstractMigration
 
 		for(Integer typeToVisit : typesToVisit)
 		{
-			visitor = new PromoteChildTasksVisitor(typeToVisit);
+			visitor = new DeleteSupersededAssignmentsVisitor(typeToVisit);
 			visitAllORefsInPool(visitor);
 			final MigrationResult thisMigrationResult = visitor.getMigrationResult();
 			if (migrationResult == null)
@@ -71,7 +76,8 @@ public class MigrationTo28 extends AbstractMigration
 	private Vector<Integer> getTypesToMigrate()
 	{
 		Vector<Integer> typesToMigrate = new Vector<Integer>();
-		typesToMigrate.add(ObjectType.TASK);
+		typesToMigrate.add(ObjectType.STRATEGY);
+		typesToMigrate.add(ObjectType.INDICATOR);
 
 		return typesToMigrate;
 	}
@@ -91,14 +97,15 @@ public class MigrationTo28 extends AbstractMigration
 	@Override
 	protected String getDescription()
 	{
-		return EAM.text("This migration moves child tasks up to the activity level.");
+		return EAM.text("This migration removes superseded assignments from the work plan.");
 	}
 
-	private class PromoteChildTasksVisitor extends AbstractMigrationORefVisitor
+	private class DeleteSupersededAssignmentsVisitor extends AbstractMigrationORefVisitor
 	{
-		public PromoteChildTasksVisitor(int typeToVisit)
+		public DeleteSupersededAssignmentsVisitor(int typeToVisit)
 		{
 			type = typeToVisit;
+			assignmentsToDelete = new HashMap<ORef, RawObject>() {};
 		}
 
 		public int getTypeToVisit()
@@ -106,91 +113,294 @@ public class MigrationTo28 extends AbstractMigration
 			return type;
 		}
 
-		@Override
-		public MigrationResult internalVisit(ORef rawObjectRef) throws Exception
+		public HashMap<ORef, RawObject> getAssignmentsToDelete()
 		{
-			HashMap<BaseId, BaseId> subTaskIdMap = getOrCreateSubTaskIdToParentIdMap();
+			return assignmentsToDelete;
+		}
 
-			RawObject rawTask = getRawProject().findObject(rawObjectRef);
-			if (rawTask != null)
+		@Override
+		protected MigrationResult internalVisit(ORef rawObjectRef) throws Exception
+		{
+			MigrationResult migrationResult = MigrationResult.createUninitializedResult();
+
+			RawObject rawObjectToMigrate = getRawProject().findObject(rawObjectRef);
+			if (rawObjectToMigrate != null)
 			{
-				BaseId taskId = rawObjectRef.getObjectId();
-				if (subTaskIdMap.containsKey(taskId))
+				visitAssignments(rawObjectToMigrate);
+				visitExpenses(rawObjectToMigrate);
+				visitTasks(rawObjectToMigrate);
+			}
+
+			if (getAssignmentsToDelete().size() > 0)
+			{
+				for (Map.Entry<ORef, RawObject> entry : getAssignmentsToDelete().entrySet())
 				{
-					BaseId parentTaskId = subTaskIdMap.get(taskId);
-					ORef parentTaskRef = new ORef(ObjectType.TASK, parentTaskId);
-					RawObject rawParentTask = getRawProject().findObject(parentTaskRef);
-
-					RawObject rawParentActivity = getParentActivity(subTaskIdMap, taskId);
-
-					if (!rawParentTask.equals(rawParentActivity))
+					ORef assignmentToDeleteRef = entry.getKey();
+					RawObject assignmentToDelete = getRawProject().findObject(entry.getKey());
+					if (assignmentToDelete != null)
 					{
-						IdList parentTaskSubTaskIdList = new IdList(TaskSchema.getObjectType(), rawParentTask.get(TAG_SUBTASK_IDS));
-						if (parentTaskSubTaskIdList.contains(taskId))
-						{
-							parentTaskSubTaskIdList.removeId(taskId);
-							rawParentTask.setData(TAG_SUBTASK_IDS, parentTaskSubTaskIdList.toJson().toString());
-						}
-
-						IdList parentActivitySubTaskIdList = new IdList(TaskSchema.getObjectType(), rawParentActivity.get(TAG_SUBTASK_IDS));
-						if (!parentActivitySubTaskIdList.contains(taskId))
-						{
-							parentActivitySubTaskIdList.add(taskId);
-							rawParentActivity.setData(TAG_SUBTASK_IDS, parentActivitySubTaskIdList.toJson().toString());
-						}
+						migrationResult.addDataLoss(buildDataLossMessage(assignmentToDelete, entry.getValue()));
+						deleteAssignment(assignmentToDeleteRef, entry.getValue());
 					}
 				}
+
+				return migrationResult;
 			}
 
 			return MigrationResult.createSuccess();
 		}
 
-		private RawObject getParentActivity(HashMap<BaseId, BaseId> subTaskIdMap, BaseId subTaskId)
+		private void visitAssignments(RawObject rawObjectToVisit) throws Exception
 		{
-			BaseId parentTaskId = subTaskIdMap.get(subTaskId);
-			if (subTaskIdMap.containsKey(parentTaskId))
-				return getParentActivity(subTaskIdMap, parentTaskId);
-
-			ORef parentActivityRef = new ORef(ObjectType.TASK, parentTaskId);
-			return getRawProject().findObject(parentActivityRef);
-		}
-
-		private HashMap<BaseId, BaseId> getOrCreateSubTaskIdToParentIdMap() throws ParseException
-		{
-			if (subTaskIdToParentIdMap == null)
-				subTaskIdToParentIdMap = createSubTaskIdToParentIdMap();
-
-			return subTaskIdToParentIdMap;
-		}
-
-		private HashMap<BaseId, BaseId> createSubTaskIdToParentIdMap() throws ParseException
-		{
-			HashMap<BaseId, BaseId> subTaskIdMap = new HashMap<BaseId, BaseId>();
-
-			ORefList taskRefs = getRawProject().getAllRefsForType(ObjectType.TASK);
-			for (ORef taskRef : taskRefs)
+			for (ORef assignmentRef : getAssignments(rawObjectToVisit))
 			{
-				RawObject rawTask = getRawProject().findObject(taskRef);
-				if (rawTask != null && rawTask.containsKey(TAG_SUBTASK_IDS))
+				RawObject assignment = getRawProject().findObject(assignmentRef);
+				if (assignmentIsSuperseded(rawObjectToVisit, assignment))
+					getAssignmentsToDelete().put(assignmentRef, rawObjectToVisit);
+			}
+		}
+
+		private void visitExpenses(RawObject rawObjectToVisit) throws Exception
+		{
+			for (ORef expenseRef : getExpenses(rawObjectToVisit))
+			{
+				RawObject expense = getRawProject().findObject(expenseRef);
+				if (expenseIsSuperseded(rawObjectToVisit, expense))
+					getAssignmentsToDelete().put(expenseRef, rawObjectToVisit);
+			}
+		}
+
+		private void visitTasks(RawObject rawObjectToVisit) throws Exception
+		{
+			for (RawObject task : getChildTasks(rawObjectToVisit))
+			{
+				visitAssignments(task);
+				visitExpenses(task);
+				visitTasks(task);
+			}
+		}
+
+		private ArrayList<ORef> getAssignments(RawObject rawObject) throws Exception
+		{
+			ArrayList<ORef> assignmentList = new ArrayList<ORef>(){};
+
+			if (rawObject.containsKey(TAG_RESOURCE_ASSIGNMENT_IDS))
+			{
+				IdList assignmentIdList = new IdList(ResourceAssignmentSchema.getObjectType(), rawObject.getData(TAG_RESOURCE_ASSIGNMENT_IDS));
+				for (int i = 0; i < assignmentIdList.size(); i++)
 				{
-					BaseId parentTaskId = taskRef.getObjectId();
-					IdList subTaskIdList = new IdList(TaskSchema.getObjectType(), rawTask.get(TAG_SUBTASK_IDS));
-					for (int i = 0; i < subTaskIdList.size(); ++i)
-					{
-						BaseId subTaskId = subTaskIdList.get(i);
-						subTaskIdMap.put(subTaskId, parentTaskId);
-					}
+					BaseId assignmentId = assignmentIdList.get(i);
+					ORef assignmentRef = new ORef(ObjectType.RESOURCE_ASSIGNMENT, assignmentId);
+					assignmentList.add(assignmentRef);
 				}
 			}
 
-			return subTaskIdMap;
+			return assignmentList;
+		}
+
+		private ArrayList<ORef> getExpenses(RawObject rawObject) throws Exception
+		{
+			ArrayList<ORef> expenseList = new ArrayList<ORef>(){};
+
+			if (rawObject.containsKey(TAG_EXPENSE_ASSIGNMENT_REFS))
+			{
+				ORefList expenseRefList = new ORefList(rawObject.getData(TAG_EXPENSE_ASSIGNMENT_REFS));
+				for (ORef expenseRef : expenseRefList)
+				{
+					expenseList.add(expenseRef);
+				}
+			}
+
+			return expenseList;
+		}
+
+		private ArrayList<RawObject> getChildTasks(RawObject rawObject) throws Exception
+		{
+			ArrayList<RawObject> taskList = new ArrayList<RawObject>(){};
+
+			String taskIdsTag = getChildTasksTag(rawObject);
+			if (rawObject.containsKey(taskIdsTag))
+			{
+				IdList taskIdList = new IdList(TaskSchema.getObjectType(), rawObject.get(taskIdsTag));
+				for (int i = 0; i < taskIdList.size(); i++)
+				{
+					BaseId taskId = taskIdList.get(i);
+					ORef taskRef = new ORef(ObjectType.TASK, taskId);
+					RawObject task = getRawProject().findObject(taskRef);
+					taskList.add(task);
+				}
+			}
+
+			return taskList;
+		}
+
+		private DateUnitEffortList getDateUnitEffortList(RawObject rawObject) throws Exception
+		{
+			DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
+
+			String dateUnitEffortAsString =  safeGetTag(rawObject, TAG_DATEUNIT_EFFORTS);
+			if (dateUnitEffortAsString != null && dateUnitEffortAsString.length() > 0)
+				dateUnitEffortList = new DateUnitEffortList(dateUnitEffortAsString);
+
+			return dateUnitEffortList;
+		}
+
+		private boolean assignmentIsSuperseded(RawObject rawObject, RawObject assignment) throws Exception
+		{
+			ArrayList<RawObject> childTasks = getChildTasks(rawObject);
+			for (RawObject task : childTasks)
+			{
+				ArrayList<ORef> childAssignmentRefs = getAssignments(task);
+				for (ORef childAssignmentRef : childAssignmentRefs)
+				{
+					RawObject childAssignment = getRawProject().findObject(childAssignmentRef);
+					if (dateUnitContained(assignment, childAssignment))
+						return true;
+
+					return assignmentIsSuperseded(task, assignment);
+				}
+			}
+
+			return false;
+		}
+
+		private boolean expenseIsSuperseded(RawObject rawObject, RawObject expense) throws Exception
+		{
+			ArrayList<RawObject> childTasks = getChildTasks(rawObject);
+			for (RawObject task : childTasks)
+			{
+				ArrayList<ORef> childExpenseRefs = getExpenses(task);
+				for (ORef childExpenseRef : childExpenseRefs)
+				{
+					RawObject childExpense = getRawProject().findObject(childExpenseRef);
+					if (dateUnitContained(expense, childExpense))
+						return true;
+
+					return expenseIsSuperseded(task, expense);
+				}
+			}
+
+			return false;
+		}
+
+		private boolean dateUnitContained(RawObject parentAssignment, RawObject childAssignment) throws Exception
+		{
+			DateUnitEffortList parentDateUnitEffortList = getDateUnitEffortList(parentAssignment);
+			DateUnitEffortList childDateUnitEffortList = getDateUnitEffortList(childAssignment);
+
+			for (int i = 0; i < parentDateUnitEffortList.size(); i++)
+			{
+				DateUnitEffort parentDateUnitEffort = parentDateUnitEffortList.getDateUnitEffort(i);
+				DateUnit parentDateUnit = parentDateUnitEffort.getDateUnit();
+
+				for (int j = 0; j < childDateUnitEffortList.size(); j++)
+				{
+					DateUnitEffort childDateUnitEffort = childDateUnitEffortList.getDateUnitEffort(j);
+					DateUnit childDateUnit = childDateUnitEffort.getDateUnit();
+					if (childDateUnit.contains(parentDateUnit))
+						return true;
+				}
+			}
+
+			return false;
+		}
+
+		private void deleteAssignment(ORef assignmentToDeleteRef, RawObject parent) throws Exception
+		{
+			BaseId assignmentId = assignmentToDeleteRef.getObjectId();
+			RawObject assignment = getRawProject().findObject(assignmentToDeleteRef);
+
+			if (assignment.getObjectType() == ObjectType.RESOURCE_ASSIGNMENT)
+			{
+				if (parent.containsKey(TAG_RESOURCE_ASSIGNMENT_IDS))
+				{
+					IdList parentAssignmentIdList = new IdList(TaskSchema.getObjectType(), parent.get(TAG_RESOURCE_ASSIGNMENT_IDS));
+					if (parentAssignmentIdList.contains(assignmentId))
+					{
+						parentAssignmentIdList.removeId(assignmentId);
+						parent.setData(TAG_RESOURCE_ASSIGNMENT_IDS, parentAssignmentIdList.toJson().toString());
+					}
+				}
+			}
+			else if (assignment.getObjectType() == ObjectType.EXPENSE_ASSIGNMENT)
+			{
+				if (parent.containsKey(TAG_EXPENSE_ASSIGNMENT_REFS))
+				{
+					ORefList parentExpenseRefList = new ORefList(parent.getData(TAG_EXPENSE_ASSIGNMENT_REFS));
+					if (parentExpenseRefList.contains(assignmentToDeleteRef))
+					{
+						parentExpenseRefList.remove(assignmentToDeleteRef);
+						parent.setData(TAG_EXPENSE_ASSIGNMENT_REFS, parentExpenseRefList.toJson().toString());
+					}
+				}
+			}
+			else
+			{
+				throw new Exception("deleteAssignment called for unexpected object type " + assignment.getObjectType());
+			}
+
+			getRawProject().deleteRawObject(assignmentToDeleteRef);
+		}
+
+		private String buildDataLossMessage(RawObject assignmentToDelete, RawObject parent) throws Exception
+		{
+			String name = safeGetTag(parent, TAG_LABEL);
+			return EAM.text("superseded ") + getUserFriendlyObjectName(assignmentToDelete) + " for " + getUserFriendlyObjectName(parent) + " '" + name + EAM.text("'.");
+		}
+
+		private String getUserFriendlyObjectName(RawObject rawObject) throws Exception
+		{
+			switch(rawObject.getObjectType())
+			{
+				case ObjectType.STRATEGY:
+					return EAM.text("Strategy");
+				case ObjectType.INDICATOR:
+					return EAM.text("Indicator");
+				case ObjectType.TASK:
+					return EAM.text("Activity");
+				case ObjectType.RESOURCE_ASSIGNMENT:
+					return EAM.text("Assignment");
+				case ObjectType.EXPENSE_ASSIGNMENT:
+					return EAM.text("Expense");
+			}
+
+			throw new Exception("getUserFriendlyObjectName called for unexpected object type " + rawObject.getObjectType());
+		}
+
+		private String getChildTasksTag(RawObject rawObject) throws Exception
+		{
+			switch(rawObject.getObjectType())
+			{
+				case ObjectType.STRATEGY:
+					return TAG_ACTIVITY_IDS;
+				case ObjectType.INDICATOR:
+					return TAG_METHOD_IDS;
+				case ObjectType.TASK:
+					return TAG_SUBTASK_IDS;
+			}
+
+			throw new Exception("getChildTasksTag called for unexpected object type " + rawObject.getObjectType());
+		}
+
+		private String safeGetTag(RawObject rawObject, String tag)
+		{
+			if (rawObject.hasValue(tag))
+				return rawObject.getData(tag);
+
+			return "";
 		}
 
 		private int type;
-		private HashMap<BaseId, BaseId> subTaskIdToParentIdMap;
+		private HashMap<ORef, RawObject> assignmentsToDelete;
 	}
 
+	public static final String TAG_LABEL = "Label";
+	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
+	public final static String TAG_METHOD_IDS = "TaskIds";
 	public static final String TAG_SUBTASK_IDS = "SubtaskIds";
+	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
+	public static final String TAG_EXPENSE_ASSIGNMENT_REFS = "ExpenseRefs";
+	public static final String TAG_DATEUNIT_EFFORTS = "Details";
 
 	public static final int VERSION_FROM = 27;
 	public static final int VERSION_TO = 28;

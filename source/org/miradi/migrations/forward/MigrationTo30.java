@@ -39,7 +39,7 @@ public class MigrationTo30 extends AbstractMigration
 	@Override
 	protected MigrationResult reverseMigrate() throws Exception
 	{
-		// decision made not to try and undo split of shared methods
+		// decision made not to try and undo split of shared activities
 		return MigrationResult.createSuccess();
 	}
 
@@ -52,7 +52,7 @@ public class MigrationTo30 extends AbstractMigration
 
 		for(Integer typeToVisit : typesToVisit)
 		{
-			visitor = new SplitSharedTasksVisitor(getRawProject(), typeToVisit, TAG_METHOD_IDS);
+			visitor = new SplitSharedTasksVisitor(getRawProject(), typeToVisit, TAG_ACTIVITY_IDS);
 			visitAllORefsInPool(visitor);
 			final MigrationResult thisMigrationResult = visitor.getMigrationResult();
 			if (migrationResult == null)
@@ -67,7 +67,7 @@ public class MigrationTo30 extends AbstractMigration
 	private Vector<Integer> getTypesToMigrate()
 	{
 		Vector<Integer> typesToMigrate = new Vector<Integer>();
-		typesToMigrate.add(ObjectType.INDICATOR);
+		typesToMigrate.add(ObjectType.STRATEGY);
 
 		return typesToMigrate;
 	}
@@ -87,10 +87,10 @@ public class MigrationTo30 extends AbstractMigration
 	@Override
 	protected String getDescription()
 	{
-		return EAM.text("This migration splits shared methods out to separate method entries.");
+		return EAM.text("This migration splits shared activities out to separate activity entries.");
 	}
 
-	public final static String TAG_METHOD_IDS = "TaskIds";
+	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
 
 	public static final int VERSION_FROM = 29;
 	public static final int VERSION_TO = 30;
