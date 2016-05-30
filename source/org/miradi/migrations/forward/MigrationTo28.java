@@ -352,7 +352,7 @@ public class MigrationTo28 extends AbstractMigration
 
 		private String buildDataLossMessage(RawObject assignment) throws Exception
 		{
-			Vector<String> dateUnitEffortMessages = new Vector<>();
+			Vector<String> dateUnitEffortMessages = new Vector<String>();
 
 			DateUnitEffortList dateUnitEffortList = getDateUnitEffortList(assignment);
 			for (int i = 0; i < dateUnitEffortList.size(); i++)
