@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-05-25 11:36-0700\n"
+"POT-Creation-Date: 2016-05-30 05:06-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/miradi-client/"
@@ -46,6 +46,10 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DiagramWizardLinkDirectThreatsToTargetsStep.java:51
 msgid " 2) Connect threat to relevant targets"
 msgstr " 2) Connecter la menace aux cibles pertinentes"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:348
+msgid " for "
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractZippedXmlImporter.java:50
 msgid " was empty"
@@ -295,7 +299,7 @@ msgstr "%s données de terrain seront perdues pour les mesures"
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:155
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:156
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr "(%s)"
@@ -2087,6 +2091,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:203
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:109
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:57
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:397
 msgid "Activity"
 msgstr "Activité"
 
@@ -2458,6 +2463,7 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:40
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:49
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:399
 msgid "Assignment"
 msgstr ""
 
@@ -3681,6 +3687,7 @@ msgstr "Entrer un Nom d'étiquette"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/AssignedDateUnitTypeQuestion.java:44
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlannedDateUnitTypeQuestion.java:42
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:379
 msgid "Entire Project Duration"
 msgstr "Durée totale du projet"
 
@@ -3767,6 +3774,7 @@ msgstr "Développer la colonne sélectionnée"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentSubPanel.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentSubPanel.java:52
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:401
 msgid "Expense"
 msgstr ""
 
@@ -4362,9 +4370,10 @@ msgstr ""
 msgid ""
 "If you continue with this migration, some data will be lost.\n"
 "\n"
+"Would you like to continue anyway?\n"
+"\n"
 "Summary of data losses:\n"
 "%s \n"
-"Would you like to continue anyway?"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/arranger/MeglerArranger.java:104
@@ -4479,6 +4488,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:45
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/IndicatorSubForm.java:33
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:51
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:395
 msgid "Indicator"
 msgstr "Indicateur"
 
@@ -4501,7 +4511,7 @@ msgstr ""
 msgid "Indicator Relevancy Panel"
 msgstr "Panneau de pertinence de l'indicateur"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo31.java:40
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:40
 msgid "Indicator Relevant Strategies / Activities"
 msgstr ""
 
@@ -4632,7 +4642,7 @@ msgstr "Est Pertinent"
 msgid "Is Tagged"
 msgstr "Est Marqué"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/EAM.java:649
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/EAM.java:660
 msgid ""
 "It appears that Miradi was launched without the -Xmx512m switch. As a "
 "result, certain operations like Reports may run out of memory."
@@ -6953,6 +6963,7 @@ msgstr "Les Stratégies contiennent les Objectifs"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:48
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/StrategyCoreSubForm.java:34
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:48
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:393
 msgid "Strategy"
 msgstr "Stratégie"
 
@@ -8370,7 +8381,7 @@ msgstr ""
 msgid "This migration adds a new field to the Diagram Factor properties."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo31.java:66
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:66
 msgid ""
 "This migration adds a new field to the Indicator properties to track "
 "Strategy / Activity relevancy."
@@ -8420,7 +8431,7 @@ msgid ""
 "resource or date range is specified)."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:94
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo29.java:94
 msgid "This migration moves child tasks up to the activity level."
 msgstr ""
 
@@ -8458,6 +8469,10 @@ msgid ""
 "is Sampling Based"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:99
+msgid "This migration removes superseded assignments from the work plan."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo10.java:53
 msgid "This migration renames 2 fields"
 msgstr ""
@@ -8475,12 +8490,12 @@ msgid ""
 "for the total planned effort (timeframe) dates."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo29.java:90
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo30.java:90
 msgid ""
 "This migration splits shared activities out to separate activity entries."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo30.java:90
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo31.java:90
 msgid "This migration splits shared methods out to separate method entries."
 msgstr ""
 
@@ -9062,6 +9077,10 @@ msgstr ""
 msgid "Unit"
 msgstr "Unité"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:370
+msgid "Units"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FosTrainingTypeQuestion.java:37
 msgid "University"
 msgstr "Université"
@@ -9595,9 +9614,17 @@ msgstr "un nouveau projet à partir de zéro"
 msgid "an exported Miradi file (.Miradi, .xmpz2, or .mpz)"
 msgstr "un fichier Miradi exporté (.Miradi, .xmpz2, .mpz ou .cpmz)"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:350
+msgid "details = '"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/NeverShowAgainPanel.java:48
 msgid "it will not be shown. Uncheck it to have Miradi "
 msgstr "ne sera pas affiché. Décochez-le pour avoir Miradi"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:349
+msgid "name = '"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:116
@@ -9608,6 +9635,10 @@ msgstr "Enregistrer..."
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/NeverShowAgainPanel.java:49
 msgid "start displaying it again."
 msgstr "Recommencer en l'affichant."
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:348
+msgid "superseded "
+msgstr ""
 
 msgid "FieldLabel|3.Task|Task"
 msgstr "Tâche"
