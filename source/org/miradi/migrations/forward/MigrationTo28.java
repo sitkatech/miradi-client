@@ -255,9 +255,9 @@ public class MigrationTo28 extends AbstractMigration
 					RawObject childAssignment = getRawProject().findObject(childAssignmentRef);
 					if (dateUnitContained(assignment, childAssignment))
 						return true;
-
-					return assignmentIsSuperseded(task, assignment);
 				}
+
+				return assignmentIsSuperseded(task, assignment);
 			}
 
 			return false;
