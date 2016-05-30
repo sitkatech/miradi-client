@@ -722,10 +722,10 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		{
 			final String[] labels = new String[]{ConstantButtonNames.MIGRATE, ConstantButtonNames.CANCEL};
 			final String message = EAM.substituteSingleString(EAM.text("If you continue with this migration, some data will be lost.\n\n" +
+											"Would you like to continue anyway?\n\n" +
 											"Summary of data losses:\n" +
-											 "%s \n" + 
-											"Would you like to continue anyway?"), migrationResult.getUserFriendlyGroupedDataLossMessagesAsString());
-			final int result = EAM.confirmDialog(EAM.text("Migration"), message, labels);
+											 "%s \n"), migrationResult.getUserFriendlyGroupedDataLossMessagesAsString());
+			final int result = EAM.confirmDialogWithScrollPanel(EAM.text("Migration"), message, labels);
 			if (result != 0)
 				return false;
 		}

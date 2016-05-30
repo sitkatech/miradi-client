@@ -19,8 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.main;
 
-import java.awt.Color;
-import java.awt.Toolkit;
+import java.awt.*;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -32,11 +31,12 @@ import java.util.HashMap;
 import java.util.Set;
 import java.util.prefs.Preferences;
 
-import javax.swing.JOptionPane;
+import javax.swing.*;
 import javax.swing.filechooser.FileSystemView;
 
 import org.martus.swing.UiNotifyDlg;
 import org.martus.util.xml.XmlUtilities;
+import org.miradi.dialogs.fieldComponents.PanelTextArea;
 import org.miradi.project.Project;
 import org.miradi.utils.*;
 
@@ -472,7 +472,18 @@ public class EAM
 		return JOptionPane.showOptionDialog(getMainWindow(), text, title, JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, buttonLabels, null);
 	}
 
-	
+	public static int confirmDialogWithScrollPanel(String title, String text, String[] buttonLabels)
+	{
+		PanelTextArea textArea = new PanelTextArea(text);
+		MiradiScrollPane scrollPane = new MiradiScrollPane(textArea){
+			@Override
+			public Dimension getPreferredSize() {
+				return new Dimension(480, 320);
+			}
+		};
+		return JOptionPane.showOptionDialog(getMainWindow(), scrollPane, title, JOptionPane.DEFAULT_OPTION, JOptionPane.QUESTION_MESSAGE, null, buttonLabels, null);
+	}
+
 	public static void okDialog(String title, String[] body)
 	{
 		new UiNotifyDlg(getMainWindow(), title, body, new String[] {MiradiStrings.getOkButtonText()});

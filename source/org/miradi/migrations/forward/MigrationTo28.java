@@ -30,8 +30,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.TaskSchema;
-import org.miradi.utils.DateUnitEffort;
-import org.miradi.utils.DateUnitEffortList;
+import org.miradi.utils.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -345,7 +344,45 @@ public class MigrationTo28 extends AbstractMigration
 		private String buildDataLossMessage(RawObject assignmentToDelete, RawObject parent) throws Exception
 		{
 			String name = safeGetTag(parent, TAG_LABEL);
-			return EAM.text("superseded ") + getUserFriendlyObjectName(assignmentToDelete) + " for " + getUserFriendlyObjectName(parent) + " '" + name + EAM.text("'.");
+			String dateUnitEffortMessage = buildDataLossMessage(assignmentToDelete);
+			return 	EAM.text("superseded ") + getUserFriendlyObjectName(assignmentToDelete) + EAM.text(" for ") + getUserFriendlyObjectName(parent) + ": " +
+					EAM.text("name = '") + name + "', " +
+					EAM.text("details = '") + dateUnitEffortMessage + "'.";
+		}
+
+		private String buildDataLossMessage(RawObject assignment) throws Exception
+		{
+			Vector<String> dateUnitEffortMessages = new Vector<>();
+
+			DateUnitEffortList dateUnitEffortList = getDateUnitEffortList(assignment);
+			for (int i = 0; i < dateUnitEffortList.size(); i++)
+			{
+				String dateUnitEffortMessage = buildDataLossMessage(dateUnitEffortList.getDateUnitEffort(i));
+				if (!dateUnitEffortMessage.isEmpty())
+					dateUnitEffortMessages.add(dateUnitEffortMessage);
+			}
+
+			return StringUtilities.joinList(dateUnitEffortMessages, ", ");
+		}
+
+		private String buildDataLossMessage(DateUnitEffort dateUnitEffort) throws Exception
+		{
+			String unitsDisplay = EAM.text("Units");
+			OptionalDouble quantity = new OptionalDouble(dateUnitEffort.getQuantity());
+			String quantityString = quantity.hasValue() ? quantity.toString() : "0";
+			String quantityDisplay =  "(" + quantityString + " " + unitsDisplay + ")";
+
+			DateUnit dateUnit = dateUnitEffort.getDateUnit();
+			if (dateUnit != null)
+			{
+				if (dateUnit.isProjectTotal())
+					return EAM.text("Entire Project Duration") + " " + quantityDisplay;
+
+				DateRange dateRange = dateUnit.asDateRange();
+				return dateRange.fullDateRangeString() + " " + quantityDisplay;
+			}
+
+			return "";
 		}
 
 		private String getUserFriendlyObjectName(RawObject rawObject) throws Exception
