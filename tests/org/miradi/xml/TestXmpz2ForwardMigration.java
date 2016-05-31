@@ -42,12 +42,6 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 		super(name);
 	}
 	
-	public void validateMigratingEmptyProject() throws Exception
-	{
-		Document document = convertProjectToDocument();
-		verifyMigratedXmpz2(document);
-	}
-	
 	public void testRenameTncFieldsMigration() throws Exception
 	{
 		Document document = convertProjectToDocument();
@@ -79,17 +73,41 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 		verifyMigratedXmpz2(document);
 	}
 
-	public void testRenameWhoWhenAssignedFieldsMigration() throws Exception
+	public void testRenameWhenAssignedFieldsMigration() throws Exception
 	{
+		getProject().createAndPopulateObjectTreeTableConfiguration();
+
 		Document document = convertProjectToDocument();
 		Element rootElement = document.getDocumentElement();
-		NodeList planningViewConfigurationColumnNamesNodes = rootElement.getElementsByTagName(PREFIX + Xmpz2XmlConstants.OBJECT_TREE_TABLE_CONFIGURATION + Xmpz2XmlConstants.COLUMN_CONFIGURATION_CODES + Xmpz2XmlConstants.CONTAINER_ELEMENT_TAG);
-		for (int index = 0; index < planningViewConfigurationColumnNamesNodes.getLength(); ++index)
-		{
-			Node node = planningViewConfigurationColumnNamesNodes.item(index);
 
-			appendChildNodeWithSampleText(document, node, MigrationTo20.LEGACY_READABLE_ASSIGNED_WHO_TOTAL_CODE);
-			appendChildNodeWithSampleText(document, node, MigrationTo20.LEGACY_READABLE_ASSIGNED_WHEN_TOTAL_CODE);
+		NodeList planningViewConfigurationColumnNamesContainer = rootElement.getElementsByTagName(PREFIX + Xmpz2XmlConstants.OBJECT_TREE_TABLE_CONFIGURATION + Xmpz2XmlConstants.COLUMN_CONFIGURATION_CODES + Xmpz2XmlConstants.CONTAINER_ELEMENT_TAG);
+		for (int index = 0; index < planningViewConfigurationColumnNamesContainer.getLength(); ++index)
+		{
+			Node container = planningViewConfigurationColumnNamesContainer.item(index);
+
+			Element codeWhenTotalNode = document.createElement(PREFIX + CODE_ELEMENT_NAME);
+			codeWhenTotalNode.setTextContent(MigrationTo20.LEGACY_READABLE_ASSIGNED_WHEN_TOTAL_CODE);
+			container.appendChild(codeWhenTotalNode);
+		}
+
+		verifyMigratedXmpz2(document);
+	}
+
+	public void testRemoveWhoAssignedFieldsMigration() throws Exception
+	{
+		getProject().createAndPopulateObjectTreeTableConfiguration();
+
+		Document document = convertProjectToDocument();
+		Element rootElement = document.getDocumentElement();
+
+		NodeList planningViewConfigurationColumnNamesContainer = rootElement.getElementsByTagName(PREFIX + Xmpz2XmlConstants.OBJECT_TREE_TABLE_CONFIGURATION + Xmpz2XmlConstants.COLUMN_CONFIGURATION_CODES + Xmpz2XmlConstants.CONTAINER_ELEMENT_TAG);
+		for (int index = 0; index < planningViewConfigurationColumnNamesContainer.getLength(); ++index)
+		{
+			Node container = planningViewConfigurationColumnNamesContainer.item(index);
+
+			Element codeWhoTotalNode = document.createElement(PREFIX + CODE_ELEMENT_NAME);
+			codeWhoTotalNode.setTextContent(MigrationTo20.LEGACY_READABLE_ASSIGNED_WHO_TOTAL_CODE);
+			container.appendChild(codeWhoTotalNode);
 		}
 
 		verifyMigratedXmpz2(document);

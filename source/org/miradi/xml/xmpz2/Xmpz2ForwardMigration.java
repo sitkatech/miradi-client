@@ -60,7 +60,7 @@ public class Xmpz2ForwardMigration
 		removeHumanWellbeingTargetCalculatedThreatRatingElement(rootElement);
 		renameTncFields(document);
 		renameLeaderResourceFields(document);
-		renameWhoWhenAssignedFields(document);
+		adjustWhoWhenAssignedFields(document);
 		addDayColumnsVisibilityField(document);
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
@@ -145,7 +145,7 @@ public class Xmpz2ForwardMigration
 		return oldToNewTagMap;
 	}
 
-	private void renameWhoWhenAssignedFields(Document document)
+	private void adjustWhoWhenAssignedFields(Document document)
 	{
 		Element rootElement = document.getDocumentElement();
 
@@ -169,6 +169,8 @@ public class Xmpz2ForwardMigration
 						Node code = codeList.item(i);
 						if (code.getTextContent().equals(MigrationTo20.LEGACY_READABLE_ASSIGNED_WHEN_TOTAL_CODE))
 							code.setTextContent(MigrationTo20.READABLE_TIMEFRAME_TOTAL_CODE);
+						if (code.getTextContent().equals(MigrationTo20.LEGACY_READABLE_ASSIGNED_WHO_TOTAL_CODE))
+							columnNamesContainer.removeChild(code);
 					}
 				}
 			}
