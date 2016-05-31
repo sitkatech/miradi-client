@@ -103,16 +103,14 @@ public class TimePeriodCostsMap
 			add(dateUnit, timePeriodCostsToMerge);
 	}
 		
-	public void mergeNonConflicting(TimePeriodCostsMap timePeriodCostsMapToMerge) throws Exception
+	public void merge(TimePeriodCostsMap timePeriodCostsMapToMerge) throws Exception
 	{
-		TimePeriodCostsMap snapShot = new TimePeriodCostsMap(this);
 		Set<DateUnit> keysToMerge = timePeriodCostsMapToMerge.getDateUnitTimePeriodCostsMap().keySet();
 		for(DateUnit dateUnitToMerge : keysToMerge)
 		{
 			TimePeriodCosts timePeriodCostsToMerge = timePeriodCostsMapToMerge.getTimePeriodCostsForSpecificDateUnit(dateUnitToMerge);
-			TimePeriodCosts snapShotTimePeriodCosts = snapShot.calculateTimePeriodCosts(dateUnitToMerge);
 			TimePeriodCosts existing = getSafeTimePeriodCostsForSpecificDateUnit(dateUnitToMerge);
-			existing.mergeNonConflicting(snapShotTimePeriodCosts, timePeriodCostsToMerge);
+			existing.merge(timePeriodCostsToMerge);
 			
 			add(dateUnitToMerge, existing);
 		}

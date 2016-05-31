@@ -167,12 +167,6 @@ public class ResourceAssignment extends Assignment
 	}
 	
 	@Override
-	public boolean isAssignmentDataSuperseded(DateUnit dateUnit) throws Exception
-	{
-		return getOwner().hasAnyChildTaskResourceData(dateUnit);
-	}
-
-	@Override
 	public String getFullName()
 	{
 		return toString();

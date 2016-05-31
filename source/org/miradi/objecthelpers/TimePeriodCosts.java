@@ -207,13 +207,10 @@ public class TimePeriodCosts
 		}
 	}
 	
-	protected void mergeNonConflicting(TimePeriodCosts snapShotTimePeriodCosts, TimePeriodCosts timePeriodCostsToMerge) throws Exception
+	protected void merge(TimePeriodCosts timePeriodCostsToMerge) throws Exception
 	{
-		if (!snapShotTimePeriodCosts.hasExpenseData() || snapShotTimePeriodCosts.isZeroExpenseValue())
-			mergeAllExpenseCategorizedQuantityInPlace(timePeriodCostsToMerge);
-		
-		if (!snapShotTimePeriodCosts.hasTotalWorkUnitsData() || snapShotTimePeriodCosts.isZeroTotalWorkUnits())
-			mergeAllWorkUnitCategorizedQuantityInPlace(timePeriodCostsToMerge);
+		mergeAllExpenseCategorizedQuantityInPlace(timePeriodCostsToMerge);
+		mergeAllWorkUnitCategorizedQuantityInPlace(timePeriodCostsToMerge);
 	}
 
 	public void retainWorkUnitDataRelatedToAnyOf(BaseObject baseObject)

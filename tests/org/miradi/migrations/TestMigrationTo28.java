@@ -47,9 +47,9 @@ public class TestMigrationTo28 extends AbstractTestMigration
 		Task subTask = getProject().createTask(activity);
 		ResourceAssignment subTaskResourceAssignment = getProject().addResourceAssignment(subTask, 3.0, 2007, 2007);
 
-		assertFalse(strategyResourceAssignment.isAssignmentDataSuperseded(dateUnit2005));
-		assertFalse(activityResourceAssignment.isAssignmentDataSuperseded(dateUnit2006));
-		assertFalse(subTaskResourceAssignment.isAssignmentDataSuperseded(dateUnit2007));
+		assertFalse(isAssignmentDataSuperseded(strategyResourceAssignment, dateUnit2005));
+		assertFalse(isAssignmentDataSuperseded(activityResourceAssignment, dateUnit2006));
+		assertFalse(isAssignmentDataSuperseded(subTaskResourceAssignment, dateUnit2007));
 
 		RawProject migratedProject = reverseMigrate(new VersionRange(MigrationTo28.VERSION_TO));
 		migrateProject(migratedProject, new VersionRange(Project.VERSION_HIGH));
@@ -72,9 +72,9 @@ public class TestMigrationTo28 extends AbstractTestMigration
 		Task subTask = getProject().createTask(activity);
 		ResourceAssignment subTaskResourceAssignment = getProject().addResourceAssignment(subTask, 3.0, 2005, 2005);
 
-		assertTrue(strategyResourceAssignment.isAssignmentDataSuperseded(dateUnit2005));
-		assertTrue(activityResourceAssignment.isAssignmentDataSuperseded(dateUnit2005));
-		assertFalse(subTaskResourceAssignment.isAssignmentDataSuperseded(dateUnit2005));
+		assertTrue(isAssignmentDataSuperseded(strategyResourceAssignment, dateUnit2005));
+		assertTrue(isAssignmentDataSuperseded(activityResourceAssignment, dateUnit2005));
+		assertFalse(isAssignmentDataSuperseded(subTaskResourceAssignment, dateUnit2005));
 
 		RawProject migratedProject = reverseMigrate(new VersionRange(MigrationTo28.VERSION_TO));
 		migrateProject(migratedProject, new VersionRange(Project.VERSION_HIGH));
@@ -99,9 +99,9 @@ public class TestMigrationTo28 extends AbstractTestMigration
 		Task subTask = getProject().createTask(task);
 		ResourceAssignment subTaskResourceAssignment = getProject().addResourceAssignment(subTask, 3.0, 2005, 2005);
 
-		assertTrue(strategyResourceAssignment.isAssignmentDataSuperseded(dateUnit2005));
-		assertTrue(activityResourceAssignment.isAssignmentDataSuperseded(dateUnit2005));
-		assertFalse(subTaskResourceAssignment.isAssignmentDataSuperseded(dateUnit2005));
+		assertTrue(isAssignmentDataSuperseded(strategyResourceAssignment, dateUnit2005));
+		assertTrue(isAssignmentDataSuperseded(activityResourceAssignment, dateUnit2005));
+		assertFalse(isAssignmentDataSuperseded(subTaskResourceAssignment, dateUnit2005));
 
 		RawProject migratedProject = reverseMigrate(new VersionRange(MigrationTo28.VERSION_TO));
 		migrateProject(migratedProject, new VersionRange(Project.VERSION_HIGH));
@@ -124,9 +124,9 @@ public class TestMigrationTo28 extends AbstractTestMigration
 		Task subTask = getProject().createTask(activity);
 		ExpenseAssignment subTaskExpenseAssignment = getProject().addExpenseAssignment(subTask, dateUnit2007, 3.0);
 
-		assertFalse(strategyExpenseAssignment.isAssignmentDataSuperseded(dateUnit2005));
-		assertFalse(activityExpenseAssignment.isAssignmentDataSuperseded(dateUnit2006));
-		assertFalse(subTaskExpenseAssignment.isAssignmentDataSuperseded(dateUnit2007));
+		assertFalse(isAssignmentDataSuperseded(strategyExpenseAssignment, dateUnit2005));
+		assertFalse(isAssignmentDataSuperseded(activityExpenseAssignment, dateUnit2006));
+		assertFalse(isAssignmentDataSuperseded(subTaskExpenseAssignment, dateUnit2007));
 
 		RawProject migratedProject = reverseMigrate(new VersionRange(MigrationTo28.VERSION_TO));
 		migrateProject(migratedProject, new VersionRange(Project.VERSION_HIGH));
@@ -149,9 +149,9 @@ public class TestMigrationTo28 extends AbstractTestMigration
 		Task subTask = getProject().createTask(activity);
 		ExpenseAssignment subTaskExpenseAssignment = getProject().addExpenseAssignment(subTask, dateUnit2005, 3.0);
 
-		assertTrue(strategyExpenseAssignment.isAssignmentDataSuperseded(dateUnit2005));
-		assertTrue(activityExpenseAssignment.isAssignmentDataSuperseded(dateUnit2005));
-		assertFalse(subTaskExpenseAssignment.isAssignmentDataSuperseded(dateUnit2005));
+		assertTrue(isAssignmentDataSuperseded(strategyExpenseAssignment, dateUnit2005));
+		assertTrue(isAssignmentDataSuperseded(activityExpenseAssignment, dateUnit2005));
+		assertFalse(isAssignmentDataSuperseded(subTaskExpenseAssignment, dateUnit2005));
 
 		RawProject migratedProject = reverseMigrate(new VersionRange(MigrationTo28.VERSION_TO));
 		migrateProject(migratedProject, new VersionRange(Project.VERSION_HIGH));
@@ -175,9 +175,9 @@ public class TestMigrationTo28 extends AbstractTestMigration
 		Task subTask = getProject().createTask(method);
 		ResourceAssignment subTaskResourceAssignment = getProject().addResourceAssignment(subTask, 3.0, 2007, 2007);
 
-		assertFalse(indicatorResourceAssignment.isAssignmentDataSuperseded(dateUnit2005));
-		assertFalse(methodResourceAssignment.isAssignmentDataSuperseded(dateUnit2006));
-		assertFalse(subTaskResourceAssignment.isAssignmentDataSuperseded(dateUnit2007));
+		assertFalse(isAssignmentDataSuperseded(indicatorResourceAssignment, dateUnit2005));
+		assertFalse(isAssignmentDataSuperseded(methodResourceAssignment, dateUnit2006));
+		assertFalse(isAssignmentDataSuperseded(subTaskResourceAssignment, dateUnit2007));
 
 		RawProject migratedProject = reverseMigrate(new VersionRange(MigrationTo28.VERSION_TO));
 		migrateProject(migratedProject, new VersionRange(Project.VERSION_HIGH));
@@ -201,9 +201,9 @@ public class TestMigrationTo28 extends AbstractTestMigration
 		Task subTask = getProject().createTask(method);
 		ResourceAssignment subTaskResourceAssignment = getProject().addResourceAssignment(subTask, 3.0, 2005, 2005);
 
-		assertTrue(indicatorResourceAssignment.isAssignmentDataSuperseded(dateUnit2005));
-		assertTrue(methodResourceAssignment.isAssignmentDataSuperseded(dateUnit2005));
-		assertFalse(subTaskResourceAssignment.isAssignmentDataSuperseded(dateUnit2005));
+		assertTrue(isAssignmentDataSuperseded(indicatorResourceAssignment, dateUnit2005));
+		assertTrue(isAssignmentDataSuperseded(methodResourceAssignment, dateUnit2005));
+		assertFalse(isAssignmentDataSuperseded(subTaskResourceAssignment, dateUnit2005));
 
 		RawProject migratedProject = reverseMigrate(new VersionRange(MigrationTo28.VERSION_TO));
 		migrateProject(migratedProject, new VersionRange(Project.VERSION_HIGH));
@@ -227,9 +227,9 @@ public class TestMigrationTo28 extends AbstractTestMigration
 		Task subTask = getProject().createTask(method);
 		ExpenseAssignment subTaskExpenseAssignment = getProject().addExpenseAssignment(subTask, dateUnit2007, 3.0);
 
-		assertFalse(indicatorResourceAssignment.isAssignmentDataSuperseded(dateUnit2005));
-		assertFalse(methodResourceAssignment.isAssignmentDataSuperseded(dateUnit2006));
-		assertFalse(subTaskExpenseAssignment.isAssignmentDataSuperseded(dateUnit2007));
+		assertFalse(isAssignmentDataSuperseded(indicatorResourceAssignment, dateUnit2005));
+		assertFalse(isAssignmentDataSuperseded(methodResourceAssignment, dateUnit2006));
+		assertFalse(isAssignmentDataSuperseded(subTaskExpenseAssignment, dateUnit2007));
 
 		RawProject migratedProject = reverseMigrate(new VersionRange(MigrationTo28.VERSION_TO));
 		migrateProject(migratedProject, new VersionRange(Project.VERSION_HIGH));
@@ -253,15 +253,25 @@ public class TestMigrationTo28 extends AbstractTestMigration
 		Task subTask = getProject().createTask(method);
 		ExpenseAssignment subTaskExpenseAssignment = getProject().addExpenseAssignment(subTask, dateUnit2005, 3.0);
 
-		assertTrue(indicatorResourceAssignment.isAssignmentDataSuperseded(dateUnit2005));
-		assertTrue(methodResourceAssignment.isAssignmentDataSuperseded(dateUnit2005));
-		assertFalse(subTaskExpenseAssignment.isAssignmentDataSuperseded(dateUnit2005));
+		assertTrue(isAssignmentDataSuperseded(indicatorResourceAssignment, dateUnit2005));
+		assertTrue(isAssignmentDataSuperseded(methodResourceAssignment, dateUnit2005));
+		assertFalse(isAssignmentDataSuperseded(subTaskExpenseAssignment, dateUnit2005));
 
 		RawProject migratedProject = reverseMigrate(new VersionRange(MigrationTo28.VERSION_TO));
 		migrateProject(migratedProject, new VersionRange(Project.VERSION_HIGH));
 
 		RawPool rawPoolForType = migratedProject.getRawPoolForType(ObjectType.EXPENSE_ASSIGNMENT);
 		assertEquals(rawPoolForType.size(), 1);
+	}
+
+	private static boolean isAssignmentDataSuperseded(ResourceAssignment assignment, DateUnit dateUnit) throws Exception
+	{
+		return assignment.getOwner().hasAnyChildTaskResourceData(dateUnit);
+	}
+
+	private static boolean isAssignmentDataSuperseded(ExpenseAssignment assignment, DateUnit dateUnit) throws Exception
+	{
+		return assignment.getOwner().hasAnyChildTaskExpenseData(dateUnit);
 	}
 
 	@Override

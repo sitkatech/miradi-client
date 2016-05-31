@@ -19,15 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import java.awt.Color;
-import java.util.Vector;
-
-import javax.swing.Action;
-import javax.swing.JLabel;
-import javax.swing.ListSelectionModel;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
-
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
@@ -35,13 +26,7 @@ import org.miradi.dialogs.planning.AssignmentDateUnitsTableModel;
 import org.miradi.dialogs.planning.RightClickActionProvider;
 import org.miradi.dialogs.planning.TableHeaderWithExpandCollapseIcons;
 import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
-import org.miradi.dialogs.tablerenderers.BasicTableCellEditorOrRendererFactory;
-import org.miradi.dialogs.tablerenderers.BudgetCostCellRendererWithStrikeThroughFactory;
-import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
-import org.miradi.dialogs.tablerenderers.FontForObjectProvider;
-import org.miradi.dialogs.tablerenderers.NumericTableCellRendererWithStrikeThroughFactory;
-import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
-import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.dialogs.tablerenderers.*;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORefList;
@@ -49,6 +34,12 @@ import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.utils.SingleLineTextCellEditorFactory;
+
+import javax.swing.*;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
+import java.awt.*;
+import java.util.Vector;
 
 abstract public class AssignmentDateUnitsTable extends AbstractAssignmentDetailsTable implements RightClickActionProvider, TableWithExpandableColumnsInterface, RowColumnBaseObjectProvider
 {
@@ -61,8 +52,8 @@ abstract public class AssignmentDateUnitsTable extends AbstractAssignmentDetails
 		setColumnSelectionAllowed(true);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		FontForObjectProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
-		currencyRendererFactory = new BudgetCostCellRendererWithStrikeThroughFactory(getWorkUnitsTableModel(), fontProvider);
-		numericRendererFactory = new NumericTableCellRendererWithStrikeThroughFactory(getWorkUnitsTableModel(), new DefaultFontProvider(getMainWindow()));
+		currencyRendererFactory = new BudgetCostTreeTableCellRendererFactory(getWorkUnitsTableModel(), fontProvider);
+		numericRendererFactory = new NumericTableCellRendererFactory(getWorkUnitsTableModel(), new DefaultFontProvider(getMainWindow()));
 		setTableHeader(new TableHeaderWithExpandCollapseIcons(this));
 
 		addRightClickHandler();

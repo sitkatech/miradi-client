@@ -23,14 +23,16 @@ package org.miradi.xml;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.exceptions.ValidationException;
+import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.*;
 import org.miradi.objects.*;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.NullProgressMeter;
+import org.miradi.utils.OptionalDouble;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.xml.generic.XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlValidator;
@@ -191,21 +193,41 @@ public class TestXmpz2XmlExporter extends TestCaseForXmpz2ExportAndImport
 		getProject().createAndPopulateActivity();
 		getProject().createAndPopulateIndicator(getProject().createStrategy());
 		getProject().createAndPopulateStrategy();
+
 		verifyCalculatedCostsElement();
 	}
 
-	public void verifyCalculatedCostsElement() throws Exception
+	private OptionalDouble getTotalBudgetCost(ProjectForTesting projectToImportInto, ORef baseObjectRef) throws Exception
+	{
+		OptionalDouble totalBudgetCost = new OptionalDouble(0.0);
+
+		BaseObject baseObject = projectToImportInto.findObject(baseObjectRef);
+		TimePeriodCostsMap totalBudgetCostsTimePeriodCostsMap = baseObject.getTotalTimePeriodCostsMapForAssignments();
+		TimePeriodCosts timePeriodCosts = totalBudgetCostsTimePeriodCostsMap.calculateTotalBudgetCost();
+		totalBudgetCost = totalBudgetCost.add(timePeriodCosts.calculateTotalCost(projectToImportInto));
+
+		return totalBudgetCost;
+	}
+
+	private void verifyCalculatedCostsElement() throws Exception
 	{
 		ProjectForTesting projectToImportInto = ProjectForTesting.createProjectWithoutDefaultObjects("ProjectToImportInto");
+
 		Xmpz2XmlImporter xmlImporter = new Xmpz2XmlImporter(projectToImportInto, new NullProgressMeter());
 		String exportedProjectXml = validateProject();
 		StringInputStreamWithSeek stringInputStream = new StringInputStreamWithSeek(exportedProjectXml);
 		try
 		{
 			xmlImporter.importProjectXml(stringInputStream);
-			verifyCalculatedCostsElement(xmlImporter, new TaskImporter(xmlImporter), 5);
-			verifyCalculatedCostsElement(xmlImporter, new IndicatorImporter(xmlImporter), 3);
-			verifyCalculatedCostsElement(xmlImporter, new StrategyImporter(xmlImporter), 3);
+
+			ORefList taskRefs = projectToImportInto.getAllRefsForType(ObjectType.TASK);
+			verifyCalculatedCostsElement(projectToImportInto, xmlImporter, new TaskImporter(xmlImporter), taskRefs.size());
+
+			ORefList indicatorRefs = projectToImportInto.getAllRefsForType(ObjectType.INDICATOR);
+			verifyCalculatedCostsElement(projectToImportInto, xmlImporter, new IndicatorImporter(xmlImporter), indicatorRefs.size());
+
+			ORefList strategyRefs = projectToImportInto.getAllRefsForType(ObjectType.STRATEGY);
+			verifyCalculatedCostsElement(projectToImportInto, xmlImporter, new StrategyImporter(xmlImporter), strategyRefs.size());
 		}
 		finally
 		{
@@ -213,7 +235,7 @@ public class TestXmpz2XmlExporter extends TestCaseForXmpz2ExportAndImport
 		}
 	}
 
-	public void verifyCalculatedCostsElement(Xmpz2XmlImporter xmlImporter, BaseObjectImporter objectImporter, int expectedNodeCount) throws Exception
+	private void verifyCalculatedCostsElement(ProjectForTesting projectToImportInto, Xmpz2XmlImporter xmlImporter, BaseObjectImporter objectImporter, int expectedNodeCount) throws Exception
 	{
 		final String elementObjectName = objectImporter.getBaseObjectSchema().getXmpz2ElementName();
 		final String containerElementName = Xmpz2XmlWriter.createPoolElementName(elementObjectName);
@@ -221,8 +243,13 @@ public class TestXmpz2XmlExporter extends TestCaseForXmpz2ExportAndImport
 		final NodeList baseObjectNodes = xmlImporter.getNodes(rootNode, new String[]{containerElementName, elementObjectName, });
 		
 		assertEquals("should have expected node count?", expectedNodeCount, baseObjectNodes.getLength());
+
 		Node baseObjectNode = baseObjectNodes.item(0);
-		
+		String idAsString = xmlImporter.getAttributeValue(baseObjectNode, Xmpz2XmlConstants.ID);
+		int objectType = objectImporter.getBaseObjectSchema().getType();
+		ORef objectRef = new ORef(objectType, new BaseId(idAsString));
+		OptionalDouble expectedTotalBudgetCost = getTotalBudgetCost(projectToImportInto, objectRef);
+
 		Node baseObjectCalculatedCostsNode = xmlImporter.getNamedChildNode(baseObjectNode, elementObjectName + Xmpz2XmlConstants.TIME_PERIOD_COSTS);
 		assertNotNull("should have object calculated costs element?", baseObjectCalculatedCostsNode);
 		
@@ -230,7 +257,7 @@ public class TestXmpz2XmlExporter extends TestCaseForXmpz2ExportAndImport
 		assertNotNull("should have calculated costs element?", calculatedCostsNode);
 		
 		Node calculatedTotalBudgetCostNode = xmlImporter.getNamedChildNode(calculatedCostsNode, XmlConstants.CALCULATED_TOTAL_BUDGET_COST);
-		assertEquals("incorrect total budget value for object?", "112", xmlImporter.getSafeNodeContent(calculatedTotalBudgetCostNode));
+		assertEquals("incorrect total budget value for object?", expectedTotalBudgetCost.toString(), xmlImporter.getSafeNodeContent(calculatedTotalBudgetCostNode));
 	}
 	
 	public void testProjectWithHtmlInQuarantinedContent() throws Exception

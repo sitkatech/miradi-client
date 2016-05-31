@@ -177,19 +177,19 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 	{
 		TimePeriodCostsMap strategyTimePeriodCostsMap = createTimePeriodCostsMap(dateUnitTotal, 2.0);
 		TimePeriodCostsMap activityTimePeriodCostsMap = createTimePeriodCostsMap(dateUnit2007, 1.0);
-		activityTimePeriodCostsMap.mergeNonConflicting(strategyTimePeriodCostsMap);
-		verifyMergedExpense(1.0, activityTimePeriodCostsMap, dateUnitTotal);
+		activityTimePeriodCostsMap.merge(strategyTimePeriodCostsMap);
+		verifyMergedExpense(3.0, activityTimePeriodCostsMap, dateUnitTotal);
 		verifyMergedExpense(1.0, activityTimePeriodCostsMap, dateUnit2007);
 		
 		TimePeriodCostsMap strategyTimePeriodCostsMap2 = createTimePeriodCostsMap(dateUnit2008, 2.0);
 		TimePeriodCostsMap activityTimePeriodCostsMap2 = createTimePeriodCostsMap(dateUnit2007, 2.0);
-		activityTimePeriodCostsMap2.mergeNonConflicting(strategyTimePeriodCostsMap2);
+		activityTimePeriodCostsMap2.merge(strategyTimePeriodCostsMap2);
 		verifyMergedExpense(2.0, activityTimePeriodCostsMap2, dateUnit2008);
 		verifyMergedExpense(2.0, activityTimePeriodCostsMap2, dateUnit2007);
 		
 		TimePeriodCostsMap strategyTimePeriodCostsMap3 = createTimePeriodCostsMap(dateUnit2008, 1.0);
 		TimePeriodCostsMap activityTimePeriodCostsMap3 = createTimePeriodCostsMap(dateUnitTotal, 2.0);
-		activityTimePeriodCostsMap3.mergeNonConflicting(strategyTimePeriodCostsMap3);
+		activityTimePeriodCostsMap3.merge(strategyTimePeriodCostsMap3);
 		verifyMergedExpense(1.0, activityTimePeriodCostsMap3, dateUnit2008);
 		verifyMergedExpense(3.0, activityTimePeriodCostsMap3, dateUnitTotal);
 	}
@@ -205,19 +205,19 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		ProjectResource fred = createProjectResource();
 		TimePeriodCostsMap strategyTimePeriodCostsMap = createTimePeriodCostsMap(dateUnitTotal, fred.getRef(), 2.0);
 		TimePeriodCostsMap activityTimePeriodCostsMap = createTimePeriodCostsMap(dateUnit2007, fred.getRef(), 1.0);
-		activityTimePeriodCostsMap.mergeNonConflicting(strategyTimePeriodCostsMap);
-		verifyMergedWorkUnits(1.0, activityTimePeriodCostsMap, dateUnitTotal);
+		activityTimePeriodCostsMap.merge(strategyTimePeriodCostsMap);
+		verifyMergedWorkUnits(3.0, activityTimePeriodCostsMap, dateUnitTotal);
 		verifyMergedWorkUnits(1.0, activityTimePeriodCostsMap, dateUnit2007);
 		
 		TimePeriodCostsMap strategyTimePeriodCostsMap2 = createTimePeriodCostsMap(dateUnit2008, fred.getRef(), 2.0);
 		TimePeriodCostsMap activityTimePeriodCostsMap2 = createTimePeriodCostsMap(dateUnit2007, fred.getRef(), 2.0);
-		activityTimePeriodCostsMap2.mergeNonConflicting(strategyTimePeriodCostsMap2);
+		activityTimePeriodCostsMap2.merge(strategyTimePeriodCostsMap2);
 		verifyMergedWorkUnits(2.0, activityTimePeriodCostsMap2, dateUnit2008);
 		verifyMergedWorkUnits(2.0, activityTimePeriodCostsMap2, dateUnit2007);
 		
 		TimePeriodCostsMap strategyTimePeriodCostsMap3 = createTimePeriodCostsMap(dateUnit2008, fred.getRef(), 1.0);
 		TimePeriodCostsMap activityTimePeriodCostsMap3 = createTimePeriodCostsMap(dateUnitTotal, fred.getRef(), 2.0);
-		activityTimePeriodCostsMap3.mergeNonConflicting(strategyTimePeriodCostsMap3);
+		activityTimePeriodCostsMap3.merge(strategyTimePeriodCostsMap3);
 		verifyMergedWorkUnits(1.0, activityTimePeriodCostsMap3, dateUnit2008);
 		verifyMergedWorkUnits(3.0, activityTimePeriodCostsMap3, dateUnitTotal);
 		
@@ -234,7 +234,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		ProjectResource fred = createProjectResource();
 		TimePeriodCostsMap workUnitsTimePeriodCostsMap = createTimePeriodCostsMap(dateUnit2007, fred.getRef(), 1.0);
 		TimePeriodCostsMap expenseTimePeriodCostsMap = createTimePeriodCostsMap(dateUnit2007, 13.0);
-		workUnitsTimePeriodCostsMap.mergeNonConflicting(expenseTimePeriodCostsMap);
+		workUnitsTimePeriodCostsMap.merge(expenseTimePeriodCostsMap);
 		
 		TimePeriodCosts timePeriodCosts = workUnitsTimePeriodCostsMap.getTimePeriodCostsForSpecificDateUnit(dateUnit2007);
 		assertEquals("wrong expense after megrge?", 13.0, timePeriodCosts.getTotalExpense().getValue());
@@ -246,9 +246,9 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		ProjectResource fred = createProjectResource();
 		TimePeriodCostsMap timePeriodCostsMap1 = createTimePeriodCostsMap(dateUnit2007, fred.getRef(), 1.0);
 		TimePeriodCostsMap timePeriodCostsMap2 = createTimePeriodCostsMap(dateUnit2007, fred.getRef(), 2.0);
-		timePeriodCostsMap2.mergeNonConflicting(timePeriodCostsMap1);
+		timePeriodCostsMap2.merge(timePeriodCostsMap1);
 		TimePeriodCosts timePeriodCosts2007AfterMerge = timePeriodCostsMap2.getTimePeriodCostsForSpecificDateUnit(dateUnit2007);
-		assertEquals("wrong work units for resource?", 2.0, timePeriodCosts2007AfterMerge.getTotalWorkUnits().getValue());
+		assertEquals("wrong work units for resource?", 3.0, timePeriodCosts2007AfterMerge.getTotalWorkUnits().getValue());
 	}
 	
 	public void testMultipleAssignmentsWithinSameTimePeriodCostsMapMerge() throws Exception
@@ -260,7 +260,7 @@ public class TestTimePeriodCostsMap extends TestCaseWithProject
 		timePeriodCostsMap1.add(dateUnit2009, jillTimePeriodCosts);
 		
 		TimePeriodCostsMap timePeriodCostsMap = new TimePeriodCostsMap();
-		timePeriodCostsMap.mergeNonConflicting(timePeriodCostsMap1);
+		timePeriodCostsMap.merge(timePeriodCostsMap1);
 		
 		TimePeriodCosts timePeriodCosts = timePeriodCostsMap.calculateTimePeriodCosts(dateUnitTotal);
 		assertEquals("wrong work units?", 15.0, timePeriodCosts.getTotalWorkUnits().getValue());

@@ -564,17 +564,12 @@ abstract public class BaseObject
 		id = newId;
 	}
 	
-	public boolean isAssignmentDataSuperseded(DateUnit dateUnit) throws Exception
-	{		
-		return false;
-	}
-	
-	protected boolean hasAnyChildTaskResourceData(DateUnit dateUnit) throws Exception
+	public boolean hasAnyChildTaskResourceData(DateUnit dateUnit) throws Exception
 	{
 		return hasAnyChildTaskAssignmentData(dateUnit, TAG_RESOURCE_ASSIGNMENT_IDS);
 	}
 	
-	protected boolean hasAnyChildTaskExpenseData(DateUnit dateUnit) throws Exception
+	public boolean hasAnyChildTaskExpenseData(DateUnit dateUnit) throws Exception
 	{	
 		return hasAnyChildTaskAssignmentData(dateUnit, TAG_EXPENSE_ASSIGNMENT_REFS);
 	}
@@ -608,8 +603,8 @@ abstract public class BaseObject
 		TimePeriodCostsMap expenseTimePeriodCostsMap = getTotalTimePeriodCostsMapForTag(TAG_EXPENSE_ASSIGNMENT_REFS);
 		
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
-		mergedTimePeriodCostsMap.mergeNonConflicting(expenseTimePeriodCostsMap);
-		mergedTimePeriodCostsMap.mergeNonConflicting(assignmentTimePeriodCostsMap);
+		mergedTimePeriodCostsMap.merge(expenseTimePeriodCostsMap);
+		mergedTimePeriodCostsMap.merge(assignmentTimePeriodCostsMap);
 
 		return mergedTimePeriodCostsMap;
 	}
@@ -641,7 +636,7 @@ abstract public class BaseObject
 		TimePeriodCostsMap planTimePeriodCostsMap = getTimePeriodCostsMap(TAG_TIMEFRAME_IDS);
 
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
-		mergedTimePeriodCostsMap.mergeNonConflicting(planTimePeriodCostsMap);
+		mergedTimePeriodCostsMap.merge(planTimePeriodCostsMap);
 
 		return mergedTimePeriodCostsMap;
 	}
@@ -667,8 +662,8 @@ abstract public class BaseObject
 		TimePeriodCostsMap totalTimePeriodCostsMapForTag = getTotalTimePeriodCostsMapForTag(tag);
 		
 		TimePeriodCostsMap mergedTimePeriodCostsMap = new TimePeriodCostsMap();
-		mergedTimePeriodCostsMap.mergeNonConflicting(subTaskTimePeriodCosts);
-		mergedTimePeriodCostsMap.mergeNonConflicting(totalTimePeriodCostsMapForTag);
+		mergedTimePeriodCostsMap.merge(subTaskTimePeriodCosts);
+		mergedTimePeriodCostsMap.merge(totalTimePeriodCostsMapForTag);
 		
 		return mergedTimePeriodCostsMap;	
 	}
