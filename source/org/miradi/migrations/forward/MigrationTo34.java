@@ -25,13 +25,14 @@ import org.miradi.migrations.AbstractMigration;
 import org.miradi.migrations.AbstractMigrationORefVisitor;
 import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawProject;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 
 import java.util.Vector;
 
-public class MigrationTo32 extends AbstractMigration
+public class MigrationTo34 extends AbstractMigration
 {
-	public MigrationTo32(RawProject rawProjectToUse)
+	public MigrationTo34(RawProject rawProjectToUse)
 	{
 		super(rawProjectToUse);
 	}
@@ -39,7 +40,6 @@ public class MigrationTo32 extends AbstractMigration
 	@Override
 	protected MigrationResult reverseMigrate() throws Exception
 	{
-		// decision made not to try and undo split of shared methods
 		return MigrationResult.createSuccess();
 	}
 
@@ -52,7 +52,7 @@ public class MigrationTo32 extends AbstractMigration
 
 		for(Integer typeToVisit : typesToVisit)
 		{
-			visitor = new SplitSharedTasksVisitor(getRawProject(), typeToVisit, TAG_METHOD_IDS);
+			visitor = new MigrateIndicatorAssignmentsVisitor(typeToVisit);
 			visitAllORefsInPool(visitor);
 			final MigrationResult thisMigrationResult = visitor.getMigrationResult();
 			if (migrationResult == null)
@@ -87,11 +87,30 @@ public class MigrationTo32 extends AbstractMigration
 	@Override
 	protected String getDescription()
 	{
-		return EAM.text("This migration splits shared methods out to separate method entries.");
+		return EAM.text("This migration moves work plan data from Indicators / Methods to Monitoring Activities.");
 	}
 
-	public final static String TAG_METHOD_IDS = "TaskIds";
+	private class MigrateIndicatorAssignmentsVisitor extends AbstractMigrationORefVisitor
+	{
+		public MigrateIndicatorAssignmentsVisitor(int typeToVisit)
+		{
+			type = typeToVisit;
+		}
 
-	public static final int VERSION_FROM = 31;
-	public static final int VERSION_TO = 32;
+		public int getTypeToVisit()
+		{
+			return type;
+		}
+
+		@Override
+		protected MigrationResult internalVisit(ORef rawObjectRef) throws Exception
+		{
+			return MigrationResult.createSuccess();
+		}
+
+		private int type;
+	}
+
+	public static final int VERSION_FROM = 33;
+	public static final int VERSION_TO = 34;
 }

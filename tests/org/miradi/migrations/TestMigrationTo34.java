@@ -20,39 +20,24 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
-import org.miradi.migrations.forward.MigrationTo30;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.schemas.TaskSchema;
+import org.miradi.migrations.forward.MigrationTo34;
 
-public class TestMigrationTo30 extends AbstractTestMigration
+public class TestMigrationTo34 extends AbstractTestMigration
 {
-	public TestMigrationTo30(String name)
+	public TestMigrationTo34(String name)
 	{
 		super(name);
-	}
-	
-	public void testFieldsRemovedAfterReverseMigration() throws Exception
-	{
-		getProject().createAndPopulateStrategy();
-
-		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo30.VERSION_TO));
-        RawPool rawTaskPool = rawProject.getRawPoolForType(TaskSchema.getObjectType());
-        for(ORef ref : rawTaskPool.keySet())
-        {
-            RawObject rawTask = rawTaskPool.get(ref);
-            assertFalse("Field should have been removed during reverse migration?", rawTask.containsKey(MigrationTo30.TAG_IS_MONITORING_ACTIVITY));
-        }
 	}
 	
 	@Override
 	protected int getFromVersion()
 	{
-		return MigrationTo30.VERSION_FROM;
+		return MigrationTo34.VERSION_FROM;
 	}
 	
 	@Override
 	protected int getToVersion()
 	{
-		return MigrationTo30.VERSION_TO;
+		return MigrationTo34.VERSION_TO;
 	}
 }
