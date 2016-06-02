@@ -25,6 +25,10 @@ import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.*;
 import org.miradi.project.Project;
+import org.miradi.utils.DateUnitEffort;
+import org.miradi.utils.DateUnitEffortList;
+
+import java.util.ArrayList;
 
 public class TestMigrationTo28 extends AbstractTestMigration
 {
@@ -108,6 +112,46 @@ public class TestMigrationTo28 extends AbstractTestMigration
 
 		RawPool rawPoolForType = migratedProject.getRawPoolForType(ObjectType.RESOURCE_ASSIGNMENT);
 		assertEquals(rawPoolForType.size(), 1);
+	}
+
+	public void testForwardMigrationStrategyResourceAssignmentsUpdated() throws Exception
+	{
+		getProject().setProjectStartDate(2005);
+		getProject().setProjectEndDate(2007);
+
+		Strategy strategy = getProject().createStrategy();
+		ArrayList<DateUnit> strategyDateUnits = new ArrayList<DateUnit>();
+		strategyDateUnits.add(dateUnit2005Q1);
+		strategyDateUnits.add(dateUnit2005Q2);
+		DateUnitEffortList strategyDateUnitEffortList = createDateUnitEffortList(strategyDateUnits, 1.0);
+		ResourceAssignment strategyResourceAssignment = getProject().addResourceAssignment(strategy, strategyDateUnitEffortList);
+
+		Task activity = getProject().createActivity(strategy);
+		ArrayList<DateUnit> activityDateUnits = new ArrayList<DateUnit>();
+		activityDateUnits.add(dateUnit2005Q2);
+		activityDateUnits.add(dateUnit2005Q3);
+		DateUnitEffortList activityDateUnitEffortList = createDateUnitEffortList(activityDateUnits, 2.0);
+		ResourceAssignment activityResourceAssignment = getProject().addResourceAssignment(activity, activityDateUnitEffortList);
+
+		Task subTask = getProject().createTask(activity);
+		ArrayList<DateUnit> subTaskDateUnits = new ArrayList<DateUnit>();
+		subTaskDateUnits.add(dateUnit2005Q3);
+		subTaskDateUnits.add(dateUnit2005Q4);
+		DateUnitEffortList subTaskDateUnitEffortList = createDateUnitEffortList(subTaskDateUnits, 3.0);
+		ResourceAssignment subTaskResourceAssignment = getProject().addResourceAssignment(subTask, subTaskDateUnitEffortList);
+
+		assertFalse(isAssignmentDataSuperseded(strategyResourceAssignment, dateUnit2005Q1));
+		assertTrue(isAssignmentDataSuperseded(strategyResourceAssignment, dateUnit2005Q2));
+		assertFalse(isAssignmentDataSuperseded(activityResourceAssignment, dateUnit2005Q2));
+		assertTrue(isAssignmentDataSuperseded(activityResourceAssignment, dateUnit2005Q3));
+		assertFalse(isAssignmentDataSuperseded(subTaskResourceAssignment, dateUnit2005Q3));
+		assertFalse(isAssignmentDataSuperseded(subTaskResourceAssignment, dateUnit2005Q4));
+
+		RawProject migratedProject = reverseMigrate(new VersionRange(MigrationTo28.VERSION_TO));
+		migrateProject(migratedProject, new VersionRange(Project.VERSION_HIGH));
+
+		RawPool rawPoolForType = migratedProject.getRawPoolForType(ObjectType.RESOURCE_ASSIGNMENT);
+		assertEquals(rawPoolForType.size(), 3);
 	}
 
 	public void testForwardMigrationStrategyNoExpenseAssignmentsRemoved() throws Exception
@@ -264,6 +308,18 @@ public class TestMigrationTo28 extends AbstractTestMigration
 		assertEquals(rawPoolForType.size(), 1);
 	}
 
+	private DateUnitEffortList createDateUnitEffortList(ArrayList<DateUnit> dateUnitList, double units) throws Exception
+	{
+		DateUnitEffortList list = new DateUnitEffortList();
+
+		for (DateUnit dateUnit : dateUnitList)
+		{
+			list.add(new DateUnitEffort(dateUnit, units));
+		}
+
+		return list;
+	}
+
 	private static boolean isAssignmentDataSuperseded(ResourceAssignment assignment, DateUnit dateUnit) throws Exception
 	{
 		return assignment.getOwner().hasAnyChildTaskResourceData(dateUnit);
@@ -289,4 +345,9 @@ public class TestMigrationTo28 extends AbstractTestMigration
 	private final static DateUnit dateUnit2007 = new DateUnit("YEARFROM:2007-01");
 	private final static DateUnit dateUnit2006 = new DateUnit("YEARFROM:2006-01");
 	private final static DateUnit dateUnit2005 = new DateUnit("YEARFROM:2005-01");
+
+	private final static DateUnit dateUnit2005Q1 = new DateUnit("2005Q1");
+	private final static DateUnit dateUnit2005Q2 = new DateUnit("2005Q2");
+	private final static DateUnit dateUnit2005Q3 = new DateUnit("2005Q3");
+	private final static DateUnit dateUnit2005Q4 = new DateUnit("2005Q4");
 }

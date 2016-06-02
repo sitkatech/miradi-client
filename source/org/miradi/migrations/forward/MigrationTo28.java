@@ -104,7 +104,6 @@ public class MigrationTo28 extends AbstractMigration
 		public DeleteSupersededAssignmentsVisitor(int typeToVisit)
 		{
 			type = typeToVisit;
-			assignmentsToDelete = new HashMap<ORef, RawObject>() {};
 		}
 
 		public int getTypeToVisit()
@@ -112,15 +111,17 @@ public class MigrationTo28 extends AbstractMigration
 			return type;
 		}
 
-		public HashMap<ORef, RawObject> getAssignmentsToDelete()
+		public HashMap<ORef, SupersededAssignment> getAssignmentsToUpdate()
 		{
-			return assignmentsToDelete;
+			return assignmentsToUpdate;
 		}
 
 		@Override
 		protected MigrationResult internalVisit(ORef rawObjectRef) throws Exception
 		{
 			MigrationResult migrationResult = MigrationResult.createUninitializedResult();
+
+			assignmentsToUpdate = new HashMap<ORef, SupersededAssignment>() {};
 
 			RawObject rawObjectToMigrate = getRawProject().findObject(rawObjectRef);
 			if (rawObjectToMigrate != null)
@@ -130,17 +131,15 @@ public class MigrationTo28 extends AbstractMigration
 				visitTasks(rawObjectToMigrate);
 			}
 
-			if (getAssignmentsToDelete().size() > 0)
+			if (getAssignmentsToUpdate().size() > 0)
 			{
-				for (Map.Entry<ORef, RawObject> entry : getAssignmentsToDelete().entrySet())
+				for (Map.Entry<ORef, SupersededAssignment> entry : getAssignmentsToUpdate().entrySet())
 				{
-					ORef assignmentToDeleteRef = entry.getKey();
-					RawObject assignmentToDelete = getRawProject().findObject(entry.getKey());
-					if (assignmentToDelete != null)
-					{
-						migrationResult.addDataLoss(buildDataLossMessage(assignmentToDelete, entry.getValue()));
-						deleteAssignment(assignmentToDeleteRef, entry.getValue());
-					}
+					migrationResult.addDataLoss(buildDataLossMessage(entry.getValue().assignment, entry.getValue().parentObject));
+					if (entry.getValue().adjustedDateUnitEffortList.size() > 0)
+						updateAssignment(entry.getValue().assignment, entry.getValue().adjustedDateUnitEffortList);
+					else
+						deleteAssignment(entry.getKey(), entry.getValue().parentObject);
 				}
 
 				return migrationResult;
@@ -154,8 +153,10 @@ public class MigrationTo28 extends AbstractMigration
 			for (ORef assignmentRef : getAssignments(rawObjectToVisit))
 			{
 				RawObject assignment = getRawProject().findObject(assignmentRef);
-				if (assignmentIsSuperseded(rawObjectToVisit, assignment))
-					getAssignmentsToDelete().put(assignmentRef, rawObjectToVisit);
+				DateUnitEffortList dateUnitEffortList = getDateUnitEffortList(assignment);
+				DateUnitEffortList adjustedDateUnitEffortList = getAdjustedDateUnitEffortListForAssignments(dateUnitEffortList, rawObjectToVisit);
+				if (!dateUnitEffortList.equals(adjustedDateUnitEffortList))
+					assignmentsToUpdate.put(assignmentRef, new SupersededAssignment(assignment, adjustedDateUnitEffortList, rawObjectToVisit));
 			}
 		}
 
@@ -164,8 +165,10 @@ public class MigrationTo28 extends AbstractMigration
 			for (ORef expenseRef : getExpenses(rawObjectToVisit))
 			{
 				RawObject expense = getRawProject().findObject(expenseRef);
-				if (expenseIsSuperseded(rawObjectToVisit, expense))
-					getAssignmentsToDelete().put(expenseRef, rawObjectToVisit);
+				DateUnitEffortList dateUnitEffortList = getDateUnitEffortList(expense);
+				DateUnitEffortList adjustedDateUnitEffortList = getAdjustedDateUnitEffortListForExpenses(dateUnitEffortList, rawObjectToVisit);
+				if (!dateUnitEffortList.equals(adjustedDateUnitEffortList))
+					assignmentsToUpdate.put(expenseRef, new SupersededAssignment(expense, adjustedDateUnitEffortList, rawObjectToVisit));
 			}
 		}
 
@@ -244,7 +247,7 @@ public class MigrationTo28 extends AbstractMigration
 			return dateUnitEffortList;
 		}
 
-		private boolean assignmentIsSuperseded(RawObject rawObject, RawObject assignment) throws Exception
+		private DateUnitEffortList getAdjustedDateUnitEffortListForAssignments(DateUnitEffortList dateUnitEffortListToAdjust, RawObject rawObject) throws Exception
 		{
 			ArrayList<RawObject> childTasks = getChildTasks(rawObject);
 			for (RawObject task : childTasks)
@@ -253,17 +256,16 @@ public class MigrationTo28 extends AbstractMigration
 				for (ORef childAssignmentRef : childAssignmentRefs)
 				{
 					RawObject childAssignment = getRawProject().findObject(childAssignmentRef);
-					if (dateUnitContained(assignment, childAssignment))
-						return true;
+					dateUnitEffortListToAdjust = getAdjustedDateUnitEffortListForAssignment(dateUnitEffortListToAdjust, childAssignment);
 				}
 
-				return assignmentIsSuperseded(task, assignment);
+				return getAdjustedDateUnitEffortListForAssignments(dateUnitEffortListToAdjust, task);
 			}
 
-			return false;
+			return dateUnitEffortListToAdjust;
 		}
 
-		private boolean expenseIsSuperseded(RawObject rawObject, RawObject expense) throws Exception
+		private DateUnitEffortList getAdjustedDateUnitEffortListForExpenses(DateUnitEffortList dateUnitEffortListToAdjust, RawObject rawObject) throws Exception
 		{
 			ArrayList<RawObject> childTasks = getChildTasks(rawObject);
 			for (RawObject task : childTasks)
@@ -272,24 +274,25 @@ public class MigrationTo28 extends AbstractMigration
 				for (ORef childExpenseRef : childExpenseRefs)
 				{
 					RawObject childExpense = getRawProject().findObject(childExpenseRef);
-					if (dateUnitContained(expense, childExpense))
-						return true;
-
-					return expenseIsSuperseded(task, expense);
+					dateUnitEffortListToAdjust = getAdjustedDateUnitEffortListForAssignment(dateUnitEffortListToAdjust, childExpense);
 				}
+
+				return getAdjustedDateUnitEffortListForExpenses(dateUnitEffortListToAdjust, task);
 			}
 
-			return false;
+			return dateUnitEffortListToAdjust;
 		}
 
-		private boolean dateUnitContained(RawObject parentAssignment, RawObject childAssignment) throws Exception
+		private DateUnitEffortList getAdjustedDateUnitEffortListForAssignment(DateUnitEffortList dateUnitEffortListToAdjust, RawObject childAssignment) throws Exception
 		{
-			DateUnitEffortList parentDateUnitEffortList = getDateUnitEffortList(parentAssignment);
+			DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
+
 			DateUnitEffortList childDateUnitEffortList = getDateUnitEffortList(childAssignment);
 
-			for (int i = 0; i < parentDateUnitEffortList.size(); i++)
+			for (int i = 0; i < dateUnitEffortListToAdjust.size(); i++)
 			{
-				DateUnitEffort parentDateUnitEffort = parentDateUnitEffortList.getDateUnitEffort(i);
+				boolean supersededByChildAssignment = false;
+				DateUnitEffort parentDateUnitEffort = dateUnitEffortListToAdjust.getDateUnitEffort(i);
 				DateUnit parentDateUnit = parentDateUnitEffort.getDateUnit();
 
 				for (int j = 0; j < childDateUnitEffortList.size(); j++)
@@ -297,11 +300,19 @@ public class MigrationTo28 extends AbstractMigration
 					DateUnitEffort childDateUnitEffort = childDateUnitEffortList.getDateUnitEffort(j);
 					DateUnit childDateUnit = childDateUnitEffort.getDateUnit();
 					if (childDateUnit.contains(parentDateUnit))
-						return true;
+						supersededByChildAssignment = true;
 				}
+
+				if (!supersededByChildAssignment)
+					dateUnitEffortList.add(parentDateUnitEffort);
 			}
 
-			return false;
+			return dateUnitEffortList;
+		}
+
+		private void updateAssignment(RawObject assignmentToUpdate, DateUnitEffortList dateUnitEffortList) throws Exception
+		{
+			assignmentToUpdate.setData(TAG_DATEUNIT_EFFORTS, dateUnitEffortList.toJson().toString());
 		}
 
 		private void deleteAssignment(ORef assignmentToDeleteRef, RawObject parent) throws Exception
@@ -345,9 +356,9 @@ public class MigrationTo28 extends AbstractMigration
 		{
 			String name = safeGetTag(parent, TAG_LABEL);
 			String dateUnitEffortMessage = buildDataLossMessage(assignmentToDelete);
-			return 	EAM.text("superseded ") + getUserFriendlyObjectName(assignmentToDelete) + EAM.text(" for ") + getUserFriendlyObjectName(parent) + ": " +
-					EAM.text("name = '") + name + "', " +
-					EAM.text("details = '") + dateUnitEffortMessage + "'.";
+			return 	EAM.text("Superseded ") + getUserFriendlyObjectName(assignmentToDelete) + EAM.text(" for parent ") + getUserFriendlyObjectName(parent) + ": \n" +
+					EAM.text("Name = '") + name + "', \n" +
+					EAM.text("Details = '") + dateUnitEffortMessage + "'.\n";
 		}
 
 		private String buildDataLossMessage(RawObject assignment) throws Exception
@@ -362,7 +373,7 @@ public class MigrationTo28 extends AbstractMigration
 					dateUnitEffortMessages.add(dateUnitEffortMessage);
 			}
 
-			return StringUtilities.joinList(dateUnitEffortMessages, ", ");
+			return StringUtilities.joinList(dateUnitEffortMessages, ", \n");
 		}
 
 		private String buildDataLossMessage(DateUnitEffort dateUnitEffort) throws Exception
@@ -427,8 +438,22 @@ public class MigrationTo28 extends AbstractMigration
 			return "";
 		}
 
+		private class SupersededAssignment
+		{
+			public SupersededAssignment(RawObject assignmentUse, DateUnitEffortList dateUnitEffortListToUse, RawObject parentObjectToUse)
+			{
+				assignment = assignmentUse;
+				adjustedDateUnitEffortList = dateUnitEffortListToUse;
+				parentObject = parentObjectToUse;
+			}
+
+			public RawObject assignment;
+			public DateUnitEffortList adjustedDateUnitEffortList;
+			public RawObject parentObject;
+		}
+
 		private int type;
-		private HashMap<ORef, RawObject> assignmentsToDelete;
+		private HashMap<ORef, SupersededAssignment> assignmentsToUpdate;
 	}
 
 	public static final String TAG_LABEL = "Label";
