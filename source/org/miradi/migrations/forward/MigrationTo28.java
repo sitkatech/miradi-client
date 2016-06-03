@@ -135,7 +135,7 @@ public class MigrationTo28 extends AbstractMigration
 			{
 				for (Map.Entry<ORef, SupersededAssignment> entry : getAssignmentsToUpdate().entrySet())
 				{
-					migrationResult.addDataLoss(buildDataLossMessage(entry.getValue().assignment, entry.getValue().parentObject));
+					migrationResult.addDataLoss(buildDataLossMessage(entry.getValue().assignment, entry.getValue().adjustedDateUnitEffortList, entry.getValue().parentObject));
 					if (entry.getValue().adjustedDateUnitEffortList.size() > 0)
 						updateAssignment(entry.getValue().assignment, entry.getValue().adjustedDateUnitEffortList);
 					else
@@ -352,25 +352,29 @@ public class MigrationTo28 extends AbstractMigration
 			getRawProject().deleteRawObject(assignmentToDeleteRef);
 		}
 
-		private String buildDataLossMessage(RawObject assignmentToDelete, RawObject parent) throws Exception
+		private String buildDataLossMessage(RawObject assignmentToDelete, DateUnitEffortList adjustedDateUnitEffortList, RawObject parent) throws Exception
 		{
 			String name = safeGetTag(parent, TAG_LABEL);
-			String dateUnitEffortMessage = buildDataLossMessage(assignmentToDelete);
+			String dateUnitEffortMessage = buildDataLossMessage(assignmentToDelete, adjustedDateUnitEffortList);
 			return 	EAM.text("Superseded ") + getUserFriendlyObjectName(assignmentToDelete) + EAM.text(" for parent ") + getUserFriendlyObjectName(parent) + ": \n" +
 					EAM.text("Name = '") + name + "', \n" +
 					EAM.text("Details = '") + dateUnitEffortMessage + "'.\n";
 		}
 
-		private String buildDataLossMessage(RawObject assignment) throws Exception
+		private String buildDataLossMessage(RawObject assignment, DateUnitEffortList adjustedDateUnitEffortList) throws Exception
 		{
 			Vector<String> dateUnitEffortMessages = new Vector<String>();
 
 			DateUnitEffortList dateUnitEffortList = getDateUnitEffortList(assignment);
 			for (int i = 0; i < dateUnitEffortList.size(); i++)
 			{
-				String dateUnitEffortMessage = buildDataLossMessage(dateUnitEffortList.getDateUnitEffort(i));
-				if (!dateUnitEffortMessage.isEmpty())
-					dateUnitEffortMessages.add(dateUnitEffortMessage);
+				DateUnitEffort dateUnitEffort = dateUnitEffortList.getDateUnitEffort(i);
+				if (adjustedDateUnitEffortList.getDateUnitEffortForSpecificDateUnit(dateUnitEffort.getDateUnit()) == null)
+				{
+					String dateUnitEffortMessage = buildDataLossMessage(dateUnitEffort);
+					if (!dateUnitEffortMessage.isEmpty())
+						dateUnitEffortMessages.add(dateUnitEffortMessage);
+				}
 			}
 
 			return StringUtilities.joinList(dateUnitEffortMessages, ", \n");
