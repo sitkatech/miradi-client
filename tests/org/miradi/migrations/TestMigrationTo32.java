@@ -31,7 +31,6 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
-import org.miradi.project.Project;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.DateUnitEffort;
@@ -82,7 +81,7 @@ public class TestMigrationTo32 extends AbstractTestMigration
 		assertTrue(indicator1.getMethodRefs().contains(method1.getRef()));
 
 		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo32.VERSION_TO));
-		migrateProject(rawProject, new VersionRange(Project.VERSION_HIGH));
+		migrateProject(rawProject, new VersionRange(MigrationTo32.VERSION_TO));
 
 		RawPool indicatorPool = rawProject.getRawPoolForType(ObjectType.INDICATOR);
 		assertNotNull(indicatorPool);

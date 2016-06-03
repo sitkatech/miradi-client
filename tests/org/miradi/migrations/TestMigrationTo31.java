@@ -31,7 +31,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
-import org.miradi.project.Project;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.DateUnitEffort;
@@ -78,7 +77,7 @@ public class TestMigrationTo31 extends AbstractTestMigration
 		assertTrue(strategy2.getActivityRefs().contains(activity2.getRef()));
 
 		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo31.VERSION_TO));
-		migrateProject(rawProject, new VersionRange(Project.VERSION_HIGH));
+		migrateProject(rawProject, new VersionRange(MigrationTo31.VERSION_TO));
 
 		RawPool strategyPool = rawProject.getRawPoolForType(ObjectType.STRATEGY);
 		assertNotNull(strategyPool);

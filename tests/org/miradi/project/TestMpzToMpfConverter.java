@@ -188,8 +188,7 @@ public class TestMpzToMpfConverter extends TestCaseWithProject
 			//System.out.println(convertedProjectString);
 			
 			ProjectForTesting project2 = createProjectFromDotMiradi(convertedProjectString);
-			assertEquals(974, project2.getNormalIdAssigner().getHighestAssignedId());
-			
+
 			SimpleThreatRatingFramework simpleThreatRatingFramework = project2.getSimpleThreatRatingFramework();
 			Collection<ThreatRatingBundle> bundles = simpleThreatRatingFramework.getAllBundles();
 			assertEquals("Didn't convert simple threat ratings?", 31, bundles.size());
