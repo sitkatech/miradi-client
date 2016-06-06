@@ -250,7 +250,7 @@ public class MigrationTo34 extends AbstractMigration
 			currentExpenseOwner.setData(TAG_EXPENSE_ASSIGNMENT_REFS, indicatorExpenseRefList.toJson().toString());
 
 			ORefList expenseRefList;
-			String expenseRefListAsString = safeGetTag(activity, TAG_EXPENSE_ASSIGNMENT_REFS);
+			String expenseRefListAsString = safeGetTag(newExpenseOwner, TAG_EXPENSE_ASSIGNMENT_REFS);
 			if (!expenseRefListAsString.isEmpty())
 			{
 				expenseRefList = new ORefList(expenseRefListAsString);
@@ -318,7 +318,7 @@ public class MigrationTo34 extends AbstractMigration
 				RawObject strategy = getOrCreateStrategyForMonitoringActivities(indicator);
 				BaseId activityId = newActivityRef.getObjectId();
 
-				String activityIdListAsString = safeGetTag(activity, TAG_ACTIVITY_IDS);
+				String activityIdListAsString = safeGetTag(strategy, TAG_ACTIVITY_IDS);
 				IdList activityIdList;
 				if (!activityIdListAsString.isEmpty())
 				{
@@ -349,7 +349,7 @@ public class MigrationTo34 extends AbstractMigration
 
 			BaseId taskId = newTaskRef.getObjectId();
 
-			String taskIdListAsString = safeGetTag(activity, TAG_SUBTASK_IDS);
+			String taskIdListAsString = safeGetTag(monitoringActivity, TAG_SUBTASK_IDS);
 			IdList taskIdList;
 			if (!taskIdListAsString.isEmpty())
 			{
