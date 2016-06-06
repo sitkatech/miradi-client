@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-03 03:06-0700\n"
+"POT-Creation-Date: 2016-06-06 04:06-0700\n"
 "PO-Revision-Date: 2015-07-15 14:36+0000\n"
 "Last-Translator: Felix <felix.cybulla@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/miradi-client/"
@@ -1158,10 +1158,6 @@ msgid ""
 "of numbers and/or letters (the code) along with a text description."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:58
-msgid "Acct Code"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:211
 msgid "Action Plan: Objective-based"
 msgstr "Aktionsplan: Zwischenzielbasiert"
@@ -1200,14 +1196,14 @@ msgstr "Über CMP"
 msgid "Action|Adaptive Management"
 msgstr "Adaptives Management"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionAddAssignment.java:35
+msgid "Action|Add People"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/HelpButtonData.java:58
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionHelpAgileSoftware.java:34
 msgid "Action|Agile Software"
 msgstr "Agile Software"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionAssignResource.java:35
-msgid "Action|Assign Resource"
-msgstr "Resource zurordnen"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionArrangeConceptualModel.java:35
 msgid "Action|Auto-Arrange Diagram (BETA)"
@@ -1827,8 +1823,8 @@ msgid "Action|Redo"
 msgstr "Wiederholen"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionRemoveAssignment.java:35
-msgid "Action|Remove Resource"
-msgstr "Ressource entfernen"
+msgid "Action|Remove People"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionGroupBoxRemoveFactor.java:35
 msgid "Action|Remove|Remove Factor(s) from Group Box"
@@ -2151,9 +2147,9 @@ msgstr ""
 msgid "An Error Occurred During Sorting."
 msgstr "Während des Anordnens ist ein Fehler aufgetreten"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:78
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:120
-msgid "An error has occured while writing assignment data."
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:73
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:79
+msgid "An error has occurred while writing assignment data."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:346
@@ -2419,7 +2415,6 @@ msgstr ""
 msgid "Assignment"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:85
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanRowConfigurationQuestion.java:40
 msgid "Assignments"
 msgstr ""
@@ -2814,12 +2809,10 @@ msgid "Category Ib: Wilderness area"
 msgstr "Kategorie Ib: Wildnisgebiet"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/doers/DeleteCategoryOneDoer.java:34
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:64
 msgid "Category One"
 msgstr "Kategorie Eins"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/doers/DeleteCategoryTwoDoer.java:34
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:67
 msgid "Category Two"
 msgstr "Kategorie Zwei"
 
@@ -4007,7 +4000,6 @@ msgid "Full Report"
 msgstr "Vollständigen Bericht"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/DeleteFundingSourceDoer.java:34
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/AbstractSummaryTableModel.java:61
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:49
 msgid "Funding Source"
 msgstr "Finanzierungsquelle"
@@ -5453,7 +5445,7 @@ msgid ""
 "available. <br>"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:44
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:40
 msgid "Name"
 msgstr "Name"
 
@@ -5507,7 +5499,7 @@ msgstr "Nicht anwendbar"
 msgid "Not Effective"
 msgstr "Nicht effektiv"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:285
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:147
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:45
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/Translation.java:356
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:607
@@ -5763,6 +5755,14 @@ msgid ""
 "original factor, and vice-versa. This also means that taxonomy or "
 "classification selections made in the original factor will not carry over to "
 "its pasted complementary factor."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:85
+msgid "People"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:44
+msgid "People (Who)"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:94
@@ -6203,10 +6203,6 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
 msgid "Resource"
 msgstr "Ressource"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:58
-msgid "Resource (Who)"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
 msgid ""
@@ -6917,8 +6913,8 @@ msgstr "Tags zum gewählten Faktor hinzufügen/entfernen "
 msgid "TT|Add/remove tags for this factor"
 msgstr "Tags von diesem Faktor entfernen"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionAssignResource.java:41
-msgid "TT|Assign a resource to this task"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionAddAssignment.java:41
+msgid "TT|Assign a person to this task"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionArrangeConceptualModel.java:41
@@ -7587,6 +7583,9 @@ msgid "TT|Remove a member from the team"
 msgstr "Ein Mitglied des Teams entfernen"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionRemoveAssignment.java:41
+msgid "TT|Remove a person from this task"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionResourceListRemove.java:40
 msgid "TT|Remove resource from list"
 msgstr "Ressourcen aus Liste entfernen"
@@ -9214,10 +9213,6 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:74
 msgid "Work Planning"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:61
-msgid "Work Unit Rate"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:120
@@ -30325,6 +30320,12 @@ msgid ""
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
 "Marine___Western Tropical Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Action|Assign Resource"
+#~ msgstr "Resource zurordnen"
+
+#~ msgid "Action|Remove Resource"
+#~ msgstr "Ressource entfernen"
 
 #~ msgid "Action|Share Method"
 #~ msgstr "Methode teilen"
