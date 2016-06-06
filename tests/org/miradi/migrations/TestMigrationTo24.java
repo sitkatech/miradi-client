@@ -20,10 +20,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
-import org.miradi.ids.BaseId;
+import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.migrations.forward.MigrationTo24;
+import org.miradi.objectdata.CodeToCodeListMapData;
+import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.schemas.ProjectMetadataSchema;
+import org.miradi.objects.TableSettings;
+import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
+
+import java.util.Vector;
+
 
 public class TestMigrationTo24 extends AbstractTestMigration
 {
@@ -31,17 +38,78 @@ public class TestMigrationTo24 extends AbstractTestMigration
 	{
 		super(name);
 	}
-	
-	public void testFieldsRemovedAfterReverseMigration() throws Exception
-	{
-		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo24.VERSION_TO));
-        ORef metadataRef = new ORef(ProjectMetadataSchema.getObjectType(), new BaseId(rawProject.getProjectMetadataId()));
 
-        RawObject rawMetadata = rawProject.findObject(metadataRef);
-        assertNotNull(rawMetadata);
-        assertFalse("Field should have been removed during reverse migration?", rawMetadata.containsKey(MigrationTo24.TAG_WORKPLAN_DISPLAY_MODE));
+	public void testTableSettingsFieldsChangedByMigration() throws Exception
+	{
+		Vector<String> newRowCodesBeingAdded = getNewRowCodesAddedByMigration();
+
+		TableSettings tableSettingsBefore = getProject().createAndPopulateTableSettings();
+
+		getProject().setObjectData(tableSettingsBefore, TableSettings.TAG_TABLE_IDENTIFIER, WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
+
+		CodeToCodeListMap tableSettingsMapBefore = tableSettingsBefore.getTableSettingsMap();
+
+		CodeList workPlanRowCodeListBefore = tableSettingsBefore.getCodeListFromTableSettingsMap(MigrationTo24.WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY);
+
+		for (String code : newRowCodesBeingAdded)
+		{
+			assertTrue("Prior to reverse migration work plan row code list should contain new codes", workPlanRowCodeListBefore.contains(code));
+		}
+
+		RawProject migratedProject = reverseMigrate(new VersionRange(MigrationTo24.VERSION_TO));
+
+		CodeToCodeListMap tableSettingsMapAfterReverseMigration = getCodeToCodeListMapData(migratedProject, tableSettingsBefore.getRef(), MigrationTo24.TAG_TABLE_SETTINGS_MAP);
+
+		assertTrue("Reverse migration should not have removed work plan budget row code list", tableSettingsMapAfterReverseMigration.contains(MigrationTo24.WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY));
+
+		assertTrue("Reverse migration should not have removed any codes from table settings map", tableSettingsMapBefore.getCodes().equals(tableSettingsMapAfterReverseMigration.getCodes()));
+
+		CodeList workPlanRowCodeListAfterReverseMigration = tableSettingsMapAfterReverseMigration.getCodeList(MigrationTo24.WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY);
+
+		for (String code : newRowCodesBeingAdded)
+		{
+			assertFalse("Reverse migration should have removed code from work plan budget row code list", workPlanRowCodeListAfterReverseMigration.contains(code));
+		}
+
+		assertEquals("Reverse migration should not have changed the number of codes (bar those removed)", workPlanRowCodeListAfterReverseMigration.size() + newRowCodesBeingAdded.size(), workPlanRowCodeListBefore.size());
+
+		migrateProject(migratedProject, new VersionRange(Project.VERSION_HIGH));
+
+		CodeToCodeListMap tableSettingsMapAfterForwardMigration = getCodeToCodeListMapData(migratedProject, tableSettingsBefore.getRef(), MigrationTo24.TAG_TABLE_SETTINGS_MAP);
+
+		assertTrue("Forward migration should not have removed work plan row code list", tableSettingsMapAfterForwardMigration.contains(MigrationTo24.WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY));
+
+		assertTrue("Forward migration should not have removed any codes from table settings map", tableSettingsMapBefore.getCodes().equals(tableSettingsMapAfterForwardMigration.getCodes()));
+
+		CodeList workPlanRowCodeListAfterForwardMigration = tableSettingsMapAfterForwardMigration.getCodeList(MigrationTo24.WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY);
+
+		for (String code : newRowCodesBeingAdded)
+		{
+			assertTrue("Forward migration should have added code to work plan row code list", workPlanRowCodeListAfterForwardMigration.contains(code));
+		}
+
+		assertEquals("Forward migration should have changed the number of codes", workPlanRowCodeListAfterForwardMigration.size(), workPlanRowCodeListAfterReverseMigration.size() + newRowCodesBeingAdded.size());
+
+		verifyFullCircleMigrations(new VersionRange(25, 26));
 	}
-	
+
+	private Vector<String> getNewRowCodesAddedByMigration()
+	{
+		Vector<String> result = new Vector<String>();
+		result.add(MigrationTo24.RESOURCE_ASSIGNMENT);
+		result.add(MigrationTo24.EXPENSE_ASSIGNMENT);
+		return result;
+	}
+
+	private CodeToCodeListMap getCodeToCodeListMapData(RawProject rawProject, ORef oRef, String tag) throws Exception
+	{
+		String rawValue = rawProject.getData(oRef, tag);
+		CodeToCodeListMapData map = new CodeToCodeListMapData(tag);
+		if (rawValue != null)
+			map.set(rawValue);
+		return map.getStringToCodeListMap();
+	}
+
 	@Override
 	protected int getFromVersion()
 	{

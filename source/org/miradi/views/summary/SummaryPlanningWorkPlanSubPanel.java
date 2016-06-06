@@ -87,8 +87,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		addDayColumnVisibilityExplanationLabel();
 
 		addField(createMultilineField(ProjectMetadata.TAG_PLANNING_COMMENTS));
-		addField(createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORKPLAN_DISPLAY_MODE, new WorkPlanDisplayModeQuestion()));
-		
+
 		updateQuarterColumnVisibilityEnableStatus();
 		
 		updateDayColumnVisibilityEnableStatus();

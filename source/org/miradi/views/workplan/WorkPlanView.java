@@ -25,10 +25,10 @@ import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.dialogs.planning.EmptyRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.RowColumnProvider;
-import org.miradi.main.*;
-import org.miradi.objects.ProjectMetadata;
+import org.miradi.main.CommandExecutedListener;
+import org.miradi.main.MainWindow;
+import org.miradi.main.MiradiToolBar;
 import org.miradi.project.Project;
-import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.views.Doer;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.TabbedView;
@@ -55,13 +55,8 @@ public class WorkPlanView extends TabbedView implements CommandExecutedListener
 	@Override
 	public void createTabs() throws Exception
 	{
-		ProjectMetadata projectMetadata = getProject().getMetadata();
-
-		if (projectMetadata.shouldDisplaySharedWorkPlan())
-			sharedWorkPlanManagementPanel = SharedWorkPlanManagementPanel.createWorkPlanPanel(getMainWindow());
-
-		if (projectMetadata.shouldDisplayLegacyWorkPlan())
-			workPlanManagementPanel = WorkPlanManagementPanel.createWorkPlanPanel(getMainWindow());
+		sharedWorkPlanManagementPanel = SharedWorkPlanManagementPanel.createWorkPlanPanel(getMainWindow());
+		workPlanManagementPanel = WorkPlanManagementPanel.createWorkPlanPanel(getMainWindow());
 
 		settingsPanel = new WorkPlanSettingsPanel(getMainWindow(), getProject().getMetadata().getRef());
 		rollupReportsManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new AnalysisManagementConfiguration(getProject()));
@@ -73,11 +68,8 @@ public class WorkPlanView extends TabbedView implements CommandExecutedListener
 
 		managementPanelMap = new HashMap<String, PlanningTreeManagementPanel>();
 
-		if (projectMetadata.shouldDisplaySharedWorkPlan())
-			addPlanningManagementTab(sharedWorkPlanManagementPanel);
-
-		if (projectMetadata.shouldDisplayLegacyWorkPlan())
-			addPlanningManagementTab(workPlanManagementPanel);
+		addPlanningManagementTab(sharedWorkPlanManagementPanel);
+		addPlanningManagementTab(workPlanManagementPanel);
 
 		addNonScrollingTab(settingsPanel);
 
@@ -103,37 +95,6 @@ public class WorkPlanView extends TabbedView implements CommandExecutedListener
 			return getManagementPanelMap().get(panelDescriptionAsKey).getRowColumnProvider();
 
 		return new EmptyRowColumnProvider();
-	}
-
-	@Override
-	public void commandExecuted(CommandExecutedEvent event)
-	{
-		super.commandExecuted(event);
-
-		try
-		{
-			if(event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORKPLAN_DISPLAY_MODE))
-			{
-				ProjectMetadata projectMetadata = getProject().getMetadata();
-				MiradiTabContentsPanelInterface currentTab = getCurrentTabPanel();
-				String newTabName = currentTab.getClass().getSimpleName();
-
-				if(currentTab instanceof SharedWorkPlanManagementPanel && !projectMetadata.shouldDisplaySharedWorkPlan())
-					newTabName = WorkPlanManagementPanel.class.getSimpleName();
-
-				if(currentTab instanceof WorkPlanManagementPanel && !projectMetadata.shouldDisplayLegacyWorkPlan())
-					newTabName = SharedWorkPlanManagementPanel.class.getSimpleName();
-
-				this.refresh();
-
-				int settingsTabIndex = getTabIndex(newTabName);
-				getProject().executeAsSideEffect(getViewData().createTabChangeCommand(settingsTabIndex));
-			}
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-		}
 	}
 
 	@Override

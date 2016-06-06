@@ -27,7 +27,7 @@ import org.miradi.migrations.forward.MigrationTo31;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.BaseObject;
+import org.miradi.objects.Indicator;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
@@ -36,11 +36,7 @@ import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
 
-import java.util.Vector;
-
-import static org.miradi.objects.BaseObject.TAG_LABEL;
 import static org.miradi.objects.BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS;
-import static org.miradi.objects.Strategy.TAG_ACTIVITY_IDS;
 
 public class TestMigrationTo31 extends AbstractTestMigration
 {
@@ -49,75 +45,84 @@ public class TestMigrationTo31 extends AbstractTestMigration
 		super(name);
 	}
 
-	public void testSharedActivitiesSplitByForwardMigration() throws Exception
+	public void testSharedMethodsSplitByForwardMigration() throws Exception
 	{
 		double numberOfUnits = 10.0;
 
 		Strategy strategy1 = getProject().createAndPopulateStrategy();
-		Task activity1 = getProject().createTask(strategy1);
-		getProject().populateTask(activity1, "Activity 1");
+		Indicator indicator1 = getProject().createAndPopulateIndicator(strategy1);
+
+		Task method1 = getProject().createMethod(indicator1);
+		getProject().populateTask(method1, "Some Shared Method");
 
 		Strategy strategy2 = getProject().createAndPopulateStrategy();
-		Task activity2 = getProject().createTask(strategy2);
-		getProject().populateTask(activity2, "Activity 2");
-		CommandSetObjectData cmdToShareActivity1 = CommandSetObjectData.createAppendIdCommand(strategy2, Strategy.TAG_ACTIVITY_IDS, activity1.getId());
-		getProject().executeCommand(cmdToShareActivity1);
+		Indicator indicator2 = getProject().createAndPopulateIndicator(strategy2);
 
-		assertEquals(strategy1.getActivityRefs().size(), 1);
-		assertEquals(activity1.getResourceAssignmentRefs().size(), 1);
+		ORefList methodRefsForIndicator2 = indicator2.getMethodRefs();
+		assertEquals(methodRefsForIndicator2.size(), 1);
 
-		ORef resourceAssignmentForActivity1Ref = activity1.getResourceAssignmentRefs().toArray()[0];
-		ResourceAssignment resourceAssignmentForActivity1 = (ResourceAssignment) getProject().findObject(resourceAssignmentForActivity1Ref);
-		assertEquals(resourceAssignmentForActivity1.getDateUnitEffortList().size(), 1);
-		DateUnitEffort dateUnitEffortForResourceAssignment1 = resourceAssignmentForActivity1.getDateUnitEffortList().getDateUnitEffort(0);
+		CommandSetObjectData cmdToShareMethod1 = CommandSetObjectData.createAppendIdCommand(indicator2, Indicator.TAG_METHOD_IDS, method1.getId());
+		getProject().executeCommand(cmdToShareMethod1);
+
+		assertEquals(indicator1.getMethodRefs().size(), 1);
+		assertEquals(method1.getResourceAssignmentRefs().size(), 1);
+
+		assertEquals(indicator2.getMethodRefs().size(), 2);
+
+		int indicatorCountBeforeMigration = getProject().getAllRefsForType(ObjectType.INDICATOR).size();
+
+		ORef resourceAssignmentForMethod1Ref = method1.getResourceAssignmentRefs().toArray()[0];
+		ResourceAssignment resourceAssignmentForMethod1 = (ResourceAssignment) getProject().findObject(resourceAssignmentForMethod1Ref);
+		assertEquals(resourceAssignmentForMethod1.getDateUnitEffortList().size(), 1);
+		DateUnitEffort dateUnitEffortForResourceAssignment1 = resourceAssignmentForMethod1.getDateUnitEffortList().getDateUnitEffort(0);
 		assertEquals(dateUnitEffortForResourceAssignment1.getQuantity(), numberOfUnits);
 
-		assertEquals(strategy2.getActivityRefs().size(), 2);
-		assertTrue(strategy2.getActivityRefs().contains(activity1.getRef()));
-		assertTrue(strategy2.getActivityRefs().contains(activity2.getRef()));
+		assertEquals(indicator1.getMethodRefs().size(), 1);
+		assertTrue(indicator1.getMethodRefs().contains(method1.getRef()));
 
 		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo31.VERSION_TO));
 		migrateProject(rawProject, new VersionRange(MigrationTo31.VERSION_TO));
 
-		RawPool strategyPool = rawProject.getRawPoolForType(ObjectType.STRATEGY);
-		assertNotNull(strategyPool);
-		assertEquals(strategyPool.keySet().size(), 2);
+		RawPool indicatorPool = rawProject.getRawPoolForType(ObjectType.INDICATOR);
+		assertNotNull(indicatorPool);
+		assertEquals(indicatorPool.keySet().size(), indicatorCountBeforeMigration);
 
-		RawObject rawStrategy1 = rawProject.findObject(strategy1.getRef());
-		assertNotNull(rawStrategy1);
-		assertTrue(rawStrategy1.containsKey(TAG_ACTIVITY_IDS));
-		IdList activityIdListForRawStrategy1 = new IdList(TaskSchema.getObjectType(), rawStrategy1.get(TAG_ACTIVITY_IDS));
-		assertEquals(activityIdListForRawStrategy1, new IdList(activity1));
+		RawObject rawIndicator1 = rawProject.findObject(indicator1.getRef());
+		assertNotNull(rawIndicator1);
+		assertTrue(rawIndicator1.containsKey(Indicator.TAG_METHOD_IDS));
+		IdList methodIdListForRawIndicator1 = new IdList(TaskSchema.getObjectType(), rawIndicator1.get(Indicator.TAG_METHOD_IDS));
+		assertEquals(methodIdListForRawIndicator1, new IdList(method1));
 
-		RawObject rawActivity1 = rawProject.findObject(activity1.getRef());
-		assertTrue(rawActivity1.containsKey(TAG_RESOURCE_ASSIGNMENT_IDS));
-		IdList assignmentIdListForRawActivity1 = new IdList(ResourceAssignmentSchema.getObjectType(), rawActivity1.get(TAG_RESOURCE_ASSIGNMENT_IDS));
-		assertEquals(assignmentIdListForRawActivity1, new IdList(resourceAssignmentForActivity1));
+		RawObject rawMethod1 = rawProject.findObject(method1.getRef());
+		assertTrue(rawMethod1.containsKey(TAG_RESOURCE_ASSIGNMENT_IDS));
+		IdList assignmentIdListForRawMethod1 = new IdList(ResourceAssignmentSchema.getObjectType(), rawMethod1.get(TAG_RESOURCE_ASSIGNMENT_IDS));
+		assertEquals(assignmentIdListForRawMethod1, new IdList(resourceAssignmentForMethod1));
 
-		RawObject rawAssignment1 = rawProject.findObject(resourceAssignmentForActivity1Ref);
+		RawObject rawAssignment1 = rawProject.findObject(resourceAssignmentForMethod1Ref);
 		assertTrue(rawAssignment1.containsKey(ResourceAssignment.TAG_DATEUNIT_DETAILS));
 		DateUnitEffortList dateUnitEffortListForRawAssignment1 = new DateUnitEffortList(rawAssignment1.getData(ResourceAssignment.TAG_DATEUNIT_DETAILS));
 		assertEquals(dateUnitEffortListForRawAssignment1.size(), 1);
 		DateUnitEffort dateUnitEffortForRawAssignment1 = dateUnitEffortListForRawAssignment1.getDateUnitEffort(0);
 		assertEquals(dateUnitEffortForRawAssignment1.getQuantity(), numberOfUnits / 2);
 
-		RawObject rawStrategy2 = rawProject.findObject(strategy2.getRef());
-		assertNotNull(rawStrategy2);
-		assertTrue(rawStrategy2.containsKey(TAG_ACTIVITY_IDS));
-		IdList activityIdListForRawStrategy2 = new IdList(TaskSchema.getObjectType(), rawStrategy2.get(TAG_ACTIVITY_IDS));
-		assertEquals(activityIdListForRawStrategy2.size(), 2);
-		assertFalse(activityIdListForRawStrategy2.contains(activity1.getId()));
-		assertTrue(activityIdListForRawStrategy2.contains(activity2.getId()));
+		RawObject rawIndicator2 = rawProject.findObject(indicator2.getRef());
+		assertNotNull(rawIndicator2);
+		assertTrue(rawIndicator2.containsKey(Indicator.TAG_METHOD_IDS));
+		IdList methodIdListForRawIndicator2 = new IdList(TaskSchema.getObjectType(), rawIndicator2.get(Indicator.TAG_METHOD_IDS));
+		assertEquals(methodIdListForRawIndicator2.size(), 2);
+		BaseId idForMethod2 = methodRefsForIndicator2.convertToIdList(ObjectType.TASK).get(0);
+		assertTrue(methodIdListForRawIndicator2.contains(idForMethod2));
+		assertFalse(methodIdListForRawIndicator2.contains(method1.getId()));
 
-		activityIdListForRawStrategy2.removeId(activity2.getId());
-		BaseId addedActivityIdForRawStrategy2 = activityIdListForRawStrategy2.get(0);
-		ORef addedActivityForRawStrategy2Ref = new ORef(ObjectType.TASK, addedActivityIdForRawStrategy2);
-		RawObject rawAddedActivity = rawProject.findObject(addedActivityForRawStrategy2Ref);
-		assertTrue(rawAddedActivity.containsKey(TAG_RESOURCE_ASSIGNMENT_IDS));
-		IdList assignmentIdListForRawAddedActivity = new IdList(ResourceAssignmentSchema.getObjectType(), rawAddedActivity.get(TAG_RESOURCE_ASSIGNMENT_IDS));
-		assertEquals(assignmentIdListForRawAddedActivity.size(), 1);
+		methodIdListForRawIndicator2.removeId(idForMethod2);
+		BaseId addedMethodIdForRawIndicato2 = methodIdListForRawIndicator2.get(0);
+		ORef addedMethodForRawIndicator2Ref = new ORef(ObjectType.TASK, addedMethodIdForRawIndicato2);
+		RawObject rawAddedMethod = rawProject.findObject(addedMethodForRawIndicator2Ref);
+		assertTrue(rawAddedMethod.containsKey(TAG_RESOURCE_ASSIGNMENT_IDS));
+		IdList assignmentIdListForRawAddedMethod = new IdList(ResourceAssignmentSchema.getObjectType(), rawAddedMethod.get(TAG_RESOURCE_ASSIGNMENT_IDS));
+		assertEquals(assignmentIdListForRawAddedMethod.size(), 1);
 
-		BaseId addedAssignmentId = assignmentIdListForRawAddedActivity.get(0);
+		BaseId addedAssignmentId = assignmentIdListForRawAddedMethod.get(0);
 		ORef addedAssignmentRef = new ORef(ObjectType.RESOURCE_ASSIGNMENT, addedAssignmentId);
 		RawObject rawAddedAssignment = rawProject.findObject(addedAssignmentRef);
 		assertTrue(rawAddedAssignment.containsKey(ResourceAssignment.TAG_DATEUNIT_DETAILS));
@@ -126,65 +131,7 @@ public class TestMigrationTo31 extends AbstractTestMigration
 		DateUnitEffort dateUnitEffortForRawAddedAssignment1 = dateUnitEffortListForRawAddedAssignment1.getDateUnitEffort(0);
 		assertEquals(dateUnitEffortForRawAddedAssignment1.getQuantity(), numberOfUnits / 2);
 
-		verifyRawObjectMatchesBaseObject(activity1, rawAddedActivity);
-	}
-
-	public static void verifyRawObjectMatchesBaseObject(BaseObject baseObject, RawObject rawObject) throws Exception
-	{
-		Vector<String> storedTags = baseObject.getStoredFieldTags();
-
-		Vector<String> ignoredTags = new Vector<String>();
-		ignoredTags.add(ResourceAssignment.TAG_TIMEFRAME_IDS);	// added by migration 22 and so not present on original object
-
-		for (String tag : storedTags)
-		{
-			if (ignoredTags.contains(tag))
-				continue;
-
-			final boolean isOwnedField = baseObject.isOwnedField(tag);
-			if (tag.equals(TAG_LABEL))
-			{
-				assertEquals("Copy of " + baseObject.getData(tag), rawObject.getData(tag));
-			}
-			else if (isOwnedField && baseObject.isRefList(tag))
-			{
-				assertNotEquals("Tag '" + tag + "' should not match", baseObject.getData(tag), rawObject.getData(tag));
-				ORefList baseObjectRefList = baseObject.getSafeRefListData(tag);
-				ORefList rawObjectRefList = safeGetORefList(rawObject, tag);
-				assertEquals("Size of ORefList for Tag '" + tag + "' should match", baseObjectRefList.size(), rawObjectRefList.size());
-			}
-			else if (isOwnedField && baseObject.isIdListTag(tag))
-			{
-				assertNotEquals("Tag '" + tag + "' should not match", baseObject.getData(tag), rawObject.getData(tag));
-				IdList baseObjectIdList = baseObject.getSafeIdListData(tag);
-				IdList rawObjectIdList = safeGetIdList(baseObject, rawObject, tag);
-				assertEquals("Size of IdList for Tag '" + tag + "' should match", baseObjectIdList.size(), rawObjectIdList.size());
-			}
-			else
-			{
-				assertEquals("Tag '" + tag + "' should match", baseObject.getData(tag), rawObject.getData(tag));
-			}
-		}
-	}
-
-	private static ORefList safeGetORefList(RawObject rawObject, String tag) throws Exception
-	{
-		ORefList refList = new ORefList(){};
-
-		if (rawObject.containsKey(tag))
-			refList = new ORefList(rawObject.getData(tag));
-
-		return refList;
-	}
-
-	private static IdList safeGetIdList(BaseObject baseObject, RawObject rawObject, String tag) throws Exception
-	{
-		IdList idList = new IdList(baseObject.getType()){};
-
-		if (rawObject.containsKey(tag))
-			idList = new IdList(baseObject.getType(), rawObject.getData(tag));
-
-		return idList;
+		TestMigrationTo30.verifyRawObjectMatchesBaseObject(method1, rawAddedMethod);
 	}
 
 	@Override

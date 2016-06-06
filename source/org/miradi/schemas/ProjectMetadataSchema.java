@@ -79,7 +79,6 @@ public class ProjectMetadataSchema extends BaseObjectSchema
 		createFieldSchemaDate(ProjectMetadata.TAG_WORKPLAN_START_DATE);
 		createFieldSchemaDate(ProjectMetadata.TAG_WORKPLAN_END_DATE);
 		createFieldSchemaChoice(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, BudgetTimePeriodQuestion.class);
-		createFieldSchemaChoice(ProjectMetadata.TAG_WORKPLAN_DISPLAY_MODE, WorkPlanDisplayModeQuestion.class);
 		createFieldSchemaMultiLineUserText(ProjectMetadata.TAG_PLANNING_COMMENTS);
 		
 		createFieldSchemaInteger(ProjectMetadata.TAG_HUMAN_POPULATION);

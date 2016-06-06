@@ -119,7 +119,6 @@ public class StaticQuestionManager
 		addQuestion(new ProjectFocusQuestion());
 		addQuestion(new ProjectScaleQuestion());
 		addQuestion(new DiagramChoiceQuestion());
-		addQuestion(new WorkPlanDisplayModeQuestion());
 		addQuestion(new WorkPlanProjectResourceConfigurationQuestion());
 	}
 	

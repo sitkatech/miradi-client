@@ -82,7 +82,6 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(QuarterColumnsVisibilityQuestion.class, VOCABULARY_QUARTER_COLUMNS_VISIBILITY);
 		addItem(DayColumnsVisibilityQuestion.class, VOCABULARY_DAY_COLUMNS_VISIBILITY);
 		addItem(BudgetTimePeriodQuestion.class, VOCABULARY_WORK_PLAN_TIME_UNIT);
-		addItem(WorkPlanDisplayModeQuestion.class, VOCABULARY_WORKPLAN_DISPLAY_MODE);
 		addItem(RatingSourceQuestion.class, VOCABULARY_RATING_SOURCE);
 		addItem(CurrencyTypeQuestion.class, VOCABULARY_CURRENCY_TYPE);
 		addItem(TextBoxZOrderQuestion.class, VOCABULARY_TEXT_BOX_Z_ORDER);

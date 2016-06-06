@@ -271,8 +271,6 @@ public class SingletonObjectExporter implements Xmpz2XmlConstants
 		ChoiceQuestion dayColumnsVisibilityQuestion = StaticQuestionManager.getQuestion(DayColumnsVisibilityQuestion.class);
 		getWriter().writeNonOptionalCodeElement(PROJECT_SUMMARY_PLANNING, ProjectMetadata.TAG_DAY_COLUMNS_VISIBILITY, dayColumnsVisibilityQuestion, getMetadata().getData(ProjectMetadata.TAG_DAY_COLUMNS_VISIBILITY));
 
-		writeProjectSummaryPlanningElement(ProjectMetadata.TAG_WORKPLAN_DISPLAY_MODE);
-
 		getWriter().writeEndElement(PROJECT_SUMMARY_PLANNING);
 	}
 	
