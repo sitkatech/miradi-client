@@ -17,27 +17,30 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.actions;
+package org.miradi.dialogs.planning.propertiesPanel;
 
-import org.miradi.icons.IconManager;
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import org.miradi.project.Project;
+import org.miradi.utils.ModelColumnTagProvider;
 
-public class ActionRemoveAssignment extends ObjectsAction
+abstract public class AbstractAssignmentSummaryTableModel extends PlanningViewAbstractAssignmentTableModel implements ModelColumnTagProvider
 {
-	public ActionRemoveAssignment(MainWindow mainWindowToUse)
+	public AbstractAssignmentSummaryTableModel(Project projectToUse)
 	{
-		super(mainWindowToUse, getLabel(), IconManager.getDeleteIcon());
+		super(projectToUse);
 	}
-
-	public static String getLabel()
-	{
-		return EAM.text("Action|Remove People");
-	}
-
+	
 	@Override
-	public String getToolTipText()
+	public boolean isCellEditable(int row, int column)
 	{
-		return EAM.text("TT|Remove a person from this task");
+		return true;
 	}
+	
+	public String getColumnTag(int modelColumn)
+	{
+		return "";
+	}
+
+	abstract public int getColumnCount();
+	
+	abstract public boolean isResourceColumn(int column);
 }

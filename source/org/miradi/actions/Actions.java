@@ -218,7 +218,7 @@ public class Actions
 		registerAction(new ActionResourceListModify(mainWindow));
 		registerAction(new ActionViewPossibleResources(mainWindow));
 		
-		registerAction(new ActionAssignResource(mainWindow));
+		registerAction(new ActionAddAssignment(mainWindow));
 		registerAction(new ActionRemoveAssignment(mainWindow));
 		registerAction(new ActionCreateAccountingCode(mainWindow));
 		registerAction(new ActionDeleteAccountingCode(mainWindow));

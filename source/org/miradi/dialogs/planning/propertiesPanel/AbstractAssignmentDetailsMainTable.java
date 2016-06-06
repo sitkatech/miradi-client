@@ -19,21 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import java.awt.Color;
-import java.awt.Point;
-import java.awt.event.MouseEvent;
-
 import org.miradi.main.AppPreferences;
 import org.miradi.main.MainWindow;
-import org.miradi.objects.BaseObject;
-import org.miradi.schemas.AccountingCodeSchema;
-import org.miradi.schemas.BudgetCategoryOneSchema;
-import org.miradi.schemas.BudgetCategoryTwoSchema;
-import org.miradi.schemas.FundingSourceSchema;
+
+import java.awt.*;
+import java.awt.event.MouseEvent;
 
 public class AbstractAssignmentDetailsMainTable extends AbstractAssignmentDetailsTable
 {
-	public AbstractAssignmentDetailsMainTable(MainWindow mainWindowToUse, AbstractSummaryTableModel modelToUse, String uniqueIdentifier) throws Exception
+	public AbstractAssignmentDetailsMainTable(MainWindow mainWindowToUse, AbstractAssignmentSummaryTableModel modelToUse, String uniqueIdentifier) throws Exception
 	{
 		super(mainWindowToUse, modelToUse, uniqueIdentifier);
 		
@@ -50,29 +44,11 @@ public class AbstractAssignmentDetailsMainTable extends AbstractAssignmentDetail
 	@Override
 	public void rebuildColumnEditorsAndRenderers() throws Exception
 	{
-		for (int tableColumn = 0; tableColumn < getColumnCount(); ++tableColumn)
-		{
-			createComboColumnWithInvalidObject(tableColumn, FundingSourceSchema.getObjectType(), FundingSourceSchema.OBJECT_NAME);
-			createComboColumnWithInvalidObject(tableColumn, AccountingCodeSchema.getObjectType(), AccountingCodeSchema.OBJECT_NAME);
-			createComboColumnWithInvalidObject(tableColumn, BudgetCategoryOneSchema.getObjectType(), BudgetCategoryOneSchema.OBJECT_NAME);
-			createComboColumnWithInvalidObject(tableColumn, BudgetCategoryTwoSchema.getObjectType(), BudgetCategoryTwoSchema.OBJECT_NAME);
-		}
 	}
 	
-	private void createComboColumnWithInvalidObject(int tableColumn, int objectType, String objectTypeName)
+	protected AbstractAssignmentSummaryTableModel getAbstractSummaryTableModel()
 	{
-		int modelColumn = convertColumnIndexToModel(tableColumn);
-		if (! getAbstractSummaryTableModel().isColumnForType(modelColumn, objectType))
-			return;
-		
-		BaseObject[] baseObjects = getObjectManager().getPool(objectType).getAllObjectsAsArray();
-		BaseObject invalidObject = ResourceAssignmentMainTableModel.createInvalidObject(getObjectManager(), objectType, objectTypeName);
-		createComboColumn(baseObjects, tableColumn, invalidObject);
-	}
-	
-	protected AbstractSummaryTableModel getAbstractSummaryTableModel()
-	{
-		return (AbstractSummaryTableModel) getModel();
+		return (AbstractAssignmentSummaryTableModel) getModel();
 	}
 	
 	@Override
@@ -81,12 +57,6 @@ public class AbstractAssignmentDetailsMainTable extends AbstractAssignmentDetail
 		return false;
 	}
 
-	@Override
-	public boolean shouldSaveColumnWidth()
-	{
-		return false;
-	}
-	
 	@Override
 	public String getToolTipText(MouseEvent event)
 	{

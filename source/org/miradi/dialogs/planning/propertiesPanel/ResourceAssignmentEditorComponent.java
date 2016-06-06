@@ -20,13 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 
-
-import org.miradi.actions.ActionAssignResource;
+import org.miradi.actions.ActionAddAssignment;
 import org.miradi.actions.ActionRemoveAssignment;
-import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTableModel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.MainWindow;
-import org.miradi.objects.EmptyPlanningTreeRowColumnProvider;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class ResourceAssignmentEditorComponent extends AbstractAssignmentEditorComponent
@@ -39,17 +36,14 @@ public class ResourceAssignmentEditorComponent extends AbstractAssignmentEditorC
 	@Override
 	protected void createTables() throws Exception
 	{
-		abstractSummaryTableModel = new ResourceAssignmentMainTableModel(getProject());
-		abstractSummaryTable = new ResourceAssignmentDetailsMainTable(getMainWindow(), abstractSummaryTableModel);
-
-		assignmentDateUnitsTableModel = new WorkPlanWorkUnitsSharedTaskTableModel(getProject(), new EmptyPlanningTreeRowColumnProvider(), abstractSummaryTableModel, WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
-		assignmentDateUnitsTable = new AssignmentWorkUnitsTable(getMainWindow(), assignmentDateUnitsTableModel);		
+		abstractAssignmentSummaryTableModel = new ResourceAssignmentMainTableModel(getProject());
+		abstractSummaryTable = new ResourceAssignmentDetailsMainTable(getMainWindow(), abstractAssignmentSummaryTableModel);
 	}
 	
 	@Override
 	protected void addButtons(OneRowPanel box)
 	{
-		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionAssignResource.class), getPicker()));
+		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionAddAssignment.class), getPicker()));
 		box.add(createObjectsActionButton(getActions().getObjectsAction(ActionRemoveAssignment.class), abstractSummaryTable));
 	}
 }

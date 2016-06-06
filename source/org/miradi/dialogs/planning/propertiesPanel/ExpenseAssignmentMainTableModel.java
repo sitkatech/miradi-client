@@ -21,16 +21,12 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.AccountingCode;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.FundingSource;
 import org.miradi.project.Project;
-import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
-import org.miradi.schemas.FundingSourceSchema;
 
-public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
+public class ExpenseAssignmentMainTableModel extends AbstractAssignmentSummaryTableModel
 {
 	public ExpenseAssignmentMainTableModel(Project projectToUse)
 	{
@@ -58,13 +54,12 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 		return getCellValue(row, column);
 	}
 	
-	@Override
-	protected Object getCellValue(int row, int column)
+	private Object getCellValue(int row, int column)
 	{
 		if (isExpenseNameColumn(column))
 			return getBaseObjectForRowColumn(row, column).getLabel();
 		
-		return super.getCellValue(row, column);
+		return null;
 	}
 
 	@Override
@@ -75,8 +70,8 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 		
 		if (row < 0 || row >= getRowCount())
 		{
-			EAM.errorDialog(EAM.text("An error has occured while writing assignment data."));
-			EAM.logWarning("Row out of bounds in PlanningViewResourceTableModel.setValueAt value = "+ value + " row = " + row + " column = " + column);
+			EAM.errorDialog(EAM.text("An error has occurred while writing assignment data."));
+			EAM.logWarning("Row out of bounds in ExpenseAssignmentMainTableModel.setValueAt value = "+ value + " row = " + row + " column = " + column);
 			return;
 		}
 		
@@ -101,45 +96,11 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 		return false;
 	}
 	
-	public boolean isExpenseNameColumn(int column)
+	private boolean isExpenseNameColumn(int column)
 	{
 		return getExpenseNameColumn() == column;
 	}
 
-	@Override
-	public boolean isFundingSourceColumn(int column)
-	{
-		return getFundingSourceColumn() == column;
-	}
-
-	@Override
-	public boolean isAccountingCodeColumn(int column)
-	{
-		return getAccountingCodeColumn() == column;
-	}
-	
-	@Override
-	public boolean isBudgetCategoryOneColumn(int column)
-	{
-		return CATEGORY_ONE_COLUMN == column;
-	}
-	
-	@Override
-	public boolean isBudgetCategoryTwoColumn(int column)
-	{
-		return CATEGORY_TWO_COLUMN == column;
-	}
-
-	private int getAccountingCodeColumn()
-	{
-		return ACCOUNTING_CODE_COLUMN;
-	}
-	
-	private int getFundingSourceColumn()
-	{
-		return FUNDING_SOURCE_COLUMN;
-	}
-	
 	private int getExpenseNameColumn()
 	{
 		return EXPENSE_NAME_COLUMN;
@@ -156,53 +117,7 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 	{
 		return ExpenseAssignmentSchema.getObjectType();
 	}
-	
-	@Override
-	protected BaseObject getFundingSource(BaseObject baseObjectToUse)
-	{
-		ExpenseAssignment expense = (ExpenseAssignment) baseObjectToUse;
-		ORef fundingSourceRef = expense.getFundingSourceRef();
-		if (fundingSourceRef.isInvalid())
-			return createInvalidObject(getObjectManager(), FundingSourceSchema.getObjectType(), FundingSourceSchema.OBJECT_NAME);
-		
-		return FundingSource.find(getProject(), fundingSourceRef);
-	}
-	
-	@Override
-	protected BaseObject getAccountingCode(BaseObject baseObjectToUse)
-	{
-		ExpenseAssignment expense = (ExpenseAssignment) baseObjectToUse;
-		ORef accountingCodeRef = expense.getAccountingCodeRef();
-		if (accountingCodeRef.isInvalid())
-			return createInvalidObject(getObjectManager(), AccountingCodeSchema.getObjectType(), AccountingCodeSchema.OBJECT_NAME);
-		
-		return AccountingCode.find(getProject(), accountingCodeRef);
-	}
 
-	@Override
-	protected String getAccountingCodeTag()
-	{
-		return ExpenseAssignment.TAG_ACCOUNTING_CODE_REF;
-	}
-	
-	@Override
-	protected String getFundingSourceTag()
-	{
-		return ExpenseAssignment.TAG_FUNDING_SOURCE_REF;
-	}
-	
-	@Override
-	protected void setAccountingCode(ORef accountingCode, ORef assignmentRefForRow, int column)
-	{
-		setValueUsingCommand(assignmentRefForRow, getAccountingCodeTag(), accountingCode);
-	}
-
-	@Override
-	protected void setFundingSource(ORef fundingSourceRef, ORef assignmentRefForRow, int column)
-	{
-		setValueUsingCommand(assignmentRefForRow, getFundingSourceTag(), fundingSourceRef);
-	}
-	
 	@Override
 	public String getUniqueTableModelIdentifier()
 	{
@@ -211,11 +126,7 @@ public class ExpenseAssignmentMainTableModel extends AbstractSummaryTableModel
 				
 	private static final String UNIQUE_MODEL_IDENTIFIER = "ExpenseAssignmentMainTableModel";
 	
-	private static final int COLUMN_COUNT = 5;
+	private static final int COLUMN_COUNT = 1;
 	
 	private static final int EXPENSE_NAME_COLUMN = 0;
-	private static final int ACCOUNTING_CODE_COLUMN = 1;
-	private static final int FUNDING_SOURCE_COLUMN = 2;
-	private static final int CATEGORY_ONE_COLUMN = 3;
-	private static final int CATEGORY_TWO_COLUMN = 4;
 }

@@ -23,21 +23,21 @@ import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionAssignResource extends ObjectsAction
+public class ActionAddAssignment extends ObjectsAction
 {
-	public ActionAssignResource(MainWindow mainWindowToUse)
+	public ActionAddAssignment(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel(), IconManager.getResourceIcon());
 	}
 	
 	public static String getLabel()
 	{
-		return EAM.text("Action|Assign Resource");
+		return EAM.text("Action|Add People");
 	}
 
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Assign a resource to this task");
+		return EAM.text("TT|Assign a person to this task");
 	}
 }

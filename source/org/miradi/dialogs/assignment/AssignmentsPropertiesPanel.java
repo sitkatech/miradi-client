@@ -82,7 +82,7 @@ public class AssignmentsPropertiesPanel extends ObjectDataInputPanelWithSections
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Assignments");
+		return EAM.text("People");
 	}
 
 	@Override

@@ -21,10 +21,8 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.actions.ActionCreateExpense;
 import org.miradi.actions.ActionDeleteExpense;
-import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTableModel;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.MainWindow;
-import org.miradi.objects.EmptyPlanningTreeRowColumnProvider;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class ExpenseAssignmentEditorComponent extends AbstractAssignmentEditorComponent
@@ -37,11 +35,8 @@ public class ExpenseAssignmentEditorComponent extends AbstractAssignmentEditorCo
 	@Override
 	protected void createTables() throws Exception
 	{
-		abstractSummaryTableModel = new ExpenseAssignmentMainTableModel(getProject());
-		abstractSummaryTable = new ExpenseAssignmentDetailsMainTable(getMainWindow(), abstractSummaryTableModel);
-
-		assignmentDateUnitsTableModel = new WorkPlanExpenseAmountsSharedTaskTableModel(getProject(), new EmptyPlanningTreeRowColumnProvider(), abstractSummaryTableModel, WorkPlanTreeTableModel.UNIQUE_TREE_TABLE_IDENTIFIER);
-		assignmentDateUnitsTable = new AssignmentExpensesTable(getMainWindow(), assignmentDateUnitsTableModel);		
+		abstractAssignmentSummaryTableModel = new ExpenseAssignmentMainTableModel(getProject());
+		abstractSummaryTable = new ExpenseAssignmentDetailsMainTable(getMainWindow(), abstractAssignmentSummaryTableModel);
 	}
 	
 	@Override
