@@ -309,11 +309,17 @@ public class MigrationTo33 extends AbstractMigration
 		{
 			if (activity == null)
 			{
-				getRawProject().ensurePoolExists(ObjectType.TASK);
-				ORef newActivityRef = getRawProject().createObject(ObjectType.TASK);
+				ORef newActivityRef = createTask();
 				activity = getRawProject().findObject(newActivityRef);
+				activity.setData(TAG_ID, safeGetTag(indicator, TAG_ID));
+				activity.setData(TAG_DETAILS, safeGetTag(indicator, TAG_DETAILS));
 				activity.setData(TAG_LABEL, safeGetTag(indicator, TAG_LABEL));
 				activity.setData(TAG_IS_MONITORING_ACTIVITY, BooleanData.BOOLEAN_TRUE);
+				activity.setData(TAG_COMMENTS, safeGetTag(indicator, TAG_COMMENTS));
+
+				ORefList clonedProgressReportRefs = cloneProgressReports(indicator);
+				if (!clonedProgressReportRefs.isEmpty())
+					activity.setData(TAG_PROGRESS_REPORT_REFS, clonedProgressReportRefs.toJson().toString());
 
 				RawObject strategy = getOrCreateStrategyForMonitoringActivities(indicator);
 				BaseId activityId = newActivityRef.getObjectId();
@@ -341,11 +347,49 @@ public class MigrationTo33 extends AbstractMigration
 			return activity;
 		}
 
+		private ORefList cloneProgressReports(RawObject indicatorToCloneFrom) throws Exception
+		{
+			ORefList progressReportRefs = new ORefList();
+
+			if (indicatorToCloneFrom.hasValue(TAG_PROGRESS_REPORT_REFS))
+			{
+				ORefList progressReportRefList = new ORefList(indicatorToCloneFrom.getData(TAG_PROGRESS_REPORT_REFS));
+				for (ORef progressReportRef : progressReportRefList)
+				{
+					RawObject progressReportToClone = getRawProject().findObject(progressReportRef);
+
+					ORef newProgressReportRef = cloneProgressReport(progressReportToClone);
+					progressReportRefs.add(newProgressReportRef);
+				}
+			}
+
+			return progressReportRefs;
+		}
+
+		private ORef cloneProgressReport(RawObject progressReportToClone) throws Exception
+		{
+			ORef newProgressReportRef = getRawProject().createObject(ObjectType.PROGRESS_REPORT);
+			RawObject newProgressReport = getRawProject().findObject(newProgressReportRef);
+
+			newProgressReport.setData(TAG_DETAILS, safeGetTag(progressReportToClone, TAG_DETAILS));
+			newProgressReport.setData(TAG_PROGRESS_STATUS, safeGetTag(progressReportToClone, TAG_PROGRESS_STATUS));
+			newProgressReport.setData(TAG_PROGRESS_DATE, safeGetTag(progressReportToClone, TAG_PROGRESS_DATE));
+
+			return newProgressReportRef;
+		}
+
 		private RawObject createTask(RawObject method, RawObject monitoringActivity) throws Exception
 		{
 			ORef newTaskRef = createTask();
 			RawObject task = getRawProject().findObject(newTaskRef);
+
+			task.setData(TAG_ID, safeGetTag(method, TAG_ID));
+			task.setData(TAG_DETAILS, safeGetTag(method, TAG_DETAILS));
 			task.setData(TAG_LABEL, safeGetTag(method, TAG_LABEL));
+			task.setData(TAG_COMMENTS, safeGetTag(method, TAG_COMMENTS));
+
+			task.setData(TAG_PROGRESS_REPORT_REFS, safeGetTag(method, TAG_PROGRESS_REPORT_REFS));
+			method.setData(TAG_PROGRESS_REPORT_REFS, "");
 
 			BaseId taskId = newTaskRef.getObjectId();
 
@@ -403,6 +447,16 @@ public class MigrationTo33 extends AbstractMigration
 	public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
 	public static final String TAG_WRAPPED_REF = "WrappedFactorRef";
 	public static final String TAG_RELEVANT_STRATEGY_ACTIVITY_SET = "RelevantStrategySet";
+
+	public static final String TAG_ID = "Id";
+	public static final String TAG_DETAILS = "Details";
+	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
+	public static final String TAG_COMMENTS = "Comments";
+	public static final String TAG_TEXT = "Text";
+	public static final String TAG_SHORT_LABEL = "ShortLabel";
+
+	public static final String TAG_PROGRESS_STATUS = "ProgressStatus";
+	public static final String TAG_PROGRESS_DATE = "ProgressDate";
 
 	public static final int VERSION_FROM = 32;
 	public static final int VERSION_TO = 33;

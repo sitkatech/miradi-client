@@ -176,10 +176,10 @@ public class SplitSharedTasksVisitor extends AbstractMigrationORefVisitor
 			newTask.setData(TAG_SUBTASK_IDS, subTaskIdList.toJson().toString());
 		}
 
-		ORefList clonedtimeframeRefs = cloneTimeframes(taskToClone);
-		if (!clonedtimeframeRefs.isEmpty())
+		ORefList clonedTimeframeRefs = cloneTimeframes(taskToClone);
+		if (!clonedTimeframeRefs.isEmpty())
 		{
-			IdList timeframeIdList = clonedtimeframeRefs.convertToIdList(ObjectType.TIMEFRAME);
+			IdList timeframeIdList = clonedTimeframeRefs.convertToIdList(ObjectType.TIMEFRAME);
 			newTask.setData(TAG_TIMEFRAME_IDS, timeframeIdList.toJson().toString());
 		}
 
