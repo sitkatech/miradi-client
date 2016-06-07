@@ -312,10 +312,12 @@ public class MigrationTo33 extends AbstractMigration
 				ORef newActivityRef = createTask();
 				activity = getRawProject().findObject(newActivityRef);
 				activity.setData(TAG_ID, safeGetTag(indicator, TAG_ID));
-				activity.setData(TAG_DETAILS, safeGetTag(indicator, TAG_DETAILS));
+				activity.setData(TAG_SHORT_LABEL, safeGetTag(indicator, TAG_SHORT_LABEL));
 				activity.setData(TAG_LABEL, safeGetTag(indicator, TAG_LABEL));
+				activity.setData(TAG_DETAILS, safeGetTag(indicator, TAG_DETAIL));
 				activity.setData(TAG_IS_MONITORING_ACTIVITY, BooleanData.BOOLEAN_TRUE);
 				activity.setData(TAG_COMMENTS, safeGetTag(indicator, TAG_COMMENTS));
+				activity.setData(TAG_TEXT, safeGetTag(indicator, TAG_TEXT));
 
 				ORefList clonedProgressReportRefs = cloneProgressReports(indicator);
 				if (!clonedProgressReportRefs.isEmpty())
@@ -384,9 +386,11 @@ public class MigrationTo33 extends AbstractMigration
 			RawObject task = getRawProject().findObject(newTaskRef);
 
 			task.setData(TAG_ID, safeGetTag(method, TAG_ID));
-			task.setData(TAG_DETAILS, safeGetTag(method, TAG_DETAILS));
+			task.setData(TAG_SHORT_LABEL, safeGetTag(method, TAG_SHORT_LABEL));
 			task.setData(TAG_LABEL, safeGetTag(method, TAG_LABEL));
+			task.setData(TAG_DETAILS, safeGetTag(method, TAG_DETAILS));
 			task.setData(TAG_COMMENTS, safeGetTag(method, TAG_COMMENTS));
+			task.setData(TAG_TEXT, safeGetTag(method, TAG_TEXT));
 
 			task.setData(TAG_PROGRESS_REPORT_REFS, safeGetTag(method, TAG_PROGRESS_REPORT_REFS));
 			method.setData(TAG_PROGRESS_REPORT_REFS, "");
@@ -449,6 +453,7 @@ public class MigrationTo33 extends AbstractMigration
 	public static final String TAG_RELEVANT_STRATEGY_ACTIVITY_SET = "RelevantStrategySet";
 
 	public static final String TAG_ID = "Id";
+	public static final String TAG_DETAIL = "Detail";
 	public static final String TAG_DETAILS = "Details";
 	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
 	public static final String TAG_COMMENTS = "Comments";
