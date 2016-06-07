@@ -171,9 +171,10 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		try
 		{
 			BaseObject baseObjectForRow = getBaseObjectForRow(row);
-			if (!isOrCanReferToAssignments(baseObjectForRow.getRef()))
+
+			if (!Assignment.isAssignment(baseObjectForRow.getRef()))
 				return false;
-			
+
 			if (!isEditableModel())
 				return false;
 
@@ -216,14 +217,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	{
 		ORefList assignmentRefsForRowObject = baseObjectForRow.getSafeRefListData(getAssignmentsTag());
 		return Assignment.findAssignment(getProject(), assignmentRefsForRowObject.get(0));
-	}
-
-	private static boolean isOrCanReferToAssignments(ORef ref)
-	{
-		if (Assignment.isAssignment(ref))
-			return true;
-		
-		return BaseObject.canOwnPlanningObjects(ref);
 	}
 
 	private boolean isAssignmentCellEditable(Assignment assignment, DateUnit dateUnit) throws Exception
