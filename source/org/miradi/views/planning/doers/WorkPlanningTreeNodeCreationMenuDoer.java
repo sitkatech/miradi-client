@@ -22,7 +22,7 @@ package org.miradi.views.planning.doers;
 import org.miradi.actions.*;
 import org.miradi.views.umbrella.doers.AbstractPopDownMenuDoer;
 
-public class SharedWorkPlanningTreeNodeCreationMenuDoer extends AbstractPopDownMenuDoer
+public class WorkPlanningTreeNodeCreationMenuDoer extends AbstractPopDownMenuDoer
 {
 	@Override
 	protected Class[] getAllPossibleActionClasses()

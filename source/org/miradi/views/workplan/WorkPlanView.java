@@ -29,8 +29,6 @@ import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.MainWindow;
 import org.miradi.main.MiradiToolBar;
 import org.miradi.project.Project;
-import org.miradi.views.Doer;
-import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.TabbedView;
 import org.miradi.views.diagram.doers.TreeNodeCreateExpenseAssignmentDoer;
 import org.miradi.views.diagram.doers.TreeNodeCreateResourceAssignmentDoer;
@@ -55,9 +53,7 @@ public class WorkPlanView extends TabbedView implements CommandExecutedListener
 	@Override
 	public void createTabs() throws Exception
 	{
-		sharedWorkPlanManagementPanel = SharedWorkPlanManagementPanel.createWorkPlanPanel(getMainWindow());
 		workPlanManagementPanel = WorkPlanManagementPanel.createWorkPlanPanel(getMainWindow());
-
 		settingsPanel = new WorkPlanSettingsPanel(getMainWindow(), getProject().getMetadata().getRef());
 		rollupReportsManagementPanel = WorkPlanBudgetCategoryManagementPanel.createManagementPanel(getMainWindow(), new AnalysisManagementConfiguration(getProject()));
 		resourceManagementPanel = WorkPlanProjectResourceManagementPanel.createManagementPanel(getMainWindow(), new ProjectResourceManagementConfiguration(getProject()));
@@ -68,11 +64,8 @@ public class WorkPlanView extends TabbedView implements CommandExecutedListener
 
 		managementPanelMap = new HashMap<String, PlanningTreeManagementPanel>();
 
-		addPlanningManagementTab(sharedWorkPlanManagementPanel);
 		addPlanningManagementTab(workPlanManagementPanel);
-
 		addNonScrollingTab(settingsPanel);
-
 		addPlanningManagementTab(rollupReportsManagementPanel);
 		addPlanningManagementTab(resourceManagementPanel);
 		addPlanningManagementTab(accountingCodePoolManagementPanel);
@@ -100,17 +93,8 @@ public class WorkPlanView extends TabbedView implements CommandExecutedListener
 	@Override
 	public void deleteTabs() throws Exception
 	{
-		if (sharedWorkPlanManagementPanel != null)
-		{
-			sharedWorkPlanManagementPanel.dispose();
-			sharedWorkPlanManagementPanel = null;
-		}
-
-		if (workPlanManagementPanel != null)
-		{
-			workPlanManagementPanel.dispose();
-			workPlanManagementPanel = null;
-		}
+		workPlanManagementPanel.dispose();
+		workPlanManagementPanel = null;
 
 		settingsPanel.dispose();
 		settingsPanel = null;
@@ -153,21 +137,6 @@ public class WorkPlanView extends TabbedView implements CommandExecutedListener
 		return new WorkPlanToolBar(getActions());
 	}
 
-	@Override
-	public Doer getDoer(Class actionClass)
-	{
-		if (actionClass.equals(ActionWorkPlanBudgetCustomizeTableEditor.class))
-		{
-			MiradiTabContentsPanelInterface currentTab = getCurrentTabPanel();
-			if (currentTab instanceof SharedWorkPlanManagementPanel)
-				return new SharedWorkPlanCustomizeTableEditorDoer();
-			else
-				return new WorkPlanCustomizeTableEditorDoer();
-		}
-
-		return super.getDoer(actionClass);
-	}
-
 	private void addPlanningViewDoersToMap()
 	{				
 		addDoerToMap(ActionTreeNodeUp.class, new TaskMoveUpDoer());
@@ -202,11 +171,11 @@ public class WorkPlanView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionEditAnalysisRows.class, new EditAnalysisRowsDoer());
 		
 		addDoerToMap(ActionPlanningCreationMenu.class, new PlanningTreeNodeCreationMenuDoer());
-		addDoerToMap(ActionSharedWorkPlanningCreationMenu.class, new SharedWorkPlanningTreeNodeCreationMenuDoer());
+		addDoerToMap(ActionWorkPlanningCreationMenu.class, new WorkPlanningTreeNodeCreationMenuDoer());
 		addDoerToMap(ActionWorkPlanBudgetCustomizeTableEditor.class, new WorkPlanCustomizeTableEditorDoer());
 		addDoerToMap(ActionFilterWorkPlanByProjectResource.class, new ProjectResourceWorkPlanFilterEditDoer());
 
-		addDoerToMap(ActionExpandToMenu.class, new ExpandToMenuSharedWorkPlanDoer());
+		addDoerToMap(ActionExpandToMenu.class, new ExpandToMenuWorkPlanDoer());
 		addDoerToMap(ActionExpandToStrategy.class, new ExpandToStrategyDoer());
 		addDoerToMap(ActionExpandToTask.class, new ExpandToTaskDoer());
 	}
@@ -221,7 +190,6 @@ public class WorkPlanView extends TabbedView implements CommandExecutedListener
 		return managementPanelMap;
 	}
 
-	private PlanningTreeManagementPanel sharedWorkPlanManagementPanel;
 	private PlanningTreeManagementPanel workPlanManagementPanel;
 	private WorkPlanSettingsPanel settingsPanel;
 	private PlanningTreeManagementPanel rollupReportsManagementPanel;

@@ -19,9 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.workplan;
 
+import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
-import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
+import org.miradi.dialogs.planning.propertiesPanel.WorkPlanMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
+import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -30,9 +32,9 @@ import org.miradi.objects.PlanningTreeRowColumnProvider;
 
 import javax.swing.*;
 
-class WorkPlanManagementPanel extends AbstractWorkPlanManagementPanel
+public class WorkPlanManagementPanel extends PlanningTreeManagementPanel
 {
-	public WorkPlanManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel planningTreeTablePanel, PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel)	throws Exception
+	public WorkPlanManagementPanel(MainWindow mainWindowToUse, PlanningTreeTablePanel planningTreeTablePanel, PlanningTreeMultiPropertiesPanel planningTreePropertiesPanel) throws Exception
 	{
 		super(mainWindowToUse, planningTreeTablePanel, planningTreePropertiesPanel);
 	}
@@ -63,16 +65,26 @@ class WorkPlanManagementPanel extends AbstractWorkPlanManagementPanel
 		super.becomeInactive();
 	}
 
+	private void updateStatusBar()
+	{
+		getMainWindow().updatePlanningDateRelatedStatus();
+	}
+
+	private void clearStatusBar()
+	{
+		getMainWindow().clearStatusBar();
+	}
+
 	@Override
 	protected PlanningTreeTablePanel createPlanningTreeTablePanel(String uniqueTreeTableModelIdentifier, PlanningTreeRowColumnProvider rowColumnProvider) throws Exception
 	{
 		return WorkPlanTreeTablePanel.createPlanningTreeTablePanel(getMainWindow());
 	}
-	
+
 	public static WorkPlanManagementPanel createWorkPlanPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		PlanningTreeTablePanel workPlanTreeTablePanel = WorkPlanTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse);
-		PlanningTreeMultiPropertiesPanel workPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
+		PlanningTreeMultiPropertiesPanel workPlanPropertiesPanel = new WorkPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 
 		return new WorkPlanManagementPanel(mainWindowToUse, workPlanTreeTablePanel, workPlanPropertiesPanel);
 	}

@@ -168,7 +168,7 @@ public class Actions
 		registerAction(new ActionCreateResource(mainWindow));
 		registerAction(new ActionDeleteResource(mainWindow));
 		registerAction(new ActionPlanningCreationMenu(mainWindow));
-		registerAction(new ActionSharedWorkPlanningCreationMenu(mainWindow));
+		registerAction(new ActionWorkPlanningCreationMenu(mainWindow));
 		registerAction(new ActionPlanningRowsEditor(mainWindow));
 		registerAction(new ActionPlanningColumnsEditor(mainWindow));
 		registerAction(new ActionWorkPlanBudgetCustomizeTableEditor(mainWindow));

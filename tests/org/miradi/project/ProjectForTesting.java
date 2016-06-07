@@ -1396,13 +1396,19 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void populateTask(Task task, String customLabel) throws Exception
 	{
+		populateTask(task, customLabel, false);
+	}
+	
+	public void populateTask(Task task, String customLabel, boolean isMonitoringActivity) throws Exception
+	{
 		fillObjectUsingCommand(task, Task.TAG_LABEL, customLabel);
 		fillObjectUsingCommand(task, Task.TAG_DETAILS, "Some Task details");
+		fillObjectUsingCommand(task, Task.TAG_IS_MONITORING_ACTIVITY, isMonitoringActivity ? BooleanData.BOOLEAN_TRUE : BooleanData.BOOLEAN_FALSE);
 		addResourceAssignment(task);
 
 		addExpenseWithValue(task);
 	}
-	
+
 	public void populateMeasurement(Measurement measurement) throws Exception
 	{
 		fillObjectUsingCommand(measurement, Measurement.TAG_STATUS, StatusQuestion.GOOD);

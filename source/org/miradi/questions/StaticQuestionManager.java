@@ -106,7 +106,7 @@ public class StaticQuestionManager
 		addQuestion(new DashboardFlagsQuestion());
 		addQuestion(new StrategyObjectiveTreeOrderQuestion());
 		addQuestion(new WorkPlanVisibleRowsQuestion());
-		addQuestion(new SharedWorkPlanVisibleRowsQuestion());
+		addQuestion(new WorkPlanVisibleRowsQuestion());
 		addQuestion(new MonitoringTreeConfigurationQuestion());
 		addQuestion(new ActionTreeConfigurationQuestion());
 		addQuestion(new WorkPlanAnalysisConfigurationQuestion());

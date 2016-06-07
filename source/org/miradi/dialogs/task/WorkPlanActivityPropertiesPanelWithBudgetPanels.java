@@ -17,24 +17,21 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.dialogs.planning.AbstractWorkPlanRowColumnProvider;
-import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAlwaysExpanded;
-import org.miradi.dialogs.planning.upperPanel.rebuilder.AbstractTreeRebuilder;
-import org.miradi.dialogs.planning.upperPanel.rebuilder.SharedWorkPlanTreeRebuilder;
-import org.miradi.project.Project;
+package org.miradi.dialogs.task;
 
-public class SharedWorkPlanTreeTableModel extends WorkPlanTreeTableModel
+import org.miradi.main.MainWindow;
+
+public class WorkPlanActivityPropertiesPanelWithBudgetPanels extends WorkPlanActivityPropertiesPanel
 {
-	public SharedWorkPlanTreeTableModel(Project project, PlanningTreeRootNodeAlwaysExpanded rootNode, AbstractWorkPlanRowColumnProvider rowColumnProvider) throws Exception
+	public WorkPlanActivityPropertiesPanelWithBudgetPanels(MainWindow mainWindow) throws Exception
 	{
-		super(project, rootNode, rowColumnProvider);
+		super(mainWindow);
 	}
-
+	
 	@Override
-	protected AbstractTreeRebuilder createTreeRebuilder()
+	protected boolean shouldHaveIsMonitoringActivityField()
 	{
-		return new SharedWorkPlanTreeRebuilder(getProject(), getRowColumnProvider());
+		return true;
 	}
 }

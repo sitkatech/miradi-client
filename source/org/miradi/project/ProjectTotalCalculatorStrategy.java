@@ -23,21 +23,66 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramObject;
+import org.miradi.objects.Strategy;
+import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 
 import java.util.HashSet;
 
-abstract public class ProjectTotalCalculatorStrategy
+public class ProjectTotalCalculatorStrategy
 {
 	public ProjectTotalCalculatorStrategy(String workPlanBudgetModeToUse)
 	{
 		workPlanBudgetMode = workPlanBudgetModeToUse;
 	}
 
-	public abstract ORefList getChildTaskRefs(BaseObject baseObject);
+	public ORefList getChildTaskRefs(BaseObject baseObject)
+	{
+		if (Strategy.is(baseObject))
+		{
+			Strategy strategy = (Strategy) baseObject;
 
-	public abstract boolean shouldOnlyIncludeActionsData();
+			if (getWorkPlanBudgetMode().equals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE))
+				return strategy.getChildTaskRefs();
 
-	public abstract boolean shouldOnlyIncludeMonitoringData();
+			if (getWorkPlanBudgetMode().equals(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE))
+				return strategy.getMonitoringActivityRefs();
+
+			if (getWorkPlanBudgetMode().equals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE))
+				return ORefList.subtract(strategy.getActivityRefs(), strategy.getMonitoringActivityRefs());
+		}
+
+		return baseObject.getChildTaskRefs();
+	}
+
+	public boolean shouldOnlyIncludeActionsData()
+	{
+		return getWorkPlanBudgetMode().equals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE);
+	}
+
+	public boolean shouldOnlyIncludeMonitoringData()
+	{
+		return getWorkPlanBudgetMode().equals(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE);
+	}
+
+	public HashSet<BaseObject> getMonitoringData(Project project) throws Exception
+	{
+		return getActionsData(project);
+	}
+
+	public HashSet<BaseObject> getMonitoringData(Project project, ORef diagramObjectRef) throws Exception
+	{
+		return getActionsData(project, diagramObjectRef);
+	}
+
+	public HashSet<BaseObject> getAllData(Project project) throws Exception
+	{
+		return getActionsData(project);
+	}
+
+	public HashSet<BaseObject> getAllData(Project project, ORef diagramObjectRef) throws Exception
+	{
+		return getActionsData(project, diagramObjectRef);
+	}
 
 	public HashSet<BaseObject> getActionsData(Project project) throws Exception
 	{
@@ -55,14 +100,6 @@ abstract public class ProjectTotalCalculatorStrategy
 	{
 		return getNonDraftStrategies(project, diagramObjectRef);
 	}
-
-	public abstract HashSet<BaseObject> getMonitoringData(Project project) throws Exception;
-
-	public abstract HashSet<BaseObject> getMonitoringData(Project project, ORef diagramObjectRef) throws Exception;
-
-	public abstract HashSet<BaseObject> getAllData(Project project) throws Exception;
-
-	public abstract HashSet<BaseObject> getAllData(Project project, ORef diagramObjectRef) throws Exception;
 
 	protected ORefList getIncludedDiagramRefs(Project project) throws Exception
 	{

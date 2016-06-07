@@ -44,13 +44,13 @@ public class WorkPlanVisibleRowsQuestion extends StaticChoiceQuestion
 	public static String getTextForChoice(String choice)
 	{
 		if (choice.equals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE))
-			return EAM.text("All rows");
+			return EAM.text("Actions and Monitoring");
 
 		if (choice.equals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE))
-			return EAM.text("Action-Related");
+			return EAM.text("Actions");
 
 		if (choice.equals(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE))
-			return EAM.text("Monitoring-Related");
+			return EAM.text("Monitoring");
 
 		return "";
 	}
@@ -58,10 +58,10 @@ public class WorkPlanVisibleRowsQuestion extends StaticChoiceQuestion
 	public static Icon getIconForChoice(String choice)
 	{
 		if (choice.equals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE))
-			return IconManager.getStrategyIcon();
+			return IconManager.getActivityIcon();
 
 		if (choice.equals(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE))
-			return IconManager.getIndicatorIcon();
+			return IconManager.getMonitoringActivityIcon();
 
 		return null;
 	}

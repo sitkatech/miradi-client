@@ -202,8 +202,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestStressBasedThreatFormula.class));
 		addTest(new TestSuite(TestStressBasedThreatRatingFramework.class));
 		addTest(new TestSuite(TestGroupBoxPool.class));
-		addTest(new TestSuite(TestProjectTotalCalculatorDefaultStrategy.class));
-		addTest(new TestSuite(TestProjectTotalCalculatorSharedWorkPlanStrategy.class));
+		addTest(new TestSuite(TestProjectTotalCalculatorStrategy.class));
 		addTest(new TestSuite(TestCommandExecutor.class));
 		addTest(new TestSuite(TestProjectSaver.class));
 		addTest(new TestSuite(TestMpzToMpfConverter.class));

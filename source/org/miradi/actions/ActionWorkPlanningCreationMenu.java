@@ -17,26 +17,14 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
+package org.miradi.actions;
 
-package org.miradi.dialogs.base;
+import org.miradi.main.MainWindow;
 
-import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.project.Project;
-import org.miradi.questions.SharedWorkPlanVisibleRowsQuestion;
-import org.miradi.questions.StaticQuestionManager;
-
-public class SharedWorkPlanColumnConfigurationEditorPanel extends AbstractWorkPlanColumnConfigurationEditorPanel
+public class ActionWorkPlanningCreationMenu extends ActionPlanningCreationMenu
 {
-	public SharedWorkPlanColumnConfigurationEditorPanel(Project projectToUse, ORef orefToUse)
+	public ActionWorkPlanningCreationMenu(MainWindow mainWindowToUse)
 	{
-		super(projectToUse, orefToUse);
-		createPanel(orefToUse, StaticQuestionManager.getQuestion(SharedWorkPlanVisibleRowsQuestion.class), true);
-	}
-
-	@Override
-	protected String getConfigurationLabel()
-	{
-		return EAM.text("Select which rows and column groups to display.");
+		super(mainWindowToUse);
 	}
 }

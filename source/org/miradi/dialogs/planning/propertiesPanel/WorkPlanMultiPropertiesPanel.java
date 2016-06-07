@@ -20,14 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import org.miradi.dialogs.task.SharedWorkPlanActivityPropertiesPanel;
+import org.miradi.dialogs.task.WorkPlanActivityPropertiesPanelWithBudgetPanels;
 import org.miradi.dialogs.task.WorkPlanActivityPropertiesPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 
-public class SharedWorkPlanMultiPropertiesPanel extends	PlanningTreeMultiPropertiesPanel
+public class WorkPlanMultiPropertiesPanel extends	PlanningTreeMultiPropertiesPanel
 {
-	public SharedWorkPlanMultiPropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse) throws Exception
+	public WorkPlanMultiPropertiesPanel(MainWindow mainWindowToUse, ORef orefToUse) throws Exception
 	{
 		super(mainWindowToUse, orefToUse);
 	}
@@ -35,6 +35,6 @@ public class SharedWorkPlanMultiPropertiesPanel extends	PlanningTreeMultiPropert
 	@Override
 	protected WorkPlanActivityPropertiesPanel createActivityPropertiesPanel() throws Exception
 	{
-		return new SharedWorkPlanActivityPropertiesPanel(getMainWindow());
+		return new WorkPlanActivityPropertiesPanelWithBudgetPanels(getMainWindow());
 	}
 }

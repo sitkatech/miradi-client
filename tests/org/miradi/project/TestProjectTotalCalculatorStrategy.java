@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.project;
 
-public class TestProjectTotalCalculatorSharedWorkPlanStrategy extends TestProjectTotalCalculator
+public class TestProjectTotalCalculatorStrategy extends TestProjectTotalCalculator
 {
-	public TestProjectTotalCalculatorSharedWorkPlanStrategy(String name)
+	public TestProjectTotalCalculatorStrategy(String name)
 	{
 		super(name);
 	}
@@ -31,7 +31,7 @@ public class TestProjectTotalCalculatorSharedWorkPlanStrategy extends TestProjec
 	public void setUp() throws Exception
 	{
 		super.setUp();
-		setUpSharedWorkPlanCalculatorStrategy();
+		setUpWorkPlanCalculatorStrategy();
 	}
 
 	public void testMonitoringBudgetMode() throws Exception

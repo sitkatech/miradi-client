@@ -22,21 +22,46 @@ package org.miradi.dialogs.base;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
-import org.miradi.questions.StaticQuestionManager;
-import org.miradi.questions.WorkPlanVisibleRowsQuestion;
+import org.miradi.questions.*;
+import org.miradi.schemas.TableSettingsSchema;
 
-public class WorkPlanColumnConfigurationEditorPanel extends AbstractWorkPlanColumnConfigurationEditorPanel
+public class WorkPlanColumnConfigurationEditorPanel extends ObjectDataInputPanel
 {
 	public WorkPlanColumnConfigurationEditorPanel(Project projectToUse, ORef orefToUse)
 	{
 		super(projectToUse, orefToUse);
-		createPanel(orefToUse, StaticQuestionManager.getQuestion(WorkPlanVisibleRowsQuestion.class));
+		createPanel(orefToUse, StaticQuestionManager.getQuestion(WorkPlanVisibleRowsQuestion.class), true);
 	}
 
 	@Override
-	protected String getConfigurationLabel()
+	public String getPanelDescription()
 	{
-		return EAM.text("Select which column groups to display.");
+		return EAM.text("Work Plan Column Editor");
+	}
+
+	private String getConfigurationLabel()
+	{
+		return EAM.text("Select which rows and column groups to display.");
+	}
+
+	private void createPanel(ORef orefToUse, ChoiceQuestion workPlanVisibleRowsQuestion, boolean addRowConfiguration)
+	{
+		addField(createChoiceField(TableSettingsSchema.getObjectType(), TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE, workPlanVisibleRowsQuestion));
+
+		addHtmlWrappedLabel("");
+		addHtmlWrappedLabel(getConfigurationLabel());
+
+		if (addRowConfiguration)
+		{
+			ChoiceQuestion rowConfigurationQuestion = StaticQuestionManager.getQuestion(WorkPlanRowConfigurationQuestion.class);
+			addFieldWithCustomLabel(createWorkPlanCodeListEditor(orefToUse.getObjectType(), TableSettings.TAG_TABLE_SETTINGS_MAP, rowConfigurationQuestion, TableSettings.WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY), EAM.text("Rows"));
+		}
+
+		ChoiceQuestion columnConfigurationQuestion = StaticQuestionManager.getQuestion(WorkPlanColumnConfigurationQuestion.class);
+		addFieldWithCustomLabel(createWorkPlanCodeListEditor(orefToUse.getObjectType(), TableSettings.TAG_TABLE_SETTINGS_MAP, columnConfigurationQuestion, TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY), EAM.text("Column groups"));
+
+		updateFieldsFromProject();
 	}
 }

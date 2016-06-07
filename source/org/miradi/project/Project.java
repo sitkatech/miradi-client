@@ -19,14 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.project;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.io.File;
-import java.io.PrintStream;
-import java.util.Collection;
-import java.util.Vector;
-
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
@@ -34,11 +26,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.UnexpectedNonSideEffectException;
 import org.miradi.exceptions.UnexpectedSideEffectException;
 import org.miradi.files.AbstractMpfFileFilter;
-import org.miradi.ids.BaseId;
-import org.miradi.ids.DiagramFactorId;
-import org.miradi.ids.DiagramLinkId;
-import org.miradi.ids.IdAssigner;
-import org.miradi.ids.IdList;
+import org.miradi.ids.*;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.VersionConstants;
@@ -46,27 +34,22 @@ import org.miradi.migrations.VersionRange;
 import org.miradi.objecthelpers.*;
 import org.miradi.objectpools.*;
 import org.miradi.objects.*;
-import org.miradi.project.threatrating.SimpleThreatFormula;
-import org.miradi.project.threatrating.SimpleThreatRatingFramework;
-import org.miradi.project.threatrating.StressBasedThreatFormula;
-import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
-import org.miradi.project.threatrating.ThreatRatingBundle;
-import org.miradi.project.threatrating.ThreatRatingFramework;
+import org.miradi.project.threatrating.*;
 import org.miradi.questions.*;
 import org.miradi.schemas.*;
-import org.miradi.utils.CodeList;
-import org.miradi.utils.CommandVector;
-import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.HtmlUtilities;
-import org.miradi.utils.ProgressInterface;
-import org.miradi.utils.StringUtilities;
-import org.miradi.utils.Translation;
+import org.miradi.utils.*;
 import org.miradi.views.diagram.DiagramClipboard;
 import org.miradi.views.diagram.DiagramPageList;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.planning.PlanningView;
 import org.miradi.views.planning.doers.CreatePlanningViewEmptyConfigurationDoer;
 import org.miradi.views.workplan.WorkPlanView;
+
+import java.awt.*;
+import java.io.File;
+import java.io.PrintStream;
+import java.util.Collection;
+import java.util.Vector;
 
 
 public class Project implements ProjectInterface

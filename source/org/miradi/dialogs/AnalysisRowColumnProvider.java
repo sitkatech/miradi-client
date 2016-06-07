@@ -27,11 +27,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
-import org.miradi.schemas.AccountingCodeSchema;
-import org.miradi.schemas.BudgetCategoryOneSchema;
-import org.miradi.schemas.BudgetCategoryTwoSchema;
-import org.miradi.schemas.FundingSourceSchema;
-import org.miradi.schemas.ProjectResourceSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
 import org.miradi.views.workplan.WorkPlanView;
 

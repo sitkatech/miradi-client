@@ -20,18 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.workplan.doers;
 
-import org.miradi.actions.*;
-import org.miradi.views.umbrella.doers.AbstractPopDownMenuDoer;
+import org.miradi.views.MiradiTabContentsPanelInterface;
+import org.miradi.views.targetviability.doers.AbstractExpandToDoer;
+import org.miradi.views.workplan.WorkPlanManagementPanel;
 
-public class ExpandToMenuSharedWorkPlanDoer extends AbstractPopDownMenuDoer
+public abstract class AbstractWorkPlanExpandToDoer extends AbstractExpandToDoer
 {
 	@Override
-	protected Class[] getAllPossibleActionClasses()
+	public boolean isAvailable()
 	{
-		return new Class[] {
-				ActionExpandAllRows.class,
-				ActionExpandToStrategy.class,
-				ActionExpandToTask.class,
-			};
+		if(!super.isAvailable())
+			return false;
+
+		MiradiTabContentsPanelInterface currentTab = getView().getCurrentTabPanel();
+		return currentTab instanceof WorkPlanManagementPanel;
 	}
 }

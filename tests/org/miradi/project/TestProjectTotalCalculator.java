@@ -27,16 +27,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.KeyEcologicalAttribute;
-import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.ProjectResource;
-import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Target;
+import org.miradi.objects.*;
 import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.schemas.CauseSchema;
@@ -69,41 +60,31 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		dateUnit = getProject().createDateUnit(YEAR_2008, YEAR_2009);
 	}
 
-	protected void setUpDefaultCalculatorStrategy()
+	protected void setUpWorkPlanCalculatorStrategy()
 	{
 		String currentWorkBudgetMode = calculator.getProjectTotalCalculatorStrategy().getWorkPlanBudgetMode();
-		calculator.setProjectTotalCalculatorStrategy(new ProjectTotalCalculatorStrategyDefault(currentWorkBudgetMode));
-	}
-
-	protected void setUpSharedWorkPlanCalculatorStrategy()
-	{
-		String currentWorkBudgetMode = calculator.getProjectTotalCalculatorStrategy().getWorkPlanBudgetMode();
-		calculator.setProjectTotalCalculatorStrategy(new ProjectTotalCalculatorStrategySharedWorkPlan(currentWorkBudgetMode));
+		calculator.setProjectTotalCalculatorStrategy(new ProjectTotalCalculatorStrategy(currentWorkBudgetMode));
 	}
 
 	protected void testMonitoringBudgetMode() throws Exception
 	{
-		createNonDraftStrategyWithAssignment(getConceptualModelDiagramObject());
-		createCauseWithIndicatorWithAssignment(getConceptualModelDiagramObject());
-		
-		verifyCalculationBasedOnMode(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE, 100.0);
+		DiagramFactor diagramFactor = createNonDraftStrategyWithAssignment(getConceptualModelDiagramObject());
+		Strategy strategy = (Strategy) diagramFactor.getWrappedFactor();
+		createMonitoringActivity(strategy);
+
+		verifyCalculationBasedOnMode(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE, 212.0);
 		verifyCalculationBasedOnMode(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE, 100.0);
-		verifyCalculationBasedOnMode(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE, 200.0);
+		verifyCalculationBasedOnMode(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE, 212.0);
 	}
 
-	protected void verifyCalculationBasedOnMode(String workPlanBudgetMode, double expectedTotal) throws Exception
+	private void verifyCalculationBasedOnMode(String workPlanBudgetMode, double expectedTotal) throws Exception
 	{
-		calculator.setProjectTotalCalculatorStrategy(new ProjectTotalCalculatorStrategyDefault(workPlanBudgetMode));
+		calculator.setProjectTotalCalculatorStrategy(new ProjectTotalCalculatorStrategy(workPlanBudgetMode));
 		TimePeriodCostsMap projectTotals = calculator.calculateProjectAssignedTotals();
 		assertEquals("Project totals time period costs map should not be empty?", 1, projectTotals.size());
 
 		OptionalDouble calculateTotalBudgetCost = projectTotals.calculateTotalBudgetCost(getProject());		
 		assertEquals("Incorrect project total", expectedTotal, calculateTotalBudgetCost.getValue());
-	}
-
-	protected void testKeaIndicatorInResultsChain() throws Exception
-	{
-		testKeaIndicatorInResultsChain(1);
 	}
 
 	protected void testKeaIndicatorInResultsChain(final int expectedProjectTotalTimePeriodMapCount) throws Exception
@@ -125,11 +106,6 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 
 		turnOnDataFromConceptualDiagramOnly();
 		verifyEmptyProjectTotalTimePeriodCostsMap();
-	}
-
-	protected void testProjectTotalWithDraftStrategyIndicator() throws Exception
-	{
-		testProjectTotalWithDraftStrategyIndicator(20.0, 200.0);
 	}
 
 	protected void testProjectTotalWithDraftStrategyIndicator(final double expectedWorkUnits, final double expectedTotalBudgetCost) throws Exception
@@ -172,11 +148,6 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		verifyEmptyProjectTotalTimePeriodCostsMap();
 	}
 
-	protected void testConceptualModelIndicatorProjectTotal() throws Exception
-	{
-		testConceptualModelIndicatorProjectTotal(1);
-	}
-
 	protected void testConceptualModelIndicatorProjectTotal(final int expectedProjectTotalTimePeriodMapCount) throws Exception
 	{
 		createCauseWithIndicatorWithAssignment(getConceptualModelDiagramObject());
@@ -189,11 +160,6 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 
 		turnOnDataFromResultsChainOnly();
 		verifyEmptyBudgetTotalCost();
-	}
-
-	protected void testResultsChainIndicatorProjectTotal() throws Exception
-	{
-		testResultsChainIndicatorProjectTotal(1);
 	}
 
 	protected void testResultsChainIndicatorProjectTotal(final int expectedProjectTotalTimePeriodMapCount) throws Exception
@@ -238,11 +204,6 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		verifyEmptyBudgetTotalCost();
 	}
 
-	protected void testStrategyOnEachDiagramProjectTotal() throws Exception
-	{
-		testStrategyOnEachDiagramProjectTotal(true);
-	}
-
 	protected void testStrategyOnEachDiagramProjectTotal(final boolean expectIndicatorAssignmentsToBeCounted) throws Exception
 	{
 		createNonDraftStrategyWithAssignment(getConceptualModelDiagramObject());
@@ -275,33 +236,33 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		assertEquals("Empty project had non-zero totals data?", 0, calculator.calculateProjectAssignedTotals().size());
 	}
 
-	protected void verifyEmptyBudgetTotalCost() throws Exception
+	private void verifyEmptyBudgetTotalCost() throws Exception
 	{
 		OptionalDouble totalBudgetCost = calculator.calculateProjectAssignedTotals().calculateTotalBudgetCost(getProject());
 		assertFalse("ConceptualModel Strategy is included in project totals?", totalBudgetCost.hasValue());
 	}
 
-	protected void verifyEmptyProjectTotalTimePeriodCostsMap() throws Exception
+	private void verifyEmptyProjectTotalTimePeriodCostsMap() throws Exception
 	{
 		assertEquals("Should have empty project total time perdiod costs map?", 0, calculator.calculateProjectAssignedTotals().size());
 	}
 
-	protected void verifyCalculatedValues() throws Exception
+	private void verifyCalculatedValues() throws Exception
 	{
 		verifyCalculatedValues(TEN_WORK_UNITS, 100.0);
 	}
 
-	protected void verifyCalculatedValues(final int expectedProjectTotalTimePeriodMapCount) throws Exception
+	private void verifyCalculatedValues(final int expectedProjectTotalTimePeriodMapCount) throws Exception
 	{
 		verifyCalculatedValues(expectedProjectTotalTimePeriodMapCount, TEN_WORK_UNITS, 100.0);
 	}
 
-	protected void verifyCalculatedValues(final double expectedWorkUnits, final double expectedTotalBudgetCost) throws Exception
+	private void verifyCalculatedValues(final double expectedWorkUnits, final double expectedTotalBudgetCost) throws Exception
 	{
 		verifyCalculatedValues(1, expectedWorkUnits, expectedTotalBudgetCost);
 	}
 
-	protected void verifyCalculatedValues(final int expectedProjectTotalTimePeriodMapCount, final double expectedWorkUnits, final double expectedTotalBudgetCost) throws Exception
+	private void verifyCalculatedValues(final int expectedProjectTotalTimePeriodMapCount, final double expectedWorkUnits, final double expectedTotalBudgetCost) throws Exception
 	{
 		TimePeriodCostsMap projectTotals = verifyProjectTotalTimePeriodCostsMap(expectedProjectTotalTimePeriodMapCount);
 
@@ -315,7 +276,7 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		}
 	}
 
-	protected TimePeriodCostsMap verifyProjectTotalTimePeriodCostsMap(final int expectedProjectTotalTimePeriodMapCount) throws Exception
+	private TimePeriodCostsMap verifyProjectTotalTimePeriodCostsMap(final int expectedProjectTotalTimePeriodMapCount) throws Exception
 	{
 		TimePeriodCostsMap projectTotals = calculator.calculateProjectAssignedTotals();
 		assertEquals("Project totals time period costs map should not be empty?", expectedProjectTotalTimePeriodMapCount, projectTotals.size());
@@ -323,33 +284,33 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		return projectTotals;
 	}
 
-	protected void turnOnDataFromResultsChainOnly() throws Exception
+	private void turnOnDataFromResultsChainOnly() throws Exception
 	{
 		turnOnDiagramObjectDataFromCode(DiagramObjectDataInclusionQuestion.INCLUDE_RESULTS_CHAIN_DATA_CODE);
 	}
 
-	protected void turnOnDataFromConceptualDiagramOnly() throws Exception
+	private void turnOnDataFromConceptualDiagramOnly() throws Exception
 	{
 		turnOnDiagramObjectDataFromCode(DiagramObjectDataInclusionQuestion.INCLUDE_CONCEPTUAL_MODEL_DATA_CODE);
 	}
 
-	protected void turnOnDataFromBothDiagramTypes() throws Exception
+	private void turnOnDataFromBothDiagramTypes() throws Exception
 	{
 		turnOnDiagramObjectDataFromCode(DiagramObjectDataInclusionQuestion.INCLUDE_BOTH_DIAGRAM_DATA_CODE);
 	}
 
-	protected void turnOnDiagramObjectDataFromCode(String code) throws Exception
+	private void turnOnDiagramObjectDataFromCode(String code) throws Exception
 	{
 		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, code);	
 	}
 
-	protected void createDraftStrategyWithAssignment(DiagramObject diagramModel) throws Exception
+	private void createDraftStrategyWithAssignment(DiagramObject diagramModel) throws Exception
 	{
 		DiagramFactor draftStrategy = createNonDraftStrategyWithAssignment(diagramModel);
 		getProject().turnOnDraft((Strategy)draftStrategy.getWrappedFactor());
 	}
 
-	protected DiagramFactor createNonDraftStrategyWithAssignment(DiagramObject diagramObject) throws Exception
+	private DiagramFactor createNonDraftStrategyWithAssignment(DiagramObject diagramObject) throws Exception
 	{
 		DiagramFactor nonDraftStrategy = getProject().createAndAddFactorToDiagram(diagramObject, StrategySchema.getObjectType());
 		addResourceAssignment(nonDraftStrategy.getWrappedFactor());
@@ -357,19 +318,25 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		return nonDraftStrategy;
 	}
 
-	protected void createCauseWithIndicatorWithAssignment(DiagramObject diagramObject) throws Exception
+	private void createMonitoringActivity(Strategy strategy) throws Exception
+	{
+		Task monitoringActivity = getProject().createActivity(strategy);
+		getProject().populateTask(monitoringActivity, "Some Monitoring Activity", true);
+	}
+
+	private void createCauseWithIndicatorWithAssignment(DiagramObject diagramObject) throws Exception
 	{
 		DiagramFactor diagramFactor = getProject().createAndAddFactorToDiagram(diagramObject, CauseSchema.getObjectType());
 		Indicator indicator = getProject().createIndicator(diagramFactor.getWrappedFactor());
 		addResourceAssignment(indicator);
 	}
 
-	protected DiagramObject getConceptualModelDiagramObject()
+	private DiagramObject getConceptualModelDiagramObject()
 	{
 		return getProject().getTestingDiagramModel().getDiagramObject();
 	}
 
-	protected DiagramObject getResultsChainDiagramObject()
+	private DiagramObject getResultsChainDiagramObject()
 	{
 		return resultsChainDiagramModel.getDiagramObject();
 	}

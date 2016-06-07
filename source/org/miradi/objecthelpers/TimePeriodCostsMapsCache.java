@@ -31,7 +31,6 @@ import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectTotalCalculator;
 import org.miradi.project.ProjectTotalCalculatorStrategy;
-import org.miradi.project.ProjectTotalCalculatorStrategyDefault;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.schemas.TableSettingsSchema;
 
@@ -42,7 +41,7 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 	public TimePeriodCostsMapsCache(Project projectToUse)
 	{
 		project = projectToUse;
-		ProjectTotalCalculatorStrategy projectTotalCalculatorStrategy = new ProjectTotalCalculatorStrategyDefault(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE);
+		ProjectTotalCalculatorStrategy projectTotalCalculatorStrategy = new ProjectTotalCalculatorStrategy(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE);
 		projectTotalCalculator = new ProjectTotalCalculator(projectToUse, projectTotalCalculatorStrategy);
 		clear();
 	}

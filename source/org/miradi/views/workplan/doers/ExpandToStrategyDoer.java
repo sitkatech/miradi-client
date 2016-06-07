@@ -22,7 +22,7 @@ package org.miradi.views.workplan.doers;
 
 import org.miradi.schemas.StrategySchema;
 
-public class ExpandToStrategyDoer extends AbstractSharedWorkPlanExpandToDoer
+public class ExpandToStrategyDoer extends AbstractWorkPlanExpandToDoer
 {
 	@Override
 	protected int getTypeToExpandTo()

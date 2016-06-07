@@ -27,9 +27,9 @@ import org.miradi.main.MainWindow;
 import java.util.HashSet;
 import java.util.Set;
 
-public class SharedWorkPlanningTreeTableWithVisibleRootNode extends PlanningTreeTableWithVisibleRootNode
+public class WorkPlanningTreeTableWithVisibleRootNode extends PlanningTreeTableWithVisibleRootNode
 {
-	public SharedWorkPlanningTreeTableWithVisibleRootNode(MainWindow mainWindowToUse, GenericTreeTableModel planningTreeModelToUse)
+	public WorkPlanningTreeTableWithVisibleRootNode(MainWindow mainWindowToUse, GenericTreeTableModel planningTreeModelToUse)
 	{
 		super(mainWindowToUse, planningTreeModelToUse);
 	}

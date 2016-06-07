@@ -20,10 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
+import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.PlanningTreeRowColumnProvider;
-import org.miradi.objects.Strategy;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
+import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 
 public class WorkPlanTreeRebuilder extends NormalTreeRebuilder
 {
@@ -35,6 +37,61 @@ public class WorkPlanTreeRebuilder extends NormalTreeRebuilder
 	@Override
 	protected ORefList getActivities(Strategy strategy) throws Exception
 	{
-		return ORefList.subtract(strategy.getActivityRefs(), strategy.getMonitoringActivityRefs());
+		String workPlanBudgetMode = getProject().getTimePeriodCostsMapsCache().getWorkPlanBudgetMode();
+
+		if (workPlanBudgetMode.equals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE))
+			return strategy.getActivityRefs();
+
+		if (workPlanBudgetMode.equals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE))
+			return ORefList.subtract(strategy.getActivityRefs(), strategy.getMonitoringActivityRefs());
+
+		if (workPlanBudgetMode.equals(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE))
+			return strategy.getMonitoringActivityRefs();
+
+		throw new Exception("getActivities called for unknown work plan budget mode " + workPlanBudgetMode);
+	}
+
+	@Override
+	protected ORefList getResourceAssignmentsForParent(AbstractPlanningTreeNode parentNode) throws Exception
+	{
+		BaseObject parentObject = parentNode.getObject();
+		if(willThisTypeEndUpInTheTree(parentObject.getTypeName()))
+			return parentObject.getResourceAssignmentRefs();
+
+		return new ORefList(){};
+	}
+
+	@Override
+	protected ORefList getExpenseAssignmentsForParent(AbstractPlanningTreeNode parentNode) throws Exception
+	{
+		BaseObject parentObject = parentNode.getObject();
+		if(willThisTypeEndUpInTheTree(parentObject.getTypeName()))
+			return parentObject.getExpenseAssignmentRefs();
+
+		return new ORefList(){};
+	}
+
+	@Override
+	protected ORefList getRelevantIndicatorsInDiagram(DiagramObject diagram, Desire desire) throws Exception
+	{
+		return new ORefList(){};
+	}
+
+	@Override
+	protected ORefList getChildrenOfIndicator(ORef parentRef, DiagramObject diagram) throws Exception
+	{
+		return new ORefList(){};
+	}
+
+	@Override
+	protected ORefList getIndicatorsForTarget(AbstractTarget target)
+	{
+		return new ORefList(){};
+	}
+
+	@Override
+	protected ORefList getRelevantIndicatorsForStrategy(Strategy strategy)
+	{
+		return new ORefList(){};
 	}
 }
