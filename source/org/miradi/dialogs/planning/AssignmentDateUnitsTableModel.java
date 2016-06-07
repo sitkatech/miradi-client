@@ -186,8 +186,8 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 			
 			ORefList assignmentRefs = baseObjectForRow.getSafeRefListData(getAssignmentsTag());
 			if (assignmentRefs.size() >  1)
-				return canEditMultipleAssignments(baseObjectForRow, getDateUnit(column));
-			
+				return false;
+
 			if (assignmentRefs.size() == 1)
 				return isAssignmentCellEditable(getSingleAssignmentForBaseObject(baseObjectForRow), getDateUnit(column));
 			
@@ -198,11 +198,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 			EAM.logException(e);
 			return false;
 		}
-	}
-	
-	protected boolean canEditMultipleAssignments(BaseObject baseObjectForRow, DateUnit dateUnit) throws Exception
-	{
-		return false;
 	}
 	
 	private boolean hasConflictingValue(BaseObject baseObjectForRow, DateUnit dateUnit) throws Exception
@@ -239,18 +234,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		return isHorizontallyEditable(assignment, dateUnit);
 	}
 
-	protected boolean isHorizontallyEditable(ORefList assignmentRefs, DateUnit dateUnit) throws Exception
-	{
-		for (int index = 0; index < assignmentRefs.size(); ++index)
-		{
-			Assignment assignment = Assignment.findAssignment(getProject(), assignmentRefs.get(index));
-			if (!isHorizontallyEditable(assignment, dateUnit))
-				return false;
-		}
-		
-		return true;
-	}
-	
 	private boolean isHorizontallyEditable(Assignment assignment, DateUnit dateUnit) throws Exception
 	{
 		DateUnitEffort thisCellEffort = getDateUnitEffort(assignment, dateUnit);
@@ -285,7 +268,7 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		try
 		{
 			Vector<Assignment> assignments = getAssignmentsToEdit(row);
-			setAssignmentValues(assignments, column, divideValue(value, assignments.size()));	
+			setAssignmentValues(assignments, column, value);
 		}
 		finally
 		{
@@ -301,16 +284,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 		}
 	}
 	
-	private Object divideValue(Object value, int portionCount) throws Exception
-	{
-		String valueAsString = value.toString().trim();
-		if (valueAsString.equals(""))
-			return value;
-		
-		double parsedValue = DoubleUtilities.toDoubleFromHumanFormat(valueAsString);
-		return parsedValue  / portionCount;
-	}
-
 	private void setAssignmentValue(Object dividedValue, int column, Assignment assignment) throws Exception
 	{
 		DateUnit dateUnit = getDateUnit(column);

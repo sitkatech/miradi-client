@@ -19,56 +19,21 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import java.text.ParseException;
-
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
-import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.TimePeriodCosts;
-import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.project.Project;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
-import org.miradi.utils.OptionalDouble;
+
+import java.text.ParseException;
 
 public class WorkPlanWorkUnitsTableModel extends AbstractWorkUnitsTableModel
 {
 	public WorkPlanWorkUnitsTableModel(Project projectToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse, RowColumnBaseObjectProvider providerToUse, String treeModelIdentifierAsTagToUse) throws Exception
 	{
 		super(projectToUse, rowColumnProviderToUse, providerToUse, treeModelIdentifierAsTagToUse);
-	}
-	
-	@Override
-	protected boolean canEditMultipleAssignments(BaseObject baseObjectForRow, DateUnit dateUnit) throws Exception
-	{
-		ORefList assignmentRefs = baseObjectForRow.getSafeRefListData(getAssignmentsTag());
-		if (!isHorizontallyEditable(assignmentRefs, dateUnit))
-			return false;
-			
-		return isTotalUnitsEqualForAssignments(assignmentRefs, dateUnit);
-	}
-
-	private boolean isTotalUnitsEqualForAssignments(ORefList assignmentRefs, DateUnit dateUnit) throws Exception
-	{
-		OptionalDouble resourceTotal = new OptionalDouble();
-		for (int index = 0; index < assignmentRefs.size(); ++index)
-		{
-			Assignment assignment = Assignment.findAssignment(getProject(), assignmentRefs.get(index));
-			TimePeriodCosts timePeriodCosts = assignment.calculateTimePeriodCostsForAssignments(dateUnit);
-			OptionalDouble thisResourceTotal = timePeriodCosts.getTotalWorkUnits();
-			if (index == 0)
-				resourceTotal = thisResourceTotal;
-			
-			if (!thisResourceTotal.equals(resourceTotal))
-				return false;
-			
-			resourceTotal = thisResourceTotal;
-		}
-		
-		return true;
 	}
 	
 	@Override
