@@ -145,43 +145,6 @@ abstract public class AbstractPlanningTreeNode extends TreeTableNode
 		children = newChildren;
 	}
 
-	public ORef getContextRef()
-	{
-		return getObjectReference();
-	}
-
-	public void addProportionShares(TreeTableNode rawNode)
-	{
-	}
-
-	@Override
-	public boolean areBudgetValuesAllocated()
-	{
-		if(isAllocated)
-			return true;
-		
-		if(getProportionShares() < getTotalShareCount())
-			return true;
-		
-		return false;
-	}
-
-	public boolean isAnyChildAllocated()
-	{
-		for(AbstractPlanningTreeNode node : children)
-		{
-			if(node.areBudgetValuesAllocated())
-				return true;
-		}
-		
-		return false;
-	}
-
-	public void setAllocated()
-	{
-		isAllocated = true;
-	}
-	
 	@Override
 	public boolean equals(Object rawOther)
 	{
@@ -207,5 +170,4 @@ abstract public class AbstractPlanningTreeNode extends TreeTableNode
 	protected Project project;
 	private TreeTableNode parentNode;
 	protected Vector<AbstractPlanningTreeNode> children;
-	private boolean isAllocated;
 }

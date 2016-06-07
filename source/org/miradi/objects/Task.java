@@ -202,11 +202,6 @@ public class Task extends Factor
 		return !hasReferrers();
 	}
 	
-	public boolean isPartOfASharedTaskTree()
-	{
-		return getTotalShareCount() > 1;
-	}
-
 	public int getSubtaskCount()
 	{
 		return getSubtaskIdList().size();
@@ -336,23 +331,6 @@ public class Task extends Factor
 		return new ORefList(TaskSchema.getObjectType(), getSubtaskIdList());
 	}
 	
-	@Override
-	public int getTotalShareCount()
-	{
-		ORefList parentRefs = getParentRefs();
-		if (parentRefs.isEmpty())
-			return 1;
-			
-		if(isTask())
-		{
-			ORef parentRef = parentRefs.get(0);
-			Task parentTask = Task.find(getObjectManager(), parentRef);
-			return parentTask.getTotalShareCount();
-		}
-		
-		return parentRefs.size();
-	}
-
 	public ORefList getParentRefs()
 	{
 		try
@@ -369,18 +347,7 @@ public class Task extends Factor
 		}
 	}
 	
-	@Override
-	protected TimePeriodCostsMap getTotalTimePeriodCostsMapForTag(String tag) throws Exception
-	{
-		TimePeriodCostsMap timePeriodCostsMap = super.getTotalTimePeriodCostsMapForTag(tag);
-		double totalShareCount = getTotalShareCount();
-		if (totalShareCount > 1)
-			timePeriodCostsMap.divideBy(new OptionalDouble(totalShareCount));
-		
-		return timePeriodCostsMap;
-	}
-	
-	public int getTypeOfParent() throws UnknownTaskParentTypeException
+	private int getTypeOfParent() throws UnknownTaskParentTypeException
 	{
 		if(isTask())
 			return TaskSchema.getObjectType();
@@ -392,17 +359,6 @@ public class Task extends Factor
 			return StrategySchema.getObjectType();
 		
 		throw new UnknownTaskParentTypeException();
-	}
-	
-	public static boolean canOwnTask(int selectedType)
-	{
-		if (Indicator.is(selectedType))
-			return true;
-		
-		if (Strategy.is(selectedType))
-			return true;
-		
-		return Task.is(selectedType);
 	}
 
 	private String getLabelOfTaskParent()

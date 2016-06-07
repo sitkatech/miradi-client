@@ -587,11 +587,6 @@ abstract public class BaseObject
 		return totalTimePeriodCostsMap.calculateTotalBudgetCost(getProject());
 	}
 
-	public int getTotalShareCount()
-	{
-		return 1;
-	}
-	
 	public TimePeriodCosts calculateTimePeriodCostsForAssignments(DateUnit dateUnitToUse)throws Exception
 	{
 		return getTotalTimePeriodCostsMapForAssignments().calculateTimePeriodCosts(dateUnitToUse);
@@ -1556,15 +1551,6 @@ abstract public class BaseObject
 	public static BaseObject find(Project project, ORef objectRef)
 	{
 		return find(project.getObjectManager(), objectRef);
-	}
-
-	public static boolean isSharedTask(BaseObject baseObject)
-	{
-		if (!Task.is(baseObject))
-			return false;
-
-		Task task = (Task) baseObject;
-		return task.isPartOfASharedTaskTree();
 	}
 
 	public boolean isType(int typeToUse)

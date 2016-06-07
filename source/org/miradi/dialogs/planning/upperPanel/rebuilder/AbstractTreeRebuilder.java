@@ -20,11 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
-import java.util.Collections;
-import java.util.Vector;
-
 import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
-import org.miradi.dialogs.planning.treenodes.PlanningTaskNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeBaseObjectNode;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeErrorNode;
 import org.miradi.dialogs.progressReport.FieldComparator;
@@ -32,16 +28,13 @@ import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Desire;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.Measurement;
-import org.miradi.objects.PlanningTreeRowColumnProvider;
-import org.miradi.objects.Task;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
+
+import java.util.Collections;
+import java.util.Vector;
 
 abstract public class AbstractTreeRebuilder
 {
@@ -186,9 +179,6 @@ abstract public class AbstractTreeRebuilder
 		
 		try
 		{
-			if(Task.is(refToAdd))
-				return new PlanningTaskNode(project, parentNode.getContextRef(), parentNode, refToAdd);
-			
 			int type = refToAdd.getObjectType();
 			for(int i = 0; i < supportedTypes.length; ++i)
 			{
@@ -235,9 +225,6 @@ abstract public class AbstractTreeRebuilder
 
 	private void removeUnwantedLayersAndPromoteChildren(AbstractPlanningTreeNode node, CodeList objectTypesToShow)
 	{
-		if(node.isAnyChildAllocated())
-			node.setAllocated();
-		
 		Vector<AbstractPlanningTreeNode> newChildren = new Vector<AbstractPlanningTreeNode>();
 		for(int i = 0; i < node.getChildCount(); ++i)
 		{
@@ -278,8 +265,6 @@ abstract public class AbstractTreeRebuilder
 		
 		destination = existingNode.getRawChildrenByReference();
 		addChildrenOfNodeToList(destination, newChild);
-
-		existingNode.addProportionShares(newChild);
 
 		sortChildren(existingNode, destination);
 	}
@@ -366,7 +351,6 @@ abstract public class AbstractTreeRebuilder
 		for(int child = 0; child < node.getChildCount(); ++child)
 			dumpTreeToConsole(node.getChild(child), level + 1);
 	}
-
 
 	private Project project;
 	private PlanningTreeRowColumnProvider rowColumnProvider;

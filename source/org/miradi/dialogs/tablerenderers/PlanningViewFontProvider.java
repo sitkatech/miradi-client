@@ -19,16 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.tablerenderers;
 
-import java.awt.Font;
-
 import org.miradi.main.MainWindow;
-import org.miradi.objects.Assignment;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
+
+import java.awt.*;
 
 public class PlanningViewFontProvider extends FontForObjectProvider
 {
@@ -41,14 +40,12 @@ public class PlanningViewFontProvider extends FontForObjectProvider
 	public Font getFont(BaseObject baseObject)
 	{
 		Font font = super.getFont(baseObject);
+
 		if(shouldBeBold(baseObject.getType()))
 			font = font.deriveFont(Font.BOLD);
 	
 		if(Task.is(baseObject))
 			font = deriveTaskFont((Task) baseObject);
-
-		if(Assignment.is(baseObject))
-			font = deriveAssignmentFont((Assignment) baseObject);
 
 		return font;
 	}
@@ -66,30 +63,13 @@ public class PlanningViewFontProvider extends FontForObjectProvider
 		return false;
 	}
 	
-	private Font deriveTaskFont(Task task)
-	{
-		final int SINGLE_PROPORTION = 1;
-		return deriveTaskFont(task, SINGLE_PROPORTION);
-	}
-	
-	public Font deriveTaskFont(Task task, int proportionShares)
+	public Font deriveTaskFont(Task task)
 	{
 		Font font = super.getFont(task);
-		if (task.isPartOfASharedTaskTree() && proportionShares < task.getTotalShareCount())
-			font = font.deriveFont(Font.ITALIC);
 
 		if (task.isMethod())
 			font = font.deriveFont(Font.BOLD + font.getStyle());
 		
-		return font;
-	}
-
-	public Font deriveAssignmentFont(Assignment assignment)
-	{
-		Font font = super.getFont(assignment);
-		if (assignment.isPartOfASharedTaskTree())
-			font = font.deriveFont(Font.ITALIC);
-
 		return font;
 	}
 }

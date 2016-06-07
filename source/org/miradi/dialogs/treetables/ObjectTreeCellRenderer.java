@@ -36,7 +36,6 @@ import org.miradi.objects.BudgetCategoryOne;
 import org.miradi.objects.BudgetCategoryTwo;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.Factor;
 import org.miradi.objects.FundingSource;
 import org.miradi.objects.FutureStatus;
 import org.miradi.objects.ProjectResource;
@@ -165,12 +164,12 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		setRendererDefaults(scopeBoxRenderer, new ScopeBoxIcon(), getPlainFont());
 	}
 	
-	VariableHeightTreeCellRenderer createRenderer(ObjectTreeTable treeTableToUse)
+	private VariableHeightTreeCellRenderer createRenderer(ObjectTreeTable treeTableToUse)
 	{
 		return new VariableHeightTreeCellRenderer(treeTableToUse);
 	}
 	
-	public void setRendererDefaults(VariableHeightTreeCellRenderer renderer, Icon icon, Font font)
+	private void setRendererDefaults(VariableHeightTreeCellRenderer renderer, Icon icon, Font font)
 	{
 		renderer.setClosedIcon(icon);
 		renderer.setOpenIcon(icon);
@@ -207,13 +206,13 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		else if(node.getType() == ObjectType.INDICATOR)
 			renderer = indicatorRenderer;
 		else if(node.getType() == ObjectType.STRATEGY)
-			renderer = getStrategyRenderer((Factor)node.getObject());
+			renderer = getStrategyRenderer();
 		else if(node.getType() == ObjectType.OBJECTIVE)
 			renderer = objectiveRenderer;
 		else if(node.getType() == ObjectType.GOAL)
 			renderer = goalRenderer;
 		else if(node.getType() == ObjectType.TASK)
-			renderer = getTaskRenderer((Task)node.getObject(), node.getProportionShares());
+			renderer = getTaskRenderer((Task)node.getObject());
 		else if(node.getType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
 			renderer = keyEcologicalAttributeRenderer;
 		else if(node.getType() == ObjectType.STRESS)
@@ -259,26 +258,26 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		return contributingFactorRenderer;
 	}
 
-	private TreeCellRenderer getTaskRenderer(Task task, int proportionShares)
+	private TreeCellRenderer getTaskRenderer(Task task)
 	{
 		if(task.isMonitoringActivity())
-			return getRendererWithSetSharedTaskItalicFont(monitoringActivityRenderer, task, proportionShares);
+			return getTaskRenderer(monitoringActivityRenderer, task);
 		if(task.isActivity())
-			return getRendererWithSetSharedTaskItalicFont(activityRenderer, task, proportionShares);
+			return getTaskRenderer(activityRenderer, task);
 		if(task.isMethod())
-			return getRendererWithSetSharedTaskItalicFont(methodRenderer, task, proportionShares);
+			return getTaskRenderer(methodRenderer, task);
 		
 		return taskRenderer;
 	}
 	
-	private VariableHeightTreeCellRenderer getRendererWithSetSharedTaskItalicFont(VariableHeightTreeCellRenderer renderer, Task task, int proportionShares)
+	private VariableHeightTreeCellRenderer getTaskRenderer(VariableHeightTreeCellRenderer renderer, Task task)
 	{
-		Font taskFont = new PlanningViewFontProvider(getMainWindow()).deriveTaskFont(task, proportionShares);
+		Font taskFont = new PlanningViewFontProvider(getMainWindow()).deriveTaskFont(task);
 		renderer.setFont(taskFont);
 		return renderer;
 	}
 	
-	protected VariableHeightTreeCellRenderer getStrategyRenderer(Factor factor)
+	private VariableHeightTreeCellRenderer getStrategyRenderer()
 	{
 		return strategyRenderer;
 	}
@@ -288,7 +287,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		return deriveFont(getMainWindow(), Font.BOLD);
 	}
 
-	protected Font getPlainFont()
+	private Font getPlainFont()
 	{
 		return deriveFont(getMainWindow(), Font.PLAIN);
 	}
@@ -304,8 +303,8 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	private VariableHeightTreeCellRenderer humanWelfareTargetRenderer;
 	private VariableHeightTreeCellRenderer strategyRenderer;
 	private VariableHeightTreeCellRenderer objectiveRenderer;
-	protected VariableHeightTreeCellRenderer goalRenderer;
-	protected VariableHeightTreeCellRenderer indicatorRenderer;
+	private VariableHeightTreeCellRenderer goalRenderer;
+	private VariableHeightTreeCellRenderer indicatorRenderer;
 	private VariableHeightTreeCellRenderer activityRenderer;
 	private VariableHeightTreeCellRenderer monitoringActivityRenderer;
 	private VariableHeightTreeCellRenderer stressRenderer;

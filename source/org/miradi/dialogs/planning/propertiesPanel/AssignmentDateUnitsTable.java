@@ -69,7 +69,7 @@ abstract public class AssignmentDateUnitsTable extends AbstractAssignmentDetails
 		return getMainWindow().getActions();
 	}
 	
-	protected AssignmentDateUnitsTableModel getWorkUnitsTableModel()
+	private AssignmentDateUnitsTableModel getWorkUnitsTableModel()
 	{
 		return (AssignmentDateUnitsTableModel) getModel();
 	}
@@ -151,16 +151,6 @@ abstract public class AssignmentDateUnitsTable extends AbstractAssignmentDetails
 	public BaseObject getBaseObjectForRowColumn(int row, int column)
 	{
 		return getWorkUnitsTableModel().getBaseObjectForRow(row);
-	}
-	
-	public int getProportionShares(int row)
-	{
-		return getWorkUnitsTableModel().getProportionShares(row);
-	}
-	
-	public boolean areBudgetValuesAllocated(int row)
-	{
-		return getWorkUnitsTableModel().areBudgetValuesAllocated(row);
 	}
 	
 	@Override

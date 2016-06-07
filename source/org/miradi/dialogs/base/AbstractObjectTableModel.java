@@ -95,16 +95,6 @@ abstract public class AbstractObjectTableModel extends SortableTableModel
 		return super.createComparator(sortColumn);
 	}
 	
-	public int getProportionShares(int row)
-	{
-		throw new RuntimeException("getProportionShares has not been implemented by ObjectTableModel");
-	}
-	
-	public boolean areBudgetValuesAllocated(int row)
-	{
-		throw new RuntimeException("areBudgetValuesAllocated has not been implemented by ObjectTableModel");
-	}
-	
 	public ORefList getObjectHierarchy(int row, int column)
 	{
 		throw new RuntimeException("Method is currently unused and has no implementation");

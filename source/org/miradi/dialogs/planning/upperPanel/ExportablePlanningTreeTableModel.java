@@ -19,11 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
-import javax.swing.tree.TreePath;
-
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.dialogs.treetables.TreeTableNode;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
@@ -63,42 +60,7 @@ public class ExportablePlanningTreeTableModel extends PlanningTreeTableModel imp
 	{
 		return rowObjectRefs.size();
 	}
-	
-	public int getProportionShares(int row)
-	{
-		TreeTableNode node = getNodeForRow(row);
-		if(node == null)
-			return 1;
-		return node.getProportionShares();
-	}
-	
-	public boolean areBudgetValuesAllocated(int row)
-	{
-		TreeTableNode node = getNodeForRow(row);
-		if(node == null)
-			return false;
-		return node.areBudgetValuesAllocated();
-	}
 
-	private TreeTableNode getNodeForRow(int row)
-	{
-		ORef rowObjectRef = rowObjectRefs.get(row);
-		if (rowObjectRef.isInvalid())
-			return null;
-		
-		try
-		{
-			TreePath path = getFullyExpandedTreePathListExcludingLeafNodes().get(row);
-			
-			return (TreeTableNode) path.getLastPathComponent();
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			throw new RuntimeException(e);
-		}
-	}
-	
 	@Override
 	public String getUniqueTreeTableModelIdentifier()
 	{

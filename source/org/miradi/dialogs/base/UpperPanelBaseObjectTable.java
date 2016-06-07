@@ -59,31 +59,6 @@ abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable 
 		codeListRenderer = new CodeListRendererFactory(mainWindowToUse, this, fontProvider);
 	}
 	
-	// FIXME urgent: This code no longer has any effect, so any useful bits
-	// need to be moved into getCellEditor/Renderer
-//	@Override
-//	public void rebuildColumnEditorsAndRenderers()
-//	{
-//		UpperPanelBaseObjectTableModel model = getObjectTableModel();
-//		for (int tableColumn = 0; tableColumn < model.getColumnCount(); ++tableColumn)
-//		{
-//			int modelColumn = convertColumnIndexToModel(tableColumn);
-//			if (model.isChoiceItemColumn(modelColumn))
-//				createComboQuestionColumn(model.getColumnQuestion(modelColumn), tableColumn);
-//			
-//			if (model.isCodeListColumn(modelColumn))
-//				createCodeListColumn(model.getColumnQuestion(modelColumn), modelColumn);
-//		}
-//	}
-//	
-//	protected void createCodeListColumn(ChoiceQuestion columnQuestion, int modelColumn)
-//	{
-//		final ChoiceQuestion question = getObjectTableModel().getColumnQuestion(modelColumn);
-//		QuestionPopupEditorTableCellEditorFactory editorFactory = new QuestionPopupEditorTableCellEditorFactory(getMainWindow(), this, ProjectResource.TAG_ROLE_CODES, question, getCodesToDisable());
-//		TableColumn column = getColumnModel().getColumn(modelColumn);
-//		column.setCellEditor(editorFactory);
-//	}
-//
 	protected CodeList getCodesToDisable()
 	{
 		return new CodeList();
@@ -219,16 +194,6 @@ abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable 
 		}
 		
 		return selectedHierarchies;
-	}
-
-	public int getProportionShares(int row)
-	{
-		throw new RuntimeException("getProportionShares has not been implemented by ObjectTableModel");
-	}
-	
-	public boolean areBudgetValuesAllocated(int row)
-	{
-		throw new RuntimeException("areBudgetValuesAllocated has not been implemented by ObjectTableModel");
 	}
 
 	@Override

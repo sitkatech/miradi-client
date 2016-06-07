@@ -98,26 +98,11 @@ abstract public class AbstractThreatTargetTableModel extends SortableTableModel
 		return foundChoiceItem;
 	}
 
-	public boolean isPopupSupportableCell(int row, int modelColumn)
-	{
-		return true;
-	}
-    	
 	public Project getProject()
 	{
 		return project;
 	}
-	
-	public boolean isActiveCell(int threatIndex, int targetIndex)
-	{
-		if(threatIndex < 0 || targetIndex < 0)
-			return false;
-		
-		Factor threat = getThreat(threatIndex);
-		Factor target = getTargets()[targetIndex];
-		return getProject().areLinked(threat, target);
-	}
-	
+
 	@Override
 	public void setSortedRefs(ORefList sortedRefs)
 	{
@@ -182,22 +167,7 @@ abstract public class AbstractThreatTargetTableModel extends SortableTableModel
 		return targetColumns[column].getRef().toString();
 	}
 
-	public int getProportionShares(int row)
-	{
-		throw new RuntimeException("getProportionShares has not been implemented by AbstractThreatTargetTableModel");
-	}
-
-	public boolean areBudgetValuesAllocated(int row)
-	{
-		throw new RuntimeException("areBudgetValuesAllocated has not been implemented by AbstractThreatTargetTableModel");
-	}
-
-	public ORef getLinkRef(Factor from, Factor to)
-	{
-		return getProject().getFactorLinkPool().getLinkedRef(from, to);
-	}
-
-	public Factor getThreat(int row)
+	private Factor getThreat(int row)
 	{
 		return getDirectThreats()[row];
 	}

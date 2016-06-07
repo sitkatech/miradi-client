@@ -25,16 +25,13 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.ids.IdList;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.*;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.AccountingCodeSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TableSettingsSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.DateRange;
-import org.miradi.utils.DateUnitEffort;
 
 public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 {
@@ -88,31 +85,6 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 		projectToUse.addExpenseAssignment(supersedingSubTask, dateUnit2006, 1.0);
 		assertTrue("resource assignment is not superseded?", isAssignmentDataSuperseded(parentOfTaskResourceAssignment2006, dateUnit2006));
 		assertTrue("expense assignment is not superseded?", isAssignmentDataSuperseded(parentOfTaskExpenseAssignment2006, dateUnit2006));
-	}
-
-	public void testGetTotalShareCount() throws Exception
-	{
-		Task activity = getProject().createActivity();
-		assertEquals("wrong activity share count?", 1, activity.getTotalShareCount());
-		
-		Strategy strategy = getProject().createStrategy();
-		getProject().appendActivityToStrategy(strategy, activity);
-		assertEquals("wrong activity(Shared) share count?", 2, activity.getTotalShareCount());
-		
-		Task task = getProject().createTask(activity);
-		assertEquals("wrong task share count?", 2, task.getTotalShareCount());
-		
-		Task taskWithDeletedParent = getProject().createTask(task);
-		getProject().deleteObject(task);
-		EAM.setLogToString();
-		try
-		{
-			assertEquals("wrong parentless task share count?", 1, taskWithDeletedParent.getTotalShareCount());
-		}
-		finally
-		{
-			EAM.setLogToConsole();
-		}
 	}
 
 	public void testBasics() throws Exception
@@ -246,12 +218,7 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 	{
 		getProject().addResourceAssignment(parentOfAssignment, units, startYear, endYear);
 	}
-	
-	public DateUnitEffort createDateUnitEffort(int startYear, int endYear) throws Exception
-	{
-		return getProject().createDateUnitEffort(startYear, endYear);
-	}
-	
+
 	public void testGetWorkUnitsForTaskWithoutSubTasks() throws Exception
 	{
 		getProject().setProjectStartDate(2009);
@@ -285,35 +252,6 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 		assertEquals("wrong subtask work units for date range?", 5.0, ProjectForTesting.calculateTimePeriodCosts(task, dateUnit1));
 	}
 	
-	public void testIsPartOfASharedTaskTree() throws Exception
-	{
-		Strategy strategy1 = getProject().createStrategy();
-		Task activity = getProject().createTask(strategy1);
-		assertFalse("activity should not be shared?", activity.isPartOfASharedTaskTree());
-		
-		ORef tableSettingsRef = getProject().createObject(TableSettingsSchema.getObjectType());
-		getProject().fillObjectUsingCommand(tableSettingsRef, TableSettings.TAG_TREE_EXPANSION_LIST, new ORefList(activity).toString());
-		assertFalse("activity should not be shared?", activity.isPartOfASharedTaskTree());
-		
-		Strategy strategy2 = getProject().createStrategy();
-		getProject().appendActivityToStrategy(strategy2, activity);
-		assertTrue("activity should be shared?", activity.isPartOfASharedTaskTree());
-		
-		Indicator indicator1 = getProject().createIndicatorWithCauseParent();
-		Task method = getProject().createTask(indicator1);
-		assertFalse("method should not be shared?", method.isPartOfASharedTaskTree());
-		
-		Indicator indicator2 = getProject().createIndicatorWithCauseParent();
-		getProject().appendMethodToIndicator(indicator2, method);
-		assertTrue("method should be shared?", method.isPartOfASharedTaskTree());
-		
-		Task task = getProject().createTask(method);
-		assertTrue("task should be shared, since parent method is shared?", task.isPartOfASharedTaskTree());
-		
-		Task subTask = getProject().createTask(task);
-		assertTrue("subtask should be shared, since parent task is shared?", subTask.isPartOfASharedTaskTree());
-	}
-
 	public void testGetRelevantIndicatorRefList() throws Exception
 	{
 		ORef strategyRef = getProject().createObject(ObjectType.STRATEGY);
@@ -352,11 +290,6 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 		return assignment.getOwner().hasAnyChildTaskExpenseData(dateUnit);
 	}
 
-	public MultiCalendar createMultiCalendar(int year)
-	{
-		return getProject().createMultiCalendar(year);
-	}
-	
 	private final static DateUnit dateUnit2006 = new DateUnit("YEARFROM:2006-01");
 	private final static DateUnit dateUnit2005 = new DateUnit("YEARFROM:2005-01");
 }

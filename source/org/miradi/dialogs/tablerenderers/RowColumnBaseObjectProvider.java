@@ -24,9 +24,7 @@ import org.miradi.objects.BaseObject;
 
 public interface RowColumnBaseObjectProvider
 {
-	public int getRowCount();
-	public BaseObject getBaseObjectForRowColumn(int row, int column);
-	public int getProportionShares(int row);
-	public boolean areBudgetValuesAllocated(int row);
-	public ORefList getObjectHierarchy(int row, int column);
+	int getRowCount();
+	BaseObject getBaseObjectForRowColumn(int row, int column);
+	ORefList getObjectHierarchy(int row, int column);
 }

@@ -171,16 +171,6 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		return masterTree.getBaseObjectForRowColumn(row, column);
 	}
 
-	public int getProportionShares(int row)
-	{
-		return masterTree.getProportionShares(row);
-	}
-
-	public boolean areBudgetValuesAllocated(int row)
-	{
-		return masterTree.areBudgetValuesAllocated(row);
-	}
-	
 	@Override
 	public String getColumnGroupCode(int tableColumn)
 	{

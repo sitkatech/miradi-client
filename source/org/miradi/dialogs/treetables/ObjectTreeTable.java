@@ -82,16 +82,6 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		return project;
 	}
 	
-	public int getProportionShares(int row)
-	{
-		return getNodeForRow(row).getProportionShares();
-	}
-
-	public boolean areBudgetValuesAllocated(int row)
-	{
-		return getNodeForRow(row).areBudgetValuesAllocated();
-	}
-
 	@Override
 	public String getToolTipText(MouseEvent event)
 	{
@@ -108,7 +98,7 @@ abstract public class ObjectTreeTable extends TreeTableWithColumnWidthSaving imp
 		return getToolTipString(object);
 	}
 
-	public static String getToolTipString(BaseObject object)
+	private static String getToolTipString(BaseObject object)
 	{
 		String typeName = EAM.fieldLabel(object.getType(), object.getTypeName());
 		return "<html><b>" + typeName + "</b><br>" + XmlUtilities2.convertXmlTextToHtmlWithoutSurroundingHtmlTags(object.getFullName()) + "</html>";

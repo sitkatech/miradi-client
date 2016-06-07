@@ -174,9 +174,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 			if (!isOrCanReferToAssignments(baseObjectForRow.getRef()))
 				return false;
 			
-			if (BaseObject.isSharedTask(baseObjectForRow))
-				return false;
-
 			if (!isEditableModel())
 				return false;
 
@@ -237,9 +234,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	private boolean isAssignmentCellEditable(Assignment assignment, DateUnit dateUnit) throws Exception
 	{
 		if (!isAssignmentForModel(assignment))
-			return false;
-
-		if (isAssignmentReadOnlyWhenOwnerIsSharedTask() && assignment.isPartOfASharedTaskTree())
 			return false;
 
 		return isHorizontallyEditable(assignment, dateUnit);
@@ -755,11 +749,6 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 	abstract protected OptionalDouble calculateValue(TimePeriodCosts timePeriodCosts) throws Exception;
 	
 	abstract protected boolean isAssignmentForModel(Assignment assignment);
-
-	protected boolean isAssignmentReadOnlyWhenOwnerIsSharedTask()
-	{
-		return true;
-	}
 
     protected boolean isEditableModel()
     {

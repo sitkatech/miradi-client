@@ -446,8 +446,6 @@ public class TestTreeRebuilder extends TestCaseWithProject
 
 		final TreeTableNode firstChild = rootNode.getChild(0);
 		assertEquals(diagramCause.getWrappedORef(), firstChild.getObjectReference());
-		assertEquals(1, firstChild.getProportionShares());
-		assertFalse("Full proportion task is allocated?", firstChild.areBudgetValuesAllocated());
 
 	}
 
@@ -462,8 +460,6 @@ public class TestTreeRebuilder extends TestCaseWithProject
 		assertEquals("More than one activity?", 1, rootNode.getChildCount());
 		AbstractPlanningTreeNode childNode = (AbstractPlanningTreeNode) rootNode.getChild(0);
 		assertEquals("Not the activity?", activityId, childNode.getObjectReference().getObjectId());
-		assertEquals(2, childNode.getProportionShares());
-		assertFalse("Full proportion task is allocated?", childNode.areBudgetValuesAllocated());
 	}
 	
 	public void testDeleteUncles() throws Exception
