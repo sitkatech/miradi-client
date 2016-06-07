@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-06 04:06-0700\n"
+"POT-Creation-Date: 2016-06-07 06:06-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -48,7 +48,7 @@ msgstr ""
 msgid " 2) Connect threat to relevant targets"
 msgstr "2) Свързване на заплахата със съответните обекти"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:359
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:359
 msgid " for parent "
 msgstr ""
 
@@ -289,8 +289,8 @@ msgstr "% крайни цели"
 msgid "%s Objs"
 msgstr "% междинни цели"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:109
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:108
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:109
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:108
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo7.java:126
 msgid "%s field data will be lost"
 msgstr "%s field data will be lost"
@@ -303,7 +303,7 @@ msgstr "%s "
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%ОтИме' -> '%ЗаИме'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:158
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:157
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr "(%s)"
@@ -1211,14 +1211,10 @@ msgid "Action Plan: Strategy-based"
 msgstr "План на действие: на основа стратегия"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:50
-msgid "Action-Related"
-msgstr "Действие-свързано"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/SharedWorkPlanVisibleRowsQuestion.java:50
 msgid "Actions"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/SharedWorkPlanVisibleRowsQuestion.java:47
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:47
 msgid "Actions and Monitoring"
 msgstr ""
 
@@ -2108,7 +2104,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:203
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:109
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:57
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:412
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:412
 msgid "Activity"
 msgstr "Дейност"
 
@@ -2187,10 +2183,6 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:57
 msgid "All on One Page"
 msgstr "Всичко на една страница"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:47
-msgid "All rows"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:82
 msgid "All subtasks within this item will be removed as well."
@@ -2478,7 +2470,7 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:40
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:49
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:414
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:414
 msgid "Assignment"
 msgstr ""
 
@@ -3002,7 +2994,7 @@ msgid "Collapse Selected Column"
 msgstr "Сриване на маркирани колони"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:52
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractWorkPlanColumnConfigurationEditorPanel.java:56
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:63
 msgid "Column groups"
 msgstr "Групи от колони"
 
@@ -3432,7 +3424,7 @@ msgstr "Подробни методи, задачи и отговорности"
 msgid "Details"
 msgstr "Подробности"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:361
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:361
 msgid "Details = '"
 msgstr ""
 
@@ -3670,7 +3662,7 @@ msgstr "Редактор"
 msgid "Effective"
 msgstr "Ефективен"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:146
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:145
 msgid ""
 "Effective end date for project planning date range is before start date."
 msgstr ""
@@ -3698,7 +3690,7 @@ msgstr "Въвеждане име на етикет"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/AssignedDateUnitTypeQuestion.java:44
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlannedDateUnitTypeQuestion.java:42
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:394
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:394
 msgid "Entire Project Duration"
 msgstr "Цяла продължителност на проект"
 
@@ -3778,11 +3770,11 @@ msgstr "Разширяване на избрана колона"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentSubPanel.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentSubPanel.java:52
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:416
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:416
 msgid "Expense"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:609
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:608
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RatingSourceQuestion.java:37
 msgid "Expert Knowledge"
@@ -4484,7 +4476,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:45
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/IndicatorSubForm.java:33
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:51
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:410
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:410
 msgid "Indicator"
 msgstr "Индикатор"
 
@@ -4507,7 +4499,7 @@ msgstr ""
 msgid "Indicator Relevancy Panel"
 msgstr "Панел за приложимост на индикатор"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:40
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:40
 msgid "Indicator Relevant Strategies / Activities"
 msgstr ""
 
@@ -4579,7 +4571,7 @@ msgstr "Инсталиран успешно"
 msgid "Instructions"
 msgstr "Инструкции"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:611
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:610
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:39
 msgid "Intensive Assessment"
 msgstr "Интензивна оценка"
@@ -5495,12 +5487,12 @@ msgstr ""
 msgid "Missing Indicator(s) was removed!"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/SharedWorkPlanVisibleRowsQuestion.java:53
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:53
 msgid "Monitoring"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo34.java:274
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo34.java:287
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:274
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:287
 msgid "Monitoring Activities"
 msgstr ""
 
@@ -5509,7 +5501,7 @@ msgstr ""
 msgid "Monitoring Activity"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo30.java:41
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo29.java:41
 msgid "Monitoring Activity Flag"
 msgstr ""
 
@@ -5538,10 +5530,6 @@ msgstr ""
 "се нуждаете за пълното разбиране на проекта си. Добрият план включва "
 "индикатори, които ще бъдат отчитани през определено време, както и методите, "
 "които се използват"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:53
-msgid "Monitoring-Related"
-msgstr "Свързани с мониторинг"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/MonthDateUnitStartAndEndCard.java:40
 msgid "Month Selection: "
@@ -5582,7 +5570,7 @@ msgstr ""
 "които действа тази настройка. За по-добро представяне, <br>изберете режим "
 "\"Ръчно подравняване на височина\"."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:163
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:162
 msgid ""
 "NOTE: Day columns cannot be hidden because this project already has data for "
 "some days."
@@ -5596,7 +5584,7 @@ msgstr ""
 "БЕЛЕЖКА: Имената на проектовите файлове могат да съдържат букви, числа, "
 "празни интервали, точки, тирета и подчертавания."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:155
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:154
 msgid ""
 "NOTE: Quarter columns cannot be hidden because this project already has data "
 "for some quarters."
@@ -5620,7 +5608,7 @@ msgstr ""
 msgid "Name"
 msgstr "Име"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:360
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:360
 msgid "Name = '"
 msgstr ""
 
@@ -5677,7 +5665,7 @@ msgstr "Не е ефективно"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:147
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:45
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/Translation.java:356
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:607
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:606
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MiradiShareTaxonomyQuestion.java:58
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:35
@@ -5794,14 +5782,6 @@ msgstr "Единствено страници на концептуални мо
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramObjectDataInclusionQuestion.java:40
 msgid "Only Results Chains"
 msgstr "Единствено вериги на резултати"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanDisplayModeQuestion.java:50
-msgid "Only Shared Work Plan"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanDisplayModeQuestion.java:53
-msgid "Only legacy Work Plan"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RatingSourceQuestion.java:39
 msgid "Onsite Research"
@@ -6314,7 +6294,7 @@ msgstr "Оценяване на преки заплахи"
 msgid "Rank draft strategies"
 msgstr "Оценяване на чернови на стратегии"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:610
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:609
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:38
 msgid "Rapid Assessment"
 msgstr "Бърза преценка"
@@ -6402,7 +6382,7 @@ msgstr ""
 "метод или задача. Има три основни вида ресурси - човешки, материални и "
 "финансови."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/AbstractWorkPlanTreeTablePanel.java:72
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/WorkPlanTreeTablePanel.java:87
 msgid "Resource filter is on"
 msgstr ""
 
@@ -6474,13 +6454,13 @@ msgstr "Реки, притоци и потоци"
 msgid "Rocky Areas [e.g. inland cliffs, mountain peaks]"
 msgstr "Скалисти месности [напр., вътрешни скали, планински върхове]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:608
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:607
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RatingSourceQuestion.java:36
 msgid "Rough Guess"
 msgstr "Грубо предположение"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractWorkPlanColumnConfigurationEditorPanel.java:52
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:59
 msgid "Rows"
 msgstr ""
 
@@ -6673,11 +6653,7 @@ msgstr ""
 "<code class='toolbarbutton'>&lt;Файл/ Експортиране на&nbsp;текуща&nbsp;"
 "страница&nbsp;като.../ RTF&nbsp;файл&gt;</code> от този иглед."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:40
-msgid "Select which column groups to display."
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/SharedWorkPlanColumnConfigurationEditorPanel.java:40
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:46
 msgid "Select which rows and column groups to display."
 msgstr ""
 
@@ -6735,10 +6711,6 @@ msgstr "Формален и неформален обмен на обратна 
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:51
 msgid "Share success and failures with other teams"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanDisplayModeQuestion.java:47
-msgid "Shared Work Plan and legacy Work Plan"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DayColumnsVisibilityQuestion.java:35
@@ -6825,7 +6797,7 @@ msgstr "Малък"
 msgid "Smallest"
 msgstr "Най-малък"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:132
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:131
 msgid ""
 "Some work plan data is currently hidden and not included in calculated "
 "totals. If the data is outside the planning date range, it will be visible "
@@ -6952,7 +6924,7 @@ msgstr "Стратегиите съдържат междинни цели"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:48
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/StrategyCoreSubForm.java:34
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:48
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:408
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:408
 msgid "Strategy"
 msgstr "Стратегия"
 
@@ -7073,7 +7045,7 @@ msgstr "Обобщени оценки на заплахи"
 msgid "Summary View - Project Description, Scope, and Vision fields"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:359
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:359
 msgid "Superseded "
 msgstr ""
 
@@ -7989,10 +7961,6 @@ msgstr "Tab|Междинни цели"
 msgid "Tab|Report Templates"
 msgstr "Tab|Образци на доклади"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/SharedWorkPlanManagementPanel.java:47
-msgid "Tab|Shared Work Plan"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/stress/StressListManagementPanel.java:77
 msgid "Tab|Stresses"
 msgstr "Tab|Стрес"
@@ -8002,7 +7970,7 @@ msgstr "Tab|Стрес"
 msgid "Tab|Viability"
 msgstr "Tab|Жизнеспособност"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/WorkPlanManagementPanel.java:43
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/WorkPlanManagementPanel.java:45
 msgid "Tab|Work Plan"
 msgstr "Tab|Работен план"
 
@@ -8117,7 +8085,7 @@ msgstr ""
 "При необходимост, задачите могат да бъдат разделени в подзадачи. В Миради, "
 "задачите са представени като сив плосък овал."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/Task.java:367
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/Task.java:345
 msgid "Task does not have a parent"
 msgstr "Задачата няма източник"
 
@@ -8359,7 +8327,7 @@ msgid ""
 "Metadata properties."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo30.java:61
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo29.java:61
 msgid "This migration adds a new field to the Activity properties."
 msgstr ""
 
@@ -8367,14 +8335,13 @@ msgstr ""
 msgid "This migration adds a new field to the Diagram Factor properties."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:66
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:66
 msgid ""
 "This migration adds a new field to the Indicator properties to track "
 "Strategy / Activity relevancy."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo18.java:61
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo24.java:61
 msgid "This migration adds a new field to the Project Metadata properties."
 msgstr ""
 
@@ -8383,7 +8350,7 @@ msgid ""
 "This migration adds new default columns to the work plan customize panel."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:90
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo24.java:90
 msgid "This migration adds new default rows to the work plan customize panel."
 msgstr ""
 
@@ -8417,23 +8384,23 @@ msgid ""
 "resource or date range is specified)."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo29.java:94
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:94
 msgid "This migration moves child tasks up to the activity level."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo34.java:93
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:93
 msgid ""
 "This migration moves work plan data from Indicators / Methods to Monitoring "
 "Activities."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:88
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:88
 msgid ""
 "This migration only has reverse to remove Miradi share accounting "
 "classification related objects."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:87
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:87
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo7.java:105
 msgid ""
 "This migration only has reverse to remove Miradi share taxonomy related "
@@ -8461,7 +8428,7 @@ msgid ""
 "is Sampling Based"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:99
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:99
 msgid "This migration removes superseded assignments from the work plan."
 msgstr ""
 
@@ -8482,12 +8449,12 @@ msgid ""
 "for the total planned effort (timeframe) dates."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo31.java:90
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo30.java:90
 msgid ""
 "This migration splits shared activities out to separate activity entries."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:90
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo31.java:90
 msgid "This migration splits shared methods out to separate method entries."
 msgstr ""
 
@@ -8732,7 +8699,6 @@ msgid "Title|Contributing Factor Properties"
 msgstr "Title|Свойства на фактор"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/WorkPlanCustomizeTableEditorDoer.java:39
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/SharedWorkPlanCustomizeTableEditorDoer.java:40
 msgid "Title|Customize Table"
 msgstr "Title|Персонализиране на таблица"
 
@@ -9065,7 +9031,7 @@ msgstr "Неочаквана грешка попречи на изпълнени
 msgid "Unit"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:385
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:385
 msgid "Units"
 msgstr ""
 
@@ -9435,15 +9401,11 @@ msgstr ""
 msgid "Work Plan Assignment Resources Only"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractWorkPlanColumnConfigurationEditorPanel.java:64
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:41
 msgid "Work Plan Column Editor"
 msgstr "Редактор на колони на работен план"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo24.java:41
-msgid "Work Plan Display Mode"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:381
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:380
 msgid "Work Plan Settings"
 msgstr "Настройки на работен план"
 
@@ -9458,7 +9420,7 @@ msgstr ""
 msgid "Work Planning"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:120
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:119
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr ""
 "Информацията от работния план понастоящем съществува за %начална дата - "
@@ -9564,7 +9526,7 @@ msgstr "[НЕУТОЧНЕН]"
 msgid "[New Results Chain]"
 msgstr "[Нова верига на резултатите]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:957
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:940
 msgid "[No Project]"
 msgstr "[Няма проект]"
 
@@ -33216,6 +33178,12 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Морски___Западен тропически "
 "Атлантически океан___Североизточен бразилски шелф___Бразилия"
+
+#~ msgid "Action-Related"
+#~ msgstr "Действие-свързано"
+
+#~ msgid "Monitoring-Related"
+#~ msgstr "Свързани с мониторинг"
 
 #~ msgid "Acct Code"
 #~ msgstr "Счет код"
