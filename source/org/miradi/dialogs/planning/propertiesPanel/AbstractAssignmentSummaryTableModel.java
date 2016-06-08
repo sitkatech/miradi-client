@@ -19,6 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
+import org.miradi.objecthelpers.DateUnit;
+import org.miradi.objecthelpers.TimePeriodCosts;
+import org.miradi.objecthelpers.TimePeriodCostsMap;
+import org.miradi.objecthelpers.TimePeriodCostsMapsCache;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.utils.ModelColumnTagProvider;
 
@@ -32,15 +37,35 @@ abstract public class AbstractAssignmentSummaryTableModel extends PlanningViewAb
 	@Override
 	public boolean isCellEditable(int row, int column)
 	{
+		if (isTotalsColumn(column))
+			return false;
+
 		return true;
 	}
-	
+
 	public String getColumnTag(int modelColumn)
 	{
 		return "";
 	}
 
+	protected TimePeriodCosts calculateTotalTimePeriodAssignedCosts(Assignment assignment) throws Exception
+	{
+		return calculateTimePeriodAssignedCostsMap(assignment).calculateTimePeriodCosts(new DateUnit());
+	}
+
+	private TimePeriodCostsMap calculateTimePeriodAssignedCostsMap(BaseObject baseObject) throws Exception
+	{
+		return getTimePeriodCostsMapsCache().getTotalTimePeriodAssignedCostsMap(baseObject);
+	}
+
+	private TimePeriodCostsMapsCache getTimePeriodCostsMapsCache()
+	{
+		return getProject().getTimePeriodCostsMapsCache();
+	}
+
 	abstract public int getColumnCount();
 	
 	abstract public boolean isResourceColumn(int column);
+
+	abstract public boolean isTotalsColumn(int column);
 }

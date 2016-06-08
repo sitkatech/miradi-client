@@ -22,6 +22,7 @@ package org.miradi.dialogs.planning.propertiesPanel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
@@ -29,6 +30,8 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItemBaseObjectWrapper;
 import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.utils.OptionalDouble;
+import org.miradi.utils.Translation;
 
 public class ResourceAssignmentMainTableModel extends AbstractAssignmentSummaryTableModel
 {
@@ -43,9 +46,24 @@ public class ResourceAssignmentMainTableModel extends AbstractAssignmentSummaryT
 		if (isResourceColumn(column))
 			return EAM.text("People (Who)");
 
+		if (isTotalsColumn(column))
+			return EAM.text("Total");
+
 		return super.getColumnName(column);
 	}
-	
+
+	@Override
+	public String getColumnTag(int modelColumn)
+	{
+		if (isResourceColumn(modelColumn))
+			return RESOURCE_COLUMN_TAG;
+
+		if (isTotalsColumn(modelColumn))
+			return TOTALS_COLUMN_TAG;
+
+		return super.getColumnTag(modelColumn);
+	}
+
 	@Override
 	public int getColumnCount()
 	{
@@ -64,10 +82,30 @@ public class ResourceAssignmentMainTableModel extends AbstractAssignmentSummaryT
 		ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRef);
 		if (isResourceColumn(column))
 			return new ChoiceItemBaseObjectWrapper(findProjectResource(resourceAssignment));
-		
+		if (isTotalsColumn(column))
+			return getTotals(resourceAssignment);
+
 		return null;
 	}
-	
+
+	private Object getTotals(ResourceAssignment assignment)
+	{
+		try
+		{
+			TimePeriodCosts timePeriodCosts = calculateTotalTimePeriodAssignedCosts(assignment);
+			OptionalDouble totalWorkUnits = timePeriodCosts.getTotalWorkUnits();
+			if (totalWorkUnits.hasValue())
+				return currencyFormatter.format(totalWorkUnits.getValue());
+			else
+				return null;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return Translation.getCellTextWhenException();
+		}
+	}
+
 	@Override
 	public void setValueAt(Object value, int row, int column)
 	{
@@ -122,6 +160,17 @@ public class ResourceAssignmentMainTableModel extends AbstractAssignmentSummaryT
 	}
 	
 	@Override
+	public boolean isTotalsColumn(int column)
+	{
+		return getTotalsColumn() == column;
+	}
+
+	private int getTotalsColumn()
+	{
+		return TOTALS_COLUMN;
+	}
+
+	@Override
 	protected String getListTag()
 	{
 		return BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS;
@@ -157,7 +206,11 @@ public class ResourceAssignmentMainTableModel extends AbstractAssignmentSummaryT
 
 	private static final String UNIQUE_MODEL_IDENTIFIER = "ResourceAssignmentMainTableModel";
 	
-	private static final int COLUMN_COUNT = 1;
+	private static final int COLUMN_COUNT = 2;
 	
 	private static final int RESOURCE_COLUMN = 0;
+	private static final int TOTALS_COLUMN = 1;
+
+	private static final String RESOURCE_COLUMN_TAG = "Fake Tag: Resource";
+	private static final String TOTALS_COLUMN_TAG = "Fake Tag: Totals";
 }

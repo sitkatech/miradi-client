@@ -21,10 +21,13 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExpenseAssignment;
 import org.miradi.project.Project;
 import org.miradi.schemas.ExpenseAssignmentSchema;
+import org.miradi.utils.OptionalDouble;
+import org.miradi.utils.Translation;
 
 public class ExpenseAssignmentMainTableModel extends AbstractAssignmentSummaryTableModel
 {
@@ -38,10 +41,25 @@ public class ExpenseAssignmentMainTableModel extends AbstractAssignmentSummaryTa
 	{
 		if (isExpenseNameColumn(column))
 			return EAM.text("Name");
-		
+
+		if (isTotalsColumn(column))
+			return EAM.text("Total");
+
 		return super.getColumnName(column);
 	}
-	
+
+	@Override
+	public String getColumnTag(int modelColumn)
+	{
+		if (isExpenseNameColumn(modelColumn))
+			return EXPENSE_NAME_COLUMN_TAG;
+
+		if (isTotalsColumn(modelColumn))
+			return TOTALS_COLUMN_TAG;
+
+		return super.getColumnTag(modelColumn);
+	}
+
 	@Override
 	public int getColumnCount()
 	{
@@ -56,10 +74,33 @@ public class ExpenseAssignmentMainTableModel extends AbstractAssignmentSummaryTa
 	
 	private Object getCellValue(int row, int column)
 	{
+		ORef expenseAssignmentRef = getRefForRow(row);
+		ExpenseAssignment expenseAssignment = ExpenseAssignment.find(getProject(), expenseAssignmentRef);
+
 		if (isExpenseNameColumn(column))
 			return getBaseObjectForRowColumn(row, column).getLabel();
-		
+		if (isTotalsColumn(column))
+			return getTotals(expenseAssignment);
+
 		return null;
+	}
+
+	private Object getTotals(ExpenseAssignment assignment)
+	{
+		try
+		{
+			TimePeriodCosts timePeriodCosts = calculateTotalTimePeriodAssignedCosts(assignment);
+			OptionalDouble totalExpense = timePeriodCosts.getTotalExpense();
+			if (totalExpense.hasValue())
+				return currencyFormatter.format(totalExpense.getValue());
+			else
+				return null;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return Translation.getCellTextWhenException();
+		}
 	}
 
 	@Override
@@ -105,7 +146,18 @@ public class ExpenseAssignmentMainTableModel extends AbstractAssignmentSummaryTa
 	{
 		return EXPENSE_NAME_COLUMN;
 	}
-	
+
+	@Override
+	public boolean isTotalsColumn(int column)
+	{
+		return getTotalsColumn() == column;
+	}
+
+	private int getTotalsColumn()
+	{
+		return TOTALS_COLUMN;
+	}
+
 	@Override
 	protected String getListTag()
 	{
@@ -126,7 +178,11 @@ public class ExpenseAssignmentMainTableModel extends AbstractAssignmentSummaryTa
 				
 	private static final String UNIQUE_MODEL_IDENTIFIER = "ExpenseAssignmentMainTableModel";
 	
-	private static final int COLUMN_COUNT = 1;
+	private static final int COLUMN_COUNT = 2;
 	
 	private static final int EXPENSE_NAME_COLUMN = 0;
+	private static final int TOTALS_COLUMN = 1;
+
+	private static final String EXPENSE_NAME_COLUMN_TAG = "Fake Tag: Expense Name";
+	private static final String TOTALS_COLUMN_TAG = "Fake Tag: Totals";
 }
