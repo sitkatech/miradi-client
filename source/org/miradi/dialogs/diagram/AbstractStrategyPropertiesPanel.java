@@ -40,7 +40,7 @@ abstract public class AbstractStrategyPropertiesPanel extends ObjectDataInputPan
 		addSubPanelWithTitledBorder(new RelatedItemsSubpanel(getProject(), StrategySchema.getObjectType()));
 		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getMainWindow().getActions(), StrategySchema.getObjectType()));
 		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
-		addSubPanelWithTitledBorder(new WorkPlanPanelPropertiesPanel(getProject(), ORef.createInvalidWithType(StrategySchema.getObjectType())));
+		addSubPanelWithTitledBorder(new TimeframePropertiesSubPanel(getProject(), ORef.createInvalidWithType(StrategySchema.getObjectType())));
 		addBudgetSubPanels();
 		
 		updateFieldsFromProject();

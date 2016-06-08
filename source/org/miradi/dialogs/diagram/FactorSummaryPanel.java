@@ -60,6 +60,9 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 		currentDiagramFactor = diagramFactorToEdit;
 		corePanel = new FactorSummaryCorePanel(getProject(), getActions(), getCurrentDiagramFactor());
 		addSubPanelWithTitledBorder(corePanel);
+
+		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getActions(), getCurrentDiagramFactor().getWrappedType()));
+
 		if(getFactor().isStrategy())
 		{
 			addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
@@ -67,10 +70,8 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 		
 		if (canHaveWorkPlanSideTab())
 		{
-			addSubPanelWithTitledBorder(new WorkPlanPanelPropertiesPanel(getProject(), getCurrentDiagramFactor().getWrappedORef()));
+			addSubPanelWithTitledBorder(new TimeframePropertiesSubPanel(getProject(), getCurrentDiagramFactor().getWrappedORef()));
 		}
-		
-		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getActions(), getCurrentDiagramFactor().getWrappedType()));
 		
 		detailIcon = createIcon();
 		

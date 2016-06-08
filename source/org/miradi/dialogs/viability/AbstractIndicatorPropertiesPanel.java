@@ -23,7 +23,7 @@ package org.miradi.dialogs.viability;
 import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.diagram.IndicatorSubPanel;
-import org.miradi.dialogs.diagram.WorkPlanPanelPropertiesPanel;
+import org.miradi.dialogs.diagram.TimeframePropertiesSubPanel;
 import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
@@ -47,7 +47,7 @@ abstract public class AbstractIndicatorPropertiesPanel extends ObjectDataInputPa
 		addSubPanelWithTitledBorder(viabilityRatingsSubPanel);
 		addSubPanelWithTitledBorder(new IndicatorMonitoringPlanSubPanel(getProject(), getInvalidTargetRef()));
 		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
-		addSubPanelWithTitledBorder(new WorkPlanPanelPropertiesPanel(getProject(), ORef.createInvalidWithType(IndicatorSchema.getObjectType())));
+		addSubPanelWithTitledBorder(new TimeframePropertiesSubPanel(getProject(), ORef.createInvalidWithType(IndicatorSchema.getObjectType())));
 		addBudgetSubPanels();
 		
 		updateFieldsFromProject();

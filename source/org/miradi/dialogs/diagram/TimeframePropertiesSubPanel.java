@@ -33,9 +33,9 @@ import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.FillerLabel;
 import org.miradi.utils.HtmlUtilities;
 
-public class WorkPlanPanelPropertiesPanel extends ObjectDataInputPanel
+public class TimeframePropertiesSubPanel extends ObjectDataInputPanel
 {
-	public WorkPlanPanelPropertiesPanel(Project projectToUse, ORef orefToUse) throws Exception
+	public TimeframePropertiesSubPanel(Project projectToUse, ORef orefToUse) throws Exception
 	{
 		super(projectToUse, orefToUse);
 
