@@ -24,7 +24,6 @@ import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.diagram.TimeframePropertiesSubPanel;
-import org.miradi.dialogs.expense.ExpensesPropertiesPanel;
 import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
@@ -60,7 +59,6 @@ public abstract class TaskPropertiesPanel extends ObjectDataInputPanelWithSectio
 	protected void addBudgetSubPanels() throws Exception
 	{
 		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(getMainWindow(), TaskSchema.getObjectType(), getPicker()));
-		addSubPanelWithTitledBorder(new ExpensesPropertiesPanel(getMainWindow(), TaskSchema.getObjectType(), getPicker()));
 	}
 
 	@Override

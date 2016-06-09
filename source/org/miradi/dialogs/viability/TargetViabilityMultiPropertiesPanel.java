@@ -23,7 +23,7 @@ import org.miradi.dialogs.base.AbstractMultiPropertiesPanel;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
 import org.miradi.dialogs.planning.propertiesPanel.BlankPropertiesPanel;
-import org.miradi.dialogs.strategicPlan.IndicatorPropertiesPanelWithoutBudgetPanels;
+import org.miradi.dialogs.strategicPlan.IndicatorPropertiesPanel;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.main.CommandExecutedEvent;
@@ -51,7 +51,7 @@ public class TargetViabilityMultiPropertiesPanel extends AbstractMultiProperties
 		targetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), TargetSchema.getObjectType());
 		humanWelfareTargetPropertiesPanel = new NonDiagramAbstractTargetPropertiesPanel(getProject(), HumanWelfareTargetSchema.getObjectType());
 		targetViabilityKeaPropertiesPanel = new TargetViabilityKeaPropertiesPanel(getProject(), mainWindow.getActions());
-		targetViabilityIndicatorPropertiesPanel = new IndicatorPropertiesPanelWithoutBudgetPanels(getProject(), mainWindow);
+		targetViabilityIndicatorPropertiesPanel = new IndicatorPropertiesPanel(getProject(), mainWindow);
 		targetViabilityMeasurementPropertiesPanel = new MeasurementPropertiesPanel(getProject());
 		
 		addPanel(blankPropertiesPanel);
@@ -111,6 +111,6 @@ public class TargetViabilityMultiPropertiesPanel extends AbstractMultiProperties
 	private NonDiagramAbstractTargetPropertiesPanel targetPropertiesPanel;
 	private NonDiagramAbstractTargetPropertiesPanel humanWelfareTargetPropertiesPanel;
 	private TargetViabilityKeaPropertiesPanel targetViabilityKeaPropertiesPanel;
-	private AbstractIndicatorPropertiesPanel targetViabilityIndicatorPropertiesPanel;
+	private IndicatorPropertiesPanel targetViabilityIndicatorPropertiesPanel;
 	private MeasurementPropertiesPanel targetViabilityMeasurementPropertiesPanel;
 }

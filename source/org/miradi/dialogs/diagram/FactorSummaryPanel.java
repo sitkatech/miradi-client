@@ -19,36 +19,21 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.diagram;
 
-import javax.swing.Icon;
-
 import org.miradi.actions.Actions;
-import org.miradi.actions.jump.ActionJumpDevelopDraftStrategiesStep;
-import org.miradi.actions.jump.ActionJumpDiagramOverviewStep;
-import org.miradi.actions.jump.ActionJumpDiagramWizardDefineTargetsStep;
-import org.miradi.actions.jump.ActionJumpDiagramWizardHumanWelfareTargetsStep;
-import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyDirectThreatStep;
-import org.miradi.actions.jump.ActionJumpDiagramWizardIdentifyIndirectThreatStep;
-import org.miradi.actions.jump.ActionJumpDiagramWizardResultsChainSelectStrategyStep;
+import org.miradi.actions.jump.*;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
-import org.miradi.icons.ContributingFactorIcon;
-import org.miradi.icons.DirectThreatIcon;
-import org.miradi.icons.DraftStrategyIcon;
-import org.miradi.icons.HumanWelfareTargetIcon;
-import org.miradi.icons.IconManager;
-import org.miradi.icons.IntermediateResultIcon;
-import org.miradi.icons.TargetIcon;
-import org.miradi.icons.ThreatReductionResultIcon;
-import org.miradi.ids.DiagramFactorId;
+import org.miradi.icons.*;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
-import org.miradi.objects.Indicator;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.schemas.DiagramFactorSchema;
+
+import javax.swing.*;
 
 public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 {
@@ -64,15 +49,11 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getActions(), getCurrentDiagramFactor().getWrappedType()));
 
 		if(getFactor().isStrategy())
-		{
 			addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
-		}
-		
+
 		if (canHaveWorkPlanSideTab())
-		{
 			addSubPanelWithTitledBorder(new TimeframePropertiesSubPanel(getProject(), getCurrentDiagramFactor().getWrappedORef()));
-		}
-		
+
 		detailIcon = createIcon();
 		
 		setObjectRefs(new ORef[] {getCurrentDiagramFactor().getWrappedORef(), getCurrentDiagramFactor().getRef(),});
@@ -82,9 +63,6 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 	private boolean canHaveWorkPlanSideTab()
 	{
 		if (Strategy.is(getCurrentDiagramFactor().getWrappedORef()))
-			return true;
-			
-		if (Indicator.is(getCurrentDiagramFactor().getWrappedORef()))
 			return true;
 			
 		if (Task.is(getCurrentDiagramFactor().getWrappedORef()))
@@ -143,11 +121,6 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 		return currentDiagramFactor;
 	}
 
-	public DiagramFactorId getCurrentDiagramFactorId()
-	{
-		return getCurrentDiagramFactor().getDiagramFactorId();
-	}
-	
 	@Override
 	public String getPanelDescription()
 	{

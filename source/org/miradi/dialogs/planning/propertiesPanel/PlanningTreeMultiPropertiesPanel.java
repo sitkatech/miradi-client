@@ -33,10 +33,9 @@ import org.miradi.dialogs.goal.GoalPropertiesPanel;
 import org.miradi.dialogs.objective.ObjectivePropertiesPanel;
 import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
 import org.miradi.dialogs.resource.ResourcePropertiesPanel;
+import org.miradi.dialogs.strategicPlan.IndicatorPropertiesPanel;
 import org.miradi.dialogs.subTarget.SubTargetPropertiesPanel;
 import org.miradi.dialogs.task.WorkPlanActivityPropertiesPanel;
-import org.miradi.dialogs.viability.AbstractIndicatorPropertiesPanel;
-import org.miradi.dialogs.viability.IndicatorPropertiesPanelWithBudgetPanels;
 import org.miradi.dialogs.viability.NonDiagramAbstractTargetPropertiesPanel;
 import org.miradi.ids.BaseId;
 import org.miradi.main.CommandExecutedEvent;
@@ -72,9 +71,9 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 		return new StrategyPropertiesPanel(getMainWindow());
 	}
 
-	protected AbstractIndicatorPropertiesPanel createIndicatorPropertiesPanel() throws Exception
+	protected IndicatorPropertiesPanel createIndicatorPropertiesPanel() throws Exception
 	{
-		return new IndicatorPropertiesPanelWithBudgetPanels(getMainWindow());
+		return new IndicatorPropertiesPanel(getProject(), getMainWindow());
 	}
 	
 	protected ResourceAssignmentPropertiesPanel createResourceAssignmentPropertiesPanel() throws Exception
@@ -463,7 +462,7 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 	
 	private GoalPropertiesPanel goalPropertiesPanel;
 	private ObjectivePropertiesPanel objectivePropertiesPanel;
-	private AbstractIndicatorPropertiesPanel indicatorPropertiesPanel;
+	private IndicatorPropertiesPanel indicatorPropertiesPanel;
 	private AbstractStrategyPropertiesPanel strategyPropertiesPanel;
 	private PlanningViewTaskPropertiesPanel taskPropertiesInputPanel;
 	private WorkPlanActivityPropertiesPanel activityPropertiesPanel;
