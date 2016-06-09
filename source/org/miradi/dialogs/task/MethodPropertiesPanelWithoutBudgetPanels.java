@@ -23,11 +23,16 @@ package org.miradi.dialogs.task;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class MethodPropertiesPanelWithoutBudgetPanels extends TaskPropertiesPanelWithoutBudgetPanels
+public class MethodPropertiesPanelWithoutBudgetPanels extends TaskPropertiesPanel
 {
 	public MethodPropertiesPanelWithoutBudgetPanels(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow);
+	}
+
+	@Override
+	protected void addBudgetSubPanels() throws Exception
+	{
 	}
 
 	@Override

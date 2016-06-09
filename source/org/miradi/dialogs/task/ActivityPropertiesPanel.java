@@ -25,9 +25,9 @@ import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActivityPropertiesPanelWithoutBudgetPanels extends TaskPropertiesPanelWithoutBudgetPanels
+public class ActivityPropertiesPanel extends TaskPropertiesPanel
 {
-	public ActivityPropertiesPanelWithoutBudgetPanels(MainWindow mainWindow) throws Exception
+	public ActivityPropertiesPanel(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow);
 	}

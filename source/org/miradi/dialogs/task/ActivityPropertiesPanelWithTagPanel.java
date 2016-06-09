@@ -29,7 +29,7 @@ import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class ActivityPropertiesPanelWithTagPanel extends ActivityPropertiesPanelWithoutBudgetPanels
+public class ActivityPropertiesPanelWithTagPanel extends ActivityPropertiesPanel
 {
 	public ActivityPropertiesPanelWithTagPanel(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
 	{
