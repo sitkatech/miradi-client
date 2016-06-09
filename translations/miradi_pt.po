@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-07 06:06-0700\n"
+"POT-Creation-Date: 2016-06-09 03:06-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/miradi-client/"
@@ -2151,8 +2151,8 @@ msgstr "Todas as sub-tarefas neste item serão removidas também"
 msgid "An Error Occurred During Sorting."
 msgstr "Um erro ocorreu durante a ordenação"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:73
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:79
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:114
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:117
 msgid "An error has occurred while writing assignment data."
 msgstr ""
 
@@ -4979,7 +4979,7 @@ msgstr "Ligar as Ameaças Diretas aos Alvos"
 msgid "Link Properties"
 msgstr "Propriedades da Ligação"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:48
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:47
 msgid "Lists"
 msgstr "Listas"
 
@@ -5584,7 +5584,7 @@ msgstr ""
 "Principal dos Dados do Projeto\" qualquer idioma não sendo inglês, a "
 "verificação ortográfica não será disponível. <br>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:40
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:43
 msgid "Name"
 msgstr "Nome"
 
@@ -5642,7 +5642,7 @@ msgstr "Não Aplicável"
 msgid "Not Effective"
 msgstr "Não Efetivo"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:147
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:196
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:45
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/Translation.java:356
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:606
@@ -5894,11 +5894,11 @@ msgid ""
 "its pasted complementary factor."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/assignment/AssignmentsPropertiesPanel.java:85
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/assignment/AssignmentsPropertiesSubPanel.java:85
 msgid "People"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:44
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:47
 msgid "People (Who)"
 msgstr ""
 
@@ -7001,7 +7001,7 @@ msgid "Strong Increase"
 msgstr "Aumento Forte"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:153
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:143
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:69
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:142
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:75
@@ -7907,7 +7907,7 @@ msgstr "Modo Altura de Linhas da Tabela"
 msgid "Table:"
 msgstr "Tabela:"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/ActionPlanManagementPanel.java:47
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/ActionPlanManagementPanel.java:46
 msgid "Tab|Action Plan"
 msgstr "Plano de Ação"
 
@@ -7915,7 +7915,7 @@ msgstr "Plano de Ação"
 msgid "Tab|Activities"
 msgstr "Atividades"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/ConfigurablePlanningManagementPanel.java:48
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/ConfigurablePlanningManagementPanel.java:47
 msgid "Tab|Custom"
 msgstr "Personalizado"
 
@@ -7931,7 +7931,7 @@ msgstr "Indicadores"
 msgid "Tab|Methods"
 msgstr "Métodos"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/MonitoringPlanManagementPanel.java:47
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/MonitoringPlanManagementPanel.java:46
 msgid "Tab|Monitoring Plan"
 msgstr "Plano de Monitoramento"
 
@@ -7956,7 +7956,7 @@ msgstr "Estresses"
 msgid "Tab|Viability"
 msgstr "Viabilidade"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/WorkPlanManagementPanel.java:45
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/WorkPlanManagementPanel.java:44
 msgid "Tab|Work Plan"
 msgstr "Plano de Trabalho"
 
@@ -8626,7 +8626,7 @@ msgstr "Ameaças no Sítio"
 msgid "Threat|Scope"
 msgstr "Escopo"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:121
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/TimeframePropertiesSubPanel.java:121
 msgid "Timeframe"
 msgstr ""
 
@@ -8634,7 +8634,7 @@ msgstr ""
 msgid "Timeframe - %s"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/WorkPlanPanelPropertiesPanel.java:106
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/TimeframePropertiesSubPanel.java:106
 msgid "Timeframe including nested actions"
 msgstr ""
 
@@ -8650,7 +8650,7 @@ msgstr "Sobre Miradi"
 msgid "Title|Accounting Code Properties"
 msgstr "Propriedades de Códigos Contabilísticos"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/ActivityPropertiesPanelWithoutBudgetPanels.java:56
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/ActivityPropertiesPanel.java:56
 msgid "Title|Activity Properties"
 msgstr "Propriedades de Atividades"
 
@@ -8753,7 +8753,7 @@ msgstr ""
 msgid "Title|IUCN Redlist Species"
 msgstr "Espécies da Lista Vermelha da IUCN"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/AbstractIndicatorPropertiesPanel.java:75
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/strategicPlan/IndicatorPropertiesPanel.java:72
 msgid "Title|Indicator Properties"
 msgstr "Propriedades de Indicadores"
 
@@ -8786,7 +8786,7 @@ msgstr ""
 msgid "Title|Measurement Properties"
 msgstr "Propriedades de Medidas"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/MethodPropertiesPanelWithoutBudgetPanels.java:42
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/MethodPropertiesPanelWithoutBudgetPanels.java:47
 msgid "Title|Method Properties"
 msgstr "Propriedades de Métodos"
 
@@ -8867,7 +8867,7 @@ msgstr "Classificação Simples de Ameaças"
 msgid "Title|Simple Viability"
 msgstr "Viabilidade Simples"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/AbstractStrategyPropertiesPanel.java:56
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyPropertiesPanel.java:53
 msgid "Title|Strategy Properties"
 msgstr "Propriedades de Estratégias"
 
@@ -8931,6 +8931,8 @@ msgstr "Ver..."
 msgid "Title|XSL Template Properties"
 msgstr "Propriedades de Modelo XSL"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:46
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:50
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:84
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectCalendar.java:187
 msgid "Total"
