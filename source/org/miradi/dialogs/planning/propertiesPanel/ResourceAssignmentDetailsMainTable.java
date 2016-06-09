@@ -19,9 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
+import org.miradi.dialogs.tablerenderers.ChoiceItemComboBoxRendererOrEditorFactory;
 import org.miradi.main.MainWindow;
 import org.miradi.objectpools.ResourcePool;
 import org.miradi.objects.ProjectResource;
+
+import javax.swing.table.TableCellEditor;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class ResourceAssignmentDetailsMainTable extends AbstractAssignmentDetailsMainTable
 {
@@ -40,7 +45,7 @@ public class ResourceAssignmentDetailsMainTable extends AbstractAssignmentDetail
 		
 		super.rebuildColumnEditorsAndRenderers();
 	}
-	
+
 	private void createResourceCombo(int tableColumn) throws Exception
 	{
 		int modelColumn = convertColumnIndexToModel(tableColumn);
@@ -49,9 +54,17 @@ public class ResourceAssignmentDetailsMainTable extends AbstractAssignmentDetail
 		
 		ProjectResource[] resources = getAllProjectResources();
 		ProjectResource invalidResource = ResourceAssignmentMainTableModel.createInvalidResource(getObjectManager());
-		createComboColumn(resources, tableColumn, invalidResource);
+		ChoiceItemComboBoxRendererOrEditorFactory resourceComboColumn = createComboColumn(resources, tableColumn, invalidResource);
+
+		resourceComboColumn.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				TableCellEditor cellEditor = getCellEditor();
+				cellEditor.stopCellEditing();
+			}
+		});
 	}
-	
+
 	private ProjectResource[] getAllProjectResources()
 	{
 		return  getResourcePool().getAllProjectResources();

@@ -19,33 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
-import javax.swing.JTable;
-import javax.swing.SwingUtilities;
-import javax.swing.event.ChangeEvent;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.event.TableColumnModelEvent;
-import javax.swing.event.TableColumnModelListener;
-
-import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.EditableObjectTableModel;
 import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
-import org.miradi.dialogs.planning.propertiesPanel.AboveBudgetColumnsBar;
-import org.miradi.dialogs.planning.propertiesPanel.AbstractFixedHeightDirectlyAboveTreeTablePanel;
-import org.miradi.dialogs.planning.propertiesPanel.AbstractWorkUnitsTableModel;
-import org.miradi.dialogs.planning.propertiesPanel.AccountingCodeExpenseTableModel;
-import org.miradi.dialogs.planning.propertiesPanel.FundingSourceExpenseTableModel;
-import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
-import org.miradi.dialogs.planning.propertiesPanel.PlanningViewMainModelExporter;
-import org.miradi.dialogs.planning.propertiesPanel.ProjectResourceWorkUnitsTableModel;
-import org.miradi.dialogs.planning.propertiesPanel.WorkPlanBudgetDetailsTableModel;
-import org.miradi.dialogs.planning.propertiesPanel.WorkPlanExpenseAmountsTableModel;
-import org.miradi.dialogs.planning.propertiesPanel.WorkPlanWorkUnitsTableModel;
+import org.miradi.dialogs.planning.propertiesPanel.*;
 import org.miradi.dialogs.treetables.AbstractTreeTablePanel;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.layout.TwoColumnPanel;
@@ -53,16 +29,18 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.*;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.Indicator;
+import org.miradi.objects.Measurement;
+import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.questions.WorkPlanColumnConfigurationQuestion;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
-import org.miradi.utils.CodeList;
-import org.miradi.utils.FillerLabel;
-import org.miradi.utils.MultiTableCombinedAsOneExporter;
-import org.miradi.utils.TableExporter;
-import org.miradi.utils.TableWithColumnWidthAndSequenceSaver;
-import org.miradi.utils.TreeTableExporter;
+import org.miradi.utils.*;
+
+import javax.swing.*;
+import javax.swing.event.*;
+import java.awt.*;
 
 abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 {
@@ -167,26 +145,6 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		if (rowCodes.contains(ExpenseAssignmentSchema.OBJECT_NAME) && event.isSetDataCommandWithThisTag(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS))
 			return true;
 		
-		return false;
-	}
-
-	@Override
-	protected boolean didAffectAssignmentInTree(CommandExecutedEvent event) throws Exception
-	{
-		if (! event.isSetDataCommand())
-			return false;
-
-		CommandSetObjectData setCommand = (CommandSetObjectData) event.getCommand();
-		int type = setCommand.getObjectType();
-		String tag = setCommand.getFieldTag();
-		CodeList rowCodes = getRowColumnProvider().getRowCodesToShow();
-
-		if(rowCodes.contains(ResourceAssignmentSchema.OBJECT_NAME) && type == ResourceAssignmentSchema.getObjectType() && tag.equals(ResourceAssignment.TAG_RESOURCE_ID))
-			return true;
-
-		if(rowCodes.contains(ExpenseAssignmentSchema.OBJECT_NAME) && type == ExpenseAssignmentSchema.getObjectType() && tag.equals(ExpenseAssignment.TAG_LABEL))
-			return true;
-
 		return false;
 	}
 

@@ -20,22 +20,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.tablerenderers;
 
-import java.awt.Color;
-import java.awt.Component;
-import java.util.Vector;
-
-import javax.swing.JComponent;
-import javax.swing.JTable;
-
 import org.miradi.dialogs.fieldComponents.ChoiceItemWithXmlTextRendererComboBox;
 import org.miradi.questions.ChoiceItem;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.util.Vector;
 
 public class ChoiceItemComboBoxRendererOrEditorFactory extends ObjectTableCellEditorOrRendererFactory
 {
 	public ChoiceItemComboBoxRendererOrEditorFactory(RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse, Vector<ChoiceItem> items)
 	{
 		super(providerToUse, fontProviderToUse);
-		
+
 		rendererComponent = new HtmlEncodedCellRenderer(items);
 		editorComponent = new HtmlEncodedCellEditor(items);
 	}
@@ -97,7 +95,12 @@ public class ChoiceItemComboBoxRendererOrEditorFactory extends ObjectTableCellEd
 	{
 		return editorComponent.getSelectedItem();
 	}
-	
+
+	public void addActionListener(ActionListener actionListener)
+	{
+		editorComponent.addActionListener(actionListener);
+	}
+
 	private class HtmlEncodedCellEditor extends ChoiceItemWithXmlTextRendererComboBox
 	{
 		public HtmlEncodedCellEditor(Vector<ChoiceItem> items)

@@ -144,13 +144,14 @@ abstract public class EditableBaseObjectTable extends SortableRowTable  implemen
 		setDisposableRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
 	}
 		
-	protected void createComboColumn(BaseObject[] content, int tableColumn, BaseObject invalidObject)
+	protected ChoiceItemComboBoxRendererOrEditorFactory createComboColumn(BaseObject[] content, int tableColumn, BaseObject invalidObject)
 	{
 		Arrays.sort(content, new SorterByToString());
 		Vector<ChoiceItem> comboContent = addEmptySpaceAtStart(content, invalidObject);
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		ChoiceItemComboBoxRendererOrEditorFactory renderer = new ChoiceItemComboBoxRendererOrEditorFactory(model, fontProvider, comboContent);
 		setPlainRendererAndEditorFactories(tableColumn, renderer, renderer);
+		return renderer;
 	}
 	
 	protected void createComboColumn(ChoiceItem[] choices, int tableColumn)

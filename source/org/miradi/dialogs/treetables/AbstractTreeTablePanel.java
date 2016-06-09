@@ -206,9 +206,6 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		if(wereAssignmentNodesAddedOrRemoved(event))
 			return true;
 
-		if(didAffectAssignmentInTree(event))
-			return true;
-
 		if(wereProgressReportsAddedOrRemoved(event))
 			return true;
 		
@@ -275,11 +272,6 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		return event.isSetDataCommandWithThisTypeAndTag(TargetSchema.getObjectType(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 	}
 
-	protected boolean didAffectAssignmentInTree(CommandExecutedEvent event) throws Exception
-	{
-		return false;
-	}
-	
 	//TODO this should use that getTasksTag (or something like that) method
 	//from email :Please put a todo in isTaskMove that it should use that 
 	//getTasksTag method (or whatever it's called) that I mentioned the 
