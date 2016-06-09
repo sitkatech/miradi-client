@@ -21,6 +21,7 @@ package org.miradi.dialogs.diagram;
 
 import org.miradi.actions.Actions;
 import org.miradi.actions.jump.*;
+import org.miradi.dialogs.assignment.AssignmentsPropertiesSubPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
 import org.miradi.icons.*;
@@ -32,6 +33,8 @@ import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TaskSchema;
 
 import javax.swing.*;
 
@@ -52,7 +55,10 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 			addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
 
 		if (canHaveWorkPlanSideTab())
+		{
 			addSubPanelWithTitledBorder(new TimeframePropertiesSubPanel(getProject(), getCurrentDiagramFactor().getWrappedORef()));
+			addSubPanelWithTitledBorder(new AssignmentsPropertiesSubPanel(getMainWindow(), getObjectTypeForWorkPlanSideTab(), getPicker()));
+		}
 
 		detailIcon = createIcon();
 		
@@ -60,14 +66,25 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 		updateFieldsFromProject();
 	}
 
+	private int getObjectTypeForWorkPlanSideTab() throws Exception
+	{
+		if (Strategy.is(getCurrentDiagramFactor().getWrappedORef()))
+			return StrategySchema.getObjectType();
+			
+		if (Task.is(getCurrentDiagramFactor().getWrappedORef()))
+			return TaskSchema.getObjectType();
+
+		throw new Exception("getObjectTypeForWorkPlanSideTab called for non work plan diagram factor : " + getCurrentDiagramFactor().toString());
+	}
+
 	private boolean canHaveWorkPlanSideTab()
 	{
 		if (Strategy.is(getCurrentDiagramFactor().getWrappedORef()))
 			return true;
-			
+
 		if (Task.is(getCurrentDiagramFactor().getWrappedORef()))
 			return true;
-			
+
 		return false;
 	}
 
@@ -103,7 +120,6 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 
 		return null;
 	}
-
 
 	public Factor getFactor()
 	{
