@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.task;
 
 import org.miradi.dialogs.activity.ActivityFactorVisibilityControlPanel;
-import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
+import org.miradi.dialogs.assignment.AssignmentsPropertiesSubPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.diagram.TimeframePropertiesSubPanel;
@@ -58,7 +58,7 @@ public abstract class TaskPropertiesPanel extends ObjectDataInputPanelWithSectio
 
 	protected void addBudgetSubPanels() throws Exception
 	{
-		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(getMainWindow(), TaskSchema.getObjectType(), getPicker()));
+		addSubPanelWithTitledBorder(new AssignmentsPropertiesSubPanel(getMainWindow(), TaskSchema.getObjectType(), getPicker()));
 	}
 
 	@Override

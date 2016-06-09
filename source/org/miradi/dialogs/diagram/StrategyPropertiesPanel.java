@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.diagram;
 
 
-import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
+import org.miradi.dialogs.assignment.AssignmentsPropertiesSubPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
 import org.miradi.layout.OneColumnGridLayout;
@@ -42,7 +42,7 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanelWithSections
 		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getMainWindow().getActions(), StrategySchema.getObjectType()));
 		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
 		addSubPanelWithTitledBorder(new TimeframePropertiesSubPanel(getProject(), ORef.createInvalidWithType(StrategySchema.getObjectType())));
-		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(getMainWindow(), StrategySchema.getObjectType(), getPicker()));
+		addSubPanelWithTitledBorder(new AssignmentsPropertiesSubPanel(getMainWindow(), StrategySchema.getObjectType(), getPicker()));
 
 		updateFieldsFromProject();
 	}
