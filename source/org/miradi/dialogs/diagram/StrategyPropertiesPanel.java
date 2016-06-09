@@ -21,19 +21,35 @@ package org.miradi.dialogs.diagram;
 
 
 import org.miradi.dialogs.assignment.AssignmentsPropertiesPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
+import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
+import org.miradi.layout.OneColumnGridLayout;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.schemas.StrategySchema;
 
-public class StrategyPropertiesPanel extends AbstractStrategyPropertiesPanel
+public class StrategyPropertiesPanel extends ObjectDataInputPanelWithSections
 {
 	public StrategyPropertiesPanel(MainWindow mainWindow) throws Exception
 	{
-		super(mainWindow.getProject());
+		super(mainWindow.getProject(), StrategySchema.getObjectType());
+
+		setLayout(new OneColumnGridLayout());
+
+		addSubPanelWithTitledBorder(new StrategyCoreSubpanel(getProject(), getMainWindow().getActions(), StrategySchema.getObjectType()));
+		addSubPanelWithTitledBorder(new RelatedItemsSubpanel(getProject(), StrategySchema.getObjectType()));
+		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getMainWindow().getActions(), StrategySchema.getObjectType()));
+		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
+		addSubPanelWithTitledBorder(new TimeframePropertiesSubPanel(getProject(), ORef.createInvalidWithType(StrategySchema.getObjectType())));
+		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(getMainWindow(), StrategySchema.getObjectType(), getPicker()));
+
+		updateFieldsFromProject();
 	}
 
 	@Override
-	protected void addBudgetSubPanels() throws Exception
+	public String getPanelDescription()
 	{
-		addSubPanelWithTitledBorder(new AssignmentsPropertiesPanel(getMainWindow(), StrategySchema.getObjectType(), getPicker()));
+		return EAM.text("Title|Strategy Properties");
 	}
 }

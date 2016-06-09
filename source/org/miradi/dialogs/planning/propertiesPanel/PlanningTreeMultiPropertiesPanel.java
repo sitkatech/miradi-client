@@ -24,7 +24,6 @@ import org.miradi.dialogs.base.AbstractMultiPropertiesPanel;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.categoryOne.BudgetCategoryOnePropertiesPanel;
 import org.miradi.dialogs.categoryTwo.BudgetCategoryTwoPropertiesPanel;
-import org.miradi.dialogs.diagram.AbstractStrategyPropertiesPanel;
 import org.miradi.dialogs.diagram.ConceptualModelPropertiesPanel;
 import org.miradi.dialogs.diagram.ResultsChainPropertiesPanel;
 import org.miradi.dialogs.diagram.StrategyPropertiesPanel;
@@ -66,7 +65,7 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 		return new PlanningViewTaskPropertiesPanel(getMainWindow());
 	}
 
-	protected AbstractStrategyPropertiesPanel createStrategyPropertiesPanel() throws Exception
+	protected StrategyPropertiesPanel createStrategyPropertiesPanel() throws Exception
 	{
 		return new StrategyPropertiesPanel(getMainWindow());
 	}
@@ -463,7 +462,7 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 	private GoalPropertiesPanel goalPropertiesPanel;
 	private ObjectivePropertiesPanel objectivePropertiesPanel;
 	private IndicatorPropertiesPanel indicatorPropertiesPanel;
-	private AbstractStrategyPropertiesPanel strategyPropertiesPanel;
+	private StrategyPropertiesPanel strategyPropertiesPanel;
 	private PlanningViewTaskPropertiesPanel taskPropertiesInputPanel;
 	private WorkPlanActivityPropertiesPanel activityPropertiesPanel;
 	private NonDiagramAbstractTargetPropertiesPanel targetPropertiesPanel;
