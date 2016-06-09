@@ -55,32 +55,32 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 		addPanel(blankPropertiesPanel);
 	}
 	
-	protected WorkPlanActivityPropertiesPanel createActivityPropertiesPanel() throws Exception
+	private WorkPlanActivityPropertiesPanel createActivityPropertiesPanel() throws Exception
 	{
 		return new WorkPlanActivityPropertiesPanel(getMainWindow());
 	}
 
-	protected PlanningViewTaskPropertiesPanel createTaskPropertiesPanel() throws Exception
+	private PlanningViewTaskPropertiesPanel createTaskPropertiesPanel() throws Exception
 	{
 		return new PlanningViewTaskPropertiesPanel(getMainWindow());
 	}
 
-	protected StrategyPropertiesPanel createStrategyPropertiesPanel() throws Exception
+	private StrategyPropertiesPanel createStrategyPropertiesPanel() throws Exception
 	{
 		return new StrategyPropertiesPanel(getMainWindow());
 	}
 
-	protected IndicatorPropertiesPanel createIndicatorPropertiesPanel() throws Exception
+	private IndicatorPropertiesPanel createIndicatorPropertiesPanel() throws Exception
 	{
 		return new IndicatorPropertiesPanel(getProject(), getMainWindow());
 	}
 	
-	protected ResourceAssignmentPropertiesPanel createResourceAssignmentPropertiesPanel() throws Exception
+	private ResourceAssignmentPropertiesPanel createResourceAssignmentPropertiesPanel() throws Exception
 	{
 		return new ResourceAssignmentPropertiesPanel(getMainWindow());
 	}
 
-	protected ExpenseAssignmentPropertiesPanel createExpenseAssignmentPropertiesPanel() throws Exception
+	private ExpenseAssignmentPropertiesPanel createExpenseAssignmentPropertiesPanel() throws Exception
 	{
 		return new ExpenseAssignmentPropertiesPanel(getMainWindow());
 	}

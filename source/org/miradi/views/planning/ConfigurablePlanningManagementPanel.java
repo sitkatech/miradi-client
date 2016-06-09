@@ -20,17 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.planning;
 
-import javax.swing.Icon;
-
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.upperPanel.ConfigurablePlanningTreeTablePanel;
 import org.miradi.dialogs.planning.upperPanel.PlanningTreeTablePanel;
-import org.miradi.dialogs.strategicPlan.ActionPlanMultiPropertiesPanel;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+
+import javax.swing.*;
 
 public class ConfigurablePlanningManagementPanel extends PlanningTreeManagementPanel
 {
@@ -57,7 +56,7 @@ public class ConfigurablePlanningManagementPanel extends PlanningTreeManagementP
 	public static ConfigurablePlanningManagementPanel createActionPlanPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		PlanningTreeTablePanel actionPlanTreeTablePanel = ConfigurablePlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse);
-		PlanningTreeMultiPropertiesPanel actionPlanPropertiesPanel = new ActionPlanMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
+		PlanningTreeMultiPropertiesPanel actionPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
 		return new ConfigurablePlanningManagementPanel(mainWindowToUse, actionPlanTreeTablePanel, actionPlanPropertiesPanel);
 	}
