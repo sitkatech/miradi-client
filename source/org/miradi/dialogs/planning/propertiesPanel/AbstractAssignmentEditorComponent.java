@@ -28,7 +28,10 @@ import org.miradi.layout.OneRowPanel;
 import org.miradi.main.*;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Strategy;
+import org.miradi.objects.Task;
 import org.miradi.views.umbrella.ObjectPicker;
 
 import javax.swing.*;
@@ -63,15 +66,26 @@ abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel 
 	{
 		try
 		{
-			if (event.isSetDataCommand())
-				dataWasChanged();
+			if (eventForcesRebuild(event))
+				rebuild();
 		}
 		catch(Exception e)
 		{
 			EAM.alertUserOfNonFatalException(e);
 		}		
 	}
-	
+
+	private boolean eventForcesRebuild(CommandExecutedEvent event)
+	{
+		if (event.isSetDataCommandWithThisTypeAndTag(ObjectType.STRATEGY, Strategy.TAG_RESOURCE_ASSIGNMENT_IDS))
+			return true;
+
+		if (event.isSetDataCommandWithThisTypeAndTag(ObjectType.TASK, Task.TAG_RESOURCE_ASSIGNMENT_IDS))
+			return true;
+
+		return false;
+	}
+
 	protected Actions getActions()
 	{
 		return getMainWindow().getActions();
@@ -151,7 +165,7 @@ abstract public class AbstractAssignmentEditorComponent extends MultiTablePanel 
 		selectionController.addTable(abstractSummaryTable);
 	}
 
-	private void dataWasChanged() throws Exception
+	private void rebuild() throws Exception
 	{
 		abstractAssignmentSummaryTableModel.dataWasChanged();
 		
