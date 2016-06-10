@@ -24,7 +24,6 @@ import org.miradi.main.MainWindow;
 import org.miradi.objectpools.ResourcePool;
 import org.miradi.objects.ProjectResource;
 
-import javax.swing.table.TableCellEditor;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -59,8 +58,7 @@ public class ResourceAssignmentDetailsMainTable extends AbstractAssignmentDetail
 		resourceComboColumn.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				TableCellEditor cellEditor = getCellEditor();
-				cellEditor.stopCellEditing();
+				stopCellEditing();
 			}
 		});
 	}
