@@ -86,7 +86,9 @@ public class ChoiceItemComboBoxRendererOrEditorFactory extends ObjectTableCellEd
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int tableColumn)
 	{
 		updateBorderAndColors(editorComponent, table, row, tableColumn, isSelected);
-		
+
+		editorComponent.setSelectedItem(value);
+
 		return editorComponent;
 	}
 	
