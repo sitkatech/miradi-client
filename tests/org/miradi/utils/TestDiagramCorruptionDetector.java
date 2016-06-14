@@ -24,13 +24,7 @@ import org.miradi.ids.IdList;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.Task;
+import org.miradi.objects.*;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.schemas.GroupBoxSchema;
@@ -42,24 +36,25 @@ public class TestDiagramCorruptionDetector extends TestCaseWithProject
 	{
 		super(name);
 	}
-	
-	
+
 	public void testHasCorruptedDiagramFactors() throws Exception
 	{
 		DiagramObject diagramObject = getProject().getTestingDiagramObject();
 		assertFalse("detected corrupted diagram factors?", DiagramCorruptionDetector.getCorruptedDiagramFactorErrorMessages(getProject(), diagramObject).size() > 0);
 		
-		Indicator indicator = getProject().createIndicatorWithCauseParent();
-		Task method = getProject().createTask(indicator);
+		Strategy strategy = getProject().createStrategy();
+		Task task = getProject().createTask(strategy);
+		Task subTask = getProject().createTask(task);
+
 		ORef diagramFactorRef = getProject().createObject(DiagramFactorSchema.getObjectType());
-		getProject().setObjectData(diagramFactorRef, DiagramFactor.TAG_WRAPPED_REF, method.getRef().toString());
+		getProject().setObjectData(diagramFactorRef, DiagramFactor.TAG_WRAPPED_REF, subTask.getRef().toString());
 		IdList diagramFactorIds = new IdList(DiagramFactorSchema.getObjectType());
 		diagramFactorIds.addRef(diagramFactorRef);
 		getProject().setObjectData(diagramObject.getRef(), DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorIds.toString());
 		
-		assertTrue("did't detect task diagram factor that is not activity?", DiagramCorruptionDetector.getCorruptedDiagramFactorErrorMessages(getProject(), diagramObject).size() > 0);
+		assertTrue("didn't detect task diagram factor that is not activity?", DiagramCorruptionDetector.getCorruptedDiagramFactorErrorMessages(getProject(), diagramObject).size() > 0);
 		
-		getProject().deleteObject(method);
+		getProject().deleteObject(subTask);
 		
 		assertTrue("didn't detect diagram factor that has no wrapped ref?", DiagramCorruptionDetector.getCorruptedDiagramFactorErrorMessages(getProject(), diagramObject).size() > 0);
 		

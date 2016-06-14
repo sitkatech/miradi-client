@@ -70,11 +70,6 @@ public class TaskPool extends FactorPool
 		return getTasks(TaskSchema.ACTIVITY_NAME);
 	}
 	
-	public Vector<Task> getAllMethods()
-	{
-		return getTasks(TaskSchema.METHOD_NAME);
-	}
-	
 	public Vector<Task> getAllTasks()
 	{
 		return getTasks(TaskSchema.OBJECT_NAME);

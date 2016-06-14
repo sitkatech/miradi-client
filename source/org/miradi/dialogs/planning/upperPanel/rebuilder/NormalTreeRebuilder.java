@@ -74,6 +74,9 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		if(Indicator.is(parentRef))
 			return getChildrenOfIndicator(parentRef, diagram);
 
+		if(Method.is(parentRef))
+			return noChildren;
+
 		if(Task.is(parentRef))
 			return getChildrenOfTask(parentRef, diagram);
 

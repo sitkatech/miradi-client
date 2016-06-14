@@ -261,7 +261,7 @@ public class Project implements ProjectInterface
 	{
 		return objectManager.getTaskPool();
 	}
-	
+
 	public KeyEcologicalAttributePool getKeyEcologicalAttributePool()
 	{
 		return objectManager.getKeyEcologicalAttributePool();
@@ -286,10 +286,15 @@ public class Project implements ProjectInterface
 	{
 		return objectManager.getFutureStatusPool();
 	}
-	
+
 	public IndicatorPool getIndicatorPool()
 	{
 		return objectManager.getIndicatorPool();
+	}
+
+	public MethodPool getMethodPool()
+	{
+		return objectManager.getMethodPool();
 	}
 
 	public ObjectivePool getObjectivePool()

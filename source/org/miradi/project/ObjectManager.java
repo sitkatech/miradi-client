@@ -50,6 +50,7 @@ public class ObjectManager
 		addNormalPool(new TaskPool(ida), TaskSchema.OBJECT_NAME);
 		addNormalPool(new ViewPool(ida), ViewDataSchema.OBJECT_NAME);
 		addNormalPool(new ResourcePool(ida), ProjectResourceSchema.OBJECT_NAME);
+		addNormalPool(new MethodPool(ida), MethodSchema.OBJECT_NAME);
 		addNormalPool(new IndicatorPool(ida), IndicatorSchema.OBJECT_NAME);
 		addNormalPool(new ObjectivePool(ida), ObjectiveSchema.OBJECT_NAME);
 		addNormalPool(new GoalPool(ida), GoalSchema.OBJECT_NAME);
@@ -197,6 +198,11 @@ public class ObjectManager
 		return (IndicatorPool)getPool(ObjectType.INDICATOR);
 	}
 
+	public MethodPool getMethodPool()
+	{
+		return (MethodPool)getPool(ObjectType.METHOD);
+	}
+
 	public ObjectivePool getObjectivePool()
 	{
 		return (ObjectivePool)getPool(ObjectType.OBJECTIVE);
@@ -320,6 +326,7 @@ public class ObjectManager
 			ObjectType.VIEW_DATA,
 			ObjectType.PROJECT_RESOURCE,
 			ObjectType.INDICATOR,
+			ObjectType.METHOD,
 			ObjectType.OBJECTIVE,
 			ObjectType.GOAL,
 			ObjectType.RATING_CRITERION,

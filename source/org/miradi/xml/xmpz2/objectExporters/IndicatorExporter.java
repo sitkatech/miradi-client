@@ -33,9 +33,10 @@ import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CodeList;
+import org.miradi.xml.xmpz2.BaseObjectExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-public class IndicatorExporter extends BaseObjectWithLeaderResourceFieldExporter
+public class IndicatorExporter extends BaseObjectExporter
 {
 	public IndicatorExporter(Xmpz2XmlWriter writerToUse)
 	{
@@ -50,7 +51,6 @@ public class IndicatorExporter extends BaseObjectWithLeaderResourceFieldExporter
 		final Indicator indicator = (Indicator) baseObject;
 		writeMethodRefs(baseObjectSchema, indicator);
 		writeThreshold(indicator);
-		writeOptionalCalculatedTimePeriodCosts(indicator, baseObjectSchema);
 
 		final String objectName = baseObjectSchema.getObjectName();
 		writeRelevantStrategyIds(objectName, indicator);

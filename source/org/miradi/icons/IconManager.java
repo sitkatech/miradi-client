@@ -253,9 +253,6 @@ public class IconManager
 
 	private static Icon getTaskIcon(Task task)
 	{
-		if (task.isMethod())
-			return getMethodIcon();
-		
 		if (task.isActivity())
 			return getActivityIcon(task);
 		

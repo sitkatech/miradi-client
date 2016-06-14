@@ -89,9 +89,6 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 		if(task.isActivity())
 			return new ActivityIcon();
 
-		if(task.isMethod())
-			return new MethodIcon();
-		
 		return new TaskIcon();
 	}
 
@@ -108,9 +105,6 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 		if(task.isActivity())
 			return EAM.text("Activity");
 
-		if(task.isMethod())
-			return EAM.text("Method");
-		
 		return EAM.text("Task");
 	}
 	

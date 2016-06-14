@@ -346,42 +346,44 @@ public class TestMigrationTo21 extends AbstractTestMigration
 		ensureReverseMigrationTimeframesRemoved(task.getRef());
 	}
 
-	public void testIndicatorForwardMigrationNoResourceAssignments() throws Exception
-	{
-		Strategy strategy = getProject().createStrategy();
-		ORef indicatorRef = getProject().createIndicator(strategy).getRef();
-		ensureForwardMigrationTimeframesNotAdded(indicatorRef);
-	}
+	// TODO: MRD-6011 - need to revisit...
 
-	public void testIndicatorForwardMigrationWithZeroEffortResourceAssignment() throws Exception
-	{
-		Strategy strategy = getProject().createStrategy();
-		Indicator indicator = getProject().createIndicator(strategy);
-		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
-
-		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
-		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2007, 0.0));
-		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_DETAILS, dateUnitEffortList.toJson().toString());
-		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
-		getProject().fillObjectUsingCommand(indicator, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
-
-		ensureForwardMigrationTimeframesAdded(indicator.getRef(), resourceAssignment);
-	}
-
-	public void testIndicatorReverseMigration() throws Exception
-	{
-		Strategy strategy = getProject().createStrategy();
-		Indicator indicator = getProject().createIndicator(strategy);
-		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
-
-		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
-		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2007, 0.0));
-		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_DETAILS, dateUnitEffortList.toJson().toString());
-		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
-		getProject().fillObjectUsingCommand(indicator, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
-
-		ensureReverseMigrationTimeframesRemoved(indicator.getRef());
-	}
+//	public void testIndicatorForwardMigrationNoResourceAssignments() throws Exception
+//	{
+//		Strategy strategy = getProject().createStrategy();
+//		ORef indicatorRef = getProject().createIndicator(strategy).getRef();
+//		ensureForwardMigrationTimeframesNotAdded(indicatorRef);
+//	}
+//
+//	public void testIndicatorForwardMigrationWithZeroEffortResourceAssignment() throws Exception
+//	{
+//		Strategy strategy = getProject().createStrategy();
+//		Indicator indicator = getProject().createIndicator(strategy);
+//		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
+//
+//		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
+//		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2007, 0.0));
+//		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_DETAILS, dateUnitEffortList.toJson().toString());
+//		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
+//		getProject().fillObjectUsingCommand(indicator, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
+//
+//		ensureForwardMigrationTimeframesAdded(indicator.getRef(), resourceAssignment);
+//	}
+//
+//	public void testIndicatorReverseMigration() throws Exception
+//	{
+//		Strategy strategy = getProject().createStrategy();
+//		Indicator indicator = getProject().createIndicator(strategy);
+//		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
+//
+//		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
+//		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2007, 0.0));
+//		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_DETAILS, dateUnitEffortList.toJson().toString());
+//		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
+//		getProject().fillObjectUsingCommand(indicator, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
+//
+//		ensureReverseMigrationTimeframesRemoved(indicator.getRef());
+//	}
 
 	private void ensureForwardMigrationTimeframesNotAdded(ORef objectRef) throws Exception
 	{

@@ -60,12 +60,7 @@ public class Indicator extends BaseObject implements StrategyActivityRelevancyIn
 	{
 		return getSafeIdListData(TAG_METHOD_IDS);
 	}
-	
-	public ORefList getTaskRefs()
-	{
-		return new ORefList(TaskSchema.getObjectType(), getMethodIds());
-	}
-	
+
 	public CodeToUserStringMapData getThresholdsMap()
 	{
 		return (CodeToUserStringMapData)getField(TAG_THRESHOLDS_MAP);
@@ -99,7 +94,6 @@ public class Indicator extends BaseObject implements StrategyActivityRelevancyIn
 	{
 		CommandVector commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
 		commandsToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_PROGRESS_REPORT_REFS));
-		commandsToDeleteChildren.addAll(createCommandsToDeleteBudgetChildren());
 		commandsToDeleteChildren.addAll(createCommandsToDeleteMethods());
 		commandsToDeleteChildren.addAll(createCommandsToDeleteMeasurements());
 		commandsToDeleteChildren.addAll(createCommandsToDeleteFutureStatuses());
@@ -213,30 +207,11 @@ public class Indicator extends BaseObject implements StrategyActivityRelevancyIn
 		return getLabelsAsMultiline(getMethodRefs());
 	}
 
-	@Override
-	public ORefList getChildTaskRefs()
-	{
-		return getMethodRefs();
-	}
-	
 	public ORefList getMethodRefs()
 	{
-		return new ORefList(TaskSchema.getObjectType(), getMethodIds());
+		return new ORefList(MethodSchema.getObjectType(), getMethodIds());
 	}
-	
-	public Vector<Task> getMethods()
-	{
-		Vector<Task> methods = new Vector<Task>();
-		ORefList methodRefs = getMethodRefs();
-		for (int index = 0; index < methodRefs.size(); ++index)
-		{
-			Task method = Task.find(getProject(), methodRefs.get(index));
-			methods.add(method);
-		}
-		
-		return methods;
-	}
-	
+
 	public ORef getLatestMeasurementRef()
 	{
 		return getSafeLatestObject(getMeasurementRefs(), Measurement.TAG_DATE);
@@ -270,7 +245,7 @@ public class Indicator extends BaseObject implements StrategyActivityRelevancyIn
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_METHOD_IDS))
-			return TaskSchema.getObjectType();
+			return MethodSchema.getObjectType();
 		
 		if (tag.equals(TAG_MEASUREMENT_REFS))
 			return MeasurementSchema.getObjectType();
@@ -295,25 +270,6 @@ public class Indicator extends BaseObject implements StrategyActivityRelevancyIn
             BiophysicalFactorSchema.getObjectType(),
             BiophysicalResultSchema.getObjectType(),
 		};
-	}
-	
-	public String getFutureStatusRating()
-	{
-		final ORef latestFutureStatusRef = getLatestFutureStatusRef();
-		if (latestFutureStatusRef.isInvalid())
-			return StatusQuestion.UNSPECIFIED;
-		
-		FutureStatus futureStatus = FutureStatus.find(getProject(), latestFutureStatusRef);
-		
-		return futureStatus.getData(FutureStatusSchema.TAG_FUTURE_STATUS_RATING);
-	}
-	
-	public ORefList getRelevantDesireRefs() throws Exception
-	{
-		ORefList relevantDesireRefs = new ORefList();
-		relevantDesireRefs.addAll(extractRelevantDesireRefs(getProject().getGoalPool().getRefSet()));
-		relevantDesireRefs.addAll(extractRelevantDesireRefs(getProject().getObjectivePool().getRefSet()));
-		return relevantDesireRefs;
 	}
 
 	@Override
@@ -473,19 +429,6 @@ public class Indicator extends BaseObject implements StrategyActivityRelevancyIn
 		return getRelevantStrategyAndActivityRefs().getFilteredBy(TaskSchema.getObjectType());
 	}
 
-	private ORefList extractRelevantDesireRefs(ORefSet desireRefs) throws Exception
-	{
-		ORefList relevantDesireRefs = new ORefList();
-		for(ORef desireRef : desireRefs)
-		{
-			Desire goal = Desire.findDesire(getProject(), desireRef);
-			if(goal.getRelevantIndicatorRefList().contains(getRef()))
-				relevantDesireRefs.add(desireRef);
-		}
-		
-		return relevantDesireRefs;
-	}
-
 	@Override
 	protected ORefList getNonOwnedObjectsToDeepCopy(ORefList deepCopiedFactorRefs)
 	{
@@ -544,7 +487,7 @@ public class Indicator extends BaseObject implements StrategyActivityRelevancyIn
 	
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_PRIORITY = "Priority";
-	
+
 	public final static String TAG_METHOD_IDS = "TaskIds";
 	public static final String TAG_THRESHOLDS_MAP = "IndicatorThresholds";
 	public static final String TAG_THRESHOLD_DETAILS_MAP = "ThresholdDetails";

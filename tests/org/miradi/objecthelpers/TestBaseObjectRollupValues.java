@@ -48,29 +48,6 @@ public class TestBaseObjectRollupValues extends TestCaseWithProject
 		year2009 = getProject().createDateUnit(2009);
 	}
 	
-	public void testWorkUnitsRollupWithProjectStartEndDateSet() throws Exception
-	{
-		getProject().setProjectStartDate(MultiCalendar.createFromGregorianYearMonthDay(2009, 1, 1));
-		getProject().setProjectEndDate(MultiCalendar.createFromGregorianYearMonthDay(2009, 12, 31));
-		verifyWorkUnitsRollup();
-	}
-
-	private void verifyWorkUnitsRollup() throws Exception
-	{
-		Indicator indicator = getProject().createIndicatorWithCauseParent();
-		Task methodWith2ResourceAssignments = getProject().createTask(indicator);
-				
-		getProject().addResourceAssignment(methodWith2ResourceAssignments, 13.0, year2009Q1);
-		getProject().addResourceAssignment(methodWith2ResourceAssignments, 2.0, year2009);
-		
-		TimePeriodCostsMap timePeriodCostsMap = indicator.getTotalTimePeriodCostsMapForAssignments();
-		TimePeriodCosts timePeriodCostsTotal = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit());
-		assertEquals("Wrong total for indicator rollup?", 15.0, timePeriodCostsTotal.getTotalWorkUnits().getValue());
-		
-		TimePeriodCosts timePeriodCosts2009 = timePeriodCostsMap.calculateTimePeriodCosts(year2009);
-		assertEquals("wrong total for 2009?", 15.0, timePeriodCosts2009.getTotalWorkUnits().getValue());
-	}
-	
 	public void testDoNotOverrideExpensesWithZero() throws Exception
 	{
 		getProject().setProjectStartDate(MultiCalendar.createFromGregorianYearMonthDay(2009, 1, 1));

@@ -18,32 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogs.task;
+package org.miradi.xml.xmpz2.objectImporters;
 
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
-public class MethodPropertiesPanelWithoutBudgetPanels extends TaskPropertiesPanel
+public class MethodImporter extends BaseObjectImporter
 {
-	public MethodPropertiesPanelWithoutBudgetPanels(MainWindow mainWindow) throws Exception
+	public MethodImporter(Xmpz2XmlImporter importerToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{
-		super(mainWindow);
-	}
-
-	@Override
-	protected void addBudgetSubPanels() throws Exception
-	{
-	}
-
-	@Override
-	protected boolean shouldHaveVisibilityPanel()
-	{
-		return false;
-	}
-
-	@Override
-	public String getPanelDescription()
-	{
-		return EAM.text("Title|Method Properties");
+		super(importerToUse, baseObjectSchemaToUse);
 	}
 }

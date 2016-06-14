@@ -26,13 +26,13 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.Indicator;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.MethodSchema;
 import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TaskSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
-public class IndicatorImporter extends BaseObjectWithLeaderResourceFieldImporter
+public class IndicatorImporter extends BaseObjectImporter
 {
 	public IndicatorImporter(Xmpz2XmlImporter importerToUse)
 	{
@@ -45,7 +45,7 @@ public class IndicatorImporter extends BaseObjectWithLeaderResourceFieldImporter
 		super.importFields(baseObjectNode, refToUse);
 		
 		importThresholds(baseObjectNode, refToUse);
-		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), Indicator.TAG_METHOD_IDS, METHOD, TaskSchema.getObjectType());
+		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), Indicator.TAG_METHOD_IDS, METHOD, MethodSchema.getObjectType());
 		importRelevantStrategyAndActivityIds(baseObjectNode, refToUse);
 	}
 

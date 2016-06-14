@@ -26,16 +26,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ProjectForTesting;
-import org.miradi.schemas.CauseSchema;
-import org.miradi.schemas.DiagramFactorSchema;
-import org.miradi.schemas.DiagramLinkSchema;
-import org.miradi.schemas.FactorLinkSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.MeasurementSchema;
-import org.miradi.schemas.ResourceAssignmentSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.*;
 
 public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 {
@@ -238,9 +229,9 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 	{
 		ORef indicatorRef = project.createObject(IndicatorSchema.getObjectType());
 	
-		ORef taskRef = project.createObject(TaskSchema.getObjectType());
-		IdList taskList = new IdList(TaskSchema.getObjectType(), new BaseId[] {taskRef.getObjectId()});
-		project.setObjectData(indicatorRef, Indicator.TAG_METHOD_IDS, taskList.toString());
+		ORef methodRef = project.createObject(MethodSchema.getObjectType());
+		IdList methodIdList = new IdList(MethodSchema.getObjectType(), new BaseId[] {methodRef.getObjectId()});
+		project.setObjectData(indicatorRef, Indicator.TAG_METHOD_IDS, methodIdList.toString());
 		
 		ORef measurementRef = project.createObject(MeasurementSchema.getObjectType());
 		ORefList measurementList = new ORefList(new ORef[] {measurementRef});
@@ -248,7 +239,7 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 		
 		//----------- start test -----------
 		
-		verifyRefer(indicatorRef, taskRef);
+		verifyRefer(indicatorRef, methodRef);
 		verifyRefer(indicatorRef, measurementRef);
 	}
 	

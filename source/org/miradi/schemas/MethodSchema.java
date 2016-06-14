@@ -17,39 +17,45 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.umbrella.doers;
 
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Indicator;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.MethodSchema;
-import org.miradi.views.diagram.CreateAnnotationDoer;
+package org.miradi.schemas;
 
-public class CreateMethodDoer extends CreateAnnotationDoer
+import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Method;
+
+public class MethodSchema extends BaseObjectSchema
 {
-	@Override
-	public int getAnnotationType()
+	public MethodSchema()
 	{
-		return MethodSchema.getObjectType();
+		super();
+	}
+	
+	@Override
+	protected void fillFieldSchemas()
+	{
+		super.fillFieldSchemas();
+		
+		createFieldSchemaSingleLineUserText(Method.TAG_SHORT_LABEL);
+		createFieldSchemaMultiLineUserText(Method.TAG_DETAILS);
+		createFieldSchemaMultiLineUserText(Method.TAG_COMMENTS);
+	}
+
+	public static int getObjectType()
+	{
+		return ObjectType.METHOD;
+	}
+	
+	@Override
+	public int getType()
+	{
+		return getObjectType();
 	}
 
 	@Override
-	public String getAnnotationListTag()
+	public String getObjectName()
 	{
-		return Indicator.TAG_METHOD_IDS;
+		return OBJECT_NAME;
 	}
-
-	@Override
-	public BaseObject getSelectedParentFactor()
-	{
-		if(getSelectedHierarchies().length != 1)
-			return null;
-
-		ORef indicatorRef = getSelectedHierarchies()[0].getRefForType(IndicatorSchema.getObjectType());
-		if(indicatorRef == null || indicatorRef.isInvalid())
-			return null;
-
-		return Indicator.find(getProject(), indicatorRef);
-	}
+	
+	public static final String OBJECT_NAME = "Method";
 }

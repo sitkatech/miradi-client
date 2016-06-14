@@ -49,11 +49,6 @@ public class TestPlanningViewMainTableModel extends TestCaseWithProject
 		Task activity = Task.find(getProject(), activityRef);
 		getProject().addResourceAssignment(activity);
 		assertFalse("can edit strategy with filled activity?", isAssignedWhenEditable(strategy));
-		
-		Indicator indicatorWithTwoAssignments = getProject().createIndicatorWithCauseParent();
-		getProject().addResourceAssignment(indicatorWithTwoAssignments);
-		getProject().addResourceAssignment(indicatorWithTwoAssignments);
-		assertFalse("can edit indicator with multiple assignments?", isAssignedWhenEditable(indicatorWithTwoAssignments));
 	}
 	
 	public void testIsAssignedWhenEditableWithMultipleResourceAssignmentsWithIdenticalDateUnitEffortLists() throws Exception
@@ -103,7 +98,7 @@ public class TestPlanningViewMainTableModel extends TestCaseWithProject
 	{
 		for (int type = ObjectType.FIRST_OBJECT_TYPE; type < ObjectType.OBJECT_TYPE_COUNT; ++type)
 		{
-			if (Indicator.is(type) || Strategy.is(type) || Task.is(type))
+			if (Strategy.is(type) || Task.is(type))
 				assertTrue("type " + type + "cannot refer to assignments?", canOwnAssignments(type));
 			else
 				assertFalse("Type" + type + " can refer to assignments?", canOwnAssignments(type));

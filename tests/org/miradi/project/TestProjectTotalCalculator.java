@@ -95,8 +95,7 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		ORefList keaRefs = new ORefList(kea);
 		getProject().fillObjectUsingCommand(target.getWrappedORef(), Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keaRefs.convertToIdList(KeyEcologicalAttributeSchema.getObjectType()).toString());
 
-		Indicator indicatorWithResourceAssignment = getProject().createIndicator(kea);
-		addResourceAssignment(indicatorWithResourceAssignment);
+		getProject().createIndicator(kea);
 
 		turnOnDataFromResultsChainOnly();
 		verifyCalculatedValues(expectedProjectTotalTimePeriodMapCount);
@@ -113,7 +112,6 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		DiagramFactor diagramFactor = createNonDraftStrategyWithAssignment(getConceptualModelDiagramObject());
 		Strategy strategy = Strategy.find(getProject(), diagramFactor.getWrappedORef());
 		Indicator indicator = getProject().createIndicator(strategy);
-		getProject().addResourceAssignment(indicator, 10.0, new DateUnit());
 		verifyCalculatedValues(expectedWorkUnits, expectedTotalBudgetCost);
 
 		getProject().turnOnDraft(strategy);
@@ -150,7 +148,7 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 
 	protected void testConceptualModelIndicatorProjectTotal(final int expectedProjectTotalTimePeriodMapCount) throws Exception
 	{
-		createCauseWithIndicatorWithAssignment(getConceptualModelDiagramObject());
+		createCauseWithIndicator(getConceptualModelDiagramObject());
 
 		turnOnDataFromConceptualDiagramOnly();
 		verifyCalculatedValues(expectedProjectTotalTimePeriodMapCount);
@@ -164,7 +162,7 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 
 	protected void testResultsChainIndicatorProjectTotal(final int expectedProjectTotalTimePeriodMapCount) throws Exception
 	{
-		createCauseWithIndicatorWithAssignment(getResultsChainDiagramObject());
+		createCauseWithIndicator(getResultsChainDiagramObject());
 
 		turnOnDataFromResultsChainOnly();
 		verifyCalculatedValues(expectedProjectTotalTimePeriodMapCount);
@@ -208,8 +206,8 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 	{
 		createNonDraftStrategyWithAssignment(getConceptualModelDiagramObject());
 		createNonDraftStrategyWithAssignment(getResultsChainDiagramObject());
-		createCauseWithIndicatorWithAssignment(getConceptualModelDiagramObject());
-		createCauseWithIndicatorWithAssignment(getResultsChainDiagramObject());
+		createCauseWithIndicator(getConceptualModelDiagramObject());
+		createCauseWithIndicator(getResultsChainDiagramObject());
 
 		turnOnDataFromConceptualDiagramOnly();
 		if (expectIndicatorAssignmentsToBeCounted)
@@ -324,11 +322,10 @@ public class TestProjectTotalCalculator extends TestCaseWithProject
 		getProject().populateTask(monitoringActivity, "Some Monitoring Activity", true);
 	}
 
-	private void createCauseWithIndicatorWithAssignment(DiagramObject diagramObject) throws Exception
+	private void createCauseWithIndicator(DiagramObject diagramObject) throws Exception
 	{
 		DiagramFactor diagramFactor = getProject().createAndAddFactorToDiagram(diagramObject, CauseSchema.getObjectType());
-		Indicator indicator = getProject().createIndicator(diagramFactor.getWrappedFactor());
-		addResourceAssignment(indicator);
+		getProject().createIndicator(diagramFactor.getWrappedFactor());
 	}
 
 	private DiagramObject getConceptualModelDiagramObject()

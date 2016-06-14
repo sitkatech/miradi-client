@@ -73,7 +73,6 @@ public class TaskSchema extends FactorSchema
 	}
 	
 	public static final String OBJECT_NAME = "Task";
-	public static final String METHOD_NAME = "Method";
 	public static final String ACTIVITY_NAME = "Activity";
 	public static final String MONITORING_ACTIVITY_NAME = "MonitoringActivity";
 }

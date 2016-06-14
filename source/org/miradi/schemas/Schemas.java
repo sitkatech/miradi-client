@@ -93,6 +93,7 @@ public class Schemas
 		registerSchema(new BiophysicalResultSchema());
 		registerSchema(new TimeframeSchema());
 		registerSchema(new AccountingClassificationAssociationSchema());
+		registerSchema(new MethodSchema());
 	}
 	
 	public BaseObjectSchema get(final int objectType)

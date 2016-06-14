@@ -207,13 +207,18 @@ public class MigrationTo33 extends AbstractMigration
 
 			if (rawObject.containsKey(TAG_METHOD_IDS))
 			{
-				IdList methodIdList = new IdList(TaskSchema.getObjectType(), rawObject.get(TAG_METHOD_IDS));
-				for (int i = 0; i < methodIdList.size(); i++)
+				String methodIdListAsString = rawObject.get(TAG_METHOD_IDS);
+				if (!methodIdListAsString.isEmpty())
 				{
-					BaseId methodId = methodIdList.get(i);
-					ORef methodRef = new ORef(ObjectType.TASK, methodId);
-					RawObject method = getRawProject().findObject(methodRef);
-					methodList.add(method);
+					IdList methodIdList = new IdList(TaskSchema.getObjectType(), methodIdListAsString);
+					for (int i = 0; i < methodIdList.size(); i++)
+					{
+						BaseId methodId = methodIdList.get(i);
+						ORef methodRef = new ORef(ObjectType.TASK, methodId);
+						RawObject method = getRawProject().findObject(methodRef);
+						if (method != null)
+							methodList.add(method);
+					}
 				}
 			}
 

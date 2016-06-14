@@ -17,39 +17,44 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.umbrella.doers;
+package org.miradi.objectpools;
 
-import org.miradi.objecthelpers.ORef;
+import org.miradi.ids.BaseId;
+import org.miradi.ids.IdAssigner;
+import org.miradi.ids.MethodId;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Indicator;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.MethodSchema;
-import org.miradi.views.diagram.CreateAnnotationDoer;
+import org.miradi.objects.Method;
+import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 
-public class CreateMethodDoer extends CreateAnnotationDoer
+public class MethodPool extends BaseObjectPool
 {
-	@Override
-	public int getAnnotationType()
+	public MethodPool(IdAssigner idAssignerToUse)
 	{
-		return MethodSchema.getObjectType();
+		super(idAssignerToUse, ObjectType.METHOD);
+	}
+	
+	public void put(Method method) throws Exception
+	{
+		put(method.getId(), method);
+	}
+	
+	public Method find(BaseId id)
+	{
+		return (Method)getRawObject(id);
 	}
 
 	@Override
-	public String getAnnotationListTag()
+	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId)
 	{
-		return Indicator.TAG_METHOD_IDS;
+		return new Method(objectManager, new MethodId(actualId.asInt()));
 	}
-
+	
 	@Override
-	public BaseObject getSelectedParentFactor()
+	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
 	{
-		if(getSelectedHierarchies().length != 1)
-			return null;
-
-		ORef indicatorRef = getSelectedHierarchies()[0].getRefForType(IndicatorSchema.getObjectType());
-		if(indicatorRef == null || indicatorRef.isInvalid())
-			return null;
-
-		return Indicator.find(getProject(), indicatorRef);
+		return Method.createSchema(projectToUse);
 	}
 }

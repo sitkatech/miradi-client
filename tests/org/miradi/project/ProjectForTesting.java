@@ -615,6 +615,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return task;
 	}
 	
+	public Method createAndPopulateMethod(BaseObject owner, String customMethodLabel) throws Exception
+	{
+		Method method  = createMethod(owner);
+		populateMethod(method, customMethodLabel);
+		
+		return method;
+	}
+	
 	public Measurement createAndPopulateMeasurement() throws Exception
 	{
 		Measurement measurement = createMeasurement();
@@ -994,6 +1002,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return Task.find(this, taskRef);
 	}
 	
+	public Method createMethod(BaseObject owner) throws Exception
+	{
+		ORef MethodRef = createObject(MethodSchema.getObjectType());
+		Method method = Method.find(this, MethodRef);
+		appendMethodToParentIdList(owner, method, Indicator.TAG_METHOD_IDS);
+		return Method.find(this, MethodRef);
+	}
+	
 	public Measurement createMeasurement() throws Exception
 	{
 		ORef measurementRef = createObject(MeasurementSchema.getObjectType());
@@ -1362,11 +1378,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENTS, "Some Indicator viability ratings comment");
 		fillObjectUsingCommand(indicator, Indicator.TAG_RATING_SOURCE, RatingSourceQuestion.ONSITE_RESEARCH_CODE);
 		
-		Task task = createAndPopulateTask(indicator, "Some Method Name");
-		IdList taskIds = new IdList(TaskSchema.getObjectType());
-		taskIds.addRef(task.getRef());
-		fillObjectUsingCommand(indicator, Indicator.TAG_METHOD_IDS, taskIds.toString());
-		
+		createAndPopulateMethod(indicator, "Some Method Name");
+
 		Measurement measurement = createAndPopulateMeasurement();
 		ORefList measurementRefs = new ORefList(measurement.getRef());
 		fillObjectUsingCommand(indicator, Indicator.TAG_MEASUREMENT_REFS, measurementRefs.toString());
@@ -1389,8 +1402,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		fillObjectUsingCommand(indicator, Indicator.TAG_COMMENTS, "Some indicator Comment");
 		
-		addExpenseWithValue(indicator);
-		addResourceAssignment(indicator);
 		createAndPopulateFutureStatus(indicator);
 	}
 	
@@ -1407,6 +1418,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		addResourceAssignment(task);
 
 		addExpenseWithValue(task);
+	}
+
+	public void populateMethod(Method method, String customLabel) throws Exception
+	{
+		fillObjectUsingCommand(method, Method.TAG_LABEL, customLabel);
+		fillObjectUsingCommand(method, Method.TAG_DETAILS, "Some Method details");
 	}
 
 	public void populateMeasurement(Measurement measurement) throws Exception
@@ -2738,29 +2755,22 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		appendTaskToParentIdList(strategy, activity, Strategy.TAG_ACTIVITY_IDS);	
 	}
-	
-	public Task createMethod(Indicator indicator) throws Exception
-	{
-		return createTask(indicator);
-	}
-	
-	public Task createMethod() throws Exception
-	{
-		Indicator indicator = createIndicatorWithCauseParent();
-		Task method = createMethod(indicator);
-
-		return method;
-	}
 
 	public void appendMethodToIndicator(Indicator indicator, Task method) throws Exception
 	{
-		appendTaskToParentIdList(indicator, method, Indicator.TAG_METHOD_IDS);
+		appendMethodToParentIdList(indicator, method, Indicator.TAG_METHOD_IDS);
 	}
 	
 	private void appendTaskToParentIdList(BaseObject parent, BaseObject child, String childListTag) throws Exception
 	{
 		ORefList childTaskRefs = new ORefList(child);
 		fillObjectUsingCommand(parent, childListTag, childTaskRefs.convertToIdList(TaskSchema.getObjectType()).toString());
+	}
+	
+	private void appendMethodToParentIdList(BaseObject parent, BaseObject child, String childListTag) throws Exception
+	{
+		ORefList childMethodRefs = new ORefList(child);
+		fillObjectUsingCommand(parent, childListTag, childMethodRefs.convertToIdList(MethodSchema.getObjectType()).toString());
 	}
 	
 	public static double calculateTimePeriodCosts(BaseObject baseObject, DateUnit dateUnit) throws Exception

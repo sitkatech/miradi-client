@@ -17,20 +17,20 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.activity;
+package org.miradi.dialogs.indicator;
 
 import org.miradi.dialogs.base.ObjectListTableModel;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.Task;
+import org.miradi.objects.Method;
 import org.miradi.project.Project;
 
 public class MethodListTableModel extends ObjectListTableModel
 {
 	public MethodListTableModel(Project projectToUse, ORefList selectedHierarchy)
 	{
-		super(projectToUse, selectedHierarchy, Indicator.TAG_METHOD_IDS, ObjectType.TASK, COLUMN_TAGS);
+		super(projectToUse, selectedHierarchy, Indicator.TAG_METHOD_IDS, ObjectType.METHOD, COLUMN_TAGS);
 	}
 	
 	@Override
@@ -41,8 +41,8 @@ public class MethodListTableModel extends ObjectListTableModel
 	
 	private static final String UNIQUE_MODEL_IDENTIFIER = "MethodListTableModel";
 	private static String[] COLUMN_TAGS = {
-		Task.TAG_SHORT_LABEL,
-		Task.TAG_LABEL,
+		Method.TAG_SHORT_LABEL,
+		Method.TAG_LABEL,
 	};
 
 }

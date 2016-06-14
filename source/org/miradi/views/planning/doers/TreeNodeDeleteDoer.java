@@ -50,6 +50,9 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 		if (Indicator.is(selected))
 			return true;
 		
+		if (Method.is(selected))
+			return true;
+
 		if (Goal.is(selected))
 			return true;
 		
@@ -89,9 +92,12 @@ public class TreeNodeDeleteDoer extends AbstractDeleteDoer
 			if (Task.is(selected))
 				deleteTask(selected);
 			
+			if (Method.is(selected))
+				deleteAnnotation(selected, Indicator.TAG_METHOD_IDS);
+			
 			if (Indicator.is(selected))
 				deleteAnnotation(selected, Factor.TAG_INDICATOR_IDS);
-			
+
 			if (Objective.is(selected))
 				deleteAnnotation(selected, Factor.TAG_OBJECTIVE_IDS);
 			

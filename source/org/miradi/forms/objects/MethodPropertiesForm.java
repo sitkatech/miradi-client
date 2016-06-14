@@ -17,22 +17,13 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.activity;
+package org.miradi.forms.objects;
 
-import org.miradi.actions.ActionCreateMethod;
-import org.miradi.actions.ActionDeleteMethod;
-import org.miradi.dialogs.base.ObjectListTablePanel;
-import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.views.umbrella.StaticPicker;
+import org.miradi.forms.FieldPanelSpec;
 
-public class MethodListTablePanel extends ObjectListTablePanel
+public class MethodPropertiesForm extends FieldPanelSpec
 {
-	public MethodListTablePanel(MainWindow mainWindowToUse, ORefList selectedHierarchy)
+	public MethodPropertiesForm()
 	{
-		super(mainWindowToUse, new MethodListTableModel(mainWindowToUse.getProject(), selectedHierarchy), new StaticPicker(selectedHierarchy));
-		
-		addObjectActionButton(ActionCreateMethod.class, getParentPicker());
-		addUnknownTypeOfButton(ActionDeleteMethod.class);
 	}
 }

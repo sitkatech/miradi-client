@@ -78,7 +78,7 @@ public class TreeRebuilderNodeSorter extends NodeSorter
 			ResourceAssignmentSchema.OBJECT_NAME,
 			ExpenseAssignmentSchema.OBJECT_NAME,
 			TaskSchema.ACTIVITY_NAME,
-			TaskSchema.METHOD_NAME,
+			MethodSchema.OBJECT_NAME,
 			TaskSchema.OBJECT_NAME,
 		};
 	}

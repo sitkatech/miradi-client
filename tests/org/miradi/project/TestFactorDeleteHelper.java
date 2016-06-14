@@ -26,7 +26,6 @@ import org.miradi.objectpools.CausePool;
 import org.miradi.objectpools.IndicatorPool;
 import org.miradi.objectpools.ObjectivePool;
 import org.miradi.objects.Factor;
-import org.miradi.project.FactorDeleteHelper;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
@@ -71,7 +70,7 @@ public class TestFactorDeleteHelper extends MiradiTestCase
 		ObjectivePool objectivePool = project.getObjectivePool();
 		
 		assertEquals("didn't add cause?", 1, causePool.getIdList().size());
-		assertEquals("didn't add inidicator?", 2, indicatorPool.getIdList().size());
+		assertEquals("didn't add indicator?", 2, indicatorPool.getIdList().size());
 		assertEquals("didn't add objective?", 1, objectivePool.getIdList().size());
 		FactorDeleteHelper deleteHelper = FactorDeleteHelper.createFactorDeleteHelperForNonSelectedFactors(project.getTestingDiagramModel().getDiagramObject());
 		deleteHelper.deleteFactorAndDiagramFactor(causeCell.getDiagramFactor());

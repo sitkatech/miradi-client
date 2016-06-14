@@ -74,8 +74,6 @@ public class DashboardSchema extends BaseObjectSchema
 		createPseudoFieldSchemaString(Dashboard.PSEUDO_INDICATORS_WITH_METHODS_COUNT);
 		createPseudoFieldSchemaString(Dashboard.PSEUDO_METHODS_COUNT);
 		createPseudoFieldSchemaString(Dashboard.PSEUDO_INDICATORS_COUNT);
-		createPseudoFieldSchemaString(Dashboard.PSEUDO_METHODS_AND_TASKS_COUNT);
-		createPseudoFieldSchemaString(Dashboard.PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT);
 		createPseudoFieldSchemaString(Dashboard.PSEUDO_WORK_PLAN_START_DATE);
 		createPseudoFieldSchemaString(Dashboard.PSEUDO_WORK_PLAN_END_DATE);
 		createPseudoFieldSchemaString(Dashboard.PSEUDO_TOTAL_PROJECT_RESOURCES_COSTS);

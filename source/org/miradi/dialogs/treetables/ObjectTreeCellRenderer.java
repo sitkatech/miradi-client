@@ -205,6 +205,8 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer = intermediateResultsRenderer;
 		else if(node.getType() == ObjectType.INDICATOR)
 			renderer = indicatorRenderer;
+		else if(node.getType() == ObjectType.METHOD)
+			renderer = methodRenderer;
 		else if(node.getType() == ObjectType.STRATEGY)
 			renderer = getStrategyRenderer();
 		else if(node.getType() == ObjectType.OBJECTIVE)
@@ -264,15 +266,13 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			return getTaskRenderer(monitoringActivityRenderer, task);
 		if(task.isActivity())
 			return getTaskRenderer(activityRenderer, task);
-		if(task.isMethod())
-			return getTaskRenderer(methodRenderer, task);
-		
+
 		return taskRenderer;
 	}
 	
 	private VariableHeightTreeCellRenderer getTaskRenderer(VariableHeightTreeCellRenderer renderer, Task task)
 	{
-		Font taskFont = new PlanningViewFontProvider(getMainWindow()).deriveTaskFont(task);
+		Font taskFont = new PlanningViewFontProvider(getMainWindow()).getFont(task);
 		renderer.setFont(taskFont);
 		return renderer;
 	}

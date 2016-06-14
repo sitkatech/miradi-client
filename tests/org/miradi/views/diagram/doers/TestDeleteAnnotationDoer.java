@@ -25,12 +25,12 @@ import org.miradi.main.MiradiTestCase;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.Method;
 import org.miradi.objects.Strategy;
-import org.miradi.objects.Task;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.MethodSchema;
 import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TaskSchema;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
 
 public class TestDeleteAnnotationDoer extends MiradiTestCase
@@ -60,7 +60,7 @@ public class TestDeleteAnnotationDoer extends MiradiTestCase
 		ORef strategyRef = project.createObject(StrategySchema.getObjectType());
 		ORef indicatorRef1 = project.createObject(IndicatorSchema.getObjectType());
 		ORef indicatorRef2 = project.createObject(IndicatorSchema.getObjectType());
-		ORef methodRef = project.createObject(TaskSchema.getObjectType());
+		ORef methodRef = project.createObject(MethodSchema.getObjectType());
 	
 		Strategy strategy = (Strategy) project.findObject(strategyRef);
 		Indicator indicator1 = (Indicator) project.findObject(indicatorRef1);
@@ -80,14 +80,14 @@ public class TestDeleteAnnotationDoer extends MiradiTestCase
 		CommandSetObjectData addSharedMethod2 = CommandSetObjectData.createAppendIdCommand(indicator2, Indicator.TAG_METHOD_IDS, methodRef.getObjectId());
 		project.executeCommand(addSharedMethod2);
 		assertEquals("wrong number of tasks?", 1, indicator2.getMethodRefs().size());
-	
-		Task method = (Task) project.findObject(methodRef);
-		assertTrue("is not method?", method.isMethod());
-		
+
+		Method method = (Method) project.findObject(methodRef);
+		assertNotNull(method);
+
 		Command[] commandsToRemoveIndicator1 = DeleteAnnotationDoer.buildCommandsToDeleteAnnotation(project, strategy, Strategy.TAG_INDICATOR_IDS, indicator1);
 		project.executeCommands(commandsToRemoveIndicator1);
-		
-		Task foundMethod = (Task) project.findObject(methodRef);
+
+		Method foundMethod = (Method) project.findObject(methodRef);
 		assertEquals("method was deleted?", method.getRef(), foundMethod.getRef());
 		
 		ORefList referrers = method.findObjectsThatReferToUs(IndicatorSchema.getObjectType());

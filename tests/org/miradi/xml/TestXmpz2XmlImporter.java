@@ -376,7 +376,7 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 		Strategy strategy = getProject().createStrategy();
 		Indicator indicator = getProject().createAndPopulateIndicator(strategy);
 		getProject().addThresholdWithXmlEscapedData(indicator);
-		Task task = getProject().createAndPopulateTask(indicator, "TASK");
+		Task task = getProject().createAndPopulateTask(strategy, "TASK");
 		Goal goal = getProject().createAndPopulateGoal(target);
 		getProject().addProgressReport(task);
 		getProject().addProgressReport(indicator);

@@ -22,18 +22,17 @@ package org.miradi.objects;
 import org.martus.util.MultiCalendar;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.ids.BaseId;
-import org.miradi.ids.IdList;
-import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.project.ProjectForTesting;
-import org.miradi.schemas.*;
+import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.MeasurementSchema;
+import org.miradi.schemas.StrategySchema;
 
 import java.util.Vector;
 
 
-public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
+public class TestIndicator extends ObjectTestCase
 {
 	public TestIndicator(String name)
 	{
@@ -66,7 +65,6 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 		project = null;
 	}
 	
-	@Override
 	protected int getType()
 	{
 		return IndicatorSchema.getObjectType();
@@ -123,49 +121,6 @@ public class TestIndicator extends AbstractObjectWithBudgetDataToDeleteTestCase
 		assertEquals("is wrong annotation type?", MeasurementSchema.getObjectType(), indicator.getAnnotationType(Indicator.TAG_MEASUREMENT_REFS));
 	}
 	
-	public void testGetWorkUnits() throws Exception
-	{
-		verifyGetWorkUnits(getProject(), IndicatorSchema.getObjectType(), Indicator.TAG_METHOD_IDS);
-	}
-	
-	public static void verifyGetWorkUnits(ProjectForTesting project, int objectType, String taskTag) throws Exception
-	{
-		project.setProjectDates(1999, 2012);
-
-		BaseObject baseObject = project.createBaseObject(objectType);
-		Task task = project.createTask(baseObject);
-		project.addResourceAssignment(task, 14, 2007, 2007);
-		project.addResourceAssignment(task, 15, 2006, 2006);
-		
-		IdList taskIdsFromObject = new IdList(TaskSchema.getObjectType(), baseObject.getData(taskTag));
-		assertEquals("wrong method count?", 1, taskIdsFromObject.size());
-		
-		DateUnit dateUnit = project.createDateUnit(2006, 2006);
-		assertEquals("wrong work units for methods", 15.0, ProjectForTesting.calculateTimePeriodCosts(baseObject, dateUnit));
-		
-		BaseObject objectWithNoTasks = project.createBaseObject(objectType);
-		project.addResourceAssignment(objectWithNoTasks, 45, 2006, 2006);
-		assertEquals("wrong work units for methods", 45.0, ProjectForTesting.calculateTimePeriodCosts(objectWithNoTasks, dateUnit));
-	}
-	
-	public void testIsAssignmentDataSuperseded() throws Exception
-	{
-		Indicator indicator = getProject().createIndicatorWithCauseParent();
-		TestTask.verifyIsAssignmentDataSuperseded(getProject(), indicator, Indicator.TAG_METHOD_IDS);
-	}
-
-	public void testCreateCommandsToClone() throws Exception
-	{
-		Cause indicatorOwner = getProject().createCause();
-		Indicator indicator = getProject().createIndicator(indicatorOwner);
-		ResourceAssignment assignment = getProject().createResourceAssignment();
-		IdList assignmentIds = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[] { assignment.getId() });
-		indicator.setData(Indicator.TAG_RESOURCE_ASSIGNMENT_IDS, assignmentIds.toString());
-		Command[] commandsToClone = indicator.createCommandsToClone(indicator.getId());
-		Vector<String> modifiedTags = extractSetDataCommands(commandsToClone, indicator.getRef());
-		assertNotContains(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, modifiedTags);
-	}
-
 	//region Strategy Relevancy tests
 	public void testStrategyDefaultRelevantNoOverridesMakeIrrelevant() throws Exception
 	{

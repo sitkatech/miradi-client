@@ -290,9 +290,7 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 			return true;
 		if(type == StrategySchema.getObjectType() && tag.equals(Strategy.TAG_ACTIVITY_IDS))
 			return true;
-		if(type == IndicatorSchema.getObjectType() && tag.equals(Indicator.TAG_METHOD_IDS))
-			return true;
-		
+
 		return false;
 	}
 	
@@ -306,7 +304,10 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		String tag = setCommand.getFieldTag();
 		if(Factor.isFactor(type))
 			return isValidFactorTag(tag);
-		
+
+		if(type == IndicatorSchema.getObjectType() && tag.equals(Indicator.TAG_METHOD_IDS))
+			return true;
+
 		if(type == KeyEcologicalAttributeSchema.getObjectType() && tag.equals(KeyEcologicalAttribute.TAG_INDICATOR_IDS))
 			return true;
 				

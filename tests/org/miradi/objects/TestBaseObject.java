@@ -170,9 +170,6 @@ public class TestBaseObject extends TestCaseWithProject
 		
 		Indicator indicator = getProject().createIndicatorWithCauseParent();
 		assertFalse("indicator should not have a total cost?", indicator.getTotalBudgetCost().hasValue());
-		
-		getProject().addResourceAssignment(indicator, 20.0, 2006, 2006);
-		assertEquals("wrong total budget cost?", 200.0, indicator.getTotalBudgetCost().getValue());
 	}
 	
 	public void testGetRefList() throws Exception

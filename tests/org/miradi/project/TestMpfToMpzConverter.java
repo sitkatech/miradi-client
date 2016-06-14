@@ -113,7 +113,7 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 		Strategy strategy = getProject().createStrategy();
 		Indicator indicator = getProject().createAndPopulateIndicator(strategy);
 		getProject().addThresholdWithXmlEscapedData(indicator);
-		Task task = getProject().createAndPopulateTask(indicator, "TASK");
+		Task task = getProject().createAndPopulateTask(strategy, "TASK");
 		Goal goal = getProject().createAndPopulateGoal(target);
 		getProject().addProgressReport(task);
 		getProject().addProgressReport(indicator);

@@ -122,8 +122,8 @@ public class DiagramCorruptionDetector
 			DiagramFactor diagramFactor = DiagramFactor.find(project, diagramFactorRefs.get(index));
 			if (diagramFactor == null)
 			{
-				String errorMesssage = "Found null diagram factor. Ref = " + diagramFactorRefs.get(index);
-				EAM.logVerbose(errorMesssage);
+				String errorMessage = "Found null diagram factor. Ref = " + diagramFactorRefs.get(index);
+				EAM.logVerbose(errorMessage);
 				errorMessages.add(EAM.substituteSingleString(EAM.text("Found null diagram factor.  Diagram = %s"), diagramName));
 				continue;
 			}

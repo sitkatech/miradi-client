@@ -104,11 +104,6 @@ public class TestStrategy extends AbstractObjectWithBudgetDataToDeleteTestCase
 		
 	}
 	
-	public void testGetWorkUnits() throws Exception
-	{
-		TestIndicator.verifyGetWorkUnits(getProject(), StrategySchema.getObjectType(), Strategy.TAG_ACTIVITY_IDS);
-	}
-	
 	public void testIsAssignmentDataSuperseded() throws Exception
 	{
 		Strategy strategy = getProject().createStrategy();

@@ -86,6 +86,8 @@ public class ORef implements Comparable<ORef>
 				return new TaskId(idToUse);
 			case ObjectType.VIEW_DATA:
 				return new ViewDataId(idToUse);
+			case ObjectType.METHOD:
+				return new MethodId(idToUse);
 		}
 		
 		if(Factor.isFactor(objectTypeToUse))

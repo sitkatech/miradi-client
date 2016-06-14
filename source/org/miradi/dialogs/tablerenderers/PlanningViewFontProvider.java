@@ -21,7 +21,6 @@ package org.miradi.dialogs.tablerenderers;
 
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Task;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
@@ -44,9 +43,6 @@ public class PlanningViewFontProvider extends FontForObjectProvider
 		if(shouldBeBold(baseObject.getType()))
 			font = font.deriveFont(Font.BOLD);
 	
-		if(Task.is(baseObject))
-			font = deriveTaskFont((Task) baseObject);
-
 		return font;
 	}
 
@@ -61,15 +57,5 @@ public class PlanningViewFontProvider extends FontForObjectProvider
 		if(objectType == IndicatorSchema.getObjectType())
 			return true;
 		return false;
-	}
-	
-	public Font deriveTaskFont(Task task)
-	{
-		Font font = super.getFont(task);
-
-		if (task.isMethod())
-			font = font.deriveFont(Font.BOLD + font.getStyle());
-		
-		return font;
 	}
 }

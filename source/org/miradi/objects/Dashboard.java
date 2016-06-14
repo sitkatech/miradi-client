@@ -20,11 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.objects;
 
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Vector;
-
 import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.dialogs.dashboard.DashboardRowDefinitionManager;
 import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
@@ -37,6 +32,11 @@ import org.miradi.questions.StrategyRatingSummaryQuestion;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
 import org.miradi.schemas.*;
 import org.miradi.utils.OptionalDouble;
+
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Vector;
 
 public class Dashboard extends BaseObject
 {
@@ -170,13 +170,7 @@ public class Dashboard extends BaseObject
 			
 			if (fieldTag.equals(PSEUDO_INDICATORS_COUNT))
 				return getObjectPoolCountAsString(IndicatorSchema.getObjectType());
-			
-			if (fieldTag.equals(PSEUDO_METHODS_AND_TASKS_COUNT))
-				return getSpecifiedTaskTypeAndTasksCount(TaskSchema.METHOD_NAME);
-			
-			if (fieldTag.equals(PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT))
-				return getSpecifiedTaskTypeAndTasksWithAssignmentsCount(TaskSchema.METHOD_NAME);
-			
+
 			if (fieldTag.equals(PSEUDO_WORK_PLAN_START_DATE))
 				return getProject().getMetadata().getWorkPlanStartDateAsString();
 			
@@ -623,9 +617,20 @@ public class Dashboard extends BaseObject
 	private Vector<BaseObject> getAllIndicatorsAndMethods()
 	{
 		Vector<BaseObject> baseObjects = new Vector<BaseObject>();
-		baseObjects.addAll(Arrays.asList(getAllActiveIndicators()));
-		baseObjects.addAll(getProject().getTaskPool().getAllMethods());
-		
+		Indicator[] allActiveIndicators = getAllActiveIndicators();
+		baseObjects.addAll(Arrays.asList(allActiveIndicators));
+
+		for (int index = 0; index < allActiveIndicators.length; ++index)
+		{
+			ORefList methodRefs = allActiveIndicators[index].getMethodRefs();
+			for (ORef methodRef : methodRefs)
+			{
+				BaseObject method = getProject().findObject(methodRef);
+				if (method != null)
+					baseObjects.add(method);
+			}
+		}
+
 		return baseObjects;
 	}
 
@@ -723,7 +728,7 @@ public class Dashboard extends BaseObject
 
 	private String getMethodsCount()
 	{
-		int count = getProject().getTaskPool().getAllMethods().size();
+		int count = getProject().getMethodPool().size();
 		return Integer.toString(count);
 	}
 
@@ -776,7 +781,7 @@ public class Dashboard extends BaseObject
 	private String getActivitiesCount()
 	{
 		int count = getProject().getTaskPool().getAllActivities().size();
-		
+
 		return Integer.toString(count);
 	}
 
@@ -1164,8 +1169,6 @@ public class Dashboard extends BaseObject
 	public static final String PSEUDO_INDICATORS_WITH_METHODS_COUNT = "IndicatorsWithMethodsCount";
 	public static final String PSEUDO_METHODS_COUNT = "MethodsCount";
 	public static final String PSEUDO_INDICATORS_COUNT = "IndicatorsCount";
-	public static final String PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT = "MethodsAndTasksWithAssignmentsCount";
-	public static final String PSEUDO_METHODS_AND_TASKS_COUNT = "MethodsAndTasksCount";
 	public static final String PSEUDO_WORK_PLAN_START_DATE = "WorkPlanStartDate";
 	public static final String PSEUDO_WORK_PLAN_END_DATE = "WorkPlanEndDate";
 	public static final String PSEUDO_TOTAL_PROJECT_RESOURCES_COSTS = "TotalProjectResourcesCosts";

@@ -51,7 +51,6 @@ public class TestBaseObjectDeepCopier extends TestCaseWithProject
 		Strategy strategy = getProject().createStrategy();
 		getProject().populateStrategy(strategy);
 		Indicator indicator = getProject().createIndicator(strategy);
-		getProject().addResourceAssignment(indicator);
 		getProject().addProgressReport(strategy);
 		getProject().addProgressReport(indicator);
 		verifyCopy(indicator);

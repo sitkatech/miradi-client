@@ -32,24 +32,7 @@ import org.miradi.objects.FundingSource;
 import org.miradi.objects.Goal;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.ProjectResource;
-import org.miradi.schemas.AccountingCodeSchema;
-import org.miradi.schemas.BudgetCategoryOneSchema;
-import org.miradi.schemas.BudgetCategoryTwoSchema;
-import org.miradi.schemas.ConceptualModelDiagramSchema;
-import org.miradi.schemas.FundingSourceSchema;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.KeyEcologicalAttributeSchema;
-import org.miradi.schemas.MeasurementSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.ProjectMetadataSchema;
-import org.miradi.schemas.ProjectResourceSchema;
-import org.miradi.schemas.ResultsChainDiagramSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.TaskSchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
+import org.miradi.schemas.*;
 
 public class RtfStyleManager
 {
@@ -81,7 +64,7 @@ public class RtfStyleManager
 		createNewStyle(StrategySchema.OBJECT_NAME,  	    			CS_24_RTF_ID, " \\f1\\fs20 ", MIRADI_STYLE_PREFIX + "Strat");
 		createNewStyle(TaskSchema.ACTIVITY_NAME,  	    			CS_25_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Act");
 		createNewStyle(IndicatorSchema.OBJECT_NAME,  	    			CS_26_RTF_ID, " \\f1\\fs20 ", MIRADI_STYLE_PREFIX + "Ind");
-		createNewStyle(TaskSchema.METHOD_NAME,   	    				CS_27_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Mthd");
+		createNewStyle(MethodSchema.OBJECT_NAME,   	    				CS_27_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Mthd");
 		createNewStyle(TaskSchema.OBJECT_NAME,   	    				CS_28_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Task");
 		createNewStyle(MeasurementSchema.OBJECT_NAME,   	    		CS_29_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Msrmnt");
 		createNewStyle(AccountingCodeSchema.OBJECT_NAME,  	    	CS_30_RTF_ID, " \\f1\\fs18 ", MIRADI_STYLE_PREFIX + "Accntng Cd");

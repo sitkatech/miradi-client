@@ -22,7 +22,6 @@ package org.miradi.dialogs.strategicPlan;
 
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.diagram.IndicatorSubPanel;
-import org.miradi.dialogs.diagram.TimeframePropertiesSubPanel;
 import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
 import org.miradi.dialogs.viability.IndicatorMonitoringPlanSubPanel;
 import org.miradi.dialogs.viability.IndicatorViabilityRatingsSubPanel;
@@ -49,7 +48,6 @@ public class IndicatorPropertiesPanel extends ObjectDataInputPanelWithSections
 		addSubPanelWithTitledBorder(viabilityRatingsSubPanel);
 		addSubPanelWithTitledBorder(new IndicatorMonitoringPlanSubPanel(getProject(), getInvalidTargetRef()));
 		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
-		addSubPanelWithTitledBorder(new TimeframePropertiesSubPanel(getProject(), ORef.createInvalidWithType(IndicatorSchema.getObjectType())));
 
 		updateFieldsFromProject();
 	}

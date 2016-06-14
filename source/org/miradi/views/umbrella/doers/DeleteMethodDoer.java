@@ -19,20 +19,22 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella.doers;
 
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Task;
-import org.miradi.schemas.TaskSchema;
-import org.miradi.views.ObjectsDoer;
-import org.miradi.views.umbrella.DeleteActivityDoer;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.Indicator;
+import org.miradi.objects.Method;
+import org.miradi.schemas.MethodSchema;
+import org.miradi.views.diagram.DeleteAnnotationDoer;
 
-public class DeleteMethodDoer extends ObjectsDoer
+public class DeleteMethodDoer extends DeleteAnnotationDoer
 {
 	@Override
 	public boolean isAvailable()
 	{
 		if(getSelectedMethod() == null)
 			return false;
-		
+
 		return true;
 	}
 
@@ -41,21 +43,43 @@ public class DeleteMethodDoer extends ObjectsDoer
 	{
 		if(!isAvailable())
 			return;
-		
-		DeleteActivityDoer.deleteTaskWithUserConfirmation(getProject(), getSelectionHierarchy(), getSelectedMethod());
 
+		super.doIt();
 	}
 
-	public Task getSelectedMethod()
+	@Override
+	protected BaseObject getParent(BaseObject annotationToDelete)
+	{
+		return getReferrerParent(annotationToDelete);
+	}
+
+	@Override
+	public String getAnnotationIdListTag()
+	{
+		return Indicator.TAG_METHOD_IDS;
+	}
+
+	@Override
+	public int getAnnotationType()
+	{
+		return MethodSchema.getObjectType();
+	}
+
+	@Override
+	public String[] getDialogText()
+	{
+		return new String[] { EAM.text("Are you sure you want to delete this Method?"),};
+	}
+
+	private Method getSelectedMethod()
 	{
 		if(getSelectedHierarchies().length != 1)
 			return null;
-		
-		ORef methodRef = getSelectedHierarchies()[0].getRefForType(TaskSchema.getObjectType());
+
+		ORef methodRef = getSelectedHierarchies()[0].getRefForType(MethodSchema.getObjectType());
 		if(methodRef == null || methodRef.isInvalid())
 			return null;
-		
-		return Task.find(getProject(), methodRef);
-	}
 
+		return Method.find(getProject(), methodRef);
+	}
 }

@@ -81,7 +81,6 @@ abstract public class AbstractTreeRebuilder
 		}
 	}
 
-
 	protected ORefList getResourceAssignmentsForParent(AbstractPlanningTreeNode parentNode) throws Exception
 	{
 		return parentNode.getObject().getResourceAssignmentRefs();
@@ -169,6 +168,7 @@ abstract public class AbstractTreeRebuilder
 			GoalSchema.getObjectType(),
 			ObjectiveSchema.getObjectType(),
 			IndicatorSchema.getObjectType(),
+			MethodSchema.getObjectType(),
 			TaskSchema.getObjectType(),
 			
 			MeasurementSchema.getObjectType(),

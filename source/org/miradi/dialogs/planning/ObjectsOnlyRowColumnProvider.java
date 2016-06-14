@@ -20,25 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning;
 
 import org.miradi.main.EAM;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
-import org.miradi.objects.Factor;
-import org.miradi.objects.Goal;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.Measurement;
-import org.miradi.objects.Objective;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Target;
-import org.miradi.objects.ViewData;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.MeasurementSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
 
 public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
@@ -100,7 +84,7 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 		if (propertyName.equals(IndicatorSchema.OBJECT_NAME))
 			return ObjectsOnlyRowColumnProvider.getIndicatorColumns();
 	
-		if (propertyName.equals(TaskSchema.METHOD_NAME))
+		if (propertyName.equals(MethodSchema.OBJECT_NAME))
 			return ObjectsOnlyRowColumnProvider.getMethodColumns();
 	
 		if (propertyName.equals(TaskSchema.OBJECT_NAME))
@@ -174,7 +158,7 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 	private static CodeList getMethodColumns()
 	{
 		String[] list = {
-				BaseObject.PSEUDO_TAG_TIMEFRAME_TOTAL,
+				Method.TAG_DETAILS,
 				};
 	
 		return new CodeList(list);

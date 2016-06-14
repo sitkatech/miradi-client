@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import java.text.ParseException;
-import java.util.Vector;
-
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
@@ -30,20 +27,17 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Task;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.schemas.DiagramFactorSchema;
-import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
+
+import java.text.ParseException;
+import java.util.Vector;
 
 public class DeleteActivityDoer extends ObjectsDoer
 {
@@ -87,12 +81,12 @@ public class DeleteActivityDoer extends ObjectsDoer
 		deleteTask(project, selectionHierarchy, selectedTask);
 	}
 	
-	private static void deleteTask(Project project, ORefList selectionHierachy, Task selectedTask) throws CommandFailedException
+	private static void deleteTask(Project project, ORefList selectionHierarchy, Task selectedTask) throws CommandFailedException
 	{
 		project.executeCommand(new CommandBeginTransaction());
 		try
 		{
-			deleteTaskTree(project, selectionHierachy, selectedTask);
+			deleteTaskTree(project, selectionHierarchy, selectedTask);
 		}
 		catch(Exception e)
 		{
@@ -129,7 +123,6 @@ public class DeleteActivityDoer extends ObjectsDoer
 		CommandVector commandsToDeleteTasks = new CommandVector();
 		commandsToDeleteTasks.addAll(buildDeleteDiagramFactors(project, selectionHierarchy, task));
 		commandsToDeleteTasks.addAll(buildRemoveCommandsForActivityIds(project, selectionHierarchy, task));
-		commandsToDeleteTasks.addAll(buildRemoveCommandsForMethodIds(project, selectionHierarchy, task));
 		commandsToDeleteTasks.addAll(buildRemoveCommandsForTaskIds(project, task));
 		commandsToDeleteTasks.addAll(DeleteAnnotationDoer.buildCommandsToUntag(project, task.getRef()));
 		
@@ -142,14 +135,6 @@ public class DeleteActivityDoer extends ObjectsDoer
 			return new CommandVector();
 		
 		return buildRemoveCommands(project, StrategySchema.getObjectType(), selectionHierarchy, Strategy.TAG_ACTIVITY_IDS, task);
-	}
-	
-	private static CommandVector buildRemoveCommandsForMethodIds(Project project, ORefList selectionHierarchy, Task task) throws Exception
-	{
-		if (! task.isMethod())
-			return new CommandVector();
-		
-		return buildRemoveCommands(project, IndicatorSchema.getObjectType(), selectionHierarchy, Indicator.TAG_METHOD_IDS, task);
 	}
 	
 	private static CommandVector buildRemoveCommandsForTaskIds(Project project, Task task) throws ParseException

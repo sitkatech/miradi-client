@@ -91,10 +91,8 @@ public class TestOwnedBaseObjects extends TestCaseWithProject
 		Strategy strategy = getProject().createStrategy();
 		Indicator indicator = getProject().createIndicator(strategy);
 		ORef progressReportRef = getProject().addProgressReport(indicator).getRef();
-		ORef resourceAssignmentRef = getProject().addResourceAssignment(indicator).getRef();
-		ORef expenseAssignmentRef = getProject().addExpenseWithValue(indicator).getRef();
-		
-		verifyOwnedObjects(indicator, new ORefList(new ORef[]{progressReportRef, resourceAssignmentRef, expenseAssignmentRef}));
+
+		verifyOwnedObjects(indicator, new ORefList(new ORef[]{progressReportRef}));
 	}
 	
 	public void testKeaOwnedObjects() throws Exception

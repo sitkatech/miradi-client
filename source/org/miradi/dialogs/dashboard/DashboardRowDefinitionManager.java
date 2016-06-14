@@ -74,7 +74,6 @@ public class DashboardRowDefinitionManager
 		{
 			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 of %2 Indicators have Methods."), Dashboard.PSEUDO_INDICATORS_WITH_METHODS_COUNT, Dashboard.PSEUDO_INDICATORS_COUNT));
 			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 Total methods created"), Dashboard.PSEUDO_METHODS_COUNT));
-			rowDefinitions.add(new DashboardRowDefinition(EAM.text("%1 of %2 Methods and Tasks have assignments"), Dashboard.PSEUDO_METHODS_AND_TASKS_WITH_ASSIGNMENT_COUNT, Dashboard.PSEUDO_METHODS_AND_TASKS_COUNT));
 		}
 		
 		if (code.equals(OpenStandardsImplementActionsAndMonitoringQuestion.DEVELOP_PROJECT_TIMELINE_OR_CALENDAR_CODE))

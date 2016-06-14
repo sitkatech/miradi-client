@@ -26,7 +26,7 @@ import org.miradi.schemas.FieldSchemaRelevancyOverrideSetData;
 
 import java.util.Vector;
 
-public class IndicatorSchemaWriter extends BaseObjectSchemaWriterWithCalculatedCostsElement
+public class IndicatorSchemaWriter extends BaseObjectSchemaWriterWithTaxonomyClassificationContainer
 {
 	public IndicatorSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{

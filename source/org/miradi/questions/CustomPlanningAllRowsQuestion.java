@@ -65,7 +65,6 @@ public class CustomPlanningAllRowsQuestion extends AbstractCustomPlanningRowsQue
 	{
 		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
 		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.ACTIVITY_NAME, new ActivityIcon()));
-		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.METHOD_NAME, new MethodIcon()));
 		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.OBJECT_NAME, new TaskIcon()));
 
 		return choiceItems;

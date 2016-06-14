@@ -17,23 +17,22 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.umbrella.doers;
+package org.miradi.dialogs.indicator;
 
-import org.miradi.dialogs.indicator.MethodListManagementPanel;
-import org.miradi.dialogs.base.ObjectListManagementPanel;
-import org.miradi.main.EAM;
-import org.miradi.schemas.IndicatorSchema;
+import org.miradi.actions.ActionCreateMethod;
+import org.miradi.actions.ActionDeleteMethod;
+import org.miradi.dialogs.base.ObjectListTablePanel;
+import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.views.umbrella.StaticPicker;
 
-public class EditMethodsDoer extends AbstractPopUpEditDoer
+public class MethodListTablePanel extends ObjectListTablePanel
 {
-	public EditMethodsDoer()
+	public MethodListTablePanel(MainWindow mainWindowToUse, ORefList selectedHierarchy)
 	{
-		super(IndicatorSchema.getObjectType(), EAM.text("Edit Methods"));
-	}
-
-	@Override
-	protected ObjectListManagementPanel createManagementPanel() throws Exception
-	{
-		return MethodListManagementPanel.create(getMainWindow(), getPicker().getSelectionHierarchy());
+		super(mainWindowToUse, new MethodListTableModel(mainWindowToUse.getProject(), selectedHierarchy), new StaticPicker(selectedHierarchy));
+		
+		addObjectActionButton(ActionCreateMethod.class, getParentPicker());
+		addUnknownTypeOfButton(ActionDeleteMethod.class);
 	}
 }

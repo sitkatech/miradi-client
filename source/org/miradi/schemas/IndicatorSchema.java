@@ -39,7 +39,7 @@ public class IndicatorSchema extends BaseObjectSchema
 		
 		createFieldSchemaSingleLineUserText(Indicator.TAG_SHORT_LABEL);
 		createFieldSchemaChoice(Indicator.TAG_PRIORITY, PriorityRatingQuestion.class);
-		createFieldSchemaIdList(Indicator.TAG_METHOD_IDS, TaskSchema.getObjectType());
+		createFieldSchemaIdList(Indicator.TAG_METHOD_IDS, MethodSchema.getObjectType());
 		createFieldSchemaCodeToUserStringMap(Indicator.TAG_THRESHOLDS_MAP);
 		createFieldSchemaCodeToUserStringMap(Indicator.TAG_THRESHOLD_DETAILS_MAP);
 		createFieldSchemaChoice(Indicator.TAG_RATING_SOURCE, RatingSourceQuestion.class);
@@ -47,11 +47,9 @@ public class IndicatorSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(Indicator.TAG_DETAIL);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_COMMENTS);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
-		createFieldSchemaOptionalRef(Indicator.TAG_ASSIGNED_LEADER_RESOURCE);
 		createFieldSchemaSingleLineUserText(Indicator.TAG_UNIT);
         createOwnedFieldSchemaReflist(Indicator.TAG_FUTURE_STATUS_REFS, FUTURE_STATUS);
 		createFieldSchemaRelevancyOverrideSet(Indicator.TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
-		createBudgetSchemas();
 		createProgressReportSchema();
 		createTaxonomyClassificationSchemaField();
 		

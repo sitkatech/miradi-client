@@ -29,7 +29,7 @@ import org.miradi.forms.objects.IndicatorPropertiesForm;
 import org.miradi.forms.objects.IntermediateResultsPropertiesForm;
 import org.miradi.forms.objects.KeyEcologicalAttributePropertiesForm;
 import org.miradi.forms.objects.MeasurementPropertiesForm;
-import org.miradi.forms.objects.MethodPropetiesForm;
+import org.miradi.forms.objects.MethodPropertiesForm;
 import org.miradi.forms.objects.ObjectivePropertiesForm;
 import org.miradi.forms.objects.OrganizationPropertiesForm;
 import org.miradi.forms.objects.ResourcePropertiesForm;
@@ -41,25 +41,7 @@ import org.miradi.forms.objects.ThreatPropertiesForm;
 import org.miradi.forms.objects.ThreatReductionResultPropertiesForm;
 import org.miradi.forms.objects.ViabilityIndicatorPropertiesForm;
 import org.miradi.forms.objects.ViabilityProjectForm;
-import org.miradi.objects.AccountingCode;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
-import org.miradi.objects.FundingSource;
-import org.miradi.objects.Goal;
-import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.IntermediateResult;
-import org.miradi.objects.KeyEcologicalAttribute;
-import org.miradi.objects.Measurement;
-import org.miradi.objects.Objective;
-import org.miradi.objects.Organization;
-import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.ProjectResource;
-import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
-import org.miradi.objects.ThreatReductionResult;
+import org.miradi.objects.*;
 
 public class ViabilityObjectToFormMap
 {
@@ -93,6 +75,9 @@ public class ViabilityObjectToFormMap
 		if (Task.is(objectType))
 			return getTaskForm((Task) baseObject);
 		
+		if (Method.is(objectType))
+			return getMethodForm((Method) baseObject);
+
 		if (Indicator.is(objectType))
 			return getIndicatorForm((Indicator) baseObject);
 		
@@ -123,11 +108,16 @@ public class ViabilityObjectToFormMap
 		throw new RuntimeException("Form not found for type:" + objectType);
 	}
 
+	private static MethodPropertiesForm getMethodForm(Method method)
+	{
+		return new MethodPropertiesForm();
+	}
+
 	private static PanelHolderSpec getIndicatorForm(Indicator indicator)
 	{
 		if (indicator.isViabilityIndicator())
 			return new ViabilityIndicatorPropertiesForm();
-		
+
 		return new IndicatorPropertiesForm();
 	}
 
@@ -143,10 +133,7 @@ public class ViabilityObjectToFormMap
 	{
 		if (task.isActivity())
 			return new ActivityPropertiesForm();
-		
-		if (task.isMethod())
-			return new MethodPropetiesForm();
-		
+
 		return new TaskPropertiesForm();
 	}
 }

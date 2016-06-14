@@ -19,17 +19,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
  */ 
 package org.miradi.questions;
 
-import java.util.Vector;
-
 import org.miradi.icons.ActivityIcon;
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.icons.DirectThreatIcon;
-import org.miradi.icons.MethodIcon;
 import org.miradi.icons.TaskIcon;
 import org.miradi.objects.Cause;
 import org.miradi.project.Project;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TaskSchema;
+
+import java.util.Vector;
 
 public class CustomPlanningRowsQuestion extends AbstractCustomPlanningRowsQuestion
 {
@@ -74,7 +73,6 @@ public class CustomPlanningRowsQuestion extends AbstractCustomPlanningRowsQuesti
 	{
 		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
 		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.ACTIVITY_NAME, new ActivityIcon()));
-		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.METHOD_NAME, new MethodIcon()));
 		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.OBJECT_NAME, new TaskIcon()));
 
 		return choiceItems;

@@ -20,31 +20,34 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.planning.doers;
 
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
-import org.miradi.objects.Task;
-import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.MethodSchema;
 
-public class CreateMethodNodeDoer extends AbstractCreateTaskNodeDoer
+public class CreateMethodNodeDoer extends AbstractTreeCreateAnnotationDoer
 {
 	@Override
-	protected ORef getParentRef()
+	protected boolean isCorrectOwner(BaseObject selectedObject)
 	{
-		ORefList selectionHierarchy = getSelectionHierarchy();
-		if (selectionHierarchy.isEmpty())
-			return ORef.INVALID;
-
-		ORef selectedRef = selectionHierarchy.getFirstElement();
-		if (selectedRef.isInvalid())
-			return ORef.INVALID;
-		
-		if (Indicator.is(selectedRef))
-			return selectedRef;
-		
-		if (Task.isMethod(getProject(), selectedRef))
-			return selectionHierarchy.getRefForType(IndicatorSchema.getObjectType());
-		
-		return ORef.INVALID;
+		return Indicator.is(selectedObject);
 	}
+
+	@Override
+	protected int getAnnotationType()
+	{
+		return MethodSchema.getObjectType();
+	}
+
+	@Override
+	protected String getAnnotationTag()
+	{
+		return Indicator.TAG_METHOD_IDS;
+	}
+
+	@Override
+	protected String getObjectName()
+	{
+		return MethodSchema.OBJECT_NAME;
+	}
+
 }

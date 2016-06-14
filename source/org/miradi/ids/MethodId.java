@@ -17,23 +17,14 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.umbrella.doers;
+package org.miradi.ids;
 
-import org.miradi.dialogs.indicator.MethodListManagementPanel;
-import org.miradi.dialogs.base.ObjectListManagementPanel;
-import org.miradi.main.EAM;
-import org.miradi.schemas.IndicatorSchema;
-
-public class EditMethodsDoer extends AbstractPopUpEditDoer
+public class MethodId extends ObjectId
 {
-	public EditMethodsDoer()
+
+	public MethodId(int idToUse)
 	{
-		super(IndicatorSchema.getObjectType(), EAM.text("Edit Methods"));
+		super(idToUse);
 	}
 
-	@Override
-	protected ObjectListManagementPanel createManagementPanel() throws Exception
-	{
-		return MethodListManagementPanel.create(getMainWindow(), getPicker().getSelectionHierarchy());
-	}
 }

@@ -188,12 +188,16 @@ public class MigrationTo27 extends AbstractMigration
 
 			if (rawObject.containsKey(TAG_RESOURCE_ASSIGNMENT_IDS))
 			{
-				IdList assignmentIdList = new IdList(ResourceAssignmentSchema.getObjectType(), rawObject.getData(TAG_RESOURCE_ASSIGNMENT_IDS));
-				for (int i = 0; i < assignmentIdList.size(); i++)
+				String assignmentIdListAsString = rawObject.getData(TAG_RESOURCE_ASSIGNMENT_IDS);
+				if (!assignmentIdListAsString.isEmpty())
 				{
-					BaseId assignmentId = assignmentIdList.get(i);
-					ORef assignmentRef = new ORef(ObjectType.RESOURCE_ASSIGNMENT, assignmentId);
-					assignmentList.add(assignmentRef);
+					IdList assignmentIdList = new IdList(ResourceAssignmentSchema.getObjectType(), assignmentIdListAsString);
+					for (int i = 0; i < assignmentIdList.size(); i++)
+					{
+						BaseId assignmentId = assignmentIdList.get(i);
+						ORef assignmentRef = new ORef(ObjectType.RESOURCE_ASSIGNMENT, assignmentId);
+						assignmentList.add(assignmentRef);
+					}
 				}
 			}
 
@@ -206,10 +210,14 @@ public class MigrationTo27 extends AbstractMigration
 
 			if (rawObject.containsKey(TAG_EXPENSE_ASSIGNMENT_REFS))
 			{
-				ORefList expenseRefList = new ORefList(rawObject.getData(TAG_EXPENSE_ASSIGNMENT_REFS));
-				for (ORef expenseRef : expenseRefList)
+				String expenseRefsAsString = rawObject.getData(TAG_EXPENSE_ASSIGNMENT_REFS);
+				if (!expenseRefsAsString.isEmpty())
 				{
-					expenseList.add(expenseRef);
+					ORefList expenseRefList = new ORefList(expenseRefsAsString);
+					for (ORef expenseRef : expenseRefList)
+					{
+						expenseList.add(expenseRef);
+					}
 				}
 			}
 
@@ -223,13 +231,18 @@ public class MigrationTo27 extends AbstractMigration
 			String taskIdsTag = getChildTasksTag(rawObject);
 			if (rawObject.containsKey(taskIdsTag))
 			{
-				IdList taskIdList = new IdList(TaskSchema.getObjectType(), rawObject.get(taskIdsTag));
-				for (int i = 0; i < taskIdList.size(); i++)
+				String taskIdListAsString = rawObject.get(taskIdsTag);
+				if (!taskIdListAsString.isEmpty())
 				{
-					BaseId taskId = taskIdList.get(i);
-					ORef taskRef = new ORef(ObjectType.TASK, taskId);
-					RawObject task = getRawProject().findObject(taskRef);
-					taskList.add(task);
+					IdList taskIdList = new IdList(TaskSchema.getObjectType(), taskIdListAsString);
+					for (int i = 0; i < taskIdList.size(); i++)
+					{
+						BaseId taskId = taskIdList.get(i);
+						ORef taskRef = new ORef(ObjectType.TASK, taskId);
+						RawObject task = getRawProject().findObject(taskRef);
+						if (task != null)
+							taskList.add(task);
+					}
 				}
 			}
 

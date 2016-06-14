@@ -139,6 +139,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, new KeyEcologicalAttributeSchema()));
 
 		addImporterToMap(typeToImporterMap, new IndicatorImporter(this));
+		addImporterToMap(typeToImporterMap, new MethodImporter(this, new MethodSchema()));
 		addImporterToMap(typeToImporterMap, new TimeframeImporter(this));
 		addImporterToMap(typeToImporterMap, new ResourceAssignmentImporter(this));
 		addImporterToMap(typeToImporterMap, new ExpenseAssignmentImporter(this));
@@ -413,7 +414,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 			if (Task.is(objectType))
 			{
 				elementNameToType.put(TaskSchema.ACTIVITY_NAME, TaskSchema.getObjectType());
-				elementNameToType.put(TaskSchema.METHOD_NAME, TaskSchema.getObjectType());
 				elementNameToType.put(SUB_TASK, TaskSchema.getObjectType());
 			}
 		}

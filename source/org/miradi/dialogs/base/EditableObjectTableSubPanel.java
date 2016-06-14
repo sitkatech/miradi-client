@@ -47,7 +47,7 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 		
 		setLayout(new OneColumnGridLayout());
 		
-		rowCountLanel = new PanelTitleLabel();
+		rowCountLabel = new PanelTitleLabel();
 		createTable();
 		addComponents();
 		updateFieldsFromProject();
@@ -94,7 +94,7 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 		objectTable.stopCellEditing();
 		objectTableModel.setObjectRefs(new ORefList(hierarchyToSelectedRef));
 		objectTableModel.fireTableDataChanged();		
-		rowCountLanel.setText(getPanelDescription() + ": " + objectTableModel.getRowCount());
+		rowCountLabel.setText(getPanelDescription() + ": " + objectTableModel.getRowCount());
 		objectTable.sortTable();
 	}
 	
@@ -122,7 +122,7 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	{
 		MiradiScrollPane scroller = new MiradiScrollPane(objectTable);
 		add(createButtonBar(), BorderLayout.PAGE_START);
-		add(rowCountLanel);
+		add(rowCountLabel);
 		add(scroller, BorderLayout.CENTER);
 	}
 	
@@ -166,7 +166,7 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 		private DynamicWidthEditableObjectTable table;
 	}
 	
-	private PanelTitleLabel rowCountLanel;
+	private PanelTitleLabel rowCountLabel;
 	protected EditableObjectRefsTableModel objectTableModel;
 	protected DynamicWidthEditableObjectTable objectTable;
 }

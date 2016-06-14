@@ -149,14 +149,6 @@ public class TestTask extends AbstractObjectWithBudgetDataToDeleteTestCase
 		assertEquals("modified the actual list?", 2, parent.getSubtaskIdList().size());
 	}
 	
-	public void testGetChildTaskTypeCode()
-	{
-		assertEquals(TaskSchema.ACTIVITY_NAME, Task.getChildTaskTypeCode(StrategySchema.getObjectType()));
-		assertEquals(TaskSchema.METHOD_NAME, Task.getChildTaskTypeCode(IndicatorSchema.getObjectType()));
-		assertEquals(TaskSchema.OBJECT_NAME, Task.getChildTaskTypeCode(TaskSchema.getObjectType()));
-		assertEquals(TaskSchema.OBJECT_NAME, Task.getChildTaskTypeCode(AccountingCodeSchema.getObjectType()));
-	}
-
 	private Task createBasicTree() throws Exception
 	{
 		Task parent = new Task(getObjectManager(), new FactorId(1));

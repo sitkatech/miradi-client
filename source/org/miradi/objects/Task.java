@@ -110,7 +110,6 @@ public class Task extends Factor
 	{
 		return new int[] {
 			StrategySchema.getObjectType(),
-			IndicatorSchema.getObjectType(),
 			TaskSchema.getObjectType(),
 		};
 	}
@@ -128,7 +127,7 @@ public class Task extends Factor
 	}
 	
 	//NOTE: this is not testing if this is a Task object...
-	//but if it is a user level task as opposed to a method or an activity
+	//but if it is a user level task as opposed to an activity
 	public boolean isTask()
 	{
 		return is(TaskSchema.OBJECT_NAME);
@@ -146,11 +145,6 @@ public class Task extends Factor
 		return is(TaskSchema.ACTIVITY_NAME) && getBooleanData(TAG_IS_MONITORING_ACTIVITY);
 	}
 
-	public boolean isMethod()
-	{
-		return is(TaskSchema.METHOD_NAME);
-	}
-	
 	private boolean is(final String taskObjectTypeName)
 	{
 		ensureCachedTypeStringIsValid();
@@ -178,13 +172,6 @@ public class Task extends Factor
 			return;
 		}
 		
-		ORefList indicatorReferrers = findObjectsThatReferToUs(IndicatorSchema.getObjectType());
-		if(indicatorReferrers.size() > 0)
-		{
-			cachedObjectTypeName = TaskSchema.METHOD_NAME;
-			return;
-		}
-
 		// NOTE: We should be able to do this test first, but in Marine Example 1.0.7
 		// there are Activities that somehow have owners
 		ORef ownerRef = getOwnerRef();
@@ -290,41 +277,6 @@ public class Task extends Factor
 		return calculateRelevantRefList(relevantIndicators, relevantOverrides);
 	}
 
-	public boolean hasSubTasks()
-	{
-		return getSubtaskCount() > 0;
-	}
-		
-	public ORefSet getTaskResources()
-	{
-		ORefSet resourceRefs = new ORefSet();
-		ORefList assignmentRefs = getResourceAssignmentRefs();
-		for (int i = 0; i < assignmentRefs.size(); ++i)
-		{
-			ResourceAssignment assignment = (ResourceAssignment.find(getProject(), assignmentRefs.get(i)));
-			resourceRefs.add(assignment.getResourceRef());	
-		}
-		
-		return resourceRefs;
-	}
-	
-	public String getParentTypeCode()
-	{
-		if(isActivity())
-			return StrategySchema.OBJECT_NAME;
-		
-		if(isMethod())
-			return IndicatorSchema.OBJECT_NAME;
-		
-		Task owner = (Task)getOwner();
-		if(owner.isActivity())
-			return TaskSchema.ACTIVITY_NAME;
-		if(owner.isMethod())
-			return TaskSchema.METHOD_NAME;
-		
-		return TaskSchema.OBJECT_NAME;
-	}
-	
 	@Override
 	public ORefList getChildTaskRefs()
 	{
@@ -352,9 +304,6 @@ public class Task extends Factor
 		if(isTask())
 			return TaskSchema.getObjectType();
 		
-		if(isMethod())
-			return IndicatorSchema.getObjectType();
-		
 		if(isActivity())
 			return StrategySchema.getObjectType();
 		
@@ -378,9 +327,6 @@ public class Task extends Factor
 		if(parentType == StrategySchema.getObjectType())
 			return TaskSchema.ACTIVITY_NAME;
 		
-		if(parentType == IndicatorSchema.getObjectType())
-			return TaskSchema.METHOD_NAME;
-		
 		return TaskSchema.OBJECT_NAME;
 	}
 	
@@ -394,19 +340,11 @@ public class Task extends Factor
 				
 			case ObjectType.STRATEGY:
 				return Strategy.TAG_ACTIVITY_IDS;
-				
-			case ObjectType.INDICATOR:
-				return Indicator.TAG_METHOD_IDS;
 		}
 		
 		throw new Exception("getTaskIdsTag called for non-task container type " + type);
 	}
-	
-	public static boolean isMethod(Project projectToUse, ORef ref)
-	{
-		return is(projectToUse, ref, TaskSchema.METHOD_NAME);	
-	}
-	
+
 	public static boolean isActivity(Project projectToUse, ORef ref)
 	{
 		return is(projectToUse, ref, TaskSchema.ACTIVITY_NAME);

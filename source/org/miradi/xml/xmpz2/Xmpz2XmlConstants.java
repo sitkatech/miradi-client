@@ -103,7 +103,7 @@ public interface Xmpz2XmlConstants
 	public static final String INDICATOR = IndicatorSchema.OBJECT_NAME;
 	public static final String ACTIVITY = TaskSchema.ACTIVITY_NAME;
 	public static final String ORDERED_ACTIVITY_IDS = "OrderedActivityIds";
-	public static final String METHOD = TaskSchema.METHOD_NAME;
+	public static final String METHOD = MethodSchema.OBJECT_NAME;
 	public static final String TASK = TaskSchema.OBJECT_NAME;
 	public static final String SUB_TASK = "SubTask";
 	public static final String ASSIGNED_LEADER_RESOURCE_ID = "AssignedLeaderResourceId";

@@ -542,9 +542,6 @@ abstract public class BaseObject
 
 	public static boolean canOwnPlanningObjects(ORef ref)
 	{
-		if (Indicator.is(ref))
-			return true;
-
 		if (Strategy.is(ref))
 			return true;
 

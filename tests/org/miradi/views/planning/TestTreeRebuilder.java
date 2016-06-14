@@ -506,9 +506,10 @@ public class TestTreeRebuilder extends TestCaseWithProject
 		
 		objectiveId = project.addItemToObjectiveList(diagramCause.getWrappedORef(), Cause.TAG_OBJECTIVE_IDS);
 		indicatorId = project.addItemToIndicatorList(diagramCause.getWrappedORef(), Cause.TAG_INDICATOR_IDS);
-		taskId = project.addItemToIndicatorList(indicatorId, TaskSchema.getObjectType(), Indicator.TAG_METHOD_IDS);
+		methodId = project.addItemToIndicatorList(indicatorId, MethodSchema.getObjectType(), Indicator.TAG_METHOD_IDS);
+
 		activityId = project.addActivityToStrategyList(diagramStrategy1.getWrappedORef(), Strategy.TAG_ACTIVITY_IDS);
-		subtaskId = project.addSubtaskToActivity(getTask().getRef(), Task.TAG_SUBTASK_IDS);
+		subtaskId = project.addSubtaskToActivity(getActivity().getRef(), Task.TAG_SUBTASK_IDS);
 		
 		IdList activityIds = new IdList(TaskSchema.getObjectType(), new BaseId[] {activityId});
 		project.setObjectData(diagramStrategy2.getWrappedORef(), Strategy.TAG_ACTIVITY_IDS, activityIds.toString());
@@ -553,17 +554,12 @@ public class TestTreeRebuilder extends TestCaseWithProject
 		return (Indicator) getProject().findObject(new ORef(IndicatorSchema.getObjectType(), indicatorId));
 	}
 	
-	public Task getTask()
+	public Task getActivity()
 	{
-		return (Task) getProject().findObject(new ORef(TaskSchema.getObjectType(), taskId));
-	}
-	
-	public Task getSubtask()
-	{
-		return (Task) getProject().findObject(new ORef(TaskSchema.getObjectType(), subtaskId));
+		return (Task) getProject().findObject(new ORef(TaskSchema.getObjectType(), activityId));
 	}
 
-	private DiagramFactor diagramStrategy1;
+    private DiagramFactor diagramStrategy1;
 	private DiagramFactor diagramStrategy2;
 	private DiagramFactor diagramCause;
 	private BaseId objectiveId;
@@ -571,4 +567,5 @@ public class TestTreeRebuilder extends TestCaseWithProject
 	private BaseId indicatorId;
 	private BaseId subtaskId;
 	private BaseId taskId;
+	private BaseId methodId;
 }

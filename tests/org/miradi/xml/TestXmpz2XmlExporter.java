@@ -223,9 +223,6 @@ public class TestXmpz2XmlExporter extends TestCaseForXmpz2ExportAndImport
 			ORefList taskRefs = projectToImportInto.getAllRefsForType(ObjectType.TASK);
 			verifyCalculatedCostsElement(projectToImportInto, xmlImporter, new TaskImporter(xmlImporter), taskRefs.size());
 
-			ORefList indicatorRefs = projectToImportInto.getAllRefsForType(ObjectType.INDICATOR);
-			verifyCalculatedCostsElement(projectToImportInto, xmlImporter, new IndicatorImporter(xmlImporter), indicatorRefs.size());
-
 			ORefList strategyRefs = projectToImportInto.getAllRefsForType(ObjectType.STRATEGY);
 			verifyCalculatedCostsElement(projectToImportInto, xmlImporter, new StrategyImporter(xmlImporter), strategyRefs.size());
 		}
