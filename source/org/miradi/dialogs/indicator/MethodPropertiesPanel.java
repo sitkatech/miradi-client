@@ -42,6 +42,8 @@ public class MethodPropertiesPanel extends ObjectDataInputPanelWithSections
 		addField(createMultilineField(MethodSchema.getObjectType(), Method.TAG_DETAILS));
 		addField(createMultilineField(MethodSchema.getObjectType(), Method.TAG_COMMENTS));
 
+		addField(createStringField(MethodSchema.getObjectType(), Method.TAG_URL));
+
 		updateFieldsFromProject();
 	}
 

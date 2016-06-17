@@ -101,4 +101,5 @@ public class Method extends BaseObject
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_DETAILS = "Details";
 	public static final String TAG_COMMENTS = "Comments";
+	public static final String TAG_URL = "Url";
 }

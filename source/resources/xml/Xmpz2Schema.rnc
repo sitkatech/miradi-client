@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Jun 16 13:58:15 BST 2016 $
+# $LastChangedDate: Fri Jun 17 15:26:20 BST 2016 $
 # $LastChangedRevision: 236 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/236'
 start = ConservationProject.element
@@ -804,7 +804,8 @@ Method.element = element miradi:Method
   element miradi:MethodComments { formatted_text }? &
   element miradi:MethodDetails { formatted_text }? &
   element miradi:MethodIdentifier { text }? &
-  element miradi:MethodName { formatted_text }?
+  element miradi:MethodName { formatted_text }? &
+  element miradi:MethodUrl { text }?
 }
 
 SimpleThreatRatingPool.element = element miradi:SimpleThreatRatingPool { SimpleThreatRating.element* }

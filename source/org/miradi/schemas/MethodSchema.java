@@ -38,6 +38,7 @@ public class MethodSchema extends BaseObjectSchema
 		createFieldSchemaSingleLineUserText(Method.TAG_SHORT_LABEL);
 		createFieldSchemaMultiLineUserText(Method.TAG_DETAILS);
 		createFieldSchemaMultiLineUserText(Method.TAG_COMMENTS);
+		createFieldSchemaSingleLineUserText(Method.TAG_URL);
 	}
 
 	public static int getObjectType()
