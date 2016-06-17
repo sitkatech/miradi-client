@@ -101,11 +101,14 @@ public class LeaderAssignedEnsurer implements CommandExecutedListener
 
 	private void ensureLeaderIsLegal(ORef objectContainingLeaderRef) throws Exception
 	{
-		BaseObject objectContainingLeader = BaseObject.find(getProject(), objectContainingLeaderRef);
-		ORef currentLeaderRef = objectContainingLeader.getAssignedLeaderResourceRef();
-		ORefSet resourceRefs = objectContainingLeader.getTotalTimePeriodCostsMapForAssignments().getAllProjectResourceRefs();
-		if (!resourceRefs.contains(currentLeaderRef))
-			clearLeaderResourceRef(objectContainingLeader);
+		if (BaseObject.canOwnPlanningObjects(objectContainingLeaderRef))
+		{
+			BaseObject objectContainingLeader = BaseObject.find(getProject(), objectContainingLeaderRef);
+			ORef currentLeaderRef = objectContainingLeader.getAssignedLeaderResourceRef();
+			ORefSet resourceRefs = objectContainingLeader.getTotalTimePeriodCostsMapForAssignments().getAllProjectResourceRefs();
+			if (!resourceRefs.contains(currentLeaderRef))
+				clearLeaderResourceRef(objectContainingLeader);
+		}
 	}
 
 	private void clearLeaderResourceRef(BaseObject objectToClearLeaderFrom) throws Exception

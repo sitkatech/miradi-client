@@ -20,11 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
-import org.miradi.migrations.forward.MigrationTo20;
-import org.miradi.migrations.forward.MigrationTo21;
+import org.miradi.migrations.forward.MigrationTo34;
 import org.miradi.objectdata.CodeToCodeListMapData;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.Strategy;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
@@ -32,62 +32,61 @@ import org.miradi.utils.CodeList;
 import java.util.Vector;
 
 
-public class TestMigrationTo21 extends AbstractTestMigration
+public class TestMigrationTo34 extends AbstractTestMigration
 {
-	public TestMigrationTo21(String name)
+	public TestMigrationTo34(String name)
 	{
 		super(name);
 	}
 
 	public void testTableSettingsFieldsChangedByMigration() throws Exception
 	{
+		Strategy strategy = getProject().createStrategy();
+		getProject().addTimeframe(strategy);
+
 		Vector<String> newColumnCodesBeingAdded = getNewColumnCodesAddedByMigration();
 		TableSettings tableSettingsBefore = getProject().createAndPopulateTableSettings();
 		CodeToCodeListMap tableSettingsMapBefore = tableSettingsBefore.getTableSettingsMap();
 
-		CodeList workPlanBudgetColumnsCodeListBefore = tableSettingsBefore.getCodeListFromTableSettingsMap(MigrationTo21.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
+		CodeList workPlanBudgetColumnsCodeListBefore = tableSettingsBefore.getCodeListFromTableSettingsMap(MigrationTo34.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 		for (String code : newColumnCodesBeingAdded)
 		{
 			assertTrue("Prior to reverse migration work plan budget columns code list should contain new columns", workPlanBudgetColumnsCodeListBefore.contains(code));
 		}
 
-		RawProject migratedProject = reverseMigrate(new VersionRange(MigrationTo20.VERSION_TO));
-		CodeToCodeListMap tableSettingsMapAfterReverseMigration = getCodeToCodeListMapData(migratedProject, tableSettingsBefore.getRef(), MigrationTo21.TAG_TABLE_SETTINGS_MAP);
+		RawProject migratedProject = reverseMigrate(new VersionRange(MigrationTo34.VERSION_TO));
 
-		assertTrue("Reverse migration should not have removed work plan budget columns code list", tableSettingsMapAfterReverseMigration.contains(MigrationTo21.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY));
+		CodeToCodeListMap tableSettingsMapAfterReverseMigration = getCodeToCodeListMapData(migratedProject, tableSettingsBefore.getRef(), MigrationTo34.TAG_TABLE_SETTINGS_MAP);
+
+		assertTrue("Reverse migration should not have removed work plan budget columns code list", tableSettingsMapAfterReverseMigration.contains(MigrationTo34.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY));
 		assertTrue("Reverse migration should not have removed any codes from table settings map", tableSettingsMapBefore.getCodes().equals(tableSettingsMapAfterReverseMigration.getCodes()));
 
-		CodeList workPlanBudgetColumnCodeListAfterReverseMigration = tableSettingsMapAfterReverseMigration.getCodeList(MigrationTo21.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
+		CodeList workPlanBudgetColumnCodeListAfterReverseMigration = tableSettingsMapAfterReverseMigration.getCodeList(MigrationTo34.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 		for (String code : newColumnCodesBeingAdded)
 		{
 			assertFalse("Reverse migration should have removed code from work plan budget columns code list", workPlanBudgetColumnCodeListAfterReverseMigration.contains(code));
 		}
 
-		assertEquals("Reverse migration should not have changed the number of codes (bar those removed)", workPlanBudgetColumnCodeListAfterReverseMigration.size() + newColumnCodesBeingAdded.size(), workPlanBudgetColumnsCodeListBefore.size());
-
 		migrateProject(migratedProject, new VersionRange(Project.VERSION_HIGH));
 
-		CodeToCodeListMap tableSettingsMapAfterForwardMigration = getCodeToCodeListMapData(migratedProject, tableSettingsBefore.getRef(), MigrationTo21.TAG_TABLE_SETTINGS_MAP);
+		CodeToCodeListMap tableSettingsMapAfterForwardMigration = getCodeToCodeListMapData(migratedProject, tableSettingsBefore.getRef(), MigrationTo34.TAG_TABLE_SETTINGS_MAP);
 
-		assertTrue("Forward migration should not have removed work plan budget columns code list", tableSettingsMapAfterForwardMigration.contains(MigrationTo21.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY));
+		assertTrue("Forward migration should not have removed work plan budget columns code list", tableSettingsMapAfterForwardMigration.contains(MigrationTo34.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY));
 		assertTrue("Forward migration should not have removed any codes from table settings map", tableSettingsMapBefore.getCodes().equals(tableSettingsMapAfterForwardMigration.getCodes()));
 
-		CodeList workPlanBudgetColumnCodeListAfterForwardMigration = tableSettingsMapAfterForwardMigration.getCodeList(MigrationTo21.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
+		CodeList workPlanBudgetColumnCodeListAfterForwardMigration = tableSettingsMapAfterForwardMigration.getCodeList(MigrationTo34.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 		for (String code : newColumnCodesBeingAdded)
 		{
 			assertTrue("Forward migration should have added code to work plan budget columns code list", workPlanBudgetColumnCodeListAfterForwardMigration.contains(code));
 		}
 
-		assertEquals("Forward migration should have changed the number of codes", workPlanBudgetColumnCodeListAfterForwardMigration.size(), workPlanBudgetColumnCodeListAfterReverseMigration.size() + newColumnCodesBeingAdded.size());
-
-		verifyFullCircleMigrations(new VersionRange(20, 21));
+		verifyFullCircleMigrations(new VersionRange(33, 34));
 	}
 
 	private Vector<String> getNewColumnCodesAddedByMigration()
 	{
 		Vector<String> result = new Vector<String>();
-		result.add(MigrationTo21.META_ASSIGNED_WHO_TOTAL);
-		result.add(MigrationTo21.META_ASSIGNED_WHEN_TOTAL);
+		result.add(MigrationTo34.META_TIMEFRAME_TOTAL);
 		return result;
 	}
 
@@ -103,12 +102,12 @@ public class TestMigrationTo21 extends AbstractTestMigration
 	@Override
 	protected int getFromVersion()
 	{
-		return MigrationTo21.VERSION_FROM;
+		return MigrationTo34.VERSION_FROM;
 	}
 	
 	@Override
 	protected int getToVersion()
 	{
-		return MigrationTo21.VERSION_TO;
+		return MigrationTo34.VERSION_TO;
 	}
 }

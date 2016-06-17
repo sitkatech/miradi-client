@@ -1573,6 +1573,36 @@ public class ProjectForTesting extends ProjectWithHelpers
 		addProgressReport(strategy);
 	}
 
+	public Timeframe addTimeframe(BaseObject baseObject) throws Exception 
+	{
+		Timeframe timeframe = createAndPopulateTimeframe();
+		IdList timeframeIds = new IdList(timeframe);
+		fillObjectUsingCommand(baseObject, BaseObject.TAG_TIMEFRAME_IDS, timeframeIds);
+		
+		return timeframe;
+	}
+
+	public Timeframe createAndPopulateTimeframe() throws Exception
+	{
+		Timeframe timeframe = createTimeframe();
+		populateTimeframe(timeframe);
+
+		return timeframe;
+	}
+
+	public Timeframe createTimeframe() throws Exception
+	{
+		ORef timeframeRef = createObject(TimeframeSchema.getObjectType());
+		return Timeframe.find(this, timeframeRef);
+	}
+
+	public void populateTimeframe(Timeframe timeframe) throws Exception
+	{
+		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
+		dateUnitEffortList.add(createDateUnitEffort(2008, 2008, 0.0));
+		fillObjectUsingCommand(timeframe, Timeframe.TAG_DATEUNIT_DETAILS, dateUnitEffortList.toString());
+	}
+	
 	public void createAndPopulateThreatReductionResult() throws Exception
 	{
 		ThreatReductionResult threatReductionResult = createThreatReductionResult();

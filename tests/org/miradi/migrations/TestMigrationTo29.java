@@ -21,8 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.migrations;
 
 import org.miradi.migrations.forward.MigrationTo29;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.schemas.TaskSchema;
 
 public class TestMigrationTo29 extends AbstractTestMigration
 {
@@ -30,20 +28,10 @@ public class TestMigrationTo29 extends AbstractTestMigration
 	{
 		super(name);
 	}
-	
-	public void testFieldsRemovedAfterReverseMigration() throws Exception
-	{
-		getProject().createAndPopulateStrategy();
 
-		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo29.VERSION_TO));
-        RawPool rawTaskPool = rawProject.getRawPoolForType(TaskSchema.getObjectType());
-        for(ORef ref : rawTaskPool.keySet())
-        {
-            RawObject rawTask = rawTaskPool.get(ref);
-            assertFalse("Field should have been removed during reverse migration?", rawTask.containsKey(MigrationTo29.TAG_IS_MONITORING_ACTIVITY));
-        }
-	}
-	
+	// note: since work plan data is subsequently removed from indicators / methods, we won't explicitly test here
+	// logic is exactly the same as what is exercised for shared tasks in migration 28
+
 	@Override
 	protected int getFromVersion()
 	{

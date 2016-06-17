@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectExporters;
 
+import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
@@ -68,7 +69,7 @@ public class ExtraDataExporter implements Xmpz2XmlConstants
 		for (int index = 0; index < fieldTags.length; ++index)
 		{
 			String fieldTag = fieldTags[index];
-			String extraDataItemName = baseObject.getTypeName() + TYPE_ID_TAG_SPLIT_TOKEN + baseObject.getId() + TYPE_ID_TAG_SPLIT_TOKEN + fieldTag;
+			String extraDataItemName = getExtraDataItemName(baseObject.getTypeName(), baseObject.getId(), fieldTag);
 			String data = baseObject.getData(fieldTag);
 			if (data.length() > 0)
 			{
@@ -80,7 +81,12 @@ public class ExtraDataExporter implements Xmpz2XmlConstants
 			}
 		}
 	}
-	
+
+	public static String getExtraDataItemName(String typeName, BaseId objectId, String fieldTag)
+	{
+		return typeName + TYPE_ID_TAG_SPLIT_TOKEN + objectId + TYPE_ID_TAG_SPLIT_TOKEN + fieldTag;
+	}
+
 	private Xmpz2XmlWriter getWriter()
 	{
 		return out;
@@ -93,5 +99,5 @@ public class ExtraDataExporter implements Xmpz2XmlConstants
 	
 	private Project project;
 	private Xmpz2XmlWriter out;
-	private static final String TYPE_ID_TAG_SPLIT_TOKEN = ".";
+	public static final String TYPE_ID_TAG_SPLIT_TOKEN = ".";
 }

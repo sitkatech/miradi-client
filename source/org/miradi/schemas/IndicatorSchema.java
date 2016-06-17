@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.RatingSourceQuestion;
@@ -51,9 +52,13 @@ public class IndicatorSchema extends BaseObjectSchema
         createOwnedFieldSchemaReflist(Indicator.TAG_FUTURE_STATUS_REFS, FUTURE_STATUS);
 		createFieldSchemaRelevancyOverrideSet(Indicator.TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
 		createProgressReportSchema();
+
+		// TODO: fields to be deprecated in post 4.4 release...only here to support migrations
+		createOwnedFieldSchemaIdList(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignmentSchema.getObjectType());
+		createOwnedFieldSchemaReflist(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT);
+
 		createTaxonomyClassificationSchemaField();
-		
-		
+
 		createPseudoFieldSchemaString(Indicator.PSEUDO_TAG_TARGETS);
 		createPseudoFieldSchemaString(Indicator.PSEUDO_TAG_DIRECT_THREATS);
 		createPseudoFieldSchemaString(Indicator.PSEUDO_TAG_STRATEGIES);

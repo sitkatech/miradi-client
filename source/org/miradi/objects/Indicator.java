@@ -488,7 +488,7 @@ public class Indicator extends BaseObject implements StrategyActivityRelevancyIn
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_PRIORITY = "Priority";
 
-	public final static String TAG_METHOD_IDS = "TaskIds";
+	public final static String TAG_METHOD_IDS = "MethodIds";
 	public static final String TAG_THRESHOLDS_MAP = "IndicatorThresholds";
 	public static final String TAG_THRESHOLD_DETAILS_MAP = "ThresholdDetails";
 	public static final String TAG_RATING_SOURCE = "RatingSource";

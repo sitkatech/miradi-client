@@ -16,60 +16,31 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/
+*/ 
 
 package org.miradi.migrations.forward;
 
 import org.miradi.main.EAM;
-import org.miradi.migrations.AbstractMigration;
-import org.miradi.migrations.AbstractMigrationORefVisitor;
-import org.miradi.migrations.MigrationResult;
+import org.miradi.migrations.NewlyAddedFieldsMigration;
 import org.miradi.migrations.RawProject;
-import org.miradi.objecthelpers.ObjectType;
+import org.miradi.schemas.TaskSchema;
 
-import java.util.Vector;
+import java.util.HashMap;
 
-public class MigrationTo30 extends AbstractMigration
+public class MigrationTo30 extends NewlyAddedFieldsMigration
 {
 	public MigrationTo30(RawProject rawProjectToUse)
 	{
-		super(rawProjectToUse);
+		super(rawProjectToUse, TaskSchema.getObjectType());
 	}
-
+	
 	@Override
-	protected MigrationResult reverseMigrate() throws Exception
+	protected HashMap<String, String> createFieldsToLabelMapToModify()
 	{
-		// decision made not to try and undo split of shared activities
-		return MigrationResult.createSuccess();
-	}
-
-	@Override
-	protected MigrationResult migrateForward() throws Exception
-	{
-		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
-		AbstractMigrationORefVisitor visitor;
-		Vector<Integer> typesToVisit = getTypesToMigrate();
-
-		for(Integer typeToVisit : typesToVisit)
-		{
-			visitor = new SplitSharedTasksVisitor(getRawProject(), typeToVisit, TAG_ACTIVITY_IDS);
-			visitAllORefsInPool(visitor);
-			final MigrationResult thisMigrationResult = visitor.getMigrationResult();
-			if (migrationResult == null)
-				migrationResult = thisMigrationResult;
-			else
-				migrationResult.merge(thisMigrationResult);
-		}
-
-		return migrationResult;
-	}
-
-	private Vector<Integer> getTypesToMigrate()
-	{
-		Vector<Integer> typesToMigrate = new Vector<Integer>();
-		typesToMigrate.add(ObjectType.STRATEGY);
-
-		return typesToMigrate;
+		HashMap<String, String> fieldsToAdd = new HashMap<String, String>();
+		fieldsToAdd.put(TAG_IS_MONITORING_ACTIVITY, EAM.text("Monitoring Activity Flag"));
+		
+		return fieldsToAdd;
 	}
 
 	@Override
@@ -77,21 +48,21 @@ public class MigrationTo30 extends AbstractMigration
 	{
 		return VERSION_TO;
 	}
-
+	
 	@Override
-	protected int getFromVersion()
+	protected int getFromVersion() 
 	{
 		return VERSION_FROM;
 	}
-
+	
 	@Override
 	protected String getDescription()
 	{
-		return EAM.text("This migration splits shared activities out to separate activity entries.");
+		return EAM.text("This migration adds a new field to the Activity properties.");
 	}
-
-	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
-
+	
 	public static final int VERSION_FROM = 29;
 	public static final int VERSION_TO = 30;
+
+	public final static String TAG_IS_MONITORING_ACTIVITY = "IsMonitoringActivity";
 }

@@ -23,11 +23,10 @@ package org.miradi.xml.xmpz2.objectImporters;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
-import org.miradi.schemas.ReportTemplateSchema;
-import org.miradi.schemas.TableSettingsSchema;
-import org.miradi.schemas.ViewDataSchema;
-import org.miradi.schemas.XslTemplateSchema;
+import org.miradi.objects.Indicator;
+import org.miradi.schemas.*;
 import org.miradi.utils.StringUtilities;
+import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -67,6 +66,8 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 			if (extraDataItemValueNode != null)
 			{
 				String value = extraDataItemValueNode.getTextContent();
+				if (doesFieldRequireDataToBeXmlDecoded(typeName, tag))
+					value = XmlUtilities2.getXmlDecoded(value);
 				value = StringUtilities.unescapeQuotesWithBackslash(value);
 				baseObject.setData(tag, value);
 			}
@@ -100,8 +101,22 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 		if (typeName.equals(ReportTemplateSchema.OBJECT_NAME))
 			return ReportTemplateSchema.getObjectType();
 		
+		if (typeName.equals(IndicatorSchema.OBJECT_NAME))
+			return IndicatorSchema.getObjectType();
+
 		throw new RuntimeException("Object type name is not recognized as type, " + typeName);
 	}
 
-	public static final String TYPE_ID_TAG_SPLIT_TOKEN_FOR_REGULAR_EXPRESSION = "\\.";
+	private boolean doesFieldRequireDataToBeXmlDecoded(String typeName, String tag)
+	{
+		if (typeName.equals(IndicatorSchema.OBJECT_NAME) && tag.equals(Indicator.TAG_RESOURCE_ASSIGNMENT_IDS))
+			return true;
+
+		if (typeName.equals(IndicatorSchema.OBJECT_NAME) && tag.equals(Indicator.TAG_EXPENSE_ASSIGNMENT_REFS))
+			return true;
+
+		return false;
+	}
+
+	private static final String TYPE_ID_TAG_SPLIT_TOKEN_FOR_REGULAR_EXPRESSION = "\\.";
 }

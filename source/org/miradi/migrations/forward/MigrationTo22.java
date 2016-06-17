@@ -16,59 +16,42 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/
+*/ 
 
 package org.miradi.migrations.forward;
 
 import org.miradi.main.EAM;
 import org.miradi.migrations.*;
-import org.miradi.objectdata.CodeToCodeListMapData;
-import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.TableSettings;
-import org.miradi.schemas.TimeframeSchema;
-import org.miradi.utils.CodeList;
+import org.miradi.schemas.ProjectMetadataSchema;
+import org.miradi.utils.DateUnitEffort;
+import org.miradi.utils.DateUnitEffortList;
 
+import java.util.HashMap;
+import java.util.Set;
 import java.util.Vector;
 
-public class MigrationTo22 extends AbstractMigration
+public class MigrationTo22 extends NewlyAddedFieldsMigration
 {
 	public MigrationTo22(RawProject rawProjectToUse)
 	{
-		super(rawProjectToUse);
+		super(rawProjectToUse, ProjectMetadataSchema.getObjectType());
 	}
 
 	@Override
-	protected MigrationResult migrateForward() throws Exception
+	public AbstractMigrationVisitor createMigrateForwardVisitor() throws Exception
 	{
-		return migrate(false);
+		return new AddAndPopulateDayColumnsVisibilityVisitor(type);
 	}
 
 	@Override
-	protected MigrationResult reverseMigrate() throws Exception
+	protected HashMap<String, String> createFieldsToLabelMapToModify()
 	{
-		return migrate(true);
-	}
-
-	private MigrationResult migrate(boolean reverseMigration) throws Exception
-	{
-		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
-
-		Vector<Integer> typesToVisit = getTypesToMigrate();
-
-		for(Integer typeToVisit : typesToVisit)
-		{
-			final WorkPlanBudgetColumnCodeListVisitor visitor = new WorkPlanBudgetColumnCodeListVisitor(typeToVisit, reverseMigration);
-			visitAllORefsInPool(visitor);
-			final MigrationResult thisMigrationResult = visitor.getMigrationResult();
-			if (migrationResult == null)
-				migrationResult = thisMigrationResult;
-			else
-				migrationResult.merge(thisMigrationResult);
-		}
-
-		return migrationResult;
+		HashMap<String, String> fieldsToAdd = new HashMap<String, String>();
+		fieldsToAdd.put(TAG_DAY_COLUMNS_VISIBILITY, EAM.text("Day Columns Visibility"));
+		
+		return fieldsToAdd;
 	}
 
 	@Override
@@ -76,33 +59,24 @@ public class MigrationTo22 extends AbstractMigration
 	{
 		return VERSION_TO;
 	}
-
+	
 	@Override
-	protected int getFromVersion()
+	protected int getFromVersion() 
 	{
 		return VERSION_FROM;
 	}
-
+	
 	@Override
 	protected String getDescription()
 	{
-		return EAM.text("This migration adds new default columns to the work plan customize panel.");
+		return EAM.text("This migration adds a new day columns visibility field to the Project Metadata properties.");
 	}
 
-	private Vector<Integer> getTypesToMigrate()
+	private class AddAndPopulateDayColumnsVisibilityVisitor extends AbstractMigrationVisitor
 	{
-		Vector<Integer> typesToMigrate = new Vector<Integer>();
-		typesToMigrate.add(ObjectType.TABLE_SETTINGS);
-
-		return typesToMigrate;
-	}
-
-	private class WorkPlanBudgetColumnCodeListVisitor extends AbstractMigrationORefVisitor
-	{
-		public WorkPlanBudgetColumnCodeListVisitor(int typeToVisit, boolean reverseMigration)
+		public AddAndPopulateDayColumnsVisibilityVisitor(int typeToVisit)
 		{
 			type = typeToVisit;
-			isReverseMigration = reverseMigration;
 		}
 
 		public int getTypeToVisit()
@@ -111,99 +85,70 @@ public class MigrationTo22 extends AbstractMigration
 		}
 
 		@Override
-		public MigrationResult internalVisit(ORef rawObjectRef) throws Exception
+		protected MigrationResult internalVisit(RawObject rawObject) throws Exception
 		{
-			MigrationResult migrationResult = MigrationResult.createUninitializedResult();
+			if (projectHasDayData())
+				rawObject.setData(TAG_DAY_COLUMNS_VISIBILITY, SHOW_DAY_COLUMNS_CODE);
+			else
+				rawObject.setData(TAG_DAY_COLUMNS_VISIBILITY, HIDE_DAY_COLUMNS_CODE);
 
-			RawObject rawObject = getRawProject().findObject(rawObjectRef);
-			if (rawObject != null)
+			return MigrationResult.createSuccess();
+		}
+
+		private Vector<Integer> getTypesToCheckForDayData()
+		{
+			Vector<Integer> typesToMigrate = new Vector<Integer>();
+			typesToMigrate.add(ObjectType.RESOURCE_ASSIGNMENT);
+			typesToMigrate.add(ObjectType.EXPENSE_ASSIGNMENT);
+
+			return typesToMigrate;
+		}
+
+		private boolean projectHasDayData() throws Exception
+		{
+			for (int typeToCheck : getTypesToCheckForDayData())
 			{
-				if (isReverseMigration)
-					migrationResult = removeFields(rawObject);
-				else
-					migrationResult = addFields(rawObject);
+				if (typeHasDayData(typeToCheck))
+					return true;
 			}
 
-			return migrationResult;
+			return false;
 		}
 
-		private boolean projectHasTimeframes()
+		private boolean typeHasDayData(int typeToCheck) throws Exception
 		{
-			return getRawProject().containsAnyObjectsOfType(TimeframeSchema.getObjectType());
-		}
+			if (!getRawProject().containsAnyObjectsOfType(typeToCheck))
+				return false;
 
-		private MigrationResult addFields(RawObject rawObject) throws Exception
-		{
-			MigrationResult migrationResult = MigrationResult.createSuccess();
-
-			CodeToCodeListMap tableSettingsMap = getCodeToCodeListMapData(rawObject, TAG_TABLE_SETTINGS_MAP);
-			if (tableSettingsMap.contains(WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY))
+			RawPool rawPool = getRawProject().getRawPoolForType(typeToCheck);
+			Set<ORef> refs = rawPool.keySet();
+			for(ORef ref : refs)
 			{
-				CodeList workPlanBudgetColumnCodeList = tableSettingsMap.getCodeList(WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
-
-				if (projectHasTimeframes())
+				RawObject rawObject = getRawProject().findObject(ref);
+				if (rawObject != null && rawObject.containsKey(TAG_DATEUNIT_EFFORTS))
 				{
-					if (!workPlanBudgetColumnCodeList.contains(META_TIMEFRAME_TOTAL))
-						workPlanBudgetColumnCodeList.add(META_TIMEFRAME_TOTAL);
+					DateUnitEffortList rawObjectDateUnitEffortList = new DateUnitEffortList(rawObject.get(TAG_DATEUNIT_EFFORTS));
+
+					for (int index = 0; index < rawObjectDateUnitEffortList.size(); ++index)
+					{
+						DateUnitEffort rawObjectDateUnitEffort = rawObjectDateUnitEffortList.getDateUnitEffort(index);
+						if (rawObjectDateUnitEffort.getDateUnit().isDay())
+							return true;
+					}
 				}
-
-				if (!workPlanBudgetColumnCodeList.contains(META_ASSIGNED_WHO_TOTAL))
-					workPlanBudgetColumnCodeList.add(META_ASSIGNED_WHO_TOTAL);
-				if (!workPlanBudgetColumnCodeList.contains(META_ASSIGNED_WHEN_TOTAL))
-					workPlanBudgetColumnCodeList.add(META_ASSIGNED_WHEN_TOTAL);
-
-				tableSettingsMap.putCodeList(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, workPlanBudgetColumnCodeList);
-
-				rawObject.setData(TAG_TABLE_SETTINGS_MAP, tableSettingsMap.toJsonString());
 			}
 
-			return migrationResult;
-		}
-
-		private MigrationResult removeFields(RawObject rawObject) throws Exception
-		{
-			MigrationResult migrationResult = MigrationResult.createSuccess();
-
-			CodeToCodeListMap tableSettingsMap = getCodeToCodeListMapData(rawObject, TAG_TABLE_SETTINGS_MAP);
-			if (tableSettingsMap.contains(WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY))
-			{
-				CodeList workPlanBudgetColumnCodeList = tableSettingsMap.getCodeList(WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
-
-				if (workPlanBudgetColumnCodeList.contains(META_TIMEFRAME_TOTAL))
-					workPlanBudgetColumnCodeList.removeCode(META_TIMEFRAME_TOTAL);
-				if (workPlanBudgetColumnCodeList.contains(META_ASSIGNED_WHO_TOTAL))
-					workPlanBudgetColumnCodeList.removeCode(META_ASSIGNED_WHO_TOTAL);
-				if (workPlanBudgetColumnCodeList.contains(META_ASSIGNED_WHEN_TOTAL))
-					workPlanBudgetColumnCodeList.removeCode(META_ASSIGNED_WHEN_TOTAL);
-
-				tableSettingsMap.putCodeList(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, workPlanBudgetColumnCodeList);
-
-				rawObject.setData(TAG_TABLE_SETTINGS_MAP, tableSettingsMap.toJsonString());
-			}
-
-			return migrationResult;
-		}
-
-		private CodeToCodeListMap getCodeToCodeListMapData(RawObject rawObject, String tag) throws Exception
-		{
-			String rawValue = rawObject.getData(tag);
-			CodeToCodeListMapData map = new CodeToCodeListMapData(tag);
-			if (rawValue != null)
-				map.set(rawValue);
-			return map.getStringToCodeListMap();
+			return false;
 		}
 
 		private int type;
-		private boolean isReverseMigration;
 	}
 
 	public static final int VERSION_FROM = 21;
 	public static final int VERSION_TO = 22;
 
-	public static final String TAG_TABLE_SETTINGS_MAP = "TagTableSettingsMap";
-	public static final String WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY = "WorkPlanBudgetColumnCodeListKey";
-
-	public static final String META_TIMEFRAME_TOTAL = "TimeframeDatesTotal";
-	public static final String META_ASSIGNED_WHO_TOTAL = "MetaAssignedWhoTotal";
-	public static final String META_ASSIGNED_WHEN_TOTAL = "AssignedEffortDatesTotal";
+	public static final String TAG_DATEUNIT_EFFORTS = "Details";
+	public static final String TAG_DAY_COLUMNS_VISIBILITY = "DayColumnsVisibility";
+	public static final String SHOW_DAY_COLUMNS_CODE = "";
+	public static final String HIDE_DAY_COLUMNS_CODE = "HideDayColumns";
 }

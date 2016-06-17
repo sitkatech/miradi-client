@@ -108,7 +108,7 @@ abstract public class AbstractXmlImporter
 
 	abstract protected Xmpz2MigrationResult migrate(InputStreamWithSeek projectAsInputStream) throws Exception;
 
-	private String getXmlTextForDebugging(InputStreamWithSeek projectAsInputStream) throws Exception
+	public static String getXmlTextForDebugging(InputStreamWithSeek projectAsInputStream) throws Exception
 	{
 		UnicodeReader reader = new UnicodeReader(projectAsInputStream);
 		String xml = reader.readAll();

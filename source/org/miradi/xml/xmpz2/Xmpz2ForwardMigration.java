@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Vector;
@@ -30,14 +31,24 @@ import javax.xml.parsers.DocumentBuilderFactory;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.exceptions.XmlVersionTooOldException;
+import org.miradi.ids.BaseId;
+import org.miradi.ids.IdList;
 import org.miradi.migrations.forward.MigrationTo10;
 import org.miradi.migrations.forward.MigrationTo11;
 import org.miradi.migrations.forward.MigrationTo19;
 import org.miradi.migrations.forward.MigrationTo20;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.BaseObject;
 import org.miradi.questions.DayColumnsVisibilityQuestion;
+import org.miradi.schemas.IndicatorSchema;
 import org.miradi.utils.BiDirectionalHashMap;
 import org.miradi.utils.HtmlUtilities;
+import org.miradi.utils.StringUtilities;
+import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.AbstractXmlImporter;
+import org.miradi.xml.xmpz2.objectExporters.ExtraDataExporter;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NamedNodeMap;
@@ -62,9 +73,134 @@ public class Xmpz2ForwardMigration
 		renameLeaderResourceFields(document);
 		adjustWhoWhenAssignedFields(document);
 		addDayColumnsVisibilityField(document);
+		moveIndicatorWorkPlanDataToExtraData(document);
+
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
 		return new Xmpz2MigrationResult(new StringInputStreamWithSeek(migratedXmlAsString), schemaVersionWasUpdated, xmpz2DocumentSchemaVersion);
+	}
+
+	private void moveIndicatorWorkPlanDataToExtraData(Document document) throws Exception
+	{
+		Element rootElement = document.getDocumentElement();
+
+		Node indicatorPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.INDICATOR));
+		if (indicatorPool != null)
+		{
+			NodeList indicatorNodes = indicatorPool.getChildNodes();
+			for (int index = 0; index < indicatorNodes.getLength(); ++index)
+			{
+				Node indicatorNode = indicatorNodes.item(index);
+				if (indicatorNode != null && indicatorNode.getNodeType() == Node.ELEMENT_NODE)
+				{
+					removeChildren(indicatorNode, new String[]{Xmpz2XmlConstants.INDICATOR + Xmpz2XmlConstants.TIME_PERIOD_COSTS,});
+
+					// note: work plan data is deprecated for indicators but we need to keep it around for migrations
+					// see related changes in Xmpz2ExtraDataImporter where these fields are imported
+
+					moveResourceAssignmentIdListToExtraData(document, indicatorNode);
+					moveExpenseAssignmentRefListToExtraData(document, indicatorNode);
+				}
+			}
+		}
+	}
+
+	private void moveResourceAssignmentIdListToExtraData(Document document, Node indicatorNode) throws Exception
+	{
+		String idAsString = getAttributeValue(indicatorNode, Xmpz2XmlConstants.ID);
+
+		String resourceAssignmentIdsElementName = Xmpz2XmlConstants.INDICATOR + Xmpz2XmlConstants.RESOURCE_ASSIGNMENT + Xmpz2XmlConstants.IDS;
+		String tagName = BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS;
+
+		Node resourceAssignmentIdsNode = findNode(indicatorNode.getChildNodes(), resourceAssignmentIdsElementName);
+		if (resourceAssignmentIdsNode != null && resourceAssignmentIdsNode.getNodeType() == Node.ELEMENT_NODE)
+		{
+			IdList idList = new IdList(ObjectType.RESOURCE_ASSIGNMENT);
+
+			NodeList resourceAssignmentIdNodes = resourceAssignmentIdsNode.getChildNodes();
+			for (int index = 0; index < resourceAssignmentIdNodes.getLength(); ++index)
+			{
+				Node resourceAssignmentIdNode = resourceAssignmentIdNodes.item(index);
+				if (resourceAssignmentIdNode != null && resourceAssignmentIdNode.getNodeType() == Node.ELEMENT_NODE)
+				{
+					String resourceAssignmentId = resourceAssignmentIdNode.getTextContent().trim();
+					idList.add(new BaseId(resourceAssignmentId));
+				}
+			}
+
+			String extraDataItemName = ExtraDataExporter.getExtraDataItemName(IndicatorSchema.OBJECT_NAME, new BaseId(idAsString), tagName);
+			String extraDataItemValue = idList.toJson().toString();
+			moveDataToExtraData(document, extraDataItemName, extraDataItemValue);
+
+			indicatorNode.removeChild(resourceAssignmentIdsNode);
+		}
+	}
+
+	private void moveExpenseAssignmentRefListToExtraData(Document document, Node indicatorNode) throws Exception
+	{
+		String idAsString = getAttributeValue(indicatorNode, Xmpz2XmlConstants.ID);
+
+		String expenseAssignmentIdsTagName = Xmpz2XmlConstants.INDICATOR + Xmpz2XmlConstants.EXPENSE_ASSIGNMENT + Xmpz2XmlConstants.IDS;
+		String tagName = BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS;
+
+		Node expenseAssignmentIdsNode = findNode(indicatorNode.getChildNodes(), expenseAssignmentIdsTagName);
+		if (expenseAssignmentIdsNode != null && expenseAssignmentIdsNode.getNodeType() == Node.ELEMENT_NODE)
+		{
+			ORefList refList = new ORefList();
+
+			NodeList expenseAssignmentIdNodes = expenseAssignmentIdsNode.getChildNodes();
+			for (int index = 0; index < expenseAssignmentIdNodes.getLength(); ++index)
+			{
+				Node expenseAssignmentIdNode = expenseAssignmentIdNodes.item(index);
+				if (expenseAssignmentIdNode != null && expenseAssignmentIdNode.getNodeType() == Node.ELEMENT_NODE)
+				{
+					String expenseAssignmentId = expenseAssignmentIdNode.getTextContent().trim();
+					refList.add(new ORef(ObjectType.EXPENSE_ASSIGNMENT, new BaseId(expenseAssignmentId)));
+				}
+			}
+
+			String extraDataItemName = ExtraDataExporter.getExtraDataItemName(IndicatorSchema.OBJECT_NAME, new BaseId(idAsString), tagName);
+			String extraDataItemValue = refList.toJson().toString();
+			moveDataToExtraData(document, extraDataItemName, extraDataItemValue);
+
+			indicatorNode.removeChild(expenseAssignmentIdsNode);
+		}
+	}
+
+	private void moveDataToExtraData(Document document, String extraDataItemName, String extraDataItemValue) throws Exception
+	{
+		Element rootElement = document.getDocumentElement();
+		final String alias = getNameSpaceAliasName(document.getDocumentElement());
+
+		Node extraDataNode = findNode(rootElement.getChildNodes(), Xmpz2XmlConstants.EXTRA_DATA);
+		if (extraDataNode != null && extraDataNode.getNodeType() == Node.ELEMENT_NODE)
+		{
+			NodeList extraDataSectionNodes = extraDataNode.getChildNodes();
+			for (int index = 0; index < extraDataSectionNodes.getLength(); ++index)
+			{
+				Node extraDataSectionNode = extraDataSectionNodes.item(index);
+				if (extraDataSectionNode != null && extraDataSectionNode.getNodeType() == Node.ELEMENT_NODE)
+				{
+					String owner = getAttributeValue(extraDataSectionNode, Xmpz2XmlConstants.EXTRA_DATA_SECTION_OWNER_ATTRIBUTE);
+					if (owner.equals(Xmpz2XmlConstants.MIRADI_CLIENT_EXTRA_DATA_SECTION))
+					{
+						Node newExtraDataItemNode = document.createElement(alias + COLON +  Xmpz2XmlConstants.EXTRA_DATA_ITEM);
+						((Element) newExtraDataItemNode).setAttribute(Xmpz2XmlConstants.EXTRA_DATA_ITEM_NAME, extraDataItemName);
+
+						Node newExtraDataItemValueNode = document.createElement(alias + COLON + Xmpz2XmlConstants.EXTRA_DATA_ITEM_VALUE);
+
+						extraDataItemValue = StringUtilities.escapeQuotesWithBackslash(extraDataItemValue);
+						extraDataItemValue = XmlUtilities2.getXmlEncoded(extraDataItemValue);
+						newExtraDataItemValueNode.setTextContent(extraDataItemValue);
+						newExtraDataItemNode.appendChild(newExtraDataItemValueNode);
+
+						extraDataSectionNode.appendChild(newExtraDataItemNode);
+
+						break;
+					}
+				}
+			}
+		}
 	}
 
 	private void renameTncFields(Document document) throws Exception
@@ -145,9 +281,10 @@ public class Xmpz2ForwardMigration
 		return oldToNewTagMap;
 	}
 
-	private void adjustWhoWhenAssignedFields(Document document)
+	private void adjustWhoWhenAssignedFields(Document document) throws Exception
 	{
 		Element rootElement = document.getDocumentElement();
+		final String alias = getNameSpaceAliasName(document.getDocumentElement());
 
 		Node planningViewConfigurationPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.OBJECT_TREE_TABLE_CONFIGURATION));
 
@@ -163,14 +300,36 @@ public class Xmpz2ForwardMigration
 				Node columnNamesContainer = findNode(planningViewConfiguration.getChildNodes(), Xmpz2XmlConstants.OBJECT_TREE_TABLE_CONFIGURATION + Xmpz2XmlConstants.COLUMN_CONFIGURATION_CODES + Xmpz2XmlConstants.CONTAINER_ELEMENT_TAG);
 				if (columnNamesContainer != null)
 				{
+					ArrayList<String> codesToKeep = new ArrayList<String>();
+
 					NodeList codeList = columnNamesContainer.getChildNodes();
-					for (int i = 0; i < codeList.getLength(); ++i)
+					int codeCount = codeList.getLength();
+
+					for (int i = 0; i < codeCount; ++i)
 					{
 						Node code = codeList.item(i);
-						if (code.getTextContent().equals(MigrationTo20.LEGACY_READABLE_ASSIGNED_WHEN_TOTAL_CODE))
-							code.setTextContent(MigrationTo20.READABLE_TIMEFRAME_TOTAL_CODE);
-						if (code.getTextContent().equals(MigrationTo20.LEGACY_READABLE_ASSIGNED_WHO_TOTAL_CODE))
-							columnNamesContainer.removeChild(code);
+						String codeValue = code.getTextContent().trim().replaceAll(StringUtilities.NEW_LINE, StringUtilities.EMPTY_SPACE);
+						if (codeValue.equals(MigrationTo20.LEGACY_READABLE_ASSIGNED_WHEN_TOTAL_CODE))
+							codesToKeep.add(MigrationTo20.READABLE_TIMEFRAME_TOTAL_CODE);
+						else if (codeValue.equals(MigrationTo20.LEGACY_READABLE_ASSIGNED_WHO_TOTAL_CODE));
+							// skip - will be deleted
+						else
+							codesToKeep.add(codeValue);
+					}
+
+					for (int i = 0; i < codeCount; ++i)
+					{
+						removeChildren(columnNamesContainer, new String[]{Xmpz2XmlConstants.CODE_ELEMENT_NAME,});
+					}
+
+					for (String code : codesToKeep)
+					{
+						if (!code.isEmpty())
+						{
+							Node newNode = document.createElement(alias + COLON +  Xmpz2XmlConstants.CODE_ELEMENT_NAME);
+							newNode.setTextContent(code);
+							columnNamesContainer.appendChild(newNode);
+						}
 					}
 				}
 			}
@@ -316,6 +475,13 @@ public class Xmpz2ForwardMigration
 		final String currentNamespace = getNameSpace(rootElement);
 		String readInSchemaVersionAsString = AbstractXmlImporter.getSchemaVersionToImport(currentNamespace);
 		return Integer.parseInt(readInSchemaVersionAsString);
+	}
+
+	private String getAttributeValue(Node elementNode, String attributeName)
+	{
+		NamedNodeMap attributes = elementNode.getAttributes();
+		Node attributeNode = attributes.getNamedItem(attributeName);
+		return attributeNode.getNodeValue();
 	}
 
 	public static void setNameSpaceVersion(Element rootElement, String newNameSpaceVersion) throws Exception

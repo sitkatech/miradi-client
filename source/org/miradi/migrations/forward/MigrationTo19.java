@@ -83,7 +83,7 @@ public class MigrationTo19 extends AbstractMigration
 	@Override
 	protected String getDescription()
 	{
-		return EAM.text("This migration renames the leader resource assignment field on Strategy, Task and Indicator objects.");
+		return EAM.text("This migration renames the leader resource assignment field on Strategy and Task objects.");
 	}
 
 	private Vector<Integer> getTypesToMigrate()
@@ -91,7 +91,6 @@ public class MigrationTo19 extends AbstractMigration
 		Vector<Integer> typesToMigrate = new Vector<Integer>();
 		typesToMigrate.add(ObjectType.STRATEGY);
 		typesToMigrate.add(ObjectType.TASK);
-		typesToMigrate.add(ObjectType.INDICATOR);
 
 		return typesToMigrate;
 	}

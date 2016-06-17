@@ -27,15 +27,14 @@ import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.TableSettings;
-import org.miradi.schemas.ExpenseAssignmentSchema;
-import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.schemas.TimeframeSchema;
 import org.miradi.utils.CodeList;
 
 import java.util.Vector;
 
-public class MigrationTo23 extends AbstractMigration
+public class MigrationTo34 extends AbstractMigration
 {
-	public MigrationTo23(RawProject rawProjectToUse)
+	public MigrationTo34(RawProject rawProjectToUse)
 	{
 		super(rawProjectToUse);
 	}
@@ -60,7 +59,7 @@ public class MigrationTo23 extends AbstractMigration
 
 		for(Integer typeToVisit : typesToVisit)
 		{
-			final WorkPlanBudgetRowCodeListVisitor visitor = new WorkPlanBudgetRowCodeListVisitor(typeToVisit, reverseMigration);
+			final WorkPlanBudgetColumnCodeListVisitor visitor = new WorkPlanBudgetColumnCodeListVisitor(typeToVisit, reverseMigration);
 			visitAllORefsInPool(visitor);
 			final MigrationResult thisMigrationResult = visitor.getMigrationResult();
 			if (migrationResult == null)
@@ -87,7 +86,7 @@ public class MigrationTo23 extends AbstractMigration
 	@Override
 	protected String getDescription()
 	{
-		return EAM.text("This migration adds new default rows to the work plan customize panel.");
+		return EAM.text("This migration adds a new default timeframe totals column to the work plan customize panel.");
 	}
 
 	private Vector<Integer> getTypesToMigrate()
@@ -98,9 +97,9 @@ public class MigrationTo23 extends AbstractMigration
 		return typesToMigrate;
 	}
 
-	private class WorkPlanBudgetRowCodeListVisitor extends AbstractMigrationORefVisitor
+	private class WorkPlanBudgetColumnCodeListVisitor extends AbstractMigrationORefVisitor
 	{
-		public WorkPlanBudgetRowCodeListVisitor(int typeToVisit, boolean reverseMigration)
+		public WorkPlanBudgetColumnCodeListVisitor(int typeToVisit, boolean reverseMigration)
 		{
 			type = typeToVisit;
 			isReverseMigration = reverseMigration;
@@ -128,23 +127,29 @@ public class MigrationTo23 extends AbstractMigration
 			return migrationResult;
 		}
 
+		private boolean projectHasTimeframes()
+		{
+			return getRawProject().containsAnyObjectsOfType(TimeframeSchema.getObjectType());
+		}
+
 		private MigrationResult addFields(RawObject rawObject) throws Exception
 		{
 			MigrationResult migrationResult = MigrationResult.createSuccess();
 
-			String tableIdentifier = rawObject.getData(TAG_TABLE_IDENTIFIER);
-			if (tableIdentifier.equals(WORK_PLAN_UNIQUE_TREE_TABLE_IDENTIFIER + TAB_TAG))
+			CodeToCodeListMap tableSettingsMap = getCodeToCodeListMapData(rawObject, TAG_TABLE_SETTINGS_MAP);
+			if (tableSettingsMap.contains(WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY))
 			{
-				CodeToCodeListMap tableSettingsMap = getCodeToCodeListMapData(rawObject, TAG_TABLE_SETTINGS_MAP);
+				CodeList workPlanBudgetColumnCodeList = tableSettingsMap.getCodeList(WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 
-				CodeList rowCodes = new CodeList();
-
-				rowCodes.add(RESOURCE_ASSIGNMENT);
-				rowCodes.add(EXPENSE_ASSIGNMENT);
-
-				tableSettingsMap.putCodeList(TableSettings.WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY, rowCodes);
-
-				rawObject.setData(TAG_TABLE_SETTINGS_MAP, tableSettingsMap.toJsonString());
+				if (projectHasTimeframes())
+				{
+					if (!workPlanBudgetColumnCodeList.contains(META_TIMEFRAME_TOTAL))
+					{
+						workPlanBudgetColumnCodeList.add(META_TIMEFRAME_TOTAL);
+						tableSettingsMap.putCodeList(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, workPlanBudgetColumnCodeList);
+						rawObject.setData(TAG_TABLE_SETTINGS_MAP, tableSettingsMap.toJsonString());
+					}
+				}
 			}
 
 			return migrationResult;
@@ -155,18 +160,16 @@ public class MigrationTo23 extends AbstractMigration
 			MigrationResult migrationResult = MigrationResult.createSuccess();
 
 			CodeToCodeListMap tableSettingsMap = getCodeToCodeListMapData(rawObject, TAG_TABLE_SETTINGS_MAP);
-			if (tableSettingsMap.contains(WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY))
+			if (tableSettingsMap.contains(WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY))
 			{
-				CodeList rowCodes = tableSettingsMap.getCodeList(WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY);
+				CodeList workPlanBudgetColumnCodeList = tableSettingsMap.getCodeList(WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 
-				if (rowCodes.contains(RESOURCE_ASSIGNMENT))
-					rowCodes.removeCode(RESOURCE_ASSIGNMENT);
-				if (rowCodes.contains(EXPENSE_ASSIGNMENT))
-					rowCodes.removeCode(EXPENSE_ASSIGNMENT);
-
-				tableSettingsMap.putCodeList(TableSettings.WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY, rowCodes);
-
-				rawObject.setData(TAG_TABLE_SETTINGS_MAP, tableSettingsMap.toJsonString());
+				if (workPlanBudgetColumnCodeList.contains(META_TIMEFRAME_TOTAL))
+				{
+					workPlanBudgetColumnCodeList.removeCode(META_TIMEFRAME_TOTAL);
+					tableSettingsMap.putCodeList(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, workPlanBudgetColumnCodeList);
+					rawObject.setData(TAG_TABLE_SETTINGS_MAP, tableSettingsMap.toJsonString());
+				}
 			}
 
 			return migrationResult;
@@ -185,14 +188,11 @@ public class MigrationTo23 extends AbstractMigration
 		private boolean isReverseMigration;
 	}
 
-	public static final int VERSION_FROM = 22;
-	public static final int VERSION_TO = 23;
+	public static final int VERSION_FROM = 33;
+	public static final int VERSION_TO = 34;
 
 	public static final String TAG_TABLE_SETTINGS_MAP = "TagTableSettingsMap";
-	public static final String TAG_TABLE_IDENTIFIER = "TableIdentifier";
-	public static final String WORK_PLAN_UNIQUE_TREE_TABLE_IDENTIFIER = "WorkPlanTreeTableModel";
-	public static final String TAB_TAG = "Tab_Tag";
-	public static final String WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY = "WorkPlanRowConfigurationCodeListKey";
-	public static final String RESOURCE_ASSIGNMENT = ResourceAssignmentSchema.OBJECT_NAME;
-	public static final String EXPENSE_ASSIGNMENT = ExpenseAssignmentSchema.OBJECT_NAME;
+	public static final String WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY = "WorkPlanBudgetColumnCodeListKey";
+
+	public static final String META_TIMEFRAME_TOTAL = "TimeframeDatesTotal";
 }

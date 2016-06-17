@@ -71,7 +71,7 @@ public class TestMigrationTo20 extends AbstractTestMigration
 		assertTrue("Forward migration should have added new code", codeListAfterForwardMigration.contains(MigrationTo20.META_ASSIGNED_WHO_TOTAL));
 		assertTrue("Forward migration should have added new code", codeListAfterForwardMigration.contains(MigrationTo20.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL));
 
-		verifyFullCircleMigrations(new VersionRange(20, 21));
+		verifyFullCircleMigrations(new VersionRange(19, 20));
 	}
 
 	public void testTableSettingsFieldsRenamedAfterMigration() throws Exception
@@ -139,7 +139,7 @@ public class TestMigrationTo20 extends AbstractTestMigration
 		assertTrue("Forward migration should have added new code", columnWidthMapAfterForwardMigration.contains(MigrationTo20.META_ASSIGNED_WHO_TOTAL));
 		assertTrue("Forward migration should have added new code", columnWidthMapAfterForwardMigration.contains(MigrationTo20.PSEUDO_TAG_ASSIGNED_WHEN_TOTAL));
 
-		verifyFullCircleMigrations(new VersionRange(20, 21));
+		verifyFullCircleMigrations(new VersionRange(19, 20));
 	}
 
 	private Vector<String> getNewColumnSequenceCodesAddedByMigration()

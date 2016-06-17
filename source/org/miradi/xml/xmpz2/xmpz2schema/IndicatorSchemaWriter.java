@@ -56,6 +56,15 @@ public class IndicatorSchemaWriter extends BaseObjectSchemaWriterWithTaxonomyCla
 		if (tag.equals(Indicator.TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
 			return true;
 
+		// TODO: fields to be deprecated in post 4.4 release...only here to support migrations
+        // listed here so they can be excluded from the schema
+
+		if (tag.equals(Indicator.TAG_RESOURCE_ASSIGNMENT_IDS))
+			return true;
+
+		if (tag.equals(Indicator.TAG_EXPENSE_ASSIGNMENT_REFS))
+			return true;
+
 		return super.doesFieldRequireSpecialHandling(tag);
 	}	
 }

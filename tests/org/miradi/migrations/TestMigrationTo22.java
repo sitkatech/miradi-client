@@ -20,21 +20,22 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
+import org.martus.util.MultiCalendar;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.migrations.forward.MigrationTo22;
-import org.miradi.objectdata.CodeToCodeListMapData;
-import org.miradi.objecthelpers.CodeToCodeListMap;
+import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ExpenseAssignment;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
-import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
+import org.miradi.schemas.ExpenseAssignmentSchema;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
-import org.miradi.utils.CodeList;
-
-import java.util.Vector;
+import org.miradi.utils.DateUnitEffort;
+import org.miradi.utils.DateUnitEffortList;
 
 
 public class TestMigrationTo22 extends AbstractTestMigration
@@ -44,81 +45,152 @@ public class TestMigrationTo22 extends AbstractTestMigration
 		super(name);
 	}
 
-	public void testTableSettingsFieldsChangedByMigration() throws Exception
+	public void testFieldsRemovedAfterReverseMigration() throws Exception
 	{
-		// create resource assignments so we have something to migrate
+		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo22.VERSION_TO));
+		ORef metadataRef = new ORef(ProjectMetadataSchema.getObjectType(), new BaseId(rawProject.getProjectMetadataId()));
+
+		RawObject rawMetadata = rawProject.findObject(metadataRef);
+		assertNotNull(rawMetadata);
+		assertFalse("Field should have been removed during reverse migration?", rawMetadata.containsKey(MigrationTo22.TAG_DAY_COLUMNS_VISIBILITY));
+	}
+
+	public void testFieldAddedAfterForwardMigrationNoAssignmentsHideDays() throws Exception
+	{
+		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo22.VERSION_TO));
+		migrateProject(rawProject, new VersionRange(Project.VERSION_HIGH));
+
+		ORef metadataRef = new ORef(ProjectMetadataSchema.getObjectType(), new BaseId(rawProject.getProjectMetadataId()));
+
+		verifyAssignmentsHaveNoDayData(rawProject, ResourceAssignmentSchema.getObjectType());
+		verifyAssignmentsHaveNoDayData(rawProject, ExpenseAssignmentSchema.getObjectType());
+
+		RawObject rawMetadata = rawProject.findObject(metadataRef);
+		assertNotNull(rawMetadata);
+		assertEquals("Field should have been added during forward migration with (default) hide days setting?", rawMetadata.getData(MigrationTo22.TAG_DAY_COLUMNS_VISIBILITY), MigrationTo22.HIDE_DAY_COLUMNS_CODE);
+	}
+
+	public void testFieldAddedAfterForwardMigrationAssignmentsWithNoDaysHideDays() throws Exception
+	{
 		Strategy strategy = getProject().createStrategy();
 		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
-		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_DETAILS, "");
+
+		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
+		dateUnitEffortList.add(getProject().createDateUnitEffort(2007, 2007, 0.0));
+
+		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_DETAILS, dateUnitEffortList.toJson().toString());
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
-		Vector<String> newColumnCodesBeingAdded = getNewColumnCodesAddedByMigration();
+		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo22.VERSION_TO));
+		migrateProject(rawProject, new VersionRange(Project.VERSION_HIGH));
 
-		TableSettings tableSettingsBefore = getProject().createAndPopulateTableSettings();
+		ORef metadataRef = new ORef(ProjectMetadataSchema.getObjectType(), new BaseId(rawProject.getProjectMetadataId()));
 
-		CodeToCodeListMap tableSettingsMapBefore = tableSettingsBefore.getTableSettingsMap();
+		verifyAssignmentsHaveNoDayData(rawProject, ResourceAssignmentSchema.getObjectType());
+		verifyAssignmentsHaveNoDayData(rawProject, ExpenseAssignmentSchema.getObjectType());
 
-		CodeList workPlanBudgetColumnsCodeListBefore = tableSettingsBefore.getCodeListFromTableSettingsMap(MigrationTo22.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
-
-		for (String code : newColumnCodesBeingAdded)
-		{
-			assertTrue("Prior to reverse migration work plan budget columns code list should contain new columns", workPlanBudgetColumnsCodeListBefore.contains(code));
-		}
-
-		RawProject migratedProject = reverseMigrate(new VersionRange(MigrationTo22.VERSION_TO));
-
-		CodeToCodeListMap tableSettingsMapAfterReverseMigration = getCodeToCodeListMapData(migratedProject, tableSettingsBefore.getRef(), MigrationTo22.TAG_TABLE_SETTINGS_MAP);
-
-		assertTrue("Reverse migration should not have removed work plan budget columns code list", tableSettingsMapAfterReverseMigration.contains(MigrationTo22.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY));
-
-		assertTrue("Reverse migration should not have removed any codes from table settings map", tableSettingsMapBefore.getCodes().equals(tableSettingsMapAfterReverseMigration.getCodes()));
-
-		CodeList workPlanBudgetColumnCodeListAfterReverseMigration = tableSettingsMapAfterReverseMigration.getCodeList(MigrationTo22.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
-
-		for (String code : newColumnCodesBeingAdded)
-		{
-			assertFalse("Reverse migration should have removed code from work plan budget columns code list", workPlanBudgetColumnCodeListAfterReverseMigration.contains(code));
-		}
-
-		assertEquals("Reverse migration should not have changed the number of codes (bar those removed)", workPlanBudgetColumnCodeListAfterReverseMigration.size() + newColumnCodesBeingAdded.size(), workPlanBudgetColumnsCodeListBefore.size());
-
-		migrateProject(migratedProject, new VersionRange(Project.VERSION_HIGH));
-
-		CodeToCodeListMap tableSettingsMapAfterForwardMigration = getCodeToCodeListMapData(migratedProject, tableSettingsBefore.getRef(), MigrationTo22.TAG_TABLE_SETTINGS_MAP);
-
-		assertTrue("Forward migration should not have removed work plan budget columns code list", tableSettingsMapAfterForwardMigration.contains(MigrationTo22.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY));
-
-		assertTrue("Forward migration should not have removed any codes from table settings map", tableSettingsMapBefore.getCodes().equals(tableSettingsMapAfterForwardMigration.getCodes()));
-
-		CodeList workPlanBudgetColumnCodeListAfterForwardMigration = tableSettingsMapAfterForwardMigration.getCodeList(MigrationTo22.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
-
-		for (String code : newColumnCodesBeingAdded)
-		{
-			assertTrue("Forward migration should have added code to work plan budget columns code list", workPlanBudgetColumnCodeListAfterForwardMigration.contains(code));
-		}
-
-		assertEquals("Forward migration should have changed the number of codes", workPlanBudgetColumnCodeListAfterForwardMigration.size(), workPlanBudgetColumnCodeListAfterReverseMigration.size() + newColumnCodesBeingAdded.size());
-
-		verifyFullCircleMigrations(new VersionRange(22, 23));
+		RawObject rawMetadata = rawProject.findObject(metadataRef);
+		assertNotNull(rawMetadata);
+		assertEquals("Field should have been added during forward migration with (default) hide days setting?", rawMetadata.getData(MigrationTo22.TAG_DAY_COLUMNS_VISIBILITY), MigrationTo22.HIDE_DAY_COLUMNS_CODE);
 	}
 
-	private Vector<String> getNewColumnCodesAddedByMigration()
+	public void testFieldAddedAfterForwardMigrationResourceAssignmentsWithDaysShowDays() throws Exception
 	{
-		Vector<String> result = new Vector<String>();
-		result.add(MigrationTo22.META_TIMEFRAME_TOTAL);
-		result.add(MigrationTo22.META_ASSIGNED_WHO_TOTAL);
-		result.add(MigrationTo22.META_ASSIGNED_WHEN_TOTAL);
-		return result;
+		Strategy strategy = getProject().createStrategy();
+		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
+
+		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
+		MultiCalendar cal = MultiCalendar.createFromGregorianYearMonthDay(2007, 12, 1);
+		DateUnit dateUnit = new DateUnit(cal.toIsoDateString());
+		dateUnitEffortList.add(new DateUnitEffort(dateUnit, 0.0));
+
+		getProject().fillObjectUsingCommand(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_DETAILS, dateUnitEffortList.toJson().toString());
+		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
+		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
+
+		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo22.VERSION_TO));
+		migrateProject(rawProject, new VersionRange(Project.VERSION_HIGH));
+
+		ORef metadataRef = new ORef(ProjectMetadataSchema.getObjectType(), new BaseId(rawProject.getProjectMetadataId()));
+
+		verifyAssignmentsHaveDayData(rawProject, ResourceAssignmentSchema.getObjectType());
+		verifyAssignmentsHaveNoDayData(rawProject, ExpenseAssignmentSchema.getObjectType());
+
+		RawObject rawMetadata = rawProject.findObject(metadataRef);
+		assertNotNull(rawMetadata);
+		assertEquals("Field should have been added during forward migration with show days setting?", rawMetadata.getData(MigrationTo22.TAG_DAY_COLUMNS_VISIBILITY), MigrationTo22.SHOW_DAY_COLUMNS_CODE);
 	}
 
-	private CodeToCodeListMap getCodeToCodeListMapData(RawProject rawProject, ORef oRef, String tag) throws Exception
+	public void testFieldAddedAfterForwardMigrationExpenseAssignmentsWithDaysShowDays() throws Exception
 	{
-		String rawValue = rawProject.getData(oRef, tag);
-		CodeToCodeListMapData map = new CodeToCodeListMapData(tag);
-		if (rawValue != null)
-			map.set(rawValue);
-		return map.getStringToCodeListMap();
+		Strategy strategy = getProject().createStrategy();
+		ExpenseAssignment expenseAssignment = getProject().createAndPopulateExpenseAssignment();
+
+		DateUnitEffortList dateUnitEffortList = new DateUnitEffortList();
+		MultiCalendar cal = MultiCalendar.createFromGregorianYearMonthDay(2007, 12, 1);
+		DateUnit dateUnit = new DateUnit(cal.toIsoDateString());
+		dateUnitEffortList.add(new DateUnitEffort(dateUnit, 0.0));
+
+		getProject().fillObjectUsingCommand(expenseAssignment, ExpenseAssignment.TAG_DATEUNIT_DETAILS, dateUnitEffortList.toJson().toString());
+		IdList idList = new IdList(ExpenseAssignmentSchema.getObjectType(), new BaseId[]{expenseAssignment.getId()});
+		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, idList.toJson().toString());
+
+		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo22.VERSION_TO));
+		migrateProject(rawProject, new VersionRange(Project.VERSION_HIGH));
+
+		ORef metadataRef = new ORef(ProjectMetadataSchema.getObjectType(), new BaseId(rawProject.getProjectMetadataId()));
+
+		verifyAssignmentsHaveNoDayData(rawProject, ResourceAssignmentSchema.getObjectType());
+		verifyAssignmentsHaveDayData(rawProject, ExpenseAssignmentSchema.getObjectType());
+
+		RawObject rawMetadata = rawProject.findObject(metadataRef);
+		assertNotNull(rawMetadata);
+		assertEquals("Field should have been added during forward migration with show days setting?", rawMetadata.getData(MigrationTo22.TAG_DAY_COLUMNS_VISIBILITY), MigrationTo22.SHOW_DAY_COLUMNS_CODE);
+	}
+
+	private void verifyAssignmentsHaveNoDayData(RawProject rawProject, int assignmentType) throws Exception
+	{
+		RawPool assignmentPool = rawProject.getRawPoolForType(assignmentType);
+		if (assignmentPool != null)
+		{
+			for(ORef ref : assignmentPool.keySet())
+			{
+				RawObject rawObject = assignmentPool.get(ref);
+				if (rawObject != null && rawObject.containsKey(MigrationTo22.TAG_DATEUNIT_EFFORTS))
+				{
+					DateUnitEffortList rawObjectDateUnitEffortList = new DateUnitEffortList(rawObject.get(MigrationTo22.TAG_DATEUNIT_EFFORTS));
+
+					for (int index = 0; index < rawObjectDateUnitEffortList.size(); ++index)
+					{
+						DateUnitEffort rawObjectDateUnitEffort = rawObjectDateUnitEffortList.getDateUnitEffort(index);
+						assertFalse("Did not expect assignment to have day data", rawObjectDateUnitEffort.getDateUnit().isDay());
+					}
+				}
+			}
+		}
+	}
+
+	private void verifyAssignmentsHaveDayData(RawProject rawProject, int assignmentType) throws Exception
+	{
+		RawPool assignmentPool = rawProject.getRawPoolForType(assignmentType);
+		if (assignmentPool != null)
+		{
+			for(ORef ref : assignmentPool.keySet())
+			{
+				RawObject rawObject = assignmentPool.get(ref);
+				if (rawObject != null && rawObject.containsKey(MigrationTo22.TAG_DATEUNIT_EFFORTS))
+				{
+					DateUnitEffortList rawObjectDateUnitEffortList = new DateUnitEffortList(rawObject.get(MigrationTo22.TAG_DATEUNIT_EFFORTS));
+
+					for (int index = 0; index < rawObjectDateUnitEffortList.size(); ++index)
+					{
+						DateUnitEffort rawObjectDateUnitEffort = rawObjectDateUnitEffortList.getDateUnitEffort(index);
+						assertTrue("Did expect assignment to have day data", rawObjectDateUnitEffort.getDateUnit().isDay());
+					}
+				}
+			}
+		}
 	}
 
 	@Override

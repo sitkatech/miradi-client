@@ -21,8 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.migrations;
 
 import org.miradi.migrations.forward.MigrationTo25;
+import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objectpools.AccountingClassificationAssociationPool;
 import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
 
 public class TestMigrationTo25 extends AbstractTestMigration
@@ -32,40 +33,40 @@ public class TestMigrationTo25 extends AbstractTestMigration
 		super(name);
 	}
 	
-	public void testProjectResourceTaxonomyClassificationsRemovedAfterReverseMigration() throws Exception
-	{
-		ProjectResource projectResource = getProject().createAndPopulateProjectResource();
-		String taxonomyClassifications = projectResource.getData(MigrationTo25.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
-		assertNotNull(taxonomyClassifications);
-
-		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo25.VERSION_TO));
-        RawObject rawProjectResource = rawProject.findObject(projectResource.getRef());
-        assertNotNull(rawProjectResource);
-		assertFalse("Field should have been removed during reverse migration?", rawProjectResource.containsKey(MigrationTo25.TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
-	}
-	
-	public void testResourceAssignmentTaxonomyClassificationsRemovedAfterReverseMigration() throws Exception
+	public void testResourceAssignmentAccountingClassificationsRemovedAfterReverseMigration() throws Exception
 	{
 		ResourceAssignment resourceAssignment = getProject().createAndPopulateResourceAssignment();
-		String taxonomyClassifications = resourceAssignment.getData(MigrationTo25.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
-		assertNotNull(taxonomyClassifications);
+		String accountingClassifications = resourceAssignment.getData(MigrationTo25.TAG_ACCOUNTING_CLASSIFICATION_CONTAINER);
+		assertNotNull(accountingClassifications);
+
+		AccountingClassificationAssociationPool accountingClassificationPool = getProject().getAccountingClassificationAssociationPool();
+		assertNotNull(accountingClassificationPool);
 
 		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo25.VERSION_TO));
         RawObject rawResourceAssignment = rawProject.findObject(resourceAssignment.getRef());
         assertNotNull(rawResourceAssignment);
-		assertFalse("Field should have been removed during reverse migration?", rawResourceAssignment.containsKey(MigrationTo25.TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
+		assertFalse("Field should have been removed during reverse migration?", rawResourceAssignment.containsKey(MigrationTo25.TAG_ACCOUNTING_CLASSIFICATION_CONTAINER));
+
+		RawPool rawAccountingClassificationPool = rawProject.getRawPoolForType(ObjectType.ACCOUNTING_CLASSIFICATION_ASSOCIATION);
+		assertNull(rawAccountingClassificationPool);
 	}
 	
-	public void testExpenseAssignmentTaxonomyClassificationsRemovedAfterReverseMigration() throws Exception
+	public void testExpenseAssignmentAccountingClassificationsRemovedAfterReverseMigration() throws Exception
 	{
 		ExpenseAssignment expenseAssignment = getProject().createAndPopulateExpenseAssignment();
-		String taxonomyClassifications = expenseAssignment.getData(MigrationTo25.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
-		assertNotNull(taxonomyClassifications);
+		String accountingClassifications = expenseAssignment.getData(MigrationTo25.TAG_ACCOUNTING_CLASSIFICATION_CONTAINER);
+		assertNotNull(accountingClassifications);
+
+		AccountingClassificationAssociationPool accountingClassificationPool = getProject().getAccountingClassificationAssociationPool();
+		assertNotNull(accountingClassificationPool);
 
 		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo25.VERSION_TO));
         RawObject rawExpenseAssignment = rawProject.findObject(expenseAssignment.getRef());
         assertNotNull(rawExpenseAssignment);
-		assertFalse("Field should have been removed during reverse migration?", rawExpenseAssignment.containsKey(MigrationTo25.TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
+		assertFalse("Field should have been removed during reverse migration?", rawExpenseAssignment.containsKey(MigrationTo25.TAG_ACCOUNTING_CLASSIFICATION_CONTAINER));
+
+		RawPool rawAccountingClassificationPool = rawProject.getRawPoolForType(ObjectType.ACCOUNTING_CLASSIFICATION_ASSOCIATION);
+		assertNull(rawAccountingClassificationPool);
 	}
 	
 	@Override
