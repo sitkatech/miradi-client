@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-09 03:06-0700\n"
+"POT-Creation-Date: 2016-06-17 07:36-0700\n"
 "PO-Revision-Date: 2014-05-28 17:01+0000\n"
 "Last-Translator: nsalafsky <nick@fosonline.org>\n"
 "Language-Team: English (Estonia) (http://www.transifex.com/projects/p/miradi-"
@@ -46,7 +46,7 @@ msgstr ""
 msgid " 2) Connect threat to relevant targets"
 msgstr " 2) Connect pressure to relevant interests"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:359
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:372
 msgid " for parent "
 msgstr ""
 
@@ -54,96 +54,96 @@ msgstr ""
 msgid " was empty"
 msgstr " was empty"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:146
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:145
 msgid "%1 % of Objectives associated with 1 or more Strategies"
 msgstr "%1 % of Outcomes associated with 1 or more Interventions"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:147
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:146
 msgid "%1 % of Strategies associated with 1 or more Objectives"
 msgstr "%1 % of Interventions associated with 1 or more Outcomes"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:164
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:163
 msgid "%1 % of indicators linked to objectives"
 msgstr "%1 % of indicators linked to outcomes"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:165
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:164
 msgid "%1 % of indicators not linked to objectives"
 msgstr "%1 % of indicators not linked to outcomes"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:153
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:152
 msgid "%1 % of indicators with Desired Future Status specified"
 msgstr "%1 % of indicators with Performance Target specified"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:82
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:184
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:81
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:183
 msgid "%1 - %2"
 msgstr "%1 - %2"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:253
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:252
 msgid "%1 Conceptual Model Pages created"
 msgstr "%1 Situation Model Pages created"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:243
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:242
 msgid "%1 Contributing Factors Created"
 msgstr "%1 Drivers Created"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:168
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:167
 msgid "%1 Direct Threat Indicators"
 msgstr "%1 Pressure Indicators"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:231
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:230
 msgid "%1 Direct Threats created"
 msgstr "%1 Pressures created"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:123
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:122
 msgid "%1 Draft Strategies Created"
 msgstr "%1 Draft Interventions Created"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:128
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:127
 msgid "%1 Draft Strategies Ranked"
 msgstr "%1 Draft Interventions Ranked"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:162
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:161
 msgid "%1 Indicators associated to KEA's"
 msgstr "%1 Indicators associated to KA's"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:100
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:99
 msgid "%1 Indicators/methods (%2%) have progress reports"
 msgstr "%1 Indicators/methods (%2%) have progress reports"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:166
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:165
 msgid "%1 KEA viability indicators associated with %2 targets"
 msgstr "%1 KA viability indicators associated with %2 interests"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:140
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:139
 msgid "%1 Objectives Created"
 msgstr "%1 Outcomes Created"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:152
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:151
 msgid "%1 Objectives associated to 1 or more Indicators"
 msgstr "%1 Outcomes associated to 1 or more Indicators"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:175
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:174
 msgid "%1 Other Organizations"
 msgstr "%1 Other Organizations"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:135
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:134
 msgid "%1 Results Chains Created"
 msgstr "%1 Development Hypotheses Created"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:133
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:132
 msgid "%1 Strategies Created"
 msgstr "%1 Interventions Created"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:99
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:98
 msgid "%1 Strategies/activities (%2%) have progress reports"
 msgstr "%1 Interventions/outputs (%2%) have progress reports"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:174
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:173
 msgid "%1 Team Members"
 msgstr "%1 Team Members"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:169
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:168
 msgid "%1 Threat Reduction Result indicators"
 msgstr "%1 Pressure Reduction Result indicators"
 
@@ -155,40 +155,40 @@ msgstr "%1 Total outputs created"
 msgid "%1 Total methods created"
 msgstr "%1 Total methods created"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:215
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:220
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:214
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:219
 msgid "%1 created"
 msgstr "%1 created"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:118
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:117
 msgid "%1 goals Created"
 msgstr "%1 sub-purposes Created"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:163
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:162
 msgid "%1 indicators associate to Factors"
 msgstr "%1 indicators associate to Factors"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:276
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:275
 msgid "%1 indicators with 1 measurement"
 msgstr "%1 indicators with 1 measurement"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:277
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:276
 msgid "%1 indicators with more than 1 measurement"
 msgstr "%1 indicators with more than 1 measurement"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:275
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:274
 msgid "%1 indicators with no measurement"
 msgstr "%1 indicators with no measurement"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:279
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:278
 msgid "%1 objectives with 1 percent complete record"
 msgstr "%1 outcomes with 1 percent complete record"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:280
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:279
 msgid "%1 objectives with more than 1 percent complete record"
 msgstr "%1 outcomes with more than 1 percent complete record"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:278
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:277
 msgid "%1 objectives with no percent complete record"
 msgstr "%1 outcomes with no percent complete record"
 
@@ -196,35 +196,31 @@ msgstr "%1 outcomes with no percent complete record"
 msgid "%1 of %2 Indicators have Methods."
 msgstr "%1 of %2 Indicators have Methods."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:77
-msgid "%1 of %2 Methods and Tasks have assignments"
-msgstr "%1 of %2 Methods and Tasks have assignments"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:68
 msgid "%1 of %2 Strategies have at least 1 Activity."
 msgstr "%1 of %2 Interventions have at least 1 Output."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:117
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:116
 msgid "%1 of %2 Targets have Goals"
 msgstr "%1 of %2 Interests have Sub-purposes"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:267
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:266
 msgid "%1 of %2 have taxonomy assignments"
 msgstr "%1 of %2 have taxonomy assignments"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:167
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:166
 msgid "%1 simple viability indicators associated with %2 targets"
 msgstr "%1 simple viability indicators associated with %2 interests"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:225
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:224
 msgid "%1 targets have KEA"
 msgstr "%1 interests have KA"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:226
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:225
 msgid "%1 targets have simple viability information"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:254
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:253
 msgid "%1 total factors created"
 msgstr "%1 total factors created"
 
@@ -232,15 +228,15 @@ msgstr "%1 total factors created"
 msgid "%2 of %1 Activities and tasks have assignments"
 msgstr "%2 of %1 Outputs and tasks have assignments"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:141
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:140
 msgid "%2 of %1 RCs have at least 1 objective"
 msgstr "%2 of %1 RCs have at least 1 outcome"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:237
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:236
 msgid "%2 of %1 threat/target ranks with simple ranking"
 msgstr "%2 of %1 pressure/interest ranks with simple ranking"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:238
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:237
 msgid "%2 of %1 threat/target ranks with stress-based ranking"
 msgstr "%2 of %1 pressure/interest ranks with stress-based ranking"
 
@@ -256,7 +252,7 @@ msgstr "%externalContextCode - %projectCodeWithinExternalContext  <br/>"
 msgid "%fieldName field data will be lost for %indicatorLabel (Indicator)"
 msgstr "%fieldName field data will be lost for %indicatorLabel (Indicator)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo21.java:295
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:294
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/AbstractModifyMultipleFieldMigration.java:70
 msgid "%fieldName will be removed. %label"
 msgstr "%fieldName will be removed. %label"
@@ -285,9 +281,9 @@ msgstr "%s Sub-purposes"
 msgid "%s Objs"
 msgstr "%s Outcomes"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:109
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:108
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:109
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo7.java:126
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo24.java:108
 msgid "%s field data will be lost"
 msgstr "%s field data will be lost"
 
@@ -299,7 +295,7 @@ msgstr "%s field data will be lost for measurement"
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:157
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:159
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr "(%s)"
@@ -2078,7 +2074,7 @@ msgstr "Action|Zoom Out"
 msgid "Action|Zoom To Fit"
 msgstr "Action|Zoom To Fit"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:57
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:51
 msgid "Activities Only"
 msgstr "Outputs Only"
 
@@ -2090,9 +2086,9 @@ msgstr ""
 "pages"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:203
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:109
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:106
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:57
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:412
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:425
 msgid "Activity"
 msgstr "Output"
 
@@ -2171,7 +2167,7 @@ msgstr ""
 msgid "All on One Page"
 msgstr "All on One Page"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:82
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:76
 msgid "All subtasks within this item will be removed as well."
 msgstr "All subtasks within this item will be removed as well."
 
@@ -2261,6 +2257,10 @@ msgstr "Are you sure you want to delete this Indicator?"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DeleteKeyEcologicalAttributeDoer.java:46
 msgid "Are you sure you want to delete this Key Ecological Attribute?"
 msgstr "Are you sure you want to delete this Key Attribute?"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/DeleteMethodDoer.java:71
+msgid "Are you sure you want to delete this Method?"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/noproject/DeleteProject.java:52
 msgid "Are you sure you want to delete this Miradi project?"
@@ -2451,7 +2451,7 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:40
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:49
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:414
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:427
 msgid "Assignment"
 msgstr ""
 
@@ -2648,7 +2648,7 @@ msgstr "Button|Close"
 msgid "Button|Continue"
 msgstr "Button|Continue"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:83
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:77
 msgid "Button|Delete"
 msgstr "Button|Delete"
 
@@ -2731,7 +2731,7 @@ msgstr "Button|Replace"
 msgid "Button|Replace Backup"
 msgstr "Button|Replace Backup"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:83
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:77
 msgid "Button|Retain"
 msgstr "Button|Retain"
 
@@ -3288,7 +3288,7 @@ msgstr "Date"
 msgid "Date Chooser"
 msgstr "Date Chooser"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo23.java:52
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:52
 msgid "Day Columns Visibility"
 msgstr ""
 
@@ -3402,7 +3402,7 @@ msgstr "Detail methods, tasks, and responsibilities"
 msgid "Details"
 msgstr "Details"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:361
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:374
 msgid "Details = '"
 msgstr ""
 
@@ -3530,7 +3530,7 @@ msgstr "Pressure"
 msgid "Direct Threat (Pink)"
 msgstr "Pressure (Pink)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:55
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:49
 msgid "Direct Threats Only"
 msgstr "Pressures Only"
 
@@ -3677,7 +3677,7 @@ msgstr "Enter Tag Name"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/AssignedDateUnitTypeQuestion.java:44
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlannedDateUnitTypeQuestion.java:42
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:394
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:407
 msgid "Entire Project Duration"
 msgstr "Entire Project Duration"
 
@@ -3693,7 +3693,7 @@ msgstr "Error Creating: %s"
 msgid "Error Occurred During Sorting"
 msgstr "Error Occurred During Sorting"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/Dashboard.java:275
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/Dashboard.java:269
 msgid "Error Retrieving Data"
 msgstr "Error Retrieving Data"
 
@@ -3753,7 +3753,7 @@ msgstr "Expand Selected Column"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentSubPanel.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentSubPanel.java:52
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:416
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:429
 msgid "Expense"
 msgstr ""
 
@@ -4147,7 +4147,7 @@ msgstr "Sub-purpose Relevancy Panel"
 msgid "Goals"
 msgstr "Sub-purposes"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:48
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:42
 msgid "Goals Only"
 msgstr "Sub-purposes Only"
 
@@ -4292,7 +4292,7 @@ msgstr ""
 "encompass the desired human values of the system. In Miradi, represented by "
 "tan ovals."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:53
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:47
 msgid "Human Wellbeing Targets Only"
 msgstr "Related Interests Only"
 
@@ -4454,7 +4454,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:45
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/IndicatorSubForm.java:33
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:51
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:410
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:423
 msgid "Indicator"
 msgstr "Indicator"
 
@@ -4477,7 +4477,7 @@ msgstr ""
 msgid "Indicator Relevancy Panel"
 msgstr "Indicator Relevancy Panel"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:40
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo31.java:40
 msgid "Indicator Relevant Strategies / Activities"
 msgstr ""
 
@@ -4489,7 +4489,7 @@ msgstr ""
 msgid "Indicators"
 msgstr "Indicators"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:58
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:52
 msgid "Indicators Only"
 msgstr "Indicators Only"
 
@@ -4684,7 +4684,7 @@ msgstr "Key Attribute"
 msgid "Key Ecological Attribute (KEA)"
 msgstr "Key Attribute (KA)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo21.java:290
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:289
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/AbstractModifyMultipleFieldMigration.java:65
 msgid "Label = %s"
 msgstr "Label = %s"
@@ -5329,7 +5329,7 @@ msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr "Menu|Remove Tag from %n Selected Item(s)"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:151
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:112
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/indicator/MethodPropertiesPanel.java:40
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:56
 msgid "Method"
 msgstr "Method"
@@ -5348,7 +5348,7 @@ msgstr ""
 msgid "Method selection"
 msgstr "Method selection"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:59
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:53
 msgid "Methods Only"
 msgstr "Methods Only"
 
@@ -5458,17 +5458,17 @@ msgstr "Missing Indicator(s) was removed!"
 msgid "Monitoring"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:274
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:287
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:298
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:311
 msgid "Monitoring Activities"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:106
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:103
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:58
 msgid "Monitoring Activity"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo29.java:41
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo30.java:41
 msgid "Monitoring Activity Flag"
 msgstr ""
 
@@ -5573,7 +5573,7 @@ msgstr ""
 msgid "Name"
 msgstr "Name"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:360
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:373
 msgid "Name = '"
 msgstr ""
 
@@ -5702,7 +5702,7 @@ msgstr "Outcome Relevancy Panel"
 msgid "Objectives"
 msgstr "Outcomes"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:49
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:43
 msgid "Objectives Only"
 msgstr "Outcomes Only"
 
@@ -5887,7 +5887,7 @@ msgstr ""
 msgid "People (Who)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:94
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:93
 msgid "Percent of Budget Secured:  %1 %"
 msgstr "Percent of Budget Secured:  %1 %"
 
@@ -6880,7 +6880,7 @@ msgstr ""
 msgid "Strategies And Activities"
 msgstr "Interventions And Outputs"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:56
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:50
 msgid "Strategies Only"
 msgstr "Interventions Only"
 
@@ -6893,7 +6893,7 @@ msgstr "Interventions contain Outcomes"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:48
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/StrategyCoreSubForm.java:34
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:48
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:408
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:421
 msgid "Strategy"
 msgstr "Intervention"
 
@@ -6991,9 +6991,10 @@ msgstr "Strong Increase"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:69
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:142
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:75
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/indicator/MethodPropertiesPanel.java:37
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:38
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:144
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:138
 msgid "Summary"
 msgstr "Summary"
 
@@ -7013,7 +7014,7 @@ msgstr "Summary Pressure Rating"
 msgid "Summary View - Project Description, Scope, and Vision fields"
 msgstr "Summary View - Project Description, Scope, and Vision fields"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:359
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:372
 msgid "Superseded "
 msgstr ""
 
@@ -7899,7 +7900,7 @@ msgstr "Tab|Sub-purposes"
 msgid "Tab|Indicators"
 msgstr "Tab|Indicators"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/activity/MethodListManagementPanel.java:70
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/indicator/MethodListManagementPanel.java:69
 msgid "Tab|Methods"
 msgstr "Tab|Methods"
 
@@ -8015,7 +8016,7 @@ msgstr ""
 "within functional landscapes. In Miradi, an interest is represented by a "
 "large green oval."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:50
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlanningViewSingleLevelQuestion.java:44
 msgid "Targets Only"
 msgstr "Interests Only"
 
@@ -8028,7 +8029,7 @@ msgid "Targets within Diagrams"
 msgstr "Interests within Diagrams"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:207
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:114
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:108
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:55
 msgid "Task"
 msgstr "Task"
@@ -8043,7 +8044,7 @@ msgstr ""
 "themselves can be broken into sub-tasks if necessary. In Miradi, a task is "
 "represented by a grey flattened oval."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/Task.java:345
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/Task.java:297
 msgid "Task does not have a parent"
 msgstr "Task does not have a parent"
 
@@ -8063,7 +8064,7 @@ msgstr "Team Contact"
 msgid "Team Member"
 msgstr "Team Member"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:195
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:194
 msgid "Team Members: %1"
 msgstr "Team Members: %1"
 
@@ -8190,7 +8191,7 @@ msgstr ""
 "not be correct. \n"
 "Are you sure you want to do this?"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:205
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:204
 msgid "The scope currently consists of %1 words"
 msgstr "The scope currently consists of %1 words"
 
@@ -8291,7 +8292,7 @@ msgid ""
 "org."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:80
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:74
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr "This item is shared, so will be deleted from multiple places."
 
@@ -8303,13 +8304,19 @@ msgstr "This migration adds 1 new TNC field."
 msgid "This migration adds 2 new TNC fields."
 msgstr "This migration adds 2 new TNC fields."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo23.java:72
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:72
 msgid ""
 "This migration adds a new day columns visibility field to the Project "
 "Metadata properties."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo29.java:61
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo34.java:89
+msgid ""
+"This migration adds a new default timeframe totals column to the work plan "
+"customize panel."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo30.java:61
 msgid "This migration adds a new field to the Activity properties."
 msgstr ""
 
@@ -8317,7 +8324,7 @@ msgstr ""
 msgid "This migration adds a new field to the Diagram Factor properties."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:66
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo31.java:66
 msgid ""
 "This migration adds a new field to the Indicator properties to track "
 "Strategy / Activity relevancy."
@@ -8327,12 +8334,13 @@ msgstr ""
 msgid "This migration adds a new field to the Project Metadata properties."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:89
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo21.java:88
 msgid ""
-"This migration adds new default columns to the work plan customize panel."
+"This migration adds new default assigned who / when total columns to the "
+"work plan customize panel."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo24.java:90
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo23.java:90
 msgid "This migration adds new default rows to the work plan customize panel."
 msgstr ""
 
@@ -8362,30 +8370,30 @@ msgstr ""
 "This migration creates new performance target objects from indicator's "
 "performance target fields"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo21.java:109
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:108
 msgid ""
 "This migration creates timeframe entries for resource assignments (where a "
 "resource or date range is specified)."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:94
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:94
 msgid "This migration moves child tasks up to the activity level."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:93
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:93
 msgid ""
 "This migration moves work plan data from Indicators / Methods to Monitoring "
 "Activities."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:88
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:88
 msgid ""
 "This migration only has reverse to remove Miradi share accounting "
 "classification related objects."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:87
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo7.java:105
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo24.java:87
 msgid ""
 "This migration only has reverse to remove Miradi share taxonomy related "
 "objects."
@@ -8395,6 +8403,10 @@ msgstr ""
 msgid ""
 "This migration prevents the removal of Biophysical Factors and / or Results "
 "if reversing (to support an older file format / Miradi version)."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo35.java:89
+msgid "This migration promotes methods from tasks to 1st class objects."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo11.java:62
@@ -8412,7 +8424,7 @@ msgid ""
 "is Sampling Based"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:99
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:99
 msgid "This migration removes superseded assignments from the work plan."
 msgstr ""
 
@@ -8422,8 +8434,8 @@ msgstr "This migration renames 2 fields"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo19.java:86
 msgid ""
-"This migration renames the leader resource assignment field on Strategy, "
-"Task and Indicator objects."
+"This migration renames the leader resource assignment field on Strategy and "
+"Task objects."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo20.java:89
@@ -8433,12 +8445,12 @@ msgid ""
 "for the total planned effort (timeframe) dates."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo30.java:90
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:90
 msgid ""
 "This migration splits shared activities out to separate activity entries."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo31.java:90
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo29.java:90
 msgid "This migration splits shared methods out to separate method entries."
 msgstr ""
 
@@ -8681,7 +8693,7 @@ msgstr "Title|Driver Properties"
 msgid "Title|Customize Table"
 msgstr "Title|Customize Table"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:84
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:78
 msgid "Title|Delete"
 msgstr "Title|Delete"
 
@@ -8738,7 +8750,7 @@ msgstr "Title|Related Interest Properties"
 msgid "Title|IUCN Redlist Species"
 msgstr "Title|IUCN Redlist Species"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/strategicPlan/IndicatorPropertiesPanel.java:72
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/strategicPlan/IndicatorPropertiesPanel.java:70
 msgid "Title|Indicator Properties"
 msgstr "Title|Indicator Properties"
 
@@ -8771,7 +8783,7 @@ msgstr "Title|MPZ Export Warning"
 msgid "Title|Measurement Properties"
 msgstr "Title|Measurement Properties"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/MethodPropertiesPanelWithoutBudgetPanels.java:47
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/indicator/MethodPropertiesPanel.java:53
 msgid "Title|Method Properties"
 msgstr "Title|Method Properties"
 
@@ -8923,15 +8935,15 @@ msgstr "Title|XSL Template Properties"
 msgid "Total"
 msgstr "Total"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:87
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:86
 msgid "Total Action Budget: %1 %2"
 msgstr "Total Action Budget: %1 %2"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:93
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:92
 msgid "Total Budget for Funding: %1 %2"
 msgstr "Total Budget for Funding: %1 %2"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:88
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:87
 msgid "Total Monitoring Budget %1 %2"
 msgstr "Total Monitoring Budget %1 %2"
 
@@ -9011,7 +9023,7 @@ msgstr "Unexpected error prevented the tag operation from succeeding"
 msgid "Unit"
 msgstr "Unit"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:385
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:398
 msgid "Units"
 msgstr ""
 
@@ -9508,7 +9520,7 @@ msgstr "[NOT SPECIFIED]"
 msgid "[New Results Chain]"
 msgstr "[New Theory of Change]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:940
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:945
 msgid "[No Project]"
 msgstr "[No Project]"
 
@@ -10334,6 +10346,9 @@ msgstr ""
 
 msgid "FieldLabel|12.DetailsColumnCode|Details"
 msgstr "FieldLabel|12.DetailsColumnCode|Details"
+
+msgid "FieldLabel|12.Details|Details"
+msgstr ""
 
 msgid "FieldLabel|12.Summary|Future Value"
 msgstr "FieldLabel|12.Summary|Target"
@@ -11467,6 +11482,24 @@ msgstr ""
 msgid ""
 "FieldLabel|68.AccountingClassificationAssociation|Accounting Configuration "
 "Association"
+msgstr ""
+
+msgid "FieldLabel|69.Method|Method"
+msgstr ""
+
+msgid "FieldLabel|69.Label|Name"
+msgstr ""
+
+msgid "FieldLabel|69.ShortLabel|ID"
+msgstr ""
+
+msgid "FieldLabel|69.Details|Details"
+msgstr ""
+
+msgid "FieldLabel|69.Comments|Comments"
+msgstr ""
+
+msgid "FieldLabel|69.Url|URL"
 msgstr ""
 
 msgid ""
@@ -37458,6 +37491,9 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "%1 of %2 Methods and Tasks have assignments"
+#~ msgstr "%1 of %2 Methods and Tasks have assignments"
 
 #~ msgid "Action-Related"
 #~ msgstr "Action-Related"
