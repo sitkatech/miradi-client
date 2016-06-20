@@ -614,6 +614,11 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (columnTag.equals(Factor.PSEUDO_TAG_ACTIVITIES))
 				return Indicator.PSEUDO_TAG_RELEVANT_ACTIVITY_REFS;
 		}
+		if(Method.is(nodeType))
+		{
+			if (isDetailsColumn(column))
+				return Method.TAG_DETAILS;
+		}
 		if(Measurement.is(nodeType))
 		{
 			if (isDetailsColumn(column))
