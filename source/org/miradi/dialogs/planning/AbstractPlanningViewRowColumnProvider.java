@@ -19,8 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning;
 
+import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
+import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
+import org.miradi.utils.CodeList;
 
 abstract public class AbstractPlanningViewRowColumnProvider implements RowColumnProvider
 {
@@ -42,6 +45,26 @@ abstract public class AbstractPlanningViewRowColumnProvider implements RowColumn
 	public boolean doObjectivesContainStrategies() throws Exception
 	{
 		return true;
+	}
+
+	public boolean shouldIncludeActivities() throws Exception
+	{
+		return true;
+	}
+
+	public boolean shouldIncludeMonitoringActivities() throws Exception
+	{
+		return true;
+	}
+
+	public String getRowTypeCodeForTask(Task task) throws Exception
+	{
+		return task.getTypeName();
+	}
+
+	public boolean shouldBeVisible(AbstractPlanningTreeNode child) throws Exception
+	{
+		return getRowCodesToShow().contains(child.getObjectTypeName());
 	}
 
 	public String getDiagramFilter() throws Exception

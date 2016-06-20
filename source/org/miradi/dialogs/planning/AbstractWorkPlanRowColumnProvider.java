@@ -99,6 +99,20 @@ public abstract class AbstractWorkPlanRowColumnProvider extends AbstractPlanning
 		return tableSettings.getData(TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER);
 	}
 
+	@Override
+	public boolean shouldIncludeActivities() throws Exception
+	{
+		String workPlanBudgetMode = getProject().getTimePeriodCostsMapsCache().getWorkPlanBudgetMode();
+		return workPlanBudgetMode.equals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE) || workPlanBudgetMode.equals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE);
+	}
+
+	@Override
+	public boolean shouldIncludeMonitoringActivities() throws Exception
+	{
+		String workPlanBudgetMode = getProject().getTimePeriodCostsMapsCache().getWorkPlanBudgetMode();
+		return workPlanBudgetMode.equals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE) || workPlanBudgetMode.equals(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE);
+	}
+
 	abstract protected CodeList createMonitoringRelatedRowCodeList();
 
 	abstract protected CodeList createActionRelatedRowCodeList();

@@ -21,15 +21,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.dialogs.planning.RowColumnProvider;
+import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.utils.CodeList;
 
 public interface PlanningTreeRowColumnProvider extends RowColumnProvider
 {
-	public abstract CodeList getRowCodesToShow() throws Exception;
-	public abstract CodeList getColumnCodesToShow() throws Exception;
-	public abstract boolean shouldIncludeResultsChain() throws Exception;
-	public abstract boolean shouldIncludeConceptualModelPage() throws Exception;
-	public abstract boolean doObjectivesContainStrategies() throws Exception;
-	public abstract boolean shouldPutTargetsAtTopLevelOfTree() throws Exception;
-	public String getDiagramFilter() throws Exception;
+	CodeList getRowCodesToShow() throws Exception;
+	CodeList getColumnCodesToShow() throws Exception;
+	boolean shouldIncludeResultsChain() throws Exception;
+	boolean shouldIncludeConceptualModelPage() throws Exception;
+	boolean doObjectivesContainStrategies() throws Exception;
+	boolean shouldPutTargetsAtTopLevelOfTree() throws Exception;
+	boolean shouldIncludeActivities() throws Exception;
+	boolean shouldIncludeMonitoringActivities() throws Exception;
+	String getRowTypeCodeForTask(Task task) throws Exception;
+	boolean shouldBeVisible(AbstractPlanningTreeNode child) throws Exception;
+	String getDiagramFilter() throws Exception;
 }

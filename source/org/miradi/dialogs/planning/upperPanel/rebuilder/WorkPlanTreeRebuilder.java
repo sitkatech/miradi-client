@@ -25,30 +25,12 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.*;
 import org.miradi.project.Project;
-import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 
 public class WorkPlanTreeRebuilder extends NormalTreeRebuilder
 {
 	public WorkPlanTreeRebuilder(Project projectToUse, PlanningTreeRowColumnProvider rowColumnProviderToUse)
 	{
 		super(projectToUse, rowColumnProviderToUse);
-	}
-
-	@Override
-	protected ORefList getActivities(Strategy strategy) throws Exception
-	{
-		String workPlanBudgetMode = getProject().getTimePeriodCostsMapsCache().getWorkPlanBudgetMode();
-
-		if (workPlanBudgetMode.equals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE))
-			return strategy.getActivityRefs();
-
-		if (workPlanBudgetMode.equals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE))
-			return ORefList.subtract(strategy.getActivityRefs(), strategy.getMonitoringActivityRefs());
-
-		if (workPlanBudgetMode.equals(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE))
-			return strategy.getMonitoringActivityRefs();
-
-		throw new Exception("getActivities called for unknown work plan budget mode " + workPlanBudgetMode);
 	}
 
 	@Override

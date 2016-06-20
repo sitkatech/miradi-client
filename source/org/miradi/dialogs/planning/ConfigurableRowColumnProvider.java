@@ -19,13 +19,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning;
 
+import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.main.EAM;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
+import org.miradi.objects.Task;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.StaticQuestionManager;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.StringList;
 
@@ -109,6 +112,37 @@ public class ConfigurableRowColumnProvider extends AbstractPlanningTreeRowColumn
 			return "";
 
 		return customization.getDiagramFilter();
+	}
+
+	@Override
+	public boolean shouldIncludeActivities() throws Exception
+	{
+		return getRowCodesToShow().contains(TaskSchema.ACTIVITY_NAME);
+	}
+
+	@Override
+	public boolean shouldIncludeMonitoringActivities() throws Exception
+	{
+		return getRowCodesToShow().contains(TaskSchema.MONITORING_ACTIVITY_NAME);
+	}
+
+	@Override
+	public String getRowTypeCodeForTask(Task task)
+	{
+		return task.isMonitoringActivity() ? TaskSchema.MONITORING_ACTIVITY_NAME : task.getTypeName();
+	}
+
+	@Override
+	public boolean shouldBeVisible(AbstractPlanningTreeNode child) throws Exception
+	{
+		if (child.getObjectTypeName().equals(TaskSchema.ACTIVITY_NAME))
+		{
+			Task activity = (Task) child.getObject();
+			if (activity.isMonitoringActivity())
+				return getRowCodesToShow().contains(TaskSchema.MONITORING_ACTIVITY_NAME);
+		}
+
+		return super.shouldBeVisible(child);
 	}
 
 	private static void omitUnknownColumnTagsInPlace(Project project, CodeList rawCodes)

@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
 import org.miradi.diagram.ChainWalker;
+import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
@@ -42,7 +43,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 	{
 		final ORefList noChildren = new ORefList();
 		if(ProjectMetadata.is(parentRef))
-			return getChildrenOfProjectNode(parentRef);
+			return getChildrenOfProjectNode();
 
 		if(DiagramObject.isDiagramObject(parentRef))
 			return getChildrenOfDiagramNode(parentRef);
@@ -78,7 +79,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 			return noChildren;
 
 		if(Task.is(parentRef))
-			return getChildrenOfTask(parentRef, diagram);
+			return getChildrenOfTask(parentRef);
 
 		if(Measurement.is(parentRef))
 			return noChildren;
@@ -105,7 +106,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		return new ORefList();
 	}
 
-	protected ORefList getChildrenOfProjectNode(ORef parentRef) throws Exception
+	private ORefList getChildrenOfProjectNode() throws Exception
 	{
 		ORefList childRefs = new ORefList();
 
@@ -238,9 +239,17 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		}
 	}
 
-	protected ORefList getActivities(Strategy strategy) throws Exception
+	private ORefList getActivities(Strategy strategy) throws Exception
 	{
-		return strategy.getActivityRefs();
+		ORefList activityRefs = new ORefList();
+
+		if (getRowColumnProvider().shouldIncludeActivities())
+			activityRefs.addAll(ORefList.subtract(strategy.getActivityRefs(), strategy.getMonitoringActivityRefs()));
+
+		if (getRowColumnProvider().shouldIncludeMonitoringActivities())
+			activityRefs.addAll(strategy.getMonitoringActivityRefs());
+
+		return activityRefs;
 	}
 
 	private ORefList getChildrenOfDesire(ORef parentRef, DiagramObject diagram) throws Exception
@@ -287,10 +296,10 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		return strategyAndActivityRefs;
 	}
 
-	protected boolean willThisTypeEndUpInTheTree(String taskTypeCode) throws Exception
+	protected boolean willThisTypeEndUpInTheTree(String rowTypeCode) throws Exception
 	{
 		CodeList visibleRowTypes = getRowColumnProvider().getRowCodesToShow();
-		return visibleRowTypes.contains(taskTypeCode);
+		return visibleRowTypes.contains(rowTypeCode);
 	}
 
 	protected ORefList getChildrenOfIndicator(ORef parentRef, DiagramObject diagram) throws Exception
@@ -307,15 +316,24 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		return childRefs;
 	}
 
-	protected ORefList getChildrenOfTask(ORef parentTaskRef, DiagramObject diagram) throws Exception
+	private ORefList getChildrenOfTask(ORef parentTaskRef) throws Exception
 	{
 		ORefList childRefs = new ORefList();
 
 		Task parentTask = Task.find(getProject(), parentTaskRef);
-		if(willThisTypeEndUpInTheTree(parentTask.getTypeName()))
+
+		String rowTypeCode = getRowColumnProvider().getRowTypeCodeForTask(parentTask);
+
+		if(willThisTypeEndUpInTheTree(rowTypeCode))
 			childRefs.addAll(parentTask.getChildTaskRefs());
 
 		return childRefs;
+	}
+
+	@Override
+	protected boolean isVisible(CodeList objectTypesToShow, AbstractPlanningTreeNode child) throws Exception
+	{
+		return getRowColumnProvider().shouldBeVisible(child);
 	}
 
 	private boolean doStrategiesContainObjectives() throws Exception

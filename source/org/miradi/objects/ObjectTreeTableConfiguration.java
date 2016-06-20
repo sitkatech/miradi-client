@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -78,7 +79,27 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 	{
 		return DiagramObjectDataInclusionQuestion.shouldIncludeConceptualModelPage(getDiagramInclusionCode());
 	}
-	
+
+	public boolean shouldIncludeActivities()
+	{
+		return true;
+	}
+
+	public boolean shouldIncludeMonitoringActivities()
+	{
+		return true;
+	}
+
+	public String getRowTypeCodeForTask(Task task) throws Exception
+	{
+		return task.getTypeName();
+	}
+
+	public boolean shouldBeVisible(AbstractPlanningTreeNode child) throws Exception
+	{
+		return getRowCodesToShow().contains(child.getObjectTypeName());
+	}
+
 	private String getDiagramInclusionCode()
 	{
 		return getData(TAG_DIAGRAM_DATA_INCLUSION);

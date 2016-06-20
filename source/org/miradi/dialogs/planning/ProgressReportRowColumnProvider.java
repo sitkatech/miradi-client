@@ -19,8 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning;
 
+import org.miradi.dialogs.planning.treenodes.AbstractPlanningTreeNode;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
+import org.miradi.objects.Task;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.IntermediateResultSchema;
@@ -67,7 +69,27 @@ public class ProgressReportRowColumnProvider implements RowColumnProvider, Plann
 	{
 		return false;
 	}
-	
+
+	public boolean shouldIncludeActivities()
+	{
+		return true;
+	}
+
+	public boolean shouldIncludeMonitoringActivities()
+	{
+		return true;
+	}
+
+	public String getRowTypeCodeForTask(Task task)
+	{
+		return task.getTypeName();
+	}
+
+	public boolean shouldBeVisible(AbstractPlanningTreeNode child) throws Exception
+	{
+		return getRowCodesToShow().contains(child.getObjectTypeName());
+	}
+
 	public String getWorkPlanBudgetMode() throws Exception
 	{
 		return WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE;

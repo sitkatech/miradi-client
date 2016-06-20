@@ -223,7 +223,7 @@ abstract public class AbstractTreeRebuilder
 		rootNode.setRawChildren(childrenToKeep);
 	}
 
-	private void removeUnwantedLayersAndPromoteChildren(AbstractPlanningTreeNode node, CodeList objectTypesToShow)
+	private void removeUnwantedLayersAndPromoteChildren(AbstractPlanningTreeNode node, CodeList objectTypesToShow) throws Exception
 	{
 		Vector<AbstractPlanningTreeNode> newChildren = new Vector<AbstractPlanningTreeNode>();
 		for(int i = 0; i < node.getChildCount(); ++i)
@@ -246,7 +246,7 @@ abstract public class AbstractTreeRebuilder
 		node.setRawChildren(newChildren);
 	}
 
-	protected boolean isVisible(CodeList objectTypesToShow, AbstractPlanningTreeNode child)
+	protected boolean isVisible(CodeList objectTypesToShow, AbstractPlanningTreeNode child) throws Exception
 	{
 		return objectTypesToShow.contains(child.getObjectTypeName());
 	}

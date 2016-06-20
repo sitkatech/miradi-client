@@ -26,6 +26,7 @@ import javax.swing.Icon;
 
 import org.miradi.icons.*;
 import org.miradi.main.EAM;
+import org.miradi.objects.Cause;
 import org.miradi.schemas.*;
 
 abstract public class AbstractCustomPlanningRowsQuestion extends ProjectBasedDynamicQuestion
@@ -36,7 +37,7 @@ abstract public class AbstractCustomPlanningRowsQuestion extends ProjectBasedDyn
 		return getRowChoices().toArray(new ChoiceItem[0]);
 	}
 
-	protected Vector<ChoiceItem> getRowChoices()
+	private Vector<ChoiceItem> getRowChoices()
 	{	
 		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
 
@@ -71,7 +72,7 @@ abstract public class AbstractCustomPlanningRowsQuestion extends ProjectBasedDyn
 		return choiceItems;
 	}
 
-	protected static ChoiceItem createChoiceItem(int objectType, String objectName, Icon iconToUse)
+	private static ChoiceItem createChoiceItem(int objectType, String objectName, Icon iconToUse)
 	{
 		return new ChoiceItem(objectName, EAM.fieldLabel(objectType, objectName), iconToUse);
 	}
@@ -80,7 +81,22 @@ abstract public class AbstractCustomPlanningRowsQuestion extends ProjectBasedDyn
 
 	abstract protected boolean shouldIncludeBiophysicalFactorRow();
 
-	abstract protected Vector<ChoiceItem> createCauseChoiceItems();
-	
-	abstract protected Vector<ChoiceItem> createTaskChoiceItems();
+	private Vector<ChoiceItem> createCauseChoiceItems()
+	{
+		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
+		choiceItems.add(createChoiceItem(CauseSchema.getObjectType(), Cause.OBJECT_NAME_THREAT, new DirectThreatIcon()));
+		choiceItems.add(createChoiceItem(CauseSchema.getObjectType(), Cause.OBJECT_NAME_CONTRIBUTING_FACTOR, new ContributingFactorIcon()));
+
+		return choiceItems;
+	}
+
+	private Vector<ChoiceItem> createTaskChoiceItems()
+	{
+		Vector<ChoiceItem> choiceItems = new Vector<ChoiceItem>();
+		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.ACTIVITY_NAME, new ActivityIcon()));
+		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.MONITORING_ACTIVITY_NAME, new MonitoringActivityIcon()));
+		choiceItems.add(createChoiceItem(TaskSchema.getObjectType(), TaskSchema.OBJECT_NAME, new TaskIcon()));
+
+		return choiceItems;
+	}
 }

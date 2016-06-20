@@ -41,4 +41,14 @@ public class AccountingCodeCoreRowColumnProvider extends AbstractBudgetCategoryR
 	{
 		return AccountingCodeSchema.getObjectType();
 	}
+
+	public boolean shouldIncludeActivities()
+	{
+		return true;
+	}
+
+	public boolean shouldIncludeMonitoringActivities()
+	{
+		return true;
+	}
 }
