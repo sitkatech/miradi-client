@@ -312,7 +312,7 @@ public class MigrationTo26 extends AbstractMigration
 				{
 					DateUnitEffort childDateUnitEffort = childDateUnitEffortList.getDateUnitEffort(j);
 					DateUnit childDateUnit = childDateUnitEffort.getDateUnit();
-					if (childDateUnit.contains(parentDateUnit))
+					if (parentDateUnit.contains(childDateUnit))
 						supersededByChildAssignment = true;
 				}
 

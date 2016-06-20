@@ -90,6 +90,31 @@ public class TestMigrationTo26 extends AbstractTestMigration
 		assertEquals(rawPoolForType.size(), 1);
 	}
 
+	public void testForwardMigrationStrategyAllResourceAssignmentsRemovedExceptLowestLevel() throws Exception
+	{
+		getProject().setProjectStartDate(2005);
+		getProject().setProjectEndDate(2007);
+
+		Strategy strategy = getProject().createStrategy();
+		ResourceAssignment strategyResourceAssignment = getProject().addResourceAssignment(strategy, 1.0, dateUnit2005);
+
+		Task activity = getProject().createActivity(strategy);
+		ResourceAssignment activityResourceAssignment = getProject().addResourceAssignment(activity, 2.0, dateUnit2005Q4);
+
+		Task subTask = getProject().createTask(activity);
+		ResourceAssignment subTaskResourceAssignment = getProject().addResourceAssignment(subTask, 3.0, dateUnit200512);
+
+		assertTrue(isAssignmentDataSuperseded(strategyResourceAssignment, dateUnit2005));
+		assertTrue(isAssignmentDataSuperseded(activityResourceAssignment, dateUnit2005));
+		assertFalse(isAssignmentDataSuperseded(subTaskResourceAssignment, dateUnit2005));
+
+		RawProject migratedProject = reverseMigrate(new VersionRange(MigrationTo26.VERSION_TO));
+		migrateProject(migratedProject, new VersionRange(Project.VERSION_HIGH));
+
+		RawPool rawPoolForType = migratedProject.getRawPoolForType(ObjectType.RESOURCE_ASSIGNMENT);
+		assertEquals(rawPoolForType.size(), 1);
+	}
+
 	public void testForwardMigrationStrategyResourceAssignmentsRemovedSkipLevel() throws Exception
 	{
 		getProject().setProjectStartDate(2005);
@@ -249,4 +274,6 @@ public class TestMigrationTo26 extends AbstractTestMigration
 	private final static DateUnit dateUnit2005Q2 = new DateUnit("2005Q2");
 	private final static DateUnit dateUnit2005Q3 = new DateUnit("2005Q3");
 	private final static DateUnit dateUnit2005Q4 = new DateUnit("2005Q4");
+
+	private final static DateUnit dateUnit200512 = new DateUnit("2005-12");
 }
