@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-21 07:51-0700\n"
+"POT-Creation-Date: 2016-06-21 11:36-0700\n"
 "PO-Revision-Date: 2015-07-29 01:52-0700\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3049,7 +3049,7 @@ msgid "Date Chooser"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:52
-msgid "Day Columns Visibility"
+msgid "Day Columns Visibility Feature"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/DayDateUnitStartAndEndCard.java:37
