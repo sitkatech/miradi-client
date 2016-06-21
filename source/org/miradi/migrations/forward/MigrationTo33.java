@@ -286,11 +286,11 @@ public class MigrationTo33 extends AbstractMigration
 				rawObject.remove(TAG_TIMEFRAME_IDS);
 
 				String label = HtmlUtilities.convertHtmlToPlainText(rawObject.get(TAG_LABEL));
-				String baseObjectLabel = createMessage(EAM.text("Label = %s"), label);
+				String baseObjectLabel = createMessage(EAM.text("Name = %s"), label);
 
 				HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 				tokenReplacementMap.put("%label", baseObjectLabel);
-				tokenReplacementMap.put("%fieldName", TAG_TIMEFRAME_IDS);
+				tokenReplacementMap.put("%fieldName", TAG_TIMEFRAME_IDS_READABLE);
 				String dataLossMessage = EAM.substitute(EAM.text("%fieldName will be removed. %label"), tokenReplacementMap);
 				migrationResult.addDataLoss(dataLossMessage);
 			}
@@ -313,6 +313,7 @@ public class MigrationTo33 extends AbstractMigration
 	public static final String TAG_DATEUNIT_EFFORTS = "Details";
 	public static final String TAG_RESOURCE_ID = "ResourceId";
 	public static final String TAG_TIMEFRAME_IDS = "TimeframeIds";
+	public static final String TAG_TIMEFRAME_IDS_READABLE = "Timeframe";
 	public static final String TAG_LABEL = "Label";
 
 	public static final int VERSION_FROM = 32;

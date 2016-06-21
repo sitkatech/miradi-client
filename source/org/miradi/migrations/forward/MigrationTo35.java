@@ -242,7 +242,6 @@ public class MigrationTo35 extends AbstractMigration
 			task.setData(TAG_SUBTASK_IDS, "");
 			task.setData(TAG_RESOURCE_ASSIGNMENT_IDS, "");
 			task.setData(TAG_EXPENSE_ASSIGNMENT_REFS, "");
-			task.setData(TAG_IS_MONITORING_ACTIVITY, "");
 			task.setData(TAG_PROGRESS_REPORT_REFS, "");
 
 			return newTaskRef;
@@ -279,7 +278,6 @@ public class MigrationTo35 extends AbstractMigration
 	public static final String TAG_SUBTASK_IDS = "SubtaskIds";
 	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
 	public static final String TAG_EXPENSE_ASSIGNMENT_REFS = "ExpenseRefs";
-	public final static String TAG_IS_MONITORING_ACTIVITY = "IsMonitoringActivity";
 	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
 
 	public static final int VERSION_FROM = 34;

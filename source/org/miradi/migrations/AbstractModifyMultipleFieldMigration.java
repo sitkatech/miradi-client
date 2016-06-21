@@ -62,7 +62,7 @@ abstract public class AbstractModifyMultipleFieldMigration extends AbstractMigra
 			{
 				rawObject.remove(tagToRemove);
 				String fieldName = fieldsToLabelMap.get(tagToRemove);
-				String baseObjectlabel = createMessage(EAM.text("Label = %s"), rawObject.get(Indicator.TAG_LABEL));
+				String baseObjectlabel = createMessage(EAM.text("Name = %s"), rawObject.get(Indicator.TAG_LABEL));
 
 				HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
 				tokenReplacementMap.put("%label", baseObjectlabel);
