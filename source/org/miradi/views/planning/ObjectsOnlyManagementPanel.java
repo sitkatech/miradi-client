@@ -21,6 +21,7 @@ package org.miradi.views.planning;
 
 import org.miradi.dialogs.planning.ObjectsOnlyRowColumnProvider;
 import org.miradi.dialogs.planning.PlanningTreeManagementPanel;
+import org.miradi.dialogs.planning.propertiesPanel.ObjectsOnlyPlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningTreeMultiPropertiesPanel;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAlwaysExpanded;
 import org.miradi.dialogs.planning.upperPanel.ObjectsOnlyPlanningTreeTableModel;
@@ -53,7 +54,7 @@ public class ObjectsOnlyManagementPanel extends PlanningTreeManagementPanel
 		PlanningTreeRootNodeAlwaysExpanded rootNode = new PlanningTreeRootNodeAlwaysExpanded(mainWindowToUse.getProject());
 		PlanningTreeTableModel objectsOnlyTreeTableModel = new ObjectsOnlyPlanningTreeTableModel(mainWindowToUse.getProject(), rootNode, provider);
 		PlanningTreeTablePanel objectsOnlyPlanTreeTablePanel = ObjectsOnlyPlanningTreeTablePanel.createPlanningTreeTablePanel(mainWindowToUse, objectsOnlyTreeTableModel);
-		PlanningTreeMultiPropertiesPanel objectsOnlyPlanPropertiesPanel = new PlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
+		PlanningTreeMultiPropertiesPanel objectsOnlyPlanPropertiesPanel = new ObjectsOnlyPlanningTreeMultiPropertiesPanel(mainWindowToUse, ORef.INVALID);
 		
 		return new ObjectsOnlyManagementPanel(mainWindowToUse, objectsOnlyPlanTreeTablePanel, objectsOnlyPlanPropertiesPanel);
 	}

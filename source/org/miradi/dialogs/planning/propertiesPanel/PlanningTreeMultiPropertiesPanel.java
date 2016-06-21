@@ -56,7 +56,7 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 		addPanel(blankPropertiesPanel);
 	}
 	
-	private WorkPlanActivityPropertiesPanel createActivityPropertiesPanel() throws Exception
+	protected WorkPlanActivityPropertiesPanel createActivityPropertiesPanel() throws Exception
 	{
 		return new WorkPlanActivityPropertiesPanel(getMainWindow());
 	}
