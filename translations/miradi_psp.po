@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-21 03:51-0700\n"
+"POT-Creation-Date: 2016-06-21 07:51-0700\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -4678,11 +4678,6 @@ msgstr "Key Attribute"
 msgid "Key Ecological Attribute (KEA)"
 msgstr "Key Ecological Attribute (KEA)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:289
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/AbstractModifyMultipleFieldMigration.java:65
-msgid "Label = %s"
-msgstr "Label = %s"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/FutureStatus.java:101
 msgid "Label|(Future Status)"
 msgstr "Label|(Future Status)"
@@ -5566,6 +5561,11 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:43
 msgid "Name"
 msgstr "Name"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:289
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/AbstractModifyMultipleFieldMigration.java:65
+msgid "Name = %s"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:373
 msgid "Name = '"
@@ -37471,6 +37471,9 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Label = %s"
+#~ msgstr "Label = %s"
 
 #~ msgid "%1 of %2 Methods and Tasks have assignments"
 #~ msgstr "%1 of %2 Methods and Tasks have assignments"

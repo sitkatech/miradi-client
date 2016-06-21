@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-21 03:51-0700\n"
+"POT-Creation-Date: 2016-06-21 07:51-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/miradi-client/"
@@ -4595,11 +4595,6 @@ msgstr "Atributo clave "
 msgid "Key Ecological Attribute (KEA)"
 msgstr "Atributos ecológicos clave (AEC)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:289
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/AbstractModifyMultipleFieldMigration.java:65
-msgid "Label = %s"
-msgstr "Etiqueta = %s"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/FutureStatus.java:101
 msgid "Label|(Future Status)"
 msgstr "Etiqueta (Estado Futuro)"
@@ -5502,6 +5497,11 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:43
 msgid "Name"
 msgstr "Nombre"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:289
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/AbstractModifyMultipleFieldMigration.java:65
+msgid "Name = %s"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:373
 msgid "Name = '"
@@ -31797,6 +31797,9 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "Label = %s"
+#~ msgstr "Etiqueta = %s"
 
 #~ msgid "%1 of %2 Methods and Tasks have assignments"
 #~ msgstr "%1 of %2 Métodos y tareas tienen asignaciones"
