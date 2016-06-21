@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-20 08:36-0700\n"
+"POT-Creation-Date: 2016-06-21 03:06-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/miradi-client/"
@@ -1622,6 +1622,10 @@ msgstr "Créer un Membre"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateMethod.java:35
 msgid "Action|Manage|Create Method"
 msgstr "Créer une Méthode"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/AbstractActionCreateMonitoringActivity.java:36
+msgid "Action|Manage|Create Monitoring Activity"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateObjective.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeCreateObjective.java:40
@@ -5303,15 +5307,15 @@ msgstr "Modifier"
 msgid "MenuBar|File"
 msgstr "Fichier"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:586
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:588
 msgid "MenuBar|Help"
 msgstr "Aide"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:518
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:520
 msgid "MenuBar|Step-by-Step"
 msgstr "Étape par étape"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:445
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:447
 msgid "MenuBar|View"
 msgstr "Afficher"
 
@@ -5348,7 +5352,7 @@ msgid "Menu|Export Current Project as..."
 msgstr "Exporter le projet actuel sous..."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:243
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:433
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:435
 msgid "Menu|Group Box"
 msgstr "Boîte de regroupement"
 
@@ -7236,6 +7240,10 @@ msgstr "Créer un Attribut Ecologique Clé"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeCreateMethod.java:46
 msgid "TT|Create a Method for the selected Indicator"
 msgstr "Créer une Méthode pour l'indicateur sélectionné"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/AbstractActionCreateMonitoringActivity.java:43
+msgid "TT|Create a Monitoring Activity for the selected Strategy"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateSubTarget.java:41
 msgid "TT|Create a Nested Target"

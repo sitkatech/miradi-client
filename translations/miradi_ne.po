@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-20 08:36-0700\n"
+"POT-Creation-Date: 2016-06-21 03:06-0700\n"
 "PO-Revision-Date: 2015-07-29 01:52-0700\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -1441,6 +1441,10 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeCreateMethod.java:40
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateMethod.java:35
 msgid "Action|Manage|Create Method"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/AbstractActionCreateMonitoringActivity.java:36
+msgid "Action|Manage|Create Monitoring Activity"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateObjective.java:35
@@ -4951,15 +4955,15 @@ msgstr ""
 msgid "MenuBar|File"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:586
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:588
 msgid "MenuBar|Help"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:518
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:520
 msgid "MenuBar|Step-by-Step"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:445
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:447
 msgid "MenuBar|View"
 msgstr ""
 
@@ -4996,7 +5000,7 @@ msgid "Menu|Export Current Project as..."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:243
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:433
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:435
 msgid "Menu|Group Box"
 msgstr ""
 
@@ -6741,6 +6745,10 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeCreateMethod.java:46
 msgid "TT|Create a Method for the selected Indicator"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/AbstractActionCreateMonitoringActivity.java:43
+msgid "TT|Create a Monitoring Activity for the selected Strategy"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateSubTarget.java:41
