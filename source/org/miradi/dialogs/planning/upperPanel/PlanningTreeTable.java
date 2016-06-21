@@ -58,6 +58,7 @@ public class PlanningTreeTable extends TreeTableWithPreferredScrollableViewportS
 		actions.add(ActionTreeCreateObjective.class);
 		actions.add(ActionTreeCreateIndicator.class);
 		actions.add(ActionTreeCreateActivity.class);
+		actions.add(ActionTreeCreateMonitoringActivity.class);
 		actions.add(ActionTreeMoveActivity.class);
 		actions.add(ActionTreeCreateMethod.class);
 		actions.add(ActionCreateTask.class);

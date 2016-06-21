@@ -20,40 +20,23 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.planning.doers;
 
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Task;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.views.diagram.doers.CloneStressDoer;
+import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 
-public class CreateActivityNodeDoer extends AbstractCreateTaskNodeDoer
+public class CreateActivityNodeDoer extends AbstractCreateActivityNodeDoer
 {
 	@Override
-	protected ORef getParentRef()
+	public boolean isAvailable()
 	{
-		ORefList selectionHierarchy = getSelectionHierarchy();
-		if (selectionHierarchy.isEmpty())
-			return ORef.INVALID;
+		if (getProject().getCurrentView().equals(getProject().WORK_PLAN_VIEW))
+			if (getWorkPlanBudgetMode().equals(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE))
+				return false;
 
-		ORef selectedRef = selectionHierarchy.getFirstElement();
-		if (selectedRef.isInvalid())
-			return ORef.INVALID;
-		
-		if (Strategy.is(selectedRef))
-			return selectedRef;
-		
-		if (Task.isActivity(getProject(), selectedRef))
-			return selectionHierarchy.getRefForType(StrategySchema.getObjectType());
-		
-		return ORef.INVALID;
+		return super.isAvailable();
 	}
-	
+
 	@Override
-	protected void doWork(ORefList selectionBeforeCreate, ORef newTaskRef) throws Exception
+	protected boolean isMonitoringActivity()
 	{
-		super.doWork(selectionBeforeCreate, newTaskRef);
-		
-		CloneStressDoer.includeInAllItsOwnersTag(getProject(), newTaskRef);
+		return false;
 	}
 }

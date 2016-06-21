@@ -17,31 +17,14 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.planning.doers;
+package org.miradi.actions;
 
-import org.miradi.actions.*;
-import org.miradi.views.umbrella.doers.AbstractPopDownMenuDoer;
+import org.miradi.main.MainWindow;
 
-public class PlanningTreeNodeCreationMenuDoer extends AbstractPopDownMenuDoer
+public class ActionTreeCreateMonitoringActivity extends AbstractActionCreateMonitoringActivity
 {
-	@Override
-	protected Class[] getAllPossibleActionClasses()
+	public ActionTreeCreateMonitoringActivity(MainWindow mainWindowToUse)
 	{
-		return new Class[] {
-				ActionTreeCreateObjective.class,
-				ActionTreeCreateIndicator.class,
-				null,
-				ActionTreeCreateActivity.class,
-				ActionTreeCreateMonitoringActivity.class,
-				ActionTreeMoveActivity.class,
-				null,
-				ActionTreeCreateMethod.class,
-				null,
-				ActionCreateTask.class,
-				ActionCreateSameLevelTask.class,
-				null,
-				ActionCreateIndicatorMeasurement.class,
-				ActionCreateFutureStatus.class,
-			};
+		super(mainWindowToUse);
 	}
 }

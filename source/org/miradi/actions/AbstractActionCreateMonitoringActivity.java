@@ -17,31 +17,29 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.planning.doers;
 
-import org.miradi.actions.*;
-import org.miradi.views.umbrella.doers.AbstractPopDownMenuDoer;
+package org.miradi.actions;
 
-public class PlanningTreeNodeCreationMenuDoer extends AbstractPopDownMenuDoer
+import org.miradi.icons.MonitoringActivityIcon;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
+
+abstract public class AbstractActionCreateMonitoringActivity extends ObjectsAction
 {
-	@Override
-	protected Class[] getAllPossibleActionClasses()
+	public AbstractActionCreateMonitoringActivity(MainWindow mainWindowToUse)
 	{
-		return new Class[] {
-				ActionTreeCreateObjective.class,
-				ActionTreeCreateIndicator.class,
-				null,
-				ActionTreeCreateActivity.class,
-				ActionTreeCreateMonitoringActivity.class,
-				ActionTreeMoveActivity.class,
-				null,
-				ActionTreeCreateMethod.class,
-				null,
-				ActionCreateTask.class,
-				ActionCreateSameLevelTask.class,
-				null,
-				ActionCreateIndicatorMeasurement.class,
-				ActionCreateFutureStatus.class,
-			};
+		super(mainWindowToUse, getLabel(), new MonitoringActivityIcon());
+	}
+
+	private static String getLabel()
+	{
+		return EAM.text("Action|Manage|Create Monitoring Activity");
+	}
+	
+
+	@Override
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Create a Monitoring Activity for the selected Strategy");
 	}
 }

@@ -32,6 +32,7 @@ public class WorkPlanningTreeNodeCreationMenuDoer extends AbstractPopDownMenuDoe
 				ActionTreeCreateIndicator.class,
 				null,
 				ActionTreeCreateActivity.class,
+				ActionTreeCreateMonitoringActivity.class,
 				ActionTreeMoveActivity.class,
 				null,
 				ActionTreeCreateMethod.class,

@@ -17,31 +17,26 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
+
 package org.miradi.views.planning.doers;
 
-import org.miradi.actions.*;
-import org.miradi.views.umbrella.doers.AbstractPopDownMenuDoer;
+import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 
-public class PlanningTreeNodeCreationMenuDoer extends AbstractPopDownMenuDoer
+public class CreateMonitoringActivityNodeDoer extends AbstractCreateActivityNodeDoer
 {
 	@Override
-	protected Class[] getAllPossibleActionClasses()
+	public boolean isAvailable()
 	{
-		return new Class[] {
-				ActionTreeCreateObjective.class,
-				ActionTreeCreateIndicator.class,
-				null,
-				ActionTreeCreateActivity.class,
-				ActionTreeCreateMonitoringActivity.class,
-				ActionTreeMoveActivity.class,
-				null,
-				ActionTreeCreateMethod.class,
-				null,
-				ActionCreateTask.class,
-				ActionCreateSameLevelTask.class,
-				null,
-				ActionCreateIndicatorMeasurement.class,
-				ActionCreateFutureStatus.class,
-			};
+		if (getProject().getCurrentView().equals(getProject().WORK_PLAN_VIEW))
+			if (getWorkPlanBudgetMode().equals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE))
+				return false;
+
+		return super.isAvailable();
+	}
+
+	@Override
+	protected boolean isMonitoringActivity()
+	{
+		return true;
 	}
 }

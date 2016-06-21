@@ -151,6 +151,7 @@ public class Actions
 		registerAction(new ActionNudgeRight(mainWindow));
 		registerAction(new ActionCreateDiagramMargin(mainWindow));
 		registerAction(new ActionTreeCreateActivity(mainWindow));
+		registerAction(new ActionTreeCreateMonitoringActivity(mainWindow));
 		registerAction(new ActionTreeCreateRelevancyActivity(mainWindow));
 		registerAction(new ActionTreeMoveActivity(mainWindow));
 		registerAction(new ActionTreeCreateMethod(mainWindow));
