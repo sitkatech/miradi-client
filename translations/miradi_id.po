@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-21 03:06-0700\n"
+"POT-Creation-Date: 2016-06-21 03:51-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/miradi-client/"
@@ -4828,7 +4828,7 @@ msgstr "Tautkan Ancaman Langsung ke Target "
 msgid "Link Properties"
 msgstr "Sifat-sifat Tautan "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:47
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:48
 msgid "Lists"
 msgstr "Daftar "
 
