@@ -32,10 +32,7 @@ import javax.swing.JToggleButton;
 
 import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.MiradiPanel;
-import org.miradi.dialogs.fieldComponents.CheckBoxWithChoiceItemProvider;
-import org.miradi.dialogs.fieldComponents.ChoiceItemProvider;
-import org.miradi.dialogs.fieldComponents.ControlPanelHtmlFormViewer;
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.dialogs.fieldComponents.*;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.questions.ChoiceItem;
@@ -159,9 +156,9 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 	protected PanelTitleLabel getSafeIconLabel(Icon icon)
 	{
 		if (icon == null)
-			return new PanelTitleLabel();
+			return new QuestionEditorPanelTitleLabel();
 		
-		return new PanelTitleLabel(icon);
+		return new QuestionEditorPanelTitleLabel(icon);
 	}
 
 	protected JToggleButton createToggleButton(ChoiceItem choiceItem)
