@@ -46,7 +46,7 @@ abstract public class AbstractCreateTaskNodeDoer extends AbstractTreeNodeDoer
 			if (parentRef.isInvalid())
 				return false;
 
-			if(!childWouldBeVisible(Task.getChildTaskTypeCode(parentRef.getObjectType())))
+			if (!childWouldBeVisible(getChildRowTypeCode(parentRef)))
 				return false;
 
 			return true;
@@ -57,7 +57,12 @@ abstract public class AbstractCreateTaskNodeDoer extends AbstractTreeNodeDoer
 			return false;
 		}
 	}
-	
+
+	protected String getChildRowTypeCode(ORef parentRef)
+	{
+		return Task.getChildTaskTypeCode(parentRef.getObjectType());
+	}
+
 	//FIXME low - Sometimes when an object is deleted, the selection hierarchy has
 	//not been updated so there is a ref in the hierarchy that points to the deleted object.
 	private boolean doesFirstSelectedRefExist()

@@ -20,14 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.planning.doers;
 
+import org.miradi.objecthelpers.ORef;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
+import org.miradi.schemas.TaskSchema;
 
 public class CreateMonitoringActivityNodeDoer extends AbstractCreateActivityNodeDoer
 {
 	@Override
 	public boolean isAvailable()
 	{
-		if (getProject().getCurrentView().equals(getProject().WORK_PLAN_VIEW))
+		if (isWorkPlanView())
 			if (getWorkPlanBudgetMode().equals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE))
 				return false;
 
@@ -38,5 +40,11 @@ public class CreateMonitoringActivityNodeDoer extends AbstractCreateActivityNode
 	protected boolean isMonitoringActivity()
 	{
 		return true;
+	}
+
+	@Override
+	protected String getChildRowTypeCode(ORef parentRef)
+	{
+		return TaskSchema.MONITORING_ACTIVITY_NAME;
 	}
 }

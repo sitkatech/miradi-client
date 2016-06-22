@@ -27,7 +27,7 @@ public class CreateActivityNodeDoer extends AbstractCreateActivityNodeDoer
 	@Override
 	public boolean isAvailable()
 	{
-		if (getProject().getCurrentView().equals(getProject().WORK_PLAN_VIEW))
+		if (isWorkPlanView())
 			if (getWorkPlanBudgetMode().equals(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE))
 				return false;
 

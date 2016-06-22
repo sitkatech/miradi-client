@@ -29,6 +29,7 @@ import org.miradi.questions.DiagramObjectDataInclusionQuestion;
 import org.miradi.questions.PlanningTreeTargetPositionQuestion;
 import org.miradi.questions.StrategyObjectiveTreeOrderQuestion;
 import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CodeList;
 
 public class ObjectTreeTableConfiguration extends BaseObject implements PlanningTreeRowColumnProvider
@@ -80,14 +81,14 @@ public class ObjectTreeTableConfiguration extends BaseObject implements Planning
 		return DiagramObjectDataInclusionQuestion.shouldIncludeConceptualModelPage(getDiagramInclusionCode());
 	}
 
-	public boolean shouldIncludeActivities()
+	public boolean shouldIncludeActivities() throws Exception
 	{
-		return true;
+		return getRowCodesToShow().contains(TaskSchema.ACTIVITY_NAME);
 	}
 
-	public boolean shouldIncludeMonitoringActivities()
+	public boolean shouldIncludeMonitoringActivities() throws Exception
 	{
-		return true;
+		return getRowCodesToShow().contains(TaskSchema.MONITORING_ACTIVITY_NAME);
 	}
 
 	public String getRowTypeCodeForTask(Task task) throws Exception

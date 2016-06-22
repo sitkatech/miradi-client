@@ -28,20 +28,20 @@ import org.miradi.views.ObjectsDoer;
 
 abstract public class AbstractTreeNodeDoer extends ObjectsDoer
 {
-	protected boolean childWouldBeVisible(String objectTypeName) throws Exception
+	protected boolean childWouldBeVisible(String rowTypeCode) throws Exception
 	{
 		if (isPlanningView())
 		{
 			RowColumnProvider rowColumnProvider = getPlanningView().getRowColumnProvider();
 			CodeList visibleRowCodes = rowColumnProvider.getRowCodesToShow();
-			return (visibleRowCodes.contains(objectTypeName));
+			return (visibleRowCodes.contains(rowTypeCode));
 		}
 
 		if (isWorkPlanView())
 		{
 			RowColumnProvider rowColumnProvider = getWorkPlanView().getRowColumnProvider();
 			CodeList visibleRowCodes = rowColumnProvider.getRowCodesToShow();
-			return (visibleRowCodes.contains(objectTypeName));
+			return (visibleRowCodes.contains(rowTypeCode));
 		}
 
 		return true;

@@ -66,6 +66,7 @@ public class WorkPlanRowColumnProvider extends AbstractWorkPlanRowColumnProvider
 				ResultsChainDiagramSchema.OBJECT_NAME,
 				StrategySchema.OBJECT_NAME,
 				TaskSchema.ACTIVITY_NAME,
+				TaskSchema.MONITORING_ACTIVITY_NAME,
 				TaskSchema.OBJECT_NAME,
 		});
 	}
