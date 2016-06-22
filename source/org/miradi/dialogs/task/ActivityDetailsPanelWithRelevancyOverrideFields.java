@@ -29,9 +29,9 @@ import org.miradi.schemas.TaskSchema;
 
 public class ActivityDetailsPanelWithRelevancyOverrideFields extends TaskDetailsPanel
 {
-	public ActivityDetailsPanelWithRelevancyOverrideFields(Project projectToUse, Actions actionsToUse, ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel, boolean shouldHaveIsMonitoringActivityField) throws Exception
+	public ActivityDetailsPanelWithRelevancyOverrideFields(Project projectToUse, Actions actionsToUse, ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel, boolean isMonitoringActivityFieldEditable) throws Exception
 	{
-		super(projectToUse, actionsToUse, activityVisibilityButtonPanel, shouldHaveIsMonitoringActivityField);
+		super(projectToUse, actionsToUse, activityVisibilityButtonPanel, isMonitoringActivityFieldEditable);
 	}
 
 	@Override

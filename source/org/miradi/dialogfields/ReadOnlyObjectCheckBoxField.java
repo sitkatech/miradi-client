@@ -17,35 +17,20 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
+package org.miradi.dialogfields;
 
-package org.miradi.dialogs.task;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.project.Project;
 
-import org.miradi.dialogs.activity.ActivityFactorVisibilityControlPanel;
-import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.main.MainWindow;
-
-public class WorkPlanActivityPropertiesPanel extends TaskPropertiesPanel
+public class ReadOnlyObjectCheckBoxField extends ObjectCheckBoxField
 {
-	public WorkPlanActivityPropertiesPanel(MainWindow mainWindow) throws Exception
+	public ReadOnlyObjectCheckBoxField(Project projectToUse, ORef refToUse, String tag, String valueWhenChecked, String valueWhenUnchecked)
 	{
-		super(mainWindow);
+		super(projectToUse, refToUse, tag, valueWhenChecked, valueWhenUnchecked);
 	}
-	
 	@Override
-	protected ObjectDataInputPanel createDetailsPanel(MainWindow mainWindow, ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel) throws Exception
-	{
-		return new ActivityDetailsPanelWithRelevancyOverrideFields(getProject(), mainWindow.getActions(), activityVisibilityButtonPanel, isMonitoringActivityFieldEditable());
-	}
-
-	@Override
-	protected boolean shouldHaveVisibilityPanel()
+	protected boolean shouldBeEditable()
 	{
 		return false;
-	}
-
-	@Override
-	public String getPanelDescription()
-	{
-		return "WorkPlanActivityPropertiesPanel";
 	}
 }

@@ -30,7 +30,7 @@ public class ObjectsOnlyWorkPlanActivityPropertiesPanel extends WorkPlanActivity
 	}
 
 	@Override
-	protected boolean shouldHaveIsMonitoringActivityField()
+	protected boolean isMonitoringActivityFieldEditable()
 	{
 		return true;
 	}

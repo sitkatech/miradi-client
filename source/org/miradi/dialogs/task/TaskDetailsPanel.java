@@ -38,7 +38,7 @@ import org.miradi.utils.FillerLabel;
 
 public class TaskDetailsPanel extends ObjectDataInputPanel
 {
-	public TaskDetailsPanel(Project projectToUse, Actions actionsToUse, ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel, boolean shouldHaveIsMonitoringActivityField) throws Exception
+	public TaskDetailsPanel(Project projectToUse, Actions actionsToUse, ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel, boolean isMonitoringActivityFieldEditable) throws Exception
 	{
 		super(projectToUse, TaskSchema.getObjectType());
 		
@@ -47,8 +47,10 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 		ObjectDataInputField taskIdField = createShortStringField(ObjectType.TASK, Task.TAG_SHORT_LABEL);
 		addFieldsOnOneLine(taskNameLabel, new ObjectDataInputField[] {taskIdField, taskNameField,} );
 
-		if (shouldHaveIsMonitoringActivityField)
+		if (isMonitoringActivityFieldEditable)
 			addField(createCheckBoxField(TaskSchema.getObjectType(), Task.TAG_IS_MONITORING_ACTIVITY, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));
+		else
+			addField(createReadOnlyCheckBoxField(TaskSchema.getObjectType(), Task.TAG_IS_MONITORING_ACTIVITY, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));
 
 		if (activityVisibilityButtonPanel != null)
 		{
