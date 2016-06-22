@@ -19,15 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.icons;
 
-import java.awt.Color;
+import org.miradi.utils.MiradiResourceImageIcon;
 
-import org.miradi.main.AppPreferences;
-
-public class MethodIcon extends TaskIcon
+public class MethodIcon extends MiradiResourceImageIcon
 {
-	@Override
-	protected Color getIconColor()
+	public MethodIcon()
 	{
-		return AppPreferences.INDICATOR_COLOR;
+		super("icons/icon_method.png");
 	}
 }
