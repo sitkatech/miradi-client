@@ -49,7 +49,7 @@ public class MigrationTo22 extends NewlyAddedFieldsMigration
 	protected HashMap<String, String> createFieldsToLabelMapToModify()
 	{
 		HashMap<String, String> fieldsToAdd = new HashMap<String, String>();
-		fieldsToAdd.put(TAG_DAY_COLUMNS_VISIBILITY, EAM.text("Day Columns Visibility Feature"));
+		fieldsToAdd.put(TAG_DAY_COLUMNS_VISIBILITY, EAM.text("Day Columns Visibility feature"));
 		
 		return fieldsToAdd;
 	}
