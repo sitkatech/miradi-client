@@ -67,6 +67,11 @@ public class TreeNodeMoveActivityDoer extends AbstractTreeNodeTaskDoer
 		moveSelectedActivity();
 	}
 
+	protected boolean childWouldBeVisible() throws Exception
+	{
+		return childWouldBeVisible(TaskSchema.ACTIVITY_NAME) || childWouldBeVisible(TaskSchema.MONITORING_ACTIVITY_NAME);
+
+	}
 	private void moveSelectedActivity() throws CommandFailedException
 	{
 		ORef parentOfSelectedRef = getParentRefOfSelectedObject();

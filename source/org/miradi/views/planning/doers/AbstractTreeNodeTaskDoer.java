@@ -23,7 +23,6 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Task;
 
 
 abstract public class AbstractTreeNodeTaskDoer extends AbstractTreeNodeDoer
@@ -44,9 +43,9 @@ abstract public class AbstractTreeNodeTaskDoer extends AbstractTreeNodeDoer
 			if(!canBeParentOfTask(parent))
 				return false;
 
-			if(!childWouldBeVisible(Task.getChildTaskTypeCode(parent.getType())))
+			if(!childWouldBeVisible())
 				return false;
-			
+
 			return true;
 		}
 		catch(Exception e)
@@ -83,4 +82,5 @@ abstract public class AbstractTreeNodeTaskDoer extends AbstractTreeNodeDoer
 	}
 	
 	abstract protected int getParentType();
+	abstract protected boolean childWouldBeVisible() throws Exception;
 }

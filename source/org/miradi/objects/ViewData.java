@@ -116,7 +116,17 @@ public class ViewData extends BaseObject
 	{
 		return getTreeConfiguration().shouldIncludeConceptualModelPage();
 	}
-	
+
+	public boolean shouldIncludeActivities() throws Exception
+	{
+		return getTreeConfiguration().shouldIncludeActivities();
+	}
+
+	public boolean shouldIncludeMonitoringActivities() throws Exception
+	{
+		return getTreeConfiguration().shouldIncludeMonitoringActivities();
+	}
+
 	public int getCurrentTab()
 	{
 		return getIntegerData(TAG_CURRENT_TAB);

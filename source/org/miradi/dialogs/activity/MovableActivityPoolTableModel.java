@@ -21,13 +21,19 @@ package org.miradi.dialogs.activity;
 
 import org.miradi.dialogs.base.ObjectPoolTableModel;
 import org.miradi.ids.IdList;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
+import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
+import org.miradi.project.ProjectTotalCalculatorStrategy;
+import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.schemas.TaskSchema;
+import org.miradi.views.planning.PlanningView;
+import org.miradi.views.workplan.WorkPlanView;
 
 public class MovableActivityPoolTableModel extends ObjectPoolTableModel
 {
@@ -49,15 +55,23 @@ public class MovableActivityPoolTableModel extends ObjectPoolTableModel
     {
         ORefList filteredTaskRefs = new ORefList();
         Strategy  parentStrategy = (Strategy) getProject().findObject(parentRef);
+
         ORefList parentActivityRefs = parentStrategy.getActivityRefs();
+
         ORefList taskRefs = super.getLatestRefListFromProject();
         for (int i = 0; i < taskRefs.size(); ++i)
         {
             Task task = (Task) getProject().findObject(taskRefs.get(i));
-            if (! task.isActivity())
+            if (!task.isActivity())
                 continue;
 
             if (parentActivityRefs.contains(task.getRef()))
+                continue;
+
+            if (!task.isMonitoringActivity() && !shouldIncludeActivities())
+                continue;
+
+            if (task.isMonitoringActivity() && !shouldIncludeMonitoringActivities())
                 continue;
 
             filteredTaskRefs.add(taskRefs.get(i));
@@ -70,6 +84,69 @@ public class MovableActivityPoolTableModel extends ObjectPoolTableModel
     public String getUniqueTableModelIdentifier()
     {
         return UNIQUE_MODEL_IDENTIFIER;
+    }
+
+    private String getWorkPlanBudgetMode()
+    {
+        ProjectTotalCalculatorStrategy projectTotalCalculatorStrategy = getProject().getTimePeriodCostsMapsCache().getProjectTotalCalculator().getProjectTotalCalculatorStrategy();
+        return projectTotalCalculatorStrategy.getWorkPlanBudgetMode();
+    }
+
+    private ViewData getPlanningViewData() throws Exception
+    {
+        return getProject().getViewData(PlanningView.getViewName());
+    }
+
+    private boolean isPlanningView()
+    {
+        return getProject().getCurrentView().equals(PlanningView.getViewName());
+    }
+
+    private boolean isWorkPlanView()
+    {
+        return getProject().getCurrentView().equals(WorkPlanView.getViewName());
+    }
+
+    private boolean shouldIncludeActivities()
+    {
+        try
+        {
+            if (isWorkPlanView())
+                if (getWorkPlanBudgetMode().equals(WorkPlanVisibleRowsQuestion.SHOW_MONITORING_RELATED_ROWS_CODE))
+                    return false;
+
+            if (isPlanningView())
+                return getPlanningViewData().shouldIncludeActivities();
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            EAM.logException(ex);
+        }
+
+        return false;
+    }
+
+    private boolean shouldIncludeMonitoringActivities()
+    {
+        try
+        {
+            if (isWorkPlanView())
+                if (getWorkPlanBudgetMode().equals(WorkPlanVisibleRowsQuestion.SHOW_ACTION_RELATED_ROWS_CODE))
+                    return false;
+
+            if (isPlanningView())
+                return getPlanningViewData().shouldIncludeMonitoringActivities();
+
+            return true;
+        }
+        catch (Exception ex)
+        {
+            EAM.logException(ex);
+        }
+
+        return false;
     }
 
     private static final String UNIQUE_MODEL_IDENTIFIER = "MovableActivityPoolTableModel";
