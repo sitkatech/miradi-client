@@ -370,7 +370,7 @@ public class MigrationTo26 extends AbstractMigration
 			String name = safeGetTag(parent, TAG_LABEL);
 			String dateUnitEffortMessage = buildDataLossMessage(assignmentToDelete, adjustedDateUnitEffortList);
 			return 	EAM.text("Superseded ") + getUserFriendlyObjectName(assignmentToDelete) + EAM.text(" for parent ") + getUserFriendlyObjectName(parent) + ": \n" +
-					EAM.text("Name = '") + name + "', \n" +
+					EAM.text("Name = '") + HtmlUtilities.convertHtmlToPlainText(name) + "', \n" +
 					EAM.text("Details = '") + dateUnitEffortMessage + "'.\n";
 		}
 
