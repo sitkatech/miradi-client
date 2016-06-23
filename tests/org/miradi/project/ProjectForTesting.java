@@ -2780,27 +2780,19 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		return activity;
 	}
-	
-	public void appendActivityToStrategy(Strategy strategy, Task activity) throws Exception
-	{
-		appendTaskToParentIdList(strategy, activity, Strategy.TAG_ACTIVITY_IDS);	
-	}
 
-	public void appendMethodToIndicator(Indicator indicator, Task method) throws Exception
-	{
-		appendMethodToParentIdList(indicator, method, Indicator.TAG_METHOD_IDS);
-	}
-	
 	private void appendTaskToParentIdList(BaseObject parent, BaseObject child, String childListTag) throws Exception
 	{
-		ORefList childTaskRefs = new ORefList(child);
-		fillObjectUsingCommand(parent, childListTag, childTaskRefs.convertToIdList(TaskSchema.getObjectType()).toString());
+		IdList currentIdList = parent.getSafeIdListData(childListTag);
+		currentIdList.add(child.getId());
+		fillObjectUsingCommand(parent, childListTag, currentIdList.toJson().toString());
 	}
-	
+
 	private void appendMethodToParentIdList(BaseObject parent, BaseObject child, String childListTag) throws Exception
 	{
-		ORefList childMethodRefs = new ORefList(child);
-		fillObjectUsingCommand(parent, childListTag, childMethodRefs.convertToIdList(MethodSchema.getObjectType()).toString());
+		IdList currentIdList = parent.getSafeIdListData(childListTag);
+		currentIdList.add(child.getId());
+		fillObjectUsingCommand(parent, childListTag, currentIdList.toJson().toString());
 	}
 	
 	public static double calculateTimePeriodCosts(BaseObject baseObject, DateUnit dateUnit) throws Exception

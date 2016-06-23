@@ -54,12 +54,12 @@ public class TestMigrationTo28 extends AbstractTestMigration
 		double numberOfUnits = 10.0;
 
 		Strategy strategy1 = getProject().createAndPopulateStrategy();
-		Task activity1 = getProject().createTask(strategy1);
-		getProject().populateTask(activity1, "Activity 1");
+		ORefList strategy1ActivityRefs = strategy1.getActivityRefs();
+		Task activity1 = (Task) getProject().findObject(strategy1ActivityRefs.get(0));
 
 		Strategy strategy2 = getProject().createAndPopulateStrategy();
-		Task activity2 = getProject().createTask(strategy2);
-		getProject().populateTask(activity2, "Activity 2");
+		ORefList strategy2ActivityRefs = strategy2.getActivityRefs();
+		Task activity2 = (Task) getProject().findObject(strategy2ActivityRefs.get(0));
 		CommandSetObjectData cmdToShareActivity1 = CommandSetObjectData.createAppendIdCommand(strategy2, Strategy.TAG_ACTIVITY_IDS, activity1.getId());
 		getProject().executeCommand(cmdToShareActivity1);
 

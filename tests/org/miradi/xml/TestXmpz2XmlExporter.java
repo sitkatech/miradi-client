@@ -38,7 +38,6 @@ import org.miradi.xml.generic.XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlValidator;
 import org.miradi.xml.xmpz2.*;
 import org.miradi.xml.xmpz2.objectImporters.BaseObjectImporter;
-import org.miradi.xml.xmpz2.objectImporters.IndicatorImporter;
 import org.miradi.xml.xmpz2.objectImporters.StrategyImporter;
 import org.miradi.xml.xmpz2.objectImporters.TaskImporter;
 import org.w3c.dom.Node;

@@ -272,7 +272,7 @@ public class MigrationTo26 extends AbstractMigration
 					dateUnitEffortListToAdjust = getAdjustedDateUnitEffortListForAssignment(dateUnitEffortListToAdjust, childAssignment);
 				}
 
-				return getAdjustedDateUnitEffortListForAssignments(dateUnitEffortListToAdjust, task);
+				dateUnitEffortListToAdjust = getAdjustedDateUnitEffortListForAssignments(dateUnitEffortListToAdjust, task);
 			}
 
 			return dateUnitEffortListToAdjust;
@@ -290,7 +290,7 @@ public class MigrationTo26 extends AbstractMigration
 					dateUnitEffortListToAdjust = getAdjustedDateUnitEffortListForAssignment(dateUnitEffortListToAdjust, childExpense);
 				}
 
-				return getAdjustedDateUnitEffortListForExpenses(dateUnitEffortListToAdjust, task);
+				dateUnitEffortListToAdjust = getAdjustedDateUnitEffortListForExpenses(dateUnitEffortListToAdjust, task);
 			}
 
 			return dateUnitEffortListToAdjust;
