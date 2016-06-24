@@ -35,6 +35,7 @@ import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.utils.DateRange;
+import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.OptionalDouble;
 
 public class BaseObjectExporter implements Xmpz2XmlConstants
@@ -155,7 +156,7 @@ public class BaseObjectExporter implements Xmpz2XmlConstants
                 getWriter().writeElement(CALCULATED_END_DATE, totalDateRange.getEndDate().toIsoDateString());
             }
             writeOptionalCost(CALCULATED_TOTAL_BUDGET_COST, totalCostValue);
-            getWriter().writeElement(CALCULATED_WORK_COST_TOTAL, calculatedWorkCostTotal);
+            getWriter().writeElement(CALCULATED_WORK_COST_TOTAL, DoubleUtilities.toStringForData(calculatedWorkCostTotal));
             writeResourceIds(CALCULATED_WHO, calculatedWho);
             writeOptionalCost(CALCULATED_EXPENSE_TOTAL, calculatedExpenseTotal);
             writeOptionalCost(CALCULATED_WORK_UNITS_TOTAL, calculatedWorkUnits);
@@ -190,7 +191,7 @@ public class BaseObjectExporter implements Xmpz2XmlConstants
 	{
 		if (totalCost.hasValue())
 		{
-			getWriter().writeElement(totalCostElementName, totalCost.toString());
+			getWriter().writeElement(totalCostElementName, DoubleUtilities.toStringForData(totalCost));
 		}
 	}
 	
