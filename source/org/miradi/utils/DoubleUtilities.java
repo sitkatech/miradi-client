@@ -46,6 +46,14 @@ public class DoubleUtilities
 		return formatter.format(doubleToConvert).toString();
 	}
 
+	public static String toStringForData(OptionalDouble doubleToConvert)
+	{
+		if (doubleToConvert.hasValue())
+			return toStringForData(doubleToConvert.getValue());
+
+		return "";
+	}
+
 	private static void applyPatternToAvoidScientificNotation(DecimalFormat formatter)
 	{
 		formatter.applyPattern("#.#");
