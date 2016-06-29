@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-22 07:36-0700\n"
+"POT-Creation-Date: 2016-06-29 02:06-0700\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -5350,6 +5350,14 @@ msgstr "Migrate"
 msgid "Migrated High Level Estimate:"
 msgstr "Migrated High Level Estimate:"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:300
+msgid "Migrated Monitoring Activities"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:313
+msgid "Migrated Monitoring Activities (see Details)"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/legacyprojects/DataUpgrader.java:77
 msgid "Migrating Project Data"
 msgstr "Migrating Project Data"
@@ -5445,11 +5453,6 @@ msgstr "Missing Indicator(s) was removed!"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:53
 msgid "Monitoring"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:298
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:311
-msgid "Monitoring Activities"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:105
@@ -5879,6 +5882,17 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:47
 msgid "People (Who)"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:339
+msgid ""
+"People assignments and expense data were moved from indicators and methods "
+"to these new monitoring activities and tasks. Other data from the indicators "
+"and methods were copied to their new corresponding monitoring activities and "
+"tasks: (1) the name, in order to match factors easily, and (2) progress "
+"reports, since this data may be tracking \"work plan\" activity or not. (You "
+"will want to determine which set of progress reports is redundant, and "
+"delete it.)<br/>"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:93
@@ -8275,6 +8289,14 @@ msgstr "Theory of Change<br/>- Strategy Logic"
 msgid "Theory of Change<br/>- Strategy Selection"
 msgstr "Theory of Change<br/>- Strategy Selection"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:340
+msgid ""
+"This \"Migrated Monitoring Activities\" strategy is intended to be a "
+"temporary container. In the Work Plan view, use the Move Activity command "
+"(under the Create… button) to move monitoring activities to their proper "
+"strategies."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:258
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
@@ -8371,7 +8393,7 @@ msgstr ""
 msgid "This migration moves child tasks up to the activity level."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:93
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:95
 msgid ""
 "This migration moves work plan data from Indicators / Methods to Monitoring "
 "Activities."
@@ -8504,6 +8526,16 @@ msgstr ""
 msgid ""
 "This resource has been planned for work in the Strategic Plan and / or "
 "assigned work in the Work Plan"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:338
+msgid ""
+"This strategy contains monitoring activities and (if applicable) tasks that "
+"contain monitoring work plan data created in Miradi prior to release 4.4. "
+"Such data was initially entered into indicators; now, the indicator data "
+"resides in monitoring activities under this strategy. If an indicator had a "
+"method which contained work plan data, that data now resides in a task of "
+"the corresponding monitoring activity.<br/>"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningFinancialSubPanel.java:48
