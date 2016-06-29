@@ -109,6 +109,9 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 
 	private boolean doesFieldRequireDataToBeXmlDecoded(String typeName, String tag)
 	{
+		if (typeName.equals(IndicatorSchema.OBJECT_NAME) && tag.equals(Indicator.TAG_ASSIGNED_LEADER_RESOURCE))
+			return true;
+
 		if (typeName.equals(IndicatorSchema.OBJECT_NAME) && tag.equals(Indicator.TAG_RESOURCE_ASSIGNMENT_IDS))
 			return true;
 

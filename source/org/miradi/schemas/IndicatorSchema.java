@@ -54,6 +54,7 @@ public class IndicatorSchema extends BaseObjectSchema
 		createProgressReportSchema();
 
 		// TODO: fields to be deprecated in post 4.4 release...only here to support migrations
+		createFieldSchemaOptionalRef(BaseObject.TAG_ASSIGNED_LEADER_RESOURCE);
 		createOwnedFieldSchemaIdList(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignmentSchema.getObjectType());
 		createOwnedFieldSchemaReflist(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT);
 

@@ -27,6 +27,7 @@ import org.miradi.objecthelpers.*;
 import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.schemas.ResourceAssignmentSchema;
+import org.miradi.utils.EnhancedJsonObject;
 
 public class TestMigrationTo32 extends AbstractTestMigration
 {
@@ -40,10 +41,13 @@ public class TestMigrationTo32 extends AbstractTestMigration
 		getProject().setProjectStartDate(2005);
 		getProject().setProjectEndDate(2007);
 
+		ProjectResource leader = getProject().createAndPopulateProjectResource();
+
 		Strategy strategy = getProject().createAndPopulateStrategy();
 
 		Indicator indicator = getProject().createIndicator(strategy);
 		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_LABEL, indicatorName);
+		getProject().fillObjectUsingCommand(indicator, BaseObject.TAG_ASSIGNED_LEADER_RESOURCE, leader.getRef());
 		ResourceAssignment indicatorResourceAssignment = getProject().addResourceAssignment(indicator, 1.0, 2005, 2005);
 		ExpenseAssignment indicatorExpenseAssignment = getProject().addExpenseAssignment(indicator, dateUnit2005, 1.0);
 
@@ -69,7 +73,7 @@ public class TestMigrationTo32 extends AbstractTestMigration
 			if (safeGetTag(migratedIndicator, BaseObject.TAG_LABEL).equals(indicatorName))
 			{
 				verifyNoAssignmentsOrExpenses(migratedIndicator);
-				verifyMonitoringActivityCreated(migratedProject, migratedIndicator, indicatorResourceAssignment, indicatorExpenseAssignment);
+				verifyMonitoringActivityCreated(migratedProject, migratedIndicator, indicatorResourceAssignment, indicatorExpenseAssignment, leader);
 			}
 		}
 	}
@@ -91,12 +95,16 @@ public class TestMigrationTo32 extends AbstractTestMigration
 		assertTrue(expenseRefList.isEmpty());
 	}
 
-	private void verifyMonitoringActivityCreated(RawProject rawProject, RawObject migratedIndicator, ResourceAssignment indicatorResourceAssignment, ExpenseAssignment indicatorExpenseAssignment) throws Exception
+	private void verifyMonitoringActivityCreated(RawProject rawProject, RawObject migratedIndicator, ResourceAssignment indicatorResourceAssignment, ExpenseAssignment indicatorExpenseAssignment, ProjectResource leader) throws Exception
 	{
 		ORef monitoringActivityRef = findTask(rawProject, safeGetTag(migratedIndicator, BaseObject.TAG_LABEL), migratedIndicator);
 		assertTrue(monitoringActivityRef.isValid());
 		RawObject monitoringActivity = rawProject.findObject(monitoringActivityRef);
 		assertEquals(safeGetTag(monitoringActivity, Task.TAG_IS_MONITORING_ACTIVITY), BooleanData.BOOLEAN_TRUE);
+
+		String leaderRefAsString = safeGetTag(monitoringActivity, BaseObject.TAG_ASSIGNED_LEADER_RESOURCE);
+		ORef leaderRef = new ORef(new EnhancedJsonObject(leaderRefAsString));
+		assertEquals(leaderRef, leader.getRef());
 
 		IdList assignmentIdList = new IdList(ResourceAssignmentSchema.getObjectType(), safeGetTag(monitoringActivity, Task.TAG_RESOURCE_ASSIGNMENT_IDS));
 		assertTrue(assignmentIdList.contains(indicatorResourceAssignment.getRef()));

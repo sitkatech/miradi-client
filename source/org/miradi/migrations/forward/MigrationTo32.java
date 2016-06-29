@@ -361,6 +361,7 @@ public class MigrationTo32 extends AbstractMigration
 				activity.setData(TAG_IS_MONITORING_ACTIVITY, BooleanData.BOOLEAN_TRUE);
 				activity.setData(TAG_COMMENTS, safeGetTag(indicator, TAG_COMMENTS));
 				activity.setData(TAG_TEXT, safeGetTag(indicator, TAG_TEXT));
+				activity.setData(TAG_ASSIGNED_LEADER_RESOURCE, safeGetTag(indicator, TAG_ASSIGNED_LEADER_RESOURCE));
 
 				ORefList clonedProgressReportRefs = cloneProgressReports(indicator);
 				if (!clonedProgressReportRefs.isEmpty())

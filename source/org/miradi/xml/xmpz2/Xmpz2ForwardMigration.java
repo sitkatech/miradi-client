@@ -98,14 +98,41 @@ public class Xmpz2ForwardMigration
 					// note: work plan data is deprecated for indicators but we need to keep it around for migrations
 					// see related changes in Xmpz2ExtraDataImporter where these fields are imported
 
-					moveResourceAssignmentIdListToExtraData(document, indicatorNode);
-					moveExpenseAssignmentRefListToExtraData(document, indicatorNode);
+					moveIndicatorAssignedLeaderResourceIdToExtraData(document, indicatorNode);
+					moveIndicatorResourceAssignmentIdListToExtraData(document, indicatorNode);
+					moveIndicatorExpenseAssignmentRefListToExtraData(document, indicatorNode);
 				}
 			}
 		}
 	}
 
-	private void moveResourceAssignmentIdListToExtraData(Document document, Node indicatorNode) throws Exception
+	private void moveIndicatorAssignedLeaderResourceIdToExtraData(Document document, Node indicatorNode) throws Exception
+	{
+		String idAsString = getAttributeValue(indicatorNode, Xmpz2XmlConstants.ID);
+
+		String assignedLeaderResourceIdElementName = Xmpz2XmlConstants.INDICATOR + Xmpz2XmlConstants.ASSIGNED_LEADER_RESOURCE_ID;
+		String tagName = BaseObject.TAG_ASSIGNED_LEADER_RESOURCE;
+
+		Node assignedLeaderResourceIdNode = findNode(indicatorNode.getChildNodes(), assignedLeaderResourceIdElementName);
+		if (assignedLeaderResourceIdNode != null && assignedLeaderResourceIdNode.getNodeType() == Node.ELEMENT_NODE)
+		{
+			NodeList resourceIdNodes = assignedLeaderResourceIdNode.getChildNodes();
+
+			if (resourceIdNodes.getLength() == 1)
+			{
+				Node resourceIdNode = resourceIdNodes.item(0);
+				String resourceIdAsString = resourceIdNode.getTextContent();
+				ORef leaderRef = new ORef(ObjectType.PROJECT_RESOURCE, new BaseId(resourceIdAsString));
+				String extraDataItemName = ExtraDataExporter.getExtraDataItemName(IndicatorSchema.OBJECT_NAME, new BaseId(idAsString), tagName);
+				String extraDataItemValue = leaderRef.toJson().toString();
+				moveDataToExtraData(document, extraDataItemName, extraDataItemValue);
+			}
+
+			indicatorNode.removeChild(assignedLeaderResourceIdNode);
+		}
+	}
+
+	private void moveIndicatorResourceAssignmentIdListToExtraData(Document document, Node indicatorNode) throws Exception
 	{
 		String idAsString = getAttributeValue(indicatorNode, Xmpz2XmlConstants.ID);
 
@@ -136,7 +163,7 @@ public class Xmpz2ForwardMigration
 		}
 	}
 
-	private void moveExpenseAssignmentRefListToExtraData(Document document, Node indicatorNode) throws Exception
+	private void moveIndicatorExpenseAssignmentRefListToExtraData(Document document, Node indicatorNode) throws Exception
 	{
 		String idAsString = getAttributeValue(indicatorNode, Xmpz2XmlConstants.ID);
 

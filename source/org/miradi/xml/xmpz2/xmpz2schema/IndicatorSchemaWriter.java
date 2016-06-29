@@ -59,6 +59,9 @@ public class IndicatorSchemaWriter extends BaseObjectSchemaWriterWithTaxonomyCla
 		// TODO: fields to be deprecated in post 4.4 release...only here to support migrations
         // listed here so they can be excluded from the schema
 
+		if (tag.equals(Indicator.TAG_ASSIGNED_LEADER_RESOURCE))
+			return true;
+
 		if (tag.equals(Indicator.TAG_RESOURCE_ASSIGNMENT_IDS))
 			return true;
 
