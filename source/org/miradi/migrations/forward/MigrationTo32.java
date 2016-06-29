@@ -24,10 +24,12 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.migrations.*;
+import org.miradi.objectdata.AbstractUserTextDataWithHtmlFormatting;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.*;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.schemas.TaskSchema;
+import org.miradi.utils.HtmlUtilitiesRelatedToShef;
 
 import java.util.ArrayList;
 import java.util.Vector;
@@ -295,7 +297,7 @@ public class MigrationTo32 extends AbstractMigration
 				getRawProject().ensurePoolExists(ObjectType.RESULTS_CHAIN_DIAGRAM);
 				ORef newResultsChainDiagramRef = getRawProject().createObject(ObjectType.RESULTS_CHAIN_DIAGRAM);
 				resultsChain = getRawProject().findObject(newResultsChainDiagramRef);
-				resultsChain.setData(TAG_LABEL, EAM.text("Monitoring Activities"));
+				resultsChain.setData(TAG_LABEL, EAM.text("Migrated Monitoring Activities"));
 			}
 
 			return resultsChain;
@@ -308,12 +310,14 @@ public class MigrationTo32 extends AbstractMigration
 				getRawProject().ensurePoolExists(ObjectType.STRATEGY);
 				ORef newStrategyRef = getRawProject().createObject(ObjectType.STRATEGY);
 				strategy = getRawProject().findObject(newStrategyRef);
-				strategy.setData(TAG_LABEL, EAM.text("Monitoring Activities"));
+				strategy.setData(TAG_LABEL, EAM.text("Migrated Monitoring Activities (see Details)"));
+				strategy.setData(TAG_TEXT, getStrategyDetailsText());
 
 				getRawProject().ensurePoolExists(ObjectType.DIAGRAM_FACTOR);
 				ORef newDiagramFactorRef = getRawProject().createObject(ObjectType.DIAGRAM_FACTOR);
 				RawObject newDiagramFactor = getRawProject().findObject(newDiagramFactorRef);
 				newDiagramFactor.setData(TAG_WRAPPED_REF, newStrategyRef.toJson().toString());
+				newDiagramFactor.setData(TAG_FONT_SIZE, "0.75");
 
 				RawObject resultsChain = getOrCreateResultsChainForMonitoringActivities();
 				IdList diagramFactorIdList = new IdList(ObjectType.DIAGRAM_FACTOR);
@@ -327,6 +331,21 @@ public class MigrationTo32 extends AbstractMigration
 			}
 
 			return strategy;
+		}
+
+		private String getStrategyDetailsText() throws Exception
+		{
+			String detailsTextLine1 = EAM.text("This strategy contains monitoring activities and (if applicable) tasks that contain monitoring work plan data created in Miradi prior to release 4.4. Such data was initially entered into indicators; now, the indicator data resides in monitoring activities under this strategy. If an indicator had a method which contained work plan data, that data now resides in a task of the corresponding monitoring activity.<br/>");
+			String detailsTextLine2 = EAM.text("People assignments and expense data were moved from indicators and methods to these new monitoring activities and tasks. Other data from the indicators and methods were copied to their new corresponding monitoring activities and tasks: (1) the name, in order to match factors easily, and (2) progress reports, since this data may be tracking \"work plan\" activity or not. (You will want to determine which set of progress reports is redundant, and delete it.)<br/>");
+			String detailsTextLine3 = EAM.text("This \"Migrated Monitoring Activities\" strategy is intended to be a temporary container. In the Work Plan view, use the Move Activity command (under the Create… button) to move monitoring activities to their proper strategies.");
+
+			String detailsText = new StringBuilder()
+					.append(detailsTextLine1)
+					.append(detailsTextLine2)
+					.append(detailsTextLine3)
+					.toString();
+
+			return HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(detailsText, AbstractUserTextDataWithHtmlFormatting.getAllowedHtmlTags());
 		}
 
 		private RawObject getOrCreateMonitoringActivity(RawObject indicator) throws Exception
@@ -484,6 +503,7 @@ public class MigrationTo32 extends AbstractMigration
 	public final static String TAG_IS_MONITORING_ACTIVITY = "IsMonitoringActivity";
 	public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
 	public static final String TAG_WRAPPED_REF = "WrappedFactorRef";
+	public static final String TAG_FONT_SIZE = "FontSize";
 	public static final String TAG_RELEVANT_STRATEGY_ACTIVITY_SET = "RelevantStrategySet";
 
 	public static final String TAG_ID = "Id";
