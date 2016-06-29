@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-29 03:06-0700\n"
+"POT-Creation-Date: 2016-06-29 07:06-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/miradi-client/"
@@ -8350,7 +8350,7 @@ msgid ""
 "Metadata properties."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo34.java:89
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo34.java:88
 msgid ""
 "This migration adds a new default timeframe totals column to the work plan "
 "customize panel."
@@ -9567,7 +9567,7 @@ msgstr "[NÃO ESPECIFICADO]"
 msgid "[New Results Chain]"
 msgstr "[Nova Cadeia de Resultados]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:945
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:946
 msgid "[No Project]"
 msgstr "[Sem Projeto]"
 
