@@ -391,7 +391,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		return createLabelsOnSingleLine(baseObject, baseObject.getRelevantActivityRefs());
 	}
 
-	private ChoiceItem createAppendedRelevantIndicatorLabels(BaseObject baseObject) throws Exception
+	protected ChoiceItem createAppendedRelevantIndicatorLabels(BaseObject baseObject) throws Exception
 	{
 		return createLabelsOnSingleLine(baseObject, baseObject.getRelevantIndicatorRefList());
 	}

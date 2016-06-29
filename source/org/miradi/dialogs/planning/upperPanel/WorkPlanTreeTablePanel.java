@@ -25,6 +25,7 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.planning.WorkPlanRowColumnProvider;
 import org.miradi.dialogs.planning.propertiesPanel.AboveBudgetColumnsBar;
 import org.miradi.dialogs.planning.propertiesPanel.AbstractFixedHeightDirectlyAboveTreeTablePanel;
+import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.planning.propertiesPanel.WorkPlanAboveBudgetColumnsBar;
 import org.miradi.dialogs.planning.treenodes.PlanningTreeRootNodeAlwaysExpanded;
 import org.miradi.icons.IconManager;
@@ -60,6 +61,12 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 		AbstractFixedHeightDirectlyAboveTreeTablePanel treeTableHeaderPanel = new AbstractFixedHeightDirectlyAboveTreeTablePanel();
 
 		return new WorkPlanTreeTablePanel(mainWindowToUse, treeTable, model, getButtonActions(), rowColumnProvider, treeTableHeaderPanel);
+	}
+
+	@Override
+	protected PlanningViewAbstractTreeTableSyncedTableModel createMainTableModel(final PlanningTreeRowColumnProvider rowColumnProviderToUse) throws Exception
+	{
+		return new WorkPlanViewMainTableModel(getProject(), getTree(), rowColumnProviderToUse);
 	}
 
 	@Override
