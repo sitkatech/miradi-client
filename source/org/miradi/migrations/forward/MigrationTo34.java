@@ -27,7 +27,6 @@ import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.TableSettings;
-import org.miradi.schemas.TimeframeSchema;
 import org.miradi.utils.CodeList;
 
 import java.util.Vector;
@@ -127,11 +126,6 @@ public class MigrationTo34 extends AbstractMigration
 			return migrationResult;
 		}
 
-		private boolean projectHasTimeframes()
-		{
-			return getRawProject().containsAnyObjectsOfType(TimeframeSchema.getObjectType());
-		}
-
 		private MigrationResult addFields(RawObject rawObject) throws Exception
 		{
 			MigrationResult migrationResult = MigrationResult.createSuccess();
@@ -141,14 +135,11 @@ public class MigrationTo34 extends AbstractMigration
 			{
 				CodeList workPlanBudgetColumnCodeList = tableSettingsMap.getCodeList(WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 
-				if (projectHasTimeframes())
+				if (!workPlanBudgetColumnCodeList.contains(META_TIMEFRAME_TOTAL))
 				{
-					if (!workPlanBudgetColumnCodeList.contains(META_TIMEFRAME_TOTAL))
-					{
-						workPlanBudgetColumnCodeList.add(META_TIMEFRAME_TOTAL);
-						tableSettingsMap.putCodeList(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, workPlanBudgetColumnCodeList);
-						rawObject.setData(TAG_TABLE_SETTINGS_MAP, tableSettingsMap.toJsonString());
-					}
+					workPlanBudgetColumnCodeList.insertElementAt(META_TIMEFRAME_TOTAL, 0);
+					tableSettingsMap.putCodeList(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, workPlanBudgetColumnCodeList);
+					rawObject.setData(TAG_TABLE_SETTINGS_MAP, tableSettingsMap.toJsonString());
 				}
 			}
 

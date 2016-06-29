@@ -666,6 +666,7 @@ public class Project implements ProjectInterface
 
 		CodeList budgetColumnCodes = new CodeList();
 
+		budgetColumnCodes.add(WorkPlanColumnConfigurationQuestion.META_TIMEFRAME_TOTAL);
 		budgetColumnCodes.add(WorkPlanColumnConfigurationQuestion.META_ASSIGNED_WHO_TOTAL);
 		budgetColumnCodes.add(WorkPlanColumnConfigurationQuestion.META_RESOURCE_ASSIGNMENT_COLUMN_CODE);
 		budgetColumnCodes.add(WorkPlanColumnConfigurationQuestion.META_EXPENSE_ASSIGNMENT_COLUMN_CODE);

@@ -137,8 +137,6 @@ public class MigrationTo21 extends AbstractMigration
 
 				if (!workPlanBudgetColumnCodeList.contains(META_ASSIGNED_WHO_TOTAL))
 					workPlanBudgetColumnCodeList.add(META_ASSIGNED_WHO_TOTAL);
-				if (!workPlanBudgetColumnCodeList.contains(META_ASSIGNED_WHEN_TOTAL))
-					workPlanBudgetColumnCodeList.add(META_ASSIGNED_WHEN_TOTAL);
 
 				tableSettingsMap.putCodeList(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, workPlanBudgetColumnCodeList);
 

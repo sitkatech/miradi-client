@@ -41,12 +41,14 @@ public class TestMigrationTo21 extends AbstractTestMigration
 
 	public void testTableSettingsFieldsChangedByMigration() throws Exception
 	{
-		Vector<String> newColumnCodesBeingAdded = getNewColumnCodesAddedByMigration();
 		TableSettings tableSettingsBefore = getProject().createAndPopulateTableSettings();
 		CodeToCodeListMap tableSettingsMapBefore = tableSettingsBefore.getTableSettingsMap();
 
+		Vector<String> columnCodesAddedByForwardMigration = getColumnCodesAddedByForwardMigration();
+		Vector<String> columnCodesRemovedByReverseMigration = getColumnCodesRemovedByReverseMigration();
+
 		CodeList workPlanBudgetColumnsCodeListBefore = tableSettingsBefore.getCodeListFromTableSettingsMap(MigrationTo21.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
-		for (String code : newColumnCodesBeingAdded)
+		for (String code : columnCodesAddedByForwardMigration)
 		{
 			assertTrue("Prior to reverse migration work plan budget columns code list should contain new columns", workPlanBudgetColumnsCodeListBefore.contains(code));
 		}
@@ -58,12 +60,12 @@ public class TestMigrationTo21 extends AbstractTestMigration
 		assertTrue("Reverse migration should not have removed any codes from table settings map", tableSettingsMapBefore.getCodes().equals(tableSettingsMapAfterReverseMigration.getCodes()));
 
 		CodeList workPlanBudgetColumnCodeListAfterReverseMigration = tableSettingsMapAfterReverseMigration.getCodeList(MigrationTo21.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
-		for (String code : newColumnCodesBeingAdded)
+		for (String code : columnCodesRemovedByReverseMigration)
 		{
 			assertFalse("Reverse migration should have removed code from work plan budget columns code list", workPlanBudgetColumnCodeListAfterReverseMigration.contains(code));
 		}
 
-		assertEquals("Reverse migration should not have changed the number of codes (bar those removed)", workPlanBudgetColumnCodeListAfterReverseMigration.size() + newColumnCodesBeingAdded.size(), workPlanBudgetColumnsCodeListBefore.size());
+		assertEquals("Reverse migration should not have changed the number of codes (bar those removed)", workPlanBudgetColumnCodeListAfterReverseMigration.size() + columnCodesRemovedByReverseMigration.size(), workPlanBudgetColumnsCodeListBefore.size());
 
 		migrateProject(migratedProject, new VersionRange(Project.VERSION_HIGH));
 
@@ -73,17 +75,24 @@ public class TestMigrationTo21 extends AbstractTestMigration
 		assertTrue("Forward migration should not have removed any codes from table settings map", tableSettingsMapBefore.getCodes().equals(tableSettingsMapAfterForwardMigration.getCodes()));
 
 		CodeList workPlanBudgetColumnCodeListAfterForwardMigration = tableSettingsMapAfterForwardMigration.getCodeList(MigrationTo21.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
-		for (String code : newColumnCodesBeingAdded)
+		for (String code : columnCodesAddedByForwardMigration)
 		{
 			assertTrue("Forward migration should have added code to work plan budget columns code list", workPlanBudgetColumnCodeListAfterForwardMigration.contains(code));
 		}
 
-		assertEquals("Forward migration should have changed the number of codes", workPlanBudgetColumnCodeListAfterForwardMigration.size(), workPlanBudgetColumnCodeListAfterReverseMigration.size() + newColumnCodesBeingAdded.size());
+		assertEquals("Forward migration should have changed the number of codes", workPlanBudgetColumnCodeListAfterForwardMigration.size(), workPlanBudgetColumnCodeListAfterReverseMigration.size() + columnCodesAddedByForwardMigration.size());
 
 		verifyFullCircleMigrations(new VersionRange(20, 21));
 	}
 
-	private Vector<String> getNewColumnCodesAddedByMigration()
+	private Vector<String> getColumnCodesAddedByForwardMigration()
+	{
+		Vector<String> result = new Vector<String>();
+		result.add(MigrationTo21.META_ASSIGNED_WHO_TOTAL);
+		return result;
+	}
+
+	private Vector<String> getColumnCodesRemovedByReverseMigration()
 	{
 		Vector<String> result = new Vector<String>();
 		result.add(MigrationTo21.META_ASSIGNED_WHO_TOTAL);
