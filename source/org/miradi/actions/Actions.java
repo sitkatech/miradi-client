@@ -183,7 +183,7 @@ public class Actions
 		registerAction(new ActionExpandToMeasurement(mainWindow));
 		registerAction(new ActionExpandToFutureStatus(mainWindow));
 		registerAction(new ActionExpandToStrategy(mainWindow));
-		registerAction(new ActionExpandToTask(mainWindow));
+		registerAction(new ActionExpandToActivity(mainWindow));
 		registerAction(new ActionPlanningCustomizeDialogPopup(mainWindow));
 		registerAction(new ActionCreateCustomFromCurrentTreeTableConfiguration(mainWindow));
 

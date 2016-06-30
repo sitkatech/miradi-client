@@ -178,7 +178,7 @@ public class WorkPlanView extends TabbedView implements CommandExecutedListener
 
 		addDoerToMap(ActionExpandToMenu.class, new ExpandToMenuWorkPlanDoer());
 		addDoerToMap(ActionExpandToStrategy.class, new ExpandToStrategyDoer());
-		addDoerToMap(ActionExpandToTask.class, new ExpandToTaskDoer());
+		addDoerToMap(ActionExpandToActivity.class, new ExpandToActivityDoer());
 	}
 	
 	public static boolean is(UmbrellaView view)

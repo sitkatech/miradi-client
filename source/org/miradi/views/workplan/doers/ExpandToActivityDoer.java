@@ -22,7 +22,7 @@ package org.miradi.views.workplan.doers;
 
 import org.miradi.schemas.TaskSchema;
 
-public class ExpandToTaskDoer extends AbstractWorkPlanExpandToDoer
+public class ExpandToActivityDoer extends AbstractWorkPlanExpandToDoer
 {
 	@Override
 	protected int getTypeToExpandTo()

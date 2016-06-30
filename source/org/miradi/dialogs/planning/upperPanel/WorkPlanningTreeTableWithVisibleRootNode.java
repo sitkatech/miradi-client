@@ -23,6 +23,10 @@ package org.miradi.dialogs.planning.upperPanel;
 import org.miradi.actions.*;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.Task;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -43,8 +47,20 @@ public class WorkPlanningTreeTableWithVisibleRootNode extends PlanningTreeTableW
 		relevantActions.add(ActionTreeCreateExpenseAssignment.class);
 		relevantActions.add(ActionExpandToMenu.class);
 		relevantActions.add(ActionExpandToStrategy.class);
-		relevantActions.add(ActionExpandToTask.class);
+		relevantActions.add(ActionExpandToActivity.class);
 
 		return relevantActions;
+	}
+
+	@Override
+	public boolean elementMatchesTypeToExpandTo(int typeToExpandTo, ORef elementRef)
+	{
+		if (elementRef.getObjectType() == ObjectType.TASK)
+		{
+			BaseObject baseObject = getProject().findObject(elementRef);
+			return Task.isActivity(baseObject);
+		}
+
+		return super.elementMatchesTypeToExpandTo(typeToExpandTo, elementRef);
 	}
 }

@@ -31,7 +31,7 @@ public class ExpandToMenuWorkPlanDoer extends AbstractPopDownMenuDoer
 		return new Class[] {
 				ActionExpandAllRows.class,
 				ActionExpandToStrategy.class,
-				ActionExpandToTask.class,
+				ActionExpandToActivity.class,
 			};
 	}
 }

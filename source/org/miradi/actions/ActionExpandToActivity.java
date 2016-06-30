@@ -24,9 +24,9 @@ import org.miradi.icons.ActivityIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionExpandToTask extends ObjectsAction
+public class ActionExpandToActivity extends ObjectsAction
 {
-	public ActionExpandToTask(MainWindow mainWindowToUse)
+	public ActionExpandToActivity(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel(), new ActivityIcon());
 	}
