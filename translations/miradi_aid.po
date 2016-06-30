@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-29 07:06-0700\n"
+"POT-Creation-Date: 2016-06-30 08:06-0700\n"
 "PO-Revision-Date: 2014-05-28 17:01+0000\n"
 "Last-Translator: nsalafsky <nick@fosonline.org>\n"
 "Language-Team: English (Estonia) (http://www.transifex.com/projects/p/miradi-"
@@ -1961,7 +1961,7 @@ msgstr "Action|Tab-Delimited Table"
 msgid "Action|Table|Create..."
 msgstr "Action|Table|Create..."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToTask.java:36
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToActivity.java:36
 msgid "Action|Table|Expand To Activity"
 msgstr ""
 
@@ -7502,7 +7502,7 @@ msgstr "TT|Edit the methods for this indicator"
 msgid "TT|Expand All Tree Rows"
 msgstr "TT|Expand All Tree Rows"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToTask.java:42
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToActivity.java:42
 msgid "TT|Expand To Activity"
 msgstr ""
 

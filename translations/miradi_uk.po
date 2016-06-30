@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-29 07:06-0700\n"
+"POT-Creation-Date: 2016-06-30 08:06-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/miradi-client/"
@@ -1882,7 +1882,7 @@ msgstr "Action|Таблицю"
 msgid "Action|Table|Create..."
 msgstr "Action|Table|Створити..."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToTask.java:36
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToActivity.java:36
 msgid "Action|Table|Expand To Activity"
 msgstr ""
 
@@ -7360,7 +7360,7 @@ msgstr "TT|Редагувати методи для цього індикато�
 msgid "TT|Expand All Tree Rows"
 msgstr "TT|Розтягнути усі три рядки"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToTask.java:42
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToActivity.java:42
 msgid "TT|Expand To Activity"
 msgstr ""
 

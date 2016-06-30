@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-29 07:06-0700\n"
+"POT-Creation-Date: 2016-06-30 08:06-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -1894,7 +1894,7 @@ msgstr "Арга хэмжээ|Tab-аар тусгаарлагдсан Хүснэ
 msgid "Action|Table|Create..."
 msgstr "Арга хэмжээ|Хүснэгт|Үүсгэх..."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToTask.java:36
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToActivity.java:36
 msgid "Action|Table|Expand To Activity"
 msgstr ""
 
@@ -7396,7 +7396,7 @@ msgstr "TT|Энэ шалгуур үзүүлэлтийн арга зүйг хян
 msgid "TT|Expand All Tree Rows"
 msgstr "TT|Бүх тулгуур эгнээнүүдийг өргөжүүлэх"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToTask.java:42
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExpandToActivity.java:42
 msgid "TT|Expand To Activity"
 msgstr ""
 
