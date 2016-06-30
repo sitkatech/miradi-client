@@ -573,34 +573,78 @@ abstract public class AssignmentDateUnitsTableModel extends PlanningViewAbstract
 			respondToExpandColumnEvent(dateUnit);
 	}
 	
-	private void respondToCollapseColumnEvent(DateUnit dateUnit) throws Exception
-	{
-		Vector<DateUnit> superDateUnitsHierarchy = getProjectCalendar().getSuperDateUnitsHierarchy(dateUnit);
-		DateUnit superDateUnit = null;
-		if (!superDateUnitsHierarchy.isEmpty())
-			superDateUnit = superDateUnitsHierarchy.firstElement();
-		
-		setDeepestExpandedColumn(superDateUnit);
-	}
-
-	private void respondToExpandColumnEvent(DateUnit dateUnit) throws Exception
-	{
-		setDeepestExpandedColumn(dateUnit);
-	}
-	
-	private void setDeepestExpandedColumn(DateUnit dateUnit) throws Exception
+	private void respondToCollapseColumnEvent(DateUnit dateUnitToCollapse) throws Exception
 	{
 		Vector<DateUnit> visibleDateUnits = new Vector<DateUnit>();
-		if (dateUnit != null)
+
+		if (dateUnitToCollapse != null)
 		{
-			visibleDateUnits.addAll(getSubDateUnits(dateUnit));
-			visibleDateUnits.add(dateUnit);
-			visibleDateUnits.addAll(getSuperDateUnitsHierarchy(dateUnit));
+			if (dateUnitToCollapse.isProjectTotal())
+				visibleDateUnits.add(dateUnitToCollapse);
+			else
+				visibleDateUnits.addAll(getCollapsedDateUnits(dateUnitToCollapse));
 		}
-		
+
 		saveColumnDateUnits(visibleDateUnits);
 	}
-	
+
+	private void respondToExpandColumnEvent(DateUnit dateUnitToExpand) throws Exception
+	{
+		Vector<DateUnit> visibleDateUnits = new Vector<DateUnit>();
+
+		if (dateUnitToExpand != null)
+		{
+			if (dateUnitToExpand.isProjectTotal())
+				visibleDateUnits.addAll(getProjectTotalDateUnits(dateUnitToExpand));
+			else
+				visibleDateUnits.addAll(getExpandedDateUnits(dateUnitToExpand));
+		}
+
+		saveColumnDateUnits(visibleDateUnits);
+	}
+
+	private Vector<DateUnit> getProjectTotalDateUnits(DateUnit dateUnit) throws Exception
+	{
+		Vector<DateUnit> projectTotalDateUnits = new Vector<DateUnit>();
+
+		projectTotalDateUnits.addAll(getSubDateUnits(dateUnit));
+		projectTotalDateUnits.add(dateUnit);
+		projectTotalDateUnits.addAll(getSuperDateUnitsHierarchy(dateUnit));
+
+		return projectTotalDateUnits;
+	}
+
+	private Vector<DateUnit> getCollapsedDateUnits(DateUnit dateUnitToCollapse) throws Exception
+	{
+		Vector<DateUnit> visibleDateUnits = new Vector<DateUnit>();
+
+		Vector<DateUnit> currentDateUnits = getDateUnits();
+
+		for (DateUnit dateUnit : currentDateUnits)
+		{
+			if (!dateUnitToCollapse.contains(dateUnit) || dateUnitToCollapse.equals(dateUnit))
+				visibleDateUnits.add(dateUnit);
+		}
+
+		return visibleDateUnits;
+	}
+
+	private Vector<DateUnit> getExpandedDateUnits(DateUnit dateUnitToExpand) throws Exception
+	{
+		Vector<DateUnit> visibleDateUnits = new Vector<DateUnit>();
+
+		Vector<DateUnit> currentDateUnits = getDateUnits();
+		for (DateUnit dateUnit : currentDateUnits)
+		{
+			if (dateUnit.equals(dateUnitToExpand))
+				visibleDateUnits.addAll(getSubDateUnits(dateUnitToExpand));
+
+			visibleDateUnits.add(dateUnit);
+		}
+
+		return visibleDateUnits;
+	}
+
 	private boolean isExpanded(int column) throws Exception
 	{
 		Vector<DateUnit> visibleDateUnits = getCopyOfDateUnits();
