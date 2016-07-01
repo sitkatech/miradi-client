@@ -19,9 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
+import org.miradi.dialogs.tablerenderers.DefaultTableCellRendererWithPreferredHeightFactory;
 import org.miradi.main.AppPreferences;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
+import javax.swing.table.TableCellRenderer;
 import java.awt.*;
 import java.awt.event.MouseEvent;
 
@@ -34,7 +37,21 @@ public class AbstractAssignmentDetailsMainTable extends AbstractAssignmentDetail
 		setBackground(getColumnBackGroundColor(0));
 		rebuildColumnEditorsAndRenderers();
 	}
-	
+
+	@Override
+	public TableCellRenderer getCellRenderer(int row, int column)
+	{
+		TableCellRenderer cellRenderer = super.getCellRenderer(row, column);
+
+		if (getModel().isCellEditable(row, column))
+			return cellRenderer;
+
+		DefaultTableCellRendererWithPreferredHeightFactory totalsRenderer = (DefaultTableCellRendererWithPreferredHeightFactory) cellRenderer;
+		totalsRenderer.setCellBackgroundColor(EAM.READONLY_BACKGROUND_COLOR);
+
+		return cellRenderer;
+	}
+
 	@Override
 	public Color getColumnBackGroundColor(int column)
 	{
