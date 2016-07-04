@@ -32,13 +32,13 @@ public class ActionDeleteResource extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Delete Resource");
+		return EAM.text("Action|Manage|Delete People");
 	}
 
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Delete the selected Resource (person, team, etc)");
+		return EAM.text("TT|Delete the selected person or group");
 	}
 
 }

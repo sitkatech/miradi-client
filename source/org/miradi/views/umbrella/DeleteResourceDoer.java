@@ -63,11 +63,11 @@ public class DeleteResourceDoer extends ObjectsDoer
 		ORefList allThatUseThisResource = resource.findAllObjectsThatReferToUs();
 
 		if (allThatUseThisResource.size() > 0)
-			dialogText.add(EAM.text("This resource has been planned for work in the Strategic Plan and / or assigned work in the Work Plan"));
+			dialogText.add(EAM.text("This person or group has been planned for work in the Strategic Plan and / or assigned work in the Work Plan"));
 		
-		dialogText.add(EAM.text("\nAre you sure you want to delete this resource?"));
+		dialogText.add(EAM.text("\nAre you sure you want to delete this person or group?"));
 		String[] buttons = {EAM.text("Yes"), EAM.text("No"), };
-		if(!EAM.confirmDialog(EAM.text("Delete Resource"), dialogText.toArray(new String[0]), buttons))
+		if(!EAM.confirmDialog(EAM.text("Delete People"), dialogText.toArray(new String[0]), buttons))
 			return;
 		
 		try

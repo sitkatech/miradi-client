@@ -33,8 +33,8 @@ public class WorkPlanProjectResourceConfigurationQuestion extends StaticChoiceQu
 	private static ChoiceItem[] getStaticChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem(ALL_PROJECT_RESOURCES_CODE, EAM.text("All Project Resources"), new ProjectResourceIcon()),
-			new ChoiceItem(WORK_PLAN_ASSIGNMENT_RESOURCES_ONLY_CODE, EAM.text("Work Plan Assignment Resources Only"), new ProjectResourceIcon()),
+			new ChoiceItem(ALL_PROJECT_RESOURCES_CODE, EAM.text("All People"), new ProjectResourceIcon()),
+			new ChoiceItem(WORK_PLAN_ASSIGNMENT_RESOURCES_ONLY_CODE, EAM.text("Work Plan Assignments Only"), new ProjectResourceIcon()),
 		};
 	}
 	

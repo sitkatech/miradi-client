@@ -55,7 +55,7 @@ public class ProjectResourceManagementConfiguration extends	WorkPlanManagementPa
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Project Resources");	
+		return EAM.text("People");
 	}
 
 	@Override

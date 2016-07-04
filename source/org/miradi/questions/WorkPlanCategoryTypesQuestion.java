@@ -44,7 +44,7 @@ public class WorkPlanCategoryTypesQuestion extends StaticChoiceQuestion
 	{
 		return new ChoiceItem[]{
 			new ChoiceItem(UNSPECIFIED_CODE, EAM.text("Unspecified")),
-			new ChoiceItem(ProjectResourceSchema.getObjectType(), EAM.text("Project Resource"), new ProjectResourceIcon()),
+			new ChoiceItem(ProjectResourceSchema.getObjectType(), EAM.text("People"), new ProjectResourceIcon()),
 			new ChoiceItem(AccountingCodeSchema.getObjectType(), EAM.text("Accounting Code"), new AccountingCodeIcon()),
 			new ChoiceItem(FundingSourceSchema.getObjectType(), EAM.text("Funding Source"), new FundingSourceIcon()),
 			new ChoiceItem(BudgetCategoryOneSchema.getObjectType(), EAM.text("Budget Category One"), new BudgetCategoryOneIcon()),

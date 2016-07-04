@@ -56,7 +56,7 @@ public class PlanningProjectResourceManagementConfiguration extends WorkPlanMana
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Project Resources");	
+		return EAM.text("People");
 	}
 
 	@Override

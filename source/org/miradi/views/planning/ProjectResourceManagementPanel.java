@@ -48,6 +48,6 @@ abstract public class ProjectResourceManagementPanel extends PlanningTreeManagem
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Project Resources");
+		return EAM.text("People");
 	}
 }

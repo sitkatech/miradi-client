@@ -170,7 +170,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 	public static void notifyUserThatResourceIsNoLongerPartOfTeam()
 	{
 		EAM.okDialog(EAM.text("Remove Team Member"), new String[] {
-			EAM.text("You are removing this resource from the project team, " +
+			EAM.text("You are removing this person from the project team, " +
 					 "so he/she will no longer appear in " +
 					 "the list of Team Members in the Summary View. ")});
 	}
