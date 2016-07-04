@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-30 08:06-0700\n"
+"POT-Creation-Date: 2016-07-04 01:51-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/miradi-client/"
@@ -31,10 +31,8 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:68
 msgid ""
 "\n"
-"Are you sure you want to delete this resource?"
+"Are you sure you want to delete this person or group?"
 msgstr ""
-"\n"
-"Ви впевнені, що хочете видалити цей ресурс?"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningFinancialSubPanel.java:48
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:59
@@ -1571,6 +1569,10 @@ msgstr "Action|Manage|Створити організацію"
 msgid "Action|Manage|Create Other Notable Species"
 msgstr "Action|Manage|Створити Інші важливі види"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateResource.java:35
+msgid "Action|Manage|Create People"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateProgressPercent.java:35
 msgid "Action|Manage|Create Progress Percent"
 msgstr "Action|Manage|Створити відсоток прогресу"
@@ -1584,10 +1586,6 @@ msgstr "Action|Manage|Створити звіт про виконану робо
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeCreateExpenseAssignment.java:35
 msgid "Action|Manage|Create Projected Expense"
 msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateResource.java:35
-msgid "Action|Manage|Create Resource"
-msgstr "Action|Manage|Створити ресурс"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateTask.java:40
 msgid "Action|Manage|Create Task"
@@ -1655,6 +1653,10 @@ msgstr "Action|Manage|Видалити метод"
 msgid "Action|Manage|Delete Objective"
 msgstr "Action|Manage|Видалити Завдання"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeleteResource.java:35
+msgid "Action|Manage|Delete People"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeleteProgressPercent.java:35
 msgid "Action|Manage|Delete Progress Percent"
 msgstr "Action|Manage|Видалити Відсоток прогресу"
@@ -1664,10 +1666,6 @@ msgstr "Action|Manage|Видалити Відсоток прогресу"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeleteStrategyProgressReport.java:35
 msgid "Action|Manage|Delete Progress Report"
 msgstr "Action|Manage|Видалити проміжний звіт"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeleteResource.java:35
-msgid "Action|Manage|Delete Resource"
-msgstr "Action|Manage|Видалити ресурс"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionResourceListModify.java:34
 msgid "Action|Manage|Modify Resource"
@@ -2083,7 +2081,7 @@ msgid "All Diagrams"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanProjectResourceConfigurationQuestion.java:36
-msgid "All Project Resources"
+msgid "All People"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:57
@@ -3251,8 +3249,8 @@ msgid "Delete %s"
 msgstr "Видалити %s"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
-msgid "Delete Resource"
-msgstr "Видалити ресурс"
+msgid "Delete People"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:46
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:98
@@ -5763,7 +5761,11 @@ msgid ""
 "its pasted complementary factor."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/ProjectResourceManagementPanel.java:51
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/PlanningProjectResourceManagementConfiguration.java:59
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/ProjectResourceManagementConfiguration.java:58
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/assignment/AssignmentsPropertiesSubPanel.java:85
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:47
 msgid "People"
 msgstr ""
 
@@ -6042,10 +6044,6 @@ msgstr ""
 msgid "Project Plan For "
 msgstr "Для плану проекту "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:47
-msgid "Project Resource"
-msgstr "Ресурс проекту"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:47
 msgid "Project Resource Filter Editor"
 msgstr "Редактор фільтра ресурсів проекту"
@@ -6053,12 +6051,6 @@ msgstr "Редактор фільтра ресурсів проекту"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1032
 msgid "Project Resource Filter Is On"
 msgstr "Фільтр ресурсу проекту увімкнено"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/ProjectResourceManagementPanel.java:51
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/PlanningProjectResourceManagementConfiguration.java:59
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/ProjectResourceManagementConfiguration.java:58
-msgid "Project Resources"
-msgstr "Ресурси проекту"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo12.java:42
 msgid "Project Scale"
@@ -7075,10 +7067,6 @@ msgstr ""
 msgid "TT|Create a Report Template"
 msgstr "TT|Створити шаблон звіту"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateResource.java:41
-msgid "TT|Create a Resource (person, team, etc)"
-msgstr "TT|Створити Ресурс (особа, група і т.п.)"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateStress.java:41
 msgid "TT|Create a Stress"
 msgstr "TT|Створити акцент"
@@ -7144,6 +7132,10 @@ msgstr "TT|Створити нове наповнення Виду планув�
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateNamedTaggedObjectSet.java:41
 msgid "TT|Create a new tag"
 msgstr "TT|Створити новий тег"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateResource.java:41
+msgid "TT|Create a person or group"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateExpense.java:40
 msgid "TT|Create a projected expense"
@@ -7323,10 +7315,6 @@ msgstr "TT|Видалити вибраний метод"
 msgid "TT|Delete the selected Objective"
 msgstr "TT|Видалити вибране завдання"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeleteResource.java:41
-msgid "TT|Delete the selected Resource (person, team, etc)"
-msgstr "TT|Видалити вибраний ресурс (особу, групу і т.п.)"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeleteStress.java:41
 msgid "TT|Delete the selected Stress"
 msgstr "TT|Видалити вибране стрес"
@@ -7339,6 +7327,10 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeletePlanningViewTreeNode.java:41
 msgid "TT|Delete the selected item"
 msgstr "TT|Видалити вибраний пункт"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeleteResource.java:41
+msgid "TT|Delete the selected person or group"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDelete.java:41
 msgid "TT|Delete the selection"
@@ -8319,6 +8311,12 @@ msgstr "Ця модель не для окремого призначення і
 msgid "This person is a coach within the Conservation Coaches Network"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:66
+msgid ""
+"This person or group has been planned for work in the Strategic Plan and / "
+"or assigned work in the Work Plan"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/exceptions/XmlVersionTooOldException.java:30
 msgid ""
 "This project cannot be imported because it is in an old data format.\n"
@@ -8362,12 +8360,6 @@ msgstr ""
 " Цей проект був створений на старішій версії Міраді, тому перед тим як "
 "відкривати його треба перевести у поточний формат даних. Спочатку треба "
 "зберегти дублікат на випадок збою. Здійснити автоматичний перехід? "
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:66
-msgid ""
-"This resource has been planned for work in the Strategic Plan and / or "
-"assigned work in the Work Plan"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:338
 msgid ""
@@ -9245,7 +9237,7 @@ msgstr ""
 "здійснити згідно з вашими стратегічним планом і планом моніторингу"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanProjectResourceConfigurationQuestion.java:37
-msgid "Work Plan Assignment Resources Only"
+msgid "Work Plan Assignments Only"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:41
@@ -9324,11 +9316,9 @@ msgstr "Так"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:173
 msgid ""
-"You are removing this resource from the project team, so he/she will no "
-"longer appear in the list of Team Members in the Summary View. "
+"You are removing this person from the project team, so he/she will no longer "
+"appear in the list of Team Members in the Summary View. "
 msgstr ""
-"Ви забираєте цей ресурс з робочої групи проекту, тому він або вона не "
-"з'явиться більше у списку членів робочої групи у підсумковому виді."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:260
 msgid "You must select one item in each of the two lists"
@@ -32566,6 +32556,41 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid ""
+#~ "\n"
+#~ "Are you sure you want to delete this resource?"
+#~ msgstr ""
+#~ "\n"
+#~ "Ви впевнені, що хочете видалити цей ресурс?"
+
+#~ msgid "Action|Manage|Create Resource"
+#~ msgstr "Action|Manage|Створити ресурс"
+
+#~ msgid "Action|Manage|Delete Resource"
+#~ msgstr "Action|Manage|Видалити ресурс"
+
+#~ msgid "Delete Resource"
+#~ msgstr "Видалити ресурс"
+
+#~ msgid "Project Resource"
+#~ msgstr "Ресурс проекту"
+
+#~ msgid "Project Resources"
+#~ msgstr "Ресурси проекту"
+
+#~ msgid "TT|Create a Resource (person, team, etc)"
+#~ msgstr "TT|Створити Ресурс (особа, група і т.п.)"
+
+#~ msgid "TT|Delete the selected Resource (person, team, etc)"
+#~ msgstr "TT|Видалити вибраний ресурс (особу, групу і т.п.)"
+
+#~ msgid ""
+#~ "You are removing this resource from the project team, so he/she will no "
+#~ "longer appear in the list of Team Members in the Summary View. "
+#~ msgstr ""
+#~ "Ви забираєте цей ресурс з робочої групи проекту, тому він або вона не "
+#~ "з'явиться більше у списку членів робочої групи у підсумковому виді."
 
 #~ msgid "Acct Code"
 #~ msgstr "Бухгалтерський код"

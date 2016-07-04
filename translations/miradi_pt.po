@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-06-30 08:06-0700\n"
+"POT-Creation-Date: 2016-07-04 01:51-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/miradi-client/"
@@ -30,10 +30,8 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:68
 msgid ""
 "\n"
-"Are you sure you want to delete this resource?"
+"Are you sure you want to delete this person or group?"
 msgstr ""
-"\n"
-"Tem certeza que deseja excluir este recurso?"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningFinancialSubPanel.java:48
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:59
@@ -1623,6 +1621,10 @@ msgstr "Criar Organização"
 msgid "Action|Manage|Create Other Notable Species"
 msgstr "Criar Outra Espécie Notável"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateResource.java:35
+msgid "Action|Manage|Create People"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateProgressPercent.java:35
 msgid "Action|Manage|Create Progress Percent"
 msgstr "Criar Por Cento de Andamento"
@@ -1636,10 +1638,6 @@ msgstr "Criar Relatório de Progresso"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeCreateExpenseAssignment.java:35
 msgid "Action|Manage|Create Projected Expense"
 msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateResource.java:35
-msgid "Action|Manage|Create Resource"
-msgstr "Criar Recurso"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateTask.java:40
 msgid "Action|Manage|Create Task"
@@ -1707,6 +1705,10 @@ msgstr "Apagar Método"
 msgid "Action|Manage|Delete Objective"
 msgstr "Apagar Meta"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeleteResource.java:35
+msgid "Action|Manage|Delete People"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeleteProgressPercent.java:35
 msgid "Action|Manage|Delete Progress Percent"
 msgstr "Apagar Percentual de Andamento"
@@ -1716,10 +1718,6 @@ msgstr "Apagar Percentual de Andamento"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeleteStrategyProgressReport.java:35
 msgid "Action|Manage|Delete Progress Report"
 msgstr "Apagar Relatório de Progresso"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeleteResource.java:35
-msgid "Action|Manage|Delete Resource"
-msgstr "Apagar Recurso"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionResourceListModify.java:34
 msgid "Action|Manage|Modify Resource"
@@ -2136,7 +2134,7 @@ msgid "All Diagrams"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanProjectResourceConfigurationQuestion.java:36
-msgid "All Project Resources"
+msgid "All People"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:57
@@ -3325,8 +3323,8 @@ msgid "Delete %s"
 msgstr "Apagar (Delete) %s"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
-msgid "Delete Resource"
-msgstr "Apagar (Delete) Recurso"
+msgid "Delete People"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:46
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/NoProjectWizardStep.java:98
@@ -5901,7 +5899,11 @@ msgid ""
 "its pasted complementary factor."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/ProjectResourceManagementPanel.java:51
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/PlanningProjectResourceManagementConfiguration.java:59
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/ProjectResourceManagementConfiguration.java:58
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/assignment/AssignmentsPropertiesSubPanel.java:85
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:47
 msgid "People"
 msgstr ""
 
@@ -6179,10 +6181,6 @@ msgstr ""
 msgid "Project Plan For "
 msgstr "Plano do Projeto para"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:47
-msgid "Project Resource"
-msgstr "Recurso do Projeto"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:47
 msgid "Project Resource Filter Editor"
 msgstr "Editora do Filtro de Recursos do Projeto"
@@ -6190,12 +6188,6 @@ msgstr "Editora do Filtro de Recursos do Projeto"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1032
 msgid "Project Resource Filter Is On"
 msgstr "Filtro de Recursos do Projeto está Ativado"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/ProjectResourceManagementPanel.java:51
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/PlanningProjectResourceManagementConfiguration.java:59
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/ProjectResourceManagementConfiguration.java:58
-msgid "Project Resources"
-msgstr "Recursos do Projeto"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo12.java:42
 msgid "Project Scale"
@@ -7231,10 +7223,6 @@ msgstr ""
 msgid "TT|Create a Report Template"
 msgstr "Criar um Modelo de Relatório"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateResource.java:41
-msgid "TT|Create a Resource (person, team, etc)"
-msgstr "Criar um Recurso (pessoa, equipe, etc.)"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateStress.java:41
 msgid "TT|Create a Stress"
 msgstr "Criar um Estresse"
@@ -7300,6 +7288,10 @@ msgstr "Criar uma nova Visão de Planejamento Personalizada pre-preenchida"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateNamedTaggedObjectSet.java:41
 msgid "TT|Create a new tag"
 msgstr "Criar um novo 'tag'"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateResource.java:41
+msgid "TT|Create a person or group"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateExpense.java:40
 msgid "TT|Create a projected expense"
@@ -7479,10 +7471,6 @@ msgstr "Apagar o Método selecionado"
 msgid "TT|Delete the selected Objective"
 msgstr "Apagar a Meta selecionada"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeleteResource.java:41
-msgid "TT|Delete the selected Resource (person, team, etc)"
-msgstr "Apagar o Recurso (pessoa, equipe, etc.) selecionado"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeleteStress.java:41
 msgid "TT|Delete the selected Stress"
 msgstr "Apagar o Estresse selecionado"
@@ -7495,6 +7483,10 @@ msgstr "Apagar o Modelo XSL selecionado "
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeletePlanningViewTreeNode.java:41
 msgid "TT|Delete the selected item"
 msgstr "Apagar o item selecionado"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeleteResource.java:41
+msgid "TT|Delete the selected person or group"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDelete.java:41
 msgid "TT|Delete the selection"
@@ -8503,6 +8495,12 @@ msgstr ""
 msgid "This person is a coach within the Conservation Coaches Network"
 msgstr "Esta pessoa é um treinador ('coach') do Conservation Coaches Network"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:66
+msgid ""
+"This person or group has been planned for work in the Strategic Plan and / "
+"or assigned work in the Work Plan"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/exceptions/XmlVersionTooOldException.java:30
 msgid ""
 "This project cannot be imported because it is in an old data format.\n"
@@ -8550,12 +8548,6 @@ msgstr ""
 "ser migrado ao formato de dados atual antes de poder ser aberto.  Uma cópia "
 "de segurança será salvo primeiro, caso que qualquer coisa der errado.  "
 "Realize a migração automática?"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:66
-msgid ""
-"This resource has been planned for work in the Strategic Plan and / or "
-"assigned work in the Work Plan"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:338
 msgid ""
@@ -9440,7 +9432,7 @@ msgstr ""
 "cada tarefa bem como os recursos específicos necessários para executâ-lo."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanProjectResourceConfigurationQuestion.java:37
-msgid "Work Plan Assignment Resources Only"
+msgid "Work Plan Assignments Only"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:41
@@ -9523,11 +9515,9 @@ msgstr "Sim"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:173
 msgid ""
-"You are removing this resource from the project team, so he/she will no "
-"longer appear in the list of Team Members in the Summary View. "
+"You are removing this person from the project team, so he/she will no longer "
+"appear in the list of Team Members in the Summary View. "
 msgstr ""
-"Você está apagando este recursos da equipe do projeto; assim esta pessoa "
-"deixará de aparecer na lista de Membros da Equipe na Visão de Resumo."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:260
 msgid "You must select one item in each of the two lists"
@@ -28374,6 +28364,41 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid ""
+#~ "\n"
+#~ "Are you sure you want to delete this resource?"
+#~ msgstr ""
+#~ "\n"
+#~ "Tem certeza que deseja excluir este recurso?"
+
+#~ msgid "Action|Manage|Create Resource"
+#~ msgstr "Criar Recurso"
+
+#~ msgid "Action|Manage|Delete Resource"
+#~ msgstr "Apagar Recurso"
+
+#~ msgid "Delete Resource"
+#~ msgstr "Apagar (Delete) Recurso"
+
+#~ msgid "Project Resource"
+#~ msgstr "Recurso do Projeto"
+
+#~ msgid "Project Resources"
+#~ msgstr "Recursos do Projeto"
+
+#~ msgid "TT|Create a Resource (person, team, etc)"
+#~ msgstr "Criar um Recurso (pessoa, equipe, etc.)"
+
+#~ msgid "TT|Delete the selected Resource (person, team, etc)"
+#~ msgstr "Apagar o Recurso (pessoa, equipe, etc.) selecionado"
+
+#~ msgid ""
+#~ "You are removing this resource from the project team, so he/she will no "
+#~ "longer appear in the list of Team Members in the Summary View. "
+#~ msgstr ""
+#~ "Você está apagando este recursos da equipe do projeto; assim esta pessoa "
+#~ "deixará de aparecer na lista de Membros da Equipe na Visão de Resumo."
 
 #~ msgid "%1 of %2 Methods and Tasks have assignments"
 #~ msgstr "%1 de %2 Métodos e Tarefas têm responsáveis designados"
