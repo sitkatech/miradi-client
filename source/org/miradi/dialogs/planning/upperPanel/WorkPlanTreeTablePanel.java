@@ -64,6 +64,12 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 	}
 
 	@Override
+	protected PlanningUpperMultiTable createUpperMultiTable(PlanningTreeTable treeToUse, PlanningTreeMultiTableModel multiModelToUse)
+	{
+		return new WorkPlanUpperMultiTable(getMainWindow(), treeToUse, multiModelToUse);
+	}
+
+	@Override
 	protected PlanningViewAbstractTreeTableSyncedTableModel createMainTableModel(final PlanningTreeRowColumnProvider rowColumnProviderToUse) throws Exception
 	{
 		return new WorkPlanViewMainTableModel(getProject(), getTree(), rowColumnProviderToUse);

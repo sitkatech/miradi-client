@@ -21,6 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.actions.*;
+import org.miradi.dialogs.planning.RightClickActionProvider;
+import org.miradi.dialogs.planning.propertiesPanel.PlanningRightClickHandler;
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -28,14 +30,18 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
 
+import javax.swing.*;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.Vector;
 
-public class WorkPlanningTreeTableWithVisibleRootNode extends PlanningTreeTableWithVisibleRootNode
+public class WorkPlanningTreeTableWithVisibleRootNode extends PlanningTreeTableWithVisibleRootNode implements RightClickActionProvider
 {
 	public WorkPlanningTreeTableWithVisibleRootNode(MainWindow mainWindowToUse, GenericTreeTableModel planningTreeModelToUse)
 	{
 		super(mainWindowToUse, planningTreeModelToUse);
+
+		addMouseListener(new PlanningRightClickHandler(getMainWindow(), this, this));
 	}
 
 	@Override
@@ -62,5 +68,26 @@ public class WorkPlanningTreeTableWithVisibleRootNode extends PlanningTreeTableW
 		}
 
 		return super.elementMatchesTypeToExpandTo(typeToExpandTo, elementRef);
+	}
+
+	@Override
+	public Vector<Action> getActionsForRightClickMenu(int row, int tableColumn)
+	{
+		Vector<Action> actions = new Vector<Action>();
+
+		BaseObject baseObject = getBaseObjectForRowColumn(row, tableColumn);
+		actions.addAll(WorkPlanUpperMultiTable.getWorkPlanActionsForBaseObject(baseObject, getActions()));
+		actions.add(getActions().get(ActionDeletePlanningViewTreeNode.class));
+		actions.add(null);
+		actions.add(getActions().get(ActionExpandAllRows.class));
+		actions.add(getActions().get(ActionCollapseAllRows.class));
+		actions.add(null);
+
+		return actions;
+	}
+
+	private Actions getActions()
+	{
+		return getMainWindow().getActions();
 	}
 }

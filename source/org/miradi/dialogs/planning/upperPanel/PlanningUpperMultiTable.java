@@ -184,7 +184,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 
 		Vector<Action> actions = new Vector<Action>();
 		BaseObject baseObject = getBaseObjectForRowColumn(row, tableColumn);
-		actions.addAll(getActionsForBaseObject(baseObject));
+		actions.addAll(getActionsForBaseObject(baseObject, getActions()));
 		actions.add(getActions().get(ActionDeletePlanningViewTreeNode.class));
 		actions.add(null);
 		actions.add(getActions().get(ActionExpandAllRows.class));
@@ -199,37 +199,9 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		return actions;
 	}
 
-	private ArrayList<Action> getActionsForBaseObject(BaseObject baseObject)
+	protected ArrayList<Action> getActionsForBaseObject(BaseObject baseObject, Actions availableActions)
 	{
-		ArrayList<Action> actions = new ArrayList<Action>();
-
-		if (Strategy.is(baseObject))
-		{
-			actions.add(getActions().get(ActionTreeCreateActivity.class));
-			actions.add(getActions().get(ActionTreeCreateMonitoringActivity.class));
-			actions.add(getActions().get(ActionTreeCreateResourceAssignment.class));
-			actions.add(getActions().get(ActionTreeCreateExpenseAssignment.class));
-			actions.add(null);
-		}
-
-		if (Task.is(baseObject))
-		{
-			if (((Task) baseObject).isActivity())
-			{
-				actions.add(getActions().get(ActionTreeCreateActivity.class));
-				actions.add(getActions().get(ActionTreeCreateMonitoringActivity.class));
-				actions.add(getActions().get(ActionCreateTask.class));
-			}
-			else
-			{
-				actions.add(getActions().get(ActionCreateSameLevelTask.class));
-			}
-			actions.add(getActions().get(ActionTreeCreateResourceAssignment.class));
-			actions.add(getActions().get(ActionTreeCreateExpenseAssignment.class));
-			actions.add(null);
-		}
-
-		return actions;
+		return new ArrayList<Action>();
 	}
 
 	public int getColumnWidth(int tableColumnIndex)
@@ -271,7 +243,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		return modelColumn;
 	}
 	
-	private Actions getActions()
+	protected Actions getActions()
 	{
 		return getMainWindow().getActions();
 	}
