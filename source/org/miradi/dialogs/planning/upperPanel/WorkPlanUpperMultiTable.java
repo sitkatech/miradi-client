@@ -21,12 +21,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.actions.*;
+import org.miradi.dialogs.tablerenderers.BasicTableCellEditorOrRendererFactory;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
 
 import javax.swing.*;
+import javax.swing.table.TableCellRenderer;
+import java.awt.*;
 import java.util.ArrayList;
 
 public class WorkPlanUpperMultiTable extends PlanningUpperMultiTable
@@ -34,6 +38,24 @@ public class WorkPlanUpperMultiTable extends PlanningUpperMultiTable
 	public WorkPlanUpperMultiTable(MainWindow mainWindowToUse, PlanningTreeTable masterTreeToUse, PlanningTreeMultiTableModel model)
 	{
 		super(mainWindowToUse, masterTreeToUse, model);
+	}
+
+	@Override
+	public TableCellRenderer getCellRenderer(int row, int tableColumn)
+	{
+		final int modelColumn = convertColumnIndexToModel(tableColumn);
+
+		BasicTableCellEditorOrRendererFactory factory = (BasicTableCellEditorOrRendererFactory) super.getCellRenderer(row, tableColumn);
+
+		Color background = getCastedModel().getCellBackgroundColor(row, modelColumn);
+
+		int selectedRow = getSelectedRow();
+		if (row == selectedRow)
+			background = isCellEditable(selectedRow, tableColumn) ? Color.WHITE : EAM.READONLY_BACKGROUND_COLOR;
+
+		factory.setCellBackgroundColor(background);
+
+		return factory;
 	}
 
 	@Override
