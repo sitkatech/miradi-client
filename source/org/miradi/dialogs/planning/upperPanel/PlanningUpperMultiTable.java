@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Vector;
 
 import javax.swing.Action;
@@ -29,10 +30,7 @@ import javax.swing.ListSelectionModel;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
-import org.miradi.actions.ActionCollapseAllRows;
-import org.miradi.actions.ActionDeletePlanningViewTreeNode;
-import org.miradi.actions.ActionExpandAllRows;
-import org.miradi.actions.Actions;
+import org.miradi.actions.*;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
 import org.miradi.dialogs.planning.FullTimeEmployeeDaysPerYearAction;
 import org.miradi.dialogs.planning.MultiTableCollapseColumnAction;
@@ -46,7 +44,7 @@ import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTable
 import org.miradi.dialogs.tablerenderers.*;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.BaseObject;
+import org.miradi.objects.*;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
 import org.miradi.questions.StaticQuestionManager;
@@ -185,6 +183,8 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		PlanningViewAbstractTreeTableSyncedTableModel model = getCastedModel().getCastedModel(multiModelColumn);
 
 		Vector<Action> actions = new Vector<Action>();
+		BaseObject baseObject = getBaseObjectForRowColumn(row, tableColumn);
+		actions.addAll(getActionsForBaseObject(baseObject));
 		actions.add(getActions().get(ActionDeletePlanningViewTreeNode.class));
 		actions.add(null);
 		actions.add(getActions().get(ActionExpandAllRows.class));
@@ -196,6 +196,39 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 			actions.add(new MultiTableCollapseColumnAction(this));
 		if(model.isFullTimeEmployeeFractionAvailable(row, modelColumn))
 			actions.add(new FullTimeEmployeeDaysPerYearAction(this));
+		return actions;
+	}
+
+	private ArrayList<Action> getActionsForBaseObject(BaseObject baseObject)
+	{
+		ArrayList<Action> actions = new ArrayList<Action>();
+
+		if (Strategy.is(baseObject))
+		{
+			actions.add(getActions().get(ActionTreeCreateActivity.class));
+			actions.add(getActions().get(ActionTreeCreateMonitoringActivity.class));
+			actions.add(getActions().get(ActionTreeCreateResourceAssignment.class));
+			actions.add(getActions().get(ActionTreeCreateExpenseAssignment.class));
+			actions.add(null);
+		}
+
+		if (Task.is(baseObject))
+		{
+			if (((Task) baseObject).isActivity())
+			{
+				actions.add(getActions().get(ActionTreeCreateActivity.class));
+				actions.add(getActions().get(ActionTreeCreateMonitoringActivity.class));
+				actions.add(getActions().get(ActionCreateTask.class));
+			}
+			else
+			{
+				actions.add(getActions().get(ActionCreateSameLevelTask.class));
+			}
+			actions.add(getActions().get(ActionTreeCreateResourceAssignment.class));
+			actions.add(getActions().get(ActionTreeCreateExpenseAssignment.class));
+			actions.add(null);
+		}
+
 		return actions;
 	}
 
