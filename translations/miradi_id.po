@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-06 01:51-0700\n"
+"POT-Creation-Date: 2016-07-06 07:36-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/miradi-client/"
@@ -290,7 +290,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br> "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:159
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:161
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr ""
@@ -2619,7 +2619,7 @@ msgstr "Berdasarkan Kuartal "
 msgid "By Year"
 msgstr "Berdasarkan Tahun "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:36
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:37
 msgid "CM Page"
 msgstr "Halaman MK (Manajer Kampanye"
 
@@ -2866,6 +2866,10 @@ msgstr "Sifat-sifat Halaman Model Konsep "
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramObjectDataInclusionQuestion.java:38
 msgid "Conceptual Model Pages and Results Chains"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo37.java:40
+msgid "Conceptual Model Progress Reports"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:51
@@ -5674,8 +5678,8 @@ msgstr ""
 msgid "Overall Threat Rating"
 msgstr "Keseluruhan Peringkat Ancaman"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:40
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:39
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:41
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:40
 msgid "Page:"
 msgstr "Halaman: "
 
@@ -6203,11 +6207,15 @@ msgstr "Sumber Daya"
 msgid "Resources:"
 msgstr "Sumber daya: "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:35
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:36
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ResultsChainCreatorHelper.java:196
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:39
 msgid "Results Chain"
 msgstr "Rangkaian Hasil "
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo36.java:40
+msgid "Results Chain Progress Reports"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/DiagramTabsLabelPropertiesPanel.java:44
 msgid "Results Chain Properties"
@@ -8118,6 +8126,14 @@ msgstr ""
 msgid "This migration adds 2 new TNC fields."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo37.java:66
+msgid "This migration adds Progress Reports to Conceptual Model Diagrams."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo36.java:66
+msgid "This migration adds Progress Reports to Result Chain Diagrams."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:72
 msgid ""
 "This migration adds a new day columns visibility field to the Project "
@@ -8527,7 +8543,7 @@ msgstr "Hapus "
 msgid "Title|Diagram Panel"
 msgstr "Panel Diagram "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:51
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:56
 msgid "Title|Diagram Properties"
 msgstr "Sifat-sifat Diagram "
 
@@ -8670,7 +8686,7 @@ msgstr "Sifat-sifat Templat Laporan"
 msgid "Title|Resource Properties"
 msgstr "Sifat-sifat Sumber Daya "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:50
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:55
 msgid "Title|Results Chain Properties"
 msgstr "Properti Rangkaian Hasil "
 
@@ -9332,7 +9348,7 @@ msgstr ""
 msgid "[Error]"
 msgstr "[Kesalahan] "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/ConceptualModelDiagram.java:111
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/ConceptualModelDiagram.java:116
 msgid "[Main Diagram]"
 msgstr "[Diagram Utama] "
 
@@ -9348,7 +9364,7 @@ msgstr "[Rangkaian Hasil Baru] "
 msgid "[No Project]"
 msgstr "[Tidak Ada Proyek] "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/ConceptualModelDiagram.java:112
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/ConceptualModelDiagram.java:117
 msgid "[Not Named]"
 msgstr "[Tidak Diberi Nama] "
 

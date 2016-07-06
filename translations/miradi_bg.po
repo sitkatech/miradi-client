@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-06 01:51-0700\n"
+"POT-Creation-Date: 2016-07-06 07:36-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -297,7 +297,7 @@ msgstr "%s "
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%ОтИме' -> '%ЗаИме'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:159
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:161
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr "(%s)"
@@ -2786,7 +2786,7 @@ msgstr "По тримесечие"
 msgid "By Year"
 msgstr "По година"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:36
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:37
 msgid "CM Page"
 msgstr "CM страница"
 
@@ -3039,6 +3039,10 @@ msgstr "Детайли на страницата на концептуален �
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramObjectDataInclusionQuestion.java:38
 msgid "Conceptual Model Pages and Results Chains"
 msgstr "Страници на концептуален модел и вериги на резултати"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo37.java:40
+msgid "Conceptual Model Progress Reports"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:51
 msgid ""
@@ -5877,8 +5881,8 @@ msgstr ""
 msgid "Overall Threat Rating"
 msgstr "Пълна оценка на заплахи"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:40
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:39
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:41
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:40
 msgid "Page:"
 msgstr "Страница:"
 
@@ -6407,11 +6411,15 @@ msgstr "Ресурси"
 msgid "Resources:"
 msgstr "Ресурси"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:35
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:36
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ResultsChainCreatorHelper.java:196
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:39
 msgid "Results Chain"
 msgstr "Верига на резултати"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo36.java:40
+msgid "Results Chain Progress Reports"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/DiagramTabsLabelPropertiesPanel.java:44
 msgid "Results Chain Properties"
@@ -8351,6 +8359,14 @@ msgstr ""
 msgid "This migration adds 2 new TNC fields."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo37.java:66
+msgid "This migration adds Progress Reports to Conceptual Model Diagrams."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo36.java:66
+msgid "This migration adds Progress Reports to Result Chain Diagrams."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:72
 msgid ""
 "This migration adds a new day columns visibility field to the Project "
@@ -8761,7 +8777,7 @@ msgstr "Title|Изтриване"
 msgid "Title|Diagram Panel"
 msgstr "Title|Панел на диаграма"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:51
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:56
 msgid "Title|Diagram Properties"
 msgstr "Title|Свойства на диаграма"
 
@@ -8904,7 +8920,7 @@ msgstr "Title|Свойства на образец на доклад"
 msgid "Title|Resource Properties"
 msgstr "Title|Своства на ресурс"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:50
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:55
 msgid "Title|Results Chain Properties"
 msgstr "Title|Свойства на верига на резултатите"
 
@@ -9565,7 +9581,7 @@ msgstr ""
 msgid "[Error]"
 msgstr "[Грешка]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/ConceptualModelDiagram.java:111
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/ConceptualModelDiagram.java:116
 msgid "[Main Diagram]"
 msgstr "[Основна диаграма]"
 
@@ -9581,7 +9597,7 @@ msgstr "[Нова верига на резултатите]"
 msgid "[No Project]"
 msgstr "[Няма проект]"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/ConceptualModelDiagram.java:112
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/ConceptualModelDiagram.java:117
 msgid "[Not Named]"
 msgstr "[Не е именуван]"
 
