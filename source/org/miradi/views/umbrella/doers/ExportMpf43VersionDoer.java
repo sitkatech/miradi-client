@@ -27,7 +27,7 @@ import org.miradi.migrations.RawProject;
 import org.miradi.migrations.RawProjectLoader;
 import org.miradi.migrations.VersionRange;
 import org.miradi.migrations.forward.MigrationManager;
-import org.miradi.migrations.forward.MigrationTo16;
+import org.miradi.migrations.forward.MigrationTo18;
 import org.miradi.project.ProjectSaver;
 import org.miradi.project.RawProjectSaver;
 import org.miradi.utils.MiradiFileSaveChooser;
@@ -38,7 +38,7 @@ import org.miradi.views.umbrella.ExportMpzDoer;
 
 import java.io.File;
 
-public class ExportMpf42VersionDoer extends AbstractFileSaverDoer
+public class ExportMpf43VersionDoer extends AbstractFileSaverDoer
 {
 	@Override
 	protected MiradiFileSaveChooser createFileChooser()
@@ -53,7 +53,7 @@ public class ExportMpf42VersionDoer extends AbstractFileSaverDoer
 		String mpfSnapShot = ProjectSaver.createSnapShot(getProject());
 		MigrationManager migrationManager = new MigrationManager();
 		RawProject rawProjectToMigrate = RawProjectLoader.loadProject(mpfSnapShot);
-		MigrationResult migrationResult = migrationManager.migrate(rawProjectToMigrate, new VersionRange(MigrationTo16.VERSION_TO));
+		MigrationResult migrationResult = migrationManager.migrate(rawProjectToMigrate, new VersionRange(MigrationTo18.VERSION_TO));
 		if (migrationResult.cannotMigrate())
 		{
 			final String message = EAM.substituteSingleString(EAM.text("Unable to complete this migration.\n\n" +
@@ -87,6 +87,6 @@ public class ExportMpf42VersionDoer extends AbstractFileSaverDoer
 	@Override
 	protected String getProgressTitle()
 	{
-		return EAM.text("Export 4.2 Miradi");
+		return EAM.text("Export 4.3 Miradi");
 	}
 }
