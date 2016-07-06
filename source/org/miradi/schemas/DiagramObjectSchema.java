@@ -42,7 +42,9 @@ abstract public class DiagramObjectSchema extends BaseObjectSchema
 		createFieldSchemaCodeList(DiagramObject.TAG_HIDDEN_TYPES, getQuestion(DiagramLegendQuestion.class));
 		createFieldSchemaReflist(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TAGGED_OBJECT_SET_ELEMENT_NAME);
 		createFieldSchemaNumber(DiagramObject.TAG_ZOOM_SCALE);
-		
+
+		createProgressReportSchema();
+
 		createPseudoFieldSchemaString(DiagramObject.PSEUDO_COMBINED_LABEL);
 	}
 }

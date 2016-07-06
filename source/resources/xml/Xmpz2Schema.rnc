@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Mon Jun 20 09:25:23 BST 2016 $
+# $LastChangedDate: Wed Jul 06 12:44:43 BST 2016 $
 # $LastChangedRevision: 236 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/236'
 start = ConservationProject.element
@@ -427,6 +427,7 @@ ConceptualModel.element = element miradi:ConceptualModel
   element miradi:ConceptualModelDiagramLinkIds { DiagramLinkId.element* }? &
   element miradi:ConceptualModelIdentifier { text }? &
   element miradi:ConceptualModelName { formatted_text }? &
+  element miradi:ConceptualModelProgressReportIds { ProgressReportId.element* }? &
   element miradi:ConceptualModelSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }? &
   element miradi:ConceptualModelZoomScale { xsd:decimal }?
 }
@@ -516,6 +517,7 @@ ResultsChain.element = element miradi:ResultsChain
   element miradi:ResultsChainDiagramLinkIds { DiagramLinkId.element* }? &
   element miradi:ResultsChainIdentifier { text }? &
   element miradi:ResultsChainName { formatted_text }? &
+  element miradi:ResultsChainProgressReportIds { ProgressReportId.element* }? &
   element miradi:ResultsChainSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }? &
   element miradi:ResultsChainZoomScale { xsd:decimal }? &
   ResultsChainHiddenTypesContainer.element ? &

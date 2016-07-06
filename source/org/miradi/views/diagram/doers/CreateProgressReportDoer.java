@@ -20,10 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram.doers;
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Task;
+import org.miradi.objects.*;
 import org.miradi.schemas.ProgressReportSchema;
 
 public class CreateProgressReportDoer extends AbstractCreateProgressDoer
@@ -40,9 +37,15 @@ public class CreateProgressReportDoer extends AbstractCreateProgressDoer
 
 	private boolean canHaveProgressReports(ORef selectedRef)
 	{
-		if (Strategy.is(selectedRef))
+		if (ResultsChainDiagram.is(selectedRef))
 			return true;
 		
+		if (ConceptualModelDiagram.is(selectedRef))
+			return true;
+
+		if (Strategy.is(selectedRef))
+			return true;
+
 		if (Indicator.is(selectedRef))
 			return true;
 		

@@ -86,6 +86,11 @@ public class ConceptualModelDiagram extends DiagramObject
 		return new ORefList(new Vector<BaseObject>(allDraftStrategies)).toString();
 	}
 
+	public static boolean is(BaseObject baseObject)
+	{
+		return is(baseObject.getType());
+	}
+
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());

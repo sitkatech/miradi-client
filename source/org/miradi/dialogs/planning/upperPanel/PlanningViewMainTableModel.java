@@ -261,7 +261,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	public boolean isProgressColumn(int column)
 	{
 		String columnTag = getColumnTag(column);
-		if(columnTag.equals(Strategy.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+		if(columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return true;
 		if(columnTag.equals(Objective.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE))
 			return true;
@@ -539,15 +539,11 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		{
 			if(isDetailsColumn(column))
 				return ConceptualModelDiagram.TAG_DETAIL;
-			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
-				return "";
 		}
 		if(ResultsChainDiagram.is(nodeType))
 		{
 			if(isDetailsColumn(column))
 				return ResultsChainDiagram.TAG_DETAIL;
-			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
-				return "";
 		}
 		if(AbstractTarget.isAbstractTarget(nodeType))
 		{

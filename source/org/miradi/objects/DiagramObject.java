@@ -33,6 +33,7 @@ import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.CommandVector;
 
 abstract public class DiagramObject extends BaseObject
 {
@@ -466,7 +467,16 @@ abstract public class DiagramObject extends BaseObject
 		
 		return scale;
 	}
-	
+
+	@Override
+	public CommandVector createCommandsToDeleteChildren() throws Exception
+	{
+		CommandVector commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
+		commandsToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_PROGRESS_REPORT_REFS));
+
+		return commandsToDeleteChildren;
+	}
+
 	@Override
 	public String getPseudoData(String fieldTag)
 	{

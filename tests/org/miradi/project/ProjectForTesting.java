@@ -421,16 +421,30 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return typesWithAccountingClassificationAssociationPools;
 	}
 
+    public ORef createConceptualModelDiagram() throws Exception
+	{
+		ORef conceptualModelRef = createObject(ConceptualModelDiagramSchema.getObjectType());
+		ConceptualModelDiagram conceptualModelDiagram = ConceptualModelDiagram.find(this, conceptualModelRef);
+		PersistentDiagramModel conceptualModelDiagramModel = new PersistentDiagramModel(this);
+		conceptualModelDiagramModel.fillFrom(conceptualModelDiagram);
+
+		addProgressReport(conceptualModelDiagram);
+
+		return conceptualModelRef;
+	}
+
     public ORef createResultsChainDiagram() throws Exception
 	{
 		ORef resultsChainRef = createObject(ResultsChainDiagramSchema.getObjectType());
 		ResultsChainDiagram resultsChain = ResultsChainDiagram.find(this, resultsChainRef);
 		PersistentDiagramModel resultsChainDiagramModel = new PersistentDiagramModel(this);
 		resultsChainDiagramModel.fillFrom(resultsChain);
-		
+
+		addProgressReport(resultsChain);
+
 		return resultsChainRef;
 	}
-	
+
 	public String createXenodata(String externalAppCode, String xenoDataProjectId) throws Exception
 	{
 		ORef xenodataRef = createAndPopulateXenodata(xenoDataProjectId).getRef();

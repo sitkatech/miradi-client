@@ -48,7 +48,12 @@ public class ResultsChainDiagram extends DiagramObject
 	{
 		return NO_OWNERS;
 	}
-	
+
+	public static boolean is(BaseObject baseObject)
+	{
+		return is(baseObject.getType());
+	}
+
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());
