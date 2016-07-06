@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-05 03:51-0700\n"
+"POT-Creation-Date: 2016-07-06 01:51-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Chinese (http://www.transifex.com/projects/p/miradi-client/"
@@ -1281,7 +1281,7 @@ msgid "Action|Expand All Rows"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportMiradiShareFile.java:34
-msgid "Action|Export Miradi Share File"
+msgid "Action|Export Miradi Share Project File (.xmpz2)"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportXslTemplate.java:36
@@ -1319,6 +1319,10 @@ msgstr "如何保存 \t\t"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionImportAccountingCodes.java:34
 msgid "Action|Import Accounting Codes"
 msgstr "导入会计编码 \t\t"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionImportMiradiShareFile.java:34
+msgid "Action|Import Miradi Share Project File (.xmpz2)"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionImportXslTemplate.java:35
 msgid "Action|Import XSL Template"
@@ -1604,12 +1608,16 @@ msgstr "地图 \t\t"
 msgid "Action|Miradi 3.3 Project File (.mpz)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportMpf42Version.java:35
-msgid "Action|Miradi 4.2 Project File (.Miradi)"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportMpf43Version.java:35
+msgid "Action|Miradi 4.3 Project File (.Miradi)"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportMpf.java:35
 msgid "Action|Miradi Project File (.Miradi)"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportXmpz2.java:35
+msgid "Action|Miradi Share Project File (.xmpz2)"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/views/ActionViewMonitoring.java:35
@@ -1897,10 +1905,6 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionHelpButtonWorkshop.java:34
 msgid "Action|Workshop"
 msgstr "学习班 \t\t"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportXmpz2.java:35
-msgid "Action|XML Miradi Project ZIP v2 (.xmpz2)"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionZoomIn.java:34
 msgid "Action|Zoom In"
@@ -2928,7 +2932,7 @@ msgstr ""
 "重新创建：<br>\t\t"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportMpzDoer.java:71
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf42VersionDoer.java:74
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf43VersionDoer.java:74
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/Xmpz2ProjectImporter.java:99
 msgid "Could not migrate!"
 msgstr ""
@@ -3564,10 +3568,9 @@ msgstr "专家知识"
 msgid "Export"
 msgstr "导出 "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf42VersionDoer.java:90
-#, fuzzy
-msgid "Export 4.2 Miradi"
-msgstr "导出到Miradi压缩… \t\t"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf43VersionDoer.java:90
+msgid "Export 4.3 Miradi"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportMpzDoer.java:99
 msgid "Export MPZ"
@@ -5018,11 +5021,11 @@ msgstr "中"
 msgid "Medium (Default)"
 msgstr "中等（默认）"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:244
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:245
 msgid "MenuBar|Actions"
 msgstr "动作 \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:175
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:176
 msgid "MenuBar|Edit"
 msgstr "编辑 \t\t"
 
@@ -5030,15 +5033,15 @@ msgstr "编辑 \t\t"
 msgid "MenuBar|File"
 msgstr "文件 \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:588
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:589
 msgid "MenuBar|Help"
 msgstr "帮助 \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:520
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:521
 msgid "MenuBar|Step-by-Step"
 msgstr "一步一步 \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:447
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:448
 msgid "MenuBar|View"
 msgstr "视图 \t\t"
 
@@ -5066,20 +5069,20 @@ msgstr "5. 捕捉及共享学识 \t\t"
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:143
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:144
 msgid "Menu|Export Current Page as..."
 msgstr "导出当前页面为... "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:121
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:122
 msgid "Menu|Export Current Project as..."
 msgstr "导出当前项目为... "
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:243
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:435
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:436
 msgid "Menu|Group Box"
 msgstr "组合框 \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:156
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:157
 msgid "Menu|Import"
 msgstr "导入 \t\t"
 
@@ -7212,7 +7215,7 @@ msgstr ""
 msgid "TT|Export a .Miradi file"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportMpf42Version.java:41
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportMpf43Version.java:41
 msgid "TT|Export a .miradi file"
 msgstr ""
 
@@ -7288,6 +7291,10 @@ msgstr "导入会计编码 \t\t"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionImportXslTemplate.java:41
 msgid "TT|Import an XSL Template"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionImportMiradiShareFile.java:40
+msgid "TT|Import entire project as an XML file"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionImportXmpz2.java:36
@@ -8599,7 +8606,7 @@ msgstr ""
 msgid "Total Monitoring Budget %1 %2"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf42VersionDoer.java:59
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf43VersionDoer.java:59
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/Xmpz2ProjectImporter.java:79
 msgid ""
 "Unable to complete this migration.\n"
@@ -28954,6 +28961,10 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#, fuzzy
+#~ msgid "Export 4.2 Miradi"
+#~ msgstr "导出到Miradi压缩… \t\t"
 
 #~ msgid ""
 #~ "\n"

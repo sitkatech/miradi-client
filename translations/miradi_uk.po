@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-05 03:51-0700\n"
+"POT-Creation-Date: 2016-07-06 01:51-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/miradi-client/"
@@ -1364,7 +1364,7 @@ msgid "Action|Expand All Rows"
 msgstr "Action|Розгорнути всі рядки"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportMiradiShareFile.java:34
-msgid "Action|Export Miradi Share File"
+msgid "Action|Export Miradi Share Project File (.xmpz2)"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportXslTemplate.java:36
@@ -1402,6 +1402,10 @@ msgstr "Action|Як зберегти"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionImportAccountingCodes.java:34
 msgid "Action|Import Accounting Codes"
 msgstr "Action|Імпортувати бухгалтерські коди"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionImportMiradiShareFile.java:34
+msgid "Action|Import Miradi Share Project File (.xmpz2)"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionImportXslTemplate.java:35
 msgid "Action|Import XSL Template"
@@ -1687,12 +1691,16 @@ msgstr "Action|Карти"
 msgid "Action|Miradi 3.3 Project File (.mpz)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportMpf42Version.java:35
-msgid "Action|Miradi 4.2 Project File (.Miradi)"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportMpf43Version.java:35
+msgid "Action|Miradi 4.3 Project File (.Miradi)"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportMpf.java:35
 msgid "Action|Miradi Project File (.Miradi)"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportXmpz2.java:35
+msgid "Action|Miradi Share Project File (.xmpz2)"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/views/ActionViewMonitoring.java:35
@@ -1980,10 +1988,6 @@ msgstr "Action|Робочий план"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionHelpButtonWorkshop.java:34
 msgid "Action|Workshop"
 msgstr "Action|Семінар"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportXmpz2.java:35
-msgid "Action|XML Miradi Project ZIP v2 (.xmpz2)"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionZoomIn.java:34
 msgid "Action|Zoom In"
@@ -3032,7 +3036,7 @@ msgstr ""
 "<br>"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportMpzDoer.java:71
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf42VersionDoer.java:74
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf43VersionDoer.java:74
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/Xmpz2ProjectImporter.java:99
 msgid "Could not migrate!"
 msgstr ""
@@ -3674,10 +3678,9 @@ msgstr "Спеціальне знання"
 msgid "Export"
 msgstr "Експорт"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf42VersionDoer.java:90
-#, fuzzy
-msgid "Export 4.2 Miradi"
-msgstr "Експортувати до Miradi Zip..."
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf43VersionDoer.java:90
+msgid "Export 4.3 Miradi"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportMpzDoer.java:99
 msgid "Export MPZ"
@@ -5152,11 +5155,11 @@ msgstr "Середній"
 msgid "Medium (Default)"
 msgstr "Середній (по замовчуванню)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:244
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:245
 msgid "MenuBar|Actions"
 msgstr "MenuBar|Дії"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:175
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:176
 msgid "MenuBar|Edit"
 msgstr "MenuBar|Редагувати"
 
@@ -5164,15 +5167,15 @@ msgstr "MenuBar|Редагувати"
 msgid "MenuBar|File"
 msgstr "MenuBar|Файл"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:588
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:589
 msgid "MenuBar|Help"
 msgstr "MenuBar|Допомога"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:520
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:521
 msgid "MenuBar|Step-by-Step"
 msgstr "MenuBar|Крок-за-Кроком"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:447
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:448
 msgid "MenuBar|View"
 msgstr "MenuBar|Вид"
 
@@ -5200,20 +5203,20 @@ msgstr "Menu|5. Оволодіння знаннями і їх поширення
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Menu|Додати тег до %n вибраного пункту (ів) "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:143
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:144
 msgid "Menu|Export Current Page as..."
 msgstr "Menu|Експортувати дану сторінку як..."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:121
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:122
 msgid "Menu|Export Current Project as..."
 msgstr "Menu|Експортувати даний проект як..."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:243
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:435
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:436
 msgid "Menu|Group Box"
 msgstr "Menu|Групова рамка"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:156
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:157
 msgid "Menu|Import"
 msgstr "Menu|Імпорт"
 
@@ -7392,7 +7395,7 @@ msgstr "TT|Розтягнути до типу"
 msgid "TT|Export a .Miradi file"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportMpf42Version.java:41
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionExportMpf43Version.java:41
 msgid "TT|Export a .miradi file"
 msgstr ""
 
@@ -7472,6 +7475,10 @@ msgstr "TT|Імпортувати бухгалтерські коди"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionImportXslTemplate.java:41
 msgid "TT|Import an XSL Template"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionImportMiradiShareFile.java:40
+msgid "TT|Import entire project as an XML file"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionImportXmpz2.java:36
@@ -8805,7 +8812,7 @@ msgstr ""
 msgid "Total Monitoring Budget %1 %2"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf42VersionDoer.java:59
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf43VersionDoer.java:59
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/Xmpz2ProjectImporter.java:79
 msgid ""
 "Unable to complete this migration.\n"
@@ -32556,6 +32563,10 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#, fuzzy
+#~ msgid "Export 4.2 Miradi"
+#~ msgstr "Експортувати до Miradi Zip..."
 
 #~ msgid ""
 #~ "\n"
