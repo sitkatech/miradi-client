@@ -87,7 +87,7 @@ public class WelcomeImportStep extends NoProjectWizardStep
 					
 					"<tr>" +
 					"<td></td>" + 
-					"<td><input type='submit' name='" + CONTROL_IMPORT_XMPZ2 + "' value='XML Miradi Project File (.xmpz2)'></input></td>" +
+					"<td><input type='submit' name='" + CONTROL_IMPORT_XMPZ2 + "' value='Miradi Share Project File (.xmpz2)'></input></td>" +
 					"</tr>" +
 
 					"<tr>" +

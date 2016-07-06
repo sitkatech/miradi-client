@@ -26,12 +26,12 @@ public class ActionExportMiradiShareFile extends MainWindowAction
 {
     public ActionExportMiradiShareFile(MainWindow mainWindowToUse)
     {
-        super(mainWindowToUse, getLabel());
+        super(mainWindowToUse, getLabel(), "icons/miradiShareIcon.png");
     }
 
     public static String getLabel()
     {
-        return EAM.text("Action|Export Miradi Share File");
+        return EAM.text("Action|Export Miradi Share Project File (.xmpz2)");
     }
 
     @Override

@@ -109,6 +109,7 @@ public class Actions
 		registerAction(new ActionImportMpf(mainWindow));
 		registerAction(new ActionExportMpf(mainWindow));
 		registerAction(new ActionExportXmpz2(mainWindow));
+		registerAction(new ActionImportMiradiShareFile(mainWindow));
 		registerAction(new ActionExportMiradiShareFile(mainWindow));
 		registerAction(new ActionImportXmpz2(mainWindow));
 		registerAction(new ActionExportMpf43Version(mainWindow));
