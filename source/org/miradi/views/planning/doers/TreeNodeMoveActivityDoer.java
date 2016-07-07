@@ -52,7 +52,7 @@ public class TreeNodeMoveActivityDoer extends AbstractTreeNodeTaskDoer
 
 		BaseObject selected = getSingleSelectedObject();
 		if (selected != null)
-			if (selected instanceof ResourceAssignment || selected instanceof ExpenseAssignment)
+			if (!Strategy.is(selected))
 				return false;
 
 		return activitiesCanBeMoved();
