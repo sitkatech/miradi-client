@@ -161,7 +161,7 @@ public class DateEditorComponent extends JDateChooser
 		possiblySavePendingEdits();
 		
 		calendarDialog = createCalendarDialogWithCorrectOwner();
-		calendarDialog.addWindowListener(new DateFieldRequestFocusAfterDiactivatedHandler());
+		calendarDialog.addWindowListener(new DateFieldRequestFocusAfterDeactivatedHandler());
 		calendarDialog.enableCloseWhenFocusLost();
 
 		updateCalenderDate();
@@ -231,13 +231,14 @@ public class DateEditorComponent extends JDateChooser
 		}
 	}
 	
-	private class DateFieldRequestFocusAfterDiactivatedHandler extends WindowAdapter
+	private class DateFieldRequestFocusAfterDeactivatedHandler extends WindowAdapter
 	{
 		@Override
 		public void windowDeactivated(WindowEvent e)
 		{
 			getDateTextEditor().requestFocus();
 			updateTextFromCalendarAndSetNeedsSave();
+			FieldSaver.savePendingEdits();
 		}
 	}
 		

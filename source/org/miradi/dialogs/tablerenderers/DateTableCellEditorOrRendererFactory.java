@@ -20,13 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.tablerenderers;
 
-import java.awt.Component;
-
-import javax.swing.JTable;
-
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.utils.DateEditorComponent;
 import org.miradi.utils.DateEditorComponentInsideTable;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class DateTableCellEditorOrRendererFactory extends PopupEditableCellEditorOrRendererFactory
 {
@@ -50,8 +49,11 @@ public class DateTableCellEditorOrRendererFactory extends PopupEditableCellEdito
 	@Override
 	protected Component getConfiguredComponent(JTable table, Object value, int row, int column)
 	{
-		TaglessChoiceItem choiceItem = (TaglessChoiceItem) value;
-		dateComponent.setText(choiceItem.getLabel());
+		if (value != null)
+		{
+			TaglessChoiceItem choiceItem = (TaglessChoiceItem) value;
+			dateComponent.setText(choiceItem.getLabel());
+		}
 		return dateComponent;
 	}
 
