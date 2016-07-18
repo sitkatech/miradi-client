@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-06 07:36-0700\n"
+"POT-Creation-Date: 2016-07-18 05:21-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -5931,6 +5931,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/PlanningProjectResourceManagementConfiguration.java:59
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/ProjectResourceManagementConfiguration.java:58
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/assignment/AssignmentsPropertiesSubPanel.java:85
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:316
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:47
 msgid "People"
 msgstr ""
@@ -9577,7 +9578,7 @@ msgstr ""
 "Миради ще създава ZIP файлове и за резервни копия на проекти, които са "
 "създадени по време на форматови пренасяния."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:385
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:389
 msgid "[Error]"
 msgstr "[Грешка]"
 
@@ -10257,6 +10258,9 @@ msgid "FieldLabel|12.PseudoTagStatusValue|Progress"
 msgstr "FieldLabel|12.PseudoTagStatusValue|Напредък"
 
 msgid "FieldLabel|12.TimeframeDatesTotal|Timeframe"
+msgstr ""
+
+msgid "FieldLabel|12.AssignedWhoTotal|People"
 msgstr ""
 
 msgid "FieldLabel|12.MetaAssignedWhoTotal|Who"

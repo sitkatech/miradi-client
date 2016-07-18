@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-06 07:36-0700\n"
+"POT-Creation-Date: 2016-07-18 05:21-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/miradi-client/"
@@ -5848,6 +5848,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/PlanningProjectResourceManagementConfiguration.java:59
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/ProjectResourceManagementConfiguration.java:58
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/assignment/AssignmentsPropertiesSubPanel.java:85
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:316
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:47
 msgid "People"
 msgstr ""
@@ -9490,7 +9491,7 @@ msgstr ""
 "Miradi creerà file compressi per i backup di progetto creati durante le "
 "migrazioni di formato."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:385
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:389
 msgid "[Error]"
 msgstr "[Errore]"
 
@@ -10163,6 +10164,9 @@ msgid "FieldLabel|12.PseudoTagStatusValue|Progress"
 msgstr "Avanzamento"
 
 msgid "FieldLabel|12.TimeframeDatesTotal|Timeframe"
+msgstr ""
+
+msgid "FieldLabel|12.AssignedWhoTotal|People"
 msgstr ""
 
 msgid "FieldLabel|12.MetaAssignedWhoTotal|Who"
