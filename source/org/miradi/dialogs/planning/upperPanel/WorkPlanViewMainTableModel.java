@@ -21,6 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.Task;
@@ -42,5 +44,12 @@ public class WorkPlanViewMainTableModel extends PlanningViewMainTableModel
 			return super.createAppendedRelevantIndicatorLabels(baseObject);
 
 		return new EmptyChoiceItem();
+	}
+
+	@Override
+	public String getColumnName(int column)
+	{
+		String columnTag = getColumnTag(column);
+		return EAM.fieldLabel(ObjectType.FAKE, columnTag);
 	}
 }

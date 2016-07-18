@@ -311,6 +311,10 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	public String getColumnName(int column)
 	{
 		String columnTag = getColumnTag(column);
+
+		if (isAssignedWhoColumn(columnTag))
+			return EAM.text("People");
+
 		return EAM.fieldLabel(ObjectType.FAKE, columnTag);
 	}
 	
