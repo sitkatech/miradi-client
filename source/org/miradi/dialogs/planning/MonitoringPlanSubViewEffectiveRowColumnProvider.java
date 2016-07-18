@@ -22,6 +22,7 @@ package org.miradi.dialogs.planning;
 
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
+import org.miradi.objects.Indicator;
 import org.miradi.project.Project;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
@@ -38,8 +39,9 @@ public class MonitoringPlanSubViewEffectiveRowColumnProvider extends AbstractPla
 	public CodeList getColumnCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
-				BaseObject.PSEUDO_TAG_TIMEFRAME_TOTAL,
+				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 				Desire.TAG_FULL_TEXT,
+				Indicator.TAG_PRIORITY,
 		});
 	}
 
