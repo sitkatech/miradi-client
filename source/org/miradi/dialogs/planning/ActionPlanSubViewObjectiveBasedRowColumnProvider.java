@@ -42,6 +42,7 @@ public class ActionPlanSubViewObjectiveBasedRowColumnProvider extends AbstractPl
 	public CodeList getColumnCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
+				CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL,
 				CustomPlanningColumnsQuestion.META_CURRENT_RATING,
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 				Desire.TAG_FULL_TEXT,
