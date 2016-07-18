@@ -32,8 +32,6 @@ import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
-import org.miradi.utils.DateUnitEffort;
-import org.miradi.utils.DateUnitEffortList;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 
@@ -69,12 +67,8 @@ public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedCom
 		getProject().executeBeginTransaction();
 		try
 		{
-			int oldResourceRefsSize = getResourceAssignmentRefs().size();
-			DateUnitEffortList oldDateUnitEffortList = getDateUnitEffortListFromResourceAssignment();
 			Vector<ResourceAssignment> resourceAssignmentsToDelete = extractResourceAssignments(selectedResourceRef);
-			
 			removeResourceAssignments(resourceAssignmentsToDelete);
-			updateDividedDateUnitEffortList(oldResourceRefsSize, oldDateUnitEffortList);
 		}
 		finally
 		{
@@ -112,16 +106,11 @@ public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedCom
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			ORefList oldResourceAssignmentRefs = getResourceAssignmentRefs();
-			int oldResourceAssignmentsCount = oldResourceAssignmentRefs.size();
-			DateUnitEffortList oldDateUnitEffortList = getDateUnitEffortListFromResourceAssignment(); 	
-
 			ResourceAssignment resourceAssignmentWithoutResource = findResourceAssignmentWithoutResource();
 			if (resourceAssignmentWithoutResource == null)
 				resourceAssignmentWithoutResource = createNewResourceAssignment();
 			
 			setResourceAssignmentResource(resourceAssignmentWithoutResource, resourceRef);
-			updateDividedDateUnitEffortList(oldResourceAssignmentsCount, oldDateUnitEffortList);
 		}
 		finally
 		{
@@ -166,48 +155,6 @@ public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedCom
 		return ResourceAssignment.find(getProject(), newResourceAssignmentRef);
 	}
 
-	private void updateDividedDateUnitEffortList(int oldResourceAssignmentCount, DateUnitEffortList oldDateUnitEffortList) throws Exception
-	{
-		ORefList newResourceAssignmentRefs = getResourceAssignmentRefs();
-		DateUnitEffortList templateDateUnitEffortList = createTemplateDateUnitEffortList(oldDateUnitEffortList, oldResourceAssignmentCount, newResourceAssignmentRefs.size());		
-		updateDateUnitEffortLists(newResourceAssignmentRefs, templateDateUnitEffortList);
-	}
-
-	private DateUnitEffortList createTemplateDateUnitEffortList(DateUnitEffortList oldDateUnitEffortList, int oldResourceAssignmentCount, int newResourceAssignmentCount) throws Exception
-	{
-		DateUnitEffortList newDateUnitEffortList = new DateUnitEffortList();
-		for (int index = 0; index < oldDateUnitEffortList.size(); ++index)
-		{
-			DateUnitEffort oldDateUnitEffort = oldDateUnitEffortList.getDateUnitEffort(index);
-			double oldTotalUnits = oldDateUnitEffort.getQuantity() * oldResourceAssignmentCount;
-			double newUnitQuantity = oldTotalUnits / newResourceAssignmentCount; 
-			DateUnitEffort newDateUnitEffort = new DateUnitEffort(oldDateUnitEffort.getDateUnit(), newUnitQuantity);
-			newDateUnitEffortList.add(newDateUnitEffort);
-		}
-		
-		return newDateUnitEffortList;
-	}
-	
-	private void updateDateUnitEffortLists(ORefList newResourceAssignmentRefs, DateUnitEffortList templateDateUnitEffortList) throws Exception
-	{
-		for (int index = 0; index < newResourceAssignmentRefs.size(); ++index)
-		{
-			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), newResourceAssignmentRefs.get(index));
-			CommandSetObjectData setDateUnitEffortList = new CommandSetObjectData(resourceAssignment, ResourceAssignment.TAG_DATEUNIT_DETAILS, templateDateUnitEffortList.toString());
-			getProject().executeCommand(setDateUnitEffortList);
-		}
-	}
-	
-	private DateUnitEffortList getDateUnitEffortListFromResourceAssignment() throws Exception
-	{
-		ORefList existingResourceAssignmentRefs = getResourceAssignmentRefs();
-		if (existingResourceAssignmentRefs.isEmpty())
-			return new DateUnitEffortList();
-		
-		ResourceAssignment firstResourceAssignment = ResourceAssignment.find(getProject(), existingResourceAssignmentRefs.get(0));
-		return firstResourceAssignment.getDateUnitEffortList();
-	}
-	
 	private ORefList getResourceAssignmentRefs() throws Exception
 	{
 		return getParentObject().getSafeRefListData(getResourceAssignmentTag());
