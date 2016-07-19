@@ -22,13 +22,10 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
-import org.miradi.utils.DateUnitEffortList;
 import org.miradi.utils.OptionalDouble;
 
 public class WhoAssignedStateLogic
@@ -48,7 +45,7 @@ public class WhoAssignedStateLogic
 			if (doAnySubTasksHaveAnyWorkUnitData(baseObjectToUse))
 				return false;
 
-			return doAllResourceAssignmentsHaveIdenticalWorkUnits(baseObjectToUse);
+			return true;
 		}
 		catch (Exception e)
 		{
@@ -64,24 +61,6 @@ public class WhoAssignedStateLogic
 		OptionalDouble totalSubTaskWorkUnitsForAllTimePeriods = wholeProjectTimePeriodCosts.getTotalWorkUnits();
 
 		return totalSubTaskWorkUnitsForAllTimePeriods.hasValue();
-	}
-	
-	private boolean doAllResourceAssignmentsHaveIdenticalWorkUnits(BaseObject baseObjectToUse) throws Exception
-	{
-			ORefList resourceAssignments = baseObjectToUse.getResourceAssignmentRefs();
-			DateUnitEffortList expectedDateUnitEffortList = null;
-			for (int index = 0; index < resourceAssignments.size(); ++index)
-			{
-				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignments.get(index));
-				DateUnitEffortList thisDateUnitEffortList = resourceAssignment.getDateUnitEffortList();
-				if (expectedDateUnitEffortList == null)
-					expectedDateUnitEffortList = thisDateUnitEffortList;
-				
-				if (!expectedDateUnitEffortList.equals(thisDateUnitEffortList))
-					return false;
-			}
-			
-			return true;
 	}
 	
 	private Project getProject()
