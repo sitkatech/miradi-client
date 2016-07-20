@@ -808,7 +808,7 @@ abstract public class BaseObject
 		return appendedResources;
 	}
 
-	public static Vector<String> getResourceNames(Project project, ORefList filteredResources, ORef leaderResourceRef)
+	public static Vector<String> getResourceNames(Project project, Iterable<ORef> filteredResources, ORef leaderResourceRef)
 	{
 		Vector<String> names = new Vector<String>();
 		for(ORef resourceRef : filteredResources)
@@ -819,7 +819,7 @@ abstract public class BaseObject
 		return names;
 	}
 
-	public static String getWhoName(Project project, ORef resourceRef, ORef leaderResourceRef)
+	private static String getWhoName(Project project, ORef resourceRef, ORef leaderResourceRef)
 	{
 		if (resourceRef.isInvalid())
 			return Translation.getNotSpecifiedText();
@@ -936,6 +936,31 @@ abstract public class BaseObject
 		{
 			EAM.logException(e);
 			return new CodeList();
+		}
+	}
+
+	public String getAssignedWhoRollupResourcesAsString()
+	{
+		try
+		{
+			ORefSet resourceRefs = getTotalTimePeriodCostsMapForAssignments().getAllProjectResourceRefs();
+			Vector<ProjectResource> projectResources = BaseObject.toProjectResources(getProject(), resourceRefs);
+
+			ORef leaderResourceRef = ORef.INVALID;
+			if (doesFieldExist(BaseObject.TAG_ASSIGNED_LEADER_RESOURCE))
+			{
+				leaderResourceRef = getRef(BaseObject.TAG_ASSIGNED_LEADER_RESOURCE);
+				Collections.sort(projectResources, new ProjectResourceLeaderAtTopSorter(leaderResourceRef));
+			}
+
+			final ORefList sortedProjectResourceRefs = new ORefList(projectResources);
+			Vector<String> sortedNames = BaseObject.getResourceNames(getProject(), sortedProjectResourceRefs, leaderResourceRef);
+			return BaseObject.createAppendedResourceNames(sortedNames);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return "";
 		}
 	}
 

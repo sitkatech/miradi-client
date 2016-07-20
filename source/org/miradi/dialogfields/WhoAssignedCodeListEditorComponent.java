@@ -46,6 +46,7 @@ public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedCom
 		
 		parentObject = parentObjectToUse;
 		updateToggleButtonSelections(parentObject.getAssignedWhoResourcesAsCodeList());
+		setInstructions(getInstructions());
 	}
 	
 	@Override
@@ -62,6 +63,22 @@ public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedCom
 
 		if (needToCreate)
 			createResourceAssignment(refCode);
+
+		setInstructions(getInstructions());
+	}
+
+	private String getInstructions()
+	{
+		StringBuilder instructionsText = new StringBuilder();
+
+		instructionsText.append("<HTML>");
+		instructionsText.append(EAM.text("People assigned to this action and actions below it: "));
+		instructionsText.append(parentObject.getAssignedWhoRollupResourcesAsString());
+		instructionsText.append("<br>");
+		instructionsText.append(EAM.text("People assigned to this action only: "));
+		instructionsText.append("</HTML>");
+
+		return instructionsText.toString();
 	}
 
 	private void deleteMatchingResourceAssignments(ORef resourceRef) throws Exception
