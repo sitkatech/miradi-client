@@ -79,7 +79,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			return isTimeframeCellEditable(row, modelColumn);
 		
 		if (isAssignedWhoColumn(columnTag))
-			return new WhoAssignedStateLogic(getProject()).isWhoCellEditable(getBaseObjectForRowColumn(row, modelColumn));
+			return new WhoAssignedStateLogic().isWhoCellEditable(getBaseObjectForRowColumn(row, modelColumn));
 
 		if (isAssignedWhenColumn(columnTag))
 			return isAssignedWhenCellEditable(row, modelColumn);

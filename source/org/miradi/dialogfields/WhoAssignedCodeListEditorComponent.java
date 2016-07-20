@@ -76,11 +76,6 @@ public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedCom
 		}
 	}
 
-	private void clearResourceRef(ResourceAssignment resourceAssignment) throws Exception
-	{
-		setResourceAssignmentResource(resourceAssignment, ORef.INVALID);
-	}
-
 	private void setResourceAssignmentResource(ResourceAssignment resourceAssignment, ORef resourceRef) throws Exception
 	{
 		CommandSetObjectData clearProjectResourceRef = new CommandSetObjectData(resourceAssignment, ResourceAssignment.TAG_RESOURCE_ID, resourceRef.getObjectId().toString());
@@ -92,12 +87,8 @@ public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedCom
 		for (int index = 0; index < resourceAssignmentsToDelete.size(); ++index)
 		{
 			ResourceAssignment resourceAssignment = resourceAssignmentsToDelete.get(index);
-			clearResourceRef(resourceAssignment);
-			if (getResourceAssignmentRefs().size() > 1)
-			{
-				CommandVector deleteResourceAssignment = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, getResourceAssignmentTag());
-				getProject().executeCommands(deleteResourceAssignment);
-			}
+			CommandVector deleteResourceAssignment = TreeNodeDeleteDoer.buildCommandsToDeleteAnnotation(getProject(), resourceAssignment, getResourceAssignmentTag());
+			getProject().executeCommands(deleteResourceAssignment);
 		}
 	}
 

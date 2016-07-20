@@ -45,7 +45,7 @@ public class WhoAssignedEditorField extends WhoEditorField
 	@Override
 	protected CodeList getWhoTotalsCodeList(BaseObject baseObject)
 	{
-		return baseObject.getAssignedWhoResourcesAsCodeList();
+		return baseObject.getAssignedWhoRollupResourcesAsCodeList();
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class WhoAssignedEditorField extends WhoEditorField
 	{
 		BaseObject baseObject = BaseObject.find(getProject(), getORef());
 
-		return new WhoAssignedStateLogic(getProject()).isWhoCellEditable(baseObject);
+		return new WhoAssignedStateLogic().isWhoCellEditable(baseObject);
 	}
 
 	@Override

@@ -905,20 +905,49 @@ abstract public class BaseObject
 	{
 		try
 		{
-			ORefSet resourcesRefs = getTotalTimePeriodCostsMapForAssignments().getAllProjectResourceRefs();
-			CodeList projectResourceCodes = new CodeList();
-			for(ORef resourceRef : resourcesRefs)
+			ORefList resourceAssignmentRefs = getResourceAssignmentRefs();
+
+			ORefSet resourceRefs = new ORefSet();
+			for(ORef resourceAssignmentRef : resourceAssignmentRefs)
 			{
-				projectResourceCodes.add(resourceRef.toString());
+				ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRef);
+				ORef resourceRef = resourceAssignment.getResourceRef();
+				if (resourceRef.isValid())
+					resourceRefs.add(resourceRef);
 			}
 
-			return projectResourceCodes;
+			return buildResourceCodeList(resourceRefs);
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
 			return new CodeList();
 		}
+	}
+
+	public CodeList getAssignedWhoRollupResourcesAsCodeList()
+	{
+		try
+		{
+			ORefSet resourceRefs = getTotalTimePeriodCostsMapForAssignments().getAllProjectResourceRefs();
+			return buildResourceCodeList(resourceRefs);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new CodeList();
+		}
+	}
+
+	private CodeList buildResourceCodeList(Iterable<ORef> resourcesRefs)
+	{
+		CodeList projectResourceCodes = new CodeList();
+		for(ORef resourceRef : resourcesRefs)
+		{
+			projectResourceCodes.add(resourceRef.toString());
+		}
+
+		return projectResourceCodes;
 	}
 
 	public String getAssignedWhenRollupAsString()

@@ -52,7 +52,6 @@ public class WhoAssignedColumnTableCellEditorFactory extends AbstractPopupTableC
 	protected String getDialogHelpText()
 	{
 		return EAM.text("<html>" +
-				"Selecting resources from the list will create Assignments <br>" +
-				"and reallocate any existing Work Units for this item.");
+				"Select people from the list. This creates work plan Assignments.");
 	}
 }

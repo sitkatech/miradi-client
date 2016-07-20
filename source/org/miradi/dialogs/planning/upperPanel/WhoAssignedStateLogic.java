@@ -25,14 +25,12 @@ import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
-import org.miradi.project.Project;
 import org.miradi.utils.OptionalDouble;
 
 public class WhoAssignedStateLogic
 {
-	public WhoAssignedStateLogic(Project projectToUse)
+	public WhoAssignedStateLogic()
 	{
-		project = projectToUse;
 	}
 	
 	public boolean isWhoCellEditable(BaseObject baseObjectToUse)
@@ -62,11 +60,5 @@ public class WhoAssignedStateLogic
 
 		return totalSubTaskWorkUnitsForAllTimePeriods.hasValue();
 	}
-	
-	private Project getProject()
-	{
-		return project;
-	}
 
-	private Project project;
 }
