@@ -21,8 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import org.miradi.commands.*;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.*;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
@@ -32,6 +32,7 @@ import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.schemas.ResourceAssignmentSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
+import org.miradi.utils.OptionalDouble;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 
@@ -58,16 +59,49 @@ public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedCom
 		
 		if (needToDelete)
 			deleteMatchingResourceAssignments(refCode);
+
 		if (needToCreate)
 			createResourceAssignment(refCode);
 	}
 
-	private void deleteMatchingResourceAssignments(ORef selectedResourceRef ) throws Exception
+	private void deleteMatchingResourceAssignments(ORef resourceRef) throws Exception
+	{
+		boolean hasWorkUnitData = false;
+		Vector<ResourceAssignment> resourceAssignmentsToDelete = extractResourceAssignments(resourceRef);
+
+		for (ResourceAssignment resourceAssignment : resourceAssignmentsToDelete)
+		{
+			TimePeriodCostsMap timePeriodCostsMap = resourceAssignment.getTotalTimePeriodCostsMapForAssignments();
+			TimePeriodCosts wholeProjectTimePeriodCosts = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit());
+			OptionalDouble totalWorkUnits = wholeProjectTimePeriodCosts.getTotalWorkUnits();
+			if (totalWorkUnits.hasNonZeroValue())
+			{
+				hasWorkUnitData = true;
+				break;
+			}
+		}
+
+		Vector<String> dialogText = new Vector<String>();
+
+		if (hasWorkUnitData)
+		{
+			dialogText.add(EAM.text("Work units have been entered for this assignment. All work units will be removed. Continue?"));
+			String[] buttons = {EAM.text("Yes"), EAM.text("No"), };
+			if(!EAM.confirmDialog(EAM.text("Delete Work Assignments"), dialogText.toArray(new String[0]), buttons))
+			{
+				updateToggleButtonSelections(parentObject.getAssignedWhoResourcesAsCodeList());
+				return;
+			}
+		}
+
+		deleteMatchingResourceAssignments(resourceAssignmentsToDelete);
+	}
+
+	private void deleteMatchingResourceAssignments(Vector<ResourceAssignment> resourceAssignmentsToDelete) throws Exception
 	{
 		getProject().executeBeginTransaction();
 		try
 		{
-			Vector<ResourceAssignment> resourceAssignmentsToDelete = extractResourceAssignments(selectedResourceRef);
 			removeResourceAssignments(resourceAssignmentsToDelete);
 		}
 		finally
