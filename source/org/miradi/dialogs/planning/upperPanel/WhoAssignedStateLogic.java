@@ -21,11 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.DateUnit;
-import org.miradi.objecthelpers.TimePeriodCosts;
-import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
-import org.miradi.utils.OptionalDouble;
 
 public class WhoAssignedStateLogic
 {
@@ -40,9 +36,6 @@ public class WhoAssignedStateLogic
 			if (!BaseObject.canOwnPlanningObjects(baseObjectToUse.getRef()))
 				return false;
 
-			if (doAnySubTasksHaveAnyWorkUnitData(baseObjectToUse))
-				return false;
-
 			return true;
 		}
 		catch (Exception e)
@@ -51,14 +44,4 @@ public class WhoAssignedStateLogic
 			return false;		
 		}
 	}
-	
-	private boolean doAnySubTasksHaveAnyWorkUnitData(BaseObject baseObjectForRow) throws Exception
-	{
-		TimePeriodCostsMap timePeriodCostsMap = baseObjectForRow.getTotalTimePeriodCostsMapForChildTasks(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS);
-		TimePeriodCosts wholeProjectTimePeriodCosts = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit());
-		OptionalDouble totalSubTaskWorkUnitsForAllTimePeriods = wholeProjectTimePeriodCosts.getTotalWorkUnits();
-
-		return totalSubTaskWorkUnitsForAllTimePeriods.hasValue();
-	}
-
 }
