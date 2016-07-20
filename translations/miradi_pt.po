@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-18 05:21-0700\n"
+"POT-Creation-Date: 2016-07-20 11:36-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/miradi-client/"
@@ -1026,9 +1026,7 @@ msgid ""
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/tablerenderers/WhoAssignedColumnTableCellEditorFactory.java:54
-msgid ""
-"<html>Selecting resources from the list will create Assignments <br>and "
-"reallocate any existing Work Units for this item."
+msgid "<html>Select people from the list. This creates work plan Assignments."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenAssignedEditorComponent.java:64
@@ -3332,6 +3330,10 @@ msgstr "Apagar (Delete) %s"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:70
 msgid "Delete People"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:107
+msgid "Delete Work Assignments"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:46
@@ -5639,6 +5641,7 @@ msgstr "Novo nome de projeto"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:106
 msgid "No"
 msgstr "Não"
 
@@ -5917,6 +5920,14 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:47
 msgid "People (Who)"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:75
+msgid "People assigned to this action and actions below it: "
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:78
+msgid "People assigned to this action only: "
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:339
@@ -9492,6 +9503,12 @@ msgid "Work plan start date is before project start date"
 msgstr ""
 "A data de início do plano de trabalho é antes da data de início do projeto"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:105
+msgid ""
+"Work units have been entered for this assignment. All work units will be "
+"removed. Continue?"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:31
 msgid "Workplan"
 msgstr "Plano de Trabalho"
@@ -9534,6 +9551,7 @@ msgstr "Yen (Japão)"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:106
 msgid "Yes"
 msgstr "Sim"
 
