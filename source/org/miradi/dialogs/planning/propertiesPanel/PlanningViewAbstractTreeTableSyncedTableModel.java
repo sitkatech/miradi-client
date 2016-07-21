@@ -97,6 +97,11 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 		return false;
 	}
 
+	public boolean isAssignedWhoColumn(int modelColumn)
+	{
+		return false;
+	}
+
 	public boolean isFormattedColumn(int modelColumn)
 	{
 		return false;

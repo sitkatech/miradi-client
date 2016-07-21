@@ -142,7 +142,12 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	{
 		return isAssignedWhenColumn(getColumnTag(modelColumn));
 	}
-	
+	@Override
+	public boolean isAssignedWhoColumn(int modelColumn)
+	{
+		return isAssignedWhoColumn(getColumnTag(modelColumn));
+	}
+
 	private boolean isAssignedWhenCellEditable(int row, int modelColumn)
 	{
 		BaseObject baseObjectForRow = getBaseObjectForRowColumn(row, modelColumn);
@@ -160,7 +165,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			
 			if (value == null)
 				return;
-			
+
 			if (isTimeframeColumn(column))
 			{
 				TimeframeEditorComponent.setTimeframeValue(getProject(), baseObjectForRow, TimeframeEditorComponent.createCodeList(value));

@@ -91,6 +91,11 @@ public class PlanningTreeMultiTableModel extends MultiTableModel implements Mode
 		return getCastedModel(modelColumn).isAssignedWhenColumn(findColumnWithinSubTable(modelColumn));
 	}
 
+	public boolean isAssignedWhoColumn(int modelColumn)
+	{
+		return getCastedModel(modelColumn).isAssignedWhoColumn(findColumnWithinSubTable(modelColumn));
+	}
+
 	public boolean isFormattedEditableColumn(int modelColumn)
 	{
 		return getCastedModel(modelColumn).isFormattedColumn(modelColumn);
