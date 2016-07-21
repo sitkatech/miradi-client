@@ -73,6 +73,7 @@ public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedCom
 
 		instructionsText.append("<HTML>");
 		instructionsText.append(EAM.text("People assigned to this action and actions below it: "));
+		instructionsText.append("<br>");
 		instructionsText.append(parentObject.getAssignedWhoRollupResourcesAsString());
 		instructionsText.append("<br>");
 		instructionsText.append(EAM.text("People assigned to this action only: "));
