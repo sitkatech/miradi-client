@@ -44,18 +44,12 @@ import com.jhlabs.awt.BasicGridLayout;
 import com.jhlabs.awt.GridLayoutPlus;
 
 abstract public class AbstractQuestionEditorComponent extends SavebleComponent
-{	
+{
+
 	public AbstractQuestionEditorComponent(ChoiceQuestion questionToUse, int columnCountToUse)
-	{
-		this(questionToUse, columnCountToUse, "");
-	}
-	
-	public AbstractQuestionEditorComponent(ChoiceQuestion questionToUse, int columnCountToUse, String instructionsToUse)
 	{
 		question = questionToUse;
 		columnCount = columnCountToUse;
-		instructions = instructionsToUse;
-		instructionsPanel = new PanelTitleLabel(instructions);
 
 		setLayout(new BasicGridLayout(0, columnCount));
 		choiceItemToToggleButtonMap = new HashMap<ChoiceItem, JToggleButton>();
@@ -85,8 +79,6 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		clearChoiceItemToToggleButtonMap();
 		MiradiPanel mainRowsPanel = new MiradiPanel(new GridLayoutPlus(0, calculateColumnCount())); 
 		mainRowsPanel.setBackground(getTogglePanelBackgroundColor());
-
-		add(instructionsPanel);
 
 		for (int index = 0; index < choices.length; ++index)
 		{
@@ -216,12 +208,6 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 		return columnCount;
 	}
 
-	public void setInstructions(String instructionsToUse)
-	{
-		instructions = instructionsToUse;
-		instructionsPanel.setText(instructions);
-	}
-
 	private class ToggleButtonHandler implements ActionListener
 	{
 		public ToggleButtonHandler()
@@ -246,8 +232,6 @@ abstract public class AbstractQuestionEditorComponent extends SavebleComponent
 	abstract protected void toggleButtonStateChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception;
 	
 	private ChoiceQuestion question;
-	private String instructions;
-	private PanelTitleLabel instructionsPanel;
 	protected HashMap<ChoiceItem, JToggleButton> choiceItemToToggleButtonMap;
 	private int columnCount;
 	public static final int SINGLE_COLUMN = 1;

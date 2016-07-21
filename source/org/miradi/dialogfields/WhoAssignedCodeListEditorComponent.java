@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogfields;
 
 import org.miradi.commands.*;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.*;
 import org.miradi.objects.BaseObject;
@@ -46,7 +47,7 @@ public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedCom
 		
 		parentObject = parentObjectToUse;
 		updateToggleButtonSelections(parentObject.getAssignedWhoResourcesAsCodeList());
-		setInstructions(getInstructions());
+		setInstructions();
 	}
 	
 	@Override
@@ -64,7 +65,20 @@ public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedCom
 		if (needToCreate)
 			createResourceAssignment(refCode);
 
-		setInstructions(getInstructions());
+		setInstructions();
+	}
+
+	@Override
+	protected void addAdditionalComponent()
+	{
+		instructionsPanel = new PanelTitleLabel(getInstructions());
+		add(instructionsPanel);
+	}
+
+	private void setInstructions()
+	{
+		if (instructionsPanel != null)
+			instructionsPanel.setText(getInstructions());
 	}
 
 	private String getInstructions()
@@ -73,8 +87,11 @@ public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedCom
 
 		instructionsText.append("<HTML>");
 		instructionsText.append(EAM.text("People assigned to this action and actions below it: "));
-		instructionsText.append("<br>");
-		instructionsText.append(parentObject.getAssignedWhoRollupResourcesAsString());
+		if (parentObject != null)
+		{
+			instructionsText.append("<br>");
+			instructionsText.append(parentObject.getAssignedWhoRollupResourcesAsString());
+		}
 		instructionsText.append("<br>");
 		instructionsText.append(EAM.text("People assigned to this action only: "));
 		instructionsText.append("</HTML>");
@@ -219,4 +236,5 @@ public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedCom
 	}
 	
 	private BaseObject parentObject;
+	private PanelTitleLabel instructionsPanel;
 }
