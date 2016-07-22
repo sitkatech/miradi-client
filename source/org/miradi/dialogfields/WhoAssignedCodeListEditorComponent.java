@@ -85,16 +85,20 @@ public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedCom
 	{
 		StringBuilder instructionsText = new StringBuilder();
 
-		instructionsText.append("<HTML>");
+		instructionsText.append("<html>");
+		instructionsText.append("<div style='margin-left: 7px;'>");
 		instructionsText.append(EAM.text("People assigned to this action and actions below it: "));
+		instructionsText.append("</div>");
 		if (parentObject != null)
 		{
-			instructionsText.append("<br>");
+			instructionsText.append("<div style='margin-left: 7px;'>");
 			instructionsText.append(parentObject.getAssignedWhoRollupResourcesAsString());
+			instructionsText.append("</div>");
 		}
-		instructionsText.append("<br>");
+		instructionsText.append("<div style='margin-left: 7px;'>");
 		instructionsText.append(EAM.text("People assigned to this action only: "));
-		instructionsText.append("</HTML>");
+		instructionsText.append("</div>");
+		instructionsText.append("</html>");
 
 		return instructionsText.toString();
 	}
