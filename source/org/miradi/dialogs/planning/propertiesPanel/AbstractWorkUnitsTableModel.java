@@ -43,8 +43,11 @@ abstract public class AbstractWorkUnitsTableModel extends AssignmentDateUnitsTab
 	}
 
 	@Override
-	public Color getCellBackgroundColor(int column)
+	public Color getCellBackgroundColor(int row, int column)
 	{
+		if (isAssignmentRow(row))
+			return AppPreferences.getWorkUnitsAssignmentBackgroundColor();
+
 		DateUnit dateUnit = getDateUnit(column);
 		return AppPreferences.getWorkUnitsBackgroundColor(dateUnit);
 	}

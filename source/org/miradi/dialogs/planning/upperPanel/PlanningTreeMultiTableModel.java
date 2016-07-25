@@ -53,7 +53,7 @@ public class PlanningTreeMultiTableModel extends MultiTableModel implements Mode
 	
 	public Color getCellBackgroundColor(int row, int column)
 	{
-		return getCastedModel(column).getCellBackgroundColor(findColumnWithinSubTable(column));
+		return getCastedModel(column).getCellBackgroundColor(row, findColumnWithinSubTable(column));
 	}
 	
 	public boolean isCurrencyColumn(int modelColumn)

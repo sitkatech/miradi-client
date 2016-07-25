@@ -64,8 +64,11 @@ abstract public class AbstractExpenseTableModel extends AssignmentDateUnitsTable
 	}
 	
 	@Override
-	public Color getCellBackgroundColor(int column)
+	public Color getCellBackgroundColor(int row, int column)
 	{
+		if (isAssignmentRow(row))
+			return AppPreferences.getExpenseAmountAssignmentBackgroundColor();
+
 		DateUnit dateUnit = getDateUnit(column);
 		return AppPreferences.getExpenseAmountBackgroundColor(dateUnit);
 	}

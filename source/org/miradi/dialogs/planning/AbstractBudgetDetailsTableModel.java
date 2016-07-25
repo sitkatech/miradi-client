@@ -54,7 +54,7 @@ abstract public class AbstractBudgetDetailsTableModel extends AssignmentDateUnit
 	}
 	
 	@Override
-	public Color getCellBackgroundColor(int column)
+	public Color getCellBackgroundColor(int row, int column)
 	{
 		DateUnit dateUnit = getDateUnit(column);
 		return AppPreferences.getBudgetDetailsBackgroundColor(dateUnit);

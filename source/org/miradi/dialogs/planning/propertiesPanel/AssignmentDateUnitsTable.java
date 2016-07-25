@@ -47,7 +47,7 @@ abstract public class AssignmentDateUnitsTable extends AbstractAssignmentDetails
 	{
 		super(mainWindowToUse, modelToUse, UNIQUE_IDENTIFIER);
 		
-		setBackground(getColumnBackGroundColor(0));	
+		setBackground(getColumnBackGroundColor(0, 0));
 		setAllColumnsToUseSingleLineEditors();
 		setColumnSelectionAllowed(true);
 		setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -82,15 +82,15 @@ abstract public class AssignmentDateUnitsTable extends AbstractAssignmentDetails
 		if(getWorkUnitsTableModel().isCurrencyColumn(modelColumn))
 			renderer = currencyRendererFactory;
 
-		renderer.setCellBackgroundColor(getColumnBackGroundColor(tableColumn));
+		renderer.setCellBackgroundColor(getColumnBackGroundColor(row, tableColumn));
 		return renderer;	
 	}
 	
 	@Override
-	public Color getColumnBackGroundColor(int column)
+	public Color getColumnBackGroundColor(int row, int column)
 	{
 		int modelColumn = convertColumnIndexToModel(column);
-		return getWorkUnitsTableModel().getCellBackgroundColor(modelColumn);
+		return getWorkUnitsTableModel().getCellBackgroundColor(row, modelColumn);
 	}
 
 	private void setAllColumnsToUseSingleLineEditors()

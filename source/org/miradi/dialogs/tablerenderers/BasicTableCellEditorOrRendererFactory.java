@@ -30,6 +30,8 @@ import javax.swing.border.Border;
 import javax.swing.table.TableCellEditor;
 import javax.swing.table.TableCellRenderer;
 
+import static org.miradi.main.Miradi.isWindows;
+
 abstract public class BasicTableCellEditorOrRendererFactory extends AbstractCellEditor implements TableCellRenderer, TableCellPreferredHeightProvider, TableCellEditor 
 {
 	public BasicTableCellEditorOrRendererFactory()
@@ -106,11 +108,29 @@ abstract public class BasicTableCellEditorOrRendererFactory extends AbstractCell
 
 	public Border getCellBorder()
 	{
-		Border line = BorderFactory.createMatteBorder(1, 1, 0, 0, Color.black);
+		int cellBorderWidth = getCellBorderWidth();
+		Color cellBorderColor = getCellBorderColor();
+		Border line = BorderFactory.createMatteBorder(cellBorderWidth, cellBorderWidth, 0, 0, cellBorderColor);
 		Border margin = BorderFactory.createEmptyBorder(CELL_MARGIN, CELL_MARGIN, CELL_MARGIN, CELL_MARGIN);
 		return BorderFactory.createCompoundBorder(line, margin);
 	}
-	
+
+	private int getCellBorderWidth()
+	{
+		if (isWindows())
+			return 0;
+
+		return 1;
+	}
+
+	public static Color getCellBorderColor()
+	{
+		if (isWindows())
+			return Color.lightGray;
+
+		return Color.black;
+	}
+
 	public Color getCellForegroundColor(JTable table, int row, int tableColumn)
 	{
 		if(table.isCellEditable(row, tableColumn))

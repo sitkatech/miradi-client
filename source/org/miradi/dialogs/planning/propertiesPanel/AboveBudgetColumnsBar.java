@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.dialogs.planning.TableWithExpandableColumnsInterface;
+import org.miradi.dialogs.tablerenderers.BasicTableCellEditorOrRendererFactory;
 import org.miradi.main.AppPreferences;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.project.Project;
@@ -111,9 +112,10 @@ public class AboveBudgetColumnsBar extends AbstractFixedHeightDirectlyAboveTreeT
 		
 		g.setColor(backgroundColor);
 		g.fillRect(groupHeaderArea.x, groupHeaderArea.y, groupHeaderArea.width, groupHeaderArea.height);
-		g.setColor(Color.BLACK);
+		g.setColor(BasicTableCellEditorOrRendererFactory.getCellBorderColor());
 		g.drawRect(groupHeaderArea.x, groupHeaderArea.y, groupHeaderArea.width, groupHeaderArea.height);
-		
+		g.setColor(Color.BLACK);
+
 		Shape oldClip = g.getClip();
 		try
 		{

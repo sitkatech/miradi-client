@@ -45,7 +45,7 @@ abstract public class AbstractAssignmentDetailsTable extends EditableBaseObjectT
 		return getPreferredSize();
 	}
 	
-	public Color getColumnBackGroundColor(int tableColumn)
+	public Color getColumnBackGroundColor(int row, int tableColumn)
 	{
 		return getBackground();
 	}

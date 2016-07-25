@@ -154,7 +154,7 @@ public class IndicatorViabilityTableModel extends PlanningViewAbstractTreeTableS
 	}
 
 	@Override
-	public Color getCellBackgroundColor(int column)
+	public Color getCellBackgroundColor(int row, int column)
 	{
 		return Color.WHITE;
 	}

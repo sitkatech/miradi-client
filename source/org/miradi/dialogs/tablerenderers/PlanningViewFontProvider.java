@@ -21,10 +21,7 @@ package org.miradi.dialogs.tablerenderers;
 
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.*;
 
 import java.awt.*;
 
@@ -48,6 +45,12 @@ public class PlanningViewFontProvider extends FontForObjectProvider
 
 	private boolean shouldBeBold(int objectType)
 	{
+		if(objectType == ResultsChainDiagramSchema.getObjectType())
+			return true;
+		if(objectType == ConceptualModelDiagramSchema.getObjectType())
+			return true;
+		if(objectType == ProjectMetadataSchema.getObjectType())
+			return true;
 		if(objectType == GoalSchema.getObjectType())
 			return true;
 		if(objectType == ObjectiveSchema.getObjectType())
@@ -55,6 +58,8 @@ public class PlanningViewFontProvider extends FontForObjectProvider
 		if(objectType == StrategySchema.getObjectType())
 			return true;
 		if(objectType == IndicatorSchema.getObjectType())
+			return true;
+		if(objectType == TaskSchema.getObjectType())
 			return true;
 		return false;
 	}

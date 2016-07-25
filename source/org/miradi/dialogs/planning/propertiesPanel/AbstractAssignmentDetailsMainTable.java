@@ -34,7 +34,7 @@ public class AbstractAssignmentDetailsMainTable extends AbstractAssignmentDetail
 	{
 		super(mainWindowToUse, modelToUse, uniqueIdentifier);
 		
-		setBackground(getColumnBackGroundColor(0));
+		setBackground(getColumnBackGroundColor(0, 0));
 		rebuildColumnEditorsAndRenderers();
 	}
 
@@ -53,7 +53,7 @@ public class AbstractAssignmentDetailsMainTable extends AbstractAssignmentDetail
 	}
 
 	@Override
-	public Color getColumnBackGroundColor(int column)
+	public Color getColumnBackGroundColor(int row, int column)
 	{
 		return AppPreferences.RESOURCE_TABLE_BACKGROUND;
 	}

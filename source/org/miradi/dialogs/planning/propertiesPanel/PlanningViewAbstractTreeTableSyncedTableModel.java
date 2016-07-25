@@ -223,7 +223,19 @@ abstract public class PlanningViewAbstractTreeTableSyncedTableModel extends Edit
 
 	protected PlanningTreeRowColumnProvider getRowColumnProvider() { return rowColumnProvider; }
 
-	abstract public Color getCellBackgroundColor(int column);
+	protected boolean isAssignmentRow(int row)
+	{
+		BaseObject baseObjectForRow = getBaseObjectForRow(row);
+
+		if (ResourceAssignment.is(baseObjectForRow))
+			return true;
+		if (ExpenseAssignment.is(baseObjectForRow))
+			return true;
+
+		return false;
+	}
+	
+	abstract public Color getCellBackgroundColor(int row, int column);
 
 	protected Project project;
 	private RowColumnBaseObjectProvider objectProvider;

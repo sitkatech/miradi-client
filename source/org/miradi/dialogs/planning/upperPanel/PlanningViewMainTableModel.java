@@ -57,7 +57,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	}
 
 	@Override
-	public Color getCellBackgroundColor(int column)
+	public Color getCellBackgroundColor(int row, int column)
 	{
 		String columnTag = getColumnTag(column);
 		

@@ -92,7 +92,7 @@ public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTree
 	}
 
 	@Override
-	public Color getCellBackgroundColor(int column)
+	public Color getCellBackgroundColor(int row, int column)
 	{
 		return FactorRenderer.ANNOTATIONS_COLOR;
 	}
