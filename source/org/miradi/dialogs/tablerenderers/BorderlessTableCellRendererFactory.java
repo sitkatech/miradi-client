@@ -25,7 +25,7 @@ import javax.swing.border.Border;
 public class BorderlessTableCellRendererFactory extends DefaultTableCellRendererWithPreferredHeightFactory
 {
 	@Override
-	public Border getCellBorder()
+	public Border getCellBorder(int row)
 	{
 		return BorderFactory.createEmptyBorder();
 	}

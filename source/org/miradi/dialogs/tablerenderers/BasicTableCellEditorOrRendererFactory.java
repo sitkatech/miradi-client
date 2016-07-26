@@ -85,7 +85,7 @@ abstract public class BasicTableCellEditorOrRendererFactory extends AbstractCell
 
 	protected void updateBorderAndColors(JComponent renderer, JTable table, int row, int tableColumn, boolean isSelected)
 	{
-		renderer.setBorder(getCellBorder());
+		renderer.setBorder(getCellBorder(row));
 		if(isSelected)
 		{
 			Color fg = table.getSelectionForeground();
@@ -106,11 +106,12 @@ abstract public class BasicTableCellEditorOrRendererFactory extends AbstractCell
 		renderer.setBackground(bg);
 	}
 
-	public Border getCellBorder()
+	public Border getCellBorder(int row)
 	{
-		int cellBorderWidth = getCellBorderWidth();
+		int cellTopBorderWidth = getCellBorderWidth(row);
+		int cellLeftBorderWidth = getCellBorderWidth();
 		Color cellBorderColor = getCellBorderColor();
-		Border line = BorderFactory.createMatteBorder(cellBorderWidth, cellBorderWidth, 0, 0, cellBorderColor);
+		Border line = BorderFactory.createMatteBorder(cellTopBorderWidth, cellLeftBorderWidth, 0, 0, cellBorderColor);
 		Border margin = BorderFactory.createEmptyBorder(CELL_MARGIN, CELL_MARGIN, CELL_MARGIN, CELL_MARGIN);
 		return BorderFactory.createCompoundBorder(line, margin);
 	}
@@ -120,7 +121,15 @@ abstract public class BasicTableCellEditorOrRendererFactory extends AbstractCell
 		if (isWindows())
 			return 0;
 
-		return 1;
+		return DEFAULT_CELL_WIDTH;
+	}
+
+	private int getCellBorderWidth(int row)
+	{
+		if (isWindows())
+			return row == 0 ? DEFAULT_CELL_WIDTH : 0;
+
+		return DEFAULT_CELL_WIDTH;
 	}
 
 	public static Color getCellBorderColor()
@@ -144,6 +153,7 @@ abstract public class BasicTableCellEditorOrRendererFactory extends AbstractCell
 	}
 	
 	public static final int CELL_MARGIN = 2;
-	
+	private static final int DEFAULT_CELL_WIDTH = 1;
+
 	private Color backgroundColor;
 }
