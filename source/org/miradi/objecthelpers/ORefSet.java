@@ -151,4 +151,16 @@ public class ORefSet extends HashSet<ORef>
 		
 		return nonOverlapping;
 	}
+
+	public static ORefSet getInvalidRefs(ORefSet oRefSet)
+	{
+		ORefSet invalidRefs = new ORefSet();
+		for(ORef ref : oRefSet)
+		{
+			if (ref.isInvalid())
+				invalidRefs.add(ref);
+		}
+
+		return invalidRefs;
+	}
 }

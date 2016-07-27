@@ -19,8 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
-import org.miradi.dialogfields.editors.WhenAssignedEditorComponent;
 import org.miradi.dialogfields.editors.TimeframeEditorComponent;
+import org.miradi.dialogfields.editors.WhenAssignedEditorComponent;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
@@ -30,13 +30,10 @@ import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.questions.*;
 import org.miradi.schemas.FutureStatusSchema;
-import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DateRange;
 
 import java.awt.*;
-import java.util.Collections;
-import java.util.Vector;
 
 public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyncedTableModel
 {
@@ -482,44 +479,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	private ChoiceItem getAssignedProjectResourcesAsChoiceItem(BaseObject baseObject) throws Exception
 	{
 		TimePeriodCosts timePeriodCosts = calculateTimePeriodAssignedCosts(baseObject, new DateUnit());
-		return getProjectResourcesAsChoiceItem(timePeriodCosts, baseObject, BaseObject.TAG_ASSIGNED_LEADER_RESOURCE);
+		return baseObject.getAssignedProjectResourcesAsChoiceItem(timePeriodCosts, BaseObject.TAG_ASSIGNED_LEADER_RESOURCE, getResourcesFilter());
 	}
 
-	private ChoiceItem getProjectResourcesAsChoiceItem(TimePeriodCosts timePeriodCosts, BaseObject baseObject, String leaderResourceTag) throws Exception
-	{
-		timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(getResourcesFilter());
-		ORefSet filteredResources = new ORefSet(timePeriodCosts.getWorkUnitsRefSetForType(ProjectResourceSchema.getObjectType()));
-
-		ORefSet unspecifiedBaseObjectRefs = getInvalidRefs(filteredResources);
-		filteredResources.removeAll(unspecifiedBaseObjectRefs);
-		Vector<ProjectResource> sortedProjectResources = BaseObject.toProjectResources(getProject(), filteredResources);
-		ORef leaderResourceRef = ORef.INVALID;
-		if (baseObject.doesFieldExist(leaderResourceTag))
-		{
-			leaderResourceRef = baseObject.getRef(leaderResourceTag);
-			Collections.sort(sortedProjectResources, new ProjectResourceLeaderAtTopSorter(leaderResourceRef));
-		}
-
-		final ORefList sortedProjectResourceRefs = new ORefList(sortedProjectResources);
-		sortedProjectResourceRefs.addAll(new ORefList(unspecifiedBaseObjectRefs));
-		Vector<String> sortedNames = BaseObject.getResourceNames(getProject(), sortedProjectResourceRefs, leaderResourceRef);
-		String appendedResources = BaseObject.createAppendedResourceNames(sortedNames);
-
-		return new TaglessChoiceItem(appendedResources);
-	}
-
-	public ORefSet getInvalidRefs(ORefSet oRefSet)
-	{
-		ORefSet invalidRefs = new ORefSet();
-		for(ORef ref : oRefSet)
-		{
-			if (ref.isInvalid())
-				invalidRefs.add(ref);
-		}
-		
-		return invalidRefs;
-	}
-	
 	public Object getValueAt(int row, int column)
 	{
 		return getChoiceItemAt(row, column);

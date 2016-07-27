@@ -87,13 +87,13 @@ abstract public class AbstractPlanningObject extends BaseObject
 
 	protected boolean shouldIncludeEffort(DateUnit dateUnit) throws Exception
 	{
-		if (matchesCurrentFiscalYearStartMonth(dateUnit))
+		if (yearlyDateUnitDoesNotMatchCurrentFiscalYearStartMonth(dateUnit))
 			return false;
 
 		return isWithinProjectDateRange(dateUnit);
 	}
 
-	private boolean matchesCurrentFiscalYearStartMonth(DateUnit dateUnit)
+	private boolean yearlyDateUnitDoesNotMatchCurrentFiscalYearStartMonth(DateUnit dateUnit)
 	{
 		if (dateUnit.isYear())
 		{
@@ -111,7 +111,7 @@ abstract public class AbstractPlanningObject extends BaseObject
 		{
 			DateUnitEffort dateUnitEffort = duel.getDateUnitEffort(index);
 			DateUnit dateUnit = dateUnitEffort.getDateUnit();
-			if (matchesCurrentFiscalYearStartMonth(dateUnit))
+			if (yearlyDateUnitDoesNotMatchCurrentFiscalYearStartMonth(dateUnit))
 				return true;
 		}
 		

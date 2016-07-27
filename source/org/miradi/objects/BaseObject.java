@@ -925,20 +925,6 @@ abstract public class BaseObject
 		}
 	}
 
-	public CodeList getAssignedWhoRollupResourcesAsCodeList()
-	{
-		try
-		{
-			ORefSet resourceRefs = getTotalTimePeriodCostsMapForAssignments().getAllProjectResourceRefs();
-			return buildResourceCodeList(resourceRefs);
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return new CodeList();
-		}
-	}
-
 	public String getAssignedWhoRollupResourcesAsString()
 	{
 		try
@@ -962,6 +948,33 @@ abstract public class BaseObject
 			EAM.logException(e);
 			return "";
 		}
+	}
+
+	public ChoiceItem getAssignedProjectResourcesAsChoiceItem(TimePeriodCosts timePeriodCosts, String leaderResourceTag, ORefSet resourcesFilter) throws Exception
+	{
+		String appendedResources = getAssignedProjectResourcesAsString(timePeriodCosts, leaderResourceTag, resourcesFilter);
+		return new TaglessChoiceItem(appendedResources);
+	}
+
+	private String getAssignedProjectResourcesAsString(TimePeriodCosts timePeriodCosts, String leaderResourceTag, ORefSet resourcesFilter) throws Exception
+	{
+		timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(resourcesFilter);
+		ORefSet filteredResources = new ORefSet(timePeriodCosts.getWorkUnitsRefSetForType(ProjectResourceSchema.getObjectType()));
+
+		ORefSet unspecifiedBaseObjectRefs = ORefSet.getInvalidRefs(filteredResources);
+		filteredResources.removeAll(unspecifiedBaseObjectRefs);
+		Vector<ProjectResource> sortedProjectResources = BaseObject.toProjectResources(getProject(), filteredResources);
+		ORef leaderResourceRef = ORef.INVALID;
+		if (doesFieldExist(leaderResourceTag))
+		{
+			leaderResourceRef = getRef(leaderResourceTag);
+			Collections.sort(sortedProjectResources, new ProjectResourceLeaderAtTopSorter(leaderResourceRef));
+		}
+
+		final ORefList sortedProjectResourceRefs = new ORefList(sortedProjectResources);
+		sortedProjectResourceRefs.addAll(new ORefList(unspecifiedBaseObjectRefs));
+		Vector<String> sortedNames = BaseObject.getResourceNames(getProject(), sortedProjectResourceRefs, leaderResourceRef);
+		return BaseObject.createAppendedResourceNames(sortedNames);
 	}
 
 	private CodeList buildResourceCodeList(Iterable<ORef> resourcesRefs)
