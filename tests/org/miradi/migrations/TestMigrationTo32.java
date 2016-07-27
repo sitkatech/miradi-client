@@ -22,6 +22,7 @@ package org.miradi.migrations;
 
 import org.miradi.ids.IdList;
 import org.miradi.migrations.forward.MigrationTo32;
+import org.miradi.migrations.forward.MigrationTo35;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.*;
 import org.miradi.objects.*;
@@ -76,6 +77,37 @@ public class TestMigrationTo32 extends AbstractTestMigration
 				verifyMonitoringActivityCreated(migratedProject, migratedIndicator, indicatorResourceAssignment, indicatorExpenseAssignment, leader);
 			}
 		}
+	}
+
+	public void testIndicatorNoWorkPlanDataNotMigratedByForwardMigration() throws Exception
+	{
+		getProject().setProjectStartDate(2005);
+		getProject().setProjectEndDate(2007);
+
+		Strategy strategy = getProject().createAndPopulateStrategy();
+
+		Indicator indicator = getProject().createIndicator(strategy);
+		getProject().fillObjectUsingCommand(indicator, Indicator.TAG_LABEL, indicatorName);
+		getProject().createAndPopulateMethod(indicator, "Method to Migrate");
+
+		int rcDiagramCountBefore = getProject().getAllRefsForType(ObjectType.RESULTS_CHAIN_DIAGRAM).size();
+		int strategyCountBefore = getProject().getAllRefsForType(ObjectType.STRATEGY).size();
+		int taskCountBefore = getProject().getAllRefsForType(ObjectType.TASK).size();
+		ORefList indicatorRefsBefore = getProject().getAllRefsForType(ObjectType.INDICATOR);
+		int indicatorCountBefore = indicatorRefsBefore.size();
+
+		RawProject migratedProject = reverseMigrate(new VersionRange(MigrationTo35.VERSION_TO));
+		migrateProject(migratedProject, new VersionRange(Project.VERSION_HIGH));
+
+		int strategyCountAfter = migratedProject.getAllRefsForType(ObjectType.STRATEGY).size();
+		int taskCountAfter = migratedProject.getAllRefsForType(ObjectType.TASK).size();
+		int indicatorCountAfter = migratedProject.getAllRefsForType(ObjectType.INDICATOR).size();
+		int rcDiagramCountAfter =  migratedProject.containsAnyObjectsOfType(ObjectType.RESULTS_CHAIN_DIAGRAM) ? migratedProject.getAllRefsForType(ObjectType.RESULTS_CHAIN_DIAGRAM).size() : 0;
+
+		assertEquals(strategyCountBefore, strategyCountAfter);
+		assertEquals(taskCountBefore, taskCountAfter);
+		assertEquals(indicatorCountBefore, indicatorCountAfter);
+		assertEquals(rcDiagramCountBefore, rcDiagramCountAfter);
 	}
 
 	private String safeGetTag(RawObject rawObject, String tag)

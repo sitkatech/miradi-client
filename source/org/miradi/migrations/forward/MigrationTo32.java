@@ -148,8 +148,12 @@ public class MigrationTo32 extends AbstractMigration
 				return true;
 
 			ArrayList<RawObject> indicatorMethods = getMethods(rawIndicatorToMigrate);
-			if (indicatorMethods.size() > 0)
-				return true;
+			for (RawObject method : indicatorMethods)
+			{
+				ArrayList<ORef> methodAssignmentRefs = getAssignments(method);
+				if (methodAssignmentRefs.size() > 0)
+					return true;
+			}
 
 			return false;
 		}
