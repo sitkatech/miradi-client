@@ -62,17 +62,21 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		setTableHeaderRenderer();
 
 		masterTree = masterTreeToUse;
-		FontForObjectProvider fontProvider = new PlanningViewFontProvider(getMainWindow());
-		defaultRendererFactory = new MultiLineObjectTableCellRendererOnlyFactory(mainWindowToUse, this, fontProvider);
-		currencyRendererFactory = new BudgetCostTreeTableCellRendererFactory(this, fontProvider);
-		choiceRendererFactory = new ChoiceItemTableCellRendererFactory(this, fontProvider);
-		appendedLabelsOnSingleLineRendererFactory = new SingleLineAppendedLabelsObjectTableCellRendererOnlyFactory(mainWindowToUse, this, fontProvider);
-		progressRendererFactory = new ProgressTableCellRendererFactory(this, fontProvider);
-		doubleRendererFactory = new NumericTableCellRendererFactory(this, fontProvider);
-		whoAssignedColumnTableCellEditorFactory = new WhoAssignedTableCellPopupEditorOrRendererFactory(getMainWindow(), this, fontProvider);
-		timeframeColumnTableCellEditorFactory = new TimeframeTableCellPopupEditorOrRendererFactory(mainWindowToUse, this, fontProvider);
-		singleLineTextCellEditorFactory = new SingleLineObjectTableCellEditorOrRendererFactory(this, fontProvider);
-		multiLineTextCellEditorFactor = new ExpandingReadonlyTableCellEditorOrRendererFactory(mainWindowToUse, this, fontProvider);
+
+		DefaultFontProvider defaultFontProvider = new DefaultFontProvider(getMainWindow());
+		FontForObjectProvider objectFontProvider = new PlanningViewFontProvider(getMainWindow());
+
+		defaultRendererFactory = new MultiLineObjectTableCellRendererOnlyFactory(mainWindowToUse, this, objectFontProvider);
+		currencyRendererFactory = new BudgetCostTreeTableCellRendererFactory(this, objectFontProvider);
+		choiceRendererFactory = new ChoiceItemTableCellRendererFactory(this, objectFontProvider);
+		appendedLabelsOnSingleLineRendererFactory = new SingleLineAppendedLabelsObjectTableCellRendererOnlyFactory(mainWindowToUse, this, objectFontProvider);
+		progressRendererFactory = new ProgressTableCellRendererFactory(this, objectFontProvider);
+		doubleRendererFactory = new NumericTableCellRendererFactory(this, objectFontProvider);
+		whenAssignedColumnTableCellEditorFactory = new SingleLineObjectTableCellEditorOrRendererFactory(this, defaultFontProvider);
+		whoAssignedColumnTableCellEditorFactory = new WhoAssignedTableCellPopupEditorOrRendererFactory(getMainWindow(), this, objectFontProvider);
+		timeframeColumnTableCellEditorFactory = new TimeframeTableCellPopupEditorOrRendererFactory(mainWindowToUse, this, objectFontProvider);
+		singleLineTextCellEditorFactory = new SingleLineObjectTableCellEditorOrRendererFactory(this, objectFontProvider);
+		multiLineTextCellEditorFactor = new ExpandingReadonlyTableCellEditorOrRendererFactory(mainWindowToUse, this, objectFontProvider);
 		
 		addMouseListener(new PlanningRightClickHandler(getMainWindow(), this, this));
 	}
@@ -145,6 +149,8 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 			factory = doubleRendererFactory;
 		else if (getCastedModel().isTimeframeColumn(modelColumn))
 			factory = timeframeColumnTableCellEditorFactory;
+		else if (getCastedModel().isAssignedWhenColumn(modelColumn))
+			factory = whenAssignedColumnTableCellEditorFactory;
 		else if (getCastedModel().isAssignedWhoColumn(modelColumn))
 			factory = whoAssignedColumnTableCellEditorFactory;
 		else if (getCastedModel().isAppendedLabelsOnSingleLineColumn(modelColumn))
@@ -256,6 +262,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private BasicTableCellEditorOrRendererFactory appendedLabelsOnSingleLineRendererFactory;
 	private BasicTableCellEditorOrRendererFactory progressRendererFactory;
 	private BasicTableCellEditorOrRendererFactory doubleRendererFactory;
+	private SingleLineObjectTableCellEditorOrRendererFactory whenAssignedColumnTableCellEditorFactory;
 	private WhoAssignedTableCellPopupEditorOrRendererFactory whoAssignedColumnTableCellEditorFactory;
 	private TimeframeTableCellPopupEditorOrRendererFactory timeframeColumnTableCellEditorFactory;
 	private SingleLineObjectTableCellEditorOrRendererFactory singleLineTextCellEditorFactory;
