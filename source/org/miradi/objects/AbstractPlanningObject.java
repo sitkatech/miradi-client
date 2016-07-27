@@ -66,9 +66,11 @@ abstract public class AbstractPlanningObject extends BaseObject
 	{
 		DateUnitEffortList duel = getDateUnitEffortList();
 		TimePeriodCostsMap tpcm = new TimePeriodCostsMap();
-		if (duel.size() == 0 && !isEmpty())
+
+		boolean shouldAddNoDataInPlace = (!isEmpty()) || (isEmpty() && getProjectResourceTag() != null);
+		if (duel.size() == 0 && shouldAddNoDataInPlace)
 			addTimePeriodCostsInPlaceForNoData(duel, tpcm);
-			
+
 		for (int index = 0; index < duel.size(); ++index)
 		{
 			DateUnitEffort dateUnitEffort = duel.getDateUnitEffort(index);

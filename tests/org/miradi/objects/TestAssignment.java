@@ -98,7 +98,7 @@ public class TestAssignment extends ObjectTestCase
 	public void testConvertDateUnitEffortList() throws Exception
 	{
 		ResourceAssignment emptyAssignment = getProject().createResourceAssignment();
-		assertEquals("Should have no data in its DUEL?", 0, emptyAssignment.getResourceAssignmentsTimePeriodCostsMap().size());
+		assertEquals("Should have a blank DUEL?", 1, emptyAssignment.getResourceAssignmentsTimePeriodCostsMap().size());
 		
 		ResourceAssignment assignmentWithFundingSource  = getProject().createResourceAssignment();
 		getProject().addAccountingCode(assignmentWithFundingSource);
