@@ -59,8 +59,6 @@ public class PlanningViewFontProvider extends FontForObjectProvider
 			return true;
 		if(objectType == IndicatorSchema.getObjectType())
 			return true;
-		if(objectType == TaskSchema.getObjectType())
-			return true;
 		return false;
 	}
 }
