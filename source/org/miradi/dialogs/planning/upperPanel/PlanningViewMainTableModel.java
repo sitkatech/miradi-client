@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel;
 
 import org.miradi.dialogfields.editors.TimeframeEditorComponent;
-import org.miradi.dialogfields.editors.WhenAssignedEditorComponent;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.AppPreferences;
@@ -79,7 +78,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			return new WhoAssignedStateLogic().isWhoCellEditable(getBaseObjectForRowColumn(row, modelColumn));
 
 		if (isAssignedWhenColumn(columnTag))
-			return isAssignedWhenCellEditable(row, modelColumn);
+			return false;
 
 		if (isCodeListColumn(modelColumn))
 			return false;
@@ -139,16 +138,11 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	{
 		return isAssignedWhenColumn(getColumnTag(modelColumn));
 	}
+
 	@Override
 	public boolean isAssignedWhoColumn(int modelColumn)
 	{
 		return isAssignedWhoColumn(getColumnTag(modelColumn));
-	}
-
-	private boolean isAssignedWhenCellEditable(int row, int modelColumn)
-	{
-		BaseObject baseObjectForRow = getBaseObjectForRowColumn(row, modelColumn);
-		return baseObjectForRow.isAssignedWhenEditable();
 	}
 
 	@Override
@@ -166,10 +160,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (isTimeframeColumn(column))
 			{
 				TimeframeEditorComponent.setTimeframeValue(getProject(), baseObjectForRow, TimeframeEditorComponent.createCodeList(value));
-			}
-			else if (isAssignedWhenColumn(column))
-			{
-				WhenAssignedEditorComponent.setWhenAssignedValue(getProject(), baseObjectForRow, TimeframeEditorComponent.createCodeList(value));
 			}
 			else if (isChoiceItemColumn(column))
 			{
@@ -380,9 +370,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if(isTimeframeColumn(columnTag))
 				return getFilteredWhenForPlans(baseObject);
 
-			if(isAssignedWhenColumn(columnTag))
-				return getFilteredWhenForAssignments(baseObject);
-
 			return new TaglessChoiceItem(rawValue);
 		}
 		catch (Exception e)
@@ -446,12 +433,6 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	private ChoiceItem getFilteredWhenForPlans(BaseObject baseObject) throws Exception
 	{
 		TimePeriodCostsMap totalTimePeriodCostsMap = calculateTimePeriodPlannedCostsMap(baseObject);
-		return getFilteredWhen(totalTimePeriodCostsMap);
-	}
-
-	private ChoiceItem getFilteredWhenForAssignments(BaseObject baseObject) throws Exception
-	{
-		TimePeriodCostsMap totalTimePeriodCostsMap = calculateTimePeriodAssignedCostsMap(baseObject);
 		return getFilteredWhen(totalTimePeriodCostsMap);
 	}
 

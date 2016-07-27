@@ -71,7 +71,6 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		doubleRendererFactory = new NumericTableCellRendererFactory(this, fontProvider);
 		whoAssignedColumnTableCellEditorFactory = new WhoAssignedTableCellPopupEditorOrRendererFactory(getMainWindow(), this, fontProvider);
 		timeframeColumnTableCellEditorFactory = new TimeframeTableCellPopupEditorOrRendererFactory(mainWindowToUse, this, fontProvider);
-		whenAssignedColumnTableCellEditorFactory = new WhenAssignedTableCellPopupEditorOrRendererFactory(mainWindowToUse, this, fontProvider);
 		singleLineTextCellEditorFactory = new SingleLineObjectTableCellEditorOrRendererFactory(this, fontProvider);
 		multiLineTextCellEditorFactor = new ExpandingReadonlyTableCellEditorOrRendererFactory(mainWindowToUse, this, fontProvider);
 		
@@ -94,9 +93,6 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		
 		if (getCastedModel().isTimeframeColumn(modelColumn))
 			return new TimeframeTableCellPopupEditorOrRendererFactory(getMainWindow(), this, new PlanningViewFontProvider(getMainWindow()));
-
-		if (getCastedModel().isAssignedWhenColumn(modelColumn))
-			return new WhenAssignedTableCellPopupEditorOrRendererFactory(getMainWindow(), this, new PlanningViewFontProvider(getMainWindow()));
 
 		Class cellQuestionClass = getCastedModel().getCellQuestion(row, modelColumn);
 		if (cellQuestionClass !=  null)
@@ -149,8 +145,6 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 			factory = doubleRendererFactory;
 		else if (getCastedModel().isTimeframeColumn(modelColumn))
 			factory = timeframeColumnTableCellEditorFactory;
-		else if (getCastedModel().isAssignedWhenColumn(modelColumn))
-			factory = whenAssignedColumnTableCellEditorFactory;
 		else if (getCastedModel().isAssignedWhoColumn(modelColumn))
 			factory = whoAssignedColumnTableCellEditorFactory;
 		else if (getCastedModel().isAppendedLabelsOnSingleLineColumn(modelColumn))
@@ -264,7 +258,6 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private BasicTableCellEditorOrRendererFactory doubleRendererFactory;
 	private WhoAssignedTableCellPopupEditorOrRendererFactory whoAssignedColumnTableCellEditorFactory;
 	private TimeframeTableCellPopupEditorOrRendererFactory timeframeColumnTableCellEditorFactory;
-	private WhenAssignedTableCellPopupEditorOrRendererFactory whenAssignedColumnTableCellEditorFactory;
 	private SingleLineObjectTableCellEditorOrRendererFactory singleLineTextCellEditorFactory;
 	private ExpandingReadonlyTableCellEditorOrRendererFactory multiLineTextCellEditorFactor;
 }

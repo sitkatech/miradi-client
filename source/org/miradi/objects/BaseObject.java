@@ -722,51 +722,6 @@ abstract public class BaseObject
 		return true;
 	}
 
-	public boolean hasSubTasksWithResourceAssignments() throws Exception
-	{
-		ORefList subTaskRefs = getChildTaskRefs();
-		for (int index = 0; index < subTaskRefs.size(); ++index)
-		{
-			Task task = Task.find(getProject(), subTaskRefs.get(index));
-			if (task.getResourceAssignmentRefs().hasRefs())
-				return true;
-		}
-
-		return false;
-	}
-
-	public boolean hasResourceAssignmentsWithDifferentDateUnitEffortLists() throws Exception
-	{
-		ORefList resourceAssignmentRefs = getResourceAssignmentRefs();
-		HashSet<DateUnitEffortList> dateUnitEffortLists = new HashSet<DateUnitEffortList>();
-		for (int index = 0; index < resourceAssignmentRefs.size(); ++index)
-		{
-			ResourceAssignment resourceAssignment = ResourceAssignment.find(getProject(), resourceAssignmentRefs.get(index));
-			dateUnitEffortLists.add(resourceAssignment.getDateUnitEffortList());
-			if (dateUnitEffortLists.size() > 1)
-				return true;
-		}
-
-		return false;
-	}
-
-	public boolean hasResourceAssignmentsWithUsableNumberOfDateUnitEfforts() throws Exception
-	{
-		ORefList assignmentRefs = getResourceAssignmentRefs();
-		ResourceAssignment assignment = ResourceAssignment.find(getProject(), assignmentRefs.getFirstElement());
-		DateUnitEffortList effortList = assignment.getDateUnitEffortList();
-
-		TimePeriodCostsMap timePeriodCostsMap = assignment.getResourceAssignmentsTimePeriodCostsMap();
-		OptionalDouble totalWorkUnits = timePeriodCostsMap.calculateTimePeriodCosts(new DateUnit()).getTotalWorkUnits();
-		if (totalWorkUnits.hasNonZeroValue())
-			return false;
-
-		if (effortList.size() > 2)
-			return false;
-
-		return true;
-	}
-
 	public ORefList getChildTaskRefs()
 	{
 		return new ORefList();
@@ -871,34 +826,6 @@ abstract public class BaseObject
 	{
 		final DateRange projectStartEndDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
 		return getTotalTimePeriodCostsMapForPlans().getRolledUpDateRange(projectStartEndDateRange);
-	}
-
-	public boolean isAssignedWhenEditable()
-	{
-		try
-		{
-			if (!canOwnPlanningObjects(getRef()))
-				return false;
-
-			if (hasSubTasksWithResourceAssignments())
-				return false;
-
-			if (getResourceAssignmentRefs().isEmpty())
-				return true;
-
-			if (hasResourceAssignmentsWithDifferentDateUnitEffortLists())
-				return false;
-
-			if (hasResourceAssignmentsWithUsableNumberOfDateUnitEfforts())
-				return true;
-
-			return false;
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return false;
-		}
 	}
 
 	public CodeList getAssignedWhoResourcesAsCodeList()
