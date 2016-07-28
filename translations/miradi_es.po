@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-27 01:36-0700\n"
+"POT-Creation-Date: 2016-07-28 05:21-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/miradi-client/"
@@ -962,14 +962,8 @@ msgid ""
 "have a project open."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhoAssignedPopupEditorComponent.java:92
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhoAssignedPopupEditorComponent.java:94
 msgid "<html>Select people from the list. This creates work plan Assignments."
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenAssignedEditorComponent.java:64
-msgid ""
-"<html>Specifying the Work Unit time span using this dialog <br>will enter "
-"zeros in the designated time period column(s)."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/SeverityStressBasedThreatRatingQuestion.java:58
@@ -3249,7 +3243,7 @@ msgstr "Eliminar %s"
 msgid "Delete People"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:129
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:130
 msgid "Delete Work Assignments"
 msgstr ""
 
@@ -5552,7 +5546,7 @@ msgstr "Nombre del nuevo proyecto: "
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:128
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:129
 msgid "No"
 msgstr "No"
 
@@ -5819,7 +5813,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/PlanningProjectResourceManagementConfiguration.java:59
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/ProjectResourceManagementConfiguration.java:58
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/assignment/AssignmentsPropertiesSubPanel.java:85
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:321
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:308
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:47
 msgid "People"
 msgstr ""
@@ -5828,15 +5822,17 @@ msgstr ""
 msgid "People (Who)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:90
-msgid "People assigned to this action and actions below it: "
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:91
+msgid ""
+"People assigned to this action and actions below it, based on current filter "
+"settings: "
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:99
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:100
 msgid "People assigned to this action only: "
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:343
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:338
 msgid ""
 "People assignments and expense data were moved from indicators and methods "
 "to these new monitoring activities and tasks. Other data from the indicators "
@@ -6297,7 +6293,7 @@ msgstr ""
 "método o tarea. Existen tres tipos principales de recursos: humanos, "
 "materiales y financieros."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/WorkPlanTreeTablePanel.java:100
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/WorkPlanTreeTablePanel.java:101
 msgid "Resource filter is on"
 msgstr ""
 
@@ -8205,7 +8201,7 @@ msgstr "Teoría del cambio<br/>- Estrategia lógica"
 msgid "Theory of Change<br/>- Strategy Selection"
 msgstr "Teoría del cambio<br/>- Selección de estrategia"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:344
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:339
 msgid ""
 "This \"Migrated Monitoring Activities\" strategy is intended to be a "
 "temporary container. In the Work Plan view, use the Move Activity command "
@@ -8453,7 +8449,7 @@ msgstr ""
 "guardará una copia de seguridad en caso de que algo salga mal. ¿Ha realizado "
 "la migración automática?"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:342
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:337
 msgid ""
 "This strategy contains monitoring activities and (if applicable) tasks that "
 "contain monitoring work plan data created in Miradi prior to release 4.4. "
@@ -9275,10 +9271,6 @@ msgstr ""
 msgid "When Override was: %s"
 msgstr "Cuándo fue el reemplazo: %s "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhenAssignedPopupEditorComponent.java:44
-msgid "When Work Assignments - %s"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportMpzDoer.java:81
 msgid ""
 "While migrating this project back to an older data format, some data would "
@@ -9309,7 +9301,7 @@ msgstr ""
 msgid "Who Override was: %s"
 msgstr "Quién hizo el reemplazo: %s"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhoAssignedPopupEditorComponent.java:54
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/editors/WhoAssignedPopupEditorComponent.java:56
 msgid "Who Work Assignments"
 msgstr ""
 
@@ -9378,7 +9370,7 @@ msgid "Work plan start date is before project start date"
 msgstr ""
 "La fecha de inicio del plan es anterior a la fecha de inicio del proyecto."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:127
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:128
 msgid ""
 "Work units have been entered for this assignment. All work units will be "
 "removed. Continue?"
@@ -9424,7 +9416,7 @@ msgstr "Yen (Japón) "
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:69
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:128
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:129
 msgid "Yes"
 msgstr "Sí"
 
@@ -9456,7 +9448,7 @@ msgstr ""
 "comandos exportar e importar. Miradi también creará archivos zip para las "
 "copias de seguridad del proyecto creadas durante las migraciones de formato."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:394
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:378
 msgid "[Error]"
 msgstr "[Error]"
 
