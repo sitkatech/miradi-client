@@ -22,6 +22,7 @@ package org.miradi.dialogs.tablerenderers;
 
 import org.miradi.dialogfields.editors.WhoAssignedPopupEditorComponent;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.BaseObject;
 
 import javax.swing.*;
@@ -29,16 +30,16 @@ import java.awt.*;
 
 public class WhoAssignedTableCellPopupEditorOrRendererFactory extends PopupEditableCellEditorOrRendererFactory
 {
-	public WhoAssignedTableCellPopupEditorOrRendererFactory(MainWindow mainWindowToUse, RowColumnBaseObjectProvider objectProvider, FontForObjectProvider fontProvider)
+	public WhoAssignedTableCellPopupEditorOrRendererFactory(MainWindow mainWindowToUse, RowColumnBaseObjectProvider objectProvider, FontForObjectProvider fontProvider, ORefSet resourceRefsFilter)
 	{
 		super(objectProvider, fontProvider);
 		
-		whoAssignedPopupEditorComponent = createWhenPopupEditorComponent(mainWindowToUse);
+		whoAssignedPopupEditorComponent = createWhenPopupEditorComponent(mainWindowToUse, resourceRefsFilter);
 	}
 
-	private WhoAssignedPopupEditorComponent createWhenPopupEditorComponent(MainWindow mainWindowToUse)
+	private WhoAssignedPopupEditorComponent createWhenPopupEditorComponent(MainWindow mainWindowToUse, ORefSet resourceRefsFilter)
 	{
-		return new WhoAssignedPopupEditorComponent(mainWindowToUse);
+		return new WhoAssignedPopupEditorComponent(mainWindowToUse, resourceRefsFilter);
 	}
 
 	@Override

@@ -44,6 +44,7 @@ import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTable
 import org.miradi.dialogs.tablerenderers.*;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.*;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.CustomPlanningColumnsQuestion;
@@ -62,6 +63,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		setTableHeaderRenderer();
 
 		masterTree = masterTreeToUse;
+		resourceRefsFilter = new ORefSet();
 
 		DefaultFontProvider defaultFontProvider = new DefaultFontProvider(getMainWindow());
 		FontForObjectProvider objectFontProvider = new PlanningViewFontProvider(getMainWindow());
@@ -73,11 +75,11 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		progressRendererFactory = new ProgressTableCellRendererFactory(this, objectFontProvider);
 		doubleRendererFactory = new NumericTableCellRendererFactory(this, objectFontProvider);
 		whenAssignedColumnTableCellEditorFactory = new SingleLineObjectTableCellEditorOrRendererFactory(this, defaultFontProvider);
-		whoAssignedColumnTableCellEditorFactory = new WhoAssignedTableCellPopupEditorOrRendererFactory(getMainWindow(), this, objectFontProvider);
+		whoAssignedColumnTableCellEditorFactory = new WhoAssignedTableCellPopupEditorOrRendererFactory(getMainWindow(), this, objectFontProvider, resourceRefsFilter);
 		timeframeColumnTableCellEditorFactory = new TimeframeTableCellPopupEditorOrRendererFactory(mainWindowToUse, this, objectFontProvider);
 		singleLineTextCellEditorFactory = new SingleLineObjectTableCellEditorOrRendererFactory(this, objectFontProvider);
 		multiLineTextCellEditorFactor = new ExpandingReadonlyTableCellEditorOrRendererFactory(mainWindowToUse, this, objectFontProvider);
-		
+
 		addMouseListener(new PlanningRightClickHandler(getMainWindow(), this, this));
 	}
 
@@ -93,7 +95,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		String columnTag = getCastedModel().getColumnTag(modelColumn);
 
 		if (columnTag.equals(CustomPlanningColumnsQuestion.META_ASSIGNED_WHO_TOTAL))
-			return new WhoAssignedTableCellPopupEditorOrRendererFactory(getMainWindow(), this, new PlanningViewFontProvider(getMainWindow()));
+			return new WhoAssignedTableCellPopupEditorOrRendererFactory(getMainWindow(), this, new PlanningViewFontProvider(getMainWindow()), resourceRefsFilter);
 		
 		if (getCastedModel().isTimeframeColumn(modelColumn))
 			return new TimeframeTableCellPopupEditorOrRendererFactory(getMainWindow(), this, new PlanningViewFontProvider(getMainWindow()));
@@ -254,7 +256,12 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	{
 		throw new RuntimeException("Method is currently unused and has no implementation");
 	}
-	
+
+	public void setResourcesFilter(ORefSet resourceRefFiltersToUse)
+	{
+		resourceRefsFilter = resourceRefFiltersToUse;
+	}
+
 	private PlanningTreeTable masterTree;
 	private BasicTableCellEditorOrRendererFactory defaultRendererFactory;
 	private BasicTableCellEditorOrRendererFactory currencyRendererFactory;
@@ -267,4 +274,5 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private TimeframeTableCellPopupEditorOrRendererFactory timeframeColumnTableCellEditorFactory;
 	private SingleLineObjectTableCellEditorOrRendererFactory singleLineTextCellEditorFactory;
 	private ExpandingReadonlyTableCellEditorOrRendererFactory multiLineTextCellEditorFactor;
+	protected ORefSet resourceRefsFilter;
 }

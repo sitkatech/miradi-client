@@ -28,6 +28,7 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ProjectResourceQuestion;
 import org.miradi.utils.AbstractPopupEditorComponent;
@@ -38,14 +39,15 @@ import java.awt.*;
 
 public class WhoAssignedPopupEditorComponent extends AbstractPopupEditorComponent
 {
-	public WhoAssignedPopupEditorComponent(MainWindow mainWindowToUse)
+	public WhoAssignedPopupEditorComponent(MainWindow mainWindowToUse, ORefSet resourceRefsFilterToUse)
 	{
 		super(mainWindowToUse);
+		resourceRefsFilter = resourceRefsFilterToUse;
 	}
 
-	private WhoAssignedCodeListEditorComponent createEditorComponent(BaseObject baseObject, ProjectResourceQuestion question) throws Exception
+	private WhoAssignedCodeListEditorComponent createEditorComponent(BaseObject baseObject, ProjectResourceQuestion question, ORefSet resourceRefsFilter) throws Exception
 	{
-		return new WhoAssignedCodeListEditorComponent(baseObject, question);
+		return new WhoAssignedCodeListEditorComponent(baseObject, question, resourceRefsFilter);
 	}
 
 	protected String getDialogTitle()
@@ -71,7 +73,7 @@ public class WhoAssignedPopupEditorComponent extends AbstractPopupEditorComponen
 			dialog.add(panelTitleLabel, BorderLayout.BEFORE_FIRST_LINE);
 
 			final ProjectResourceQuestion question = new ProjectResourceQuestion(getMainWindow().getProject());
-			whoAssignedEditorPanel = createEditorComponent(baseObjectForRow, question);
+			whoAssignedEditorPanel = createEditorComponent(baseObjectForRow, question, resourceRefsFilter);
 
 			dialog.setScrollableMainPanel(whoAssignedEditorPanel);
 			dialog.getWrappedPanel().setBackground(AppPreferences.getDataPanelBackgroundColor());
@@ -113,4 +115,5 @@ public class WhoAssignedPopupEditorComponent extends AbstractPopupEditorComponen
 	
 	private WhoAssignedCodeListEditorComponent whoAssignedEditorPanel;
 	private BaseObject baseObjectForRow;
+	private ORefSet resourceRefsFilter;
 }

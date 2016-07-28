@@ -41,11 +41,12 @@ import java.util.Vector;
 
 public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedComponent
 {
-	public WhoAssignedCodeListEditorComponent(BaseObject parentObjectToUse, ChoiceQuestion questionToUse)
+	public WhoAssignedCodeListEditorComponent(BaseObject parentObjectToUse, ChoiceQuestion questionToUse, ORefSet resourceRefsFilterToUse)
 	{
 		super(questionToUse, SINGLE_COLUMN);
 		
 		parentObject = parentObjectToUse;
+		resourceRefsFilter = resourceRefsFilterToUse;
 		updateToggleButtonSelections(parentObject.getAssignedWhoResourcesAsCodeList());
 		setInstructions();
 	}
@@ -86,13 +87,13 @@ public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedCom
 		StringBuilder instructionsText = new StringBuilder();
 
 		instructionsText.append("<html>");
-		instructionsText.append("<div style='margin-left: 7px;'>");
-		instructionsText.append(EAM.text("People assigned to this action and actions below it: "));
+		instructionsText.append("<div style='margin-left: 7px; margin-right: 7px;'>");
+		instructionsText.append(EAM.text("People assigned to this action and actions below it, based on current filter settings: "));
 		instructionsText.append("</div>");
 		if (parentObject != null)
 		{
 			instructionsText.append("<div style='margin-left: 7px;'>");
-			instructionsText.append(parentObject.getAssignedWhoRollupResourcesAsString());
+			instructionsText.append(parentObject.getAssignedWhoRollupResourcesAsString(resourceRefsFilter));
 			instructionsText.append("</div>");
 		}
 		instructionsText.append("<div style='margin-left: 7px;'>");
@@ -241,4 +242,5 @@ public class WhoAssignedCodeListEditorComponent extends AbstractQuestionBasedCom
 	
 	private BaseObject parentObject;
 	private PanelTitleLabel instructionsPanel;
+	private ORefSet resourceRefsFilter;
 }

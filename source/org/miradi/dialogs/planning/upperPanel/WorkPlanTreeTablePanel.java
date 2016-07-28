@@ -87,13 +87,14 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 	@Override
 	protected void updateResourceFilter() throws Exception
 	{
-		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getIdentifier());
-		ORefList projectResourceFilterRefs = tableSettings.getTableSettingsMap().getRefList(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
-		ORefSet projectResourceRefsToRetain = new ORefSet(projectResourceFilterRefs);
+		ORefSet projectResourceRefsToRetain = getResourceFilter();
 		
 		getWorkUnitsTableModel().setResourcesFilter(projectResourceRefsToRetain);
 		getBudgetDetailsTableModel().setResourcesFilter(projectResourceRefsToRetain);
 		getPlanningViewMainTableModel().setResourcesFilter(projectResourceRefsToRetain);
+
+		PlanningUpperMultiTable mainTable = (PlanningUpperMultiTable) getMainTable();
+		mainTable.setResourcesFilter(projectResourceRefsToRetain);
 
 		if (getMainWindow().areAnyProjectResourceFiltersOn())
 		{
@@ -104,6 +105,21 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 		{
 			filterResourceLabel.setText(" ");
 			filterResourceLabel.setIcon(null);
+		}
+	}
+
+	private ORefSet getResourceFilter()
+	{
+		try
+		{
+			TableSettings tableSettings = TableSettings.findOrCreate(getProject(), getIdentifier());
+			ORefList projectResourceFilterRefs = tableSettings.getTableSettingsMap().getRefList(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
+			return new ORefSet(projectResourceFilterRefs);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new ORefSet();
 		}
 	}
 

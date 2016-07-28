@@ -852,23 +852,19 @@ abstract public class BaseObject
 		}
 	}
 
-	public String getAssignedWhoRollupResourcesAsString()
+	public String getAssignedWhoRollupResourcesAsString(ORefSet resourcesFilter)
 	{
 		try
 		{
-			ORefSet resourceRefs = getTotalTimePeriodCostsMapForAssignments().getAllProjectResourceRefs();
-			Vector<ProjectResource> projectResources = BaseObject.toProjectResources(getProject(), resourceRefs);
+			ORefSet allResourceRefs = getTotalTimePeriodCostsMapForAssignments().getAllProjectResourceRefs();
 
-			ORef leaderResourceRef = ORef.INVALID;
-			if (doesFieldExist(BaseObject.TAG_ASSIGNED_LEADER_RESOURCE))
+			if (!resourcesFilter.isEmpty())
 			{
-				leaderResourceRef = getRef(BaseObject.TAG_ASSIGNED_LEADER_RESOURCE);
-				Collections.sort(projectResources, new ProjectResourceLeaderAtTopSorter(leaderResourceRef));
+				ORefSet refsToRemove = ORefSet.subtract(allResourceRefs, resourcesFilter);
+				allResourceRefs.removeAll(refsToRemove);
 			}
 
-			final ORefList sortedProjectResourceRefs = new ORefList(projectResources);
-			Vector<String> sortedNames = BaseObject.getResourceNames(getProject(), sortedProjectResourceRefs, leaderResourceRef);
-			return BaseObject.createAppendedResourceNames(sortedNames);
+			return getAssignedProjectResourceNames(BaseObject.TAG_ASSIGNED_LEADER_RESOURCE, allResourceRefs);
 		}
 		catch (Exception e)
 		{
@@ -888,9 +884,14 @@ abstract public class BaseObject
 		timePeriodCosts.retainWorkUnitDataRelatedToAnyOf(resourcesFilter);
 		ORefSet filteredResources = new ORefSet(timePeriodCosts.getWorkUnitsRefSetForType(ProjectResourceSchema.getObjectType()));
 
-		ORefSet unspecifiedBaseObjectRefs = ORefSet.getInvalidRefs(filteredResources);
-		filteredResources.removeAll(unspecifiedBaseObjectRefs);
-		Vector<ProjectResource> sortedProjectResources = BaseObject.toProjectResources(getProject(), filteredResources);
+		return getAssignedProjectResourceNames(leaderResourceTag, filteredResources);
+	}
+
+	private String getAssignedProjectResourceNames(String leaderResourceTag, ORefSet resourceRefs) throws Exception
+	{
+		ORefSet unspecifiedBaseObjectRefs = ORefSet.getInvalidRefs(resourceRefs);
+		resourceRefs.removeAll(unspecifiedBaseObjectRefs);
+		Vector<ProjectResource> sortedProjectResources = BaseObject.toProjectResources(getProject(), resourceRefs);
 		ORef leaderResourceRef = ORef.INVALID;
 		if (doesFieldExist(leaderResourceTag))
 		{
