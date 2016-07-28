@@ -307,7 +307,7 @@ public class MigrationTo32 extends AbstractMigration
 			return resultsChain;
 		}
 
-		private RawObject getOrCreateStrategyForMonitoringActivities(RawObject indicator) throws Exception
+		private RawObject getOrCreateStrategyForMonitoringActivities() throws Exception
 		{
 			if (strategy == null)
 			{
@@ -327,11 +327,6 @@ public class MigrationTo32 extends AbstractMigration
 				IdList diagramFactorIdList = new IdList(ObjectType.DIAGRAM_FACTOR);
 				diagramFactorIdList.add(newDiagramFactorRef.getObjectId());
 				resultsChain.setData(TAG_DIAGRAM_FACTOR_IDS, diagramFactorIdList.toJson().toString());
-
-				String relevancySetAsJsonString = safeGetTag(indicator, TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
-				RelevancyOverrideSet relevancySet = new RelevancyOverrideSet(relevancySetAsJsonString);
-				relevancySet.add(new RelevancyOverride(newStrategyRef, true));
-				indicator.setData(TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevancySet.toString());
 			}
 
 			return strategy;
@@ -371,7 +366,7 @@ public class MigrationTo32 extends AbstractMigration
 				if (!clonedProgressReportRefs.isEmpty())
 					activity.setData(TAG_PROGRESS_REPORT_REFS, clonedProgressReportRefs.toJson().toString());
 
-				RawObject strategy = getOrCreateStrategyForMonitoringActivities(indicator);
+				RawObject strategy = getOrCreateStrategyForMonitoringActivities();
 				BaseId activityId = newActivityRef.getObjectId();
 
 				String activityIdListAsString = safeGetTag(strategy, TAG_ACTIVITY_IDS);
