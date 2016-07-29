@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-28 05:21-0700\n"
+"POT-Creation-Date: 2016-07-29 03:06-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -1391,6 +1391,14 @@ msgstr "Арга хэмжээ|Санхүүгийн"
 msgid "Action|Hide Activity on this page"
 msgstr "Арга хэмжээ|Хуудас дахь үйл ажиллагааг нуух"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionHideAllResourceAssignmentRows.java:35
+msgid "Action|Hide All Assignments"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionHideAllExpenseAssignmentRows.java:35
+msgid "Action|Hide All Expenses"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionHideCellRatings.java:34
 msgid "Action|Hide Ratings in Cell"
 msgstr "Арга хэмжээ|Үүрэн дэх үнэлгээг нуухl"
@@ -1831,6 +1839,14 @@ msgstr "Арга хэмжээ|Хүчин зүйлийн хэлхээг сонг�
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShowActivityBubble.java:34
 msgid "Action|Show Activity on this page"
 msgstr "Арга хэмжээ|Хуудас дахь үйл ажиллагааг харуулах"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShowAllResourceAssignmentRows.java:35
+msgid "Action|Show All Assignments"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShowAllExpenseAssignmentRows.java:35
+msgid "Action|Show All Expenses"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShowConceptualModel.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShowConceptualModel.java:41
@@ -7490,6 +7506,14 @@ msgstr "TT|Мастерийн (Wizard) дараагийн үе шат руу о�
 msgid "TT|Go to the Previous wizard step"
 msgstr "TT|Мастерийн(Wizard) Өмнөх үе шат руу очих"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionHideAllResourceAssignmentRows.java:41
+msgid "TT|Hide All Assignment Rows"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionHideAllExpenseAssignmentRows.java:41
+msgid "TT|Hide All Expense Rows"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionConfigureLayers.java:40
 msgid "TT|Hide or show portions of the diagram"
 msgstr "TT|Диаграммын хэсгүүдийг нуух эсвэл харуулах"
@@ -7698,6 +7722,14 @@ msgstr "TT|Диаграмм буюу хүснэгтийн дээд хэсгий�
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionSelectChain.java:40
 msgid "TT|Select the entire chain related to this Direct Threat"
 msgstr "TT|Энэ шууд аюул заналтай холбоотой гинжин холбоог бүхэлд нь сонгох"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShowAllResourceAssignmentRows.java:41
+msgid "TT|Show All Assignment Rows"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShowAllExpenseAssignmentRows.java:41
+msgid "TT|Show All Expense Rows"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDiagramProperties.java:40
 msgid "TT|Show the diagram properties"

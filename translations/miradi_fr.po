@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-07-28 05:21-0700\n"
+"POT-Creation-Date: 2016-07-29 03:06-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/miradi-client/"
@@ -1448,6 +1448,14 @@ msgstr "Financier"
 msgid "Action|Hide Activity on this page"
 msgstr "Masquer l'activité dans cette page"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionHideAllResourceAssignmentRows.java:35
+msgid "Action|Hide All Assignments"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionHideAllExpenseAssignmentRows.java:35
+msgid "Action|Hide All Expenses"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionHideCellRatings.java:34
 msgid "Action|Hide Ratings in Cell"
 msgstr "Masquer les classements dans la cellule"
@@ -1888,6 +1896,14 @@ msgstr "Sélectionner une Chaîne de facteurs"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShowActivityBubble.java:34
 msgid "Action|Show Activity on this page"
 msgstr "Afficher l'Activité dans cette page"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShowAllResourceAssignmentRows.java:35
+msgid "Action|Show All Assignments"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShowAllExpenseAssignmentRows.java:35
+msgid "Action|Show All Expenses"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShowConceptualModel.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShowConceptualModel.java:41
@@ -7654,6 +7670,14 @@ msgstr "Aller à l'Étape suivante de l'assistant"
 msgid "TT|Go to the Previous wizard step"
 msgstr "Aller à l'Étape précédente de l'assistant"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionHideAllResourceAssignmentRows.java:41
+msgid "TT|Hide All Assignment Rows"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionHideAllExpenseAssignmentRows.java:41
+msgid "TT|Hide All Expense Rows"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionConfigureLayers.java:40
 msgid "TT|Hide or show portions of the diagram"
 msgstr "Masquer ou afficher des parties du diagramme"
@@ -7867,6 +7891,14 @@ msgstr "Enregistrer le diagramme ou la zone du tableau supérieur en image PNG"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionSelectChain.java:40
 msgid "TT|Select the entire chain related to this Direct Threat"
 msgstr "Sélectionner tout la chaîne liée à cette menace directe"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShowAllResourceAssignmentRows.java:41
+msgid "TT|Show All Assignment Rows"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionShowAllExpenseAssignmentRows.java:41
+msgid "TT|Show All Expense Rows"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDiagramProperties.java:40
 msgid "TT|Show the diagram properties"
