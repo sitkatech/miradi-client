@@ -121,9 +121,14 @@ public abstract class AbstractWorkPlanRowColumnProvider extends AbstractPlanning
 
 	protected TableSettings getWorkPlanTableSettings() throws Exception
 	{
-		return TableSettings.findOrCreate(getProject(), WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
+		return getWorkPlanTableSettings(getProject());
 	}
 	
+	public static TableSettings getWorkPlanTableSettings(Project project) throws Exception
+	{
+		return TableSettings.findOrCreate(project, WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
+	}
+
 	@Override
 	public String getWorkPlanBudgetMode() throws Exception
 	{

@@ -82,6 +82,11 @@ public class WorkPlanningTreeTableWithVisibleRootNode extends PlanningTreeTableW
 		actions.add(getActions().get(ActionExpandAllRows.class));
 		actions.add(getActions().get(ActionCollapseAllRows.class));
 		actions.add(null);
+		actions.add(getActions().get(ActionShowAllResourceAssignmentRows.class));
+		actions.add(getActions().get(ActionHideAllResourceAssignmentRows.class));
+		actions.add(getActions().get(ActionShowAllExpenseAssignmentRows.class));
+		actions.add(getActions().get(ActionHideAllExpenseAssignmentRows.class));
+		actions.add(null);
 
 		return actions;
 	}

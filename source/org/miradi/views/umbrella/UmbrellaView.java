@@ -67,6 +67,10 @@ import org.miradi.views.diagram.doers.CreateProgressReportDoer;
 import org.miradi.views.diagram.doers.DeleteProgressReportDoer;
 import org.miradi.views.diagram.doers.EditEstimatedResourceDoer;
 import org.miradi.views.umbrella.doers.*;
+import org.miradi.views.workplan.doers.HideAllExpenseAssignmentsDoer;
+import org.miradi.views.workplan.doers.HideAllResourceAssignmentsDoer;
+import org.miradi.views.workplan.doers.ShowAllExpenseAssignmentsDoer;
+import org.miradi.views.workplan.doers.ShowAllResourceAssignmentsDoer;
 import org.miradi.wizard.SkeletonWizardStep;
 
 abstract public class UmbrellaView extends JPanel implements CommandExecutedListener
@@ -302,7 +306,12 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		
 		addDoerToMap(ActionWizardNext.class, new WizardNextDoer());
 		addDoerToMap(ActionWizardPrevious.class, new WizardPreviousDoer());
-		
+
+		addDoerToMap(ActionShowAllResourceAssignmentRows.class, new ShowAllResourceAssignmentsDoer());
+		addDoerToMap(ActionHideAllResourceAssignmentRows.class, new HideAllResourceAssignmentsDoer());
+		addDoerToMap(ActionShowAllExpenseAssignmentRows.class, new ShowAllExpenseAssignmentsDoer());
+		addDoerToMap(ActionHideAllExpenseAssignmentRows.class, new HideAllExpenseAssignmentsDoer());
+
 		addJumpDoerToMap(ActionJumpSummaryWizardDefineTeamMembers.class);
 		addJumpDoerToMap(ActionJumpSummaryWizardDefineProjectLeader.class);
 		addJumpDoerToMap(ActionJumpSummaryWizardRolesAndResponsibilities.class);

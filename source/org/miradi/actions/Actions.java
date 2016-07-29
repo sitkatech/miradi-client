@@ -455,6 +455,11 @@ public class Actions
 		registerAction(new ActionExpandAllRows(mainWindow));
 		registerAction(new ActionCollapseAllRows(mainWindow));
 		registerAction(new ActionCreateFutureStatus(mainWindow));
+
+		registerAction(new ActionShowAllResourceAssignmentRows(mainWindow));
+		registerAction(new ActionHideAllResourceAssignmentRows(mainWindow));
+		registerAction(new ActionShowAllExpenseAssignmentRows(mainWindow));
+		registerAction(new ActionHideAllExpenseAssignmentRows(mainWindow));
 	}
 	
 	public MiradiAction get(Class c)

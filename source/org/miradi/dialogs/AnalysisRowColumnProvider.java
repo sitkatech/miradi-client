@@ -21,8 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs;
 
 import org.miradi.dialogs.planning.AbstractBudgetCategoryRowColumnProvider;
+import org.miradi.dialogs.planning.AbstractWorkPlanRowColumnProvider;
 import org.miradi.dialogs.planning.WorkPlanCategoryTreeRowColumnProvider;
-import org.miradi.dialogs.planning.upperPanel.WorkPlanTreeTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objects.TableSettings;
@@ -73,7 +73,7 @@ public class AnalysisRowColumnProvider extends AbstractBudgetCategoryRowColumnPr
 	
 	private TableSettings getWorkPlanTableSettings() throws Exception
 	{
-		return TableSettings.findOrCreate(getProject(), WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
+		return AbstractWorkPlanRowColumnProvider.getWorkPlanTableSettings(getProject());
 	}
 
 	@Override

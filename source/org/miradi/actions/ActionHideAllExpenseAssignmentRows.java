@@ -17,36 +17,27 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
+package org.miradi.actions;
 
-package org.miradi.objecthelpers;
+import org.miradi.icons.IconManager;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-import org.miradi.objecthelpers.AbstractStringToStringMap;
-import org.miradi.objecthelpers.CodeToCodeListMap;
-import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.TestAbstractStringMap;
-
-public class TestCodeToCodeListMap extends TestAbstractStringMap
+public class ActionHideAllExpenseAssignmentRows extends ObjectsAction
 {
-	public TestCodeToCodeListMap(String name)
+	public ActionHideAllExpenseAssignmentRows(MainWindow mainWindow)
 	{
-		super(name);
+		super(mainWindow, getLabel(), IconManager.getCollapseAllIcon());
 	}
 
-	@Override
-	protected AbstractStringToStringMap createAbstractMap()
+	private static String getLabel()
 	{
-		return new CodeToCodeListMap();
-	}
-
-	@Override
-	protected AbstractStringToStringMap createAbstractMap(EnhancedJsonObject json)
-	{
-		return new CodeToCodeListMap(json);
+		return EAM.text("Action|Hide All Expenses");
 	}
 	
-	public void testToString() throws Exception
+	@Override
+	public String getToolTipText()
 	{
-		CodeToCodeListMap list = (CodeToCodeListMap) createMapWithSampleData();
-		assertEquals("Can't round trip?", list, new CodeToCodeListMap(list));
+		return EAM.text("TT|Hide All Expense Rows");
 	}
 }

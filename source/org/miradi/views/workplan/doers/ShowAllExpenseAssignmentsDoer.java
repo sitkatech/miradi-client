@@ -17,36 +17,16 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
+package org.miradi.views.workplan.doers;
 
-package org.miradi.objecthelpers;
 
-import org.miradi.objecthelpers.AbstractStringToStringMap;
-import org.miradi.objecthelpers.CodeToCodeListMap;
-import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.TestAbstractStringMap;
+import org.miradi.questions.WorkPlanRowConfigurationQuestion;
 
-public class TestCodeToCodeListMap extends TestAbstractStringMap
+public class ShowAllExpenseAssignmentsDoer extends AbstractShowAllAssignmentsDoer
 {
-	public TestCodeToCodeListMap(String name)
-	{
-		super(name);
-	}
-
 	@Override
-	protected AbstractStringToStringMap createAbstractMap()
+	String getRowCode()
 	{
-		return new CodeToCodeListMap();
-	}
-
-	@Override
-	protected AbstractStringToStringMap createAbstractMap(EnhancedJsonObject json)
-	{
-		return new CodeToCodeListMap(json);
-	}
-	
-	public void testToString() throws Exception
-	{
-		CodeToCodeListMap list = (CodeToCodeListMap) createMapWithSampleData();
-		assertEquals("Can't round trip?", list, new CodeToCodeListMap(list));
+		return WorkPlanRowConfigurationQuestion.EXPENSE_ASSIGNMENT;
 	}
 }
