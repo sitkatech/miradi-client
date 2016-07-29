@@ -29,8 +29,10 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
+import org.miradi.views.umbrella.UmbrellaView;
 
 import javax.swing.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.Vector;
@@ -82,13 +84,18 @@ public class WorkPlanningTreeTableWithVisibleRootNode extends PlanningTreeTableW
 		actions.add(getActions().get(ActionExpandAllRows.class));
 		actions.add(getActions().get(ActionCollapseAllRows.class));
 		actions.add(null);
-		actions.add(getActions().get(ActionShowAllResourceAssignmentRows.class));
-		actions.add(getActions().get(ActionHideAllResourceAssignmentRows.class));
-		actions.add(getActions().get(ActionShowAllExpenseAssignmentRows.class));
-		actions.add(getActions().get(ActionHideAllExpenseAssignmentRows.class));
-		actions.add(null);
+		actions.addAll(getActionsForAssignments());
 
 		return actions;
+	}
+
+	protected ArrayList<Action> getActionsForAssignments()
+	{
+		UmbrellaView currentView = getMainWindow().getCurrentView();
+		if(currentView == null)
+			return new ArrayList<Action>();
+
+		return WorkPlanUpperMultiTable.getActionsForAssignments(currentView);
 	}
 
 	private Actions getActions()

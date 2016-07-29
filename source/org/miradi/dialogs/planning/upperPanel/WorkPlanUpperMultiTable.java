@@ -27,6 +27,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
 import org.miradi.objects.Task;
+import org.miradi.views.umbrella.UmbrellaView;
 
 import javax.swing.*;
 import javax.swing.table.TableCellRenderer;
@@ -62,6 +63,33 @@ public class WorkPlanUpperMultiTable extends PlanningUpperMultiTable
 	protected ArrayList<Action> getActionsForBaseObject(BaseObject baseObject, Actions availableActions)
 	{
 		return getWorkPlanActionsForBaseObject(baseObject, availableActions);
+	}
+
+	@Override
+	protected ArrayList<Action> getActionsForAssignments()
+	{
+		UmbrellaView currentView = getMainWindow().getCurrentView();
+		if(currentView == null)
+			return new ArrayList<Action>();
+
+		return getActionsForAssignments(currentView);
+	}
+
+	public static ArrayList<Action> getActionsForAssignments(UmbrellaView currentView)
+	{
+		ArrayList<Action> actions = new ArrayList<Action>();
+
+		if(currentView == null)
+			return actions;
+
+		currentView.addActionToListIfDoerAvailable(actions, ActionShowAllResourceAssignmentRows.class);
+		currentView.addActionToListIfDoerAvailable(actions, ActionHideAllResourceAssignmentRows.class);
+		currentView.addActionToListIfDoerAvailable(actions, ActionShowAllExpenseAssignmentRows.class);
+		currentView.addActionToListIfDoerAvailable(actions, ActionHideAllExpenseAssignmentRows.class);
+
+		actions.add(null);
+
+		return actions;
 	}
 
 	public static ArrayList<Action> getWorkPlanActionsForBaseObject(BaseObject baseObject, Actions availableActions)

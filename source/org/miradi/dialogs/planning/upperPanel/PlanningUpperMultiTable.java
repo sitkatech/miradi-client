@@ -194,11 +194,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		actions.add(getActions().get(ActionExpandAllRows.class));
 		actions.add(getActions().get(ActionCollapseAllRows.class));
 		actions.add(null);
-		actions.add(getActions().get(ActionShowAllResourceAssignmentRows.class));
-		actions.add(getActions().get(ActionHideAllResourceAssignmentRows.class));
-		actions.add(getActions().get(ActionShowAllExpenseAssignmentRows.class));
-		actions.add(getActions().get(ActionHideAllExpenseAssignmentRows.class));
-		actions.add(null);
+		actions.addAll(getActionsForAssignments());
 		if(model.isColumnExpandable(modelColumn))
 			actions.add(new MultiTableExpandColumnAction(this));
 		if(model.isColumnCollapsible(modelColumn))
@@ -209,6 +205,11 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	}
 
 	protected ArrayList<Action> getActionsForBaseObject(BaseObject baseObject, Actions availableActions)
+	{
+		return new ArrayList<Action>();
+	}
+
+	protected ArrayList<Action> getActionsForAssignments()
 	{
 		return new ArrayList<Action>();
 	}

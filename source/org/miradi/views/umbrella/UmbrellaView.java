@@ -22,11 +22,10 @@ package org.miradi.views.umbrella;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.image.BufferedImage;
+import java.util.ArrayList;
 import java.util.HashMap;
 
-import javax.swing.JComponent;
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import javax.swing.border.LineBorder;
 
 import org.martus.swing.UiLabel;
@@ -480,7 +479,14 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		}
 		activePropertiesDlg = null;
 	}
-	
+
+	public void addActionToListIfDoerAvailable(ArrayList<Action> actions, Class actionClass)
+	{
+		Doer actionDoer = getDoer(actionClass);
+		if (actionDoer.isAvailable())
+			actions.add(getActions().get(actionClass));
+	}
+
 	protected void forceLayoutSoSplittersWork()
 	{
 		getTopLevelAncestor().validate();
