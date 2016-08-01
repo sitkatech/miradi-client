@@ -64,7 +64,7 @@ public class TaxonomyHelper implements Xmpz2XmlConstants
 		for(ORef miradiShareTaxonomyRef : miradiShareTaxonomyRefs)
 		{
 			MiradiShareTaxonomy miradiShareTaxonomy = MiradiShareTaxonomy.find(projectToUse, miradiShareTaxonomyRef);
-			final String thisTaxonomyCode = miradiShareTaxonomy.getData(MiradiShareTaxonomySchema.TAG_TAXONOMY_CODE);
+			final String thisTaxonomyCode = miradiShareTaxonomy.getTaxonomyCode();
 			if (thisTaxonomyCode.equals(taxonomyCode))
 				return miradiShareTaxonomy;
 		}

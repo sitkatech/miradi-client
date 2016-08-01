@@ -78,7 +78,7 @@ public class TaxonomyFieldsPanel extends MiradiPanel
 		for(AbstractTaxonomyAssociation taxonomyAssociation : sortedTaxonomyAssociationsForType)
 		{
 			MiradiShareTaxonomy miradiShareTaxonomy = TaxonomyHelper.getTaxonomyElementList(taxonomyAssociation);
-			final MiradiShareTaxonomyQuestion miradiShareTaxonomyQuestion = new MiradiShareTaxonomyQuestion(miradiShareTaxonomy, taxonomyAssociation);
+			final MiradiShareTaxonomyQuestion miradiShareTaxonomyQuestion = getProject().getMiradiShareTaxonomyQuestionCache().getMiradiShareTaxonomyQuestion(miradiShareTaxonomy, taxonomyAssociation);
 			final String taxonomyAssociationCode = taxonomyAssociation.getTaxonomyAssociationCode();
 			
 			TaxonomyReadonlyPanelWithPopupEditorProvider provider = new TaxonomyReadonlyPanelWithPopupEditorProvider(getProject(), refToUse, miradiShareTaxonomyQuestion, taxonomyAssociationCode, tag, taxonomyAssociation);

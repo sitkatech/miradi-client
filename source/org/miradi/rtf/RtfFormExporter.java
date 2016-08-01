@@ -19,47 +19,28 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf;
 
-import java.awt.image.BufferedImage;
-import java.util.Collections;
-import java.util.Vector;
-
-import org.miradi.forms.FieldPanelSpec;
-import org.miradi.forms.FieldRelatedFormItem;
-import org.miradi.forms.FormConstant;
-import org.miradi.forms.FormCurrencyFieldData;
-import org.miradi.forms.FormFieldData;
-import org.miradi.forms.FormFieldLabel;
-import org.miradi.forms.FormFieldMultipleTaxonomyWithEditButtonFields;
-import org.miradi.forms.FormFieldQuestionData;
-import org.miradi.forms.FormImage;
-import org.miradi.forms.FormItem;
-import org.miradi.forms.FormRow;
-import org.miradi.forms.PropertiesPanelSpec;
+import org.miradi.forms.*;
 import org.miradi.forms.objects.FormFieldCodeListData;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.AccountingClassificationMapData;
 import org.miradi.objectdata.CodeToUserStringMapData;
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objectdata.TaxonomyClassificationMapData;
-import org.miradi.objecthelpers.CodeToUserStringMap;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.TaxonomyClassificationMap;
-import org.miradi.objecthelpers.TaxonomyHelper;
+import org.miradi.objecthelpers.*;
 import org.miradi.objectpools.AbstractTaxonomyAssociationPool;
 import org.miradi.objects.AbstractTaxonomyAssociation;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.MiradiShareTaxonomy;
 import org.miradi.project.CurrencyFormat;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.MiradiShareTaxonomyQuestion;
-import org.miradi.questions.StaticQuestionManager;
-import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.*;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.StringUtilities;
+
+import java.awt.image.BufferedImage;
+import java.util.Collections;
+import java.util.Vector;
 
 public class RtfFormExporter
 {
@@ -237,7 +218,7 @@ public class RtfFormExporter
 		{
 			AbstractTaxonomyAssociation taxonomyAssociation = taxonomyAssociationsForType.get(index);
 			MiradiShareTaxonomy miradiShareTaxonomy = TaxonomyHelper.getTaxonomyElementList(taxonomyAssociation);
-			final MiradiShareTaxonomyQuestion miradiShareTaxonomyQuestion = new MiradiShareTaxonomyQuestion(miradiShareTaxonomy, taxonomyAssociation);
+			final MiradiShareTaxonomyQuestion miradiShareTaxonomyQuestion = getProject().getMiradiShareTaxonomyQuestionCache().getMiradiShareTaxonomyQuestion(miradiShareTaxonomy, taxonomyAssociation);
 			String choicesAsString = createLabelFromTaxonomyChoices(map, taxonomyAssociation, miradiShareTaxonomyQuestion);
 			String prefixWhiteSpace = "";
 			if (index > 0)

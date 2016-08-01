@@ -66,6 +66,7 @@ public class Project implements ProjectInterface
 		timePeriodCostsMapsCache = new TimePeriodCostsMapsCache(this);
 		relevantDesiresCache = new RelevantDesiresCache(this);
 		relevantIndicatorsCache = new RelevantIndicatorsCache(this);
+		miradiShareTaxonomyQuestionCache = new MiradiShareTaxonomyQuestionCache(this);
 
 		clear();
 
@@ -93,6 +94,7 @@ public class Project implements ProjectInterface
 		timePeriodCostsMapsCache.clear();
 		relevantDesiresCache.clear();
 		relevantIndicatorsCache.clear();
+		miradiShareTaxonomyQuestionCache.clear();
 		projectCalendar.clear();
 
 		quarantine = new StringBuilder();
@@ -488,6 +490,11 @@ public class Project implements ProjectInterface
 		return relevantIndicatorsCache;
 	}
 
+	public MiradiShareTaxonomyQuestionCache getMiradiShareTaxonomyQuestionCache()
+	{
+		return miradiShareTaxonomyQuestionCache;
+	}
+
 	public BaseObject findObject(ORef ref)
 	{
 		return objectManager.findObject(ref);
@@ -843,6 +850,7 @@ public class Project implements ProjectInterface
 		timePeriodCostsMapsCache.enable();
 		relevantDesiresCache.enable();
 		relevantIndicatorsCache.enable();
+		miradiShareTaxonomyQuestionCache.enable();
 		projectCalendar.enable();
 	}
 
@@ -975,6 +983,7 @@ public class Project implements ProjectInterface
 		timePeriodCostsMapsCache.disable();
 		relevantDesiresCache.disable();
 		relevantIndicatorsCache.disable();
+		miradiShareTaxonomyQuestionCache.disable();
 		projectCalendar.disable();
 	}
 
@@ -1441,6 +1450,7 @@ public class Project implements ProjectInterface
 	private TimePeriodCostsMapsCache timePeriodCostsMapsCache;
 	private RelevantDesiresCache relevantDesiresCache;
 	private RelevantIndicatorsCache relevantIndicatorsCache;
+	private MiradiShareTaxonomyQuestionCache miradiShareTaxonomyQuestionCache;
 
 	// FIXME low: This should go away, but it's difficult
 	private String currentViewName;

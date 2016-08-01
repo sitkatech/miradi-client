@@ -68,7 +68,12 @@ public class MiradiShareTaxonomy extends BaseObject
 		
 		return null;
 	}
-	
+
+	public String getTaxonomyCode()
+	{
+		return this.getData(MiradiShareTaxonomySchema.TAG_TAXONOMY_CODE);
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
