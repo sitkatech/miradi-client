@@ -20,18 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.tablerenderers.ExpandingReadonlyTableCellEditorOrRendererFactory;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+
+import static org.miradi.main.Miradi.isWindows;
 
 abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 {
@@ -77,6 +78,10 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 	{
 		currentSelectionText = new EditableHtmlPane(getMainWindow());
 		currentSelectionText.setEditable(false);
+
+		// MRD-6036 - force margin to 0 on windows
+		if (isWindows())
+			currentSelectionText.setMargin(new Insets(0, 0, 0, 0));
 
 		popupInvokeButton = new PopupEditorButton();
 	}
