@@ -19,16 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
-import java.awt.Cursor;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-
-import javax.swing.JTable;
-
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
@@ -37,12 +27,20 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+
+import static org.miradi.main.Miradi.isWindows;
+
 public class TableRowHeightManager implements MouseListener, MouseMotionListener
 {
 	public TableRowHeightManager(Project projectToUse, int defaultRowHeightToUse)
 	{
 		project = projectToUse;
-		defaultRowHeight = defaultRowHeightToUse;
+		defaultRowHeight = getAdjustedDefaultRowHeightForWindows(defaultRowHeightToUse);
 	}
 	
 	public void manage(MainWindow mainWindowToUse, TableWithRowHeightManagement tableToManage, String uniqueTableIdentifierToUse)
@@ -281,7 +279,16 @@ public class TableRowHeightManager implements MouseListener, MouseMotionListener
 		table.setCursor(oldCursor);
 		oldCursor = null;
 	}
-	
+
+	private int getAdjustedDefaultRowHeightForWindows(int defaultRowHeightToUse)
+	{
+		// re BasicTableUI.installDefaults default rowHeight for Windows is incorrect
+		if (isWindows() && defaultRowHeightToUse < WINDOWS_DEFAULT_ROW_HEIGHT)
+			return WINDOWS_DEFAULT_ROW_HEIGHT;
+
+		return defaultRowHeightToUse;
+	}
+
 	private Project getProject()
 	{
 		return project;
@@ -293,6 +300,7 @@ public class TableRowHeightManager implements MouseListener, MouseMotionListener
 	}
 	
     public final static int ROW_RESIZE_MARGIN = 2;
+    private final static int WINDOWS_DEFAULT_ROW_HEIGHT = 19;
 
     private Project project;
     private int defaultRowHeight;
