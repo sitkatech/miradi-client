@@ -626,7 +626,10 @@ public class Project implements ProjectInterface
 		createOrOpenWithDefaultObjects(projectFileToUse, progressMeter);
 		
 		if (!didProjectAlreadyExist)
+		{
 			createDefaultHelpTextBoxDiagramFactor();
+			turnOnBudgetRelatedColumnsAndRowsInWorkPlan();
+		}
 	}
 
 	public void createOrOpenWithDefaultObjects(File projectFileToUse, ProgressInterface progressMeter) throws Exception
@@ -665,9 +668,6 @@ public class Project implements ProjectInterface
 
 	private void turnOnBudgetRelatedColumnsAndRowsInWorkPlan() throws Exception
 	{
-		if (TableSettings.exists(this, WorkPlanTreeTablePanel.getTabSpecificModelIdentifier()))
-			return;
-		
 		TableSettings newTableSettings = TableSettings.findOrCreate(this, WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
 		CodeToCodeListMap newTableSettingsMap = new CodeToCodeListMap();
 
@@ -857,8 +857,6 @@ public class Project implements ProjectInterface
 	protected void applyDefaultBehavior() throws Exception
 	{
 		selectDefaultPlanningCustomization();
-		turnOnBudgetRelatedColumnsAndRowsInWorkPlan();
-
 		ensureAllConceptualModelPagesHaveLabels();
 		ensureAllDiagramFactorsAreVisible();
 		setDefaultDiagramPage(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
