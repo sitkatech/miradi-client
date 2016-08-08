@@ -34,6 +34,9 @@ public abstract class AbstractShowHideAllAssignmentsDoer extends ViewDoer
 	{
 		try
 		{
+			if (!getProject().isOpen())
+				return false;
+
 			TableSettings tableSettings = getWorkPlanTableSettings();
 			CodeList rowCodes = tableSettings.getCodeListFromTableSettingsMap(TableSettings.WORK_PLAN_ROW_CONFIGURATION_CODELIST_KEY);
 			return rowCodes.contains(getRowCode());

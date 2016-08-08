@@ -114,8 +114,9 @@ public class TimePeriodCostsMapsCache implements CommandExecutedListener
 
 		try
 		{
-			TableSettings tableSettings = TableSettings.findOrCreate(getProject(), WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
-			workPlanBudgetMode = tableSettings.getData(TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE);
+			TableSettings tableSettings = TableSettings.find(getProject(), WorkPlanTreeTablePanel.getTabSpecificModelIdentifier());
+			if (tableSettings != null)
+				workPlanBudgetMode = tableSettings.getData(TableSettings.TAG_WORK_PLAN_VISIBLE_NODES_CODE);
 		}
 		catch (Exception e)
 		{
