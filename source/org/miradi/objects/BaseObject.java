@@ -19,11 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import java.awt.Dimension;
-import java.awt.Point;
-import java.text.ParseException;
-import java.util.*;
-
 import org.martus.util.MultiCalendar;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
@@ -31,39 +26,22 @@ import org.miradi.diagram.ChainWalker;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objectdata.BaseIdData;
-import org.miradi.objectdata.BooleanData;
-import org.miradi.objectdata.ChoiceData;
-import org.miradi.objectdata.CodeListData;
-import org.miradi.objectdata.CodeToChoiceMapData;
-import org.miradi.objectdata.CodeToCodeListMapData;
-import org.miradi.objectdata.CodeToCodeMapData;
-import org.miradi.objectdata.CodeToUserStringMapData;
-import org.miradi.objectdata.DateData;
-import org.miradi.objectdata.DateUnitListData;
-import org.miradi.objectdata.DiagramPointData;
-import org.miradi.objectdata.DimensionData;
-import org.miradi.objectdata.FloatData;
-import org.miradi.objectdata.IdListData;
-import org.miradi.objectdata.IntegerData;
-import org.miradi.objectdata.NumberData;
-import org.miradi.objectdata.ORefData;
-import org.miradi.objectdata.ObjectData;
-import org.miradi.objectdata.PointListData;
-import org.miradi.objectdata.RefListData;
-import org.miradi.objectdata.RefListListData;
-import org.miradi.objectdata.RelevancyOverrideSetData;
-import org.miradi.objectdata.StringData;
-import org.miradi.objectdata.StringRefMapData;
-import org.miradi.objectdata.TagListData;
+import org.miradi.objectdata.*;
 import org.miradi.objecthelpers.*;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectTotalCalculatorStrategy;
-import org.miradi.questions.*;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.StaticQuestionManager;
+import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.schemas.*;
 import org.miradi.utils.*;
 import org.miradi.utils.OptionalDouble;
+
+import java.awt.*;
+import java.text.ParseException;
+import java.util.*;
 
 abstract public class BaseObject
 {
@@ -1269,15 +1247,17 @@ abstract public class BaseObject
 		return HtmlUtilities.createHtmlBulletList(labels);
 	}
 
-	public String combineShortLabelAndLabel(String shortLabel, String Longlabel)
+	public String combineShortLabelAndLabel(String shortLabel, String longLabel)
 	{
+		String cleanedLongLabel = HtmlUtilities.replaceHtmlTags(longLabel, HtmlUtilities.DIV_TAG_NAME, "");
+
 		if (shortLabel.length() <= 0)
-			return Longlabel;
+			return cleanedLongLabel;
 		
-		if (Longlabel.length() <= 0)
+		if (longLabel.length() <= 0)
 			return shortLabel;
-		
-		return shortLabel + ". " + Longlabel;
+
+		return shortLabel + ". " + cleanedLongLabel;
 	}
 	
 	public String combineShortLabelAndLabel()

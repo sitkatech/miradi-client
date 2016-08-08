@@ -19,11 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
-import java.awt.Color;
-import java.io.InputStream;
-import java.util.Collections;
-import java.util.Vector;
-import java.util.regex.Pattern;
+import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
+import org.miradi.main.AppPreferences;
+import org.miradi.main.EAM;
+import org.w3c.dom.*;
+import org.w3c.tidy.Tidy;
+import org.xml.sax.InputSource;
 
 import javax.swing.text.html.StyleSheet;
 import javax.xml.parsers.DocumentBuilder;
@@ -33,17 +34,11 @@ import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
-
-import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
-import org.miradi.main.AppPreferences;
-import org.miradi.main.EAM;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
-import org.w3c.tidy.Tidy;
-import org.xml.sax.InputSource;
+import java.awt.*;
+import java.io.InputStream;
+import java.util.Collections;
+import java.util.Vector;
+import java.util.regex.Pattern;
 
 public class HtmlUtilities
 {
@@ -521,7 +516,7 @@ public class HtmlUtilities
 	public static final String UL_END_TAG = "</ul>";
 	public static final String LI_START_TAG = "<li>";
 	public static final String LI_END_TAG = "</li>";
-	private static final String DIV_TAG_NAME = "div";
+	public static final String DIV_TAG_NAME = "div";
 	private static final String DIV_START_TAG = "<div>";
 	private static final String DIV_END_TAG = "</div>";
 	private static final String DIV_EMPTY_TAG = "<div/>";
