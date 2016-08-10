@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-02 12:21-0700\n"
+"POT-Creation-Date: 2016-08-10 07:06-0700\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -270,6 +270,7 @@ msgid "%s Objs"
 msgstr "%s Objs"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:109
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo38.java:148
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo7.java:126
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo24.java:108
 msgid "%s field data will be lost"
@@ -283,7 +284,7 @@ msgstr "%s field data will be lost for measurement"
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:161
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:157
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
 msgid "(%s)"
 msgstr "(%s)"
@@ -4422,7 +4423,7 @@ msgstr "Import..."
 msgid "Importing MPZ"
 msgstr "Importing MPZ"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:85
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:78
 msgid "Importing XML..."
 msgstr "Importing XML..."
 
@@ -4926,7 +4927,7 @@ msgstr "Leader/Manager"
 msgid "Leaf Only"
 msgstr "Leaf Only"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:70
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:83
 msgid "Learn about Miradi Share"
 msgstr "Learn about Miradi Share"
 
@@ -5417,7 +5418,7 @@ msgstr "Miradi Preferences"
 msgid "Miradi Share"
 msgstr "Miradi Share"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:71
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:84
 msgid "Miradi Share Program"
 msgstr "Miradi Share Program"
 
@@ -6144,6 +6145,7 @@ msgstr "Progress"
 msgid "Progress Percents"
 msgstr "Progress Percents"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:65
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:166
 msgid "Progress Report"
 msgstr "Progress Report"
@@ -6153,7 +6155,7 @@ msgid "Progress Reports"
 msgstr "Progress Reports"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:245
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:118
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryProjectTabPanel.java:84
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
 msgid "Project"
@@ -7021,6 +7023,7 @@ msgstr "Strong Decrease"
 msgid "Strong Increase"
 msgstr "Strong Increase"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:131
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:143
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:69
@@ -8373,6 +8376,10 @@ msgstr ""
 msgid "This migration adds Progress Reports to Result Chain Diagrams."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo38.java:88
+msgid "This migration adds Progress Reports to the Project Summary."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:72
 msgid ""
 "This migration adds a new day columns visibility field to the Project "
@@ -9499,7 +9506,7 @@ msgstr "Work plan data currently exists for %startDate - %endDate"
 msgid "Work plan overview"
 msgstr "Work plan overview"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryView.java:175
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryView.java:169
 msgid "Work plan start date is before project start date"
 msgstr "Work plan start date is before project start date"
 
@@ -10230,6 +10237,18 @@ msgstr ""
 msgid "FieldLabel|11.WorkUnitRateDescription|Work Unit Rate Description"
 msgstr ""
 
+msgid "FieldLabel|11.ProgressReportRefs|Project Progress Reports"
+msgstr ""
+
+msgid "FieldLabel|11.PseudoLatestProgressReportDate|Date"
+msgstr ""
+
+msgid "FieldLabel|11.PseudoLatestProgressReportCode|Status"
+msgstr ""
+
+msgid "FieldLabel|11.PseudoLatestProgressReportDetails|Progress Report Details"
+msgstr ""
+
 msgid "FieldLabel|12.ShortLabel|ID"
 msgstr "FieldLabel|12.ShortLabel|ID"
 
@@ -10304,6 +10323,9 @@ msgstr "FieldLabel|12.IndicatorMetaColumnTag|Future Status"
 
 msgid "FieldLabel|12.MeasurementMetaColumnTag|Current Status"
 msgstr "FieldLabel|12.MeasurementMetaColumnTag|Current Status"
+
+msgid "FieldLabel|12.PseudoLatestProgressReportDate|Date"
+msgstr ""
 
 msgid "FieldLabel|12.PseudoLatestProgressReportCode|Progress"
 msgstr "FieldLabel|12.PseudoLatestProgressReportCode|Progress"
