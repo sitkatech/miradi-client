@@ -31,10 +31,7 @@ import org.miradi.objecthelpers.*;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectTotalCalculatorStrategy;
-import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.StaticQuestionManager;
-import org.miradi.questions.TaglessChoiceItem;
+import org.miradi.questions.*;
 import org.miradi.schemas.*;
 import org.miradi.utils.*;
 import org.miradi.utils.OptionalDouble;
@@ -1431,9 +1428,12 @@ abstract public class BaseObject
 		if (fieldTag.equals(PSEUDO_TAG_ASSIGNED_WHEN_TOTAL))
 			return getAssignedWhenRollupAsString();
 
-		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE))
 			return getLatestProgressReportDate();
 		
+		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+			return getLatestProgressReportStatusCode();
+
 		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS))
 			return getLatestProgressReportDetails();
 		
@@ -1446,12 +1446,21 @@ abstract public class BaseObject
 		return getData(fieldTag);
 	}
 	
-	public String  getLatestProgressReportDate()
+	public String getLatestProgressReportDate()
 	{
 		ProgressReport progressReport = getLatestProgressReport();
 		if (progressReport == null)
 			return "";
 		
+		return progressReport.getDateAsString();
+	}
+
+	public String getLatestProgressReportStatusCode()
+	{
+		ProgressReport progressReport = getLatestProgressReport();
+		if (progressReport == null)
+			return "";
+
 		return progressReport.getProgressStatusChoice().getCode();
 	}
 
@@ -1568,6 +1577,7 @@ abstract public class BaseObject
 
 	public final static String PSEUDO_TAG_TIMEFRAME_TOTAL = "TimeframeDatesTotal";
 	public final static String PSEUDO_TAG_ASSIGNED_WHEN_TOTAL = "AssignedEffortDatesTotal";
+	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE = "PseudoLatestProgressReportDate";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS = "PseudoLatestProgressReportDetails";
 

@@ -19,15 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import java.awt.Color;
-
-import javax.swing.Icon;
-import javax.swing.JComponent;
-import javax.swing.border.Border;
-import javax.swing.border.CompoundBorder;
-import javax.swing.border.EmptyBorder;
-import javax.swing.border.LineBorder;
-
 import org.martus.swing.UiLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.RatingIcon;
@@ -37,6 +28,13 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
+import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.CompoundBorder;
+import javax.swing.border.EmptyBorder;
+import javax.swing.border.LineBorder;
+import java.awt.*;
+
 public class ObjectReadonlyChoiceField extends ObjectDataInputField
 {
 	public ObjectReadonlyChoiceField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse)
@@ -44,7 +42,7 @@ public class ObjectReadonlyChoiceField extends ObjectDataInputField
 		super(projectToUse, refToUse, tagToUse);
 		
 		question = questionToUse;
-		component = new PanelTitleLabel("");
+		component = new OpaqueLabel("");
 		Border lineBorder = new LineBorder(Color.BLACK);
 		Border emptyBorder = new EmptyBorder(3, 3, 3, 3);
 		CompoundBorder border = new CompoundBorder(lineBorder, emptyBorder);
@@ -62,14 +60,24 @@ public class ObjectReadonlyChoiceField extends ObjectDataInputField
 		currentCode = code;
 		String text = "";
 		Icon icon = null;
+		Color color = EAM.READONLY_BACKGROUND_COLOR;
 		if(choice != null)
 		{
 			text = choice.getLabel();
 			icon = RatingIcon.createFromChoice(choice);
+			color = choice.getColor();
+
 		}
 		component.setText(text);
 		component.setIcon(icon);
+		component.setBackground(color);
 		component.invalidate();
+	}
+
+	@Override
+	protected boolean shouldSetBackground()
+	{
+		return false;
 	}
 
 	private ChoiceItem getRatingChoice(String text)
@@ -87,6 +95,15 @@ public class ObjectReadonlyChoiceField extends ObjectDataInputField
 	public String getText()
 	{
 		return currentCode;
+	}
+
+	class OpaqueLabel extends PanelTitleLabel
+	{
+		public OpaqueLabel(String text)
+		{
+			super(text);
+			setOpaque(true);
+		}
 	}
 
 	String currentCode;

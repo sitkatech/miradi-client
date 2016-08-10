@@ -575,9 +575,9 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new EditableCodeListField(project, getFirstSelectedRef(), tagToUse, question);
 	}
 	
-	public ObjectDataInputField createReadOnlyCodeListField(int objctType, String tagToUse, ChoiceQuestion question)
+	public ObjectDataInputField createReadOnlyCodeListField(int objectType, String tagToUse, ChoiceQuestion question)
 	{
-		return new ReadOnlyCodeListField(getProject(), getRefForType(objctType), tagToUse, question);
+		return new ReadOnlyCodeListField(getProject(), getRefForType(objectType), tagToUse, question);
 	}
 	
 	public ObjectCodeEditorField createMultiCodeField(String tagToUse, ChoiceQuestion question, int columnCount)

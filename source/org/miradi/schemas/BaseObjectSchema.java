@@ -20,17 +20,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.Vector;
-
 import org.miradi.objectdata.ObjectData;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DynamicChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.Vector;
 
 abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>, Xmpz2XmlConstants
 {
@@ -333,6 +333,7 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 	{
 		createOwnedFieldSchemaReflist(BaseObject.TAG_PROGRESS_REPORT_REFS, PROGRESS_REPORT);
 		
+		createPseudoFieldSchemaQuestion(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE);
 		createPseudoFieldSchemaQuestion(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE);
 		createPseudoFieldSchemaString(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 	}
