@@ -48,6 +48,9 @@ public class ProgressReport extends BaseObject
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {
+			ProjectMetadataSchema.getObjectType(),
+			ConceptualModelDiagramSchema.getObjectType(),
+			ResultsChainDiagramSchema.getObjectType(),
 			StrategySchema.getObjectType(),
 			IndicatorSchema.getObjectType(),
 			TaskSchema.getObjectType(),

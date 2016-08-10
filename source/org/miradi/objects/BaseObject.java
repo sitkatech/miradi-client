@@ -1481,10 +1481,10 @@ abstract public class BaseObject
 	protected static BaseObject getLatestObject(ObjectManager objectManagerToUse, ORefList objectRefs, String dateTag)
 	{
 		BaseObject latestObjectToFind = null; 
-		for (int i = 0; i < objectRefs.size(); ++i)
+		for (int i = objectRefs.size() - 1; i >= 0; i--)
 		{
 			BaseObject thisObject = objectManagerToUse.findObject(objectRefs.get(i));
-			if (i == 0)
+			if (i == objectRefs.size() - 1)
 				latestObjectToFind = thisObject;
 			
 			String thisDateAsString = thisObject.getData(dateTag);
