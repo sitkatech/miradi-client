@@ -37,9 +37,12 @@ public class CreateProgressReportDoer extends AbstractCreateProgressDoer
 
 	private boolean canHaveProgressReports(ORef selectedRef)
 	{
+		if (ProjectMetadata.is(selectedRef))
+			return true;
+
 		if (ResultsChainDiagram.is(selectedRef))
 			return true;
-		
+
 		if (ConceptualModelDiagram.is(selectedRef))
 			return true;
 

@@ -19,10 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.project;
 
-import java.awt.Dimension;
-import java.awt.Point;
-import java.util.Vector;
-
 import org.martus.util.MultiCalendar;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
@@ -41,19 +37,11 @@ import org.miradi.objects.*;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.questions.*;
 import org.miradi.schemas.*;
-import org.miradi.utils.CodeList;
-import org.miradi.utils.CommandVector;
-import org.miradi.utils.DateRange;
-import org.miradi.utils.DateUnitEffort;
-import org.miradi.utils.DateUnitEffortList;
-import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.HtmlUtilities;
-import org.miradi.utils.OptionalDouble;
-import org.miradi.utils.PointList;
-import org.miradi.utils.ThreatStressRatingHelper;
-import org.miradi.utils.Translation;
-import org.miradi.utils.XmlUtilities2;
+import org.miradi.utils.*;
 import org.miradi.views.diagram.LinkCreator;
+
+import java.awt.*;
+import java.util.Vector;
 
 
 public class ProjectForTesting extends ProjectWithHelpers
@@ -110,6 +98,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, createSampleMarineEcoregionsCodeList().toString());
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, createSampleTerrestrialEcoregionsCodeList().toString());
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, createSampleXenodata());
+		addProgressReport(getMetadata());
 	}
 
 	public ORef getTncProjectDataRef()
@@ -1715,12 +1704,17 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public ProgressReport addProgressReport(BaseObject baseObject) throws Exception
 	{
 		ProgressReport progressReport = createAndPopulateProgressReport();
-		ORefList progressReportRefs = new ORefList(progressReport.getRef());
-		fillObjectUsingCommand(baseObject, BaseObject.TAG_PROGRESS_REPORT_REFS, progressReportRefs.toString());
-		
-		return progressReport;
+		return addProgressReport(baseObject, progressReport);
 	}
 	
+	public ProgressReport addProgressReport(BaseObject baseObject, ProgressReport progressReport) throws Exception
+	{
+		ORefList progressReportRefs = new ORefList(progressReport.getRef());
+		fillObjectUsingCommand(baseObject, BaseObject.TAG_PROGRESS_REPORT_REFS, progressReportRefs.toString());
+
+		return progressReport;
+	}
+
 	public void addProgressPercent(Desire desire) throws Exception
 	{
 		ProgressPercent progressPercent = createAndPopulateProgressPercent();
@@ -1740,10 +1734,16 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public void populateProgressReport(ProgressReport progressReport) throws Exception
 	{
-		fillObjectUsingCommand(progressReport, ProgressReport.TAG_PROGRESS_DATE, "2008-01-23");
-		fillObjectUsingCommand(progressReport, ProgressReport.TAG_PROGRESS_STATUS, ProgressReportLongStatusQuestion.PLANNED_CODE);
+		populateProgressReport(progressReport, "2008-01-23", ProgressReportLongStatusQuestion.PLANNED_CODE, "some progress report details");
 	}
 	
+	public void populateProgressReport(ProgressReport progressReport, String dateAsString, String status, String details) throws Exception
+	{
+		fillObjectUsingCommand(progressReport, ProgressReport.TAG_PROGRESS_DATE, dateAsString);
+		fillObjectUsingCommand(progressReport, ProgressReport.TAG_PROGRESS_STATUS, status);
+		fillObjectUsingCommand(progressReport, ProgressReport.TAG_DETAILS, details);
+	}
+
 	public void populateProgressPercent(ProgressPercent progressPercent) throws Exception
 	{
 		fillObjectUsingCommand(progressPercent, ProgressPercent.TAG_DATE, "2009-01-23");
@@ -1951,6 +1951,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 		if (field.isStringRefMapData())
 		{
 			return createSampleXenodata();
+		}
+		if (field.isRefListData())
+		{
+			return new ORefList().toJson().toString();
 		}
 
 		throw new Exception("no sample data for: " + field.getClass().getSimpleName());

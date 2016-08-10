@@ -37,7 +37,7 @@ class ProjectSummarySchemaElement extends ObjectSchemaElement
 		createOptionalTextField(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		createOptionalTextField(ProjectMetadata.TAG_PROJECT_URL);
 		createOptionalTextField(ProjectMetadata.TAG_PROJECT_DESCRIPTION);
-		createOptionalTextField(ProjectMetadata.TAG_PROJECT_STATUS);
+//		createOptionalTextField(ProjectMetadata.TAG_PROJECT_STATUS);
 		createOptionalTextField(ProjectMetadata.TAG_NEXT_STEPS);
 		createOptionalCodeField(OVERALL_PROJECT_THREAT_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING);
 		createOptionalCodeField(OVERALL_PROJECT_VIABILITY_RATING, XmlSchemaCreator.VOCABULARY_TARGET_STATUS);

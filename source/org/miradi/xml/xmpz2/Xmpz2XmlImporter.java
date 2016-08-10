@@ -20,19 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
-import java.awt.Dimension;
-import java.awt.Point;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Set;
-import java.util.Vector;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.TransformerException;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.xpath.XPathExpressionException;
-
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
@@ -44,21 +31,27 @@ import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.*;
-import org.miradi.utils.CodeList;
-import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.HtmlUtilities;
-import org.miradi.utils.HtmlUtilitiesRelatedToShef;
-import org.miradi.utils.PointList;
-import org.miradi.utils.ProgressInterface;
-import org.miradi.utils.StringUtilities;
+import org.miradi.utils.*;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.AbstractXmlNamespaceContext;
 import org.miradi.xml.MiradiXmlValidator;
 import org.miradi.xml.xmpz2.objectImporters.*;
 import org.miradi.xml.xmpz2.xmpz2schema.Xmpz2NameSpaceContext;
 import org.w3c.dom.Document;
+import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.TransformerException;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.xpath.XPathExpressionException;
+import java.awt.*;
+import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Set;
+import java.util.Vector;
 
 public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlConstants
 {
@@ -291,22 +284,22 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		setData(destinationRefToUse, fieldSchema.getTag(), importedRefs.convertToIdList(idListType));
 	}
 	
-	private ORefList extractRefs(Node node, String poolName, AbstractFieldSchema fieldSchema) throws Exception
+	private ORefList extractRefs(Node node, String baseObjectElementName, AbstractFieldSchema fieldSchema) throws Exception
 	{
-		String elementName = findElementName(poolName, fieldSchema.getTag());
+		String elementName = findElementName(baseObjectElementName, fieldSchema.getTag());
 		String idElementName = convertIdsToIdString(elementName);
-		return extractRefsFromNodes(node, poolName, elementName, idElementName);
+		return extractRefsFromNodes(node, baseObjectElementName, elementName, idElementName);
 	}
 	
-	public ORefList extractRefs(Node node, String poolName, String idsElementName, String idElementName) throws Exception
+	public ORefList extractRefs(Node node, String baseObjectElementName, String idsElementName, String idElementName) throws Exception
 	{
-		String elementName = findElementName(poolName, idsElementName);
-		return extractRefsFromNodes(node, poolName, elementName,  idElementName + ID);
+		String elementName = findElementName(baseObjectElementName, idsElementName);
+		return extractRefsFromNodes(node, baseObjectElementName, elementName,  idElementName + ID);
 	}
 	
-	private ORefList extractRefsFromNodes(Node node, final String poolName, final String elementName, final String idElementName) throws Exception
+	private ORefList extractRefsFromNodes(Node node, final String baseObjectElementName, final String elementName, final String idElementName) throws Exception
 	{
-		final String idsContainerName = poolName + elementName;
+		final String idsContainerName = baseObjectElementName + elementName;
 		NodeList idNodes = getNodes(node, new String[]{idsContainerName, idElementName});
 		ORefList importedRefs = new ORefList();
 		for (int index = 0; index < idNodes.getLength(); ++index)
@@ -474,27 +467,38 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		Node node = getNamedChildNode(parentNode, childNodeName);
 		if (node == null)
 			return;
-		
+
 		String nodeTreeAsString = getFormattedNodeContent(node);
 		importField(ref, destinationTag, nodeTreeAsString);
 	}
 
-	public String getFormattedNodeContent(Node node)	throws Exception
+	public static String getFormattedNodeContent(Node node)	throws Exception
 	{
-		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
-		DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
-		Document documentToUse = documentBuilder.newDocument();
+		Document document = createDomDocument();
+		return getFormattedNodeContent(node, document);
+	}
+
+	public static String getFormattedNodeContent(Node node, Document documentToUse)	throws Exception
+	{
 		final Node clonedNode = node.cloneNode(true);
-		
+
 		Node adoptedNode = documentToUse.adoptNode(clonedNode);
-		Node appendedNode = documentToUse.appendChild(adoptedNode);
+		Element rootElement = documentToUse.getDocumentElement();
+		Node appendedNode = rootElement != null ?  rootElement.appendChild(adoptedNode) : documentToUse.appendChild(adoptedNode);
 		String nodeTreeAsString = nodeToString(appendedNode);
 		nodeTreeAsString = HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(nodeTreeAsString, AbstractUserTextDataWithHtmlFormatting.getAllowedHtmlTags());
-		
+
 		return nodeTreeAsString;
 	}
 
-	private String nodeToString(Node node) throws Exception 
+	private static Document createDomDocument() throws Exception
+	{
+		DocumentBuilderFactory documentBuilderFactory = DocumentBuilderFactory.newInstance();
+		DocumentBuilder documentBuilder = documentBuilderFactory.newDocumentBuilder();
+		return documentBuilder.newDocument();
+	}
+
+	private static String nodeToString(Node node) throws Exception
 	{
 		return HtmlUtilities.toXmlString(new DOMSource(node));
 	}

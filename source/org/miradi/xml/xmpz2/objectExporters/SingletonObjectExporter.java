@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.objectExporters;
 
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.FosProjectData;
 import org.miradi.objects.MiradiShareProjectData;
@@ -92,7 +93,7 @@ public class SingletonObjectExporter implements Xmpz2XmlConstants
 		writeProjectSummaryElement(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		writeProjectSummaryElement(ProjectMetadata.TAG_PROJECT_URL);
 		writeProjectSummaryElement(ProjectMetadata.TAG_PROJECT_DESCRIPTION);
-		writeProjectSummaryElement(ProjectMetadata.TAG_PROJECT_STATUS);
+//		writeProjectSummaryElement(ProjectMetadata.TAG_PROJECT_STATUS);
 		writeProjectSummaryElement(ProjectMetadata.TAG_NEXT_STEPS);
 		writeProjectSummaryElement(ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		writeOverallProjectThreatRating();
@@ -104,8 +105,10 @@ public class SingletonObjectExporter implements Xmpz2XmlConstants
 
 		ChoiceQuestion budgetTimePeriodQuestion = StaticQuestionManager.getQuestion(BudgetTimePeriodQuestion.class);
 		getWriter().writeNonOptionalCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, budgetTimePeriodQuestion, getMetadata().getData(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT));
-		
-		
+
+		ORefList progress_report_refs = new ORefList(getMetadata().getData(ProjectMetadata.TAG_PROGRESS_REPORT_REFS));
+		getWriter().writeNonOptionalReflist(PROJECT_SUMMARY + PROGRESS_REPORT_IDS, PROGRESS_REPORT, progress_report_refs);
+
 		getWriter().writeEndElement(PROJECT_SUMMARY);
 	}
 	
@@ -183,17 +186,17 @@ public class SingletonObjectExporter implements Xmpz2XmlConstants
 	{
 		getWriter().writeStartElement(PROJECT_SUMMARY_SCOPE);
 		
-		writeProjetScopeElement(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
-		writeProjetScopeElement(ProjectMetadata.TAG_PROJECT_SCOPE);
-		writeProjetScopeElement(ProjectMetadata.TAG_PROJECT_VISION);
-		writeProjetScopeElement(ProjectMetadata.TAG_SCOPE_COMMENTS);		
-		writeProjetScopeElement(ProjectMetadata.TAG_PROJECT_AREA);
-		writeProjetScopeElement(ProjectMetadata.TAG_PROJECT_AREA_NOTES);
-		writeProjetScopeElement(ProjectMetadata.TAG_HUMAN_POPULATION);
-		writeProjetScopeElement(ProjectMetadata.TAG_HUMAN_POPULATION_NOTES);
-		writeProjetScopeElement(ProjectMetadata.TAG_SOCIAL_CONTEXT);
+		writeProjectScopeElement(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE);
+		writeProjectScopeElement(ProjectMetadata.TAG_PROJECT_SCOPE);
+		writeProjectScopeElement(ProjectMetadata.TAG_PROJECT_VISION);
+		writeProjectScopeElement(ProjectMetadata.TAG_SCOPE_COMMENTS);
+		writeProjectScopeElement(ProjectMetadata.TAG_PROJECT_AREA);
+		writeProjectScopeElement(ProjectMetadata.TAG_PROJECT_AREA_NOTES);
+		writeProjectScopeElement(ProjectMetadata.TAG_HUMAN_POPULATION);
+		writeProjectScopeElement(ProjectMetadata.TAG_HUMAN_POPULATION_NOTES);
+		writeProjectScopeElement(ProjectMetadata.TAG_SOCIAL_CONTEXT);
 		writeCodeListElement(PROJECT_SUMMARY_SCOPE, ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES, getMetadata(), ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES, ProtectedAreaCategoryQuestion.class);		
-		writeProjetScopeElement(ProjectMetadata.TAG_PROTECTED_AREA_CATEGORY_NOTES);
+		writeProjectScopeElement(ProjectMetadata.TAG_PROTECTED_AREA_CATEGORY_NOTES);
 		writeWcpaElement(WcpaProjectData.TAG_LEGAL_STATUS);
 		writeWcpaElement(WcpaProjectData.TAG_LEGISLATIVE);
 		writeWcpaElement(WcpaProjectData.TAG_PHYSICAL_DESCRIPTION);
@@ -442,7 +445,7 @@ public class SingletonObjectExporter implements Xmpz2XmlConstants
 		writeProjectMetadataElement(PROJECT_SUMMARY, tag);
 	}
 	
-	private void writeProjetScopeElement(final String tag) throws Exception
+	private void writeProjectScopeElement(final String tag) throws Exception
 	{
 		writeProjectMetadataElement(PROJECT_SUMMARY_SCOPE, tag);
 	}

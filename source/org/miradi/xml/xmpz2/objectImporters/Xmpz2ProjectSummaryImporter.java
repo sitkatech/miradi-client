@@ -22,12 +22,16 @@ package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.StringRefMap;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.questions.*;
+import org.miradi.schemas.FieldSchemaReflist;
+import org.miradi.schemas.ProgressReportSchema;
 import org.miradi.schemas.XenodataSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
+import org.miradi.xml.xmpz2.xmpz2schema.ProjectSummarySchema;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -50,7 +54,8 @@ public class Xmpz2ProjectSummaryImporter extends BaseObjectImporter
 		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_PROJECT_URL);
 		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_PROJECT_DESCRIPTION);
-		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_PROJECT_STATUS);
+
+//		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_PROJECT_STATUS);
 		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_NEXT_STEPS);
 		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		importExternalProjectId(projectSummaryNode);
@@ -59,11 +64,14 @@ public class Xmpz2ProjectSummaryImporter extends BaseObjectImporter
 		getImporter().importCodeField(projectSummaryNode, PROJECT_SUMMARY, getMetadataRef(), ProjectMetadata.TAG_BIOPHYSICAL_FACTOR_MODE, new FactorModeQuestion());
 		getImporter().importCodeField(projectSummaryNode, PROJECT_SUMMARY, getMetadataRef(), ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, StaticQuestionManager.getQuestion(BudgetTimePeriodQuestion.class));
 		getImporter().importCodeField(projectSummaryNode, PROJECT_SUMMARY, getMetadataRef(), ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion());
+
+		FieldSchemaReflist progressReportFieldSchema = new FieldSchemaReflist(BaseObject.TAG_PROGRESS_REPORT_REFS, PROGRESS_REPORT);
+		getImporter().importRefs(projectSummaryNode, getMetadataRef(), new ProjectSummarySchema(), progressReportFieldSchema, ProgressReportSchema.OBJECT_NAME);
 	}
 	
-	private void writeShareOutsideOrganizationElement(Node projectSumaryNode) throws Exception
+	private void writeShareOutsideOrganizationElement(Node projectSummaryNode) throws Exception
 	{
-		Node shareOutsideTncNode = getImporter().getNamedChildNode(projectSumaryNode, PROJECT_SUMMARY + PROJECT_SHARE_OUTSIDE_ORGANIZATION);
+		Node shareOutsideTncNode = getImporter().getNamedChildNode(projectSummaryNode, PROJECT_SUMMARY + PROJECT_SHARE_OUTSIDE_ORGANIZATION);
 		String readableCode = getImporter().getSafeNodeContent(shareOutsideTncNode);
 		String internalCode = StaticQuestionManager.getQuestion(ProjectSharingQuestion.class).convertToInternalCode(readableCode);
 		getImporter().setData(getTncProjectDataRef(), TncProjectData.TAG_PROJECT_SHARING_CODE, internalCode);
@@ -74,9 +82,9 @@ public class Xmpz2ProjectSummaryImporter extends BaseObjectImporter
 		importField(projectSummaryNode, PROJECT_SUMMARY, getMetadataRef(), tag);
 	}
 	
-	private void importExternalProjectId(Node projectSumaryNode) throws Exception
+	private void importExternalProjectId(Node projectSummaryNode) throws Exception
 	{
-		Node projectIdNode = getImporter().getNamedChildNode(projectSumaryNode, PROJECT_SUMMARY + Xenodata.TAG_PROJECT_ID);
+		Node projectIdNode = getImporter().getNamedChildNode(projectSummaryNode, PROJECT_SUMMARY + Xenodata.TAG_PROJECT_ID);
 		NodeList projectIdNodes = getImporter().getNodes(projectIdNode, new String[]{EXTERNAL_PROJECT_ID_ELEMENT_NAME, });
 		StringRefMap stringRefMap = new StringRefMap();
 		for (int index = 0; index < projectIdNodes.getLength(); ++index)

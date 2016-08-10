@@ -20,14 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Vector;
-
-import javax.xml.parsers.DocumentBuilder;
-import javax.xml.parsers.DocumentBuilderFactory;
-
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.exceptions.XmlVersionTooOldException;
@@ -41,20 +33,25 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.questions.DayColumnsVisibilityQuestion;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.BiDirectionalHashMap;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.StringUtilities;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.xmpz2.objectExporters.ExtraDataExporter;
-import org.w3c.dom.Document;
-import org.w3c.dom.Element;
-import org.w3c.dom.NamedNodeMap;
-import org.w3c.dom.Node;
-import org.w3c.dom.NodeList;
+import org.w3c.dom.*;
 import org.xml.sax.InputSource;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
+import java.util.Vector;
 
 public class Xmpz2ForwardMigration
 {
@@ -74,6 +71,7 @@ public class Xmpz2ForwardMigration
 		adjustWhoWhenAssignedFields(document);
 		addDayColumnsVisibilityField(document);
 		moveIndicatorWorkPlanDataToExtraData(document);
+		moveProjectStatusDataToExtraData(document);
 
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
@@ -191,6 +189,24 @@ public class Xmpz2ForwardMigration
 			moveDataToExtraData(document, extraDataItemName, extraDataItemValue);
 
 			indicatorNode.removeChild(expenseAssignmentIdsNode);
+		}
+	}
+
+	private void moveProjectStatusDataToExtraData(Document document) throws Exception
+	{
+		Element rootElement = document.getDocumentElement();
+		Node projectSummaryNode = findNode(rootElement.getChildNodes(), Xmpz2XmlConstants.PROJECT_SUMMARY);
+		if (projectSummaryNode != null)
+		{
+			Node projectStatusNode = findNode(projectSummaryNode, Xmpz2XmlConstants.PROJECT_SUMMARY + ProjectMetadata.TAG_PROJECT_STATUS);
+			if (projectStatusNode != null && projectStatusNode.getNodeType() == Node.ELEMENT_NODE)
+			{
+				String extraDataItemName = ExtraDataExporter.getExtraDataItemName(ProjectMetadataSchema.OBJECT_NAME, new BaseId(""), ProjectMetadata.TAG_PROJECT_STATUS);
+				String extraDataItemValue = getFormattedNodeContent(projectStatusNode);
+				moveDataToExtraData(document, extraDataItemName, extraDataItemValue);
+
+				projectSummaryNode.removeChild(projectStatusNode);
+			}
 		}
 	}
 
@@ -558,7 +574,14 @@ public class Xmpz2ForwardMigration
 		
 		return document;
 	}
-	
+
+	private String getFormattedNodeContent(Node node) throws Exception
+	{
+		Document document = HtmlUtilities.createDomDocument(HtmlUtilities.wrapInHtmlTags(""));
+		document.getDocumentElement().setAttributeNS(Xmpz2XmlConstants.W3_XMLNS, Xmpz2XmlConstants.NAME_SPACE_ATTRIBUTE_NAME, Xmpz2XmlConstants.NAME_SPACE);
+		return Xmpz2XmlImporter.getFormattedNodeContent(node, document);
+	}
+
 	private static final int LOWEST_SCHEMA_VERSION = Xmpz2XmlConstants.LOWEST_SCHEMA_VERSION;
 	private static final String NAME_SPACE_VERSION = Xmpz2XmlConstants.NAME_SPACE_VERSION;
 	private static final String XMLNS = "xmlns";

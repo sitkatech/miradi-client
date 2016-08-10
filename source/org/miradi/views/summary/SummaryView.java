@@ -20,9 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.summary;
 
 
-import java.util.HashSet;
-
-
 import org.martus.util.MultiCalendar;
 import org.miradi.actions.ActionCreateOrganization;
 import org.miradi.actions.ActionDeleteOrganization;
@@ -39,18 +36,14 @@ import org.miradi.main.MiradiToolBar;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
-import org.miradi.schemas.FosProjectDataSchema;
-import org.miradi.schemas.ProjectMetadataSchema;
-import org.miradi.schemas.RareProjectDataSchema;
-import org.miradi.schemas.TncProjectDataSchema;
-import org.miradi.schemas.WcpaProjectDataSchema;
-import org.miradi.schemas.WcsProjectDataSchema;
-import org.miradi.schemas.WwfProjectDataSchema;
+import org.miradi.schemas.*;
 import org.miradi.views.TabbedView;
 import org.miradi.views.summary.doers.CreateOranizationDoer;
 import org.miradi.views.summary.doers.DeleteOranizationDoer;
 import org.miradi.views.summary.doers.TeamCreateMemberDoer;
 import org.miradi.views.umbrella.DeleteResourceDoer;
+
+import java.util.HashSet;
 
 public class SummaryView extends TabbedView
 {
@@ -96,7 +89,8 @@ public class SummaryView extends TabbedView
 			getProject().getSingletonObjectRef(WcpaProjectDataSchema.getObjectType()),
 		};
 		
-		addSummaryTab(new SummaryProjectPanel(getMainWindow(), metadata.getRef()));
+		addSummaryTab(new SummaryProjectTabPanel(getMainWindow(), metadata.getRef()));
+
 		if (getProject().getMetadata().isMiradiShareProject())
 			addSummaryTab(new SummaryMiradiSharePanel(getProject()));
 		else

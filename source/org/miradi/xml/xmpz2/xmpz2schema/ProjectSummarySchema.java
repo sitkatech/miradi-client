@@ -48,9 +48,13 @@ public class ProjectSummarySchema extends AbstractProjectSummarySchema
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_PROJECT_URL));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_PROJECT_DESCRIPTION));
-		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_PROJECT_STATUS));
+
+//		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_PROJECT_STATUS));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_NEXT_STEPS));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_TNC_LESSONS_LEARNED));
+
+		createProgressReportSchema();
+
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_THREAT_RATING_MODE));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE));

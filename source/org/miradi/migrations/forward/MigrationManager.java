@@ -20,24 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations.forward;
 
-import java.io.File;
-import java.util.Vector;
-
 import org.martus.util.UnicodeReader;
 import org.martus.util.UnicodeStringReader;
 import org.miradi.exceptions.ProjectFileTooNewException;
 import org.miradi.exceptions.ProjectFileTooOldException;
 import org.miradi.exceptions.XmlVersionTooOldException;
 import org.miradi.main.EAM;
-import org.miradi.migrations.AbstractMigration;
-import org.miradi.migrations.AbstractMigrationManager;
-import org.miradi.migrations.MigrationResult;
-import org.miradi.migrations.RawProject;
-import org.miradi.migrations.RawProjectLoader;
-import org.miradi.migrations.VersionRange;
+import org.miradi.migrations.*;
 import org.miradi.project.Project;
 import org.miradi.utils.FileUtilities;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
+
+import java.io.File;
+import java.util.Vector;
 
 public class MigrationManager extends AbstractMigrationManager
 {
@@ -124,6 +119,7 @@ public class MigrationManager extends AbstractMigrationManager
 		migrations.add(new MigrationTo35(rawProject));
 		migrations.add(new MigrationTo36(rawProject));
 		migrations.add(new MigrationTo37(rawProject));
+		migrations.add(new MigrationTo38(rawProject));
 
 		return migrations;
 	}
@@ -134,7 +130,7 @@ public class MigrationManager extends AbstractMigrationManager
 
 		// 4.4 -> 236
 		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_236))
-			return MigrationTo37.VERSION_TO;
+			return MigrationTo38.VERSION_TO;
 
 		// 4.3.x -> 234/235
 		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_234) || documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_235))

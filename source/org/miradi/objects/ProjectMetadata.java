@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import java.util.Set;
-import java.util.Vector;
-
 import org.martus.util.MultiCalendar;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
@@ -34,8 +31,12 @@ import org.miradi.project.Project;
 import org.miradi.questions.*;
 import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.CommandVector;
 import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.OptionalDouble;
+
+import java.util.Set;
+import java.util.Vector;
 
 public class ProjectMetadata extends BaseObject
 {
@@ -71,7 +72,16 @@ public class ProjectMetadata extends BaseObject
 		
 		return super.getPseudoData(fieldTag);
 	}
-	
+
+	@Override
+	public CommandVector createCommandsToDeleteChildren() throws Exception
+	{
+		CommandVector commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
+		commandsToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_PROGRESS_REPORT_REFS));
+
+		return commandsToDeleteChildren;
+	}
+
 	private String getStandardClassifications()
 	{
 		Vector<Cause> allThreats = getProject().getCausePool().getDirectThreatsAsVector();

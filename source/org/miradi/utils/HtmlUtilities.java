@@ -425,7 +425,7 @@ public class HtmlUtilities
 		return legalAnchorAttributeNames.contains(attributeName);
 	}
 	
-	private static Document createDomDocument(String htmlText) throws Exception
+	public static Document createDomDocument(String htmlText) throws Exception
 	{
 		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
 		factory.setNamespaceAware(true);

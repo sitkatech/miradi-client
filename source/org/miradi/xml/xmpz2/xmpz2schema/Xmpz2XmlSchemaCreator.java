@@ -20,42 +20,21 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.xmpz2schema;
 
-import java.util.Collections;
-import java.util.Set;
-import java.util.Vector;
-
 import org.miradi.main.Miradi;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.BaseObjectPool;
 import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.questions.*;
-import org.miradi.schemas.AbstractFieldSchema;
-import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.schemas.CostAllocationRuleSchema;
-import org.miradi.schemas.DiagramFactorSchema;
-import org.miradi.schemas.DiagramLinkSchema;
-import org.miradi.schemas.FosProjectDataSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.MiradiShareProjectDataSchema;
-import org.miradi.schemas.RareProjectDataSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TaggedObjectSetSchema;
-import org.miradi.schemas.TaskSchema;
-import org.miradi.schemas.TncProjectDataSchema;
-import org.miradi.schemas.ValueOptionSchema;
-import org.miradi.schemas.WcpaProjectDataSchema;
-import org.miradi.schemas.WcsProjectDataSchema;
-import org.miradi.schemas.WwfProjectDataSchema;
-import org.miradi.utils.CodeList;
-import org.miradi.utils.HtmlUtilities;
-import org.miradi.utils.IgnoreCaseStringComparator;
-import org.miradi.utils.StringUtilities;
-import org.miradi.utils.Translation;
-import org.miradi.utils.Utility;
+import org.miradi.schemas.*;
+import org.miradi.utils.*;
 import org.miradi.xml.xmpz2.Xmpz2TagToElementNameMap;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
+
+import java.util.Collections;
+import java.util.Set;
+import java.util.Vector;
 
 public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 {

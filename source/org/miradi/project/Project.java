@@ -796,7 +796,7 @@ public class Project implements ProjectInterface
 		setObjectData(mainDiagramRef, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorIdList.toString());
 	}
 	
-	private void createProjectMetadata() throws Exception
+	public void createProjectMetadata() throws Exception
 	{
 		BaseId createdId = createObjectAndReturnId(ObjectType.PROJECT_METADATA);
 		projectInfo.setMetadataId(createdId);
@@ -1455,6 +1455,6 @@ public class Project implements ProjectInterface
 	
 	public CommandExecutor commandExecutor;
 	
-	public static final int VERSION_LOW = 37;
-	public static final int VERSION_HIGH = 37;
+	public static final int VERSION_LOW = 38;
+	public static final int VERSION_HIGH = 38;
 }

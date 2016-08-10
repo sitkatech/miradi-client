@@ -89,12 +89,15 @@ public class ProjectMetadataSchema extends BaseObjectSchema
 		createFieldSchemaCodeList(ProjectMetadata.TAG_PROTECTED_AREA_CATEGORIES, getQuestion(ProtectedAreaCategoryQuestion.class));
 		createFieldSchemaMultiLineUserText(ProjectMetadata.TAG_PROTECTED_AREA_CATEGORY_NOTES);
 
+		// TODO: fields to be deprecated in post 4.4 release...only here to support migrations...data moved to progress reports
 		createFieldSchemaMultiLineUserText(ProjectMetadata.TAG_PROJECT_STATUS);
 		createFieldSchemaMultiLineUserText(ProjectMetadata.TAG_NEXT_STEPS);
+		createFieldSchemaMultiLineUserText(ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
+
+		createProgressReportSchema();
 
 		createFieldSchemaCode(ProjectMetadata.TAG_CURRENT_WIZARD_SCREEN_NAME).setNavigationField();
 
-		createFieldSchemaMultiLineUserText(ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		createFieldSchemaSingleLineUserText(ProjectMetadata.TAG_TNC_WORKBOOK_VERSION_NUMBER);
 		createFieldSchemaDate(ProjectMetadata.TAG_TNC_WORKBOOK_VERSION_DATE);
 		createFieldSchemaDate(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);

@@ -24,6 +24,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.schemas.*;
 import org.miradi.utils.StringUtilities;
 import org.miradi.utils.XmlUtilities2;
@@ -78,13 +79,24 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 	{
 		int type = convertTypeNameToObjectType(typeName);
 		BaseId id = new BaseId(Integer.parseInt(idAsString));
-		BaseObject foundObject = getProject().getPool(type).findObject(id);
-		if (foundObject != null)
-			return foundObject;
-		
-		ORef createObjectRef = getProject().createObject(type, id);
-		
-		return BaseObject.find(getProject(), createObjectRef);
+
+		if (isSingleton(typeName))
+		{
+			BaseObject foundObject = getSingletonObject(typeName);
+			if (foundObject != null)
+				return foundObject;
+
+			ORef createObjectRef = createSingletonObject(typeName);
+			return BaseObject.find(getProject(), createObjectRef);
+		}
+		else
+		{
+			BaseObject foundObject = getProject().getPool(type).findObject(id);
+			if (foundObject != null)
+				return foundObject;
+			ORef createObjectRef = getProject().createObject(type, id);
+			return BaseObject.find(getProject(), createObjectRef);
+		}
 	}
 
 	private int convertTypeNameToObjectType(String typeName)
@@ -92,6 +104,9 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 		if (typeName.equals(ViewDataSchema.OBJECT_NAME))
 			return ViewDataSchema.getObjectType();
 		
+		if (typeName.equals(ProjectMetadataSchema.OBJECT_NAME))
+			return ProjectMetadataSchema.getObjectType();
+
 		if (typeName.equals(TableSettingsSchema.OBJECT_NAME))
 			return TableSettingsSchema.getObjectType();
 		
@@ -107,8 +122,38 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 		throw new RuntimeException("Object type name is not recognized as type, " + typeName);
 	}
 
+	private boolean isSingleton(String typeName)
+	{
+		if (typeName.equals(ProjectMetadataSchema.OBJECT_NAME))
+			return true;
+
+		return false;
+	}
+
+	private BaseObject getSingletonObject(String typeName)
+	{
+		if (typeName.equals(ProjectMetadataSchema.OBJECT_NAME))
+			return getProject().getMetadata();
+
+		throw new RuntimeException("Do not know how to retrieve singleton object for type name, " + typeName);
+	}
+
+	private ORef createSingletonObject(String typeName) throws Exception
+	{
+		if (typeName.equals(ProjectMetadataSchema.OBJECT_NAME))
+		{
+			getProject().createProjectMetadata();
+			return getProject().getMetadata().getRef();
+		}
+
+		throw new RuntimeException("Do not know how to create singleton object for type name, " + typeName);
+	}
+
 	private boolean doesFieldRequireDataToBeXmlDecoded(String typeName, String tag)
 	{
+		if (typeName.equals(ProjectMetadataSchema.OBJECT_NAME) && tag.equals(ProjectMetadata.TAG_PROJECT_STATUS))
+			return true;
+
 		if (typeName.equals(IndicatorSchema.OBJECT_NAME) && tag.equals(Indicator.TAG_ASSIGNED_LEADER_RESOURCE))
 			return true;
 

@@ -41,8 +41,8 @@ public class ProjectTabForm extends FieldPanelSpec
 		addLabelAndField(type, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_URL);
 		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_DESCRIPTION);
-		
-		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_STATUS);
+
+//		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_STATUS);
 		addLabelAndField(type, ProjectMetadata.TAG_NEXT_STEPS);
 	}
 }

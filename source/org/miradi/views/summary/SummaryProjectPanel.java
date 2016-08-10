@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.summary;
 
-import javax.swing.Icon;
-
 import org.miradi.actions.views.ActionViewSummary;
 import org.miradi.dialogfields.ObjectDataField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
@@ -37,6 +35,8 @@ import org.miradi.rtf.RtfWriter;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.TncProjectDataSchema;
+
+import javax.swing.*;
 
 public class SummaryProjectPanel extends ObjectDataInputPanel
 {
@@ -57,10 +57,11 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 		addField(createStringField(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));
 		addField(createStringField(ProjectMetadata.TAG_PROJECT_URL));
 		addField(createMultilineField(ProjectMetadata.TAG_PROJECT_DESCRIPTION));
-		addField(createMultilineField(ProjectMetadata.TAG_PROJECT_STATUS));
+
+//		addField(createMultilineField(ProjectMetadata.TAG_PROJECT_STATUS));
 		addField(createMultilineField(ProjectMetadata.TAG_NEXT_STEPS));
 		addField(createMultilineField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED));
-		
+
 		setObjectRefs(new ORef[]{refToUse, getProject().getSingletonObjectRef(TncProjectDataSchema.getObjectType()), getProject().getSingletonObjectRef(MiradiShareProjectDataSchema.getObjectType()),});
 		updateFieldsFromProject();
 	}
@@ -115,5 +116,5 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 		rtfFormExporter.exportForm(new ProjectTabForm());
 	}
 	
-	public static final String PANEL_DESCRIPTION = EAM.text("Project");
+	public static final String PANEL_DESCRIPTION = EAM.text("Summary");
 }
