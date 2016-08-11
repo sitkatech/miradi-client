@@ -19,16 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.FocusEvent;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-
-import javax.swing.JComponent;
-
 import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
@@ -40,6 +30,10 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.utils.MiradiScrollPane;
 import org.miradi.utils.PopupEditorButton;
 import org.miradi.utils.Translation;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 
 public class ObjectScrollingMultilineInputField extends ObjectMultilineInputField
 {
@@ -92,6 +86,9 @@ public class ObjectScrollingMultilineInputField extends ObjectMultilineInputFiel
 		getTextField().setForeground(fg);
 		if(shouldSetBackground())
 			getTextField().setBackground(bg);
+
+		if(!isEditable)
+			getTextField().setDisabledTextColor(EAM.READONLY_FOREGROUND_COLOR);
 	}
 
 	@Override
