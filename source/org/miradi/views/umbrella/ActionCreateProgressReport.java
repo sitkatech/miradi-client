@@ -19,26 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import org.miradi.actions.ObjectsAction;
-import org.miradi.icons.IconManager;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionCreateProgressReport extends ObjectsAction
+public class ActionCreateProgressReport extends AbstractActionCreateProgressReport
 {
 	public ActionCreateProgressReport(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel(), IconManager.getProgressReportIcon());
-	}
-
-	private static String getLabel()
-	{
-		return EAM.text("Action|Manage|Create Progress Report");
-	}
-
-	@Override
-	public String getToolTipText()
-	{
-		return EAM.text("TT|Create a new Progress Report");
+		super(mainWindowToUse);
 	}
 }

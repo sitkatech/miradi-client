@@ -20,10 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
-import java.util.HashMap;
-
 import org.miradi.schemas.*;
 import org.miradi.xml.xmpz2.objectExporters.*;
+
+import java.util.HashMap;
 
 public class ObjectTypeToExporterMap extends HashMap<Integer, BaseObjectExporter>
 {
@@ -68,6 +68,7 @@ public class ObjectTypeToExporterMap extends HashMap<Integer, BaseObjectExporter
 		addGenericExporterToMap(GroupBoxSchema.getObjectType());
 		addGenericExporterToMap(SubTargetSchema.getObjectType());
 		addGenericExporterToMap(ProgressReportSchema.getObjectType());
+		addGenericExporterToMap(ExtendedProgressReportSchema.getObjectType());
 		addGenericExporterToMap(OrganizationSchema.getObjectType());
 		addGenericExporterToMap(ProgressPercentSchema.getObjectType());
 		addGenericExporterToMap(ScopeBoxSchema.getObjectType());

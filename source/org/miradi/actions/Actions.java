@@ -19,52 +19,20 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions;
 
+import org.miradi.ActionDeleteExtendedProgressReport;
+import org.miradi.actions.jump.*;
+import org.miradi.actions.openstandards.*;
+import org.miradi.actions.views.*;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
+import org.miradi.views.umbrella.ActionCreateExtendedProgressReport;
+import org.miradi.views.umbrella.ActionCreateProgressReport;
+
+import javax.swing.*;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
-
-import javax.swing.SwingUtilities;
-
-import org.miradi.actions.jump.*;
-import org.miradi.actions.openstandards.ActionOpenStandardsAnalyzeUseAndAdaptParentMenu;
-import org.miradi.actions.openstandards.ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4a;
-import org.miradi.actions.openstandards.ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4b;
-import org.miradi.actions.openstandards.ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4c;
-import org.miradi.actions.openstandards.ActionOpenStandardsCaptureAndShareLearningParentMenu;
-import org.miradi.actions.openstandards.ActionOpenStandardsCaptureAndShareLearningProcessStep5a;
-import org.miradi.actions.openstandards.ActionOpenStandardsCaptureAndShareLearningProcessStep5b;
-import org.miradi.actions.openstandards.ActionOpenStandardsCaptureAndShareLearningProcessStep5c;
-import org.miradi.actions.openstandards.ActionOpenStandardsConceptualizeParentMenu;
-import org.miradi.actions.openstandards.ActionOpenStandardsConceptualizeProcessStep1a;
-import org.miradi.actions.openstandards.ActionOpenStandardsConceptualizeProcessStep1b;
-import org.miradi.actions.openstandards.ActionOpenStandardsConceptualizeProcessStep1c;
-import org.miradi.actions.openstandards.ActionOpenStandardsConceptualizeProcessStep1d;
-import org.miradi.actions.openstandards.ActionOpenStandardsImplementActionsAndMonitoringParentMenu;
-import org.miradi.actions.openstandards.ActionOpenStandardsImplementActionsAndMonitoringProcessStep3a;
-import org.miradi.actions.openstandards.ActionOpenStandardsImplementActionsAndMonitoringProcessStep3b;
-import org.miradi.actions.openstandards.ActionOpenStandardsImplementActionsAndMonitoringProcessStep3c;
-import org.miradi.actions.openstandards.ActionOpenStandardsPlanActionsAndMonitoringParentMenu;
-import org.miradi.actions.openstandards.ActionOpenStandardsPlanActionsAndMonitoringProcessStep2a;
-import org.miradi.actions.openstandards.ActionOpenStandardsPlanActionsAndMonitoringProcessStep2b;
-import org.miradi.actions.openstandards.ActionOpenStandardsPlanActionsAndMonitoringProcessStep2c;
-import org.miradi.actions.views.ActionViewBudget;
-import org.miradi.actions.views.ActionViewDiagram;
-import org.miradi.actions.views.ActionViewImages;
-import org.miradi.actions.views.ActionViewMap;
-import org.miradi.actions.views.ActionViewMonitoring;
-import org.miradi.actions.views.ActionViewOperationalPlan;
-import org.miradi.actions.views.ActionViewPlanning;
-import org.miradi.actions.views.ActionViewReports;
-import org.miradi.actions.views.ActionViewSchedule;
-import org.miradi.actions.views.ActionViewStrategicPlan;
-import org.miradi.actions.views.ActionViewSummary;
-import org.miradi.actions.views.ActionViewTargetViability;
-import org.miradi.actions.views.ActionViewThreatMatrix;
-import org.miradi.actions.views.ActionViewWorkPlan;
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
-import org.miradi.views.umbrella.ActionCreateProgressReport;
 
 public class Actions
 {
@@ -429,18 +397,16 @@ public class Actions
 		registerAction(new ActionCreateSubTarget(mainWindow));
 		registerAction(new ActionDeleteSubTarget(mainWindow));
 		registerAction(new ActionDiagramProperties(mainWindow));
-		registerAction(new ActionCreateStrategyProgressReport(mainWindow));
-		registerAction(new ActionDeleteStrategyProgressReport(mainWindow));
-		
+
 		registerAction(new ActionEditEstimatedResource(mainWindow));
 		
 		registerAction(new ActionCreateProgressReport(mainWindow));
+		registerAction(new ActionCreateExtendedProgressReport(mainWindow));
 		registerAction(new ActionDeleteProgressReport(mainWindow));
+		registerAction(new ActionDeleteExtendedProgressReport(mainWindow));
 		registerAction(new ActionDeleteOrganization(mainWindow));
 		registerAction(new ActionCreateOrganization(mainWindow));
 		registerAction(new ActionExportTable(mainWindow));
-		registerAction(new ActionCreateTaskProgressReport(mainWindow));
-		registerAction(new ActionDeleteTaskProgressReport(mainWindow));
 		registerAction(new ActionCreateProgressPercent(mainWindow));
 		registerAction(new ActionDeleteProgressPercent(mainWindow));
 		registerAction(new ActionViewLegacyTncStrategyRanking(mainWindow));

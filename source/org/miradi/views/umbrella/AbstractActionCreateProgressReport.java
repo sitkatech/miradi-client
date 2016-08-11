@@ -17,15 +17,16 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.actions;
+package org.miradi.views.umbrella;
 
+import org.miradi.actions.ObjectsAction;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionCreateTaskProgressReport extends ObjectsAction
+public class AbstractActionCreateProgressReport extends ObjectsAction
 {
-	public ActionCreateTaskProgressReport(MainWindow mainWindowToUse)
+	public AbstractActionCreateProgressReport(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel(), IconManager.getProgressReportIcon());
 	}
@@ -40,5 +41,4 @@ public class ActionCreateTaskProgressReport extends ObjectsAction
 	{
 		return EAM.text("TT|Create a new Progress Report");
 	}
-
 }

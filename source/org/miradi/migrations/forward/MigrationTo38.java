@@ -130,28 +130,35 @@ public class MigrationTo38 extends AbstractMigration
 		{
 			MigrationResult migrationResult = MigrationResult.createSuccess();
 
-			String progressReportRefsAsString = safeGetTag(rawObject, TAG_PROGRESS_REPORT_REFS);
+			String progressReportRefsAsString = safeGetTag(rawObject, TAG_EXTENDED_PROGRESS_REPORT_REFS);
 			if (!progressReportRefsAsString.isEmpty())
 			{
-				ORefList progressReportRefs = new ORefList(rawObject.get(TAG_PROGRESS_REPORT_REFS));
+				ORefList progressReportRefs = new ORefList(rawObject.get(TAG_EXTENDED_PROGRESS_REPORT_REFS));
 				if (!progressReportRefs.isEmpty())
 				{
 					RawObject latestProgressReport = getLatestProgressReport(progressReportRefs);
+
 					String latestStatus = safeGetTag(latestProgressReport, TAG_DETAILS);
 					rawObject.setData(TAG_PROJECT_STATUS, latestStatus);
+
+					String latestLessonsLearned = safeGetTag(latestProgressReport, TAG_LESSONS_LEARNED);
+					rawObject.setData(TAG_TNC_LESSONS_LEARNED, latestLessonsLearned);
+
+					String latestNextSteps = safeGetTag(latestProgressReport, TAG_NEXT_STEPS);
+					rawObject.setData(TAG_NEXT_STEPS, latestNextSteps);
 
 					for (ORef progressReportRef : progressReportRefs)
 					{
 						getRawProject().deleteRawObject(progressReportRef);
 					}
 
-					final String dataLossMessage = EAM.substituteSingleString(EAM.text("%s field data will be lost"), Translation.fieldLabel(rawObject.getObjectType(), TAG_PROGRESS_REPORT_REFS));
+					final String dataLossMessage = EAM.substituteSingleString(EAM.text("%s field data will be lost"), Translation.fieldLabel(rawObject.getObjectType(), TAG_EXTENDED_PROGRESS_REPORT_REFS));
 					migrationResult.addDataLoss(dataLossMessage);
 				}
 			}
 
-			if (rawObject.hasValue(TAG_PROGRESS_REPORT_REFS))
-				rawObject.remove(TAG_PROGRESS_REPORT_REFS);
+			if (rawObject.hasValue(TAG_EXTENDED_PROGRESS_REPORT_REFS))
+				rawObject.remove(TAG_EXTENDED_PROGRESS_REPORT_REFS);
 
 			return migrationResult;
 		}
@@ -161,28 +168,39 @@ public class MigrationTo38 extends AbstractMigration
 			MigrationResult migrationResult = MigrationResult.createSuccess();
 
 			String projectStatus = safeGetTag(rawObject, TAG_PROJECT_STATUS);
-			if (!projectStatus.isEmpty())
+			String lessonsLearned = safeGetTag(rawObject, TAG_TNC_LESSONS_LEARNED);
+			String nextSteps = safeGetTag(rawObject, TAG_NEXT_STEPS);
+
+			if (!(projectStatus.isEmpty() && lessonsLearned.isEmpty() && nextSteps.isEmpty()))
 			{
 				ORef progressReportRef = createProgressReport();
 				RawObject progressReport = getRawProject().findObject(progressReportRef);
 				progressReport.setData(TAG_DETAILS, projectStatus);
+				progressReport.setData(TAG_LESSONS_LEARNED, lessonsLearned);
+				progressReport.setData(TAG_NEXT_STEPS, nextSteps);
 
 				ORefList progressReportRefs = new ORefList(progressReportRef);
-				rawObject.setData(TAG_PROGRESS_REPORT_REFS, progressReportRefs.toJson().toString());
+				rawObject.setData(TAG_EXTENDED_PROGRESS_REPORT_REFS, progressReportRefs.toJson().toString());
 
 				rawObject.setData(TAG_PROJECT_STATUS, "");
+				rawObject.setData(TAG_TNC_LESSONS_LEARNED, "");
+				rawObject.setData(TAG_NEXT_STEPS, "");
 			}
 
 			if (rawObject.hasValue(TAG_PROGRESS_STATUS))
 				rawObject.remove(TAG_PROGRESS_STATUS);
+			if (rawObject.hasValue(TAG_TNC_LESSONS_LEARNED))
+				rawObject.remove(TAG_TNC_LESSONS_LEARNED);
+			if (rawObject.hasValue(TAG_NEXT_STEPS))
+				rawObject.remove(TAG_NEXT_STEPS);
 
 			return migrationResult;
 		}
 
 		private ORef createProgressReport()
 		{
-			getRawProject().ensurePoolExists(ObjectType.PROGRESS_REPORT);
-			return getRawProject().createObject(ObjectType.PROGRESS_REPORT);
+			getRawProject().ensurePoolExists(ObjectType.EXTENDED_PROGRESS_REPORT);
+			return getRawProject().createObject(ObjectType.EXTENDED_PROGRESS_REPORT);
 		}
 
 		private String safeGetTag(RawObject rawObject, String tag)
@@ -238,13 +256,16 @@ public class MigrationTo38 extends AbstractMigration
 		private boolean isReverseMigration;
 	}
 
-	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
+	public static final String TAG_EXTENDED_PROGRESS_REPORT_REFS = "ExtendedProgressReportRefs";
 
 	public static final String TAG_PROJECT_STATUS = "ProjectStatus";
+	public static final String TAG_TNC_LESSONS_LEARNED = "TNC.LessonsLearned";
 
 	public static final String TAG_PROGRESS_STATUS = "ProgressStatus";
 	public static final String TAG_PROGRESS_DATE = "ProgressDate";
 	public static final String TAG_DETAILS = "Details";
+	public static final String TAG_NEXT_STEPS = "NextSteps";
+	public static final String TAG_LESSONS_LEARNED = "LessonsLearned";
 
 	public static final int VERSION_FROM = 37;
 	public static final int VERSION_TO = 38;

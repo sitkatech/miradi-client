@@ -22,7 +22,7 @@ package org.miradi.migrations;
 
 import org.miradi.migrations.forward.MigrationTo38;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.ProgressReport;
+import org.miradi.objects.ExtendedProgressReport;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.questions.ProgressReportLongStatusQuestion;
@@ -41,7 +41,11 @@ public class TestMigrationTo38 extends AbstractTestMigration
 		ProjectMetadata metadata = getProject().getMetadata();
 
 		String latestDetails = "latest progress report details";
+		String lessonsLearned = "latest progress report lessons learned";
+		String nextSteps = "latest progress report next steps";
 		getProject().fillObjectUsingCommand(metadata, MigrationTo38.TAG_PROJECT_STATUS, latestDetails);
+		getProject().fillObjectUsingCommand(metadata, MigrationTo38.TAG_TNC_LESSONS_LEARNED, lessonsLearned);
+		getProject().fillObjectUsingCommand(metadata, MigrationTo38.TAG_NEXT_STEPS, nextSteps);
 
 		RawProject reverseMigratedProject = reverseMigrate(new VersionRange(MigrationTo38.VERSION_TO));
 		migrateProject(reverseMigratedProject, new VersionRange(Project.VERSION_HIGH));
@@ -49,8 +53,10 @@ public class TestMigrationTo38 extends AbstractTestMigration
 		RawObject rawMetadata = reverseMigratedProject.findObject(metadata.getRef());
 		assertNotNull(rawMetadata);
 		assertEquals(rawMetadata.getData(MigrationTo38.TAG_PROJECT_STATUS), "");
+		assertEquals(rawMetadata.getData(MigrationTo38.TAG_TNC_LESSONS_LEARNED), "");
+		assertEquals(rawMetadata.getData(MigrationTo38.TAG_NEXT_STEPS), "");
 
-		String projectProgressReportRefsAsString = rawMetadata.getData(MigrationTo38.TAG_PROGRESS_REPORT_REFS);
+		String projectProgressReportRefsAsString = rawMetadata.getData(MigrationTo38.TAG_EXTENDED_PROGRESS_REPORT_REFS);
 		assertNotNull(projectProgressReportRefsAsString);
 
 		ORefList progressReportRefList = new ORefList(projectProgressReportRefsAsString);
@@ -58,6 +64,8 @@ public class TestMigrationTo38 extends AbstractTestMigration
 
 		RawObject progressReport = reverseMigratedProject.findObject(progressReportRefList.get(0));
 		assertEquals(progressReport.getData(MigrationTo38.TAG_DETAILS), latestDetails);
+		assertEquals(progressReport.getData(MigrationTo38.TAG_LESSONS_LEARNED), lessonsLearned);
+		assertEquals(progressReport.getData(MigrationTo38.TAG_NEXT_STEPS), nextSteps);
 
 		verifyFullCircleMigrations(new VersionRange(37, 38));
 	}
@@ -66,29 +74,37 @@ public class TestMigrationTo38 extends AbstractTestMigration
 	{
 		ProjectMetadata metadata = getProject().getMetadata();
 
-		ProgressReport progressReport = createLatestProgressReport();
-		getProject().addProgressReport(metadata, progressReport);
+		ExtendedProgressReport progressReport = createLatestProgressReport();
+		getProject().addExtendedProgressReport(metadata, progressReport);
 
 		assertEquals(metadata.getData(MigrationTo38.TAG_PROJECT_STATUS), "");
+		assertEquals(metadata.getData(MigrationTo38.TAG_TNC_LESSONS_LEARNED), "");
+		assertEquals(metadata.getData(MigrationTo38.TAG_NEXT_STEPS), "");
 
 		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo38.VERSION_TO));
 
 		RawObject rawMetadata = rawProject.findObject(metadata.getRef());
 		assertNotNull(rawMetadata);
-		assertFalse("Field should have been removed during reverse migration?", rawMetadata.containsKey(MigrationTo38.TAG_PROGRESS_REPORT_REFS));
+		assertFalse("Field should have been removed during reverse migration?", rawMetadata.containsKey(MigrationTo38.TAG_EXTENDED_PROGRESS_REPORT_REFS));
 
 		assertTrue("Field should have been added during reverse migration?", rawMetadata.containsKey(MigrationTo38.TAG_PROJECT_STATUS));
 		assertEquals(rawMetadata.getData(MigrationTo38.TAG_PROJECT_STATUS), progressReport.getDetails());
+		assertTrue("Field should have been added during reverse migration?", rawMetadata.containsKey(MigrationTo38.TAG_TNC_LESSONS_LEARNED));
+		assertEquals(rawMetadata.getData(MigrationTo38.TAG_TNC_LESSONS_LEARNED), progressReport.getLessonsLearned());
+		assertTrue("Field should have been added during reverse migration?", rawMetadata.containsKey(MigrationTo38.TAG_NEXT_STEPS));
+		assertEquals(rawMetadata.getData(MigrationTo38.TAG_NEXT_STEPS), progressReport.getNextSteps());
 	}
 
-	private ProgressReport createLatestProgressReport() throws Exception
+	private ExtendedProgressReport createLatestProgressReport() throws Exception
 	{
 		MiradiMultiCalendar calendar = new MiradiMultiCalendar();
 		String currentDate = calendar.toIsoDateString();
 		String latestDetails = "latest progress report details";
+		String latestNextSteps = "latest progress report next steps";
+		String latestLessonsLearned = "latest progress report lessons learned";
 
-		ProgressReport progressReport = getProject().createProgressReport();
-		getProject().populateProgressReport(progressReport, currentDate, ProgressReportLongStatusQuestion.COMPLETED_CODE, latestDetails);
+		ExtendedProgressReport progressReport = getProject().createExtendedProgressReport();
+		getProject().populateExtendedProgressReport(progressReport, currentDate, ProgressReportLongStatusQuestion.COMPLETED_CODE, latestDetails, latestNextSteps, latestLessonsLearned);
 
 		return progressReport;
 	}

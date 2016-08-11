@@ -20,42 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
-import java.util.HashMap;
+import org.miradi.objects.*;
+import org.miradi.schemas.*;
 
-import org.miradi.objects.Assignment;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
-import org.miradi.objects.Desire;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.Factor;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.KeyEcologicalAttribute;
-import org.miradi.objects.Measurement;
-import org.miradi.objects.ObjectTreeTableConfiguration;
-import org.miradi.objects.Organization;
-import org.miradi.objects.ProgressPercent;
-import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.ProjectResource;
-import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.ScopeBox;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Stress;
-import org.miradi.objects.SubTarget;
-import org.miradi.objects.TaggedObjectSet;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
-import org.miradi.objects.ThreatReductionResult;
-import org.miradi.objects.ThreatStressRating;
-import org.miradi.objects.TncProjectData;
-import org.miradi.schemas.AbstractFieldSchema;
-import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.schemas.CauseSchema;
-import org.miradi.schemas.FutureStatusSchema;
-import org.miradi.schemas.MiradiShareTaxonomySchema;
-import org.miradi.schemas.StrategySchema;
+import java.util.HashMap;
 
 public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 {
@@ -186,6 +154,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(BaseObject.TAG_LABEL, NAME);
 		map.put(Target.TAG_SHORT_LABEL, IDENTIFIER);
 		map.put(BaseObject.TAG_PROGRESS_REPORT_REFS, PROGRESS_REPORT_IDS);
+		map.put(BaseObject.TAG_EXTENDED_PROGRESS_REPORT_REFS, EXTENDED_PROGRESS_REPORT_IDS);
 		map.put(BaseObject.TAG_TIMEFRAME_IDS, TIMEFRAME + IDS);
 		map.put(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, RESOURCE_ASSIGNMENT + IDS);
 		map.put(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT + IDS);
@@ -269,7 +238,6 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(ProjectMetadata.TAG_LOCATION_DETAIL, LOCATION_DETAILS);
 		map.put(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, PROJECT_ID);
 		map.put(TncProjectData.TAG_PROJECT_SHARING_CODE, PROJECT_SHARE_OUTSIDE_ORGANIZATION);
-		map.put(ProjectMetadata.TAG_TNC_LESSONS_LEARNED, LESSONS_LEARNED);
 
 		return map;
 	}
@@ -280,7 +248,6 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		
 		map.put(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE, TNC_DATABASE_DOWNLOAD_DATE);
 		map.put(ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS, TNC_PLANNING_TEAM_COMMENTS);
-		map.put(ProjectMetadata.TAG_TNC_LESSONS_LEARNED, TNC_LESSONS_LEARNED);
 		map.put(ProjectMetadata.TAG_TNC_OPERATING_UNITS, TNC_OPERATING_UNITS);
 		map.put(ProjectMetadata.TAG_TNC_TERRESTRIAL_ECO_REGION, TNC_TERRESTRIAL_ECO_REGION);
 		map.put(ProjectMetadata.TAG_TNC_MARINE_ECO_REGION, TNC_MARINE_ECO_REGION);

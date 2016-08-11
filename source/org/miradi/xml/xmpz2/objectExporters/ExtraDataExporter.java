@@ -84,7 +84,7 @@ public class ExtraDataExporter implements Xmpz2XmlConstants
 
 	public static String getExtraDataItemName(String typeName, BaseId objectId, String fieldTag)
 	{
-		return typeName + TYPE_ID_TAG_SPLIT_TOKEN + objectId + TYPE_ID_TAG_SPLIT_TOKEN + fieldTag;
+		return typeName + TYPE_ID_TAG_SPLIT_TOKEN + objectId + TYPE_ID_TAG_SPLIT_TOKEN + fieldTag.replace(TYPE_ID_TAG_SPLIT_TOKEN, FIELD_TAG_ESCAPE_TOKEN);
 	}
 
 	private Xmpz2XmlWriter getWriter()
@@ -100,4 +100,5 @@ public class ExtraDataExporter implements Xmpz2XmlConstants
 	private Project project;
 	private Xmpz2XmlWriter out;
 	public static final String TYPE_ID_TAG_SPLIT_TOKEN = ".";
+	public static final String FIELD_TAG_ESCAPE_TOKEN = ":";
 }

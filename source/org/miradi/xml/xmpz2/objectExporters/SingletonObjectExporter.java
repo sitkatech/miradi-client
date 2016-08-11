@@ -93,9 +93,6 @@ public class SingletonObjectExporter implements Xmpz2XmlConstants
 		writeProjectSummaryElement(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		writeProjectSummaryElement(ProjectMetadata.TAG_PROJECT_URL);
 		writeProjectSummaryElement(ProjectMetadata.TAG_PROJECT_DESCRIPTION);
-//		writeProjectSummaryElement(ProjectMetadata.TAG_PROJECT_STATUS);
-		writeProjectSummaryElement(ProjectMetadata.TAG_NEXT_STEPS);
-		writeProjectSummaryElement(ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		writeOverallProjectThreatRating();
 		writeOverallProjectViabilityRating();
 		writeExternalAppIds();
@@ -106,8 +103,8 @@ public class SingletonObjectExporter implements Xmpz2XmlConstants
 		ChoiceQuestion budgetTimePeriodQuestion = StaticQuestionManager.getQuestion(BudgetTimePeriodQuestion.class);
 		getWriter().writeNonOptionalCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, budgetTimePeriodQuestion, getMetadata().getData(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT));
 
-		ORefList progress_report_refs = new ORefList(getMetadata().getData(ProjectMetadata.TAG_PROGRESS_REPORT_REFS));
-		getWriter().writeNonOptionalReflist(PROJECT_SUMMARY + PROGRESS_REPORT_IDS, PROGRESS_REPORT, progress_report_refs);
+		ORefList progress_report_refs = new ORefList(getMetadata().getData(ProjectMetadata.TAG_EXTENDED_PROGRESS_REPORT_REFS));
+		getWriter().writeNonOptionalReflist(PROJECT_SUMMARY + EXTENDED_PROGRESS_REPORT_IDS, EXTENDED_PROGRESS_REPORT, progress_report_refs);
 
 		getWriter().writeEndElement(PROJECT_SUMMARY);
 	}

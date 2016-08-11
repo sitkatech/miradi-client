@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.xmpz2schema;
 
-import java.util.Vector;
-
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.StringUtilities;
 import org.miradi.utils.Utility;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
+
+import java.util.Vector;
 
 abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 {
@@ -114,10 +114,11 @@ abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 		BUDGET_CATEGORY_ONE,
 		BUDGET_CATEGORY_TWO,
 		PROGRESS_REPORT,
+		EXTENDED_PROGRESS_REPORT,
 		PROGRESS_PERCENT,
 		EXPENSE_ASSIGNMENT,
 		RESOURCE_ASSIGNMENT,
-				TIMEFRAME,
+		TIMEFRAME,
 		RESOURCE_ID_ELEMENT_NAME,
 		MEASUREMENT,
 		METHOD,

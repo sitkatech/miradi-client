@@ -19,39 +19,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.image.BufferedImage;
-import java.util.ArrayList;
-import java.util.HashMap;
-
-import javax.swing.*;
-import javax.swing.border.LineBorder;
-
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
+import org.miradi.ActionDeleteExtendedProgressReport;
 import org.miradi.actions.*;
 import org.miradi.actions.jump.*;
-import org.miradi.actions.views.ActionViewDiagram;
-import org.miradi.actions.views.ActionViewImages;
-import org.miradi.actions.views.ActionViewMap;
-import org.miradi.actions.views.ActionViewPlanning;
-import org.miradi.actions.views.ActionViewReports;
-import org.miradi.actions.views.ActionViewSchedule;
-import org.miradi.actions.views.ActionViewSummary;
-import org.miradi.actions.views.ActionViewTargetViability;
-import org.miradi.actions.views.ActionViewThreatMatrix;
-import org.miradi.actions.views.ActionViewWorkPlan;
+import org.miradi.actions.views.*;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.dialogs.base.AbstractDialogWithClose;
 import org.miradi.dialogs.base.ModelessDialogPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.main.CommandExecutedEvent;
-import org.miradi.main.CommandExecutedListener;
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
-import org.miradi.main.MiradiToolBar;
+import org.miradi.main.*;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ViewData;
@@ -62,15 +41,20 @@ import org.miradi.views.Doer;
 import org.miradi.views.MiradiTabContentsPanelInterface;
 import org.miradi.views.NullDoer;
 import org.miradi.views.diagram.Print;
-import org.miradi.views.diagram.doers.CreateProgressReportDoer;
-import org.miradi.views.diagram.doers.DeleteProgressReportDoer;
-import org.miradi.views.diagram.doers.EditEstimatedResourceDoer;
+import org.miradi.views.diagram.doers.*;
 import org.miradi.views.umbrella.doers.*;
 import org.miradi.views.workplan.doers.HideAllExpenseAssignmentsDoer;
 import org.miradi.views.workplan.doers.HideAllResourceAssignmentsDoer;
 import org.miradi.views.workplan.doers.ShowAllExpenseAssignmentsDoer;
 import org.miradi.views.workplan.doers.ShowAllResourceAssignmentsDoer;
 import org.miradi.wizard.SkeletonWizardStep;
+
+import javax.swing.*;
+import javax.swing.border.LineBorder;
+import java.awt.*;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.HashMap;
 
 abstract public class UmbrellaView extends JPanel implements CommandExecutedListener
 {
@@ -245,8 +229,10 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionDeleteMethod.class, new DeleteMethodDoer());
 
 		addDoerToMap(ActionCreateProgressReport.class, new CreateProgressReportDoer());
+		addDoerToMap(ActionCreateExtendedProgressReport.class, new CreateExtendedProgressReportDoer());
 		addDoerToMap(ActionDeleteProgressReport.class, new DeleteProgressReportDoer());
-		
+		addDoerToMap(ActionDeleteExtendedProgressReport.class, new DeleteExtendedProgressReportDoer());
+
 		addDoerToMap(ActionCreateProgressPercent.class, new CreateProgressPercentDoer());
 		addDoerToMap(ActionDeleteProgressPercent.class, new DeleteProgressPercentDoer());
 		

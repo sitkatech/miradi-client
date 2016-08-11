@@ -21,37 +21,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.progressReport;
 
 import org.miradi.dialogs.base.EditableObjectTableModel;
-import org.miradi.dialogs.base.DynamicWidthEditableObjectTable;
 import org.miradi.main.MainWindow;
-import org.miradi.questions.ProgressReportLongStatusQuestion;
 
-public class ProgressReportTable extends DynamicWidthEditableObjectTable
+public class ProgressReportTable extends AbstractProgressReportTable
 {
 	public ProgressReportTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse) throws Exception
 	{
 		super(mainWindowToUse, modelToUse);		
-	}
-	
-	private ProgressReportTableModel getProgressReportTableModel()
-	{
-		return (ProgressReportTableModel) getModel();
-	}
-	
-	@Override
-	public void rebuildColumnEditorsAndRenderers()
-	{
-		ProgressReportTableModel progressReportTableModel = getProgressReportTableModel();
-		for (int tableColumn = 0; tableColumn < progressReportTableModel.getColumnCount(); ++tableColumn)
-		{
-			int modelColumn = convertColumnIndexToModel(tableColumn);
-			if (progressReportTableModel.isProgressStatusColumn(modelColumn))
-				createComboQuestionColumn(new ProgressReportLongStatusQuestion(), tableColumn);
-			
-			if (progressReportTableModel.isDateColumn(modelColumn))
-				createDateColumn(tableColumn);
-			
-			if (progressReportTableModel.isDetailsColumn(modelColumn))
-				createWrappableTextFieldColumn(tableColumn);
-		}
 	}
 }

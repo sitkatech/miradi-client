@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
-import org.miradi.objects.DiagramObject;
-import org.miradi.questions.DiagramLegendQuestion;
+import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.ExtendedProgressReport;
 
-abstract public class DiagramObjectSchema extends BaseObjectSchema
+public class ExtendedProgressReportSchema extends ProgressReportSchema
 {
-	public DiagramObjectSchema()
+	public ExtendedProgressReportSchema()
 	{
 		super();
 	}
@@ -34,17 +34,27 @@ abstract public class DiagramObjectSchema extends BaseObjectSchema
 	protected void fillFieldSchemas()
 	{
 		super.fillFieldSchemas();
-		
-		createOwnedFieldSchemaIdList(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, DiagramFactorSchema.getObjectType());
-		createOwnedFieldSchemaIdList(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, DiagramLinkSchema.getObjectType());
-		createFieldSchemaSingleLineUserText(DiagramObject.TAG_SHORT_LABEL);
-		createFieldSchemaMultiLineUserText(DiagramObject.TAG_DETAIL);
-		createFieldSchemaCodeList(DiagramObject.TAG_HIDDEN_TYPES, getQuestion(DiagramLegendQuestion.class));
-		createFieldSchemaReflist(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TAGGED_OBJECT_SET_ELEMENT_NAME);
-		createFieldSchemaNumber(DiagramObject.TAG_ZOOM_SCALE);
 
-		createExtendedProgressReportSchema();
-
-		createPseudoFieldSchemaString(DiagramObject.PSEUDO_COMBINED_LABEL);
+		createFieldSchemaMultiLineUserText(ExtendedProgressReport.TAG_NEXT_STEPS);
+		createFieldSchemaMultiLineUserText(ExtendedProgressReport.TAG_LESSONS_LEARNED);
 	}
+	
+	public static int getObjectType()
+	{
+		return ObjectType.EXTENDED_PROGRESS_REPORT;
+	}
+	
+	@Override
+	public int getType()
+	{
+		return getObjectType();
+	}
+
+	@Override
+	public String getObjectName()
+	{
+		return OBJECT_NAME;
+	}
+	
+	public static final String OBJECT_NAME = "ExtendedProgressReport";
 }

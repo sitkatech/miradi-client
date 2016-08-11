@@ -21,7 +21,7 @@ package org.miradi.views.summary;
 
 import org.miradi.actions.views.ActionViewSummary;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
-import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
+import org.miradi.dialogs.progressReport.ExtendedProgressReportSubPanel;
 import org.miradi.forms.summary.ProjectTabForm;
 import org.miradi.icons.MiradiApplicationIcon;
 import org.miradi.layout.OneColumnGridLayout;
@@ -43,8 +43,7 @@ public class SummaryProjectTabPanel extends ObjectDataInputPanelWithSections
 		setLayout(new OneColumnGridLayout());
 
 		addSubPanelWithTitledBorder(new SummaryProjectPanel(mainWindow, refToUse));
-
-		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
+		addSubPanelWithTitledBorder(new ExtendedProgressReportSubPanel(getMainWindow()));
 
 		setObjectRefs(new ORefList(refToUse));
 		updateFieldsFromProject();

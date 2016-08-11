@@ -19,25 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions;
 
-import org.miradi.icons.DeleteIcon;
-import org.miradi.main.EAM;
+import org.miradi.AbstractActionDeleteProgressReport;
 import org.miradi.main.MainWindow;
 
-public class ActionDeleteProgressReport extends ObjectsAction
+public class ActionDeleteProgressReport extends AbstractActionDeleteProgressReport
 {
 	public ActionDeleteProgressReport(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel(), new DeleteIcon());
-	}
-
-	private static String getLabel()
-	{
-		return EAM.text("Action|Manage|Delete Progress Report");
-	}
-
-	@Override
-	public String getToolTipText()
-	{
-		return EAM.text("TT|Delete Progress Report");
+		super(mainWindowToUse);
 	}
 }

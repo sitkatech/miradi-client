@@ -21,7 +21,7 @@ package org.miradi.dialogs.diagram;
 
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
-import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
+import org.miradi.dialogs.progressReport.ExtendedProgressReportSubPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramObject;
@@ -42,7 +42,7 @@ public class ResultsChainPropertiesPanel extends ObjectDataInputPanelWithSection
 		addField(createMultilineField(ResultsChainDiagramSchema.getObjectType(), DiagramObject.TAG_DETAIL));
 		addTaxonomyFields(ResultsChainDiagramSchema.getObjectType());
 
-		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
+		addSubPanelWithTitledBorder(new ExtendedProgressReportSubPanel(getMainWindow()));
 
 		setObjectRefs(new ORef[] {resultsChainRef,});
 

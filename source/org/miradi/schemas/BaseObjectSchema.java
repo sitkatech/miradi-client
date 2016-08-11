@@ -332,12 +332,29 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 	protected void createProgressReportSchema()
 	{
 		createOwnedFieldSchemaReflist(BaseObject.TAG_PROGRESS_REPORT_REFS, PROGRESS_REPORT);
-		
+		createProgressReportPseudoFields();
+	}
+
+	protected void createExtendedProgressReportSchema()
+	{
+		createOwnedFieldSchemaReflist(BaseObject.TAG_EXTENDED_PROGRESS_REPORT_REFS, EXTENDED_PROGRESS_REPORT);
+		createProgressReportPseudoFields();
+		createExtendedProgressReportPseudoFields();
+	}
+
+	private void createProgressReportPseudoFields()
+	{
 		createPseudoFieldSchemaQuestion(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE);
 		createPseudoFieldSchemaQuestion(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE);
 		createPseudoFieldSchemaString(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 	}
-	
+
+	private void createExtendedProgressReportPseudoFields()
+	{
+		createPseudoFieldSchemaString(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_NEXT_STEPS);
+		createPseudoFieldSchemaString(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_LESSONS_LEARNED);
+	}
+
 	protected void createTaxonomyClassificationSchemaField()
 	{
 		createTaxonomyClassifications(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);

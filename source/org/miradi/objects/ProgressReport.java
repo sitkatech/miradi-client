@@ -24,10 +24,9 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
 import org.miradi.schemas.*;
 
-public class ProgressReport extends BaseObject
+public class ProgressReport extends AbstractProgressReport
 {
 	public ProgressReport(ObjectManager objectManager, BaseId idToUse)
 	{
@@ -48,47 +47,12 @@ public class ProgressReport extends BaseObject
 	public int[] getTypesThatCanOwnUs()
 	{
 		return new int[] {
-			ProjectMetadataSchema.getObjectType(),
-			ConceptualModelDiagramSchema.getObjectType(),
-			ResultsChainDiagramSchema.getObjectType(),
 			StrategySchema.getObjectType(),
 			IndicatorSchema.getObjectType(),
 			TaskSchema.getObjectType(),
 		};
 	}
-	
-	public boolean canHaveIndicators()
-	{
-		return false;
-	}
 
-	public String getDateAsString()
-	{
-		return getData(TAG_PROGRESS_DATE);
-	}
-	
-	@Override
-	public String toString()
-	{
-		return getDateAsString() + ": " + getProgressStatusChoice().getLabel();
-	}
-
-	@Override
-	public String getFullName()
-	{
-		return toString();
-	}
-	
-	public ChoiceItem getProgressStatusChoice()
-	{
-		return getChoiceItemData(TAG_PROGRESS_STATUS);
-	}
-	
-	public String getDetails()
-	{
-		return getStringData(TAG_DETAILS);
-	}
-	
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());
@@ -96,20 +60,21 @@ public class ProgressReport extends BaseObject
 
 	public static boolean is(int objectType)
 	{
-		return (objectType == ProgressReportSchema.getObjectType());
+		return objectType == ProgressReportSchema.getObjectType();
 	}
-	
+
+	public static boolean is(BaseObject baseObject)
+	{
+		return is(baseObject.getType());
+	}
+
 	public static ProgressReport find(ObjectManager objectManager, ORef progressReportRef)
 	{
 		return (ProgressReport) objectManager.findObject(progressReportRef);
 	}
-	
+
 	public static ProgressReport find(Project project, ORef progressReportRef)
 	{
 		return find(project.getObjectManager(), progressReportRef);
 	}
-	
-	public static final String TAG_PROGRESS_STATUS = "ProgressStatus";
-	public static final String TAG_PROGRESS_DATE = "ProgressDate";
-	public static final String TAG_DETAILS = "Details";
 }

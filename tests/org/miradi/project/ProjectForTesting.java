@@ -90,7 +90,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_DESCRIPTION, "Some project description");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_PROJECT_VISION, encodeXml("Some project \"vision\"" + HtmlUtilities.BR_TAG + HtmlUtilities.BR_TAG + "With multiple lines!"));
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS, encodeXml("TNC planning team comment, mentioning that x > 2 && x < 4"));
-		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED, "TNC lessons learned");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS, "Other Related Projects");
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_COUNTRIES, createSampleCountriesCodeList().toString());
 		fillObjectUsingCommand(getMetadata().getRef(), ProjectMetadata.TAG_TNC_OPERATING_UNITS, createSampleTncOperatingUnitsCodeList().toString());
@@ -683,6 +682,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return progressReport;
 	}
 	
+	public ExtendedProgressReport createAndPopulateExtendedProgressReport() throws Exception
+	{
+		ExtendedProgressReport progressReport = createExtendedProgressReport();
+		populateExtendedProgressReport(progressReport);
+
+		return progressReport;
+	}
+
 	public ProgressPercent createAndPopulateProgressPercent() throws Exception
 	{
 		ProgressPercent progressPercent = createProgressPercent();
@@ -1081,7 +1088,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORef progressReportRef = createObject(ProgressReportSchema.getObjectType());
 		return ProgressReport.find(this, progressReportRef);
 	}
-	
+
+	public ExtendedProgressReport createExtendedProgressReport() throws Exception
+	{
+		ORef progressReportRef = createObject(ExtendedProgressReportSchema.getObjectType());
+		return ExtendedProgressReport.find(this, progressReportRef);
+	}
+
 	public ProgressPercent createProgressPercent() throws Exception
 	{
 		ORef progressPercentRef = createObject(ProgressPercentSchema.getObjectType());
@@ -1710,7 +1723,21 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public ProgressReport addProgressReport(BaseObject baseObject, ProgressReport progressReport) throws Exception
 	{
 		ORefList progressReportRefs = new ORefList(progressReport.getRef());
-		fillObjectUsingCommand(baseObject, BaseObject.TAG_PROGRESS_REPORT_REFS, progressReportRefs.toString());
+		fillObjectUsingCommand(baseObject, baseObject.getProgressReportRefsTag(), progressReportRefs.toString());
+
+		return progressReport;
+	}
+
+	public ExtendedProgressReport addExtendedProgressReport(BaseObject baseObject) throws Exception
+	{
+		ExtendedProgressReport progressReport = createAndPopulateExtendedProgressReport();
+		return addExtendedProgressReport(baseObject, progressReport);
+	}
+
+	public ExtendedProgressReport addExtendedProgressReport(BaseObject baseObject, ExtendedProgressReport progressReport) throws Exception
+	{
+		ORefList progressReportRefs = new ORefList(progressReport.getRef());
+		fillObjectUsingCommand(baseObject, baseObject.getProgressReportRefsTag(), progressReportRefs.toString());
 
 		return progressReport;
 	}
@@ -1744,13 +1771,27 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(progressReport, ProgressReport.TAG_DETAILS, details);
 	}
 
+	public void populateExtendedProgressReport(ExtendedProgressReport progressReport) throws Exception
+	{
+		populateExtendedProgressReport(progressReport, "2008-01-23", ProgressReportLongStatusQuestion.PLANNED_CODE, "some progress report details", "some progress report next steps", "some progress report lessons learned");
+	}
+
+	public void populateExtendedProgressReport(ExtendedProgressReport progressReport, String dateAsString, String status, String details, String nextSteps, String lessonsLearned) throws Exception
+	{
+		fillObjectUsingCommand(progressReport, ExtendedProgressReport.TAG_PROGRESS_DATE, dateAsString);
+		fillObjectUsingCommand(progressReport, ExtendedProgressReport.TAG_PROGRESS_STATUS, status);
+		fillObjectUsingCommand(progressReport, ExtendedProgressReport.TAG_DETAILS, details);
+		fillObjectUsingCommand(progressReport, ExtendedProgressReport.TAG_NEXT_STEPS, nextSteps);
+		fillObjectUsingCommand(progressReport, ExtendedProgressReport.TAG_LESSONS_LEARNED, lessonsLearned);
+	}
+
 	public void populateProgressPercent(ProgressPercent progressPercent) throws Exception
 	{
 		fillObjectUsingCommand(progressPercent, ProgressPercent.TAG_DATE, "2009-01-23");
 		fillObjectUsingCommand(progressPercent, ProgressPercent.TAG_PERCENT_COMPLETE, "21");
 		fillObjectUsingCommand(progressPercent, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES, "some percent complete notes");
 	}
-	
+
 	public void populateXenodata(Xenodata xenodata, String xenoDataProjectId) throws Exception
 	{
 		setObjectData(xenodata.getRef(), Xenodata.TAG_PROJECT_ID, xenoDataProjectId);

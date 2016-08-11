@@ -33,6 +33,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ExtendedProgressReport;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.questions.DayColumnsVisibilityQuestion;
 import org.miradi.schemas.IndicatorSchema;
@@ -52,6 +53,9 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.Vector;
+
+import static org.miradi.xml.xmpz2.objectExporters.ExtraDataExporter.FIELD_TAG_ESCAPE_TOKEN;
+import static org.miradi.xml.xmpz2.objectExporters.ExtraDataExporter.TYPE_ID_TAG_SPLIT_TOKEN;
 
 public class Xmpz2ForwardMigration
 {
@@ -198,15 +202,22 @@ public class Xmpz2ForwardMigration
 		Node projectSummaryNode = findNode(rootElement.getChildNodes(), Xmpz2XmlConstants.PROJECT_SUMMARY);
 		if (projectSummaryNode != null)
 		{
-			Node projectStatusNode = findNode(projectSummaryNode, Xmpz2XmlConstants.PROJECT_SUMMARY + ProjectMetadata.TAG_PROJECT_STATUS);
-			if (projectStatusNode != null && projectStatusNode.getNodeType() == Node.ELEMENT_NODE)
-			{
-				String extraDataItemName = ExtraDataExporter.getExtraDataItemName(ProjectMetadataSchema.OBJECT_NAME, new BaseId(""), ProjectMetadata.TAG_PROJECT_STATUS);
-				String extraDataItemValue = getFormattedNodeContent(projectStatusNode);
-				moveDataToExtraData(document, extraDataItemName, extraDataItemValue);
+			moveProjectStatusElementToExtraData(document, projectSummaryNode, Xmpz2XmlConstants.PROJECT_SUMMARY + ProjectMetadata.TAG_PROJECT_STATUS, ProjectMetadata.TAG_PROJECT_STATUS);
+			moveProjectStatusElementToExtraData(document, projectSummaryNode, Xmpz2XmlConstants.PROJECT_SUMMARY + ExtendedProgressReport.TAG_LESSONS_LEARNED, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
+			moveProjectStatusElementToExtraData(document, projectSummaryNode, Xmpz2XmlConstants.PROJECT_SUMMARY + ProjectMetadata.TAG_NEXT_STEPS, ProjectMetadata.TAG_NEXT_STEPS);
+		}
+	}
 
-				projectSummaryNode.removeChild(projectStatusNode);
-			}
+	private void moveProjectStatusElementToExtraData(Document document, Node projectSummaryNode, final String elementNameWithoutAlias, String fieldTag) throws Exception
+	{
+		Node nodeToMove = findNode(projectSummaryNode, elementNameWithoutAlias);
+		if (nodeToMove != null && nodeToMove.getNodeType() == Node.ELEMENT_NODE)
+		{
+			String extraDataItemName = ExtraDataExporter.getExtraDataItemName(ProjectMetadataSchema.OBJECT_NAME, new BaseId(""), fieldTag.replace(TYPE_ID_TAG_SPLIT_TOKEN, FIELD_TAG_ESCAPE_TOKEN));
+			String extraDataItemValue = getFormattedNodeContent(nodeToMove);
+			moveDataToExtraData(document, extraDataItemName, extraDataItemValue);
+
+			projectSummaryNode.removeChild(nodeToMove);
 		}
 	}
 

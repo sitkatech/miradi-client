@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.project;
 
-import java.util.HashMap;
-import java.util.Vector;
-
 import org.miradi.diagram.ChainWalker;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
@@ -33,6 +30,9 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objectpools.*;
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.*;
+
+import java.util.HashMap;
+import java.util.Vector;
 
 public class ObjectManager
 {
@@ -81,6 +81,7 @@ public class ObjectManager
 		addNormalPool(new GroupBoxPool(ida), GroupBoxSchema.OBJECT_NAME);
 		addNormalPool(new SubTargetPool(ida), SubTargetSchema.OBJECT_NAME);
 		addNormalPool(new ProgressReportPool(ida), ProgressReportSchema.OBJECT_NAME);
+		addNormalPool(new ExtendedProgressReportPool(ida), ExtendedProgressReportSchema.OBJECT_NAME);
 		addNormalPool(new RareProjectDataPool(ida), RareProjectDataSchema.OBJECT_NAME);
 		addNormalPool(new WcsProjectDataPool(ida), WcsProjectDataSchema.OBJECT_NAME);
 		addNormalPool(new TncProjectDataPool(ida), TncProjectDataSchema.OBJECT_NAME);

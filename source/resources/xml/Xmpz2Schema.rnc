@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue Aug 09 13:32:43 BST 2016 $
+# $LastChangedDate: Thu Aug 11 15:13:46 BST 2016 $
 # $LastChangedRevision: 236 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/236'
 start = ConservationProject.element
@@ -60,6 +60,7 @@ ConservationProject.element = element miradi:ConservationProject
   BiophysicalResultPool.element? &
   TimeframePool.element? &
   MethodPool.element? &
+  ExtendedProgressReportPool.element? &
   SimpleThreatRatingPool.element? &
   StressBasedThreatRatingPool.element? &
   MiradiShareProjectDataTaxonomyAssociationPool.element? &
@@ -90,12 +91,10 @@ ProjectSummary.element = element miradi:ProjectSummary
   element miradi:ProjectSummaryCalculatedOverallProjectThreatRating { vocabulary_threat_rating }? &
   element miradi:ProjectSummaryCalculatedOverallProjectViabilityRating { vocabulary_status }? &
   element miradi:ProjectSummaryDataEffectiveDate { vocabulary_date }? &
+  element miradi:ProjectSummaryExtendedProgressReportIds { ExtendedProgressReportId.element* }? &
   element miradi:ProjectSummaryFactorMode { vocabulary_factor_mode }? &
-  element miradi:ProjectSummaryLessonsLearned { formatted_text }? &
-  element miradi:ProjectSummaryNextSteps { formatted_text }? &
   element miradi:ProjectSummaryOtherOrgProjectNumber { text }? &
   element miradi:ProjectSummaryOtherOrgRelatedProjects { text }? &
-  element miradi:ProjectSummaryProgressReportIds { ProgressReportId.element* }? &
   element miradi:ProjectSummaryProjectDescription { formatted_text }? &
   element miradi:ProjectSummaryProjectId { ExternalProjectId.element* }? &
   element miradi:ProjectSummaryProjectLanguage { vocabulary_language_code }? &
@@ -425,9 +424,9 @@ ConceptualModel.element = element miradi:ConceptualModel
   element miradi:ConceptualModelDetails { formatted_text }? &
   element miradi:ConceptualModelDiagramFactorIds { DiagramFactorId.element* }? &
   element miradi:ConceptualModelDiagramLinkIds { DiagramLinkId.element* }? &
+  element miradi:ConceptualModelExtendedProgressReportIds { ExtendedProgressReportId.element* }? &
   element miradi:ConceptualModelIdentifier { text }? &
   element miradi:ConceptualModelName { formatted_text }? &
-  element miradi:ConceptualModelProgressReportIds { ProgressReportId.element* }? &
   element miradi:ConceptualModelSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }? &
   element miradi:ConceptualModelZoomScale { xsd:decimal }?
 }
@@ -515,9 +514,9 @@ ResultsChain.element = element miradi:ResultsChain
   element miradi:ResultsChainDetails { formatted_text }? &
   element miradi:ResultsChainDiagramFactorIds { DiagramFactorId.element* }? &
   element miradi:ResultsChainDiagramLinkIds { DiagramLinkId.element* }? &
+  element miradi:ResultsChainExtendedProgressReportIds { ExtendedProgressReportId.element* }? &
   element miradi:ResultsChainIdentifier { text }? &
   element miradi:ResultsChainName { formatted_text }? &
-  element miradi:ResultsChainProgressReportIds { ProgressReportId.element* }? &
   element miradi:ResultsChainSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }? &
   element miradi:ResultsChainZoomScale { xsd:decimal }? &
   ResultsChainHiddenTypesContainer.element ? &
@@ -810,6 +809,17 @@ Method.element = element miradi:Method
   element miradi:MethodUrl { text }?
 }
 
+ExtendedProgressReportPool.element = element miradi:ExtendedProgressReportPool { ExtendedProgressReport.element* }
+ExtendedProgressReport.element = element miradi:ExtendedProgressReport
+{
+  attribute Id {xsd:integer} &
+  element miradi:ExtendedProgressReportDetails { formatted_text }? &
+  element miradi:ExtendedProgressReportLessonsLearned { formatted_text }? &
+  element miradi:ExtendedProgressReportNextSteps { formatted_text }? &
+  element miradi:ExtendedProgressReportProgressDate { vocabulary_date }? &
+  element miradi:ExtendedProgressReportProgressStatus { vocabulary_progress_report_status }?
+}
+
 SimpleThreatRatingPool.element = element miradi:SimpleThreatRatingPool { SimpleThreatRating.element* }
 SimpleThreatRating.element = element miradi:SimpleThreatRating
 {
@@ -1013,6 +1023,7 @@ FundingSourceId.element = element miradi:FundingSourceId { xsd:integer }
 BudgetCategoryOneId.element = element miradi:BudgetCategoryOneId { xsd:integer }
 BudgetCategoryTwoId.element = element miradi:BudgetCategoryTwoId { xsd:integer }
 ProgressReportId.element = element miradi:ProgressReportId { xsd:integer }
+ExtendedProgressReportId.element = element miradi:ExtendedProgressReportId { xsd:integer }
 ProgressPercentId.element = element miradi:ProgressPercentId { xsd:integer }
 ExpenseAssignmentId.element = element miradi:ExpenseAssignmentId { xsd:integer }
 ResourceAssignmentId.element = element miradi:ResourceAssignmentId { xsd:integer }

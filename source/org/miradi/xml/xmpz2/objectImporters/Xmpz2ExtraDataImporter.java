@@ -32,6 +32,9 @@ import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
+import static org.miradi.xml.xmpz2.objectExporters.ExtraDataExporter.FIELD_TAG_ESCAPE_TOKEN;
+import static org.miradi.xml.xmpz2.objectExporters.ExtraDataExporter.TYPE_ID_TAG_SPLIT_TOKEN;
+
 public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 {
 	public Xmpz2ExtraDataImporter(Xmpz2XmlImporter importerToUse)
@@ -60,7 +63,7 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 				throw new RuntimeException("Incorrect number if values split of extra data name, Raw name before split = " + extraDataName);
 			String typeName = splitValues[0];
 			String id = splitValues[1];
-			String tag = splitValues[2];
+			String tag = splitValues[2].replace(FIELD_TAG_ESCAPE_TOKEN, TYPE_ID_TAG_SPLIT_TOKEN);
 			
 			BaseObject baseObject = createOrGetExisting(typeName, id);
 			Node extraDataItemValueNode = getImporter().getNamedChildNode(extraDataItemNode, EXTRA_DATA_ITEM_VALUE);
@@ -154,6 +157,12 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 		if (typeName.equals(ProjectMetadataSchema.OBJECT_NAME) && tag.equals(ProjectMetadata.TAG_PROJECT_STATUS))
 			return true;
 
+		if (typeName.equals(ProjectMetadataSchema.OBJECT_NAME) && tag.equals(ProjectMetadata.TAG_TNC_LESSONS_LEARNED))
+			return true;
+
+		if (typeName.equals(ProjectMetadataSchema.OBJECT_NAME) && tag.equals(ProjectMetadata.TAG_NEXT_STEPS))
+			return true;
+
 		if (typeName.equals(IndicatorSchema.OBJECT_NAME) && tag.equals(Indicator.TAG_ASSIGNED_LEADER_RESOURCE))
 			return true;
 
@@ -166,5 +175,5 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 		return false;
 	}
 
-	private static final String TYPE_ID_TAG_SPLIT_TOKEN_FOR_REGULAR_EXPRESSION = "\\.";
+	private static final String TYPE_ID_TAG_SPLIT_TOKEN_FOR_REGULAR_EXPRESSION = "\\" + TYPE_ID_TAG_SPLIT_TOKEN;
 }

@@ -113,6 +113,7 @@ public interface Xmpz2XmlConstants
 	public static final String RESOURCE_ASSIGNMENT = "ResourceAssignment";
 	public static final String EXPENSE_ASSIGNMENT = "ExpenseAssignment";
 	public static final String PROGRESS_REPORT = "ProgressReport";
+	public static final String EXTENDED_PROGRESS_REPORT = "ExtendedProgressReport";
 	public static final String PROGRESS_PERCENT = "ProgressPercent";
 	public static final String THREAT = "Threat";
 	public static final String TARGET = TargetSchema.OBJECT_NAME;
@@ -165,6 +166,7 @@ public interface Xmpz2XmlConstants
 	public static final String BUDGET_CATEGORY_ONE_ID = "BudgetCategoryOneId";
 	public static final String BUDGET_CATEGORY_TWO_ID = "BudgetCategoryTwoId";
 	public static final String PROGRESS_REPORT_IDS = "ProgressReportIds";
+	public static final String EXTENDED_PROGRESS_REPORT_IDS = "ExtendedProgressReportIds";
 	public static final String PROGRESS_PERCENT_IDS = "ProgressPercentIds";
 	public static final String RELATED_THREAT_ID = "RelatedDirectThreat" + ID;
 	public static final String THREAT_ID = "ThreatId";

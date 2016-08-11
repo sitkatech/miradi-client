@@ -94,7 +94,7 @@ public class ProjectMetadataSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(ProjectMetadata.TAG_NEXT_STEPS);
 		createFieldSchemaMultiLineUserText(ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 
-		createProgressReportSchema();
+		createExtendedProgressReportSchema();
 
 		createFieldSchemaCode(ProjectMetadata.TAG_CURRENT_WIZARD_SCREEN_NAME).setNavigationField();
 

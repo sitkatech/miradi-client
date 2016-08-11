@@ -27,8 +27,8 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TncProjectData;
 import org.miradi.objects.Xenodata;
 import org.miradi.questions.*;
+import org.miradi.schemas.ExtendedProgressReportSchema;
 import org.miradi.schemas.FieldSchemaReflist;
-import org.miradi.schemas.ProgressReportSchema;
 import org.miradi.schemas.XenodataSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.miradi.xml.xmpz2.xmpz2schema.ProjectSummarySchema;
@@ -55,9 +55,6 @@ public class Xmpz2ProjectSummaryImporter extends BaseObjectImporter
 		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_PROJECT_URL);
 		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_PROJECT_DESCRIPTION);
 
-//		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_PROJECT_STATUS);
-		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_NEXT_STEPS);
-		importProjectMetadataField(projectSummaryNode, ProjectMetadata.TAG_TNC_LESSONS_LEARNED);
 		importExternalProjectId(projectSummaryNode);
 				
 		getImporter().importCodeField(projectSummaryNode, PROJECT_SUMMARY, getMetadataRef(), ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE, new TargetModeQuestion());
@@ -65,8 +62,8 @@ public class Xmpz2ProjectSummaryImporter extends BaseObjectImporter
 		getImporter().importCodeField(projectSummaryNode, PROJECT_SUMMARY, getMetadataRef(), ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, StaticQuestionManager.getQuestion(BudgetTimePeriodQuestion.class));
 		getImporter().importCodeField(projectSummaryNode, PROJECT_SUMMARY, getMetadataRef(), ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion());
 
-		FieldSchemaReflist progressReportFieldSchema = new FieldSchemaReflist(BaseObject.TAG_PROGRESS_REPORT_REFS, PROGRESS_REPORT);
-		getImporter().importRefs(projectSummaryNode, getMetadataRef(), new ProjectSummarySchema(), progressReportFieldSchema, ProgressReportSchema.OBJECT_NAME);
+		FieldSchemaReflist progressReportFieldSchema = new FieldSchemaReflist(BaseObject.TAG_EXTENDED_PROGRESS_REPORT_REFS, EXTENDED_PROGRESS_REPORT);
+		getImporter().importRefs(projectSummaryNode, getMetadataRef(), new ProjectSummarySchema(), progressReportFieldSchema, ExtendedProgressReportSchema.OBJECT_NAME);
 	}
 	
 	private void writeShareOutsideOrganizationElement(Node projectSummaryNode) throws Exception

@@ -20,31 +20,22 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.progressReport;
 
-import java.util.LinkedHashMap;
-
 import org.miradi.actions.ActionDeleteProgressReport;
-import org.miradi.dialogs.base.EditableObjectListTableSubPanel;
-import org.miradi.main.CommandExecutedEvent;
-import org.miradi.main.EAM;
+import org.miradi.dialogs.base.EditableObjectRefsTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.ProgressReport;
+import org.miradi.project.Project;
 import org.miradi.schemas.ProgressReportSchema;
 import org.miradi.views.umbrella.ActionCreateProgressReport;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class ProgressReportSubPanel extends EditableObjectListTableSubPanel
+import java.util.LinkedHashMap;
+
+public class ProgressReportSubPanel extends AbstractProgressReportSubPanel
 {
 	public ProgressReportSubPanel(MainWindow mainWindow) throws Exception
 	{
-		super(mainWindow.getProject(), getObjectType());
-	}
-	
-	@Override
-	protected void createTable() throws Exception
-	{
-		objectTableModel = new ProgressReportTableModel(getMainWindow().getProject());
-		objectTable = new ProgressReportTable(getMainWindow(), objectTableModel);
+		super(mainWindow, getObjectType());
 	}
 	
 	@Override
@@ -56,13 +47,19 @@ public class ProgressReportSubPanel extends EditableObjectListTableSubPanel
 		
 		return buttonsMap;
 	}
-	
+
 	@Override
-	public String getPanelDescription()
+	protected EditableObjectRefsTableModel createTableModel(Project project)
 	{
-		return EAM.text("Title|Progress Report");
+		return new ProgressReportTableModel(project);
 	}
-	
+
+	@Override
+	protected ProgressReportTable createTable(MainWindow mainWindow, EditableObjectRefsTableModel model) throws Exception
+	{
+		return new ProgressReportTable(mainWindow, model);
+	}
+
 	@Override
 	protected int getEditableObjectType()
 	{
@@ -75,29 +72,8 @@ public class ProgressReportSubPanel extends EditableObjectListTableSubPanel
 		return BaseObject.TAG_PROGRESS_REPORT_REFS;
 	}
 	
-	@Override
-	protected boolean doesSectionContainFieldWithTag(String tagToUse)
-	{
-		if (tagToUse.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
-			return true;
-		
-		if (tagToUse.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS))
-			return true;
-
-		return super.doesSectionContainFieldWithTag(tagToUse);
-	}
-	
 	private static int getObjectType()
 	{
 		return ProgressReportSchema.getObjectType();
-	}
-	
-	@Override
-	protected boolean shouldRefreshModel(CommandExecutedEvent event)
-	{
-		if (super.shouldRefreshModel(event))
-			return true;
-		
-		return event.isSetDataCommandWithThisTag(ProgressReport.TAG_PROGRESS_DATE);
 	}
 }

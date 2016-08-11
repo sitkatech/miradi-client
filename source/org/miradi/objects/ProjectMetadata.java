@@ -77,7 +77,7 @@ public class ProjectMetadata extends BaseObject
 	public CommandVector createCommandsToDeleteChildren() throws Exception
 	{
 		CommandVector commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
-		commandsToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_PROGRESS_REPORT_REFS));
+		commandsToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_EXTENDED_PROGRESS_REPORT_REFS));
 
 		return commandsToDeleteChildren;
 	}

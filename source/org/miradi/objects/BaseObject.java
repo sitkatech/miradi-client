@@ -377,6 +377,9 @@ abstract public class BaseObject
 		if (tag.equals(TAG_PROGRESS_REPORT_REFS))
 			return ProgressReportSchema.getObjectType();
 		
+		if (tag.equals(TAG_EXTENDED_PROGRESS_REPORT_REFS))
+			return ExtendedProgressReportSchema.getObjectType();
+
 		throw new RuntimeException("Cannot find annotation type for " + tag);
 	}
 	
@@ -1436,7 +1439,13 @@ abstract public class BaseObject
 
 		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS))
 			return getLatestProgressReportDetails();
-		
+
+		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_NEXT_STEPS))
+			return getLatestProgressReportNextSteps();
+
+		if(fieldTag.equals(PSEUDO_TAG_LATEST_PROGRESS_REPORT_LESSONS_LEARNED))
+			return getLatestProgressReportLessonsLearned();
+
 		if(isPseudoField(fieldTag))
 		{
 			EAM.logError("BaseObject.getPseudoData called for: " + fieldTag);
@@ -1446,36 +1455,74 @@ abstract public class BaseObject
 		return getData(fieldTag);
 	}
 	
-	public String getLatestProgressReportDate()
+	private String getLatestProgressReportDate()
 	{
-		ProgressReport progressReport = getLatestProgressReport();
+		AbstractProgressReport progressReport = getLatestProgressReport();
 		if (progressReport == null)
 			return "";
 		
 		return progressReport.getDateAsString();
 	}
 
-	public String getLatestProgressReportStatusCode()
+	private String getLatestProgressReportStatusCode()
 	{
-		ProgressReport progressReport = getLatestProgressReport();
+		AbstractProgressReport progressReport = getLatestProgressReport();
 		if (progressReport == null)
 			return "";
 
 		return progressReport.getProgressStatusChoice().getCode();
 	}
 
-	protected String getLatestProgressReportDetails()
+	private String getLatestProgressReportDetails()
 	{
-		ProgressReport progressReport = getLatestProgressReport();
+		AbstractProgressReport progressReport = getLatestProgressReport();
 		if (progressReport == null)
 			return "";
 		
-		return progressReport.getData(ProgressReport.TAG_DETAILS);
+		return progressReport.getDetails();
 	}
 
-	public ProgressReport getLatestProgressReport()
+	private String getLatestProgressReportNextSteps()
 	{
-		return (ProgressReport) getLatestObject(getObjectManager(), getSafeRefListData(TAG_PROGRESS_REPORT_REFS), ProgressReport.TAG_PROGRESS_DATE);
+		AbstractProgressReport progressReport = getLatestProgressReport();
+		if (progressReport == null)
+			return "";
+
+		if (!(progressReport instanceof ExtendedProgressReport))
+			return "";
+
+		return ((ExtendedProgressReport) progressReport).getNextSteps();
+	}
+
+	private String getLatestProgressReportLessonsLearned()
+	{
+		AbstractProgressReport progressReport = getLatestProgressReport();
+		if (progressReport == null)
+			return "";
+
+		if (!(progressReport instanceof ExtendedProgressReport))
+			return "";
+
+		return ((ExtendedProgressReport) progressReport).getLessonsLearned();
+	}
+
+	public String getProgressReportRefsTag()
+	{
+		if (ProjectMetadata.is(this))
+			return TAG_EXTENDED_PROGRESS_REPORT_REFS;
+
+		if (ConceptualModelDiagram.is(this))
+			return TAG_EXTENDED_PROGRESS_REPORT_REFS;
+
+		if (ResultsChainDiagram.is(this))
+			return TAG_EXTENDED_PROGRESS_REPORT_REFS;
+
+		return TAG_PROGRESS_REPORT_REFS;
+	}
+
+	private AbstractProgressReport getLatestProgressReport()
+	{
+		return (AbstractProgressReport) getLatestObject(getObjectManager(), getSafeRefListData(getProgressReportRefsTag()), AbstractProgressReport.TAG_PROGRESS_DATE);
 	}
 
 	protected static BaseObject getLatestObject(ObjectManager objectManagerToUse, ORefList objectRefs, String dateTag)
@@ -1572,6 +1619,7 @@ abstract public class BaseObject
 	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
 	public static final String TAG_EXPENSE_ASSIGNMENT_REFS = "ExpenseRefs";
 	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
+	public static final String TAG_EXTENDED_PROGRESS_REPORT_REFS = "ExtendedProgressReportRefs";
 	public static final String TAG_ASSIGNED_LEADER_RESOURCE = "AssignedLeaderResource";
 	public static final String TAG_TAXONOMY_CLASSIFICATION_CONTAINER = "TaxonomyClassificationContainer";
 
@@ -1580,6 +1628,8 @@ abstract public class BaseObject
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE = "PseudoLatestProgressReportDate";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE = "PseudoLatestProgressReportCode";
 	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS = "PseudoLatestProgressReportDetails";
+	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_NEXT_STEPS = "PseudoLatestProgressReportNextSteps";
+	public static final String PSEUDO_TAG_LATEST_PROGRESS_REPORT_LESSONS_LEARNED = "PseudoLatestProgressReportLessonsLearned";
 
 	protected static final int[] NO_OWNERS = new int[] {};
 	

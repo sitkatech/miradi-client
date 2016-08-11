@@ -20,38 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import java.util.HashMap;
-
 import org.miradi.migrations.IndicatorFutureStatusTagsToFutureStatusTagsMap;
-import org.miradi.objects.AccountingCode;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.FundingSource;
-import org.miradi.objects.Goal;
-import org.miradi.objects.GroupBox;
-import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.IntermediateResult;
-import org.miradi.objects.KeyEcologicalAttribute;
-import org.miradi.objects.Measurement;
-import org.miradi.objects.ObjectTreeTableConfiguration;
-import org.miradi.objects.Objective;
-import org.miradi.objects.Organization;
-import org.miradi.objects.ProgressPercent;
-import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.ProjectResource;
-import org.miradi.objects.ScopeBox;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Stress;
-import org.miradi.objects.SubTarget;
-import org.miradi.objects.TaggedObjectSet;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
-import org.miradi.objects.TextBox;
-import org.miradi.objects.ThreatReductionResult;
-import org.miradi.xml.generic.XmlSchemaCreator;
-import org.miradi.xml.generic.XmlConstants;
+import org.miradi.objects.*;
+
+import java.util.HashMap;
 
 public class TagToElementNameMap implements XmlConstants
 {
@@ -203,7 +175,6 @@ public class TagToElementNameMap implements XmlConstants
 		
 		map.put(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE, XmlSchemaCreator.TNC_DATABASE_DOWNLOAD_DATE);
 		map.put(ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS, XmlSchemaCreator.TNC_PLANNING_TEAM_COMMENTS);
-		map.put(ProjectMetadata.TAG_TNC_LESSONS_LEARNED, XmlSchemaCreator.TNC_LESSONS_LEARNED);
 		map.put(ProjectMetadata.TAG_TNC_OPERATING_UNITS, XmlSchemaCreator.TNC_OPERATING_UNITS);
 		map.put("ProjectPlaceTypes", XmlSchemaCreator.TNC_PROJECT_PLACE_TYPES);
 		map.put("OrganizationalPriorities", XmlSchemaCreator.TNC_ORGANIZATIONAL_PRIORITIES);

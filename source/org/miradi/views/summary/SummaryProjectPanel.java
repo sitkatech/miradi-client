@@ -69,10 +69,12 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 		ObjectDataInputField latestProgressReportDetailsField = createMultilineField(ProjectMetadata.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 		latestProgressReportDetailsField.setEditable(false);
 		addField(latestProgressReportDetailsField);
-
-//		addField(createMultilineField(ProjectMetadata.TAG_PROJECT_STATUS));
-		addField(createMultilineField(ProjectMetadata.TAG_NEXT_STEPS));
-		addField(createMultilineField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_TNC_LESSONS_LEARNED));
+		ObjectDataInputField latestProgressReportNextStepsField = createMultilineField(ProjectMetadata.PSEUDO_TAG_LATEST_PROGRESS_REPORT_NEXT_STEPS);
+		latestProgressReportNextStepsField.setEditable(false);
+		addField(latestProgressReportNextStepsField);
+		ObjectDataInputField latestProgressReportLessonsLearnedField = createMultilineField(ProjectMetadata.PSEUDO_TAG_LATEST_PROGRESS_REPORT_LESSONS_LEARNED);
+		latestProgressReportLessonsLearnedField.setEditable(false);
+		addField(latestProgressReportLessonsLearnedField);
 
 		setObjectRefs(new ORef[]{refToUse, getProject().getSingletonObjectRef(TncProjectDataSchema.getObjectType()), getProject().getSingletonObjectRef(MiradiShareProjectDataSchema.getObjectType()),});
 		updateFieldsFromProject();

@@ -19,21 +19,24 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import java.awt.Rectangle;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Vector;
-
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.*;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
+
+import java.awt.*;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.Vector;
 
 abstract public class DiagramObject extends BaseObject
 {
@@ -472,7 +475,7 @@ abstract public class DiagramObject extends BaseObject
 	public CommandVector createCommandsToDeleteChildren() throws Exception
 	{
 		CommandVector commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
-		commandsToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_PROGRESS_REPORT_REFS));
+		commandsToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_EXTENDED_PROGRESS_REPORT_REFS));
 
 		return commandsToDeleteChildren;
 	}

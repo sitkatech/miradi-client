@@ -63,6 +63,7 @@ public class Schemas
 		registerSchema(new GroupBoxSchema());
 		registerSchema(new SubTargetSchema());
 		registerSchema(new ProgressReportSchema());
+		registerSchema(new ExtendedProgressReportSchema());
 		registerSchema(new RareProjectDataSchema());
 		registerSchema(new WcsProjectDataSchema());
 		registerSchema(new TncProjectDataSchema());

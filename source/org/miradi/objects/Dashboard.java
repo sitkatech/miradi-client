@@ -688,7 +688,7 @@ public class Dashboard extends BaseObject
 		Vector<BaseObject> objectsWithProgressReports = new Vector<BaseObject>();
 		for (BaseObject baseObject : baseObjects)
 		{
-			if (baseObject.getSafeRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS).hasRefs())
+			if (baseObject.getSafeRefListData(baseObject.getProgressReportRefsTag()).hasRefs())
 				objectsWithProgressReports.add(baseObject);
 		}
 		
