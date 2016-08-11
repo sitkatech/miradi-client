@@ -19,9 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import org.martus.swing.UiLabel;
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.icons.RatingIcon;
+import org.miradi.dialogs.fieldComponents.PanelTextField;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
@@ -42,7 +40,7 @@ public class ObjectReadonlyChoiceField extends ObjectDataInputField
 		super(projectToUse, refToUse, tagToUse);
 		
 		question = questionToUse;
-		component = new OpaqueLabel("");
+		component = new PanelTextField("");
 		Border lineBorder = new LineBorder(Color.BLACK);
 		Border emptyBorder = new EmptyBorder(3, 3, 3, 3);
 		CompoundBorder border = new CompoundBorder(lineBorder, emptyBorder);
@@ -59,18 +57,15 @@ public class ObjectReadonlyChoiceField extends ObjectDataInputField
 		ChoiceItem choice = getRatingChoice(code);
 		currentCode = code;
 		String text = "";
-		Icon icon = null;
 		Color color = EAM.READONLY_BACKGROUND_COLOR;
 		if(choice != null)
 		{
 			text = choice.getLabel();
-			icon = RatingIcon.createFromChoice(choice);
 			color = choice.getColor();
-
 		}
 		component.setText(text);
-		component.setIcon(icon);
 		component.setBackground(color);
+		component.setDisabledTextColor(EAM.READONLY_FOREGROUND_COLOR);
 		component.invalidate();
 	}
 
@@ -97,16 +92,7 @@ public class ObjectReadonlyChoiceField extends ObjectDataInputField
 		return currentCode;
 	}
 
-	class OpaqueLabel extends PanelTitleLabel
-	{
-		public OpaqueLabel(String text)
-		{
-			super(text);
-			setOpaque(true);
-		}
-	}
-
 	String currentCode;
 	ChoiceQuestion question;
-	UiLabel component;
+	PanelTextField component;
 }
