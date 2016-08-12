@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-12 05:06-0700\n"
+"POT-Creation-Date: 2016-08-12 09:51-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -34,8 +34,8 @@ msgid ""
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningFinancialSubPanel.java:48
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:59
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:63
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:62
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:66
 msgid " "
 msgstr ""
 
@@ -292,7 +292,7 @@ msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%нэрээс' -> '%нэрэнд'<br>"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:157
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1478
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1433
 msgid "(%s)"
 msgstr ""
 
@@ -440,8 +440,8 @@ msgid "3) Complete links in the chain "
 msgstr "3) Хэлхээс дэх холбоосуудыг хийж дуусгах  "
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:49
-msgid "3) Edit resources"
-msgstr "3) нөөцүүдийг  засварлах"
+msgid "3) Edit assignments"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/threatmatrix/ThreatStressRateContributionAndIrreversibilityStep.java:51
 msgid "3) Rate contribution and irreversibility of threat"
@@ -464,8 +464,8 @@ msgid "3b) Refine indicator ratings"
 msgstr "3b) Шалгуурын ангилалыг боловсронгуй болгох "
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:49
-msgid "4) Assign resources"
-msgstr "4)Нөөцийг товлох"
+msgid "4) Assign people"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/threatmatrix/ThreatStressCheckThreatRatingStep.java:50
 msgid "4) Check target-threat rating"
@@ -969,10 +969,10 @@ msgid ""
 "<html>Note that certain project data cannot be copied between projects. This "
 "includes:<ol><li>Simple Threat Ratings </li><li>Work planning data that "
 "refers to other data which only exists in the old project.This would include "
-"work or expense assignments to Project Resources, Accounting Codes, Funding "
-"Sources, and items in Category #1 or Category #2 lists. The Leader attribute "
-"is also not copied.</li><li>Taxonomy classifications where the two projects "
-"do not share the same taxonomy classification lists. </li></ol></html>"
+"work or expense assignments to People, Accounting Codes, Funding Sources, "
+"and items in Category #1 or Category #2 lists. The Leader attribute is also "
+"not copied.</li><li>Taxonomy classifications where the two projects do not "
+"share the same taxonomy classification lists. </li></ol></html>"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:245
@@ -1044,11 +1044,11 @@ msgstr ""
 msgid "A project or file by this name already exists: "
 msgstr "Ийм нэр бүхий төсөл эсвэл файл байна:"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1474
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1429
 msgid "A project or file by this name already exists: %s"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:605
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:560
 msgid "A project with this name already exists."
 msgstr ""
 
@@ -1343,10 +1343,6 @@ msgstr "Арга хэмжээ|Диаграмм"
 msgid "Action|Diagram Properties..."
 msgstr "Арга хэмжээ|Диаграммын  агуулга..."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditEstimatedResource.java:34
-msgid "Action|Edit Estimated Resources..."
-msgstr "Арга хэмжээ|Багцаалсан  нөөцийг хянан засварлах..."
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditMethods.java:34
 msgid "Action|Edit Methods..."
 msgstr "Арга хэмжээ|Аргачлалыг хянан засварлах..."
@@ -1381,8 +1377,8 @@ msgid "Action|Export finance tree"
 msgstr "Арга хэмжээ|Санхүүгийн бүтцийг экспортлох"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionFilterWorkPlanByProjectResource.java:35
-msgid "Action|Filter by Resource..."
-msgstr "Арга хэмжээ|Нөөцөөр шүүх..."
+msgid "Action|Filter by People..."
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/views/ActionViewBudget.java:35
 msgid "Action|Financial"
@@ -1502,17 +1498,9 @@ msgstr "Арга хэмжээ|Номын Сан"
 msgid "Action|Manage Stresses..."
 msgstr "Арга хэмжээ|Дарамтыг зохицуулах..."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeCreateResourceAssignment.java:35
-msgid "Action|Manage|  Create Assignment"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateResource.java:35
+msgid "Action|Manage|Add People"
 msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionResourceListAdd.java:34
-msgid "Action|Manage|Add Resource"
-msgstr "Арга хэмжээ|Удирдах|Нөөц нэмэх"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionViewPossibleResources.java:34
-msgid "Action|Manage|Add Resources..."
-msgstr "Арга хэмжээ|Удирдах|Нөөц нэмэх..."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateAccountingCode.java:35
 msgid "Action|Manage|Create Accounting Code"
@@ -1521,6 +1509,10 @@ msgstr "Арга хэмжээ|Удирдах|Тооцооны Код үүсгэ�
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/AbstractActionCreateActivity.java:36
 msgid "Action|Manage|Create Activity"
 msgstr "Арга хэмжээ|Удирдах|Үйл ажиллагаа үүсгэх"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTreeCreateResourceAssignment.java:35
+msgid "Action|Manage|Create Assignment"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateAudience.java:35
 msgid "Action|Manage|Create Audience"
@@ -1585,10 +1577,6 @@ msgstr "Арга хэмжээ|Удирдах|Байгууллага үүсгэх
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateOtherNotableSpecies.java:35
 msgid "Action|Manage|Create Other Notable Species"
 msgstr "Арга хэмжээ|Удирдах|Бусад онцгой зүйлс үүсгэх"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateResource.java:35
-msgid "Action|Manage|Create People"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateProgressPercent.java:35
 msgid "Action|Manage|Create Progress Percent"
@@ -1680,17 +1668,9 @@ msgstr "Арга хэмжээ|Удирдах|Үйл явцын хувийг ус
 msgid "Action|Manage|Delete Progress Report"
 msgstr "Арга хэмжээ|Удирдах|Үйл явцын тайланг устгах"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionResourceListModify.java:34
-msgid "Action|Manage|Modify Resource"
-msgstr "Арга хэмжээ|Удирдах|Нөөцийг өөрчлөх"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/AbstractActionMoveActivity.java:36
 msgid "Action|Manage|Move Activity"
 msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionResourceListRemove.java:34
-msgid "Action|Manage|Remove Resource"
-msgstr "Арга хэмжээ|Удирдах|Нөөцийг арилгах"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/views/ActionViewMap.java:35
 msgid "Action|Maps"
@@ -2398,7 +2378,6 @@ msgstr ""
 "гүйцэтгэхэд хуваарилсан төслийн нөөц."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:40
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:49
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:427
 msgid "Assignment"
 msgstr ""
@@ -2740,7 +2719,7 @@ msgstr "Үүнийг өөртэй нь холбох боломжгүй байн�
 msgid "Cancel"
 msgstr "Цуцлах"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:627
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:582
 msgid "Cancelled"
 msgstr ""
 
@@ -3079,7 +3058,7 @@ msgstr "Шинээр үүсгэх амжилтгүй болов:"
 msgid "Create Folder"
 msgstr "Фолдер үүсгэх"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:766
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:721
 msgid "Create Project"
 msgstr ""
 
@@ -3604,7 +3583,7 @@ msgid "Enter As: "
 msgstr "-ээр орох: "
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/noproject/RenameOldProjectDoer.java:118
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1508
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1463
 msgid "Enter New Name"
 msgstr "Шинэ нэрээр оруулах"
 
@@ -3679,7 +3658,7 @@ msgstr "Үйл ажиллагаа ба мониторингийн өртгийн
 msgid "Euro"
 msgstr "Евро"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1034
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:989
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr "Өөр санхүүгийн жилийн байгаа мэдээлэл хасагдаж байна."
 
@@ -4264,7 +4243,7 @@ msgid ""
 "at your project site?"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:724
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:679
 msgid ""
 "If you continue with this migration, some data will be lost.\n"
 "\n"
@@ -4515,7 +4494,7 @@ msgstr "Танилцуулга"
 msgid "Invalid project name:"
 msgstr "Төслийн нэр хүчингүй:"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1483
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1438
 msgid "Invalid project name: %s"
 msgstr ""
 
@@ -4622,8 +4601,8 @@ msgid "Label|(Undefined Funding Source)"
 msgstr "Хаяг|(Санхүүгийн эх үүсвэр тодорхой бус)"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objects/ProjectResource.java:105
-msgid "Label|(Undefined Resource)"
-msgstr "Хаяг|(Нөөц тодорхой бус)"
+msgid "Label|(Undefined Person)"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:98
 msgid "Label|--- affects -->"
@@ -4680,7 +4659,7 @@ msgstr "Хаяг|FOS"
 msgid "Label|Human Stakeholder Pop Size"
 msgstr "Хаяг|Оролцогч  хүмүүсийн тоо"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:86
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:89
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:74
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:40
 msgid "Label|IM Address"
@@ -4692,6 +4671,10 @@ msgstr "Хаяг|Арга зүй"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryMiradiSharePanel.java:64
 msgid "Label|Miradi Share"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:58
+msgid "Label|Name"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/InsertBiophysicalFactorDoer.java:46
@@ -4755,7 +4738,11 @@ msgstr "Хаяг|Байгууллагуудтай харьцах"
 msgid "Label|Organization"
 msgstr "Хаяг|Байгууллага"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:75
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:33
+msgid "Label|People"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:78
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/summary/TeamMemberPropertiesPanel.java:63
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:36
 msgid "Label|Phone Numbers"
@@ -4783,12 +4770,7 @@ msgstr "Хаяг|Ховор"
 msgid "Label|Rare Tracking"
 msgstr "Хаяг|Ховор ажиглалт"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:55
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:33
-msgid "Label|Resource"
-msgstr "Хаяг|Нөөц"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:68
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:71
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/ResourcePropertiesForm.java:35
 msgid "Label|Roles (people only)"
 msgstr "Хаяг|Үүрэг роль (зөвхөн хүмүүс)"
@@ -5301,8 +5283,8 @@ msgstr ""
 msgid "Migrating..."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:706
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:728
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:661
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:683
 msgid "Migration"
 msgstr ""
 
@@ -5368,7 +5350,7 @@ msgstr "Оруулах боломжтой Файл: %s гэж  Миради та
 msgid "Miradi does not recognize %s as a project file"
 msgstr "Миради төслийн файлыг танихгүй байна"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:854
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:809
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5685,7 +5667,7 @@ msgid "Open Anyway"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:198
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:768
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:723
 msgid "Open Project"
 msgstr "Төслийг Нээх"
 
@@ -5804,11 +5786,16 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/assignment/AssignmentsPropertiesSubPanel.java:85
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:308
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:47
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:196
 msgid "People"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:47
 msgid "People (Who)"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:47
+msgid "People Filter Editor"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:91
@@ -5830,6 +5817,14 @@ msgid ""
 "reports, since this data may be tracking \"work plan\" activity or not. (You "
 "will want to determine which set of progress reports is redundant, and "
 "delete it.)<br/>"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/WorkPlanTreeTablePanel.java:101
+msgid "People filter is on"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:39
+msgid "People:"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/dashboard/DashboardRowDefinitionManager.java:93
@@ -6068,7 +6063,7 @@ msgstr "Төсөл"
 msgid "Project Advisor"
 msgstr "Төслийн Зөвлөх"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:852
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:807
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -6084,6 +6079,10 @@ msgstr "Төслийн шилжилт зайлшгүй шаардлагатай"
 msgid "Project Number"
 msgstr "Төслийн дугаар"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:987
+msgid "Project People Filter Is On"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo11.java:41
 msgid "Project Place Types"
 msgstr ""
@@ -6091,14 +6090,6 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/rtf/ProjectRtfExporter.java:57
 msgid "Project Plan For "
 msgstr "-д зориулсан төслийн төлөвлөгөө "
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:47
-msgid "Project Resource Filter Editor"
-msgstr "Төслийн нөөцийн шүүлтүүрийн хянан засварлагч"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1032
-msgid "Project Resource Filter Is On"
-msgstr "Төслийн нөөцийн шүүлтүүр ажиллагаатай"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo12.java:42
 msgid "Project Scale"
@@ -6238,7 +6229,7 @@ msgstr "Хамааралтай төслүүд"
 msgid "Relevant Strategies and Activities"
 msgstr "Холбогдох стратеги ба үйл ажиллагаа"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:172
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:175
 msgid "Remove Team Member"
 msgstr "Багийн гишүүнийг хасах"
 
@@ -6282,18 +6273,6 @@ msgstr ""
 "Нөөц - Үйл ажиллагаа/арга зүй эсвэл даалгаварыг бүрэн хэрэгжүүлж дуусгахад "
 "шаардлагатай хүн аль эсвэл зүйл. Гурван гол нөөц байдаг - хүнийн, материалын "
 "болон санхүүгийн."
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/WorkPlanTreeTablePanel.java:101
-msgid "Resource filter is on"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:196
-msgid "Resources"
-msgstr "Нөөцүүд"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:39
-msgid "Resources:"
-msgstr "Нөөцүүд:"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:37
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ResultsChainCreatorHelper.java:196
@@ -6573,9 +6552,9 @@ msgstr "Сонгосон тайлангийн загвар RTF-ээр гарса
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:35
 msgid ""
-"Selecting one or more resources below<br>will filter the display to only "
-"include <br>work unit and budget total values for <br>items that are "
-"assigned to those resources."
+"Selecting one or more people below will <br>filter the display to include "
+"work unit and <br>budget total values for only the work <br>assignments of "
+"the selected people."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/AbstractPlanningViewConfigurationCodeListEditorDoer.java:54
@@ -6754,7 +6733,7 @@ msgstr "Оролцогч тал"
 msgid "Standard Reports"
 msgstr "Стандарт тайлан"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1066
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1021
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently "
 "%endDate)"
@@ -6966,10 +6945,6 @@ msgstr "Нийт системээр"
 msgid "TNC"
 msgstr "TNC"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionResourceListAdd.java:40
-msgid "TT|Add"
-msgstr "TT|Нэмэх"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionGroupBoxAddFactor.java:41
 msgid "TT|Add Factor(s) to Group Box"
 msgstr "TT|Бүлгийн хайрцагт хүчин зүйлийг(үүдийг) нэмэх"
@@ -6978,13 +6953,13 @@ msgstr "TT|Бүлгийн хайрцагт хүчин зүйлийг(үүдий�
 msgid "TT|Add a link between two factors"
 msgstr "TT|Хоёр хүчин зүйлийн хооронд холбоос нэмэх"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateResource.java:41
+msgid "TT|Add a person or group"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionTeamCreateMember.java:41
 msgid "TT|Add member to the team"
 msgstr "TT|Багийн гишүүний тоог нэмэх"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionViewPossibleResources.java:40
-msgid "TT|Add resources to activity"
-msgstr "TT|Үйл ажиллагаанд нөөц нэмэх"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionManageFactorTagsFromMenu.java:41
 msgid "TT|Add/remove tags for the selected factor"
@@ -7201,10 +7176,6 @@ msgstr "TT|Хэрэглэгчийн төлөвлөлтийн урьдчилан 
 msgid "TT|Create a new tag"
 msgstr "TT|Шинэ тэмдэглэгээ үүсгэх"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateResource.java:41
-msgid "TT|Create a person or group"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateExpense.java:40
 msgid "TT|Create a projected expense"
 msgstr "TT|Төлөвлөсөн зардлыг үүсгэх"
@@ -7406,10 +7377,6 @@ msgstr "TT|Сонголтыг устгах"
 msgid "TT|Develop a work plan and budget"
 msgstr "TT|Ажлын төлөвлөгөө болон төсвийг боловсруулах"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditEstimatedResource.java:40
-msgid "TT|Edit the list of estimated resources."
-msgstr "TT|Багцаалж тооцсон нөөцийн жагсаалтыг хянан засварлах."
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionEditMethods.java:40
 msgid "TT|Edit the methods for this indicator"
 msgstr "TT|Энэ шалгуур үзүүлэлтийн арга зүйг хянан засварлах"
@@ -7489,9 +7456,8 @@ msgstr ""
 "TT|Энэ view-ийн хүснэгтийг tab-аар тусгааралагдсан файлруу экспорт хийх"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionFilterWorkPlanByProjectResource.java:41
-msgid "TT|Filter to only display budget data for the selected resource(s)"
+msgid "TT|Filter to only display budget data for the selected people"
 msgstr ""
-"TT|Сонгосон нөөцийн(үүдийн) төсвийн мэдээллийг харуулах зорилгоор шүүж гаргах"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionWizardNext.java:42
 msgid "TT|Go to the Next wizard step"
@@ -7612,10 +7578,6 @@ msgstr "TT|Сонгосон хэлний багцыг суулгах"
 msgid "TT|Isolate the selected factor chain in Brainstorm Mode"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionResourceListModify.java:40
-msgid "TT|Modify resource from list"
-msgstr "TT|Жагсаалт дахь нөөцийг өөрчлөх"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateDiagramMargin.java:41
 msgid "TT|Move factors right and down as needed to create margins"
 msgstr ""
@@ -7677,10 +7639,6 @@ msgstr "TT|Гишүүнийг багаас хасах"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionRemoveAssignment.java:41
 msgid "TT|Remove a person from this task"
 msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionResourceListRemove.java:40
-msgid "TT|Remove resource from list"
-msgstr "TT|Нөөцийг жагсаалтаас хасах"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionRenameConceptualModel.java:40
 msgid "TT|Rename this Conceptual Model Page"
@@ -8048,7 +8006,7 @@ msgstr "Текст|Огноог ЖЖЖЖ-СС-ӨӨ форматаар бичнэ
 msgid "Text|Unknown error prevented saving this data"
 msgstr "Текст|Мэдээллийг хадгалахад үл мэдэгдэх алдаа саад болж байна."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:651
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:606
 msgid "That file is not a valid Miradi project"
 msgstr ""
 
@@ -8060,19 +8018,19 @@ msgstr "Тэр хэлний багцыг хэдийнээ байна.  Түүн�
 msgid "That language pack is already installed"
 msgstr "Тэр хэлний багцыг хэдийнээ суулгасан байна."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:660
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:664
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:615
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:619
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "Miradi"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:668
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:623
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr "Тэр төслийг мэдээллийн энэ форматад шилжүүлэхээс нааш нээх боломжгүй."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:647
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:602
 msgid "That project is in use by another copy of this application"
 msgstr "Энэ программын өөр хуулбарт тэр төслийг хэрэглэж байна"
 
@@ -8086,7 +8044,7 @@ msgstr ""
 "Мэдээллийн орчин үеийн хэлбэрт шилжүүлэхийн тулд та  Miradi 1.0-ийг ашиглах "
 "боломжтой ба үүний дараа түүнийг нээж мөн энэ хувилбарт шилжүүлж болно."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:655
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:610
 msgid "That project is too old to be opened with this version of Miradi"
 msgstr ""
 
@@ -8426,7 +8384,7 @@ msgid ""
 "damaged. Please contact Miradi support for recovery options."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:843
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:798
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -8441,7 +8399,7 @@ msgstr ""
 "өмнө мэдээллийн одоогийн форматад шижлүүлэх шаардлагатай. Ямар нэгэн зүйл "
 "буруу болох тохиолдолд эхлээд backup хийгдэнэ. Шилжилтийг автоматаар хийх үү?"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:701
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:656
 #, fuzzy
 msgid ""
 "This project was saved using an older version of Miradi. Before it can be "
@@ -8683,8 +8641,8 @@ msgid "Title|Factor Properties"
 msgstr "Гарчиг|Хүчин зүйлийн агуулга"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/doers/ProjectResourceWorkPlanFilterEditDoer.java:43
-msgid "Title|Filter by Resource(s)"
-msgstr "Гарчиг|Нөөцийг шүүх"
+msgid "Title|Filter by People"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/DiagramCorruptionDetector.java:172
 msgid "Title|Found Corrupted Links"
@@ -8780,6 +8738,10 @@ msgstr "Гарчиг|Бусад Байгууллагууд"
 msgid "Title|Overwrite existing file?"
 msgstr "Гарчиг|Одоогийн байгаа файлыг өөрчлөх үү?"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:106
+msgid "Title|People Properties"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/progressPercent/ProgressPercentSubPanel.java:62
 msgid "Title|Progress Percent"
 msgstr "Гарчиг|Явцын хувь"
@@ -8795,10 +8757,6 @@ msgstr "Гарчиг|Төслийн Файлын нэр"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:51
 msgid "Title|Report Template Properties"
 msgstr "Гарчиг|Тайлангийн загварын агуулга"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:103
-msgid "Title|Resource Properties"
-msgstr "Гарчиг|Нөөцийн агуулга"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:58
 msgid "Title|Results Chain Properties"
@@ -8920,7 +8878,7 @@ msgstr ""
 "Энэ программын өөр хуулбарт энэ төслийг ашиглаж байгаа учир энэ төслийг "
 "устгах боломжгүй байна:\n"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1450
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1405
 msgid "Unable to launch external web browser"
 msgstr "Вэб хуудас эхлүүлэх боломжгүй байна"
 
@@ -8941,7 +8899,7 @@ msgstr ""
 "Программын өөр хуулбарыг ашиглаж байгаа үед энэхүү төслийн нэрийг өөрчилж "
 "болохгүй байна:\n"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1223
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1178
 msgid "Unable to save preferences"
 msgstr "Сонголтуудийг хадгалах боломжгүй байна"
 
@@ -8995,7 +8953,7 @@ msgstr "Их сургууль"
 msgid "Unknown"
 msgstr "Тодорхой бус"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:642
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:597
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -9013,7 +8971,7 @@ msgstr "Тодорхой бус код: "
 msgid "Unknown error displaying diagram"
 msgstr "Тодорхой бус шалтгаанаар диаграммыг үзүүлэх боломжгүй"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:673
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:628
 msgid "Unknown error prevented opening that project"
 msgstr "Энэ төсөл тодорхой бус алдаанаас болж нээгдэхгүй байна."
 
@@ -9342,6 +9300,10 @@ msgstr ""
 msgid "Wizard load of control failed:"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:49
+msgid "Work Assignment"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:196
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:201
 msgid "Work Plan"
@@ -9447,7 +9409,7 @@ msgstr "Иен (Япон)"
 msgid "Yes"
 msgstr "Тийм"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:173
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:176
 msgid ""
 "You are removing this person from the project team, so he/she will no longer "
 "appear in the list of Team Members in the Summary View. "
@@ -9475,7 +9437,7 @@ msgstr ""
 "уу. Форматыг шилжүүлж байхад үүссэн төслийн нөөц хувийг ч Миради мөн адил  "
 "zip файл үүсгэнэ.  "
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:378
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:381
 msgid "[Error]"
 msgstr "[Алдаа]"
 
@@ -9630,11 +9592,11 @@ msgstr "БаганыХаяг|6.Тайлбар|Тайлбарууд"
 msgid "FieldLabel|7.Label|Resource"
 msgstr "БаганыХаяг|7.Хаяг|Нөөц"
 
-msgid "FieldLabel|7.ResourceType|Resource Type"
-msgstr "БаганыХаяг|7.Нөөцийн төрөл|Нөөцийн төрөл"
+msgid "FieldLabel|7.ResourceType|Type"
+msgstr ""
 
-msgid "FieldLabel|7.Initials|Resource ID"
-msgstr "БаганыХаяг|7.ОвогНэрийнҮсгүүд|Нөөцийн дэс дугаар"
+msgid "FieldLabel|7.Initials|ID"
+msgstr ""
 
 msgid "FieldLabel|7.Name|First Name"
 msgstr ""
@@ -10362,11 +10324,11 @@ msgstr ""
 msgid "FieldLabel|12.MetaAnalysisBudgetDetailsColumnCode|Budget Totals"
 msgstr ""
 
-msgid "FieldLabel|12.ResourceType|Resource Type"
-msgstr "БаганыХаяг|12.НөөцийнТөрөл|Нөөцийн Төрөл"
+msgid "FieldLabel|12.ResourceType|Type"
+msgstr ""
 
-msgid "FieldLabel|12.Initials|Resource ID"
-msgstr "БаганыХаяг|12.ОвогНэрийнЭхнийҮсгүүд|Нөөцийн дугаар"
+msgid "FieldLabel|12.Initials|ID"
+msgstr ""
 
 msgid "FieldLabel|12.Name|First Name"
 msgstr ""
@@ -10445,9 +10407,6 @@ msgstr ""
 
 msgid "FieldLabel|14.ResourceAssignment|Assignment"
 msgstr "БаганыХаяг|14.НөөцХуваарилалт|Хуваарилалт"
-
-msgid "FieldLabel|14.ResourceId|Resource"
-msgstr ""
 
 msgid "FieldLabel|14.AccountingCode|Accounting Code"
 msgstr ""
@@ -32578,6 +32537,86 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "3) Edit resources"
+#~ msgstr "3) нөөцүүдийг  засварлах"
+
+#~ msgid "4) Assign resources"
+#~ msgstr "4)Нөөцийг товлох"
+
+#~ msgid "Action|Edit Estimated Resources..."
+#~ msgstr "Арга хэмжээ|Багцаалсан  нөөцийг хянан засварлах..."
+
+#~ msgid "Action|Filter by Resource..."
+#~ msgstr "Арга хэмжээ|Нөөцөөр шүүх..."
+
+#~ msgid "Action|Manage|Add Resource"
+#~ msgstr "Арга хэмжээ|Удирдах|Нөөц нэмэх"
+
+#~ msgid "Action|Manage|Add Resources..."
+#~ msgstr "Арга хэмжээ|Удирдах|Нөөц нэмэх..."
+
+#~ msgid "Action|Manage|Modify Resource"
+#~ msgstr "Арга хэмжээ|Удирдах|Нөөцийг өөрчлөх"
+
+#~ msgid "Action|Manage|Remove Resource"
+#~ msgstr "Арга хэмжээ|Удирдах|Нөөцийг арилгах"
+
+#~ msgid "Label|(Undefined Resource)"
+#~ msgstr "Хаяг|(Нөөц тодорхой бус)"
+
+#~ msgid "Label|Resource"
+#~ msgstr "Хаяг|Нөөц"
+
+#~ msgid "Project Resource Filter Editor"
+#~ msgstr "Төслийн нөөцийн шүүлтүүрийн хянан засварлагч"
+
+#~ msgid "Project Resource Filter Is On"
+#~ msgstr "Төслийн нөөцийн шүүлтүүр ажиллагаатай"
+
+#~ msgid "Resources"
+#~ msgstr "Нөөцүүд"
+
+#~ msgid "Resources:"
+#~ msgstr "Нөөцүүд:"
+
+#~ msgid "TT|Add"
+#~ msgstr "TT|Нэмэх"
+
+#~ msgid "TT|Add resources to activity"
+#~ msgstr "TT|Үйл ажиллагаанд нөөц нэмэх"
+
+#~ msgid "TT|Edit the list of estimated resources."
+#~ msgstr "TT|Багцаалж тооцсон нөөцийн жагсаалтыг хянан засварлах."
+
+#~ msgid "TT|Filter to only display budget data for the selected resource(s)"
+#~ msgstr ""
+#~ "TT|Сонгосон нөөцийн(үүдийн) төсвийн мэдээллийг харуулах зорилгоор шүүж "
+#~ "гаргах"
+
+#~ msgid "TT|Modify resource from list"
+#~ msgstr "TT|Жагсаалт дахь нөөцийг өөрчлөх"
+
+#~ msgid "TT|Remove resource from list"
+#~ msgstr "TT|Нөөцийг жагсаалтаас хасах"
+
+#~ msgid "Title|Filter by Resource(s)"
+#~ msgstr "Гарчиг|Нөөцийг шүүх"
+
+#~ msgid "Title|Resource Properties"
+#~ msgstr "Гарчиг|Нөөцийн агуулга"
+
+#~ msgid "FieldLabel|7.ResourceType|Resource Type"
+#~ msgstr "БаганыХаяг|7.Нөөцийн төрөл|Нөөцийн төрөл"
+
+#~ msgid "FieldLabel|7.Initials|Resource ID"
+#~ msgstr "БаганыХаяг|7.ОвогНэрийнҮсгүүд|Нөөцийн дэс дугаар"
+
+#~ msgid "FieldLabel|12.ResourceType|Resource Type"
+#~ msgstr "БаганыХаяг|12.НөөцийнТөрөл|Нөөцийн Төрөл"
+
+#~ msgid "FieldLabel|12.Initials|Resource ID"
+#~ msgstr "БаганыХаяг|12.ОвогНэрийнЭхнийҮсгүүд|Нөөцийн дугаар"
 
 #, fuzzy
 #~ msgid "Export 4.2 Miradi"
