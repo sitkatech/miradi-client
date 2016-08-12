@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-10 07:06-0700\n"
+"POT-Creation-Date: 2016-08-12 05:06-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -284,7 +284,7 @@ msgid "%s Objs"
 msgstr "% междинни цели"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:109
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo38.java:148
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo38.java:155
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo7.java:126
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo24.java:108
 msgid "%s field data will be lost"
@@ -1164,7 +1164,7 @@ msgstr ""
 "\". Ако характеристиката се намира извън този допустим диапазон, тя се "
 "дефинира като \"деградирала\" характеристика."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:689
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:690
 msgid "Accounting"
 msgstr ""
 
@@ -1673,9 +1673,7 @@ msgstr ""
 msgid "Action|Manage|Create Progress Percent"
 msgstr "Action|Manage|Създаване процент напредък"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ActionCreateProgressReport.java:36
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateStrategyProgressReport.java:35
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateTaskProgressReport.java:35
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractActionCreateProgressReport.java:36
 msgid "Action|Manage|Create Progress Report"
 msgstr "Action|Manage|Създаване на доклад за напредък"
 
@@ -1757,9 +1755,7 @@ msgstr ""
 msgid "Action|Manage|Delete Progress Percent"
 msgstr "Action|Manage|Изтриване процент напредък"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeleteTaskProgressReport.java:35
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeleteProgressReport.java:35
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeleteStrategyProgressReport.java:35
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/AbstractActionDeleteProgressReport.java:36
 msgid "Action|Manage|Delete Progress Report"
 msgstr "Action|Manage|Изтриване на доклад за напредък"
 
@@ -2312,8 +2308,8 @@ msgstr "Сигурни ли сте, че искате да изтриете та
 msgid "Are you sure you want to delete this Progress Percent?"
 msgstr "Сигурни ли сте, че искате да изтриете този процент напредък"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/doers/DeleteExtendedProgressReportDoer.java:50
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/doers/DeleteProgressReportDoer.java:50
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/doers/DeleteStrategyProgressReportDoer.java:52
 msgid "Are you sure you want to delete this Progress Report?"
 msgstr "Сигурни ли сте, че искате да изтриете този доклад за напредък?"
 
@@ -2795,7 +2791,7 @@ msgstr "По тримесечие"
 msgid "By Year"
 msgstr "По година"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:37
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:38
 msgid "CM Page"
 msgstr "CM страница"
 
@@ -2984,7 +2980,7 @@ msgstr "Избор на етикети"
 msgid "Choose the colors that look best on your system:"
 msgstr "Избор на най-подходящия за вашата система цвят:"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:675
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:676
 msgid "Classifications"
 msgstr ""
 
@@ -4959,7 +4955,7 @@ msgstr "Ръководител/управител"
 msgid "Leaf Only"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:83
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:70
 msgid "Learn about Miradi Share"
 msgstr ""
 
@@ -5460,7 +5456,7 @@ msgstr ""
 msgid "Miradi Share"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:84
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:71
 msgid "Miradi Share Program"
 msgstr ""
 
@@ -5895,8 +5891,8 @@ msgstr ""
 msgid "Overall Threat Rating"
 msgstr "Пълна оценка на заплахи"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:41
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:40
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:42
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:41
 msgid "Page:"
 msgstr "Страница:"
 
@@ -6190,7 +6186,7 @@ msgstr "Напредък"
 msgid "Progress Percents"
 msgstr "Проценти напредък"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:65
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:799
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:166
 msgid "Progress Report"
 msgstr "Доклад за напредък"
@@ -6200,7 +6196,7 @@ msgid "Progress Reports"
 msgstr "Доклади за напредък"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:245
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryProjectTabPanel.java:84
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryProjectTabPanel.java:83
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
 msgid "Project"
@@ -6437,7 +6433,7 @@ msgstr "Ресурси"
 msgid "Resources:"
 msgstr "Ресурси"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:36
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:37
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ResultsChainCreatorHelper.java:196
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:39
 msgid "Results Chain"
@@ -7065,7 +7061,7 @@ msgstr "Силен спад"
 msgid "Strong Increase"
 msgstr "Силно нарастване"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:131
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:118
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:143
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:69
@@ -7315,9 +7311,7 @@ msgstr "TT|Създаване на нов метод"
 msgid "TT|Create a new Progress Percent"
 msgstr "TT|Създаване на нов процент напредък"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ActionCreateProgressReport.java:42
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateStrategyProgressReport.java:41
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateTaskProgressReport.java:41
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractActionCreateProgressReport.java:42
 msgid "TT|Create a new Progress Report"
 msgstr "TT|Създаване на нов доклад за напредък"
 
@@ -7451,9 +7445,7 @@ msgstr "TT|Изтриване на организация"
 msgid "TT|Delete Progress Percent"
 msgstr "TT|Изтриване на процент напредък"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeleteTaskProgressReport.java:41
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeleteProgressReport.java:41
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeleteStrategyProgressReport.java:41
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/AbstractActionDeleteProgressReport.java:42
 msgid "TT|Delete Progress Report"
 msgstr "TT|Изтриване на доклад за прогрес"
 
@@ -8824,7 +8816,7 @@ msgstr "Title|Изтриване"
 msgid "Title|Diagram Panel"
 msgstr "Title|Панел на диаграма"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:56
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:59
 msgid "Title|Diagram Properties"
 msgstr "Title|Свойства на диаграма"
 
@@ -8951,7 +8943,7 @@ msgstr "Title|Презаписване върху съществуващия ф�
 msgid "Title|Progress Percent"
 msgstr "Title|Процент напредък"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/progressReport/ProgressReportSubPanel.java:63
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/progressReport/AbstractProgressReportSubPanel.java:49
 msgid "Title|Progress Report"
 msgstr "Title|Доклад за прогрес"
 
@@ -8967,7 +8959,7 @@ msgstr "Title|Свойства на образец на доклад"
 msgid "Title|Resource Properties"
 msgstr "Title|Своства на ресурс"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:55
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:58
 msgid "Title|Results Chain Properties"
 msgstr "Title|Свойства на верига на резултатите"
 
@@ -10281,7 +10273,7 @@ msgstr ""
 msgid "FieldLabel|11.WorkUnitRateDescription|Work Unit Rate Description"
 msgstr ""
 
-msgid "FieldLabel|11.ProgressReportRefs|Project Progress Reports"
+msgid "FieldLabel|11.ExtendedProgressReportRefs|Project Progress Reports"
 msgstr ""
 
 msgid "FieldLabel|11.PseudoLatestProgressReportDate|Date"
@@ -10291,6 +10283,12 @@ msgid "FieldLabel|11.PseudoLatestProgressReportCode|Status"
 msgstr ""
 
 msgid "FieldLabel|11.PseudoLatestProgressReportDetails|Progress Report Details"
+msgstr ""
+
+msgid "FieldLabel|11.PseudoLatestProgressReportNextSteps|Next Steps"
+msgstr ""
+
+msgid "FieldLabel|11.PseudoLatestProgressReportLessonsLearned|Lessons Learned"
 msgstr ""
 
 msgid "FieldLabel|12.ShortLabel|ID"
@@ -10409,6 +10407,12 @@ msgid ""
 msgstr ""
 "FieldLabel|12.PseudoLatestProgressPercentDetails|Подробности за процент "
 "напредък"
+
+msgid "FieldLabel|12.PseudoLatestProgressReportNextSteps|Next Steps"
+msgstr ""
+
+msgid "FieldLabel|12.PseudoLatestProgressReportLessonsLearned|Lessons Learned"
+msgstr ""
 
 msgid "FieldLabel|12.Comments|Comments"
 msgstr "FieldLabel|12.Comments|Коментари"
@@ -10648,6 +10652,24 @@ msgstr "FieldLabel|19.Detail|Подробности"
 msgid "FieldLabel|19.PseudoDraftStrategies|Draft Strategies"
 msgstr "FieldLabel|19.PseudoDraftStrategies|Чернови на стратегии"
 
+msgid "FieldLabel|19.ExtendedProgressReportRefs|Progress Reports"
+msgstr ""
+
+msgid "FieldLabel|19.PseudoLatestProgressReportDate|Date"
+msgstr ""
+
+msgid "FieldLabel|19.PseudoLatestProgressReportCode|Status"
+msgstr ""
+
+msgid "FieldLabel|19.PseudoLatestProgressReportDetails|Progress Report Details"
+msgstr ""
+
+msgid "FieldLabel|19.PseudoLatestProgressReportNextSteps|Next Steps"
+msgstr ""
+
+msgid "FieldLabel|19.PseudoLatestProgressReportLessonsLearned|Lessons Learned"
+msgstr ""
+
 msgid "FieldLabel|20.Cause|Cause"
 msgstr ""
 
@@ -10867,6 +10889,24 @@ msgid "FieldLabel|24.Detail|Details"
 msgstr "FieldLabel|24.Detail|Подробности"
 
 msgid "FieldLabel|24.TaxonomyClassificationContainer|Program Classifications"
+msgstr ""
+
+msgid "FieldLabel|24.ExtendedProgressReportRefs|Progress Reports"
+msgstr ""
+
+msgid "FieldLabel|24.PseudoLatestProgressReportDate|Date"
+msgstr ""
+
+msgid "FieldLabel|24.PseudoLatestProgressReportCode|Status"
+msgstr ""
+
+msgid "FieldLabel|24.PseudoLatestProgressReportDetails|Progress Report Details"
+msgstr ""
+
+msgid "FieldLabel|24.PseudoLatestProgressReportNextSteps|Next Steps"
+msgstr ""
+
+msgid "FieldLabel|24.PseudoLatestProgressReportLessonsLearned|Lessons Learned"
 msgstr ""
 
 msgid "FieldLabel|25.ThreatReductionResult|Threat Reduction Result"
@@ -11676,6 +11716,24 @@ msgid "FieldLabel|69.Comments|Comments"
 msgstr ""
 
 msgid "FieldLabel|69.Url|URL"
+msgstr ""
+
+msgid "FieldLabel|70.ExtendedProgressReport|Progress Report"
+msgstr ""
+
+msgid "FieldLabel|70.ProgressStatus|Progress Status"
+msgstr ""
+
+msgid "FieldLabel|70.ProgressDate|Progress Date"
+msgstr ""
+
+msgid "FieldLabel|70.Details|Details"
+msgstr ""
+
+msgid "FieldLabel|70.NextSteps|Next Steps"
+msgstr ""
+
+msgid "FieldLabel|70.LessonsLearned|Lessons Learned"
 msgstr ""
 
 msgid ""
