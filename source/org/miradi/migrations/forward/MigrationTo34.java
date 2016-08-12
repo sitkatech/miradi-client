@@ -131,16 +131,16 @@ public class MigrationTo34 extends AbstractMigration
 			MigrationResult migrationResult = MigrationResult.createSuccess();
 
 			CodeToCodeListMap tableSettingsMap = getCodeToCodeListMapData(rawObject, TAG_TABLE_SETTINGS_MAP);
-			if (tableSettingsMap.contains(WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY))
-			{
-				CodeList workPlanBudgetColumnCodeList = tableSettingsMap.getCodeList(WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 
-				if (!workPlanBudgetColumnCodeList.contains(META_TIMEFRAME_TOTAL))
-				{
-					workPlanBudgetColumnCodeList.insertElementAt(META_TIMEFRAME_TOTAL, 0);
-					tableSettingsMap.putCodeList(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, workPlanBudgetColumnCodeList);
-					rawObject.setData(TAG_TABLE_SETTINGS_MAP, tableSettingsMap.toJsonString());
-				}
+			CodeList workPlanBudgetColumnCodeList = new CodeList();
+			if (tableSettingsMap.contains(WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY))
+				workPlanBudgetColumnCodeList = tableSettingsMap.getCodeList(WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
+
+			if (!workPlanBudgetColumnCodeList.contains(META_TIMEFRAME_TOTAL))
+			{
+				workPlanBudgetColumnCodeList.insertElementAt(META_TIMEFRAME_TOTAL, 0);
+				tableSettingsMap.putCodeList(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, workPlanBudgetColumnCodeList);
+				rawObject.setData(TAG_TABLE_SETTINGS_MAP, tableSettingsMap.toJsonString());
 			}
 
 			return migrationResult;

@@ -131,17 +131,17 @@ public class MigrationTo21 extends AbstractMigration
 			MigrationResult migrationResult = MigrationResult.createSuccess();
 
 			CodeToCodeListMap tableSettingsMap = getCodeToCodeListMapData(rawObject, TAG_TABLE_SETTINGS_MAP);
+
+			CodeList workPlanBudgetColumnCodeList = new CodeList();
 			if (tableSettingsMap.contains(WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY))
-			{
-				CodeList workPlanBudgetColumnCodeList = tableSettingsMap.getCodeList(WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
+				workPlanBudgetColumnCodeList = tableSettingsMap.getCodeList(WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY);
 
-				if (!workPlanBudgetColumnCodeList.contains(META_ASSIGNED_WHO_TOTAL))
-					workPlanBudgetColumnCodeList.add(META_ASSIGNED_WHO_TOTAL);
+			if (!workPlanBudgetColumnCodeList.contains(META_ASSIGNED_WHO_TOTAL))
+				workPlanBudgetColumnCodeList.add(META_ASSIGNED_WHO_TOTAL);
 
-				tableSettingsMap.putCodeList(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, workPlanBudgetColumnCodeList);
+			tableSettingsMap.putCodeList(TableSettings.WORK_PLAN_BUDGET_COLUMNS_CODELIST_KEY, workPlanBudgetColumnCodeList);
 
-				rawObject.setData(TAG_TABLE_SETTINGS_MAP, tableSettingsMap.toJsonString());
-			}
+			rawObject.setData(TAG_TABLE_SETTINGS_MAP, tableSettingsMap.toJsonString());
 
 			return migrationResult;
 		}
