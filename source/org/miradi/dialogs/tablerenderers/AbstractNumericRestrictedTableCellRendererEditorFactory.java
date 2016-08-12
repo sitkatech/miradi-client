@@ -20,12 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.tablerenderers;
 
-import java.awt.Component;
-import java.awt.Font;
-
-import javax.swing.JTable;
-
 import org.miradi.dialogs.fieldComponents.PanelTextField;
+
+import javax.swing.*;
+import java.awt.*;
 
 abstract public class AbstractNumericRestrictedTableCellRendererEditorFactory extends NumericTableCellRendererFactory
 {
@@ -40,14 +38,16 @@ abstract public class AbstractNumericRestrictedTableCellRendererEditorFactory ex
 	@Override
 	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column)
 	{
-		updateTextField(numericRestrictedTextEditor, value.toString(), row, column);
+		String cleanedValue = value == null ? "" : value.toString();
+		updateTextField(numericRestrictedTextEditor, cleanedValue, row, column);
 		return numericRestrictedTextEditor;
 	}
 	
 	@Override
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
-		updateTextField(numericRestrictedTextRenderer, value.toString(), row, tableColumn);
+		String cleanedValue = value == null ? "" : value.toString();
+		updateTextField(numericRestrictedTextRenderer, cleanedValue, row, tableColumn);
 		updateBorderAndColors(numericRestrictedTextRenderer, table, row, tableColumn, isSelected);
 		return numericRestrictedTextRenderer;
 	}
