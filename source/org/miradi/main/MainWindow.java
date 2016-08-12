@@ -19,38 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.main;
 
-import java.awt.BorderLayout;
-import java.awt.CardLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Point;
-import java.awt.datatransfer.Clipboard;
-import java.awt.datatransfer.ClipboardOwner;
-import java.awt.datatransfer.Transferable;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Set;
-import java.util.TreeSet;
-import java.util.Vector;
-
-import javax.swing.Box;
-import javax.swing.JComponent;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JSplitPane;
-import javax.swing.SwingUtilities;
-import javax.swing.ToolTipManager;
-
+import edu.stanford.ejalbert.BrowserLauncher;
+import edu.stanford.ejalbert.BrowserLauncherRunner;
 import org.martus.swing.HyperlinkHandler;
-import org.martus.util.*;
+import org.martus.util.MultiCalendar;
+import org.martus.util.UnicodeReader;
+import org.martus.util.UnicodeStringReader;
+import org.martus.util.UnicodeWriter;
 import org.miradi.actions.Actions;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
@@ -60,13 +35,7 @@ import org.miradi.dialogs.ProjectCorruptionDialog;
 import org.miradi.dialogs.base.ProgressDialog;
 import org.miradi.dialogs.notify.NotifyDialog;
 import org.miradi.dialogs.notify.NotifyDialogTemplateFactory;
-import org.miradi.exceptions.FutureSchemaVersionException;
-import org.miradi.exceptions.NotMiradiProjectFileException;
-import org.miradi.exceptions.OldSchemaVersionException;
-import org.miradi.exceptions.ProjectFileTooNewException;
-import org.miradi.exceptions.ProjectFileTooOldException;
-import org.miradi.exceptions.UnknownCommandException;
-import org.miradi.exceptions.UserCanceledException;
+import org.miradi.exceptions.*;
 import org.miradi.files.AbstractMpfFileFilter;
 import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.menu.MainMenuBar;
@@ -74,40 +43,17 @@ import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.RawProjectLoader;
 import org.miradi.migrations.forward.MigrationManager;
-import org.miradi.objecthelpers.CodeToCodeListMap;
-import org.miradi.objecthelpers.ColorsFileLoader;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.TwoLevelEntry;
+import org.miradi.objecthelpers.*;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.TableSettings;
-import org.miradi.project.Project;
-import org.miradi.project.ProjectLoader;
-import org.miradi.project.ProjectRepairer;
-import org.miradi.project.ProjectSaver;
-import org.miradi.project.RawProjectSaver;
+import org.miradi.project.*;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.FontFamiliyQuestion;
 import org.miradi.questions.TableRowHeightModeQuestion;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
-import org.miradi.utils.ConstantButtonNames;
-import org.miradi.utils.DefaultHyperlinkHandler;
-import org.miradi.utils.FileLocker;
-import org.miradi.utils.FileUtilities;
-import org.miradi.utils.HtmlViewPanel;
-import org.miradi.utils.HtmlViewPanelWithMargins;
-import org.miradi.utils.MiradiBackgroundWorkerThread;
-import org.miradi.utils.MiradiLogger;
-import org.miradi.utils.MiradiResourceImageIcon;
-import org.miradi.utils.ModalRenameDialog;
-import org.miradi.utils.NullProgressMeter;
-import org.miradi.utils.ProgressInterface;
-import org.miradi.utils.SplitterPositionSaverAndGetter;
-import org.miradi.utils.StringUtilities;
+import org.miradi.utils.*;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.library.LibraryView;
 import org.miradi.views.map.MapView;
@@ -130,8 +76,17 @@ import org.miradi.wizard.WizardPanel;
 import org.miradi.wizard.WizardTitlePanel;
 import org.miradi.wizard.noproject.WelcomeCreateStep;
 
-import edu.stanford.ejalbert.BrowserLauncher;
-import edu.stanford.ejalbert.BrowserLauncherRunner;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.ClipboardOwner;
+import java.awt.datatransfer.Transferable;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import java.io.File;
+import java.io.IOException;
+import java.util.*;
+import java.util.List;
 
 public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositionSaverAndGetter
 {
@@ -1029,7 +984,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			if (areStartEndDateFlipped())
 				setStartEndDateWarningStatus();
 			else if (areAnyProjectResourceFiltersOn())
-				getMainStatusBar().setWarningStatus(EAM.text("Project Resource Filter Is On"));
+				getMainStatusBar().setWarningStatus(EAM.text("Project People Filter Is On"));
 			else if (hasNonMatchingFiscalYearStartMonth(getProject()))
 				getMainStatusBar().setWarningStatus(EAM.text("Existing data for a different fiscal year is being excluded"));
 			else if (isDataOutsideOfCurrentProjectDateRange())

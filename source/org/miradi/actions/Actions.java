@@ -183,11 +183,6 @@ public class Actions
 		registerAction(new ActionTeamCreateMember(mainWindow));
 		registerAction(new ActionDeleteTeamMember(mainWindow));
 		
-		registerAction(new ActionResourceListAdd(mainWindow));
-		registerAction(new ActionResourceListRemove(mainWindow));
-		registerAction(new ActionResourceListModify(mainWindow));
-		registerAction(new ActionViewPossibleResources(mainWindow));
-		
 		registerAction(new ActionAddAssignment(mainWindow));
 		registerAction(new ActionRemoveAssignment(mainWindow));
 		registerAction(new ActionCreateAccountingCode(mainWindow));
@@ -398,8 +393,6 @@ public class Actions
 		registerAction(new ActionDeleteSubTarget(mainWindow));
 		registerAction(new ActionDiagramProperties(mainWindow));
 
-		registerAction(new ActionEditEstimatedResource(mainWindow));
-		
 		registerAction(new ActionCreateProgressReport(mainWindow));
 		registerAction(new ActionCreateExtendedProgressReport(mainWindow));
 		registerAction(new ActionDeleteProgressReport(mainWindow));

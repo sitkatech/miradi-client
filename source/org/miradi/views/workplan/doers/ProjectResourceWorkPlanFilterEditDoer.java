@@ -40,6 +40,6 @@ public class ProjectResourceWorkPlanFilterEditDoer extends AbstractWorkPlanStrin
 	@Override
 	protected String getDialogTitle()
 	{
-		return EAM.text("Title|Filter by Resource(s)");
+		return EAM.text("Title|Filter by People");
 	}
 }

@@ -32,11 +32,11 @@ public class WorkPlanProjectResourceFilterEditorPanel extends ObjectDataInputPan
 		super(projectToUse, orefToUse);
 		
 		addHtmlWrappedLabel("");
-		addHtmlWrappedLabel(EAM.text("Selecting one or more resources below<br>" +
-				"will filter the display to only include <br>" +
-				"work unit and budget total values for <br>" +
-				"items that are assigned to those resources."));
-		addFieldWithCustomLabel(createStringMapProjectResourceFilterCodeListEditor(orefToUse.getObjectType(), tagToUse, question), EAM.text("Resources:"));
+		addHtmlWrappedLabel(EAM.text("Selecting one or more people below will <br>" +
+				"filter the display to include work unit and <br>" +
+				"budget total values for only the work <br>" +
+				"assignments of the selected people."));
+		addFieldWithCustomLabel(createStringMapProjectResourceFilterCodeListEditor(orefToUse.getObjectType(), tagToUse, question), EAM.text("People:"));
 		
 		updateFieldsFromProject();
 	}
@@ -44,6 +44,6 @@ public class WorkPlanProjectResourceFilterEditorPanel extends ObjectDataInputPan
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Project Resource Filter Editor");
+		return EAM.text("People Filter Editor");
 	}
 }

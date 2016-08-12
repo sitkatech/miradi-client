@@ -98,7 +98,7 @@ public class WorkPlanTreeTablePanel extends PlanningTreeTablePanel
 
 		if (getMainWindow().areAnyProjectResourceFiltersOn())
 		{
-			filterResourceLabel.setText(EAM.text("Resource filter is on"));
+			filterResourceLabel.setText(EAM.text("People filter is on"));
 			filterResourceLabel.setIcon(IconManager.getWarningIcon());
 		}
 		else

@@ -67,7 +67,7 @@ public class TestProjectResource extends TestCaseWithProject
 	public void testWho() throws Exception
 	{
 		ProjectResource person = new ProjectResource(getObjectManager(), new BaseId(15));
-		assertEquals("(Undefined Resource)", person.getWho());
+		assertEquals("(Undefined Person)", person.getWho());
 		String sampleInitials = "rl";
 		String sampleGivenName = "Robin";
 		String sampleSurName = "Lee";

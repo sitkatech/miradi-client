@@ -19,15 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
-import java.util.Collection;
-import java.util.Collections;
-import java.util.Vector;
-
 import org.miradi.main.EAM;
 import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.schemas.ObjectTreeTableConfigurationSchema;
+
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Vector;
 
 public class ReportTemplateContentQuestion extends ProjectBasedDynamicQuestion
 {
@@ -193,7 +193,7 @@ public class ReportTemplateContentQuestion extends ProjectBasedDynamicQuestion
 
 	public static String getResourcesLabel()
 	{
-		return EAM.text("Resources");
+		return EAM.text("People");
 	}
 
 	public static String getWorkPlanLabel()

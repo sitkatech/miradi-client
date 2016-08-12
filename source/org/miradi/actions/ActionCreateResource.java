@@ -32,13 +32,13 @@ public class ActionCreateResource extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Create People");
+		return EAM.text("Action|Manage|Add People");
 	}
 
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Create a person or group");
+		return EAM.text("TT|Add a person or group");
 	}
 
 }

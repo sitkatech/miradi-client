@@ -32,12 +32,12 @@ public class ActionFilterWorkPlanByProjectResource extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Filter by Resource...");
+		return EAM.text("Action|Filter by People...");
 	}
 
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Filter to only display budget data for the selected resource(s)");
+		return EAM.text("TT|Filter to only display budget data for the selected people");
 	}
 }

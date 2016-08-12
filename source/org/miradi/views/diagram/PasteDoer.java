@@ -131,7 +131,7 @@ public class PasteDoer extends AbstractPasteDoer
 				"<ol>" +
 				"<li>Simple Threat Ratings </li>" +
 				"<li>Work planning data that refers to other data which only exists in the old project." +
-				"This would include work or expense assignments to Project Resources, Accounting Codes, " +
+				"This would include work or expense assignments to People, Accounting Codes, " +
 				"Funding Sources, and items in Category #1 or Category #2 lists. The Leader attribute " +
 				"is also not copied.</li>" +
 				"<li>Taxonomy classifications where the two projects do not share the same taxonomy classification lists. </li>" +

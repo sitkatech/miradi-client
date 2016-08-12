@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import java.util.Collections;
-import java.util.Vector;
-
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.BaseObjectByFullNameSorter;
@@ -34,6 +31,9 @@ import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DoubleUtilities;
+
+import java.util.Collections;
+import java.util.Vector;
 
 public class ProjectResource extends BaseObject
 {
@@ -102,7 +102,7 @@ public class ProjectResource extends BaseObject
 		if (result.length() > 0)
 			return result;
 		
-		return EAM.text("Label|(Undefined Resource)");
+		return EAM.text("Label|(Undefined Person)");
 	}
 
 	public String getInitials()

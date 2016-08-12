@@ -46,6 +46,6 @@ public class WorkPlanAssignResourcesStep extends WorkPlanWizardStep
 	@Override
 	public String getSubHeading()
 	{
-		return EAM.text("4) Assign resources");
+		return EAM.text("4) Assign people");
 	}
 }

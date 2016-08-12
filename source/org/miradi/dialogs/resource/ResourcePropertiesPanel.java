@@ -19,10 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.resource;
 
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
-import org.miradi.dialogfields.*;
+import org.miradi.dialogfields.ChoiceItemListSelectionEvent;
+import org.miradi.dialogfields.ObjectCodeEditorField;
+import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.dialogfields.ObjectRadioButtonGroupField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.ids.BaseId;
@@ -36,6 +36,9 @@ import org.miradi.questions.ResourceRoleQuestion;
 import org.miradi.questions.ResourceTypeQuestion;
 import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.utils.CodeList;
+
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 public class ResourcePropertiesPanel extends ObjectDataInputPanel
 {
@@ -52,7 +55,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 
 		firstNameLabel = new PanelTitleLabel(EAM.text(FIRST_NAME_LABEL_PERSON));
 		ObjectDataInputField givenNameField = createMediumStringField(ProjectResource.TAG_GIVEN_NAME);
-		addFieldsOnOneLine(new PanelTitleLabel(EAM.text("Label|Resource")), new Object[]{firstNameLabel, givenNameField});
+		addFieldsOnOneLine(new PanelTitleLabel(EAM.text("Label|Name")), new Object[]{firstNameLabel, givenNameField});
 
 		lastNameLabel = new PanelTitleLabel(EAM.text(LAST_NAME_LABEL_PERSON));
 		ObjectDataInputField surNameField = createMediumStringField(ProjectResource.TAG_SUR_NAME);
@@ -100,7 +103,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Resource Properties");
+		return EAM.text("Title|People Properties");
 	}
 	
 	@Override
@@ -258,7 +261,7 @@ public class ResourcePropertiesPanel extends ObjectDataInputPanel
 	private static final String FIRST_NAME_LABEL_PERSON = "First Name   ";
 	private static final String FIRST_NAME_LABEL_GROUP = "Group Name";
 	private static final String LAST_NAME_LABEL_PERSON = "Last Name    ";
-	private static final String LAST_NAME_LABEL_GROUP = "                      ";
-	private static final String INITIAL_LABEL_PERSON = "Resource ID ";
-	private static final String INITIAL_LABEL_GROUP = "Resource ID  ";
+	private static final String LAST_NAME_LABEL_GROUP = "                   ";
+	private static final String INITIAL_LABEL_PERSON = "ID ";
+	private static final String INITIAL_LABEL_GROUP = "ID  ";
 }

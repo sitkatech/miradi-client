@@ -46,7 +46,7 @@ public class ResourceAssignmentSubPanel extends AbstractAssignmentSubPanel
 		getFields().clear();
 
 		ObjectDataInputField resourceDropdownField = createChoiceField(ResourceAssignmentSchema.getObjectType(), ResourceAssignment.TAG_RESOURCE_ID, new ProjectResourceIdQuestionWithUnspecifiedChoice(getProject()));
-		addFieldsOnOneLine(EAM.text("Assignment"), IconManager.getAssignmentIcon(), new ObjectDataInputField[]{resourceDropdownField});
+		addFieldsOnOneLine(EAM.text("Work Assignment"), IconManager.getAssignmentIcon(), new ObjectDataInputField[]{resourceDropdownField});
 
 		ObjectDataInputField readonlyResourceDailyRateField = createReadonlyShortTextField(ResourceAssignmentSchema.getObjectType(), ResourceAssignment.PSEUDO_TAG_PROJECT_RESOURCE_COST_PER_UNIT);
 		addField(readonlyResourceDailyRateField);
