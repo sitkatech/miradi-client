@@ -800,13 +800,13 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		ObjectDataInputField latestProgressReportDateField = createReadonlyShortTextField(objectType, BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE);
 		ObjectDataInputField latestProgressReportStatusField = createReadOnlyChoiceField(objectType, BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportShortStatusQuestion());
 		addFieldsOnOneLine(progressReportLabel, new ObjectDataInputField[] {latestProgressReportDateField, latestProgressReportStatusField,} );
-		ObjectDataInputField latestProgressReportDetailsField = createMultilineField(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
+		ObjectDataInputField latestProgressReportDetailsField = createMultilineField(objectType, BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 		latestProgressReportDetailsField.setEditable(false);
 		addField(latestProgressReportDetailsField);
-		ObjectDataInputField latestProgressReportNextStepsField = createMultilineField(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_NEXT_STEPS);
+		ObjectDataInputField latestProgressReportNextStepsField = createMultilineField(objectType, BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_NEXT_STEPS);
 		latestProgressReportNextStepsField.setEditable(false);
 		addField(latestProgressReportNextStepsField);
-		ObjectDataInputField latestProgressReportLessonsLearnedField = createMultilineField(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_LESSONS_LEARNED);
+		ObjectDataInputField latestProgressReportLessonsLearnedField = createMultilineField(objectType, BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_LESSONS_LEARNED);
 		latestProgressReportLessonsLearnedField.setEditable(false);
 		addField(latestProgressReportLessonsLearnedField);
 	}
