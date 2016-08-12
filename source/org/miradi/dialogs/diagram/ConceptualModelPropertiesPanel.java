@@ -24,6 +24,7 @@ import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.progressReport.ExtendedProgressReportSubPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
 import org.miradi.project.Project;
@@ -42,6 +43,8 @@ public class ConceptualModelPropertiesPanel extends ObjectDataInputPanelWithSect
 	
 		addField(createMultilineField(ConceptualModelDiagramSchema.getObjectType(), DiagramObject.TAG_DETAIL));
 		addField(createReadOnlyObjectList(ConceptualModelDiagramSchema.getObjectType(), ConceptualModelDiagram.PSEUDO_DRAFT_STRATEGY_REFS));
+
+		createLatestExtendedProgressReportFields(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 
 		addSubPanelWithTitledBorder(new ExtendedProgressReportSubPanel(getMainWindow()));
 

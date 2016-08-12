@@ -21,9 +21,7 @@ package org.miradi.views.summary;
 
 import org.miradi.actions.views.ActionViewSummary;
 import org.miradi.dialogfields.ObjectDataField;
-import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.forms.summary.ProjectTabForm;
 import org.miradi.icons.MiradiApplicationIcon;
 import org.miradi.main.EAM;
@@ -33,7 +31,6 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.MiradiShareProjectData;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.questions.MajorLanguagesQuestion;
-import org.miradi.questions.ProgressReportShortStatusQuestion;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
@@ -62,19 +59,7 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 		addField(createStringField(ProjectMetadata.TAG_PROJECT_URL));
 		addField(createMultilineField(ProjectMetadata.TAG_PROJECT_DESCRIPTION));
 
-		PanelTitleLabel progressReportLabel = new PanelTitleLabel(EAM.text("Progress Report"));
-		ObjectDataInputField latestProgressReportDateField = createReadonlyShortTextField(ObjectType.PROJECT_METADATA, ProjectMetadata.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE);
-		ObjectDataInputField latestProgressReportStatusField = createReadOnlyChoiceField(ObjectType.PROJECT_METADATA, ProjectMetadata.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportShortStatusQuestion());
-		addFieldsOnOneLine(progressReportLabel, new ObjectDataInputField[] {latestProgressReportDateField, latestProgressReportStatusField,} );
-		ObjectDataInputField latestProgressReportDetailsField = createMultilineField(ProjectMetadata.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
-		latestProgressReportDetailsField.setEditable(false);
-		addField(latestProgressReportDetailsField);
-		ObjectDataInputField latestProgressReportNextStepsField = createMultilineField(ProjectMetadata.PSEUDO_TAG_LATEST_PROGRESS_REPORT_NEXT_STEPS);
-		latestProgressReportNextStepsField.setEditable(false);
-		addField(latestProgressReportNextStepsField);
-		ObjectDataInputField latestProgressReportLessonsLearnedField = createMultilineField(ProjectMetadata.PSEUDO_TAG_LATEST_PROGRESS_REPORT_LESSONS_LEARNED);
-		latestProgressReportLessonsLearnedField.setEditable(false);
-		addField(latestProgressReportLessonsLearnedField);
+		createLatestExtendedProgressReportFields(ObjectType.PROJECT_METADATA);
 
 		setObjectRefs(new ORef[]{refToUse, getProject().getSingletonObjectRef(TncProjectDataSchema.getObjectType()), getProject().getSingletonObjectRef(MiradiShareProjectDataSchema.getObjectType()),});
 		updateFieldsFromProject();

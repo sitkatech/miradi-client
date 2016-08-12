@@ -19,21 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
-import java.util.Vector;
-
-import javax.swing.Box;
-import javax.swing.Icon;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import org.martus.swing.UiLabel;
 import org.miradi.dialogfields.ObjectDataField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogfields.RadioButtonsField;
 import org.miradi.dialogs.fieldComponents.ClickablePanelTitleLabel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.dialogs.fieldComponents.PanelFieldLabel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.icons.QuestionMarkIcon;
@@ -44,6 +35,9 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.FillerLabel;
+
+import javax.swing.*;
+import java.util.Vector;
 
 abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelWithCreationFromForms
 {
@@ -229,20 +223,6 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		fieldPanel.setGaps(3);
 		
 		return createFieldPanel(fieldPanel, fields);
-	}
-
-	private JPanel createFieldPanel(JPanel fieldPanel, ObjectDataField[] fields)
-	{
-		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		for(int i = 0; i < fields.length; ++i)
-		{
-			addFieldToList(fields[i]);
-			fieldPanel.add(new PanelFieldLabel(fields[i].getObjectType(), fields[i].getTag()));
-			fieldPanel.add(fields[i].getComponent());
-			fieldPanel.add(new JLabel(" "));
-		}
-		
-		return fieldPanel;
 	}
 
 	private JPanel createFieldPanel(String labelTexts[], ObjectDataField[] fields)

@@ -30,6 +30,7 @@ import org.miradi.forms.FormConstant;
 import org.miradi.forms.FormRow;
 import org.miradi.ids.BaseId;
 import org.miradi.layout.OneColumnPanel;
+import org.miradi.layout.OneRowPanel;
 import org.miradi.main.*;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
@@ -763,6 +764,51 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		FormConstant contextText = new FormConstant(rightSideText);
 		FormRow contextRow = new FormRow(contextLabel, contextText);
 		return contextRow;
+	}
+
+	protected void addFieldsOnOneLine(PanelTitleLabel label, ObjectDataInputField[] fields)
+	{
+		JPanel fieldPanel = createFieldPanel(fields);
+		add(label);
+		add(fieldPanel);
+	}
+
+	public JPanel createFieldPanel(ObjectDataInputField[] fields)
+	{
+		final OneRowPanel fieldPanel = new OneRowPanel();
+		fieldPanel.setGaps(3);
+
+		return createFieldPanel(fieldPanel, fields);
+	}
+
+	protected JPanel createFieldPanel(JPanel fieldPanel, ObjectDataField[] fields)
+	{
+		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		for(int i = 0; i < fields.length; ++i)
+		{
+			addFieldToList(fields[i]);
+			fieldPanel.add(new PanelFieldLabel(fields[i].getObjectType(), fields[i].getTag()));
+			fieldPanel.add(fields[i].getComponent());
+			fieldPanel.add(new JLabel(" "));
+		}
+
+		return fieldPanel;
+	}
+	protected void createLatestExtendedProgressReportFields(int objectType) throws Exception
+	{
+		PanelTitleLabel progressReportLabel = new PanelTitleLabel(EAM.text("Progress Report"));
+		ObjectDataInputField latestProgressReportDateField = createReadonlyShortTextField(objectType, BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE);
+		ObjectDataInputField latestProgressReportStatusField = createReadOnlyChoiceField(objectType, BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, new ProgressReportShortStatusQuestion());
+		addFieldsOnOneLine(progressReportLabel, new ObjectDataInputField[] {latestProgressReportDateField, latestProgressReportStatusField,} );
+		ObjectDataInputField latestProgressReportDetailsField = createMultilineField(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
+		latestProgressReportDetailsField.setEditable(false);
+		addField(latestProgressReportDetailsField);
+		ObjectDataInputField latestProgressReportNextStepsField = createMultilineField(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_NEXT_STEPS);
+		latestProgressReportNextStepsField.setEditable(false);
+		addField(latestProgressReportNextStepsField);
+		ObjectDataInputField latestProgressReportLessonsLearnedField = createMultilineField(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_LESSONS_LEARNED);
+		latestProgressReportLessonsLearnedField.setEditable(false);
+		addField(latestProgressReportLessonsLearnedField);
 	}
 
 	public ORef getRefForType(int objectType)

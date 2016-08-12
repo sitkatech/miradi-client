@@ -24,6 +24,7 @@ import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.progressReport.ExtendedProgressReportSubPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramObject;
 import org.miradi.project.Project;
 import org.miradi.schemas.ResultsChainDiagramSchema;
@@ -41,6 +42,8 @@ public class ResultsChainPropertiesPanel extends ObjectDataInputPanelWithSection
 	
 		addField(createMultilineField(ResultsChainDiagramSchema.getObjectType(), DiagramObject.TAG_DETAIL));
 		addTaxonomyFields(ResultsChainDiagramSchema.getObjectType());
+
+		createLatestExtendedProgressReportFields(ObjectType.RESULTS_CHAIN_DIAGRAM);
 
 		addSubPanelWithTitledBorder(new ExtendedProgressReportSubPanel(getMainWindow()));
 
