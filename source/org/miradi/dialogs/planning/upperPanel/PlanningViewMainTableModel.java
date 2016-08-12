@@ -370,6 +370,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if(isTimeframeColumn(columnTag))
 				return getFilteredWhenForPlans(baseObject);
 
+			if(isAssignedWhenColumn(columnTag))
+				return getFilteredWhenForAssignments(baseObject);
+
 			return new TaglessChoiceItem(rawValue);
 		}
 		catch (Exception e)
@@ -433,13 +436,19 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	private ChoiceItem getFilteredWhenForPlans(BaseObject baseObject) throws Exception
 	{
 		TimePeriodCostsMap totalTimePeriodCostsMap = calculateTimePeriodPlannedCostsMap(baseObject);
-		return getFilteredWhen(totalTimePeriodCostsMap);
+		return getFilteredWhen(totalTimePeriodCostsMap, new ORefSet());
 	}
 
-	private ChoiceItem getFilteredWhen(TimePeriodCostsMap totalTimePeriodCostsMap) throws Exception
+	private ChoiceItem getFilteredWhenForAssignments(BaseObject baseObject) throws Exception
+	{
+		TimePeriodCostsMap totalTimePeriodCostsMap = calculateTimePeriodAssignedCostsMap(baseObject);
+		return getFilteredWhen(totalTimePeriodCostsMap, getResourcesFilter());
+	}
+
+	private ChoiceItem getFilteredWhen(TimePeriodCostsMap totalTimePeriodCostsMap, ORefSet resourcesToFilterBy) throws Exception
 	{
 		DateRange projectStartEndDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
-		DateRange rolledUpDateRangeForResources = totalTimePeriodCostsMap.getRolledUpDateRange(projectStartEndDateRange, getResourcesFilter());
+		DateRange rolledUpDateRangeForResources = totalTimePeriodCostsMap.getRolledUpDateRange(projectStartEndDateRange, resourcesToFilterBy);
 		String rolledUpResourcesWhen = getProject().getProjectCalendar().convertToSafeString(rolledUpDateRangeForResources);
 
 		return new TaglessChoiceItem(rolledUpResourcesWhen);
