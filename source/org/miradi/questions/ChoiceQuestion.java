@@ -18,15 +18,15 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.*/ 
 package org.miradi.questions;
 
-import java.awt.Color;
-import java.util.Arrays;
-import java.util.Comparator;
-import java.util.Vector;
-
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.ColorManager;
+
+import java.awt.*;
+import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Vector;
 
 
 public abstract class ChoiceQuestion implements Comparable<ChoiceQuestion>
@@ -236,12 +236,14 @@ public abstract class ChoiceQuestion implements Comparable<ChoiceQuestion>
 		return !canSelectMultiple();
 	}
 	
-	abstract public boolean canSelectMultiple();	
-	
-	public static final Color COLOR_ALERT = Color.RED;
+	abstract public boolean canSelectMultiple();
+
+	public static final Color COLOR_ALERT = ColorManager.RED;
 	public static final Color COLOR_CAUTION = ColorManager.DARK_YELLOW;
 	public static final Color COLOR_OK = ColorManager.LIGHT_GREEN;
 	public static final Color COLOR_GREAT = ColorManager.DARK_GREEN;
-	
+	public static final Color COLOR_ABANDONED = ColorManager.DARK_GREY;
+	public static final Color COLOR_PLANNED = ColorManager.LIGHT_BLUE;
+
 	private String questionDescription;
 }

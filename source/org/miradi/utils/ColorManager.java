@@ -19,10 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.utils;
 
-import java.awt.Color;
-import java.util.Vector;
-
 import org.miradi.main.EAM;
+
+import java.awt.*;
+import java.util.Vector;
 
 public class ColorManager
 {
@@ -51,9 +51,12 @@ public class ColorManager
 		availableColors.add(Color.yellow);
 		availableColors.add(Color.white);
 		
-		availableColors.add(DARK_GREEN);
-		availableColors.add(LIGHT_GREEN);
+		availableColors.add(RED);
 		availableColors.add(DARK_YELLOW);
+		availableColors.add(LIGHT_GREEN);
+		availableColors.add(DARK_GREEN);
+		availableColors.add(DARK_GREY);
+		availableColors.add(LIGHT_BLUE);
 	}
 	
 	public int getColorIndex(Color color)
@@ -72,8 +75,11 @@ public class ColorManager
 		
 	private Vector<Color> availableColors;
 	private static ColorManager singletonInstance;
-	
-	public static final Color DARK_YELLOW = new Color(255, 230, 0);
-	public static final Color LIGHT_GREEN = new Color(128, 255, 0); 
-	public static final Color DARK_GREEN = new Color(0, 160, 0);
+
+	public static final Color RED = new Color(0xFD, 0x66, 0x66);
+	public static final Color DARK_YELLOW = new Color(0xFC, 0xFC, 0x64);
+	public static final Color LIGHT_GREEN = new Color(0xA0, 0xFD, 0x9E);
+	public static final Color DARK_GREEN = new Color(0x66, 0xB2, 0x66);
+	public static final Color DARK_GREY = new Color(0x80, 0x80, 0x80);
+	public static final Color LIGHT_BLUE = new Color(0x87, 0xCE, 0xFA);
 }

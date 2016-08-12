@@ -20,9 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
-import java.awt.Color;
-
 import org.miradi.main.EAM;
+
+import java.awt.*;
 
 abstract public class AbstractProgressReportStatusQuestion extends StaticChoiceQuestionSortableByNaturalOrder
 {
@@ -36,12 +36,12 @@ abstract public class AbstractProgressReportStatusQuestion extends StaticChoiceQ
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem(NOT_SPECIFIED, EAM.text("Not Specified"), Color.WHITE),
-				new ChoiceItem(PLANNED_CODE, getPlannedLabel(), Color.WHITE),
+				new ChoiceItem(PLANNED_CODE, getPlannedLabel(), COLOR_PLANNED),
 				new ChoiceItem(MAJOR_ISSUES_CODE, getMajorIssuesLabel(), COLOR_ALERT),
 				new ChoiceItem(MINOR_ISSUES_CODE, getMinorIssuesLabel(), COLOR_CAUTION),
 				new ChoiceItem(ON_TRACK_CODE, getOnTrackLabel(), COLOR_OK),
 				new ChoiceItem(COMPLETED_CODE, getCompletedLabel(), COLOR_GREAT),
-				new ChoiceItem(ABANDONED_CODE, getAbandonedLabel(), Color.WHITE),
+				new ChoiceItem(ABANDONED_CODE, getAbandonedLabel(), COLOR_ABANDONED),
 		};
 	}
 	
