@@ -32,7 +32,7 @@ public class ActionTreeCreateResourceAssignment extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|  Create Assignment");
+		return EAM.text("Action|Manage|Create Assignment");
 	}
 
 
