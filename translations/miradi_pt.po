@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-15 01:36-0700\n"
+"POT-Creation-Date: 2016-08-15 03:06-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/miradi-client/"
@@ -253,7 +253,7 @@ msgstr ""
 msgid "%fieldName field data will be lost for %indicatorLabel (Indicator)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:294
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:276
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/AbstractModifyMultipleFieldMigration.java:70
 msgid "%fieldName will be removed. %label"
 msgstr ""
@@ -5586,7 +5586,7 @@ msgstr ""
 msgid "Name"
 msgstr "Nome"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:289
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:271
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/AbstractModifyMultipleFieldMigration.java:65
 msgid "Name = %s"
 msgstr ""
@@ -6816,6 +6816,7 @@ msgstr ""
 "início do ano fiscal. "
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/AssignedDateUnitTypeQuestion.java:50
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlannedDateUnitTypeQuestion.java:48
 msgid "Specific Day(s)"
 msgstr "Dia(s) Específico(s)"
 
@@ -8416,7 +8417,7 @@ msgid ""
 "status fields"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:108
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:107
 msgid ""
 "This migration creates timeframe entries for resource assignments (where a "
 "resource or date range is specified)."
