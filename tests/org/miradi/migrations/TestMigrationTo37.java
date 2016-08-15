@@ -32,13 +32,13 @@ public class TestMigrationTo37 extends AbstractTestMigration
 	
 	public void testFieldsRemovedAfterReverseMigration() throws Exception
 	{
-		ORef diagramRef = getProject().createConceptualModelDiagram();
+		ORef diagramRef = getProject().createResultsChainDiagram();
 
 		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo37.VERSION_TO));
 
         RawObject rawDiagram = rawProject.findObject(diagramRef);
         assertNotNull(rawDiagram);
-        assertFalse("Field should have been removed during reverse migration?", rawDiagram.containsKey(MigrationTo37.TAG_PROGRESS_REPORT_REFS));
+        assertFalse("Field should have been removed during reverse migration?", rawDiagram.containsKey(MigrationTo37.TAG_EXTENDED_PROGRESS_REPORT_REFS));
 	}
 	
 	@Override

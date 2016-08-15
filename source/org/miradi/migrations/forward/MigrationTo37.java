@@ -30,14 +30,14 @@ public class MigrationTo37 extends NewlyAddedFieldsMigration
 {
 	public MigrationTo37(RawProject rawProjectToUse)
 	{
-		super(rawProjectToUse, ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+		super(rawProjectToUse, ObjectType.RESULTS_CHAIN_DIAGRAM);
 	}
 
 	@Override
 	protected HashMap<String, String> createFieldsToLabelMapToModify()
 	{
 		HashMap<String, String> fieldsToAdd = new HashMap<String, String>();
-		fieldsToAdd.put(TAG_PROGRESS_REPORT_REFS, EAM.text("Conceptual Model Progress Reports"));
+		fieldsToAdd.put(TAG_EXTENDED_PROGRESS_REPORT_REFS, EAM.text("Results Chain Progress Reports"));
 
 		return fieldsToAdd;
 	}
@@ -63,7 +63,7 @@ public class MigrationTo37 extends NewlyAddedFieldsMigration
 	@Override
 	protected String getDescription()
 	{
-		return EAM.text("This migration adds Progress Reports to Conceptual Model Diagrams.");
+		return EAM.text("This migration adds Progress Reports to Result Chain Diagrams.");
 	}
 
 	private class ProgressReportVisitor extends AbstractMigrationVisitor
@@ -93,7 +93,7 @@ public class MigrationTo37 extends NewlyAddedFieldsMigration
 		{
 			MigrationResult migrationResult = MigrationResult.createSuccess();
 
-			rawObject.setData(TAG_PROGRESS_REPORT_REFS, "");
+			rawObject.setData(TAG_EXTENDED_PROGRESS_REPORT_REFS, "");
 
 			return migrationResult;
 		}
@@ -104,5 +104,5 @@ public class MigrationTo37 extends NewlyAddedFieldsMigration
 	public static final int VERSION_FROM = 36;
 	public static final int VERSION_TO = 37;
 
-	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
+	public static final String TAG_EXTENDED_PROGRESS_REPORT_REFS = "ExtendedProgressReportRefs";
 }
