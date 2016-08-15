@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations.forward;
 
-import org.martus.util.MultiCalendar;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
@@ -170,18 +169,9 @@ public class MigrationTo33 extends AbstractMigration
 					{
 						DateUnitEffort resourceAssignmentDateUnitEffort = resourceAssignmentDateUnitEffortList.getDateUnitEffort(index);
 						if (resourceAssignmentDateUnitEffort.getDateUnit().isProjectTotal())
-						{
 							foundAtLeastOneProjectTotalDateUnit = true;
-						}
-						else if (resourceAssignmentDateUnitEffort.getDateUnit().isDay())
-						{
-							DateUnit timeframeDateUnit = createMonthDateUnit(resourceAssignmentDateUnitEffort.getDateUnit());
-							timeframeDateRange = addToDateRange(timeframeDateRange, timeframeDateUnit);
-						}
 						else
-						{
 							timeframeDateRange = addToDateRange(timeframeDateRange, resourceAssignmentDateUnitEffort.getDateUnit());
-						}
 					}
 				}
 			}
@@ -197,25 +187,17 @@ public class MigrationTo33 extends AbstractMigration
 				DateRange startDateRange = new DateRange(timeframeDateRange.getStartDate(), timeframeDateRange.getStartDate());
 				DateUnit startDateUnit = DateUnit.createFromDateRange(startDateRange);
 
-				DateUnit timeframeStartDateUnit = createMonthDateUnit(startDateUnit);
-				DateUnitEffort timeframeStartDateUnitEffort = new DateUnitEffort(timeframeStartDateUnit, 0);
-				timeframeDateUnitEffortList.add(timeframeStartDateUnitEffort);
+				DateUnitEffort startDateUnitEffort = new DateUnitEffort(startDateUnit, 0);
+				timeframeDateUnitEffortList.add(startDateUnitEffort);
 
 				DateRange endDateRange = new DateRange(timeframeDateRange.getEndDate(), timeframeDateRange.getEndDate());
 				DateUnit endDateUnit = DateUnit.createFromDateRange(endDateRange);
 
-				DateUnit timeframeEndDateUnit = createMonthDateUnit(endDateUnit);
-				DateUnitEffort timeframeEndDateUnitEffort = new DateUnitEffort(timeframeEndDateUnit, 0);
-				timeframeDateUnitEffortList.add(timeframeEndDateUnitEffort);
+				DateUnitEffort endDateUnitEffort = new DateUnitEffort(endDateUnit, 0);
+				timeframeDateUnitEffortList.add(endDateUnitEffort);
 			}
 
 			return timeframeDateUnitEffortList;
-		}
-
-		private DateUnit createMonthDateUnit(DateUnit dateUnit)
-		{
-			MultiCalendar cal = MultiCalendar.createFromGregorianYearMonthDay(dateUnit.getYear(), dateUnit.getMonth(), 1);
-			return DateUnit.createMonthDateUnit(cal.toIsoDateString());
 		}
 
 		private DateRange addToDateRange(DateRange dateRangeToAddTo, DateUnit dateUnit) throws Exception
