@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-12 09:51-0700\n"
+"POT-Creation-Date: 2016-08-15 01:36-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -284,7 +284,7 @@ msgid "%s Objs"
 msgstr "% междинни цели"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:109
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo38.java:155
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo39.java:155
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo7.java:126
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo24.java:108
 msgid "%s field data will be lost"
@@ -298,7 +298,7 @@ msgstr "%s "
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%ОтИме' -> '%ЗаИме'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:157
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationManager.java:158
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:1433
 msgid "(%s)"
 msgstr "(%s)"
@@ -3024,7 +3024,7 @@ msgstr "Детайли на страницата на концептуален �
 msgid "Conceptual Model Pages and Results Chains"
 msgstr "Страници на концептуален модел и вериги на резултати"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo37.java:40
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo38.java:40
 msgid "Conceptual Model Progress Reports"
 msgstr ""
 
@@ -6418,7 +6418,7 @@ msgstr ""
 msgid "Results Chain"
 msgstr "Верига на резултати"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo36.java:40
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo37.java:40
 msgid "Results Chain Progress Reports"
 msgstr ""
 
@@ -8351,15 +8351,15 @@ msgstr ""
 msgid "This migration adds 2 new TNC fields."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo37.java:66
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo38.java:66
 msgid "This migration adds Progress Reports to Conceptual Model Diagrams."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo36.java:66
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo37.java:66
 msgid "This migration adds Progress Reports to Result Chain Diagrams."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo38.java:88
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo39.java:88
 msgid "This migration adds Progress Reports to the Project Summary."
 msgstr ""
 
@@ -8431,6 +8431,10 @@ msgstr ""
 msgid ""
 "This migration creates timeframe entries for resource assignments (where a "
 "resource or date range is specified)."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo36.java:66
+msgid "This migration handles the removal of extended progress reports."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:94
