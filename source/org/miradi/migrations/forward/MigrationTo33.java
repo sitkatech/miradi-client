@@ -132,17 +132,14 @@ public class MigrationTo33 extends AbstractMigration
 
 				DateUnitEffortList timeframeDateUnitEffortList = buildTimeframeDateUnitEffortList(resourceAssignments);
 
-				for (RawObject resourceAssignment : resourceAssignments)
+				if (timeframeDateUnitEffortList.size() > 0)
 				{
-					if (resourceAssignment.containsKey(TAG_DATEUNIT_EFFORTS) || resourceAssignment.containsKey(TAG_RESOURCE_ID))
-					{
-						RawObject newTimeframe = new RawObject(TimeframeSchema.getObjectType());
-						newTimeframe.setData(TAG_DATEUNIT_EFFORTS, timeframeDateUnitEffortList.toJson().toString());
-						final BaseId nextHighestId = getRawProject().getNextHighestId();
-						final ORef newTimeframeRef = new ORef(ObjectType.TIMEFRAME, nextHighestId);
-						timeframePool.put(newTimeframeRef, newTimeframe);
-						timeframeIdList.add(nextHighestId);
-					}
+					RawObject newTimeframe = new RawObject(TimeframeSchema.getObjectType());
+					newTimeframe.setData(TAG_DATEUNIT_EFFORTS, timeframeDateUnitEffortList.toJson().toString());
+					final BaseId nextHighestId = getRawProject().getNextHighestId();
+					final ORef newTimeframeRef = new ORef(ObjectType.TIMEFRAME, nextHighestId);
+					timeframePool.put(newTimeframeRef, newTimeframe);
+					timeframeIdList.add(nextHighestId);
 				}
 
 				if (!timeframeIdList.isEmpty())

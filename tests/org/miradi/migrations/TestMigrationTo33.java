@@ -70,7 +70,7 @@ public class TestMigrationTo33 extends AbstractTestMigration
 		IdList idList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[]{resourceAssignment.getId()});
 		getProject().fillObjectUsingCommand(strategy, BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, idList.toJson().toString());
 
-		ensureForwardMigrationTimeframesAdded(strategy.getRef(), resourceAssignment);
+		ensureForwardMigrationTimeframesNotAdded(strategy.getRef());
 	}
 
 	public void testStrategyForwardMigrationWithNonZeroEffortResourceAssignment() throws Exception
@@ -126,15 +126,12 @@ public class TestMigrationTo33 extends AbstractTestMigration
 
 		RawPool rawTimeframePool = reverseMigratedProject.getRawPoolForType(TimeframeSchema.getObjectType());
 		assertFalse("Timeframes should have been added during forward migration", rawTimeframePool.isEmpty());
-		assertEquals("Two timeframes should have been added", rawTimeframePool.size(), 2);
+		assertEquals("Only one timeframe should have been added", rawTimeframePool.size(), 1);
 
 		ORef timeframeRef1 = rawTimeframePool.getSortedReflist().get(0);
 		RawObject timeframe1 = reverseMigratedProject.findObject(timeframeRef1);
 		verifyTimeframeMatchesResourceAssignment(timeframe1, resourceAssignment1);
-
-		ORef timeframeRef2 = rawTimeframePool.getSortedReflist().get(1);
-		RawObject timeframe2 = reverseMigratedProject.findObject(timeframeRef2);
-		verifyTimeframeMatchesResourceAssignment(timeframe2, resourceAssignment2);
+		verifyTimeframeMatchesResourceAssignment(timeframe1, resourceAssignment2);
 	}
 
 	public void testStrategyForwardMigrationWithMixedEffortResourceAssignment() throws Exception
@@ -187,19 +184,13 @@ public class TestMigrationTo33 extends AbstractTestMigration
 
 		RawPool rawTimeframePool = reverseMigratedProject.getRawPoolForType(TimeframeSchema.getObjectType());
 		assertFalse("Timeframes should have been added during forward migration", rawTimeframePool.isEmpty());
-		assertEquals("Two timeframes should have been added", rawTimeframePool.size(), 2);
+		assertEquals("Only one timeframe should have been added", rawTimeframePool.size(), 1);
 
 		ORef timeframeRef1 = rawTimeframePool.getSortedReflist().get(0);
 		RawObject timeframe1 = reverseMigratedProject.findObject(timeframeRef1);
 
 		DateUnitEffortList timeframeDateUnitEffortList1 = new DateUnitEffortList(timeframe1.getData(Timeframe.TAG_DATEUNIT_DETAILS));
 		verifyTimeframeDateUnitEffortListMatchesThatOfResourceAssignment(timeframeDateUnitEffortList1, combinedDateUnitEffortList);
-
-		ORef timeframeRef2 = rawTimeframePool.getSortedReflist().get(1);
-		RawObject timeframe2 = reverseMigratedProject.findObject(timeframeRef2);
-
-		DateUnitEffortList timeframeDateUnitEffortList2 = new DateUnitEffortList(timeframe2.getData(Timeframe.TAG_DATEUNIT_DETAILS));
-		verifyTimeframeDateUnitEffortListMatchesThatOfResourceAssignment(timeframeDateUnitEffortList2, combinedDateUnitEffortList);
 	}
 
 	private void verifyTimeframeDateUnitEffortListMatchesThatOfResourceAssignment(DateUnitEffortList timeframeDateUnitEffortList, DateUnitEffortList resourceAssignmentDateUnitEffortList) throws Exception
