@@ -20,63 +20,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
-import org.miradi.project.ProjectCalendar;
-import org.miradi.questions.AbstractDateUnitTypeQuestion;
-import org.miradi.utils.FillerLabel;
 
-public class DayDateUnitStartAndEndCard extends DateUnitStartAndEndCard
+public class DayDateUnitStartAndEndCard extends AbstractDayDateUnitStartAndEndCard
 {
 	public DayDateUnitStartAndEndCard(StartEndDateUnitProvider startEndDateUnitProvider)
 	{
-		startDayPanel = new DayPanel(startEndDateUnitProvider.getStartDateUnit(), getStartText());
-		endDayPanel = new DayPanel(startEndDateUnitProvider.getEndDateUnit(), getEndText());
-
-		add(new PanelTitleLabel(EAM.text("Day Selection: ")));
-		add(new FillerLabel());
-		add(startDayPanel);
-		add(endDayPanel);
+		super(startEndDateUnitProvider);
 	}
 	
 	@Override
-	public void dispose()
+	protected AbstractDayPanel createDayPanel(DateUnit dateUnit, String title)
 	{
-		disposePanel(startDayPanel);
-		startDayPanel = null;
-		
-		disposePanel(endDayPanel);
-		endDayPanel = null;
-		
-		super.dispose();
+		return new DayPanel(dateUnit, title);
 	}
-	
-	@Override
-	protected DateUnit getEndDate()
-	{
-		return endDayPanel.getDateUnit();
-	}
-
-	@Override
-	protected DateUnit getStartDate()
-	{
-		return startDayPanel.getDateUnit();
-	}
-	
-	@Override
-	public String getPanelDescription()
-	{
-		return AbstractDateUnitTypeQuestion.DAY_CODE;
-	}
-
-	@Override
-	public void setStartEndDateUnitProvider(ProjectCalendar projectCalendarToUse, StartEndDateUnitProvider startEndDateUnitProviderToUse)
-	{
-		startDayPanel.setDateUnit(startEndDateUnitProviderToUse.getStartDateUnit());
-		endDayPanel.setDateUnit(startEndDateUnitProviderToUse.getEndDateUnit());
-	}
-
-	private DayPanel startDayPanel;
-	private DayPanel endDayPanel;
 }

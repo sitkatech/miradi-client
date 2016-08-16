@@ -20,34 +20,27 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import java.awt.Color;
-import java.awt.Container;
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.FocusEvent;
-import java.awt.event.FocusListener;
-import java.awt.event.WindowAdapter;
-import java.awt.event.WindowEvent;
+import com.toedter.calendar.JDateChooser;
+import com.toedter.calendar.JTextFieldDateEditor;
+import org.martus.swing.Utilities;
+import org.martus.util.MultiCalendar;
+import org.miradi.dialogfields.FieldSaver;
+import org.miradi.dialogfields.TimeframeEditorField;
+import org.miradi.dialogs.base.UndecoratedModelessDialogWithClose;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
+
+import javax.swing.*;
+import javax.swing.event.CaretEvent;
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
+import java.awt.*;
+import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
-
-import javax.swing.JDialog;
-import javax.swing.event.CaretEvent;
-import javax.swing.event.DocumentEvent;
-import javax.swing.event.DocumentListener;
-
-import org.martus.swing.Utilities;
-import org.martus.util.MultiCalendar;
-import org.miradi.dialogfields.FieldSaver;
-import org.miradi.dialogs.base.UndecoratedModelessDialogWithClose;
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
-
-import com.toedter.calendar.JDateChooser;
-import com.toedter.calendar.JTextFieldDateEditor;
 
 public class DateEditorComponent extends JDateChooser
 {
@@ -71,6 +64,7 @@ public class DateEditorComponent extends JDateChooser
 	public void dispose()
 	{
 		dateEditor.removePropertyChangeListener(DATE_PROPERTY_NAME, this);
+		editorFieldChangeHandler = null;
 		cleanup();
 	}
 	
@@ -91,7 +85,12 @@ public class DateEditorComponent extends JDateChooser
 	{
 		super.addPropertyChangeListener(listener);
 	}
-		
+
+	public void addActionListener(TimeframeEditorField.TimeframeEditorChangeHandler editorFieldChangeHandlerToUse)
+	{
+		editorFieldChangeHandler = editorFieldChangeHandlerToUse;
+	}
+
 	public String getText()
 	{
 		return convertDateToIsoString(getDate());
@@ -238,7 +237,9 @@ public class DateEditorComponent extends JDateChooser
 		{
 			getDateTextEditor().requestFocus();
 			updateTextFromCalendarAndSetNeedsSave();
-			FieldSaver.savePendingEdits();
+			possiblySavePendingEdits();
+			if (editorFieldChangeHandler != null)
+				editorFieldChangeHandler.actionPerformed(new ActionEvent(e.getSource(), e.getID(), "DateEditorComponent"));
 		}
 	}
 		
@@ -328,4 +329,5 @@ public class DateEditorComponent extends JDateChooser
 	private static final String DATE_PROPERTY_NAME = "date";	
 	private boolean needsSave;
 	private UndecoratedModelessDialogWithClose calendarDialog;
+	private TimeframeEditorField.TimeframeEditorChangeHandler editorFieldChangeHandler;
 }

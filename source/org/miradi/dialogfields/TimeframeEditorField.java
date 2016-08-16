@@ -133,7 +133,7 @@ public class TimeframeEditorField extends ObjectDataField
 		return "";
 	}
 
-	public class WhenEditorChangeHandler implements ActionListener
+	public class TimeframeEditorChangeHandler implements ActionListener
 	{
 		public void actionPerformed(ActionEvent event)
 		{
@@ -156,7 +156,7 @@ public class TimeframeEditorField extends ObjectDataField
 
 			timeframeEditor = new TimeframeEditorComponent(getProject(), timeframeRefs);
 			timeframeEditor.setBackground(AppPreferences.getDataPanelBackgroundColor());
-			timeframeEditor.addActionListener(new WhenEditorChangeHandler());
+			timeframeEditor.addActionListener(new TimeframeEditorChangeHandler());
 			timeframeEditor.setBorder(DataField.createLineBorderWithMargin());
 		}
 		catch (Exception e)

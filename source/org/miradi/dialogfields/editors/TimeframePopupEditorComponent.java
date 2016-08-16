@@ -25,7 +25,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
-public class TimeframePopupEditorComponent extends WhenPopupEditorComponent
+public class TimeframePopupEditorComponent extends AbstractTimeframePopupEditorComponent
 {
 	public TimeframePopupEditorComponent(MainWindow mainWindowToUse)
 	{
@@ -33,9 +33,9 @@ public class TimeframePopupEditorComponent extends WhenPopupEditorComponent
 	}
 
 	@Override
-	protected WhenEditorComponent createWhenEditorComponent(Project projectToUse, BaseObject baseObjectForRow) throws Exception
+	protected AbstractTimeframeEditorComponent createWhenEditorComponent(Project projectToUse, BaseObject baseObjectForRow) throws Exception
 	{
-		return new TimeframeEditorComponent(getMainWindow().getProject(), baseObjectForRow);
+		return new TimeframeEditorComponentInsideTable(getMainWindow().getProject(), baseObjectForRow);
 	}
 
 	@Override

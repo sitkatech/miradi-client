@@ -20,50 +20,19 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.layout.TwoColumnPanel;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.utils.DateEditorComponent;
-import org.miradi.utils.DateEditorComponentInsideTable;
 
-public class DayPanel extends TwoColumnPanel
+public class DayPanel extends AbstractDayPanel
 {
 	public DayPanel(DateUnit dateUnit, String title)
 	{
-		add(new PanelTitleLabel(title));
-		dateEditor = new DateEditorComponentInsideTable();
-		add(dateEditor);
-		
-		setSelectedDateUnit(dateUnit);
+		super(dateUnit, title);
 	}
-	
+
 	@Override
-	public void dispose()
+	protected DateEditorComponent createDateEditorComponent()
 	{
-		dateEditor.dispose();
-		dateEditor = null;
-		
-		super.dispose();
+		return new DateEditorComponent();
 	}
-
-	private void setSelectedDateUnit(DateUnit dateUnit)
-	{
-		if (dateUnit != null && dateUnit.isDay())
-			dateEditor.setText(dateUnit.getDateUnitCode());
-	}
-
-	public DateUnit getDateUnit()
-	{
-		String dateString = dateEditor.getText();
-		if(dateString.length() == 0)
-			return null;
-		return DateUnit.createDayDateUnit(dateString); 
-	}
-
-	public void setDateUnit(DateUnit dateUnitToUse)
-	{
-		setSelectedDateUnit(dateUnitToUse);
-	}
-
-	private DateEditorComponent dateEditor;
 }

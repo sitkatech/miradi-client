@@ -46,5 +46,5 @@ abstract public class DateUnitStartAndEndCard extends TwoColumnPanel
 
 	abstract public void setStartEndDateUnitProvider(ProjectCalendar projectCalendarToUse, StartEndDateUnitProvider startEndDateUnitProviderToUse);
 
-	public void addActionListener(TimeframeEditorField.WhenEditorChangeHandler editorFieldChangeHandlerToUse) {}
+	public void addActionListener(TimeframeEditorField.TimeframeEditorChangeHandler editorFieldChangeHandlerToUse) {}
 }

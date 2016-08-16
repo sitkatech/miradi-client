@@ -81,7 +81,7 @@ public class QuarterDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	}
 
 	@Override
-	public void addActionListener(TimeframeEditorField.WhenEditorChangeHandler editorFieldChangeHandlerToUse)
+	public void addActionListener(TimeframeEditorField.TimeframeEditorChangeHandler editorFieldChangeHandlerToUse)
 	{
 		if (startQuarterPanel != null)
 			startQuarterPanel.addActionListener(editorFieldChangeHandlerToUse);

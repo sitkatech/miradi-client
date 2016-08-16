@@ -18,22 +18,23 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogs.tablerenderers;
+package org.miradi.dialogfields.editors;
 
-import org.miradi.dialogfields.editors.TimeframePopupEditorComponent;
-import org.miradi.dialogfields.editors.AbstractTimeframePopupEditorComponent;
-import org.miradi.main.MainWindow;
+import org.miradi.objects.BaseObject;
+import org.miradi.project.Project;
+import org.miradi.project.ProjectCalendar;
+import org.miradi.questions.PlannedDateUnitTypeQuestion;
 
-public class TimeframeTableCellPopupEditorOrRendererFactory extends AbstractTimeframeTableCellPopupEditorOrRendererFactory
+public class TimeframeEditorComponentInsideTable extends AbstractTimeframeEditorComponent
 {
-	public TimeframeTableCellPopupEditorOrRendererFactory(MainWindow mainWindowToUse, RowColumnBaseObjectProvider objectProvider, FontForObjectProvider fontProvider)
+	public TimeframeEditorComponentInsideTable(Project project, BaseObject baseObjectToUse) throws Exception
 	{
-		super(mainWindowToUse, objectProvider, fontProvider);
+		super(project, baseObjectToUse.getTimeframeRefs(), new PlannedDateUnitTypeQuestion(project, baseObjectToUse.getTimeframeRefs()));
 	}
 
 	@Override
-	protected AbstractTimeframePopupEditorComponent createWhenPopupEditorComponent(MainWindow mainWindowToUse)
+	protected AbstractTimeframeEditorLowerPanel createTimeframeEditorLowerPanel(ProjectCalendar projectCalendarToUse, StartEndDateUnitProvider startEndDateUnitProviderToUse)
 	{
-		return new TimeframePopupEditorComponent(mainWindowToUse);
+		return new TimeframeEditorLowerPanelInsideTable(projectCalendarToUse, startEndDateUnitProviderToUse);
 	}
 }

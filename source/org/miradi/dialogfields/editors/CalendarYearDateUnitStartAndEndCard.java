@@ -81,7 +81,7 @@ public class CalendarYearDateUnitStartAndEndCard extends DateUnitStartAndEndCard
 	}
 
 	@Override
-	public void addActionListener(TimeframeEditorField.WhenEditorChangeHandler editorFieldChangeHandlerToUse)
+	public void addActionListener(TimeframeEditorField.TimeframeEditorChangeHandler editorFieldChangeHandlerToUse)
 	{
 		if (startYearPanel != null)
 			startYearPanel.addActionListener(editorFieldChangeHandlerToUse);

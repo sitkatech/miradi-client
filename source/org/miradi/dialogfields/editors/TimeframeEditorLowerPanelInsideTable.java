@@ -18,22 +18,20 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.dialogs.tablerenderers;
+package org.miradi.dialogfields.editors;
 
-import org.miradi.dialogfields.editors.TimeframePopupEditorComponent;
-import org.miradi.dialogfields.editors.AbstractTimeframePopupEditorComponent;
-import org.miradi.main.MainWindow;
+import org.miradi.project.ProjectCalendar;
 
-public class TimeframeTableCellPopupEditorOrRendererFactory extends AbstractTimeframeTableCellPopupEditorOrRendererFactory
+public class TimeframeEditorLowerPanelInsideTable extends AbstractTimeframeEditorLowerPanel
 {
-	public TimeframeTableCellPopupEditorOrRendererFactory(MainWindow mainWindowToUse, RowColumnBaseObjectProvider objectProvider, FontForObjectProvider fontProvider)
+	public TimeframeEditorLowerPanelInsideTable(ProjectCalendar projectCalendarToUse, StartEndDateUnitProvider startEndDateUnitProviderToUse)
 	{
-		super(mainWindowToUse, objectProvider, fontProvider);
+		super(projectCalendarToUse, startEndDateUnitProviderToUse);
 	}
 
 	@Override
-	protected AbstractTimeframePopupEditorComponent createWhenPopupEditorComponent(MainWindow mainWindowToUse)
+	protected AbstractDayDateUnitStartAndEndCard createDayDateUnitStartAndEndCard(StartEndDateUnitProvider startEndDateUnitProviderToUse)
 	{
-		return new TimeframePopupEditorComponent(mainWindowToUse);
+		return new DayDateUnitStartAndEndCardInsideTable(startEndDateUnitProviderToUse);
 	}
 }
