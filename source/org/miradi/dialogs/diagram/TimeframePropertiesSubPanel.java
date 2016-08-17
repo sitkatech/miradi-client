@@ -23,6 +23,7 @@ package org.miradi.dialogs.diagram;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -40,7 +41,37 @@ public class TimeframePropertiesSubPanel extends ObjectDataInputPanel
 		super(projectToUse, orefToUse);
 
 		currentRef = orefToUse;
+		planningPreferencesChangeHandler = new PlanningPreferencesChangeHandler();
+
+		getProject().addCommandExecutedListener(planningPreferencesChangeHandler);
+
 		rebuild(orefToUse);
+	}
+
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+
+		if (planningPreferencesChangeHandler != null)
+			getProject().removeCommandExecutedListener(planningPreferencesChangeHandler);
+	}
+
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		try
+		{
+			if (planningPreferencesChangeHandler.getRebuildRequired())
+			{
+				rebuild(currentRef);
+				planningPreferencesChangeHandler.setRebuildRequired(false);
+			}
+		} catch (Exception e)
+		{
+			EAM.panic(e);
+		}
 	}
 
 	@Override
@@ -61,20 +92,11 @@ public class TimeframePropertiesSubPanel extends ObjectDataInputPanel
 	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
-		try
-		{
 			super.commandExecuted(event);
-			if (eventForcesRebuild(event))
-			{
-				becomeInactive();
-				rebuild(currentRef);
-				becomeActive();
-			}
-		}
-		catch (Exception e)
-		{
-			EAM.panic(e);
-		}
+			planningPreferencesChangeHandler.commandExecuted(event);
+
+			becomeInactive();
+			becomeActive();
 	}
 
 	@Override
@@ -137,23 +159,58 @@ public class TimeframePropertiesSubPanel extends ObjectDataInputPanel
 		return selectedObjectRef;
 	}
 
-	private boolean eventForcesRebuild(CommandExecutedEvent event)
+	private class PlanningPreferencesChangeHandler implements CommandExecutedListener
 	{
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORKPLAN_END_DATE))
-			return true;
 
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORKPLAN_START_DATE))
-			return true;
+		public PlanningPreferencesChangeHandler()
+		{
+			rebuildRequired = false;
+		}
 
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_START_DATE))
-			return true;
+		@Override
+		public void commandExecuted(CommandExecutedEvent event)
+		{
+			if (eventForcesRebuild(event))
+				rebuildRequired = true;
+		}
 
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_EXPECTED_END_DATE))
-			return true;
+		public boolean getRebuildRequired()
+		{
+			return rebuildRequired;
+		}
 
-		return false;
+		public void setRebuildRequired(boolean rebuildRequiredToUse)
+		{
+			rebuildRequired = rebuildRequiredToUse;
+		}
+
+		private boolean eventForcesRebuild(CommandExecutedEvent event)
+		{
+			if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_QUARTER_COLUMNS_VISIBILITY))
+				return true;
+
+			if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_DAY_COLUMNS_VISIBILITY))
+				return true;
+
+			if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORKPLAN_END_DATE))
+				return true;
+
+			if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORKPLAN_START_DATE))
+				return true;
+
+			if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_START_DATE))
+				return true;
+
+			if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_EXPECTED_END_DATE))
+				return true;
+
+			return false;
+		}
+
+		private boolean rebuildRequired;
 	}
 
 	private ORef currentRef;
 	private PanelTitleLabel timeframeLabel;
+	private PlanningPreferencesChangeHandler planningPreferencesChangeHandler;
 }
