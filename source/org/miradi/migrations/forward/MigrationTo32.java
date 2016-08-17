@@ -24,14 +24,18 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.migrations.*;
-import org.miradi.objectdata.AbstractUserTextDataWithHtmlFormatting;
-import org.miradi.objectdata.BooleanData;
-import org.miradi.objecthelpers.*;
+import org.miradi.objecthelpers.DateUnit;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.schemas.ResourceAssignmentSchema;
-import org.miradi.schemas.TaskSchema;
-import org.miradi.utils.HtmlUtilitiesRelatedToShef;
+import org.miradi.schemas.TimeframeSchema;
+import org.miradi.utils.DateRange;
+import org.miradi.utils.DateUnitEffort;
+import org.miradi.utils.DateUnitEffortList;
+import org.miradi.utils.HtmlUtilities;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Vector;
 
 public class MigrationTo32 extends AbstractMigration
@@ -42,14 +46,18 @@ public class MigrationTo32 extends AbstractMigration
 	}
 
 	@Override
-	protected MigrationResult reverseMigrate() throws Exception
+	protected MigrationResult migrateForward() throws Exception
 	{
-		// decision made not to attempt to remove created monitoring activities, etc.
-		return MigrationResult.createSuccess();
+		return migrate(false);
 	}
 
 	@Override
-	protected MigrationResult migrateForward() throws Exception
+	protected MigrationResult reverseMigrate() throws Exception
+	{
+		return migrate(true);
+	}
+
+	private MigrationResult migrate(boolean reverseMigration) throws Exception
 	{
 		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
 		AbstractMigrationORefVisitor visitor;
@@ -57,7 +65,10 @@ public class MigrationTo32 extends AbstractMigration
 
 		for(Integer typeToVisit : typesToVisit)
 		{
-			visitor = new MigrateIndicatorAssignmentsVisitor(typeToVisit);
+			if (reverseMigration)
+				visitor = new RemoveTimeframesVisitor(typeToVisit);
+			else
+				visitor = new CreateTimeframesForResourceAssignmentsVisitor(typeToVisit);
 			visitAllORefsInPool(visitor);
 			final MigrationResult thisMigrationResult = visitor.getMigrationResult();
 			if (migrationResult == null)
@@ -72,7 +83,8 @@ public class MigrationTo32 extends AbstractMigration
 	private Vector<Integer> getTypesToMigrate()
 	{
 		Vector<Integer> typesToMigrate = new Vector<Integer>();
-		typesToMigrate.add(ObjectType.INDICATOR);
+		typesToMigrate.add(ObjectType.STRATEGY);
+		typesToMigrate.add(ObjectType.TASK);
 
 		return typesToMigrate;
 	}
@@ -92,16 +104,14 @@ public class MigrationTo32 extends AbstractMigration
 	@Override
 	protected String getDescription()
 	{
-		return EAM.text("This migration moves work plan data from Indicators / Methods to Monitoring Activities.");
+		return EAM.text("This migration creates timeframe entries for resource assignments (where a resource or date range is specified).");
 	}
 
-	private class MigrateIndicatorAssignmentsVisitor extends AbstractMigrationORefVisitor
+	private class CreateTimeframesForResourceAssignmentsVisitor extends AbstractMigrationORefVisitor
 	{
-		public MigrateIndicatorAssignmentsVisitor(int typeToVisit)
+		public CreateTimeframesForResourceAssignmentsVisitor(int typeToVisit)
 		{
 			type = typeToVisit;
-			resultsChain = null;
-			strategy = null;
 		}
 
 		public int getTypeToVisit()
@@ -110,414 +120,190 @@ public class MigrationTo32 extends AbstractMigration
 		}
 
 		@Override
-		protected MigrationResult internalVisit(ORef rawObjectRef) throws Exception
+		public MigrationResult internalVisit(ORef rawObjectRef) throws Exception
 		{
-			activity = null;
-
-			RawObject rawIndicatorToMigrate = getRawProject().findObject(rawObjectRef);
-			if (rawIndicatorToMigrate != null && shouldVisitIndicator(rawIndicatorToMigrate))
+			RawObject rawObject = getRawProject().findObject(rawObjectRef);
+			if (rawObject != null && rawObject.containsKey(TAG_RESOURCE_ASSIGNMENT_IDS))
 			{
-				RawObject activity = getOrCreateMonitoringActivity(rawIndicatorToMigrate);
-				visitAssignments(rawIndicatorToMigrate, activity);
-				visitExpenses(rawIndicatorToMigrate, activity);
-				visitMethods(rawIndicatorToMigrate, activity);
-			}
+				IdList timeframeIdList = new IdList(TimeframeSchema.getObjectType());
+				RawPool timeframePool = getOrCreateTimeframePool();
 
-			removeTags(rawIndicatorToMigrate);
+				ArrayList<RawObject> resourceAssignments = getResourceAssignments(rawObject);
+
+				DateUnitEffortList timeframeDateUnitEffortList = buildTimeframeDateUnitEffortList(resourceAssignments);
+
+				if (timeframeDateUnitEffortList.size() > 0)
+				{
+					RawObject newTimeframe = new RawObject(TimeframeSchema.getObjectType());
+					newTimeframe.setData(TAG_DATEUNIT_EFFORTS, timeframeDateUnitEffortList.toJson().toString());
+					final BaseId nextHighestId = getRawProject().getNextHighestId();
+					final ORef newTimeframeRef = new ORef(ObjectType.TIMEFRAME, nextHighestId);
+					timeframePool.put(newTimeframeRef, newTimeframe);
+					timeframeIdList.add(nextHighestId);
+				}
+
+				if (!timeframeIdList.isEmpty())
+					rawObject.setData(TAG_TIMEFRAME_IDS, timeframeIdList.toJson().toString());
+			}
 
 			return MigrationResult.createSuccess();
 		}
 
-		private void removeTags(RawObject rawIndicatorToMigrate)
+		private DateUnitEffortList buildTimeframeDateUnitEffortList(ArrayList<RawObject> resourceAssignments) throws Exception
 		{
-			for (String tag : getTagsToRemove())
+			DateUnitEffortList timeframeDateUnitEffortList = new DateUnitEffortList();
+
+			DateRange timeframeDateRange = null;
+			boolean foundAtLeastOneProjectTotalDateUnit = false;
+
+			for (RawObject resourceAssignment : resourceAssignments)
 			{
-				if (rawIndicatorToMigrate.hasValue(tag))
-					rawIndicatorToMigrate.remove(tag);
-			}
-		}
-
-		private boolean shouldVisitIndicator(RawObject rawIndicatorToMigrate) throws Exception
-		{
-			ArrayList<ORef> indicatorAssignmentRefs = getAssignments(rawIndicatorToMigrate);
-			if (indicatorAssignmentRefs.size() > 0)
-				return true;
-
-			ArrayList<ORef> indicatorExpenseRefs = getExpenses(rawIndicatorToMigrate);
-			if (indicatorExpenseRefs.size() > 0)
-				return true;
-
-			ArrayList<RawObject> indicatorMethods = getMethods(rawIndicatorToMigrate);
-			for (RawObject method : indicatorMethods)
-			{
-				ArrayList<ORef> methodAssignmentRefs = getAssignments(method);
-				if (methodAssignmentRefs.size() > 0)
-					return true;
-			}
-
-			return false;
-		}
-
-		private void visitAssignments(RawObject currentAssignmentOwner, RawObject newAssignmentOwner) throws Exception
-		{
-			for (ORef assignmentRef : getAssignments(currentAssignmentOwner))
-			{
-				moveAssignment(currentAssignmentOwner, newAssignmentOwner, assignmentRef);
-			}
-		}
-
-		private void visitExpenses(RawObject currentExpenseOwner, RawObject newExpenseOwner) throws Exception
-		{
-			for (ORef expenseRef : getExpenses(currentExpenseOwner))
-			{
-				moveExpense(currentExpenseOwner, newExpenseOwner, expenseRef);
-			}
-		}
-
-		private void visitMethods(RawObject rawIndicatorToVisit, RawObject monitoringActivity) throws Exception
-		{
-			for (RawObject method : getMethods(rawIndicatorToVisit))
-			{
-				RawObject task = createTask(method, monitoringActivity);
-				visitAssignments(method, task);
-				visitExpenses(method, task);
-			}
-		}
-
-		private ArrayList<ORef> getAssignments(RawObject rawObject) throws Exception
-		{
-			ArrayList<ORef> assignmentList = new ArrayList<ORef>(){};
-
-			if (rawObject.containsKey(TAG_RESOURCE_ASSIGNMENT_IDS))
-			{
-				String idListAsString = rawObject.getData(TAG_RESOURCE_ASSIGNMENT_IDS);
-				if (!idListAsString.isEmpty())
+				if (resourceAssignment.containsKey(TAG_DATEUNIT_EFFORTS))
 				{
-					IdList assignmentIdList = new IdList(ResourceAssignmentSchema.getObjectType(), idListAsString);
-					for (int i = 0; i < assignmentIdList.size(); i++)
+					DateUnitEffortList resourceAssignmentDateUnitEffortList = new DateUnitEffortList(resourceAssignment.get(TAG_DATEUNIT_EFFORTS));
+
+					for (int index = 0; index < resourceAssignmentDateUnitEffortList.size(); ++index)
 					{
-						BaseId assignmentId = assignmentIdList.get(i);
-						ORef assignmentRef = new ORef(ObjectType.RESOURCE_ASSIGNMENT, assignmentId);
-						assignmentList.add(assignmentRef);
+						DateUnitEffort resourceAssignmentDateUnitEffort = resourceAssignmentDateUnitEffortList.getDateUnitEffort(index);
+						if (resourceAssignmentDateUnitEffort.getDateUnit().isProjectTotal())
+							foundAtLeastOneProjectTotalDateUnit = true;
+						else
+							timeframeDateRange = addToDateRange(timeframeDateRange, resourceAssignmentDateUnitEffort.getDateUnit());
 					}
 				}
 			}
 
-			return assignmentList;
-		}
-
-		private ArrayList<ORef> getExpenses(RawObject rawObject) throws Exception
-		{
-			ArrayList<ORef> expenseList = new ArrayList<ORef>(){};
-
-			if (rawObject.containsKey(TAG_EXPENSE_ASSIGNMENT_REFS))
+			if (foundAtLeastOneProjectTotalDateUnit)
 			{
-				String refListAsString = rawObject.getData(TAG_EXPENSE_ASSIGNMENT_REFS);
-				if (!refListAsString.isEmpty())
+				DateUnit timeframeDateUnit = new DateUnit();
+				DateUnitEffort timeframeDateUnitEffort = new DateUnitEffort(timeframeDateUnit, 0);
+				timeframeDateUnitEffortList.add(timeframeDateUnitEffort);
+			}
+			else if (timeframeDateRange != null)
+			{
+				if (timeframeDateRange.isMonth() || timeframeDateRange.isQuarter() || timeframeDateRange.isYear())
 				{
-					ORefList expenseRefList = new ORefList(refListAsString);
-					for (ORef expenseRef : expenseRefList)
-					{
-						expenseList.add(expenseRef);
-					}
-				}
-			}
+					DateUnit timeframeDateUnit = DateUnit.createFromDateRange(timeframeDateRange);
 
-			return expenseList;
-		}
-
-		private ArrayList<RawObject> getMethods(RawObject rawObject) throws Exception
-		{
-			ArrayList<RawObject> methodList = new ArrayList<RawObject>(){};
-
-			if (rawObject.containsKey(TAG_METHOD_IDS))
-			{
-				String methodIdListAsString = rawObject.get(TAG_METHOD_IDS);
-				if (!methodIdListAsString.isEmpty())
-				{
-					IdList methodIdList = new IdList(TaskSchema.getObjectType(), methodIdListAsString);
-					for (int i = 0; i < methodIdList.size(); i++)
-					{
-						BaseId methodId = methodIdList.get(i);
-						ORef methodRef = new ORef(ObjectType.TASK, methodId);
-						RawObject method = getRawProject().findObject(methodRef);
-						if (method != null)
-							methodList.add(method);
-					}
-				}
-			}
-
-			return methodList;
-		}
-
-		private void moveAssignment(RawObject currentAssignmentOwner, RawObject newAssignmentOwner, ORef assignmentRefToMove) throws Exception
-		{
-			BaseId assignmentId = assignmentRefToMove.getObjectId();
-
-			IdList currentOwnerAssignmentIdList = new IdList(ResourceAssignmentSchema.getObjectType(), currentAssignmentOwner.get(TAG_RESOURCE_ASSIGNMENT_IDS));
-			currentOwnerAssignmentIdList.removeId(assignmentId);
-			currentAssignmentOwner.setData(TAG_RESOURCE_ASSIGNMENT_IDS, currentOwnerAssignmentIdList.toJson().toString());
-
-			IdList assignmentIdList;
-			String assignmentIdListAsString = safeGetTag(newAssignmentOwner, TAG_RESOURCE_ASSIGNMENT_IDS);
-			if (!assignmentIdListAsString.isEmpty())
-			{
-				assignmentIdList = new IdList(ResourceAssignmentSchema.getObjectType(), assignmentIdListAsString);
-				assignmentIdList.add(assignmentId);
-			}
-			else
-			{
-				assignmentIdList = new IdList(ResourceAssignmentSchema.getObjectType(), new BaseId[] {assignmentId});
-			}
-
-			newAssignmentOwner.setData(TAG_RESOURCE_ASSIGNMENT_IDS, assignmentIdList.toJson().toString());
-		}
-
-		private void moveExpense(RawObject currentExpenseOwner, RawObject newExpenseOwner, ORef expenseRef) throws Exception
-		{
-			ORefList indicatorExpenseRefList = new ORefList(currentExpenseOwner.getData(TAG_EXPENSE_ASSIGNMENT_REFS));
-			indicatorExpenseRefList.remove(expenseRef);
-			currentExpenseOwner.setData(TAG_EXPENSE_ASSIGNMENT_REFS, indicatorExpenseRefList.toJson().toString());
-
-			ORefList expenseRefList;
-			String expenseRefListAsString = safeGetTag(newExpenseOwner, TAG_EXPENSE_ASSIGNMENT_REFS);
-			if (!expenseRefListAsString.isEmpty())
-			{
-				expenseRefList = new ORefList(expenseRefListAsString);
-				expenseRefList.add(expenseRef);
-			}
-			else
-			{
-				expenseRefList = new ORefList(expenseRef);
-			}
-
-			newExpenseOwner.setData(TAG_EXPENSE_ASSIGNMENT_REFS, expenseRefList.toJson().toString());
-		}
-
-		private RawObject getOrCreateResultsChainForMonitoringActivities()
-		{
-			if (resultsChain == null)
-			{
-				getRawProject().ensurePoolExists(ObjectType.RESULTS_CHAIN_DIAGRAM);
-				ORef newResultsChainDiagramRef = getRawProject().createObject(ObjectType.RESULTS_CHAIN_DIAGRAM);
-				resultsChain = getRawProject().findObject(newResultsChainDiagramRef);
-				resultsChain.setData(TAG_LABEL, EAM.text("Migrated Monitoring Activities"));
-			}
-
-			return resultsChain;
-		}
-
-		private RawObject getOrCreateStrategyForMonitoringActivities() throws Exception
-		{
-			if (strategy == null)
-			{
-				getRawProject().ensurePoolExists(ObjectType.STRATEGY);
-				ORef newStrategyRef = getRawProject().createObject(ObjectType.STRATEGY);
-				strategy = getRawProject().findObject(newStrategyRef);
-				strategy.setData(TAG_LABEL, EAM.text("Migrated Monitoring Activities (see Details)"));
-				strategy.setData(TAG_TEXT, getStrategyDetailsText());
-
-				getRawProject().ensurePoolExists(ObjectType.DIAGRAM_FACTOR);
-				ORef newDiagramFactorRef = getRawProject().createObject(ObjectType.DIAGRAM_FACTOR);
-				RawObject newDiagramFactor = getRawProject().findObject(newDiagramFactorRef);
-				newDiagramFactor.setData(TAG_WRAPPED_REF, newStrategyRef.toJson().toString());
-				newDiagramFactor.setData(TAG_FONT_SIZE, "0.75");
-
-				RawObject resultsChain = getOrCreateResultsChainForMonitoringActivities();
-				IdList diagramFactorIdList = new IdList(ObjectType.DIAGRAM_FACTOR);
-				diagramFactorIdList.add(newDiagramFactorRef.getObjectId());
-				resultsChain.setData(TAG_DIAGRAM_FACTOR_IDS, diagramFactorIdList.toJson().toString());
-			}
-
-			return strategy;
-		}
-
-		private String getStrategyDetailsText() throws Exception
-		{
-			String detailsTextLine1 = EAM.text("This strategy contains monitoring activities and (if applicable) tasks that contain monitoring work plan data created in Miradi prior to release 4.4. Such data was initially entered into indicators; now, the indicator data resides in monitoring activities under this strategy. If an indicator had a method which contained work plan data, that data now resides in a task of the corresponding monitoring activity.<br/>");
-			String detailsTextLine2 = EAM.text("People assignments and expense data were moved from indicators and methods to these new monitoring activities and tasks. Other data from the indicators and methods were copied to their new corresponding monitoring activities and tasks: (1) the name, in order to match factors easily, and (2) progress reports, since this data may be tracking \"work plan\" activity or not. (You will want to determine which set of progress reports is redundant, and delete it.)<br/>");
-			String detailsTextLine3 = EAM.text("This \"Migrated Monitoring Activities\" strategy is intended to be a temporary container. In the Work Plan view, use the Move Activity command (under the Create… button) to move monitoring activities to their proper strategies.");
-
-			String detailsText = new StringBuilder()
-					.append(detailsTextLine1)
-					.append(detailsTextLine2)
-					.append(detailsTextLine3)
-					.toString();
-
-			return HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(detailsText, AbstractUserTextDataWithHtmlFormatting.getAllowedHtmlTags());
-		}
-
-		private RawObject getOrCreateMonitoringActivity(RawObject indicator) throws Exception
-		{
-			if (activity == null)
-			{
-				ORef newActivityRef = createTask();
-				activity = getRawProject().findObject(newActivityRef);
-				activity.setData(TAG_ID, safeGetTag(indicator, TAG_ID));
-				activity.setData(TAG_SHORT_LABEL, safeGetTag(indicator, TAG_SHORT_LABEL));
-				activity.setData(TAG_LABEL, safeGetTag(indicator, TAG_LABEL));
-				activity.setData(TAG_DETAILS, safeGetTag(indicator, TAG_DETAIL));
-				activity.setData(TAG_IS_MONITORING_ACTIVITY, BooleanData.BOOLEAN_TRUE);
-				activity.setData(TAG_COMMENTS, safeGetTag(indicator, TAG_COMMENTS));
-				activity.setData(TAG_TEXT, safeGetTag(indicator, TAG_TEXT));
-				activity.setData(TAG_ASSIGNED_LEADER_RESOURCE, safeGetTag(indicator, TAG_ASSIGNED_LEADER_RESOURCE));
-
-				ORefList clonedProgressReportRefs = cloneProgressReports(indicator);
-				if (!clonedProgressReportRefs.isEmpty())
-					activity.setData(TAG_PROGRESS_REPORT_REFS, clonedProgressReportRefs.toJson().toString());
-
-				RawObject strategy = getOrCreateStrategyForMonitoringActivities();
-				BaseId activityId = newActivityRef.getObjectId();
-
-				String activityIdListAsString = safeGetTag(strategy, TAG_ACTIVITY_IDS);
-				IdList activityIdList;
-				if (!activityIdListAsString.isEmpty())
-				{
-					activityIdList = new IdList(TaskSchema.getObjectType(), activityIdListAsString);
-					activityIdList.add(activityId);
+					DateUnitEffort endDateUnitEffort = new DateUnitEffort(timeframeDateUnit, 0);
+					timeframeDateUnitEffortList.add(endDateUnitEffort);
 				}
 				else
 				{
-					activityIdList = new IdList(TaskSchema.getObjectType(), new BaseId[] {activityId});
-				}
+					DateRange startDateRange = new DateRange(timeframeDateRange.getStartDate(), timeframeDateRange.getStartDate());
+					DateUnit startDateUnit = DateUnit.createFromDateRange(startDateRange);
 
-				strategy.setData(TAG_ACTIVITY_IDS, activityIdList.toJson().toString());
+					DateUnitEffort startDateUnitEffort = new DateUnitEffort(startDateUnit, 0);
+					timeframeDateUnitEffortList.add(startDateUnitEffort);
 
-				String relevancySetAsJsonString = safeGetTag(indicator, TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
-				RelevancyOverrideSet relevancySet = new RelevancyOverrideSet(relevancySetAsJsonString);
-				relevancySet.add(new RelevancyOverride(newActivityRef, true));
-				indicator.setData(TAG_RELEVANT_STRATEGY_ACTIVITY_SET, relevancySet.toString());
-			}
+					DateRange endDateRange = new DateRange(timeframeDateRange.getEndDate(), timeframeDateRange.getEndDate());
+					DateUnit endDateUnit = DateUnit.createFromDateRange(endDateRange);
 
-			return activity;
-		}
-
-		private ORefList cloneProgressReports(RawObject indicatorToCloneFrom) throws Exception
-		{
-			ORefList progressReportRefs = new ORefList();
-
-			if (indicatorToCloneFrom.hasValue(TAG_PROGRESS_REPORT_REFS))
-			{
-				ORefList progressReportRefList = new ORefList(indicatorToCloneFrom.getData(TAG_PROGRESS_REPORT_REFS));
-				for (ORef progressReportRef : progressReportRefList)
-				{
-					RawObject progressReportToClone = getRawProject().findObject(progressReportRef);
-
-					ORef newProgressReportRef = cloneProgressReport(progressReportToClone);
-					progressReportRefs.add(newProgressReportRef);
+					DateUnitEffort endDateUnitEffort = new DateUnitEffort(endDateUnit, 0);
+					timeframeDateUnitEffortList.add(endDateUnitEffort);
 				}
 			}
 
-			return progressReportRefs;
+			return timeframeDateUnitEffortList;
 		}
 
-		private ORef cloneProgressReport(RawObject progressReportToClone) throws Exception
+		private DateRange addToDateRange(DateRange dateRangeToAddTo, DateUnit dateUnit) throws Exception
 		{
-			ORef newProgressReportRef = getRawProject().createObject(ObjectType.PROGRESS_REPORT);
-			RawObject newProgressReport = getRawProject().findObject(newProgressReportRef);
-
-			newProgressReport.setData(TAG_DETAILS, safeGetTag(progressReportToClone, TAG_DETAILS));
-			newProgressReport.setData(TAG_PROGRESS_STATUS, safeGetTag(progressReportToClone, TAG_PROGRESS_STATUS));
-			newProgressReport.setData(TAG_PROGRESS_DATE, safeGetTag(progressReportToClone, TAG_PROGRESS_DATE));
-
-			return newProgressReportRef;
-		}
-
-		private RawObject createTask(RawObject method, RawObject monitoringActivity) throws Exception
-		{
-			ORef newTaskRef = createTask();
-			RawObject task = getRawProject().findObject(newTaskRef);
-
-			task.setData(TAG_ID, safeGetTag(method, TAG_ID));
-			task.setData(TAG_SHORT_LABEL, safeGetTag(method, TAG_SHORT_LABEL));
-			task.setData(TAG_LABEL, safeGetTag(method, TAG_LABEL));
-			task.setData(TAG_DETAILS, safeGetTag(method, TAG_DETAILS));
-			task.setData(TAG_COMMENTS, safeGetTag(method, TAG_COMMENTS));
-			task.setData(TAG_TEXT, safeGetTag(method, TAG_TEXT));
-
-			task.setData(TAG_PROGRESS_REPORT_REFS, safeGetTag(method, TAG_PROGRESS_REPORT_REFS));
-			method.setData(TAG_PROGRESS_REPORT_REFS, "");
-
-			BaseId taskId = newTaskRef.getObjectId();
-
-			String taskIdListAsString = safeGetTag(monitoringActivity, TAG_SUBTASK_IDS);
-			IdList taskIdList;
-			if (!taskIdListAsString.isEmpty())
-			{
-				taskIdList = new IdList(TaskSchema.getObjectType(), taskIdListAsString);
-				taskIdList.add(taskId);
-			}
+			if (dateRangeToAddTo == null)
+				return dateUnit.asDateRange();
 			else
-			{
-				taskIdList = new IdList(TaskSchema.getObjectType(), new BaseId[] {taskId});
-			}
-
-			if (method.containsKey(TAG_SUBTASK_IDS))
-			{
-				IdList subTaskIdList = new IdList(TaskSchema.getObjectType(), method.getData(TAG_SUBTASK_IDS));
-				taskIdList.addAll(subTaskIdList);
-				method.setData(TAG_SUBTASK_IDS, "");
-			}
-
-			monitoringActivity.setData(TAG_SUBTASK_IDS, taskIdList.toJson().toString());
-
-			return task;
+				return DateRange.combine(dateRangeToAddTo, dateUnit.asDateRange());
 		}
 
-		private ORef createTask()
+		private RawPool getOrCreateTimeframePool()
 		{
-			getRawProject().ensurePoolExists(ObjectType.TASK);
-			return getRawProject().createObject(ObjectType.TASK);
+			getRawProject().ensurePoolExists(TimeframeSchema.getObjectType());
+			return getRawProject().getRawPoolForType(TimeframeSchema.getObjectType());
 		}
 
-		private String safeGetTag(RawObject rawObject, String tag)
+		private ArrayList<RawObject> getResourceAssignments(RawObject rawObject) throws Exception
 		{
-			if (rawObject.hasValue(tag))
-				return rawObject.getData(tag);
+			ArrayList<RawObject> resourceAssignments = new ArrayList<RawObject>();
+
+			IdList resourceAssignmentIdList = new IdList(ResourceAssignmentSchema.getObjectType(), rawObject.get(TAG_RESOURCE_ASSIGNMENT_IDS));
+
+			for(BaseId resourceAssignmentId : resourceAssignmentIdList.asVector())
+			{
+				ORef resourceAssignmentRef = new ORef(ResourceAssignmentSchema.getObjectType(), resourceAssignmentId);
+				RawObject rawResourceAssignment = getRawProject().findObject(resourceAssignmentRef);
+				if (rawResourceAssignment != null)
+					resourceAssignments.add(rawResourceAssignment);
+			}
+
+			return resourceAssignments;
+		}
+
+		private int type;
+	}
+
+	private class RemoveTimeframesVisitor extends AbstractMigrationORefVisitor
+	{
+		public RemoveTimeframesVisitor(int typeToVisit)
+		{
+			type = typeToVisit;
+		}
+
+		public int getTypeToVisit()
+		{
+			return type;
+		}
+
+		@Override
+		public MigrationResult internalVisit(ORef rawObjectRef) throws Exception
+		{
+			MigrationResult migrationResult = MigrationResult.createSuccess();
+
+			RawObject rawObject = getRawProject().findObject(rawObjectRef);
+			if (rawObject != null && rawObject.containsKey(TAG_TIMEFRAME_IDS))
+			{
+				IdList timeframeIdList = new IdList(TimeframeSchema.getObjectType(), rawObject.get(TAG_TIMEFRAME_IDS));
+
+				if (timeframeIdList.isEmpty())
+					return MigrationResult.createSuccess();
+
+				for(BaseId timeframeId : timeframeIdList.asVector())
+				{
+					ORef timeframeRef = new ORef(TimeframeSchema.getObjectType(), timeframeId);
+					getRawProject().deleteRawObject(timeframeRef);
+				}
+
+				rawObject.remove(TAG_TIMEFRAME_IDS);
+
+				String label = HtmlUtilities.convertHtmlToPlainText(rawObject.get(TAG_LABEL));
+				String baseObjectLabel = createMessage(EAM.text("Name = %s"), label);
+
+				HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+				tokenReplacementMap.put("%label", baseObjectLabel);
+				tokenReplacementMap.put("%fieldName", TAG_TIMEFRAME_IDS_READABLE);
+				String dataLossMessage = EAM.substitute(EAM.text("%fieldName will be removed. %label"), tokenReplacementMap);
+				migrationResult.addDataLoss(dataLossMessage);
+			}
+
+			return migrationResult;
+		}
+
+		private String createMessage(String message, String label)
+		{
+			if (label != null && label.length() > 0)
+				return EAM.substituteSingleString(message, label);
 
 			return "";
 		}
 
-		private Vector<String> getTagsToRemove()
-		{
-			Vector<String> tagsToRemove = new Vector<String>();
-			tagsToRemove.add(TAG_RESOURCE_ASSIGNMENT_IDS);
-			tagsToRemove.add(TAG_EXPENSE_ASSIGNMENT_REFS);
-			tagsToRemove.add(TAG_ASSIGNED_LEADER_RESOURCE);
-
-			return tagsToRemove;
-		}
-
 		private int type;
-		private RawObject resultsChain;
-		private RawObject strategy;
-		private RawObject activity;
 	}
 
-	public static final String TAG_LABEL = "Label";
-	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
-	public final static String TAG_METHOD_IDS = "TaskIds";
-	public static final String TAG_SUBTASK_IDS = "SubtaskIds";
 	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
-	public static final String TAG_EXPENSE_ASSIGNMENT_REFS = "ExpenseRefs";
-	public final static String TAG_IS_MONITORING_ACTIVITY = "IsMonitoringActivity";
-	public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
-	public static final String TAG_WRAPPED_REF = "WrappedFactorRef";
-	public static final String TAG_FONT_SIZE = "FontSize";
-	public static final String TAG_RELEVANT_STRATEGY_ACTIVITY_SET = "RelevantStrategySet";
-
-	public static final String TAG_ID = "Id";
-	public static final String TAG_DETAIL = "Detail";
-	public static final String TAG_DETAILS = "Details";
-	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
-	public static final String TAG_COMMENTS = "Comments";
-	public static final String TAG_TEXT = "Text";
-	public static final String TAG_SHORT_LABEL = "ShortLabel";
-
-	public static final String TAG_PROGRESS_STATUS = "ProgressStatus";
-	public static final String TAG_PROGRESS_DATE = "ProgressDate";
-
-	public static final String TAG_ASSIGNED_LEADER_RESOURCE = "AssignedLeaderResource";
+	public static final String TAG_DATEUNIT_EFFORTS = "Details";
+	public static final String TAG_RESOURCE_ID = "ResourceId";
+	public static final String TAG_TIMEFRAME_IDS = "TimeframeIds";
+	public static final String TAG_TIMEFRAME_IDS_READABLE = "Timeframe";
+	public static final String TAG_LABEL = "Label";
 
 	public static final int VERSION_FROM = 31;
 	public static final int VERSION_TO = 32;

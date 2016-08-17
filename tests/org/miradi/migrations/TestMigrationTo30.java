@@ -21,8 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.migrations;
 
 import org.miradi.migrations.forward.MigrationTo30;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.schemas.TaskSchema;
+import org.miradi.objects.Indicator;
+import org.miradi.objects.Strategy;
+import org.miradi.project.Project;
 
 public class TestMigrationTo30 extends AbstractTestMigration
 {
@@ -31,19 +32,31 @@ public class TestMigrationTo30 extends AbstractTestMigration
 		super(name);
 	}
 	
-	public void testFieldsRemovedAfterReverseMigration() throws Exception
+	public void testFieldsAddedAfterForwardMigration() throws Exception
 	{
-		getProject().createAndPopulateStrategy();
+		Strategy strategy = getProject().createAndPopulateStrategy();
+		Indicator indicator = getProject().createAndPopulateIndicator(strategy);
 
 		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo30.VERSION_TO));
-        RawPool rawTaskPool = rawProject.getRawPoolForType(TaskSchema.getObjectType());
-        for(ORef ref : rawTaskPool.keySet())
-        {
-            RawObject rawTask = rawTaskPool.get(ref);
-            assertFalse("Field should have been removed during reverse migration?", rawTask.containsKey(MigrationTo30.TAG_IS_MONITORING_ACTIVITY));
-        }
+		migrateProject(rawProject, new VersionRange(Project.VERSION_HIGH));
+
+        RawObject rawIndicator = rawProject.findObject(indicator.getRef());
+        assertNotNull(rawIndicator);
+        assertTrue("Field should have been added during forward migration?", rawIndicator.containsKey(MigrationTo30.TAG_RELEVANT_STRATEGY_ACTIVITY_SET));
 	}
 	
+	public void testFieldsRemovedAfterReverseMigration() throws Exception
+	{
+		Strategy strategy = getProject().createAndPopulateStrategy();
+		Indicator indicator = getProject().createAndPopulateIndicator(strategy);
+
+		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo30.VERSION_TO));
+
+        RawObject rawIndicator = rawProject.findObject(indicator.getRef());
+        assertNotNull(rawIndicator);
+        assertFalse("Field should have been removed during reverse migration?", rawIndicator.containsKey(MigrationTo30.TAG_RELEVANT_STRATEGY_ACTIVITY_SET));
+	}
+
 	@Override
 	protected int getFromVersion()
 	{

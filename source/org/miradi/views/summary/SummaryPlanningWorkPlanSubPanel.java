@@ -19,10 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.summary;
 
-import javax.swing.Box;
-import javax.swing.JComponent;
-import javax.swing.JLabel;
-
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogfields.ObjectMultilineDisplayField;
@@ -38,13 +34,16 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.Assignment;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.Timeframe;
 import org.miradi.project.Project;
 import org.miradi.questions.*;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
+import org.miradi.schemas.TimeframeSchema;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.MiradiTextPane;
 
+import javax.swing.*;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
@@ -346,12 +345,29 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		return tpcm;
 	}
 	
+	private static TimePeriodCostsMap getTimePeriodCostsMapForAllTimeframes(Project projectToUse) throws Exception
+	{
+		ORefList timeframeRefs = new ORefList();
+		timeframeRefs.addAll(projectToUse.getTimeframePool().getORefList());
+		timeframeRefs.addAll(projectToUse.getPool(TimeframeSchema.getObjectType()).getRefList());
+
+		TimePeriodCostsMap tpcm = new TimePeriodCostsMap();
+		for (int index = 0; index < timeframeRefs.size(); ++index)
+		{
+			Timeframe timeframe = Timeframe.find(projectToUse, timeframeRefs.get(index));
+			tpcm.mergeAll(timeframe.convertAllDateUnitEffortList());
+		}
+
+		return tpcm;
+	}
+
 	private boolean hasQuarterData()
 	{
 		try
 		{
-			TimePeriodCostsMap tpcm = getTimePeriodCostsMapForAllAssignments(getProject());
-			return tpcm.containsQuarterDateUnit();
+			TimePeriodCostsMap tpcmAssignments = getTimePeriodCostsMapForAllAssignments(getProject());
+			TimePeriodCostsMap tpcmTimeframes = getTimePeriodCostsMapForAllTimeframes(getProject());
+			return tpcmAssignments.containsQuarterDateUnit() || tpcmTimeframes.containsQuarterDateUnit();
 		}
 		catch (Exception e)
 		{
@@ -364,8 +380,9 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 	{
 		try
 		{
-			TimePeriodCostsMap tpcm = getTimePeriodCostsMapForAllAssignments(getProject());
-			return tpcm.containsDayDateUnit();
+			TimePeriodCostsMap tpcmAssignments = getTimePeriodCostsMapForAllAssignments(getProject());
+			TimePeriodCostsMap tpcmTimeframes = getTimePeriodCostsMapForAllTimeframes(getProject());
+			return tpcmAssignments.containsDayDateUnit() || tpcmTimeframes.containsDayDateUnit();
 		}
 		catch (Exception e)
 		{

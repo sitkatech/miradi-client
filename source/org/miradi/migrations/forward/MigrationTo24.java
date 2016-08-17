@@ -44,10 +44,10 @@ public class MigrationTo24 extends AbstractMigration
 	protected MigrationResult reverseMigrate() throws Exception
 	{
 		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
-		Vector<Integer> typesWithTaxonomyClassifications = getTypesWithTaxonomyClassifications();
-		for(Integer typeWithTaxonomy : typesWithTaxonomyClassifications)
+		Vector<Integer> typesWithAccountingClassifications = getTypesWithAccountingClassifications();
+		for(Integer typeWithTaxonomy : typesWithAccountingClassifications)
 		{
-			final RemoveTaxonomyClassificationFieldVisitor visitor = new RemoveTaxonomyClassificationFieldVisitor(typeWithTaxonomy);
+			final RemoveAccountingClassificationFieldVisitor visitor = new RemoveAccountingClassificationFieldVisitor(typeWithTaxonomy);
 			visitAllObjectsInPool(visitor);
 			final MigrationResult thisMigrationResult = visitor.getMigrationResult();
 			if (migrationResult == null)
@@ -56,17 +56,18 @@ public class MigrationTo24 extends AbstractMigration
 				migrationResult.merge(thisMigrationResult);
 		}
 
+		getRawProject().deletePoolWithData(ObjectType.ACCOUNTING_CLASSIFICATION_ASSOCIATION);
+
 		return migrationResult;
 	}
 
-	private Vector<Integer> getTypesWithTaxonomyClassifications()
+	private Vector<Integer> getTypesWithAccountingClassifications()
 	{
-		Vector<Integer> typesWithTaxonomyClassifications = new Vector<Integer>();
-		typesWithTaxonomyClassifications.add(ObjectType.PROJECT_RESOURCE);
-		typesWithTaxonomyClassifications.add(ObjectType.RESOURCE_ASSIGNMENT);
-		typesWithTaxonomyClassifications.add(ObjectType.EXPENSE_ASSIGNMENT);
+		Vector<Integer> typesWithAccountingClassifications = new Vector<Integer>();
+		typesWithAccountingClassifications.add(ObjectType.RESOURCE_ASSIGNMENT);
+		typesWithAccountingClassifications.add(ObjectType.EXPENSE_ASSIGNMENT);
 
-		return typesWithTaxonomyClassifications;
+		return typesWithAccountingClassifications;
 	}
 
 	@Override
@@ -84,12 +85,12 @@ public class MigrationTo24 extends AbstractMigration
 	@Override
 	protected String getDescription()
 	{
-		return EAM.text("This migration only has reverse to remove Miradi share taxonomy related objects.");
+		return EAM.text("This migration only has reverse to remove Miradi share accounting classification related objects.");
 	}
 	
-	private class RemoveTaxonomyClassificationFieldVisitor extends AbstractMigrationVisitor
+	private class RemoveAccountingClassificationFieldVisitor extends AbstractMigrationVisitor
 	{
-		public RemoveTaxonomyClassificationFieldVisitor(int typeToUse)
+		public RemoveAccountingClassificationFieldVisitor(int typeToUse)
 		{
 			type = typeToUse;
 		}
@@ -102,10 +103,10 @@ public class MigrationTo24 extends AbstractMigration
 		@Override
 		public MigrationResult internalVisit(RawObject rawObject) throws Exception 
 		{
-			if (rawObject.containsKey(TAG_TAXONOMY_CLASSIFICATION_CONTAINER))
+			if (rawObject.containsKey(TAG_ACCOUNTING_CLASSIFICATION_CONTAINER))
 			{
-				removeField(rawObject, TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
-				final String dataLossMessage = EAM.substituteSingleString(EAM.text("%s field data will be lost"), Translation.fieldLabel(rawObject.getObjectType(), TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
+				removeField(rawObject, TAG_ACCOUNTING_CLASSIFICATION_CONTAINER);
+				final String dataLossMessage = EAM.substituteSingleString(EAM.text("%s field data will be lost"), Translation.fieldLabel(rawObject.getObjectType(), TAG_ACCOUNTING_CLASSIFICATION_CONTAINER));
 				return MigrationResult.createDataLoss(dataLossMessage);
 			}
 			
@@ -115,7 +116,7 @@ public class MigrationTo24 extends AbstractMigration
 		private int type;
 	}
 
-	public static final String TAG_TAXONOMY_CLASSIFICATION_CONTAINER = "TaxonomyClassificationContainer";
+	public static final String TAG_ACCOUNTING_CLASSIFICATION_CONTAINER = "AccountingClassificationContainer";
 
 	public static final int VERSION_FROM = 23;
 	public static final int VERSION_TO = 24;

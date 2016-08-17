@@ -16,77 +16,42 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/
+*/ 
 
 package org.miradi.migrations.forward;
 
-import org.miradi.ids.BaseId;
-import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.migrations.*;
-import org.miradi.objecthelpers.DateUnit;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.schemas.ResourceAssignmentSchema;
-import org.miradi.schemas.TimeframeSchema;
-import org.miradi.utils.DateRange;
+import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.DateUnitEffort;
 import org.miradi.utils.DateUnitEffortList;
-import org.miradi.utils.HtmlUtilities;
 
-import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Set;
 import java.util.Vector;
 
-public class MigrationTo33 extends AbstractMigration
+public class MigrationTo33 extends NewlyAddedFieldsMigration
 {
 	public MigrationTo33(RawProject rawProjectToUse)
 	{
-		super(rawProjectToUse);
+		super(rawProjectToUse, ProjectMetadataSchema.getObjectType());
 	}
 
 	@Override
-	protected MigrationResult migrateForward() throws Exception
+	public AbstractMigrationVisitor createMigrateForwardVisitor() throws Exception
 	{
-		return migrate(false);
+		return new AddAndPopulateDayColumnsVisibilityVisitor(type);
 	}
 
 	@Override
-	protected MigrationResult reverseMigrate() throws Exception
+	protected HashMap<String, String> createFieldsToLabelMapToModify()
 	{
-		return migrate(true);
-	}
-
-	private MigrationResult migrate(boolean reverseMigration) throws Exception
-	{
-		MigrationResult migrationResult = MigrationResult.createUninitializedResult();
-		AbstractMigrationORefVisitor visitor;
-		Vector<Integer> typesToVisit = getTypesToMigrate();
-
-		for(Integer typeToVisit : typesToVisit)
-		{
-			if (reverseMigration)
-				visitor = new RemoveTimeframesVisitor(typeToVisit);
-			else
-				visitor = new CreateTimeframesForResourceAssignmentsVisitor(typeToVisit);
-			visitAllORefsInPool(visitor);
-			final MigrationResult thisMigrationResult = visitor.getMigrationResult();
-			if (migrationResult == null)
-				migrationResult = thisMigrationResult;
-			else
-				migrationResult.merge(thisMigrationResult);
-		}
-
-		return migrationResult;
-	}
-
-	private Vector<Integer> getTypesToMigrate()
-	{
-		Vector<Integer> typesToMigrate = new Vector<Integer>();
-		typesToMigrate.add(ObjectType.STRATEGY);
-		typesToMigrate.add(ObjectType.TASK);
-
-		return typesToMigrate;
+		HashMap<String, String> fieldsToAdd = new HashMap<String, String>();
+		fieldsToAdd.put(TAG_DAY_COLUMNS_VISIBILITY, EAM.text("Day Columns Visibility feature"));
+		
+		return fieldsToAdd;
 	}
 
 	@Override
@@ -94,22 +59,22 @@ public class MigrationTo33 extends AbstractMigration
 	{
 		return VERSION_TO;
 	}
-
+	
 	@Override
-	protected int getFromVersion()
+	protected int getFromVersion() 
 	{
 		return VERSION_FROM;
 	}
-
+	
 	@Override
 	protected String getDescription()
 	{
-		return EAM.text("This migration creates timeframe entries for resource assignments (where a resource or date range is specified).");
+		return EAM.text("This migration adds a new day columns visibility field to the Project Metadata properties.");
 	}
 
-	private class CreateTimeframesForResourceAssignmentsVisitor extends AbstractMigrationORefVisitor
+	private class AddAndPopulateDayColumnsVisibilityVisitor extends AbstractMigrationVisitor
 	{
-		public CreateTimeframesForResourceAssignmentsVisitor(int typeToVisit)
+		public AddAndPopulateDayColumnsVisibilityVisitor(int typeToVisit)
 		{
 			type = typeToVisit;
 		}
@@ -120,181 +85,71 @@ public class MigrationTo33 extends AbstractMigration
 		}
 
 		@Override
-		public MigrationResult internalVisit(ORef rawObjectRef) throws Exception
+		protected MigrationResult internalVisit(RawObject rawObject) throws Exception
 		{
-			RawObject rawObject = getRawProject().findObject(rawObjectRef);
-			if (rawObject != null && rawObject.containsKey(TAG_RESOURCE_ASSIGNMENT_IDS))
-			{
-				IdList timeframeIdList = new IdList(TimeframeSchema.getObjectType());
-				RawPool timeframePool = getOrCreateTimeframePool();
-
-				ArrayList<RawObject> resourceAssignments = getResourceAssignments(rawObject);
-
-				DateUnitEffortList timeframeDateUnitEffortList = buildTimeframeDateUnitEffortList(resourceAssignments);
-
-				if (timeframeDateUnitEffortList.size() > 0)
-				{
-					RawObject newTimeframe = new RawObject(TimeframeSchema.getObjectType());
-					newTimeframe.setData(TAG_DATEUNIT_EFFORTS, timeframeDateUnitEffortList.toJson().toString());
-					final BaseId nextHighestId = getRawProject().getNextHighestId();
-					final ORef newTimeframeRef = new ORef(ObjectType.TIMEFRAME, nextHighestId);
-					timeframePool.put(newTimeframeRef, newTimeframe);
-					timeframeIdList.add(nextHighestId);
-				}
-
-				if (!timeframeIdList.isEmpty())
-					rawObject.setData(TAG_TIMEFRAME_IDS, timeframeIdList.toJson().toString());
-			}
+			if (projectHasDayData())
+				rawObject.setData(TAG_DAY_COLUMNS_VISIBILITY, SHOW_DAY_COLUMNS_CODE);
+			else
+				rawObject.setData(TAG_DAY_COLUMNS_VISIBILITY, HIDE_DAY_COLUMNS_CODE);
 
 			return MigrationResult.createSuccess();
 		}
 
-		private DateUnitEffortList buildTimeframeDateUnitEffortList(ArrayList<RawObject> resourceAssignments) throws Exception
+		private Vector<Integer> getTypesToCheckForDayData()
 		{
-			DateUnitEffortList timeframeDateUnitEffortList = new DateUnitEffortList();
+			Vector<Integer> typesToMigrate = new Vector<Integer>();
+			typesToMigrate.add(ObjectType.RESOURCE_ASSIGNMENT);
+			typesToMigrate.add(ObjectType.EXPENSE_ASSIGNMENT);
+			typesToMigrate.add(ObjectType.TIMEFRAME);
 
-			DateRange timeframeDateRange = null;
-			boolean foundAtLeastOneProjectTotalDateUnit = false;
+			return typesToMigrate;
+		}
 
-			for (RawObject resourceAssignment : resourceAssignments)
+		private boolean projectHasDayData() throws Exception
+		{
+			for (int typeToCheck : getTypesToCheckForDayData())
 			{
-				if (resourceAssignment.containsKey(TAG_DATEUNIT_EFFORTS))
-				{
-					DateUnitEffortList resourceAssignmentDateUnitEffortList = new DateUnitEffortList(resourceAssignment.get(TAG_DATEUNIT_EFFORTS));
+				if (typeHasDayData(typeToCheck))
+					return true;
+			}
 
-					for (int index = 0; index < resourceAssignmentDateUnitEffortList.size(); ++index)
+			return false;
+		}
+
+		private boolean typeHasDayData(int typeToCheck) throws Exception
+		{
+			if (!getRawProject().containsAnyObjectsOfType(typeToCheck))
+				return false;
+
+			RawPool rawPool = getRawProject().getRawPoolForType(typeToCheck);
+			Set<ORef> refs = rawPool.keySet();
+			for(ORef ref : refs)
+			{
+				RawObject rawObject = getRawProject().findObject(ref);
+				if (rawObject != null && rawObject.containsKey(TAG_DATEUNIT_EFFORTS))
+				{
+					DateUnitEffortList rawObjectDateUnitEffortList = new DateUnitEffortList(rawObject.get(TAG_DATEUNIT_EFFORTS));
+
+					for (int index = 0; index < rawObjectDateUnitEffortList.size(); ++index)
 					{
-						DateUnitEffort resourceAssignmentDateUnitEffort = resourceAssignmentDateUnitEffortList.getDateUnitEffort(index);
-						if (resourceAssignmentDateUnitEffort.getDateUnit().isProjectTotal())
-							foundAtLeastOneProjectTotalDateUnit = true;
-						else
-							timeframeDateRange = addToDateRange(timeframeDateRange, resourceAssignmentDateUnitEffort.getDateUnit());
+						DateUnitEffort rawObjectDateUnitEffort = rawObjectDateUnitEffortList.getDateUnitEffort(index);
+						if (rawObjectDateUnitEffort.getDateUnit().isDay())
+							return true;
 					}
 				}
 			}
 
-			if (foundAtLeastOneProjectTotalDateUnit)
-			{
-				DateUnit timeframeDateUnit = new DateUnit();
-				DateUnitEffort timeframeDateUnitEffort = new DateUnitEffort(timeframeDateUnit, 0);
-				timeframeDateUnitEffortList.add(timeframeDateUnitEffort);
-			}
-			else if (timeframeDateRange != null)
-			{
-				DateRange startDateRange = new DateRange(timeframeDateRange.getStartDate(), timeframeDateRange.getStartDate());
-				DateUnit startDateUnit = DateUnit.createFromDateRange(startDateRange);
-
-				DateUnitEffort startDateUnitEffort = new DateUnitEffort(startDateUnit, 0);
-				timeframeDateUnitEffortList.add(startDateUnitEffort);
-
-				DateRange endDateRange = new DateRange(timeframeDateRange.getEndDate(), timeframeDateRange.getEndDate());
-				DateUnit endDateUnit = DateUnit.createFromDateRange(endDateRange);
-
-				DateUnitEffort endDateUnitEffort = new DateUnitEffort(endDateUnit, 0);
-				timeframeDateUnitEffortList.add(endDateUnitEffort);
-			}
-
-			return timeframeDateUnitEffortList;
-		}
-
-		private DateRange addToDateRange(DateRange dateRangeToAddTo, DateUnit dateUnit) throws Exception
-		{
-			if (dateRangeToAddTo == null)
-				return dateUnit.asDateRange();
-			else
-				return DateRange.combine(dateRangeToAddTo, dateUnit.asDateRange());
-		}
-
-		private RawPool getOrCreateTimeframePool()
-		{
-			getRawProject().ensurePoolExists(TimeframeSchema.getObjectType());
-			return getRawProject().getRawPoolForType(TimeframeSchema.getObjectType());
-		}
-
-		private ArrayList<RawObject> getResourceAssignments(RawObject rawObject) throws Exception
-		{
-			ArrayList<RawObject> resourceAssignments = new ArrayList<RawObject>();
-
-			IdList resourceAssignmentIdList = new IdList(ResourceAssignmentSchema.getObjectType(), rawObject.get(TAG_RESOURCE_ASSIGNMENT_IDS));
-
-			for(BaseId resourceAssignmentId : resourceAssignmentIdList.asVector())
-			{
-				ORef resourceAssignmentRef = new ORef(ResourceAssignmentSchema.getObjectType(), resourceAssignmentId);
-				RawObject rawResourceAssignment = getRawProject().findObject(resourceAssignmentRef);
-				if (rawResourceAssignment != null)
-					resourceAssignments.add(rawResourceAssignment);
-			}
-
-			return resourceAssignments;
+			return false;
 		}
 
 		private int type;
 	}
-
-	private class RemoveTimeframesVisitor extends AbstractMigrationORefVisitor
-	{
-		public RemoveTimeframesVisitor(int typeToVisit)
-		{
-			type = typeToVisit;
-		}
-
-		public int getTypeToVisit()
-		{
-			return type;
-		}
-
-		@Override
-		public MigrationResult internalVisit(ORef rawObjectRef) throws Exception
-		{
-			MigrationResult migrationResult = MigrationResult.createSuccess();
-
-			RawObject rawObject = getRawProject().findObject(rawObjectRef);
-			if (rawObject != null && rawObject.containsKey(TAG_TIMEFRAME_IDS))
-			{
-				IdList timeframeIdList = new IdList(TimeframeSchema.getObjectType(), rawObject.get(TAG_TIMEFRAME_IDS));
-
-				if (timeframeIdList.isEmpty())
-					return MigrationResult.createSuccess();
-
-				for(BaseId timeframeId : timeframeIdList.asVector())
-				{
-					ORef timeframeRef = new ORef(TimeframeSchema.getObjectType(), timeframeId);
-					getRawProject().deleteRawObject(timeframeRef);
-				}
-
-				rawObject.remove(TAG_TIMEFRAME_IDS);
-
-				String label = HtmlUtilities.convertHtmlToPlainText(rawObject.get(TAG_LABEL));
-				String baseObjectLabel = createMessage(EAM.text("Name = %s"), label);
-
-				HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
-				tokenReplacementMap.put("%label", baseObjectLabel);
-				tokenReplacementMap.put("%fieldName", TAG_TIMEFRAME_IDS_READABLE);
-				String dataLossMessage = EAM.substitute(EAM.text("%fieldName will be removed. %label"), tokenReplacementMap);
-				migrationResult.addDataLoss(dataLossMessage);
-			}
-
-			return migrationResult;
-		}
-
-		private String createMessage(String message, String label)
-		{
-			if (label != null && label.length() > 0)
-				return EAM.substituteSingleString(message, label);
-
-			return "";
-		}
-
-		private int type;
-	}
-
-	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
-	public static final String TAG_DATEUNIT_EFFORTS = "Details";
-	public static final String TAG_RESOURCE_ID = "ResourceId";
-	public static final String TAG_TIMEFRAME_IDS = "TimeframeIds";
-	public static final String TAG_TIMEFRAME_IDS_READABLE = "Timeframe";
-	public static final String TAG_LABEL = "Label";
 
 	public static final int VERSION_FROM = 32;
 	public static final int VERSION_TO = 33;
+
+	public static final String TAG_DATEUNIT_EFFORTS = "Details";
+	public static final String TAG_DAY_COLUMNS_VISIBILITY = "DayColumnsVisibility";
+	public static final String SHOW_DAY_COLUMNS_CODE = "";
+	public static final String HIDE_DAY_COLUMNS_CODE = "HideDayColumns";
 }
