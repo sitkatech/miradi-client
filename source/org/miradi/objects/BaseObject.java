@@ -1097,7 +1097,8 @@ abstract public class BaseObject
 		CommandVector commandToDeleteChildren = new CommandVector();
 		commandToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_EXPENSE_ASSIGNMENT_REFS));
 		commandToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_RESOURCE_ASSIGNMENT_IDS));
-		
+		commandToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_TIMEFRAME_IDS));
+
 		return commandToDeleteChildren;
 	}
 
