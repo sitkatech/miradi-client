@@ -19,22 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
-import java.awt.Rectangle;
-import java.util.Vector;
-
-import javax.swing.DefaultCellEditor;
-import javax.swing.ListSelectionModel;
-import javax.swing.event.ListSelectionListener;
-import javax.swing.table.TableCellEditor;
-import javax.swing.table.TableCellRenderer;
-
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.fieldComponents.ChoiceItemComboBox;
-import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
-import org.miradi.dialogs.tablerenderers.CodeListRendererFactory;
-import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
-import org.miradi.dialogs.tablerenderers.RowColumnSelectionProvider;
-import org.miradi.dialogs.tablerenderers.SingleLineObjectTableCellEditorOrRendererFactory;
+import org.miradi.dialogs.tablerenderers.*;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -43,6 +30,13 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
+
+import javax.swing.*;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.table.TableCellEditor;
+import javax.swing.table.TableCellRenderer;
+import java.awt.*;
+import java.util.Vector;
 
 abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable implements RowColumnSelectionProvider
 {
@@ -57,6 +51,7 @@ abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable 
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
 		statusQuestionRenderer = new ChoiceItemTableCellRendererFactory(this, fontProvider);
 		codeListRenderer = new CodeListRendererFactory(mainWindowToUse, this, fontProvider);
+		booleanRendererFactory = new BooleanTableCellRendererFactoryWithPreferredHeight();
 	}
 	
 	protected CodeList getCodesToDisable()
@@ -91,7 +86,14 @@ abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable 
 		{
 			return statusQuestionRenderer;
 		}
-		
+
+		if (getObjectTableModel().isCheckboxCell(row, modelColumn))
+		{
+			TableCellRenderer r = super.getCellRenderer(row, tableColumn);
+			r.getTableCellRendererComponent(this, false, false, false, row, tableColumn);
+			return booleanRendererFactory;
+		}
+
 		return getSafeSingleLineRendererOrEditorFactory();
 	}
 
@@ -250,4 +252,5 @@ abstract public class UpperPanelBaseObjectTable extends EditableBaseObjectTable 
 	private SingleLineObjectTableCellEditorOrRendererFactory singleLineRendererOrEditorFactory;
 	private ChoiceItemTableCellRendererFactory statusQuestionRenderer;
 	private CodeListRendererFactory codeListRenderer;
+	private BooleanTableCellRendererFactoryWithPreferredHeight booleanRendererFactory;
 }

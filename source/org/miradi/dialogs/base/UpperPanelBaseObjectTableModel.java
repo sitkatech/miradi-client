@@ -117,6 +117,12 @@ abstract public class UpperPanelBaseObjectTableModel extends EditableObjectTable
 			if (isChoiceItemColumn(column))
 				return getChoiceItem(column, valueToDisplay);
 			
+			if (isCheckboxCell(row, column))
+			{
+				BaseObject object = getProject().findObject(rowObjectRef);
+				return object.getBooleanData(getColumnTag(column));
+			}
+
 			return valueToDisplay;
 		}
 		catch(Exception e)

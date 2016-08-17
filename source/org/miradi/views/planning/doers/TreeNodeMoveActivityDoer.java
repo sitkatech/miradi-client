@@ -22,7 +22,7 @@ package org.miradi.views.planning.doers;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.activity.MovableActivityPoolTablePanel;
 import org.miradi.dialogs.base.ObjectPoolTablePanel;
-import org.miradi.dialogs.diagram.MoveSelectionDialog;
+import org.miradi.dialogs.diagram.MoveActivitySelectionDialog;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
@@ -84,7 +84,7 @@ public class TreeNodeMoveActivityDoer extends AbstractTreeNodeTaskDoer
 
 		try
 		{
-			MoveSelectionDialog listDialog = new MoveSelectionDialog(getMainWindow(), getShareDialogTitle(), movableObjectPoolTablePanel);
+			MoveActivitySelectionDialog listDialog = new MoveActivitySelectionDialog(getMainWindow(), getShareDialogTitle(), movableObjectPoolTablePanel);
 			listDialog.setVisible(true);
 
 			BaseObject activityToMove = listDialog.getSelectedObject();
@@ -250,7 +250,7 @@ public class TreeNodeMoveActivityDoer extends AbstractTreeNodeTaskDoer
 
 	private String getShareDialogTitle()
 	{
-		return EAM.text("Move Activity");
+		return EAM.text("Move Activity to this Strategy");
 	}
 
 	@Override

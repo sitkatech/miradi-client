@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.base;
 
-import java.util.Comparator;
-
 import org.miradi.dialogs.threatrating.upperPanel.TableModelChoiceItemComparator;
 import org.miradi.main.MiradiUiSchema;
 import org.miradi.objecthelpers.ORef;
@@ -30,6 +28,8 @@ import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.SortableTableModel;
+
+import java.util.Comparator;
 
 abstract public class AbstractObjectTableModel extends SortableTableModel
 {
@@ -67,6 +67,14 @@ abstract public class AbstractObjectTableModel extends SortableTableModel
 		BaseObject object = BaseObject.find(getProject(), ref);
 		String tag = getColumnTag(column);
 		return MiradiUiSchema.isMultiLineTextCell(object, tag);
+	}
+
+	public boolean isCheckboxCell(int row, int column)
+	{
+		ORef ref = getObjectRef(row);
+		BaseObject object = BaseObject.find(getProject(), ref);
+		String tag = getColumnTag(column);
+		return MiradiUiSchema.isCheckboxCell(object, tag);
 	}
 
 	protected ORef getObjectRef(int row)

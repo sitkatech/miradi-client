@@ -33,7 +33,7 @@ abstract public class AbstractActionMoveActivity extends ObjectsAction
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Manage|Move Activity");
+		return EAM.text("Action|Manage|Move Activity to this Strategy");
 	}
 	
 

@@ -36,4 +36,10 @@ public class MiradiUiSchema
 		ObjectData field = object.getField(tag);
 		return field.isMultiLineUserText();
 	}
+
+	public static boolean isCheckboxCell(BaseObject object, String tag)
+	{
+		ObjectData field = object.getField(tag);
+		return field.isBooleanData();
+	}
 }

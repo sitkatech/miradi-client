@@ -24,9 +24,9 @@ import org.miradi.dialogs.base.ObjectTablePanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class MoveSelectionDialog extends AbstractSelectionDialog
+public class MoveActivitySelectionDialog extends AbstractSelectionDialog
 {
-    public MoveSelectionDialog(MainWindow mainWindow, String title, ObjectTablePanel poolTable)
+    public MoveActivitySelectionDialog(MainWindow mainWindow, String title, ObjectTablePanel poolTable)
     {
         super(mainWindow, title, poolTable);
     }
@@ -40,6 +40,6 @@ public class MoveSelectionDialog extends AbstractSelectionDialog
     @Override
     protected String getPanelTitleInstructions()
     {
-        return EAM.text("Please select which item should be move to this factor, then press the Move button");
+        return EAM.text("Select the Activity to move to this Strategy, then click the Move button");
     }
 }

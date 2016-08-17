@@ -43,7 +43,9 @@ public class MovableActivityPoolTableModel extends ObjectPoolTableModel
         parentRef = parentRefToUse;
     }
 
-    private static final String[] COLUMN_TAGS = new String[] {Task.TAG_LABEL,};
+    private static final String[] COLUMN_TAGS = new String[] {
+        Task.TAG_SHORT_LABEL, Task.TAG_LABEL, Task.TAG_IS_MONITORING_ACTIVITY,
+    };
 
     @Override
     public ORefList getLatestRefListFromProject()
@@ -84,6 +86,12 @@ public class MovableActivityPoolTableModel extends ObjectPoolTableModel
     public String getUniqueTableModelIdentifier()
     {
         return UNIQUE_MODEL_IDENTIFIER;
+    }
+
+    @Override
+    public boolean isCellEditable(int row, int column)
+    {
+        return false;
     }
 
     private String getWorkPlanBudgetMode()
