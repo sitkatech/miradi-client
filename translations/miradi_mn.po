@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-16 04:51-0700\n"
+"POT-Creation-Date: 2016-08-17 06:36-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -43,7 +43,7 @@ msgstr ""
 msgid " 2) Connect threat to relevant targets"
 msgstr "Аюул заналыг хамаарал бүхий хамгаалах  зүйлтэй холбож өгөх."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:372
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:372
 msgid " for parent "
 msgstr ""
 
@@ -249,7 +249,7 @@ msgstr ""
 msgid "%fieldName field data will be lost for %indicatorLabel (Indicator)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:273
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:283
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/AbstractModifyMultipleFieldMigration.java:70
 msgid "%fieldName will be removed. %label"
 msgstr ""
@@ -276,10 +276,10 @@ msgstr ""
 msgid "%s Objs"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:109
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo23.java:108
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo39.java:155
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo7.java:126
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo24.java:108
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo24.java:109
 msgid "%s field data will be lost"
 msgstr ""
 
@@ -2012,7 +2012,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:203
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:108
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:57
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:425
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:425
 msgid "Activity"
 msgstr "Үйл ажиллагаа"
 
@@ -2378,7 +2378,7 @@ msgstr ""
 "гүйцэтгэхэд хуваарилсан төслийн нөөц."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:40
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:427
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:427
 msgid "Assignment"
 msgstr ""
 
@@ -3208,7 +3208,7 @@ msgstr "Огноо"
 msgid "Date Chooser"
 msgstr "Огноо сонгогч"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:52
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:52
 msgid "Day Columns Visibility feature"
 msgstr ""
 
@@ -3327,7 +3327,7 @@ msgstr "Тодорхой арга зүй, үүрэг даалгавар, ба х
 msgid "Details"
 msgstr "Дэлгэрэнгүй:"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:374
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:374
 msgid "Details = '"
 msgstr ""
 
@@ -3565,7 +3565,7 @@ msgstr "Редактор"
 msgid "Effective"
 msgstr "Үр дүнтэй"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:145
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:144
 msgid ""
 "Effective end date for project planning date range is before start date."
 msgstr ""
@@ -3593,7 +3593,7 @@ msgstr "Хаягийн нэрээр оруулах"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/AssignedDateUnitTypeQuestion.java:44
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/PlannedDateUnitTypeQuestion.java:42
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:407
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:407
 msgid "Entire Project Duration"
 msgstr "Төсөл үргэлжлэх нийт хугацаа"
 
@@ -3668,7 +3668,7 @@ msgstr "Сонгосон баганыг өргөжүүлэх"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentSubPanel.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentSubPanel.java:52
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:429
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:429
 msgid "Expense"
 msgstr ""
 
@@ -4360,7 +4360,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:45
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/IndicatorSubForm.java:33
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:51
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:423
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:423
 msgid "Indicator"
 msgstr "Шалгуур үзүүлэлт"
 
@@ -4383,7 +4383,7 @@ msgstr ""
 msgid "Indicator Relevancy Panel"
 msgstr "Шалгуур үзүүлэлттэй холбоотой самбар"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo31.java:40
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo30.java:40
 msgid "Indicator Relevant Strategies / Activities"
 msgstr ""
 
@@ -4748,7 +4748,7 @@ msgstr ""
 msgid "Label|Phone Numbers"
 msgstr "Хаяг|Утасны дугаарууд"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:64
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:63
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/summary/PlanningTabWorkPlanSubPanelForm.java:35
 msgid "Label|Project Dates"
 msgstr "Хаяг|Төслийн огноо"
@@ -4787,7 +4787,7 @@ msgstr "Хаяг|Зэрлэг Амьтан Хамгаалах Нийгэмлэг
 msgid "Label|WWF"
 msgstr "Хаяг|Дэлхийн Байгаль Хамгаалах Сан"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:71
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:70
 msgid "Label|Work Plan Dates"
 msgstr "Хаяг|Ажлын төлөвлөгөөний огноо"
 
@@ -5267,11 +5267,11 @@ msgstr ""
 msgid "Migrated High Level Estimate:"
 msgstr "Шилжсэн өндөр нарийвчлалтай тооцоо:"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:304
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo31.java:304
 msgid "Migrated Monitoring Activities"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:317
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo31.java:317
 msgid "Migrated Monitoring Activities (see Details)"
 msgstr ""
 
@@ -5373,7 +5373,7 @@ msgstr ""
 msgid "Monitoring Activity"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo30.java:41
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo29.java:41
 msgid "Monitoring Activity Flag"
 msgstr ""
 
@@ -5438,7 +5438,7 @@ msgid ""
 "performance, <br>select Manual Row Height Mode."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:162
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:161
 msgid ""
 "NOTE: Day columns cannot be hidden because this project already has data for "
 "some days."
@@ -5452,7 +5452,7 @@ msgstr ""
 "Тайлбар: Төслийн файлын нэр нь үсэг, тоо, зай, үе, зураас, үгийн доогуур "
 "зурах зэргийг агуулсан байж болно."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:154
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:153
 msgid ""
 "NOTE: Quarter columns cannot be hidden because this project already has data "
 "for some quarters."
@@ -5472,12 +5472,12 @@ msgstr ""
 msgid "Name"
 msgstr "Нэр"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:268
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:278
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/AbstractModifyMultipleFieldMigration.java:65
 msgid "Name = %s"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:373
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:373
 msgid "Name = '"
 msgstr ""
 
@@ -5808,7 +5808,7 @@ msgstr ""
 msgid "People assigned to this action only: "
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:338
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo31.java:338
 msgid ""
 "People assignments and expense data were moved from indicators and methods "
 "to these new monitoring activities and tasks. Other data from the indicators "
@@ -6683,7 +6683,7 @@ msgstr "Жижиг"
 msgid "Smallest"
 msgstr "Хамгийн жижигхэн"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:131
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:130
 msgid ""
 "Some work plan data is currently hidden and not included in calculated "
 "totals. If the data is outside the planning date range, it will be visible "
@@ -6809,7 +6809,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:48
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/StrategyCoreSubForm.java:34
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:48
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:421
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:421
 msgid "Strategy"
 msgstr "Стратеги"
 
@@ -6933,7 +6933,7 @@ msgstr "Аюул заналын үнэлгээний дүгнэлт"
 msgid "Summary View - Project Description, Scope, and Vision fields"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:372
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:372
 msgid "Superseded "
 msgstr ""
 
@@ -8168,7 +8168,7 @@ msgstr ""
 msgid "Theory of Change<br/>- Strategy Selection"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:339
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo31.java:339
 msgid ""
 "This \"Migrated Monitoring Activities\" strategy is intended to be a "
 "temporary container. In the Work Plan view, use the Move Activity command "
@@ -8208,7 +8208,7 @@ msgstr ""
 msgid "This migration adds Progress Reports to the Project Summary."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:72
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:72
 msgid ""
 "This migration adds a new day columns visibility field to the Project "
 "Metadata properties."
@@ -8220,7 +8220,7 @@ msgid ""
 "customize panel."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo30.java:61
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo29.java:61
 msgid "This migration adds a new field to the Activity properties."
 msgstr ""
 
@@ -8228,7 +8228,7 @@ msgstr ""
 msgid "This migration adds a new field to the Diagram Factor properties."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo31.java:66
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo30.java:66
 msgid ""
 "This migration adds a new field to the Indicator properties to track "
 "Strategy / Activity relevancy."
@@ -8244,7 +8244,7 @@ msgid ""
 "work plan customize panel."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo23.java:90
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:90
 msgid "This migration adds new default rows to the work plan customize panel."
 msgstr ""
 
@@ -8272,7 +8272,7 @@ msgid ""
 "status fields"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:107
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:107
 msgid ""
 "This migration creates timeframe entries for resource assignments (where a "
 "resource or date range is specified)."
@@ -8282,24 +8282,24 @@ msgstr ""
 msgid "This migration handles the removal of extended progress reports."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:94
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:94
 msgid "This migration moves child tasks up to the activity level."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:95
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo31.java:95
 msgid ""
 "This migration moves work plan data from Indicators / Methods to Monitoring "
 "Activities."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:88
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo24.java:88
 msgid ""
 "This migration only has reverse to remove Miradi share accounting "
 "classification related objects."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo23.java:87
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo7.java:105
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo24.java:87
 msgid ""
 "This migration only has reverse to remove Miradi share taxonomy related "
 "objects."
@@ -8330,7 +8330,7 @@ msgid ""
 "is Sampling Based"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:99
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:99
 msgid "This migration removes superseded assignments from the work plan."
 msgstr ""
 
@@ -8351,12 +8351,12 @@ msgid ""
 "for the total planned effort (timeframe) dates."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:90
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:90
 msgid ""
 "This migration splits shared activities out to separate activity entries."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo29.java:90
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:90
 msgid "This migration splits shared methods out to separate method entries."
 msgstr ""
 
@@ -8421,7 +8421,7 @@ msgstr ""
 "өмнө мэдээллийн одоогийн форматад шижлүүлэх шаардлагатай. Ямар нэгэн зүйл "
 "буруу болох тохиолдолд эхлээд backup хийгдэнэ. Шилжилтийг автоматаар хийх үү?"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo32.java:337
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo31.java:337
 msgid ""
 "This strategy contains monitoring activities and (if applicable) tasks that "
 "contain monitoring work plan data created in Miradi prior to release 4.4. "
@@ -8542,7 +8542,7 @@ msgstr "Төслийн газар нутаг дахь аюул занал"
 msgid "Threat|Scope"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/TimeframePropertiesSubPanel.java:121
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/TimeframePropertiesSubPanel.java:143
 msgid "Timeframe"
 msgstr ""
 
@@ -8550,7 +8550,7 @@ msgstr ""
 msgid "Timeframe - %s"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/TimeframePropertiesSubPanel.java:106
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/TimeframePropertiesSubPanel.java:128
 msgid "Timeframe including nested actions"
 msgstr ""
 
@@ -8942,7 +8942,7 @@ msgstr ""
 msgid "Unit"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:398
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:398
 msgid "Units"
 msgstr ""
 
@@ -9335,7 +9335,7 @@ msgstr ""
 msgid "Work Plan Column Editor"
 msgstr "Ажлын төлөвлөгөө баганан редактор"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:380
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:397
 msgid "Work Plan Settings"
 msgstr "Ажлын төлөвлөгөөний тохиргоо (Settings)"
 
@@ -9350,7 +9350,7 @@ msgstr ""
 msgid "Work Planning"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:119
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryPlanningWorkPlanSubPanel.java:118
 msgid "Work plan data currently exists for %startDate - %endDate"
 msgstr ""
 " %эхлэхОгноо - %дуусах огноо зориулсан ажлын төлөвлөгөөний одоогийн мэдээлэл "
