@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-17 06:36-0700\n"
+"POT-Creation-Date: 2016-08-17 08:51-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/miradi-client/"
@@ -308,7 +308,7 @@ msgid "(Definition Not Available)"
 msgstr "(Définition Non Disponible)"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:99
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/UpperPanelBaseObjectTableModel.java:125
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/UpperPanelBaseObjectTableModel.java:131
 msgid "(Error)"
 msgstr "(Erreur)"
 
@@ -1726,7 +1726,7 @@ msgid "Action|Manage|Delete Progress Report"
 msgstr "Supprimer Rapport d'avancement"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/AbstractActionMoveActivity.java:36
-msgid "Action|Manage|Move Activity"
+msgid "Action|Manage|Move Activity to this Strategy"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/views/ActionViewMap.java:35
@@ -5541,12 +5541,12 @@ msgstr "Sélection du mois :"
 msgid "More Suggestions"
 msgstr "Plus de Suggestions"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/MoveSelectionDialog.java:37
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/MoveActivitySelectionDialog.java:37
 msgid "Move"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/TreeNodeMoveActivityDoer.java:253
-msgid "Move Activity"
+msgid "Move Activity to this Strategy"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/projectlist/ProjectListMoveToDirectoryAction.java:32
@@ -6062,12 +6062,6 @@ msgid ""
 msgstr ""
 "Veuillez sélectionner l'élément à créer dans ce facteur, ensuite appuyez sur "
 "le bouton Créer à partir de"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/MoveSelectionDialog.java:43
-msgid ""
-"Please select which item should be move to this factor, then press the Move "
-"button"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ProjectFocusQuestion.java:37
 msgid "Policy and Practice"
@@ -6637,6 +6631,11 @@ msgstr "Sélectionner les cibles de conservation"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:88
 msgid "Select initial team members"
 msgstr "Sélectionner les membres de l'équipe initiale"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/MoveActivitySelectionDialog.java:43
+msgid ""
+"Select the Activity to move to this Strategy, then click the Move button"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/EditActivityGoalRelevancyListDoer.java:39
 msgid "Select the Goals which this Activity helps to achieve"
