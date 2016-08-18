@@ -31,7 +31,7 @@ public class ActionEditIndicatorStrategyActivityRelevancyList extends ObjectsAct
 
 	private static String getLabel()
 	{
-		return EAM.text("Action|Choose...");
+		return EAM.text("Action|Choose and Create Activities...");
 	}
 
 	@Override
