@@ -84,13 +84,14 @@ public class TimeframeEditorField extends ObjectDataField
 	{
 		updateEditableState();
 
-		if (!isValidObject())
-			return;
-
 		ignoreEditorActions = true;
 
-		BaseObject baseObject = BaseObject.find(getProject(), getORef());
-		ORefList planningObjectRefs = baseObject.getTimeframeRefs();
+		ORefList planningObjectRefs = new ORefList();
+		if (isValidObject())
+		{
+			BaseObject baseObject = BaseObject.find(getProject(), getORef());
+			planningObjectRefs = baseObject.getTimeframeRefs();
+		}
 		timeframeEditor.setPlanningObjectRefs(planningObjectRefs);
 
 		ignoreEditorActions = false;

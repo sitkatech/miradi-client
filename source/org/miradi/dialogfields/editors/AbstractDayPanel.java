@@ -68,8 +68,8 @@ abstract public class AbstractDayPanel extends TwoColumnPanel
 
 	private void setSelectedDateUnit(DateUnit dateUnit)
 	{
-		if (dateUnit != null && dateUnit.isDay())
-			dateEditor.setText(dateUnit.getDateUnitCode());
+		String dateUnitAsString = dateUnit != null && dateUnit.isDay() ? dateUnit.getDateUnitCode() : "";
+		dateEditor.setText(dateUnitAsString);
 	}
 
 	private DateEditorComponent dateEditor;
