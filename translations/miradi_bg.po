@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-17 08:51-0700\n"
+"POT-Creation-Date: 2016-08-18 04:51-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -275,11 +275,11 @@ msgstr "%messageCount case(s) of: %message"
 msgid "%s (old project)"
 msgstr "%s (old project)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:214
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:226
 msgid "%s Goals"
 msgstr "% крайни цели"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:222
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:234
 msgid "%s Objs"
 msgstr "% междинни цели"
 
@@ -369,11 +369,11 @@ msgstr "- Пещери"
 msgid "- Other Subterranean Habitats"
 msgstr "- Други подземни хабитати"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:211
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:223
 msgid "1 Goal"
 msgstr "1 крайна цел"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:219
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:231
 msgid "1 Obj"
 msgstr "1 междинна цел"
 

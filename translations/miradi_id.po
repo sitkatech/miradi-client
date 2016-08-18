@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-17 08:51-0700\n"
+"POT-Creation-Date: 2016-08-18 04:51-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/miradi-client/"
@@ -268,11 +268,11 @@ msgstr ""
 msgid "%s (old project)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:214
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:226
 msgid "%s Goals"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:222
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:234
 msgid "%s Objs"
 msgstr ""
 
@@ -362,11 +362,11 @@ msgstr "- Gua-gua"
 msgid "- Other Subterranean Habitats"
 msgstr "- Habitat Bawah Tanah Lainnya"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:211
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:223
 msgid "1 Goal"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:219
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:231
 msgid "1 Obj"
 msgstr ""
 
