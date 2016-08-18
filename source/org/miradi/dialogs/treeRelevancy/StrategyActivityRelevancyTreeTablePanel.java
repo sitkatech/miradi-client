@@ -21,6 +21,7 @@ package org.miradi.dialogs.treeRelevancy;
 
 import org.miradi.actions.ActionDeletePlanningViewTreeNode;
 import org.miradi.actions.ActionTreeCreateRelevancyActivity;
+import org.miradi.actions.ActionTreeCreateRelevancyMonitoringActivity;
 import org.miradi.dialogs.base.EditableBaseObjectTable;
 import org.miradi.dialogs.base.SingleBooleanColumnEditableModel;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
@@ -56,6 +57,7 @@ public class StrategyActivityRelevancyTreeTablePanel extends AbstractEditableTre
 	{
 		return new Class[] {
 				ActionTreeCreateRelevancyActivity.class,
+				ActionTreeCreateRelevancyMonitoringActivity.class,
 				ActionDeletePlanningViewTreeNode.class,
 		};
 	}

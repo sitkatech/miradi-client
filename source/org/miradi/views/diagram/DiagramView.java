@@ -19,14 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import java.awt.Color;
-import java.awt.event.KeyEvent;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Vector;
-
-import javax.swing.JPopupMenu;
-
 import org.martus.swing.Utilities;
 import org.miradi.actions.*;
 import org.miradi.commands.CommandSetObjectData;
@@ -38,17 +30,9 @@ import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.dialogs.base.AbstractDialogWithClose;
 import org.miradi.dialogs.base.ModelessDialogWithClose;
-import org.miradi.dialogs.diagram.ConceptualModelDiagramPanel;
-import org.miradi.dialogs.diagram.DiagramPanel;
-import org.miradi.dialogs.diagram.FactorPropertiesDialog;
-import org.miradi.dialogs.diagram.FactorPropertiesPanel;
-import org.miradi.dialogs.diagram.ResultsChainDiagramPanel;
+import org.miradi.dialogs.diagram.*;
 import org.miradi.ids.IdList;
-import org.miradi.main.CommandExecutedEvent;
-import org.miradi.main.CommandExecutedListener;
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
-import org.miradi.main.MiradiToolBar;
+import org.miradi.main.*;
 import org.miradi.objecthelpers.FactorSet;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -57,48 +41,14 @@ import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.questions.DiagramModeQuestion;
-import org.miradi.schemas.ConceptualModelDiagramSchema;
-import org.miradi.schemas.DiagramFactorSchema;
-import org.miradi.schemas.DiagramLinkSchema;
-import org.miradi.schemas.GroupBoxSchema;
-import org.miradi.schemas.ResultsChainDiagramSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.DiagramCorruptionDetector;
 import org.miradi.utils.PointList;
 import org.miradi.views.TabbedView;
-import org.miradi.views.diagram.doers.ArrangeConceptualModelDoer;
-import org.miradi.views.diagram.doers.CloneStressDoer;
-import org.miradi.views.diagram.doers.CreateFutureStatusDoer;
-import org.miradi.views.diagram.doers.CreateIncomingJunctionDoer;
-import org.miradi.views.diagram.doers.CreateMarginDoer;
-import org.miradi.views.diagram.doers.CreateNamedTaggedObjectSetDoer;
-import org.miradi.views.diagram.doers.CreateOutgoingJunctionDoer;
-import org.miradi.views.diagram.doers.CreateStressDoer;
-import org.miradi.views.diagram.doers.CreateStressFromKeaDoer;
-import org.miradi.views.diagram.doers.CreateTaggedObjectSetDoer;
-import org.miradi.views.diagram.doers.DeleteGroupBoxDoer;
-import org.miradi.views.diagram.doers.DeleteStressDoer;
-import org.miradi.views.diagram.doers.DeleteTaggedObjectSetDoer;
-import org.miradi.views.diagram.doers.DiagramPropertiesShowDoer;
-import org.miradi.views.diagram.doers.EditTaggedObjectSetDoer;
-import org.miradi.views.diagram.doers.ExpandToFutureStatusDoer;
-import org.miradi.views.diagram.doers.GroupBoxAddDiagramFactorDoer;
-import org.miradi.views.diagram.doers.GroupBoxRemoveDiagramFactorDoer;
-import org.miradi.views.diagram.doers.HideActivityBubbleDoer;
-import org.miradi.views.diagram.doers.HideStressBubbleDoer;
-import org.miradi.views.diagram.doers.InsertGroupBoxDoer;
-import org.miradi.views.diagram.doers.InsertHumanWelfareTargetDoer;
-import org.miradi.views.diagram.doers.InsertScopeBoxDoer;
-import org.miradi.views.diagram.doers.ManageFactorTagsDoer;
-import org.miradi.views.diagram.doers.ManageFactorTagsFromMenuDoer;
-import org.miradi.views.diagram.doers.PasteFactorContentDoer;
-import org.miradi.views.diagram.doers.SelectChainDoer;
-import org.miradi.views.diagram.doers.ShowActivityBubbleDoer;
-import org.miradi.views.diagram.doers.ShowStressBubbleDoer;
-import org.miradi.views.diagram.doers.ZoomIn;
-import org.miradi.views.diagram.doers.ZoomOut;
-import org.miradi.views.diagram.doers.ZoomToFitDoer;
+import org.miradi.views.diagram.doers.*;
 import org.miradi.views.planning.doers.CreateRelevancyActivityDoer;
+import org.miradi.views.planning.doers.CreateRelevancyMonitoringActivityDoer;
 import org.miradi.views.planning.doers.TreeNodeDeleteDoer;
 import org.miradi.views.planning.doers.TreeNodeMoveActivityDoer;
 import org.miradi.views.targetviability.doers.CreateKeyEcologicalAttributeMeasurementDoer;
@@ -110,6 +60,13 @@ import org.miradi.views.umbrella.DeleteActivityDoer;
 import org.miradi.views.umbrella.UmbrellaView;
 import org.miradi.views.umbrella.doers.TaskMoveDownDoer;
 import org.miradi.views.umbrella.doers.TaskMoveUpDoer;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.KeyEvent;
+import java.util.Arrays;
+import java.util.Iterator;
+import java.util.Vector;
 
 
 public class DiagramView extends TabbedView implements CommandExecutedListener
@@ -220,6 +177,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionDeleteActivity.class, new DeleteActivityDoer());
 		addDoerToMap(ActionMoveActivity.class, new TreeNodeMoveActivityDoer());
 		addDoerToMap(ActionTreeCreateRelevancyActivity.class, new CreateRelevancyActivityDoer());
+		addDoerToMap(ActionTreeCreateRelevancyMonitoringActivity.class, new CreateRelevancyMonitoringActivityDoer());
 		addDoerToMap(ActionDeletePlanningViewTreeNode.class, new TreeNodeDeleteDoer());
 
 		addDoerToMap(ActionCreateObjective.class, new CreateObjectiveDoer());

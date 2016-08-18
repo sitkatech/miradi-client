@@ -24,7 +24,10 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.RelevancyOverrideSet;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
+import org.miradi.objects.StrategyActivityRelevancyInterface;
 import org.miradi.objects.Task;
 import org.miradi.project.ProjectTotalCalculatorStrategy;
 import org.miradi.schemas.StrategySchema;
@@ -71,6 +74,35 @@ abstract class AbstractCreateActivityNodeDoer extends AbstractCreateTaskNodeDoer
 	{
 		ProjectTotalCalculatorStrategy projectTotalCalculatorStrategy = getProject().getTimePeriodCostsMapsCache().getProjectTotalCalculator().getProjectTotalCalculatorStrategy();
 		return projectTotalCalculatorStrategy.getWorkPlanBudgetMode();
+	}
+
+	protected void createActivityRelevancy(ORefList selectionHierarchy, ORef newTaskRef) throws Exception
+	{
+		ORef parentObjectRef = findParentObjectRef(selectionHierarchy);
+		if (parentObjectRef.isInvalid())
+			return;
+
+		StrategyActivityRelevancyInterface parentObject = (StrategyActivityRelevancyInterface) getProject().findObject(parentObjectRef);
+		ORefList strategyAndActivityRefs = parentObject.getRelevantStrategyAndActivityRefs();
+		strategyAndActivityRefs.add(newTaskRef);
+		RelevancyOverrideSet relevancySet = parentObject.getCalculatedRelevantStrategyActivityOverrides(strategyAndActivityRefs);
+
+		CommandSetObjectData addNewActivityToRelevancyList = new CommandSetObjectData(parentObjectRef, parentObject.getRelevantStrategyActivitySetTag(), relevancySet.toString());
+		getProject().executeCommand(addNewActivityToRelevancyList);
+	}
+
+	private ORef findParentObjectRef(ORefList selectionHierarchy)
+	{
+		for (int index = 0; index < selectionHierarchy.size(); ++index)
+		{
+			ORef ref = selectionHierarchy.get(index);
+			BaseObject parentObject = getProject().findObject(ref);
+
+			if (parentObject instanceof StrategyActivityRelevancyInterface)
+				return ref;
+		}
+
+		return ORef.INVALID;
 	}
 
 	protected abstract boolean isMonitoringActivity();

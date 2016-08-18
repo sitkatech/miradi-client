@@ -122,6 +122,7 @@ public class Actions
 		registerAction(new ActionTreeCreateActivity(mainWindow));
 		registerAction(new ActionTreeCreateMonitoringActivity(mainWindow));
 		registerAction(new ActionTreeCreateRelevancyActivity(mainWindow));
+		registerAction(new ActionTreeCreateRelevancyMonitoringActivity(mainWindow));
 		registerAction(new ActionTreeMoveActivity(mainWindow));
 		registerAction(new ActionTreeCreateMethod(mainWindow));
 		registerAction(new ActionCreateTask(mainWindow));

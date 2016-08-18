@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.planning;
 
 
-import java.util.HashMap;
-
 import org.miradi.actions.*;
 import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.dialogs.planning.EmptyRowColumnProvider;
@@ -39,6 +37,8 @@ import org.miradi.views.umbrella.UmbrellaView;
 import org.miradi.views.umbrella.doers.TaskMoveDownDoer;
 import org.miradi.views.umbrella.doers.TaskMoveUpDoer;
 import org.miradi.views.workplan.WorkPlanBudgetCategoryManagementPanel;
+
+import java.util.HashMap;
 
 public class PlanningView extends TabbedView
 {
@@ -134,7 +134,8 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionCreateTask.class, new CreateTaskDoer());
 		addDoerToMap(ActionCreateSameLevelTask.class, new CreateSameLevelTaskDoer());
 		addDoerToMap(ActionTreeCreateRelevancyActivity.class, new CreateRelevancyActivityDoer());
-				
+		addDoerToMap(ActionTreeCreateRelevancyMonitoringActivity.class, new CreateRelevancyMonitoringActivityDoer());
+
 		addDoerToMap(ActionCreateResource.class, new CreateResource());
 		addDoerToMap(ActionDeleteResource.class, new DeleteResourceDoer());
 
