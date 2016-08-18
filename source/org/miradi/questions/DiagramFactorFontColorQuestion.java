@@ -19,9 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
-import java.awt.Color;
-
 import org.miradi.main.EAM;
+
+import java.awt.*;
 
 
 public class DiagramFactorFontColorQuestion extends StaticChoiceQuestion
@@ -66,7 +66,15 @@ public class DiagramFactorFontColorQuestion extends StaticChoiceQuestion
 	{
 		return "#000000";
 	}
-	
+
+	public static String convertToCssStyle(String code)
+	{
+		if (!code.isEmpty())
+			return "color: " + code + ";";
+
+		return "";
+	}
+
 	public static final String DARK_GRAY_HEX = "#4E4848";
 	public static final String LIGHT_GRAY_HEX = "#6D7B8D";
 	public static final String DARK_ORANGE_HEX = "#FF6600";

@@ -80,7 +80,21 @@ public class DiagramFactorFontStyleQuestion extends StaticChoiceQuestion
 
 		return super.convertToInternalCode(code);
 	}
-	
+
+	public static String convertToCssStyle(String code)
+	{
+		if (code.equals(BOLD_CODE))
+			return "font-weight: bold;";
+
+		if (code.equals(UNDERLINE_CODE))
+			return "text-decoration: underline;";
+
+		if (code.equals(STRIKE_THROUGH_CODE))
+			return "text-decoration: line-through;";
+
+		return "";
+	}
+
 	public static final String PLAIN_CODE = "";
 	public static final String BOLD_CODE = "<B>";
 	public static final String UNDERLINE_CODE = "<U>";

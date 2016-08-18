@@ -52,6 +52,11 @@ public class HtmlUtilities
 		return "<" + tagName + ">" + value + "</" + tagName + ">";
 	}
 	
+	public static String wrapWithTagAndStyle(String value, String tagName, String style)
+	{
+		return "<" + tagName + " style='" + style + "'>" + value + "</" + tagName + ">";
+	}
+
 	public static void addRuleFontSize(StyleSheet style, final int defaultFontSize, final int fontSize)
 	{
 		int size = fontSize;

@@ -50,20 +50,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.diagram.renderers;
 
-import java.awt.BasicStroke;
-import java.awt.Color;
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Paint;
-import java.awt.Point;
-import java.awt.Polygon;
-import java.awt.Rectangle;
-import java.awt.RenderingHints;
-import java.awt.Stroke;
-
 import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
@@ -77,25 +63,22 @@ import org.miradi.ids.IdList;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.Desire;
-import org.miradi.objects.Factor;
-import org.miradi.objects.Goal;
-import org.miradi.objects.Objective;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Stress;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.DiagramFactorFontColorQuestion;
+import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.Utility;
 import org.miradi.utils.XmlUtilities2;
+
+import java.awt.*;
 
 
 public abstract class FactorRenderer extends MultilineCellRenderer implements CellViewRenderer
@@ -129,14 +112,17 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			{
 				Strategy strategy = (Strategy)getFactorCell().getWrappedFactor();
 				rating = strategy.getStrategyRating();
-				stragetyInResultsChain = shouldDisplayResultsChainIcon(model, strategy);
+				strategyInResultsChain = shouldDisplayResultsChainIcon(model, strategy);
 			}
 			
 			isAliased = shouldMarkAsShared(model);
 			isOwnedByGroup = getFactorCell().getDiagramFactor().isCoveredByGroupBox();
 			
 			EAMGraphCell cell = (EAMGraphCell)view.getCell();
-			setHtmlFormViewerText(getAdditionalHtmlFontTags() + cell.toString());
+			String cellValue = cell.toString();
+			String style = buildFontStyle(isAliased);
+			String formattedCellValue = HtmlUtilities.wrapWithTagAndStyle(cellValue, HtmlUtilities.DIV_TAG_NAME, style);
+			setHtmlFormViewerText(formattedCellValue);
 			
 			indicatorText = null;
 			if(diagram.areIndicatorsVisible())
@@ -160,6 +146,32 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		}
 		
 		return this;
+	}
+
+	private String buildFontStyle(boolean isAliased)
+	{
+		DiagramFactor diagramFactor = getFactorCell().getDiagramFactor();
+		String fontStyle = getCssFontStyle(diagramFactor, isAliased);
+		String fontColor = getCssFontColor(diagramFactor);
+
+		return fontStyle + fontColor;
+	}
+
+	private String getCssFontStyle(DiagramFactor diagramFactor, boolean isAliased)
+	{
+		String fontStyleCode = diagramFactor.getFontStyle();
+		String fontCssStyle = DiagramFactorFontStyleQuestion.convertToCssStyle(fontStyleCode);
+
+		if (isAliased)
+			fontCssStyle += "font-style: italic;";
+
+		return  fontCssStyle;
+	}
+
+	private String getCssFontColor(DiagramFactor diagramFactor)
+	{
+		String fontColor = diagramFactor.getFontColor();
+		return DiagramFactorFontColorQuestion.convertToCssStyle(fontColor);
 	}
 
 	private void setGoalText(DiagramComponent diagram) throws Exception
@@ -290,33 +302,6 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		
 		return model.isSharedInResultsChain(getFactorCell().getDiagramFactor());
 	}
-	protected String getAdditionalHtmlFontTags()
-	{
-		String formatted = "<Font "+ getDiagramFactorFontColor() + ">";
-		formatted += getDiagramFactorFontStyle();
-		if (isAliased)
-			return formatted += "<i>";
-	
-		return formatted;
-	}
-	
-	private String getDiagramFactorFontColor()
-	{
-		String fontColor = getFactorCell().getDiagramFactor().getFontColor();
-		if (fontColor.length() != 0)
-			return fontColor = "color=" + fontColor;
-		
-		return fontColor;
-	}
-	
-	private String getDiagramFactorFontStyle()
-	{
-		String fontStyle = getFactorCell().getDiagramFactor().getFontStyle();
-		if (fontStyle.length() != 0)
-			return fontStyle;
-		
-		return fontStyle;
-	}
 
 	private boolean shouldDisplayResultsChainIcon(DiagramModel model, Strategy strategy)
 	{
@@ -354,7 +339,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		if(indicatorText != null)
 			drawIndicator(rect, g2);
 		
-		if(stragetyInResultsChain)
+		if(strategyInResultsChain)
 			drawChainIcon(rect, g2);
 		
 		drawCommentTriangle(g2, new Point(rect.width, 0));
@@ -501,7 +486,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	private String indicatorText;
 	private String objectivesText;
 	private String goalsText;
-	boolean stragetyInResultsChain;
+	boolean strategyInResultsChain;
 	boolean isAliased;
 	boolean isOwnedByGroup;
 	private boolean isRelatedToSelectedFactor;
