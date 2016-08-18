@@ -30,12 +30,6 @@ public class ObjectsOnlyWorkPlanActivityPropertiesPanel extends WorkPlanActivity
 	}
 
 	@Override
-	protected boolean isMonitoringActivityFieldEditable()
-	{
-		return true;
-	}
-
-	@Override
 	public String getPanelDescription()
 	{
 		return "ObjectsOnlyWorkPlanActivityPropertiesPanel";

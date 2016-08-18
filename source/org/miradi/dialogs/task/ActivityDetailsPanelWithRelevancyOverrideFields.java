@@ -23,15 +23,16 @@ package org.miradi.dialogs.task;
 import org.miradi.actions.*;
 import org.miradi.dialogs.activity.ActivityFactorVisibilityControlPanel;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.schemas.TaskSchema;
 
 public class ActivityDetailsPanelWithRelevancyOverrideFields extends TaskDetailsPanel
 {
-	public ActivityDetailsPanelWithRelevancyOverrideFields(Project projectToUse, Actions actionsToUse, ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel, boolean isMonitoringActivityFieldEditable) throws Exception
+	public ActivityDetailsPanelWithRelevancyOverrideFields(Project projectToUse, MainWindow mainWindowToUse, ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel) throws Exception
 	{
-		super(projectToUse, actionsToUse, activityVisibilityButtonPanel, isMonitoringActivityFieldEditable);
+		super(projectToUse, mainWindowToUse, activityVisibilityButtonPanel);
 	}
 
 	@Override

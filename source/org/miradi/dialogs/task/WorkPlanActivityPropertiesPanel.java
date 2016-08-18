@@ -34,7 +34,7 @@ public class WorkPlanActivityPropertiesPanel extends TaskPropertiesPanel
 	@Override
 	protected ObjectDataInputPanel createDetailsPanel(MainWindow mainWindow, ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel) throws Exception
 	{
-		return new ActivityDetailsPanelWithRelevancyOverrideFields(getProject(), mainWindow.getActions(), activityVisibilityButtonPanel, isMonitoringActivityFieldEditable());
+		return new ActivityDetailsPanelWithRelevancyOverrideFields(getProject(), mainWindow, activityVisibilityButtonPanel);
 	}
 
 	@Override

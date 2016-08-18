@@ -53,7 +53,7 @@ public abstract class TaskPropertiesPanel extends ObjectDataInputPanelWithSectio
 
 	protected ObjectDataInputPanel createDetailsPanel(MainWindow mainWindow, ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel) throws Exception
 	{
-		return new TaskDetailsPanel(getProject(), mainWindow.getActions(), activityVisibilityButtonPanel, isMonitoringActivityFieldEditable());
+		return new TaskDetailsPanel(getProject(), mainWindow, activityVisibilityButtonPanel);
 	}
 
 	protected void addBudgetSubPanels() throws Exception
@@ -71,9 +71,4 @@ public abstract class TaskPropertiesPanel extends ObjectDataInputPanelWithSectio
 	}
 
 	abstract protected boolean shouldHaveVisibilityPanel();
-
-	protected boolean isMonitoringActivityFieldEditable()
-	{
-		return false;
-	}
 }

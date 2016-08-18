@@ -19,15 +19,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.task;
 
-import javax.swing.*;
-
 import org.miradi.actions.Actions;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.activity.ActivityFactorVisibilityControlPanel;
+import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.icons.*;
+import org.miradi.icons.ActivityIcon;
+import org.miradi.icons.EmptyIcon;
+import org.miradi.icons.MonitoringActivityIcon;
+import org.miradi.icons.TaskIcon;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -35,10 +38,17 @@ import org.miradi.objects.Task;
 import org.miradi.project.Project;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.FillerLabel;
+import org.miradi.views.MiradiTabContentsPanelInterface;
+import org.miradi.views.planning.ConfigurablePlanningManagementPanel;
+import org.miradi.views.planning.PlanningView;
+import org.miradi.views.umbrella.UmbrellaView;
+import org.miradi.views.workplan.WorkPlanView;
+
+import javax.swing.*;
 
 public class TaskDetailsPanel extends ObjectDataInputPanel
 {
-	public TaskDetailsPanel(Project projectToUse, Actions actionsToUse, ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel, boolean isMonitoringActivityFieldEditable) throws Exception
+	public TaskDetailsPanel(Project projectToUse, MainWindow mainWindowToUse, ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel) throws Exception
 	{
 		super(projectToUse, TaskSchema.getObjectType());
 		
@@ -47,7 +57,7 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 		ObjectDataInputField taskIdField = createShortStringField(ObjectType.TASK, Task.TAG_SHORT_LABEL);
 		addFieldsOnOneLine(taskNameLabel, new ObjectDataInputField[] {taskIdField, taskNameField,} );
 
-		if (isMonitoringActivityFieldEditable)
+		if (canEnableMonitoringActivityField(projectToUse, mainWindowToUse))
 			addField(createCheckBoxField(TaskSchema.getObjectType(), Task.TAG_IS_MONITORING_ACTIVITY, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));
 		else
 			addField(createReadOnlyCheckBoxField(TaskSchema.getObjectType(), Task.TAG_IS_MONITORING_ACTIVITY, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));
@@ -59,7 +69,7 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 		}
 		
 		addField(createMultilineField(TaskSchema.getObjectType(), Task.TAG_DETAILS));
-		addCustomFields(actionsToUse);
+		addCustomFields(mainWindowToUse.getActions());
 		addTaxonomyFields(TaskSchema.getObjectType());
 		addField(createMultilineField(TaskSchema.getObjectType(), Task.TAG_COMMENTS));
 	}
@@ -119,7 +129,25 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 		Task task = Task.find(getProject(), ref);
 		return task;
 	}
-	
+
+	private boolean canEnableMonitoringActivityField(Project projectToUse, MainWindow mainWindowToUse)
+	{
+		String currentViewName = projectToUse.getCurrentView();
+
+		if (currentViewName.equals(WorkPlanView.getViewName()))
+			return false;
+
+		if (currentViewName.equals(PlanningView.getViewName()))
+		{
+			UmbrellaView currentView = mainWindowToUse.getCurrentView();
+			MiradiTabContentsPanelInterface currentTab = currentView.getCurrentTabPanel();
+			DisposablePanelWithDescription currentTabTabContentsComponent = currentTab.getTabContentsComponent();
+			return !(currentTabTabContentsComponent instanceof ConfigurablePlanningManagementPanel);
+		}
+
+		return true;
+	}
+
 	@Override
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
