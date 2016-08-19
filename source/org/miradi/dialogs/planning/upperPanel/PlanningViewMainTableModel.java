@@ -485,16 +485,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		{
 			columnTag = Factor.TAG_COMMENTS;
 		}
-
 		if (isIndicatorsColumn(column))
 		{
 			columnTag = Factor.PSEUDO_TAG_INDICATORS;
-		}
-
-		if(ProjectMetadata.is(nodeType))
-		{
-			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
-				return "";
 		}
 		if(ConceptualModelDiagram.is(nodeType))
 		{

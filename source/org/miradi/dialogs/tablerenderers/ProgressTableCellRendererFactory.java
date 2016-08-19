@@ -19,12 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.tablerenderers;
 
-import java.awt.Component;
-
-import javax.swing.JComponent;
-import javax.swing.JTable;
-
 import org.miradi.objects.*;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class ProgressTableCellRendererFactory extends ObjectTableCellEditorOrRendererFactory
 {
@@ -64,9 +62,12 @@ public class ProgressTableCellRendererFactory extends ObjectTableCellEditorOrRen
 
 	private boolean isChoiceItemRow(BaseObject baseObject)
 	{
-		if (ResultsChainDiagram.is(baseObject))
+		if (ProjectMetadata.is(baseObject))
 			return true;
 		
+		if (ResultsChainDiagram.is(baseObject))
+			return true;
+
 		if (ConceptualModelDiagram.is(baseObject))
 			return true;
 
