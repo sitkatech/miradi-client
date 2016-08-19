@@ -40,6 +40,7 @@ public class TaskExporter extends BaseObjectWithLeaderResourceFieldExporter
 
 		writeSubTaskIds((Task)baseObject);
 		writeOptionalCalculatedTimePeriodCosts(baseObject, baseObjectSchema);
+		writeOptionalCalculatedTimeframe(baseObject, baseObjectSchema);
 	}
 
 	@Override

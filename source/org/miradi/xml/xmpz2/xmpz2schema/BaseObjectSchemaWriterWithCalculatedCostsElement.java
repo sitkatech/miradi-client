@@ -20,10 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.xmpz2schema;
 
-import java.util.Vector;
-
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.BaseObjectSchema;
+
+import java.util.Vector;
 
 abstract public class BaseObjectSchemaWriterWithCalculatedCostsElement extends BaseObjectSchemaWriterWithTaxonomyClassificationContainer
 {
@@ -58,7 +58,8 @@ abstract public class BaseObjectSchemaWriterWithCalculatedCostsElement extends B
 		Vector<String> schemaElements = super.createFieldSchemas();
 		
 		schemaElements.add(getXmpz2XmlSchemaCreator().writeCalculatedCostSchemaElement(getBaseObjectSchema()));
-		
+		schemaElements.add(getXmpz2XmlSchemaCreator().writeCalculatedTimeframeSchemaElement(getBaseObjectSchema()));
+
 		return schemaElements;
 	}	
 }

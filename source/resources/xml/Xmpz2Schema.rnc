@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Aug 11 15:13:46 BST 2016 $
+# $LastChangedDate: Fri Aug 19 09:03:59 BST 2016 $
 # $LastChangedRevision: 236 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/236'
 start = ConservationProject.element
@@ -259,6 +259,7 @@ Task.element = element miradi:Task
   element miradi:TaskOrderedSubTaskIds { SubTaskId.element* }? &
   element miradi:TaskProgressReportIds { ProgressReportId.element* }? &
   element miradi:TaskResourceAssignmentIds { ResourceAssignmentId.element* }? &
+  element miradi:TaskTimeframe { CalculatedTimeframe.element }? &
   element miradi:TaskTimeframeIds { TimeframeId.element* }? &
   TaxonomyClassificationContainer.element?
 }
@@ -468,6 +469,7 @@ Strategy.element = element miradi:Strategy
   element miradi:StrategyResourceAssignmentIds { ResourceAssignmentId.element* }? &
   element miradi:StrategyStandardClassification { vocabulary_strategy_taxonomy_code }? &
   element miradi:StrategyStatus { vocabulary_strategy_status } &
+  element miradi:StrategyTimeframe { CalculatedTimeframe.element }? &
   element miradi:StrategyTimeframeIds { TimeframeId.element* }? &
   TaxonomyClassificationContainer.element?
 }
@@ -1239,6 +1241,12 @@ CalculatedCosts.element = element miradi:CalculatedCosts
   element miradi:CalculatedWho { ResourceId.element* }? &
   element miradi:CalculatedExpenseEntries { CalculatedExpenseEntry.element* }? &
   element miradi:CalculatedWorkUnitsEntries { CalculatedWorkUnitsEntry.element* }?
+}
+
+CalculatedTimeframe.element = element miradi:CalculatedTimeframe
+{
+  element miradi:CalculatedStartDate { vocabulary_date } &
+  element miradi:CalculatedEndDate { vocabulary_date }
 }
 
 CalculatedExpenseEntry.element = element miradi:CalculatedExpenseEntry

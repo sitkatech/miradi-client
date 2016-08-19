@@ -86,6 +86,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creators.add(createExporterDetailsElementCreator());
 		creators.add(creatorThresholdsElementSchemaCreator());
 		creators.add(createTimePeriodCostsElementSchemaCreator());
+		creators.add(createCalculatedTimeframeElementSchemaCreator());
 		creators.add(createExpenseEntryElementSchemaCreator());
 		creators.add(createWorkUnitsEntryElementSchemaCreator());
 		creators.add(createExternalIdSchemaElementSchemaCreator());
@@ -297,6 +298,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return getSchemaWriter().createOptionalSchemaElement(baseObjectSchema.getXmpz2ElementName() + TIME_PERIOD_COSTS, createElementName(TIME_PERIOD_COSTS));
 	}
 	
+	public String writeCalculatedTimeframeSchemaElement(BaseObjectSchema baseObjectSchema)
+	{
+		return getSchemaWriter().createOptionalSchemaElement(baseObjectSchema.getXmpz2ElementName() + TIMEFRAME, createElementName(CALCULATED_TIMEFRAME));
+	}
+
 	public String createThresholdsSchemaElement(BaseObjectSchema baseObjectSchema)
 	{
 		return getSchemaWriter().createOptionalSchemaElement(baseObjectSchema.getXmpz2ElementName() + THRESHOLDS, createElementName(THRESHOLD) +  "*");
@@ -876,6 +882,15 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creator.addOptionalChildElement(CALCULATED_EXPENSE_ENTRIES, getSchemaWriter().createZeroOrMoreDotElement(EXPENSE_ENTRY));
 		creator.addChildElement(getSchemaWriter().createOptionalSchemaElement(CALCULATED_WORK_UNITS_ENTRIES, getSchemaWriter().createZeroOrMoreDotElement(WORK_UNITS_ENTRY)));
 		
+		return creator;
+	}
+
+	private Xmpz2CustomSchemaDefinitionCreator createCalculatedTimeframeElementSchemaCreator()
+	{
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), Xmpz2XmlConstants.CALCULATED_TIMEFRAME);
+		creator.addChildElement(CALCULATED_START_DATE, VOCABULARY_DATE);
+		creator.addChildElement(CALCULATED_END_DATE, VOCABULARY_DATE);
+
 		return creator;
 	}
 

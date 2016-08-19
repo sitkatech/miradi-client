@@ -20,16 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
-import java.util.Set;
-
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.TimePeriodCosts;
 import org.miradi.objecthelpers.TimePeriodCostsMap;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
-import org.miradi.objects.Factor;
-import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.Target;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
@@ -37,6 +31,8 @@ import org.miradi.schemas.ProjectResourceSchema;
 import org.miradi.utils.DateRange;
 import org.miradi.utils.DoubleUtilities;
 import org.miradi.utils.OptionalDouble;
+
+import java.util.Set;
 
 public class BaseObjectExporter implements Xmpz2XmlConstants
 {
@@ -173,6 +169,23 @@ public class BaseObjectExporter implements Xmpz2XmlConstants
             getWriter().writeEndElement(baseObjectSchema.getObjectName() + TIME_PERIOD_COSTS);
         }
     }
+
+	protected void writeOptionalCalculatedTimeframe(BaseObject baseObject, BaseObjectSchema baseObjectSchema) throws Exception
+	{
+		final TimePeriodCostsMap timePeriodCostsMapForPlans = baseObject.getTotalTimePeriodCostsMapForPlans();
+		final DateRange projectPlanningDateRange = getProject().getProjectCalendar().getProjectPlanningDateRange();
+		final DateRange totalDateRange = timePeriodCostsMapForPlans.getRolledUpDateRange(projectPlanningDateRange);
+
+		if(totalDateRange != null)
+		{
+			getWriter().writeStartElement(baseObjectSchema.getObjectName() + TIMEFRAME);
+			getWriter().writeStartElement(Xmpz2XmlConstants.CALCULATED_TIMEFRAME);
+			getWriter().writeElement(CALCULATED_START_DATE, totalDateRange.getStartDate().toIsoDateString());
+			getWriter().writeElement(CALCULATED_END_DATE, totalDateRange.getEndDate().toIsoDateString());
+			getWriter().writeEndElement(Xmpz2XmlConstants.CALCULATED_TIMEFRAME);
+			getWriter().writeEndElement(baseObjectSchema.getObjectName() + Xmpz2XmlConstants.TIMEFRAME);
+		}
+	}
 
 	private void writeResourceIds(String elementName, Set<ORef> resourceRefs) throws Exception
 	{
