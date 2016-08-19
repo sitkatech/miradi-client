@@ -105,6 +105,7 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 	public void setInvokeButtonEnabled(boolean isEnabled)
 	{
 		popupInvokeButton.setEnabled(isEnabled);
+		currentSelectionText.setEditable(isEnabled);
 	}
 	
 	protected MainWindow getMainWindow()

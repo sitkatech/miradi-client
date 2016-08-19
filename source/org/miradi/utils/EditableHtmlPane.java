@@ -20,10 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import javax.swing.text.html.StyleSheet;
-
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+
+import javax.swing.text.EditorKit;
+import javax.swing.text.html.HTMLEditorKit;
+import javax.swing.text.html.StyleSheet;
+import java.awt.*;
 
 public class EditableHtmlPane extends AbstractHtmlPane
 {
@@ -36,13 +39,44 @@ public class EditableHtmlPane extends AbstractHtmlPane
 	{
 		super(mainWindow);
 	}
-	
+
+	@Override
+	public void setEditable(boolean b)
+	{
+		super.setEditable(b);
+		updateStyleSheet();
+	}
+
 	@Override
 	protected void customizeStyleSheet(StyleSheet style)
+	{
+		customizeStyleSheet(style, EAM.EDITABLE_FOREGROUND_COLOR);
+	}
+
+	@Override
+	protected void updateStyleSheet()
+	{
+		Color fg = isEditable() ? EAM.EDITABLE_FOREGROUND_COLOR : EAM.READONLY_FOREGROUND_COLOR;
+		updateStyleSheet(fg);
+	}
+
+	private void updateStyleSheet(Color fg)
+	{
+		EditorKit editorKit = getEditorKit();
+		if (editorKit instanceof HTMLEditorKit)
+		{
+			HTMLEditorKit htmlKit = (HTMLEditorKit)getEditorKit();
+			StyleSheet style = htmlKit.getStyleSheet();
+			customizeStyleSheet(style, fg);
+			htmlKit.setStyleSheet(style);
+		}
+	}
+
+	private void customizeStyleSheet(StyleSheet style, Color fg)
 	{
 		final int fontSize = getMainWindow().getWizardFontSize();
 		HtmlUtilities.addRuleFontSize(style, getFont().getSize(), fontSize);
 		HtmlUtilities.addRuleFontFamily(style, getMainWindow().getDataPanelFontFamily());
-		HtmlUtilities.addFontColor(style, EAM.EDITABLE_FOREGROUND_COLOR);
+		HtmlUtilities.addFontColor(style, fg);
 	}
 }

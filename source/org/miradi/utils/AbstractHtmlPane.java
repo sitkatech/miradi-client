@@ -20,17 +20,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import java.awt.Point;
-import java.awt.event.MouseListener;
-import java.awt.event.MouseMotionListener;
-import java.io.IOException;
-import java.io.StringReader;
-import java.io.Writer;
-import java.net.URL;
+import net.atlanticbb.tantlinger.ui.text.CompoundUndoManager;
+import net.atlanticbb.tantlinger.ui.text.HTMLUtils;
+import net.atlanticbb.tantlinger.ui.text.WysiwygHTMLEditorKit;
+import org.miradi.dialogfields.DocumentEventHandler;
+import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
+import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
+import org.miradi.objectdata.AbstractUserTextDataWithHtmlFormatting;
+import org.miradi.views.umbrella.PasteHtmlTextAction;
 
-import javax.swing.ActionMap;
-import javax.swing.InputMap;
-import javax.swing.JEditorPane;
+import javax.swing.*;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import javax.swing.text.BadLocationException;
@@ -40,18 +41,13 @@ import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLEditorKit;
 import javax.swing.text.html.HTMLWriter;
 import javax.swing.text.html.StyleSheet;
-
-import net.atlanticbb.tantlinger.ui.text.CompoundUndoManager;
-import net.atlanticbb.tantlinger.ui.text.HTMLUtils;
-import net.atlanticbb.tantlinger.ui.text.WysiwygHTMLEditorKit;
-
-import org.miradi.dialogfields.DocumentEventHandler;
-import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
-import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
-import org.miradi.objectdata.AbstractUserTextDataWithHtmlFormatting;
-import org.miradi.views.umbrella.PasteHtmlTextAction;
+import java.awt.*;
+import java.awt.event.MouseListener;
+import java.awt.event.MouseMotionListener;
+import java.io.IOException;
+import java.io.StringReader;
+import java.io.Writer;
+import java.net.URL;
 
 abstract public class AbstractHtmlPane extends MiradiTextPane
 {
@@ -161,7 +157,7 @@ abstract public class AbstractHtmlPane extends MiradiTextPane
 		return HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(text, AbstractUserTextDataWithHtmlFormatting.getAllowedHtmlTags());
 	}
 
-	private void updateStyleSheet()
+	protected void updateStyleSheet()
 	{
 		HTMLEditorKit htmlKit = (HTMLEditorKit)getEditorKit();
 		StyleSheet style = htmlKit.getStyleSheet();
