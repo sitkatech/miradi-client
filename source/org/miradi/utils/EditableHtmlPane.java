@@ -53,6 +53,14 @@ public class EditableHtmlPane extends AbstractHtmlPane
 		customizeStyleSheet(style, EAM.EDITABLE_FOREGROUND_COLOR);
 	}
 
+	protected void customizeStyleSheet(StyleSheet style, Color fg)
+	{
+		final int fontSize = getMainWindow().getWizardFontSize();
+		HtmlUtilities.addRuleFontSize(style, getFont().getSize(), fontSize);
+		HtmlUtilities.addRuleFontFamily(style, getMainWindow().getDataPanelFontFamily());
+		HtmlUtilities.addFontColor(style, fg);
+	}
+
 	@Override
 	protected void updateStyleSheet()
 	{
@@ -70,13 +78,5 @@ public class EditableHtmlPane extends AbstractHtmlPane
 			customizeStyleSheet(style, fg);
 			htmlKit.setStyleSheet(style);
 		}
-	}
-
-	private void customizeStyleSheet(StyleSheet style, Color fg)
-	{
-		final int fontSize = getMainWindow().getWizardFontSize();
-		HtmlUtilities.addRuleFontSize(style, getFont().getSize(), fontSize);
-		HtmlUtilities.addRuleFontFamily(style, getMainWindow().getDataPanelFontFamily());
-		HtmlUtilities.addFontColor(style, fg);
 	}
 }

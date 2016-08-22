@@ -24,6 +24,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.utils.HtmlUtilities;
 
 import javax.swing.text.html.StyleSheet;
+import java.awt.*;
 
 
 public class SingleLineAppendedLabelsObjectTableCellRendererOnlyFactory extends MultiLineObjectTableCellRendererOnlyFactory
@@ -39,20 +40,24 @@ public class SingleLineAppendedLabelsObjectTableCellRendererOnlyFactory extends 
 		return new TableCellHtmlRendererComponentWithCustomStylesheet(mainWindowToUse);
 	}
 
-	public static class TableCellHtmlRendererComponentWithCustomStylesheet extends TableCellHtmlRendererComponent implements TableCellPreferredHeightProvider
+	private static class TableCellHtmlRendererComponentWithCustomStylesheet extends TableCellHtmlRendererComponent implements TableCellPreferredHeightProvider
 	{
 		public TableCellHtmlRendererComponentWithCustomStylesheet(MainWindow mainWindow)
 		{
 			super(mainWindow);
 		}
-		
+
 		@Override
 		protected void customizeStyleSheet(StyleSheet style)
 		{
-			final int fontSize = getMainWindow().getWizardFontSize();
-			HtmlUtilities.addRuleFontSize(style, getFont().getSize(), fontSize);
-			HtmlUtilities.addRuleFontFamily(style, getMainWindow().getDataPanelFontFamily());
-			HtmlUtilities.addFontColor(style, EAM.EDITABLE_FOREGROUND_COLOR);
+			super.customizeStyleSheet(style);
+			HtmlUtilities.addCustomListItemStyle(style);
+		}
+
+		@Override
+		protected void customizeStyleSheet(StyleSheet style, Color fg)
+		{
+			super.customizeStyleSheet(style, EAM.READONLY_FOREGROUND_COLOR);
 			HtmlUtilities.addCustomListItemStyle(style);
 		}
 	}

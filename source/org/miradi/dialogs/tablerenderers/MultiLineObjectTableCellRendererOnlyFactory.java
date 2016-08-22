@@ -19,15 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.tablerenderers;
 
-import java.awt.Component;
-import java.awt.Dimension;
-import java.awt.Font;
-
-import javax.swing.JComponent;
-import javax.swing.JTable;
-
 import org.miradi.main.MainWindow;
 import org.miradi.utils.EditableHtmlPane;
+
+import javax.swing.*;
+import java.awt.*;
 
 
 public class MultiLineObjectTableCellRendererOnlyFactory extends ObjectTableCellEditorOrRendererFactory
@@ -102,25 +98,25 @@ public class MultiLineObjectTableCellRendererOnlyFactory extends ObjectTableCell
 		@Override
 		public void validate()
 		{
-			//Note: overriding to imporove speed
+			//Note: overriding to improve speed
 		}
 		
 		@Override
 		public void invalidate()
 		{
-			//Note: overriding to imporove speed
+			//Note: overriding to improve speed
 		}
 		
 		@Override
 		public void revalidate()
 		{
-			//Note: overriding to imporove speed
+			//Note: overriding to improve speed
 		}
 		
 		@Override
 		public void repaint()
 		{
-			//Note: overriding to imporove speed
+			//Note: overriding to improve speed
 		}		
 	}
 
@@ -130,5 +126,4 @@ public class MultiLineObjectTableCellRendererOnlyFactory extends ObjectTableCell
 	}
 	
 	private TableCellHtmlRendererComponent rendererComponent;
-
 }
