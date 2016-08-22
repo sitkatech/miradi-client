@@ -40,7 +40,7 @@ public class IndicatorMonitoringPlanSubPanel extends ObjectDataInputPanel
 		
 		ObjectsAction editMethods = getMainWindow().getActions().getObjectsAction(ActionEditMethods.class);
 		editMethodsButton = new ObjectsActionButton(editMethods, getPicker());
-		addFieldWithEditButton(EAM.text("Label|Methods"), createReadonlyTextField(IndicatorSchema.getObjectType(), Indicator.PSEUDO_TAG_METHODS), editMethodsButton);
+		addFieldWithEditButton(EAM.text("Label|Methods"), createReadonlyObjectListField(IndicatorSchema.getObjectType(), Indicator.PSEUDO_TAG_METHODS), editMethodsButton);
 
 		addField(createRatingChoiceField(IndicatorSchema.getObjectType(), Indicator.TAG_PRIORITY, new PriorityRatingQuestion()));
 		

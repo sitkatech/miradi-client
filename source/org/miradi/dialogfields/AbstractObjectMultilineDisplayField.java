@@ -20,11 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
-import javax.swing.text.JTextComponent;
-
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+
+import javax.swing.text.JTextComponent;
 
 public class AbstractObjectMultilineDisplayField extends ObjectMultilineInputField
 {
@@ -41,7 +41,12 @@ public class AbstractObjectMultilineDisplayField extends ObjectMultilineInputFie
 	{
 		getComponent().setBackground(EAM.READONLY_BACKGROUND_COLOR);
 	}
-	
+
+	@Override
+	protected void createRightClickMouseHandler()
+	{
+	}
+
 	@Override
 	public boolean needsToBeSaved()
 	{
