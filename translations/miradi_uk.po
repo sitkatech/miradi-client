@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-18 08:21-0700\n"
+"POT-Creation-Date: 2016-08-22 03:06-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/miradi-client/"
@@ -1073,7 +1073,7 @@ msgstr ""
 "природоохоронної цілі як \"збережена\" чи ні. Якщо характеристика лежить за "
 "межами цього допустимого рівня, це \"деградована\" ціль."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:690
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:700
 msgid "Accounting"
 msgstr ""
 
@@ -2857,7 +2857,7 @@ msgstr "Вибрати теги"
 msgid "Choose the colors that look best on your system:"
 msgstr "Виберіть кольори, які виглядають кращими на вашій системі:"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:676
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:686
 msgid "Classifications"
 msgstr ""
 
@@ -6021,7 +6021,7 @@ msgstr "Прогрес"
 msgid "Progress Percents"
 msgstr "Відсотки прогресу"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:799
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:809
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:166
 msgid "Progress Report"
 msgstr "Проміжний звіт"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-18 08:21-0700\n"
+"POT-Creation-Date: 2016-08-22 03:06-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/miradi-client/"
@@ -1122,7 +1122,7 @@ msgstr ""
 "como  \"conservado\" ou não.  Se o atributo ficar fora desta gama aceitável, "
 "é um atributo \"degradado\"."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:690
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:700
 msgid "Accounting"
 msgstr ""
 
@@ -2922,7 +2922,7 @@ msgstr "Escolher Tags "
 msgid "Choose the colors that look best on your system:"
 msgstr "Escolher as cores que aparecem melhor no seu sistema:"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:676
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:686
 msgid "Classifications"
 msgstr ""
 
@@ -6158,7 +6158,7 @@ msgstr "Progresso"
 msgid "Progress Percents"
 msgstr "Porcentuais de Andamento"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:799
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:809
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:166
 msgid "Progress Report"
 msgstr "Relatório de Progresso"

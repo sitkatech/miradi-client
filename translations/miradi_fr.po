@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-18 08:21-0700\n"
+"POT-Creation-Date: 2016-08-22 03:06-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/miradi-client/"
@@ -1141,7 +1141,7 @@ msgstr ""
 "protection est \"conservée\" ou pas. Si l'attribut est en dehors de ce degré "
 "de variation toléré, il s'agit d'un attribut \"dégradé\".</td>"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:690
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:700
 msgid "Accounting"
 msgstr ""
 
@@ -2941,7 +2941,7 @@ msgstr "Choisir des étiquettes"
 msgid "Choose the colors that look best on your system:"
 msgstr "Choisir les couleurs que correspondent le mieux à votre système :"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:676
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:686
 msgid "Classifications"
 msgstr ""
 
@@ -6184,7 +6184,7 @@ msgstr "Avancement"
 msgid "Progress Percents"
 msgstr "Pourcentages d'avancement"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:799
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:809
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:166
 msgid "Progress Report"
 msgstr "Rapport d'avancement"
