@@ -19,28 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.icons;
 
-import java.awt.Color;
-
-import org.miradi.diagram.renderers.FactorRenderer;
-import org.miradi.diagram.renderers.RectangleRenderer;
-
-public class FundingSourceIcon  extends AbstractShapeIcon 
+public class FundingSourceIcon  extends ExpenseAssignmentIcon
 {
-	@Override
-	FactorRenderer getRenderer() 
-	{
-		return new RectangleRenderer();
-	}
-
-	@Override
-	Color getIconColor() 
-	{
-		return Color.GREEN;
-	}
-	
-	@Override
-	public int getIconHeight()
-	{
-		return 10;
-	}
 }
