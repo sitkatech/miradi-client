@@ -19,6 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.icons;
 
-public class FundingSourceIcon  extends ExpenseAssignmentIcon
+import org.miradi.utils.MiradiResourceImageIcon;
+
+public class FundingSourceIcon  extends MiradiResourceImageIcon
 {
+    public FundingSourceIcon()
+    {
+        super("icons/icon_funding_source.png");
+    }
 }
