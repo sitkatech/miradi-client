@@ -36,7 +36,12 @@ abstract public class AbstractProgressReportTable extends DynamicWidthEditableOb
 	{
 		return (AbstractProgressReportTableModel) getModel();
 	}
-	
+
+	@Override
+	protected void setFixedRowHeight()
+	{
+	}
+
 	@Override
 	public void rebuildColumnEditorsAndRenderers()
 	{
