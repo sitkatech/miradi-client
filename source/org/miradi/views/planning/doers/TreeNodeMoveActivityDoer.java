@@ -31,6 +31,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.*;
 import org.miradi.project.FactorCommandHelper;
+import org.miradi.project.FactorDeleteHelper;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
@@ -72,6 +73,7 @@ public class TreeNodeMoveActivityDoer extends AbstractTreeNodeTaskDoer
 		return childWouldBeVisible(TaskSchema.ACTIVITY_NAME) || childWouldBeVisible(TaskSchema.MONITORING_ACTIVITY_NAME);
 
 	}
+
 	private void moveSelectedActivity() throws CommandFailedException
 	{
 		ORef parentOfSelectedRef = getParentRefOfSelectedObject();
@@ -132,7 +134,7 @@ public class TreeNodeMoveActivityDoer extends AbstractTreeNodeTaskDoer
 			}
 
 			// reposition activity if displayed in rc diagrams
-			repositionActivityInResultsChainDiagrams(activityToMove, newStrategy);
+			repositionActivityInResultsChainDiagrams(activityToMove, originalStrategy, newStrategy);
 
 			getProject().executeCommands(commandsToFixRelevancy);
 		}
@@ -148,32 +150,93 @@ public class TreeNodeMoveActivityDoer extends AbstractTreeNodeTaskDoer
 		}
 	}
 
-	private void repositionActivityInResultsChainDiagrams(BaseObject activityToMove, BaseObject newStrategy) throws Exception
+	private void repositionActivityInResultsChainDiagrams(BaseObject activityToMove, BaseObject originalStrategy, BaseObject newStrategy) throws Exception
 	{
 		ORefList activityDiagramFactorRefs = activityToMove.findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());
 		if (activityDiagramFactorRefs.size() > 0)
         {
-            ORefList resultsChainRefs = ((Strategy) newStrategy).getResultsChains();
-            for (ORef resultsChainRef : resultsChainRefs)
-            {
-                ResultsChainDiagram resultsChainDiagram = ResultsChainDiagram.find(getProject(), resultsChainRef);
-                FactorCommandHelper commandHelper = new FactorCommandHelper(getProject(), resultsChainDiagram);
+            ORefList originalStrategyResultsChainRefs = ((Strategy) originalStrategy).getResultsChains();
+            ORefList newStrategyResultsChainRefs = ((Strategy) newStrategy).getResultsChains();
 
-                HashSet<DiagramFactor> strategyDiagramFactors = resultsChainDiagram.getFactorsFromDiagram(StrategySchema.getObjectType());
-                for (DiagramFactor strategyDiagramFactor : strategyDiagramFactors)
-                {
-                    if (strategyDiagramFactor.getWrappedFactor().getRef().equals(newStrategy.getRef()))
-                    {
-                        for (ORef activityDiagramFactorRef : activityDiagramFactorRefs)
-                        {
-                            DiagramFactorId activityDiagramFactorId = (DiagramFactorId) activityDiagramFactorRef.getObjectId();
-                            if (resultsChainDiagram.containsDiagramFactor(activityDiagramFactorId))
-                                setActivityDiagramLocation(commandHelper, newStrategy, strategyDiagramFactor, activityToMove.getRef(), activityDiagramFactorId);
-                        }
-                    }
-                }
-            }
+			// remove activity refs from rcs where only old strategy is displayed
+			removeActivityFromDiagrams(originalStrategyResultsChainRefs, newStrategyResultsChainRefs, activityDiagramFactorRefs);
+
+			// reposition activity or add it to rcs where new strategy is displayed
+			addActivityToDiagrams(activityToMove, newStrategyResultsChainRefs, newStrategy, activityDiagramFactorRefs);
         }
+	}
+
+	private DiagramFactor getStrategyDiagramFactor(ResultsChainDiagram resultsChainDiagram, BaseObject strategy)
+	{
+		HashSet<DiagramFactor> strategyDiagramFactors = resultsChainDiagram.getFactorsFromDiagram(StrategySchema.getObjectType());
+		for (DiagramFactor strategyDiagramFactor : strategyDiagramFactors)
+		{
+			if (strategyDiagramFactor.getWrappedFactor().getRef().equals(strategy.getRef()))
+				return strategyDiagramFactor;
+		}
+
+		return null;
+	}
+
+	private void removeActivityFromDiagrams(ORefList originalStrategyResultsChainRefs, ORefList newStrategyResultsChainRefs, ORefList activityDiagramFactorRefs) throws Exception
+	{
+		for (ORef resultsChainRef : originalStrategyResultsChainRefs)
+		{
+			if (!newStrategyResultsChainRefs.contains(resultsChainRef))
+			{
+				ResultsChainDiagram resultsChainDiagram = ResultsChainDiagram.find(getProject(), resultsChainRef);
+				FactorDeleteHelper helper = FactorDeleteHelper.createFactorDeleteHelperForNonSelectedFactors(resultsChainDiagram);
+
+				for (ORef activityDiagramFactorRef : activityDiagramFactorRefs)
+				{
+					DiagramFactorId activityDiagramFactorId = (DiagramFactorId) activityDiagramFactorRef.getObjectId();
+					if (resultsChainDiagram.containsDiagramFactor(activityDiagramFactorId))
+						removeActivityFromDiagram(helper, resultsChainDiagram, activityDiagramFactorRef);
+				}
+			}
+		}
+
+	}
+
+	private void removeActivityFromDiagram(FactorDeleteHelper helper, ResultsChainDiagram resultsChainDiagram, ORef activityDiagramFactorRef) throws Exception
+	{
+		CommandVector commandsToHide = new CommandVector();
+		DiagramFactor diagramFactorToDelete = DiagramFactor.find(getProject(), activityDiagramFactorRef);
+
+		commandsToHide.add(helper.buildCommandToRemoveNodeFromDiagram(resultsChainDiagram, diagramFactorToDelete.getDiagramFactorId()));
+		commandsToHide.addAll(helper.buildCommandsToDeleteDiagramFactor(diagramFactorToDelete));
+		getProject().executeCommands(commandsToHide);
+	}
+
+	private void addActivityToDiagrams(BaseObject activityToMove, ORefList newStrategyResultsChainRefs, BaseObject newStrategy, ORefList activityDiagramFactorRefs) throws Exception
+	{
+		for (ORef resultsChainRef : newStrategyResultsChainRefs)
+		{
+			ResultsChainDiagram resultsChainDiagram = ResultsChainDiagram.find(getProject(), resultsChainRef);
+
+			DiagramFactor strategyDiagramFactor = getStrategyDiagramFactor(resultsChainDiagram, newStrategy);
+			if (strategyDiagramFactor != null)
+			{
+				FactorCommandHelper commandHelper = new FactorCommandHelper(getProject(), resultsChainDiagram);
+
+				for (ORef activityDiagramFactorRef : activityDiagramFactorRefs)
+				{
+					DiagramFactorId activityDiagramFactorId = (DiagramFactorId) activityDiagramFactorRef.getObjectId();
+					if (resultsChainDiagram.containsDiagramFactor(activityDiagramFactorId))
+					{
+						// reposition activity
+						setActivityDiagramLocation(commandHelper, newStrategy, strategyDiagramFactor, activityToMove.getRef(), activityDiagramFactorId);
+					}
+					else
+					{
+						// add activity to diagram
+						DiagramFactorId newActivityDiagramFactorId = (DiagramFactorId) commandHelper.createDiagramFactor(resultsChainDiagram, activityToMove.getRef()).getCreatedId();
+						setActivityDiagramLocation(commandHelper, newStrategy, strategyDiagramFactor, activityToMove.getRef(), newActivityDiagramFactorId);
+						commandHelper.setDiagramFactorSize(newActivityDiagramFactorId, DiagramFactor.DEFAULT_ACTIVITY_SIZE);
+					}
+				}
+			}
+		}
 	}
 
 	private void setActivityDiagramLocation(FactorCommandHelper helper, BaseObject newStrategy, DiagramFactor strategyDiagramFactor, ORef activityRef, DiagramFactorId activityDiagramFactorId) throws Exception
