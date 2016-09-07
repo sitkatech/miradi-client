@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-30 02:52-0700\n"
+"POT-Creation-Date: 2016-09-07 03:21-0700\n"
 "PO-Revision-Date: 2014-05-28 17:01+0000\n"
 "Last-Translator: nsalafsky <nick@fosonline.org>\n"
 "Language-Team: English (Estonia) (http://www.transifex.com/projects/p/miradi-"
@@ -2237,8 +2237,8 @@ msgid "Apr"
 msgstr "Apr"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:37
-msgid "April to March"
-msgstr "April to March"
+msgid "April"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DeleteGoal.java:31
 msgid "Are you sure you want to delete this Goal?"
@@ -2473,6 +2473,10 @@ msgstr "Audience"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MonthAbbreviationsQuestion.java:42
 msgid "Aug"
 msgstr "Aug"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:41
+msgid "August"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsProgressStatusQuestion.java:32
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/TableRowHeightModeQuestion.java:38
@@ -3297,6 +3301,10 @@ msgstr "Day Selection: "
 msgid "Dec"
 msgstr "Dec"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:45
+msgid "December"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FontSizeQuestion.java:34
 msgid "Default System Size"
 msgstr "Default System Size"
@@ -3843,6 +3851,10 @@ msgstr "Fair"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MonthAbbreviationsQuestion.java:36
 msgid "Feb"
 msgstr "Feb"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:35
+msgid "February"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/MiradiFileSaveChooser.java:120
 msgid ""
@@ -4628,20 +4640,24 @@ msgid "Jan"
 msgstr "Jan"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:34
-msgid "January to December"
-msgstr "January to December"
+msgid "January"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MonthAbbreviationsQuestion.java:41
 msgid "Jul"
 msgstr "Jul"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:36
-msgid "July to June"
-msgstr "July to June"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:40
+msgid "July"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MonthAbbreviationsQuestion.java:40
 msgid "Jun"
 msgstr "Jun"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:39
+msgid "June"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/KeyEcologicalAttributePropertiesForm.java:33
@@ -5033,6 +5049,10 @@ msgstr "Manual"
 msgid "Mar"
 msgstr "Mar"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:36
+msgid "March"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/HabitatAssociationQuestion.java:129
 msgid "Marine Coastal/Supratidal"
 msgstr "Marine Coastal/Supratidal"
@@ -5216,6 +5236,7 @@ msgid "Marine Oceanic - Mesopelagic (200-1,000 m)"
 msgstr "Marine Oceanic - Mesopelagic (200-1,000 m)"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MonthAbbreviationsQuestion.java:39
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:38
 msgid "May"
 msgstr "May"
 
@@ -5681,6 +5702,10 @@ msgstr "Notifications"
 msgid "Nov"
 msgstr "Nov"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:44
+msgid "November"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:42
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:46
@@ -5731,9 +5756,9 @@ msgstr "Obtain financial resources"
 msgid "Oct"
 msgstr "Oct"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:35
-msgid "October to September"
-msgstr "October to September"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:43
+msgid "October"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:42
 msgid "On-Track"
@@ -6671,6 +6696,10 @@ msgstr "Selection Dialog"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MonthAbbreviationsQuestion.java:43
 msgid "Sep"
 msgstr "Sep"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:42
+msgid "September"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/WorkPlanSettingsPanel.java:37
 msgid "Settings"
@@ -10051,8 +10080,8 @@ msgstr "FieldLabel|11.TNC.PlanningTeamComment|Planning Team (legacy)"
 msgid "FieldLabel|11.CurrencyDecimalPlaces|Currency Decimal Places"
 msgstr "FieldLabel|11.CurrencyDecimalPlaces|Currency Decimal Places"
 
-msgid "FieldLabel|11.FiscalYearStart|Fiscal Year"
-msgstr "FieldLabel|11.FiscalYearStart|Fiscal Year"
+msgid "FieldLabel|11.FiscalYearStart|Fiscal Year (Start Month)"
+msgstr ""
 
 msgid "FieldLabel|11.FullTimeEmployeeDaysPerYear|FTE Days per Year"
 msgstr "FieldLabel|11.FullTimeEmployeeDaysPerYear|FTE Days per Year"
@@ -37637,6 +37666,21 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "April to March"
+#~ msgstr "April to March"
+
+#~ msgid "January to December"
+#~ msgstr "January to December"
+
+#~ msgid "July to June"
+#~ msgstr "July to June"
+
+#~ msgid "October to September"
+#~ msgstr "October to September"
+
+#~ msgid "FieldLabel|11.FiscalYearStart|Fiscal Year"
+#~ msgstr "FieldLabel|11.FiscalYearStart|Fiscal Year"
 
 #~ msgid "3) Edit resources"
 #~ msgstr "3) Edit resources"

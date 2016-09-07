@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-08-30 02:52-0700\n"
+"POT-Creation-Date: 2016-09-07 03:21-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/miradi-client/"
@@ -2088,8 +2088,8 @@ msgid "Apr"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:37
-msgid "April to March"
-msgstr "April sampai Maret "
+msgid "April"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DeleteGoal.java:31
 msgid "Are you sure you want to delete this Goal?"
@@ -2325,6 +2325,10 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MonthAbbreviationsQuestion.java:42
 msgid "Aug"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:41
+msgid "August"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsProgressStatusQuestion.java:32
@@ -3146,6 +3150,10 @@ msgstr ""
 msgid "Dec"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:45
+msgid "December"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FontSizeQuestion.java:34
 msgid "Default System Size"
 msgstr ""
@@ -3686,6 +3694,10 @@ msgstr "Wajar"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MonthAbbreviationsQuestion.java:36
 msgid "Feb"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:35
+msgid "February"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/MiradiFileSaveChooser.java:120
@@ -4466,19 +4478,23 @@ msgid "Jan"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:34
-msgid "January to December"
-msgstr "Januari sampai Desember "
+msgid "January"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MonthAbbreviationsQuestion.java:41
 msgid "Jul"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:36
-msgid "July to June"
-msgstr "Juli sampai Juni "
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:40
+msgid "July"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MonthAbbreviationsQuestion.java:40
 msgid "Jun"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:39
+msgid "June"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
@@ -4876,6 +4892,10 @@ msgstr "Manual"
 msgid "Mar"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:36
+msgid "March"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/HabitatAssociationQuestion.java:129
 msgid "Marine Coastal/Supratidal"
 msgstr "Perairan Laut Pesisir/Pasang Tinggi"
@@ -5068,6 +5088,7 @@ msgid "Marine Oceanic - Mesopelagic (200-1,000 m)"
 msgstr "Perairan Laut Lepas – Mesopelagik (200-1.000 m)"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MonthAbbreviationsQuestion.java:39
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:38
 msgid "May"
 msgstr ""
 
@@ -5518,6 +5539,10 @@ msgstr ""
 msgid "Nov"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:44
+msgid "November"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:42
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:46
@@ -5568,9 +5593,9 @@ msgstr "Dapatkan sumber keuangan "
 msgid "Oct"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:35
-msgid "October to September"
-msgstr "Oktober sampai September "
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:43
+msgid "October"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:42
 msgid "On-Track"
@@ -6497,6 +6522,10 @@ msgstr "Dialog Pilihan "
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MonthAbbreviationsQuestion.java:43
 msgid "Sep"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:42
+msgid "September"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/WorkPlanSettingsPanel.java:37
@@ -9839,8 +9868,8 @@ msgstr "Tim Perencanaan (sistem warisan) "
 msgid "FieldLabel|11.CurrencyDecimalPlaces|Currency Decimal Places"
 msgstr "Jumlah Desimal Mata Uang "
 
-msgid "FieldLabel|11.FiscalYearStart|Fiscal Year"
-msgstr "Tahun Fiskal "
+msgid "FieldLabel|11.FiscalYearStart|Fiscal Year (Start Month)"
+msgstr ""
 
 msgid "FieldLabel|11.FullTimeEmployeeDaysPerYear|FTE Days per Year"
 msgstr "Hari FTE Per Tahun: "
@@ -30810,6 +30839,21 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "April to March"
+#~ msgstr "April sampai Maret "
+
+#~ msgid "January to December"
+#~ msgstr "Januari sampai Desember "
+
+#~ msgid "July to June"
+#~ msgstr "Juli sampai Juni "
+
+#~ msgid "October to September"
+#~ msgstr "Oktober sampai September "
+
+#~ msgid "FieldLabel|11.FiscalYearStart|Fiscal Year"
+#~ msgstr "Tahun Fiskal "
 
 #~ msgid "3) Edit resources"
 #~ msgstr "3) Edit sumber daya "
