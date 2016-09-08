@@ -31,18 +31,10 @@ public class FiscalYearStartQuestion extends StaticChoiceQuestion
 	static ChoiceItem[] getStaticChoices()
 	{
 		return new ChoiceItem[] {
-			new ChoiceItem("", EAM.text("January")),
-			new ChoiceItem("2", EAM.text("February")),
-			new ChoiceItem("3", EAM.text("March")),
-			new ChoiceItem("4", EAM.text("April")),
-			new ChoiceItem("5", EAM.text("May")),
-			new ChoiceItem("6", EAM.text("June")),
-			new ChoiceItem("7", EAM.text("July")),
-			new ChoiceItem("8", EAM.text("August")),
-			new ChoiceItem("9", EAM.text("September")),
-			new ChoiceItem("10", EAM.text("October")),
-			new ChoiceItem("11", EAM.text("November")),
-			new ChoiceItem("12", EAM.text("December")),
+			new ChoiceItem("", EAM.text("January to December")),	
+			new ChoiceItem("10", EAM.text("October to September")),	
+			new ChoiceItem("7", EAM.text("July to June")),	
+			new ChoiceItem("4", EAM.text("April to March")),	
 		};
 	}
 }
