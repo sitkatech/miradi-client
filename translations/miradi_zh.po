@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-07 03:21-0700\n"
+"POT-Creation-Date: 2016-09-08 01:51-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Chinese (http://www.transifex.com/projects/p/miradi-client/"
@@ -2065,8 +2065,8 @@ msgid "Apr"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:37
-msgid "April"
-msgstr ""
+msgid "April to March"
+msgstr "4月到3月 \t\t"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/DeleteGoal.java:31
 msgid "Are you sure you want to delete this Goal?"
@@ -2294,10 +2294,6 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MonthAbbreviationsQuestion.java:42
 msgid "Aug"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:41
-msgid "August"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsProgressStatusQuestion.java:32
@@ -3111,10 +3107,6 @@ msgstr ""
 msgid "Dec"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:45
-msgid "December"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FontSizeQuestion.java:34
 msgid "Default System Size"
 msgstr ""
@@ -3644,10 +3636,6 @@ msgstr "一般"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MonthAbbreviationsQuestion.java:36
 msgid "Feb"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:35
-msgid "February"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/MiradiFileSaveChooser.java:120
@@ -4409,23 +4397,19 @@ msgid "Jan"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:34
-msgid "January"
-msgstr ""
+msgid "January to December"
+msgstr "1月到12月 \t\t"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MonthAbbreviationsQuestion.java:41
 msgid "Jul"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:40
-msgid "July"
-msgstr ""
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:36
+msgid "July to June"
+msgstr "7月到6月 \t\t"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MonthAbbreviationsQuestion.java:40
 msgid "Jun"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:39
-msgid "June"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:146
@@ -4819,10 +4803,6 @@ msgstr "手册"
 msgid "Mar"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:36
-msgid "March"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/HabitatAssociationQuestion.java:129
 msgid "Marine Coastal/Supratidal"
 msgstr "海洋潮间带-红树林 "
@@ -5003,7 +4983,6 @@ msgid "Marine Oceanic - Mesopelagic (200-1,000 m)"
 msgstr "海洋-中层海（200-1,000 m） "
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MonthAbbreviationsQuestion.java:39
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:38
 msgid "May"
 msgstr ""
 
@@ -5440,10 +5419,6 @@ msgstr ""
 msgid "Nov"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:44
-msgid "November"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:42
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:46
@@ -5493,9 +5468,9 @@ msgstr "获取财务资源 \t\t"
 msgid "Oct"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:43
-msgid "October"
-msgstr ""
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:35
+msgid "October to September"
+msgstr "10月到9月 \t\t"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:42
 msgid "On-Track"
@@ -6396,10 +6371,6 @@ msgstr "选项对话框 \t\t"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/MonthAbbreviationsQuestion.java:43
 msgid "Sep"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FiscalYearStartQuestion.java:42
-msgid "September"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/WorkPlanSettingsPanel.java:37
@@ -9670,8 +9641,8 @@ msgstr "规划团队(传承) \t\t"
 msgid "FieldLabel|11.CurrencyDecimalPlaces|Currency Decimal Places"
 msgstr "货币小数位 \t\t"
 
-msgid "FieldLabel|11.FiscalYearStart|Fiscal Year (Start Month)"
-msgstr ""
+msgid "FieldLabel|11.FiscalYearStart|Fiscal Year"
+msgstr "财政年 \t\t"
 
 msgid "FieldLabel|11.FullTimeEmployeeDaysPerYear|FTE Days per Year"
 msgstr ""
@@ -29098,21 +29069,6 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
-
-#~ msgid "April to March"
-#~ msgstr "4月到3月 \t\t"
-
-#~ msgid "January to December"
-#~ msgstr "1月到12月 \t\t"
-
-#~ msgid "July to June"
-#~ msgstr "7月到6月 \t\t"
-
-#~ msgid "October to September"
-#~ msgstr "10月到9月 \t\t"
-
-#~ msgid "FieldLabel|11.FiscalYearStart|Fiscal Year"
-#~ msgstr "财政年 \t\t"
 
 #~ msgid "3) Edit resources"
 #~ msgstr "3) 编辑资源 \t\t"
