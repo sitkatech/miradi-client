@@ -19,31 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.icons;
 
-import java.util.HashMap;
-
-import javax.swing.Icon;
-
-import org.miradi.objects.AccountingCode;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.BudgetCategoryOne;
-import org.miradi.objects.BudgetCategoryTwo;
-import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.Factor;
-import org.miradi.objects.FundingSource;
-import org.miradi.objects.FutureStatus;
-import org.miradi.objects.Goal;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.KeyEcologicalAttribute;
-import org.miradi.objects.Measurement;
-import org.miradi.objects.Objective;
-import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.ProjectResource;
-import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.SubTarget;
-import org.miradi.objects.Task;
+import org.miradi.objects.*;
 import org.miradi.utils.MiradiResourceImageIcon;
+
+import javax.swing.*;
+import java.util.HashMap;
  
 public class IconManager
 {
@@ -204,6 +184,9 @@ public class IconManager
 		if (FutureStatus.is(type))
 			return getGoalIcon();
 		
+		if (Method.is(type))
+			return getMethodIcon();
+
 		throw new RuntimeException("Could not find icon for type:" + type);
 	}
 
