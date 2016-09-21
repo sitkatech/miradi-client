@@ -339,7 +339,26 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 	{
 		enableSectionSwitch();
 	}
-	
+
+	@Override
+	protected boolean shouldSetFocusOnFirstField()
+	{
+		return !isCellEditable();
+	}
+
+	private boolean isCellEditable()
+	{
+		int selectedRow = tree.getSelectionModel().getMinSelectionIndex();
+		if(selectedRow < 0 || selectedRow >= getMainTable().getRowCount())
+			return false;
+
+		int selectedColumn = getMainTable().getColumnModel().getSelectionModel().getMinSelectionIndex();
+		if(selectedColumn < 0 || selectedColumn >= getMainTable().getColumnCount())
+			return false;
+
+		return getMainTable().isCellEditable(selectedRow, selectedColumn);
+	}
+
 	private void enableSelectionListeners()
 	{
 		listenForColumnSelectionChanges(getMainTable());
@@ -498,9 +517,9 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 
 	private PlanningViewMeasurementTableModel measurementModel;
 	private PlanningViewFutureStatusTableModel futureStatusModel;
-	protected AbstractWorkUnitsTableModel workUnitsTableModel;
+	private AbstractWorkUnitsTableModel workUnitsTableModel;
 	private WorkPlanExpenseAmountsTableModel expenseAmountsTableModel;
-	protected WorkPlanBudgetDetailsTableModel budgetDetailsTableModel;
+	private WorkPlanBudgetDetailsTableModel budgetDetailsTableModel;
 	private FundingSourceBudgetDetailsTableModel fundingSourceBudgetDetailsTableModel;
 	private AccountingCodeBudgetDetailsTableModel accountingCodeBudgetDetailsTableModel;
 	private ProjectResourceWorkUnitsTableModel resourceWorkUnitsTableModel;
