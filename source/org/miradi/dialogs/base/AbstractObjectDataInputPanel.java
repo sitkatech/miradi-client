@@ -75,6 +75,8 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		picker = new Picker();
 		subPanels = new Vector<AbstractObjectDataInputPanel>();
 
+		setFocusOnFirstFieldEnabled(true);
+
 		setObjectRefsWithoutUpdatingFields(orefsToUse);
 		final int HORIZONTAL_MARGIN = 2;
 		final int VERTICAL_MARGIN = 5;
@@ -233,9 +235,22 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	public void exportRtf(RtfWriter writer) throws Exception
 	{
 	}
-	
+
+	protected boolean getFocusOnFirstFieldEnabled()
+	{
+		return setFocusOnFirstFieldEnabled;
+	}
+
+	protected void setFocusOnFirstFieldEnabled(boolean valueToUse)
+	{
+		setFocusOnFirstFieldEnabled = valueToUse;
+	}
+
 	public void setFocusOnFirstField()
 	{
+		if (!getFocusOnFirstFieldEnabled())
+			return;
+
 		//TODO: should be first non read only field.
 		if (getFields().size() > 0)
 		{
@@ -1103,5 +1118,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 	private ORefList selectedRefs;
 	private Vector<ObjectDataField> fields;
 	private Vector<AbstractObjectDataInputPanel> subPanels;
+	private boolean setFocusOnFirstFieldEnabled;
 }
 

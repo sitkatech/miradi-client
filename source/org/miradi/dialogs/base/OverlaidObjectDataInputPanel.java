@@ -19,11 +19,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.base;
 
-import java.awt.CardLayout;
-import java.awt.Rectangle;
-
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+
+import java.awt.*;
 
 public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInputPanel
 {
@@ -94,7 +93,7 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 			currentCard.setFocusOnFirstField();
 	}
 	
-	protected boolean isMultiPropertiesPanelActive()
+	private boolean isMultiPropertiesPanelActive()
 	{
 		return isActive;
 	}
@@ -106,13 +105,15 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 
 		deactivateCurrentCard();
 		currentCard = findPanel(orefsToUse);
-		
+
 		if (isMultiPropertiesPanelActive())
 		{
+			currentCard.setFocusOnFirstFieldEnabled(false);
 			cardLayout.show(this, currentCard.getPanelDescription());
 			activateCurrentCard();
+			currentCard.setFocusOnFirstFieldEnabled(true);
 		}
-		
+
 		scrollRectToVisible(new Rectangle(0,0,0,0));
 		
 		// NOTE: The following are an attempt to fix a reported problem 
@@ -127,5 +128,5 @@ public abstract class OverlaidObjectDataInputPanel extends AbstractObjectDataInp
 
 	private boolean isActive;
 	private CardLayout cardLayout;
-	protected AbstractObjectDataInputPanel currentCard;
+	private AbstractObjectDataInputPanel currentCard;
 }
