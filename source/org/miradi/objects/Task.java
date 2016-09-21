@@ -25,17 +25,14 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objecthelpers.RelevancyOverrideSet;
-import org.miradi.objecthelpers.TimePeriodCostsMap;
+import org.miradi.objecthelpers.*;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.schemas.*;
+import org.miradi.schemas.GoalSchema;
+import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
-import org.miradi.utils.OptionalDouble;
 
 public class Task extends Factor
 {
@@ -228,6 +225,9 @@ public class Task extends Factor
 		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
 			return getRelevantIndicatorRefsAsString();
 
+		if(fieldTag.equals(PSEUDO_TAG_ACTIVITY_TYPE_LABEL))
+			return isMonitoringActivity() ? EAM.fieldLabel(ObjectType.FAKE, PSEUDO_TAG_ACTIVITY_TYPE_LABEL) : "";
+
 		return super.getPseudoData(fieldTag);
 	}
 	
@@ -403,6 +403,7 @@ public class Task extends Factor
 	public static final String PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS = "PseudoTaskRelevantObjectiveRefs";
 	public static final String PSEUDO_TAG_RELEVANT_GOAL_REFS = "PseudoTaskRelevantGoalRefs";
 	public static final String PSEUDO_TAG_RELEVANT_INDICATOR_REFS = "PseudoRelevantIndicatorRefs";
+	public final static String PSEUDO_TAG_ACTIVITY_TYPE_LABEL = "ActivityTypeLabel";
 
 	private String cachedObjectTypeName;
 }

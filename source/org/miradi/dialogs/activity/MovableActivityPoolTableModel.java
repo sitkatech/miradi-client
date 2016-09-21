@@ -44,7 +44,7 @@ public class MovableActivityPoolTableModel extends ObjectPoolTableModel
     }
 
     private static final String[] COLUMN_TAGS = new String[] {
-        Task.TAG_SHORT_LABEL, Task.TAG_LABEL, Task.TAG_IS_MONITORING_ACTIVITY,
+        Task.TAG_SHORT_LABEL, Task.TAG_LABEL, Task.PSEUDO_TAG_ACTIVITY_TYPE_LABEL,
     };
 
     @Override
