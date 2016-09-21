@@ -31,7 +31,7 @@ import org.miradi.project.Project;
 import org.miradi.views.TabbedView;
 import org.miradi.views.diagram.doers.CreateFutureStatusDoer;
 import org.miradi.views.planning.doers.*;
-import org.miradi.views.umbrella.CreateResource;
+import org.miradi.views.umbrella.CreateResourceDoer;
 import org.miradi.views.umbrella.DeleteResourceDoer;
 import org.miradi.views.umbrella.UmbrellaView;
 import org.miradi.views.umbrella.doers.TaskMoveDownDoer;
@@ -136,7 +136,7 @@ public class PlanningView extends TabbedView
 		addDoerToMap(ActionTreeCreateRelevancyActivity.class, new CreateRelevancyActivityDoer());
 		addDoerToMap(ActionTreeCreateRelevancyMonitoringActivity.class, new CreateRelevancyMonitoringActivityDoer());
 
-		addDoerToMap(ActionCreateResource.class, new CreateResource());
+		addDoerToMap(ActionCreateResource.class, new CreateResourceDoer());
 		addDoerToMap(ActionDeleteResource.class, new DeleteResourceDoer());
 
 		addDoerToMap(ActionPlanningCreationMenu.class, new PlanningTreeNodeCreationMenuDoer());
