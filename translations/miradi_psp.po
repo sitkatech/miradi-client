@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-08 01:51-0700\n"
+"POT-Creation-Date: 2016-09-21 03:07-0700\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1146,7 +1146,7 @@ msgstr ""
 "\"conserved\" or not.  If the attribute lies outside this acceptable range, "
 "it is a \"degraded\" attribute."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:700
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:715
 msgid "Accounting"
 msgstr ""
 
@@ -2928,7 +2928,7 @@ msgstr "Choose Tags"
 msgid "Choose the colors that look best on your system:"
 msgstr "Choose the colors that look best on your system:"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:686
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:701
 msgid "Classifications"
 msgstr ""
 
@@ -6133,7 +6133,7 @@ msgstr "Progress"
 msgid "Progress Percents"
 msgstr "Progress Percents"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:809
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:824
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:166
 msgid "Progress Report"
 msgstr "Progress Report"
