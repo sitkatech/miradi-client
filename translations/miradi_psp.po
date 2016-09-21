@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-21 03:07-0700\n"
+"POT-Creation-Date: 2016-09-21 07:06-0700\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -9677,6 +9677,9 @@ msgstr ""
 msgid "FieldLabel|3.PseudoRelevantIndicatorRefs|Relevant Indicators"
 msgstr ""
 
+msgid "FieldLabel|3.ActivityTypeLabel|Activity Type"
+msgstr ""
+
 msgid "FieldLabel|5.BudgetRollupReportTypes|Rollup Types"
 msgstr "FieldLabel|5.BudgetRollupReportTypes|Rollup Types"
 
@@ -10436,6 +10439,9 @@ msgstr ""
 
 msgid "FieldLabel|12.Rating|Rating"
 msgstr "FieldLabel|12.Rating|Rating"
+
+msgid "FieldLabel|12.ActivityTypeLabel|Monitoring"
+msgstr ""
 
 msgid "FieldLabel|13.DiagramLink|Diagram Link"
 msgstr "FieldLabel|13.DiagramLink|Diagram Link"

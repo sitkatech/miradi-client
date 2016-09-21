@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-21 03:07-0700\n"
+"POT-Creation-Date: 2016-09-21 07:06-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/miradi-client/"
@@ -9576,6 +9576,9 @@ msgstr ""
 msgid "FieldLabel|3.PseudoRelevantIndicatorRefs|Relevant Indicators"
 msgstr ""
 
+msgid "FieldLabel|3.ActivityTypeLabel|Activity Type"
+msgstr ""
+
 msgid "FieldLabel|5.BudgetRollupReportTypes|Rollup Types"
 msgstr ""
 
@@ -10334,6 +10337,9 @@ msgstr ""
 
 msgid "FieldLabel|12.Rating|Rating"
 msgstr "Clasificación"
+
+msgid "FieldLabel|12.ActivityTypeLabel|Monitoring"
+msgstr ""
 
 msgid "FieldLabel|13.DiagramLink|Diagram Link"
 msgstr "Enlace al diagrama"
