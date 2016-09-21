@@ -19,8 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import java.text.ParseException;
-
+import org.miradi.actions.ActionShowActivityBubble;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandEndTransaction;
@@ -34,6 +33,7 @@ import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.diagram.doers.CloneStressDoer;
+import org.miradi.views.diagram.doers.ShowActivityBubbleDoer;
 
 public class CreateActivityDoer extends ObjectsDoer
 {
@@ -51,6 +51,10 @@ public class CreateActivityDoer extends ObjectsDoer
 	protected void doIt() throws Exception
 	{
 		doInsertActivity();
+
+		ShowActivityBubbleDoer showActivityBubbleDoer = (ShowActivityBubbleDoer)getView().getDoer(ActionShowActivityBubble.class);
+		if (showActivityBubbleDoer.isAvailable())
+			showActivityBubbleDoer.safeDoIt();
 	}
 
 	private void doInsertActivity() throws CommandFailedException
@@ -71,7 +75,7 @@ public class CreateActivityDoer extends ObjectsDoer
 		}
 	}
 
-	private void insertActivity(Project project, Strategy strategy, int childIndex) throws CommandFailedException, ParseException, Exception
+	private void insertActivity(Project project, Strategy strategy, int childIndex) throws Exception
 	{
 		project.executeCommand(new CommandBeginTransaction());
 		try
