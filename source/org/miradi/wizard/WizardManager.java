@@ -19,29 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.wizard;
 
-import java.util.Hashtable;
-
-import org.miradi.actions.openstandards.ActionOpenStandardsAnalyzeUseAndAdaptParentMenu;
-import org.miradi.actions.openstandards.ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4a;
-import org.miradi.actions.openstandards.ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4b;
-import org.miradi.actions.openstandards.ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4c;
-import org.miradi.actions.openstandards.ActionOpenStandardsCaptureAndShareLearningParentMenu;
-import org.miradi.actions.openstandards.ActionOpenStandardsCaptureAndShareLearningProcessStep5a;
-import org.miradi.actions.openstandards.ActionOpenStandardsCaptureAndShareLearningProcessStep5b;
-import org.miradi.actions.openstandards.ActionOpenStandardsCaptureAndShareLearningProcessStep5c;
-import org.miradi.actions.openstandards.ActionOpenStandardsConceptualizeParentMenu;
-import org.miradi.actions.openstandards.ActionOpenStandardsConceptualizeProcessStep1a;
-import org.miradi.actions.openstandards.ActionOpenStandardsConceptualizeProcessStep1b;
-import org.miradi.actions.openstandards.ActionOpenStandardsConceptualizeProcessStep1c;
-import org.miradi.actions.openstandards.ActionOpenStandardsConceptualizeProcessStep1d;
-import org.miradi.actions.openstandards.ActionOpenStandardsImplementActionsAndMonitoringParentMenu;
-import org.miradi.actions.openstandards.ActionOpenStandardsImplementActionsAndMonitoringProcessStep3a;
-import org.miradi.actions.openstandards.ActionOpenStandardsImplementActionsAndMonitoringProcessStep3b;
-import org.miradi.actions.openstandards.ActionOpenStandardsImplementActionsAndMonitoringProcessStep3c;
-import org.miradi.actions.openstandards.ActionOpenStandardsPlanActionsAndMonitoringParentMenu;
-import org.miradi.actions.openstandards.ActionOpenStandardsPlanActionsAndMonitoringProcessStep2a;
-import org.miradi.actions.openstandards.ActionOpenStandardsPlanActionsAndMonitoringProcessStep2b;
-import org.miradi.actions.openstandards.ActionOpenStandardsPlanActionsAndMonitoringProcessStep2c;
+import org.miradi.actions.openstandards.*;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
@@ -53,74 +31,21 @@ import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.views.noproject.NoProjectView;
 import org.miradi.views.summary.SummaryView;
-import org.miradi.wizard.diagram.DescribeTargetStatusStep;
-import org.miradi.wizard.diagram.DevelopDraftStrategiesStep;
-import org.miradi.wizard.diagram.DiagramOverviewStep;
-import org.miradi.wizard.diagram.DiagramWizardCompleteResultsChainLinks;
-import org.miradi.wizard.diagram.DiagramWizardConstructInitialResultsChain;
-import org.miradi.wizard.diagram.DiagramWizardCreateInitialModelStep;
-import org.miradi.wizard.diagram.DiagramWizardDefineAudienceStep;
-import org.miradi.wizard.diagram.DiagramWizardDefineTargetsStep;
-import org.miradi.wizard.diagram.DiagramWizardGoodResultsChainCriteriaReview;
-import org.miradi.wizard.diagram.DiagramWizardHumanWelfareTargetsStep;
-import org.miradi.wizard.diagram.DiagramWizardIdentifyDirectThreatStep;
-import org.miradi.wizard.diagram.DiagramWizardIdentifyIndirectThreatStep;
-import org.miradi.wizard.diagram.DiagramWizardLinkDirectThreatsToTargetsStep;
-import org.miradi.wizard.diagram.DiagramWizardProjectScopeStep;
-import org.miradi.wizard.diagram.DiagramWizardResultsChainSelectStrategyStep;
-import org.miradi.wizard.diagram.DiagramWizardReviewAndModifyTargetsStep;
-import org.miradi.wizard.diagram.DiagramWizardReviewModelAndAdjustStep;
-import org.miradi.wizard.diagram.MonitoringWizardDefineIndicatorsStep;
-import org.miradi.wizard.diagram.RankDraftStrategiesStep;
-import org.miradi.wizard.diagram.SelectChainStep;
-import org.miradi.wizard.diagram.StrategicPlanDevelopGoalStep;
-import org.miradi.wizard.diagram.StrategicPlanDevelopObjectivesStep;
-import org.miradi.wizard.diagram.TargetStressesStep;
-import org.miradi.wizard.diagram.TargetViabilityMethodChoiceStep;
+import org.miradi.wizard.diagram.*;
 import org.miradi.wizard.library.LibraryOverviewStep;
 import org.miradi.wizard.map.MapOverviewStep;
 import org.miradi.wizard.noproject.NoProjectOverviewStep;
 import org.miradi.wizard.noproject.WelcomeCreateStep;
 import org.miradi.wizard.noproject.WelcomeImportStep;
-import org.miradi.wizard.planning.BudgetWizardAccountingAndFunding;
-import org.miradi.wizard.planning.BudgetWizardBudgetDetail;
-import org.miradi.wizard.planning.BudgetWizardReconcileActualExpendituresStep;
-import org.miradi.wizard.planning.DevelopOperationalPlan;
-import org.miradi.wizard.planning.ImplementPlans;
-import org.miradi.wizard.planning.PlanningOverviewStep;
-import org.miradi.wizard.planning.PlanningWizardFinalizeMonitoringPlanStep;
-import org.miradi.wizard.planning.PlanningWizardFinalizeStrategicPlanStep;
-import org.miradi.wizard.planning.WorkPlanAssignResourcesStep;
-import org.miradi.wizard.planning.WorkPlanCreateResourcesStep;
-import org.miradi.wizard.planning.WorkPlanDevelopActivitiesAndTasksStep;
-import org.miradi.wizard.planning.WorkPlanDevelopMethodsAndTasksStep;
+import org.miradi.wizard.planning.*;
 import org.miradi.wizard.reports.ReportsOverviewStep;
 import org.miradi.wizard.schedule.ScheduleOverviewStep;
-import org.miradi.wizard.summary.SummaryOverviewStep;
-import org.miradi.wizard.summary.SummaryWizardDefineProjecScope;
-import org.miradi.wizard.summary.SummaryWizardDefineProjectVision;
-import org.miradi.wizard.summary.SummaryWizardDefineTeamMembers;
-import org.miradi.wizard.summary.SummaryWizardRolesAndResponsibilities;
-import org.miradi.wizard.targetviability.TargetViabilityDetermineDesiredStatusStep;
-import org.miradi.wizard.targetviability.TargetViabilityDetermineKeyAttributesStep;
-import org.miradi.wizard.targetviability.TargetViabilityDevelopDraftIndicatorsStep;
-import org.miradi.wizard.targetviability.TargetViabilityIdentifyIndicatorsStep;
-import org.miradi.wizard.targetviability.TargetViabilityOverviewStep;
-import org.miradi.wizard.targetviability.TargetViabilityRecordInitialMeasurementStep;
-import org.miradi.wizard.targetviability.TargetViabilityRefineIndicatorRatingsStep;
-import org.miradi.wizard.threatmatrix.ThreatMatrixOverviewStep;
-import org.miradi.wizard.threatmatrix.ThreatRatingWizardCheckBundleStep;
-import org.miradi.wizard.threatmatrix.ThreatRatingWizardCheckTotalsStep;
-import org.miradi.wizard.threatmatrix.ThreatRatingWizardChooseBundle;
-import org.miradi.wizard.threatmatrix.ThreatRatingWizardIrreversibilityStep;
-import org.miradi.wizard.threatmatrix.ThreatRatingWizardScopeStep;
-import org.miradi.wizard.threatmatrix.ThreatRatingWizardSeverityStep;
-import org.miradi.wizard.threatmatrix.ThreatSimpleOverviewStep;
-import org.miradi.wizard.threatmatrix.ThreatStressCheckThreatRatingStep;
-import org.miradi.wizard.threatmatrix.ThreatStressOverviewStep;
-import org.miradi.wizard.threatmatrix.ThreatStressRateContributionAndIrreversibilityStep;
-import org.miradi.wizard.threatmatrix.ThreatStressRateScopeAndSeverityStep;
+import org.miradi.wizard.summary.*;
+import org.miradi.wizard.targetviability.*;
+import org.miradi.wizard.threatmatrix.*;
 import org.miradi.wizard.workplan.WorkPlanOverviewStep;
+
+import java.util.Hashtable;
 
 
 public class WizardManager
@@ -349,7 +274,6 @@ public class WizardManager
 		createStepEntry(new WorkPlanDevelopActivitiesAndTasksStep(panel));
 		createStepEntry(new WorkPlanDevelopMethodsAndTasksStep(panel));
 		createStepEntry(new WorkPlanCreateResourcesStep(panel));
-		createStepEntry(new WorkPlanAssignResourcesStep(panel));
 		createStepEntry(new BudgetWizardAccountingAndFunding(panel));
 		createStepEntry(new BudgetWizardBudgetDetail(panel));
 		createStepEntry(new BudgetWizardReconcileActualExpendituresStep(panel));
@@ -498,7 +422,6 @@ public class WizardManager
 				
 				WorkPlanDevelopMethodsAndTasksStep.class,
 				WorkPlanCreateResourcesStep.class,
-				WorkPlanAssignResourcesStep.class,
 
 				// (later this will go here)
 				//ScheduleOverviewStep.class,

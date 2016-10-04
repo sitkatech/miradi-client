@@ -47,6 +47,6 @@ public class BudgetWizardBudgetDetail extends FinancialWizardStep
 	@Override
 	public String getSubHeading()
 	{
-		return EAM.text("2) Add budget detail to workplan ");
+		return EAM.text("2) Add budget detail to work plan ");
 	}
 }

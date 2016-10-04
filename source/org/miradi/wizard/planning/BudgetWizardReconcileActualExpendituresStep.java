@@ -48,6 +48,6 @@ public class BudgetWizardReconcileActualExpendituresStep extends FinancialWizard
 	@Override
 	public String getSubHeading()
 	{
-		return EAM.text("3) Reconcile actual expenditures");
+		return EAM.text("3) Analyzing and using work plan data");
 	}
 }

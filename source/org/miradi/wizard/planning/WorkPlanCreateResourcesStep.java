@@ -40,12 +40,12 @@ public class WorkPlanCreateResourcesStep extends WorkPlanWizardStep
 	@Override
 	public String getWizardScreenTitle()
 	{
-		return EAM.text("Detail activities/methods, tasks, and responsibilities");
+		return EAM.text("Detail activities, tasks, and responsibilities");
 	}
 
 	@Override
 	public String getSubHeading()
 	{
-		return EAM.text("3) Edit assignments");
+		return EAM.text("3) Work planning for monitoring");
 	}
 }
