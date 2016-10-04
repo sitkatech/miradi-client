@@ -21,26 +21,30 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 <div class='navigation'>
 
 <h3>Hints for the Work Plan View</h3>
-<p>You can specify if your workplan should show data from your Conceptual Models, Results Chains or both by going to the Planning tab in <code class='toolbarbutton'>&lt;Edit/Preferences&gt;</code> and selecting from the <strong>Include Work Plan Data From:</strong> drop down chooser.</p>
+<p>You can specify which Conceptual Model or Results Chain to display in the Work Plan tab 
+by selecting from the <strong>Diagrams - include data from </strong> and the  <strong>Display this selection </strong> drop down choosers.</p>
 
-<p>You can also specify whether to display only Action related rows (Strategies and Activities) or Monitoring related rows (Indicators and Methods) by clicking the <code class='toolbarbutton'>&lt;Customize&nbsp;Table...&gt;</code> button and making a selection in the Include Data From drop down menu.  The project totals values will only reflect the data that is being displayed.</p>
+<p>You can also specify whether to display only Action related rows (Strategies and Activities) or Monitoring related rows (Strategies and Monitoring Activities) 
+by clicking the <code class='toolbarbutton'>&lt;Customize&nbsp;Table...&gt;</code> button and making a selection in the <strong>Include Data From </strong> drop down menu.  
+The project totals values will only reflect the data that is being displayed.</p>
 
-<p>Click on the Work Plan tab to <strong>see an overview of your plan.</strong> In the tree, clicking on the + and - symbols enables you to <strong>expand</strong> or <strong>collapse</strong> different parts of the hierarchy. Items in the table are based on your results chains and will include the strategies/indicators and their activities/methods and tasks.</p>
+<p>Click on the Work Plan tab to <strong>see an overview of your plan.</strong> In the tree, clicking on the + and - symbols 
+enables you to <strong>expand</strong> or <strong>collapse</strong> different parts of the hierarchy.
+Click the <code class='toolbarbutton'>&lt;Expand&nbsp;To...&gt;</code> button to select the branches of the tree to display.   
+To display the <strong>Assignment</strong> and <strong>Expense</strong> rows, click 
+the <code class='toolbarbutton'>&lt;Customize&nbsp;Table...&gt;</code> button, and check the appropriate Rows check boxes.  
+Items in the table are based on your results chains and will include the strategies, activities (regular or monitoring) and tasks.</p>
 
-<p>The work plan table allows you to view and edit the work and expenses required to achieve your results chains at any level of detail and uses the concept of <strong>roll up rules</strong>.</p>
-<p>Estimates that are entered at the same level of hierarchy in the project tree, or in the temporal grid will be added up and displayed as a sum total at the next level up in hierarchy.</p>
-<p>If you enter an estimate at a finer level of detail (lower level of hierarchy), the calculated total will then be displayed for the higher level. Original higher level estimate data is retained for later comparison, but is ignored by roll up rules and not used to calculate totals and will display with strikethrough text in the lower panel</p>
+<p>Expenses are estimated in the default project currency.  To set the currency, go to the <code class='toolbarbutton'>&lt;Settings&gt;</code> tab in the Work Plan View (or go to Edit->Preferences, and select the Planning tab). Select the <code class='toolbarbutton'>&lt;Financial Settings&gt;</code> sidetab to adjust the currency type and the number of decimal places displayed.</p>
 
-<p>Work Units are typically estimated in number of days.  If you would prefer to do your estimates using the concept of Full Time Equivalents (FTEs), you can right click in any work units cell and select <code class='toolbarbutton'>&lt;Fraction&nbsp;of&nbsp;FTE...&gt;</code> to bring up a calculator that will assist you in conversion of FTE values into days.</p>
+<p class='hint'><b>Hint: </b>The values in the  <strong>Who Work Assignments</strong> column also roll up from lower levels in the hierarchy so that it is easy to see all the resources that will be required for a given strategy or indicator.
+<p class='hint'><b>Hint: </b>The values in the <strong>Timeline</strong> column are entered from the <code class='toolbarbutton'>&lt;Timeline&gt;</code> sidetab in the sub-panel of an action or from the cell popup, and are independent of the entries in the Work Plan table.   
+<p class='hint'><b>Hint: </b>The values in the <strong>When Work Assignments</strong> column are based on fields that are populated in the Work Units columns only. 
 
-<p>Expenses are estimated in the default project currency.  The same roll up rules that apply to Work Units also apply to expenses.</p>
-
-<p class='hint'><b>Hint:</b>The values in the When column are based on fields that are populated in the Work Units columns only.  It is possible to specify a when value for any row that is not being calculated or already has data in the work columns using the When pop up.  This will place zeros in the appropriate cells in the work columns that you can then override with estimates at a later time.
-<p class='hint'><b>Hint:</b>The values in the Who column also roll up from lower levels in the hierarchy so that it is easy to see all the resources that will be required for a given strategy or indicator.
-
+<p>The lettered circles in the following image explain key work plan controls:</p>
 
 <p><table width='100%'><tr><td align='center'>
-<img src='images/WorkPlanWizard/workplan-nav.png' width='500' height='386'></img>
+<img src='images/WorkPlanWizard/workplan-nav-new.png' width='700' height='891'></img>
 </td></tr></table><p>
 
 </div>
