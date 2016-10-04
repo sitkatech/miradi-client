@@ -19,16 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.upperPanel;
 
-import java.util.Vector;
-
-import javax.swing.tree.TreePath;
-
 import org.miradi.dialogs.treetables.GenericTreeTableModel;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.utils.AbstractTreeTableOrModelExporter;
+
+import javax.swing.tree.TreePath;
+import java.util.Vector;
 
 public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 {
@@ -37,7 +36,7 @@ public class TreeTableModelExporter extends AbstractTreeTableOrModelExporter
 		super(projectToUse, modelToUse.getUniqueTreeTableModelIdentifier());
 		
 		model = modelToUse;
-		fullyExpandedTreePaths = model.getFullyExpandedTreePathListExcludingLeafNodes();
+		fullyExpandedTreePaths = model.getFullyExpandedTreePathListIncludingLeafNodes();
 		removeRootNode();
 	}
 

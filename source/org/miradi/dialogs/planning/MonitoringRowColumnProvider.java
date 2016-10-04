@@ -23,12 +23,9 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Indicator;
 import org.miradi.project.Project;
-import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.ResultsChainDiagramSchema;
-import org.miradi.schemas.TargetSchema;
 import org.miradi.utils.CodeList;
 
 public class MonitoringRowColumnProvider extends AbstractPlanningTreeRowColumnProvider
@@ -41,9 +38,7 @@ public class MonitoringRowColumnProvider extends AbstractPlanningTreeRowColumnPr
 	public CodeList getColumnCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
-				Indicator.PSEUDO_TAG_METHODS,
 				Indicator.TAG_PRIORITY,
-				BaseObject.PSEUDO_TAG_TIMEFRAME_TOTAL,
 				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 				Desire.TAG_FULL_TEXT,
 		});
@@ -52,12 +47,10 @@ public class MonitoringRowColumnProvider extends AbstractPlanningTreeRowColumnPr
 	public CodeList getRowCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
-				ResultsChainDiagramSchema.OBJECT_NAME,
-				ConceptualModelDiagramSchema.OBJECT_NAME,
-				TargetSchema.OBJECT_NAME,
 				GoalSchema.OBJECT_NAME,
 				ObjectiveSchema.OBJECT_NAME,
-				IndicatorSchema.OBJECT_NAME, });
+				IndicatorSchema.OBJECT_NAME,
+		});
 	}
 
 	public boolean shouldIncludeResultsChain() throws Exception

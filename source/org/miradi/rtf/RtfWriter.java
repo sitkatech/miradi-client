@@ -19,23 +19,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf;
 
-import java.awt.Color;
+import org.martus.util.UnicodeWriter;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.utils.*;
+import org.miradi.views.umbrella.SaveImageJPEGDoer;
+
+import javax.swing.*;
+import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.util.Vector;
-
-import javax.swing.Icon;
-
-import org.martus.util.UnicodeWriter;
-import org.miradi.questions.ChoiceItem;
-import org.miradi.utils.BufferedImageFactory;
-import org.miradi.utils.ColorManager;
-import org.miradi.utils.HtmlUtilities;
-import org.miradi.utils.TableExporter;
-import org.miradi.utils.XmlUtilities2;
-import org.miradi.views.umbrella.SaveImageJPEGDoer;
 
 public class RtfWriter
 {
@@ -290,7 +285,10 @@ public class RtfWriter
 	}
 	
 	public static String encode(String stringToEncode)
-	{	
+	{
+		if (stringToEncode == null)
+			return "";
+
 		String encodedString = stringToEncode.replaceAll("\\\\", "\\\\\\\\");
 		encodedString = encodedString.replaceAll("\\}", "\\\\}");
 		encodedString = encodedString.replaceAll("\\{", "\\\\{");
@@ -299,7 +297,7 @@ public class RtfWriter
 		encodedString = HtmlUtilities.stripAllHtmlTags(encodedString);
 		encodedString = XmlUtilities2.getXmlDecoded(encodedString);
 		
-		String NEW_LINE_TO_SEPERATE_FROM_NEXT_CHAR = "\\~\n";
+		String NEW_LINE_TO_SEPARATE_FROM_NEXT_CHAR = "\\~\n";
 		StringBuffer buffer = new StringBuffer(encodedString);
 		for(int i = 0; i < buffer.length(); ++i)
 		{
@@ -307,7 +305,7 @@ public class RtfWriter
 			if (c >= 128)
 			{
 				String decimalValue = toDecimal(c);
-				buffer.replace(i, i+1, "\\u" + decimalValue.toUpperCase() + NEW_LINE_TO_SEPERATE_FROM_NEXT_CHAR);
+				buffer.replace(i, i+1, "\\u" + decimalValue.toUpperCase() + NEW_LINE_TO_SEPARATE_FROM_NEXT_CHAR);
 			}
 		}
 		

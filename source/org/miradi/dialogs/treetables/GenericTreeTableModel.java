@@ -19,17 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.treetables;
 
-import java.util.Vector;
-
-import javax.swing.tree.TreePath;
-
+import com.java.sun.jtreetable.AbstractTreeTableModel;
+import com.java.sun.jtreetable.TreeTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.utils.ModelColumnTagProvider;
 
-import com.java.sun.jtreetable.AbstractTreeTableModel;
-import com.java.sun.jtreetable.TreeTableModel;
+import javax.swing.tree.TreePath;
+import java.util.Vector;
 
 public abstract class GenericTreeTableModel extends AbstractTreeTableModel implements ModelColumnTagProvider
 {
@@ -38,7 +36,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		super(root);
 	}
 
-	public TreePath getPathToRoot()
+	private TreePath getPathToRoot()
 	{
 		return new TreePath(getRoot());
 	}
@@ -66,7 +64,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		reloadNodesWithoutRebuildingNodes();
 	}
 
-	public void reloadNodesWithoutRebuildingNodes()
+	protected void reloadNodesWithoutRebuildingNodes()
 	{
 		fireTreeStructureChanged(getRoot(), new Object[] {getPathToRoot()}, null, null);
 	}
@@ -146,21 +144,21 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		TreeTableNode node = (TreeTableNode)rawNode;
 		return node.getChildCount();
 	}
-	
-	public ORefList getFullyExpandedRefListExcludingLeafNodes() throws Exception
+
+	protected ORefList getFullyExpandedRefListIncludingLeafNodes() throws Exception
 	{
 		ORefList fullyExpandedObjectRefs = new ORefList();
-		Vector<TreePath> fullExpandedNodeList = getFullyExpandedTreePathListExcludingLeafNodes();
+		Vector<TreePath> fullExpandedNodeList = getFullyExpandedTreePathListIncludingLeafNodes();
 		for(TreePath treePath : fullExpandedNodeList)
 		{
 			TreeTableNode node = (TreeTableNode) treePath.getLastPathComponent();
 			ORef ref = node.getObjectReference();
 			fullyExpandedObjectRefs.add(ref);
 		}
-		
+
 		return fullyExpandedObjectRefs;
 	}
-	
+
 	public Vector<ORefList> getFullyExpandedHierarchyRefListListExcludingLeafNodes() throws Exception
 	{
 		return getExpandedHierarchies(getFullyExpandedTreePathListExcludingLeafNodes());
@@ -199,7 +197,7 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 		return getExpandedTreePathList(new IncludingLeafNodesTreeExpander());
 	}
 	
-	public Vector<TreePath> getFullyExpandedTreePathListExcludingLeafNodes() throws Exception
+	private Vector<TreePath> getFullyExpandedTreePathListExcludingLeafNodes() throws Exception
 	{
 		return getExpandedTreePathList(new ExcludingLeafNodesTreeExpander());
 	}
@@ -211,6 +209,6 @@ public abstract class GenericTreeTableModel extends AbstractTreeTableModel imple
 
 	abstract public String getUniqueTreeTableModelIdentifier();
 
-	public static final String DEFAULT_COLUMN = "Item";
-	public static final int SINGLE_COLUMN_COUNT = 1;
+	protected static final String DEFAULT_COLUMN = "Item";
+	protected static final int SINGLE_COLUMN_COUNT = 1;
 }
