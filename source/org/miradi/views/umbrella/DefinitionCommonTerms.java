@@ -93,7 +93,7 @@ public class DefinitionCommonTerms
 		
 
 		def = Definition.createDefinitionFromTextString(EAM.text("Direct Threat"), EAM.text("Direct threat - A proximate agent or factor that directly " +
-		"degrades one or more conservation targets. In Miradi, a dirct threat is represented by a pink rectangle."));
+		"degrades one or more conservation targets. In Miradi, a direct threat is represented by a pink rectangle."));
 		defs.put("Definition:DirectThreat", def);
 			
 
@@ -118,7 +118,7 @@ public class DefinitionCommonTerms
 		def = Definition.createDefinitionFromTextString(EAM.text("Project|Scope"), EAM.text("Scope - The broad geographic or thematic focus of a project. In Miradi, a project's scope is represented by a green box around the targets."));
 		defs.put("Definition:Scope", def);
 		
-		def = Definition.createDefinitionFromTextString(EAM.text("Assigned Resource"), EAM.text("Assigned Resource - A project resource that has been assigned to a specific activity, method, or task."));
+		def = Definition.createDefinitionFromTextString(EAM.text("Assigned Person"), EAM.text("Assigned Person - A person that has been assigned to a specific strategy, activity or task."));
 		defs.put("Definition:AssignedResource", def);
 		
 		
@@ -126,7 +126,7 @@ public class DefinitionCommonTerms
 		"spatially as the proportion of the target that can reasonably be expected to be " +
 		"affected by the threat within ten years given the continuation of current " +
 		"circumstances and trends. For ecosystems and ecological communities, measured " +
-		"as the proportion of the target's occurence. For species, measured as the " +
+		"as the proportion of the target's occurrence. For species, measured as the " +
 		"proportion of the target's population."));
 		defs.put("Definition:ThreatRatingScope", def);
 		
@@ -149,7 +149,7 @@ public class DefinitionCommonTerms
 		defs.put("Definition:KEA", def);
 
 		def = Definition.createDefinitionFromTextString(EAM.text("Method"), EAM.text("Method - A specific technique used to collect data to measure an indicator.  " +
-		"A good method is accurate, reliable, cost-effective, feasible, and appropriate. In Miradi, a method is represented by a purple flattened oval."));
+		"A good method is accurate, reliable, cost-effective, feasible, and appropriate. In Miradi, a method is represented by a purple clipboard."));
 		defs.put("Definition:Method", def);
 		
 
@@ -193,19 +193,19 @@ public class DefinitionCommonTerms
 		defs.put("Definition:InitialProjectTeam", def);
 		
 		
-		def = Definition.createDefinitionFromTextString(EAM.text("Work Plan"), EAM.text("Work Plan - A description of the specific activities/methods and tasks that " +
+		def = Definition.createDefinitionFromTextString(EAM.text("Work Plan"), EAM.text("Work Plan - A description of the specific activities and tasks that " +
 		"you need to undertake your strategic and monitoring plans.  A good work plan " +
 		"shows the timing and sequence of each task as well as the specific resources " +
 		"required to carry it out."));
 		defs.put("Definition:WorkPlan", def);
 		
 
-		def = Definition.createDefinitionFromTextString(EAM.text("Activity"), EAM.text("Activity - An action carried out to accomplish one or more of a project's strategies. In Miradi, an activity is represented by a yellow flattened oval."));
+		def = Definition.createDefinitionFromTextString(EAM.text("Activity"), EAM.text("Activity - An action carried out to accomplish one or more of a project's strategies. In Miradi, an action activity is represented by a yellow flattened oval; a monitoring activity is represented by a purple flattened oval."));
 		defs.put("Definition:Activity", def);
 		
 		
-		def = Definition.createDefinitionFromTextString(EAM.text("Task"), EAM.text("Task - A specific action required in service of an activity or method.  Tasks themselves can " +
-		"be broken into sub-tasks if necessary. In Miradi, a task is represented by a grey flattened oval."));
+		def = Definition.createDefinitionFromTextString(EAM.text("Task"), EAM.text("Task - A specific action required in service of an activity.  " +
+		"In Miradi, a task is represented by a grey flattened oval."));
 		defs.put("Definition:Task", def);
 		
 		
@@ -215,8 +215,7 @@ public class DefinitionCommonTerms
 		defs.put("Definition:Quarter", def);
 		
 		
-		def = Definition.createDefinitionFromTextString(EAM.text("Resource"), EAM.text("Resource - A person or item that is needed to complete an activity/method or a task. " +
-		"There are three main kinds of resources - human, material, and financial."));
+		def = Definition.createDefinitionFromTextString(EAM.text("People"), EAM.text("People - A person or item that is needed to complete a strategy, activity or task. "));
 		defs.put("Definition:Resource", def);
 		
 		
