@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-21 07:06-0700\n"
+"POT-Creation-Date: 2016-10-04 04:06-0700\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -365,12 +365,12 @@ msgstr ""
 msgid "1 Obj"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:49
-msgid "1) Activities"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/targetviability/TargetViabilityDetermineKeyAttributesStep.java:50
 msgid "1) Determine key ecological attributes"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:49
+msgid "1) High-level work planning"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DiagramWizardDefineTargetsStep.java:51
@@ -399,11 +399,15 @@ msgid "1) Select target and threat to work on"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/BudgetWizardBudgetDetail.java:50
-msgid "2) Add budget detail to workplan "
+msgid "2) Add budget detail to work plan "
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DiagramWizardConstructInitialResultsChain.java:50
 msgid "2) Construct initial results chain "
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:49
+msgid "2) Detailed work planning"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DevelopDraftStrategiesStep.java:50
@@ -412,10 +416,6 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/targetviability/TargetViabilityIdentifyIndicatorsStep.java:50
 msgid "2) Identify indicators"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:49
-msgid "2) Methods"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/threatmatrix/ThreatStressRateScopeAndSeverityStep.java:51
@@ -430,12 +430,12 @@ msgstr ""
 msgid "2) Review and modify targets"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DiagramWizardCompleteResultsChainLinks.java:50
-msgid "3) Complete links in the chain "
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/BudgetWizardReconcileActualExpendituresStep.java:51
+msgid "3) Analyzing and using work plan data"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:49
-msgid "3) Edit assignments"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DiagramWizardCompleteResultsChainLinks.java:50
+msgid "3) Complete links in the chain "
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/threatmatrix/ThreatStressRateContributionAndIrreversibilityStep.java:51
@@ -446,8 +446,8 @@ msgstr ""
 msgid "3) Rate the severity of the threat"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/BudgetWizardReconcileActualExpendituresStep.java:51
-msgid "3) Reconcile actual expenditures"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:49
+msgid "3) Work planning for monitoring"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/targetviability/TargetViabilityDevelopDraftIndicatorsStep.java:50
@@ -456,10 +456,6 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/targetviability/TargetViabilityRefineIndicatorRatingsStep.java:50
 msgid "3b) Refine indicator ratings"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:49
-msgid "4) Assign people"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/threatmatrix/ThreatStressCheckThreatRatingStep.java:50
@@ -3139,14 +3135,10 @@ msgid ""
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:73
-msgid "Detail activities, tasks, and responsibilities"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:43
-msgid "Detail activities/methods, tasks, and responsibilities"
+msgid "Detail activities, tasks, and responsibilities"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:78

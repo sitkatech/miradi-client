@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-21 07:06-0700\n"
+"POT-Creation-Date: 2016-10-04 04:06-0700\n"
 "PO-Revision-Date: 2015-07-15 14:36+0000\n"
 "Last-Translator: Felix <felix.cybulla@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/miradi-client/"
@@ -380,13 +380,13 @@ msgstr "1 Schutzziel"
 msgid "1 Obj"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:49
-msgid "1) Activities"
-msgstr "1) Aktivitäten"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/targetviability/TargetViabilityDetermineKeyAttributesStep.java:50
 msgid "1) Determine key ecological attributes"
 msgstr "1) Ökologische Schlüsselattribute festlegen"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:49
+msgid "1) High-level work planning"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DiagramWizardDefineTargetsStep.java:51
 msgid "1) Identify initial list of targets"
@@ -414,12 +414,16 @@ msgid "1) Select target and threat to work on"
 msgstr "1) Schutzobjekt und Bedrohung zur Bearbeitung wählen"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/BudgetWizardBudgetDetail.java:50
-msgid "2) Add budget detail to workplan "
-msgstr "2) Budgetdetail zum Arbeitsplan hinzufügen"
+msgid "2) Add budget detail to work plan "
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DiagramWizardConstructInitialResultsChain.java:50
 msgid "2) Construct initial results chain "
 msgstr "2) vorläufige Ergebniswirkungskette erstellen"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:49
+msgid "2) Detailed work planning"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DevelopDraftStrategiesStep.java:50
 msgid "2) Develop draft strategies"
@@ -428,10 +432,6 @@ msgstr "2) Strategieentwurf erstellen"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/targetviability/TargetViabilityIdentifyIndicatorsStep.java:50
 msgid "2) Identify indicators"
 msgstr "2) Indikatoren identifizieren"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:49
-msgid "2) Methods"
-msgstr "2) Methoden"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/threatmatrix/ThreatStressRateScopeAndSeverityStep.java:51
 msgid "2) Rate scope and severity of stress"
@@ -445,13 +445,13 @@ msgstr "2) Wirkungsreichweite der Bedrohung bewerten"
 msgid "2) Review and modify targets"
 msgstr "2) Schutzobjekte überprüfen und anpassen"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/BudgetWizardReconcileActualExpendituresStep.java:51
+msgid "3) Analyzing and using work plan data"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DiagramWizardCompleteResultsChainLinks.java:50
 msgid "3) Complete links in the chain "
 msgstr "3) Vervollständigen Sie die Verbindungen in der Kette"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:49
-msgid "3) Edit assignments"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/threatmatrix/ThreatStressRateContributionAndIrreversibilityStep.java:51
 msgid "3) Rate contribution and irreversibility of threat"
@@ -461,9 +461,9 @@ msgstr "3) Beitrag und Irreversibilität der Bedrohung bewerten"
 msgid "3) Rate the severity of the threat"
 msgstr "3) Wirkungsschwere der Bedrohung bewerten"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/BudgetWizardReconcileActualExpendituresStep.java:51
-msgid "3) Reconcile actual expenditures"
-msgstr "3) Ausgaben abgleichen"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:49
+msgid "3) Work planning for monitoring"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/targetviability/TargetViabilityDevelopDraftIndicatorsStep.java:50
 msgid "3a) Develop draft indicator ratings"
@@ -471,10 +471,6 @@ msgstr "3a) Vorläufige Indikatorenbewertung erstellen "
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/targetviability/TargetViabilityRefineIndicatorRatingsStep.java:50
 msgid "3b) Refine indicator ratings"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:49
-msgid "4) Assign people"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/threatmatrix/ThreatStressCheckThreatRatingStep.java:50
@@ -3311,16 +3307,11 @@ msgid ""
 msgstr "Gewünschter zukünftiger Zustand - Eine Messung "
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:73
-msgid "Detail activities, tasks, and responsibilities"
-msgstr "Aktivitäten, Aufgaben und Verantwortlichkeiten näher beschreiben"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:43
-msgid "Detail activities/methods, tasks, and responsibilities"
-msgstr ""
-"Aktivitäten/Methoden, Aufgaben und Vearantwortlichkeiten näher beschreiben"
+msgid "Detail activities, tasks, and responsibilities"
+msgstr "Aktivitäten, Aufgaben und Verantwortlichkeiten näher beschreiben"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:78
 msgid "Detail methods, tasks, and responsibilities"
@@ -30472,6 +30463,22 @@ msgid ""
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
 "Marine___Western Tropical Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "1) Activities"
+#~ msgstr "1) Aktivitäten"
+
+#~ msgid "2) Add budget detail to workplan "
+#~ msgstr "2) Budgetdetail zum Arbeitsplan hinzufügen"
+
+#~ msgid "2) Methods"
+#~ msgstr "2) Methoden"
+
+#~ msgid "3) Reconcile actual expenditures"
+#~ msgstr "3) Ausgaben abgleichen"
+
+#~ msgid "Detail activities/methods, tasks, and responsibilities"
+#~ msgstr ""
+#~ "Aktivitäten/Methoden, Aufgaben und Vearantwortlichkeiten näher beschreiben"
 
 #~ msgid "3) Edit resources"
 #~ msgstr "3) Ressourcen bearbeiten"

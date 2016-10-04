@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-21 07:06-0700\n"
+"POT-Creation-Date: 2016-10-04 04:06-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -377,13 +377,13 @@ msgstr "1 крайна цел"
 msgid "1 Obj"
 msgstr "1 междинна цел"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:49
-msgid "1) Activities"
-msgstr "1) Дейности"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/targetviability/TargetViabilityDetermineKeyAttributesStep.java:50
 msgid "1) Determine key ecological attributes"
 msgstr "1) Определете ключови екологични характеристики"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:49
+msgid "1) High-level work planning"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DiagramWizardDefineTargetsStep.java:51
 msgid "1) Identify initial list of targets"
@@ -411,12 +411,16 @@ msgid "1) Select target and threat to work on"
 msgstr "1) Изберете обект и заплаха, по които да работите"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/BudgetWizardBudgetDetail.java:50
-msgid "2) Add budget detail to workplan "
-msgstr "2) Добавете бюджетни детайли към работния план"
+msgid "2) Add budget detail to work plan "
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DiagramWizardConstructInitialResultsChain.java:50
 msgid "2) Construct initial results chain "
 msgstr "2) Постройте начални верига на резултати"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:49
+msgid "2) Detailed work planning"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DevelopDraftStrategiesStep.java:50
 msgid "2) Develop draft strategies"
@@ -425,10 +429,6 @@ msgstr "2) Разработете чернови на стратегии"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/targetviability/TargetViabilityIdentifyIndicatorsStep.java:50
 msgid "2) Identify indicators"
 msgstr "2) Определете индикатори"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:49
-msgid "2) Methods"
-msgstr "2) Методи"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/threatmatrix/ThreatStressRateScopeAndSeverityStep.java:51
 msgid "2) Rate scope and severity of stress"
@@ -442,13 +442,13 @@ msgstr "2) Оценете обхвата на заплахата"
 msgid "2) Review and modify targets"
 msgstr "2) Разгледайте повторно и модифицирайте обектите"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/BudgetWizardReconcileActualExpendituresStep.java:51
+msgid "3) Analyzing and using work plan data"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DiagramWizardCompleteResultsChainLinks.java:50
 msgid "3) Complete links in the chain "
 msgstr "3) Попълнете връзките във веригата"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:49
-msgid "3) Edit assignments"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/threatmatrix/ThreatStressRateContributionAndIrreversibilityStep.java:51
 msgid "3) Rate contribution and irreversibility of threat"
@@ -458,9 +458,9 @@ msgstr "3) Оценете въздействие и необратимост н�
 msgid "3) Rate the severity of the threat"
 msgstr "3) Оценете интензивност на заплахата"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/BudgetWizardReconcileActualExpendituresStep.java:51
-msgid "3) Reconcile actual expenditures"
-msgstr "3) Съгласуване на действителни разходи"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:49
+msgid "3) Work planning for monitoring"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/targetviability/TargetViabilityDevelopDraftIndicatorsStep.java:50
 msgid "3a) Develop draft indicator ratings"
@@ -469,10 +469,6 @@ msgstr "3a) Създайте проекто-оценки на индикатор
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/targetviability/TargetViabilityRefineIndicatorRatingsStep.java:50
 msgid "3b) Refine indicator ratings"
 msgstr "3б) Преработете оценките на индикаторите"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:49
-msgid "4) Assign people"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/threatmatrix/ThreatStressCheckThreatRatingStep.java:50
 msgid "4) Check target-threat rating"
@@ -3406,15 +3402,11 @@ msgstr ""
 "на проектова крайна подцел."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:73
-msgid "Detail activities, tasks, and responsibilities"
-msgstr "Подробни дейности, задачи и отговорности"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:43
-msgid "Detail activities/methods, tasks, and responsibilities"
-msgstr "Подробни дейности/методи, задачи и отговорности"
+msgid "Detail activities, tasks, and responsibilities"
+msgstr "Подробни дейности, задачи и отговорности"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:78
 msgid "Detail methods, tasks, and responsibilities"
@@ -33365,6 +33357,21 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Морски___Западен тропически "
 "Атлантически океан___Североизточен бразилски шелф___Бразилия"
+
+#~ msgid "1) Activities"
+#~ msgstr "1) Дейности"
+
+#~ msgid "2) Add budget detail to workplan "
+#~ msgstr "2) Добавете бюджетни детайли към работния план"
+
+#~ msgid "2) Methods"
+#~ msgstr "2) Методи"
+
+#~ msgid "3) Reconcile actual expenditures"
+#~ msgstr "3) Съгласуване на действителни разходи"
+
+#~ msgid "Detail activities/methods, tasks, and responsibilities"
+#~ msgstr "Подробни дейности/методи, задачи и отговорности"
 
 #~ msgid "3) Edit resources"
 #~ msgstr "3) Редактирайте ресурси"

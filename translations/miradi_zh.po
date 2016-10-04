@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-21 07:06-0700\n"
+"POT-Creation-Date: 2016-10-04 04:06-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Chinese (http://www.transifex.com/projects/p/miradi-client/"
@@ -368,13 +368,13 @@ msgstr ""
 msgid "1 Obj"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:49
-msgid "1) Activities"
-msgstr "1) 活动 \t\t"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/targetviability/TargetViabilityDetermineKeyAttributesStep.java:50
 msgid "1) Determine key ecological attributes"
 msgstr "1) 确定关键生态属性 \t\t"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:49
+msgid "1) High-level work planning"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DiagramWizardDefineTargetsStep.java:51
 msgid "1) Identify initial list of targets"
@@ -402,12 +402,16 @@ msgid "1) Select target and threat to work on"
 msgstr "1) 选择要处理的对象和威胁因子 \t\t"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/BudgetWizardBudgetDetail.java:50
-msgid "2) Add budget detail to workplan "
-msgstr "2) 添加预算详情到工作计划中 \t\t"
+msgid "2) Add budget detail to work plan "
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DiagramWizardConstructInitialResultsChain.java:50
 msgid "2) Construct initial results chain "
 msgstr "2) 构建初始结果链 \t\t"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:49
+msgid "2) Detailed work planning"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DevelopDraftStrategiesStep.java:50
 msgid "2) Develop draft strategies"
@@ -416,10 +420,6 @@ msgstr "2) 拟定策略草案 \t\t"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/targetviability/TargetViabilityIdentifyIndicatorsStep.java:50
 msgid "2) Identify indicators"
 msgstr "2) 识别指示物 \t\t"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:49
-msgid "2) Methods"
-msgstr "2) 方法 \t\t"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/threatmatrix/ThreatStressRateScopeAndSeverityStep.java:51
 msgid "2) Rate scope and severity of stress"
@@ -433,13 +433,13 @@ msgstr "2) 评定威胁因子范围 \t\t"
 msgid "2) Review and modify targets"
 msgstr "2) 审查并修改对象 \t\t"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/BudgetWizardReconcileActualExpendituresStep.java:51
+msgid "3) Analyzing and using work plan data"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DiagramWizardCompleteResultsChainLinks.java:50
 msgid "3) Complete links in the chain "
 msgstr "3) 在链中完成链接 \t\t"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:49
-msgid "3) Edit assignments"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/threatmatrix/ThreatStressRateContributionAndIrreversibilityStep.java:51
 msgid "3) Rate contribution and irreversibility of threat"
@@ -449,9 +449,9 @@ msgstr "3) 评定威胁因子所起的作用及不可逆性 \t\t"
 msgid "3) Rate the severity of the threat"
 msgstr "3) 评定威胁因子严重性 \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/BudgetWizardReconcileActualExpendituresStep.java:51
-msgid "3) Reconcile actual expenditures"
-msgstr "3) 协调实际开销 \t\t"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:49
+msgid "3) Work planning for monitoring"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/targetviability/TargetViabilityDevelopDraftIndicatorsStep.java:50
 msgid "3a) Develop draft indicator ratings"
@@ -460,10 +460,6 @@ msgstr "3a) 拟定指示物评级草案 \t\t"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/targetviability/TargetViabilityRefineIndicatorRatingsStep.java:50
 msgid "3b) Refine indicator ratings"
 msgstr "3b) 修订指示物评级 \t\t"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:49
-msgid "4) Assign people"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/threatmatrix/ThreatStressCheckThreatRatingStep.java:50
 msgid "4) Check target-threat rating"
@@ -3191,15 +3187,11 @@ msgid ""
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:73
-msgid "Detail activities, tasks, and responsibilities"
-msgstr "详尽的活动、任务及职责 \t\t"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:43
-msgid "Detail activities/methods, tasks, and responsibilities"
-msgstr "详尽的活动/方法、任务、以及职责 \t\t"
+msgid "Detail activities, tasks, and responsibilities"
+msgstr "详尽的活动、任务及职责 \t\t"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:78
 msgid "Detail methods, tasks, and responsibilities"
@@ -29075,6 +29067,21 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "1) Activities"
+#~ msgstr "1) 活动 \t\t"
+
+#~ msgid "2) Add budget detail to workplan "
+#~ msgstr "2) 添加预算详情到工作计划中 \t\t"
+
+#~ msgid "2) Methods"
+#~ msgstr "2) 方法 \t\t"
+
+#~ msgid "3) Reconcile actual expenditures"
+#~ msgstr "3) 协调实际开销 \t\t"
+
+#~ msgid "Detail activities/methods, tasks, and responsibilities"
+#~ msgstr "详尽的活动/方法、任务、以及职责 \t\t"
 
 #~ msgid "3) Edit resources"
 #~ msgstr "3) 编辑资源 \t\t"
