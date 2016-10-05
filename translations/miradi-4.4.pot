@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-09-21 07:21-0700\n"
+"POT-Creation-Date: 2016-10-05 03:51-0700\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -366,12 +366,12 @@ msgstr ""
 msgid "1 Obj"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:49
-msgid "1) Activities"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/targetviability/TargetViabilityDetermineKeyAttributesStep.java:50
 msgid "1) Determine key ecological attributes"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:49
+msgid "1) High-level work planning"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DiagramWizardDefineTargetsStep.java:51
@@ -400,11 +400,15 @@ msgid "1) Select target and threat to work on"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/BudgetWizardBudgetDetail.java:50
-msgid "2) Add budget detail to workplan "
+msgid "2) Add budget detail to work plan "
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DiagramWizardConstructInitialResultsChain.java:50
 msgid "2) Construct initial results chain "
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:49
+msgid "2) Detailed work planning"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DevelopDraftStrategiesStep.java:50
@@ -413,10 +417,6 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/targetviability/TargetViabilityIdentifyIndicatorsStep.java:50
 msgid "2) Identify indicators"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:49
-msgid "2) Methods"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/threatmatrix/ThreatStressRateScopeAndSeverityStep.java:51
@@ -431,12 +431,12 @@ msgstr ""
 msgid "2) Review and modify targets"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DiagramWizardCompleteResultsChainLinks.java:50
-msgid "3) Complete links in the chain "
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/BudgetWizardReconcileActualExpendituresStep.java:51
+msgid "3) Analyzing and using work plan data"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:49
-msgid "3) Edit assignments"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/diagram/DiagramWizardCompleteResultsChainLinks.java:50
+msgid "3) Complete links in the chain "
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/threatmatrix/ThreatStressRateContributionAndIrreversibilityStep.java:51
@@ -447,8 +447,8 @@ msgstr ""
 msgid "3) Rate the severity of the threat"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/BudgetWizardReconcileActualExpendituresStep.java:51
-msgid "3) Reconcile actual expenditures"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:49
+msgid "3) Work planning for monitoring"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/targetviability/TargetViabilityDevelopDraftIndicatorsStep.java:50
@@ -457,10 +457,6 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/targetviability/TargetViabilityRefineIndicatorRatingsStep.java:50
 msgid "3b) Refine indicator ratings"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:49
-msgid "4) Assign people"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/threatmatrix/ThreatStressCheckThreatRatingStep.java:50
@@ -858,7 +854,7 @@ msgstr ""
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:228
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:227
 msgid ""
 "<html>Irreversibility - The degree to which the effects of a threat can be "
 "reversed and the target affected by the threat restored. "
@@ -875,7 +871,7 @@ msgid ""
 "share the same taxonomy classification lists. </li></ol></html>"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:245
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:244
 msgid ""
 "<html>Project (general) - Any set of actions undertaken by a group of people "
 "and/or organizations to achieve defined goals and objectives. Projects can "
@@ -954,11 +950,11 @@ msgstr ""
 msgid "Abandoned - No longer relevant or useful"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:325
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:324
 msgid "Acceptable Range of Variation"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:325
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:324
 msgid ""
 "Acceptable Range of Variation - Key ecological attributes of focal targets "
 "naturally vary over time. The acceptable range defines the limits of this "
@@ -980,12 +976,12 @@ msgid "Accounting Code"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/AccountingCodeManagementConfiguration.java:60
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:296
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:295
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:191
 msgid "Accounting Codes"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:296
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:295
 msgid ""
 "Accounting Codes - A set of categories developed by an organization to "
 "categorize and track expenses.  They typically include hierarchical strings "
@@ -1900,14 +1896,16 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:203
 msgid ""
 "Activity - An action carried out to accomplish one or more of a project's "
-"strategies. In Miradi, an activity is represented by a yellow flattened oval."
+"strategies. In Miradi, an action activity is represented by a yellow "
+"flattened oval; a monitoring activity is represented by a purple flattened "
+"oval."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:290
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:289
 msgid "Actual Expenditures"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:290
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:289
 msgid ""
 "Actual Expenditures - A backwards looking report on the money you spent for "
 "the activities/methods and tasks you undertook to implement your strategic "
@@ -1924,6 +1922,10 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:113
 msgid "Add Human Wellbeing Targets If Desired"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:94
+msgid "Add budget detail to work plan"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpTargetStressesStep.java:35
@@ -2015,6 +2017,10 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:40
 msgid "Analyze project results and assumptions"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:99
+msgid "Analyzing and using work plan data"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/CreateResultsChainDoer.java:90
@@ -2226,13 +2232,13 @@ msgid "Assign Resources"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:121
-msgid "Assigned Resource"
+msgid "Assigned Person"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:121
 msgid ""
-"Assigned Resource - A project resource that has been assigned to a specific "
-"activity, method, or task."
+"Assigned Person - A person that has been assigned to a specific strategy, "
+"activity or task."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:40
@@ -2361,11 +2367,11 @@ msgstr ""
 msgid "Brown"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:284
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:283
 msgid "Budget"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:284
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:283
 msgid ""
 "Budget - A forward looking projection of the expenses and anticipated "
 "funding sources for the activities/methods and tasks you need to implement "
@@ -2390,7 +2396,7 @@ msgstr ""
 msgid "Budget Override was: %s"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:345
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:344
 msgid "Bundle Rules"
 msgstr ""
 
@@ -2542,7 +2548,7 @@ msgstr ""
 msgid "CM Page"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:261
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:260
 msgid "CMP"
 msgstr ""
 
@@ -2844,11 +2850,11 @@ msgid ""
 "Miradi, a contributing factor is represented by an orange rectangle."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:239
 msgid "Contribution"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:240
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:239
 msgid ""
 "Contribution - A threat rating criterion defined as the expected "
 "contribution of the source, acting alone, to the full expression of a stress "
@@ -3128,30 +3134,25 @@ msgstr ""
 msgid "Desert - Temperate"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:334
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:333
 msgid "Desired Future Status"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:334
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:333
 msgid ""
 "Desired Future Status - A measurement or rating value for an indicator for a "
 "key ecological attribute that the project intends to achieve at a specified "
 "time in the future. Generally equivalent to a project sub-goal."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:73
-msgid "Detail activities, tasks, and responsibilities"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanAssignResourcesStep.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:43
-msgid "Detail activities/methods, tasks, and responsibilities"
+msgid "Detail activities, tasks, and responsibilities"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:78
-msgid "Detail methods, tasks, and responsibilities"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:79
+msgid "Detailed work planning"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/MiradiShareDetailsPanel.java:39
@@ -3187,10 +3188,6 @@ msgstr ""
 msgid "Develop and share communication products"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:93
-msgid "Develop and submit funding proposals"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:40
 msgid "Develop communications strategy"
 msgstr ""
@@ -3213,10 +3210,6 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpPlanningWizardDevelopOperationalPlan.java:36
 msgid "Develop operational plan"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:83
-msgid "Develop project timeline or calendar"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpShorttermPlans.java:35
@@ -3285,7 +3278,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:95
 msgid ""
 "Direct threat - A proximate agent or factor that directly degrades one or "
-"more conservation targets. In Miradi, a dirct threat is represented by a "
+"more conservation targets. In Miradi, a direct threat is represented by a "
 "pink rectangle."
 msgstr ""
 
@@ -3467,10 +3460,6 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/treetables/TreeTablePanel.java:127
 msgid "Error restoring tree state"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:88
-msgid "Estimate costs for activities and monitoring"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/CurrencyTypeQuestion.java:36
@@ -3817,12 +3806,12 @@ msgid "Funding Source"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/FundingSourceManagementConfiguration.java:58
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:309
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:308
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:171
 msgid "Funding Sources"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:309
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:308
 msgid "Funding Sources - The sources of money available to your project."
 msgstr ""
 
@@ -3963,6 +3952,10 @@ msgstr ""
 msgid "High"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:74
+msgid "High-level work planning"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/notify/NotifyDialogTemplateFactory.java:75
 msgid "Home Folder Not Found"
 msgstr ""
@@ -4072,11 +4065,11 @@ msgstr ""
 msgid "Implement plans"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:103
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:109
 msgid "Implement strategic and monitoring plans"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:108
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:114
 msgid "Implement work plan"
 msgstr ""
 
@@ -4102,7 +4095,7 @@ msgstr ""
 msgid "Import Project"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:275
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:274
 msgid "Import Zip"
 msgstr ""
 
@@ -4255,7 +4248,7 @@ msgstr ""
 msgid "Intensive Assessment"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:316
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:315
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewIntermediateResultPropertiesPanel.java:33
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:46
 msgid "Intermediate Result"
@@ -4265,7 +4258,7 @@ msgstr ""
 msgid "Intermediate Result (Light Blue)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:316
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:315
 msgid ""
 "Intermediate Result - A factor in a results chain that describes a specific "
 "outcome that results from implementing one or more conservation strategies. "
@@ -4292,7 +4285,7 @@ msgstr ""
 msgid "Invalid project name: %s"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:228
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:227
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:107
 msgid "Irreversibility"
 msgstr ""
@@ -4673,6 +4666,10 @@ msgstr ""
 msgid "Link Properties"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:89
+msgid "List accounting codes and funding sources"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:48
 msgid "Lists"
 msgstr ""
@@ -4908,7 +4905,7 @@ msgstr ""
 msgid "May"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:328
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:327
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:52
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:53
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:33
@@ -4916,7 +4913,7 @@ msgstr ""
 msgid "Measurement"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:328
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:327
 msgid ""
 "Measurement - An assessment of an indicator at a given point in time. "
 "Measurements can be either quantitative or qualitative."
@@ -4973,7 +4970,7 @@ msgstr ""
 msgid "Menu|2. Plan Actions and Monitoring"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:53
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:54
 msgid "Menu|3. Implement Actions and Monitoring"
 msgstr ""
 
@@ -5024,7 +5021,7 @@ msgstr ""
 msgid ""
 "Method - A specific technique used to collect data to measure an indicator.  "
 "A good method is accurate, reliable, cost-effective, feasible, and "
-"appropriate. In Miradi, a method is represented by a purple flattened oval."
+"appropriate. In Miradi, a method is represented by a purple clipboard."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpMonitoringWizardSelectMethodsStep.java:35
@@ -5248,12 +5245,12 @@ msgstr ""
 msgid "Needs Attention"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:319
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:318
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:38
 msgid "Nested Target"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:319
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:318
 msgid ""
 "Nested Target - Species, ecological communities, or ecological system "
 "targets whose conservation needs are subsumed in one or more focal "
@@ -5376,7 +5373,7 @@ msgstr ""
 msgid "Objectives:"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:98
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:104
 msgid "Obtain financial resources"
 msgstr ""
 
@@ -5426,11 +5423,11 @@ msgstr ""
 msgid "Open Project"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:268
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:267
 msgid "Open Standards"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:268
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:267
 msgid ""
 "Open Standards for the Practice of Conservation - A series of best practices "
 "for designing, managing, monitoring, and learning from conservation "
@@ -5485,7 +5482,7 @@ msgstr ""
 msgid "Outcomes"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:223
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:222
 msgid "Overall Threat Rating"
 msgstr ""
 
@@ -5538,6 +5535,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/ProjectResourceManagementPanel.java:51
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/PlanningProjectResourceManagementConfiguration.java:59
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/ProjectResourceManagementConfiguration.java:58
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/assignment/AssignmentsPropertiesSubPanel.java:85
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:308
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:47
@@ -5547,6 +5545,12 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:47
 msgid "People (Who)"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
+msgid ""
+"People - A person or item that is needed to complete a strategy, activity or "
+"task. "
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanProjectResourceFilterEditorPanel.java:47
@@ -5686,11 +5690,11 @@ msgstr ""
 msgid "Preparing groups..."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:331
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:330
 msgid "Priority Rating"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:331
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:330
 msgid ""
 "Priority Rating - An assesment of the importance or urgency or collecting "
 "measurements for a given indicator."
@@ -5735,17 +5739,17 @@ msgstr ""
 msgid "ProcessStep|2C. Develop Operational Plan"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:58
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:59
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/ProcessSteps.java:36
 msgid "ProcessStep|3A. Develop Short-Term Work Plan"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:63
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:64
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/ProcessSteps.java:37
 msgid "ProcessStep|3B. Develop and Refine Project Budget"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:68
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:69
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/ProcessSteps.java:38
 msgid "ProcessStep|3C. Implement Plans"
 msgstr ""
@@ -5791,7 +5795,7 @@ msgstr ""
 msgid "Progress Reports"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:245
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:244
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryProjectTabPanel.java:83
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
@@ -5994,17 +5998,6 @@ msgstr ""
 msgid "Report to project team and stakeholders"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
-msgid "Resource"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
-msgid ""
-"Resource - A person or item that is needed to complete an activity/method or "
-"a task. There are three main kinds of resources - human, material, and "
-"financial."
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:37
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ResultsChainCreatorHelper.java:196
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:39
@@ -6162,7 +6155,7 @@ msgid ""
 "expected to be affected by the threat within ten years given the "
 "continuation of current circumstances and trends. For ecosystems and "
 "ecological communities, measured as the proportion of the target's "
-"occurence. For species, measured as the proportion of the target's "
+"occurrence. For species, measured as the proportion of the target's "
 "population."
 msgstr ""
 
@@ -6283,12 +6276,12 @@ msgstr ""
 msgid "Settings"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:232
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:231
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:106
 msgid "Severity"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:232
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:231
 msgid ""
 "Severity - Within the scope, the level of damage to the target from the "
 "threat that can reasonably be expected given the continuation of current "
@@ -6547,7 +6540,7 @@ msgstr ""
 msgid "Stress Based Threat Rating Mode"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:348
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:347
 msgid "Stress Calculation Rules"
 msgstr ""
 
@@ -7449,11 +7442,11 @@ msgstr ""
 msgid "TT|Zoom To Fit"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:302
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:301
 msgid "Tab Delimited File"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:302
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:301
 msgid ""
 "Tab Delimited File - A software file with regular entries spaced by tab "
 "commands.  Most word processors or spreadsheet programs will allow you to "
@@ -7567,7 +7560,7 @@ msgstr ""
 msgid "Target-Threat Rating"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:223
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:222
 msgid ""
 "Target-Threat Rating - The rating of the effect of a direct threat on a "
 "specific target. The target-threat rating is calculated using a rule-based "
@@ -7613,8 +7606,7 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:207
 msgid ""
-"Task - A specific action required in service of an activity or method.  "
-"Tasks themselves can be broken into sub-tasks if necessary. In Miradi, a "
+"Task - A specific action required in service of an activity.  In Miradi, a "
 "task is represented by a grey flattened oval."
 msgstr ""
 
@@ -7701,7 +7693,7 @@ msgstr ""
 msgid "That project is too old to be opened with this version of Miradi"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:261
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:260
 msgid ""
 "The Conservation Measures Partnership (CMP) - A consortium of some of the "
 "world's leading conservation organizations, CMP members work together to "
@@ -8092,8 +8084,8 @@ msgstr ""
 msgid "Threat"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:339
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:342
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:338
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:341
 msgid "Threat Calculations"
 msgstr ""
 
@@ -8134,7 +8126,7 @@ msgstr ""
 msgid "Threat Reduction Result (Light Purple)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:313
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:312
 msgid ""
 "Threat Reduction Result - A factor in a results chain that describes the "
 "desired change in a direct threat that results from implementing one or more "
@@ -8150,7 +8142,7 @@ msgstr ""
 msgid "Threat: %s"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:313
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:312
 msgid "ThreatReduction Result"
 msgstr ""
 
@@ -8532,7 +8524,7 @@ msgid ""
 "to write to it, or you are using invalid characters in the file name."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:358
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:357
 msgid "Undefined"
 msgstr ""
 
@@ -8664,12 +8656,12 @@ msgstr ""
 msgid "Viability Analysis Mode"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:322
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:321
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:118
 msgid "Viability Ratings"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:322
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:321
 msgid ""
 "Viability Ratings - A project's scale of what is very good, good, fair, or "
 "poor for a given indicator for a given target. Viability ratings are often "
@@ -8887,9 +8879,9 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:196
 msgid ""
-"Work Plan - A description of the specific activities/methods and tasks that "
-"you need to undertake your strategic and monitoring plans.  A good work plan "
-"shows the timing and sequence of each task as well as the specific resources "
+"Work Plan - A description of the specific activities and tasks that you need "
+"to undertake your strategic and monitoring plans.  A good work plan shows "
+"the timing and sequence of each task as well as the specific resources "
 "required to carry it out."
 msgstr ""
 
@@ -8926,6 +8918,10 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryView.java:169
 msgid "Work plan start date is before project start date"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:84
+msgid "Work planning for monitoring"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:128
@@ -8988,7 +8984,7 @@ msgstr ""
 msgid "You must select one item in each of the two lists"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:275
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:274
 msgid ""
 "Zipped Project - A project folder that has been compressed using the zip "
 "format. To share files with other Miradi users, you can use the file/export/"
@@ -11380,7 +11376,7 @@ msgstr ""
 msgid "html|/resources/wizard/TargetViabilityView/DescribeTargetStatusStepRight.html|<div class='navigation'>Assigning one rating to represent the overall status of most conservation targets is a difficult task that involves making many assumptions. As a general rule, this rating process involves determining one or more attributes and/or indicators that represent the health of the target and then assessing the status of these indicators against a predetermined rating scale: <ul><li><strong>Very Good - </strong>Ecologically desirable status; requires little intervention for maintenance.</li><li><strong>Good - </strong>Within acceptable range of variation; some intervention required for maintenance.</li><li><strong>Fair - </strong> Outside acceptable range of variation; requires human intervention.</li><li><strong>Poor - </strong>Restoration increasingly difficult; may result in extirpation of target. If your assessment of a target involves more than one attributes/indicators, then you need to combine these ratings to get an overall rating for the target.</li></ul></div>"
 msgstr ""
 
-msgid "html|/resources/wizard/DiagramView/DiagramWizardReviewModelAndAdjustStepLeft.html|You have constructed your conceptual model in a series of separate steps. At this point, you should take a look at your model as a whole and ask yourself the following questions: <ul><li>Does this model reasonably portray what is happening at my site?</li><li>Are all the key targets represented?</li><li>Are all the key direct threats represented?</li><li>Are all the key contributing factors (indirect threats and opportunities) represented?</li><li>Are the link arrows properly placed?</li><li>Have you verified that nothing major is missing?</li><li>Will the model be understandable to my project team?</li><li>Will the model be understandable to people outside of my project team?</li></ul><p>If you answered \"yes\" to all of these questions, <strong>Click the 'Next' button below to continue.</strong></p><p>If you answered \"no\" then you need to go back and fix your model.</p><p></p><p class='hint'><strong>Hint:</strong>Tags can be a powerful tool to help manage the visual complexity of a model.</p><p>To <b>employ tags</b>: <ol><li>Click on the <code class='toolbarbutton'>&lt;Manage Tags&gt;</code> button on the toolbar.</li><li>Create one or more tags. They can be either related to a theme (e.g. all factors that are part of a specific chain), or a sequence in which you want the tagged items to appear (e.g. in an \"animated\" powerpoint). If you want to specify a sequence, it is also helpful to put numbers or letters in order in the ID field.</li><li>Returning to the diagram, hold the shift key down and select the factors that you want to apply a give tag to, and then use the <code class='toolbarbutton'>&lt;Actions/Tag/Untag...&gt;</code> menu command, or the <code class='toolbarbutton'>&lt;Add Tag to Selected Items&gt;</code> command on the right (alt) click mouse  button to apply the tag.</li><li>Repeat with other tags as needed.</li><li>You can then use the check boxes in the control bar to set the visibility of each tag group.</li><li>Remember that once at least one tag is checked, then only checked tags will be visible. It is often helpful to create a tag called <b>Show All Factors</b> and assign it to all factors on the diagram so that you can rapidly bring them back without having to check and uncheck all the tags.</li></ol> "
+msgid "html|/resources/wizard/DiagramView/DiagramWizardReviewModelAndAdjustStepLeft.html|You have constructed your conceptual model in a series of separate steps. At this point, you should take a look at your model as a whole and ask yourself the following questions: <ul><li>Does this model reasonably portray what is happening at my site?</li><li>Are all the key targets represented?</li><li>Are all the key direct threats represented?</li><li>Are all the key contributing factors (indirect threats and opportunities) represented?</li><li>Are the link arrows properly placed?</li><li>Have you verified that nothing major is missing?</li><li>Will the model be understandable to my project team?</li><li>Will the model be understandable to people outside of my project team?</li></ul><p>If you answered \"yes\" to all of these questions, click the <code class='toolbarbutton'>&lt;Next&gt;</code> button below to continue.  If you answered \"no\" then you need to go back and fix your model.</p><p><b>Conceptual Model Progress Report:</b> Note that you can now add a progress report to describe your conceptual model on a given date. Right-click on the conceptual model name in the control bar to bring up the Diagram Properties window.  Click the <code class='toolbarbutton'>&lt;Progress Report&gt;</code> sidetab, and then click the <code class='toolbarbutton'>&lt;Create Progress Report&gt;</code> button to create a progress report.</p><p class='hint'><strong>Hint:</strong> Tags can be a powerful tool to help manage the visual complexity of a model.</p><p>To <b>employ tags</b>: <ol><li>Click on the <code class='toolbarbutton'>&lt;Manage Tags&gt;</code> button on the toolbar.</li><li>Create one or more tags. They can be either related to a theme (e.g. all factors that are part of a specific chain), or a sequence in which you want the tagged items to appear (e.g. in an \"animated\" powerpoint). If you want to specify a sequence, it is also helpful to put numbers or letters in order in the ID field.</li><li>Returning to the diagram, hold the shift key down and select the factors that you want to apply a tag to, and then use the <code class='toolbarbutton'>&lt;Actions/Tag/Untag...&gt;</code> menu command, or the <code class='toolbarbutton'>&lt;Add Tag to Selected Items&gt;</code> command on the right (alt) click mouse  button to apply the tag.</li><li>Repeat with other tags as needed.</li><li>You can then use the check boxes in the control bar to set the visibility of each tag group.</li><li>Remember that once at least one tag is checked, then only checked tags will be visible. It is often helpful to create a tag called <b>Show All Factors</b> and assign it to all factors on the diagram so that you can rapidly bring them back without having to check and uncheck all the tags.</li></ol> "
 msgstr ""
 
 msgid "html|/resources/wizard/DiagramView/DiagramWizardIdentifyIndirectThreatStepLeft.html|To insert <a href='Definition:IndirectThreat' class='definition'>contributing factors</a>, select a threat and brainstorm what you think is driving that threat. Select the threat and click the <code class='toolbarbutton'>&lt;Insert&nbsp;Contributing&nbsp;Factor&gt;</code> button on the legend.</p><p>The software will add a new contributing factor and open a dialog box in which you can type the <strong>ID, Name, Details</strong> and <strong> Comments</strong>. Using the mouse or arrow keys, move the factor to wherever you want it to be. In most models, factors further away from the target are placed out to the left-hand side of the page.</p><p>If you have several factors that are all connected to another factor, you can use <strong>Group Boxes</strong> to reduce the number of links that you have to show.  Select the factors that you want to group, and then from the Actions menu or the Control Bar, click on <code class='toolbarbutton'>&lt;Create&nbsp;Group&nbsp;Box&gt;</code>. Miradi will then form a group box around the factors and prompt you to name it. You can then select and link to or from this group box as you would any other factor. A link to or from the group box is equivalent to a link to or from every factor within the group box. Using the <code class='toolbarbutton'>&lt;Delete&gt;</code> key will remove a selected group box AND the factors in it; using the <code class='toolbarbutton'>&lt;Actions/Group Box/Delete&gt;</code> menu command will remove a selected group box but leave the factors behind.</p><p class='hint'><strong>Hint:</strong> To select multiple factors, you can click and drag the mouse. You can also select individual factors with the mouse while holding the shift or control keys (holding the control key also allows you to deselect factors).</p>"
@@ -11428,7 +11424,7 @@ msgstr ""
 msgid "html|/resources/wizard/DiagramView/DiagramWizardResultsChainSelectStrategyStepLeft.html|<a href='Definition:Chain' class='definition'>Results chains</a> are a key tool for developing strategies. To begin, click on a strategy in the diagram. Next, click on the <code class='toolbarbutton'>&lt;Create&nbsp;Results&nbsp;Chain&gt;</code> button, available either on the toolbar or by right (alt) clicking the mouse. This will create a new tab in the diagram window that has the strategy and linked factors on it. <p>You can include multiple factors in your new results chain by selecting them before clicking the <code class='toolbarbutton'>&lt;Create&nbsp;Results&nbsp;Chain&gt;</code> button.</p><p>If there is a chain icon shown in a strategy hexagon, you can view the existing results-chain by either clicking on the appropriate tab or by clicking on the strategy and then using the <code class='toolbarbutton'>&lt;Show&nbsp;Results&nbsp;Chain&gt;</code> button, available either on the toolbar or by right (alt) clicking the mouse.</p>		"
 msgstr ""
 
-msgid "html|/resources/wizard/DiagramView/DiagramWizardGoodResultsChainCriteriaReviewLeft.html|Once you have completed your results chain, you will want to review the criteria for a good results chain shown on the right. 				<P>In particular, you want to make sure that your results chain is results oriented. A common mistake with developing results chains is to list all the activities that your team must undertake to implement your strategy. This produces an implementation chain, not a results chain. An implementation chain does not show the causal logic that connects a strategy to a desired conservation impact. As such, it does not provide you with an idea of the assumptions you need to test in order to know whether your strategy is working or not.</P>				<P>You next can either develop objectives for your project based on your results chain, work on another results chain, or go on to develop your monitoring plan.</P>"
+msgid "html|/resources/wizard/DiagramView/DiagramWizardGoodResultsChainCriteriaReviewLeft.html|Once you have completed your results chain, you will want to review the criteria for a good results chain shown on the right. 				<P>In particular, you want to make sure that your results chain is results oriented. A common mistake with developing results chains is to list all the activities that your team must undertake to implement your strategy. This produces an implementation chain, not a results chain. An implementation chain does not show the causal logic that connects a strategy to a desired conservation impact. As such, it does not provide you with an idea of the assumptions you need to test in order to know whether your strategy is working or not.</P>				<P>You next can either develop objectives for your project based on your results chain, work on another results chain, or go on to develop your monitoring plan.</P><p><b>Results Chain Progress Report:</b> Note that you can now add a progress report to describe your results chain on a given date. Right-click on the results chain name in the control bar to bring up the Diagram Properties window.  Click the <code class='toolbarbutton'>&lt;Progress Report&gt;</code> sidetab, and then click the <code class='toolbarbutton'>&lt;Create Progress Report&gt;</code> button to create a progress report.</p>"
 msgstr ""
 
 msgid "html|/resources/wizard/DiagramView/MonitoringWizardDefineIndicatorsStepRight.html|<div class='navigation'>An <i>indicator</i> is a measurable entity related to a specific information need, such as the status of a target, change in a threat, or progress towards an objective. Indicators can be quantitative measures or qualitative observations. Good indicators meet the following criteria: <ul><li><strong>Measurable: </strong>Able to be recorded and analyzed in quantitative or in discreet qualitative terms.</li><li><strong>Clear: </strong>Presented or described in such a way that its meaning will be the same to all people.</li>  <li><strong>Sensitive: </strong>Changing proportionately in response to actual changes in the condition or item being measured.</li></ul><p><i>Methods</i> are specific techniques used to collect data to measure an indicator. A good method meets the criteria:</p><ul><li><strong>Accurate: </strong>The data collection method has little or no margin of error.</li><li><strong>Reliable: </strong>The results are consistently repeatable - each time that the method is used it produces the same result.</li><li><strong>Cost-Effective: </strong>The method does not cost too much in relation to the data it produces and the resources the project has.</li><li><strong>Feasible: </strong>The method can be implemented by people on the project team.</li><li><strong>Appropriate: </strong>Acceptable to and fitting within site-specific cultural, social, and biological norms.</li></ul><p>Methods do not need to be complex or sophisticated - if you can get the information you need using a simple, inexpensive method, it is far preferable to do this than to choose a complex, expensive method.  While the information you gather may be less precise, it may be sufficient for the types of decisions you are making. When planning for measuring results, you need to keep in mind that it should be a relatively small portion of your project budget. If your methods for measuring results are too complex, you will not have enough money to implement actions and measure the results.</p><p></div>"
@@ -11452,7 +11448,7 @@ msgstr ""
 msgid "html|/resources/wizard/DiagramView/DiagramWizardConstructInitialResultsChainRight.html|<div class='navigation'>            Often, project teams implement strategies that they believe will contribute to conserving the biodiversity in their site, but they do not formally state their assumptions about exactly how the strategy will lead to threat reduction and biodiversity conservation. Because the assumptions are not explicit, the project team cannot test them and learn over time whether they are valid. 				<P>For example, a team may decide that they will undertake education of school kids in an effort to stop gorilla poaching.&nbsp;They may assume that environmental education of school kids is a good thing to do.&nbsp;If they take the time to lay out their assumptions in a results chain, however, they may find that \"connecting\" the strategy to the target requires some difficult assumptions as shown in the following diagram.</P><P>There are many points where the logic could breakdown.&nbsp;For example, it may be hard to expect kids to convince their parents to stop poaching, especially if the parents have no alternative source of income.&nbsp;A results chain is an important tool to show exactly how you think your strategy will lead to your desired outcomes, and what intermediate results you expect to see along the way.</P>   				<table><tr><td align='right'><img border='0' src=\"images/DiagramWizard/kids-and-gorillas.png\" width= '500' height='131'></td></tr></table>						       </div>"
 msgstr ""
 
-msgid "html|/resources/wizard/DiagramView/MonitoringWizardDefineIndicatorsStepLeft.html|  <a href='Definition:Indicator' class='definition'>Indicators</a> are linked to factors in a model. To create a new indicator, double click on a factor and then click on the <code class='toolbarbutton'>&lt;Indicators&gt;</code> tab in the properties dialogue box. Click on the <code class='toolbarbutton'>&lt;Create&nbsp;Indicator&gt;</code> button and fill in the following fields: <UL><LI><STRONG>Indicator ID:</STRONG> A user assigned identification code for the indicator (e.g., 3, 17).</LI><LI><STRONG>Indicator Name:</STRONG> The name of the indicator. Generally 2-5 words (e.g., Number of Sharks).</LI><LI><STRONG>Details:</STRONG> Details about the indicator.</LI><LI><STRONG>Comments:</STRONG> Discussion about the indicator.</LI></UL><p>Each indicator will have one or more <a href='Definition:Method' class='definition'>methods</a> associated with it. To assign a method, select the <code class='toolbarbutton'>&lt;Monitoring&nbsp;Plan&gt;</code> side tab in the lower panel and then click the <code class='toolbarbutton'>&lt;Edit&nbsp;Methods&gt;</code> button and provide an ID and Name for the method. You can either create a new method or share an existing method. It is possible to add multiple methods for each indicator.</p><P>The next step is to determine the <a href='Definition:Measurement' class='definition'>measurement</a> for each indicator. Select an indicator in the table and then click the <code class='toolbarbutton'>&lt;Create Measurement&gt;</code> button. Then in the bottom panel, fill in the following fields:</P><ul><LI><STRONG>Measurement Date:</STRONG>&nbsp;The date of the most recent indicator measurement. <LI><STRONG>Measurement Value:</STRONG>&nbsp;The current value or summary qualitative description of the indicator. <LI><STRONG>Detail:</STRONG>&nbsp;Full description of the current value or qualitative description of the indicator. <LI><STRONG>Current Status Trend:</STRONG> Your assessment of the direction that this indicator is heading at the moment of the current measurement. <LI><STRONG>Source:</STRONG>&nbsp;Your confidence rating in the source of the indicator measurement. <LI><STRONG>Comments:</STRONG>&nbsp;Discussion about the measurement.</ul><P>Next, determine the <a href='Definition:DesiredFutureStatus' class='definition'>desired future status</a> for the indicator. In the upper table, click on the blue oval beneath the indicator you are working on and then edit the fields in the bottom panel.</P>			<P>For the selected indicator's desired future value, fill in the following fields:</P>			<LI><STRONG>Desired Future Value Date:</STRONG>&nbsp;The date at which the indicator value will be assessed.</LI><LI><STRONG>Desired Future Value:</STRONG>&nbsp;The desired future value or summary qualitative description of the indicator. <LI><STRONG>Details:</STRONG>&nbsp;Full description of the current value or qualitative description of the indicator.</LI><LI><STRONG>Comments:</STRONG>&nbsp;Discussion about the desired future status.</ul><P>Miradi will automatically display the Future Status value, along with a blue oval icon, in the cell of the monitoring table corresponding to the desired future status.</P><p>If you want to use an existing indicator from another factor, click on the <code class='toolbarbutton'>&lt;Create&nbsp;From&nbsp;Existing&gt;</code> button and follow the instructions. To edit or delete an indicator, click on the desired row and then either edit the text in the box at the bottom or click on the <code class='toolbarbutton'>&lt;Delete&nbsp;Indicator&gt;</code> button.</p><p>You can also view and edit all of the indicators for your project by using the <i>\"Indicators Only\"</i> view under the <code class='toolbarbutton'>&lt;Lists&gt;</code> tab in the <code class='toolbarbutton'>&lt;Strategic&nbsp;Plan&gt;</code> view.</p><p class='hint'><b>Hint:</b> If you used the detailed method of viability analysis, you have already created indicators for your targets. The information on this page is not applicable for targets set to use the detailed method. However, you should create indicators for other factors, where appropriate.</p>"
+msgid "html|/resources/wizard/DiagramView/MonitoringWizardDefineIndicatorsStepLeft.html|  <a href='Definition:Indicator' class='definition'>Indicators</a> are linked to factors in a model. To create a new indicator, double click on a factor and then click on the <code class='toolbarbutton'>&lt;Indicators&gt;</code> tab in the properties dialogue box. Click on the <code class='toolbarbutton'>&lt;Create&nbsp;Indicator&gt;</code> button and fill in the following fields: <UL><LI><STRONG>Indicator ID:</STRONG> A user assigned identification code for the indicator (e.g., 3, 17).</LI><LI><STRONG>Indicator Name:</STRONG> The name of the indicator. Generally 2-5 words (e.g., Number of Sharks).</LI><LI><STRONG>Details:</STRONG> Details about the indicator.</LI><LI><STRONG>Comments:</STRONG> Discussion about the indicator.</LI></UL><p>Each indicator will have one or more <a href='Definition:Method' class='definition'>methods</a> associated with it. To assign a method, select the <code class='toolbarbutton'>&lt;Monitoring&nbsp;Plan&gt;</code> side tab in the lower panel and then click the <code class='toolbarbutton'>&lt;Edit&nbsp;Methods&gt;</code> button and provide an ID and Name for the method. You can either create a new method or share an existing method. It is possible to add multiple methods for each indicator.</p><P>The next step is to determine the <a href='Definition:Measurement' class='definition'>measurement</a> for each indicator. Select an indicator in the table and then click the <code class='toolbarbutton'>&lt;Create Measurement&gt;</code> button. Then in the bottom panel, fill in the following fields:</P><ul><LI><STRONG>Measurement Date:</STRONG>&nbsp;The date of the most recent indicator measurement. <LI><STRONG>Measurement Value:</STRONG>&nbsp;The current value or summary qualitative description of the indicator. <LI><STRONG>Detail:</STRONG>&nbsp;Full description of the current value or qualitative description of the indicator. <LI><STRONG>Current Status Trend:</STRONG> Your assessment of the direction that this indicator is heading at the moment of the current measurement. <LI><STRONG>Source:</STRONG>&nbsp;Your confidence rating in the source of the indicator measurement. <LI><STRONG>Comments:</STRONG>&nbsp;Discussion about the measurement.</ul><P>Next, determine the <a href='Definition:DesiredFutureStatus' class='definition'>desired future status</a> for the indicator. In the upper table, select the indicator you are working on, click the <code class='toolbarbutton'>&lt;Create&nbsp;Future&nbsp;Status&gt;</code> button, and then edit the fields in the bottom panel.</P>			<P>For the selected indicator's desired future value, fill in the following fields:</P>			<LI><STRONG>Desired Future Value Date:</STRONG>&nbsp;The date at which the indicator value will be assessed.</LI><LI><STRONG>Desired Future Value:</STRONG>&nbsp;The desired future value or summary qualitative description of the indicator. <LI><STRONG>Details:</STRONG>&nbsp;Full description of the current value or qualitative description of the indicator.</LI><LI><STRONG>Comments:</STRONG>&nbsp;Discussion about the desired future status.</ul><P>Miradi will automatically display the Future Status value, along with a blue icon, in the cell of the monitoring table corresponding to the desired future status.</P><p>If you want to use an existing indicator from another factor, click on the <code class='toolbarbutton'>&lt;Create&nbsp;From&nbsp;Existing&gt;</code> button and follow the instructions. To edit or delete an indicator, click on the desired row and then either edit the text in the box at the bottom or click on the <code class='toolbarbutton'>&lt;Delete&nbsp;Indicator&gt;</code> button.</p><p>You can also view and edit all of the indicators for your project by using the <i>\"Indicators Only\"</i> view under the <code class='toolbarbutton'>&lt;Lists&gt;</code> tab in the <code class='toolbarbutton'>&lt;Strategic&nbsp;Plan&gt;</code> view.</p><p class='hint'><b>Hint:</b> If you used the detailed method of viability analysis, you have already created indicators for your targets. The information on this page is not applicable for targets set to use the detailed method. However, you should create indicators for other factors, where appropriate.</p>"
 msgstr ""
 
 msgid "html|/resources/wizard/DiagramView/DiagramWizardHumanWelfareTargetsStepRight.html|<h3>Using Human Wellbeing Targets</h3>Some conservation projects have not only conservation ends, but also have human wellbeing ends. Based on user requests, Miradi now supports <i>Human Wellbeing Targets</i>. Just as focal conservation targets represent the overall biodiversity values that a project is working towards, the human wellbeing targets can be used to represent the human wellbeing values for a project. Examples of human wellbeing targets might include: <ul><li>Human health,</li><li>Home and farm security,</li><li>Rural economic livelihoods,</li><li>Tourism livelihoods, and </li><li>Mental and spiritual health.</li></ul><p>Miradi <u>strongly recommends</u> that you do not mix conservation targets and human wellbeing targets in the same column as shown in Diagram A below. Instead, the recommended practice is to place the human wellbeing targets to the far right and then show the relationship between the human wellbeing and conservation targets as shown in Diagram B. In this example, the project team can show that human health (one component of human wellbeing) ultimately depends on having healthy species and habitat and clean abundant water. As a result, a pollution abatement strategy can be a conservation action - but also contributes to human wellbeing. But the project team can also decide and then show that they are not going to address all aspects of human health. For example, as shown in the diagram the team will not tackle smoking or fixing the health care system - these important tasks are the responsibility of other sectors of society. <A href=\"http://www.fosonline.org/resource/human-wellbeing-targets\">Click here</A> for detailed guidance on using human wellbeing targets in the Open Standards and Miradi.</p><table width='100%'><tr><td align='center'><img src='images/DiagramWizard/HWT-diagramA.png' width='420' height='345'></img><br><b>Diagram A. Mixing Conservation and Human Wellbeing Targets Leads to Confusion</b></td></tr></table><p></p><table width='100%'><tr><td align='center'><img src='images/DiagramWizard/HWT-diagramB.png' width='420' height='280'></img><br><b>Diagram B. Show the Relationship Between Conservation and Human Wellbeing Targets</b></td></tr></table><p></p> "
@@ -11548,7 +11544,7 @@ msgstr ""
 msgid "html|/resources/wizard/SummaryView/SummaryWizardDefineProjectVisionRight.html|<div class='navigation'>A <i>vision statement</i> is a general summary of the desired state or ultimate condition of the project area that a project is working to achieve. A good vision statement meets the criteria of being: <lu><li><strong>Relatively General -</strong> Broadly defined to encompass a broad range of potential project activities.</li><li><strong>Visionary -</strong> Inspirational in outlining the desired change in the state of the targets toward which the project is working.</li><li><strong>Brief -</strong> Simple and succinct so that all project participants can remember it.</li></lu></div>"
 msgstr ""
 
-msgid "html|/resources/wizard/SummaryView/SummaryOverviewStepLeft.html|<h3>Welcome to the Miradi Interview & the Summary View!!</h3>As you go through the steps in the <A href=\"http://www.ConservationMeasures.org\"><U><FONT color=#0000ff>CMP Open Standards</U></FONT></A>, this leftside panel of the interview will provide you with step-by-step instructions. The rightside panel will provide definitions and guidance. <p>The <code class='toolbarbutton'>&lt;Project&gt;</code> tab below provides an overview of your <a href='Definition:Project' class='definition'>project</a>. You can fill in your <b>Project Name</b> and set the <b>Primary Project Data Language</b> and the <b>Project Data Effective Date</b> (the date of your most recent substantive updating of the Miradi project file).</p><p>A new feature of Miradi 4.1 is that is now compatible with <b>Miradi Share</b>! Click on the \"Learn about Miradi Share\" link or go to <A href=\"http://www.miradishare.org\"><U><FONT color=#0000ff>www.miradishare.org</U></FONT></A> to find out more about this new online tool that greatly extends the capability of Miradi Software. <p class='nextsteps'>Click next to define your initial project team.</p><p>Later on, you can return to this page and fill in the remaining fields.The <b>Project Number</b> field can be used for any numbering system your organization uses. <b>Related Projects</b> can be used to describe other sibling or parent projects. You can put your project's website adress in the <b>Project Website</b> field. The <b>Project Description</b> field can be used for a summary or abstract of your project. The <b>Project Status</b> field can be used to generally describe how your project is doing at the moment. The <b>Next Steps</b> field can be used to describe any critical next steps; this field is especially useful when you want to send your project file to other team members. Finally, the <b>Lessons Learned</b> field can be used to descibe any key learnings.</p> <p class='hint'><strong>Hint:</strong> Note that <b>Project Filename</b> is read only as shown by the grey background. To change what appears in this field, you have to rename the project file itself. This can be done from the initial Welcome (No-Project) page.</p><p class='hint'><strong>Hint:</strong> The <b>External Project IDs</b> field is another read only field used by external databases such as Miradi Share.</p>"
+msgid "html|/resources/wizard/SummaryView/SummaryOverviewStepLeft.html|<h3>Welcome to the Miradi Interview & the Summary View!</h3>As you go through the steps in the <A href=\"http://www.ConservationMeasures.org\"><U><FONT color=#0000ff>CMP Open Standards</U></FONT></A>, this leftside panel of the interview will provide you with step-by-step instructions. The rightside panel will provide definitions and guidance. <p>The <code class='toolbarbutton'>&lt;Project&gt;</code> tab below provides an overview of your <a href='Definition:Project' class='definition'>project</a>. You can fill in your <b>Project Name</b> and set the <b>Primary Project Data Language</b> and the <b>Project Data Effective Date</b> (the date of your most recent substantive updating of the Miradi project file).</p><p>Starting with version 4.1, Miradi is now compatible with <b>Miradi Share</b>! Click on the \"Learn about Miradi Share\" link or go to <A href=\"http://www.miradishare.org\"><U><FONT color=#0000ff>www.miradishare.org</U></FONT></A> to find out more about this new online tool that greatly extends the capability of Miradi Software.</p><p>Click the <code class='toolbarbutton'>&lt;Next&gt;</code> button to define your initial project team.</p><p>Later on, you can return to this page and fill in the remaining fields:</p><ul><li><b>Project Number</b> field can be used for any numbering system your organization uses.</li> <li><b>Related Projects</b> can be used to describe other sibling or parent projects.</li>          <li><b>Project Website</b> is where you can put your project's website address.</li>          <li><b>Project Description</b> can be used for a summary or abstract of your project.</li>     </ul><p>The <b>Progress Report</b> fields can be used to update the progress of your project on a certain date. Click the <code class='toolbarbutton'>&lt;Progress Report&gt;</code> sidetab, and then click the <code class='toolbarbutton'>&lt;Create Progress Report&gt;</code> button to create a progress report with the following fields: <ul><li><b>Project Status</b> can be used to generally describe how your project is doing at the moment.</li>    <li><b>Next Steps</b> can be used to describe any critical next steps; this field is especially useful when you want to send your project file to other team members.</li>     <li>Finally, the <b>Lessons Learned</b> field can be used to describe any key learnings.</li>      </ul>Miradi will display the most recent progress report data on the main Summary sidetab.</p><p class='hint'><b>Hint:</b> Note that <b>Project Filename</b> is read only as shown by the grey background. To change what appears in this field, you have to rename the project file itself. This can be done from the initial Welcome (No-Project) page.</p><p class='hint'><b>Hint:</b> The <b>External Project IDs</b> field is another read only field used by external databases such as Miradi Share.</p>"
 msgstr ""
 
 msgid "html|/resources/wizard/SummaryView/SummaryWizardDefineProjectVisionLeft.html|Click on the <code class='toolbarbutton'>&lt;Scope&gt;</code> tab and add your project's <a href='Definition:Vision' class='definition'>vision statement</a> to the <strong>Vision Statement Text</strong> field. Review the criteria for a good vision statement and revise your statement as necessary. <p>If desired, you can also click on the <code class='toolbarbutton'>&lt;Location&gt;</code> and the <code class='toolbarbutton'>&lt;Planning&gt;</code> tabs to add additional detail about your project.</p><p>In addition, Miradi also has tabs for some organizations that contain additional organizational specific fields.  These fields are especially for key data that will be used in reports and uploads to organizational databases. Contact your organization's Miradi lead for more information.</p><p> If your organization would like to develop its own fields, contact Miradi staff at  <a href=\"mailto:info@miradi.org\">info@miradi.org</a>.</p>"
@@ -11560,7 +11556,7 @@ msgstr ""
 msgid "html|/resources/wizard/MapView/MapOverviewStepRight.html|  "
 msgstr ""
 
-msgid "html|/resources/wizard/PlanningView/PlanningWizardFinalizeStrategicPlanStepRight.html|<div class='navigation'>You can use the <code class='toolbarbutton'>&lt;Progress&nbsp;Report&gt;</code> side tab in the lower panel to update the status of a given strategy:           <ul><li><strong>Scheduled for Future Implementation:</strong> Strategy is not yet started</li><li><strong>Major Issues:</strong> Ongoing, but has major issues that need attention</li> <li><strong>Minor Issues:</strong> Ongoing, but has minor issues that need attention</li><li><strong>On Track:</strong> Ongoing, generally on track</li><li><strong>Completed:</strong> Successfully accomplished</li><li><strong>Abandoned:</strong> No longer relevant or useful</li>          </ul>			  </div>You can use the <code class='toolbarbutton'>&lt;Who&nbsp;and&nbsp;When&gt;</code> side tab in the lower panel to assign who is responsible for undertaking and leading each strategy or action. Dates can be set in the Workplan View. "
+msgid "html|/resources/wizard/PlanningView/PlanningWizardFinalizeStrategicPlanStepRight.html|<div class='navigation'>You can use the <code class='toolbarbutton'>&lt;Progress&nbsp;Report&gt;</code> side tab in the lower panel to update the status of a given strategy:           <ul><li><strong>Scheduled for Future Implementation:</strong> Strategy is not yet started</li><li><strong>Major Issues:</strong> Ongoing, but has major issues that need attention</li> <li><strong>Minor Issues:</strong> Ongoing, but has minor issues that need attention</li><li><strong>On Track:</strong> Ongoing, generally on track</li><li><strong>Completed:</strong> Successfully accomplished</li><li><strong>Abandoned:</strong> No longer relevant or useful</li>          </ul>			  </div><p>You can use the <code class='toolbarbutton'>&lt;Timeframe&gt;</code> side tab in the lower panel to set the expected timespan of the strategy or action.</p>  <p>Use the <code class='toolbarbutton'>&lt;People&gt;</code> side tab to assign who is responsible for undertaking and leading each strategy or action.</p>"
 msgstr ""
 
 msgid "html|/resources/wizard/PlanningView/PlanningWizardFinalizeMonitoringPlanStepLeft.html|  At this point, you should have already created your draft monitoring plan by assigning indicators to specific factors in the diagram view. <p>Click on the <code class='toolbarbutton'>&lt;Monitoring Plan&gt;</code> tab in the Strategic Plan View to view and edit this plan. You can look at your plans either based on your overall conceptual model, or on specific results chains by collapsing and expanding elements of the tree.</p><p>Note that in your monitoring plan, a given indicator may be repeated several times if it contributes to more than one goal or objective. (In your operational plan, by contrast, indicators are not repeated.) If you want to adjust which indicator is tied to a given objective, click on the objective in the upper tree table and then, in the lower panel, click on the <code class='toolbarbutton'>&lt;Choose&nbsp;Indicators&gt;</code> button and check which indicators you would like to have associated with this objective.</p><p>For a selected indicator, you can select the <code class='toolbarbutton'>&lt;Monitoring&nbsp;Plan&gt;</code> side tab in the lower panel to assign or edit the <a href='Definition:Method' class='definition'>method</a> and the <a href='Definition:PriorityRating' class='definition'>priority rating</a>. You can also use the <code class='toolbarbutton'>&lt;Progress&nbsp;Reports&gt;</code> side tab in the lower panel to update the status of a given indicator.</p>"
@@ -11572,13 +11568,13 @@ msgstr ""
 msgid "html|/resources/wizard/PlanningView/DevelopOperationalPlanLeft.html|The current version of Miradi does not have any specific tools for developing an operational plan.  However, many of the elements of an Operational Plan (see right panel) can be developed as part of a work plan or budget. In addition, you can use the comments fields for many factors and/or results chains to flag specific risks or other issues. "
 msgstr ""
 
-msgid "html|/resources/wizard/PlanningView/PlanningWizardFinalizeMonitoringPlanStepRight.html|<div class='navigation'>Indicators can be assigned different <i>priority ratings</i> as follows: <ul><li><strong>Very High: </strong> Must be monitored.</li><li><strong>High: </strong> High priority for monitoring.</li><li><strong>Medium: </strong> Monitor only if resources allow.</li><li><strong>Low: </strong> Not necessary to monitor. </li></ul><p>You can use the <code class='toolbarbutton'>&lt;Progress&nbsp;Report&gt;</code> side tab in the lower panel to update the status of a given indicator:</p>          <ul><li><strong>Scheduled for Future Implementation:</strong> Indicator is not yet started</li><li><strong>Major Issues:</strong> Ongoing, but has major issues that need attention</li> <li><strong>Minor Issues:</strong> Ongoing, but has minor issues that need attention</li><li><strong>On Track:</strong> Ongoing, generally on track</li><li><strong>Completed:</strong> Successfully accomplished</li><li><strong>Abandoned:</strong> No longer relevant or useful</li>          </ul>			  </div><p></p>You can use the <code class='toolbarbutton'>&lt;Who&nbsp;and&nbsp;When&gt;</code> side tab in the lower panel to assign who is responsible for undertaking and leading each indicator. Dates can be set in the Workplan View. "
+msgid "html|/resources/wizard/PlanningView/PlanningWizardFinalizeMonitoringPlanStepRight.html|<div class='navigation'>Indicators can be assigned different <i>priority ratings</i> as follows: <ul><li><strong>Very High: </strong> Must be monitored.</li><li><strong>High: </strong> High priority for monitoring.</li><li><strong>Medium: </strong> Monitor only if resources allow.</li><li><strong>Low: </strong> Not necessary to monitor. </li></ul><p>You can use the <code class='toolbarbutton'>&lt;Progress&nbsp;Report&gt;</code> side tab in the lower panel to update the status of a given indicator:</p>          <ul><li><strong>Scheduled for Future Implementation:</strong> Indicator is not yet started</li><li><strong>Major Issues:</strong> Ongoing, but has major issues that need attention</li> <li><strong>Minor Issues:</strong> Ongoing, but has minor issues that need attention</li><li><strong>On Track:</strong> Ongoing, generally on track</li><li><strong>Completed:</strong> Successfully accomplished</li><li><strong>Abandoned:</strong> No longer relevant or useful</li>          </ul>			  </div>"
 msgstr ""
 
 msgid "html|/resources/wizard/PlanningView/PlanningOverviewStepRight.html|  <div class='navigation'><h3>Navigation Hints for the Strategic Plan View</h3><p>Miradi creates a tree based on the relationship between goals, objectives, and strategies/indicators in your conceptual models and/or results chains. Clicking on the + and - symbols enables you to <strong>expand</strong> or <strong>collapse</strong> different parts of the hierarchy. Selecting a row in the table will allow you to bring up the bottom panel and <strong>edit</strong> the information for that row.</p><p>Much of the information in the strategic plan views is automatically generated from the diagram. To <strong>create</strong> items for which no button is shown (e.g., a target or objective) you have to go the diagram and use the properties dialogue for the relevant factor.</p><p><table width='100%'><tr><td align='center'><img src='images/StrategicPlanWizard/planning-nav.png' width='500' height='386'></img></td></tr></table><p></div>"
 msgstr ""
 
-msgid "html|/resources/wizard/PlanningView/PlanningOverviewStepLeft.html|<h3>Welcome to the Strategic Plan View</h3>This view enables you to develop and edit various plans for your project.  Specific subviews include: <p><b>Action Plan</b> - A plan for how your project will change the project situation. Primarily derived from results chains and shows the relationship between a project's <a href='Definition:Goal' class='definition'>goals</a>, <a href='Definition:Objective' class='definition'>objectives</a>, and <a href='Definition:Strategy' class='definition'>strategies</a>.</p><p><b>Monitoring Plan</b> - A plan for collecting information that you and others need to know about your project. Primarily derived from results chains and includes the <a href='Definition:Indicator' class='definition'>indicators</a> that you will track over time as well as the <a href='Definition:Method' class='definition'>methods</a> that you will use.</p><p><b>Lists (Goals Only, etc.)</b> - Shows all of your <a href='Definition:Goal' class='definition'>goals</a>, <a href='Definition:Objective' class='definition'>objectives</a>, <a href='Definition:ConservationTargets' class='definition'>targets</a>, <a href='Definition:DirectThreat' class='definition'>direct threats</a>, <a href='Definition:Strategy' class='definition'>strategies</a>, <a href='Definition:Activity' class='definition'>activities</a>, <a href='Definition:Indicator' class='definition'>indicators</a>, <a href='Definition:Method' class='definition'>methods</a>, or <a href='Definition:AssignedResource' class='definition'>assigned resources</a> in one table for quick comparisons and editing.</p><p><b>Custom Tables</b> - In addition to the standard planning views, Miradi also enables you to create your own custom planning views by choosing which objects to display in the rows and columns of the planning table.  This can be a good utility for creating custom report views.</p><p><b>Project Resources</b> - Allows you to manage the individuals and other resources assigned to actions and monitoring needs.</p><p class='hint'><strong>Hint:</strong> Some users may find that the default Action Plan and Monitoring plan tables do not show all the information they would like, or have it organized in the way they would prefer.  The flexibility provided by the Custom Tab allows for the creation of Action and Monitoring plans for your specific needs.  You can create Custom tables from any existing table by clicking the <code class='toolbarbutton'>&lt;Customize Table...&gt;</code> button.</p><p class='hint'><strong>Hint:</strong> Some users may prefer to have all Targets and Goals listed only once at the top of the planning view tree while other may prefer to have them appear under each diagram in which they appear.  Choose where Targets and Goals are displayed by creating a Custom table and making a selection in the <strong>Position of Targets in Trees</strong> drop down menu.</p><p class='hint'><strong>Hint:</strong> Some users may prefer to think of Objectives as a property of Strategies or vice versa.  It is possible to control how the relationship between Strategies and Objectives is displayed by making a selection in the <strong>Objective/Strategy Display</strong> drop down menu. "
+msgid "html|/resources/wizard/PlanningView/PlanningOverviewStepLeft.html|<h3>Welcome to the Strategic Plan View</h3>This view enables you to develop and edit various plans for your project.  Specific subviews include: <p><b>Action Plan</b> - A plan for how your project will change the project situation. Primarily derived from results chains and shows the relationship between a project's <a href='Definition:Goal' class='definition'>goals</a>, <a href='Definition:Objective' class='definition'>objectives</a>, and <a href='Definition:Strategy' class='definition'>strategies</a>.</p><p><b>Monitoring Plan</b> - A plan for collecting information that you and others need to know about your project. Primarily derived from results chains and includes the <a href='Definition:Indicator' class='definition'>indicators</a> that you will track over time as well as the <a href='Definition:Method' class='definition'>methods</a> that you will use.</p><p><b>Lists (Goals Only, etc.)</b> - Shows all of your <a href='Definition:Goal' class='definition'>goals</a>, <a href='Definition:Objective' class='definition'>objectives</a>, <a href='Definition:ConservationTargets' class='definition'>targets</a>, <a href='Definition:DirectThreat' class='definition'>direct threats</a>, <a href='Definition:Strategy' class='definition'>strategies</a>, <a href='Definition:Activity' class='definition'>activities</a>, <a href='Definition:Indicator' class='definition'>indicators</a>, or <a href='Definition:Method' class='definition'>methods</a>&nbsp;  in one table for quick comparisons and editing.</p><p><b>Custom Tables</b> - In addition to the standard planning views, Miradi also enables you to create your own custom planning views by choosing which objects to display in the rows and columns of the planning table.  This can be a good utility for creating custom report views.</p><p><b>People</b> - Allows you to manage the <a href='Definition:AssignedResource' class='definition'>people</a> assigned to actions and monitoring needs.</p><p class='hint'><strong>Hint:</strong> Some users may find that the default Action Plan and Monitoring plan tables do not show all the information they would like, or have it organized in the way they would prefer.  The flexibility provided by the Custom Tab allows for the creation of Action and Monitoring plans for your specific needs.  You can create Custom tables from any existing table by clicking the <code class='toolbarbutton'>&lt;Customize Table...&gt;</code> button.</p><p class='hint'><strong>Hint:</strong> Some users may prefer to have all Targets and Goals listed only once at the top of the planning view tree while other may prefer to have them appear under each diagram in which they appear.  Choose where Targets and Goals are displayed by creating a Custom table and making a selection in the <strong>Position of Targets in Trees</strong> drop down menu.</p><p class='hint'><strong>Hint:</strong> Some users may prefer to think of Objectives as a property of Strategies or vice versa.  It is possible to control how the relationship between Strategies and Objectives is displayed by making a selection in the <strong>Objective/Strategy Display</strong> drop down menu. "
 msgstr ""
 
 msgid "html|/resources/wizard/PlanningView/DevelopOperationalPlanRight.html|  As outlined in the CMP Open Standards, key components for an operational plan include analyses of: <ul><li>Funding required to implement your project, and your current and potential sources of these funds,</li><li>Human capacity and skills and other non-financial resources required to implement your project and what you need to do to develop those resources,</li><li>What risk factors exist for your project and how they can be addressed,</li><li>How long your project will last, how you will ensure the sustainability of your project's achievements, and what your exit strategy will be.</li></ul><p>The level of detail and formality of your operational plan will vary depending on the size and level of complexity of your project. Small projects may only briefly touch on each of these topics whereas large, complex ones might have an extensive and formal treatment of each.</p> "
@@ -11587,58 +11583,58 @@ msgstr ""
 msgid "html|/resources/wizard/NoProjectView/WelcomeIntroduction.html|<div class='intro'><table><tr><td align='center'>Miradi helps conservation practitioners implement the <a href='Definition:OpenStandards' class='introdefinition'>Open Standards for the Practice of Conservation</a>. </td></tr></table></div>"
 msgstr ""
 
-msgid "html|/resources/wizard/WorkPlanView/WorkPlanDevelopActivitiesAndTasksStepRight.html|<div class='navigation'>An <i>activity</> is an action that is carried out to accomplish one or more of a project's strategies. Activities should capture a discrete package of work that is assigned to one or more specific individuals to complete over a relatively short time frame. Each activity should be defined such that: <ul><li>It has clearly identified beginning and end points</li><li>The time and cost needs can easily be estimated</li><li>Its progress and completion can be easily assessed</li><li>It is distinct from other activities.</li></ul><p>In many cases, breaking down a strategy into its component activities is a relatively straight forward process and the full suite of necessary activities can be identified. In some cases, however, where the work is more complex or new to the group, only the first few actions to launch the work may be apparent. In addition, if you find that an activity is difficult to define as outlined above, you may have to break it down into smaller <i>tasks</i>. </p></div>"
+msgid "html|/resources/wizard/WorkPlanView/WorkPlanDevelopActivitiesAndTasksStepRight.html|<div class='navigation'>An <strong>activity</strong> is an action that is carried out to accomplish one or more of a project's strategies. Activities should capture a discrete package of work that is assigned to one or more specific individuals to complete over a relatively short time frame. Each activity should be defined such that: <ul><li>It has clearly identified beginning and end points</li><li>The time and cost needs can easily be estimated</li><li>Its progress and completion can be easily assessed</li><li>It is distinct from other activities.</li></ul><p>In many cases, breaking down a strategy into its component activities is a relatively straight forward process and the full suite of necessary activities can be identified. In some cases, however, where the work is more complex or new to the group, only the first few actions to launch the work may be apparent. In addition, if you find that an activity is difficult to define as outlined above, you may have to break it down into smaller <strong>tasks</strong>. </p></div>"
 msgstr ""
 
-msgid "html|/resources/wizard/WorkPlanView/BudgetWizardReconcileActualExpendituresStepRight.html|<div class='navigation'><i>Actual expenditures</i> are backwards looking reports on the money you spent for the activities/methods and tasks you undertook to implement your strategic and monitoring plans.  They typically can be organized in several ways: <ul><li><strong>By Accounting Code -</strong> Reports of money spent in each accounting code category.  These are useful for reporting to your organization's accounting department and to donors.</li>          <li><strong>By Activity -</strong> Reports of money spent by activity, strategy, objective, and/or goal.  This is the basis for Activity Based Costing (ABC) and is essential to improve management effectiveness.</li> <li><strong>By Funding Source -</strong> Reports of money spent by each funding source.  These are useful for managing your cash-flow and for reporting to donors.</li>  <li><strong>By Other Miscelaneous Categories -</strong> Many organizations have more complex accounting systems.  Miradi includes 2 additional budgeting categories that can be used to further clasify expenses. <li><strong>Against Budgets -</strong> Reports of money spent against the projections in your budgets. These are useful for managing your cash-flow and for improving your forecasting ability over time.</li></ul><p><strong>The Analysis Tab:</strong>  This tab allows for the creation of more complex views of the budget data by grouping the expenses at various category levels.  For instance, view which resources are associated to a given funding source, or see how expenses break down amoung your accounting codes per funding source.  These reports can then be exported as RTF or Tab delimited files for use in other accounting systems. </div>"
+msgid "html|/resources/wizard/WorkPlanView/BudgetWizardReconcileActualExpendituresStepRight.html|<div class='navigation'><p>The <b>Analysis Tab</b> allows for the creation of more complex views of the budget data by grouping the expenses at various category levels.  For instance, view which people are associated to a given funding source, or see how expenses break down among your accounting codes per funding source.  These reports can then be exported as RTF or Tab delimited files for use in other accounting systems.</p><p class='hint'><b>Hint:</b> You can create individual work plans by using the <code class='toolbarbutton'>&lt;Filter&nbsp;by&nbsp;People...&gt;</code> button, and selecting the resources you want to view.  This will update the Work Plan to show work days and budget totals for only the selected people.</p>"
 msgstr ""
 
-msgid "html|/resources/wizard/WorkPlanView/BudgetWizardAccountingAndFundingRight.html|<div class='navigation'><i>Accounting codes</i> are a set of categories developed by an organization to categorize and track expenses. They typically include hierarchical strings of numbers and/or letters (the code) along with a text description.  For example: <p><strong>200.000 Core Salaries</strong><br></br>201.000  Directors' salaries<br></br>202.000  Staff salaries<br></br></p>          			<p>Information that is tracked through the use of accounting codes can include:</p>          			<ul><li><strong>Expense Type -</strong> Salary, travel, equipment, etc. This information is often used to help prepare reports to donors and/or tax returns.</li> <li><strong>Department -</strong> The branch of the organization that is incurring the expense.</li>          <li><strong>Funding Source -</strong> Some organizations also use their codes to specify the specific funding source (although Miradi also treats this separately).</li>          <li><strong>Other Information -</strong> Categories that the organization wants to track.</li>          </ul>          <p class='hint'><b>Hint:</b> It is likely that your home organization will already have a chart of accounts that they will want you to use.</p>          <p>Funding sources are, as the name implies, the sources of money available to your project.  They are typically divided into:</p><ul><li><strong>Restricted sources -</strong> Funds such as a grant from a donor that are dedicated to a specific project or set of activities.</li>          <li><strong>Unrestricted sources -</strong> Funds that can be used in any way the project chooses.</li>          </ul><p>Some organizations may also want to designate budget centers as funding sources.</p>       </div>"
+msgid "html|/resources/wizard/WorkPlanView/BudgetWizardAccountingAndFundingRight.html|<div class='navigation'><i>Accounting codes</i> are a set of categories developed by an organization to categorize and track expenses. They typically include hierarchical strings of numbers and/or letters (the code) along with a text description.  For example: <p><strong>200.000 Core Salaries</strong><br></br>201.000  Directors' salaries<br></br>202.000  Staff salaries<br></br></p>          			<p>Information that is tracked through the use of accounting codes can include:</p>          			<ul><li><strong>Expense Type -</strong> Salary, travel, equipment, etc. This information is often used to help prepare reports to donors and/or tax returns.</li> <li><strong>Department -</strong> The branch of the organization that is incurring the expense.</li>          <li><strong>Funding Source -</strong> Some organizations also use their codes to specify the specific funding source (although Miradi also treats this separately).</li>          <li><strong>Other Information -</strong> Categories that the organization wants to track.</li>          </ul>          <p>Funding sources are, as the name implies, the sources of money available to your project.  They are typically divided into:</p><ul><li><strong>Restricted sources -</strong> Funds such as a grant from a donor that are dedicated to a specific project or set of activities.</li>          <li><strong>Unrestricted sources -</strong> Funds that can be used in any way the project chooses.</li>          </ul><p>Some organizations may also want to designate budget centers as funding sources.</p>       </div>"
 msgstr ""
 
-msgid "html|/resources/wizard/WorkPlanView/WorkPlanDevelopMethodsAndTasksStepLeft.html|Just as each <a href='Definition:Strategy' class='definition'>strategy</a> will have one or more <a href='Definition:Activity' class='definition'>activities</a> associated with it, each monitoring <a href='Definition:Indicator' class='definition'>indicator</a> will also have one or more <a href='Definition:Method' class='definition'>methods</a> associated with it. <p>In the <code class='toolbarbutton'>&lt;Work&nbsp;Plan&gt;</code> view, select an indicator that you want to focus on. Think about the specific methods that you will have to undertake to measure this indicator. Click on the <code class='toolbarbutton'>&lt;Create...&gt;</code> button and the click <code class='toolbarbutton'>&lt;Create&nbsp;Method&gt;</code> to add a new method and then type the name of the method in the label box in the bottom panel. If necessary, you can have multiple methods for each indicator. Repeat for other indicators as needed. <p>If necessary, you can also highlight a method and click on the <code class='toolbarbutton'>&lt;Create...&gt;</code> button and then click <code class='toolbarbutton'>&lt;Create&nbsp;Task&gt;</code> to add <a href='Definition:Task' class='definition'>tasks</a> under this method. (If you are really detail oriented, you can even create sub-tasks and sub-sub tasks under a task.)</p>"
+msgid "html|/resources/wizard/WorkPlanView/WorkPlanDevelopMethodsAndTasksStepLeft.html|<p>Teams often will do more detailed work planning for the coming year:</p><p><table width='100%'><tr><td align='center'><img src='images/WorkPlanWizard/DetailedWorkPlanning.png' width='759' height='864'></img></td></tr></table><p>"
 msgstr ""
 
-msgid "html|/resources/wizard/WorkPlanView/WorkPlanCreateResourcesStepRight.html|<div class='navigation'>A <i>resource</i> is a person or group that is needed to complete an activity/method or a task.  Miradi will be able to help you build a detailed budget for your project by calculating the cost for the estimated work that has been assigned to each resource. <p class='hint'><b>Hint:</b>To calculate a Daily Rate for Project Resources that are paid an hourly rate, you can multiply the hourly rate by the number of hours in the average/standard work day.  For Project Resources that are paid a yearly salary, it is most common to divide the salary by 240, which is approximately how many work days there are in a standard American work year.</p></div>"
+msgid "html|/resources/wizard/WorkPlanView/WorkPlanCreateResourcesStepRight.html|<div class='navigation'><p>Purple monitoring activities function in the same way as regular yellow activities, but are used to capture work specifically needed to implement project monitoring functions.</p><p class='hint'><b>Hint: </b>To create monitoring activities from the Work Plan view, first make sure that the table view includes Monitoring data by clicking the <code class='toolbarbutton'>&lt;Customize&nbsp;Table...&gt;</code> button and selecting either <b>Actions and Monitoring</b> or <b>Monitoring</b> from the <strong>Include Data From </strong> drop down menu.  Then select the strategy in the table that will have the new monitoring activity, click the <code class='toolbarbutton'>&lt;Create...&gt;</code> button, and select the <b>Create Monitoring Activity</b> option. </p><p class='hint'><b>Hint: </b>To change a yellow activity to a purple monitoring activity, go to the <code class='toolbarbutton'>&lt;Lists&gt;</code> tab in the Strategic Plan view, and select the <b>Activities Only</b> table from the drop down menu.  Select the activity in the table that you want to change, and click the Monitoring Activity check box in the bottom panel.</p><p class='hint'><b>Hint: </b>You may want to create a separate results chain to capture the status monitoring activities that you implement to track the status of the targets and threats in your Conceptual Model.</p></div>"
 msgstr ""
 
 msgid "html|/resources/wizard/WorkPlanView/ImplementPlansRight.html|  As outlined in the CMP Open Standards, the next and most important part of Step 3 - and indeed the entire Open Standards process - is to implement your strategic plan and your more detailed work plan according to schedule and within budget. <p>Don't get stuck in planning paralysis - have confidence in your plan and go for it! "
 msgstr ""
 
-msgid "html|/resources/wizard/WorkPlanView/BudgetWizardAccountingAndFundingLeft.html|To develop a budget, you will first want to create <a href='Definition:AccountingCodes' class='definition'>accounting codes</a> and <a href='Definition:FundingSources' class='definition'>funding sources</a>. <p>In the <code class='toolbarbutton'>&lt;Accounting&nbsp;Codes&gt;</code> tab at the top of the Work Plan View, if your project already has accounting codes from your home organization, you can use the <code class='toolbarbutton'>&lt;Import&nbsp;Accounting&nbsp;Codes&gt;</code> button to import a <a href='Definition:TabDelimitedFile' class='definition'>tab delimited text file</a> (2 columns, code followed by description). If you have to create codes from scratch, click on the <code class='toolbarbutton'>&lt;Create&nbsp;Accounting&nbsp;Code&gt;</code> button to add a new one and then type the code and the label in the box at the bottom of the page. Repeat for other codes as needed.</p><p>Miradi also supports two additional Categories that can be used to further classify expenses.  This can be used to denote a matching contribution, or an extra level of detail in your accounting systems for example.  Category #1 and Category #2 are managed in the same way as Funding Sources.</p>			<p>On the <code class='toolbarbutton'>&lt;Funding&nbsp;Sources&gt;</code> tab at the top of the Work Plan View, click on the <code class='toolbarbutton'>&lt;Create&nbsp;Funding&nbsp;Source&gt;</code> button to add a new one and then type the code (if needed) and the label in the box at the bottom of the page. Repeat for other funding sources as needed.</p>		"
+msgid "html|/resources/wizard/WorkPlanView/BudgetWizardAccountingAndFundingLeft.html|To develop a budget, you will first want to create <a href='Definition:AccountingCodes' class='definition'>accounting codes</a> and <a href='Definition:FundingSources' class='definition'>funding sources</a>. <p>In the <code class='toolbarbutton'>&lt;Accounting&nbsp;Codes&gt;</code> tab at the top of the Work Plan View, if your project already has accounting codes from your home organization, you can use the <code class='toolbarbutton'>&lt;Import&nbsp;Accounting&nbsp;Codes&gt;</code> button to import a <a href='Definition:TabDelimitedFile' class='definition'>tab delimited text file</a> (2 columns, code followed by description). If you have to create codes from scratch, click on the <code class='toolbarbutton'>&lt;Create&nbsp;Accounting&nbsp;Code&gt;</code> button to add a new one and then type the code and the label in the box at the bottom of the page. Repeat for other codes as needed.</p><p class='hint'><b>Hint:</b> It is likely that your home organization will already have a chart of accounts which uses <strong>segmented accounting codes</strong>.  Miradi Share supports segmented accounting codes; use that capability rather than the Miradi accounting codes if your organization has a Miradi Share program.</p><p>Miradi also supports two additional Categories that can be used to further classify expenses.  This can be used to denote a matching contribution, or an extra level of detail in your accounting systems for example.  Category #1 and Category #2 are managed in the same way as Funding Sources.</p>	<p>On the <code class='toolbarbutton'>&lt;Funding&nbsp;Sources&gt;</code> tab at the top of the Work Plan View, click on the <code class='toolbarbutton'>&lt;Create&nbsp;Funding&nbsp;Source&gt;</code> button to add a new one and then type the code (if needed) and the label in the box at the bottom of the page. Repeat for other funding sources as needed.</p>	<p class='hint'><b>Hint:</b> Miradi Share supports an unlimited number of program-based classifications for your actions, people assignments and expenses.  As with accounting codes, use that capability instead of Miradi categories and funding sources if your organization has a Miradi Share program.</p><p><table width='100%'><tr><td align='center'><img src='images/WorkPlanWizard/EstimateCosts.png' width='798' height='526'></img></td></tr></table><p>	"
 msgstr ""
 
-msgid "html|/resources/wizard/WorkPlanView/WorkPlanCreateResourcesStepLeft.html|Activities/methods and tasks are implemented by assigning <a href='Definition:Resource' class='definition'>resources</a> to them. <p>To create a new resource, go to the <code class='toolbarbutton'>&lt;Project&nbsp;Resources&gt;</code>  tab in the Work Plan View. Click on the <code class='toolbarbutton'>&lt;Create&nbsp;Resource&gt;</code> button and the fill in the appropriate information below. You will want to fill out all of the fields.  The Resource ID field should contain the initials of the person or a short reference to the position that they hold.</p><p>To edit an existing resource, select the resource in the table and then edit the text below. To delete a resource, select the resource in the table and click on the <code class='toolbarbutton'>&lt;Delete&nbsp;Resource&gt;</code> button at the side of the page.</p><p class='hint'><b>Hint:</b> Resources can be either a person or a group or people.  In order to ensure that your project budget is accurate as possible, it will be necessary to provide a \"Daily Rate\" for each resource. Refer to the right panel for some hints on calculating daily rates for salaried and hourly resources. </p><p class='hint'><b>Hint:</b>It is possible to create work estimates for activities/methods and tasks without knowing the actual resource who will perform them.  Miradi will automatically assign the work to a \"Not Specified\" Project Resource.  This can be helpful in helping you estimate your required resources.  In some cases it might be helpful to create place holder resources like \"Field Staff\", assign work to that resource and then edit the resource details when you know who will actually performing that work. "
+msgid "html|/resources/wizard/WorkPlanView/WorkPlanCreateResourcesStepLeft.html|<p>Project teams need to assign “time and treasure” not just to actions, but also monitoring work. Starting with Miradi Version 4.4, you can now create purple monitoring activities associated with indicators that can be assigned to team members and have expenses: </p><p class='hint'><b>Quick Tip: </b>Additional guidance is available at Miradi.org for converting monitoring work plan information entered in Miradi 4.3 or earlier into Miradi 4.4’s format.</p><p></p><table width='100%'><tr><td align='center'><img src='images/WorkPlanWizard/MonitoringWorkPlanning.png' width='687' height='770'></img></table><table width='100%'><tr><td align='center'><img src='images/WorkPlanWizard/MonitoringWorkPlanning2.png' width='692' height='382'></img></td></tr></table>"
 msgstr ""
 
 msgid "html|/resources/wizard/WorkPlanView/ImplementPlansLeft.html|Many of the views in Miradi contain helpful tools for helping to manage project implementation. For example, you can track the status of specific activities or tasks as well as the implementation of monitoring methods. The key is to regularly update your plans as you go through the process. "
 msgstr ""
 
-msgid "html|/resources/wizard/WorkPlanView/WorkPlanAssignResourcesStepRight.html|<div class='navigation'><h3>Functions of the Work Plan Tab</h3>The Work Plan tab in the Work Plan view introduces a temporal grid as the primary working area.  There are three groups of columns: <UL><LI><strong>Work Units:</strong> This group of columns is used to enter the amount of work, entered as a number of days that will be required to implement a strategy or indicator.</li><LI><strong>Expenses:</strong> This group of columns contains expenses, entered as dollars (or your preferred currency).  This is typically used to estimate the cost of non human resources for the project.</li><LI><strong>Budget Totals:</strong> This group of columns is read only.  They will display the calculated total cost for the work and expenses that have been assigned to your project. </UL><p>All column groups can be expanded and collapsed by clicking on the plus/minus icons in the header row.  This will allow you to view and enter work and expense estimates at whatever granularity of time you prefer: Project Total, Years, Quarters, Months and even specific Days.</P><p class='hint'><b>Hint:</b>You can control which groups of columns are displayed by clicking the <code class='toolbarbutton'>&lt;Edit&nbsp;Customize&nbsp;Table...&gt;</code> button and checking/unchecking the groups. </div>"
+msgid "html|/resources/wizard/WorkPlanView/WorkPlanAssignResourcesStepRight.html|<div class='navigation'>"
 msgstr ""
 
-msgid "html|/resources/wizard/WorkPlanView/BudgetWizardBudgetDetailLeft.html|At this point, you should have already developed your basic work plan showing <a href='Definition:Activity' class='definition'>activities</a>/<a href='Definition:Method'  class='definition'>methods</a> and <a href='Definition:Task' class='definition'>tasks</a> and assigning <a href='Definition:Resource' class='definition'>resources</a> to each. <p>To add budget detail to an activity/method or task, click on the <code class='toolbarbutton'>&lt;Work&nbsp;Plan&gt;</code> tab in the Work Plan View and select the item that you want to focus on. Using the drop down menu, you can then assign an <a href='Definition:AccountingCodes' class='definition'>accounting code</a>, <a href='Definition:FundingSources' class='definition'>funding source</a>, and Category #1 and Category #2 values for that resource.</p><p>If you have already added the cost per unit for a resource, at this point you should see the total cost for that resource for the year (if planning by years) or for the quarter and rolled up for the year (if planning by quarters). The annual amount is then displayed in the table at the top of the page. Click on the <code class='toolbarbutton'>&lt;Resources&gt;</code> tab and select the resource in the table if you need to edit the cost per unit information.</p><p class='hint'><b>Hint:</b>In many organizations, salary levels for team members can be confidential. In this current version of Miradi, be aware that all users of the file will have access to any salary information that is entered. One temporary solution might be to use mid-points of published salary ranges. Future versions of Miradi will protect the salary information so that only managers can access it. "
+msgid "html|/resources/wizard/WorkPlanView/BudgetWizardBudgetDetailLeft.html|<p>In addition to work effort, Miradi can also be used to develop forward looking financial budgets that include expenses required to implement actions (strategies, activities, or tasks):</p><p><table width='100%'><tr><td align='center'><img src='images/WorkPlanWizard/BudgetDetail.png' width='726' height='877'></img></td></tr></table><p>	"
 msgstr ""
 
-msgid "html|/resources/wizard/WorkPlanView/WorkPlanDevelopMethodsAndTasksStepRight.html|<div class='navigation'><i>Methods</i> are specific techniques used to collect data to measure an indicator. Good methods meet the following criteria: <ul><li><strong>Accurate: </strong>The data collection method has little or no margin of error.</li><li><strong>Reliable: </strong>The results are consistently repeatable - each time that the method is used it produces the same result.</li><li><strong>Cost-Effective: </strong>The method does not cost too much in relation to the data it produces and the resources the project has.</li><li><strong>Feasible: </strong>The method can be implemented by people on the project team.</li><li><strong>Appropriate: </strong>Acceptable to and fitting within site-specific cultural, social, and biological norms.</li></ul><p>Methods do not need to be complex or sophisticated - if you can get the information you need using a simple, inexpensive method, it is far preferable to do this than to choose a complex, expensive method.  While the information you gather may be less precise, it may be sufficient for the types of decisions you are making. When planning for measuring results, you need to keep in mind that it should be a relatively small portion of your project budget. If your methods for measuring results are too complex, you will not have enough money to implement actions and measure the results.</p></div>"
+msgid "html|/resources/wizard/WorkPlanView/WorkPlanDevelopMethodsAndTasksStepRight.html|<div class='navigation'><p>Activities and tasks are implemented by assigning <strong>people</strong> to them. To add a new person, go to the <code class='toolbarbutton'>&lt;People&gt;</code> tab in the Work Plan View. Click on the <code class='toolbarbutton'>&lt;Add&nbsp;People&gt;</code> button and the fill in the appropriate information below. You do not need to fill out all of the fields. The ID field should contain the initials of the person or a short reference to the position that they hold. <p class='hint'><b>Hint: </b>People can be either an individual person or a group of people. <p class='hint'><b>Hint: </b>It is possible to create work estimates for activities and tasks without knowing the actual person who will perform them. Miradi will automatically assign the work to a \"Not Specified\" person. This can be helpful in helping you estimate required people. In some cases it might be helpful to create place holder positions like \"Field Staff\", assign work to that position and then edit the people details when you know who will actually perform that work. <p class='hint'><b>Hint: </b>Work Units are typically estimated in number of days. (This is not required; some projects use weeks as the work unit.)  If you would prefer to do your estimates using the concept of Full Time Equivalents (FTEs), you can right click in any work units cell and select <code class='toolbarbutton'>&lt;Fraction&nbsp;of&nbsp;FTE...&gt;</code> to bring up a calculator that will assist you in conversion of FTE values into days. <p class='hint'><b>Hint: </b>You can also use the <code class='toolbarbutton'>&lt;Leader&gt;</code> button on the <code class='toolbarbutton'>&lt;People&gt;</code> sidetab to assign one person to be the leader of the action; the designated leader appears first in the upper column with an asterisk (*) by their name. </p></div>"
 msgstr ""
 
-msgid "html|/resources/wizard/WorkPlanView/BudgetWizardBudgetDetailRight.html|  <div class='navigation'>Some hints for working with your budget include: <p class='hint'><b>Hint:</b> The same resource may have different accounting codes or funding sources for different activities&nbsp;/&nbsp;methods or tasks.  It is possible to view the amount of work, expenses, and total budget amounts that have been assigned to a Project Resource, Accounting Code or funding source for any given period of time by selecting the appropriate tab and using the expandable column groups to view the rolled up totals.</p><p class='hint'><b>Hint:</b> If you need to adjust the planning horizon for your project, go to the project start and end date fields on <code class='toolbarbutton'>&lt;Planning&gt;</code> tab in the Summary View or by going to Edit->Preferences and selecting the Planning tab. You can also use the tab to adjust the currency type and the number of decimal places displayed.  However, if you have already entered estimates for work or expenses and change the project start or end dates to before or after those estimates, they will no longer be displayed.  You can recover them by changing the dates back to include those time periods.</p> 			</div>"
+msgid "html|/resources/wizard/WorkPlanView/BudgetWizardBudgetDetailRight.html|  <div class='navigation'>Some hints for working with your budget: <P><strong>People costs</strong></P><p class='hint'><b>Hint:</b> If you have already added the Work Unit Rate for a person, at this point you should see the total cost for that person for the year (if planning by years) or for the quarter and rolled up for the year (if planning by quarters). The annual amount is then displayed in the table at the top of the page. Click on the <code class='toolbarbutton'>&lt;People&gt;</code>&nbsp; tab, and select the person in the table if you need to edit the Work Unit Rate information.</p><p class='hint'><b>Hint:</b> To calculate a daily Work Unit Rate for People that are paid an hourly rate, you can multiply the hourly rate by the number of hours in the average/standard work day. For People that are paid a yearly salary, it is most common to divide the salary by 240, which is approximately how many work days there are in a standard work year.</p><p class='hint'><b>Hint:</b> In many organizations, salary levels for team members can be confidential. Be aware that, unless your project is managed within a Miradi Share program that redacts Work Unit Rates, all users of the file will have access to any salary information that is entered. One solution might be to use mid-points of published salary ranges. </p><p class='hint'><b>Hint:</b> Accounting Codes and Funding Sources are applied to person assignments and expenses - not at the higher action or person levels.  Thus the same person may have different accounting codes or funding sources depending on their work in the various actions.  To view the amount of work, expenses, and total budget amounts by person, accounting code or funding source, go to the respective <code class='toolbarbutton'>&lt;People&gt;</code>, <code class='toolbarbutton'>&lt;Accounting Codes&gt;</code> or <code class='toolbarbutton'>&lt;Funding Sources&gt;</code>&nbsp;tabs.</p><P><strong>Work Plan time horizon</strong></P><p class='hint'><b>Hint:</b> To set the work planning horizon for your project, go to the Work Plan start and end date fields on <code class='toolbarbutton'>&lt;Settings&gt;</code> tab in the Work Plan View (or go to Edit->Preferences, and select the Planning tab). Go to the <code class='toolbarbutton'>&lt;Financial Settings&gt;</code> sidetab to adjust the currency type and the number of decimal places displayed.  <p class='hint'><b>Hint:</b> If you have entered estimates for work or expenses, and then change the Work Plan start or end dates so that some of the estimates fall outside of the new planning time span, those estimates will no longer be displayed in the Work Plan table.  A warning message appears at the bottom left of the screen when such estimates are hidden.  Change the dates back to a time span that includes all entries to display all estimates; the warning message will then no longer appear.</p> 			</div>"
 msgstr ""
 
-msgid "html|/resources/wizard/WorkPlanView/BudgetWizardReconcileActualExpendituresStepLeft.html|Future versions of Miradi will allow you to generate reports on <a href='Definition:ActualExpenditures' class='definition'>actual expenditures</a> across different time periods by accounting code, activity, funding source, the 2 additional categories and against budgets. <p>The Analysis tab allows for the review all work and expenses that have been assigned to a given Project Resource, Accounting Code, Funding Source and the two additional categories for a given time period.  This should aid in your planning by helping to determine your Resource and Funding needs per fiscal quarter or year.  It can also help you analyze how your projected project costs are being applied to help refine per strategy implementation costs or to identify what types of activities account for the largest expenses.</p><p class='hint'><b>Hint:</b>You can create individual work plans by using the <code class='toolbarbutton'>&lt;Filter&nbsp;by&nbsp;Resource...&gt;</code> button and selecting the resources you want to view.  This will update the Work Plan to only show work days and budget totals for the selected resource(s).</p>"
+msgid "html|/resources/wizard/WorkPlanView/BudgetWizardReconcileActualExpendituresStepLeft.html|<p>Once you have entered assignments and expenses into Work Plan, Miradi offers powerful tools to analyze and make use of this information to adaptively manage your project:</p><table width='100%'><tr><td align='center'><img src='images/WorkPlanWizard/AnalyzingData1.png' width='687' height='305'></img></table><table width='100%'><tr><td align='center'><img src='images/WorkPlanWizard/AnalyzingData2.png' width='687' height='800'></img></td></tr></table>"
 msgstr ""
 
-msgid "html|/resources/wizard/WorkPlanView/WorkPlanOverviewStepLeft.html|<h3>Welcome to the Work Plan View</h3>A <a href='Definition:WorkPlan' class='definition'>work plan</a> shows the specific <a href='Definition:Activity' class='definition'>activities</a> / <a href='Definition:Method' class='definition'>methods</a> and <a href='Definition:Task' class='definition'>tasks</a>that you need to undertake to implement your strategic and monitoring plans. <p>The work plan view also enables you to develop a budget for your project (in the future, it will also enable you to manage actual expenditures). The budget shows the planned costs for the activities/methods and tasks that you need to undertake to implement your strategic and monitoring plans. These work units and expenses can be categorized by funding sources, accounting codes, and two additional user-defined budget categories. </p><p>As a general rule, you should have a detailed work plan for the coming year and a rough plan for the years after that.  </p><p>The <strong>Analysis</strong> tab supports the creation of custom views of your work plan data by specifying how you would like to group the work units and expenses.  For example, it is possible to create a report showing salary expenses broken down by funding source and then accounting code.  "
+msgid "html|/resources/wizard/WorkPlanView/WorkPlanOverviewStepLeft.html|<h3>Welcome to the Work Plan View - Allocating a Team’s “Time and Treasure”</h3>A <a href='Definition:WorkPlan' class='definition'>work plan</a> shows the specific <a href='Definition:Activity' class='definition'>activities</a> and <a href='Definition:Task' class='definition'>tasks</a>that you need to undertake to implement your strategic and monitoring plans. <p>The work plan view also enables you to develop a forward looking budget for your project. The budget shows the planned costs for the activities/methods and tasks that you need to undertake to implement your strategic and monitoring plans. </p><p>Work planning assumes that the most valuable resource that a project has is the time of its team members, but that a team also has to track other costs as part of their project budget. It also assumes that a project team will want to start with high-level planning for the life of the project and then add more detailed planning in the short-term.   </p> <p><table width='100%'><tr><td align='center'><img src='images/WorkPlanWizard/OverviewofWorkPlan.png' width='677' height='526'></img></td></tr></table><p></div>"
 msgstr ""
 
-msgid "html|/resources/wizard/WorkPlanView/WorkPlanDevelopActivitiesAndTasksStepLeft.html|Each <a href='Definition:Strategy' class='definition'>strategy</a> will have one or more <a href='Definition:Activity' class='definition'>activities</a> associated with it. <p>In the Work Plan View, select the <code class='toolbarbutton'>&lt;Work&nbsp;Plan&gt;</code> tab and select a strategy that you want to focus on in the tree. Think about the specific activities that you will have to undertake to carry out this strategy.  Click on the <code class='toolbarbutton'>&lt;Create...&gt;</code> button and select <code class='toolbarbutton'>&lt;Create&nbsp;Activity&gt;</code> and then type the name of the activity in the item field in the bottom panel. Repeat this for other activities needed to implement this strategy as needed. <p>If necessary, you can also highlight an activity and click on the <code class='toolbarbutton'>&lt;Create...&gt;</code> button and select <code class='toolbarbutton'>&lt;Create&nbsp;Task&gt;</code> to add <a href='Definition:Task' class='definition'>tasks</a> under this activity.  (If you are really detail oriented, you can even create sub-tasks and sub-sub tasks under tasks)</p>"
+msgid "html|/resources/wizard/WorkPlanView/WorkPlanDevelopActivitiesAndTasksStepLeft.html|Each <a href='Definition:Strategy' class='definition'>strategy</a> will have one or more <a href='Definition:Activity' class='definition'>activities</a> associated with it. <p>In the Work Plan View, select the <code class='toolbarbutton'>&lt;Work&nbsp;Plan&gt;</code> tab and select a strategy that you want to focus on in the tree. Think about the specific activities that you will have to undertake to carry out this strategy.  Click on the <code class='toolbarbutton'>&lt;Create...&gt;</code> button and select <code class='toolbarbutton'>&lt;Create&nbsp;Activity&gt;</code> and then type the name of the activity in the item field in the bottom panel. Repeat this for other activities needed to implement this strategy as needed. <p>If necessary, you can also highlight an activity and click on the <code class='toolbarbutton'>&lt;Create...&gt;</code> button and select <code class='toolbarbutton'>&lt;Create&nbsp;Task&gt;</code> to add <a href='Definition:Task' class='definition'>tasks</a> under this activity. </p><p>Work Planning often starts by creating a high-level work plan that sketches out the major activities and  timeframe needed to accomplish each of the project’s strategies. The following step-by-step instructions assume  that you have a Miradi project with at least one yellow strategy hexagon on a results chain diagram:</p><p class='hint'><b>Hint: </b>Throughout the work plan, blue text means you can directly edit the information in the cell, whereas black text is a rolled up value that cannot be directly edited.  <p><table width='100%'><tr><td align='center'><img src='images/WorkPlanWizard/High-levelWorkPlanning.png' width='652' height='687'></img></td></tr></table><p>"
 msgstr ""
 
-msgid "html|/resources/wizard/WorkPlanView/WorkPlanOverviewStepRight.html|<div class='navigation'><h3>Hints for the Work Plan View</h3><p>You can specify if your workplan should show data from your Conceptual Models, Results Chains or both by going to the Planning tab in <code class='toolbarbutton'>&lt;Edit/Preferences&gt;</code> and selecting from the <strong>Include Work Plan Data From:</strong> drop down chooser.</p><p>You can also specify whether to display only Action related rows (Strategies and Activities) or Monitoring related rows (Indicators and Methods) by clicking the <code class='toolbarbutton'>&lt;Customize&nbsp;Table...&gt;</code> button and making a selection in the Include Data From drop down menu.  The project totals values will only reflect the data that is being displayed.</p><p>Click on the Work Plan tab to <strong>see an overview of your plan.</strong> In the tree, clicking on the + and - symbols enables you to <strong>expand</strong> or <strong>collapse</strong> different parts of the hierarchy. Items in the table are based on your results chains and will include the strategies/indicators and their activities/methods and tasks.</p><p>The work plan table allows you to view and edit the work and expenses required to achieve your results chains at any level of detail and uses the concept of <strong>roll up rules</strong>.</p><p>Estimates that are entered at the same level of hierarchy in the project tree, or in the temporal grid will be added up and displayed as a sum total at the next level up in hierarchy.</p><p>If you enter an estimate at a finer level of detail (lower level of hierarchy), the calculated total will then be displayed for the higher level. Original higher level estimate data is retained for later comparison, but is ignored by roll up rules and not used to calculate totals and will display with strikethrough text in the lower panel</p><p>Work Units are typically estimated in number of days.  If you would prefer to do your estimates using the concept of Full Time Equivalents (FTEs), you can right click in any work units cell and select <code class='toolbarbutton'>&lt;Fraction&nbsp;of&nbsp;FTE...&gt;</code> to bring up a calculator that will assist you in conversion of FTE values into days.</p><p>Expenses are estimated in the default project currency.  The same roll up rules that apply to Work Units also apply to expenses.</p><p class='hint'><b>Hint:</b>The values in the When column are based on fields that are populated in the Work Units columns only.  It is possible to specify a when value for any row that is not being calculated or already has data in the work columns using the When pop up.  This will place zeros in the appropriate cells in the work columns that you can then override with estimates at a later time. <p class='hint'><b>Hint:</b>The values in the Who column also roll up from lower levels in the hierarchy so that it is easy to see all the resources that will be required for a given strategy or indicator. <p><table width='100%'><tr><td align='center'><img src='images/WorkPlanWizard/workplan-nav.png' width='500' height='386'></img></td></tr></table><p></div>"
+msgid "html|/resources/wizard/WorkPlanView/WorkPlanOverviewStepRight.html|<div class='navigation'><h3>Hints for the Work Plan View</h3><p>You can specify which Conceptual Model or Results Chain to display in the Work Plan tab by selecting from the <strong>Diagrams - include data from </strong> and the  <strong>Display this selection </strong> drop down choosers.</p><p>You can also specify whether to display only Action related rows (Strategies and Activities) or Monitoring related rows (Strategies and Monitoring Activities) by clicking the <code class='toolbarbutton'>&lt;Customize&nbsp;Table...&gt;</code> button and making a selection in the <strong>Include Data From </strong> drop down menu.  The project totals values will only reflect the data that is being displayed.</p><p>Click on the Work Plan tab to <strong>see an overview of your plan.</strong> In the tree, clicking on the + and - symbols enables you to <strong>expand</strong> or <strong>collapse</strong> different parts of the hierarchy. Click the <code class='toolbarbutton'>&lt;Expand&nbsp;To...&gt;</code> button to select the branches of the tree to display.   To display the <strong>Assignment</strong> and <strong>Expense</strong> rows, click the <code class='toolbarbutton'>&lt;Customize&nbsp;Table...&gt;</code> button, and check the appropriate Rows check boxes.  Items in the table are based on your results chains and will include the strategies, activities (regular or monitoring) and tasks.</p><p>Expenses are estimated in the default project currency.  To set the currency, go to the <code class='toolbarbutton'>&lt;Settings&gt;</code> tab in the Work Plan View (or go to Edit->Preferences, and select the Planning tab). Select the <code class='toolbarbutton'>&lt;Financial Settings&gt;</code> sidetab to adjust the currency type and the number of decimal places displayed.</p><p class='hint'><b>Hint: </b>The values in the  <strong>Who Work Assignments</strong> column also roll up from lower levels in the hierarchy so that it is easy to see all the resources that will be required for a given strategy or indicator. <p class='hint'><b>Hint: </b>The values in the <strong>Timeline</strong> column are entered from the <code class='toolbarbutton'>&lt;Timeline&gt;</code> sidetab in the sub-panel of an action or from the cell popup, and are independent of the entries in the Work Plan table.   <p class='hint'><b>Hint: </b>The values in the <strong>When Work Assignments</strong> column are based on fields that are populated in the Work Units columns only. <p>The lettered circles in the following image explain key work plan controls:</p><p><table width='100%'><tr><td align='center'><img src='images/WorkPlanWizard/workplan-nav-new.png' width='700' height='891'></img></td></tr></table><p></div>"
 msgstr ""
 
-msgid "html|/resources/wizard/WorkPlanView/WorkPlanAssignResourcesStepLeft.html|There are several ways to assign an existing resource to a strategy, indicator, activity/method or task in the Work Plan View.  First, click on the <code class='toolbarbutton'>&lt;Work&nbsp;Plan&gt;</code> tab and select the item in the project tree for the strategy, indicator, activity/method or task that you want to focus on. <p>You can either double click the blue Who cell to open a pop up where you can then click the check box for the resource(s) you want to add, or select the <b>Assignments</b> tab in the lower panel and click the <code class='toolbarbutton'>&lt;Assign&nbsp;Resource&gt;</code> button and select the resource from the drop down menu. </p> <p>You can add multiple resources if necessary. You can also use the <code class='toolbarbutton'>&lt;Leader&gt;</code> button on the <code class='toolbarbutton'>&lt;Who&nbsp;and&nbsp;When&gt;</code> sidetab to assign one resource to be the leader; the designated leader appears first in the upper column with an asterisk (*) by their name.</p><p>Once you have assigned resources, you can then allocate specific work days (orange columns) to that resource. Click in the appropriate cell and type in the number of work days.</p><p>You can also assign project expenses to any strategy, indicator, activity, method or task.  Expenses are planned purchases entered in the currency for the project and can be entered at any level of temporal detail by using the light green expenses columns. <p>Work units are typically estimated in number of days.  If you would prefer to do your estimates using the concept of Full Time Equivalents (FTEs), you can right click in any work units cell and select <code class='toolbarbutton'>&lt;Fraction&nbsp;of&nbsp;FTE...&gt;</code> to bring up a calculator that will assist you in conversion of FTE values into days.</p>"
+msgid "html|/resources/wizard/WorkPlanView/WorkPlanAssignResourcesStepLeft.html|<p>This page is intentionally blank. </p>"
 msgstr ""
 
 msgid "html|/resources/wizard/ReportsView/ReportsOverviewStepRight.html|  <h3>Exporting Data in Miradi to Other Applications</h3>There are many ways to export your information from Miradi to other applications. <br><h4>A. EXPORT CURRENT PAGE AS...</h4>This command is useful to export a specific image or table for use in a document or presentation. Options include: <h4>Export JPG or PNG Images</h4>Use the <code class='toolbarbutton'>&lt;File/Export&nbsp;Current&nbsp;Page&nbsp;as.../JPEG&nbsp;Image&gt;</code> or <code class='toolbarbutton'>&lt;File/Export&nbsp;Current&nbsp;Page&nbsp;as.../PNG&nbsp;Image&gt;</code> menu commands to capture a specific diagram or table on your screen in an image file. This method is particularly useful to: <ul><li>Put a diagram or table in a document or presentation</li><li>Create an image that can be put in a website</li></ul><p class='hint'><b>Hint:</b> If you export a diagram, Miradi will size the JPG or PNG to include hidden diagram factors. In combintation with tags, this will enable you to quickly produce animated powerpoint presentations that \"build\" complex diagrams.</p><h4>Export Rich Text Format (RTF) File</h4>Use the <code class='toolbarbutton'>&lt;File/Export&nbsp;Current&nbsp;Page&nbsp;as.../RTF&nbsp;File&gt;</code> menu command to export the currently viewed table to a Rich Text Format (RTF) file. This method is particularly useful to: <ul><li>Export a table or other information in a format that can be edited by a word processor</li><li>Export pieces of a custom report</li></ul><h4>Export Tab-Delimited Table</h4>Use the <code class='toolbarbutton'>&lt;File/Export&nbsp;Current&nbsp;Page&nbsp;as.../Tab-Delimited Data&gt;</code> menu command to export the currently viewed table to a tab-delimited file. This method is particularly useful to: <ul><li>Export the current configuration from your planning view to a spreadsheet like Excel</li><li>Export financial information</li></ul><br><h4>B. EXPORT CURRENT PROJECT AS...</h4>This command is useful to export your entire project file so that it can be shared with other users. Options include: <h4>Export Miradi Project (.Miradi) File </h4>Use the <code class='toolbarbutton'>&lt;File/Export Current Project as.../Miradi Project&gt;</code> menu command to create a copy of your project with a new name. This method is particularly useful to: <ul><li>Send your project to another Miradi user</li><li>Create a backup copy of your project</li></ul><p class='hint'><b>Hint:</b>Earlier versions of Miradi (3.x and before) stored each project's data as its own folder (as opposed to file) in the Miradi folder. As a result, you had to save a Miradi file in a special .mpz format to send it to another user. This is no longer required, unless you need to send the file to someone not yet using Miradi 4.x. Be aware that some of the newer features supported by Miradi 4.x will not be retained in the MPZ exports.</p><h4>Export XMPZ2 File </h4>Use the <code class='toolbarbutton'>&lt;File/Export Current Project as.../XMPZ2&gt;</code> menu command to provide a standard output of all the data in your Miradi file. This method is particularly useful to: <ul><li>Create a file that can be read and imported by a database</li><li>Apply custom XSLT and other report templates outside of Miradi</li><li>Export all of your project's information into formats that can be read by other applications</li></ul><p>In addition to the two standard export formats above, Miradi also supports several legacy export formats:</p><h4>Export ConPro (CPMZ) File </h4>Use the <code class='toolbarbutton'>&lt;File/Export Current Project as.../ConPro (CPMZ) File&gt;</code> menu command to capture your entire project in a zip file that can be imported into The Nature Conservancy's ConPro database. This method is particularly useful to: <ul><li>Upload your information to TNC's ConPro database</li></ul><h4>Miradi 3.3 MPZ Project File </h4>Use the <code class='toolbarbutton'>&lt;File/Export Current Project as.../Miradi 3.3 MPZ Project File&gt;</code> menu command to capture your entire project in a small zip file. This method is particularly useful to: <ul><li>Send your project to another Miradi user who does not have Version 4.x</li></ul><h4>XML/WCS Miradi Project ZIP File</h4>Use these formats to export data to systems that require them. <br><br><h4>C. GENERATE REPORTS</h4>Use the <code class='toolbarbutton'>&lt;Reports&gt;</code> view to create a Rich Text Format (RTF) file that contains various configurations of your project data. This method is particularly useful to: <ul><li>Create a document that can be edited in a Word Processor</li><li>Create a standard report for a donor or other key audience for your project</li></ul>"
