@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-04 15:36-0700\n"
+"POT-Creation-Date: 2016-10-05 03:36-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/miradi-client/"
@@ -2106,6 +2106,10 @@ msgstr "Ajouter '%s' au Dictionnaire utilisateur"
 msgid "Add Human Wellbeing Targets If Desired"
 msgstr "Ajouter des cibles de bien-être humain, si vous le désirez"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:94
+msgid "Add budget detail to work plan"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpTargetStressesStep.java:35
 msgid "Add stresses and/or biophysical factors (optional)"
 msgstr ""
@@ -2207,6 +2211,10 @@ msgstr "Analyser les données opérationnelles et financières"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:40
 msgid "Analyze project results and assumptions"
 msgstr "Analyser les résultats et les hypothèses du projet"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:99
+msgid "Analyzing and using work plan data"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/CreateResultsChainDoer.java:90
 #, fuzzy
@@ -3381,16 +3389,15 @@ msgstr ""
 "indicateur de l'Attribut Ecologique Clé que le projet veut atteindre à une "
 "date spécifique dans le futur. En général équivalent à un sous-but du projet."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:73
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:43
 msgid "Detail activities, tasks, and responsibilities"
 msgstr "Détail des activités, des tâches et des responsabilités"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:78
-msgid "Detail methods, tasks, and responsibilities"
-msgstr "Détail des méthodes, des tâches et des responsabilités"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:79
+msgid "Detailed work planning"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/MiradiShareDetailsPanel.java:39
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:67
@@ -3425,10 +3432,6 @@ msgstr "Élaborer les activités et le plan d'action"
 msgid "Develop and share communication products"
 msgstr "Élaborer et partager les produits de communication"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:93
-msgid "Develop and submit funding proposals"
-msgstr "Élaborer et soumettre des propositions de financement de projet"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:40
 msgid "Develop communications strategy"
 msgstr "Élaborer une stratégie de communication"
@@ -3452,10 +3455,6 @@ msgstr "Élaborer des objectifs"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpPlanningWizardDevelopOperationalPlan.java:36
 msgid "Develop operational plan"
 msgstr "Élaborer un plan opérationnel"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:83
-msgid "Develop project timeline or calendar"
-msgstr "Élaborer la chronologie ou le calendrier du projet"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpShorttermPlans.java:35
 msgid "Develop short-term work plans"
@@ -3729,10 +3728,6 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/treetables/TreeTablePanel.java:127
 msgid "Error restoring tree state"
 msgstr "Erreur lors de la restauration de l’état d’arborescence"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:88
-msgid "Estimate costs for activities and monitoring"
-msgstr "Estimation des coûts des activités et du suivi"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/CurrencyTypeQuestion.java:36
 msgid "Euro"
@@ -4252,6 +4247,10 @@ msgstr "Masquer les colonnes trimestre"
 msgid "High"
 msgstr "Elevé"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:74
+msgid "High-level work planning"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/notify/NotifyDialogTemplateFactory.java:75
 msgid "Home Folder Not Found"
 msgstr ""
@@ -4366,11 +4365,11 @@ msgstr ""
 msgid "Implement plans"
 msgstr "Mettre en œuvre les plans"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:103
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:109
 msgid "Implement strategic and monitoring plans"
 msgstr "Mettre en œuvre les plans stratégiques et de suivi"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:108
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:114
 msgid "Implement work plan"
 msgstr "Mettre en œuvre le plan de travail"
 
@@ -4991,6 +4990,10 @@ msgstr "Lier les Menaces directes aux Cibles"
 msgid "Link Properties"
 msgstr "Lier les propriétés"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:89
+msgid "List accounting codes and funding sources"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:48
 msgid "Lists"
 msgstr "Listes"
@@ -5307,7 +5310,7 @@ msgstr "1. Conceptualiser le projet"
 msgid "Menu|2. Plan Actions and Monitoring"
 msgstr "2. Planifier les actions et le suivi"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:53
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:54
 msgid "Menu|3. Implement Actions and Monitoring"
 msgstr "3. Mettre en œuvre les Actions et le Suivi"
 
@@ -5746,7 +5749,7 @@ msgstr "Les objectifs contiennent les Stratégies"
 msgid "Objectives:"
 msgstr "Objectifs :"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:98
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:104
 msgid "Obtain financial resources"
 msgstr "Obtenir les ressources financières"
 
@@ -6127,17 +6130,17 @@ msgstr "2B. Élaborer le plan de suivi"
 msgid "ProcessStep|2C. Develop Operational Plan"
 msgstr "2C. Élaborer le plan opérationnel"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:58
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:59
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/ProcessSteps.java:36
 msgid "ProcessStep|3A. Develop Short-Term Work Plan"
 msgstr "3A. Élaborer le plan de travail à court terme"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:63
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:64
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/ProcessSteps.java:37
 msgid "ProcessStep|3B. Develop and Refine Project Budget"
 msgstr "3B. Élaborer et affinier le budget du projet"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:68
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:69
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/ProcessSteps.java:38
 msgid "ProcessStep|3C. Implement Plans"
 msgstr "3C. Mettre en œuvre les plans"
@@ -9513,6 +9516,10 @@ msgid "Work plan start date is before project start date"
 msgstr ""
 "La date de début du plan de travail est antérieure à la date de début du "
 "projet"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:84
+msgid "Work planning for monitoring"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:128
 msgid ""
@@ -31324,6 +31331,18 @@ msgid ""
 msgstr ""
 "Marin___Atlantique tropical occidental___Écorégion marine du versant nord-"
 "est du Brésil___Brésil"
+
+#~ msgid "Detail methods, tasks, and responsibilities"
+#~ msgstr "Détail des méthodes, des tâches et des responsabilités"
+
+#~ msgid "Develop and submit funding proposals"
+#~ msgstr "Élaborer et soumettre des propositions de financement de projet"
+
+#~ msgid "Develop project timeline or calendar"
+#~ msgstr "Élaborer la chronologie ou le calendrier du projet"
+
+#~ msgid "Estimate costs for activities and monitoring"
+#~ msgstr "Estimation des coûts des activités et du suivi"
 
 #~ msgid ""
 #~ "Activity - An action carried out to accomplish one or more of a project's "

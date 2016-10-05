@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-04 15:36-0700\n"
+"POT-Creation-Date: 2016-10-05 03:36-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/miradi-client/"
@@ -2060,6 +2060,10 @@ msgstr ""
 msgid "Add Human Wellbeing Targets If Desired"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:94
+msgid "Add budget detail to work plan"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpTargetStressesStep.java:35
 msgid "Add stresses and/or biophysical factors (optional)"
 msgstr ""
@@ -2160,6 +2164,10 @@ msgstr "Analizza i dati operativi e finanziari"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:40
 msgid "Analyze project results and assumptions"
 msgstr "Analizza i risultati del progetto e i presupposti"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:99
+msgid "Analyzing and using work plan data"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/CreateResultsChainDoer.java:90
 #, fuzzy
@@ -3334,16 +3342,15 @@ msgstr ""
 "in un prefissato futuro momento. Equivale generalmente e a un sub-Obiettivo "
 "di Conservazione"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:73
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:43
 msgid "Detail activities, tasks, and responsibilities"
 msgstr "Attività dettagliate, azioni e responsabilità"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:78
-msgid "Detail methods, tasks, and responsibilities"
-msgstr "Metodi di dettaglio, attività e responsibilità"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:79
+msgid "Detailed work planning"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/MiradiShareDetailsPanel.java:39
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:67
@@ -3378,10 +3385,6 @@ msgstr "Sviluppa le attività e il piano d'azione"
 msgid "Develop and share communication products"
 msgstr "Sviluppa e condividi i prodotti per la comunicazione"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:93
-msgid "Develop and submit funding proposals"
-msgstr "Sviluppa e presenta proposte di finanziamento"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:40
 msgid "Develop communications strategy"
 msgstr "Sviluppa una strategia di comunicazione"
@@ -3406,10 +3409,6 @@ msgstr "Sviluppa gli Obiettivi di Conservazione"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpPlanningWizardDevelopOperationalPlan.java:36
 msgid "Develop operational plan"
 msgstr "Sviluppa il piano operativo"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:83
-msgid "Develop project timeline or calendar"
-msgstr "Sviluppa il cronogramma o il calendario del progetto"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpShorttermPlans.java:35
 msgid "Develop short-term work plans"
@@ -3673,10 +3672,6 @@ msgstr "Errore nella lettura di %s. Fors enon è un file zip valido."
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/treetables/TreeTablePanel.java:127
 msgid "Error restoring tree state"
 msgstr "Errore durante il ripristino dello stato del diagramma"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:88
-msgid "Estimate costs for activities and monitoring"
-msgstr "Stima i costi per le attività e il monitoraggio"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/CurrencyTypeQuestion.java:36
 msgid "Euro"
@@ -4193,6 +4188,10 @@ msgstr "Nascondi le colonne trimestre"
 msgid "High"
 msgstr "Alto"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:74
+msgid "High-level work planning"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/notify/NotifyDialogTemplateFactory.java:75
 msgid "Home Folder Not Found"
 msgstr ""
@@ -4302,11 +4301,11 @@ msgstr ""
 msgid "Implement plans"
 msgstr "Sviluppa i piani"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:103
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:109
 msgid "Implement strategic and monitoring plans"
 msgstr "Sviluppa i piani strategici e di monitoraggio"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:108
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:114
 msgid "Implement work plan"
 msgstr "Sviluppa il piano di lavoro"
 
@@ -4922,6 +4921,10 @@ msgstr "Collega le Minacce Dirette ai Target di Conservazione "
 msgid "Link Properties"
 msgstr "Proprietà del collegamento"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:89
+msgid "List accounting codes and funding sources"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:48
 msgid "Lists"
 msgstr "Liste"
@@ -5235,7 +5238,7 @@ msgstr "1. Conceptualizza il  Progetto"
 msgid "Menu|2. Plan Actions and Monitoring"
 msgstr "2. Pianifica Azioni e Monitoraggio"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:53
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:54
 msgid "Menu|3. Implement Actions and Monitoring"
 msgstr ""
 
@@ -5662,7 +5665,7 @@ msgstr ""
 msgid "Objectives:"
 msgstr "Obiettivi Gestionali:"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:98
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:104
 msgid "Obtain financial resources"
 msgstr "Ottieni le risorse finanziarie"
 
@@ -6038,17 +6041,17 @@ msgstr "2B. Sviluppa il Piano di Monitoraggio"
 msgid "ProcessStep|2C. Develop Operational Plan"
 msgstr "2C. Sviluppa il Piano Operativo"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:58
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:59
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/ProcessSteps.java:36
 msgid "ProcessStep|3A. Develop Short-Term Work Plan"
 msgstr "3A. Sviluppa il Piano di Lavoro a breve termine"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:63
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:64
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/ProcessSteps.java:37
 msgid "ProcessStep|3B. Develop and Refine Project Budget"
 msgstr "3B. Sviluppa e perfeziona il bilancio(Budget) del progetto"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:68
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:69
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/ProcessSteps.java:38
 msgid "ProcessStep|3C. Implement Plans"
 msgstr "3C. Implementa i Piani"
@@ -9379,6 +9382,10 @@ msgstr "Panoramica Piano di Lavoro"
 msgid "Work plan start date is before project start date"
 msgstr ""
 "La data di inizio del Piano di Lavoro è antecedente all'inizio del progetto"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:84
+msgid "Work planning for monitoring"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:128
 msgid ""
@@ -28555,6 +28562,18 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "Detail methods, tasks, and responsibilities"
+#~ msgstr "Metodi di dettaglio, attività e responsibilità"
+
+#~ msgid "Develop and submit funding proposals"
+#~ msgstr "Sviluppa e presenta proposte di finanziamento"
+
+#~ msgid "Develop project timeline or calendar"
+#~ msgstr "Sviluppa il cronogramma o il calendario del progetto"
+
+#~ msgid "Estimate costs for activities and monitoring"
+#~ msgstr "Stima i costi per le attività e il monitoraggio"
 
 #~ msgid ""
 #~ "Activity - An action carried out to accomplish one or more of a project's "

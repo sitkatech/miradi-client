@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-04 15:36-0700\n"
+"POT-Creation-Date: 2016-10-05 03:36-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Chinese (http://www.transifex.com/projects/p/miradi-client/"
@@ -1951,6 +1951,10 @@ msgstr ""
 msgid "Add Human Wellbeing Targets If Desired"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:94
+msgid "Add budget detail to work plan"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpTargetStressesStep.java:35
 msgid "Add stresses and/or biophysical factors (optional)"
 msgstr ""
@@ -2043,6 +2047,10 @@ msgstr "分析操作及财务数据 \t\t"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsAnalyzeUseAndAdaptQuestion.java:40
 msgid "Analyze project results and assumptions"
 msgstr "分析项目的结果及假设 \t\t"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:99
+msgid "Analyzing and using work plan data"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/CreateResultsChainDoer.java:90
 msgid ""
@@ -3186,16 +3194,15 @@ msgid ""
 "time in the future. Generally equivalent to a project sub-goal."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:73
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopMethodsAndTasksStep.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanCreateResourcesStep.java:43
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/planning/WorkPlanDevelopActivitiesAndTasksStep.java:43
 msgid "Detail activities, tasks, and responsibilities"
 msgstr "详尽的活动、任务及职责 \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:78
-msgid "Detail methods, tasks, and responsibilities"
-msgstr "详尽的方法、任务及职责 \t\t"
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:79
+msgid "Detailed work planning"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/MiradiShareDetailsPanel.java:39
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:67
@@ -3230,10 +3237,6 @@ msgstr "拟定活动及行动计划 \t\t"
 msgid "Develop and share communication products"
 msgstr "开发及共享通信产品 \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:93
-msgid "Develop and submit funding proposals"
-msgstr "拟定并递交资助提议 \t\t"
-
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:40
 msgid "Develop communications strategy"
 msgstr "开发通讯策略 \t\t"
@@ -3257,10 +3260,6 @@ msgstr "发展分目标组 \t\t"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpPlanningWizardDevelopOperationalPlan.java:36
 msgid "Develop operational plan"
 msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:83
-msgid "Develop project timeline or calendar"
-msgstr "拟定项目时间表或日程表 \t\t"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpShorttermPlans.java:35
 msgid "Develop short-term work plans"
@@ -3520,10 +3519,6 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/treetables/TreeTablePanel.java:127
 msgid "Error restoring tree state"
 msgstr "重建树结构出错 \t\t"
-
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:88
-msgid "Estimate costs for activities and monitoring"
-msgstr "估计活动及监控的开销 \t\t"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/CurrencyTypeQuestion.java:36
 msgid "Euro"
@@ -4021,6 +4016,10 @@ msgstr ""
 msgid "High"
 msgstr "高"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:74
+msgid "High-level work planning"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/notify/NotifyDialogTemplateFactory.java:75
 msgid "Home Folder Not Found"
 msgstr ""
@@ -4130,11 +4129,11 @@ msgstr ""
 msgid "Implement plans"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:103
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:109
 msgid "Implement strategic and monitoring plans"
 msgstr "实施策略及监控计划 \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:108
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:114
 msgid "Implement work plan"
 msgstr "实施工作计划 \t\t"
 
@@ -4741,6 +4740,10 @@ msgstr "将直接威胁因子链结到对象 \t\t"
 msgid "Link Properties"
 msgstr "链接属性 \t\t"
 
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:89
+msgid "List accounting codes and funding sources"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/ObjectsOnlyManagementPanel.java:48
 msgid "Lists"
 msgstr ""
@@ -5041,7 +5044,7 @@ msgstr "1. 使项目概念化 \t\t"
 msgid "Menu|2. Plan Actions and Monitoring"
 msgstr "2. 计划行动及监控 \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:53
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:54
 msgid "Menu|3. Implement Actions and Monitoring"
 msgstr ""
 
@@ -5448,7 +5451,7 @@ msgstr ""
 msgid "Objectives:"
 msgstr "分目标组： \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:98
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:104
 msgid "Obtain financial resources"
 msgstr "获取财务资源 \t\t"
 
@@ -5816,17 +5819,17 @@ msgstr "2B.发展监控计划 \t\t"
 msgid "ProcessStep|2C. Develop Operational Plan"
 msgstr "2C.发展操作计划 \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:58
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:59
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/ProcessSteps.java:36
 msgid "ProcessStep|3A. Develop Short-Term Work Plan"
 msgstr "3A.发展短期工作计划 \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:63
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:64
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/ProcessSteps.java:37
 msgid "ProcessStep|3B. Develop and Refine Project Budget"
 msgstr "3B.开发与改进项目预算 \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:68
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:69
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/ProcessSteps.java:38
 msgid "ProcessStep|3C. Implement Plans"
 msgstr "3C.实施计划 \t\t"
@@ -9057,6 +9060,10 @@ msgstr "工作计划总览 \t\t"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryView.java:169
 msgid "Work plan start date is before project start date"
 msgstr "工作计划起始日期早于项目起始日期 \t\t"
+
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:84
+msgid "Work planning for monitoring"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:128
 msgid ""
@@ -29015,6 +29022,18 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Detail methods, tasks, and responsibilities"
+#~ msgstr "详尽的方法、任务及职责 \t\t"
+
+#~ msgid "Develop and submit funding proposals"
+#~ msgstr "拟定并递交资助提议 \t\t"
+
+#~ msgid "Develop project timeline or calendar"
+#~ msgstr "拟定项目时间表或日程表 \t\t"
+
+#~ msgid "Estimate costs for activities and monitoring"
+#~ msgstr "估计活动及监控的开销 \t\t"
 
 #~ msgid ""
 #~ "Activity - An action carried out to accomplish one or more of a project's "
