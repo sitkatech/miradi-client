@@ -194,7 +194,7 @@ public class DefinitionCommonTerms
 		
 		
 		def = Definition.createDefinitionFromTextString(EAM.text("Work Plan"), EAM.text("Work Plan - A description of the specific activities and tasks that " +
-		"you need to undertake your strategic and monitoring plans.  A good work plan " +
+		"you need to undertake your action and monitoring plans.  A good work plan " +
 		"shows the timing and sequence of each task as well as the specific resources " +
 		"required to carry it out."));
 		defs.put("Definition:WorkPlan", def);
@@ -282,13 +282,13 @@ public class DefinitionCommonTerms
 		
 		def = Definition.createDefinitionFromTextString(EAM.text("Budget"), EAM.text("Budget - A forward looking projection of the " +
 				"expenses and anticipated funding sources for the activities/methods and " +
-				"tasks you need to implement your strategic and monitoring plans."));
+				"tasks you need to implement your action and monitoring plans."));
 		defs.put("Definition:Budget", def);
 
 		
 		def = Definition.createDefinitionFromTextString(EAM.text("Actual Expenditures"), EAM.text("Actual Expenditures - A backwards looking " +
 				"report on the money you spent for the activities/methods and tasks you " +
-				"undertook to implement your strategic and monitoring plans."));
+				"undertook to implement your action and monitoring plans."));
 		defs.put("Definition:ActualExpenditures", def);
 		
 		
