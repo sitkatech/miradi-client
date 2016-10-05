@@ -40,7 +40,7 @@ public class OpenStandardsCaptureAndShareLearningQuestion extends DynamicChoiceW
 		processStep5bChoiceItem.addChild(new ChoiceItem("DevelopCommunicationsStrategy", EAM.text("Develop communications strategy"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5B_FILENAME)));
 		processStep5bChoiceItem.addChild(new ChoiceItem("ReportToProjectTeamAndStakeholders", EAM.text("Report to project team and stakeholders"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5B_FILENAME)));
 		processStep5bChoiceItem.addChild(new ChoiceItem("DevelopAndShareCommunicationProducts", EAM.text("Develop and share communication products"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5B_FILENAME)));
-		processStep5bChoiceItem.addChild(new ChoiceItem("UseOthersCommunicationProducts", EAM.text("Use other&apos;s communication products"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5B_FILENAME)));
+		processStep5bChoiceItem.addChild(new ChoiceItem("UseOthersCommunicationProducts", EAM.text("Use other's communication products"), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5B_FILENAME)));
 		
 		ChoiceItemWithChildren processStep5cChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_5C_CODE, getProcessStep5cLabel(), EAM.emptyText(), new HtmlResourceLongDescriptionProvider(PROCESS_STEP_5C_FILENAME));
 		headerChoiceItem.addChild(processStep5cChoiceItem);
