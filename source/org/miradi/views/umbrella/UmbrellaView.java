@@ -343,7 +343,8 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addJumpDoerToMap(ActionJumpMonitoringWizardSelectMethodsStep.class);
 		
 		addJumpDoerToMap(ActionJumpBudgetWizardAccountingAndFunding.class);
-		
+		addJumpDoerToMap(ActionJumpBudgetWizardAnalyzingWorkPlanData.class);
+
 		addJumpDoerToMap(ActionJumpPlanningOverviewStep.class);
 		addJumpDoerToMap(ActionJumpPlanningWizardFinalizeStrategicPlanStep.class);
 		addJumpDoerToMap(ActionJumpPlanningWizardFinalizeMonitoringPlanStep.class);

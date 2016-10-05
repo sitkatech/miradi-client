@@ -293,7 +293,6 @@ public class Actions
 		registerNonMenuJumpAction(new ActionJumpMonitoringWizardSelectMethodsStep(mainWindow));
 		registerNonMenuJumpAction(new ActionJumpWorkPlanAssignResourcesStep(mainWindow));
 		registerJumpMenuAction(new ActionJumpWorkPlanDevelopMethodsAndTasksStep(mainWindow));
-		registerJumpMenuAction(new ActionJumpWorkPlanDevelopActivitiesAndTasksStep(mainWindow));
 		registerNonMenuJumpAction(new ActionJumpWorkPlanAssignResourcesStep(mainWindow));
 		registerJumpMenuAction(new ActionJumpDiagramWizardReviewModelAndAdjustStep(mainWindow));
 		registerNonMenuJumpAction(new ActionJumpThreatRatingWizardCheckTotalsStep(mainWindow));
@@ -309,6 +308,7 @@ public class Actions
 		registerJumpMenuAction(new ActionJumpPlanProjectLifespan(mainWindow));
 		registerJumpMenuAction(new ActionJumpDevelopSchedule(mainWindow));
 		registerJumpMenuAction(new ActionJumpBudgetWizardAccountingAndFunding(mainWindow));
+		registerJumpMenuAction(new ActionJumpBudgetWizardAnalyzingWorkPlanData(mainWindow));
 		registerJumpMenuAction(new ActionJumpDevelopFundingProposals(mainWindow));
 		registerJumpMenuAction(new ActionJumpObtainFinancing(mainWindow));
 		registerJumpMenuAction(new ActionJumpImplementStrategicAndMonitoringPlans(mainWindow));

@@ -39,7 +39,8 @@ public class OpenStandardsImplementActionsAndMonitoringQuestion extends DynamicC
 		headerChoiceItem.addChild(processStep3bChoiceItem);
 		processStep3bChoiceItem.addChild(new ChoiceItem(ESTIMATE_COSTS_FOR_ACTIVITIES_AND_MONITORING_CODE, getEstimateCostsForActivitiesAndMonitoringLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3B_FILE_NAME)));
 		processStep3bChoiceItem.addChild(new ChoiceItem(DEVELOP_AND_SUBMIT_FUNDING_PROPOSALS_CODE, getDevelopAndSubmitFundingProposalsLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3B_FILE_NAME)));
-		
+		processStep3bChoiceItem.addChild(new ChoiceItem(ANALYZING_AND_USING_WORK_PLAN_DATA_CODE, getAnalyzingAndUsingWorkPlanLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3B_FILE_NAME)));
+
 		ChoiceItemWithChildren processStep3cChoiceItem = new ChoiceItemWithChildren(PROCESS_STEP_3C_CODE, getProcessStep3c(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3C_FILE_NAME));
 		headerChoiceItem.addChild(processStep3cChoiceItem);
 		processStep3cChoiceItem.addChild(new ChoiceItem(IMPLEMENT_STRATEGIC_AND_MONITORING_PLANS, getImplementStrategicAndMonitoringPlansLabel(), new HtmlResourceLongDescriptionProvider(DESCRIPTION_3C_FILE_NAME)));
@@ -70,27 +71,32 @@ public class OpenStandardsImplementActionsAndMonitoringQuestion extends DynamicC
 
 	public static String getDetailActivitiesTasksAndResponsibilitiesLabel()
 	{
-		return EAM.text("Detail activities, tasks, and responsibilities");
+		return EAM.text("High-level work planning");
 	}
 	
 	public static String getDetailMethodsTasksAndResponsibilitiesLabel()
 	{
-		return EAM.text("Detail methods, tasks, and responsibilities");
+		return EAM.text("Detailed work planning");
 	}
 	
 	public static String getDevelopProjectTimelineOrCalendarLabel()
 	{
-		return EAM.text("Develop project timeline or calendar");
+		return EAM.text("Work planning for monitoring");
 	}
 	
 	public static String getEstimateCostsForActivitiesAndMonitoringLabel()
 	{
-		return EAM.text("Estimate costs for activities and monitoring");
+		return EAM.text("List accounting codes and funding sources");
 	}
 	
 	public static String getDevelopAndSubmitFundingProposalsLabel()
 	{
-		return EAM.text("Develop and submit funding proposals");
+		return EAM.text("Add budget detail to work plan");
+	}
+
+	public static String getAnalyzingAndUsingWorkPlanLabel()
+	{
+		return EAM.text("Analyzing and using work plan data");
 	}
 
 	public static String getObtainFinancialResourcesLabel()
@@ -117,6 +123,7 @@ public class OpenStandardsImplementActionsAndMonitoringQuestion extends DynamicC
 	public static final String DEVELOP_PROJECT_TIMELINE_OR_CALENDAR_CODE = "DevelopProjectTimelineOrCalendar";
 	public static final String ESTIMATE_COSTS_FOR_ACTIVITIES_AND_MONITORING_CODE = "EstimateCostsForActivitiesAndMonitoring";
 	public static final String DEVELOP_AND_SUBMIT_FUNDING_PROPOSALS_CODE = "DevelopAndSubmitFundingProposals";
+	public static final String ANALYZING_AND_USING_WORK_PLAN_DATA_CODE = "AnalyzingAndUsingWorkPlanData";
 	public static final String OBTAIN_FINANCIAL_RESOURCES_CODE = "ObtainFinancialResources";
 	public static final String IMPLEMENT_STRATEGIC_AND_MONITORING_PLANS = "ImplementStrategicAndMonitoringPlans";
 	public static final String IMPLEMENT_WORK_PLAN_CODE = "ImplementWorkPlan";

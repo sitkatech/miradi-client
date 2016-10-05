@@ -17,37 +17,30 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.wizard.planning;
+package org.miradi.actions.jump;
 
-import org.miradi.actions.jump.ActionJumpBudgetWizardAnalyzingWorkPlanData;
-import org.miradi.main.EAM;
-import org.miradi.main.menu.ProcessSteps;
-import org.miradi.wizard.FinancialWizardStep;
-import org.miradi.wizard.WizardPanel;
+import org.miradi.actions.AbstractJumpMenuAction;
+import org.miradi.main.MainWindow;
+import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
 
+import java.awt.event.KeyEvent;
 
-public class BudgetWizardReconcileActualExpendituresStep extends FinancialWizardStep
+public class ActionJumpBudgetWizardAnalyzingWorkPlanData extends AbstractJumpMenuAction
 {
-	public BudgetWizardReconcileActualExpendituresStep(WizardPanel wizardToUse)
+	public ActionJumpBudgetWizardAnalyzingWorkPlanData(MainWindow mainWindowToUse)
 	{
-		super(wizardToUse);
-	}
-	
-	@Override
-	public String getProcessStepTitle()
-	{
-		return ProcessSteps.PROCESS_STEP_3B;
+		super(mainWindowToUse, OpenStandardsImplementActionsAndMonitoringQuestion.getAnalyzingAndUsingWorkPlanLabel());
 	}
 
 	@Override
-	public Class getAssociatedActionClass()
+	public int getMnemonic()
 	{
-		return ActionJumpBudgetWizardAnalyzingWorkPlanData.class;
+		return KeyEvent.VK_E;
 	}
 
 	@Override
-	public String getSubHeading()
+	public String getCode()
 	{
-		return EAM.text("3) Analyzing and using work plan data");
+		return OpenStandardsImplementActionsAndMonitoringQuestion.ANALYZING_AND_USING_WORK_PLAN_DATA_CODE;
 	}
 }

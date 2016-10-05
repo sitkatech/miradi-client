@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.wizard.planning;
 
-import org.miradi.actions.jump.ActionJumpBudgetWizardAccountingAndFunding;
+import org.miradi.actions.jump.ActionJumpDevelopFundingProposals;
 import org.miradi.main.EAM;
 import org.miradi.main.menu.ProcessSteps;
 import org.miradi.wizard.FinancialWizardStep;
@@ -41,7 +41,7 @@ public class BudgetWizardBudgetDetail extends FinancialWizardStep
 	@Override
 	public Class getAssociatedActionClass()
 	{
-		return ActionJumpBudgetWizardAccountingAndFunding.class;
+		return ActionJumpDevelopFundingProposals.class;
 	}
 
 	@Override
