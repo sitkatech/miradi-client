@@ -19,34 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.main.menu;
 
-import java.awt.HeadlessException;
-import java.awt.event.InputEvent;
-import java.awt.event.KeyEvent;
-import java.util.Vector;
-
-import javax.swing.Action;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.KeyStroke;
-
 import org.martus.swing.UiMenu;
 import org.miradi.actions.*;
 import org.miradi.actions.jump.ActionJumpCloseTheLoop;
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
-import org.miradi.main.Miradi;
-import org.miradi.main.MiradiHtmlMenuItem;
-import org.miradi.main.ViewSwitcher;
-import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceItemWithChildren;
-import org.miradi.questions.DynamicChoiceWithRootChoiceItem;
-import org.miradi.questions.OpenStandardsAnalyzeUseAndAdaptQuestion;
-import org.miradi.questions.OpenStandardsCaptureAndShareLearningQuestion;
-import org.miradi.questions.OpenStandardsConceptualizeQuestion;
-import org.miradi.questions.OpenStandardsImplementActionsAndMonitoringQuestion;
-import org.miradi.questions.OpenStandardsPlanActionsAndMonitoringQuestion;
+import org.miradi.main.*;
+import org.miradi.questions.*;
 import org.miradi.utils.MenuItemWithoutLocation;
+import org.miradi.utils.XmlUtilities2;
 import org.miradi.views.diagram.DiagramView;
 import org.miradi.views.noproject.NoProjectView;
 import org.miradi.views.planning.PlanningView;
@@ -55,6 +34,12 @@ import org.miradi.views.threatmatrix.ThreatMatrixView;
 import org.miradi.views.umbrella.HelpButtonData;
 import org.miradi.views.umbrella.ViewSpecificHelpButtonData;
 import org.miradi.views.workplan.WorkPlanView;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
+import java.util.Vector;
 
 public class MainMenuBar extends JMenuBar
 {
@@ -573,7 +558,8 @@ public class MainMenuBar extends JMenuBar
 			AbstractJumpMenuAction action = actions.getJumpMenuAction(leafChoiceItem.getCode());
 			if (action == null)
 			{
-				JMenuItem disabledMenuItem = new JMenuItem(leafChoiceItem.getLabel());
+				String decodedLabel = XmlUtilities2.decodeApostrophes(leafChoiceItem.getLabel());
+				JMenuItem disabledMenuItem = new JMenuItem(decodedLabel);
 				disabledMenuItem.setEnabled(false);
 				subHeaderMenu.add(disabledMenuItem);
 			}
