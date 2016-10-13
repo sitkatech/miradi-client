@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-10 10:21-0700\n"
+"POT-Creation-Date: 2016-10-13 01:51-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -5267,27 +5267,27 @@ msgstr "Среден"
 msgid "Medium (Default)"
 msgstr "Среден (по подразбиране)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:245
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:230
 msgid "MenuBar|Actions"
 msgstr "MenuBar|Действия"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:176
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:161
 msgid "MenuBar|Edit"
 msgstr "MenuBar|Редактиране"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:97
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:82
 msgid "MenuBar|File"
 msgstr "MenuBar|Файл"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:589
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:575
 msgid "MenuBar|Help"
 msgstr "MenuBar|Помощ"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:521
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:506
 msgid "MenuBar|Step-by-Step"
 msgstr "MenuBar|Стъпка по стъпка"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:448
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:433
 msgid "MenuBar|View"
 msgstr "MenuBar|Изглед"
 
@@ -5315,20 +5315,20 @@ msgstr "Menu|5. Придобиване и споделяне на знание"
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Menu|Добавяне на етикет към %n маркирания(ите) елемент(и)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:144
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:129
 msgid "Menu|Export Current Page as..."
 msgstr "Menu|Експортиране на текуща страница като..."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:122
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:107
 msgid "Menu|Export Current Project as..."
 msgstr "Menu|Експортиране на текущ проект като..."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:243
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:436
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:421
 msgid "Menu|Group Box"
 msgstr "Menu|Кутия за групиране"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:157
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:142
 msgid "Menu|Import"
 msgstr "Menu|Импортиране"
 
@@ -9125,7 +9125,7 @@ msgid "Updating locations..."
 msgstr "Обновяване на местоположения..."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:43
-msgid "Use other's communication products"
+msgid "Use other&apos;s communication products"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/UserDefinedFileFilter.java:54

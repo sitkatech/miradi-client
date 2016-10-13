@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2016-10-10 10:21-0700\n"
+"POT-Creation-Date: 2016-10-13 01:51-0700\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -5228,27 +5228,27 @@ msgstr "Medium"
 msgid "Medium (Default)"
 msgstr "Medium (Default)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:245
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:230
 msgid "MenuBar|Actions"
 msgstr "MenuBar|Actions"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:176
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:161
 msgid "MenuBar|Edit"
 msgstr "MenuBar|Edit"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:97
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:82
 msgid "MenuBar|File"
 msgstr "MenuBar|File"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:589
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:575
 msgid "MenuBar|Help"
 msgstr "MenuBar|Help"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:521
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:506
 msgid "MenuBar|Step-by-Step"
 msgstr "MenuBar|Step-by-Step"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:448
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:433
 msgid "MenuBar|View"
 msgstr "MenuBar|View"
 
@@ -5276,20 +5276,20 @@ msgstr "Menu|5. Capture and Share Learning"
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Menu|Add Tag to %n Selected Item(s)"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:144
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:129
 msgid "Menu|Export Current Page as..."
 msgstr "Menu|Export Current Page as..."
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:122
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:107
 msgid "Menu|Export Current Project as..."
 msgstr "Menu|Export Current Project as..."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:243
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:436
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:421
 msgid "Menu|Group Box"
 msgstr "Menu|Group Box"
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:157
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/MainMenuBar.java:142
 msgid "Menu|Import"
 msgstr "Menu|Import"
 
@@ -9086,8 +9086,8 @@ msgid "Updating locations..."
 msgstr "Updating locations..."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:43
-msgid "Use other's communication products"
-msgstr ""
+msgid "Use other&apos;s communication products"
+msgstr "Use other&apos;s communication products"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/utils/UserDefinedFileFilter.java:54
 msgid "User Defined Extension"
@@ -36975,9 +36975,6 @@ msgstr ""
 #~ "Budget - A forward looking projection of the expenses and anticipated "
 #~ "funding sources for the activities/methods and tasks you need to "
 #~ "implement your strategic and monitoring plans."
-
-#~ msgid "Use other&apos;s communication products"
-#~ msgstr "Use other&apos;s communication products"
 
 #~ msgid "Detail methods, tasks, and responsibilities"
 #~ msgstr "Detail methods, tasks, and responsibilities"
