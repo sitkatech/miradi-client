@@ -19,23 +19,21 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.main;
 
+import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
+import org.miradi.questions.AllLanguagesQuestion;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.StaticQuestionManager;
+import org.miradi.utils.LanguagePackFileFilter;
+import org.miradi.utils.Translation;
+import org.miradi.views.umbrella.AbstractProjectImporter;
+
+import javax.swing.*;
 import java.io.File;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Vector;
-
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
-
-import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
-import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.AllLanguagesQuestion;
-import org.miradi.questions.StaticQuestionManager;
-import org.miradi.utils.LanguagePackFileFilter;
-import org.miradi.utils.Translation;
-import org.miradi.views.umbrella.AbstractProjectImporter;
 
 
 public class Miradi
@@ -326,7 +324,7 @@ public class Miradi
 	}
 
     public static final String LANGUAGE_PACK_VERSION = "4.4";
-    public static final String MAIN_VERSION = LANGUAGE_PACK_VERSION + ".0";
+    public static final String MAIN_VERSION = LANGUAGE_PACK_VERSION + ".1";
 
     public static final String LANGUAGE_PACK_PREFIX = "MiradiContent-" + LANGUAGE_PACK_VERSION + "-";
     private static final String ALPHA_TESTER_MODE_ON_SWITCH = "--tester";

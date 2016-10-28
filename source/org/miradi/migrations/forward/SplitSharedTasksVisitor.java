@@ -75,7 +75,7 @@ public class SplitSharedTasksVisitor extends AbstractMigrationORefVisitor
 				if (!processedTaskMap.containsKey(taskId))
 				{
 					ORef taskRef = new ORef(ObjectType.TASK, taskId);
-					RawObject rawTask = visitTask(objectToMigrate, taskRef);
+					RawObject rawTask = visitTask(rawObjectRef, taskRef);
 					processedTaskMap.put(taskId, rawTask);
 				}
 			}
@@ -84,7 +84,7 @@ public class SplitSharedTasksVisitor extends AbstractMigrationORefVisitor
 		return MigrationResult.createSuccess();
 	}
 
-	private RawObject visitTask(RawObject objectToMigrate, ORef taskRef) throws Exception
+	private RawObject visitTask(ORef rawObjectRef, ORef taskRef) throws Exception
 	{
 		HashMap<BaseId, IdList> taskIdMap = getOrCreateSubTaskIdToParentIdMap();
 
@@ -106,7 +106,7 @@ public class SplitSharedTasksVisitor extends AbstractMigrationORefVisitor
 					ORef parentRef = new ORef(getTypeToVisit(), parentIdList.get(j));
 					RawObject parent = getRawProject().findObject(parentRef);
 
-					if (!parent.equals(objectToMigrate))
+					if (!parentRef.equals(rawObjectRef))
 					{
 						// clone original task and all its children
 						ORef newTaskRef = cloneTask(rawTask, parentCount);
