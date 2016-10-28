@@ -163,10 +163,6 @@ lost when exporting to these older formats, but a warning dialog will
 indicate when that is the case.
 
 
-Notable changes in 4.4.1:
-- Fixed issue with data migration of shared tasks / methods
-
-
 Notable changes in 4.4.0:
 - Extensive changes to work plan view
 - Progress reports added to Results Chain diagrams
