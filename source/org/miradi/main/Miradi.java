@@ -323,7 +323,7 @@ public class Miradi
 		private String[] commandLineArgs;
 	}
 
-    public static final String LANGUAGE_PACK_VERSION = "4.4";
+    public static final String LANGUAGE_PACK_VERSION = "5.0";
     public static final String MAIN_VERSION = LANGUAGE_PACK_VERSION + ".0";
 
     public static final String LANGUAGE_PACK_PREFIX = "MiradiContent-" + LANGUAGE_PACK_VERSION + "-";

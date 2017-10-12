@@ -4,7 +4,7 @@ Copyright 2005-2015, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
 
-VERSION 4.4.1
+VERSION 5.0.0
 
 License and Copying
 
@@ -163,7 +163,13 @@ lost when exporting to these older formats, but a warning dialog will
 indicate when that is the case.
 
 
+Notable changes in 5.5.0:
+
+- TBD
+
+
 Notable changes in 4.4.0:
+
 - Extensive changes to work plan view
 - Progress reports added to Results Chain diagrams
 - Introduction of Monitoring Activities
