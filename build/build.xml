@@ -203,7 +203,7 @@
 <target name="build" depends="init, ThirdParty" description="Compile Miradi">
 <mkdir dir="${eam.class.root}"/>
 
-<javac source="1.6" target="1.7" compiler="javac1.7" optimize="on" failonerror="true"
+<javac source="1.8" target="1.8" compiler="javac1.8" optimize="on" failonerror="true"
         includeantruntime="false"
         debug="true" debuglevel="lines,source"
         srcdir="${eam.src.root}" destdir="${eam.class.root}"
@@ -221,7 +221,7 @@
 <!-- ================================================================== -->
 <target name="test" depends="init, build" description="Run unit tests">
 <mkdir dir="${eam.test.class.root}"/>
-<javac source="1.6" target="1.7" compiler="javac1.7" optimize="on" failonerror="true"
+<javac source="1.8" target="1.8" compiler="javac1.8" optimize="on" failonerror="true"
         srcdir="${eam.test.src.root}" destdir="${eam.test.class.root}" >
     <compilerarg value="-Xlint:unchecked" />
     <classpath refid="eam.class.path"/>
@@ -248,30 +248,12 @@
     </fileset>
 </copy>
 
-<!--
-<java classname='org.miradi.main.MainTests'>
-    <classpath refid='eam.class.path' />
-    <classpath>
-        <pathelement location='${eam.test.class.root}' />
-        <pathelement location='${eam.class.root}' />
-        <pathelement location='/work/benetech/miradi3/eclipse/miradi-thirdparty/JUnit/bin/junit.jar' />
-    </classpath>
-</java>
--->
 <junit haltonfailure='on' showoutput='on'>
     <classpath location='${junit.jar}' />
     <classpath refid='eam.class.path' />
     <classpath location='${eam.class.root}' />
 
     <test name='org.miradi.main.MainTests' todir='${eam.test.class.root}' />
-<!--
-    <batchtest fork="yes">
-        <fileset dir="${eam.test.src.root}">
-            <include name="**/Test*.java"/>
-            <exclude name="**/MainTests.java"/>
-        </fileset>
-    </batchtest>
--->
 
     <formatter type="plain" />
 
