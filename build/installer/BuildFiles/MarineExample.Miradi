@@ -2,7 +2,7 @@
 UV	Version=61
 UP	HighestUsedNodeId=2048
 UP	ProjectMetadataId=0
-UL	LastModified=2016-08-24 00:45
+UL	LastModified=2017-10-13 05:42
 CO	1:1
 UO	1:1	Label=Scope
 CO	1:2
@@ -210,7 +210,7 @@ UO	5:11	SingleLevelChoice=Goal
 CO	5:18
 UO	5:18	CurrentConceptualModelRef={"ObjectType":19,"ObjectId":9}
 UO	5:18	CurrentResultsChainRef={"ObjectType":24,"ObjectId":181}
-UO	5:18	CurrentWizardStep=DiagramOverviewStep
+UO	5:18	CurrentWizardStep=SummaryOverviewStep
 UO	5:18	Label=Summary
 CO	5:231
 UO	5:231	CurrentWizardStep=WorkPlanOverviewStep
@@ -818,7 +818,7 @@ UO	11:0	ProjectDescription=(<i>This is the example project used by Miradi Deskto
 UO	11:0	ProjectLanguage=en
 UO	11:0	ProjectLatitude=46.7
 UO	11:0	ProjectLongitude=7.9
-UO	11:0	ProjectName=Miradi Marine Example 4.4
+UO	11:0	ProjectName=Miradi Marine Example 5.0
 UO	11:0	ProjectScope=The marine resources of Eastern Bay Village&apos;s traditional fishing grounds.
 UO	11:0	ProjectURL=www.eastbaymarine.org
 UO	11:0	ProjectVision=Marine resources of the Eastern Bay are abundant and healthy, ensuring their ecological viability and their availability for our grandchildren&apos;s grandchildren to use and enjoy.
@@ -4184,4 +4184,4 @@ UT	41-39	DefaultValueId=4
 UT	41-39	Values={"1":5,"2":5,"3":6}
 UQ	Data=
 UE	Data=
--- 1472013925531 Aug 24, 2016 12:45:25 AM
+-- 1507898522623 Oct 13, 2017 5:42:02 AM
