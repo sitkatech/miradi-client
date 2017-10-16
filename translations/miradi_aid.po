@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-12 07:16-0700\n"
+"POT-Creation-Date: 2017-10-16 02:16-0700\n"
 "PO-Revision-Date: 2014-05-28 17:01+0000\n"
 "Last-Translator: nsalafsky <nick@fosonline.org>\n"
 "Language-Team: English (Estonia) (http://www.transifex.com/projects/p/miradi-"
@@ -580,7 +580,7 @@ msgstr ""
 "<br> The operation completed successfully, but Undo/Redo may not work "
 "correctly."
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:266
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:262
 msgid ""
 "<div class='DataPanel'><p>Why are my choices limited to one color family for "
 "each type of factor?</p>"
@@ -2498,11 +2498,11 @@ msgstr "Biodiversity Features"
 msgid "Biodiversity Target"
 msgstr "Biodiversity Interest"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:251
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:247
 msgid "Biodiversity Target (Lighter Green)"
 msgstr "Biodiversity Interest (Lighter Green)"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:253
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:249
 msgid "Biodiversity Target Scope (Darker Green)"
 msgstr "Biodiversity Interest Scope (Darker Green)"
 
@@ -2515,7 +2515,7 @@ msgstr ""
 msgid "Biophysical Factor"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:249
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:245
 msgid "Biophysical Factor (Olive)"
 msgstr ""
 
@@ -2530,7 +2530,7 @@ msgstr ""
 msgid "Biophysical Result"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:256
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:252
 msgid "Biophysical Result (Lavender Blue)"
 msgstr ""
 
@@ -2929,7 +2929,7 @@ msgstr "Choose Stress to Create from"
 msgid "Choose Tags"
 msgstr "Choose Tags"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:246
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:242
 msgid "Choose the colors that look best on your system:"
 msgstr "Choose the colors that look best on your system:"
 
@@ -3050,7 +3050,7 @@ msgstr "Context"
 msgid "Contributing Factor"
 msgstr "Driver"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:250
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:246
 msgid "Contributing Factor (Orange)"
 msgstr "Driver (Orange)"
 
@@ -3264,7 +3264,7 @@ msgstr "Dark Yellow"
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:119
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:115
 msgid "Data Location"
 msgstr "Data Location"
 
@@ -3458,7 +3458,7 @@ msgstr "Develop systems for handling project data"
 msgid "Develop target viability"
 msgstr "Develop interest viability"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:108
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:104
 msgid "Diagram"
 msgstr "Diagram"
 
@@ -3509,7 +3509,7 @@ msgstr "Diagram overview"
 msgid "Direct Threat"
 msgstr "Pressure"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:248
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:244
 msgid "Direct Threat (Pink)"
 msgstr "Pressure (Pink)"
 
@@ -3634,7 +3634,7 @@ msgid ""
 "Effective end date for project planning date range is before start date."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:160
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:156
 msgid "Enable Spell Checking"
 msgstr "Enable Spell Checking"
 
@@ -3958,11 +3958,11 @@ msgstr "FolderName|BackupsFromMigrationToMiradi4"
 msgid "Font"
 msgstr "Font"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:147
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:143
 msgid "Font Family"
 msgstr "Font Family"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:144
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:140
 msgid "Font Size"
 msgstr "Font Size"
 
@@ -4250,11 +4250,11 @@ msgstr "Human Stakeholders"
 msgid "Human Wellbeing Target"
 msgstr "Related Interest"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:252
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:248
 msgid "Human Wellbeing Target (Lighter Brown)"
 msgstr "Related Interest (Lighter Brown)"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:254
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:250
 msgid "Human Wellbeing Target Scope (Darker Brown)"
 msgstr "Related Interest Scope (Darker Brown)"
 
@@ -4539,7 +4539,7 @@ msgstr "Intensive Assessment"
 msgid "Intermediate Result"
 msgstr "Result"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:255
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:251
 msgid "Intermediate Result (Light Blue)"
 msgstr "Result (Light Blue)"
 
@@ -5507,7 +5507,7 @@ msgstr "Multi Selection"
 msgid "Must be a positive number"
 msgstr "Must be a positive number"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:154
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:150
 msgid ""
 "NOTE: Automatic Table Row Height Mode may impact the speed of expand and "
 "<br>collapse actions in the tables this setting affects. For better "
@@ -5539,7 +5539,7 @@ msgstr ""
 "NOTE: Quarter columns cannot be hidden because this project already has data "
 "for some quarters."
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:168
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:164
 msgid ""
 "NOTE: Spell checking is currently only available in English. <br>If the "
 "'Primary Project Data Language' in the Project tab of the Summary view "
@@ -5653,7 +5653,7 @@ msgstr "Not all factors are being shown because %s tag(s) are checked"
 msgid "Notification Dialogs"
 msgstr "Notification Dialogs"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:122
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:118
 msgid "Notifications"
 msgstr "Notifications"
 
@@ -5966,7 +5966,7 @@ msgid "Plan project lifespan and exit strategy"
 msgstr "Plan project lifespan and exit intervention"
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/summary/SummaryPlanningPanel.java:59
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:112
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:108
 msgid "Planning"
 msgstr "Planning"
 
@@ -6024,7 +6024,7 @@ msgstr "Poor"
 msgid "Pound (United Kingdom)"
 msgstr "Pound (United Kingdom)"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:410
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:406
 msgid "Preferences"
 msgstr "Preferences"
 
@@ -6188,7 +6188,7 @@ msgid "Project Scope"
 msgstr "Problem Scope"
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/ProjectSettingsPanel.java:51
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:115
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:111
 msgid "Project Settings"
 msgstr "Project Settings"
 
@@ -6675,7 +6675,7 @@ msgstr "Share success and failures with other teams"
 msgid "Show Day Columns"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:281
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:277
 msgid "Show Diagram Grid"
 msgstr "Show Diagram Grid"
 
@@ -6683,7 +6683,7 @@ msgstr "Show Diagram Grid"
 msgid "Show Quarter Columns"
 msgstr "Show Quarter Columns"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:224
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:220
 msgid "Show Ratings in Cell"
 msgstr "Show Ratings in Cell"
 
@@ -6886,7 +6886,7 @@ msgstr "Interventions contain Outcomes"
 msgid "Strategy"
 msgstr "Intervention"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:247
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:243
 msgid "Strategy (Yellow)"
 msgstr "Intervention (Yellow)"
 
@@ -7008,7 +7008,7 @@ msgstr "Summary View - Project Description, Scope, and Vision fields"
 msgid "Superseded "
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:107
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:103
 msgid "Systemwide"
 msgstr "Systemwide"
 
@@ -7862,7 +7862,7 @@ msgstr ""
 "commands.  Most word processors or spreadsheet programs will allow you to "
 "create a table and then export as a tab delimited file."
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:152
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:148
 msgid "Table Row Height Mode"
 msgstr "Table Row Height Mode"
 
@@ -8588,7 +8588,7 @@ msgstr "Pressure Rating Preferences Panel"
 msgid "Threat Rating Properties Panel"
 msgstr "Pressure Rating Properties Panel"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:111
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:107
 msgid "Threat Ratings"
 msgstr "Pressure Ratings"
 
@@ -8605,7 +8605,7 @@ msgstr "Pressure Ratings - Table"
 msgid "Threat Reduction Result"
 msgstr "Pressure Reduction Result"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:257
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:253
 msgid "Threat Reduction Result (Light Purple)"
 msgstr "Pressure Reduction Result (Light Purple)"
 
@@ -9239,7 +9239,7 @@ msgstr "WWF"
 msgid "Warning"
 msgstr "Warning"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:267
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:263
 msgid ""
 "We are trying to create a standard set of symbols that can be recognized "
 "globally. Just like people the world over recognize a red octagon as a stop "
