@@ -33,7 +33,6 @@ import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 
 import org.martus.swing.UiButton;
-import org.martus.swing.UiList;
 import org.martus.swing.UiVBox;
 import org.martus.swing.Utilities;
 import org.miradi.diagram.DiagramComponent;
@@ -43,6 +42,7 @@ import org.miradi.dialogs.base.DialogWithButtonBar;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.ListWithHtmlRenderer;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.dialogs.fieldComponents.UiList;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -141,7 +141,7 @@ public class LinkCreateDialog extends DialogWithButtonBar implements ActionListe
 		DiagramFactor[] filteredDiagramFactors = getFilteredDiagramFactors(allDiagramFactors);
 		Factor[] factors = convertToFactorList(model.getProject(), filteredDiagramFactors);
 		
-		Vector<FactorDropDownItem> dropDownItems = new Vector<FactorDropDownItem>();
+		Vector<FactorDropDownItem> dropDownItems = new Vector<>();
 		for(int i = 0; i < factors.length; ++i)
 		{
 			Factor factor = factors[i];
@@ -149,14 +149,14 @@ public class LinkCreateDialog extends DialogWithButtonBar implements ActionListe
 		}
 
 		Collections.sort(dropDownItems, new IgnoreCaseStringComparator());
-		UiList list = new ListWithHtmlRenderer(dropDownItems);
+		UiList<FactorDropDownItem> list = new ListWithHtmlRenderer<>(dropDownItems);
 		list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 		return list;
 	}
 
 	private DiagramFactor[] getFilteredDiagramFactors(DiagramFactor[] allDiagramFactors)
 	{
-		Vector<DiagramFactor> filteredDiagramFactors = new Vector<DiagramFactor>();
+		Vector<DiagramFactor> filteredDiagramFactors = new Vector<>();
 		for (int i = 0; i < allDiagramFactors.length; ++i)
 		{
 			int wrappedType = allDiagramFactors[i].getWrappedType();
@@ -242,7 +242,7 @@ public class LinkCreateDialog extends DialogWithButtonBar implements ActionListe
 		cancelButton = new PanelButton(EAM.text("Button|Cancel"));
 		cancelButton.addActionListener(this);
 
-		Vector<Component> buttons = new Vector<Component>();
+		Vector<Component> buttons = new Vector<>();
 		buttons.add(Box.createHorizontalGlue());
 		buttons.add(okButton);
 		buttons.add(Box.createHorizontalStrut(10));

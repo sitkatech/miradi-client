@@ -77,7 +77,7 @@ public class PlanningCustomizePanel extends ObjectDataInputPanel
 		updateFieldsFromProject();
 	}
 
-	public void updateDiagramFilterChoices() throws CommandFailedException
+	private void updateDiagramFilterChoices() throws CommandFailedException
 	{
 		diagramChoiceQuestion.reloadQuestion(this.getProject());
 		ChoiceItem[] diagramChoices = diagramChoiceQuestion.getChoices();
@@ -92,7 +92,7 @@ public class PlanningCustomizePanel extends ObjectDataInputPanel
 		for(FocusListener focusListener : focusListeners)
 			combo.removeFocusListener(focusListener);
 
-		DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel(diagramChoices);
+		DefaultComboBoxModel<ChoiceItem> comboBoxModel = new DefaultComboBoxModel<>(diagramChoices);
 		combo.setModel(comboBoxModel);
 
 		String diagramFilter = objectTreeTableConfiguration.getData(ObjectTreeTableConfiguration.TAG_DIAGRAM_FILTER);

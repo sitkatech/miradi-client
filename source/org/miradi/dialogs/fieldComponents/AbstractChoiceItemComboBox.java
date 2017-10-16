@@ -26,7 +26,7 @@ import javax.swing.DefaultListCellRenderer;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
-abstract public class AbstractChoiceItemComboBox extends PanelComboBox
+abstract public class AbstractChoiceItemComboBox extends PanelComboBox<org.miradi.questions.ChoiceItem>
 {
 	public AbstractChoiceItemComboBox(ChoiceItem[] items)
 	{
@@ -35,11 +35,11 @@ abstract public class AbstractChoiceItemComboBox extends PanelComboBox
 		setRenderer(createListCellRenderer());
 	}
 	
-	public void reloadComboBox(ChoiceQuestion question)
+	protected void reloadComboBox(ChoiceQuestion question)
 	{
 		removeAllItems();
-		
-		DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel(question.getChoices());
+
+		DefaultComboBoxModel<org.miradi.questions.ChoiceItem> comboBoxModel = new DefaultComboBoxModel<>(question.getChoices());
 		setModel(comboBoxModel);
 	}
 	

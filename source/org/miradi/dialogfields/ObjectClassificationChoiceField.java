@@ -22,7 +22,7 @@ package org.miradi.dialogfields;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 
-import org.martus.swing.UiComboBox;
+import org.miradi.dialogs.fieldComponents.UiComboBox;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;

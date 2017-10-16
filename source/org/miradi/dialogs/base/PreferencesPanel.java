@@ -35,15 +35,11 @@ import javax.swing.JTabbedPane;
 import javax.swing.ListCellRenderer;
 
 import org.martus.swing.UiCheckBox;
-import org.martus.swing.UiComboBox;
 import org.martus.swing.UiLabel;
 import org.miradi.diagram.DiagramConstants;
 import org.miradi.dialogs.NeverShowAgainPanel;
 import org.miradi.dialogs.diagram.DiagramProjectPreferencesPanel;
-import org.miradi.dialogs.fieldComponents.PanelCheckBox;
-import org.miradi.dialogs.fieldComponents.PanelComboBox;
-import org.miradi.dialogs.fieldComponents.PanelTabbedPane;
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.dialogs.fieldComponents.*;
 import org.miradi.dialogs.threatrating.ThreatRatingPreferencesPanel;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.AppPreferences;
@@ -98,7 +94,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		super.dispose();
 	}
 	
-	JTabbedPane createTabs() throws Exception
+	private JTabbedPane createTabs() throws Exception
 	{
 		JTabbedPane tabPane = new PanelTabbedPane();
 		
@@ -193,7 +189,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 
 	private UiComboBox createAndAddLabelAndCombo(JPanel htmlTab, String label, ChoiceQuestion question, String sizeAsString)
 	{
-		UiComboBox combo = new PanelComboBox(question.getChoices());
+		UiComboBox<ChoiceItem> combo = new PanelComboBox<>(question.getChoices());
 		setSelectedItemQuestionBox(combo, sizeAsString);
 		combo.addActionListener(this);
 		htmlTab.add(new PanelTitleLabel(label));
@@ -201,7 +197,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		return combo;
 	}
 
-	public void setSelectedItemQuestionBox(UiComboBox combo, String code)
+	private void setSelectedItemQuestionBox(UiComboBox combo, String code)
 	{
 		for(int i = 0; i < combo.getItemCount(); ++i)
 		{
@@ -291,8 +287,8 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	private UiComboBox createAndAddColorDropdown(JPanel diagramSystemPreferencesTab, String label, Color[] colorChoices, String colorTag)
 	{
 		diagramSystemPreferencesTab.add(new PanelTitleLabel(label));
-		UiComboBox dropdown = new PanelComboBox(colorChoices);
-		dropdown.setRenderer(new ColorItemRenderer());
+		UiComboBox<Color> dropdown = new PanelComboBox<>(colorChoices);
+		dropdown.setRenderer(new ColorItemRenderer<>());
 		dropdown.setSelectedItem(getMainWindow().getColorPreference(colorTag));
 		dropdown.addActionListener(this);
 		diagramSystemPreferencesTab.add(dropdown);
@@ -347,7 +343,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		getMainWindow().setColorPreference(tagColorStrategy, interventionColor);
 	}
 	
-	public String getSelectedItemQuestionBox(UiComboBox combo)
+	private String getSelectedItemQuestionBox(UiComboBox combo)
 	{
 		ChoiceItem selected = (ChoiceItem)combo.getSelectedItem();
 		if(selected == null)
@@ -356,7 +352,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		return selected.getCode();
 	}
 
-	static class ColorItemRenderer extends Component implements ListCellRenderer
+	static class ColorItemRenderer<E> extends Component implements ListCellRenderer<E>
 	{
 		public Component getListCellRendererComponent(JList list, Object value, int index, boolean isSelected, boolean cellHasFocus)
 		{

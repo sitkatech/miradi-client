@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.fieldComponents;
 
 import org.miradi.diagram.renderers.ChoiceItemHtmlEncodedListCellRenderer;
-import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
 public class ChoiceItemComboBox extends AbstractChoiceItemComboBox
@@ -30,7 +29,7 @@ public class ChoiceItemComboBox extends AbstractChoiceItemComboBox
 		super(question.getChoices());
 	}
 
-	public ChoiceItemComboBox(ChoiceItem[] items)
+	public ChoiceItemComboBox(org.miradi.questions.ChoiceItem[] items)
 	{
 		super(items);
 	}

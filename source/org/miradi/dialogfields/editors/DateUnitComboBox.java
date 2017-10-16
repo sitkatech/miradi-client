@@ -32,7 +32,7 @@ import org.miradi.questions.ChoiceQuestion;
 import java.util.Arrays;
 import java.util.HashSet;
 
-abstract public class DateUnitComboBox extends PanelComboBox
+abstract public class DateUnitComboBox extends PanelComboBox<ChoiceItem>
 {
 	public DateUnitComboBox(ProjectCalendar projectCalendarToUse, DateUnit dateUnit)
 	{
@@ -43,14 +43,14 @@ abstract public class DateUnitComboBox extends PanelComboBox
 
 	private void setComboBoxModel(DateUnit dateUnit)
 	{
-		Object[] choiceItems = getChoiceItems(dateUnit);
+		ChoiceItem[] choiceItems = getChoiceItems(dateUnit);
 		removeAllItems();
-		setModel(new DefaultComboBoxModel(choiceItems));
+		setModel(new DefaultComboBoxModel<>(choiceItems));
 	}
 
-	private Object[] getChoiceItems(DateUnit dateUnit)
+	private ChoiceItem[] getChoiceItems(DateUnit dateUnit)
 	{
-		HashSet<ChoiceItem> choiceItems = new HashSet<ChoiceItem>(Arrays.asList(createChoices()));
+		HashSet<ChoiceItem> choiceItems = new HashSet<>(Arrays.asList(createChoices()));
 
 		ChoiceItem choiceItem = getChoiceItemForDateUnit(dateUnit);
 		if (choiceItem != null)
@@ -89,7 +89,7 @@ abstract public class DateUnitComboBox extends PanelComboBox
 			setSelectedItem(choiceItem);
 	}
 	
-	protected ChoiceItem getChoiceItemForDateUnit(DateUnit dateUnit)
+	private ChoiceItem getChoiceItemForDateUnit(DateUnit dateUnit)
 	{
 		ChoiceItem choiceItem = null;
 

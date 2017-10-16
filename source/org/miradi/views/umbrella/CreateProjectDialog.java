@@ -39,7 +39,6 @@ import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
 import org.martus.swing.UiButton;
-import org.martus.swing.UiList;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiTextField;
 import org.martus.util.DirectoryUtils;
@@ -48,6 +47,7 @@ import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTextFieldWithSelectAllOnFocusGained;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.dialogs.fieldComponents.UiList;
 import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -147,7 +147,7 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 		File home = EAM.getHomeDirectory();
 		final String[] fileList = home.list(new ProjectFilter());
 		Arrays.sort(fileList, new IgnoreCaseStringComparator());
-		UiList list = new UiList(fileList);
+		UiList<String> list = new UiList<>(fileList);
 		list.addListSelectionListener(this);
 		list.addMouseListener(new DoubleClickHandler(this));
 		return list;
@@ -234,7 +234,7 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 		cancelButton = new PanelButton(EAM.text("Button|Cancel"));
 		cancelButton.addActionListener(this);
 
-		Vector<Component> buttons = new Vector<Component>();
+		Vector<Component> buttons = new Vector<>();
 		buttons.add(Box.createHorizontalGlue());
 		buttons.add(okButton);
 		buttons.add(Box.createHorizontalStrut(10));

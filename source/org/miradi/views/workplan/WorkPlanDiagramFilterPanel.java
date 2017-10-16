@@ -84,7 +84,7 @@ public class WorkPlanDiagramFilterPanel extends ObjectDataInputPanel
 		ChoiceItem selectedInclusionChoiceItem = diagramInclusionChoiceQuestion.findChoiceByCode(diagramInclusion);
 		diagramInclusionCombo.setSelectedItem(selectedInclusionChoiceItem);
 
-		DefaultComboBoxModel comboBoxModel = new DefaultComboBoxModel(diagramChoices);
+		DefaultComboBoxModel<ChoiceItem> comboBoxModel = new DefaultComboBoxModel<>(diagramChoices);
 		diagramFilterCombo.setModel(comboBoxModel);
 
 		String diagramFilter = tableSettings.getData(TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER);

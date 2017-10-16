@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields.editors;
 
-import org.martus.swing.UiComboBox;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogfields.TimeframeEditorField;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.dialogs.fieldComponents.UiComboBox;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.DateUnit;
@@ -66,7 +66,7 @@ abstract public class AbstractTimeframeEditorComponent extends DisposablePanel
 
 		setLayout(new BorderLayout());
 
-		dateUnitTypeCombo = new UiComboBox(dateUnitTypeQuestion.getChoices());
+		dateUnitTypeCombo = new UiComboBox<>(dateUnitTypeQuestion.getChoices());
 
 		PanelTitleLabel explanation = new PanelTitleLabel(getPanelTitle());
 		explanation.setBorder(createSmallCushionBorder());
@@ -103,7 +103,7 @@ abstract public class AbstractTimeframeEditorComponent extends DisposablePanel
 	{
 		String singleDateUnitTypeCode = getDefaultDateUnitTypeCode(planningObjectRefs);
 
-		Vector<DateUnit> dateUnits = new Vector<DateUnit>();
+		Vector<DateUnit> dateUnits = new Vector<>();
 		if (!singleDateUnitTypeCode.equals(AbstractDateUnitTypeQuestion.NONE_CODE) && planningObjectRefs.hasRefs())
 		{
 			ORef planningObjectRef = planningObjectRefs.getFirstElement();
@@ -134,7 +134,7 @@ abstract public class AbstractTimeframeEditorComponent extends DisposablePanel
 		return timeframe.getDateUnitEffortList();
 	}
 
-	protected String getDefaultDateUnitTypeCode(ORefList planningObjectRefsToUse) throws Exception
+	private String getDefaultDateUnitTypeCode(ORefList planningObjectRefsToUse) throws Exception
 	{
 		if (planningObjectRefsToUse.isEmpty())
 			return AbstractDateUnitTypeQuestion.NONE_CODE;
@@ -365,5 +365,5 @@ abstract public class AbstractTimeframeEditorComponent extends DisposablePanel
 	private AbstractDateUnitTypeQuestion dateUnitTypeQuestion;
 	private TwoColumnPanel upperPanel;
 	private AbstractTimeframeEditorLowerPanel lowerPanel;
-	private UiComboBox dateUnitTypeCombo;
+	private UiComboBox<ChoiceItem> dateUnitTypeCombo;
 }
