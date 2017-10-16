@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-12 07:16-0700\n"
+"POT-Creation-Date: 2017-10-16 02:16-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -584,7 +584,7 @@ msgstr ""
 "<br> Операцията е завършена успешно, но командите за отмяна и възстановяване "
 "на действие (Undo/Redo) може да не функционират правилно."
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:266
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:262
 msgid ""
 "<div class='DataPanel'><p>Why are my choices limited to one color family for "
 "each type of factor?</p>"
@@ -2518,11 +2518,11 @@ msgstr "Елементи на биоразнообразието"
 msgid "Biodiversity Target"
 msgstr "Обект на биоразнообразието"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:251
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:247
 msgid "Biodiversity Target (Lighter Green)"
 msgstr "Обект на биоразнообразието (светло зелено)"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:253
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:249
 msgid "Biodiversity Target Scope (Darker Green)"
 msgstr "Обхват на обект на биоразнообразието (тъмно зелено)"
 
@@ -2536,7 +2536,7 @@ msgstr "Обект на биоразнообразието"
 msgid "Biophysical Factor"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:249
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:245
 msgid "Biophysical Factor (Olive)"
 msgstr ""
 
@@ -2551,7 +2551,7 @@ msgstr ""
 msgid "Biophysical Result"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:256
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:252
 msgid "Biophysical Result (Lavender Blue)"
 msgstr ""
 
@@ -2953,7 +2953,7 @@ msgstr "Избор на стрес, от когото да се създава"
 msgid "Choose Tags"
 msgstr "Избор на етикети"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:246
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:242
 msgid "Choose the colors that look best on your system:"
 msgstr "Избор на най-подходящия за вашата система цвят:"
 
@@ -3071,7 +3071,7 @@ msgstr "Контекст"
 msgid "Contributing Factor"
 msgstr "Въздействащ фактор"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:250
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:246
 msgid "Contributing Factor (Orange)"
 msgstr "Въздействащ фактор (оранжево)"
 
@@ -3285,7 +3285,7 @@ msgstr "Тъмно жълт"
 msgid "Dashboard"
 msgstr "Табло"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:119
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:115
 msgid "Data Location"
 msgstr "Местонахождение на данни"
 
@@ -3480,7 +3480,7 @@ msgstr "Разрабоване на системи за работа с прое
 msgid "Develop target viability"
 msgstr "Разработване на жизнеспособност на обект"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:108
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:104
 msgid "Diagram"
 msgstr "Диаграма"
 
@@ -3522,7 +3522,7 @@ msgstr "Преглед на диаграма"
 msgid "Direct Threat"
 msgstr "Пряка заплаха"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:248
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:244
 msgid "Direct Threat (Pink)"
 msgstr "Пряка заплаха (розово)"
 
@@ -3647,7 +3647,7 @@ msgid ""
 "Effective end date for project planning date range is before start date."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:160
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:156
 msgid "Enable Spell Checking"
 msgstr "Включване на проверка на правопис"
 
@@ -3979,11 +3979,11 @@ msgstr "FolderName|BackupsFromMigrationToMiradi4"
 msgid "Font"
 msgstr "Шрифт"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:147
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:143
 msgid "Font Family"
 msgstr "Семейство от шрифтове"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:144
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:140
 msgid "Font Size"
 msgstr "Размер на шрифт"
 
@@ -4272,11 +4272,11 @@ msgstr "Човешки заинтересовани страни"
 msgid "Human Wellbeing Target"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:252
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:248
 msgid "Human Wellbeing Target (Lighter Brown)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:254
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:250
 msgid "Human Wellbeing Target Scope (Darker Brown)"
 msgstr ""
 
@@ -4561,7 +4561,7 @@ msgstr "Интензивна оценка"
 msgid "Intermediate Result"
 msgstr "Междинен резултат"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:255
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:251
 msgid "Intermediate Result (Light Blue)"
 msgstr "Междинен резултат (светло синьо)"
 
@@ -5540,7 +5540,7 @@ msgstr ""
 msgid "Must be a positive number"
 msgstr "Трябва да е положително число"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:154
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:150
 msgid ""
 "NOTE: Automatic Table Row Height Mode may impact the speed of expand and "
 "<br>collapse actions in the tables this setting affects. For better "
@@ -5573,7 +5573,7 @@ msgstr ""
 "БЕЛЕЖКА: Колоните за тримесечия не могат да бъдат скрити, защото този проект "
 "вече има информация за някои тримесечия."
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:168
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:164
 msgid ""
 "NOTE: Spell checking is currently only available in English. <br>If the "
 "'Primary Project Data Language' in the Project tab of the Summary view "
@@ -5687,7 +5687,7 @@ msgstr "Не са показани всички фактори, защото % �
 msgid "Notification Dialogs"
 msgstr "Диалогови прозорци за известия"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:122
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:118
 msgid "Notifications"
 msgstr "Известия"
 
@@ -6001,7 +6001,7 @@ msgid "Plan project lifespan and exit strategy"
 msgstr "Планиране на проектна продължителност и exit strategy"
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/summary/SummaryPlanningPanel.java:59
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:112
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:108
 msgid "Planning"
 msgstr "Планиране"
 
@@ -6059,7 +6059,7 @@ msgstr "Незадоволителен"
 msgid "Pound (United Kingdom)"
 msgstr "Лира (Обединено Кралство)"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:410
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:406
 msgid "Preferences"
 msgstr "Предпочитания"
 
@@ -6223,7 +6223,7 @@ msgid "Project Scope"
 msgstr "Обхват на проект"
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/ProjectSettingsPanel.java:51
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:115
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:111
 msgid "Project Settings"
 msgstr "Настройки на проект"
 
@@ -6708,7 +6708,7 @@ msgstr ""
 msgid "Show Day Columns"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:281
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:277
 msgid "Show Diagram Grid"
 msgstr "Показване на координатната мрежа на диаграма"
 
@@ -6716,7 +6716,7 @@ msgstr "Показване на координатната мрежа на ди�
 msgid "Show Quarter Columns"
 msgstr "Показване на колоните за тримесечия"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:224
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:220
 msgid "Show Ratings in Cell"
 msgstr "Показване на оценки в клетки"
 
@@ -6920,7 +6920,7 @@ msgstr "Стратегиите съдържат междинни цели"
 msgid "Strategy"
 msgstr "Стратегия"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:247
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:243
 msgid "Strategy (Yellow)"
 msgstr "Стратегия (жълто)"
 
@@ -7043,7 +7043,7 @@ msgstr ""
 msgid "Superseded "
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:107
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:103
 msgid "Systemwide"
 msgstr "Обхващащ системата"
 
@@ -7905,7 +7905,7 @@ msgstr ""
 "позволяват създаването на таблица и  експортирането й като файл с делител "
 "табулация"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:152
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:148
 msgid "Table Row Height Mode"
 msgstr "Режим за височината на таблични редове"
 
@@ -8608,7 +8608,7 @@ msgstr "Панел за предпочитания на оценяването �
 msgid "Threat Rating Properties Panel"
 msgstr "Панел за свойства на оценяването на заплахи"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:111
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:107
 msgid "Threat Ratings"
 msgstr "Оценки на заплахи"
 
@@ -8625,7 +8625,7 @@ msgstr "Оценки на заплахи - таблица"
 msgid "Threat Reduction Result"
 msgstr "Резултат от ограничаване на заплаха"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:257
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:253
 msgid "Threat Reduction Result (Light Purple)"
 msgstr "Резултат от ограничаване на заплаха (светло лилав)"
 
@@ -9254,7 +9254,7 @@ msgstr "WWF"
 msgid "Warning"
 msgstr "Предупреждение"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:267
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:263
 msgid ""
 "We are trying to create a standard set of symbols that can be recognized "
 "globally. Just like people the world over recognize a red octagon as a stop "
