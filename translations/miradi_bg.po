@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-16 02:16-0700\n"
+"POT-Creation-Date: 2017-10-25 04:01-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -995,7 +995,7 @@ msgstr ""
 "екосистеми и екологични съобщества се измерва като част площта на обекта. За "
 "видове се измерва като част от популацията на обекта"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:101
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:103
 msgid ""
 "<html>An error occurred<br/><br/>Perhaps the destination is full or readonly."
 msgstr ""
@@ -3776,7 +3776,7 @@ msgstr ""
 msgid "Export Report"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:96
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:97
 msgid "Export complete"
 msgstr "Експортиране завършено"
 
@@ -9590,7 +9590,7 @@ msgid "it will not be shown. Uncheck it to have Miradi "
 msgstr "няма да бъде показан. Премахнете отметката, за да имате Миради"
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:116
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:118
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:51
 msgid "save..."
 msgstr "запазване..."
