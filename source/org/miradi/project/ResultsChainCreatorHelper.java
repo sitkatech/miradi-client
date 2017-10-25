@@ -317,6 +317,9 @@ public class ResultsChainCreatorHelper
 		if (diagramFactor.getWrappedType() == ObjectType.BIOPHYSICAL_FACTOR)
 			return createNewFactorAndSetLabel(diagramFactor);
 
+		if (diagramFactor.getWrappedType() == ObjectType.BIOPHYSICAL_RESULT)
+			return createNewFactorAndSetLabel(diagramFactor);
+
 		if (diagramFactor.getWrappedType() == ObjectType.TEXT_BOX)
 			return createNewFactorAndSetLabel(diagramFactor);
 		
@@ -375,7 +378,7 @@ public class ResultsChainCreatorHelper
 		if (factor.isContributingFactor())
 			return new CommandCreateObject(ObjectType.INTERMEDIATE_RESULT);
 		
-		if (factor.isBiophysicalFactor())
+		if (factor.isBiophysicalFactor() || factor.isBiophysicalResult())
 			return new CommandCreateObject(ObjectType.BIOPHYSICAL_RESULT);
 
 		if (factor.isTextBox())
