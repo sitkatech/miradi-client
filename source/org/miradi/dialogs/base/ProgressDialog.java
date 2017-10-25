@@ -145,11 +145,12 @@ public class ProgressDialog extends DialogWithDisposablePanel implements Progres
 		{
             SwingUtilities.invokeLater(new Runnable() {
                 public void run() {
-                    progressBar.setValue(progressBar.getMaximum());
+                	progressBar.setValue(progressBar.getMaximum());
+                	progressBar.repaint();
                 }
             });
 
-			shouldExit();
+			requestExit();
 		}
 
 		public boolean shouldExit()

@@ -92,8 +92,10 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 	private void doWorkWithProgressDialog(ProgressInterface progressInterface, File chosen) throws Exception
 	{
 		boolean workWasCompleted = doWork(chosen, progressInterface);
-		if (workWasCompleted)
+		if (workWasCompleted) {
+			progressInterface.finished();
 			EAM.notifyDialog(EAM.text("Export complete"));
+		}
 	}
 
 	protected String getIOExceptionErrorMessage()
