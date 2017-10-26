@@ -68,17 +68,20 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 		}
 		catch(ValidationException e)
 		{
+			progressInterface.finished();
 			EAM.logException(e);
 			EAM.errorDialog(e.getMessage());
 		}
 		catch (InvalidICUNSelectionException e)
 		{
+			progressInterface.finished();
 			String errorMessage = EAM.substituteSingleString(EAM.text("Please choose a specific IUCN classification (Not a category). Fix needed for Strategy named:\n'%s'"), e.getStrategy().toString());
 			EAM.logException(e);
 			EAM.errorDialog(errorMessage);
 		}
 		catch(Exception e)
 		{
+			progressInterface.finished();
 			// NOTE: If we created no zip entries, the finally will throw
 			// a generic exception instead of this one, so log this one
 			// while we have a chance
