@@ -80,7 +80,7 @@ public class Actions
 		registerAction(new ActionImportMiradiShareFile(mainWindow));
 		registerAction(new ActionExportMiradiShareFile(mainWindow));
 		registerAction(new ActionImportXmpz2(mainWindow));
-		registerAction(new ActionExportMpf43Version(mainWindow));
+		registerAction(new ActionExportMpf44Version(mainWindow));
 
 		registerAction(new ActionProperties(mainWindow));
 		registerAction(new ActionSaveImageJPEG(mainWindow));

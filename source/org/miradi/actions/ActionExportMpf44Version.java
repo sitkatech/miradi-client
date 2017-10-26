@@ -23,16 +23,16 @@ package org.miradi.actions;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionExportMpf43Version extends MainWindowAction
+public class ActionExportMpf44Version extends MainWindowAction
 {
-	public ActionExportMpf43Version(MainWindow mainWindowToUse)
+	public ActionExportMpf44Version(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Miradi 4.3 Project File (.Miradi)");
+		return EAM.text("Action|Miradi 4.4 Project File (.Miradi)");
 	}
 
 	@Override
