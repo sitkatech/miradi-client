@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-25 04:01-0700\n"
+"POT-Creation-Date: 2017-10-26 08:31-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/miradi-client/"
@@ -1719,8 +1719,8 @@ msgstr "Mapas"
 msgid "Action|Miradi 3.3 Project File (.mpz)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/actions/ActionExportMpf43Version.java:35
-msgid "Action|Miradi 4.3 Project File (.Miradi)"
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/actions/ActionExportMpf44Version.java:35
+msgid "Action|Miradi 4.4 Project File (.Miradi)"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/actions/ActionExportMpf.java:35
@@ -3092,7 +3092,7 @@ msgstr ""
 "ligação e a recrie:<br>"
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/ExportMpzDoer.java:71
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/doers/ExportMpf43VersionDoer.java:74
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/doers/ExportMpf44VersionDoer.java:74
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/Xmpz2ProjectImporter.java:99
 msgid "Could not migrate!"
 msgstr ""
@@ -3732,8 +3732,8 @@ msgstr "Conhecimento especializado"
 msgid "Export"
 msgstr "Exportar"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/doers/ExportMpf43VersionDoer.java:90
-msgid "Export 4.3 Miradi"
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/doers/ExportMpf44VersionDoer.java:90
+msgid "Export 4.4 Miradi"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/ExportMpzDoer.java:99
@@ -7513,7 +7513,7 @@ msgstr "Expandir ao Tipo"
 msgid "TT|Export a .Miradi file"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/actions/ActionExportMpf43Version.java:41
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/actions/ActionExportMpf44Version.java:41
 msgid "TT|Export a .miradi file"
 msgstr ""
 
@@ -8981,7 +8981,7 @@ msgstr "Total Orçamento para Financiamento: %1 %2 "
 msgid "Total Monitoring Budget %1 %2"
 msgstr "Total Orçamento de Monitoramento %1 %2"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/doers/ExportMpf43VersionDoer.java:59
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/doers/ExportMpf44VersionDoer.java:59
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/Xmpz2ProjectImporter.java:79
 msgid ""
 "Unable to complete this migration.\n"
