@@ -30,7 +30,7 @@ import java.util.zip.ZipOutputStream;
 
 import org.martus.util.inputstreamwithseek.ByteArrayInputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
-import org.miradi.exceptions.ValidationException;
+import org.miradi.exceptions.XmlValidationException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -63,13 +63,13 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 		ByteArrayInputStreamWithSeek inputStream = new ByteArrayInputStreamWithSeek(projectXmlInBytes);
 		try
 		{
-			if (!isValidXml(inputStream))
-			{
-				EAM.logDebug(new String(projectXmlInBytes, "UTF-8"));
-				throw new ValidationException(EAM.text("Exported file does not validate."));
-			}
-	
+			validateXml(inputStream);
 			createZipEntry(zipOut, PROJECT_XML_FILE_NAME, projectXmlInBytes);
+		}
+		catch (XmlValidationException e)
+		{
+			EAM.logDebug(new String(projectXmlInBytes, "UTF-8"));
+			throw e;
 		}
 		finally
 		{
@@ -154,8 +154,8 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 	}
 	
 	abstract protected XmlExporter createExporter() throws Exception;
-	
-	abstract protected boolean isValidXml(InputStreamWithSeek inputStream) throws Exception;
+
+	abstract protected void validateXml(InputStreamWithSeek inputStream) throws Exception;
 
 	@Override
 	abstract protected MiradiFileSaveChooser createFileChooser();

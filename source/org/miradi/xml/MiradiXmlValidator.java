@@ -24,6 +24,7 @@ import java.net.URL;
 
 import org.martus.util.UnicodeReader;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
+import org.miradi.exceptions.XmlValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.xml.xmpz2.ValidationDriver;
@@ -41,45 +42,63 @@ abstract public class MiradiXmlValidator
 {
 	public boolean isValid(InputStreamWithSeek xmlInputStream) throws Exception
 	{
+		try
+		{
+			validate(xmlInputStream);
+			return true;
+		}
+		catch (XmlValidationException e)
+		{
+			logException(e, xmlInputStream);
+			return false;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return false;
+		}
+	}
+
+	public void validate(InputStreamWithSeek xmlInputStream) throws Exception
+	{
 		PropertyMapBuilder properties = getValidatorProperties();
 		URL resourceURL = ResourcesHandler.getEnglishResourceURL(getSchemaFileRelativePathName());
 		if(resourceURL == null)
 			throw new Exception("Schema not found: " + getSchemaFileRelativePathName());
-		
+
 		InputSource schemaInputSource = new InputSource(resourceURL.openStream());
 		SchemaReader schemaReader = CompactSchemaReader.getInstance();
 		ValidationDriver validationDriver = new ValidationDriver(properties.toPropertyMap(), schemaReader);
-		if (validationDriver.loadSchema(schemaInputSource))
+		if (!validationDriver.loadSchema(schemaInputSource))
+			throw new Exception("Schema cannot be loaded: " + getSchemaFileRelativePathName());
+
+		String invalidFileMessage = EAM.text("XML file is invalid (does not conform to the schema)");
+		InputSource xmlInputSource = new InputSource(xmlInputStream);
+		try
 		{
-			InputSource xmlInputSource = new InputSource(xmlInputStream);
-			try
-			{
-				return validationDriver.validate(xmlInputSource);
-			}
-			catch(SAXParseException e)
-			{
-				logException(e, xmlInputStream);
-				return false;
-			}
-			catch(Exception e)
-			{
-				EAM.logException(e);
-				return false;
-			}
+			Boolean isValid = validationDriver.validate(xmlInputSource);
+			if (!isValid)
+				throw new XmlValidationException(invalidFileMessage);
 		}
-		
-		throw new Exception("XML file is invalid (does not conform to the schema)");
+		catch (SAXParseException e)
+		{
+			throw new XmlValidationException(invalidFileMessage, e);
+		}
 	}
 
-	protected void logException(SAXParseException e, InputStreamWithSeek xmlInputStream) throws Exception
+	protected void logException(XmlValidationException e, InputStreamWithSeek xmlInputStream) throws Exception
 	{
-		final int lineNumber = e.getLineNumber();
-		String lineValue = findLineValue(xmlInputStream, lineNumber);
-		String error = "XML Parse error line " + lineNumber + ", column " + e.getColumnNumber() + "\n";
-		error += "Line :" + lineValue + "\n";
-		error += " Public Id: " + e.getPublicId() + "\n";
-		error += " System Id: " + e.getSystemId();
-		EAM.logError(error);
+		SAXParseException saxParseExc = e.getSAXParseException();
+		if (saxParseExc != null)
+		{
+			final int lineNumber = saxParseExc.getLineNumber();
+			String lineValue = findLineValue(xmlInputStream, lineNumber);
+			String error = "XML Parse error line " + lineNumber + ", column " + saxParseExc.getColumnNumber() + "\n";
+			error += "Line :" + lineValue + "\n";
+			error += " Public Id: " + saxParseExc.getPublicId() + "\n";
+			error += " System Id: " + saxParseExc.getSystemId();
+			EAM.logError(error);
+		}
 		EAM.logException(e);
 	}
 

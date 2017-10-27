@@ -17,16 +17,27 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
+package org.miradi.exceptions;
 
-package org.miradi.xml.xmpz2;
+import org.xml.sax.SAXParseException;
 
-import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
-import org.miradi.exceptions.XmlValidationException;
-
-public class Xmpz2XmlSilentValidatorForTesting extends Xmpz2XmlValidator
+public class XmlValidationException extends Exception
 {
-	@Override
-	protected void logException(XmlValidationException e, InputStreamWithSeek xmlInputStream)
+	public XmlValidationException(String message)
 	{
+		super(message);
+	}
+
+	public XmlValidationException(String message, Exception causedBy)
+	{
+		super(message, causedBy);
+	}
+
+	public SAXParseException getSAXParseException()
+	{
+		if (getCause() != null && getCause() instanceof SAXParseException)
+			return (SAXParseException) getCause();
+
+		return null;
 	}
 }

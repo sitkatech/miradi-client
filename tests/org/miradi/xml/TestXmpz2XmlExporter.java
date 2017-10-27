@@ -22,7 +22,7 @@ package org.miradi.xml;
 
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
-import org.miradi.exceptions.ValidationException;
+import org.miradi.exceptions.XmlValidationException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.*;
@@ -309,7 +309,7 @@ public class TestXmpz2XmlExporter extends TestCaseForXmpz2ExportAndImport
 		InputStreamWithSeek inputStream = new StringInputStreamWithSeek(xml);
 		if (!xmpz2XmlValidator.isValid(inputStream))
 		{
-			throw new ValidationException(EAM.text("File to import does not validate."));
+			throw new XmlValidationException(EAM.text("File to import does not validate."));
 		}
 		
 		return xml;

@@ -21,8 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.umbrella.doers;
 
 import org.martus.util.UnicodeReader;
-import org.miradi.exceptions.InvalidICUNSelectionException;
-import org.miradi.exceptions.ValidationException;
+import org.miradi.exceptions.XmlValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.objecthelpers.ORef;
@@ -30,12 +29,15 @@ import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.PNGFileFilter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.umbrella.XmlExporterDoer;
+import org.xml.sax.SAXParseException;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.net.URL;
 import java.util.zip.ZipOutputStream;
+
+import static org.miradi.xml.xmpz2.Xmpz2XmlConstants.GEOSPATIAL_LOCATION;
 
 abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 {
@@ -66,18 +68,11 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 			
 			return true;
 		}
-		catch(ValidationException e)
+		catch(XmlValidationException e)
 		{
 			progressInterface.finished();
 			EAM.logException(e);
-			EAM.errorDialog(e.getMessage());
-		}
-		catch (InvalidICUNSelectionException e)
-		{
-			progressInterface.finished();
-			String errorMessage = EAM.substituteSingleString(EAM.text("Please choose a specific IUCN classification (Not a category). Fix needed for Strategy named:\n'%s'"), e.getStrategy().toString());
-			EAM.logException(e);
-			EAM.errorDialog(errorMessage);
+			EAM.errorDialog(extractErrorMessageFromValidationException(e));
 		}
 		catch(Exception e)
 		{
@@ -95,7 +90,18 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 		
 		return false;
 	}
-	
+
+	private String extractErrorMessageFromValidationException(XmlValidationException e)
+	{
+		String defaultErrorMsg = EAM.text("Exported project file does not validate.");
+
+		SAXParseException saxParseExc = e.getSAXParseException();
+		if (saxParseExc != null && saxParseExc.getMessage().contains(GEOSPATIAL_LOCATION))
+			return EAM.text("Unable to export project file - Project Location is incomplete (if entered, both Latitude and Longitude are required).");
+
+		return defaultErrorMsg;
+	}
+
 	private void addExceptionLogFile(ZipOutputStream zipOut) throws Exception
 	{
 		String contents = getProject().getExceptionLog();

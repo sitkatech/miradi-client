@@ -35,7 +35,7 @@ import org.miradi.exceptions.CorruptSimpleThreatRatingDataException;
 import org.miradi.exceptions.FutureSchemaVersionException;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.exceptions.UserCanceledException;
-import org.miradi.exceptions.ValidationException;
+import org.miradi.exceptions.XmlValidationException;
 import org.miradi.exceptions.XmlVersionTooOldException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -96,7 +96,7 @@ public abstract class AbstractProjectImporter
 		{
 			EAM.alertUserOfNonFatalException(e);
 		}
-		catch (ValidationException e)
+		catch (XmlValidationException e)
 		{
 			EAM.logException(e);
 			showImportFailedErrorDialog(e.getMessage());

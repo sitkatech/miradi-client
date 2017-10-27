@@ -37,7 +37,7 @@ import javax.xml.xpath.XPathFactory;
 import org.martus.util.UnicodeReader;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
-import org.miradi.exceptions.ValidationException;
+import org.miradi.exceptions.XmlValidationException;
 import org.miradi.exceptions.XmlVersionTooOldException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
@@ -98,7 +98,7 @@ abstract public class AbstractXmlImporter
 		EAM.logVerbose(getXmlTextForDebugging(projectAsInputStream));
 
 		if (!createXmlValidator().isValid(projectAsInputStream)) {
-			throw new ValidationException(EAM.text("File to import does not validate."));
+			throw new XmlValidationException(EAM.text("File to import does not validate."));
 		}
 
 		xPath = createXPath();

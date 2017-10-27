@@ -25,7 +25,7 @@ import java.io.IOException;
 import java.util.zip.ZipException;
 
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
-import org.miradi.exceptions.ValidationException;
+import org.miradi.exceptions.XmlValidationException;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.utils.MiradiZipFile;
@@ -55,7 +55,7 @@ abstract public class AbstractProjectImporter extends AbstractZippedXmlImporter
 		projectToFill.rawCreatorOpen();
 	}
 	
-	protected ImportXmlProjectResult importProject(File zipFileToImport, ProgressInterface progressIndicator) throws ZipException, IOException, Exception, ValidationException
+	protected ImportXmlProjectResult importProject(File zipFileToImport, ProgressInterface progressIndicator) throws ZipException, IOException, Exception, XmlValidationException
 	{
 		MiradiZipFile zipFile = new MiradiZipFile(zipFileToImport);
 		try

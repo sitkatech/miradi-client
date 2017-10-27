@@ -47,13 +47,13 @@ public class Xmpz2ProjectExportDoer extends AbstractExportProjectXmlZipDoer
 	{
 		return new Xmpz2XmlExporter(getProject());
 	}
-	
+
 	@Override
-	protected boolean isValidXml(InputStreamWithSeek inputStream) throws Exception
+	protected void validateXml(InputStreamWithSeek inputStream) throws Exception
 	{
-		return new Xmpz2XmlValidator().isValid(inputStream);
+		new Xmpz2XmlValidator().validate(inputStream);
 	}
-	
+
 	@Override
 	public String getSchemaRelativeFilePath()
 	{
