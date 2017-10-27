@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-26 08:31-0700\n"
+"POT-Creation-Date: 2017-10-27 07:46-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -3689,9 +3689,9 @@ msgstr "Миради Zip...рүү экспорт хийх"
 msgid "Export..."
 msgstr "Экспорт..."
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/XmlExporterDoer.java:69
-msgid "Exported file does not validate."
-msgstr "Экспорт хийсэн файл хүчин төгөлдөр болсонгүй."
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:96
+msgid "Exported project file does not validate."
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/questions/RatingSourceQuestion.java:38
 msgid "External Research"
@@ -5873,15 +5873,6 @@ msgstr "Өгөгдөхүүнийг төлөвлөх"
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:102
 msgid "PlanningSubViewName|Custom"
 msgstr "ТөлөвлөлтДэдХарагдацНэр|Үйлчлүүлэгч"
-
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:76
-msgid ""
-"Please choose a specific IUCN classification (Not a category). Fix needed "
-"for Strategy named:\n"
-"'%s'"
-msgstr ""
-"IUCN-ний тусгай ангиллыг (категори биш) сонгоно уу. \n"
-" '%s нэр бүхий стратегид шаардлагатайг товло'"
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogfields/ObjectClassificationChoiceField.java:62
 msgid ""
@@ -8847,6 +8838,12 @@ msgstr ""
 "Энэ программын өөр хуулбарт энэ төслийг ашиглаж байгаа учир энэ төслийг "
 "устгах боломжгүй байна:\n"
 
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:100
+msgid ""
+"Unable to export project file - Project Location is incomplete (if entered, "
+"both Latitude and Longitude are required)."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/main/MainWindow.java:1405
 msgid "Unable to launch external web browser"
 msgstr "Вэб хуудас эхлүүлэх боломжгүй байна"
@@ -9351,6 +9348,10 @@ msgstr ""
 msgid "Writing..."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/xml/MiradiXmlValidator.java:75
+msgid "XML file is invalid (does not conform to the schema)"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/reports/DeleteXslTemplateDoer.java:39
 msgid "XSL Template"
 msgstr ""
@@ -9447,7 +9448,7 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:118
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:51
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:53
 msgid "save..."
 msgstr ""
 
@@ -32462,6 +32463,17 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Exported file does not validate."
+#~ msgstr "Экспорт хийсэн файл хүчин төгөлдөр болсонгүй."
+
+#~ msgid ""
+#~ "Please choose a specific IUCN classification (Not a category). Fix needed "
+#~ "for Strategy named:\n"
+#~ "'%s'"
+#~ msgstr ""
+#~ "IUCN-ний тусгай ангиллыг (категори биш) сонгоно уу. \n"
+#~ " '%s нэр бүхий стратегид шаардлагатайг товло'"
 
 #~ msgid ""
 #~ "Actual Expenditures - A backwards looking report on the money you spent "

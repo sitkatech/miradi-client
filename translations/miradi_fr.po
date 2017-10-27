@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-26 08:31-0700\n"
+"POT-Creation-Date: 2017-10-27 07:46-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/miradi-client/"
@@ -3780,9 +3780,9 @@ msgstr "Exporter vers Miradi Zip ..."
 msgid "Export..."
 msgstr "Exporter ..."
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/XmlExporterDoer.java:69
-msgid "Exported file does not validate."
-msgstr "Impossible de valider le fichier exporté."
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:96
+msgid "Exported project file does not validate."
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/questions/RatingSourceQuestion.java:38
 msgid "External Research"
@@ -6017,16 +6017,6 @@ msgstr "Planification des paramètres"
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:102
 msgid "PlanningSubViewName|Custom"
 msgstr "Personnaliser"
-
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:76
-msgid ""
-"Please choose a specific IUCN classification (Not a category). Fix needed "
-"for Strategy named:\n"
-"'%s'"
-msgstr ""
-"Veuillez choisir une classification UICN spécifique (pas une catégorie). "
-"Correction nécessaire pour la Stratégie nommée :\n"
-"'%s'"
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogfields/ObjectClassificationChoiceField.java:62
 msgid ""
@@ -9041,6 +9031,12 @@ msgstr ""
 "Impossible de supprimer ce projet parce qu'il est utilisé par une autre "
 "copie de cette application : \n"
 
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:100
+msgid ""
+"Unable to export project file - Project Location is incomplete (if entered, "
+"both Latitude and Longitude are required)."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/main/MainWindow.java:1405
 msgid "Unable to launch external web browser"
 msgstr "Impossible de lancer un navigateur web externe"
@@ -9542,6 +9538,10 @@ msgstr ""
 msgid "Writing..."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/xml/MiradiXmlValidator.java:75
+msgid "XML file is invalid (does not conform to the schema)"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/reports/DeleteXslTemplateDoer.java:39
 msgid "XSL Template"
 msgstr "Modèle XSL"
@@ -9640,7 +9640,7 @@ msgstr "ne sera pas affiché. Décochez-le pour avoir Miradi"
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:118
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:51
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:53
 msgid "save..."
 msgstr "Enregistrer..."
 
@@ -31313,6 +31313,18 @@ msgid ""
 msgstr ""
 "Marin___Atlantique tropical occidental___Écorégion marine du versant nord-"
 "est du Brésil___Brésil"
+
+#~ msgid "Exported file does not validate."
+#~ msgstr "Impossible de valider le fichier exporté."
+
+#~ msgid ""
+#~ "Please choose a specific IUCN classification (Not a category). Fix needed "
+#~ "for Strategy named:\n"
+#~ "'%s'"
+#~ msgstr ""
+#~ "Veuillez choisir une classification UICN spécifique (pas une catégorie). "
+#~ "Correction nécessaire pour la Stratégie nommée :\n"
+#~ "'%s'"
 
 #~ msgid ""
 #~ "Actual Expenditures - A backwards looking report on the money you spent "

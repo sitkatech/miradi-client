@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-26 08:31-0700\n"
+"POT-Creation-Date: 2017-10-27 07:46-0700\n"
 "PO-Revision-Date: 2015-07-29 01:52-0700\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -3517,8 +3517,8 @@ msgstr ""
 msgid "Export..."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/XmlExporterDoer.java:69
-msgid "Exported file does not validate."
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:96
+msgid "Exported project file does not validate."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/questions/RatingSourceQuestion.java:38
@@ -5640,13 +5640,6 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/planning/doers/AbstractCreatePlanningViewConfigurationDoer.java:102
 msgid "PlanningSubViewName|Custom"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:76
-msgid ""
-"Please choose a specific IUCN classification (Not a category). Fix needed "
-"for Strategy named:\n"
-"'%s'"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogfields/ObjectClassificationChoiceField.java:62
@@ -8494,6 +8487,12 @@ msgid ""
 "application:\n"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:100
+msgid ""
+"Unable to export project file - Project Location is incomplete (if entered, "
+"both Latitude and Longitude are required)."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/main/MainWindow.java:1405
 msgid "Unable to launch external web browser"
 msgstr ""
@@ -8947,6 +8946,10 @@ msgstr ""
 msgid "Writing..."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/xml/MiradiXmlValidator.java:75
+msgid "XML file is invalid (does not conform to the schema)"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/reports/DeleteXslTemplateDoer.java:39
 msgid "XSL Template"
 msgstr ""
@@ -9036,7 +9039,7 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:118
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:51
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/doers/AbstractExportProjectXmlZipDoer.java:53
 msgid "save..."
 msgstr ""
 
