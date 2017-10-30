@@ -241,15 +241,18 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 
 	private ORefList getActivities(Strategy strategy) throws Exception
 	{
-		ORefList activityRefs = new ORefList();
+		ORefList activityRefsToReturn = strategy.getActivityRefs();
 
-		if (getRowColumnProvider().shouldIncludeActivities())
-			activityRefs.addAll(ORefList.subtract(strategy.getActivityRefs(), strategy.getMonitoringActivityRefs()));
+		ORefList monitoringActivityRefs = strategy.getMonitoringActivityRefs();
+		ORefList activityRefs = ORefList.subtract(strategy.getActivityRefs(), monitoringActivityRefs);
 
-		if (getRowColumnProvider().shouldIncludeMonitoringActivities())
-			activityRefs.addAll(strategy.getMonitoringActivityRefs());
+		if (!getRowColumnProvider().shouldIncludeActivities())
+			ORefList.subtract(activityRefsToReturn, activityRefs);
 
-		return activityRefs;
+		if (!getRowColumnProvider().shouldIncludeMonitoringActivities())
+			ORefList.subtract(activityRefsToReturn, monitoringActivityRefs);
+
+		return activityRefsToReturn;
 	}
 
 	private ORefList getChildrenOfDesire(ORef parentRef, DiagramObject diagram) throws Exception
