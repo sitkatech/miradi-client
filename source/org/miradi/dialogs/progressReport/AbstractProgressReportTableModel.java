@@ -48,8 +48,17 @@ abstract public class AbstractProgressReportTableModel extends EditableObjectRef
 		if (progressReportParent == null)
 			return new ORefList();
 		
-		final ORefList safeRefListData = progressReportParent.getSafeRefListData(progressReportParent.getProgressReportRefsTag());
-		return AbstractTreeRebuilder.getSortedByFieldRefs(getProject(), safeRefListData, ProgressReport.TAG_PROGRESS_DATE);
+		final ORefList progressReportRefList = progressReportParent.getSafeRefListData(progressReportParent.getProgressReportRefsTag());
+
+		final ORefList cleanedProgressReportRefList = new ORefList();
+		for (ORef ref : progressReportRefList)
+		{
+			if (ref.getObjectType() == getObjectType()) {
+				cleanedProgressReportRefList.add(ref);
+			}
+		}
+
+		return AbstractTreeRebuilder.getSortedByFieldRefs(getProject(), cleanedProgressReportRefList, ProgressReport.TAG_PROGRESS_DATE);
 	}
 	
 	public Object getValueAt(int rowIndex, int columnIndex)
