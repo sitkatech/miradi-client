@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-27 07:46-0700\n"
+"POT-Creation-Date: 2017-10-30 08:01-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Chinese (http://www.transifex.com/projects/p/miradi-client/"
@@ -2268,7 +2268,7 @@ msgid ""
 "activity or task."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:40
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:54
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:427
 msgid "Assignment"
 msgstr ""
@@ -9004,7 +9004,7 @@ msgstr ""
 msgid "Wizard load of control failed:"
 msgstr "控制向导加载失败： \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:49
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:90
 msgid "Work Assignment"
 msgstr ""
 

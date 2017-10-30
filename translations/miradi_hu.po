@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-10-27 07:46-0700\n"
+"POT-Creation-Date: 2017-10-30 08:01-0700\n"
 "PO-Revision-Date: 2011-02-15 16:35-0600\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -2240,7 +2240,7 @@ msgid ""
 "activity or task."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:40
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:54
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:427
 msgid "Assignment"
 msgstr ""
@@ -8866,7 +8866,7 @@ msgstr ""
 msgid "Wizard load of control failed:"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:49
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:90
 msgid "Work Assignment"
 msgstr ""
 
