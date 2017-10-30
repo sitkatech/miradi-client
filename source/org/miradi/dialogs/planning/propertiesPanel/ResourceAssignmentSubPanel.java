@@ -21,7 +21,10 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.icons.IconManager;
+import org.miradi.main.CommandExecutedEvent;
+import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
 import org.miradi.questions.*;
@@ -32,12 +35,50 @@ public class ResourceAssignmentSubPanel extends AbstractAssignmentSubPanel
 	public ResourceAssignmentSubPanel(Project projectToUse, int objectType) throws Exception
 	{
 		super(projectToUse, objectType);
+		resourceAssignmentsChangeHandler = new ResourceAssignmentsChangeHandler();
+		getProject().addCommandExecutedListener(resourceAssignmentsChangeHandler);
+	}
+
+	@Override
+	public void dispose()
+	{
+		super.dispose();
+
+		if (resourceAssignmentsChangeHandler != null)
+			getProject().removeCommandExecutedListener(resourceAssignmentsChangeHandler);
 	}
 
 	@Override
 	public String getPanelDescription()
 	{
 		return EAM.text("Assignment");
+	}
+
+	@Override
+	public void becomeActive()
+	{
+		super.becomeActive();
+		try
+		{
+			if (resourceAssignmentsChangeHandler.getRebuildRequired())
+			{
+				rebuild();
+				resourceAssignmentsChangeHandler.setRebuildRequired(false);
+			}
+		} catch (Exception e)
+		{
+			EAM.panic(e);
+		}
+	}
+
+	@Override
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		super.commandExecuted(event);
+		resourceAssignmentsChangeHandler.commandExecuted(event);
+
+		becomeInactive();
+		becomeActive();
 	}
 
 	protected void rebuild() throws Exception
@@ -74,4 +115,48 @@ public class ResourceAssignmentSubPanel extends AbstractAssignmentSubPanel
 		validate();
 		repaint();
 	}
+
+	private class ResourceAssignmentsChangeHandler implements CommandExecutedListener
+	{
+
+		public ResourceAssignmentsChangeHandler()
+		{
+			rebuildRequired = false;
+		}
+
+		@Override
+		public void commandExecuted(CommandExecutedEvent event)
+		{
+			if (eventForcesRebuild(event))
+				rebuildRequired = true;
+		}
+
+		public boolean getRebuildRequired()
+		{
+			return rebuildRequired;
+		}
+
+		public void setRebuildRequired(boolean rebuildRequiredToUse)
+		{
+			rebuildRequired = rebuildRequiredToUse;
+		}
+
+		private boolean eventForcesRebuild(CommandExecutedEvent event)
+		{
+			if (event.isCreateCommandForThisType(ObjectType.PROJECT_RESOURCE))
+				return true;
+
+			if (event.isDeleteCommandForThisType(ObjectType.PROJECT_RESOURCE))
+				return true;
+
+			if (event.isSetDataCommandWithThisType(ObjectType.PROJECT_RESOURCE))
+				return true;
+
+			return false;
+		}
+
+		private boolean rebuildRequired;
+	}
+
+	private ResourceAssignmentsChangeHandler resourceAssignmentsChangeHandler;
 }
