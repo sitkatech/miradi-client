@@ -29,12 +29,12 @@ import org.martus.util.UnicodeWriter;
 import org.miradi.actions.Actions;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
-import org.miradi.dialogfields.AbstractWorkPlanStringMapEditorDoer;
 import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogs.ProjectCorruptionDialog;
 import org.miradi.dialogs.base.ProgressDialog;
 import org.miradi.dialogs.notify.NotifyDialog;
 import org.miradi.dialogs.notify.NotifyDialogTemplateFactory;
+import org.miradi.dialogs.planning.AbstractWorkPlanRowColumnProvider;
 import org.miradi.exceptions.*;
 import org.miradi.files.AbstractMpfFileFilter;
 import org.miradi.legacyprojects.LegacyProjectUtilities;
@@ -300,7 +300,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		return new Point(left, top);
 	}
 
-	
 	private void ensureFontSizeIsSet()
 	{
 		if(preferences.getPanelFontSize() == 0)
@@ -1001,13 +1000,18 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	
 	public boolean areAnyProjectResourceFiltersOn() throws Exception
 	{
-		TableSettings tableSettings = TableSettings.findOrCreate(getProject(), AbstractWorkPlanStringMapEditorDoer.getTabSpecificModelIdentifier());
-		CodeToCodeListMap tableSettingsMap = tableSettings.getTableSettingsMap();
-		ORefList refs = tableSettingsMap.getRefList(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
+		ORefList refs = getProjectResourceFilterRefs();
 
 		return refs.size() > 0;
 	}
-	
+
+	public ORefList getProjectResourceFilterRefs() throws Exception
+	{
+		TableSettings tableSettings = AbstractWorkPlanRowColumnProvider.getWorkPlanTableSettings(getProject());
+		CodeToCodeListMap tableSettingsMap = tableSettings.getTableSettingsMap();
+		return tableSettingsMap.getRefList(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
+	}
+
 	private boolean areStartEndDateFlipped()
 	{
 		return getProject().getProjectCalendar().arePlanningStartAndEndDatesFlipped();

@@ -26,14 +26,14 @@ import org.miradi.dialogs.base.WorkPlanProjectResourceFilterEditorPanel;
 import org.miradi.main.EAM;
 import org.miradi.objects.TableSettings;
 import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.WorkPlanProjectResourceQuestion;
+import org.miradi.questions.WorkPlanProjectResourceFilterQuestion;
 
 public class ProjectResourceWorkPlanFilterEditDoer extends AbstractWorkPlanStringMapEditorDoer
 {
 	@Override
 	protected ObjectDataInputPanel createEditorPanel(TableSettings workPlanTableSettings)
 	{
-		ChoiceQuestion columnConfigurationQuestion = new WorkPlanProjectResourceQuestion(getProject());
+		ChoiceQuestion columnConfigurationQuestion = new WorkPlanProjectResourceFilterQuestion(getProject(), workPlanTableSettings);
 		return new WorkPlanProjectResourceFilterEditorPanel(getProject(), workPlanTableSettings.getRef(), TableSettings.TAG_TABLE_SETTINGS_MAP, columnConfigurationQuestion);
 	}
 

@@ -23,14 +23,18 @@ import org.miradi.commands.Command;
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogs.planning.AbstractWorkPlanRowColumnProvider;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
+import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.utils.CommandVector;
 import org.miradi.views.ObjectsDoer;
@@ -77,6 +81,7 @@ public class DeleteResourceDoer extends ObjectsDoer
 			try
 			{
 				project.executeCommands(createCommandsToRemoveFromReferrers(allThatUseThisResource));
+				project.executeCommands(createCommandToRemoveFromProjectResourceFilter(resource));
 				project.executeCommands(resource.createCommandsToDeleteChildrenAndObject());
 			}
 			finally
@@ -114,5 +119,33 @@ public class DeleteResourceDoer extends ObjectsDoer
 			commands.add(new CommandSetObjectData(ref, ResourceAssignment.TAG_RESOURCE_ID, BaseId.INVALID.toString()));
 
 		return commands;
+	}
+
+	private Command[] createCommandToRemoveFromProjectResourceFilter(ProjectResource resource) throws Exception
+	{
+		CommandVector commands = new CommandVector();
+
+		MainWindow mainWindow = getMainWindow();
+
+		ORefList filterProjectResourceRefs = mainWindow.getProjectResourceFilterRefs();
+		if (filterProjectResourceRefs.contains(resource.getRef()))
+		{
+			filterProjectResourceRefs.remove(resource.getRef());
+
+			TableSettings tableSettings = getWorkPlanTableSettings();
+			CodeToCodeListMap tableSettingsMap = tableSettings.getTableSettingsMap();
+
+			CodeToCodeListMap newTableSettingsMap = new CodeToCodeListMap(tableSettingsMap);
+			newTableSettingsMap.putRefList(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY, filterProjectResourceRefs);
+
+			commands.add(new CommandSetObjectData(tableSettings, TableSettings.TAG_TABLE_SETTINGS_MAP, newTableSettingsMap.toJsonString()));
+		}
+
+		return commands.toArray(new Command[0]);
+	}
+
+	private TableSettings getWorkPlanTableSettings() throws Exception
+	{
+		return AbstractWorkPlanRowColumnProvider.getWorkPlanTableSettings(getProject());
 	}
 }

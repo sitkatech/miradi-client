@@ -20,24 +20,29 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.CodeToCodeListMap;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ProjectResource;
 import org.miradi.objects.ResourceAssignment;
+import org.miradi.objects.TableSettings;
 import org.miradi.project.Project;
 import org.miradi.schemas.ResourceAssignmentSchema;
 
-public class WorkPlanProjectResourceQuestion extends ObjectQuestion
+public class WorkPlanProjectResourceFilterQuestion extends ObjectQuestion
 {
-	public WorkPlanProjectResourceQuestion(Project projectToUse)
+	public WorkPlanProjectResourceFilterQuestion(Project projectToUse, TableSettings workPlanTableSettingsToUse)
 	{
-		super(getAllObjects(projectToUse));
+		super(getAllObjects(projectToUse, workPlanTableSettingsToUse));
 
 		project = projectToUse;
+		workPlanTableSettings = workPlanTableSettingsToUse;
 	}
 
-	private static BaseObject[] getAllObjects(Project project)
+	private static BaseObject[] getAllObjects(Project project, TableSettings workPlanTableSettings)
 	{
 		ORefList resourceAssignmentRefList = project.getPool(ResourceAssignmentSchema.getObjectType()).getRefList();
 		ORefSet resourceRefSet = new ORefSet();
@@ -50,6 +55,22 @@ public class WorkPlanProjectResourceQuestion extends ObjectQuestion
 		}
 
 		ORefList resourceRefList = resourceRefSet.toRefList();
+
+		try
+		{
+			CodeToCodeListMap tableSettingsMap = workPlanTableSettings.getTableSettingsMap();
+			ORefList filterProjectResourceRefs = tableSettingsMap.getRefList(TableSettings.WORK_PLAN_PROJECT_RESOURCE_FILTER_CODELIST_KEY);
+			for (ORef projectResourceRef: filterProjectResourceRefs)
+			{
+				if (!resourceRefList.contains(projectResourceRef) && projectResourceExists(project, projectResourceRef))
+					resourceRefList.add(projectResourceRef);
+			}
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+
 		BaseObject[] objectList = new BaseObject[resourceRefList.size()];
 		for (int i = 0; i < resourceRefList.size(); ++i)
 		{
@@ -65,7 +86,7 @@ public class WorkPlanProjectResourceQuestion extends ObjectQuestion
 	{
 		super.reloadQuestion();
 
-		setObjects(getAllObjects(project));
+		setObjects(getAllObjects(project, workPlanTableSettings));
 	}
 
 	protected Project getProject()
@@ -73,5 +94,19 @@ public class WorkPlanProjectResourceQuestion extends ObjectQuestion
 		return project;
 	}
 
+	private static boolean projectResourceExists(Project project, ORef projectResourceRef)
+	{
+		try
+		{
+			ProjectResource resource = ProjectResource.find(project, projectResourceRef);
+			return resource != null;
+		}
+		catch (Exception e)
+		{
+			return false;
+		}
+	}
+
 	private Project project;
+	private TableSettings workPlanTableSettings;
 }
