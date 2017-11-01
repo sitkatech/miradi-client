@@ -28,7 +28,6 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.MiradiShareProjectData;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.questions.MajorLanguagesQuestion;
 import org.miradi.rtf.RtfFormExporter;
@@ -73,7 +72,7 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 		{
 			final String tabIdentifier = SummaryMiradiSharePanel.class.getSimpleName();
 			final ObjectDataField clickableLinkField = createStaticReadonlyClickableLinkField(ProjectMetadataSchema.getObjectType(), htmlLinkToMiradiShareTab, tabIdentifier);
-			final ObjectDataField readonlyProgramNameField = createReadonlyTextField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_NAME);
+			final ObjectDataField readonlyProgramNameField = createReadonlyTextField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.PSEUDO_TAG_MIRADI_SHARE_PROGRAM_NAME);
 			addFieldsOnOneLineWithoutFieldLabels(label, new ObjectDataField[]{readonlyProgramNameField, clickableLinkField});
 		}
 		else

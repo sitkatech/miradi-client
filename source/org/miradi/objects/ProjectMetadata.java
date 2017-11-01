@@ -29,6 +29,7 @@ import org.miradi.objecthelpers.StringRefMap;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.*;
+import org.miradi.schemas.MiradiShareProjectDataSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
@@ -69,7 +70,10 @@ public class ProjectMetadata extends BaseObject
 		
 		if(fieldTag.equals(PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS))
 			return getStandardClassifications();
-		
+
+		if (fieldTag.equals(PSEUDO_TAG_MIRADI_SHARE_PROGRAM_NAME))
+			return getMiradiShareProgramName();
+
 		return super.getPseudoData(fieldTag);
 	}
 
@@ -94,6 +98,20 @@ public class ProjectMetadata extends BaseObject
 		}
 		
 		return threatClassificationCodes.withoutDuplicates().toString();
+	}
+
+	private String getMiradiShareProgramName()
+	{
+		String programName = "";
+
+		if (getProject().getMetadata().isMiradiShareProject())
+		{
+			ORef miradiShareProjectDataRef = getProject().getSingletonObjectRef(MiradiShareProjectDataSchema.getObjectType());
+			MiradiShareProjectData miradiShareProjectData = MiradiShareProjectData.find(getProject(), miradiShareProjectDataRef);
+			programName = miradiShareProjectData.getData(MiradiShareProjectData.TAG_PROGRAM_NAME);
+		}
+
+		return programName;
 	}
 
 	public ORefList getAllDiagramObjectRefs()
@@ -402,7 +420,8 @@ public class ProjectMetadata extends BaseObject
 
 	public static final String PSEUDO_TAG_PROJECT_FILENAME = "PseudoTagProjectFilename";
 	public static final String PSEUDO_TAG_ALL_THREAT_CLASSIFICATIONS = "AllThreatClassifications";
-	
+	public static final String PSEUDO_TAG_MIRADI_SHARE_PROGRAM_NAME = "PseudoTagMiradiShareProgramName";
+
 	public static final String TAG_TNC_LESSONS_LEARNED = "TNC.LessonsLearned";
 	public static final String TAG_TNC_WORKBOOK_VERSION_NUMBER = "TNC.WorkbookVersionNumber";
 	public static final String TAG_TNC_WORKBOOK_VERSION_DATE = "TNC.WorkbookVersionDate";
