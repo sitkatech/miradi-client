@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-01 06:32-0700\n"
+"POT-Creation-Date: 2017-11-01 07:32-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/miradi-client/"
@@ -4893,7 +4893,7 @@ msgstr "Lider/Gerente"
 msgid "Leaf Only"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:70
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:69
 msgid "Learn about Miradi Share"
 msgstr ""
 
@@ -5400,7 +5400,7 @@ msgstr "Preferências de Miradi"
 msgid "Miradi Share"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:71
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:70
 msgid "Miradi Share Program"
 msgstr ""
 
@@ -6980,7 +6980,7 @@ msgstr "Decrescímo Forte"
 msgid "Strong Increase"
 msgstr "Aumento Forte"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:118
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:117
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:143
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:69
@@ -9973,6 +9973,9 @@ msgstr "Nome de Arquivo de Projeto"
 
 msgid "FieldLabel|11.ProjectLanguage|Primary Project Data Language"
 msgstr "Idioma Principal dos Dados de Projeto"
+
+msgid "FieldLabel|11.PseudoTagMiradiShareProgramName|Program Name"
+msgstr ""
 
 msgid "FieldLabel|11.ProjectName|Project Name"
 msgstr "Nome de Projeto"

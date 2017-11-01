@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-01 06:32-0700\n"
+"POT-Creation-Date: 2017-11-01 07:32-0700\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -4888,7 +4888,7 @@ msgstr "Leader/Manager"
 msgid "Leaf Only"
 msgstr "Leaf Only"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:70
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:69
 msgid "Learn about Miradi Share"
 msgstr "Learn about Miradi Share"
 
@@ -5380,7 +5380,7 @@ msgstr "Miradi Preferences"
 msgid "Miradi Share"
 msgstr "Miradi Share"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:71
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:70
 msgid "Miradi Share Program"
 msgstr "Miradi Share Program"
 
@@ -6955,7 +6955,7 @@ msgstr "Strong Decrease"
 msgid "Strong Increase"
 msgstr "Strong Increase"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:118
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:117
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:143
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:69
@@ -9951,6 +9951,9 @@ msgstr "FieldLabel|11.PseudoTagProjectFilename|Project Filename"
 
 msgid "FieldLabel|11.ProjectLanguage|Primary Project Data Language"
 msgstr "FieldLabel|11.ProjectLanguage|Primary Project Data Language"
+
+msgid "FieldLabel|11.PseudoTagMiradiShareProgramName|Program Name"
+msgstr ""
 
 msgid "FieldLabel|11.ProjectName|Project Name"
 msgstr "FieldLabel|11.ProjectName|Project Name"
