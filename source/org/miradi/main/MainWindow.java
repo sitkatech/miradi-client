@@ -85,6 +85,7 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
 import java.io.IOException;
+import java.net.URI;
 import java.util.*;
 import java.util.List;
 
@@ -1396,12 +1397,20 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	{
 		try 
 		{
-		    BrowserLauncherRunner runner = new BrowserLauncherRunner(
-		    		new BrowserLauncher(null),
-		            "",
-		            linkDescription,
-		            null);
-		    new Thread(runner).start();
+			if (Desktop.isDesktopSupported())
+			{
+				Desktop desktop = Desktop.getDesktop();
+				desktop.browse(new URI(linkDescription));
+			}
+			else
+			{
+				BrowserLauncherRunner runner = new BrowserLauncherRunner(
+						new BrowserLauncher(null),
+						"",
+						linkDescription,
+						null);
+				new Thread(runner).start();
+			}
 		}
 		catch (Exception e) 
 		{
@@ -1412,7 +1421,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 
 	private boolean isBrowserProtocol(String linkDescription)
 	{
-		return linkDescription.startsWith(HTTP_PROTOCOL) || linkDescription.startsWith(MAIL_PROTOCOL);
+		return linkDescription.startsWith(HTTP_PROTOCOL) || linkDescription.startsWith(HTTPS_PROTOCOL) || linkDescription.startsWith(MAIL_PROTOCOL);
 	}
 
     public String askForDestinationProjectName(File proposedProjectFile) throws Exception
@@ -1468,6 +1477,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			"<br>&nbsp;&nbsp;&nbsp;<i>" + WelcomeCreateStep.getLegalProjectNameNote();
 
 	private static String HTTP_PROTOCOL = "http";
+	private static String HTTPS_PROTOCOL = "https";
 	private static String MAIL_PROTOCOL = "mailto:";
 	
 	private static final String APP_PREFERENCES_FILENAME = "settings";
