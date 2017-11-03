@@ -50,11 +50,9 @@ public class TestProjectMetadata extends TestCaseWithProject
 		verifyDataField(ProjectMetadata.TAG_DATA_EFFECTIVE_DATE, "2006-09-27");
 		verifyDataField(ProjectMetadata.TAG_PROJECT_AREA, "24.3");
 	}
-	
+
 	public void testTncDataFields() throws Exception
 	{
-		verifyDataField(ProjectMetadata.TAG_TNC_WORKBOOK_VERSION_NUMBER, "WB Version #");
-		verifyDataField(ProjectMetadata.TAG_TNC_WORKBOOK_VERSION_DATE, "2004-07-19");
 		verifyDataField(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE, "2006-04-30");
 	}
 	

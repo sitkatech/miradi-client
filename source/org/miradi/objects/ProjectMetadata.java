@@ -423,8 +423,6 @@ public class ProjectMetadata extends BaseObject
 	public static final String PSEUDO_TAG_MIRADI_SHARE_PROGRAM_NAME = "PseudoTagMiradiShareProgramName";
 
 	public static final String TAG_TNC_LESSONS_LEARNED = "TNC.LessonsLearned";
-	public static final String TAG_TNC_WORKBOOK_VERSION_NUMBER = "TNC.WorkbookVersionNumber";
-	public static final String TAG_TNC_WORKBOOK_VERSION_DATE = "TNC.WorkbookVersionDate";
 	public static final String TAG_TNC_DATABASE_DOWNLOAD_DATE = "TNC.DatabaseDownloadDate";
 	public static final String TAG_TNC_PLANNING_TEAM_COMMENTS = "TNC.PlanningTeamComment";
 	public static final String TAG_TNC_OPERATING_UNITS = "TNC.OperatingUnitList";

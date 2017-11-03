@@ -98,8 +98,6 @@ public class ProjectMetadataSchema extends BaseObjectSchema
 
 		createFieldSchemaCode(ProjectMetadata.TAG_CURRENT_WIZARD_SCREEN_NAME).setNavigationField();
 
-		createFieldSchemaSingleLineUserText(ProjectMetadata.TAG_TNC_WORKBOOK_VERSION_NUMBER);
-		createFieldSchemaDate(ProjectMetadata.TAG_TNC_WORKBOOK_VERSION_DATE);
 		createFieldSchemaDate(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE);
 		createFieldSchemaMultiLineUserText(ProjectMetadata.TAG_TNC_PLANNING_TEAM_COMMENTS);
 		createFieldSchemaCodeList(ProjectMetadata.TAG_TNC_OPERATING_UNITS, getQuestion(TncOperatingUnitsQuestion.class));
