@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-02 11:32-0700\n"
+"POT-Creation-Date: 2017-11-03 03:01-0700\n"
 "PO-Revision-Date: 2015-07-15 14:36+0000\n"
 "Last-Translator: Felix <felix.cybulla@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/miradi-client/"
@@ -9800,12 +9800,6 @@ msgstr "Projektgröße (Hektar)"
 
 msgid "FieldLabel|11.TNC.LessonsLearned|Lessons Learned"
 msgstr "Gesammelte Erfahrungen"
-
-msgid "FieldLabel|11.TNC.WorkbookVersionNumber|CAP Workbook Version Number"
-msgstr "CAP Workbook Versionsnummer"
-
-msgid "FieldLabel|11.TNC.WorkbookVersionDate|CAP Workbook Version Date"
-msgstr "CAP Workbook Versionsdatum"
 
 msgid "FieldLabel|11.TNC.DatabaseDownloadDate|ConPro Database Download Date"
 msgstr ""
@@ -30416,6 +30410,12 @@ msgid ""
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
 "Marine___Western Tropical Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "FieldLabel|11.TNC.WorkbookVersionNumber|CAP Workbook Version Number"
+#~ msgstr "CAP Workbook Versionsnummer"
+
+#~ msgid "FieldLabel|11.TNC.WorkbookVersionDate|CAP Workbook Version Date"
+#~ msgstr "CAP Workbook Versionsdatum"
 
 #~ msgid "Detail methods, tasks, and responsibilities"
 #~ msgstr "Methoden, Aufgaben und Verantwortlichkeiten näher beschreiben"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-02 11:32-0700\n"
+"POT-Creation-Date: 2017-11-03 03:01-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Chinese (http://www.transifex.com/projects/p/miradi-client/"
@@ -9620,12 +9620,6 @@ msgstr "项目规模(公顷) \t\t"
 
 msgid "FieldLabel|11.TNC.LessonsLearned|Lessons Learned"
 msgstr "教训 \t\t"
-
-msgid "FieldLabel|11.TNC.WorkbookVersionNumber|CAP Workbook Version Number"
-msgstr "CAP业务手册版本号码 \t\t"
-
-msgid "FieldLabel|11.TNC.WorkbookVersionDate|CAP Workbook Version Date"
-msgstr "CAP业务手册版本日期 \t\t"
 
 msgid "FieldLabel|11.TNC.DatabaseDownloadDate|ConPro Database Download Date"
 msgstr "ConPro数据库下载日期 \t\t"
@@ -29018,6 +29012,12 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "FieldLabel|11.TNC.WorkbookVersionNumber|CAP Workbook Version Number"
+#~ msgstr "CAP业务手册版本号码 \t\t"
+
+#~ msgid "FieldLabel|11.TNC.WorkbookVersionDate|CAP Workbook Version Date"
+#~ msgstr "CAP业务手册版本日期 \t\t"
 
 #~ msgid "Exported file does not validate."
 #~ msgstr "导出的文件不正确。 \t\t"

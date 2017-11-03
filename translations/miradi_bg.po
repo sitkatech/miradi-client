@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-02 11:32-0700\n"
+"POT-Creation-Date: 2017-11-03 03:01-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -10030,15 +10030,6 @@ msgstr "FieldLabel|11.TNC.SizeInHectares|Размер на проект (хек�
 
 msgid "FieldLabel|11.TNC.LessonsLearned|Lessons Learned"
 msgstr "FieldLabel|11.TNC.LessonsLearned|Научени уроци"
-
-msgid "FieldLabel|11.TNC.WorkbookVersionNumber|CAP Workbook Version Number"
-msgstr ""
-"FieldLabel|11.TNC.WorkbookVersionNumber|Номер на версията на CAP работна "
-"книга"
-
-msgid "FieldLabel|11.TNC.WorkbookVersionDate|CAP Workbook Version Date"
-msgstr ""
-"FieldLabel|11.TNC.WorkbookVersionDate|Дата на версията на CAP работна книга"
 
 msgid "FieldLabel|11.TNC.DatabaseDownloadDate|ConPro Database Download Date"
 msgstr ""
@@ -33288,6 +33279,16 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Морски___Западен тропически "
 "Атлантически океан___Североизточен бразилски шелф___Бразилия"
+
+#~ msgid "FieldLabel|11.TNC.WorkbookVersionNumber|CAP Workbook Version Number"
+#~ msgstr ""
+#~ "FieldLabel|11.TNC.WorkbookVersionNumber|Номер на версията на CAP работна "
+#~ "книга"
+
+#~ msgid "FieldLabel|11.TNC.WorkbookVersionDate|CAP Workbook Version Date"
+#~ msgstr ""
+#~ "FieldLabel|11.TNC.WorkbookVersionDate|Дата на версията на CAP работна "
+#~ "книга"
 
 #~ msgid "Exported file does not validate."
 #~ msgstr "Експортираният файл не валидира."

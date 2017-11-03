@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-02 11:32-0700\n"
+"POT-Creation-Date: 2017-11-03 03:01-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/miradi-client/"
@@ -9891,12 +9891,6 @@ msgstr "Tamaño del proyecto (hectáreas)"
 
 msgid "FieldLabel|11.TNC.LessonsLearned|Lessons Learned"
 msgstr "Lecciones aprendidas"
-
-msgid "FieldLabel|11.TNC.WorkbookVersionNumber|CAP Workbook Version Number"
-msgstr "Número de versión del libro de trabajo CAP"
-
-msgid "FieldLabel|11.TNC.WorkbookVersionDate|CAP Workbook Version Date"
-msgstr "Fecha del libro de trabajo CAP"
 
 msgid "FieldLabel|11.TNC.DatabaseDownloadDate|ConPro Database Download Date"
 msgstr "Fecha de descarga de la base de datos de ConPro"
@@ -31860,6 +31854,12 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "FieldLabel|11.TNC.WorkbookVersionNumber|CAP Workbook Version Number"
+#~ msgstr "Número de versión del libro de trabajo CAP"
+
+#~ msgid "FieldLabel|11.TNC.WorkbookVersionDate|CAP Workbook Version Date"
+#~ msgstr "Fecha del libro de trabajo CAP"
 
 #~ msgid "Exported file does not validate."
 #~ msgstr "No se valida el archivo exportado."

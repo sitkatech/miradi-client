@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-02 11:32-0700\n"
+"POT-Creation-Date: 2017-11-03 03:01-0700\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -9993,12 +9993,6 @@ msgstr "FieldLabel|11.TNC.SizeInHectares|Project Size (Hectares)"
 
 msgid "FieldLabel|11.TNC.LessonsLearned|Lessons Learned"
 msgstr "FieldLabel|11.TNC.LessonsLearned|Lessons Learned"
-
-msgid "FieldLabel|11.TNC.WorkbookVersionNumber|CAP Workbook Version Number"
-msgstr "FieldLabel|11.TNC.WorkbookVersionNumber|CAP Workbook Version Number"
-
-msgid "FieldLabel|11.TNC.WorkbookVersionDate|CAP Workbook Version Date"
-msgstr "FieldLabel|11.TNC.WorkbookVersionDate|CAP Workbook Version Date"
 
 msgid "FieldLabel|11.TNC.DatabaseDownloadDate|ConPro Database Download Date"
 msgstr "FieldLabel|11.TNC.DatabaseDownloadDate|ConPro Database Download Date"
@@ -36966,6 +36960,12 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "FieldLabel|11.TNC.WorkbookVersionNumber|CAP Workbook Version Number"
+#~ msgstr "FieldLabel|11.TNC.WorkbookVersionNumber|CAP Workbook Version Number"
+
+#~ msgid "FieldLabel|11.TNC.WorkbookVersionDate|CAP Workbook Version Date"
+#~ msgstr "FieldLabel|11.TNC.WorkbookVersionDate|CAP Workbook Version Date"
 
 #~ msgid "Exported file does not validate."
 #~ msgstr "Exported file does not validate."
