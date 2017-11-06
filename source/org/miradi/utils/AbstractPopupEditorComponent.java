@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.utils;
 
 import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.dialogs.tablerenderers.ExpandingReadonlyTableCellEditorOrRendererFactory;
+import org.miradi.dialogs.tablerenderers.ExpandingTableCellEditorOrRendererFactory;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -47,7 +47,7 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 		addListeners();
 	}
 	
-	public void setStopEditingListener(ExpandingReadonlyTableCellEditorOrRendererFactory listener)
+	public void setStopEditingListener(ExpandingTableCellEditorOrRendererFactory listener)
 	{
 		stopEditingListener = listener;
 	}
@@ -152,5 +152,5 @@ abstract public class AbstractPopupEditorComponent extends PopupEditorComponent
 	private PanelButton popupInvokeButton;
 	private PopUpEditorHandler popupEditHandler;
 	private EditableHtmlPane currentSelectionText;
-	protected ExpandingReadonlyTableCellEditorOrRendererFactory stopEditingListener;
+	protected ExpandingTableCellEditorOrRendererFactory stopEditingListener;
 }

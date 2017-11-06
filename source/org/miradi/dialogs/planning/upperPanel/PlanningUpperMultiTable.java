@@ -78,7 +78,7 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 		whoAssignedColumnTableCellEditorFactory = new WhoAssignedTableCellPopupEditorOrRendererFactory(getMainWindow(), this, objectFontProvider, resourceRefsFilter);
 		timeframeColumnTableCellEditorFactory = new TimeframeTableCellPopupEditorOrRendererFactory(mainWindowToUse, this, objectFontProvider);
 		singleLineTextCellEditorFactory = new SingleLineObjectTableCellEditorOrRendererFactory(this, objectFontProvider);
-		multiLineTextCellEditorFactor = new ExpandingReadonlyTableCellEditorOrRendererFactory(mainWindowToUse, this, objectFontProvider);
+		multiLineTextCellEditorFactor = new ExpandingTableCellEditorOrRendererFactory(mainWindowToUse, this, objectFontProvider);
 
 		addMouseListener(new PlanningRightClickHandler(getMainWindow(), this, this));
 	}
@@ -279,6 +279,6 @@ public class PlanningUpperMultiTable extends TableWithColumnWidthAndSequenceSave
 	private WhoAssignedTableCellPopupEditorOrRendererFactory whoAssignedColumnTableCellEditorFactory;
 	private TimeframeTableCellPopupEditorOrRendererFactory timeframeColumnTableCellEditorFactory;
 	private SingleLineObjectTableCellEditorOrRendererFactory singleLineTextCellEditorFactory;
-	private ExpandingReadonlyTableCellEditorOrRendererFactory multiLineTextCellEditorFactor;
+	private ExpandingTableCellEditorOrRendererFactory multiLineTextCellEditorFactor;
 	protected ORefSet resourceRefsFilter;
 }

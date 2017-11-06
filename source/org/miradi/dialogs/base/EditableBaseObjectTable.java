@@ -40,7 +40,7 @@ import org.miradi.dialogs.tablerenderers.ChoiceItemComboBoxRendererOrEditorFacto
 import org.miradi.dialogs.tablerenderers.ChoiceItemTableCellRendererFactory;
 import org.miradi.dialogs.tablerenderers.DateTableCellEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.DefaultFontProvider;
-import org.miradi.dialogs.tablerenderers.ExpandingReadonlyTableCellEditorOrRendererFactory;
+import org.miradi.dialogs.tablerenderers.ExpandingTableCellEditorOrRendererFactory;
 import org.miradi.dialogs.tablerenderers.FloatingPointRestrictedTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.NonNegativeIntegerRestrictedTableCellRendererEditorFactory;
 import org.miradi.dialogs.tablerenderers.StressBasedThreatRatingQuestionPopupCellEditorOrRendererFactory;
@@ -131,8 +131,8 @@ abstract public class EditableBaseObjectTable extends SortableRowTable  implemen
 	protected void createWrappableTextFieldColumn(int tableColumn)
 	{
 		DefaultFontProvider fontProvider = new DefaultFontProvider(getMainWindow());
-		ExpandingReadonlyTableCellEditorOrRendererFactory rendererFactory = new ExpandingReadonlyTableCellEditorOrRendererFactory(getMainWindow(), model, fontProvider);
-		ExpandingReadonlyTableCellEditorOrRendererFactory editorFactory = new ExpandingReadonlyTableCellEditorOrRendererFactory(getMainWindow(), model, fontProvider);
+		ExpandingTableCellEditorOrRendererFactory rendererFactory = new ExpandingTableCellEditorOrRendererFactory(getMainWindow(), model, fontProvider);
+		ExpandingTableCellEditorOrRendererFactory editorFactory = new ExpandingTableCellEditorOrRendererFactory(getMainWindow(), model, fontProvider);
 		setDisposableRendererAndEditorFactories(tableColumn, rendererFactory, editorFactory);
 	}
 	

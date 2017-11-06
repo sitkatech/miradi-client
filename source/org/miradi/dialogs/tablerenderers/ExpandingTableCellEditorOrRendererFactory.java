@@ -31,9 +31,9 @@ import org.miradi.utils.AbstractPopupEditorComponent;
 import org.miradi.utils.TableWithRowHeightSaver;
 import org.miradi.utils.TextFieldPopupEditorComponent;
 
-public class ExpandingReadonlyTableCellEditorOrRendererFactory extends ObjectTableCellEditorOrRendererFactory
+public class ExpandingTableCellEditorOrRendererFactory extends ObjectTableCellEditorOrRendererFactory
 {
-	public ExpandingReadonlyTableCellEditorOrRendererFactory(MainWindow mainWindowToUse, RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
+	public ExpandingTableCellEditorOrRendererFactory(MainWindow mainWindowToUse, RowColumnBaseObjectProvider providerToUse, FontForObjectProvider fontProviderToUse)
 	{
 		super(providerToUse, fontProviderToUse);
 		

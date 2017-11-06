@@ -82,7 +82,7 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 		if (selectedHierarchies.length > 0)
 		{
 			setObjectRefs(selectedHierarchies[0].toArray());
-			stopCellEditingBecauseSelectionDoeesNotMatchPreviousObjectForRow(objectTable);
+			stopCellEditingBecauseSelectionDoesNotMatchPreviousObjectForRow(objectTable);
 		}
 	}
 	
@@ -138,7 +138,7 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 			refreshModel();
 	}
 
-	private void stopCellEditingBecauseSelectionDoeesNotMatchPreviousObjectForRow(DynamicWidthEditableObjectTable table)
+	private void stopCellEditingBecauseSelectionDoesNotMatchPreviousObjectForRow(DynamicWidthEditableObjectTable table)
 	{
 		SwingUtilities.invokeLater(new CellEditStopper(table));
 	}
