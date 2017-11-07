@@ -247,10 +247,10 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		ORefList activityRefs = ORefList.subtract(strategy.getActivityRefs(), monitoringActivityRefs);
 
 		if (!getRowColumnProvider().shouldIncludeActivities())
-			ORefList.subtract(activityRefsToReturn, activityRefs);
+			activityRefsToReturn = ORefList.subtract(activityRefsToReturn, activityRefs);
 
 		if (!getRowColumnProvider().shouldIncludeMonitoringActivities())
-			ORefList.subtract(activityRefsToReturn, monitoringActivityRefs);
+			activityRefsToReturn = ORefList.subtract(activityRefsToReturn, monitoringActivityRefs);
 
 		return activityRefsToReturn;
 	}
