@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-07 07:01-0800\n"
+"POT-Creation-Date: 2017-11-07 07:16-0800\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/miradi-client/"
@@ -309,7 +309,7 @@ msgid "(Definition Not Available)"
 msgstr "(Definição não disponível)"
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/planning/AssignmentDateUnitsTableModel.java:99
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/UpperPanelBaseObjectTableModel.java:131
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/UpperPanelBaseObjectTableModel.java:99
 msgid "(Error)"
 msgstr "(Erro)"
 
