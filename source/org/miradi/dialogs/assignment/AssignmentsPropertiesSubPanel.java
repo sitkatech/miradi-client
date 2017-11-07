@@ -86,19 +86,21 @@ public class AssignmentsPropertiesSubPanel extends ObjectDataInputPanel
 	@Override
 	public void becomeActive()
 	{
-		super.becomeActive();
 		try
 		{
 			if (projectResourcesChangeHandler.getRebuildRequired())
 			{
 				rebuild();
 				projectResourcesChangeHandler.setRebuildRequired(false);
-
-				assignmentEditor.becomeActive();
 			}
 		} catch (Exception e)
 		{
 			EAM.panic(e);
+		}
+		finally
+		{
+			super.becomeActive();
+			assignmentEditor.becomeActive();
 		}
 	}
 	
