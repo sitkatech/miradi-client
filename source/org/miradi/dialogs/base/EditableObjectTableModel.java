@@ -91,6 +91,37 @@ abstract public class EditableObjectTableModel extends AbstractObjectTableModel
 	{
 		return new ORefList();
 	}
-	
+
+	public BaseObject getObjectFromRow(int row) throws RuntimeException
+	{
+		try
+		{
+			ORef rowObjectRef = getRowObjectRefs().get(row);
+			BaseObject rowObject = getProject().findObject(rowObjectRef);
+			if(rowObject == null)
+			{
+				EAM.logWarning("ObjectTableModel.getObjectFromRow: Missing object: " + rowObjectRef);
+				EAM.logStackTrace();
+			}
+			return rowObject;
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			throw new RuntimeException("model getObjectFromRow error. row = " + row);
+		}
+	}
+
+	public int findRowObject(BaseId id)
+	{
+		for(int row = 0; row < getRowCount(); ++row)
+		{
+			if(getObjectFromRow(row).getId().equals(id))
+				return row;
+		}
+
+		return -1;
+	}
+
 	abstract public void setObjectRefs(ORefList hierarchyToSelectedRef);
 }

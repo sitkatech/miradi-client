@@ -28,7 +28,9 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import org.miradi.actions.Actions;
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.ids.BaseId;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
@@ -130,10 +132,17 @@ abstract public class EditableObjectTableSubPanel extends ObjectDataInputPanel
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
-		
+
 		if (event.isSetDataCommandWithThisType(getEditableObjectType()))
-			objectTableModel.fireTableDataChanged();
-		
+		{
+			CommandSetObjectData setCommand = event.getSetCommand();
+			BaseId id = setCommand.getObjectId();
+
+			int row = objectTableModel.findRowObject(id);
+			if(row >= 0)
+				objectTableModel.fireTableRowsUpdated(row, row);
+		}
+
 		if (shouldRefreshModel(event))
 			refreshModel();
 	}
