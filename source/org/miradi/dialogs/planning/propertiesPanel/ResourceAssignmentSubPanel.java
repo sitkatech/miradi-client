@@ -20,11 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.dialogs.changeHandlers.ProjectResourcesChangeHandler;
 import org.miradi.icons.IconManager;
 import org.miradi.main.CommandExecutedEvent;
-import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.project.Project;
 import org.miradi.questions.*;
@@ -35,8 +34,8 @@ public class ResourceAssignmentSubPanel extends AbstractAssignmentSubPanel
 	public ResourceAssignmentSubPanel(Project projectToUse, int objectType) throws Exception
 	{
 		super(projectToUse, objectType);
-		resourceAssignmentsChangeHandler = new ResourceAssignmentsChangeHandler();
-		getProject().addCommandExecutedListener(resourceAssignmentsChangeHandler);
+		projectResourcesChangeHandler = new ProjectResourcesChangeHandler();
+		getProject().addCommandExecutedListener(projectResourcesChangeHandler);
 	}
 
 	@Override
@@ -44,8 +43,8 @@ public class ResourceAssignmentSubPanel extends AbstractAssignmentSubPanel
 	{
 		super.dispose();
 
-		if (resourceAssignmentsChangeHandler != null)
-			getProject().removeCommandExecutedListener(resourceAssignmentsChangeHandler);
+		if (projectResourcesChangeHandler != null)
+			getProject().removeCommandExecutedListener(projectResourcesChangeHandler);
 	}
 
 	@Override
@@ -60,10 +59,10 @@ public class ResourceAssignmentSubPanel extends AbstractAssignmentSubPanel
 		super.becomeActive();
 		try
 		{
-			if (resourceAssignmentsChangeHandler.getRebuildRequired())
+			if (projectResourcesChangeHandler.getRebuildRequired())
 			{
 				rebuild();
-				resourceAssignmentsChangeHandler.setRebuildRequired(false);
+				projectResourcesChangeHandler.setRebuildRequired(false);
 			}
 		} catch (Exception e)
 		{
@@ -75,7 +74,7 @@ public class ResourceAssignmentSubPanel extends AbstractAssignmentSubPanel
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		super.commandExecuted(event);
-		resourceAssignmentsChangeHandler.commandExecuted(event);
+		projectResourcesChangeHandler.commandExecuted(event);
 
 		becomeInactive();
 		becomeActive();
@@ -116,47 +115,5 @@ public class ResourceAssignmentSubPanel extends AbstractAssignmentSubPanel
 		repaint();
 	}
 
-	private class ResourceAssignmentsChangeHandler implements CommandExecutedListener
-	{
-
-		public ResourceAssignmentsChangeHandler()
-		{
-			rebuildRequired = false;
-		}
-
-		@Override
-		public void commandExecuted(CommandExecutedEvent event)
-		{
-			if (eventForcesRebuild(event))
-				rebuildRequired = true;
-		}
-
-		public boolean getRebuildRequired()
-		{
-			return rebuildRequired;
-		}
-
-		public void setRebuildRequired(boolean rebuildRequiredToUse)
-		{
-			rebuildRequired = rebuildRequiredToUse;
-		}
-
-		private boolean eventForcesRebuild(CommandExecutedEvent event)
-		{
-			if (event.isCreateCommandForThisType(ObjectType.PROJECT_RESOURCE))
-				return true;
-
-			if (event.isDeleteCommandForThisType(ObjectType.PROJECT_RESOURCE))
-				return true;
-
-			if (event.isSetDataCommandWithThisType(ObjectType.PROJECT_RESOURCE))
-				return true;
-
-			return false;
-		}
-
-		private boolean rebuildRequired;
-	}
-
-	private ResourceAssignmentsChangeHandler resourceAssignmentsChangeHandler;
+	private ProjectResourcesChangeHandler projectResourcesChangeHandler;
 }

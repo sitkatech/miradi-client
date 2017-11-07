@@ -21,8 +21,9 @@ package org.miradi.dialogs.assignment;
 
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
+import org.miradi.dialogs.changeHandlers.ProjectResourcesChangeHandler;
 import org.miradi.dialogs.planning.propertiesPanel.ResourceAssignmentEditorComponent;
+import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -34,19 +35,18 @@ import org.miradi.views.umbrella.ObjectPicker;
 
 public class AssignmentsPropertiesSubPanel extends ObjectDataInputPanel
 {
-	public AssignmentsPropertiesSubPanel(MainWindow mainWindowToUse, int objectType, ObjectPicker picker) throws Exception
+	public AssignmentsPropertiesSubPanel(MainWindow mainWindowToUse, int objectTypeToUse, ObjectPicker pickerToUse) throws Exception
 	{
-		super(mainWindowToUse.getProject(), objectType);
+		super(mainWindowToUse.getProject(), objectTypeToUse);
 
-		assignmentEditor = new ResourceAssignmentEditorComponent(mainWindowToUse, picker);
+		mainWindow = mainWindowToUse;
+		objectType = objectTypeToUse;
+		picker = pickerToUse;
 
-		ObjectDataInputField leaderDropDownField = createAssignedLeaderDropDownField(objectType, BaseObject.TAG_ASSIGNED_LEADER_RESOURCE);
-		addFieldsOnOneLine("", new ObjectDataInputField[]{leaderDropDownField});
+		projectResourcesChangeHandler = new ProjectResourcesChangeHandler();
+		getProject().addCommandExecutedListener(projectResourcesChangeHandler);
 
-		add(new FillerLabel());
-
-		add(assignmentEditor);
-		updateFieldsFromProject();
+		rebuild();
 	}
 
 	@Override
@@ -56,13 +56,50 @@ public class AssignmentsPropertiesSubPanel extends ObjectDataInputPanel
 		assignmentEditor = null;
 
 		super.dispose();
+
+		if (projectResourcesChangeHandler != null)
+			getProject().removeCommandExecutedListener(projectResourcesChangeHandler);
 	}
-	
+
+	protected void rebuild() throws Exception
+	{
+		removeAll();
+		getFields().clear();
+
+		assignmentEditor = new ResourceAssignmentEditorComponent(mainWindow, picker);
+
+		ObjectDataInputField leaderDropDownField = createAssignedLeaderDropDownField(objectType, BaseObject.TAG_ASSIGNED_LEADER_RESOURCE);
+		addFieldsOnOneLine("", new ObjectDataInputField[]{leaderDropDownField});
+
+		add(new FillerLabel());
+
+		add(assignmentEditor);
+
+		updateFieldsFromProject();
+
+		doLayout();
+
+		validate();
+		repaint();
+	}
+
 	@Override
 	public void becomeActive()
 	{
 		super.becomeActive();
-		assignmentEditor.becomeActive();
+		try
+		{
+			if (projectResourcesChangeHandler.getRebuildRequired())
+			{
+				rebuild();
+				projectResourcesChangeHandler.setRebuildRequired(false);
+
+				assignmentEditor.becomeActive();
+			}
+		} catch (Exception e)
+		{
+			EAM.panic(e);
+		}
 	}
 	
 	@Override
@@ -71,7 +108,17 @@ public class AssignmentsPropertiesSubPanel extends ObjectDataInputPanel
 		assignmentEditor.becomeInactive();
 		super.becomeInactive();
 	}
-	
+
+	@Override
+	public void commandExecuted(CommandExecutedEvent event)
+	{
+		super.commandExecuted(event);
+		projectResourcesChangeHandler.commandExecuted(event);
+
+		becomeInactive();
+		becomeActive();
+	}
+
 	@Override
 	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
 	{
@@ -101,4 +148,8 @@ public class AssignmentsPropertiesSubPanel extends ObjectDataInputPanel
 	}
 	
 	private ResourceAssignmentEditorComponent assignmentEditor;
+	private ProjectResourcesChangeHandler projectResourcesChangeHandler;
+	private MainWindow mainWindow;
+	private int objectType;
+	private ObjectPicker picker;
 }
