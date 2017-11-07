@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-03 03:01-0700\n"
+"POT-Creation-Date: 2017-11-07 03:31-0800\n"
 "PO-Revision-Date: 2015-07-15 14:36+0000\n"
 "Last-Translator: Felix <felix.cybulla@gmail.com>\n"
 "Language-Team: German (http://www.transifex.com/projects/p/miradi-client/"
@@ -2400,7 +2400,7 @@ msgid ""
 "activity or task."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:54
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:53
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:427
 msgid "Assignment"
 msgstr ""
@@ -5743,7 +5743,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/planning/PlanningProjectResourceManagementConfiguration.java:59
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/workplan/ProjectResourceManagementConfiguration.java:58
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/assignment/AssignmentsPropertiesSubPanel.java:85
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/assignment/AssignmentsPropertiesSubPanel.java:132
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:308
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:47
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:196
@@ -9191,7 +9191,7 @@ msgstr "Nur innerhalb Ihrer Organisation"
 msgid "Wizard load of control failed:"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:90
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentSubPanel.java:89
 msgid "Work Assignment"
 msgstr ""
 
