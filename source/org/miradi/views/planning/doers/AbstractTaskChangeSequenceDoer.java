@@ -28,10 +28,13 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Task;
+import org.miradi.objects.ViewData;
+import org.miradi.questions.WorkPlanVisibleRowsQuestion;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.views.ObjectsDoer;
+import org.miradi.views.planning.PlanningView;
 
 
 abstract public class AbstractTaskChangeSequenceDoer extends ObjectsDoer
@@ -55,7 +58,19 @@ abstract public class AbstractTaskChangeSequenceDoer extends ObjectsDoer
 			int newPosition = oldPosition + getDelta();
 			if(newPosition < 0 || newPosition >= siblings.size())
 				return false;
-			
+
+			if (isWorkPlanView())
+			{
+				String workPlanBudgetMode = getProject().getTimePeriodCostsMapsCache().getWorkPlanBudgetMode();
+				return workPlanBudgetMode.equals(WorkPlanVisibleRowsQuestion.SHOW_ALL_ROWS_CODE);
+			}
+
+			if (isPlanningView())
+			{
+				ViewData planningViewData = getProject().getViewData(PlanningView.getViewName());
+				return planningViewData.shouldIncludeActivities() && planningViewData.shouldIncludeMonitoringActivities();
+			}
+
 			return true;
 		}
 		catch(Exception e)
