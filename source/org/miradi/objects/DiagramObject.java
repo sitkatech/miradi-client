@@ -19,10 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
@@ -471,6 +473,19 @@ abstract public class DiagramObject extends BaseObject
 		return scale;
 	}
 
+	public boolean isTaggingDisabled()
+	{
+		return getBooleanData(TAG_IS_TAGGING_DISABLED);
+	}
+
+	public CommandVector createCommandsToToggleTaggingDisabledFlag()
+	{
+		CommandVector commands = new CommandVector();
+		String newTaggingDisabledValue = BooleanData.toString(!isTaggingDisabled());
+		commands.add(new CommandSetObjectData(getRef(), DiagramObject.TAG_IS_TAGGING_DISABLED, newTaggingDisabledValue));
+		return commands;
+	}
+
 	@Override
 	public CommandVector createCommandsToDeleteChildren() throws Exception
 	{
@@ -548,6 +563,7 @@ abstract public class DiagramObject extends BaseObject
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_DETAIL = "Detail";
 	public static final String TAG_HIDDEN_TYPES = "HiddenTypes";
+	public static final String TAG_IS_TAGGING_DISABLED = "IsTaggingDisabled";
 	public static final String TAG_SELECTED_TAGGED_OBJECT_SET_REFS = "SelectedTaggedObjectSetRefs";
 	public static final String TAG_ZOOM_SCALE = "ZoomScale";
 	

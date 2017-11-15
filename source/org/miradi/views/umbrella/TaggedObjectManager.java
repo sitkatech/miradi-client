@@ -32,7 +32,7 @@ public class TaggedObjectManager
 		project = projectToUse;
 	}
 
-	public boolean isVisible(DiagramObject diagramObject, ORef wrappedFactorRef)
+	public boolean isTagged(DiagramObject diagramObject, ORef wrappedFactorRef)
 	{
 		ORefList selectedTaggedObjectSetRefs = diagramObject.getSelectedTaggedObjectSetRefs();
 		for (int index = 0; index < selectedTaggedObjectSetRefs.size(); ++index)

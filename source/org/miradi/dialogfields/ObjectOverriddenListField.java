@@ -32,7 +32,7 @@ public class ObjectOverriddenListField extends RefListEditorField
 	{
 		super(projectToUse, objectTypeToUse, objectIdToUse, tagToUse, questionToUse);
 	}
-	
+
 	@Override
 	public String getText()
 	{
@@ -60,5 +60,18 @@ public class ObjectOverriddenListField extends RefListEditorField
 		{
 			EAM.alertUserOfNonFatalException(e);
 		}	
+	}
+
+	@Override
+	public void updateEditableState(boolean isEditable)
+	{
+		super.updateEditableState(isEditable);
+		refListEditor.setEnabled(isEditable);
+	}
+
+	@Override
+	protected boolean shouldBeEditable()
+	{
+		return allowEdits() && isValidObject();
 	}
 }

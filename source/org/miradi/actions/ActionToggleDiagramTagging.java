@@ -18,23 +18,26 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.xml.generic;
+package org.miradi.actions;
 
-import org.miradi.objects.DiagramObject;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-abstract public class DiagramSchemaElement extends BaseObjectSchemaElementWithLabel
+public class ActionToggleDiagramTagging extends ViewAction
 {
-	public DiagramSchemaElement(String objectTypeNameToUse)
+	public ActionToggleDiagramTagging(MainWindow mainWindowToUse)
 	{
-		super(objectTypeNameToUse);
+		super(mainWindowToUse, getLabel());
+	}
 
-		createOptionalTextField(DiagramObject.TAG_SHORT_LABEL);
-		createOptionalTextField(DiagramObject.TAG_DETAIL);
-		createOptionalNumericField(DiagramObject.TAG_ZOOM_SCALE);
-		createIdListField(DiagramObject.TAG_DIAGRAM_FACTOR_IDS, "DiagramFactor");
-		createIdListField(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, "DiagramLink");
-		createOptionalCodeListField(XmlSchemaCreator.HIDDEN_TYPES_ELEMENT_NAME);
-		createOptionalBooleanField(DiagramObject.TAG_IS_TAGGING_DISABLED);
-		createIdListField(XmlConstants.SELECTED_TAGGED_OBJECT_SET_IDS, XmlSchemaCreator.TAGGED_OBJECT_SET_ELEMENT_NAME);
+	private static String getLabel()
+	{
+		return EAM.text("Action|Toggle Diagram Tagging");
+	}
+
+	@Override
+	public String getToolTipText()
+	{
+		return EAM.text("TT|Toggle Diagram Tagging");
 	}
 }

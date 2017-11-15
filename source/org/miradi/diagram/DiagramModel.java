@@ -455,11 +455,16 @@ abstract public class DiagramModel extends DefaultGraphModel
 	private boolean shouldFactorCellBeVisible(FactorCell factorCell) throws Exception
 	{
 		boolean isLayerVisible = getLayerManager().isVisible(getDiagramObject(), factorCell);
+
+		boolean isTaggingDisabled = getDiagramObject().isTaggingDisabled();
+		if (isTaggingDisabled)
+			return isLayerVisible;
+
 		ORefList selectedTaggedRefs = getDiagramObject().getSelectedTaggedObjectSetRefs();
 		if (selectedTaggedRefs.isEmpty())
 			return isLayerVisible;
-		
-		boolean isTagged = getTaggedObjectManager().isVisible(getDiagramObject(), factorCell.getWrappedFactorRef());
+
+		boolean isTagged = getTaggedObjectManager().isTagged(getDiagramObject(), factorCell.getWrappedFactorRef());
 			
 		return isLayerVisible && isTagged;
 	}

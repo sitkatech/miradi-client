@@ -40,6 +40,7 @@ abstract public class DiagramObjectSchema extends BaseObjectSchema
 		createFieldSchemaSingleLineUserText(DiagramObject.TAG_SHORT_LABEL);
 		createFieldSchemaMultiLineUserText(DiagramObject.TAG_DETAIL);
 		createFieldSchemaCodeList(DiagramObject.TAG_HIDDEN_TYPES, getQuestion(DiagramLegendQuestion.class));
+		createFieldSchemaBoolean(DiagramObject.TAG_IS_TAGGING_DISABLED);
 		createFieldSchemaReflist(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TAGGED_OBJECT_SET_ELEMENT_NAME);
 		createFieldSchemaNumber(DiagramObject.TAG_ZOOM_SCALE);
 

@@ -36,13 +36,18 @@ public class ObjectRefListEditorPanel extends ObjectDataInputPanel
 		
 		updateFieldsFromProject();
 	}
-	
+
 	@Override
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
 		overriddenObjectListField.refreshRefs();
 		
 		super.setObjectRefs(orefsToUse);
+	}
+
+	public void setEditable(boolean isEditable)
+	{
+		overriddenObjectListField.setEditable(isEditable);
 	}
 
 	@Override
