@@ -38,7 +38,7 @@ public class MigrationTo42 extends NewlyAddedFieldsMigration
 	protected HashMap<String, String> createFieldsToLabelMapToModify()
 	{
 		HashMap<String, String> fieldsToAdd = new HashMap<String, String>();
-		fieldsToAdd.put(TAG_IS_TAGGING_DISABLED, EAM.text("Tagging Disabled Flag"));
+		fieldsToAdd.put(TAG_IS_TAGGING_ENABLED, EAM.text("Tagging Enabled Flag"));
 		
 		return fieldsToAdd;
 	}
@@ -64,5 +64,5 @@ public class MigrationTo42 extends NewlyAddedFieldsMigration
 	public static final int VERSION_FROM = 41;
 	public static final int VERSION_TO = 42;
 
-	public static final String TAG_IS_TAGGING_DISABLED = "IsTaggingDisabled";
+	public static final String TAG_IS_TAGGING_ENABLED = "IsTaggingEnabled";
 }

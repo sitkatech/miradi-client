@@ -456,8 +456,8 @@ abstract public class DiagramModel extends DefaultGraphModel
 	{
 		boolean isLayerVisible = getLayerManager().isVisible(getDiagramObject(), factorCell);
 
-		boolean isTaggingDisabled = getDiagramObject().isTaggingDisabled();
-		if (isTaggingDisabled)
+		boolean isTaggingEnabled = getDiagramObject().isTaggingEnabled();
+		if (!isTaggingEnabled)
 			return isLayerVisible;
 
 		ORefList selectedTaggedRefs = getDiagramObject().getSelectedTaggedObjectSetRefs();

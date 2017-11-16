@@ -427,7 +427,7 @@ ConceptualModel.element = element miradi:ConceptualModel
   element miradi:ConceptualModelDiagramLinkIds { DiagramLinkId.element* }? &
   element miradi:ConceptualModelExtendedProgressReportIds { ExtendedProgressReportId.element* }? &
   element miradi:ConceptualModelIdentifier { text }? &
-  element miradi:ConceptualModelIsTaggingDisabled { xsd:boolean }? &
+  element miradi:ConceptualModelIsTaggingEnabled { xsd:boolean }? &
   element miradi:ConceptualModelName { formatted_text }? &
   element miradi:ConceptualModelSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }? &
   element miradi:ConceptualModelZoomScale { xsd:decimal }?
@@ -519,7 +519,7 @@ ResultsChain.element = element miradi:ResultsChain
   element miradi:ResultsChainDiagramLinkIds { DiagramLinkId.element* }? &
   element miradi:ResultsChainExtendedProgressReportIds { ExtendedProgressReportId.element* }? &
   element miradi:ResultsChainIdentifier { text }? &
-  element miradi:ResultsChainIsTaggingDisabled { xsd:boolean }? &
+  element miradi:ResultsChainIsTaggingEnabled { xsd:boolean }? &
   element miradi:ResultsChainName { formatted_text }? &
   element miradi:ResultsChainSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }? &
   element miradi:ResultsChainZoomScale { xsd:decimal }? &

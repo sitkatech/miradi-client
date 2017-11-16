@@ -23,8 +23,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.JCheckBox;
-import javax.swing.JPanel;
+import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
 import org.miradi.actions.*;
@@ -32,6 +31,7 @@ import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.dialogfields.ObjectCheckBoxField;
 import org.miradi.dialogs.base.AbstractDialogWithClose;
 import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.dialogs.base.ObjectRefListEditorPanel;
@@ -49,6 +49,7 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
 import org.miradi.objects.ConceptualModelDiagram;
@@ -121,20 +122,26 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 
 	private void addTaggedObjectSetPanel(DiagramObject diagramObject)
 	{
-		boolean isTaggingDisabled = diagramObject.isTaggingDisabled();
+		TwoColumnPanel manageTagsPanel = new TwoColumnPanel();
+		manageTagsPanel.disableFill();
+		manageTagsPanel.setBackground(AppPreferences.getControlPanelBackgroundColor());
 
-		disableTaggingButton = new PanelButton(new ActionToggleDiagramTagging(mainWindow));
-		setDisableTaggingButtonText(isTaggingDisabled);
-		add(disableTaggingButton);
+		ObjectCheckBoxField enableTaggingCheckBox = new ObjectCheckBoxField(getProject(), diagramObject.getRef(), DiagramObject.TAG_IS_TAGGING_ENABLED, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE);
+		enableTaggingCheckBox.getComponent().setBackground(AppPreferences.getControlPanelBackgroundColor());
+		enableTaggingCheckBox.updateFromObject();
+		manageTagsPanel.add(enableTaggingCheckBox.getComponent());
+
+		PanelButton manageTagsButton = new PanelButton(EAM.text("Manage Tags"), new TaggedObjectSetIcon());
+		manageTagsButton.addActionListener(new ManageTaggedObjectSetButtonHandler());
+		manageTagsPanel.add(manageTagsButton);
+
+		add(manageTagsPanel);
 
 		editListPanel.setObjectRef(diagramObject.getRef());
 		editListPanel.setBackground(AppPreferences.getControlPanelBackgroundColor());
-		editListPanel.setEditable(!isTaggingDisabled);
+		boolean isTaggingEnabled = diagramObject.isTaggingEnabled();
+		editListPanel.setEditable(isTaggingEnabled);
 		add(editListPanel);
-
-		PanelButton manageButton = new PanelButton(EAM.text("Manage Tags (BETA)..."), new TaggedObjectSetIcon());
-		manageButton.addActionListener(new ManageTaggedObjectSetButtonHandler());
-		add(manageButton);
 	}
 	
 	private void createLegendCheckBoxes()
@@ -331,9 +338,8 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 				DiagramObject diagramObject = getCurrentDiagramObject();
 				if (diagramObject != null)
 				{
-					boolean isTaggingDisabled = diagramObject.isTaggingDisabled();
-					setDisableTaggingButtonText(isTaggingDisabled);
-					editListPanel.setEditable(!isTaggingDisabled);
+					boolean isTaggingEnabled = diagramObject.isTaggingEnabled();
+					editListPanel.setEditable(isTaggingEnabled);
 				}
 			}
 
@@ -372,8 +378,8 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 
 	private boolean isToggleDiagramTaggingCommand(CommandExecutedEvent event)
 	{
-		return 	event.isSetDataCommandWithThisTypeAndTag(ConceptualModelDiagramSchema.getObjectType(), DiagramObject.TAG_IS_TAGGING_DISABLED) ||
-				event.isSetDataCommandWithThisTypeAndTag(ResultsChainDiagramSchema.getObjectType(), DiagramObject.TAG_IS_TAGGING_DISABLED);
+		return 	event.isSetDataCommandWithThisTypeAndTag(ConceptualModelDiagramSchema.getObjectType(), DiagramObject.TAG_IS_TAGGING_ENABLED) ||
+				event.isSetDataCommandWithThisTypeAndTag(ResultsChainDiagramSchema.getObjectType(), DiagramObject.TAG_IS_TAGGING_ENABLED);
 	}
 
 	private boolean isUpdateTaggedObjectSetsCommand(CommandExecutedEvent event)
@@ -415,12 +421,6 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	private DiagramObject getCurrentDiagramObject()
 	{
 		return getMainWindow().getDiagramView().getCurrentDiagramObject();
-	}
-
-	private void setDisableTaggingButtonText(boolean isTaggingDisabled)
-	{
-		String buttonText = isTaggingDisabled ? EAM.text("Enable Tagging") : EAM.text("Disable Tagging");
-		disableTaggingButton.setText(buttonText);
 	}
 
 	private class ManageTaggedObjectSetButtonHandler implements ActionListener
@@ -466,5 +466,4 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 
 	private MainWindow mainWindow;
 	private ObjectRefListEditorPanel editListPanel;
-	private PanelButton disableTaggingButton;
 }
