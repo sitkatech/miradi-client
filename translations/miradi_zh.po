@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-07 07:16-0800\n"
+"POT-Creation-Date: 2017-11-16 09:01-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Chinese (http://www.transifex.com/projects/p/miradi-client/"
@@ -289,7 +289,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br> \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationManager.java:163
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationManager.java:165
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/main/MainWindow.java:1446
 msgid "(%s)"
 msgstr ""
@@ -2003,7 +2003,7 @@ msgid "An error has occurred while writing assignment data."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:346
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramModel.java:741
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramModel.java:746
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
 "the project has gotten corrupted. Please contact the Miradi team for help "
@@ -3418,7 +3418,7 @@ msgstr ""
 msgid "Edit.."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:51
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:56
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/CodeListEditorPanel.java:46
 msgid "Editor"
 msgstr "编辑器 \t\t"
@@ -4776,13 +4776,10 @@ msgstr "主要问题——正在进行中、需要注意到的主要问题"
 msgid "Manage Stresses for "
 msgstr "管理压力对象 \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:411
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:134
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:441
 msgid "Manage Tags"
 msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:128
-msgid "Manage Tags (BETA)..."
-msgstr "管理标签（BETA）…"
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/questions/TableRowHeightModeQuestion.java:37
 msgid "Manual"
@@ -5390,7 +5387,7 @@ msgstr "未指定 \t\t"
 msgid "Not Started"
 msgstr "未开始"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:435
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:436
 msgid "Not all factors are being shown because %s tag(s) are checked"
 msgstr ""
 
@@ -7623,6 +7620,11 @@ msgstr "标签"
 msgid "Tagged Items"
 msgstr "加标签的条目"
 
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo41.java:41
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo42.java:41
+msgid "Tagging Enabled Flag"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:121
 msgid "Tags"
 msgstr ""
@@ -7965,6 +7967,11 @@ msgstr ""
 msgid "This migration adds a new field to the Activity properties."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo41.java:61
+msgid ""
+"This migration adds a new field to the Conceptual Model Diagram properties."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo16.java:61
 msgid "This migration adds a new field to the Diagram Factor properties."
 msgstr ""
@@ -7977,6 +7984,11 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo18.java:61
 msgid "This migration adds a new field to the Project Metadata properties."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo42.java:61
+msgid ""
+"This migration adds a new field to the Results Chain Diagram properties."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo21.java:88
@@ -29012,6 +29024,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr "海洋___西热带大西洋___巴西东北陆架海洋___巴西 \t\t"
+
+#~ msgid "Manage Tags (BETA)..."
+#~ msgstr "管理标签（BETA）…"
 
 #~ msgid "FieldLabel|11.TNC.WorkbookVersionNumber|CAP Workbook Version Number"
 #~ msgstr "CAP业务手册版本号码 \t\t"

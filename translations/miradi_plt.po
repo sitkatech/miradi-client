@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-07 07:16-0800\n"
+"POT-Creation-Date: 2017-11-16 09:01-0800\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -286,7 +286,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationManager.java:163
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationManager.java:165
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/main/MainWindow.java:1446
 msgid "(%s)"
 msgstr ""
@@ -1977,7 +1977,7 @@ msgid "An error has occurred while writing assignment data."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:346
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramModel.java:741
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramModel.java:746
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
 "the project has gotten corrupted. Please contact the Miradi team for help "
@@ -3367,7 +3367,7 @@ msgstr ""
 msgid "Edit.."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:51
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:56
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/CodeListEditorPanel.java:46
 msgid "Editor"
 msgstr ""
@@ -4705,12 +4705,9 @@ msgstr ""
 msgid "Manage Stresses for "
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:411
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:134
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:441
 msgid "Manage Tags"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:128
-msgid "Manage Tags (BETA)..."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/questions/TableRowHeightModeQuestion.java:37
@@ -5317,7 +5314,7 @@ msgstr ""
 msgid "Not Started"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:435
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:436
 msgid "Not all factors are being shown because %s tag(s) are checked"
 msgstr ""
 
@@ -7520,6 +7517,11 @@ msgstr ""
 msgid "Tagged Items"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo41.java:41
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo42.java:41
+msgid "Tagging Enabled Flag"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:121
 msgid "Tags"
 msgstr ""
@@ -7850,6 +7852,11 @@ msgstr ""
 msgid "This migration adds a new field to the Activity properties."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo41.java:61
+msgid ""
+"This migration adds a new field to the Conceptual Model Diagram properties."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo16.java:61
 msgid "This migration adds a new field to the Diagram Factor properties."
 msgstr ""
@@ -7862,6 +7869,11 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo18.java:61
 msgid "This migration adds a new field to the Project Metadata properties."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo42.java:61
+msgid ""
+"This migration adds a new field to the Results Chain Diagram properties."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo21.java:88
