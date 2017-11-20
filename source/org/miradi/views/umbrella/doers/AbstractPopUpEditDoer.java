@@ -68,7 +68,7 @@ abstract public class AbstractPopUpEditDoer extends ObjectsDoer
 		return createAndShowDialog(new ModelessDialogWithDirections(mainWindow, managementPanel, dialogTitle), managementPanel);
 	}
 
-	public static AbstractDialogWithClose createAndShowManagementDialog(MainWindow mainWindow, ObjectManagementPanel managementPanel, String dialogTitle) throws Exception
+	private static AbstractDialogWithClose createAndShowManagementDialog(MainWindow mainWindow, ObjectManagementPanel managementPanel, String dialogTitle) throws Exception
 	{
 		return createAndShowDialog(new ModalDialogWithClose(mainWindow, managementPanel, dialogTitle), managementPanel);
 	}
@@ -79,11 +79,12 @@ abstract public class AbstractPopUpEditDoer extends ObjectsDoer
 
 		managementPanel.becomeActive();
 		dialog.setVisible(true);
+		managementPanel.restoreSplitterLocation();
 
 		return dialog;
 	}
 
-	protected int getTypeToFilterOn()
+	private int getTypeToFilterOn()
 	{
 		return objectType;
 	}

@@ -66,6 +66,11 @@ abstract public class VerticalSplitPanel extends ModelessDialogPanel
 		splitter.updateSplitterLocation(getSplitterDescription());
 	}
 	
+	public void restoreSplitterLocation()
+	{
+		splitter.restoreSavedLocation();
+	}
+
 	public void updateSplitterLocationToMiddle()
 	{
 		splitter.setSplitterLocationToMiddle(getSplitterDescription());
