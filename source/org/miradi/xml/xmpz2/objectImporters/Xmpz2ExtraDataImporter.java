@@ -25,6 +25,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.schemas.*;
 import org.miradi.utils.StringUtilities;
 import org.miradi.utils.XmlUtilities2;
@@ -122,6 +123,9 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 		if (typeName.equals(IndicatorSchema.OBJECT_NAME))
 			return IndicatorSchema.getObjectType();
 
+		if (typeName.equals(TaggedObjectSetSchema.OBJECT_NAME))
+			return TaggedObjectSetSchema.getObjectType();
+
 		throw new RuntimeException("Object type name is not recognized as type, " + typeName);
 	}
 
@@ -170,6 +174,9 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 			return true;
 
 		if (typeName.equals(IndicatorSchema.OBJECT_NAME) && tag.equals(Indicator.TAG_EXPENSE_ASSIGNMENT_REFS))
+			return true;
+
+		if (typeName.equals(TaggedObjectSetSchema.OBJECT_NAME) && tag.equals(TaggedObjectSet.TAG_TAGGED_OBJECT_REFS))
 			return true;
 
 		return false;

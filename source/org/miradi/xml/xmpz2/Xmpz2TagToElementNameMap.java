@@ -71,10 +71,10 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(BIODIVERSITY_TARGET, createTargetMap());
 		map.put(HUMAN_WELFARE_TARGET, createAbstractTargetMap());
 		map.put(BIOPHYSICAL_FACTOR, createFactorMap());
-		map.put(BIOPHYSICAL_RESULTS, createFactorMap());
-		map.put(INTERMEDIATE_RESULTS, createFactorMap());
+		map.put(BIOPHYSICAL_RESULT, createFactorMap());
+		map.put(INTERMEDIATE_RESULT, createFactorMap());
 		map.put(RESULTS_CHAIN, createDiagramObjectMap());
-		map.put(THREAT_REDUCTION_RESULTS, createThreatReductionResultsMap());
+		map.put(THREAT_REDUCTION_RESULT, createThreatReductionResultsMap());
 		map.put(TEXT_BOX, createFactorMap());
 		map.put(MEASUREMENT, createMeasurementMap());
 		map.put(STRESS, createStressMap());
@@ -416,7 +416,6 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	private HashMap<String, String> createTaggedObjectSetMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, TAGGED_FACTOR_IDS);		
 
 		return map;
 	}

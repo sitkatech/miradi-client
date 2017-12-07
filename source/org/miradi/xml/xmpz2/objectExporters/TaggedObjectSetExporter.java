@@ -20,11 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectExporters;
 
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Factor;
 import org.miradi.objects.TaggedObjectSet;
-import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.xml.xmpz2.BaseObjectExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
@@ -35,45 +31,14 @@ public class TaggedObjectSetExporter extends BaseObjectExporter
 	{
 		super(writerToUse, TaggedObjectSetSchema.getObjectType());
 	}
-	
+
 	@Override
-	protected void writeFields(final BaseObject baseObject, final BaseObjectSchema baseObjectSchema) throws Exception
+	protected boolean shouldOmitField(String tag)
 	{
-		super.writeFields(baseObject, baseObjectSchema);
-		
-		TaggedObjectSet taggedObjectSet = (TaggedObjectSet) baseObject;
-		writeFactorIds(baseObjectSchema.getObjectName(), TAGGED_FACTOR_IDS, taggedObjectSet.getTaggedObjectRefs());
-	}
-	
-	@Override
-	protected boolean doesFieldRequireSpecialHandling(String tag)
-	{
+		// TODO: field to be deprecated in post 5.0 release...
 		if (tag.equals(TaggedObjectSet.TAG_TAGGED_OBJECT_REFS))
 			return true;
-		
-		return super.doesFieldRequireSpecialHandling(tag);
-	}
-	
-	private void writeFactorIds(String parentElementName, String childElementName, ORefList refList) throws Exception
-	{
-		final String elementName = getWriter().appendChildNameToParentName(parentElementName, childElementName);
-		getWriter().writeStartElement(elementName);
-		for (int index = 0; index < refList.size(); ++index)
-		{
-			Factor factor = Factor.findFactor(getProject(), refList.get(index));
-			writeWrappedFactorIdElement(factor);
-		}
-		
-		getWriter().writeEndElement(elementName);
-	}
-	
-	private void writeWrappedFactorIdElement(Factor wrappedFactor) throws Exception
-	{
-		getWriter().writeStartElement(WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
-		
-		String factorTypeName = getDiagramFactorWrappedFactorTypeName(wrappedFactor);
-		getWriter().writeElement(factorTypeName, ID_ELEMENT_NAME, wrappedFactor.getFactorId().toString());
-		
-		getWriter().writeEndElement(WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME);
+
+		return super.shouldOmitField(tag);
 	}
 }

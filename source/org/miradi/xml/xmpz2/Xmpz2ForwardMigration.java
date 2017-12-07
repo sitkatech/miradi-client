@@ -35,9 +35,11 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.ExtendedProgressReport;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.objects.TaggedObjectSet;
 import org.miradi.questions.DayColumnsVisibilityQuestion;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
+import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.utils.BiDirectionalHashMap;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.StringUtilities;
@@ -76,6 +78,7 @@ public class Xmpz2ForwardMigration
 		addDayColumnsVisibilityField(document);
 		moveIndicatorWorkPlanDataToExtraData(document);
 		moveProjectStatusDataToExtraData(document);
+		moveTaggedObjectSetTaggedFactorRefListToExtraData(document);
 
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
@@ -219,6 +222,121 @@ public class Xmpz2ForwardMigration
 
 			projectSummaryNode.removeChild(nodeToMove);
 		}
+	}
+
+	private void moveTaggedObjectSetTaggedFactorRefListToExtraData(Document document) throws Exception
+	{
+		Element rootElement = document.getDocumentElement();
+
+		Node taggedObjectSetPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.TAGGED_OBJECT_SET_ELEMENT_NAME));
+		if (taggedObjectSetPool != null)
+		{
+			NodeList taggedObjectSetNodes = taggedObjectSetPool.getChildNodes();
+			for (int index = 0; index < taggedObjectSetNodes.getLength(); ++index)
+			{
+				Node taggedObjectSetNode = taggedObjectSetNodes.item(index);
+				if (taggedObjectSetNode != null && taggedObjectSetNode.getNodeType() == Node.ELEMENT_NODE)
+				{
+					moveTaggedObjectSetFactorIdsToExtraData(document, taggedObjectSetNode);
+				}
+			}
+		}
+	}
+
+	private void moveTaggedObjectSetFactorIdsToExtraData(Document document, Node taggedObjectSetNode) throws Exception
+	{
+		String idAsString = getAttributeValue(taggedObjectSetNode, Xmpz2XmlConstants.ID);
+
+		String factorIdsElementName = TaggedObjectSetSchema.OBJECT_NAME + Xmpz2XmlConstants.TAGGED_FACTOR_IDS;
+		String tagName = TaggedObjectSet.TAG_TAGGED_OBJECT_REFS;
+
+		Node factorIdsNode = findNode(taggedObjectSetNode.getChildNodes(), factorIdsElementName);
+		if (factorIdsNode != null && factorIdsNode.getNodeType() == Node.ELEMENT_NODE)
+		{
+			ORefList refList = new ORefList();
+
+			NodeList wrappedByDiagramFactorIdNodes = factorIdsNode.getChildNodes();
+
+			for (int index = 0; index < wrappedByDiagramFactorIdNodes.getLength(); ++index)
+			{
+				Node wrappedByDiagramFactorIdNode = wrappedByDiagramFactorIdNodes.item(index);
+				if (wrappedByDiagramFactorIdNode != null && wrappedByDiagramFactorIdNode.getNodeType() == Node.ELEMENT_NODE)
+				{
+					NodeList factorIdNodes = wrappedByDiagramFactorIdNode.getChildNodes();
+					for (int j = 0; j < factorIdNodes.getLength(); ++j)
+					{
+						Node factorIdNode = factorIdNodes.item(j);
+						NodeList idNodes = factorIdNode.getChildNodes();
+						if (idNodes.getLength() == 1)
+						{
+							Node idNode = idNodes.item(0);
+							String factorId = idNode.getTextContent().trim();
+							int factorObjectType = mapWrappedDiagramFactorIdToObjectType(factorIdNode);
+							refList.add(new ORef(factorObjectType, new BaseId(factorId)));
+						}
+					}
+				}
+			}
+
+			String extraDataItemName = ExtraDataExporter.getExtraDataItemName(TaggedObjectSetSchema.OBJECT_NAME, new BaseId(idAsString), tagName);
+			String extraDataItemValue = refList.toJson().toString();
+			moveDataToExtraData(document, extraDataItemName, extraDataItemValue);
+
+			taggedObjectSetNode.removeChild(factorIdsNode);
+		}
+	}
+
+	private int mapWrappedDiagramFactorIdToObjectType(Node factorIdNode) throws Exception
+	{
+		int mappedObjectType = ObjectType.FAKE;
+
+		String factorIdNodeName = factorIdNode.getNodeName().replace(Xmpz2XmlConstants.PREFIX, "");
+		switch (factorIdNodeName)
+		{
+			case Xmpz2XmlConstants.BIODIVERSITY_TARGET + Xmpz2XmlConstants.ID:
+				mappedObjectType = ObjectType.TARGET;
+				break;
+			case Xmpz2XmlConstants.HUMAN_WELFARE_TARGET + Xmpz2XmlConstants.ID:
+				mappedObjectType = ObjectType.TARGET;
+				break;
+			case Xmpz2XmlConstants.BIOPHYSICAL_FACTOR + Xmpz2XmlConstants.ID:
+				mappedObjectType = ObjectType.BIOPHYSICAL_FACTOR;
+				break;
+			case Xmpz2XmlConstants.BIOPHYSICAL_RESULT + Xmpz2XmlConstants.ID:
+				mappedObjectType = ObjectType.BIOPHYSICAL_RESULT;
+				break;
+			case Xmpz2XmlConstants.CAUSE + Xmpz2XmlConstants.ID:
+				mappedObjectType = ObjectType.CAUSE;
+				break;
+			case Xmpz2XmlConstants.STRATEGY + Xmpz2XmlConstants.ID:
+				mappedObjectType = ObjectType.STRATEGY;
+				break;
+			case Xmpz2XmlConstants.THREAT_REDUCTION_RESULT + Xmpz2XmlConstants.ID:
+				mappedObjectType = ObjectType.THREAT_REDUCTION_RESULT;
+				break;
+			case Xmpz2XmlConstants.INTERMEDIATE_RESULT + Xmpz2XmlConstants.ID:
+				mappedObjectType = ObjectType.INTERMEDIATE_RESULT;
+				break;
+			case Xmpz2XmlConstants.GROUP_BOX + Xmpz2XmlConstants.ID:
+				mappedObjectType = ObjectType.GROUP_BOX;
+				break;
+			case Xmpz2XmlConstants.TEXT_BOX + Xmpz2XmlConstants.ID:
+				mappedObjectType = ObjectType.TEXT_BOX;
+				break;
+			case Xmpz2XmlConstants.SCOPE_BOX + Xmpz2XmlConstants.ID:
+				mappedObjectType = ObjectType.SCOPE_BOX;
+				break;
+			case Xmpz2XmlConstants.ACTIVITY + Xmpz2XmlConstants.ID:
+				mappedObjectType = ObjectType.TASK;
+				break;
+			case Xmpz2XmlConstants.STRESS + Xmpz2XmlConstants.ID:
+				mappedObjectType = ObjectType.STRESS;
+				break;
+			default:
+				throw new Exception("Could not map object type for element name: " + factorIdNodeName);
+		}
+
+		return mappedObjectType;
 	}
 
 	private void moveDataToExtraData(Document document, String extraDataItemName, String extraDataItemValue) throws Exception

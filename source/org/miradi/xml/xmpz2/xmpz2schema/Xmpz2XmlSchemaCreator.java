@@ -1186,7 +1186,10 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		if (ProjectResource.is(baseObjectSchema.getType()))
 			return new ResourceSchemaWriter(this, baseObjectSchema);
-		
+
+		if (TaggedObjectSet.is(baseObjectSchema.getType()))
+			return new TaggedObjectSetSchemaWriter(this, baseObjectSchema);
+
 		return new BaseObjectSchemaWriter(this, baseObjectSchema);
 	}
 	

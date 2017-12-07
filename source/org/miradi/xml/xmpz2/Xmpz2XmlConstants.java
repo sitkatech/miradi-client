@@ -87,13 +87,14 @@ public interface Xmpz2XmlConstants
 	public static final String BIODIVERSITY_TARGET = "BiodiversityTarget";
 	public static final String HUMAN_WELFARE_TARGET = HumanWelfareTargetSchema.HUMAN_WELLBEING_TARGET;
 	public static final String BIOPHYSICAL_FACTOR = BiophysicalFactorSchema.BIOPHYSICAL_FACTOR;
-	public static final String BIOPHYSICAL_RESULTS = BiophysicalResultSchema.OBJECT_NAME;
-	public static final String THREAT_REDUCTION_RESULTS = ThreatReductionResultSchema.OBJECT_NAME;
-	public static final String INTERMEDIATE_RESULTS = IntermediateResultSchema.OBJECT_NAME;
+	public static final String BIOPHYSICAL_RESULT = BiophysicalResultSchema.OBJECT_NAME;
+	public static final String THREAT_REDUCTION_RESULT = ThreatReductionResultSchema.OBJECT_NAME;
+	public static final String INTERMEDIATE_RESULT = IntermediateResultSchema.OBJECT_NAME;
 	public static final String GROUP_BOX = GroupBoxSchema.OBJECT_NAME;
 	public static final String TEXT_BOX = TextBoxSchema.OBJECT_NAME;
 	public static final String SCOPE_BOX = ScopeBoxSchema.OBJECT_NAME;
 	public static final String KEY_ECOLOGICAL_ATTRIBUTE = KeyEcologicalAttributeSchema.OBJECT_NAME;
+	public static final String CAUSE = CauseSchema.OBJECT_NAME;
 	public static final String STRATEGY = StrategySchema.OBJECT_NAME;
 	public static final String STRESS = StressSchema.OBJECT_NAME;
 	public static final String STRESS_ID = STRESS + ID;
@@ -307,7 +308,7 @@ public interface Xmpz2XmlConstants
 	public static final String DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME = DiagramFactor.TAG_FONT_STYLE;
 	public static final String DIAGRAM_FACTOR_HEADER_SIZE_ELEMENT_NAME = DiagramFactor.TAG_HEADER_HEIGHT;
 	public static final String DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME = DiagramFactor.TAG_FONT_SIZE;
-	public static final String THREAT_REDUCTION_RESULT_THREAT = THREAT_REDUCTION_RESULTS + THREAT;
+	public static final String THREAT_REDUCTION_RESULT_THREAT = THREAT_REDUCTION_RESULT + THREAT;
 	public static final String MIRADI_SHARE_PROJECT_DATA_TAXONOMY_ASSOCIATION_POOL = "MiradiShareProjectDataTaxonomyAssociationPool";
 	public static final String BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATION_POOL = "BiodiversityTargetTaxonomyAssociationPool";
 	public static final String HUMAN_WELLBEING_TARGET_TAXONOMY_ASSOCIATION_POOL = "HumanWellbeingTargetTaxonomyAssociationPool";
