@@ -49,6 +49,7 @@ public class DiagramFactorExporter extends BaseObjectExporter
 		writeWrappedFactorId(diagramFactor.getWrappedFactor());
 		exportFontStylingElements(diagramFactor);
 		getWriter().writeReflist(DIAGRAM_FACTOR + GROUP_BOX_CHILDREN_IDS, DIAGRAM_FACTOR, diagramFactor.getGroupBoxChildrenRefs());
+		getWriter().writeNonOptionalReflist(DIAGRAM_FACTOR + TAGGED_OBJECT_SET_IDS, TAGGED_OBJECT_SET_ELEMENT_NAME, diagramFactor.getTaggedObjectSetRefs());
 	}
 	
 	@Override
@@ -59,7 +60,10 @@ public class DiagramFactorExporter extends BaseObjectExporter
 		
 		if (tag.equals(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS))
 			return true;
-		
+
+		if (tag.equals(DiagramFactor.TAG_TAGGED_OBJECT_REFS))
+			return true;
+
 		if (isFontStyleField(tag))
 			return true;
 		
@@ -86,7 +90,7 @@ public class DiagramFactorExporter extends BaseObjectExporter
         return false;
 	}
 
-	protected void writeWrappedFactorId(Factor wrappedFactor) throws Exception
+	private void writeWrappedFactorId(Factor wrappedFactor) throws Exception
 	{
 		getWriter().writeStartElement(DIAGRAM_FACTOR + WRAPPED_FACTOR_ID_ELEMENT_NAME);
 		writeWrappedFactorIdElement(wrappedFactor);

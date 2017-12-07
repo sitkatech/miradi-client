@@ -123,6 +123,11 @@ public class DiagramFactor extends BaseObject
 		return Factor.findFactor(getObjectManager(), getWrappedORef());
 	}
 
+	public ORefList getTaggedObjectSetRefs()
+	{
+		return getSafeRefListData(TAG_TAGGED_OBJECT_REFS);
+	}
+
 	public Dimension getSize()
 	{
 		return getDimensionData(TAG_SIZE);
@@ -162,7 +167,6 @@ public class DiagramFactor extends BaseObject
     {
         return getIntegerData(TAG_HEADER_HEIGHT);
     }
-
 
     public void setLocation(Point pointToUse)
 	{
@@ -320,6 +324,7 @@ public class DiagramFactor extends BaseObject
 	public static final String TAG_BACKGROUND_COLOR = "BackgroundColor";
 	public static final String TAG_TEXT_BOX_Z_ORDER_CODE = "TextBoxZOrderCode";
     public static final String TAG_HEADER_HEIGHT = "HeaderHeight";
+	public static final String TAG_TAGGED_OBJECT_REFS = "TaggedObjectRefs";
 
     public static final int DEFAULT_HEADER_HEIGHT = 2;
 

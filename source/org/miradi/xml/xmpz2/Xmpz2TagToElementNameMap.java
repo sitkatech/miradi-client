@@ -184,6 +184,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		HashMap<String, String> map = createBaseObjectMap();
 		map.put(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, GROUP_BOX_CHILDREN_IDS);
 		map.put(DiagramFactor.TAG_WRAPPED_REF, WRAPPED_FACTOR_ID_ELEMENT_NAME);
+		map.put(DiagramFactor.TAG_TAGGED_OBJECT_REFS, TAGGED_OBJECT_SET_IDS);
 		
 		return map;
 	}
@@ -304,7 +305,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		HashMap<String, String> map = createBaseObjectMap();
 		map.put(DiagramObject.TAG_DETAIL, DETAILS);
 		map.put(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, DIAGRAM_LINK_IDS);
-		map.put(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TAGGED_OBJECT_SET_IDS);
+		map.put(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, SELECTED_TAGGED_OBJECT_SET_IDS);
 		
 		return map;
 	}

@@ -142,7 +142,8 @@ public interface Xmpz2XmlConstants
 	public static final String LATITUDE = "latitude";
 	public static final String LONGITUDE = "longitude";
 	public static final String TAGGED_OBJECT_SET_ELEMENT_NAME = "TaggedObjectSet";
-	public static final String TAGGED_OBJECT_SET_IDS = "Selected" + TAGGED_OBJECT_SET_ELEMENT_NAME + IDS;
+	public static final String TAGGED_OBJECT_SET_IDS = TAGGED_OBJECT_SET_ELEMENT_NAME + IDS;
+	public static final String SELECTED_TAGGED_OBJECT_SET_IDS = "Selected" + TAGGED_OBJECT_SET_IDS;
 	public static final String TAGGED_FACTOR_IDS = "FactorIds";
 	public static final String DIAGRAM_POINT_ELEMENT_NAME = "DiagramPoint";
 	public static final String DIAGRAM_SIZE_ELEMENT_NAME = "DiagramSize";
