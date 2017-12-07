@@ -61,7 +61,7 @@ public class DiagramFactorExporter extends BaseObjectExporter
 		if (tag.equals(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS))
 			return true;
 
-		if (tag.equals(DiagramFactor.TAG_TAGGED_OBJECT_REFS))
+		if (tag.equals(DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS))
 			return true;
 
 		if (isFontStyleField(tag))
