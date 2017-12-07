@@ -283,7 +283,7 @@ public class TestXmpz2XmlExporter extends TestCaseForXmpz2ExportAndImport
 		getProject().populateBaseObjectWithSampleData(getProject().getMetadata());
 		DiagramFactor diagramFactor1 = getProject().createAndPopulateDiagramFactor();
 		DiagramFactor diagramFactor2 = getProject().createAndPopulateDiagramFactor();
-		getProject().tagDiagramFactor(diagramFactor2.getWrappedORef());
+		getProject().tagDiagramFactorOld(diagramFactor2.getWrappedORef());
 		getProject().createDiagramFactorLinkAndAddToDiagram(diagramFactor1, diagramFactor2);
 		getProject().createResourceAssignment();
 		validateProject();

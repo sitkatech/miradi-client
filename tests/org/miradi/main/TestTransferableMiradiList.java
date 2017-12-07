@@ -122,7 +122,7 @@ public class TestTransferableMiradiList extends MiradiTestCase
 		project.fillObjectUsingCommand(diagramFactor2.getWrappedFactor(), Target.TAG_STRESS_REFS, stressRefs.toString());
 		
 		
-		project.tagDiagramFactor(diagramFactor1.getWrappedORef());
+		project.tagDiagramFactorOld(diagramFactor1.getWrappedORef());
 		
 		LinkCreator linkCreator = new LinkCreator(project);
 		DiagramLink diagramLink = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getTestingDiagramObject(), diagramFactor1, diagramFactor2);
