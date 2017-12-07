@@ -61,7 +61,6 @@ import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.GroupOfDiagrams;
 import org.miradi.views.diagram.LayerManager;
 import org.miradi.views.diagram.LayerSorter;
-import org.miradi.views.umbrella.TaggedObjectManager;
 
 abstract public class DiagramModel extends DefaultGraphModel
 {
@@ -69,7 +68,6 @@ abstract public class DiagramModel extends DefaultGraphModel
 	{
 		project = projectToUse;
 		layerManager = new LayerManager(getDiagramObject());
-		taggedObjectManager = new TaggedObjectManager(project);
 		clear();
 	}
 		
@@ -464,9 +462,16 @@ abstract public class DiagramModel extends DefaultGraphModel
 		if (selectedTaggedRefs.isEmpty())
 			return isLayerVisible;
 
-		boolean isTagged = getTaggedObjectManager().isTagged(getDiagramObject(), factorCell.getWrappedFactorRef());
+		boolean isTagged = isTagged(getDiagramObject(), factorCell.getDiagramFactor());
 			
 		return isLayerVisible && isTagged;
+	}
+
+	private boolean isTagged(DiagramObject diagramObject, DiagramFactor diagramFactor)
+	{
+		ORefList selectedTaggedObjectSetRefs = diagramObject.getSelectedTaggedObjectSetRefs();
+
+		return diagramFactor.getTaggedObjectSetRefs().containsAnyOf(selectedTaggedObjectSetRefs);
 	}
 
 	private void updateVisibilityOfLinks() throws Exception
@@ -888,11 +893,6 @@ abstract public class DiagramModel extends DefaultGraphModel
 		return layerManager;
 	}
 	
-	public TaggedObjectManager getTaggedObjectManager()
-	{
-		return taggedObjectManager;
-	}
-	
 	public GraphLayoutCache getGraphLayoutCache()
 	{
 		return graphLayoutCache;
@@ -917,6 +917,5 @@ abstract public class DiagramModel extends DefaultGraphModel
 	private GraphLayoutCache graphLayoutCache;
 	private boolean isDamaged;
 	private LayerManager layerManager;
-	private TaggedObjectManager taggedObjectManager;
 }
 
