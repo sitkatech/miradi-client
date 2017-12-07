@@ -149,7 +149,7 @@ abstract public class DiagramPanel extends DisposablePanelWithDescription implem
 	
 	public DiagramComponent[] getAllSplitterDiagramComponents()
 	{
-		return getDiagramSplitPane().getAllOwenedDiagramComponents();
+		return getDiagramSplitPane().getAllOwnedDiagramComponents();
 	}
 	
 	public DiagramComponent getCurrentDiagramComponent()

@@ -79,7 +79,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDiagramViewDoersToMap();
 	}
 
-	
 	private void updateToolBar()
 	{
 		getMainWindow().rebuildToolBar();
@@ -530,7 +529,6 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			selectionModel.clearSelection();
 	}
 
-
 	private boolean isCurrentViewDiagramView()
 	{
 		return DiagramView.is(getMainWindow().getCurrentView());
@@ -607,7 +605,10 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			if(event.isSetDataCommandWithThisTypeAndTag(GroupBoxSchema.getObjectType(), GroupBox.TAG_LABEL) ||
                event.isSetDataCommandWithThisTypeAndTag(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_HEADER_HEIGHT))
 				getDiagramModel().updateGroupBoxCells();
-			
+
+			if (setCommand.isTypeAndTag(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS))
+				updateVisibilityOfFactorsAndLinks();
+
 			forceDiagramComponentRepaint();
 		}
 		catch (Exception e)
@@ -676,12 +677,10 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		switchToFullMode();
 	}
 
-
 	private boolean isDiagramObjectTag(String tag)
 	{
 		return (tag.equals(ViewData.TAG_CURRENT_CONCEPTUAL_MODEL_REF)) && (tag.equals(ViewData.TAG_CURRENT_RESULTS_CHAIN_REF));
 	}
-
 
 	private void updateAllTabs(CommandSetObjectData cmd) throws Exception
 	{
@@ -848,8 +847,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		nodePropertiesDlg = null;
 		nodePropertiesPanel = null;
 	}
-	
-	
+
 	public void selectionWasChanged()
 	{
 		closeActivePropertiesDialog();

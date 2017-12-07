@@ -275,7 +275,6 @@ abstract public class DiagramModel extends DefaultGraphModel
 		return getDiagramObject().getDiagramLink(factorRef1, factorRef2);
 	}
 
-	
 	public boolean isResultsChain()
 	{
 		return diagramContents.isResultsChain();
@@ -415,7 +414,6 @@ abstract public class DiagramModel extends DefaultGraphModel
 		updateVisibilityOfFactors();
 		updateVisibilityOfLinks();
 	}
-	
 	
 	private void updateVisibilityOfFactors() throws Exception
 	{

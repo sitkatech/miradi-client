@@ -362,15 +362,40 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return nodes.toArray(new FactorCell[0]);
 	}
 	
+	public DiagramFactor[] getOnlySelectedDiagramFactors()
+	{
+		if (getSelectionModel() == null)
+			return new DiagramFactor[0];
+		
+		EAMGraphCell[] rawCells = getOnlySelectedCells();
+		return getOnlySelectedDiagramFactors(rawCells);
+	}
+	
+	private DiagramFactor[] getOnlySelectedDiagramFactors(EAMGraphCell[] allSelectedFactors)
+	{
+		Vector<DiagramFactor> nodes = new Vector<DiagramFactor>();
+		for(int i = 0; i < allSelectedFactors.length; ++i)
+		{
+			EAMGraphCell graphCell = allSelectedFactors[i];
+			if(graphCell.isFactor())
+			{
+				DiagramFactor diagramFactor = graphCell.getDiagramFactor();
+				nodes.add(diagramFactor);
+			}
+		}
+		return nodes.toArray(new DiagramFactor[0]);
+
+	}
+
 	public Factor[] getOnlySelectedFactors()
 	{
 		if (getSelectionModel() == null)
 			return new Factor[0];
-		
+
 		EAMGraphCell[] rawCells = getOnlySelectedCells();
 		return getOnlySelectedFactors(rawCells);
 	}
-	
+
 	private Factor[] getOnlySelectedFactors(EAMGraphCell[] allSelectedFactors)
 	{
 		Vector<Factor> nodes = new Vector<Factor>();
@@ -387,7 +412,7 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return nodes.toArray(new Factor[0]);
 
 	}
-	
+
 	public FactorCell[] getOnlySelectedFactorCells()
 	{
 		if(getSelectionModel() == null)

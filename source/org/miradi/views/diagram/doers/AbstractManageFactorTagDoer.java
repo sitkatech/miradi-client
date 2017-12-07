@@ -66,7 +66,6 @@ abstract public class AbstractManageFactorTagDoer extends ObjectsDoer
 			setScrollableMainPanel(panel);
 		}
 		
-		
 		@Override
 		protected Vector<Component> getButtonBarComponents()
 		{
