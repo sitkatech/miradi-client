@@ -23,13 +23,13 @@ package org.miradi.migrations;
 import org.miradi.migrations.forward.MigrationTo43;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.TaggedObjectSet;
+import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.TaggedObjectSetSchema;
+
+import java.text.ParseException;
 
 import static org.miradi.migrations.forward.MigrationTo43.TAG_TAGGED_OBJECT_SET_REFS;
 
@@ -67,12 +67,72 @@ public class TestMigrationTo43 extends AbstractTestMigration
             }
         }
 
-        RawPool rawTaggedObjectSetPool = rawProject.getRawPoolForType(TaggedObjectSetSchema.getObjectType());
-        for(ORef ref : rawTaggedObjectSetPool.keySet())
+        verifyTagRemovedForAllObjectsInPool(rawProject, TaggedObjectSetSchema.getObjectType(), MigrationTo43.TAG_TAGGED_OBJECT_REFS);
+
+        verifyFullCircleMigrations(new VersionRange(42, 43));
+    }
+
+    public void testTagsCreatedByForwardMigrationComplexTestCase() throws Exception
+    {
+        String tagSharedFactorLabel = "TestSharedFactorTag";
+        String tagCMFactorLabel = "TestCMTag";
+        String tagRCFactorLabel = "TestRCTag";
+
+        ConceptualModelDiagram conceptualModelDiagram = ConceptualModelDiagram.find(getProject(), getProject().createConceptualModelDiagram());
+        ResultsChainDiagram resultsChainDiagram = ResultsChainDiagram.find(getProject(), getProject().createResultsChainDiagram());
+
+        Strategy strategy = getProject().createStrategy();
+        DiagramFactor cmDiagramFactorStrategy = getProject().createAndAddFactorToDiagram(conceptualModelDiagram, strategy.getRef());
+        DiagramFactor rcDiagramFactorStrategy = getProject().createAndAddFactorToDiagram(resultsChainDiagram, strategy.getRef());
+
+        TaggedObjectSet taggedObjectSetShared = getProject().createLabeledTaggedObjectSet(tagSharedFactorLabel);
+        getProject().tagDiagramFactorOld(conceptualModelDiagram, cmDiagramFactorStrategy.getWrappedORef(), taggedObjectSetShared, false);
+        getProject().tagDiagramFactorOld(resultsChainDiagram, rcDiagramFactorStrategy.getWrappedORef(), taggedObjectSetShared, true);
+
+        Target cmTarget = getProject().createTarget();
+        DiagramFactor cmDiagramFactorTarget = getProject().createAndAddFactorToDiagram(conceptualModelDiagram, cmTarget.getRef());
+
+        TaggedObjectSet taggedObjectSetCM = getProject().createLabeledTaggedObjectSet(tagCMFactorLabel);
+        getProject().tagDiagramFactorOld(conceptualModelDiagram, cmTarget.getRef(), taggedObjectSetCM);
+
+        BiophysicalResult biophysicalResult = getProject().createBiophysicalResult();
+        DiagramFactor rcDiagramFactorBiophysicalResult = getProject().createAndAddFactorToDiagram(resultsChainDiagram, biophysicalResult.getRef());
+
+        TaggedObjectSet taggedObjectSetRC = getProject().createLabeledTaggedObjectSet(tagRCFactorLabel);
+        getProject().tagDiagramFactorOld(resultsChainDiagram, biophysicalResult.getRef(), taggedObjectSetRC, false);
+
+        RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo43.VERSION_TO));
+        migrateProject(rawProject, new VersionRange(Project.VERSION_HIGH));
+
+       RawPool rawDiagramFactorPool = rawProject.getRawPoolForType(DiagramFactorSchema.getObjectType());
+        for(ORef ref : rawDiagramFactorPool.keySet())
         {
-            RawObject rawTaggedObjectSet = rawTaggedObjectSetPool.get(ref);
-            assertFalse("Field should have been removed during forward migration?", rawTaggedObjectSet.containsKey(MigrationTo43.TAG_TAGGED_OBJECT_REFS));
+            RawObject rawDiagramFactor = rawDiagramFactorPool.get(ref);
+            String diagramTaggedObjectSetRefsAsString = rawDiagramFactor.getData(TAG_TAGGED_OBJECT_SET_REFS);
+            ORefList diagramTaggedObjectSetRefs = new ORefList(diagramTaggedObjectSetRefsAsString);
+
+            if (ref.equals(cmDiagramFactorStrategy.getRef()) || ref.equals(rcDiagramFactorStrategy.getRef()))
+            {
+                assertTrue("Field should have been added during forward migration?", rawDiagramFactor.containsKey(MigrationTo43.TAG_TAGGED_OBJECT_SET_REFS));
+                assertTrue("DiagramFactor should reference shared tag", diagramTaggedObjectSetRefs.contains(taggedObjectSetShared.getRef()));
+                assertEquals(diagramTaggedObjectSetRefs.size(), 1);
+            }
+            if (ref.equals(cmDiagramFactorTarget.getRef()))
+            {
+                assertTrue("Field should have been added during forward migration?", rawDiagramFactor.containsKey(MigrationTo43.TAG_TAGGED_OBJECT_SET_REFS));
+                assertTrue("DiagramFactor should reference CM only tag", diagramTaggedObjectSetRefs.contains(taggedObjectSetCM.getRef()));
+                assertEquals(diagramTaggedObjectSetRefs.size(), 1);
+            }
+            if (ref.equals(rcDiagramFactorBiophysicalResult.getRef()))
+            {
+                assertTrue("Field should have been added during forward migration?", rawDiagramFactor.containsKey(MigrationTo43.TAG_TAGGED_OBJECT_SET_REFS));
+                assertTrue("DiagramFactor should reference CM only tag", diagramTaggedObjectSetRefs.contains(taggedObjectSetRC.getRef()));
+                assertEquals(diagramTaggedObjectSetRefs.size(), 1);
+            }
         }
+
+        verifyTagRemovedForAllObjectsInPool(rawProject, TaggedObjectSetSchema.getObjectType(), MigrationTo43.TAG_TAGGED_OBJECT_REFS);
+        verifyDiagramSelectedTaggedObjectSetRefs(rawProject, conceptualModelDiagram, taggedObjectSetShared, taggedObjectSetCM, resultsChainDiagram);
 
         verifyFullCircleMigrations(new VersionRange(42, 43));
     }
@@ -89,12 +149,7 @@ public class TestMigrationTo43 extends AbstractTestMigration
 
         RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo43.VERSION_TO));
 
-        RawPool rawDiagramFactorPool = rawProject.getRawPoolForType(DiagramFactorSchema.getObjectType());
-        for(ORef ref : rawDiagramFactorPool.keySet())
-        {
-            RawObject rawDiagramFactor = rawDiagramFactorPool.get(ref);
-            assertFalse("Field should have been removed during forward migration?", rawDiagramFactor.containsKey(MigrationTo43.TAG_TAGGED_OBJECT_SET_REFS));
-        }
+        verifyTagRemovedForAllObjectsInPool(rawProject, DiagramFactorSchema.getObjectType(), MigrationTo43.TAG_TAGGED_OBJECT_SET_REFS);
 
         RawPool rawTaggedObjectSetPool = rawProject.getRawPoolForType(TaggedObjectSetSchema.getObjectType());
         for(ORef ref : rawTaggedObjectSetPool.keySet())
@@ -106,6 +161,98 @@ public class TestMigrationTo43 extends AbstractTestMigration
                 String taggedObjectSetFactorRefsAsString = rawTaggedObjectSet.getData(MigrationTo43.TAG_TAGGED_OBJECT_REFS);
                 ORefList taggedObjectSetFactorRefs = new ORefList(taggedObjectSetFactorRefsAsString);
                 assertTrue("Tag should reference DiagramFactor wrapped factor", taggedObjectSetFactorRefs.contains(diagramFactor.getWrappedORef()));
+            }
+        }
+    }
+
+    public void testTagsRemovedByReverseMigrationComplexTestCase() throws Exception
+    {
+        String tagSharedFactorLabel = "TestSharedFactorTag";
+        String tagCMFactorLabel = "TestCMTag";
+        String tagRCFactorLabel = "TestRCTag";
+
+        ConceptualModelDiagram conceptualModelDiagram = ConceptualModelDiagram.find(getProject(), getProject().createConceptualModelDiagram());
+        ResultsChainDiagram resultsChainDiagram = ResultsChainDiagram.find(getProject(), getProject().createResultsChainDiagram());
+
+        Strategy strategy = getProject().createStrategy();
+        DiagramFactor cmDiagramFactorStrategy = getProject().createAndAddFactorToDiagram(conceptualModelDiagram, strategy.getRef());
+        DiagramFactor rcDiagramFactorStrategy = getProject().createAndAddFactorToDiagram(resultsChainDiagram, strategy.getRef());
+
+        TaggedObjectSet taggedObjectSetShared = getProject().createLabeledTaggedObjectSet(tagSharedFactorLabel);
+        getProject().tagDiagramFactor(conceptualModelDiagram, cmDiagramFactorStrategy, taggedObjectSetShared, false);
+        getProject().tagDiagramFactor(resultsChainDiagram, rcDiagramFactorStrategy, taggedObjectSetShared, true);
+
+        Target cmTarget = getProject().createTarget();
+        DiagramFactor cmDiagramFactorTarget = getProject().createAndAddFactorToDiagram(conceptualModelDiagram, cmTarget.getRef());
+
+        TaggedObjectSet taggedObjectSetCM = getProject().createLabeledTaggedObjectSet(tagCMFactorLabel);
+        getProject().tagDiagramFactor(conceptualModelDiagram, cmDiagramFactorTarget, taggedObjectSetCM);
+
+        BiophysicalResult biophysicalResult = getProject().createBiophysicalResult();
+        DiagramFactor rcDiagramFactorBiophysicalResult = getProject().createAndAddFactorToDiagram(resultsChainDiagram, biophysicalResult.getRef());
+
+        TaggedObjectSet taggedObjectSetRC = getProject().createLabeledTaggedObjectSet(tagRCFactorLabel);
+        getProject().tagDiagramFactor(resultsChainDiagram, rcDiagramFactorBiophysicalResult, taggedObjectSetRC, false);
+
+        RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo43.VERSION_TO));
+
+        verifyTagRemovedForAllObjectsInPool(rawProject, DiagramFactorSchema.getObjectType(), MigrationTo43.TAG_TAGGED_OBJECT_SET_REFS);
+        verifyDiagramSelectedTaggedObjectSetRefs(rawProject, conceptualModelDiagram, taggedObjectSetShared, taggedObjectSetCM, resultsChainDiagram);
+
+        RawPool rawTaggedObjectSetPool = rawProject.getRawPoolForType(TaggedObjectSetSchema.getObjectType());
+        for(ORef ref : rawTaggedObjectSetPool.keySet())
+        {
+            RawObject rawTaggedObjectSet = rawTaggedObjectSetPool.get(ref);
+            assertTrue("Field should have been added during forward migration?", rawTaggedObjectSet.containsKey(MigrationTo43.TAG_TAGGED_OBJECT_REFS));
+            String taggedObjectSetFactorRefsAsString = rawTaggedObjectSet.getData(MigrationTo43.TAG_TAGGED_OBJECT_REFS);
+            ORefList taggedObjectSetFactorRefs = new ORefList(taggedObjectSetFactorRefsAsString);
+
+            if (ref.equals(taggedObjectSetShared.getRef()))
+                assertTrue("Tag should reference DiagramFactor wrapped factor", taggedObjectSetFactorRefs.equals(new ORefList(strategy.getRef())));
+
+            if (ref.equals(taggedObjectSetCM.getRef()))
+                assertTrue("Tag should reference DiagramFactor wrapped factor", taggedObjectSetFactorRefs.equals(new ORefList(cmTarget.getRef())));
+
+            if (ref.equals(taggedObjectSetRC.getRef()))
+                assertTrue("Tag should reference DiagramFactor wrapped factor", taggedObjectSetFactorRefs.equals(new ORefList(biophysicalResult.getRef())));
+        }
+    }
+
+    private void verifyTagRemovedForAllObjectsInPool(RawProject rawProject, int objectType, String tag)
+    {
+        RawPool rawObjectPool = rawProject.getRawPoolForType(objectType);
+        for(ORef ref : rawObjectPool.keySet())
+        {
+            RawObject rawObject = rawObjectPool.get(ref);
+            assertFalse("Field should have been removed during forward migration?", rawObject.containsKey(tag));
+        }
+    }
+
+    private void verifyDiagramSelectedTaggedObjectSetRefs(RawProject rawProject, ConceptualModelDiagram conceptualModelDiagram, TaggedObjectSet taggedObjectSetShared, TaggedObjectSet taggedObjectSetCM, ResultsChainDiagram resultsChainDiagram) throws ParseException
+    {
+        RawPool rcDiagramPool = rawProject.getRawPoolForType(ObjectType.RESULTS_CHAIN_DIAGRAM);
+        assertNotNull(rcDiagramPool);
+        for (ORef rcDiagramRef : rcDiagramPool.keySet())
+        {
+            if (rcDiagramRef.equals(resultsChainDiagram.getRef()))
+            {
+                RawObject rcDiagram = rcDiagramPool.get(rcDiagramRef);
+                String diagramSelectedTaggedObjectSetRefsAsString = rcDiagram.getData(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS);
+                ORefList diagramSelectedTaggedObjectSetRefs = new ORefList(diagramSelectedTaggedObjectSetRefsAsString);
+                assertTrue("RC Diagram should only have shared tag selected", diagramSelectedTaggedObjectSetRefs.equals(new ORefList(taggedObjectSetShared)));
+            }
+        }
+
+        RawPool cmDiagramPool = rawProject.getRawPoolForType(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
+        assertNotNull(cmDiagramPool);
+        for (ORef cmDiagramRef : cmDiagramPool.keySet())
+        {
+            if (cmDiagramRef.equals(conceptualModelDiagram.getRef()))
+            {
+                RawObject cmDiagram = cmDiagramPool.get(cmDiagramRef);
+                String diagramSelectedTaggedObjectSetRefsAsString = cmDiagram.getData(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS);
+                ORefList diagramSelectedTaggedObjectSetRefs = new ORefList(diagramSelectedTaggedObjectSetRefsAsString);
+                assertTrue("CM Diagram should only have shared tag selected", diagramSelectedTaggedObjectSetRefs.equals(new ORefList(taggedObjectSetCM)));
             }
         }
     }
