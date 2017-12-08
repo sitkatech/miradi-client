@@ -24,20 +24,20 @@ import org.miradi.actions.ActionManageFactorTags;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.diagram.FactorSummaryCorePanel;
 import org.miradi.main.MainWindow;
-import org.miradi.objects.Factor;
-import org.miradi.schemas.TaskSchema;
+import org.miradi.objects.DiagramFactor;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.ObjectsActionButton;
-import org.miradi.views.umbrella.ObjectPicker;
 
 public class ActivityPropertiesPanelWithTagPanel extends ActivityPropertiesPanel
 {
-	public ActivityPropertiesPanelWithTagPanel(MainWindow mainWindow, ObjectPicker objectPickerToUse) throws Exception
+	public ActivityPropertiesPanelWithTagPanel(MainWindow mainWindow) throws Exception
 	{
 		super(mainWindow);
 		
 		createSingleSection(FactorSummaryCorePanel.getTagsLabel());
-		ObjectsActionButton chooseTagForFactorButton = createObjectsActionButton(getMainWindow().getActions().getObjectsAction(ActionManageFactorTags.class), objectPickerToUse);
-		ObjectDataInputField readOnlyTaggedObjects = createReadOnlyObjectList(TaskSchema.getObjectType(), Factor.PSEUDO_TAG_REFERRING_TAG_REFS);
+
+		ObjectsActionButton chooseTagForFactorButton = createObjectsActionButton(getMainWindow().getActions().getObjectsAction(ActionManageFactorTags.class), getPicker());
+		ObjectDataInputField readOnlyTaggedObjects = createReadOnlyObjectList(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS);
 		addFieldWithEditButton(FactorSummaryCorePanel.getTagsLabel(), readOnlyTaggedObjects, chooseTagForFactorButton);
 	}
 }

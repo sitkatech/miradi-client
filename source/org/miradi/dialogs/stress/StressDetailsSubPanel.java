@@ -29,12 +29,13 @@ import org.miradi.dialogs.diagram.FactorSummaryCorePanel;
 import org.miradi.icons.StressIcon;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Factor;
+import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Stress;
 import org.miradi.project.Project;
 import org.miradi.questions.ScopeStressBasedThreatRatingQuestion;
 import org.miradi.questions.SeverityStressBasedThreatRatingQuestion;
 import org.miradi.questions.StressRatingChoiceQuestion;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.utils.FillerLabel;
 import org.miradi.utils.ObjectsActionButton;
@@ -59,10 +60,11 @@ public class StressDetailsSubPanel extends ObjectDataInputPanel
 		addField(createMultilineField(Stress.TAG_DETAIL));
 		if (projectToUse.isStressBaseMode())
 			addRatingsFields();
-		
+
 		ObjectsActionButton chooseTagForFactorButton = createObjectsActionButton(getMainWindow().getActions().getObjectsAction(ActionManageFactorTags.class), getPicker());
-		ObjectDataInputField readOnlyTaggedObjects = createReadOnlyObjectList(StressSchema.getObjectType(), Factor.PSEUDO_TAG_REFERRING_TAG_REFS);
+		ObjectDataInputField readOnlyTaggedObjects = createReadOnlyObjectList(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS);
 		addFieldWithEditButton(FactorSummaryCorePanel.getTagsLabel(), readOnlyTaggedObjects, chooseTagForFactorButton);
+
 		addTaxonomyFields(StressSchema.getObjectType());
 		
 		updateFieldsFromProject();

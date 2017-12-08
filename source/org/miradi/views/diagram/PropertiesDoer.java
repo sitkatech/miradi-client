@@ -231,7 +231,7 @@ public class PropertiesDoer extends LocationDoer
 		selectionHierarchy.add(diagramFactor.getRef());
 		StaticPicker picker = new StaticPicker(selectionHierarchy);
 		picker.becomeActive();
-		ActivityPropertiesPanelWithTagPanel panel = new ActivityPropertiesPanelWithTagPanel(getMainWindow(), picker);
+		ActivityPropertiesPanelWithTagPanel panel = new ActivityPropertiesPanelWithTagPanel(getMainWindow());
 		addDiagramWrappedRefToHierarchyAndShowPanel(diagramFactor, panel);
 	}
 
