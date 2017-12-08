@@ -23,7 +23,9 @@ import org.miradi.dialogfields.FieldSaver;
 import org.miradi.dialogs.base.SingleBooleanColumnEditableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.StrategyActivityRelevancyInterface;
 import org.miradi.project.Project;
@@ -68,13 +70,36 @@ public class StrategyActivityRelevancyTableModel extends SingleBooleanColumnEdit
 	{
 		return new ORefList(parentObject.getRelevantStrategyAndActivityRefs());
 	}
-	
-	@Override
-	protected ORefList getCheckedRefsAccordingToTheDatabase() throws Exception
+
+	private ORefList getCurrentlyCheckedRefs(Boolean valueAsBoolean, int row) throws Exception
+	{
+		ORefSet selectedRefSet = new ORefSet(getCheckedRefsForRow());
+		ORef thisRef = getRefForRow(row);
+		if (thisRef.isInvalid())
+			return selectedRefSet.toRefList();
+
+		boolean nowChecked = valueAsBoolean.booleanValue();
+		if(nowChecked)
+			selectedRefSet.add(thisRef);
+		else
+			selectedRefSet.remove(thisRef);
+
+		return selectedRefSet.toRefList();
+	}
+
+	private ORefList getCheckedRefsForRow() throws Exception
 	{
 		return getRelevantStrategyActivityRefs();
 	}
-	
+
+	@Override
+	protected boolean isRowSelected(int row, int column) throws Exception
+	{
+		ORefList currentRefList = getCheckedRefsForRow();
+		ORef ref = getBaseObjectForRowColumn(row, column).getRef();
+		return currentRefList.contains(ref);
+	}
+
 	@Override
 	public String getUniqueTableModelIdentifier()
 	{

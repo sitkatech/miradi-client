@@ -29,6 +29,7 @@ import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.ObjectsDoer;
@@ -49,9 +50,10 @@ abstract public class AbstractManageFactorTagDoer extends ObjectsDoer
 	{
 		if (!isAvailable())
 			return;
-		
+
+		DiagramObject currentDiagramObject = getDiagramView().getCurrentDiagramObject();
 		Factor selectedFactor = getSingleSelectedFactor();
-		FactorTagListEditor factorTagListEditor = new FactorTagListEditor(getProject(), selectedFactor);
+		FactorTagListEditor factorTagListEditor = new FactorTagListEditor(getProject(), currentDiagramObject, selectedFactor);
 		EditTagWithCreateTagButtonDialog dialog = new EditTagWithCreateTagButtonDialog(getMainWindow(), factorTagListEditor, EAM.text("Choose Tags"));
 		Utilities.centerDlg(dialog);
 		dialog.setSize(250, 300);

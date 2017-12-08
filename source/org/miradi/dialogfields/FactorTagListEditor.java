@@ -35,25 +35,28 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.TaggedObjectSetQuestion;
+import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.utils.XmlUtilities2;
 
 public class FactorTagListEditor extends AbstractQuestionEditorComponent implements CommandExecutedListener
 {
-	public FactorTagListEditor(Project projectToUse, Factor selectedFactorToUse)
+	public FactorTagListEditor(Project projectToUse, DiagramObject diagramObjectToUse, Factor selectedFactorToUse)
 	{
 		super(createQuestion(projectToUse), SINGLE_COLUMN);
 		
 		project = projectToUse;
+		diagramObject = diagramObjectToUse;
 		selectedFactor = selectedFactorToUse;
 	
-		updateCheckboxesToMatchDatabase();
+		updateCheckboxesToMatchCurrentTaggedObjectSets();
 		project.addCommandExecutedListener(this);
 	}
 	
@@ -126,25 +129,17 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 	{
 		String refAsCode = choiceItem.getCode();
 		ORef taggedObjectSetRef = ORef.createFromString(refAsCode);
-		ORefList taggedSet = getTaggedObjectRefs(taggedObjectSetRef);
-		taggedSet.remove(getFactorToTag().getRef());
-		if (isSelected)
-			taggedSet.add(getFactorToTag().getRef());
-		
-		sortToKeepOrderInSyncWithDisk(taggedSet);
-		CommandSetObjectData tagFactorCommand = new CommandSetObjectData(taggedObjectSetRef, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, taggedSet.toString());
-		getProject().executeCommand(tagFactorCommand);
+		DiagramFactor diagramFactor = getDiagramObject().getDiagramFactor(getFactorToTag().getRef());
+		CommandSetObjectData commandToTagUntagDiagramFactor =
+				isSelected ? CommandSetObjectData.createAppendORefCommand(diagramFactor, DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS, taggedObjectSetRef) :
+						CommandSetObjectData.createRemoveORefCommand(diagramFactor, DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS, taggedObjectSetRef);
+		getProject().executeCommand(commandToTagUntagDiagramFactor);
 	}
 
-	private void sortToKeepOrderInSyncWithDisk(ORefList taggedSet)
-	{
-		taggedSet.sort();
-	}
-	
 	public void commandExecuted(CommandExecutedEvent event)
 	{
 		if (isTaggedObjectRelatedCommand(event))
-			updateCheckboxesToMatchDatabase();		
+			updateCheckboxesToMatchCurrentTaggedObjectSets();
 	}
 	
 	private boolean isTaggedObjectRelatedCommand(CommandExecutedEvent event)
@@ -152,16 +147,19 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 		if (event.isCreateCommandForThisType(TaggedObjectSetSchema.getObjectType()))
 			return true;
 
+		if (event.isDeleteCommandForThisType(TaggedObjectSetSchema.getObjectType()))
+			return true;
+
 		if (event.isSetDataCommandWithThisTypeAndTag(TaggedObjectSetSchema.getObjectType(), TaggedObjectSet.TAG_LABEL))
 			return true;
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(TaggedObjectSetSchema.getObjectType(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS))
+		if (event.isSetDataCommandWithThisTypeAndTag(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS))
 			return true;
 		
 		return false;
 	}
 
-	private void updateCheckboxesToMatchDatabase()
+	private void updateCheckboxesToMatchCurrentTaggedObjectSets()
 	{
 		reloadQuestion();
 		rebuildToggleButtonsBoxes();
@@ -169,11 +167,21 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 		for(ChoiceItem choiceItem : choices)
 		{
 			JToggleButton toggleButton = choiceItemToToggleButtonMap.get(choiceItem);
-			ORef taggedObjectSetRef = ORef.createFromString(choiceItem.getCode());
-			ORefList taggedSet = getTaggedObjectRefs(taggedObjectSetRef);
-			boolean isSelected = taggedSet.contains(getFactorToTag().getRef());
+			ORef tagRef = ORef.createFromString(choiceItem.getCode());
+			boolean isSelected = isFactorTagged(getFactorToTag(), tagRef);
 			toggleButton.setSelected(isSelected);
 		}
+	}
+
+	private boolean isFactorTagged(Factor factor, ORef tagRef)
+	{
+		boolean factorIsTagged = false;
+
+		DiagramFactor diagramFactor = getDiagramObject().getDiagramFactor(factor.getRef());
+		if (diagramFactor != null)
+			factorIsTagged = diagramFactor.getTaggedObjectSetRefs().contains(tagRef);
+
+		return factorIsTagged;
 	}
 
 	private void reloadQuestion()
@@ -181,17 +189,16 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 		((TaggedObjectSetQuestion)getQuestion()).reloadQuestion();
 	}
 
-	private ORefList getTaggedObjectRefs(ORef taggedObjectSetRef)
-	{
-		TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), taggedObjectSetRef);
-		return new ORefList(taggedObjectSet.getTaggedObjectRefs());
-	}
-		
 	private Project getProject()
 	{
 		return project;
 	}
-	
+
+	private DiagramObject getDiagramObject()
+	{
+		return diagramObject;
+	}
+
 	private Factor getFactorToTag()
 	{
 		return selectedFactor;
@@ -203,5 +210,6 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 	}
 	
 	private Project project;
+	private DiagramObject diagramObject;
 	private Factor selectedFactor;
 }

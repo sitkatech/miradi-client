@@ -106,7 +106,7 @@ public class FactorDeleteHelper
 		return diagramFactor.createCommandsToDeleteChildrenAndObject();
 	}
 
-	public void removeNodeFromDiagram(DiagramObject diagramObjectToUse, DiagramFactorId idToDelete) throws CommandFailedException, ParseException
+	private void removeNodeFromDiagram(DiagramObject diagramObjectToUse, DiagramFactorId idToDelete) throws CommandFailedException, ParseException
 	{
 		clearSelection();
 		
@@ -120,9 +120,7 @@ public class FactorDeleteHelper
 		
 		return CommandSetObjectData.createRemoveIdCommand(diagramObjectToUse, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, idToDelete);
 	}
-	
-	
-	
+
 	private void clearSelection()
 	{
 		if(selectionModel == null)
@@ -137,7 +135,6 @@ public class FactorDeleteHelper
 		{
 			Factor factor = (Factor) getProject().findObject(factorRefs.get(index));
 			deleteFactorDiagramFactorInCurrentDiagram(factor);
-			removeFromTaggedObjectSets(factor.getRef());
 		}
 	}
 
@@ -166,16 +163,10 @@ public class FactorDeleteHelper
 		if (underlyingFactor.mustBeDeletedBecauseParentIsGone())
 			return;
 
-		removeFromTaggedObjectSets(underlyingFactor.getRef());
 		deleteAnnotations(underlyingFactor);
 		deleteUnderlyingNode(underlyingFactor);
 	}
 	
-	private void removeFromTaggedObjectSets(ORef refToUntag) throws Exception
-	{
-		getProject().executeCommands(DeleteAnnotationDoer.buildCommandsToUntag(getProject(), refToUntag));
-	}
-
 	private void removeFromDiagramAndDelete(DiagramFactor diagramFactor) throws Exception
 	{
 		removeNodeFromDiagram(getDiagramObject(), diagramFactor.getDiagramFactorId());

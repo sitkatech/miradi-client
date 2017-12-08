@@ -20,12 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
+import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.schemas.ConceptualModelDiagramSchema;
+import org.miradi.schemas.DiagramFactorSchema;
+import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.TaggedObjectSetSchema;
 
 public class TaggedObjectSet extends BaseObject
@@ -56,7 +60,29 @@ public class TaggedObjectSet extends BaseObject
 	{
 		return getData(TAG_SHORT_LABEL);
 	}
-	
+
+	@Override
+	public String getPseudoData(String fieldTag)
+	{
+		try
+		{
+			if(fieldTag.equals(PSEUDO_TAG_REFERRING_DIAGRAM_FACTOR_REFS))
+				return getReferringDiagramFactorRefs().toString();
+
+			return super.getPseudoData(fieldTag);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+	}
+
+	private ORefList getReferringDiagramFactorRefs()
+	{
+		return findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());
+	}
+
 	public ORefList getTaggedObjectRefs()
 	{
 		return getSafeRefListData(TAG_TAGGED_OBJECT_REFS);
@@ -95,4 +121,5 @@ public class TaggedObjectSet extends BaseObject
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
 	public static final String TAG_TAGGED_OBJECT_REFS = "TaggedObjectRefs";
 	public static final String TAG_COMMENTS = "Comments";
+	public static final String PSEUDO_TAG_REFERRING_DIAGRAM_FACTOR_REFS = "PseudoTagReferringDiagramFactorRefs";
 }

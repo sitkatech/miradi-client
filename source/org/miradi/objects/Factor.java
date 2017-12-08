@@ -319,14 +319,13 @@ abstract public class Factor extends BaseObject
 	{
 		return getLabel();
 	}
-	
-	
+
 	public static Factor createConceptualModelObject(ObjectManager objectManager, FactorId idToCreate, int objectType)
 	{
 		return createFactor(objectManager, idToCreate, objectType);
 	}
 
-	public static Factor createFactor(ObjectManager objectManager, FactorId idToCreate, int objectType)
+	private static Factor createFactor(ObjectManager objectManager, FactorId idToCreate, int objectType)
 	{
 		if(objectType == ObjectType.STRATEGY)
 			return new Strategy(objectManager, idToCreate);
@@ -406,7 +405,7 @@ abstract public class Factor extends BaseObject
 				return DiagramObject.getDiagramRefsContainingFactor(getProject(), ResultsChainDiagramSchema.getObjectType(), getRef()).toString();
 			
 			if(fieldTag.equals(PSEUDO_TAG_REFERRING_TAG_REFS))
-				return getReferringTags();
+				return findReferringTagRefs().toString();
 			
 			return super.getPseudoData(fieldTag);
 		}
@@ -415,11 +414,6 @@ abstract public class Factor extends BaseObject
 			EAM.logException(e);
 			return "";
 		}
-	}
-	
-	public String getReferringTags()
-	{
-		return findReferringTagRefs().toString();
 	}
 	
 	public ORefList findReferringTagRefs()
@@ -455,14 +449,12 @@ abstract public class Factor extends BaseObject
 		return getLabelsAsMultiline(directThreats);
 	}
 	
-	// FIXME low: This code does not seem to be used
 	private String getFactorObjectivesAsMultiline() throws ParseException
 	{
 		IdList theseDesireIds = new IdList(ObjectiveSchema.getObjectType(), getData(TAG_OBJECTIVE_IDS));
 		return getDesiresAsMultiline(ObjectType.OBJECTIVE, theseDesireIds);
 	}
 	
-	// FIXME low: This code does not seem to be used
 	private String getDesiresAsMultiline(int desireType, IdList desireIds)
 	{
 		ORefList refs = new ORefList(desireType, desireIds);

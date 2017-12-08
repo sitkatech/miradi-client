@@ -88,7 +88,7 @@ public class TaggedObjectSetRootProjectNode extends TreeTableNode
 		for (int index = 0; index < diagramObjectRefs.size(); ++index)
 		{
 			DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramObjectRefs.get(index));
-			children.add(new DiagramObjectNode(diagramObject));
+			children.add(new DiagramObjectNode(diagramObject, this));
 		}
 	}
 

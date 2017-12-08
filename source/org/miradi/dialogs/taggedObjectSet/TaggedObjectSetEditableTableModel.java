@@ -19,21 +19,21 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.taggedObjectSet;
 
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.SingleBooleanColumnEditableModel;
-import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.dialogs.treetables.TreeTableNode;
+import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Factor;
-import org.miradi.objects.TaggedObjectSet;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
 
 public class TaggedObjectSetEditableTableModel extends SingleBooleanColumnEditableModel
 {
-	public TaggedObjectSetEditableTableModel(Project projectToUse, RowColumnBaseObjectProvider providerToUse, TaggedObjectSet taggedObjectSetToUse)
+	public TaggedObjectSetEditableTableModel(Project projectToUse, TreeTableWithStateSaving treeTableToUse, TaggedObjectSet taggedObjectSetToUse)
 	{
-		super(projectToUse, providerToUse);
-		
+		super(projectToUse, treeTableToUse);
+
+		treeTable = treeTableToUse;
 		taggedObjectSet = taggedObjectSetToUse;
 	}
 
@@ -63,8 +63,15 @@ public class TaggedObjectSetEditableTableModel extends SingleBooleanColumnEditab
 
 		try
 		{
-			ORefList selectedRefs = getCurrentlyCheckedRefs((Boolean) value, row);	
-			setValueUsingCommand(taggedObjectSet.getRef(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, selectedRefs.toString());
+			DiagramFactor diagramFactor = getDiagramFactorForRow(row);
+			if (diagramFactor != null)
+			{
+				boolean isSelected = (boolean) value;
+				CommandSetObjectData commandToTagUntagDiagramFactor =
+						isSelected ? CommandSetObjectData.createAppendORefCommand(diagramFactor, DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS, taggedObjectSet.getRef()) :
+									 CommandSetObjectData.createRemoveORefCommand(diagramFactor, DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS, taggedObjectSet.getRef());
+				getProject().executeCommand(commandToTagUntagDiagramFactor);
+			}
 		}
 		catch (Exception e)
 		{
@@ -73,19 +80,40 @@ public class TaggedObjectSetEditableTableModel extends SingleBooleanColumnEditab
 	}
 
 	@Override
-	protected ORefList getCheckedRefsAccordingToTheDatabase() throws Exception
+	protected boolean isRowSelected(int row, int column) throws Exception
 	{
-		return new ORefList(taggedObjectSet.getTaggedObjectRefs());
+		boolean isSelected = false;
+
+		DiagramFactor diagramFactor = getDiagramFactorForRow(row);
+		if (diagramFactor != null)
+			isSelected = diagramFactor.getTaggedObjectSetRefs().contains(taggedObjectSet.getRef());
+
+		return isSelected;
 	}
-	
+
+	private DiagramFactor getDiagramFactorForRow(int row) throws Exception
+	{
+		TreeTableNode node = treeTable.getNodeForRow(row);
+		if (node instanceof FactorTreeTableNode)
+		{
+			Factor factor = (Factor) node.getObject();
+			DiagramObject diagramObject = (DiagramObject) node.getParentNode().getObject();
+			return diagramObject.getDiagramFactor(factor.getRef());
+		}
+
+		return null;
+	}
+
 	@Override
 	public String getUniqueTableModelIdentifier()
 	{
 		return UNIQUE_MODEL_IDENTIFIER;
 	}
-				
+
 	private static final String UNIQUE_MODEL_IDENTIFIER = "TaggedObjectSetEditableTableModel";
 	
 	private TaggedObjectSet taggedObjectSet;
+	private TreeTableWithStateSaving treeTable;
+
 	public static final String SINGLE_COLUMN_NAME = EAM.text("Is Tagged");
 }

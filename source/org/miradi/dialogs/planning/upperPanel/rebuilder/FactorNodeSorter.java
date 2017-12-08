@@ -21,18 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.upperPanel.rebuilder;
 
 import org.miradi.objects.Cause;
-import org.miradi.schemas.GroupBoxSchema;
-import org.miradi.schemas.HumanWelfareTargetSchema;
-import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.ScopeBoxSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.StressSchema;
-import org.miradi.schemas.TargetSchema;
-import org.miradi.schemas.TaskSchema;
-import org.miradi.schemas.TextBoxSchema;
-import org.miradi.schemas.ThreatReductionResultSchema;
+import org.miradi.schemas.*;
 
-public class FactorNoderSorter extends NodeSorter
+public class FactorNodeSorter extends NodeSorter
 {
 	@Override
 	protected String[] getNodeSortOrder()
@@ -42,8 +33,10 @@ public class FactorNoderSorter extends NodeSorter
 			TargetSchema.OBJECT_NAME,
 			HumanWelfareTargetSchema.OBJECT_NAME,
 			StressSchema.OBJECT_NAME,
+			BiophysicalFactorSchema.OBJECT_NAME,
 			Cause.OBJECT_NAME_THREAT,
 			Cause.OBJECT_NAME_CONTRIBUTING_FACTOR,
+			BiophysicalResultSchema.OBJECT_NAME,
 			ThreatReductionResultSchema.OBJECT_NAME,
 			IntermediateResultSchema.OBJECT_NAME,
 			StrategySchema.OBJECT_NAME,

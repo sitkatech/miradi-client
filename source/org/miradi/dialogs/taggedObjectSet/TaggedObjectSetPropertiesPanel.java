@@ -21,26 +21,33 @@ package org.miradi.dialogs.taggedObjectSet;
 
 import org.miradi.actions.ActionEditTaggedObjectSet;
 import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.dialogfields.TaggedObjectSetFactorListField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.icons.TaggedObjectSetIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.DiagramObject;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.schemas.TaggedObjectSetSchema;
+import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.umbrella.ObjectPicker;
 
 public class TaggedObjectSetPropertiesPanel extends ObjectDataInputPanel
 {
-	public TaggedObjectSetPropertiesPanel(MainWindow mainWindowToUse, ObjectPicker picker) throws Exception
+	public TaggedObjectSetPropertiesPanel(MainWindow mainWindowToUse, DiagramObject diagramObjectToUse, ObjectPicker picker) throws Exception
 	{
 		super(mainWindowToUse.getProject(), TaggedObjectSetSchema.getObjectType());
-			
+
+		diagramObject = diagramObjectToUse;
+
 		ObjectDataInputField shortLabelField = createStringField(TaggedObjectSet.TAG_SHORT_LABEL, 10);
 		ObjectDataInputField labelField = createExpandableField(TaggedObjectSet.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Tag"), new TaggedObjectSetIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
-		
-		addFieldWithEditButton(EAM.text("Tagged Items"), createReadOnlyObjectList(TaggedObjectSetSchema.getObjectType(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS), createObjectsActionButton(mainWindowToUse.getActions().getObjectsAction(ActionEditTaggedObjectSet.class), picker));
-		
+
+		ObjectDataInputField taggedDiagramFactorListField = createTaggedDiagramFactorListField(diagramObjectToUse, TaggedObjectSetSchema.getObjectType(), TaggedObjectSet.PSEUDO_TAG_REFERRING_DIAGRAM_FACTOR_REFS);
+		ObjectsActionButton editButton = createObjectsActionButton(mainWindowToUse.getActions().getObjectsAction(ActionEditTaggedObjectSet.class), picker);
+		addFieldWithEditButton(EAM.text("Tagged Items"), taggedDiagramFactorListField, editButton);
+
 		addField(createMultilineField(TaggedObjectSet.TAG_COMMENTS));
 		updateFieldsFromProject();
 	}
@@ -50,4 +57,11 @@ public class TaggedObjectSetPropertiesPanel extends ObjectDataInputPanel
 	{
 		return EAM.text("Title|Tag Properties Panel");
 	}
+
+	private ObjectDataInputField createTaggedDiagramFactorListField(DiagramObject diagramObject, int objectType, String tag)
+	{
+		return new TaggedObjectSetFactorListField(getMainWindow(), diagramObject, getRefForType(objectType), tag, createUniqueIdentifierForTable(objectType, tag));
+	}
+
+	private DiagramObject diagramObject;
 }

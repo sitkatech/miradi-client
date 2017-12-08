@@ -84,7 +84,7 @@ public class ObjectReadonlyObjectListField extends ObjectDataInputField
 		}
 	}
 
-	private Vector<String> createSortedBaseObjectFullNameList(ORefList refList)
+	protected Vector<String> createSortedBaseObjectFullNameList(ORefList refList)
 	{
 		Vector<String> names = new Vector<String>();
 		for (int index = 0; index < refList.size(); ++index)

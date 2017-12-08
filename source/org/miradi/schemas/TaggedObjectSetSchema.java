@@ -39,6 +39,7 @@ public class TaggedObjectSetSchema extends BaseObjectSchema
 		// TODO: field to be deprecated in post 5.0 release...only here to support migrations
 		createFieldSchemaReflist(TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, TAGGED_FACTOR_IDS);
 		createFieldSchemaMultiLineUserText(TaggedObjectSet.TAG_COMMENTS);
+		createPseudoFieldSchemaRefList(TaggedObjectSet.PSEUDO_TAG_REFERRING_DIAGRAM_FACTOR_REFS);
 	}
 
 	public static int getObjectType()

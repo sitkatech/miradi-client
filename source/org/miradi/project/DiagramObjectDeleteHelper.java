@@ -100,11 +100,11 @@ public class DiagramObjectDeleteHelper
 		Vector<DiagramFactor> allDiagramFactors = model.getAllDiagramFactors();
 		for (int i = 0; i < allDiagramLinks.length; i++)	
 		{ 
-			deletDiagramLink(linkDeletor, allDiagramFactors, allDiagramLinks[i]);
+			deleteDiagramLink(linkDeletor, allDiagramFactors, allDiagramLinks[i]);
 		}
 	}
 
-	private void deletDiagramLink(LinkDeletor linkDeletor, Vector<DiagramFactor> allDiagramFactors, DiagramLink diagramLink) throws Exception
+	private void deleteDiagramLink(LinkDeletor linkDeletor, Vector<DiagramFactor> allDiagramFactors, DiagramLink diagramLink) throws Exception
 	{
 		DiagramLink found = DiagramLink.find(getProject(), diagramLink.getRef());
 		if (found == null)

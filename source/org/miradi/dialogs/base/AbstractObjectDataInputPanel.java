@@ -737,7 +737,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectReadonlyObjectListField(getMainWindow(), getRefForType(objectType), tag, createUniqueIdentifierForTable(objectType, tag)); 
 	}
 
-	private String createUniqueIdentifierForTable(int objectType, String tag)
+	protected String createUniqueIdentifierForTable(int objectType, String tag)
 	{
 		final String TABLE_TAG = "Table";
 		return TABLE_TAG + objectType + tag;

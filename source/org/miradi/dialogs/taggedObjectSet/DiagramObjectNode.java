@@ -21,7 +21,7 @@ package org.miradi.dialogs.taggedObjectSet;
 
 import java.util.Arrays;
 
-import org.miradi.dialogs.planning.upperPanel.rebuilder.FactorNoderSorter;
+import org.miradi.dialogs.planning.upperPanel.rebuilder.FactorNodeSorter;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
@@ -30,12 +30,19 @@ import org.miradi.objects.Factor;
 
 public class DiagramObjectNode extends TreeTableNode
 {
-	public DiagramObjectNode(DiagramObject currentDiagramObjectToUse) throws Exception
+	public DiagramObjectNode(DiagramObject currentDiagramObjectToUse, TreeTableNode parentNodeToUse) throws Exception
 	{
 		currentDiagramObject = currentDiagramObjectToUse;
+		parentNode = parentNodeToUse;
 		rebuild();
 	}
-	
+
+	@Override
+	public TreeTableNode getParentNode() throws Exception
+	{
+		return parentNode;
+	}
+
 	@Override
 	public TreeTableNode getChild(int index)
 	{
@@ -73,11 +80,11 @@ public class DiagramObjectNode extends TreeTableNode
 		children = new TreeTableNode[allDiagramObjectFactors.length];
 		for (int index = 0; index < allDiagramObjectFactors.length; ++index)
 		{
-			FactorTreeTableNode factorNode = new FactorTreeTableNode(allDiagramObjectFactors[index]);
+			FactorTreeTableNode factorNode = new FactorTreeTableNode(allDiagramObjectFactors[index], this);
 			children[index] = factorNode;
 		}
 		
-		Arrays.sort(children, new FactorNoderSorter());
+		Arrays.sort(children, new FactorNodeSorter());
 	}
 	
 	@Override
@@ -87,5 +94,6 @@ public class DiagramObjectNode extends TreeTableNode
 	}
 	
 	private DiagramObject currentDiagramObject;
+	private TreeTableNode parentNode;
 	private TreeTableNode[] children;
 }

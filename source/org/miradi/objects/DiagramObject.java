@@ -278,7 +278,6 @@ abstract public class DiagramObject extends BaseObject
 		return sharedLinks;
 	}
 
-	
 	public IdList getAllDiagramFactorIds()
 	{
 		return getSafeIdListData(TAG_DIAGRAM_FACTOR_IDS);
@@ -289,6 +288,33 @@ abstract public class DiagramObject extends BaseObject
 		return new ORefList(DiagramFactorSchema.getObjectType(), getAllDiagramFactorIds());
 	}
 	
+	public DiagramFactor[] getAllDiagramFactors()
+	{
+		ORefList diagramFactorRefs = getAllDiagramFactorRefs();
+		Vector<DiagramFactor> diagramFactors = new Vector<DiagramFactor>();
+		for(int i = 0; i < diagramFactorRefs.size(); ++i)
+		{
+			DiagramFactor diagramFactor = (DiagramFactor) getProject().findObject(diagramFactorRefs.get(i));
+			diagramFactors.add(diagramFactor);
+		}
+
+		return diagramFactors.toArray(new DiagramFactor[0]);
+	}
+
+	public ORefList getAllTaggedDiagramFactorRefs(ORef taggedObjectSetRef)
+	{
+		ORefList taggedDiagramFactorRefs = new ORefList();
+
+		DiagramFactor[] diagramFactors = getAllDiagramFactors();
+		for (DiagramFactor diagramFactor : diagramFactors)
+		{
+			if (diagramFactor.getTaggedObjectSetRefs().contains(taggedObjectSetRef))
+				taggedDiagramFactorRefs.add(diagramFactor.getRef());
+		}
+
+		return taggedDiagramFactorRefs;
+	}
+
 	public Set<DiagramFactor> getDiagramFactorsThatWrap(int objectType)
 	{
 		HashSet<DiagramFactor> matches = new HashSet<DiagramFactor>();

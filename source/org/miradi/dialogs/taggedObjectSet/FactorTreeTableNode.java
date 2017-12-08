@@ -26,11 +26,18 @@ import org.miradi.objects.Factor;
 
 public class FactorTreeTableNode extends TreeTableNode
 {
-	public FactorTreeTableNode(Factor factorToUse)
+	public FactorTreeTableNode(Factor factorToUse, TreeTableNode parentNodeToUse)
 	{
 		factor = factorToUse;
+		parentNode = parentNodeToUse;
 	}
-	
+
+	@Override
+	public TreeTableNode getParentNode() throws Exception
+	{
+		return parentNode;
+	}
+
 	@Override
 	public TreeTableNode getChild(int index)
 	{
@@ -72,5 +79,6 @@ public class FactorTreeTableNode extends TreeTableNode
 		return factor.toString();
 	}
 	
-	private Factor factor; 
+	private Factor factor;
+	private TreeTableNode parentNode;
 }

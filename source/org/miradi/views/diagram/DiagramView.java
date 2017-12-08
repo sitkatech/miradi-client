@@ -522,11 +522,13 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		DiagramComponent diagramComponent = getCurrentDiagramComponent();
 		if (diagramComponent == null)
 			return;
-		
-		EAMGraphSelectionModel selectionModel = (EAMGraphSelectionModel) diagramComponent.getSelectionModel();
-		// TODO: Find a way to avoid the need to test for null here
-		if(selectionModel != null)
-			selectionModel.clearSelection();
+
+		if (getCurrentDiagramObject().isTaggingEnabled())
+		{
+			EAMGraphSelectionModel selectionModel = (EAMGraphSelectionModel) diagramComponent.getSelectionModel();
+			if(selectionModel != null)
+				selectionModel.clearSelection();
+		}
 	}
 
 	private boolean isCurrentViewDiagramView()
@@ -607,7 +609,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 				getDiagramModel().updateGroupBoxCells();
 
 			if (setCommand.isTypeAndTag(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS))
-				updateVisibilityOfFactorsAndLinks();
+				updateVisibilityOfFactorsAndClearSelectionModel();
 
 			forceDiagramComponentRepaint();
 		}

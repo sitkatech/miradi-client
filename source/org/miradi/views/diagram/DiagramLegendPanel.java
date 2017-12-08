@@ -51,13 +51,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Cause;
-import org.miradi.objects.ConceptualModelDiagram;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.TaggedObjectSet;
+import org.miradi.objects.*;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.schemas.*;
@@ -437,7 +431,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 				closeActiveTaggedObjectsDialog();
 
 				TaggedObjectSetPoolTable poolTable = new TaggedObjectSetPoolTable(getMainWindow(), new TaggedObjectSetPoolTableModel(getProject()));
-				ObjectManagementPanel panel = new TaggedObjectSetManagementPanel(getMainWindow(), poolTable);
+				ObjectManagementPanel panel = new TaggedObjectSetManagementPanel(getMainWindow(), getCurrentDiagramObject(), poolTable);
 				activeTaggedObjectsDialog = AbstractPopUpEditDoer.createAndShowManagementDialogWithInstructionsButton(mainWindow, panel, EAM.text("Manage Tags"));
 			}
 			catch (Exception e)

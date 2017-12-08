@@ -100,7 +100,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		addField(createReadOnlyObjectList(factorToEdit.getType(), Factor.PSEUDO_TAG_RESULTS_CHAIN_REFS));
 
 		ObjectsActionButton chooseTagForFactorButton = createObjectsActionButton(actions.getObjectsAction(ActionManageFactorTags.class), getPicker());
-		ObjectDataInputField readOnlyTaggedObjects = createReadOnlyObjectList(factorToEdit.getRef().getObjectType(), Factor.PSEUDO_TAG_REFERRING_TAG_REFS);
+		ObjectDataInputField readOnlyTaggedObjects = createReadOnlyObjectList(diagramFactorToEdit.getRef().getObjectType(), DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS);
 		addFieldWithEditButton(getTagsLabel(), readOnlyTaggedObjects, chooseTagForFactorButton);
 		
 		if (factorToEdit.isThreatReductionResult())

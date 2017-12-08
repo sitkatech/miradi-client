@@ -35,8 +35,8 @@ abstract public class NodeSorter implements Comparator<TreeTableNode>
 	
 	public int compare(TreeTableNode nodeA, TreeTableNode nodeB)
 	{
-		int typeSortLocationA = getTypeSortLocation(nodeA.getObject().getTypeName());
-		int typeSortLocationB = getTypeSortLocation(nodeB.getObject().getTypeName());
+		int typeSortLocationA = getTypeSortLocation(getTypeName(nodeA));
+		int typeSortLocationB = getTypeSortLocation(getTypeName(nodeB));
 		int diff = typeSortLocationA - typeSortLocationB;
 		if(diff != 0)
 			return diff;
@@ -54,7 +54,12 @@ abstract public class NodeSorter implements Comparator<TreeTableNode>
 		
 		return compareNodes(nodeA, nodeB);
 	}
-	
+
+	public String getTypeName(TreeTableNode node)
+	{
+		return node.getObject().getTypeName();
+	}
+
 	public boolean shouldSortChildren(ORef childRef)
 	{		
 		return true;
@@ -64,8 +69,8 @@ abstract public class NodeSorter implements Comparator<TreeTableNode>
 	{
 		try
 		{
-			Integer indexOfA = getIndexofChild(nodeA);
-			Integer indexOfB = getIndexofChild(nodeB);
+			Integer indexOfA = getIndexOfChild(nodeA);
+			Integer indexOfB = getIndexOfChild(nodeB);
 			
 			return indexOfA.compareTo(indexOfB);
 		}
@@ -77,7 +82,7 @@ abstract public class NodeSorter implements Comparator<TreeTableNode>
 		}
 	}
 	
-	private int getIndexofChild(TreeTableNode childNode) throws Exception
+	private int getIndexOfChild(TreeTableNode childNode) throws Exception
 	{
 		TreeTableNode parentNode = childNode.getParentNode();
 		for (int index = 0; index < parentNode.getChildCount(); ++index)
@@ -89,9 +94,7 @@ abstract public class NodeSorter implements Comparator<TreeTableNode>
 		return -1;
 	}
 
-
-
-	public int compareNodes(TreeTableNode nodeA, TreeTableNode nodeB)
+	private int compareNodes(TreeTableNode nodeA, TreeTableNode nodeB)
 	{
 		String labelA = nodeA.toString();
 		String labelB = nodeB.toString();
@@ -102,7 +105,7 @@ abstract public class NodeSorter implements Comparator<TreeTableNode>
 		return comparisonResult;
 	}
 
-	public boolean shouldReverseSort(TreeTableNode nodeA, TreeTableNode nodeB)
+	private boolean shouldReverseSort(TreeTableNode nodeA, TreeTableNode nodeB)
 	{
 		if (Measurement.is(nodeA.getType()) && Measurement.is(nodeB.getType()))
 			return true;

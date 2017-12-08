@@ -25,12 +25,13 @@ import org.miradi.actions.jump.ActionJumpDiagramWizardReviewModelAndAdjustStep;
 import org.miradi.dialogs.base.ObjectPoolManagementPanel;
 import org.miradi.icons.TaggedObjectSetIcon;
 import org.miradi.main.MainWindow;
+import org.miradi.objects.DiagramObject;
 
 public class TaggedObjectSetManagementPanel extends ObjectPoolManagementPanel
 {
-	public TaggedObjectSetManagementPanel(MainWindow mainWindowToUse, TaggedObjectSetPoolTable poolTable) throws Exception
+	public TaggedObjectSetManagementPanel(MainWindow mainWindowToUse, DiagramObject diagramObjectToUse, TaggedObjectSetPoolTable poolTable) throws Exception
 	{
-		super(mainWindowToUse, new TaggedObjectSetPoolTablePanel(mainWindowToUse, poolTable), new TaggedObjectSetPropertiesPanel(mainWindowToUse, poolTable));
+		super(mainWindowToUse, new TaggedObjectSetPoolTablePanel(mainWindowToUse, poolTable), new TaggedObjectSetPropertiesPanel(mainWindowToUse, diagramObjectToUse, poolTable));
 	}
 
 	@Override
