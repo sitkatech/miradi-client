@@ -553,9 +553,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (isFieldForType(baseObjectSchema, fieldSchema, DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS))
 			return createIdName(DIAGRAM_FACTOR);
 		
-		if (isFieldForType(baseObjectSchema, fieldSchema, TaggedObjectSetSchema.getObjectType(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS))
-			return WRAPPED_BY_DIAGRAM_FACTOR_ID_ELEMENT_NAME;
-		
 		if (DiagramObject.isDiagramObject(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS))
 			return createIdName(TAGGED_OBJECT_SET_ELEMENT_NAME);
 
