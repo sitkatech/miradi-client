@@ -34,7 +34,6 @@ import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.utils.CommandVector;
 import org.miradi.views.ObjectsDoer;
-import org.miradi.views.diagram.DeleteAnnotationDoer;
 
 import java.text.ParseException;
 import java.util.Vector;
@@ -124,8 +123,7 @@ public class DeleteActivityDoer extends ObjectsDoer
 		commandsToDeleteTasks.addAll(buildDeleteDiagramFactors(project, selectionHierarchy, task));
 		commandsToDeleteTasks.addAll(buildRemoveCommandsForActivityIds(project, selectionHierarchy, task));
 		commandsToDeleteTasks.addAll(buildRemoveCommandsForTaskIds(project, task));
-		commandsToDeleteTasks.addAll(DeleteAnnotationDoer.buildCommandsToUntag(project, task.getRef()));
-		
+
 		return commandsToDeleteTasks;
 	}
 	

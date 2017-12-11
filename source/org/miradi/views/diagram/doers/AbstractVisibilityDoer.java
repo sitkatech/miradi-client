@@ -24,12 +24,14 @@ import java.awt.Point;
 
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
@@ -100,7 +102,6 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		return commandsToHide;
 	}
 
-
 	public static CommandVector createCommandsToHideDiagramFactorForNonSelectedFactors(DiagramObject diagramObject, DiagramFactor diagramFactorToDelete) throws Exception
 	{
 		CommandVector commandsToHide = new CommandVector();
@@ -152,18 +153,28 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		return getProject().findObject(getParentRef());
 	}
 	
-	protected void showBubble(Dimension defaultSize) throws Exception, CommandFailedException
+	protected void showBubble(Dimension defaultSize) throws Exception
 	{
 		ORef selectedAnnotationRef = getSelectedAnnotationRef();
 		FactorCommandHelper helper = new FactorCommandHelper(getProject(), getDiagramModel());
 		DiagramFactorId annotationDiagramFactorId = (DiagramFactorId) helper.createDiagramFactor(getDiagramObject(), selectedAnnotationRef).getCreatedId();
+
+		applyParentTaggedObjectSets(annotationDiagramFactorId);
 
 		setLocation(helper, annotationDiagramFactorId);
 		setSize(helper, annotationDiagramFactorId, defaultSize);
 		selectParentDiagramFactor();
 	}
 
-	protected void hideBubble() throws Exception, CommandFailedException
+	private void applyParentTaggedObjectSets(DiagramFactorId annotationDiagramFactorId) throws Exception {
+		DiagramFactor parentDiagramFactor = getDiagramObject().getDiagramFactor(getParentRef());
+		DiagramFactor annotationDiagramFactor = DiagramFactor.find(getProject(), new ORef(ObjectType.DIAGRAM_FACTOR, annotationDiagramFactorId));
+
+		CommandSetObjectData appendCommand = CommandSetObjectData.createAppendORefListCommand(annotationDiagramFactor, DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS, parentDiagramFactor.getTaggedObjectSetRefs());
+		getProject().executeCommand(appendCommand);
+	}
+
+	protected void hideBubble() throws Exception
 	{
 		ORef selectedAnnotationRef = getSelectedAnnotationRef();
 		ORefList diagramFactorReferrerRefs = getDiagramFactorReferrerRefs(selectedAnnotationRef);

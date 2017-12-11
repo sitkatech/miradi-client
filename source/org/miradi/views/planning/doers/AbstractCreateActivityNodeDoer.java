@@ -31,7 +31,6 @@ import org.miradi.objects.StrategyActivityRelevancyInterface;
 import org.miradi.objects.Task;
 import org.miradi.project.ProjectTotalCalculatorStrategy;
 import org.miradi.schemas.StrategySchema;
-import org.miradi.views.diagram.doers.CloneStressDoer;
 
 abstract class AbstractCreateActivityNodeDoer extends AbstractCreateTaskNodeDoer
 {
@@ -66,8 +65,6 @@ abstract class AbstractCreateActivityNodeDoer extends AbstractCreateTaskNodeDoer
 			getProject().executeCommand(setData);
 
 		}
-
-		CloneStressDoer.includeInAllItsOwnersTag(getProject(), newTaskRef);
 	}
 
 	protected String getWorkPlanBudgetMode()

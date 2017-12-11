@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import java.text.ParseException;
-
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandEndTransaction;
@@ -34,6 +32,8 @@ import org.miradi.objects.BaseObject;
 import org.miradi.utils.BaseObjectDeepCopierUsingCommands;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.umbrella.ObjectPicker;
+
+import java.text.ParseException;
 
 public abstract class CreateAnnotationDoer extends ObjectsDoer
 {	
@@ -103,14 +103,14 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		return create.getObjectRef();
 	}
 	
-	protected BaseObject displayAnnotationList(String title, ObjectTablePanel tablePanel)
+	private BaseObject displayAnnotationList(String title, ObjectTablePanel tablePanel)
 	{
 		AnnotationSelectionDlg list = new AnnotationSelectionDlg(getMainWindow(), title, tablePanel);
 		list.setVisible(true);
 		return list.getSelectedObject();
 	}
 	
-	protected void setAnnotationToClone(BaseObject baseObject)
+	private void setAnnotationToClone(BaseObject baseObject)
 	{
 		objectToClone = baseObject;
 	}
