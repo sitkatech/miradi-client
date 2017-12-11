@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-16 09:01-0800\n"
+"POT-Creation-Date: 2017-12-11 08:46-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/miradi-client/"
@@ -291,7 +291,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br> "
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationManager.java:165
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationManager.java:166
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/main/MainWindow.java:1446
 msgid "(%s)"
 msgstr ""
@@ -334,7 +334,7 @@ msgid "(Translation: %code %date)"
 msgstr "(Penerjemahan: : %code %date) "
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/wizard/noproject/projectlist/ProjectList.java:70
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/objects/DiagramFactor.java:217
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/objects/DiagramFactor.java:221
 msgid "(Unknown)"
 msgstr "(Tidak Dikenal) "
 
@@ -2004,11 +2004,7 @@ msgstr ""
 msgid "All People"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:57
-msgid "All on One Page"
-msgstr "Semua dalam Satu Halaman"
-
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:76
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:75
 msgid "All subtasks within this item will be removed as well."
 msgstr "Semua subtugas dalam butir ini juga akan dihapus. "
 
@@ -2021,8 +2017,15 @@ msgstr ""
 msgid "An error has occurred while writing assignment data."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:346
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramModel.java:746
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:345
+msgid ""
+"An error is preventing this diagram from displaying correctly. Most likely, "
+"the project has been corrupted. Please contact the Miradi team for help and "
+"advice. We recommend that you do not make any changes to this project until "
+"this problem has been resolved."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramModel.java:749
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
 "the project has gotten corrupted. Please contact the Miradi team for help "
@@ -2490,7 +2493,7 @@ msgstr "Tutup "
 msgid "Button|Continue"
 msgstr "Lanjutkan "
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:77
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:76
 msgid "Button|Delete"
 msgstr "Hapus "
 
@@ -2573,7 +2576,7 @@ msgstr "Ganti "
 msgid "Button|Replace Backup"
 msgstr "Ganti Cadangan  "
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:77
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:76
 msgid "Button|Retain"
 msgstr "Pertahankan "
 
@@ -2777,9 +2780,9 @@ msgstr ""
 msgid "Choose Stress to Create from"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/doers/AbstractManageFactorTagDoer.java:55
-msgid "Choose Tags"
-msgstr "Pilih Tag "
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/doers/AbstractManageFactorTagDoer.java:57
+msgid "Choose tags for this diagram"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:242
 msgid "Choose the colors that look best on your system:"
@@ -2935,7 +2938,7 @@ msgstr ""
 "situasi saat ini (yaitu, dengan anggapan terus berlanjutnya situasi "
 "konservasi/manajemen yang ada saat ini)."
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:189
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:188
 msgid "Control Bar"
 msgstr "Balok Kontrol "
 
@@ -3161,8 +3164,8 @@ msgstr "Definisikan cakupan proyek "
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/noproject/DeleteProject.java:35
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/noproject/DeleteOldProject.java:45
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/noproject/DeleteOldProject.java:46
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:65
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:56
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:58
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:70
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/main/MiradiStrings.java:74
 msgid "Delete"
@@ -3461,7 +3464,7 @@ msgstr ""
 msgid "Edit.."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:56
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:69
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/CodeListEditorPanel.java:46
 msgid "Editor"
 msgstr "Editor "
@@ -3854,7 +3857,7 @@ msgstr "Hutan – Rawa-rawa Tropis/Subtropis"
 msgid "Forest - Temperate"
 msgstr "Hutan - Temperat"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramView.java:343
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramView.java:342
 msgid "Found Corrupted Data:"
 msgstr "Data yang Rusak Ditemukan: "
 
@@ -4418,11 +4421,11 @@ msgstr ""
 msgid "Irreversibility"
 msgstr "Ketakterbalikan"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/treeRelevancy/StrategyActivityRelevancyTableModel.java:43
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/treeRelevancy/StrategyActivityRelevancyTableModel.java:45
 msgid "Is Relevant"
 msgstr "Relevan"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetEditableTableModel.java:90
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetEditableTableModel.java:118
 msgid "Is Tagged"
 msgstr "Ditandai"
 
@@ -4843,8 +4846,8 @@ msgstr ""
 msgid "Manage Stresses for "
 msgstr "Mengelola Tekanan untuk "
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:134
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:441
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:135
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:439
 msgid "Manage Tags"
 msgstr ""
 
@@ -5130,7 +5133,7 @@ msgstr "4. Analisis, Gunakan, Sesuaikan"
 msgid "Menu|5. Capture and Share Learning"
 msgstr "5. Tangkap dan Berbagi Pembelajaran "
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:203
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:226
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Tambahkan Tag ke %n Butir yang Dipilih "
 
@@ -5142,7 +5145,7 @@ msgstr "Ekspor Halaman Saat Ini sebagai…"
 msgid "Menu|Export Current Project as..."
 msgstr "Ekspor Proyek Saat Ini sebagai…"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:243
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:266
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/main/menu/MainMenuBar.java:421
 msgid "Menu|Group Box"
 msgstr "Kotak Grup"
@@ -5151,11 +5154,11 @@ msgstr "Kotak Grup"
 msgid "Menu|Import"
 msgstr "Impor "
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:254
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:277
 msgid "Menu|Insert"
 msgstr "Sisipkan "
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:209
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:232
 msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr "Hapus Tag dari %n Item yang Dipilih "
 
@@ -5278,7 +5281,7 @@ msgid ""
 "so they can safely repair this project."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/project/ProjectRepairer.java:158
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/project/ProjectRepairer.java:156
 msgid "Missing Indicator(s) was removed!"
 msgstr ""
 
@@ -5478,7 +5481,7 @@ msgstr "Tidak Terspesifikasi "
 msgid "Not Started"
 msgstr "Tidak Dimulai"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:436
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:440
 msgid "Not all factors are being shown because %s tag(s) are checked"
 msgstr ""
 
@@ -6101,7 +6104,7 @@ msgstr "Penilaian Cepat"
 msgid "Rating"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:75
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:77
 msgid "Ratings"
 msgstr "Peringkat "
 
@@ -6191,7 +6194,7 @@ msgstr ""
 msgid "Results Chains"
 msgstr "Rangkaian Hasil "
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:56
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/main/MiradiStrings.java:69
 msgid "Retain"
 msgstr "Pertahankan "
@@ -6723,7 +6726,7 @@ msgstr ""
 "diinginkan?"
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:52
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:53
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:73
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:52
 msgid "Stress"
@@ -7735,13 +7738,13 @@ msgstr "Rencana Kerja "
 msgid "Tab|XSL Templates"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:37
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:40
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:44
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:45
 msgid "Tag"
 msgstr "Tag"
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/doers/EditTaggedObjectSetDoer.java:55
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:42
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:49
 msgid "Tagged Items"
 msgstr "Butir yang Ditandai"
 
@@ -8063,7 +8066,7 @@ msgid ""
 "org."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:74
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:73
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr ""
 "Butir ini digunakan bersama, jadi akan dihapus dari lebih dari satu tempat. "
@@ -8170,6 +8173,10 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo36.java:66
 msgid "This migration handles the removal of extended progress reports."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo43.java:84
+msgid "This migration modifies diagram tags so that they are diagram-specific."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:94
@@ -8509,7 +8516,7 @@ msgstr "Properti Faktor Kontribusi "
 msgid "Title|Customize Table"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:78
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:77
 msgid "Title|Delete"
 msgstr "Hapus "
 
@@ -8537,7 +8544,7 @@ msgstr ""
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramView.java:828
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramView.java:829
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Sifat-sifat Faktor "
@@ -8688,7 +8695,7 @@ msgstr "Sifat-sifat Strategi "
 msgid "Title|Stress Comments"
 msgstr "Komentar Tekanan "
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:83
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:85
 msgid "Title|Stress Details"
 msgstr "Rincian Tekanan "
 
@@ -8704,7 +8711,7 @@ msgstr "Ketampakan Tekanan "
 msgid "Title|Stress-Based Threat Rating"
 msgstr "Peringkat Ancaman Berdasarkan Tekanan "
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:51
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:58
 msgid "Title|Tag Properties Panel"
 msgstr "Panel Sifat-sifat Tag"
 
@@ -8837,7 +8844,7 @@ msgstr ""
 msgid "Unexpected error prevented installing that language pack"
 msgstr "Kesalahan tak terduga membuat paket bahasa tidak dapat diinstal "
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:135
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:134
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr "Kesalahan tak terduga telah menghalangi operasi tag tersebut "
 
@@ -8875,7 +8882,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "Kode tak dikenal: "
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramView.java:270
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramView.java:269
 msgid "Unknown error displaying diagram"
 msgstr "Kesalahan tak dikenal saat menampilkan diagram "
 
@@ -10332,6 +10339,9 @@ msgstr "Posisi "
 msgid "FieldLabel|18.HeaderHeight|Header Height"
 msgstr ""
 
+msgid "FieldLabel|18.TaggedObjectSetRefs|Tags"
+msgstr ""
+
 msgid "FieldLabel|19.ScopeBox|Scope Box"
 msgstr "Kotak Cakupan "
 
@@ -11066,6 +11076,9 @@ msgstr "Nama "
 
 msgid "FieldLabel|47.Comments|Comments"
 msgstr "Komentar "
+
+msgid "FieldLabel|47.PseudoTagReferringDiagramFactorRefs|Tag"
+msgstr ""
 
 msgid "FieldLabel|48.TableSettings|Table Settings"
 msgstr ""
@@ -30744,6 +30757,12 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "All on One Page"
+#~ msgstr "Semua dalam Satu Halaman"
+
+#~ msgid "Choose Tags"
+#~ msgstr "Pilih Tag "
 
 #~ msgid "Manage Tags (BETA)..."
 #~ msgstr "Mengelola Tag (BETA)…"

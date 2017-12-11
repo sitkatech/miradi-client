@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-11-16 09:01-0800\n"
+"POT-Creation-Date: 2017-12-11 08:46-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/miradi-client/"
@@ -300,7 +300,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationManager.java:165
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationManager.java:166
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/main/MainWindow.java:1446
 msgid "(%s)"
 msgstr ""
@@ -343,7 +343,7 @@ msgid "(Translation: %code %date)"
 msgstr "(Traducción: %code %date)"
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/wizard/noproject/projectlist/ProjectList.java:70
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/objects/DiagramFactor.java:217
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/objects/DiagramFactor.java:221
 msgid "(Unknown)"
 msgstr "(Desconocido)"
 
@@ -2047,11 +2047,7 @@ msgstr ""
 msgid "All People"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/utils/ConceptualModelByTargetSplitter.java:57
-msgid "All on One Page"
-msgstr "Todo en una página"
-
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:76
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:75
 msgid "All subtasks within this item will be removed as well."
 msgstr "Todas las subtareas de este elemento también se quitarán "
 
@@ -2064,8 +2060,15 @@ msgstr "Se produjo un error durante la clasificación."
 msgid "An error has occurred while writing assignment data."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:346
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramModel.java:746
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:345
+msgid ""
+"An error is preventing this diagram from displaying correctly. Most likely, "
+"the project has been corrupted. Please contact the Miradi team for help and "
+"advice. We recommend that you do not make any changes to this project until "
+"this problem has been resolved."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramModel.java:749
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
 "the project has gotten corrupted. Please contact the Miradi team for help "
@@ -2537,7 +2540,7 @@ msgstr "Cerrar"
 msgid "Button|Continue"
 msgstr "Continuar"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:77
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:76
 msgid "Button|Delete"
 msgstr "Eliminar"
 
@@ -2620,7 +2623,7 @@ msgstr "Reemplazar"
 msgid "Button|Replace Backup"
 msgstr "Reemplazar copia de seguridad"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:77
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:76
 msgid "Button|Retain"
 msgstr "Retener"
 
@@ -2830,9 +2833,9 @@ msgstr ""
 msgid "Choose Stress to Create from"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/doers/AbstractManageFactorTagDoer.java:55
-msgid "Choose Tags"
-msgstr "Seleccione las etiquetas."
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/doers/AbstractManageFactorTagDoer.java:57
+msgid "Choose tags for this diagram"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:242
 msgid "Choose the colors that look best on your system:"
@@ -2989,7 +2992,7 @@ msgstr ""
 "en las circunstancias actuales (es decir, dada la continuación de la "
 "situación de conservación/manejo existente). "
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:189
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:188
 msgid "Control Bar"
 msgstr "Barra de control"
 
@@ -3218,8 +3221,8 @@ msgstr "Definir alcance del proyecto"
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/noproject/DeleteProject.java:35
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/noproject/DeleteOldProject.java:45
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/noproject/DeleteOldProject.java:46
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:65
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:56
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:58
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/wizard/noproject/projectlist/ProjectListDeleteAction.java:70
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/main/MiradiStrings.java:74
 msgid "Delete"
@@ -3518,7 +3521,7 @@ msgstr "Editar Texto"
 msgid "Edit.."
 msgstr "Editar.."
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:56
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/ObjectRefListEditorPanel.java:69
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/CodeListEditorPanel.java:46
 msgid "Editor"
 msgstr "Editor"
@@ -3912,7 +3915,7 @@ msgstr "Bosque - Pantanoso tropical/subtropical"
 msgid "Forest - Temperate"
 msgstr "Bosque - Templado "
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramView.java:343
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramView.java:342
 msgid "Found Corrupted Data:"
 msgstr "Se encontraron datos dañados."
 
@@ -4485,11 +4488,11 @@ msgstr "Nombre del proyecto inválido: %s"
 msgid "Irreversibility"
 msgstr "Irreversibilidad "
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/treeRelevancy/StrategyActivityRelevancyTableModel.java:43
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/treeRelevancy/StrategyActivityRelevancyTableModel.java:45
 msgid "Is Relevant"
 msgstr "Es relevante"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetEditableTableModel.java:90
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetEditableTableModel.java:118
 msgid "Is Tagged"
 msgstr "Está etiquetado"
 
@@ -4909,8 +4912,8 @@ msgstr ""
 msgid "Manage Stresses for "
 msgstr "Manejar presiones para"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:134
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:441
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:135
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:439
 msgid "Manage Tags"
 msgstr "Administrar etiquetas"
 
@@ -5213,7 +5216,7 @@ msgstr "4. Analizar, usar, adaptar"
 msgid "Menu|5. Capture and Share Learning"
 msgstr "5. Capturar y compartir el aprendizaje"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:203
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:226
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Agregar etiqueta a los elementos seleccionados de %n"
 
@@ -5225,7 +5228,7 @@ msgstr "Exportar página actual como..."
 msgid "Menu|Export Current Project as..."
 msgstr "Exportar proyecto actual como..."
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:243
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:266
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/main/menu/MainMenuBar.java:421
 msgid "Menu|Group Box"
 msgstr "Cuadro de grupo"
@@ -5234,11 +5237,11 @@ msgstr "Cuadro de grupo"
 msgid "Menu|Import"
 msgstr "Importar"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:254
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:277
 msgid "Menu|Insert"
 msgstr "Insertar"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:209
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:232
 msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr "Quitar etiqueta de los elementos seleccionados de %n"
 
@@ -5368,7 +5371,7 @@ msgstr ""
 "y contacte al grupo de soporte de Miradi para que puedan reparar sin peligro "
 "este proyecto."
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/project/ProjectRepairer.java:158
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/project/ProjectRepairer.java:156
 msgid "Missing Indicator(s) was removed!"
 msgstr ""
 
@@ -5567,7 +5570,7 @@ msgstr "No especificado"
 msgid "Not Started"
 msgstr "No ha comenzado "
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:436
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:440
 msgid "Not all factors are being shown because %s tag(s) are checked"
 msgstr ""
 
@@ -6192,7 +6195,7 @@ msgstr "Evaluación rápida "
 msgid "Rating"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:75
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:77
 msgid "Ratings"
 msgstr "Calificaciones"
 
@@ -6282,7 +6285,7 @@ msgstr ""
 msgid "Results Chains"
 msgstr "Cadenas de resultados"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:63
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DeleteAnnotationDoer.java:56
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/main/MiradiStrings.java:69
 msgid "Retain"
 msgstr "Retener"
@@ -6815,7 +6818,7 @@ msgstr ""
 "realizamos? "
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:52
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:53
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:73
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:52
 msgid "Stress"
@@ -7831,13 +7834,13 @@ msgstr "Plan de trabajo"
 msgid "Tab|XSL Templates"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:37
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:40
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:44
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:45
 msgid "Tag"
 msgstr "Etiqueta"
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/doers/EditTaggedObjectSetDoer.java:55
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:42
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:49
 msgid "Tagged Items"
 msgstr "Elementos etiquetados "
 
@@ -8158,7 +8161,7 @@ msgid ""
 "org."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:74
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:73
 msgid "This item is shared, so will be deleted from multiple places."
 msgstr ""
 "Este elemento está compartido, por lo que se eliminará de varios lugares."
@@ -8265,6 +8268,10 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo36.java:66
 msgid "This migration handles the removal of extended progress reports."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo43.java:84
+msgid "This migration modifies diagram tags so that they are diagram-specific."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:94
@@ -8604,7 +8611,7 @@ msgstr "Propiedades del factor contribuyente"
 msgid "Title|Customize Table"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:78
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DeleteActivityDoer.java:77
 msgid "Title|Delete"
 msgstr "Eliminar"
 
@@ -8632,7 +8639,7 @@ msgstr ""
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramView.java:828
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramView.java:829
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Propiedades del factor"
@@ -8784,7 +8791,7 @@ msgstr "Propiedades de la estrategia"
 msgid "Title|Stress Comments"
 msgstr "Comentarios sobre la presión"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:83
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:85
 msgid "Title|Stress Details"
 msgstr "Detalles de la presión"
 
@@ -8800,7 +8807,7 @@ msgstr "Visibilidad de la presión"
 msgid "Title|Stress-Based Threat Rating"
 msgstr "Calificación de amenaza basada en la presión"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:51
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:58
 msgid "Title|Tag Properties Panel"
 msgstr "Panel de propiedades de etiqueta "
 
@@ -8934,7 +8941,7 @@ msgstr ""
 msgid "Unexpected error prevented installing that language pack"
 msgstr "Un error inesperado impidió la instalación del paquete de idiomas."
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:135
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:134
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr "Un error inesperado impidió el funcionamiento exitoso de la etiqueta."
 
@@ -8972,7 +8979,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "Código desconocido:"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramView.java:270
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/DiagramView.java:269
 msgid "Unknown error displaying diagram"
 msgstr "Error desconocido al mostrar el diagrama"
 
@@ -10426,6 +10433,9 @@ msgstr "Posición"
 msgid "FieldLabel|18.HeaderHeight|Header Height"
 msgstr ""
 
+msgid "FieldLabel|18.TaggedObjectSetRefs|Tags"
+msgstr ""
+
 msgid "FieldLabel|19.ScopeBox|Scope Box"
 msgstr "Cuadro de alcance"
 
@@ -11160,6 +11170,9 @@ msgstr "Nombre"
 
 msgid "FieldLabel|47.Comments|Comments"
 msgstr "Comentarios"
+
+msgid "FieldLabel|47.PseudoTagReferringDiagramFactorRefs|Tag"
+msgstr ""
 
 msgid "FieldLabel|48.TableSettings|Table Settings"
 msgstr "Configuraciones de la tabla"
@@ -31866,6 +31879,12 @@ msgid ""
 msgstr ""
 "Marina___Atlántico tropical occidental___Marina de la plataforma norte de "
 "Brasil___Brasil "
+
+#~ msgid "All on One Page"
+#~ msgstr "Todo en una página"
+
+#~ msgid "Choose Tags"
+#~ msgstr "Seleccione las etiquetas."
 
 #~ msgid "Manage Tags (BETA)..."
 #~ msgstr "Administrar etiquetas (BETA)… "
