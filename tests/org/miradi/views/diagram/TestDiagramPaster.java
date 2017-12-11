@@ -47,7 +47,6 @@ import org.miradi.project.FactorDeleteHelper;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectForTesting;
 import org.miradi.schemas.*;
-import org.miradi.utils.CodeList;
 import org.miradi.views.umbrella.UndoDoer;
 
 public class TestDiagramPaster extends TestCaseWithProject 
@@ -281,7 +280,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 		fixupRefs(HumanWelfareTargetSchema.getObjectType(), KeyEcologicalAttributeSchema.getObjectType(), AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS);
 	}
 		
-	public void fixupRefs(int factorType, int annotationType, String annotationFactorTag) throws Exception
+	private void fixupRefs(int factorType, int annotationType, String annotationFactorTag) throws Exception
 	{
 		DiagramFactor diagramFactor = getProject().createDiagramFactorAndAddToDiagram(factorType);
 		ORef annotationRef1 = getProject().createObject(annotationType);
@@ -310,30 +309,88 @@ public class TestDiagramPaster extends TestCaseWithProject
 		ORef newAnnotation2 = (ORef) oldToNewFactorRefMap.get(annotationRef2);
 		assertTrue("does not contain new id?", newAnnotationIds.contains(newAnnotation2));
 	}
-	
-	public void testFixTags() throws Exception
+
+	public void testPasteFactorSameDiagramTagsCopied() throws Exception
 	{
-		DiagramObject diagramObject = getDiagramModel().getDiagramObject();
-		AbstractTransferableMiradiList transferableList = new TransferableMiradiListVersion4(getProject(), diagramObject.getRef());
-		DiagramCopyPaster diagramPaster = new DiagramCopyPaster(null, getDiagramModel(), transferableList);
-		Target target = getProject().createTarget();
-		final String TAG_LABEL = "tagLabel1";
-		getProject().createLabeledTaggedObjectSet(TAG_LABEL);
-		getProject().createLabeledTaggedObjectSet("tagLabel2");
-		
-		assertEquals("has tagged object sets?", 2, getProject().getTaggedObjectSetPool().size());
-		diagramPaster.fixTags(new CodeList(), target);
-		assertEquals("has tagged object sets?", 2, getProject().getTaggedObjectSetPool().size());
-		
-		CodeList nonExistingTagNames = new CodeList(new String[]{"pastedTag1", });
-		diagramPaster.fixTags(nonExistingTagNames, target);	
-		assertEquals("should have created tag for non existing tag name?", 3, getProject().getTaggedObjectSetPool().size());
-		
-		CodeList existingTagNames = new CodeList(new String[]{TAG_LABEL});
-		diagramPaster.fixTags(existingTagNames, target);	
-		assertEquals("should have not created tag for existing tag name?", 3, getProject().getTaggedObjectSetPool().size());
+		String tagLabel = "TestTag";
+
+		TaggedObjectSet taggedObjectSet = getProject().createLabeledTaggedObjectSet(tagLabel);
+
+		FactorCell threatCell = getProject().createFactorCell(CauseSchema.getObjectType());
+		DiagramFactor threatDiagramFactor = threatCell.getDiagramFactor();
+		Cause threat = Cause.find(getProject(), threatDiagramFactor.getWrappedORef());
+		getProject().populateBaseObject(threat);
+
+		DiagramObject conceptualModel = getProject().getMainDiagramObject();
+		getProject().tagDiagramFactor(conceptualModel, threatDiagramFactor, taggedObjectSet);
+
+		TransferableMiradiListVersion4 miradiList = new TransferableMiradiListVersion4(getProject(), conceptualModel.getRef());
+		miradiList.storeData(new EAMGraphCell[] {threatCell});
+
+		DiagramCopyPaster paster = new DiagramCopyPaster(null, getDiagramModel(), miradiList);
+		paster.pasteFactors(new Point());
+
+		for (DiagramFactor diagramFactor : conceptualModel.getAllDiagramFactors())
+		{
+			assertEquals(diagramFactor.getTaggedObjectSetRefs(), new ORefList(taggedObjectSet.getRef()));
+		}
 	}
-	
+
+	public void testPasteFactorDifferentDiagramTagsNotCopied() throws Exception
+	{
+		String tagLabel = "TestTag";
+
+		TaggedObjectSet taggedObjectSet = getProject().createLabeledTaggedObjectSet(tagLabel);
+
+		FactorCell threatCell = getProject().createFactorCell(CauseSchema.getObjectType());
+		DiagramFactor threatDiagramFactor = threatCell.getDiagramFactor();
+		Cause threat = Cause.find(getProject(), threatDiagramFactor.getWrappedORef());
+		getProject().populateBaseObject(threat);
+
+		DiagramObject conceptualModel = getProject().getMainDiagramObject();
+		getProject().tagDiagramFactor(conceptualModel, threatDiagramFactor, taggedObjectSet);
+
+		TransferableMiradiListVersion4 miradiList = new TransferableMiradiListVersion4(getProject(), conceptualModel.getRef());
+		miradiList.storeData(new EAMGraphCell[] {threatCell});
+
+		ORef resultsChainRef = getProject().createResultsChainDiagram();
+		DiagramObject resultsChain = (DiagramObject)DiagramObject.find(getProject(), resultsChainRef);
+		DiagramModel model = new MemoryDiagramModel(getProject());
+		model.fillFrom(resultsChain);
+
+		DiagramCopyPaster paster = new DiagramCopyPaster(null, model, miradiList);
+		paster.pasteFactors(new Point());
+
+		ORefList resultsChainDiagramFactorRefs = resultsChain.getAllDiagramFactorRefs();
+		assertEquals(1, resultsChainDiagramFactorRefs.size());
+		DiagramFactor pastedDiagramFactor = DiagramFactor.find(getProject(), resultsChainDiagramFactorRefs.get(0));
+		assertTrue(pastedDiagramFactor.getTaggedObjectSetRefs().isEmpty());
+	}
+
+	public void testPasteFactorDifferentProjectTagsNotCopied() throws Exception
+	{
+		String tagLabel = "TestTag";
+
+		TaggedObjectSet taggedObjectSet = getProject().createLabeledTaggedObjectSet(tagLabel);
+
+		FactorCell threatCell = getProject().createFactorCell(CauseSchema.getObjectType());
+		DiagramFactor threatDiagramFactor = threatCell.getDiagramFactor();
+		Cause threat = Cause.find(getProject(), threatDiagramFactor.getWrappedORef());
+		getProject().populateBaseObject(threat);
+
+		DiagramObject conceptualModel = getProject().getMainDiagramObject();
+		getProject().tagDiagramFactor(conceptualModel, threatDiagramFactor, taggedObjectSet);
+
+		ProjectForTesting projectToPasteInto = createNewProject();
+		DiagramPaster paster = pasteDiagramFactor(projectToPasteInto, threatDiagramFactor);
+
+		DiagramObject mainDiagramObject = projectToPasteInto.getMainDiagramObject();
+		for (DiagramFactor diagramFactor : mainDiagramObject.getAllDiagramFactors())
+		{
+			assertTrue(diagramFactor.getTaggedObjectSetRefs().isEmpty());
+		}
+	}
+
 	public void testThreatStressRatingUndoPaste() throws Exception
 	{
 		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());

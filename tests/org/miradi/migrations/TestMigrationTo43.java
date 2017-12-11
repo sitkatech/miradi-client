@@ -49,7 +49,7 @@ public class TestMigrationTo43 extends AbstractTestMigration
         Strategy strategy = getProject().createStrategy();
         DiagramFactor diagramFactor = getProject().createAndAddFactorToDiagram(conceptualModelDiagram, strategy.getRef());
         TaggedObjectSet taggedObjectSet = getProject().createLabeledTaggedObjectSet(tagLabel);
-        getProject().tagDiagramFactorOld(conceptualModelDiagram, diagramFactor.getWrappedORef(), taggedObjectSet);
+        tagDiagramFactorOld(conceptualModelDiagram, diagramFactor.getWrappedORef(), taggedObjectSet);
 
         RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo43.VERSION_TO));
         migrateProject(rawProject, new VersionRange(Project.VERSION_HIGH));
@@ -86,20 +86,20 @@ public class TestMigrationTo43 extends AbstractTestMigration
         DiagramFactor rcDiagramFactorStrategy = getProject().createAndAddFactorToDiagram(resultsChainDiagram, strategy.getRef());
 
         TaggedObjectSet taggedObjectSetShared = getProject().createLabeledTaggedObjectSet(tagSharedFactorLabel);
-        getProject().tagDiagramFactorOld(conceptualModelDiagram, cmDiagramFactorStrategy.getWrappedORef(), taggedObjectSetShared, false);
-        getProject().tagDiagramFactorOld(resultsChainDiagram, rcDiagramFactorStrategy.getWrappedORef(), taggedObjectSetShared, true);
+        tagDiagramFactorOld(conceptualModelDiagram, cmDiagramFactorStrategy.getWrappedORef(), taggedObjectSetShared, false);
+        tagDiagramFactorOld(resultsChainDiagram, rcDiagramFactorStrategy.getWrappedORef(), taggedObjectSetShared, true);
 
         Target cmTarget = getProject().createTarget();
         DiagramFactor cmDiagramFactorTarget = getProject().createAndAddFactorToDiagram(conceptualModelDiagram, cmTarget.getRef());
 
         TaggedObjectSet taggedObjectSetCM = getProject().createLabeledTaggedObjectSet(tagCMFactorLabel);
-        getProject().tagDiagramFactorOld(conceptualModelDiagram, cmTarget.getRef(), taggedObjectSetCM);
+        tagDiagramFactorOld(conceptualModelDiagram, cmTarget.getRef(), taggedObjectSetCM);
 
         BiophysicalResult biophysicalResult = getProject().createBiophysicalResult();
         DiagramFactor rcDiagramFactorBiophysicalResult = getProject().createAndAddFactorToDiagram(resultsChainDiagram, biophysicalResult.getRef());
 
         TaggedObjectSet taggedObjectSetRC = getProject().createLabeledTaggedObjectSet(tagRCFactorLabel);
-        getProject().tagDiagramFactorOld(resultsChainDiagram, biophysicalResult.getRef(), taggedObjectSetRC, false);
+        tagDiagramFactorOld(resultsChainDiagram, biophysicalResult.getRef(), taggedObjectSetRC, false);
 
         RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo43.VERSION_TO));
         migrateProject(rawProject, new VersionRange(Project.VERSION_HIGH));
@@ -255,6 +255,23 @@ public class TestMigrationTo43 extends AbstractTestMigration
                 assertTrue("CM Diagram should only have shared tag selected", diagramSelectedTaggedObjectSetRefs.equals(new ORefList(taggedObjectSetCM)));
             }
         }
+    }
+
+    private void tagDiagramFactorOld(DiagramObject diagramObject, ORef refToTag, TaggedObjectSet taggedObjectSet, boolean selectTag) throws Exception
+    {
+        ORefList taggedFactorRefs = new ORefList(refToTag);
+        getProject().setObjectData(taggedObjectSet, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, taggedFactorRefs.toString());
+
+        if (selectTag)
+        {
+            ORefList taggedObjectSetRefs = new ORefList(taggedObjectSet.getRef());
+            getProject().setObjectData(diagramObject, DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, taggedObjectSetRefs.toString());
+        }
+    }
+
+    private void tagDiagramFactorOld(DiagramObject diagramObject, ORef refToTag, TaggedObjectSet taggedObjectSet) throws Exception
+    {
+        tagDiagramFactorOld(diagramObject, refToTag, taggedObjectSet, true);
     }
 
     @Override

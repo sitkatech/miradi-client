@@ -19,12 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import java.awt.Point;
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.HashMap;
-import java.util.Vector;
-
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandSetObjectData;
@@ -43,10 +37,15 @@ import org.miradi.objecthelpers.*;
 import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.schemas.*;
-import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
+
+import java.awt.*;
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashMap;
+import java.util.Vector;
 
 abstract public class DiagramPaster
 {
@@ -98,7 +97,7 @@ abstract public class DiagramPaster
 		getProject().executeCommands(commandsToFixRefs);
 	}
 	
-	public Command[] createCommandToFixupRefLists(HashMap pastedObjectMap, BaseObject newObject) throws Exception
+	private Command[] createCommandToFixupRefLists(HashMap pastedObjectMap, BaseObject newObject) throws Exception
 	{
 		CommandVector commands = new CommandVector();
 		String[] fieldTags = newObject.getFieldTags();
@@ -473,57 +472,11 @@ abstract public class DiagramPaster
 			
 			getOldToNewObjectRefMap().put(oldObjectRef, newObject.getRef());
 			fixupRefs(getOldToNewObjectRefMap(),newObject);
-			
-			CodeList tagNames = getTagNamesFromJson(json);
-			fixTags(tagNames, newObject);
 		}
 		
 		fixUpRelevancyOverrideSet();
 	}
 	
-	public void fixTags(CodeList tagNames, BaseObject newObject) throws Exception
-	{
-		ORefList allTags = getProject().getTaggedObjectSetPool().getRefList();
-		CodeList existingTagNames = new CodeList();
-		for (int index = 0; index < allTags.size(); ++index)
-		{
-			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), allTags.get(index));
-			String tagName = taggedObjectSet.getLabel();
-			if (tagNames.contains(tagName))
-			{
-				addObjectToTaggedObjectSet(taggedObjectSet, newObject.getRef());
-				existingTagNames.add(tagName);
-			}
-		}
-		
-		tagNames.subtract(existingTagNames);
-		CodeList needToCreateTagNames = new CodeList(tagNames);
-		
-		createMissingTags(needToCreateTagNames, newObject.getRef());
-	}
-
-	private void createMissingTags(CodeList needToCreateTagNames, ORef refToBeRemoved) throws Exception
-	{
-		for (int index = 0; index < needToCreateTagNames.size(); ++index)
-		{
-			CommandCreateObject createTaggedObjectSet = new CommandCreateObject(TaggedObjectSetSchema.getObjectType());
-			getProject().executeCommand(createTaggedObjectSet);
-			
-			ORef newTaggedObjectSetRef = createTaggedObjectSet.getObjectRef();
-			CommandSetObjectData setLabel = new CommandSetObjectData(newTaggedObjectSetRef, TaggedObjectSet.TAG_LABEL, needToCreateTagNames.get(index));
-			getProject().executeCommand(setLabel);
-			
-			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), newTaggedObjectSetRef);
-			addObjectToTaggedObjectSet(taggedObjectSet, refToBeRemoved); 
-		}
-	}
-
-	private void addObjectToTaggedObjectSet(TaggedObjectSet taggedObjectSet, ORef refToBeRemoved) throws Exception
-	{
-		CommandSetObjectData tagObjectCommand = CommandSetObjectData.createAppendORefCommand(taggedObjectSet, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, refToBeRemoved);
-		getProject().executeCommand(tagObjectCommand);
-	}
-
 	private void fixUpRelevancyOverrideSet() throws Exception
 	{
 		Collection<ORef> newPastedRefs = getOldToNewObjectRefMap().values();
@@ -596,6 +549,12 @@ abstract public class DiagramPaster
 		fixupRefs(getOldToNewObjectRefMap(), newDiagramFactor);
 		addToCurrentDiagram(newDiagramFactorRef, DiagramObject.TAG_DIAGRAM_FACTOR_IDS);
 		addDiagramFactorToSelection(newDiagramFactorRef);
+
+		if (!isPastingInSameDiagramAsCopiedFrom())
+		{
+			CommandSetObjectData clearTaggedObjectSetCommand = new CommandSetObjectData(newDiagramFactor, DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS, new ORefList());
+			getProject().executeCommand(clearTaggedObjectSetCommand);
+		}
 	}
 
 	protected void createNewFactorLinks() throws Exception
@@ -791,9 +750,23 @@ abstract public class DiagramPaster
 		return newFactorLink;
 	}
 
+	private boolean isPasteInSameProject()
+	{
+		return transferableList.getProjectFileName().equals(getProject().getFilename());
+	}
+
 	private boolean isInBetweenProjectPaste()
 	{
 		return ! getProject().getFilename().equals(getClipboardProjectFileName());
+	}
+
+	private boolean isPastingInSameDiagramAsCopiedFrom( )
+	{
+		ORef diagramObjectRefCopiedFrom = transferableList.getDiagramObjectRefCopiedFrom();
+		ORef diagramObjectRefBeingPastedInto = getDiagramObject().getRef();
+
+		boolean pasteInSameDiagram = diagramObjectRefCopiedFrom.equals(diagramObjectRefBeingPastedInto);
+		return pasteInSameDiagram && isPasteInSameProject();
 	}
 
     private boolean isValidTaxonomyClassificationList(Project project, BaseObject baseObject, String taxonomyClassificationList) throws Exception
@@ -920,22 +893,6 @@ abstract public class DiagramPaster
 		return json.getInt(FAKE_TAG_TYPE);
 	}
 	
-	private CodeList getTagNamesFromJson(EnhancedJsonObject json) throws Exception
-	{
-		return new CodeList(json.getString(FAKE_TAG_TAG_NAMES));
-	}
-
-	protected boolean containsType(int[] types, int type)
-	{
-		for (int i = 0; i < types.length; ++i)
-		{
-			if (types[i] == type)
-				return true;
-		}
-		
-		return false;
-	}
-	
 	private boolean ignorePastingDiagramFactorForFactor(ORef factorRef)
 	{
 		if (Task.is(factorRef))
@@ -1001,7 +958,7 @@ abstract public class DiagramPaster
 		return commands.toArray(new Command[0]);
 	}
 
-	public static Vector<String> getTagsToLoadFromJson(EnhancedJsonObject json, BaseObject baseObject)
+	private static Vector<String> getTagsToLoadFromJson(EnhancedJsonObject json, BaseObject baseObject)
 	{
 		final Vector<String> storedFieldTags = baseObject.getStoredFieldTags();
 		int oldType = getTypeFromJson(json);
@@ -1071,6 +1028,4 @@ abstract public class DiagramPaster
     private boolean doesPasteDiscardInvalidTaxonomyClassificationList;
 
 	public static final String FAKE_TAG_TYPE = "Type";
-	public static final String FAKE_TAG_TAG_NAMES = "TagNames";
-
 }

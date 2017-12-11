@@ -99,7 +99,7 @@ public class TestTransferableMiradiList extends MiradiTestCase
 		assertEquals("wrong project filename?", projectFileName, miradiList.getProjectFileName());
 	}
 
-	public void testGetTransfeData() throws Exception
+	public void testGetTransferData() throws Exception
 	{
 		DiagramModel model = project.getTestingDiagramModel();
 		
@@ -120,9 +120,8 @@ public class TestTransferableMiradiList extends MiradiTestCase
 		Stress stress = project.createStress();
 		ORefList stressRefs = new ORefList(stress);
 		project.fillObjectUsingCommand(diagramFactor2.getWrappedFactor(), Target.TAG_STRESS_REFS, stressRefs.toString());
-		
-		
-		project.tagDiagramFactorOld(diagramFactor1.getWrappedORef());
+
+		project.tagDiagramFactor(diagramFactor1);
 		
 		LinkCreator linkCreator = new LinkCreator(project);
 		DiagramLink diagramLink = linkCreator.createFactorLinkAndAddToDiagramUsingCommands(project.getTestingDiagramObject(), diagramFactor1, diagramFactor2);
@@ -147,9 +146,6 @@ public class TestTransferableMiradiList extends MiradiTestCase
 		int factor1Type = factor1Json.getInt(DiagramPaster.FAKE_TAG_TYPE);
 		assertEquals("wrong type for factor 1?", ObjectType.CAUSE, factor1Type);
 		assertEquals("wrong factor id?", diagramFactor1.getWrappedId(), factor1Json.getId(Factor.TAG_ID));
-		
-		CodeList tagNames = new CodeList(factor1Json.getString(DiagramPaster.FAKE_TAG_TAG_NAMES));
-		assertEquals("wrong tag name count?", 1, tagNames.size());
 		
 		EnhancedJsonObject factor2Json = new EnhancedJsonObject(factorDeepCopies.get(1));
 		int factor2Type = factor2Json.getInt(DiagramPaster.FAKE_TAG_TYPE);

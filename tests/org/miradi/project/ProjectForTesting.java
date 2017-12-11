@@ -1133,8 +1133,17 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return TableSettings.find(this, tableSettingsRef);
 	}
 
-	// TODO: MRD-6116 - clean=up old vs new once TaggedObjectSet.TAG_TAGGED_OBJECT_REFS fully deprecated...
-	// start
+	public void tagDiagramFactor(DiagramFactor diagramFactor) throws Exception
+	{
+		TaggedObjectSet taggedObjectSet = createLabeledTaggedObjectSet("TestTag");
+		tagDiagramFactor(diagramFactor, taggedObjectSet);
+	}
+
+	public void tagDiagramFactor(DiagramFactor diagramFactor, TaggedObjectSet taggedObjectSet) throws Exception
+	{
+		DiagramObject diagramObject = getTestingDiagramObject();
+		tagDiagramFactor(diagramObject, diagramFactor, taggedObjectSet, true);
+	}
 
 	public void tagDiagramFactor(DiagramObject diagramObject, DiagramFactor diagramFactor, TaggedObjectSet taggedObjectSet) throws Exception
 	{
@@ -1151,39 +1160,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 			setObjectData(diagramObject, DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, taggedObjectSetRefs.toString());
 		}
 	}
-
-	public void tagDiagramFactorOld(DiagramObject diagramObject, ORef refToTag, TaggedObjectSet taggedObjectSet, boolean selectTag) throws Exception
-	{
-		ORefList taggedFactorRefs = new ORefList(refToTag);
-		setObjectData(taggedObjectSet, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, taggedFactorRefs.toString());
-
-		if (selectTag)
-		{
-			ORefList taggedObjectSetRefs = new ORefList(taggedObjectSet.getRef());
-			setObjectData(diagramObject, DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, taggedObjectSetRefs.toString());
-		}
-	}
-
-	public void tagDiagramFactorOld(DiagramObject diagramObject, ORef refToTag, TaggedObjectSet taggedObjectSet) throws Exception
-	{
-		tagDiagramFactorOld(diagramObject, refToTag, taggedObjectSet, true);
-	}
-
-	public void tagDiagramFactorOld(ORef refToTag, TaggedObjectSet taggedObjectSet) throws Exception
-	{
-		DiagramObject diagramObject = getTestingDiagramObject();
-		tagDiagramFactorOld(diagramObject, refToTag, taggedObjectSet);
-	}
-
-	public void tagDiagramFactorOld(ORef refToTag) throws Exception
-	{
-		TaggedObjectSet taggedObjectSet = createTaggedObjectSet();
-		setObjectData(taggedObjectSet, TaggedObjectSet.TAG_LABEL, "SomeTag");
-
-		tagDiagramFactorOld(refToTag, taggedObjectSet);
-	}
-
-	// end
 
 	public void addAccountingCode(ResourceAssignment resourceAssignment) throws Exception
 	{

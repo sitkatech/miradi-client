@@ -19,15 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objecthelpers;
 
-import java.util.Vector;
-
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.TaggedObjectSet;
 import org.miradi.project.Project;
-import org.miradi.schemas.TaggedObjectSetSchema;
-import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.DiagramPaster;
+
+import java.util.Vector;
 
 public class BaseObjectDeepCopierWithRelatedObjectsToJson
 {
@@ -73,23 +70,8 @@ public class BaseObjectDeepCopierWithRelatedObjectsToJson
 	{
 		EnhancedJsonObject customJson = objectToDeepCopy.toJson();
 		customJson.put(DiagramPaster.FAKE_TAG_TYPE, objectToDeepCopy.getType());
-		customJson.put(DiagramPaster.FAKE_TAG_TAG_NAMES, getTagNames(objectToDeepCopy).toString());
-		
+
 		return customJson;
-	}
-	
-	private CodeList getTagNames(BaseObject objectToDeepCopy)
-	{
-		CodeList tagNames = new CodeList();
-		ORefList referringTaggedObjectSetRefs = objectToDeepCopy.findObjectsThatReferToUs(TaggedObjectSetSchema.getObjectType());
-		for (int index = 0; index < referringTaggedObjectSetRefs.size(); ++index)
-		{
-			ORef taggedObjectSetRef = referringTaggedObjectSetRefs.get(index);
-			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), taggedObjectSetRef);
-			tagNames.add(taggedObjectSet.getLabel());
-		}
-		
-		return tagNames;
 	}
 	
 	private Project getProject()

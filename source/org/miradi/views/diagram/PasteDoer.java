@@ -101,10 +101,10 @@ public class PasteDoer extends AbstractPasteDoer
 
 	private boolean isPastingInSameDiagramAsCopiedFrom(AbstractTransferableMiradiList list)
 	{
-		ORef diagramObjecRefCopiedFrom = list.getDiagramObjectRefCopiedFrom();
+		ORef diagramObjectRefCopiedFrom = list.getDiagramObjectRefCopiedFrom();
 		ORef diagramObjectRefBeingPastedInto = getDiagramObject().getRef();
 		
-		boolean pasteInSameDiagram = diagramObjecRefCopiedFrom.equals(diagramObjectRefBeingPastedInto);
+		boolean pasteInSameDiagram = diagramObjectRefCopiedFrom.equals(diagramObjectRefBeingPastedInto);
 		return pasteInSameDiagram && isPasteInSameProject(list);
 	}
 

@@ -314,7 +314,7 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 	public void testTaggedObjectSetIdsForDiagrams() throws Exception
 	{
 		DiagramFactor diagramFactor = getProject().createAndPopulateDiagramFactor();
-		getProject().tagDiagramFactorOld(diagramFactor.getWrappedORef());
+		getProject().tagDiagramFactor(diagramFactor);
 		
 		ProjectForTesting importedProject = validateUsingStringWriter();
 		ORef conceptualDiagramRef = importedProject.getConceptualModelDiagramPool().getRefList().getFirstElement();
