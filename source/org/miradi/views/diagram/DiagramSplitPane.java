@@ -53,7 +53,6 @@ import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.DiagramObject;
-import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.ViewData;
 import org.miradi.project.Project;
 import org.miradi.schemas.DiagramFactorSchema;
@@ -75,7 +74,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		diagramCards = new DiagramCards();
 		reloadDiagramCards(objectType);
 		
-		setLeftComponent(createLeftPanel(objectType));
+		setLeftComponent(createLeftPanel());
 		setRightComponent(new MiradiScrollPane(diagramCards));
 	}
 
@@ -123,7 +122,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		return pool.getORefList();
 	}
 	
-	public static DiagramComponent createDiagram(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
+	private static DiagramComponent createDiagram(MainWindow mainWindow, DiagramObject diagramObject) throws Exception
 	{
 		PersistentDiagramModel diagramModel = new PersistentDiagramModel(diagramObject.getProject());
 		return createDiagram(mainWindow, diagramModel, diagramObject);
@@ -144,7 +143,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		return diagram;
 	}
 
-	protected JComponent createLeftPanel(int objectType) throws Exception
+	private JComponent createLeftPanel() throws Exception
 	{
 		// NOTE: This code is convoluted, but I couldn't find a simpler way to have 
 		// the table at the top be fixed-height but variable width
@@ -165,7 +164,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		selectionPanel.addMouseListener(rightClickMouseHandler);
 
 		legendPanel = createLegendPanel(mainWindow);
-		scrollableLegendPanel = new MiradiScrollPane(legendPanel);
+		JScrollPane scrollableLegendPanel = new MiradiScrollPane(legendPanel);
 		scrollableLegendPanel.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 		scrollableLegendPanel.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollableLegendPanel.setMinimumSize(new Dimension(0,0));
@@ -184,7 +183,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 	}
 	
 	// TODO: Should be combined with similar code in ControlPanel
-	public UiLabel createControlPanelTitle()
+	private UiLabel createControlPanelTitle()
 	{
 		UiLabel title = new PanelTitleLabel(EAM.text("Control Bar"));
 		title.setBorder(new LineBorder(Color.BLACK, 2));
@@ -218,7 +217,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		return diagramCards.getAllDiagramComponents();
 	}
 	
-	public ORef getCurrentDiagramObjectRef()
+	private ORef getCurrentDiagramObjectRef()
 	{
 		return currentRef;
 	}
@@ -258,7 +257,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 			//FIXME low: why does loading all the cards work (shows newly created RC)
 			reloadDiagramCards(ref.getObjectType());
 			DiagramComponent diagramComponent = findByRef(ref);
-			getLegendPanel().resetCheckBoxes();
+			getLegendPanel().rebuild();
 			if (diagramComponent != null)
 			{
 				add(diagramComponent);
@@ -316,7 +315,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		Vector<DiagramComponent> cards;
 	}
 		
-	public void showCard(ORef diagramObjectRef)
+	private void showCard(ORef diagramObjectRef)
 	{
 		try
 		{
@@ -344,8 +343,8 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		{
 			EAM.logException(e);
 			EAM.errorDialog(EAM.text("An error is preventing this diagram from displaying correctly. " +
-									 "Most likely, the project has gotten corrupted. Please contact " +
-									 "the Miradi team for help and advice. We recommend that you not " +
+									 "Most likely, the project has been corrupted. Please contact " +
+									 "the Miradi team for help and advice. We recommend that you do not " +
 									 "make any changes to this project until this problem has been resolved."));
 		}		
 	}
@@ -393,16 +392,8 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 	{
 		if (getContentType() == objectTypeFromCommand)
 			reloadDiagramCards();
-		
-		if (TaggedObjectSet.is(objectTypeFromCommand))
-			updateLegendScrollPane();
 	}
 	
-	private void updateLegendScrollPane()
-	{
-		scrollableLegendPanel.revalidate();
-	}
-
 	private void handleCommandSetObjectData(CommandSetObjectData commandSetObjectData) throws Exception
 	{
 		if (commandSetObjectData.getObjectType() == getContentType())
@@ -416,24 +407,37 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 
 		handleGroupBoxTypes(commandSetObjectData);
 		handleDiagramZooming(commandSetObjectData);
-		handleTaggedObjectSets(commandSetObjectData);
+		handleTaggingEnabled(commandSetObjectData);
+		handleSelectedTaggedObjectSets(commandSetObjectData);
 	}
 
-	private void handleTaggedObjectSets(CommandSetObjectData commandSetObjectData)
+	private void handleTaggingEnabled(CommandSetObjectData commandSetObjectData) throws Exception
+	{
+		if (DiagramObject.isToggleDiagramTaggingCommand(commandSetObjectData))
+			updateStatusBar();
+	}
+
+	private void handleSelectedTaggedObjectSets(CommandSetObjectData commandSetObjectData) throws Exception
 	{
 		if (getCurrentDiagramComponent() == null)
 			return;
 		
 		if (commandSetObjectData.isJustTagInAnyType(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS))
+		{
+			DiagramModel diagramModel = getDiagramModel();
+			if (diagramModel != null)
+				diagramModel.updateVisibilityOfFactorsAndLinks();
+
 			updateStatusBar();
+		}
 	}
 
 	private void updateStatusBar()
 	{
 		boolean isTaggingEnabled = getCurrentDiagramComponent().getDiagramObject().isTaggingEnabled();
-		ORefList activeTaggedObjectSetRefs = getCurrentDiagramComponent().getDiagramObject().getSelectedTaggedObjectSetRefs();
-		if (activeTaggedObjectSetRefs.hasRefs() && isTaggingEnabled)
-			getMainWindow().setStatusBarWarningMessage(EAM.substituteSingleInteger(EAM.text("Not all factors are being shown because %s tag(s) are checked"), activeTaggedObjectSetRefs.size()));
+		ORefList selectedTaggedObjectSetRefs = getCurrentDiagramComponent().getDiagramObject().getSelectedTaggedObjectSetRefs();
+		if (selectedTaggedObjectSetRefs.hasRefs() && isTaggingEnabled)
+			getMainWindow().setStatusBarWarningMessage(EAM.substituteSingleInteger(EAM.text("Not all factors are being shown because %s tag(s) are checked"), selectedTaggedObjectSetRefs.size()));
 		else
 			getMainWindow().clearStatusBar();
 	}
@@ -557,9 +561,8 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 	
 	abstract public DiagramLegendPanel createLegendPanel(MainWindow mainWindowToUse) throws Exception;
 	
-	protected DiagramLegendPanel legendPanel;
+	private DiagramLegendPanel legendPanel;
 	private DiagramPageList selectionPanel;
-	private JScrollPane scrollableLegendPanel;
 	private MainWindow mainWindow;
 	private Project project;
 	private DiagramCards diagramCards;

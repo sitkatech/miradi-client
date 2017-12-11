@@ -130,7 +130,7 @@ abstract public class DiagramPageList extends ObjectPoolTable
 		if (objectType == ObjectType.RESULTS_CHAIN_DIAGRAM)
 			return ViewData.TAG_CURRENT_RESULTS_CHAIN_REF;
 		
-		throw new RuntimeException("Could not find corrent tag for " + objectType);
+		throw new RuntimeException("Could not find current diagram view data tag for " + objectType);
 	}
 	
 	public String getCurrentDiagramViewDataTag()

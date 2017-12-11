@@ -19,13 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.*;
-import javax.swing.border.EmptyBorder;
-
 import org.miradi.actions.*;
 import org.miradi.commands.Command;
 import org.miradi.commands.CommandCreateObject;
@@ -44,20 +37,24 @@ import org.miradi.icons.IconManager;
 import org.miradi.icons.ObjectiveIcon;
 import org.miradi.icons.TaggedObjectSetIcon;
 import org.miradi.layout.TwoColumnPanel;
-import org.miradi.main.AppPreferences;
-import org.miradi.main.CommandExecutedEvent;
-import org.miradi.main.CommandExecutedListener;
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import org.miradi.main.*;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.*;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramLegendQuestion;
+import org.miradi.questions.DiagramObjectTaggedObjectSetQuestion;
 import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
 import org.miradi.views.umbrella.LegendPanel;
 import org.miradi.views.umbrella.doers.AbstractPopUpEditDoer;
+
+import javax.swing.*;
+import javax.swing.border.EmptyBorder;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 abstract public class DiagramLegendPanel extends LegendPanel implements CommandExecutedListener
 {
@@ -66,10 +63,8 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		super(mainWindowToUse.getProject());
 		
 		mainWindow = mainWindowToUse;
-		editListPanel = new ObjectRefListEditorPanel(getProject(), ORef.createInvalidWithType(getDiagramType()), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TaggedObjectSetSchema.getObjectType());
-		createLegendCheckBoxes();
-		addAllComponents();
-		updateLegendPanel(getLegendSettings(DiagramObject.TAG_HIDDEN_TYPES));	
+		createDiagramLegendCheckBoxes();
+		rebuild();
 	}
 	
 	@Override
@@ -77,7 +72,9 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	{
 		super.becomeActive();
 
-		editListPanel.becomeActive();
+		if (editListPanel != null)
+			editListPanel.becomeActive();
+
 		getProject().addCommandExecutedListener(this);
 	}
 	
@@ -85,7 +82,9 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	public void becomeInactive()
 	{
 		getProject().removeCommandExecutedListener(this);
-		editListPanel.becomeInactive();
+
+		if (editListPanel != null)
+			editListPanel.becomeInactive();
 		
 		super.becomeInactive();	
 	}
@@ -99,18 +98,26 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		
 		super.dispose();
 	}
-	
+
+	public void rebuild() throws Exception
+	{
+		removeAll();
+		addAllComponents();
+		updateDiagramLegendPanel(getDiagramLegendSettings(DiagramObject.TAG_HIDDEN_TYPES));
+		validate();
+	}
+
 	private void addAllComponents() throws Exception
 	{
 		setBorder(new EmptyBorder(5,5,5,5));
 		
-		add(createLegendButtonPanel(mainWindow.getActions()));
+		add(createDiagramLegendButtonPanel(mainWindow.getActions()));
 		
 		DiagramObject diagramObject = getCurrentDiagramObject();
 		if (diagramObject != null)
 			addTaggedObjectSetPanel(diagramObject);
 		
-		updateCheckBoxes();
+		updateDiagramLegendCheckBoxes();
 		setMinimumSize(new Dimension(0,0));
 	}
 
@@ -131,6 +138,8 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 
 		add(manageTagsPanel);
 
+		ChoiceQuestion question = new DiagramObjectTaggedObjectSetQuestion(getProject(), diagramObject);
+		editListPanel = new ObjectRefListEditorPanel(getProject(), ORef.createInvalidWithType(getDiagramType()), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, question);
 		editListPanel.setObjectRef(diagramObject.getRef());
 		editListPanel.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		boolean isTaggingEnabled = diagramObject.isTaggingEnabled();
@@ -138,7 +147,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		add(editListPanel);
 	}
 	
-	private void createLegendCheckBoxes()
+	private void createDiagramLegendCheckBoxes()
 	{
 		createCheckBox(ScopeBoxSchema.OBJECT_NAME);
 		createCheckBox(TargetSchema.OBJECT_NAME);
@@ -164,7 +173,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		createCheckBox(IndicatorSchema.OBJECT_NAME);
 	}
 	
-	private JPanel createLegendButtonPanel(Actions actions)
+	private JPanel createDiagramLegendButtonPanel(Actions actions)
 	{
 		TwoColumnPanel jpanel = new TwoColumnPanel();
 		jpanel.disableFill();
@@ -205,7 +214,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	{
 	}
 
-	private void updateCheckBoxes() throws Exception
+	private void updateDiagramLegendCheckBoxes() throws Exception
 	{
 		if (isInvalidLayerManager(getLayerManager()))
 			return;
@@ -213,22 +222,22 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		Object[] keys = checkBoxes.keySet().toArray();
 		for (int index = 0; index < keys.length; ++index)
 		{
-			updateCheckBox(getLayerManager(), checkBoxes.get(keys[index]).getClientProperty(LAYER).toString());
+			updateDiagramLegendCheckBox(getLayerManager(), checkBoxes.get(keys[index]).getClientProperty(LAYER).toString());
 		}
 	}
 	
 	public void actionPerformed(ActionEvent event)
 	{
 		updateVisibility();
-		saveSettingsToProject(DiagramObject.TAG_HIDDEN_TYPES);
+		saveDiagramLegendSettingsToProject(DiagramObject.TAG_HIDDEN_TYPES);
 		getMainWindow().updateActionStates();
 	}
 	
-	private void saveSettingsToProject(String tag)
+	private void saveDiagramLegendSettingsToProject(String tag)
 	{
 		try
 		{
-			CommandSetObjectData setLegendSettingsCommand = new CommandSetObjectData(getCurrentDiagramObject().getRef(), tag, getLegendSettings().toString());
+			CommandSetObjectData setLegendSettingsCommand = new CommandSetObjectData(getCurrentDiagramObject().getRef(), tag, getDiagramLegendSettings().toString());
 			getProject().executeCommand(setLegendSettingsCommand);
 		}
 		catch(Exception e)
@@ -238,7 +247,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		}
 	}
 
-	private CodeList getLegendSettings(String tag)
+	private CodeList getDiagramLegendSettings(String tag)
 	{
 		try
 		{
@@ -250,26 +259,18 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		catch(Exception e)
 		{
 			EAM.logException(e);
-			EAM.errorDialog("Unable to read project settings:" + e.getMessage());
+			EAM.errorDialog("Unable to read project diagram legend settings:" + e.getMessage());
 			return new CodeList();
 		}
 	}
 	
-	public void resetCheckBoxes() throws Exception
-	{
-		removeAll();
-		addAllComponents();
-		updateLegendPanel(getLegendSettings(DiagramObject.TAG_HIDDEN_TYPES));
-		validate();
-	}
-	
-	private void updateCheckBox(LayerManager manager, String property) throws Exception
+	private void updateDiagramLegendCheckBox(LayerManager manager, String property) throws Exception
 	{
 		JCheckBox checkBox = findCheckBox(property);
 		checkBox.setSelected(manager.isTypeVisible(property));
 	}
 	
-	private CodeList getLegendSettings()
+	private CodeList getDiagramLegendSettings()
 	{
 		CodeList hiddenTypes = new CodeList();
 		ChoiceItem[] choices = new DiagramLegendQuestion().getChoices();
@@ -281,7 +282,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		return hiddenTypes;
 	}
 	
-	public void updateLegendPanel(CodeList hiddenTypes)
+	private void updateDiagramLegendPanel(CodeList hiddenTypes)
 	{
 		if (isInvalidLayerManager(getLayerManager()))
 			return;
@@ -327,23 +328,27 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	{
 		try
 		{
-			if (isToggleDiagramTaggingCommand(event))
+			if (DiagramObject.isToggleDiagramTaggingCommand(event.getCommand()))
 			{
 				DiagramObject diagramObject = getCurrentDiagramObject();
 				if (diagramObject != null)
 				{
 					boolean isTaggingEnabled = diagramObject.isTaggingEnabled();
-					editListPanel.setEditable(isTaggingEnabled);
+					if (editListPanel != null)
+						editListPanel.setEditable(isTaggingEnabled);
 				}
 			}
 
-			if (shouldResetCheckBoxes(event))
-				resetCheckBoxes();
+			if (shouldResetDiagramLegendCheckBoxes(event))
+				rebuild();
+
+			if (isTagUntagDiagramFactorCommand(event))
+				rebuild();
 
 			if (isUpdateTaggedObjectSetsCommand(event))
 			{
 				DiagramObject diagramObject = getCurrentDiagramObject();
-				if (diagramObject != null)
+				if (diagramObject != null && editListPanel != null)
 					editListPanel.setObjectRef(diagramObject.getRef());
 			}
 		}
@@ -353,7 +358,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		}
 	}
 
-	private boolean shouldResetCheckBoxes(CommandExecutedEvent event)
+	private boolean shouldResetDiagramLegendCheckBoxes(CommandExecutedEvent event)
 	{
 		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE))
 			return true;
@@ -370,10 +375,9 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		return false;
 	}
 
-	private boolean isToggleDiagramTaggingCommand(CommandExecutedEvent event)
+	private boolean isTagUntagDiagramFactorCommand(CommandExecutedEvent event)
 	{
-		return 	event.isSetDataCommandWithThisTypeAndTag(ConceptualModelDiagramSchema.getObjectType(), DiagramObject.TAG_IS_TAGGING_ENABLED) ||
-				event.isSetDataCommandWithThisTypeAndTag(ResultsChainDiagramSchema.getObjectType(), DiagramObject.TAG_IS_TAGGING_ENABLED);
+		return event.isSetDataCommandWithThisTypeAndTag(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS);
 	}
 
 	private boolean isUpdateTaggedObjectSetsCommand(CommandExecutedEvent event)
@@ -390,7 +394,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 			CommandDeleteObject deleteCommand = (CommandDeleteObject) command;
 			return TaggedObjectSet.is(deleteCommand.getObjectType());
 		}
-		
+
 		return event.isSetDataCommandWithThisType(TaggedObjectSetSchema.getObjectType());
 	}
 	

@@ -19,6 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import org.miradi.commands.Command;
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.DiagramFactorId;
 import org.miradi.ids.IdList;
@@ -140,21 +142,18 @@ abstract public class DiagramObject extends BaseObject
 		return nonDraftStrategies;
 	}
 
-	// TODO: This really should have a test
 	public ORefList getAllGoalRefs()
 	{
 		ORefList allGoalIds = objectManager.getGoalPool().getORefList();
 		return getAnnotationInThisDiagram(allGoalIds);
 	}
 
-	// TODO: This really should have a test
 	public ORefList getAllObjectiveRefs()
 	{
 		ORefList allObjectiveIds = objectManager.getObjectivePool().getORefList();
 		return getAnnotationInThisDiagram(allObjectiveIds);
 	}
 
-	// TODO: This really should have a test
 	private ORefList getAnnotationInThisDiagram(ORefList allAnnotationIds)
 	{
 		ORefList ourAnnotations = new ORefList();
@@ -167,8 +166,7 @@ abstract public class DiagramObject extends BaseObject
 		return ourAnnotations;
 	}
 
-	// TODO: This really should have a test
-	public boolean isAnnotationInThisDiagram(ORef annotationRef)
+	private boolean isAnnotationInThisDiagram(ORef annotationRef)
 	{
 		ORefList diagramFactorRefs = getAllDiagramFactorRefs();
 		for(int dfr = 0; dfr < diagramFactorRefs.size(); ++dfr)
@@ -420,7 +418,6 @@ abstract public class DiagramObject extends BaseObject
 		return bounds;
 	}
 	
-	//TODO write test for this method
 	public boolean containsDiagramFactor(DiagramFactorId diagramFactorId)
 	{
 		IdList ids = getAllDiagramFactorIds();
@@ -432,7 +429,6 @@ abstract public class DiagramObject extends BaseObject
 		return findOwnersOfObject(projectToUse, parentDiagramType, factorRef, DiagramFactorSchema.getObjectType());
 	}
 		
-	//TODO not sure this the right place for this method
 	public static ORefList getDiagramRefsContainingFactor(Project projectToUse, ORef factorRef)
 	{
 		if (! Factor.isFactor(factorRef))
@@ -500,6 +496,21 @@ abstract public class DiagramObject extends BaseObject
 	public boolean isTaggingEnabled()
 	{
 		return getBooleanData(TAG_IS_TAGGING_ENABLED);
+	}
+
+	public static boolean isToggleDiagramTaggingCommand(Command command)
+	{
+		boolean isToggleDiagramTagging = false;
+
+		if (command instanceof CommandSetObjectData)
+		{
+			CommandSetObjectData commandSetObjectData = (CommandSetObjectData) command;
+			isToggleDiagramTagging =
+					commandSetObjectData.isTypeAndTag(ConceptualModelDiagramSchema.getObjectType(), DiagramObject.TAG_IS_TAGGING_ENABLED) ||
+							commandSetObjectData.isTypeAndTag(ResultsChainDiagramSchema.getObjectType(), DiagramObject.TAG_IS_TAGGING_ENABLED);
+		}
+
+		return isToggleDiagramTagging;
 	}
 
 	@Override

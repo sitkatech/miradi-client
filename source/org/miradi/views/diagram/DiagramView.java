@@ -423,7 +423,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		getMainWindow().preventActionUpdates();
 		try
 		{
-			getDiagramPanel().getDiagramLegendPanel().resetCheckBoxes();
+			getDiagramPanel().getDiagramLegendPanel().rebuild();
 		}
 		finally
 		{

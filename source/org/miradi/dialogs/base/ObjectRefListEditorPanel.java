@@ -23,17 +23,30 @@ import org.miradi.dialogfields.ObjectOverriddenListField;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ObjectPoolChoiceQuestion;
 
 public class ObjectRefListEditorPanel extends ObjectDataInputPanel
 {
-	public ObjectRefListEditorPanel(Project projectToUse, ORef ref, String tagToUse, int type)
+	public ObjectRefListEditorPanel(Project projectToUse, ORef ref, String tagToUse, ChoiceQuestion question)
 	{
 		super(projectToUse, ref);
 
-		overriddenObjectListField = createOverriddenObjectListField(tagToUse, new ObjectPoolChoiceQuestion(projectToUse, type));
+		overriddenObjectListField = createOverriddenObjectListField(tagToUse, question);
 		addField(overriddenObjectListField);
 		
+		updateFieldsFromProject();
+	}
+
+	public ObjectRefListEditorPanel(Project projectToUse, ORef ref, String tagToUse, int type)
+	{
+
+		super(projectToUse, ref);
+
+		ObjectPoolChoiceQuestion question = new ObjectPoolChoiceQuestion(projectToUse, type);
+		overriddenObjectListField = createOverriddenObjectListField(tagToUse, question);
+		addField(overriddenObjectListField);
+
 		updateFieldsFromProject();
 	}
 
