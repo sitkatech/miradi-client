@@ -19,10 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.diagram;
 
-import java.awt.Point;
-import java.awt.Rectangle;
-import java.util.Vector;
-
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandCreateObject;
 import org.miradi.commands.CommandEndTransaction;
@@ -33,21 +29,17 @@ import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.GroupBox;
-import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.TaggedObjectSet;
-import org.miradi.objects.Target;
+import org.miradi.objects.*;
 import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.Project;
 import org.miradi.schemas.ScopeBoxSchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.schemas.TextBoxSchema;
+
+import java.awt.*;
+import java.util.Vector;
 
 abstract public class InsertFactorDoer extends LocationDoer
 {
@@ -103,7 +95,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 			ORef factorRef = diagramFactor.getWrappedORef();
 			if((selectedFactors.length > 0) && (!isLinkToSelfType()))
 				linkToPreviouslySelectedFactors(diagramFactor, selectedFactors);
-			else if (isSplitableLink(selectedFactors, selectedDiagramLinks, diagramFactor))
+			else if (isSplittableLink(selectedFactors, selectedDiagramLinks, diagramFactor))
 				linkCreator.splitSelectedLinkToIncludeFactor(getDiagramModel(), selectedDiagramLinks[0], diagramFactor);
 			
 			selectNewFactor(factorRef);
@@ -138,7 +130,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return HumanWelfareTarget.is(getTypeToInsert());
 	}
 	
-	private boolean isSplitableLink(FactorCell[] selectedFactors, DiagramLink[] selectedDiagramLinks, DiagramFactor diagramFactor)
+	private boolean isSplittableLink(FactorCell[] selectedFactors, DiagramLink[] selectedDiagramLinks, DiagramFactor diagramFactor)
 	{
 		if (!LinkCreator.isValidLinkableType(diagramFactor.getWrappedType()))
 			return false;
@@ -157,17 +149,17 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return getDiagramView().getDiagramPanel().getOnlySelectedFactorCells();
 	}
 	
-	protected DiagramLink[] getSelectedDiagramLinks()
+	private DiagramLink[] getSelectedDiagramLinks()
 	{
 		return getDiagramView().getDiagramPanel().getOnlySelectedLinks();
 	}
 	
-	protected void selectNewFactor(ORef factorRef)
+	private void selectNewFactor(ORef factorRef)
 	{
 		getDiagramView().getDiagramPanel().selectFactor(factorRef);
 	}
 	
-	void launchPropertiesEditor(DiagramFactor diagramFactor) throws Exception, CommandFailedException
+	private void launchPropertiesEditor(DiagramFactor diagramFactor) throws Exception
 	{
 		getDiagramView().getPropertiesDoer().doFactorProperties(diagramFactor, 0);
 	}
@@ -180,30 +172,29 @@ abstract public class InsertFactorDoer extends LocationDoer
 		FactorCell[] selectedNodes = getSelectedFactorCells();
 		Point deltaPoint = getDeltaPoint(createAt, selectedNodes, factorType, DiagramFactor.getDefaultSize(factorType).width);
 		Point snappedPoint  = project.getSnapped(deltaPoint);
-		Point ensuredNonOverlappintPoint = getDiagramModel().recursivelyGetNonOverlappingFactorPoint(snappedPoint);
+		Point ensuredNonOverlappingPoint = getDiagramModel().recursivelyGetNonOverlappingFactorPoint(snappedPoint);
 		
 		FactorCommandHelper factorCommandHelper = new FactorCommandHelper(project, getDiagramModel());
-		CommandCreateObject createCommand = factorCommandHelper.createFactorAndDiagramFactor(factorType, ensuredNonOverlappintPoint, DiagramFactor.getDefaultSize(factorType), getInitialText());
+		CommandCreateObject createCommand = factorCommandHelper.createFactorAndDiagramFactor(factorType, ensuredNonOverlappingPoint, DiagramFactor.getDefaultSize(factorType), getInitialText());
 		ORef newDiagramFactorRef =  createCommand.getObjectRef();
 				
 		DiagramFactor diagramFactor = (DiagramFactor) project.findObject(newDiagramFactorRef);
 		doExtraSetup(diagramFactor, selectedNodes);
 
-		includeNewFactorInActiveTags(diagramFactor.getWrappedORef());
+		applyCurrentlySelectedTaggedObjectSetsToNewDiagramFactor(diagramFactor);
 		forceVisibleInLayerManager();
 		getDiagramView().updateVisibilityOfFactorsAndClearSelectionModel();
 		
 		return diagramFactor;
 	}
-	private void includeNewFactorInActiveTags(ORef newFactorRefToTag) throws Exception
+
+	private void applyCurrentlySelectedTaggedObjectSetsToNewDiagramFactor(DiagramFactor diagramFactor) throws Exception
 	{
 		DiagramObject diagramObject = getDiagramModel().getDiagramObject();
-		ORefList activeTags = diagramObject.getSelectedTaggedObjectSetRefs();
-		for (int index = 0; index < activeTags.size(); ++index)
+		if (diagramObject.isTaggingEnabled())
 		{
-			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), activeTags.get(index));			
-			CommandSetObjectData setTaggedFactors = CommandSetObjectData.createAppendORefCommand(taggedObjectSet, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, newFactorRefToTag);
-			getProject().executeCommand(setTaggedFactors);
+			CommandSetObjectData appendCommand = CommandSetObjectData.createAppendORefListCommand(diagramFactor, DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS, diagramObject.getSelectedTaggedObjectSetRefs());
+			getProject().executeCommand(appendCommand);
 		}
 	}
 	
@@ -245,7 +236,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return visibleRectangle;
 	}
 	
-	public Point getCenterLocation(Rectangle visibleRectangle)
+	private Point getCenterLocation(Rectangle visibleRectangle)
 	{
 		Point deltaPoint = new Point();
 		int centeredWidth = visibleRectangle.width / 2;
@@ -257,7 +248,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return deltaPoint;
 	}
 	
-	public Point getTargetLocation(int factorWidth, int targetRightSpacing) throws Exception
+	private Point getTargetLocation(int factorWidth, int targetRightSpacing) throws Exception
 	{
 		Vector<FactorCell> allTargets = getDiagramModel().getFactorCells(getTypeToInsert());
 		Rectangle visibleRectangle = getDiagramVisibleRect();
@@ -298,7 +289,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		return new Point(x, nodeLocation.y);
 	}
 	
-	protected void linkToPreviouslySelectedFactors(DiagramFactor newlyInserted, FactorCell[] nodesToLinkTo) throws Exception
+	private void linkToPreviouslySelectedFactors(DiagramFactor newlyInserted, FactorCell[] nodesToLinkTo) throws Exception
 	{
 		if (! linkableType(newlyInserted.getWrappedType()))
 			return;
