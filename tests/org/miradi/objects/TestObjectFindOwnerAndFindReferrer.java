@@ -50,20 +50,6 @@ public class TestObjectFindOwnerAndFindReferrer extends MiradiTestCase
 		project = null;
 	}
 	
-	public void testStrongRefererers() throws Exception
-	{
-		Strategy strategy = getProject().createStrategy();
-		verifyNoStrongReferrers(strategy);
-		TaggedObjectSet taggedObjectSet = getProject().createTaggedObjectSet();
-		getProject().fillObjectUsingCommand(taggedObjectSet, TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, new ORefList(strategy.getRef()).toString());
-		verifyNoStrongReferrers(strategy);
-	}
-
-	private void verifyNoStrongReferrers(Strategy strategy)
-	{
-		assertEquals("Strategy should not have any referrers?", 0, strategy.findStrongObjectsThatReferToUs().size());
-	}
-
 	public void testIntermediateOwn() throws Exception
 	{
 		ORef intermediateResultRef = project.createObject(ObjectType.INTERMEDIATE_RESULT);

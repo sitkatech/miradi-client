@@ -44,7 +44,6 @@ abstract public class FactorSchema extends BaseObjectSchema
 		createPseudoFieldSchemaString(Factor.PSEUDO_TAG_INDICATORS);
 		createPseudoFieldSchemaRefList(Factor.PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS);
 		createPseudoFieldSchemaRefList(Factor.PSEUDO_TAG_RESULTS_CHAIN_REFS);
-		createPseudoFieldSchemaRefList(Factor.PSEUDO_TAG_REFERRING_TAG_REFS);
 	}
 
 	protected void addDetailsField()

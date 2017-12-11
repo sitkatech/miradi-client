@@ -1290,14 +1290,6 @@ abstract public class BaseObject
 	
 	abstract public int[] getTypesThatCanOwnUs();
 
-	public ORefList findStrongObjectsThatReferToUs()
-	{
-		ORefList allReferrers = findAllObjectsThatReferToUs();
-		allReferrers.removeAllRefsOfType(TaggedObjectSetSchema.getObjectType());
-		
-		return allReferrers;
-	}
-	
 	public ORefList findAllObjectsThatReferToUs()
 	{
 		return new ORefList(getObjectManager().getReferringObjects(getRef()));

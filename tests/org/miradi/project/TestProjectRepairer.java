@@ -45,7 +45,6 @@ import org.miradi.objects.GroupBox;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.ResourceAssignment;
 import org.miradi.objects.Strategy;
-import org.miradi.objects.TaggedObjectSet;
 import org.miradi.objects.Target;
 import org.miradi.objects.Task;
 import org.miradi.schemas.AccountingCodeSchema;
@@ -78,32 +77,6 @@ public class TestProjectRepairer extends TestCaseWithProject
 	{
 		super.setUp();
 		repairer = new ProjectRepairer(getProject());
-	}
-	
-	public void testToMakeSureNonOrphansAreNotUntagged() throws Exception
-	{
-		DiagramFactor diagramFactor = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
-		Target target = Target.find(getProject(), diagramFactor.getWrappedORef());
-		
-		verifyUntaggingOfObject(target, 1, 1);
-	}
-	
-	public void testDetectOrphansRefferedToByTaggedObjectSet() throws Exception
-	{
-		Target target = getProject().createTarget();
-		
-		verifyUntaggingOfObject(target, 0, 0);
-	}
-
-	public void verifyUntaggingOfObject(Target target, int expectedObjectCountAfterRepair, int expectedTaggedObjectSetSize) throws Exception
-	{
-		TaggedObjectSet taggedObjectSet = getProject().createTaggedObjectSet();
-		getProject().setObjectData(taggedObjectSet.getRef(), TaggedObjectSet.TAG_TAGGED_OBJECT_REFS, new ORefList(target.getRef()).toString());
-		assertEquals("Target was not added correctly?", 1, getProject().getTargetPool().size());
-		
-		repairer.quarantineOrphans();
-		assertEquals("Orphand target should have been deleted?", expectedObjectCountAfterRepair, getProject().getTargetPool().size());
-		assertEquals("Deleted object was not removed from taggedObjectSet?", expectedTaggedObjectSetSize, taggedObjectSet.getTaggedObjectRefsSet().size());
 	}
 	
 	public void testRepairSimpleModeTargetReferringToMissingSimpleIndicator() throws Exception
@@ -222,8 +195,8 @@ public class TestProjectRepairer extends TestCaseWithProject
 		verifyRepair(resourceAssignment, ResourceAssignment.TAG_ACCOUNTING_CODE_ID, accountingCodeRef.getObjectId().toString(), accountingCodeRef.getObjectId().toString());
 		ORef fundingSourceRef = getProject().createObject(FundingSourceSchema.getObjectType());
 		verifyRepair(resourceAssignment, ResourceAssignment.TAG_FUNDING_SOURCE_ID, fundingSourceRef.getObjectId().toString(), fundingSourceRef.getObjectId().toString());
-		verifyAssginmentReferringToExistingObject(resourceAssignment, ResourceAssignment.TAG_CATEGORY_ONE_REF, BudgetCategoryOneSchema.getObjectType());
-		verifyAssginmentReferringToExistingObject(resourceAssignment, ResourceAssignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwoSchema.getObjectType());
+		verifyAssignmentReferringToExistingObject(resourceAssignment, ResourceAssignment.TAG_CATEGORY_ONE_REF, BudgetCategoryOneSchema.getObjectType());
+		verifyAssignmentReferringToExistingObject(resourceAssignment, ResourceAssignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwoSchema.getObjectType());
 		
 		
 		ExpenseAssignment expenseAssignment = getProject().createExpenseAssignment();
@@ -239,11 +212,11 @@ public class TestProjectRepairer extends TestCaseWithProject
 		
 		verifyRepair(expenseAssignment, ExpenseAssignment.TAG_ACCOUNTING_CODE_REF, accountingCodeRef.toString(), accountingCodeRef.toString());
 		verifyRepair(expenseAssignment, ExpenseAssignment.TAG_FUNDING_SOURCE_REF, fundingSourceRef.toString(), fundingSourceRef.toString());
-		verifyAssginmentReferringToExistingObject(expenseAssignment, ExpenseAssignment.TAG_CATEGORY_ONE_REF, BudgetCategoryOneSchema.getObjectType());
-		verifyAssginmentReferringToExistingObject(expenseAssignment, ExpenseAssignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwoSchema.getObjectType());
+		verifyAssignmentReferringToExistingObject(expenseAssignment, ExpenseAssignment.TAG_CATEGORY_ONE_REF, BudgetCategoryOneSchema.getObjectType());
+		verifyAssignmentReferringToExistingObject(expenseAssignment, ExpenseAssignment.TAG_CATEGORY_TWO_REF, BudgetCategoryTwoSchema.getObjectType());
 	}
 	
-	private void verifyAssginmentReferringToExistingObject(Assignment assignment, String tag, int referrerType) throws Exception
+	private void verifyAssignmentReferringToExistingObject(Assignment assignment, String tag, int referrerType) throws Exception
 	{
 		ORef ref = getProject().createObject(referrerType);
 		verifyRepair(assignment, tag, ref.toString(), ref.toString());

@@ -404,9 +404,6 @@ abstract public class Factor extends BaseObject
 			if(fieldTag.equals(PSEUDO_TAG_RESULTS_CHAIN_REFS))
 				return DiagramObject.getDiagramRefsContainingFactor(getProject(), ResultsChainDiagramSchema.getObjectType(), getRef()).toString();
 			
-			if(fieldTag.equals(PSEUDO_TAG_REFERRING_TAG_REFS))
-				return findReferringTagRefs().toString();
-			
 			return super.getPseudoData(fieldTag);
 		}
 		catch(Exception e)
@@ -416,11 +413,6 @@ abstract public class Factor extends BaseObject
 		}
 	}
 	
-	public ORefList findReferringTagRefs()
-	{
-		return findObjectsThatReferToUs(TaggedObjectSetSchema.getObjectType());
-	}
-
 	protected CommandVector buildRemoveFromRelevancyListCommands(ORef relevantObjectRefToRemove) throws Exception
 	{
 		CommandVector removeFromRelevancyListCommands = new CommandVector();
@@ -482,7 +474,6 @@ abstract public class Factor extends BaseObject
 	public static final String PSEUDO_TAG_TARGETS = "PseudoTagTargets";
 	public static final String PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS = "PseudoTagDiagramRefs";
 	public static final String PSEUDO_TAG_RESULTS_CHAIN_REFS = "PseudoTagResultsChainDiagramRefs";
-	public static final String PSEUDO_TAG_REFERRING_TAG_REFS = "PseudoTagReferringTagRefs";
 	public static final String PSEUDO_TAG_TAXONOMY_CODE_VALUE = "TaxonomyCodeValue";
 	public static final String PSEUDO_TAG_INDICATORS = "PseudoTagIndicators";
 	public static final String PSEUDO_TAG_ACTIVITIES = "PseudoTagActivities";
