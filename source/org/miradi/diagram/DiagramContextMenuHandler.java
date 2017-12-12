@@ -75,15 +75,17 @@ public class DiagramContextMenuHandler
 		if (objectsAction.isEnabled())
 			menu.add(createMenuItem(ActionDeleteBendPoint.class, menuInvokedAt));
 		
-		int selectedFactorCount = diagramComponent.getOnlySelectedFactors().length;
 		menu.add(createMenuItem(ActionCreateIncomingJunction.class, menuInvokedAt));
 		menu.add(createMenuItem(ActionCreateOutgoingJunction.class, menuInvokedAt));
+
+        int selectedFactorCount = diagramComponent.getOnlySelectedFactors().length;
 		if(selectedFactorCount == 1)
 			menu.add(createMenuItem(ActionManageFactorTagsFromMenu.class, menuInvokedAt));
 		if(selectedFactorCount > 0)
 		{
 			menu.add(createTagFactorsMenu());
 			menu.add(createUntagFactorsMenu());
+            menu.add(createUntagAllFactorsMenuItem());
 		}
 		
 		menu.addSeparator();
@@ -231,7 +233,7 @@ public class DiagramContextMenuHandler
 		String template = EAM.text("Menu|Remove Tag from %n Selected Item(s)");
 
 		ORefSet taggedObjectSetRefSet = new ORefSet();
-		for (DiagramFactor diagramFactor : getDiagramComponent().getOnlySelectedDiagramFactors())
+		for (DiagramFactor diagramFactor : diagramComponent.getOnlySelectedDiagramFactors())
 		{
 			taggedObjectSetRefSet.addAllRefs(diagramFactor.getTaggedObjectSetRefs());
 		}
@@ -266,6 +268,82 @@ public class DiagramContextMenuHandler
 		
 		return menu;
 	}
+
+	private class ActionUntagAllFactors extends AbstractAction
+    {
+        public ActionUntagAllFactors(DiagramFactor[] diagramFactorsToUntag)
+        {
+            diagramFactors = diagramFactorsToUntag;
+        }
+
+        @Override
+        public void actionPerformed(ActionEvent event)
+        {
+            try
+            {
+                removeAllTagsFromDiagramFactors();
+            }
+            catch(Exception e)
+            {
+                EAM.logException(e);
+                EAM.errorDialog(EAM.text("Unexpected error prevented the tag operation from succeeding"));
+            }
+        }
+
+        private void removeAllTagsFromDiagramFactors() throws Exception
+        {
+            getProject().executeCommand(new CommandBeginTransaction());
+            try
+            {
+                CommandVector commandsToRemoveTags = new CommandVector();
+
+                for (DiagramFactor diagramFactor : getDiagramFactors())
+                {
+                    commandsToRemoveTags.add(new CommandSetObjectData(diagramFactor, DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS, new ORefList()));
+                }
+
+                getProject().executeCommands(commandsToRemoveTags);
+            }
+            finally
+            {
+                getProject().executeCommand(new CommandEndTransaction());
+            }
+        }
+
+        protected DiagramFactor[] getDiagramFactors()
+        {
+            return diagramFactors;
+        }
+
+        private DiagramFactor[] diagramFactors;
+    }
+
+    private JMenuItem createUntagAllFactorsMenuItem()
+    {
+        String template = EAM.text("Menu|Remove All Tags from %n Selected Item(s)");
+
+        DiagramFactor[] selectedDiagramFactors = diagramComponent.getOnlySelectedDiagramFactors();
+
+        String label = EAM.substitute(template, "%n", Integer.toString(selectedDiagramFactors.length));
+
+        Action action = new ActionUntagAllFactors(selectedDiagramFactors);
+        MenuItemWithoutLocation menuItem = new MenuItemWithoutLocation(action);
+        menuItem.setText(label);
+        menuItem.setEnabled(shouldEnableUntagAllFactorsMenuItem(selectedDiagramFactors));
+
+        return  menuItem;
+    }
+
+    private boolean shouldEnableUntagAllFactorsMenuItem(DiagramFactor[] selectedDiagramFactors)
+    {
+        for (DiagramFactor diagramFactor : selectedDiagramFactors)
+        {
+            if (!diagramFactor.getTaggedObjectSetRefs().isEmpty())
+                return true;
+        }
+
+        return false;
+    }
 
 	private Project getProject()
 	{
@@ -352,11 +430,6 @@ public class DiagramContextMenuHandler
 		{
 			return true;
 		}
-	}
-
-	private DiagramComponent getDiagramComponent()
-	{
-		return diagramComponent;
 	}
 
 	MainWindow mainWindow;
