@@ -19,18 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.diagram;
 
-import java.awt.Font;
-import java.awt.Point;
-import java.awt.event.ActionEvent;
-import java.awt.event.MouseEvent;
-import java.util.Collections;
-import java.util.Vector;
-
-import javax.swing.AbstractAction;
-import javax.swing.Action;
-import javax.swing.JMenuItem;
-import javax.swing.JPopupMenu;
-
 import org.martus.swing.UiMenu;
 import org.martus.swing.UiPopupMenu;
 import org.miradi.actions.*;
@@ -53,6 +41,13 @@ import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.LocationHolder;
 import org.miradi.utils.MenuItemWithoutLocation;
 import org.miradi.views.diagram.DiagramView;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.MouseEvent;
+import java.util.Collections;
+import java.util.Vector;
 
 public class DiagramContextMenuHandler
 {
@@ -224,24 +219,40 @@ public class DiagramContextMenuHandler
 	private UiMenu createTagFactorsMenu()
 	{
 		String template = EAM.text("Menu|Add Tag to %n Selected Item(s)");
-		return createTagUntagFactorsMenu(template, new TagActionCreator());
+
+		TaggedObjectSetPool pool = getProject().getTaggedObjectSetPool();
+		Vector<TaggedObjectSet> tags = pool.getAllTaggedObjectSets();
+
+		return createTagUntagFactorsMenu(template, new TagActionCreator(), tags);
 	}
 
 	private UiMenu createUntagFactorsMenu()
 	{
 		String template = EAM.text("Menu|Remove Tag from %n Selected Item(s)");
-		return createTagUntagFactorsMenu(template, new UntagActionCreator());
+
+		ORefSet taggedObjectSetRefSet = new ORefSet();
+		for (DiagramFactor diagramFactor : getDiagramComponent().getOnlySelectedDiagramFactors())
+		{
+			taggedObjectSetRefSet.addAllRefs(diagramFactor.getTaggedObjectSetRefs());
+		}
+
+		Vector<TaggedObjectSet> tags = new Vector<TaggedObjectSet>();
+		for (ORef taggedObjectSetRef : taggedObjectSetRefSet)
+		{
+			TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), taggedObjectSetRef);
+			tags.add(taggedObjectSet);
+		}
+
+		return createTagUntagFactorsMenu(template, new UntagActionCreator(), tags);
 	}
 
-	private UiMenu createTagUntagFactorsMenu(String template, ActionCreator actionCreator)
+	private UiMenu createTagUntagFactorsMenu(String template, ActionCreator actionCreator, Vector<TaggedObjectSet> tags)
 	{
 		ORefSet diagramFactorRefs = new ORefSet(new ORefList(diagramComponent.getOnlySelectedDiagramFactors()));
 
 		String label = EAM.substitute(template, "%n", Integer.toString(diagramFactorRefs.size()));
 		UiMenu menu = new UiMenu(label);
 
-		TaggedObjectSetPool pool = getProject().getTaggedObjectSetPool();
-		Vector<TaggedObjectSet> tags = pool.getAllTaggedObjectSets();
 		Collections.sort(tags, new BaseObjectByFullNameSorter());
 		for(TaggedObjectSet set : tags)
 		{
@@ -341,6 +352,11 @@ public class DiagramContextMenuHandler
 		{
 			return true;
 		}
+	}
+
+	private DiagramComponent getDiagramComponent()
+	{
+		return diagramComponent;
 	}
 
 	MainWindow mainWindow;
