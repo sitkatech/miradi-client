@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-11 08:46-0800\n"
+"POT-Creation-Date: 2017-12-12 04:01-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/miradi-client/"
@@ -5244,7 +5244,7 @@ msgstr "4. Analizza, Usa, Adatta"
 msgid "Menu|5. Capture and Share Learning"
 msgstr "5. Impara la lezione e condividi"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:226
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:223
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Aggiungi Etichetta alla selezione"
 
@@ -5256,7 +5256,7 @@ msgstr "Esporta la pagina corrente come..."
 msgid "Menu|Export Current Project as..."
 msgstr "Esporta il progetto come...."
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:266
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:355
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/main/menu/MainMenuBar.java:421
 msgid "Menu|Group Box"
 msgstr "Blocco gruppo"
@@ -5265,11 +5265,15 @@ msgstr "Blocco gruppo"
 msgid "Menu|Import"
 msgstr "Importa"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:277
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:366
 msgid "Menu|Insert"
 msgstr "Inserisci"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:232
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:323
+msgid "Menu|Remove All Tags from %n Selected Item(s)"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:233
 msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr "Rimuovi l'etichetta dalla selezione"
 
@@ -8987,7 +8991,8 @@ msgstr ""
 msgid "Unexpected error prevented installing that language pack"
 msgstr "Un errore inatteso ha impedito l'istallazione del pacchetto lingua"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:134
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:131
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:289
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr ""
 "Un errore imprevisto ha impedito che l'operazione di etichettatura avesse "

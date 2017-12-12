@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-11 08:46-0800\n"
+"POT-Creation-Date: 2017-12-12 04:01-0800\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/miradi-client/"
@@ -5291,7 +5291,7 @@ msgstr "4. Analisar, Praticar, Adaptar"
 msgid "Menu|5. Capture and Share Learning"
 msgstr "5. Documentar e Compartilhar o Aprendizado"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:226
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:223
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Adicionar \"Tag\" a %n Item(Itens) Selecionado(s)"
 
@@ -5303,7 +5303,7 @@ msgstr "Exportar Página Atual como..."
 msgid "Menu|Export Current Project as..."
 msgstr "Exportar Projeto Atual Como..."
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:266
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:355
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/main/menu/MainMenuBar.java:421
 msgid "Menu|Group Box"
 msgstr "Caixa de Grupo"
@@ -5312,11 +5312,15 @@ msgstr "Caixa de Grupo"
 msgid "Menu|Import"
 msgstr "Importar"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:277
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:366
 msgid "Menu|Insert"
 msgstr "Inserir"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:232
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:323
+msgid "Menu|Remove All Tags from %n Selected Item(s)"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:233
 msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr "Remover \"Tag\" de %n Item(Itens) Selecionado(s)"
 
@@ -9073,7 +9077,8 @@ msgstr ""
 "Um erro inesperado não permitiu a instalação desse pacote de idiome "
 "(language pack)"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:134
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:131
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:289
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr "Um erro inesperado não permitiu o sucesso da operação de tag"
 

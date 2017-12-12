@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-11 08:46-0800\n"
+"POT-Creation-Date: 2017-12-12 04:01-0800\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -5272,7 +5272,7 @@ msgstr "Menu|4. Analyze, Use, Adapt"
 msgid "Menu|5. Capture and Share Learning"
 msgstr "Menu|5. Capture and Share Learning"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:226
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:223
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Menu|Add Tag to %n Selected Item(s)"
 
@@ -5284,7 +5284,7 @@ msgstr "Menu|Export Current Page as..."
 msgid "Menu|Export Current Project as..."
 msgstr "Menu|Export Current Project as..."
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:266
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:355
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/main/menu/MainMenuBar.java:421
 msgid "Menu|Group Box"
 msgstr "Menu|Group Box"
@@ -5293,11 +5293,15 @@ msgstr "Menu|Group Box"
 msgid "Menu|Import"
 msgstr "Menu|Import"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:277
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:366
 msgid "Menu|Insert"
 msgstr "Menu|Insert"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:232
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:323
+msgid "Menu|Remove All Tags from %n Selected Item(s)"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:233
 msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr "Menu|Remove Tag from %n Selected Item(s)"
 
@@ -9040,7 +9044,8 @@ msgstr "Unexpected error"
 msgid "Unexpected error prevented installing that language pack"
 msgstr "Unexpected error prevented installing that language pack"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:134
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:131
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:289
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr "Unexpected error prevented the tag operation from succeeding"
 

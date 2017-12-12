@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-11 08:46-0800\n"
+"POT-Creation-Date: 2017-12-12 04:01-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -5191,7 +5191,7 @@ msgstr "Цэс|4. Дүн шинжилгээ хийх, хэрэглэх, тохи
 msgid "Menu|5. Capture and Share Learning"
 msgstr "Цэс|5. Дүрслэн гаргах ба сургамжаа хуваалцах"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:226
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:223
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Цэс|Сонгосон зүйлд(үүдэд) Тэмдэглэл нэмэх"
 
@@ -5203,7 +5203,7 @@ msgstr "Цэс|Идэвхитэй хуудсанд экспорт хийх (Expo
 msgid "Menu|Export Current Project as..."
 msgstr "Цэс|Одоогийн төсөлд экспорт хийх (Export)"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:266
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:355
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/main/menu/MainMenuBar.java:421
 msgid "Menu|Group Box"
 msgstr "Цэс|Бүлгийн хайрцаг"
@@ -5212,11 +5212,15 @@ msgstr "Цэс|Бүлгийн хайрцаг"
 msgid "Menu|Import"
 msgstr "Цэс|Импорт хийх"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:277
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:366
 msgid "Menu|Insert"
 msgstr "Цэс|Оруулах"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:232
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:323
+msgid "Menu|Remove All Tags from %n Selected Item(s)"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:233
 msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr "Цэс|Сонгосон Зүйлээс(үүдээс) Тэмдэглэгээг арилгах"
 
@@ -8920,7 +8924,8 @@ msgstr ""
 msgid "Unexpected error prevented installing that language pack"
 msgstr "Хэлний багцыг суулгахад гэнэтийн алдаа гарлаа"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:134
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:131
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:289
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr ""
 
