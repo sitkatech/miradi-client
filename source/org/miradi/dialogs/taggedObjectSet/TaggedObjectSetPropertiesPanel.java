@@ -24,7 +24,12 @@ import org.miradi.diagram.DiagramComponent;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogfields.TaggedObjectSetFactorListField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.icons.ConceptualModelIcon;
+import org.miradi.icons.ResultsChainIcon;
 import org.miradi.icons.TaggedObjectSetIcon;
+import org.miradi.layout.OneRowPanel;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -34,6 +39,9 @@ import org.miradi.objects.TaggedObjectSet;
 import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.utils.ObjectsActionButton;
 import org.miradi.views.umbrella.ObjectPicker;
+
+import javax.swing.*;
+
 
 public class TaggedObjectSetPropertiesPanel extends ObjectDataInputPanel
 {
@@ -56,6 +64,17 @@ public class TaggedObjectSetPropertiesPanel extends ObjectDataInputPanel
 		ObjectDataInputField shortLabelField = createStringField(TaggedObjectSet.TAG_SHORT_LABEL, 10);
 		ObjectDataInputField labelField = createExpandableField(TaggedObjectSet.TAG_LABEL);
 		addFieldsOnOneLine(EAM.text("Tag"), new TaggedObjectSetIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
+
+		OneRowPanel fieldPanel = new OneRowPanel();
+		fieldPanel.setGaps(3);
+		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		fieldPanel.add(new PanelTitleLabel(diagramObject.getFullName()));
+		fieldPanel.add(new JLabel(" "));
+
+		Icon diagramIcon = diagramObject.isConceptualModelDiagram() ? new ConceptualModelIcon() : new ResultsChainIcon();
+		fieldPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		addLabelWithIcon(EAM.text("Diagram"), diagramIcon);
+		add(fieldPanel);
 
 		ObjectDataInputField taggedDiagramFactorListField = createTaggedDiagramFactorListField(diagramObject, TaggedObjectSetSchema.getObjectType(), TaggedObjectSet.PSEUDO_TAG_REFERRING_DIAGRAM_FACTOR_REFS);
 		ObjectsActionButton editButton = createObjectsActionButton(mainWindow.getActions().getObjectsAction(ActionEditTaggedObjectSet.class), objectPicker);
