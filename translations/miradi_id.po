@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-12 04:01-0800\n"
+"POT-Creation-Date: 2017-12-13 07:31-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/miradi-client/"
@@ -3311,6 +3311,7 @@ msgstr ""
 msgid "Develop target viability"
 msgstr "Kembangkan kelangsungan target "
 
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:76
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:104
 msgid "Diagram"
 msgstr "Diagram"
@@ -7743,12 +7744,12 @@ msgid "Tab|XSL Templates"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:44
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:45
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:66
 msgid "Tag"
 msgstr "Tag"
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/doers/EditTaggedObjectSetDoer.java:55
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:49
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:81
 msgid "Tagged Items"
 msgstr "Butir yang Ditandai"
 
@@ -8715,7 +8716,7 @@ msgstr "Ketampakan Tekanan "
 msgid "Title|Stress-Based Threat Rating"
 msgstr "Peringkat Ancaman Berdasarkan Tekanan "
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:58
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:117
 msgid "Title|Tag Properties Panel"
 msgstr "Panel Sifat-sifat Tag"
 

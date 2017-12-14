@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-12 04:01-0800\n"
+"POT-Creation-Date: 2017-12-13 07:31-0800\n"
 "PO-Revision-Date: 2014-05-28 17:01+0000\n"
 "Last-Translator: nsalafsky <nick@fosonline.org>\n"
 "Language-Team: English (Estonia) (http://www.transifex.com/projects/p/miradi-"
@@ -3461,6 +3461,7 @@ msgstr "Develop systems for handling project data"
 msgid "Develop target viability"
 msgstr "Develop interest viability"
 
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:76
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:104
 msgid "Diagram"
 msgstr "Diagram"
@@ -7922,12 +7923,12 @@ msgid "Tab|XSL Templates"
 msgstr "Tab|XSL Templates"
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:44
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:45
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:66
 msgid "Tag"
 msgstr "Tag"
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/doers/EditTaggedObjectSetDoer.java:55
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:49
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:81
 msgid "Tagged Items"
 msgstr "Tagged Items"
 
@@ -8927,7 +8928,7 @@ msgstr "Title|Stress Visibility"
 msgid "Title|Stress-Based Threat Rating"
 msgstr "Title|Stress-Based Pressure Rating"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:58
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:117
 msgid "Title|Tag Properties Panel"
 msgstr "Title|Tag Properties Panel"
 

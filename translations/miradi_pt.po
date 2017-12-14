@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-12 04:01-0800\n"
+"POT-Creation-Date: 2017-12-13 07:31-0800\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/miradi-client/"
@@ -3451,6 +3451,7 @@ msgstr "Desenvolver sistemas para manejo dos dados do projeto"
 msgid "Develop target viability"
 msgstr "Desenvolver a viabilidade do alvo"
 
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:76
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:104
 msgid "Diagram"
 msgstr "Diagrama"
@@ -7949,12 +7950,12 @@ msgid "Tab|XSL Templates"
 msgstr "Modelos XSL"
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/doers/DeleteTaggedObjectSetDoer.java:44
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:45
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:66
 msgid "Tag"
 msgstr "'Tag'"
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/diagram/doers/EditTaggedObjectSetDoer.java:55
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:49
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:81
 msgid "Tagged Items"
 msgstr "Itens marcados com 'Tag'"
 
@@ -8941,7 +8942,7 @@ msgstr "Visibilidade de Estresse"
 msgid "Title|Stress-Based Threat Rating"
 msgstr "Classificação de Alvo Baseada em Estresse"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:58
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:117
 msgid "Title|Tag Properties Panel"
 msgstr "Painel de Propriedades de Tag"
 
