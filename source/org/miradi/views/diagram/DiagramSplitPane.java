@@ -338,6 +338,8 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 			diagramComponent.forceRepaint();
 			validate();
 			updateStatusBar();
+
+			mainWindow.getDiagramView().diagramWasSelected();
 		}
 		catch (Exception e)
 		{

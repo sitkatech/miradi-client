@@ -30,20 +30,21 @@ import org.miradi.icons.ResultsChainIcon;
 import org.miradi.icons.TaggedObjectSetIcon;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
-import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.TaggedObjectSet;
 import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.utils.ObjectsActionButton;
+import org.miradi.views.diagram.DiagramView;
+import org.miradi.views.diagram.DiagramViewEvent;
+import org.miradi.views.diagram.DiagramViewListener;
 import org.miradi.views.umbrella.ObjectPicker;
 
 import javax.swing.*;
 
 
-public class TaggedObjectSetPropertiesPanel extends ObjectDataInputPanel
+public class TaggedObjectSetPropertiesPanel extends ObjectDataInputPanel implements DiagramViewListener
 {
 	public TaggedObjectSetPropertiesPanel(MainWindow mainWindowToUse, DiagramObject diagramObjectToUse, ObjectPicker picker) throws Exception
 	{
@@ -53,7 +54,31 @@ public class TaggedObjectSetPropertiesPanel extends ObjectDataInputPanel
 		diagramObject = diagramObjectToUse;
 		objectPicker = picker;
 
+		DiagramView diagramView = getMainWindow().getDiagramView();
+		if (diagramView != null)
+			diagramView.addDiagramViewListener(this);
+
 		rebuild();
+	}
+
+	@Override
+	public void dispose()
+	{
+		DiagramView diagramView = getMainWindow().getDiagramView();
+		if (diagramView != null)
+			diagramView.removeDiagramViewListener(this);
+	}
+
+	@Override
+	public void tabWasSelected(DiagramViewEvent event)
+	{
+		rebuildForCurrentDiagramObject();
+	}
+
+	@Override
+	public void diagramWasSelected(DiagramViewEvent event)
+	{
+		rebuildForCurrentDiagramObject();
 	}
 
 	private void rebuild() throws Exception
@@ -89,20 +114,15 @@ public class TaggedObjectSetPropertiesPanel extends ObjectDataInputPanel
 		repaint();
 	}
 
-	public void commandExecuted(CommandExecutedEvent event)
+	private void rebuildForCurrentDiagramObject()
 	{
 		try
 		{
-			super.commandExecuted(event);
-
-			if (event.isSetDataCommandWithThisType(ObjectType.VIEW_DATA))
+			DiagramComponent diagramComponent = getMainWindow().getCurrentDiagramComponent();
+			if (diagramComponent != null)
 			{
-				DiagramComponent currentDiagramComponent = mainWindow.getCurrentDiagramComponent();
-				if (currentDiagramComponent != null)
-				{
-					diagramObject = currentDiagramComponent.getDiagramObject();
-					rebuild();
-				}
+				diagramObject = diagramComponent.getDiagramObject();
+				rebuild();
 			}
 		}
 		catch (Exception e)

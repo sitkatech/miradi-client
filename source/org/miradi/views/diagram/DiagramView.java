@@ -22,10 +22,7 @@ package org.miradi.views.diagram;
 import org.martus.swing.Utilities;
 import org.miradi.actions.*;
 import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.ChainWalker;
-import org.miradi.diagram.DiagramComponent;
-import org.miradi.diagram.DiagramModel;
-import org.miradi.diagram.EAMGraphSelectionModel;
+import org.miradi.diagram.*;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.dialogs.base.AbstractDialogWithClose;
@@ -64,9 +61,8 @@ import org.miradi.views.umbrella.doers.TaskMoveUpDoer;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyEvent;
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Vector;
+import java.util.*;
+import java.util.List;
 
 
 public class DiagramView extends TabbedView implements CommandExecutedListener
@@ -83,7 +79,17 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 	{
 		getMainWindow().rebuildToolBar();
 	}
-	
+
+	public void addDiagramViewListener(DiagramViewListener listener)
+	{
+		diagramViewListenerList.add(listener);
+	}
+
+	public void removeDiagramViewListener(DiagramViewListener listener)
+	{
+		diagramViewListenerList.remove(listener);
+	}
+
 	public DiagramComponent getCurrentDiagramComponent()
 	{
 		if(getCurrentDiagramPanel() == null)
@@ -262,6 +268,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 			{
 				getCurrentDiagramComponent().updateDiagramZoomSetting();
 			}
+			tabWasSelected(new DiagramViewEvent(this));
 		}
 		catch(Exception e)
 		{
@@ -272,6 +279,23 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		{
 			getMainWindow().allowActionUpdates();
 			getMainWindow().updateActionsAndStatusBar();
+		}
+	}
+
+	private void tabWasSelected(DiagramViewEvent evt)
+	{
+		for (DiagramViewListener diagramViewListener : diagramViewListenerList)
+		{
+			diagramViewListener.tabWasSelected(evt);
+		}
+	}
+
+	public void diagramWasSelected()
+	{
+		DiagramViewEvent evt = new DiagramViewEvent(this);
+		for (DiagramViewListener diagramViewListener : diagramViewListenerList)
+		{
+			diagramViewListener.diagramWasSelected(evt);
 		}
 	}
 
@@ -927,7 +951,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 
 	private PropertiesDoer propertiesDoer;
 	private String mode;
-	
+
+	private List<DiagramViewListener> diagramViewListenerList = new ArrayList<DiagramViewListener>();
+
 	private ModelessDialogWithClose nodePropertiesDlg;
 	private FactorPropertiesPanel nodePropertiesPanel;
 	
