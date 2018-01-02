@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogfields;
 
+import java.awt.*;
 import java.util.Vector;
 
 import javax.swing.Box;
@@ -41,22 +42,35 @@ abstract public class AbstractEditorComponentWithHierarchies extends QuestionBas
 	@Override
 	protected void addComponentToRowPanel(MiradiPanel mainRowsPanel, JComponent leftColumnComponent, ChoiceItem rootChoiceItem)
 	{
-		mainRowsPanel.add(getSafeIconLabel(rootChoiceItem.getIcon()));
-		rootChoiceItem.setSelectable(isRootChoiceItemSelectable());
-		mainRowsPanel.add(createLeftColumnComponent(rootChoiceItem));
 		try
 		{
 			final int horizontalIndent = 0;
+
+			mainRowsPanel.add(getSafeIconLabel(rootChoiceItem.getIcon()));
+			rootChoiceItem.setSelectable(isRootChoiceItemSelectable());
+			JComponent rootLeftColumnComponent = createLeftColumnComponent(rootChoiceItem);
+			mainRowsPanel.add(rootLeftColumnComponent);
+
 			addRowComponents(mainRowsPanel, rootChoiceItem, horizontalIndent);
+
+			Component rootRightDescriptionComponent = createDescriptionComponent(rootChoiceItem);
+			mainRowsPanel.add(rootRightDescriptionComponent);
+
+			if (isRootChoiceItemSelectable())
+			{
+				Vector<JComponent> selectableComponents = new Vector<JComponent>();
+				selectableComponents.add(rootLeftColumnComponent);
+				selectableComponents.add((JComponent) rootRightDescriptionComponent);
+
+				getSafeRowSelectionHandler().addSelectableRow(selectableComponents, rootChoiceItem.getLongDescriptionProvider());
+			}
 		}
 		catch (Exception e)
 		{
 			EAM.alertUserOfNonFatalException(e);
 		}
-		
-		mainRowsPanel.add(createDescriptionComponent(rootChoiceItem));
 	}
-	
+
 	private void addRowComponents(MiradiPanel mainRowsPanel, ChoiceItem parentChoiceItem, int horizontalIndent) throws Exception
 	{
 		horizontalIndent += INDENT_PER_LEVEL;
