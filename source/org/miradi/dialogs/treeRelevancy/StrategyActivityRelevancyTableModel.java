@@ -107,7 +107,7 @@ public class StrategyActivityRelevancyTableModel extends SingleBooleanColumnEdit
 	}
 
 	@Override
-	protected boolean shouldSortRows()
+	public boolean shouldSortRows()
 	{
 		return false;
 	}

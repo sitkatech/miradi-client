@@ -23,7 +23,7 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.Vector;
 
-import javax.swing.JTable;
+import javax.swing.*;
 import javax.swing.table.JTableHeader;
 
 import org.miradi.commands.CommandSetObjectData;
@@ -61,7 +61,7 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		sortAllTables();
 	}
 
-	private int findColumnToSortBy(SortableTableModel model) throws Exception
+	public int findColumnToSortBy(SortableTableModel model) throws Exception
 	{
 		TableSettings tableSettings = findOrCreateTableSettings(model);
 		String columnSortTag = tableSettings.getData(TableSettings.TAG_COLUMN_SORT_TAG);
@@ -90,9 +90,9 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		if (columnToSort < 0)
 			return;
 		
-		TableSettings tableSettings = findOrCreateTableSettings(model);
 		int modelColumn = tableToSort.convertColumnIndexToModel(columnToSort);
-		String sortDirectionCode = tableSettings.getData(TableSettings.TAG_COLUMN_SORT_DIRECTION);
+		String sortDirectionCode = getColumnSortDirection(model);
+
 		ORefList sortedRefs = model.getSortedRefs(modelColumn, sortDirectionCode);
 		for (int index = 0; index < tablesToSort.size(); ++index)
 		{
@@ -105,12 +105,18 @@ public class MultiTableRowSortController implements CommandExecutedListener
 		}
 	}
 	
-	private TableSettings findOrCreateTableSettings(SortableTableModel model)	throws Exception
+	private TableSettings findOrCreateTableSettings(SortableTableModel model) throws Exception
 	{
 		String uniqueTableIdentifier = model.getUniqueTableModelIdentifier();
 		return TableSettings.findOrCreate(getProject(), uniqueTableIdentifier);
 	}	
-	
+
+	public String getColumnSortDirection(SortableTableModel model) throws Exception
+	{
+		TableSettings tableSettings = findOrCreateTableSettings(model);
+		return tableSettings.getData(TableSettings.TAG_COLUMN_SORT_DIRECTION);
+	}
+
 	private void storeSameDataForAllTables(String columnSortTag, String columnSortDirection) throws Exception
 	{
 		for (TableWithRowHeightSaver table : tablesToSort)

@@ -20,11 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import java.util.Comparator;
-
 import org.miradi.dialogs.base.AbstractObjectTableModel;
+import org.miradi.dialogs.tablerenderers.SortableTableHeaderRenderer;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+
+import javax.swing.table.TableColumn;
+import java.util.Comparator;
 
 abstract public class SortableRowTable extends TableWithColumnWidthAndSequenceSaver
 {
@@ -41,6 +43,13 @@ abstract public class SortableRowTable extends TableWithColumnWidthAndSequenceSa
 		{
 			rowSortController = new MultiTableRowSortController(getProject());
 			rowSortController.addTableToSort(this);
+
+			SortableTableHeaderRenderer sortTableHeaderRenderer = new SortableTableHeaderRenderer(this);
+			for (int columnIndex = 0; columnIndex < getColumnCount(); ++columnIndex)
+			{
+				final TableColumn tableColumn = getColumnModel().getColumn(columnIndex);
+				tableColumn.setHeaderRenderer(sortTableHeaderRenderer);
+			}
 		}
 		catch(Exception e)
 		{
@@ -73,7 +82,12 @@ abstract public class SortableRowTable extends TableWithColumnWidthAndSequenceSa
 		int sortByModelColumn = convertColumnIndexToModel(sortByTableColumn);
 		return getAbstractObjectTableModel().createComparator(sortByModelColumn);
 	}
-	
+
+	public MultiTableRowSortController getRowSortController()
+	{
+		return rowSortController;
+	}
+
 	private AbstractObjectTableModel getAbstractObjectTableModel()
 	{
 		return (AbstractObjectTableModel) getModel();

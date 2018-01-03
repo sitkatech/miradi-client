@@ -43,6 +43,12 @@ abstract public class AbstractAssignmentSummaryTableModel extends PlanningViewAb
 		return true;
 	}
 
+	@Override
+	public boolean shouldSortRows()
+	{
+		return false;
+	}
+
 	public String getColumnTag(int modelColumn)
 	{
 		return "";

@@ -48,7 +48,7 @@ abstract public class SortableTableModel extends AbstractTableModel implements M
 		return new ORefList(sortedRefs);
 	}
 
-	protected boolean shouldSortRows()
+	public boolean shouldSortRows()
 	{
 		return true;
 	}
