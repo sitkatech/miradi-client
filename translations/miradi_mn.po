@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2017-12-14 04:31-0800\n"
+"POT-Creation-Date: 2018-01-03 03:31-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -2091,7 +2091,7 @@ msgstr ""
 msgid "All subtasks within this item will be removed as well."
 msgstr "Энэ зүйл дэх бүх дагалдах үүрэг мөн адил арилах болно."
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/utils/MultiTableRowSortController.java:142
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/utils/MultiTableRowSortController.java:148
 msgid "An Error Occurred During Sorting."
 msgstr "Сортлох явцад алдаа гарлаа."
 
@@ -3592,7 +3592,7 @@ msgstr "Алдаа"
 msgid "Error Creating: %s"
 msgstr "Алдаа үүсгэх: %s"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/utils/MultiTableRowSortController.java:193
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/utils/MultiTableRowSortController.java:199
 msgid "Error Occurred During Sorting"
 msgstr "Ангилахад алдаа гарлаа"
 
