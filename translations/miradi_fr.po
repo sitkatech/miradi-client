@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-03 03:31-0800\n"
+"POT-Creation-Date: 2018-01-03 09:31-0800\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/miradi-client/"
@@ -294,7 +294,7 @@ msgstr "%s données de terrain seront perdues pour les mesures"
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationManager.java:166
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationManager.java:167
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/main/MainWindow.java:1446
 msgid "(%s)"
 msgstr "(%s)"
@@ -3059,8 +3059,8 @@ msgstr "Facteur contribuant"
 msgid "Contributing Factor (Orange)"
 msgstr "Facteur contribuant (Orange)"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/questions/FactorModeQuestion.java:37
-msgid "Contributing Factors and Intermediate Results Only (default)"
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/questions/FactorModeQuestion.java:38
+msgid "Contributing Factors and Intermediate Results Only"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:106
@@ -4429,8 +4429,8 @@ msgstr "À l'avant"
 msgid "In Progress"
 msgstr "En cours"
 
-#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/questions/FactorModeQuestion.java:38
-msgid "Include Biophysical Factors and Results"
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/questions/FactorModeQuestion.java:37
+msgid "Include Biophysical Factors and Results (default)"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/questions/TargetModeQuestion.java:40
@@ -8413,6 +8413,12 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo5.java:69
 msgid "This migration changes default real status code to \"\""
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo44.java:69
+msgid ""
+"This migration changes the default diagram factor mode to include "
+"biophysical factors / results."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_5.0/workspace/source/org/miradi/migrations/forward/MigrationTo15.java:85
