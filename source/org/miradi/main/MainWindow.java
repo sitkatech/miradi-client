@@ -1354,7 +1354,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	{
 		public void commandExecuted(CommandExecutedEvent event)
 		{
-			if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_BIOPHYSICAL_FACTOR_MODE))
+			if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_FACTOR_MODE))
 				updateMenuOptions();
 		}
 	}

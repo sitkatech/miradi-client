@@ -805,7 +805,7 @@ public class Project implements ProjectInterface
 		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_DIAGRAM_FONT_FAMILY, FontFamiliyQuestion.ARIAL_CODE);
 		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_DIAGRAM_FONT_SIZE, FontSizeQuestion.getDefaultSizeCode());
 		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE, TargetModeQuestion.HUMAN_WELFARE_TARGET_CODE);
-		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_BIOPHYSICAL_FACTOR_MODE, FactorModeQuestion.DEFAULT_CODE);
+		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_FACTOR_MODE, FactorModeQuestion.DEFAULT_CODE);
 		setObjectData(getMetadata().getRef(), ProjectMetadata.TAG_DAY_COLUMNS_VISIBILITY, DayColumnsVisibilityQuestion.HIDE_DAY_COLUMNS_CODE);
 	}
 	
@@ -1455,6 +1455,6 @@ public class Project implements ProjectInterface
 	
 	public CommandExecutor commandExecutor;
 	
-	public static final int VERSION_LOW = 43;
-	public static final int VERSION_HIGH = 43;
+	public static final int VERSION_LOW = 44;
+	public static final int VERSION_HIGH = 44;
 }

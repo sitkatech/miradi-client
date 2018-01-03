@@ -38,7 +38,7 @@ public class MigrationTo18 extends NewlyAddedFieldsMigration
 	protected HashMap<String, String> createFieldsToLabelMapToModify()
 	{
 		HashMap<String, String> fieldsToAdd = new HashMap<String, String>();
-		fieldsToAdd.put(TAG_BIOPHYSICAL_FACTOR_MODE, EAM.text("Factor Mode"));
+		fieldsToAdd.put(TAG_FACTOR_MODE, EAM.text("Factor Mode"));
 		
 		return fieldsToAdd;
 	}
@@ -64,5 +64,5 @@ public class MigrationTo18 extends NewlyAddedFieldsMigration
 	public static final int VERSION_FROM = 17;
 	public static final int VERSION_TO = 18;
 
-    public static final String TAG_BIOPHYSICAL_FACTOR_MODE = "FactorMode";
+    public static final String TAG_FACTOR_MODE = "FactorMode";
 }

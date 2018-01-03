@@ -39,7 +39,7 @@ public class TestMigrationTo18 extends AbstractTestMigration
 
         RawObject rawMetadata = rawProject.findObject(metadataRef);
         assertNotNull(rawMetadata);
-        assertFalse("Field should have been removed during reverse migration?", rawMetadata.containsKey(MigrationTo18.TAG_BIOPHYSICAL_FACTOR_MODE));
+        assertFalse("Field should have been removed during reverse migration?", rawMetadata.containsKey(MigrationTo18.TAG_FACTOR_MODE));
 	}
 	
 	@Override

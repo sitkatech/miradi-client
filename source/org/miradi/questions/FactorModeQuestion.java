@@ -34,8 +34,8 @@ public class FactorModeQuestion extends StaticChoiceQuestion
 	public static ChoiceItem[] getChoiceItems()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem(DEFAULT_CODE, EAM.text("Contributing Factors and Intermediate Results Only (default)"), new ContributingFactorIcon()),
-				new ChoiceItem(BIOPHYSICAL_FACTOR_CODE, EAM.text("Include Biophysical Factors and Results"), new BiophysicalFactorIcon()),
+				new ChoiceItem(DEFAULT_CODE, EAM.text("Include Biophysical Factors and Results (default)"), new BiophysicalFactorIcon()),
+				new ChoiceItem(CONTRIBUTING_FACTOR_CODE, EAM.text("Contributing Factors and Intermediate Results Only"), new ContributingFactorIcon()),
 		};
 	}
 	
@@ -57,8 +57,8 @@ public class FactorModeQuestion extends StaticChoiceQuestion
 		if (code.equals(DEFAULT_CODE))
 			return READABLE_DEFAULT_CODE;
 		
-		if (code.equals(BIOPHYSICAL_FACTOR_CODE))
-			return READABLE_BIOPHYSICAL_FACTOR_CODE;
+		if (code.equals(CONTRIBUTING_FACTOR_CODE))
+			return READABLE_CONTRIBUTING_FACTOR_CODE;
 		
 		return getReadableAlternativeDefaultCode();
 	}
@@ -69,16 +69,16 @@ public class FactorModeQuestion extends StaticChoiceQuestion
 		if (code.equals(READABLE_DEFAULT_CODE))
 			return DEFAULT_CODE;
 		
-		if (code.equals(READABLE_BIOPHYSICAL_FACTOR_CODE))
-			return BIOPHYSICAL_FACTOR_CODE;
+		if (code.equals(READABLE_CONTRIBUTING_FACTOR_CODE))
+			return CONTRIBUTING_FACTOR_CODE;
 		
 		return code;
 	}
 
 	
 	public static final String DEFAULT_CODE = "";
-	public static final String BIOPHYSICAL_FACTOR_CODE = "BiophysicalFactorMode";
-	
-	public static final String READABLE_DEFAULT_CODE = "ContributingFactorsAndIntermediateResultsOnly";
-	public static final String READABLE_BIOPHYSICAL_FACTOR_CODE = "IncludeBiophysicalFactorsAndResults";
+	public static final String CONTRIBUTING_FACTOR_CODE = "ContributingFactorMode";
+
+	public static final String READABLE_DEFAULT_CODE = "IncludeBiophysicalFactorsAndResults";
+	public static final String READABLE_CONTRIBUTING_FACTOR_CODE = "ContributingFactorsAndIntermediateResultsOnly";
 }

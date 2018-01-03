@@ -40,7 +40,7 @@ public class ProjectSettingsPanel extends ObjectDataInputPanel
 		addField(createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE, targetModeQuestion));
 		
 		final ChoiceQuestion factorModeQuestion = StaticQuestionManager.getQuestion(FactorModeQuestion.class);
-		addField(createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_BIOPHYSICAL_FACTOR_MODE, factorModeQuestion));
+		addField(createChoiceField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_FACTOR_MODE, factorModeQuestion));
 
 		updateFieldsFromProject();
 	}

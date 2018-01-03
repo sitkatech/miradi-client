@@ -302,11 +302,11 @@ public class ProjectMetadata extends BaseObject
 		String code = getData(TAG_HUMAN_WELFARE_TARGET_MODE);
 		return code.equals(TargetModeQuestion.HUMAN_WELFARE_TARGET_CODE);
 	}
-		
+
 	public boolean isBiophysicalFactorMode()
 	{
-		String code = getData(TAG_BIOPHYSICAL_FACTOR_MODE);
-		return code.equals(FactorModeQuestion.BIOPHYSICAL_FACTOR_CODE);
+		String code = getData(TAG_FACTOR_MODE);
+		return code.equals(FactorModeQuestion.DEFAULT_CODE);
 	}
 
 	public String getThreatRatingMode()
@@ -440,5 +440,5 @@ public class ProjectMetadata extends BaseObject
 	
 	public static final String TAG_XENODATA_STRING_REF_MAP = "XenodataRefs";
 	public static final String TAG_HUMAN_WELFARE_TARGET_MODE = "TargetMode";
-	public static final String TAG_BIOPHYSICAL_FACTOR_MODE = "FactorMode";
+	public static final String TAG_FACTOR_MODE = "FactorMode";
 }

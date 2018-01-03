@@ -98,7 +98,7 @@ public class SingletonObjectExporter implements Xmpz2XmlConstants
 		writeExternalAppIds();
 		getWriter().writeNonOptionalCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion(), getMetadata().getThreatRatingMode());
 		getWriter().writeNonOptionalCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE, new TargetModeQuestion(), getMetadata().getData(ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE));
-		getWriter().writeNonOptionalCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_BIOPHYSICAL_FACTOR_MODE, new FactorModeQuestion(), getMetadata().getData(ProjectMetadata.TAG_BIOPHYSICAL_FACTOR_MODE));
+		getWriter().writeNonOptionalCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_FACTOR_MODE, new FactorModeQuestion(), getMetadata().getData(ProjectMetadata.TAG_FACTOR_MODE));
 
 		ChoiceQuestion budgetTimePeriodQuestion = StaticQuestionManager.getQuestion(BudgetTimePeriodQuestion.class);
 		getWriter().writeNonOptionalCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_WORKPLAN_TIME_UNIT, budgetTimePeriodQuestion, getMetadata().getData(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT));

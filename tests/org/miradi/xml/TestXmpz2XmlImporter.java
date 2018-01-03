@@ -210,7 +210,13 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 
 	public void testBiophysicalFactorMode() throws Exception
 	{
-		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_BIOPHYSICAL_FACTOR_MODE, FactorModeQuestion.BIOPHYSICAL_FACTOR_CODE);
+		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_FACTOR_MODE, FactorModeQuestion.DEFAULT_CODE);
+		validateUsingStringWriter();
+	}
+
+	public void testContributingFactorMode() throws Exception
+	{
+		getProject().fillObjectUsingCommand(getProject().getMetadata(), ProjectMetadata.TAG_FACTOR_MODE, FactorModeQuestion.CONTRIBUTING_FACTOR_CODE);
 		validateUsingStringWriter();
 	}
 

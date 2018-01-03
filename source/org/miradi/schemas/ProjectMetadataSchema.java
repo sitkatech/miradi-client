@@ -113,7 +113,7 @@ public class ProjectMetadataSchema extends BaseObjectSchema
 		createFieldSchemaRequiredChoice(ProjectMetadata.TAG_THREAT_RATING_MODE, ThreatRatingModeChoiceQuestion.class);
 		createFieldSchemaStringRefMap(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);
 		createFieldSchemaChoice(ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE, TargetModeQuestion.class);
-		createFieldSchemaChoice(ProjectMetadata.TAG_BIOPHYSICAL_FACTOR_MODE, FactorModeQuestion.class);
+		createFieldSchemaChoice(ProjectMetadata.TAG_FACTOR_MODE, FactorModeQuestion.class);
 		createFieldSchemaChoice(ProjectMetadata.TAG_WORK_PLAN_DIAGRAM_DATA_INCLUSION, DiagramObjectDataInclusionQuestion.class);
 		
 		createPseudoFieldSchemaString(ProjectMetadata.PSEUDO_TAG_PROJECT_FILENAME);

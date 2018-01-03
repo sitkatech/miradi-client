@@ -121,7 +121,12 @@ public class StringUtilities
 
 		return value;
 	}
-	
+
+	public static boolean isNullOrEmpty(final String value)
+	{
+		return value == null || value.isEmpty();
+	}
+
 	public static final String EMPTY_SPACE= " ";
 	public static final String EMPTY_LINE= "";
 	public static final String NEW_LINE = "\n";
