@@ -88,6 +88,9 @@ public class MiradiDialog extends JDialog
 
 		public void windowOpened(WindowEvent arg0)
 		{
+			// MRD-6127 - workaround for JDK-8190522 (& related)
+			window.removeWindowListener(this);
+			window.toFront();
 		}
 		
 		private Window window;
