@@ -22,10 +22,8 @@ package org.miradi.dialogs.progressReport;
 
 import org.miradi.dialogs.base.EditableObjectListTableSubPanel;
 import org.miradi.dialogs.base.EditableObjectRefsTableModel;
-import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objects.AbstractProgressReport;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
@@ -61,15 +59,6 @@ abstract public class AbstractProgressReportSubPanel extends EditableObjectListT
 		return super.doesSectionContainFieldWithTag(tagToUse);
 	}
 	
-	@Override
-	protected boolean shouldRefreshModel(CommandExecutedEvent event)
-	{
-		if (super.shouldRefreshModel(event))
-			return true;
-		
-		return event.isSetDataCommandWithThisTag(AbstractProgressReport.TAG_PROGRESS_DATE);
-	}
-
 	abstract protected EditableObjectRefsTableModel createTableModel(Project project);
 	abstract protected AbstractProgressReportTable createTable(MainWindow mainWindow, EditableObjectRefsTableModel model) throws Exception;
 }
