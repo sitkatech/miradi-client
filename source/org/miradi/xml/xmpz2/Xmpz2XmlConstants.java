@@ -313,6 +313,7 @@ public interface Xmpz2XmlConstants
 	public static final String BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATION_POOL = "BiodiversityTargetTaxonomyAssociationPool";
 	public static final String HUMAN_WELLBEING_TARGET_TAXONOMY_ASSOCIATION_POOL = "HumanWellbeingTargetTaxonomyAssociationPool";
 	public static final String BIOPHYSICAL_FACTOR_TAXONOMY_ASSOCIATION_POOL = "BiophysicalFactorTaxonomyAssociationPool";
+	public static final String BIOPHYSICAL_RESULT_TAXONOMY_ASSOCIATION_POOL = "BiophysicalResultTaxonomyAssociationPool";
 	public static final String CONTRIBUTING_FACTOR_TAXONOMY_ASSOCIATION_POOL = "ContributingFactorTaxonomyAssociationPool";
 	public static final String DIRECT_THREAT_TAXONOMY_ASSOCIATION_POOL = "DirectThreatTaxonomyAssociationPool";
 	public static final String STRATEGY_TAXONOMY_ASSOCIATION_POOL = "StrategyTaxonomyAssociationPool";

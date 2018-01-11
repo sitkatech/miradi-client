@@ -58,6 +58,10 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		{
 			addTaxonomyFields(BiophysicalFactorSchema.getObjectType());
 		}
+		if (factorToEdit.isBiophysicalResult())
+		{
+			addTaxonomyFields(BiophysicalResultSchema.getObjectType());
+		}
 		if (factorToEdit.isCause())
 		{
 			addField(createCheckBoxField(CauseSchema.getObjectType(), Cause.TAG_IS_DIRECT_THREAT, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE));

@@ -119,6 +119,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(HUMAN_WELLBEING_TARGET_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(BIOPHYSICAL_FACTOR_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(BIOPHYSICAL_RESULT_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(CONTRIBUTING_FACTOR_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(DIRECT_THREAT_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(STRATEGY_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
@@ -178,6 +179,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		elementNames.add(createOptionalSchemaElement(BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(HUMAN_WELLBEING_TARGET_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(BIOPHYSICAL_FACTOR_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(BIOPHYSICAL_RESULT_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(CONTRIBUTING_FACTOR_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(DIRECT_THREAT_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(STRATEGY_TAXONOMY_ASSOCIATION_POOL));
@@ -1161,6 +1163,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		if (BiophysicalFactor.is(baseObjectSchema.getType()))
 			return new BiophysicalFactorSchemaWriter(this, baseObjectSchema);
+
+		if (BiophysicalResult.is(baseObjectSchema.getType()))
+			return new BiophysicalResultSchemaWriter(this, baseObjectSchema);
 
 		if (Cause.is(baseObjectSchema.getType()))
 			return new CauseSchemaWriter(this, baseObjectSchema);

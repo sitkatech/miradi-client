@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Jan 11 11:59:25 GMT 2018 $
+# $LastChangedDate: Thu Jan 11 15:53:18 GMT 2018 $
 # $LastChangedRevision: 237 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/237'
 start = ConservationProject.element
@@ -67,6 +67,7 @@ ConservationProject.element = element miradi:ConservationProject
   BiodiversityTargetTaxonomyAssociationPool.element? &
   HumanWellbeingTargetTaxonomyAssociationPool.element? &
   BiophysicalFactorTaxonomyAssociationPool.element? &
+  BiophysicalResultTaxonomyAssociationPool.element? &
   ContributingFactorTaxonomyAssociationPool.element? &
   DirectThreatTaxonomyAssociationPool.element? &
   StrategyTaxonomyAssociationPool.element? &
@@ -793,7 +794,8 @@ BiophysicalResult.element = element miradi:BiophysicalResult
   element miradi:BiophysicalResultIdentifier { text }? &
   element miradi:BiophysicalResultIndicatorIds { IndicatorId.element* }? &
   element miradi:BiophysicalResultName { formatted_text }? &
-  element miradi:BiophysicalResultObjectiveIds { ObjectiveId.element* }?
+  element miradi:BiophysicalResultObjectiveIds { ObjectiveId.element* }? &
+  TaxonomyClassificationContainer.element?
 }
 
 TimeframePool.element = element miradi:TimeframePool { Timeframe.element* }
@@ -1200,6 +1202,7 @@ MiradiShareProjectDataTaxonomyAssociationPool.element = element miradi:MiradiSha
 BiodiversityTargetTaxonomyAssociationPool.element = element miradi:BiodiversityTargetTaxonomyAssociationPool { TaxonomyAssociation.element* }
 HumanWellbeingTargetTaxonomyAssociationPool.element = element miradi:HumanWellbeingTargetTaxonomyAssociationPool { TaxonomyAssociation.element* }
 BiophysicalFactorTaxonomyAssociationPool.element = element miradi:BiophysicalFactorTaxonomyAssociationPool { TaxonomyAssociation.element* }
+BiophysicalResultTaxonomyAssociationPool.element = element miradi:BiophysicalResultTaxonomyAssociationPool { TaxonomyAssociation.element* }
 ContributingFactorTaxonomyAssociationPool.element = element miradi:ContributingFactorTaxonomyAssociationPool { TaxonomyAssociation.element* }
 DirectThreatTaxonomyAssociationPool.element = element miradi:DirectThreatTaxonomyAssociationPool { TaxonomyAssociation.element* }
 StrategyTaxonomyAssociationPool.element = element miradi:StrategyTaxonomyAssociationPool { TaxonomyAssociation.element* }

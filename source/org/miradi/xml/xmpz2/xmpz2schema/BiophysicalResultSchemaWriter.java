@@ -18,43 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.schemas;
+package org.miradi.xml.xmpz2.xmpz2schema;
 
-import org.miradi.objecthelpers.ObjectType;
+import org.miradi.schemas.BaseObjectSchema;
 
-public class BiophysicalResultSchema extends FactorSchema
+public class BiophysicalResultSchemaWriter extends BaseObjectSchemaWriterWithTaxonomyClassificationContainer
 {
-	public BiophysicalResultSchema()
+	public BiophysicalResultSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{
-		super();
+		super(creatorToUse, baseObjectSchemaToUse);
 	}
-	
-	@Override
-	protected void fillFieldSchemas()
-	{
-		super.fillFieldSchemas();
-		
-	    writeIndicatorIds();
-		writeObjectiveIds();
-		createTaxonomyClassificationSchemaField();
-	}
-
-	public static int getObjectType()
-	{
-		return ObjectType.BIOPHYSICAL_RESULT;
-	}
-	
-	@Override
-	public int getType()
-	{
-		return getObjectType();
-	}
-
-	@Override
-	public String getObjectName()
-	{
-		return OBJECT_NAME;
-	}
-	
-	public static final String OBJECT_NAME = "BiophysicalResult";
 }

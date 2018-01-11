@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.migrations;
 
 import org.miradi.migrations.forward.MigrationTo45;
+import org.miradi.objects.BiophysicalResult;
 import org.miradi.objects.ConceptualModelDiagram;
 
 public class TestMigrationTo45 extends AbstractTestMigration
@@ -41,6 +42,19 @@ public class TestMigrationTo45 extends AbstractTestMigration
         RawObject rawConceptualModelDiagram = rawProject.findObject(conceptualModelDiagram.getRef());
         assertNotNull(rawConceptualModelDiagram);
 		assertFalse("Field should have been removed during reverse migration?", rawConceptualModelDiagram.containsKey(MigrationTo45.TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
+	}
+	
+	public void testBiophysicalResultTaxonomyClassificationsRemovedAfterReverseMigration() throws Exception
+	{
+		BiophysicalResult biophysicalResult = getProject().createBiophysicalResult();
+
+		String taxonomyClassifications = biophysicalResult.getData(MigrationTo45.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
+		assertNotNull(taxonomyClassifications);
+
+		RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo45.VERSION_TO));
+        RawObject rawBiophysicalResult = rawProject.findObject(biophysicalResult.getRef());
+        assertNotNull(rawBiophysicalResult);
+		assertFalse("Field should have been removed during reverse migration?", rawBiophysicalResult.containsKey(MigrationTo45.TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
 	}
 	
 	@Override
