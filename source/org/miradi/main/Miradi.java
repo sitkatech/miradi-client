@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2017, Foundations of Success, Bethesda, Maryland
+Copyright 2005-2018, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
 
@@ -323,7 +323,7 @@ public class Miradi
 		private String[] commandLineArgs;
 	}
 
-    public static final String LANGUAGE_PACK_VERSION = "5.0";
+    public static final String LANGUAGE_PACK_VERSION = "4.5";
     public static final String MAIN_VERSION = LANGUAGE_PACK_VERSION + ".0";
 
     public static final String LANGUAGE_PACK_PREFIX = "MiradiContent-" + LANGUAGE_PACK_VERSION + "-";

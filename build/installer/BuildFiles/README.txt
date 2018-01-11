@@ -1,10 +1,10 @@
 Miradi (TM)
 
-Copyright 2005-2017, Foundations of Success, Bethesda, Maryland
+Copyright 2005-2018, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
 
-VERSION 5.0.0
+VERSION 4.5.0
 
 License and Copying
 
@@ -163,9 +163,9 @@ lost when exporting to these older formats, but a warning dialog will
 indicate when that is the case.
 
 
-Notable changes in 5.5.0:
+Notable changes in 4.5.0:
 
-- TBD
+- Tags are now diagram specific
 
 
 Notable changes in 4.4.0:

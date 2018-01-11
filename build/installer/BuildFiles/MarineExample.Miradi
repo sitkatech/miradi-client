@@ -1,8 +1,8 @@
-﻿MiradiProjectFile 39 39
+﻿MiradiProjectFile 44 44
 UV	Version=61
 UP	HighestUsedNodeId=2048
 UP	ProjectMetadataId=0
-UL	LastModified=2017-10-13 05:42
+UL	LastModified=2018-01-11 10:13
 CO	1:1
 UO	1:1	Label=Scope
 CO	1:2
@@ -801,7 +801,6 @@ UO	11:0	DiagramFontFamily=Arial
 UO	11:0	DiagramFontSize=12
 UO	11:0	ExpectedEndDate=2017-12-31
 UO	11:0	ExtendedProgressReportRefs={"References":[{"ObjectType":70,"ObjectId":1930},{"ObjectType":70,"ObjectId":2047}]}
-UO	11:0	FactorMode=BiophysicalFactorMode
 UO	11:0	FinancialComments=Funds are in place for this year, need to fund raise for 3rd year of this phase of the project.
 UO	11:0	HumanPopulation=573
 UO	11:0	HumanPopulationNotes=Latest census shows 573 residents in Eastern Bay Village. Number does not include villagers living in other parts of the country that return to the village for stays of fewer than 3 months.
@@ -818,7 +817,7 @@ UO	11:0	ProjectDescription=(<i>This is the example project used by Miradi Deskto
 UO	11:0	ProjectLanguage=en
 UO	11:0	ProjectLatitude=46.7
 UO	11:0	ProjectLongitude=7.9
-UO	11:0	ProjectName=Miradi Marine Example 5.0
+UO	11:0	ProjectName=Miradi Marine Example 4.5
 UO	11:0	ProjectScope=The marine resources of Eastern Bay Village&apos;s traditional fishing grounds.
 UO	11:0	ProjectURL=www.eastbaymarine.org
 UO	11:0	ProjectVision=Marine resources of the Eastern Bay are abundant and healthy, ensuring their ecological viability and their availability for our grandchildren&apos;s grandchildren to use and enjoy.
@@ -1388,10 +1387,12 @@ UO	18:1003	WrappedFactorRef={"ObjectType":20,"ObjectId":1002}
 CO	18:102
 UO	18:102	Location={"X":60,"Y":300}
 UO	18:102	Size={"Height":60,"Width":120}
+UO	18:102	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":497},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:102	WrappedFactorRef={"ObjectType":20,"ObjectId":101}
 CO	18:106
 UO	18:106	Location={"X":60,"Y":210}
 UO	18:106	Size={"Height":60,"Width":120}
+UO	18:106	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":497},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:106	WrappedFactorRef={"ObjectType":20,"ObjectId":105}
 CO	18:110
 UO	18:110	FontStyle=<B>
@@ -1399,94 +1400,117 @@ UO	18:110	GroupBoxChildrenRefs={"References":[{"ObjectType":18,"ObjectId":102},{
 UO	18:110	HeaderHeight=3
 UO	18:110	Location={"X":45,"Y":165}
 UO	18:110	Size={"Height":210,"Width":150}
+UO	18:110	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":497},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:110	WrappedFactorRef={"ObjectType":35,"ObjectId":109}
 CO	18:113
 UO	18:113	Location={"X":270,"Y":240}
 UO	18:113	Size={"Height":60,"Width":150}
+UO	18:113	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":497},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:113	WrappedFactorRef={"ObjectType":20,"ObjectId":112}
 CO	18:117
 UO	18:117	Location={"X":75,"Y":660}
 UO	18:117	Size={"Height":60,"Width":120}
+UO	18:117	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":496},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:117	WrappedFactorRef={"ObjectType":20,"ObjectId":116}
 CO	18:1197
 UO	18:1197	Location={"X":705,"Y":660}
 UO	18:1197	Size={"Height":60,"Width":120}
+UO	18:1197	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":496},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1197	WrappedFactorRef={"ObjectType":65,"ObjectId":1196}
 CO	18:1205
 UO	18:1205	Location={"X":720,"Y":15}
 UO	18:1205	Size={"Height":60,"Width":120}
+UO	18:1205	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1205	WrappedFactorRef={"ObjectType":65,"ObjectId":1204}
 CO	18:1217
 UO	18:1217	Location={"X":735,"Y":225}
 UO	18:1217	Size={"Height":60,"Width":120}
+UO	18:1217	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1217	WrappedFactorRef={"ObjectType":65,"ObjectId":1216}
 CO	18:1228
 UO	18:1228	Location={"X":570,"Y":15}
 UO	18:1228	Size={"Height":60,"Width":120}
+UO	18:1228	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1228	WrappedFactorRef={"ObjectType":20,"ObjectId":1227}
 CO	18:1237
 UO	18:1237	Location={"X":645,"Y":105}
 UO	18:1237	Size={"Height":60,"Width":120}
+UO	18:1237	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1237	WrappedFactorRef={"ObjectType":20,"ObjectId":1236}
 CO	18:128
 UO	18:128	Location={"X":420,"Y":135}
 UO	18:128	Size={"Height":60,"Width":120}
+UO	18:128	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1668}]}
 UO	18:128	WrappedFactorRef={"ObjectType":20,"ObjectId":127}
 CO	18:1305
 UO	18:1305	Location={"X":795,"Y":105}
 UO	18:1305	Size={"Height":60,"Width":120}
+UO	18:1305	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1305	WrappedFactorRef={"ObjectType":65,"ObjectId":1304}
 CO	18:1316
 UO	18:1316	Location={"X":630,"Y":405}
 UO	18:1316	Size={"Height":30,"Width":180}
+UO	18:1316	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1667},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1316	WrappedFactorRef={"ObjectType":26,"ObjectId":1315}
 CO	18:1318
 UO	18:1318	Location={"X":720,"Y":150}
 UO	18:1318	Size={"Height":90,"Width":120}
+UO	18:1318	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1318	WrappedFactorRef={"ObjectType":66,"ObjectId":1317}
 CO	18:132
 UO	18:132	Location={"X":60,"Y":420}
 UO	18:132	Size={"Height":60,"Width":180}
+UO	18:132	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1665},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:132	WrappedFactorRef={"ObjectType":21,"ObjectId":131}
 CO	18:136
 UO	18:136	Location={"X":75,"Y":750}
 UO	18:136	Size={"Height":60,"Width":180}
+UO	18:136	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":496},{"ObjectType":47,"ObjectId":1666},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:136	WrappedFactorRef={"ObjectType":21,"ObjectId":135}
 CO	18:140
 UO	18:140	Location={"X":435,"Y":750}
 UO	18:140	Size={"Height":60,"Width":150}
+UO	18:140	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":496},{"ObjectType":47,"ObjectId":1665},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:140	WrappedFactorRef={"ObjectType":21,"ObjectId":139}
 CO	18:1427
 UO	18:1427	Location={"X":795,"Y":555}
 UO	18:1427	Size={"Height":60,"Width":120}
+UO	18:1427	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1427	WrappedFactorRef={"ObjectType":65,"ObjectId":1426}
 CO	18:1435
 UO	18:1435	Location={"X":645,"Y":555}
 UO	18:1435	Size={"Height":60,"Width":120}
+UO	18:1435	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1435	WrappedFactorRef={"ObjectType":65,"ObjectId":1434}
 CO	18:1444
 UO	18:1444	Location={"X":735,"Y":465}
 UO	18:1444	Size={"Height":60,"Width":120}
+UO	18:1444	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1444	WrappedFactorRef={"ObjectType":20,"ObjectId":1443}
 CO	18:144
 UO	18:144	Location={"X":225,"Y":150}
 UO	18:144	Size={"Height":60,"Width":150}
+UO	18:144	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":497},{"ObjectType":47,"ObjectId":1665},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:144	WrappedFactorRef={"ObjectType":21,"ObjectId":143}
 CO	18:1453
 UO	18:1453	Location={"X":780,"Y":750}
 UO	18:1453	Size={"Height":60,"Width":150}
+UO	18:1453	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1453	WrappedFactorRef={"ObjectType":21,"ObjectId":1452}
 CO	18:1457
 UO	18:1457	Location={"X":225,"Y":390}
 UO	18:1457	Size={"Height":60,"Width":120}
+UO	18:1457	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1666},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1457	WrappedFactorRef={"ObjectType":23,"ObjectId":1456}
 CO	18:1459
 UO	18:1459	Location={"X":225,"Y":300}
 UO	18:1459	Size={"Height":60,"Width":120}
+UO	18:1459	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1666},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1459	WrappedFactorRef={"ObjectType":23,"ObjectId":1458}
 CO	18:1468
 UO	18:1468	Location={"X":885,"Y":15}
 UO	18:1468	Size={"Height":60,"Width":240}
+UO	18:1468	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1468	WrappedFactorRef={"ObjectType":26,"ObjectId":1467}
 CO	18:148
 UO	18:148	BackgroundColor=White
@@ -1494,59 +1518,72 @@ UO	18:148	FontSize=1.75
 UO	18:148	FontStyle=<B>
 UO	18:148	Location={"X":45,"Y":15}
 UO	18:148	Size={"Height":60,"Width":330}
+UO	18:148	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":496},{"ObjectType":47,"ObjectId":497},{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:148	WrappedFactorRef={"ObjectType":26,"ObjectId":147}
 CO	18:1581
 UO	18:1581	Location={"X":540,"Y":30}
 UO	18:1581	Size={"Height":30,"Width":150}
+UO	18:1581	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1668},{"ObjectType":47,"ObjectId":1670}]}
 UO	18:1581	WrappedFactorRef={"ObjectType":3,"ObjectId":440}
 CO	18:1582
 UO	18:1582	Location={"X":540,"Y":60}
 UO	18:1582	Size={"Height":30,"Width":150}
+UO	18:1582	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1668},{"ObjectType":47,"ObjectId":1670}]}
 UO	18:1582	WrappedFactorRef={"ObjectType":3,"ObjectId":442}
 CO	18:1583
 UO	18:1583	Location={"X":540,"Y":90}
 UO	18:1583	Size={"Height":30,"Width":150}
+UO	18:1583	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1668},{"ObjectType":47,"ObjectId":1670}]}
 UO	18:1583	WrappedFactorRef={"ObjectType":3,"ObjectId":450}
 CO	18:1631
 UO	18:1631	FontStyle=<B>
 UO	18:1631	Location={"X":525,"Y":105}
 UO	18:1631	Size={"Height":30,"Width":90}
+UO	18:1631	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1668},{"ObjectType":47,"ObjectId":1670}]}
 UO	18:1631	WrappedFactorRef={"ObjectType":26,"ObjectId":1584}
 CO	18:1632
 UO	18:1632	FontStyle=<B>
 UO	18:1632	Location={"X":225,"Y":105}
 UO	18:1632	Size={"Height":30,"Width":90}
+UO	18:1632	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1668},{"ObjectType":47,"ObjectId":1670}]}
 UO	18:1632	WrappedFactorRef={"ObjectType":26,"ObjectId":1585}
 CO	18:1633
 UO	18:1633	FontStyle=<B>
 UO	18:1633	Location={"X":60,"Y":105}
 UO	18:1633	Size={"Height":30,"Width":90}
+UO	18:1633	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1668},{"ObjectType":47,"ObjectId":1670}]}
 UO	18:1633	WrappedFactorRef={"ObjectType":26,"ObjectId":1586}
 CO	18:1634
 UO	18:1634	FontStyle=<B>
 UO	18:1634	Location={"X":855,"Y":105}
 UO	18:1634	Size={"Height":30,"Width":90}
+UO	18:1634	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1668},{"ObjectType":47,"ObjectId":1670}]}
 UO	18:1634	WrappedFactorRef={"ObjectType":26,"ObjectId":1587}
 CO	18:1635
 UO	18:1635	Location={"X":660,"Y":225}
 UO	18:1635	Size={"Height":90,"Width":120}
+UO	18:1635	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1635	WrappedFactorRef={"ObjectType":25,"ObjectId":1600}
 CO	18:1636
 UO	18:1636	FontColor=#0000CC
 UO	18:1636	Location={"X":660,"Y":360}
 UO	18:1636	Size={"Height":60,"Width":120}
+UO	18:1636	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1666},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1636	WrappedFactorRef={"ObjectType":23,"ObjectId":1601}
 CO	18:1637
 UO	18:1637	Location={"X":210,"Y":225}
 UO	18:1637	Size={"Height":90,"Width":120}
+UO	18:1637	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1665},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1637	WrappedFactorRef={"ObjectType":23,"ObjectId":1614}
 CO	18:1638
 UO	18:1638	Location={"X":510,"Y":225}
 UO	18:1638	Size={"Height":90,"Width":120}
+UO	18:1638	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1665},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1638	WrappedFactorRef={"ObjectType":23,"ObjectId":1628}
 CO	18:1639
 UO	18:1639	Location={"X":360,"Y":225}
 UO	18:1639	Size={"Height":90,"Width":120}
+UO	18:1639	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1665},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1639	WrappedFactorRef={"ObjectType":23,"ObjectId":1629}
 CO	18:1658
 UO	18:1658	BackgroundColor=LightYellow
@@ -1554,62 +1591,77 @@ UO	18:1658	FontColor=#0000CC
 UO	18:1658	FontStyle=<B>
 UO	18:1658	Location={"X":510,"Y":360}
 UO	18:1658	Size={"Height":60,"Width":120}
+UO	18:1658	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1666},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1658	WrappedFactorRef={"ObjectType":35,"ObjectId":1657}
 CO	18:1663
 UO	18:1663	Location={"X":300,"Y":360}
 UO	18:1663	Size={"Height":60,"Width":180}
+UO	18:1663	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1666},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1663	WrappedFactorRef={"ObjectType":26,"ObjectId":1662}
 CO	18:182
 UO	18:182	Location={"X":840,"Y":240}
 UO	18:182	Size={"Height":60,"Width":120}
+UO	18:182	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":497},{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:182	WrappedFactorRef={"ObjectType":22,"ObjectId":33}
 CO	18:183
 UO	18:183	Location={"X":30,"Y":240}
 UO	18:183	Size={"Height":60,"Width":150}
+UO	18:183	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":497},{"ObjectType":47,"ObjectId":1665},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:183	WrappedFactorRef={"ObjectType":21,"ObjectId":143}
 CO	18:1869
 UO	18:1869	Location={"X":345,"Y":15}
 UO	18:1869	Size={"Height":60,"Width":150}
+UO	18:1869	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1869	WrappedFactorRef={"ObjectType":21,"ObjectId":1868}
 CO	18:1933
 UO	18:1933	Location={"X":570,"Y":255}
 UO	18:1933	Size={"Height":30,"Width":180}
+UO	18:1933	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1668},{"ObjectType":47,"ObjectId":2048}]}
 UO	18:1933	WrappedFactorRef={"ObjectType":3,"ObjectId":1872}
 CO	18:1935
 UO	18:1935	Location={"X":150,"Y":255}
 UO	18:1935	Size={"Height":30,"Width":120}
+UO	18:1935	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1668},{"ObjectType":47,"ObjectId":2048}]}
 UO	18:1935	WrappedFactorRef={"ObjectType":3,"ObjectId":1876}
 CO	18:1937
 UO	18:1937	Location={"X":570,"Y":315}
 UO	18:1937	Size={"Height":60,"Width":210}
+UO	18:1937	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1937	WrappedFactorRef={"ObjectType":26,"ObjectId":1936}
 CO	18:1993
 UO	18:1993	Location={"X":210,"Y":120}
 UO	18:1993	Size={"Height":60,"Width":120}
+UO	18:1993	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":497},{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1993	WrappedFactorRef={"ObjectType":22,"ObjectId":33}
 CO	18:1994
 UO	18:1994	Location={"X":540,"Y":120}
 UO	18:1994	Size={"Height":60,"Width":120}
+UO	18:1994	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1994	WrappedFactorRef={"ObjectType":22,"ObjectId":37}
 CO	18:1995
 UO	18:1995	Location={"X":45,"Y":120}
 UO	18:1995	Size={"Height":60,"Width":120}
+UO	18:1995	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1995	WrappedFactorRef={"ObjectType":22,"ObjectId":30}
 CO	18:1996
 UO	18:1996	Location={"X":705,"Y":120}
 UO	18:1996	Size={"Height":60,"Width":120}
+UO	18:1996	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":496},{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1996	WrappedFactorRef={"ObjectType":22,"ObjectId":39}
 CO	18:1997
 UO	18:1997	Location={"X":375,"Y":120}
 UO	18:1997	Size={"Height":60,"Width":120}
+UO	18:1997	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:1997	WrappedFactorRef={"ObjectType":22,"ObjectId":35}
 CO	18:1998
 UO	18:1998	Location={"X":210,"Y":195}
 UO	18:1998	Size={"Height":30,"Width":120}
+UO	18:1998	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1668},{"ObjectType":47,"ObjectId":2048}]}
 UO	18:1998	WrappedFactorRef={"ObjectType":3,"ObjectId":1881}
 CO	18:1999
 UO	18:1999	Location={"X":705,"Y":195}
 UO	18:1999	Size={"Height":30,"Width":120}
+UO	18:1999	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1668},{"ObjectType":47,"ObjectId":2048}]}
 UO	18:1999	WrappedFactorRef={"ObjectType":3,"ObjectId":1866}
 CO	18:2001
 UO	18:2001	BackgroundColor=LightYellow
@@ -1617,54 +1669,67 @@ UO	18:2001	FontSize=1.75
 UO	18:2001	FontStyle=<B>
 UO	18:2001	Location={"X":15,"Y":15}
 UO	18:2001	Size={"Height":60,"Width":300}
+UO	18:2001	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:2001	WrappedFactorRef={"ObjectType":26,"ObjectId":2000}
 CO	18:2012
 UO	18:2012	Location={"X":960,"Y":750}
 UO	18:2012	Size={"Height":60,"Width":150}
+UO	18:2012	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:2012	WrappedFactorRef={"ObjectType":21,"ObjectId":1868}
 CO	18:2020
 UO	18:2020	Location={"X":525,"Y":195}
 UO	18:2020	Size={"Height":30,"Width":150}
+UO	18:2020	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1668},{"ObjectType":47,"ObjectId":2048}]}
 UO	18:2020	WrappedFactorRef={"ObjectType":3,"ObjectId":2019}
 CO	18:2022
 UO	18:2022	Location={"X":375,"Y":195}
 UO	18:2022	Size={"Height":30,"Width":120}
+UO	18:2022	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1668},{"ObjectType":47,"ObjectId":2048}]}
 UO	18:2022	WrappedFactorRef={"ObjectType":3,"ObjectId":2021}
 CO	18:2025
 UO	18:2025	Location={"X":45,"Y":225}
 UO	18:2025	Size={"Height":30,"Width":120}
+UO	18:2025	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1668},{"ObjectType":47,"ObjectId":2048}]}
 UO	18:2025	WrappedFactorRef={"ObjectType":3,"ObjectId":2024}
 CO	18:2026
 UO	18:2026	Location={"X":45,"Y":195}
 UO	18:2026	Size={"Height":30,"Width":120}
+UO	18:2026	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1668},{"ObjectType":47,"ObjectId":2048}]}
 UO	18:2026	WrappedFactorRef={"ObjectType":3,"ObjectId":2023}
 CO	18:256
 UO	18:256	Location={"X":900,"Y":165}
 UO	18:256	Size={"Height":60,"Width":120}
+UO	18:256	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":496},{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:256	WrappedFactorRef={"ObjectType":22,"ObjectId":39}
 CO	18:258
 UO	18:258	Location={"X":555,"Y":150}
 UO	18:258	Size={"Height":90,"Width":120}
+UO	18:258	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1665},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:258	WrappedFactorRef={"ObjectType":25,"ObjectId":257}
 CO	18:259
 UO	18:259	Location={"X":375,"Y":45}
 UO	18:259	Size={"Height":60,"Width":150}
+UO	18:259	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":496},{"ObjectType":47,"ObjectId":1665},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:259	WrappedFactorRef={"ObjectType":21,"ObjectId":139}
 CO	18:261
 UO	18:261	Location={"X":390,"Y":150}
 UO	18:261	Size={"Height":90,"Width":120}
+UO	18:261	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1666},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:261	WrappedFactorRef={"ObjectType":23,"ObjectId":260}
 CO	18:262
 UO	18:262	Location={"X":15,"Y":390}
 UO	18:262	Size={"Height":60,"Width":180}
+UO	18:262	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":496},{"ObjectType":47,"ObjectId":1666},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:262	WrappedFactorRef={"ObjectType":21,"ObjectId":135}
 CO	18:264
 UO	18:264	Location={"X":225,"Y":150}
 UO	18:264	Size={"Height":90,"Width":120}
+UO	18:264	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1666},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:264	WrappedFactorRef={"ObjectType":23,"ObjectId":263}
 CO	18:266
 UO	18:266	Location={"X":60,"Y":150}
 UO	18:266	Size={"Height":90,"Width":120}
+UO	18:266	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1667},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:266	WrappedFactorRef={"ObjectType":23,"ObjectId":265}
 CO	18:280
 UO	18:280	Location={"X":900,"Y":600}
@@ -1685,6 +1750,7 @@ UO	18:294	WrappedFactorRef={"ObjectType":21,"ObjectId":293}
 CO	18:31
 UO	18:31	Location={"X":975,"Y":225}
 UO	18:31	Size={"Height":60,"Width":120}
+UO	18:31	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:31	WrappedFactorRef={"ObjectType":22,"ObjectId":30}
 CO	18:322
 UO	18:322	Location={"X":195,"Y":405}
@@ -1713,61 +1779,75 @@ UO	18:344	WrappedFactorRef={"ObjectType":21,"ObjectId":343}
 CO	18:349
 UO	18:349	Location={"X":600,"Y":225}
 UO	18:349	Size={"Height":90,"Width":120}
+UO	18:349	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:349	WrappedFactorRef={"ObjectType":25,"ObjectId":348}
 CO	18:34
 UO	18:34	Location={"X":975,"Y":330}
 UO	18:34	Size={"Height":60,"Width":120}
+UO	18:34	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":497},{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:34	WrappedFactorRef={"ObjectType":22,"ObjectId":33}
 CO	18:351
 UO	18:351	FontColor=#0000CC
 UO	18:351	Location={"X":330,"Y":360}
 UO	18:351	Size={"Height":90,"Width":120}
+UO	18:351	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1667},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:351	WrappedFactorRef={"ObjectType":23,"ObjectId":350}
 CO	18:353
 UO	18:353	FontColor=#0000CC
 UO	18:353	Location={"X":165,"Y":360}
 UO	18:353	Size={"Height":90,"Width":120}
+UO	18:353	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1667},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:353	WrappedFactorRef={"ObjectType":23,"ObjectId":352}
 CO	18:354
 UO	18:354	Location={"X":15,"Y":105}
 UO	18:354	Size={"Height":60,"Width":180}
+UO	18:354	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1665},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:354	WrappedFactorRef={"ObjectType":21,"ObjectId":131}
 CO	18:355
 UO	18:355	Location={"X":810,"Y":75}
 UO	18:355	Size={"Height":60,"Width":120}
+UO	18:355	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:355	WrappedFactorRef={"ObjectType":22,"ObjectId":30}
 CO	18:356
 UO	18:356	Location={"X":810,"Y":240}
 UO	18:356	Size={"Height":60,"Width":120}
+UO	18:356	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:356	WrappedFactorRef={"ObjectType":22,"ObjectId":35}
 CO	18:358
 UO	18:358	FontColor=#0000CC
 UO	18:358	Location={"X":495,"Y":360}
 UO	18:358	Size={"Height":90,"Width":120}
+UO	18:358	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1667},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:358	WrappedFactorRef={"ObjectType":23,"ObjectId":357}
 CO	18:360
 UO	18:360	Location={"X":45,"Y":225}
 UO	18:360	Size={"Height":90,"Width":120}
+UO	18:360	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1665},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:360	WrappedFactorRef={"ObjectType":23,"ObjectId":359}
 CO	18:36
 UO	18:36	Location={"X":975,"Y":420}
 UO	18:36	Size={"Height":60,"Width":120}
+UO	18:36	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:36	WrappedFactorRef={"ObjectType":22,"ObjectId":35}
 CO	18:376
 UO	18:376	Location={"X":405,"Y":225}
 UO	18:376	Size={"Height":90,"Width":120}
+UO	18:376	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1665},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:376	WrappedFactorRef={"ObjectType":23,"ObjectId":375}
 CO	18:380
 UO	18:380	Location={"X":225,"Y":225}
 UO	18:380	Size={"Height":90,"Width":120}
+UO	18:380	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1665},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:380	WrappedFactorRef={"ObjectType":23,"ObjectId":379}
 CO	18:386
 UO	18:386	Location={"X":405,"Y":90}
 UO	18:386	Size={"Height":90,"Width":120}
+UO	18:386	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1666},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:386	WrappedFactorRef={"ObjectType":23,"ObjectId":385}
 CO	18:38
 UO	18:38	Location={"X":975,"Y":555}
 UO	18:38	Size={"Height":60,"Width":120}
+UO	18:38	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:38	WrappedFactorRef={"ObjectType":22,"ObjectId":37}
 CO	18:404
 UO	18:404	BackgroundColor=LightYellow
@@ -1775,6 +1855,7 @@ UO	18:404	FontSize=1.75
 UO	18:404	FontStyle=<B>
 UO	18:404	Location={"X":15,"Y":15}
 UO	18:404	Size={"Height":60,"Width":300}
+UO	18:404	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:404	WrappedFactorRef={"ObjectType":26,"ObjectId":403}
 CO	18:406
 UO	18:406	BackgroundColor=LightYellow
@@ -1782,6 +1863,7 @@ UO	18:406	FontSize=1.75
 UO	18:406	FontStyle=<B>
 UO	18:406	Location={"X":15,"Y":15}
 UO	18:406	Size={"Height":60,"Width":270}
+UO	18:406	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:406	WrappedFactorRef={"ObjectType":26,"ObjectId":405}
 CO	18:408
 UO	18:408	BackgroundColor=LightYellow
@@ -1789,100 +1871,122 @@ UO	18:408	FontSize=1.75
 UO	18:408	FontStyle=<B>
 UO	18:408	Location={"X":15,"Y":15}
 UO	18:408	Size={"Height":60,"Width":480}
+UO	18:408	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:408	WrappedFactorRef={"ObjectType":26,"ObjectId":407}
 CO	18:40
 UO	18:40	Location={"X":975,"Y":660}
 UO	18:40	Size={"Height":60,"Width":120}
+UO	18:40	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":496},{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:40	WrappedFactorRef={"ObjectType":22,"ObjectId":39}
 CO	18:42
 UO	18:42	Location={"X":555,"Y":660}
 UO	18:42	Size={"Height":60,"Width":120}
+UO	18:42	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":496},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:42	WrappedFactorRef={"ObjectType":20,"ObjectId":41}
 CO	18:473
 UO	18:473	Location={"X":360,"Y":390}
 UO	18:473	Size={"Height":60,"Width":120}
+UO	18:473	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1668},{"ObjectType":47,"ObjectId":1670}]}
 UO	18:473	WrappedFactorRef={"ObjectType":3,"ObjectId":165}
 CO	18:474
 UO	18:474	Location={"X":360,"Y":315}
 UO	18:474	Size={"Height":30,"Width":120}
+UO	18:474	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1668},{"ObjectType":47,"ObjectId":1670}]}
 UO	18:474	WrappedFactorRef={"ObjectType":3,"ObjectId":164}
 CO	18:475
 UO	18:475	Location={"X":60,"Y":105}
 UO	18:475	Size={"Height":30,"Width":150}
+UO	18:475	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1668},{"ObjectType":47,"ObjectId":1670}]}
 UO	18:475	WrappedFactorRef={"ObjectType":3,"ObjectId":166}
 CO	18:476
 UO	18:476	Location={"X":45,"Y":180}
 UO	18:476	Size={"Height":30,"Width":120}
+UO	18:476	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1667},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:476	WrappedFactorRef={"ObjectType":3,"ObjectId":163}
 CO	18:477
 UO	18:477	Location={"X":210,"Y":180}
 UO	18:477	Size={"Height":30,"Width":210}
+UO	18:477	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1667},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:477	WrappedFactorRef={"ObjectType":3,"ObjectId":464}
 CO	18:523
 UO	18:523	FontSize=1.25
 UO	18:523	FontStyle=<B>
 UO	18:523	Location={"X":945,"Y":165}
 UO	18:523	Size={"Height":570,"Width":180}
+UO	18:523	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":496},{"ObjectType":47,"ObjectId":497},{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:523	WrappedFactorRef={"ObjectType":50,"ObjectId":522}
 CO	18:56
 UO	18:56	Location={"X":555,"Y":420}
 UO	18:56	Size={"Height":60,"Width":120}
+UO	18:56	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:56	WrappedFactorRef={"ObjectType":20,"ObjectId":55}
 CO	18:60
 UO	18:60	Location={"X":510,"Y":330}
 UO	18:60	Size={"Height":60,"Width":120}
+UO	18:60	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":497},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:60	WrappedFactorRef={"ObjectType":20,"ObjectId":59}
 CO	18:64
 UO	18:64	Location={"X":540,"Y":225}
 UO	18:64	Size={"Height":60,"Width":120}
+UO	18:64	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1668}]}
 UO	18:64	WrappedFactorRef={"ObjectType":20,"ObjectId":63}
 CO	18:68
 UO	18:68	Location={"X":420,"Y":15}
 UO	18:68	Size={"Height":60,"Width":120}
+UO	18:68	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:68	WrappedFactorRef={"ObjectType":20,"ObjectId":67}
 CO	18:694
 UO	18:694	FontSize=1.25
 UO	18:694	FontStyle=<B>
 UO	18:694	Location={"X":870,"Y":120}
 UO	18:694	Size={"Height":150,"Width":180}
+UO	18:694	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":496},{"ObjectType":47,"ObjectId":497},{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:694	WrappedFactorRef={"ObjectType":50,"ObjectId":522}
 CO	18:695
 UO	18:695	FontSize=1.25
 UO	18:695	FontStyle=<B>
 UO	18:695	Location={"X":780,"Y":30}
 UO	18:695	Size={"Height":300,"Width":180}
+UO	18:695	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":496},{"ObjectType":47,"ObjectId":497},{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:695	WrappedFactorRef={"ObjectType":50,"ObjectId":522}
 CO	18:696
 UO	18:696	FontSize=1.25
 UO	18:696	FontStyle=<B>
 UO	18:696	Location={"X":810,"Y":180}
 UO	18:696	Size={"Height":180,"Width":180}
+UO	18:696	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":496},{"ObjectType":47,"ObjectId":497},{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:696	WrappedFactorRef={"ObjectType":50,"ObjectId":522}
 CO	18:697
 UO	18:697	FontSize=1.25
 UO	18:697	FontStyle=<B>
 UO	18:697	Location={"X":405,"Y":120}
 UO	18:697	Size={"Height":270,"Width":180}
+UO	18:697	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":496},{"ObjectType":47,"ObjectId":497},{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:697	WrappedFactorRef={"ObjectType":50,"ObjectId":522}
 CO	18:698
 UO	18:698	Location={"X":435,"Y":180}
 UO	18:698	Size={"Height":60,"Width":120}
+UO	18:698	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:698	WrappedFactorRef={"ObjectType":22,"ObjectId":30}
 CO	18:699
 UO	18:699	Location={"X":435,"Y":285}
 UO	18:699	Size={"Height":60,"Width":120}
+UO	18:699	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1451},{"ObjectType":47,"ObjectId":1664},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:699	WrappedFactorRef={"ObjectType":22,"ObjectId":35}
 CO	18:700
 UO	18:700	Location={"X":225,"Y":240}
 UO	18:700	Size={"Height":60,"Width":150}
+UO	18:700	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:700	WrappedFactorRef={"ObjectType":20,"ObjectId":55}
 CO	18:712
 UO	18:712	Location={"X":45,"Y":135}
 UO	18:712	Size={"Height":60,"Width":180}
+UO	18:712	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1665},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:712	WrappedFactorRef={"ObjectType":21,"ObjectId":131}
 CO	18:715
 UO	18:715	Location={"X":75,"Y":240}
 UO	18:715	Size={"Height":60,"Width":120}
+UO	18:715	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:715	WrappedFactorRef={"ObjectType":20,"ObjectId":93}
 CO	18:723
 UO	18:723	Location={"X":930,"Y":285}
@@ -1918,30 +2022,37 @@ UO	18:748	WrappedFactorRef={"ObjectType":26,"ObjectId":747}
 CO	18:74
 UO	18:74	Location={"X":405,"Y":660}
 UO	18:74	Size={"Height":60,"Width":120}
+UO	18:74	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":496},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:74	WrappedFactorRef={"ObjectType":20,"ObjectId":73}
 CO	18:78
 UO	18:78	Location={"X":225,"Y":660}
 UO	18:78	Size={"Height":60,"Width":150}
+UO	18:78	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":496},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:78	WrappedFactorRef={"ObjectType":20,"ObjectId":77}
 CO	18:82
 UO	18:82	Location={"X":435,"Y":540}
 UO	18:82	Size={"Height":60,"Width":120}
+UO	18:82	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:82	WrappedFactorRef={"ObjectType":20,"ObjectId":81}
 CO	18:86
 UO	18:86	Location={"X":270,"Y":540}
 UO	18:86	Size={"Height":60,"Width":120}
+UO	18:86	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:86	WrappedFactorRef={"ObjectType":20,"ObjectId":85}
 CO	18:90
 UO	18:90	Location={"X":105,"Y":540}
 UO	18:90	Size={"Height":60,"Width":120}
+UO	18:90	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:90	WrappedFactorRef={"ObjectType":20,"ObjectId":89}
 CO	18:94
 UO	18:94	Location={"X":330,"Y":420}
 UO	18:94	Size={"Height":60,"Width":120}
+UO	18:94	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":498},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:94	WrappedFactorRef={"ObjectType":20,"ObjectId":93}
 CO	18:98
 UO	18:98	Location={"X":270,"Y":330}
 UO	18:98	Size={"Height":60,"Width":120}
+UO	18:98	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":497},{"ObjectType":47,"ObjectId":1668}]}
 UO	18:98	WrappedFactorRef={"ObjectType":20,"ObjectId":97}
 CO	19:9
 UO	19:9	Detail=The Eastern Bay Conservation Project (EBCP) is focused on working with the residents of Eastern Bay Village to help manage and conserve the marine resources of their traditional fishing grounds. Key partners on the project team include the residents of Eastern Bay Village, Eastern Bay NGO, and researchers from the local university. Our conservation targets are coral reefs, sharks, seagrass beds, mangroves, and seabirds. Major threats include unsustainable fishing by local people, invasive rats eating seabird eggs, and commercial shark finning operations. Climate change driven threats such as increased seawater temperatures which lead to coral bleaching and increase storm intensity which leads to increased sedimentation from rivers are also of growing concern in the future. The project is implementing strategies to rid key breeding islets of rats, establish alternative income sources for local fishermen, and to liaise with an international conservation organization to combat the demand for shark fin soup. We are also exploring adding a new strategy to combat river sedimenation.
@@ -2835,46 +2946,35 @@ UO	46:933	ShortLabel=1
 CO	47:1451
 UO	47:1451	Label=Climate
 UO	47:1451	ShortLabel=CM
-UO	47:1451	TaggedObjectRefs={"References":[{"ObjectType":20,"ObjectId":67},{"ObjectType":22,"ObjectId":35},{"ObjectType":20,"ObjectId":1443},{"ObjectType":22,"ObjectId":37},{"ObjectType":50,"ObjectId":522},{"ObjectType":20,"ObjectId":1227},{"ObjectType":21,"ObjectId":1452},{"ObjectType":65,"ObjectId":1426},{"ObjectType":26,"ObjectId":147},{"ObjectType":65,"ObjectId":1204},{"ObjectType":20,"ObjectId":1236},{"ObjectType":65,"ObjectId":1304},{"ObjectType":65,"ObjectId":1434},{"ObjectType":22,"ObjectId":30}]}
 CO	47:1664
 UO	47:1664	Label=1
 UO	47:1664	ShortLabel=RC
-UO	47:1664	TaggedObjectRefs={"References":[{"ObjectType":25,"ObjectId":1600},{"ObjectType":22,"ObjectId":33},{"ObjectType":22,"ObjectId":35},{"ObjectType":66,"ObjectId":1317},{"ObjectType":22,"ObjectId":37},{"ObjectType":22,"ObjectId":39},{"ObjectType":50,"ObjectId":522},{"ObjectType":21,"ObjectId":1868},{"ObjectType":26,"ObjectId":2000},{"ObjectType":26,"ObjectId":403},{"ObjectType":26,"ObjectId":405},{"ObjectType":26,"ObjectId":407},{"ObjectType":25,"ObjectId":348},{"ObjectType":22,"ObjectId":30}]}
 CO	47:1665
 UO	47:1665	Label=2
 UO	47:1665	ShortLabel=RC
-UO	47:1665	TaggedObjectRefs={"References":[{"ObjectType":25,"ObjectId":257},{"ObjectType":21,"ObjectId":131},{"ObjectType":23,"ObjectId":359},{"ObjectType":23,"ObjectId":375},{"ObjectType":21,"ObjectId":139},{"ObjectType":23,"ObjectId":379},{"ObjectType":23,"ObjectId":1628},{"ObjectType":23,"ObjectId":1629},{"ObjectType":23,"ObjectId":1614},{"ObjectType":21,"ObjectId":143}]}
 CO	47:1666
 UO	47:1666	Label=3
 UO	47:1666	ShortLabel=RC
-UO	47:1666	TaggedObjectRefs={"References":[{"ObjectType":23,"ObjectId":1456},{"ObjectType":23,"ObjectId":385},{"ObjectType":23,"ObjectId":1601},{"ObjectType":23,"ObjectId":1458},{"ObjectType":23,"ObjectId":260},{"ObjectType":21,"ObjectId":135},{"ObjectType":23,"ObjectId":263},{"ObjectType":35,"ObjectId":1657},{"ObjectType":26,"ObjectId":1662}]}
 CO	47:1667
 UO	47:1667	Label=4
 UO	47:1667	ShortLabel=RC
-UO	47:1667	TaggedObjectRefs={"References":[{"ObjectType":23,"ObjectId":352},{"ObjectType":3,"ObjectId":464},{"ObjectType":26,"ObjectId":1315},{"ObjectType":3,"ObjectId":163},{"ObjectType":23,"ObjectId":357},{"ObjectType":23,"ObjectId":265},{"ObjectType":23,"ObjectId":350}]}
 CO	47:1668
 UO	47:1668	ShortLabel=All
-UO	47:1668	TaggedObjectRefs={"References":[{"ObjectType":25,"ObjectId":257},{"ObjectType":23,"ObjectId":385},{"ObjectType":21,"ObjectId":131},{"ObjectType":23,"ObjectId":260},{"ObjectType":21,"ObjectId":135},{"ObjectType":23,"ObjectId":263},{"ObjectType":23,"ObjectId":265},{"ObjectType":50,"ObjectId":522},{"ObjectType":21,"ObjectId":139},{"ObjectType":21,"ObjectId":143},{"ObjectType":26,"ObjectId":1936},{"ObjectType":65,"ObjectId":1426},{"ObjectType":26,"ObjectId":147},{"ObjectType":26,"ObjectId":403},{"ObjectType":26,"ObjectId":405},{"ObjectType":26,"ObjectId":407},{"ObjectType":65,"ObjectId":1304},{"ObjectType":65,"ObjectId":1434},{"ObjectType":22,"ObjectId":30},{"ObjectType":22,"ObjectId":33},{"ObjectType":22,"ObjectId":35},{"ObjectType":3,"ObjectId":163},{"ObjectType":26,"ObjectId":1315},{"ObjectType":20,"ObjectId":1443},{"ObjectType":3,"ObjectId":164},{"ObjectType":22,"ObjectId":37},{"ObjectType":3,"ObjectId":165},{"ObjectType":66,"ObjectId":1317},{"ObjectType":3,"ObjectId":166},{"ObjectType":22,"ObjectId":39},{"ObjectType":20,"ObjectId":41},{"ObjectType":65,"ObjectId":1196},{"ObjectType":21,"ObjectId":1452},{"ObjectType":23,"ObjectId":1456},{"ObjectType":26,"ObjectId":1584},{"ObjectType":26,"ObjectId":1585},{"ObjectType":23,"ObjectId":1458},{"ObjectType":26,"ObjectId":1586},{"ObjectType":26,"ObjectId":1587},{"ObjectType":65,"ObjectId":1204},{"ObjectType":20,"ObjectId":55},{"ObjectType":3,"ObjectId":440},{"ObjectType":3,"ObjectId":442},{"ObjectType":20,"ObjectId":59},{"ObjectType":26,"ObjectId":1467},{"ObjectType":20,"ObjectId":63},{"ObjectType":65,"ObjectId":1216},{"ObjectType":25,"ObjectId":1600},{"ObjectType":23,"ObjectId":1601},{"ObjectType":3,"ObjectId":450},{"ObjectType":20,"ObjectId":67},{"ObjectType":20,"ObjectId":73},{"ObjectType":3,"ObjectId":1866},{"ObjectType":20,"ObjectId":1227},{"ObjectType":21,"ObjectId":1868},{"ObjectType":20,"ObjectId":77},{"ObjectType":23,"ObjectId":1614},{"ObjectType":3,"ObjectId":464},{"ObjectType":26,"ObjectId":2000},{"ObjectType":3,"ObjectId":1872},{"ObjectType":20,"ObjectId":81},{"ObjectType":20,"ObjectId":1236},{"ObjectType":3,"ObjectId":1876},{"ObjectType":20,"ObjectId":85},{"ObjectType":20,"ObjectId":89},{"ObjectType":3,"ObjectId":1881},{"ObjectType":25,"ObjectId":348},{"ObjectType":23,"ObjectId":1628},{"ObjectType":20,"ObjectId":93},{"ObjectType":23,"ObjectId":1629},{"ObjectType":23,"ObjectId":350},{"ObjectType":23,"ObjectId":352},{"ObjectType":20,"ObjectId":97},{"ObjectType":3,"ObjectId":2019},{"ObjectType":20,"ObjectId":101},{"ObjectType":23,"ObjectId":357},{"ObjectType":3,"ObjectId":2021},{"ObjectType":23,"ObjectId":359},{"ObjectType":3,"ObjectId":2023},{"ObjectType":3,"ObjectId":2024},{"ObjectType":20,"ObjectId":105},{"ObjectType":35,"ObjectId":109},{"ObjectType":20,"ObjectId":112},{"ObjectType":20,"ObjectId":116},{"ObjectType":23,"ObjectId":375},{"ObjectType":35,"ObjectId":1657},{"ObjectType":23,"ObjectId":379},{"ObjectType":26,"ObjectId":1662},{"ObjectType":20,"ObjectId":127}]}
 CO	47:1670
 UO	47:1670	Label=5
 UO	47:1670	ShortLabel=RC
-UO	47:1670	TaggedObjectRefs={"References":[{"ObjectType":26,"ObjectId":1584},{"ObjectType":26,"ObjectId":1585},{"ObjectType":3,"ObjectId":450},{"ObjectType":26,"ObjectId":1586},{"ObjectType":26,"ObjectId":1587},{"ObjectType":3,"ObjectId":164},{"ObjectType":3,"ObjectId":165},{"ObjectType":3,"ObjectId":166},{"ObjectType":3,"ObjectId":440},{"ObjectType":3,"ObjectId":442}]}
 CO	47:2048
 UO	47:2048	Label=M&amp;E
 UO	47:2048	ShortLabel=RC
-UO	47:2048	TaggedObjectRefs={"References":[{"ObjectType":3,"ObjectId":1872},{"ObjectType":3,"ObjectId":2019},{"ObjectType":3,"ObjectId":1876},{"ObjectType":3,"ObjectId":2021},{"ObjectType":3,"ObjectId":2023},{"ObjectType":3,"ObjectId":2024},{"ObjectType":3,"ObjectId":1881},{"ObjectType":3,"ObjectId":1866}]}
 CO	47:496
 UO	47:496	Label=Rats
 UO	47:496	ShortLabel=CM
-UO	47:496	TaggedObjectRefs={"References":[{"ObjectType":26,"ObjectId":147},{"ObjectType":20,"ObjectId":116},{"ObjectType":21,"ObjectId":135},{"ObjectType":22,"ObjectId":39},{"ObjectType":20,"ObjectId":41},{"ObjectType":20,"ObjectId":73},{"ObjectType":50,"ObjectId":522},{"ObjectType":21,"ObjectId":139},{"ObjectType":65,"ObjectId":1196},{"ObjectType":20,"ObjectId":77}]}
 CO	47:497
 UO	47:497	Label=Sharks
 UO	47:497	ShortLabel=CM
-UO	47:497	TaggedObjectRefs={"References":[{"ObjectType":20,"ObjectId":112},{"ObjectType":22,"ObjectId":33},{"ObjectType":20,"ObjectId":97},{"ObjectType":26,"ObjectId":147},{"ObjectType":20,"ObjectId":101},{"ObjectType":20,"ObjectId":105},{"ObjectType":50,"ObjectId":522},{"ObjectType":20,"ObjectId":59},{"ObjectType":35,"ObjectId":109},{"ObjectType":21,"ObjectId":143}]}
 CO	47:498
 UO	47:498	Label=Fishery
 UO	47:498	ShortLabel=CM
-UO	47:498	TaggedObjectRefs={"References":[{"ObjectType":65,"ObjectId":1216},{"ObjectType":20,"ObjectId":81},{"ObjectType":22,"ObjectId":35},{"ObjectType":21,"ObjectId":131},{"ObjectType":26,"ObjectId":147},{"ObjectType":20,"ObjectId":85},{"ObjectType":20,"ObjectId":55},{"ObjectType":20,"ObjectId":89},{"ObjectType":50,"ObjectId":522},{"ObjectType":20,"ObjectId":93},{"ObjectType":22,"ObjectId":30}]}
 CO	48:1001
 UO	48:1001	TableIdentifier=XslTemplatePoolTableModel
 UO	48:1001	TagTableSettingsMap={"StringCodeListMap":{"WorkPlanBudgetColumnCodeListKey":"{\"Codes\":[\"TimeframeDatesTotal\",\"MetaAssignedWhoTotal\"]}"}}
@@ -4184,4 +4284,4 @@ UT	41-39	DefaultValueId=4
 UT	41-39	Values={"1":5,"2":5,"3":6}
 UQ	Data=
 UE	Data=
--- 1507898522623 Oct 13, 2017 5:42:02 AM
+-- 1515665599286 Jan 11, 2018 10:13:19 AM
