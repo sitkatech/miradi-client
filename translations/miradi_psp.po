@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-11 08:21-0800\n"
+"POT-Creation-Date: 2018-01-11 09:36-0800\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -270,7 +270,7 @@ msgid "%s Objs"
 msgstr "%s Objs"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo23.java:108
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo45.java:107
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo45.java:108
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo39.java:155
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo7.java:126
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo24.java:109
@@ -8408,7 +8408,7 @@ msgid ""
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo23.java:87
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo45.java:86
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo45.java:87
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo7.java:105
 msgid ""
 "This migration only has reverse to remove Miradi share taxonomy related "
@@ -8815,7 +8815,7 @@ msgstr "Title|MPZ Export Warning"
 msgid "Title|Measurement Properties"
 msgstr "Title|Measurement Properties"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/indicator/MethodPropertiesPanel.java:53
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/indicator/MethodPropertiesPanel.java:56
 msgid "Title|Method Properties"
 msgstr "Title|Method Properties"
 
@@ -11629,6 +11629,9 @@ msgid "FieldLabel|69.Comments|Comments"
 msgstr ""
 
 msgid "FieldLabel|69.Url|URL"
+msgstr ""
+
+msgid "FieldLabel|69.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
 msgid "FieldLabel|70.ExtendedProgressReport|Progress Report"
