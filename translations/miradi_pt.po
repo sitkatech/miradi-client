@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-11 02:44-0800\n"
+"POT-Creation-Date: 2018-01-11 06:51-0800\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/miradi-client/"
@@ -281,6 +281,7 @@ msgid "%s Objs"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo23.java:108
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo45.java:106
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo39.java:155
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo7.java:126
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo24.java:109
@@ -295,7 +296,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:167
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:168
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1446
 msgid "(%s)"
 msgstr ""
@@ -8430,6 +8431,7 @@ msgid ""
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo23.java:87
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo45.java:85
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo7.java:105
 msgid ""
 "This migration only has reverse to remove Miradi share taxonomy related "
@@ -8761,7 +8763,7 @@ msgstr "Apagar (Delete)"
 msgid "Title|Diagram Panel"
 msgstr "Painel de Diagrama"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:59
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:61
 msgid "Title|Diagram Properties"
 msgstr "Propriedades de Diagramas"
 
@@ -10592,6 +10594,9 @@ msgstr "Tags"
 
 msgid "FieldLabel|19.Detail|Details"
 msgstr "Detalhes"
+
+msgid "FieldLabel|19.TaxonomyClassificationContainer|Program Classifications"
+msgstr ""
 
 msgid "FieldLabel|19.PseudoDraftStrategies|Draft Strategies"
 msgstr "Rascunhos de Estratégias"
