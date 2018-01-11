@@ -18,50 +18,14 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
 
-package org.miradi.schemas;
+package org.miradi.xml.xmpz2.xmpz2schema;
 
-import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.schemas.BaseObjectSchema;
 
-public class ConceptualModelDiagramSchema extends DiagramObjectSchema
+public class ConceptualModelSchemaWriter extends BaseObjectSchemaWriterWithTaxonomyClassificationContainer
 {
-	public ConceptualModelDiagramSchema()
+	public ConceptualModelSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{
-		super();
+		super(creatorToUse, baseObjectSchemaToUse);
 	}
-	
-	@Override
-	protected void fillFieldSchemas()
-	{
-		super.fillFieldSchemas();
-
-		createTaxonomyClassificationSchemaField();
-
-		createPseudoFieldSchemaRefList(ConceptualModelDiagram.PSEUDO_DRAFT_STRATEGY_REFS);
-	}
-
-	public static int getObjectType()
-	{
-		return ObjectType.CONCEPTUAL_MODEL_DIAGRAM;
-	}
-	
-	@Override
-	public int getType()
-	{
-		return getObjectType();
-	}
-
-	@Override
-	public String getObjectName()
-	{
-		return OBJECT_NAME;
-	}
-
-	@Override
-	public String getXmpz2ElementName()
-	{
-		return CONCEPTUAL_MODEL;
-	}
-	
-	public static final String OBJECT_NAME = "ConceptualModelDiagram";
 }

@@ -317,6 +317,7 @@ public interface Xmpz2XmlConstants
 	public static final String DIRECT_THREAT_TAXONOMY_ASSOCIATION_POOL = "DirectThreatTaxonomyAssociationPool";
 	public static final String STRATEGY_TAXONOMY_ASSOCIATION_POOL = "StrategyTaxonomyAssociationPool";
 	public static final String RESULTS_CHAIN_TAXONOMY_ASSOCIATION_POOL = "ResultsChainTaxonomyAssociationPool";
+	public static final String CONCEPTUAL_MODEL_TAXONOMY_ASSOCIATION_POOL = "ConceptualModelTaxonomyAssociationPool";
 	public static final String THREAT_REDUCTION_RESULT_TAXONOMY_ASSOCIATION_POOL = "ThreatReductionResultTaxonomyAssociationPool";
 	public static final String GOAL_TAXONOMY_ASSOCIATION_POOL = "GoalTaxonomyAssociationPool";
 	public static final String KEY_ECOLOGICAL_ATTRIBUTE_TAXONOMY_ASSOCIATION_POOL = "KeyEcologicalAttributeTaxonomyAssociationPool";

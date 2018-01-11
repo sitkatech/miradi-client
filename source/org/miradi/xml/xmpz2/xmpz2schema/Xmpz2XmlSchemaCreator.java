@@ -123,6 +123,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(DIRECT_THREAT_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(STRATEGY_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(RESULTS_CHAIN_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(CONCEPTUAL_MODEL_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(THREAT_REDUCTION_RESULT_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(GOAL_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(KEY_ECOLOGICAL_ATTRIBUTE_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
@@ -181,6 +182,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		elementNames.add(createOptionalSchemaElement(DIRECT_THREAT_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(STRATEGY_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(RESULTS_CHAIN_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(CONCEPTUAL_MODEL_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(THREAT_REDUCTION_RESULT_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(GOAL_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(KEY_ECOLOGICAL_ATTRIBUTE_TAXONOMY_ASSOCIATION_POOL));
@@ -1175,6 +1177,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (ResultsChainDiagram.is(baseObjectSchema.getType()))
 			return new ResultsChainSchemaWriter(this, baseObjectSchema);
 		
+		if (ConceptualModelDiagram.is(baseObjectSchema.getType()))
+			return new ConceptualModelSchemaWriter(this, baseObjectSchema);
+
 		if (ThreatReductionResult.is(baseObjectSchema.getType()))
 			return new ThreatReductionResultSchemaWriter(this, baseObjectSchema);
 		

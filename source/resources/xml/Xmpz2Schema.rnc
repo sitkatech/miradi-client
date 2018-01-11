@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Wed Jan 03 12:35:37 GMT 2018 $
+# $LastChangedDate: Thu Jan 11 11:59:25 GMT 2018 $
 # $LastChangedRevision: 237 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/237'
 start = ConservationProject.element
@@ -71,6 +71,7 @@ ConservationProject.element = element miradi:ConservationProject
   DirectThreatTaxonomyAssociationPool.element? &
   StrategyTaxonomyAssociationPool.element? &
   ResultsChainTaxonomyAssociationPool.element? &
+  ConceptualModelTaxonomyAssociationPool.element? &
   ThreatReductionResultTaxonomyAssociationPool.element? &
   GoalTaxonomyAssociationPool.element? &
   KeyEcologicalAttributeTaxonomyAssociationPool.element? &
@@ -431,7 +432,8 @@ ConceptualModel.element = element miradi:ConceptualModel
   element miradi:ConceptualModelIsTaggingEnabled { xsd:boolean }? &
   element miradi:ConceptualModelName { formatted_text }? &
   element miradi:ConceptualModelSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }? &
-  element miradi:ConceptualModelZoomScale { xsd:decimal }?
+  element miradi:ConceptualModelZoomScale { xsd:decimal }? &
+  TaxonomyClassificationContainer.element?
 }
 
 CausePool.element = element miradi:CausePool { Cause.element* }
@@ -1202,6 +1204,7 @@ ContributingFactorTaxonomyAssociationPool.element = element miradi:ContributingF
 DirectThreatTaxonomyAssociationPool.element = element miradi:DirectThreatTaxonomyAssociationPool { TaxonomyAssociation.element* }
 StrategyTaxonomyAssociationPool.element = element miradi:StrategyTaxonomyAssociationPool { TaxonomyAssociation.element* }
 ResultsChainTaxonomyAssociationPool.element = element miradi:ResultsChainTaxonomyAssociationPool { TaxonomyAssociation.element* }
+ConceptualModelTaxonomyAssociationPool.element = element miradi:ConceptualModelTaxonomyAssociationPool { TaxonomyAssociation.element* }
 ThreatReductionResultTaxonomyAssociationPool.element = element miradi:ThreatReductionResultTaxonomyAssociationPool { TaxonomyAssociation.element* }
 GoalTaxonomyAssociationPool.element = element miradi:GoalTaxonomyAssociationPool { TaxonomyAssociation.element* }
 KeyEcologicalAttributeTaxonomyAssociationPool.element = element miradi:KeyEcologicalAttributeTaxonomyAssociationPool { TaxonomyAssociation.element* }

@@ -44,6 +44,8 @@ public class ConceptualModelPropertiesPanel extends ObjectDataInputPanelWithSect
 		addField(createMultilineField(ConceptualModelDiagramSchema.getObjectType(), DiagramObject.TAG_DETAIL));
 		addField(createReadOnlyObjectList(ConceptualModelDiagramSchema.getObjectType(), ConceptualModelDiagram.PSEUDO_DRAFT_STRATEGY_REFS));
 
+		addTaxonomyFields(ConceptualModelDiagramSchema.getObjectType());
+
 		createLatestExtendedProgressReportFields(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 
 		addSubPanelWithTitledBorder(new ExtendedProgressReportSubPanel(getMainWindow()));

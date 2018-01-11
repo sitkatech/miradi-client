@@ -114,7 +114,10 @@ public class TaxonomyHelper implements Xmpz2XmlConstants
 		
 		if (ResultsChainDiagram.is(objectType))
 			return RESULTS_CHAIN_TAXONOMY_ASSOCIATION_POOL;
-		
+
+		if (ConceptualModelDiagram.is(objectType))
+			return CONCEPTUAL_MODEL_TAXONOMY_ASSOCIATION_POOL;
+
 		if (ThreatReductionResult.is(objectType))
 			return THREAT_REDUCTION_RESULT_TAXONOMY_ASSOCIATION_POOL;
 		
