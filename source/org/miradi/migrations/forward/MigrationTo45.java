@@ -64,6 +64,7 @@ public class MigrationTo45 extends AbstractMigration
 		Vector<Integer> typesWithTaxonomyClassifications = new Vector<Integer>();
 		typesWithTaxonomyClassifications.add(ObjectType.CONCEPTUAL_MODEL_DIAGRAM);
 		typesWithTaxonomyClassifications.add(ObjectType.BIOPHYSICAL_RESULT);
+		typesWithTaxonomyClassifications.add(ObjectType.METHOD);
 
 		return typesWithTaxonomyClassifications;
 	}

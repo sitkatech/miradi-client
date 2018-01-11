@@ -133,6 +133,9 @@ public class TaxonomyHelper implements Xmpz2XmlConstants
 		if (Indicator.is(objectType))
 			return INDICATOR_TAXONOMY_ASSOCIATION_POOL;
 		
+		if (Method.is(objectType))
+			return METHOD_TAXONOMY_ASSOCIATION_POOL;
+
 		if (Objective.is(objectType))
 			return OBJECTIVE_TAXONOMY_ASSOCIATION_POOL;
 		

@@ -22,7 +22,7 @@ package org.miradi.xml.xmpz2.xmpz2schema;
 
 import org.miradi.schemas.BaseObjectSchema;
 
-public class MethodSchemaWriter extends BaseObjectSchemaWriter
+public class MethodSchemaWriter extends BaseObjectSchemaWriterWithTaxonomyClassificationContainer
 {
 	public MethodSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{

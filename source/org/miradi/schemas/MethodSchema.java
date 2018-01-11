@@ -39,6 +39,8 @@ public class MethodSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(Method.TAG_DETAILS);
 		createFieldSchemaMultiLineUserText(Method.TAG_COMMENTS);
 		createFieldSchemaSingleLineUserText(Method.TAG_URL);
+
+		createTaxonomyClassificationSchemaField();
 	}
 
 	public static int getObjectType()

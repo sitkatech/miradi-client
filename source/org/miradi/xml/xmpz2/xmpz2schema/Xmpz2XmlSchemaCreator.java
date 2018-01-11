@@ -129,6 +129,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(GOAL_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(KEY_ECOLOGICAL_ATTRIBUTE_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(INDICATOR_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(METHOD_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(OBJECTIVE_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(STRESS_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(TASK_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
@@ -189,6 +190,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		elementNames.add(createOptionalSchemaElement(GOAL_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(KEY_ECOLOGICAL_ATTRIBUTE_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(INDICATOR_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(METHOD_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(OBJECTIVE_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(STRESS_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(TASK_TAXONOMY_ASSOCIATION_POOL));

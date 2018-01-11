@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Jan 11 15:53:18 GMT 2018 $
+# $LastChangedDate: Thu Jan 11 16:43:55 GMT 2018 $
 # $LastChangedRevision: 237 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/237'
 start = ConservationProject.element
@@ -77,6 +77,7 @@ ConservationProject.element = element miradi:ConservationProject
   GoalTaxonomyAssociationPool.element? &
   KeyEcologicalAttributeTaxonomyAssociationPool.element? &
   IndicatorTaxonomyAssociationPool.element? &
+  MethodTaxonomyAssociationPool.element? &
   ObjectiveTaxonomyAssociationPool.element? &
   StressTaxonomyAssociationPool.element? &
   TaskTaxonomyAssociationPool.element? &
@@ -814,7 +815,8 @@ Method.element = element miradi:Method
   element miradi:MethodDetails { formatted_text }? &
   element miradi:MethodIdentifier { text }? &
   element miradi:MethodName { formatted_text }? &
-  element miradi:MethodUrl { text }?
+  element miradi:MethodUrl { text }? &
+  TaxonomyClassificationContainer.element?
 }
 
 ExtendedProgressReportPool.element = element miradi:ExtendedProgressReportPool { ExtendedProgressReport.element* }
@@ -1212,6 +1214,7 @@ ThreatReductionResultTaxonomyAssociationPool.element = element miradi:ThreatRedu
 GoalTaxonomyAssociationPool.element = element miradi:GoalTaxonomyAssociationPool { TaxonomyAssociation.element* }
 KeyEcologicalAttributeTaxonomyAssociationPool.element = element miradi:KeyEcologicalAttributeTaxonomyAssociationPool { TaxonomyAssociation.element* }
 IndicatorTaxonomyAssociationPool.element = element miradi:IndicatorTaxonomyAssociationPool { TaxonomyAssociation.element* }
+MethodTaxonomyAssociationPool.element = element miradi:MethodTaxonomyAssociationPool { TaxonomyAssociation.element* }
 ObjectiveTaxonomyAssociationPool.element = element miradi:ObjectiveTaxonomyAssociationPool { TaxonomyAssociation.element* }
 StressTaxonomyAssociationPool.element = element miradi:StressTaxonomyAssociationPool { TaxonomyAssociation.element* }
 TaskTaxonomyAssociationPool.element = element miradi:TaskTaxonomyAssociationPool { TaxonomyAssociation.element* }

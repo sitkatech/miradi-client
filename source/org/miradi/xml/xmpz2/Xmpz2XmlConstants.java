@@ -323,6 +323,7 @@ public interface Xmpz2XmlConstants
 	public static final String GOAL_TAXONOMY_ASSOCIATION_POOL = "GoalTaxonomyAssociationPool";
 	public static final String KEY_ECOLOGICAL_ATTRIBUTE_TAXONOMY_ASSOCIATION_POOL = "KeyEcologicalAttributeTaxonomyAssociationPool";
 	public static final String INDICATOR_TAXONOMY_ASSOCIATION_POOL = "IndicatorTaxonomyAssociationPool";
+	public static final String METHOD_TAXONOMY_ASSOCIATION_POOL = "MethodTaxonomyAssociationPool";
 	public static final String OBJECTIVE_TAXONOMY_ASSOCIATION_POOL = "ObjectiveTaxonomyAssociationPool";
 	public static final String STRESS_TAXONOMY_ASSOCIATION_POOL = "StressTaxonomyAssociationPool";
 	public static final String TASK_TAXONOMY_ASSOCIATION_POOL = "TaskTaxonomyAssociationPool";

@@ -20,9 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
+import org.miradi.migrations.forward.MigrationTo44;
 import org.miradi.migrations.forward.MigrationTo45;
-import org.miradi.objects.BiophysicalResult;
-import org.miradi.objects.ConceptualModelDiagram;
+import org.miradi.objects.*;
+import org.miradi.project.ProjectSaverForTesting;
 
 public class TestMigrationTo45 extends AbstractTestMigration
 {
@@ -55,6 +56,24 @@ public class TestMigrationTo45 extends AbstractTestMigration
         RawObject rawBiophysicalResult = rawProject.findObject(biophysicalResult.getRef());
         assertNotNull(rawBiophysicalResult);
 		assertFalse("Field should have been removed during reverse migration?", rawBiophysicalResult.containsKey(MigrationTo45.TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
+	}
+	
+	public void testMethodTaxonomyClassificationsRemovedAfterReverseMigration() throws Exception
+	{
+		Strategy strategy = getProject().createAndPopulateStrategy();
+		Indicator indicator = getProject().createIndicator(strategy);
+		Method method = getProject().createAndPopulateMethod(indicator, "Method to Migrate");
+
+		String taxonomyClassifications = method.getData(MigrationTo45.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
+		assertNotNull(taxonomyClassifications);
+
+		String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), new VersionRange(getToVersion()));
+		final RawProject projectToMigrate = RawProjectLoader.loadProject(projectAsString);
+		migrateProject(projectToMigrate, new VersionRange(MigrationTo44.VERSION_TO));
+
+        RawObject rawMethod = projectToMigrate.findObject(method.getRef());
+        assertNotNull(rawMethod);
+		assertFalse("Field should have been removed during reverse migration?", rawMethod.containsKey(MigrationTo45.TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
 	}
 	
 	@Override

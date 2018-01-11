@@ -40,6 +40,9 @@ public class MethodPropertiesPanel extends ObjectDataInputPanelWithSections
 		addFieldsOnOneLine(EAM.text("Method"), IconManager.getMethodIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 
 		addField(createMultilineField(MethodSchema.getObjectType(), Method.TAG_DETAILS));
+
+		addTaxonomyFields(MethodSchema.getObjectType());
+
 		addField(createMultilineField(MethodSchema.getObjectType(), Method.TAG_COMMENTS));
 
 		addField(createStringField(MethodSchema.getObjectType(), Method.TAG_URL));
