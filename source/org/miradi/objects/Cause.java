@@ -19,14 +19,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ThreatClassificationQuestion;
 import org.miradi.schemas.CauseSchema;
+import org.miradi.utils.CommandVector;
 
 public class Cause extends Factor
 {
@@ -96,6 +100,26 @@ public class Cause extends Factor
 		}
 		
 		return super.getPseudoData(fieldTag);
+	}
+
+	public CommandVector getCommandsToRemoveFromThreatReductionResults()
+	{
+		CommandVector clearDirectThreatsFromThreatReductionResults = new CommandVector();
+
+		EAMObjectPool pool = getProject().getPool(ObjectType.THREAT_REDUCTION_RESULT);
+		ORefList orefList = pool.getORefList();
+		for (int i = 0; i < orefList.size(); ++i)
+		{
+			ThreatReductionResult threatReductionResult = (ThreatReductionResult) getProject().findObject(orefList.get(i));
+			ORef directThreatRef = ORef.createFromString(threatReductionResult.getRelatedDirectThreatRefAsString());
+			if (! directThreatRef.equals(this.getRef()))
+				continue;
+
+			CommandSetObjectData setDirectThreat = new CommandSetObjectData(threatReductionResult.getRef(), ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, ORef.INVALID.toString());
+			clearDirectThreatsFromThreatReductionResults.add(setDirectThreat);
+		}
+
+		return clearDirectThreatsFromThreatReductionResults;
 	}
 
 	public static boolean is(ORef ref)

@@ -262,7 +262,7 @@ public class TestDiagramPaster extends TestCaseWithProject
 		HashMap<ORef, ORef> oldToNewRefMap = paster.getOldToNewObjectRefMap();
 		ORef newThreatReductionResultRef = oldToNewRefMap.get(threatReductionResult.getRef());
 		ThreatReductionResult newThreatReductionResult = ThreatReductionResult.find(projectToPasteInto, newThreatReductionResultRef);
-		assertEquals("did not blank out related threat ref?", ORef.INVALID, newThreatReductionResult.getRelatedThreatRef());
+		assertEquals("did not blank out related threat ref?", ORef.INVALID, newThreatReductionResult.getRelatedDirectThreatRef());
 	}
 
 	private ProjectForTesting createNewProject() throws Exception

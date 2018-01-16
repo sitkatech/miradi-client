@@ -61,6 +61,7 @@ public class Project implements ProjectInterface
 		
 		threatStressRatingEnsurer = new ThreatStressRatingEnsurer(this);
 		leaderAssignedEnsurer = new LeaderAssignedEnsurer(this);
+		threatReductionResultEnsurer = new ThreatReductionResultEnsurer(this);
 		planningPreferencesChangeHandler = new PlanningPreferencesChangeHandler(this);
 		dashboardStatusMapsCache = new DashboardStatusMapsCache(this);
 		timePeriodCostsMapsCache = new TimePeriodCostsMapsCache(this);
@@ -844,7 +845,8 @@ public class Project implements ProjectInterface
 	protected void enableListeners()
 	{
 		enableThreatStressRatingEnsurer();
-		enableLeaderEnsurers();
+		enableLeaderEnsurer();
+		enableThreatReductionResultEnsurer();
 		planningPreferencesChangeHandler.enable();
 		dashboardStatusMapsCache.enable();
 		timePeriodCostsMapsCache.enable();
@@ -975,7 +977,8 @@ public class Project implements ProjectInterface
 	protected void disableListeners()
 	{
 		disableThreatStressRatingEnsurer();
-		disableLeaderEnsurers();
+		disableLeaderEnsurer();
+		disableThreatReductionResultEnsurer();
 		planningPreferencesChangeHandler.disable();
 		dashboardStatusMapsCache.disable();
 		timePeriodCostsMapsCache.disable();
@@ -995,16 +998,26 @@ public class Project implements ProjectInterface
 		threatStressRatingEnsurer.enable();
 	}
 	
-	public void disableLeaderEnsurers()
+	public void disableLeaderEnsurer()
 	{
 		leaderAssignedEnsurer.disable();
 	}
 	
-	public void enableLeaderEnsurers()
+	public void enableLeaderEnsurer()
 	{
 		leaderAssignedEnsurer.enable();
 	}
-	
+
+	public void disableThreatReductionResultEnsurer()
+	{
+		threatReductionResultEnsurer.disable();
+	}
+
+	public void enableThreatReductionResultEnsurer()
+	{
+		threatReductionResultEnsurer.enable();
+	}
+
 	public static boolean isValidMpfProjectFilename(String projectFileName) throws Exception
 	{
 		String projectName = Project.withoutMpfProjectSuffix(projectFileName); 
@@ -1443,6 +1456,7 @@ public class Project implements ProjectInterface
 	private ProjectCalendar projectCalendar;
 	private ThreatStressRatingEnsurer threatStressRatingEnsurer;
 	private LeaderAssignedEnsurer leaderAssignedEnsurer;
+	private ThreatReductionResultEnsurer threatReductionResultEnsurer;
 	private PlanningPreferencesChangeHandler planningPreferencesChangeHandler;
 	private DashboardStatusMapsCache dashboardStatusMapsCache;
 	private TimePeriodCostsMapsCache timePeriodCostsMapsCache;

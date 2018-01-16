@@ -66,7 +66,7 @@ public class ThreatReductionResult extends Factor
 		return getData(TAG_RELATED_DIRECT_THREAT_REF);
 	}
 	
-	public ORef getRelatedThreatRef()
+	public ORef getRelatedDirectThreatRef()
 	{
 		if (getRelatedDirectThreatRefAsString().length() == 0)
 			return ORef.INVALID;

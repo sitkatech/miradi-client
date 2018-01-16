@@ -36,7 +36,7 @@ abstract public class AbstractObjectWithBudgetDataToDeleteTestCase extends Objec
 	{
 		super.setUp();
 		
-		getProject().disableLeaderEnsurers();
+		getProject().disableLeaderEnsurer();
 	}
 
 	public void testDeleteChildren() throws Exception

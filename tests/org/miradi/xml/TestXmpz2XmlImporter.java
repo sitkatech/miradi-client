@@ -370,7 +370,7 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 		assertEquals("Threat reduction result was not imported?", 1, allThreatReductionResultRefs.size());
 		ORef threatReductionResultRef = allThreatReductionResultRefs.getFirstElement();
 		ThreatReductionResult importedThreatReductionResult = ThreatReductionResult.find(filledProject, threatReductionResultRef);
-		assertEquals("incorrect related threat ref used?", threatRef, importedThreatReductionResult.getRelatedThreatRef());
+		assertEquals("incorrect related threat ref used?", threatRef, importedThreatReductionResult.getRelatedDirectThreatRef());
 	}
 	
 	public void testImportFilledProject() throws Exception

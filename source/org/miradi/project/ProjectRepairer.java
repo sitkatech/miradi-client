@@ -40,21 +40,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objectpools.ObjectPool;
 import org.miradi.objectpools.PoolWithIdAssigner;
-import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.Assignment;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.FactorLink;
-import org.miradi.objects.FutureStatus;
-import org.miradi.objects.GroupBox;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.TableSettings;
-import org.miradi.objects.TaggedObjectSet;
-import org.miradi.objects.ThreatStressRating;
-import org.miradi.objects.ViewData;
+import org.miradi.objects.*;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
@@ -121,6 +107,7 @@ public class ProjectRepairer
 		repairUnsnappedNodes();
 		removeInvalidDiagramLinkRefs();
 		quarantineGroupBoxFactorLinks();
+		removeInvalidThreatsFromThreatReductionResults();
 		fixAnyProblemsWithThreatStressRatings();
 		fixAssignmentsReferringToMissingObjects();
 		repairKeaModeTargetsReferringToMissingSimpleModeIndicators(TargetSchema.getObjectType());
@@ -458,6 +445,25 @@ public class ProjectRepairer
 		
 		if(deletedRefs.size() > 0)
 			EAM.logWarning("Deleted " + deletedRefs.size() + " TSR's with invalid refs");
+	}
+
+	private void removeInvalidThreatsFromThreatReductionResults() throws Exception
+	{
+		ORefList threatReductionResultRefs = getProject().getThreatReductionResultPool().getRefList();
+		for(int i = 0; i < threatReductionResultRefs.size(); ++i)
+		{
+			ThreatReductionResult threatReductionResult =  ThreatReductionResult.find(getProject(), threatReductionResultRefs.get(i));
+			ORef relatedDirectThreatRef = threatReductionResult.getRelatedDirectThreatRef();
+			if (relatedDirectThreatRef.isValid())
+			{
+				Cause relatedDirectThreat = Cause.find(getProject(), relatedDirectThreatRef);
+				if (!relatedDirectThreat.isDirectThreat())
+				{
+					EAM.logWarning("Removing non direct threat from " + threatReductionResult.getRef());
+					getProject().setObjectData(threatReductionResult, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, ORef.INVALID.toString());
+				}
+			}
+		}
 	}
 
 	public HashMap<ORef, ORefSet> getListOfMissingObjects() throws Exception

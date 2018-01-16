@@ -31,16 +31,7 @@ import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objectpools.EAMObjectPool;
-import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Factor;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
-import org.miradi.objects.ThreatReductionResult;
+import org.miradi.objects.*;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.StressSchema;
@@ -186,17 +177,11 @@ public class FactorDeleteHelper
 
 	private void removeFromThreatReductionResults(Factor factor) throws CommandFailedException
 	{
-		EAMObjectPool pool = getProject().getPool(ObjectType.THREAT_REDUCTION_RESULT);
-		ORefList orefList = pool.getORefList();
-		for (int i = 0; i < orefList.size(); ++i)
+		if (factor.isDirectThreat())
 		{
-			ThreatReductionResult threatReductionResult = (ThreatReductionResult) getProject().findObject(orefList.get(i));
-			ORef directThreatRef = ORef.createFromString(threatReductionResult.getRelatedDirectThreatRefAsString());
-			if (! directThreatRef.equals(factor.getRef()))
-				continue;
-			
-			CommandSetObjectData setDirectThreat = new CommandSetObjectData(threatReductionResult.getRef(), ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, ORef.INVALID.toString());
-			getProject().executeCommand(setDirectThreat);
+			Cause threat = (Cause) factor;
+			CommandVector commandsToRemoveFromThreatReductionResults  = threat.getCommandsToRemoveFromThreatReductionResults();
+			getProject().executeCommands(commandsToRemoveFromThreatReductionResults);
 		}
 	}
 
