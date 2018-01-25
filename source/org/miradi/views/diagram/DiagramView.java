@@ -253,6 +253,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionManageFactorTagsFromMenu.class, new ManageFactorTagsFromMenuDoer());
 		addDoerToMap(ActionManageFactorTags.class, new ManageFactorTagsDoer());
 		addDoerToMap(ActionCreateNamedTaggedObjectSet.class, new CreateNamedTaggedObjectSetDoer());
+
+		addDoerToMap(ActionCopyDiagramFactorFormat.class, new CopyDiagramFactorFormatDoer());
+		addDoerToMap(ActionPasteDiagramFactorFormat.class, new PasteDiagramFactorFormatDoer());
 	}
 	
 	@Override

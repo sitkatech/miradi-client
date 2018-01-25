@@ -230,6 +230,9 @@ public class Actions
 		registerAction(new ActionCreateNamedTaggedObjectSet(mainWindow));
 		registerAction(new ActionInvokeDashboard(mainWindow));
 
+		registerAction(new ActionCopyDiagramFactorFormat(mainWindow));
+		registerAction(new ActionPasteDiagramFactorFormat(mainWindow));
+
 		registerNonMenuJumpAction(new ActionJumpWelcomeCreateStep(mainWindow));
 		registerNonMenuJumpAction(new ActionJumpWelcomeImportStep(mainWindow));
 		registerNonMenuJumpAction(new ActionJumpSummaryWizardDefineProjectLeader(mainWindow));

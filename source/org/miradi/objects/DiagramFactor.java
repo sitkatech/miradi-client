@@ -257,15 +257,8 @@ public class DiagramFactor extends BaseObject
 		String locationAsString = EnhancedJsonObject.convertFromPoint(getLocation());
 		CommandSetObjectData setLocationCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_LOCATION, locationAsString);
 		commands.add(setLocationCommand);
-		
-		CommandSetObjectData setFontSizeCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_FONT_SIZE, getStringData(TAG_FONT_SIZE));
-		commands.add(setFontSizeCommand);
-		
-		CommandSetObjectData setFontColorCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_FOREGROUND_COLOR, getStringData(TAG_FOREGROUND_COLOR));
-		commands.add(setFontColorCommand);
-		
-		CommandSetObjectData setFontStyleCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_FONT_STYLE, getStringData(TAG_FONT_STYLE));
-		commands.add(setFontStyleCommand);
+
+		commands.addAll(createCommandsToCopyFormat(newlyCreatedId));
 
         CommandSetObjectData setHeaderHeightCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_HEADER_HEIGHT, Integer.toString(getHeaderHeight()));
         commands.add(setHeaderHeightCommand);
@@ -276,6 +269,22 @@ public class DiagramFactor extends BaseObject
         return commands.toArray(new Command[0]);
 	}
 	
+	public Vector<CommandSetObjectData> createCommandsToCopyFormat(DiagramFactorId newlyCreatedId)
+	{
+		Vector<CommandSetObjectData> commands = new Vector<CommandSetObjectData>();
+
+		CommandSetObjectData setFontSizeCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_FONT_SIZE, getStringData(TAG_FONT_SIZE));
+		commands.add(setFontSizeCommand);
+
+		CommandSetObjectData setFontColorCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_FOREGROUND_COLOR, getStringData(TAG_FOREGROUND_COLOR));
+		commands.add(setFontColorCommand);
+
+		CommandSetObjectData setFontStyleCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_FONT_STYLE, getStringData(TAG_FONT_STYLE));
+		commands.add(setFontStyleCommand);
+
+        return commands;
+	}
+
 	public boolean isCoveredByGroupBox()
 	{
 		ORefList groupBoxFactors = findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());

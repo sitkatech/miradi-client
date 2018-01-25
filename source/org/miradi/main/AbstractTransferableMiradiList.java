@@ -186,6 +186,26 @@ abstract public class AbstractTransferableMiradiList implements Transferable, Se
 		return diagramFactorDeepCopies;
 	}
 
+	public ORefList getDiagramFactorRefs() throws Exception
+	{
+		return getDeepCopyRefs(this.diagramFactorDeepCopies);
+	}
+
+	private ORefList getDeepCopyRefs(Vector<String> deepCopies) throws Exception
+	{
+		ORefList deepCopyRefs = new ORefList();
+		for (int i = 0; i < deepCopies.size(); ++i)
+		{
+			String jsonAsString = deepCopies.get(i);
+			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
+			int objectToBeFoundType = json.getInt(DiagramPaster.FAKE_TAG_TYPE);
+			BaseId objectToBeFoundId = json.getId(BaseObject.TAG_ID);
+			deepCopyRefs.add(new ORef(objectToBeFoundType, objectToBeFoundId));
+		}
+
+		return deepCopyRefs;
+	}
+
 	public Vector<String> getThreatStressRatingDeepCopies()
 	{
 		return threatStressRatingCopies;
@@ -211,17 +231,7 @@ abstract public class AbstractTransferableMiradiList implements Transferable, Se
 
 	public ORefList getFactorRefs() throws Exception
 	{
-		ORefList factorRefs = new ORefList();
-		for (int i = 0; i < factorDeepCopies.size(); ++i)
-		{
-			String jsonAsString = factorDeepCopies.get(i);
-			EnhancedJsonObject json = new EnhancedJsonObject(jsonAsString);
-			int objectToBeFoundType = json.getInt(DiagramPaster.FAKE_TAG_TYPE);
-			BaseId objectToBeFoundId = json.getId(BaseObject.TAG_ID);
-			factorRefs.add(new ORef(objectToBeFoundType, objectToBeFoundId));
-		}
-		
-		return factorRefs;
+		return getDeepCopyRefs(this.factorDeepCopies);
 	}
 
 	public Vector<String> getDiagramLinkDeepCopies()

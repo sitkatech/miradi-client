@@ -28,7 +28,6 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
-import org.miradi.main.AbstractTransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
@@ -126,19 +125,6 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		}
 	}
 
-	private boolean hasMoreThanOneFactorInClipboard()
-	{
-		try
-		{
-			return getClipboardDiagramFactorJsons().size() != 1;
-		}
-		catch (Exception e)
-		{
-			EAM.logException(e);
-			return false;
-		}
-	}
-
 	private boolean notExactlyOneFactorSelected()
 	{
 		return getSingleSelectedFactor() == null;
@@ -183,14 +169,5 @@ public class PasteFactorContentDoer extends AbstractPasteDoer
 		return commands;
 	}
 
-	private Vector getClipboardDiagramFactorJsons() throws Exception
-	{
-		AbstractTransferableMiradiList list = getTransferableMiradiList();
-		if (list == null)
-			return new Vector();
-		
-		return list.getDiagramFactorDeepCopies();
-	}
-	
 	protected final String PASTE_CONTENTS_BUTTON = EAM.text("Button|Paste Contents");
 }

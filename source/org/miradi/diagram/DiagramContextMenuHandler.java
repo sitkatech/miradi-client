@@ -98,6 +98,9 @@ public class DiagramContextMenuHandler
 		menu.add(createMenuItem(ActionPasteFactorContent.class, menuInvokedAt));
 		menu.add(createMenuItem(ActionPasteWithoutLinks.class, menuInvokedAt));
 		menu.addSeparator();
+		menu.add(new MenuItemWithoutLocation(actions.get(ActionCopyDiagramFactorFormat.class)));
+		menu.add(new MenuItemWithoutLocation(actions.get(ActionPasteDiagramFactorFormat.class)));
+		menu.addSeparator();
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionDelete.class)));
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionSelectAll.class)));
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionSelectChain.class)));

@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram.doers;
 
 import java.awt.datatransfer.Transferable;
+import java.util.Vector;
 
 import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogs.diagram.DiagramPanel;
@@ -69,6 +70,28 @@ abstract public class AbstractPasteDoer extends LocationDoer
 			return (AbstractTransferableMiradiList)contents.getTransferData(TransferableMiradiList.miradiListDataFlavor); 
 
 		return null;
+	}
+
+	protected boolean hasMoreThanOneFactorInClipboard()
+	{
+		try
+		{
+			return getClipboardDiagramFactorJsons().size() != 1;
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return false;
+		}
+	}
+
+	protected Vector getClipboardDiagramFactorJsons() throws Exception
+	{
+		AbstractTransferableMiradiList list = getTransferableMiradiList();
+		if (list == null)
+			return new Vector();
+
+		return list.getDiagramFactorDeepCopies();
 	}
 
 	private Transferable getDiagramClipboardContents()
