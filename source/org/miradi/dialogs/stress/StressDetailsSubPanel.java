@@ -32,9 +32,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Stress;
 import org.miradi.project.Project;
-import org.miradi.questions.ScopeStressBasedThreatRatingQuestion;
-import org.miradi.questions.SeverityStressBasedThreatRatingQuestion;
-import org.miradi.questions.StressRatingChoiceQuestion;
+import org.miradi.questions.*;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.StressSchema;
 import org.miradi.utils.FillerLabel;
@@ -42,7 +40,7 @@ import org.miradi.utils.ObjectsActionButton;
 
 public class StressDetailsSubPanel extends ObjectDataInputPanel
 {
-	public StressDetailsSubPanel(JDialog parentDialogToUse, Project projectToUse, AbstractObjectDataInputPanel visibilityPanel) throws Exception
+	public StressDetailsSubPanel(JDialog parentDialogToUse, Project projectToUse, AbstractObjectDataInputPanel visibilityPanel, boolean showFormatFields) throws Exception
 	{
 		super(projectToUse, ObjectType.STRESS);
 	
@@ -58,6 +56,15 @@ public class StressDetailsSubPanel extends ObjectDataInputPanel
 		}
 		
 		addField(createMultilineField(Stress.TAG_DETAIL));
+
+		if(showFormatFields)
+		{
+			ObjectDataInputField fontField = createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
+			ObjectDataInputField colorField = createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
+			ObjectDataInputField styleField = createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
+			addFieldsOnOneLine(EAM.text("Font"), new ObjectDataInputField[]{fontField, colorField, styleField});
+		}
+
 		if (projectToUse.isStressBaseMode())
 			addRatingsFields();
 

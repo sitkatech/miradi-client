@@ -219,7 +219,7 @@ public class PropertiesDoer extends LocationDoer
 	
 	private void doStressProperties(DiagramFactor diagramFactor) throws Exception
 	{
-		StressPropertiesPanel panel = StressPropertiesPanel.createWithVisibilityPanel(getMainWindow());
+		StressPropertiesPanel panel = StressPropertiesPanel.createWithVisibilityPanelAndFormatFields(getMainWindow());
 		
 		addDiagramWrappedRefToHierarchyAndShowPanel(diagramFactor, panel);
 	}

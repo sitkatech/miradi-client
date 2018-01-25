@@ -33,20 +33,26 @@ public class StressPropertiesPanel extends ObjectDataInputPanelWithSections
 	public static StressPropertiesPanel createWithVisibilityPanel(MainWindow mainWindow) throws Exception
 	{
 		StressFactorVisibilityControlPanel visibilityPanel = new StressFactorVisibilityControlPanel(mainWindow);
-		return new StressPropertiesPanel(null, mainWindow, visibilityPanel);
+		return new StressPropertiesPanel(null, mainWindow, visibilityPanel, false);
+	}
+
+	public static StressPropertiesPanel createWithVisibilityPanelAndFormatFields(MainWindow mainWindow) throws Exception
+	{
+		StressFactorVisibilityControlPanel visibilityPanel = new StressFactorVisibilityControlPanel(mainWindow);
+		return new StressPropertiesPanel(null, mainWindow, visibilityPanel, true);
 	}
 
 	public static StressPropertiesPanel createWithoutVisibilityPanel(JDialog parent, MainWindow mainWindow) throws Exception
 	{
-		return new StressPropertiesPanel(parent, mainWindow, null);
+		return new StressPropertiesPanel(parent, mainWindow, null, false);
 	}
 
-	private StressPropertiesPanel(JDialog parent, MainWindow mainWindow, AbstractObjectDataInputPanel visibilityPanel) throws Exception
+	private StressPropertiesPanel(JDialog parent, MainWindow mainWindow, AbstractObjectDataInputPanel visibilityPanel, boolean showFormatFields) throws Exception
 	{
 		super(mainWindow.getProject(), ObjectType.STRESS);
 	
 		setLayout(new OneColumnGridLayout());
-		addSubPanelWithTitledBorder(new StressDetailsSubPanel(parent, getProject(), visibilityPanel));
+		addSubPanelWithTitledBorder(new StressDetailsSubPanel(parent, getProject(), visibilityPanel, showFormatFields));
 		addSubPanelWithTitledBorder(new StressCommentsSubPanel(getProject()));
 		
 		updateFieldsFromProject();

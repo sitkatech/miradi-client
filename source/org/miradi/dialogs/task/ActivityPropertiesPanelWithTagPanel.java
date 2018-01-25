@@ -22,6 +22,8 @@ package org.miradi.dialogs.task;
 
 import org.miradi.actions.ActionManageFactorTags;
 import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.dialogs.activity.ActivityFactorVisibilityControlPanel;
+import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.diagram.FactorSummaryCorePanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.DiagramFactor;
@@ -39,5 +41,11 @@ public class ActivityPropertiesPanelWithTagPanel extends ActivityPropertiesPanel
 		ObjectsActionButton chooseTagForFactorButton = createObjectsActionButton(getMainWindow().getActions().getObjectsAction(ActionManageFactorTags.class), getPicker());
 		ObjectDataInputField readOnlyTaggedObjects = createReadOnlyObjectList(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS);
 		addFieldWithEditButton(FactorSummaryCorePanel.getTagsLabel(), readOnlyTaggedObjects, chooseTagForFactorButton);
+	}
+
+	@Override
+	protected ObjectDataInputPanel createDetailsPanel(MainWindow mainWindow, ActivityFactorVisibilityControlPanel activityVisibilityButtonPanel) throws Exception
+	{
+		return new ActivityDetailsPanelWithFormatFields(getProject(), mainWindow, activityVisibilityButtonPanel);
 	}
 }
