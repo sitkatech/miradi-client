@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-16 08:36-0800\n"
+"POT-Creation-Date: 2018-01-25 05:03-0800\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -1271,6 +1271,10 @@ msgstr "Action|ContextSensitive|Help"
 msgid "Action|Copy"
 msgstr "Action|Copy"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionCopyDiagramFactorFormat.java:35
+msgid "Action|Copy Format"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionCreateTaggedObjectSet.java:35
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionCreateReportTemplate.java:35
 msgid "Action|Create"
@@ -1803,6 +1807,10 @@ msgstr "Action|Paste"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionPasteFactorContent.java:42
 msgid "Action|Paste Content"
 msgstr "Action|Paste Content"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionPasteDiagramFactorFormat.java:35
+msgid "Action|Paste Format"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionPasteWithoutLinks.java:42
 msgid "Action|Paste Without Links"
@@ -2598,7 +2606,7 @@ msgstr "Budget Override was: %s"
 msgid "Bundle Rules"
 msgstr "Bundle Rules"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:91
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:114
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:234
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/ExportMpzDoer.java:108
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
@@ -2698,7 +2706,7 @@ msgstr "Button|Paste"
 msgid "Button|Paste As Copies"
 msgstr "Button|Paste As Copies"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:195
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:172
 msgid "Button|Paste Contents"
 msgstr "Button|Paste Contents"
 
@@ -3951,6 +3959,8 @@ msgstr "FolderName|BackupsFromMigrationToMiradi4"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:55
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:52
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/task/ActivityDetailsPanelWithFormatFields.java:48
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:65
 msgid "Font"
 msgstr "Font"
 
@@ -4003,7 +4013,7 @@ msgstr "Forest - Subtropical/Tropical Swamp"
 msgid "Forest - Temperate"
 msgstr "Forest - Temperate"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramView.java:366
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramView.java:369
 msgid "Found Corrupted Data:"
 msgstr "Found Corrupted Data:"
 
@@ -5274,7 +5284,7 @@ msgstr "Menu|4. Analyze, Use, Adapt"
 msgid "Menu|5. Capture and Share Learning"
 msgstr "Menu|5. Capture and Share Learning"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:223
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:226
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Menu|Add Tag to %n Selected Item(s)"
 
@@ -5286,7 +5296,7 @@ msgstr "Menu|Export Current Page as..."
 msgid "Menu|Export Current Project as..."
 msgstr "Menu|Export Current Project as..."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:355
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:358
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:421
 msgid "Menu|Group Box"
 msgstr "Menu|Group Box"
@@ -5295,15 +5305,15 @@ msgstr "Menu|Group Box"
 msgid "Menu|Import"
 msgstr "Menu|Import"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:366
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:369
 msgid "Menu|Insert"
 msgstr "Menu|Insert"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:323
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:326
 msgid "Menu|Remove All Tags from %n Selected Item(s)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:233
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:236
 msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr "Menu|Remove Tag from %n Selected Item(s)"
 
@@ -5831,7 +5841,7 @@ msgstr "Paste"
 msgid "Paste Between Projects"
 msgstr "Paste Between Projects"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:103
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:102
 msgid "Paste Content..."
 msgstr "Paste Content..."
 
@@ -6271,7 +6281,7 @@ msgstr "Rapid Assessment"
 msgid "Rating"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:77
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:84
 msgid "Ratings"
 msgstr "Ratings"
 
@@ -6902,7 +6912,7 @@ msgstr ""
 "conservation actions we are taking achieving their desired results?"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:53
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:51
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:73
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:52
 msgid "Stress"
@@ -7101,6 +7111,10 @@ msgstr "TT|Collapse All Tree Rows"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionEditAnalysisRows.java:42
 msgid "TT|Configure which rows are displayed"
 msgstr "TT|Configure which rows are displayed"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionCopyDiagramFactorFormat.java:41
+msgid "TT|Copy the selected Factor format"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionCopy.java:40
 msgid "TT|Copy the selection to the clipboard"
@@ -7674,6 +7688,10 @@ msgstr "TT|Paste the clipboard"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionPasteWithoutLinks.java:48
 msgid "TT|Paste the clipboard without links"
 msgstr "TT|Paste the clipboard without links"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionPasteDiagramFactorFormat.java:41
+msgid "TT|Paste the selected Factor format from the clipboard"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionPrint.java:40
 msgid "TT|Print the current view to a printer"
@@ -8561,7 +8579,7 @@ msgstr ""
 "This value must be numeric<br><br>Currency symbols and percent signs are not "
 "allowed"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:104
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:103
 msgid ""
 "This will replace all the selected factor's contents with the contents of "
 "the factor that was cut/copied earlier. Are you sure you want to do this?"
@@ -8753,7 +8771,7 @@ msgstr ""
 msgid "Title|Export Image Scale"
 msgstr "Title|Export Image Scale"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramView.java:853
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramView.java:856
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Title|Factor Properties"
@@ -8904,11 +8922,11 @@ msgstr "Title|Strategy Properties"
 msgid "Title|Stress Comments"
 msgstr "Title|Stress Comments"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:85
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:92
 msgid "Title|Stress Details"
 msgstr "Title|Stress Details"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/stress/StressPropertiesPanel.java:58
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/stress/StressPropertiesPanel.java:64
 msgid "Title|Stress Properties"
 msgstr "Title|Stress Properties"
 
@@ -9053,8 +9071,8 @@ msgstr "Unexpected error"
 msgid "Unexpected error prevented installing that language pack"
 msgstr "Unexpected error prevented installing that language pack"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:131
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:289
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:134
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:292
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr "Unexpected error prevented the tag operation from succeeding"
 
@@ -9092,7 +9110,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "Unknown code: "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramView.java:276
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramView.java:279
 msgid "Unknown error displaying diagram"
 msgstr "Unknown error displaying diagram"
 

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-16 08:36-0800\n"
+"POT-Creation-Date: 2018-01-25 05:03-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/miradi-client/"
@@ -1130,6 +1130,10 @@ msgstr "Bantuan "
 msgid "Action|Copy"
 msgstr "Salin "
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionCopyDiagramFactorFormat.java:35
+msgid "Action|Copy Format"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionCreateTaggedObjectSet.java:35
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionCreateReportTemplate.java:35
 msgid "Action|Create"
@@ -1664,6 +1668,10 @@ msgstr "Tempel "
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionPasteFactorContent.java:42
 msgid "Action|Paste Content"
 msgstr "Tempelkan Isi  "
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionPasteDiagramFactorFormat.java:35
+msgid "Action|Paste Format"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionPasteWithoutLinks.java:42
 msgid "Action|Paste Without Links"
@@ -2461,7 +2469,7 @@ msgstr "Penambahan Anggaran adalah: %s "
 msgid "Bundle Rules"
 msgstr "Aturan Bundel"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:91
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:114
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:234
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/ExportMpzDoer.java:108
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
@@ -2561,7 +2569,7 @@ msgstr ""
 msgid "Button|Paste As Copies"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:195
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:172
 msgid "Button|Paste Contents"
 msgstr "Tempelkan Isi… "
 
@@ -3807,6 +3815,8 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:55
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/ScopeBoxPropertiesPanel.java:52
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/task/ActivityDetailsPanelWithFormatFields.java:48
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:65
 msgid "Font"
 msgstr "Fon"
 
@@ -3859,7 +3869,7 @@ msgstr "Hutan – Rawa-rawa Tropis/Subtropis"
 msgid "Forest - Temperate"
 msgstr "Hutan - Temperat"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramView.java:366
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramView.java:369
 msgid "Found Corrupted Data:"
 msgstr "Data yang Rusak Ditemukan: "
 
@@ -5135,7 +5145,7 @@ msgstr "4. Analisis, Gunakan, Sesuaikan"
 msgid "Menu|5. Capture and Share Learning"
 msgstr "5. Tangkap dan Berbagi Pembelajaran "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:223
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:226
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Tambahkan Tag ke %n Butir yang Dipilih "
 
@@ -5147,7 +5157,7 @@ msgstr "Ekspor Halaman Saat Ini sebagai…"
 msgid "Menu|Export Current Project as..."
 msgstr "Ekspor Proyek Saat Ini sebagai…"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:355
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:358
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:421
 msgid "Menu|Group Box"
 msgstr "Kotak Grup"
@@ -5156,15 +5166,15 @@ msgstr "Kotak Grup"
 msgid "Menu|Import"
 msgstr "Impor "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:366
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:369
 msgid "Menu|Insert"
 msgstr "Sisipkan "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:323
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:326
 msgid "Menu|Remove All Tags from %n Selected Item(s)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:233
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:236
 msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr "Hapus Tag dari %n Item yang Dipilih "
 
@@ -5671,7 +5681,7 @@ msgstr "Tempel "
 msgid "Paste Between Projects"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:103
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:102
 msgid "Paste Content..."
 msgstr "Tempelkan Isi… "
 
@@ -6110,7 +6120,7 @@ msgstr "Penilaian Cepat"
 msgid "Rating"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:77
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:84
 msgid "Ratings"
 msgstr "Peringkat "
 
@@ -6732,7 +6742,7 @@ msgstr ""
 "diinginkan?"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:53
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:51
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:73
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:52
 msgid "Stress"
@@ -6930,6 +6940,10 @@ msgstr "Lipat Semua Baris Pohon "
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionEditAnalysisRows.java:42
 msgid "TT|Configure which rows are displayed"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionCopyDiagramFactorFormat.java:41
+msgid "TT|Copy the selected Factor format"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionCopy.java:40
@@ -7506,6 +7520,10 @@ msgstr "Tempelkan papan klip "
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionPasteWithoutLinks.java:48
 msgid "TT|Paste the clipboard without links"
 msgstr "Tempel papan klip tanpa tautan "
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionPasteDiagramFactorFormat.java:41
+msgid "TT|Paste the selected Factor format from the clipboard"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionPrint.java:40
 msgid "TT|Print the current view to a printer"
@@ -8363,7 +8381,7 @@ msgstr ""
 "Nilai ini harus numerik<br><br>Simbol mata uang dan tanda persen tidak "
 "diizinkan "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:104
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/doers/PasteFactorContentDoer.java:103
 msgid ""
 "This will replace all the selected factor's contents with the contents of "
 "the factor that was cut/copied earlier. Are you sure you want to do this?"
@@ -8557,7 +8575,7 @@ msgstr ""
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramView.java:853
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramView.java:856
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
 msgid "Title|Factor Properties"
 msgstr "Sifat-sifat Faktor "
@@ -8708,11 +8726,11 @@ msgstr "Sifat-sifat Strategi "
 msgid "Title|Stress Comments"
 msgstr "Komentar Tekanan "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:85
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:92
 msgid "Title|Stress Details"
 msgstr "Rincian Tekanan "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/stress/StressPropertiesPanel.java:58
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/stress/StressPropertiesPanel.java:64
 msgid "Title|Stress Properties"
 msgstr "Sifat-sifat Tekanan "
 
@@ -8857,8 +8875,8 @@ msgstr ""
 msgid "Unexpected error prevented installing that language pack"
 msgstr "Kesalahan tak terduga membuat paket bahasa tidak dapat diinstal "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:131
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:289
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:134
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:292
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr "Kesalahan tak terduga telah menghalangi operasi tag tersebut "
 
@@ -8896,7 +8914,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "Kode tak dikenal: "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramView.java:276
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramView.java:279
 msgid "Unknown error displaying diagram"
 msgstr "Kesalahan tak dikenal saat menampilkan diagram "
 
