@@ -24,7 +24,7 @@ import org.miradi.actions.ActionDelete;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.views.ViewDoer;
 
-public class Cut extends ViewDoer
+public class CutDoer extends ViewDoer
 {
 	@Override
 	public boolean isAvailable()

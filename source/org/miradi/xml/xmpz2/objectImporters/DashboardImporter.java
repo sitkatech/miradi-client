@@ -44,6 +44,7 @@ public class DashboardImporter extends AbstractXmpz2ObjectImporter
 		String poolName = Xmpz2XmlWriter.createPoolElementName(getPoolName());
 		Node dashboardPoolNode = getImporter().getNamedChildNode(getImporter().getRootNode(), poolName);
 		Node dashboardNode = getImporter().getNamedChildNode(dashboardPoolNode, getPoolName());
+
 		Node statusesNode = getImporter().getNamedChildNode(dashboardNode,  getPoolName() + DASHBOARD_STATUS_ENTRIES);
 		NodeList statusNodes = getImporter().getNodes(statusesNode, new String[]{DASHBOARD_STATUS_ENTRY});
 		
@@ -75,8 +76,17 @@ public class DashboardImporter extends AbstractXmpz2ObjectImporter
 		getImporter().setData(getDashboardRef(), Dashboard.TAG_PROGRESS_CHOICE_MAP, userProgressMap.toJsonString());
 		getImporter().setData(getDashboardRef(), Dashboard.TAG_FLAGS_MAP, userFlagsMap.toJsonString());
 		getImporter().setData(getDashboardRef(), Dashboard.TAG_COMMENTS_MAP, userCommentsMap.toJsonString());
+
+		Node uuidNode = getUUIDNode(dashboardNode);
+		String uuid = uuidNode == null ? "" : uuidNode.getTextContent().trim();
+		getImporter().setData(getDashboardRef(), Dashboard.TAG_UUID, uuid);
 	}
-	
+
+	private Node getUUIDNode(Node node) throws Exception
+	{
+		return getImporter().getNamedChildNode(node, getPoolName() + UUID.toUpperCase());
+	}
+
 	protected ORef getDashboardRef()
 	{
 		return getSingletonObject(DashboardSchema.getObjectType());

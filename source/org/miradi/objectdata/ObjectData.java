@@ -160,7 +160,12 @@ abstract public class ObjectData
 	{
 		return false;
 	}
-	
+
+	public boolean isUUIDData()
+	{
+		return false;
+	}
+
 	public boolean isCodeData()
 	{
 		return false;

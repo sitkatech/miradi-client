@@ -28,6 +28,8 @@ public class ProjectSummaryLocationSchema extends AbstractProjectSummarySchema
 	@Override
 	protected void fillFieldSchemas()
 	{
+		super.fillFieldSchemas();
+
 		ProjectMetadataSchema schema = new ProjectMetadataSchema();
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_COUNTRIES));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_STATE_AND_PROVINCES));

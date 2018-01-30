@@ -208,7 +208,7 @@ public class FactorDeleteHelper
 		//TODO: there is much common code between DeleteAnnotationDoer and DeleteActivity classes and this class; 
 		// for example DeleteActivity.deleteTaskTree( is general and and good not just for activities
 		// I am thinking that each object Task should be able to handle its own deletion so when you call it it would delete all its own 
-		// children inforceing referencial integrity as a cascade, instead of having the the code here.
+		// children enforcing referential integrity as a cascade, instead of having the the code here.
 		if (factorToDelete.isStrategy())
 			removeAndDeleteTasksInList(factorToDelete, Strategy.TAG_ACTIVITY_IDS);
 		

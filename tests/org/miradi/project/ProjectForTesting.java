@@ -41,6 +41,7 @@ import org.miradi.utils.*;
 import org.miradi.views.diagram.LinkCreator;
 
 import java.awt.*;
+import java.util.UUID;
 import java.util.Vector;
 
 
@@ -1965,6 +1966,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	private String getSampleData(ObjectData field) throws Exception
 	{
+		if (field.isUUIDData())
+		{
+			return UUID.randomUUID().toString();
+		}
 		if (field.isIntegerData())
 		{
 			return "45";

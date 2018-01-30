@@ -277,7 +277,6 @@ abstract public class BaseObject
 			if (isPseudoField(tag))
 				continue;
 			
-			
 			final String value = getHtmlEncodedValue(json, tag);
 			try
 			{
@@ -432,11 +431,16 @@ abstract public class BaseObject
 		return baseObject.getLabel();
 	}
 		
+	public String getUUID()
+	{
+		return getData(TAG_UUID);
+	}
+	
 	public String getLabel()
 	{
 		return getData(TAG_LABEL);
 	}
-	
+
 	public String getShortLabel()
 	{
 		return "";
@@ -474,7 +478,7 @@ abstract public class BaseObject
 		
 		return HtmlUtilities.convertPlainTextToHtmlText(nonHtmlDataValue);
 	}
-	
+
 	public void setData(String fieldTag, String dataValue) throws Exception
 	{
 		if(TAG_ID.equals(fieldTag))
@@ -500,17 +504,26 @@ abstract public class BaseObject
 		return getSchema().isPseudoField(fieldTag);
 	}
 	
+	public boolean isUUIDField(String fieldTag)
+	{
+		return getSchema().isUUIDField(fieldTag);
+	}
+
 	public boolean doesFieldExist(String fieldTag)
 	{
 		return getFields().containsKey(fieldTag);
 	}
-	
+
 	public boolean isEmpty()
 	{
 		Vector<String> fieldTags = getStoredFieldTags();
 		for (int index = 0; index < fieldTags.size(); ++index)
 		{
 			String tag = fieldTags.get(index);
+
+			if (isUUIDField(tag))
+				continue;
+
 			if (!getField(tag).isEmpty())
 				return false;
 		}
@@ -1055,7 +1068,7 @@ abstract public class BaseObject
 			EAM.logWarning("BaseObject.getField called for unknown tag " + fieldTag + " in " + getRef());
 		return data;
 	}
-	
+
 	public Vector<CommandSetObjectData> createCommandsToClear()
 	{
 		Vector<CommandSetObjectData> commands = new Vector<CommandSetObjectData>();
@@ -1064,7 +1077,7 @@ abstract public class BaseObject
 		{
 			if(isPseudoField(tag))
 				continue;
-		
+
 			commands.add(new CommandSetObjectData(getType(), getId(), tag, ""));
 		}
 		
@@ -1161,6 +1174,8 @@ abstract public class BaseObject
 		for (String tag : tags)
 		{
 			if(isPseudoField(tag))
+				continue;
+			if (isUUIDField(tag))
 				continue;
 			if(isIdListTag(tag))
 				continue;
@@ -1606,6 +1621,7 @@ abstract public class BaseObject
 
 	public static final String TAG_TIME_STAMP_MODIFIED = "TimeStampModified";
 	public static final String TAG_ID = "Id";
+	public static final String TAG_UUID = "UUID";
 	public static final String TAG_LABEL = "Label";
 	public static final String TAG_EMPTY = "EMPTY";
 	public static final String TAG_TIMEFRAME_IDS = "TimeframeIds";

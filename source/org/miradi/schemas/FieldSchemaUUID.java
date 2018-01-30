@@ -1,4 +1,4 @@
-/* 
+/*
 Copyright 2005-2018, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
@@ -6,7 +6,7 @@ Material developed between 2005-2013 is jointly copyright by Beneficent Technolo
 This file is part of Miradi
 
 Miradi is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License version 3, 
+it under the terms of the GNU General Public License version 3,
 as published by the Free Software Foundation.
 
 Miradi is distributed in the hope that it will be useful,
@@ -15,25 +15,31 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/ 
+along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
-package org.miradi.xml.xmpz2.xmpz2schema;
+package org.miradi.schemas;
 
-import org.miradi.objecthelpers.ObjectType;
-import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.objectdata.ObjectData;
+import org.miradi.objectdata.UUIDData;
+import org.miradi.objects.BaseObject;
 
-abstract public class AbstractProjectSummarySchema extends BaseObjectSchema
+public class FieldSchemaUUID extends AbstractFieldSchema
 {
-	@Override
-	protected boolean hasLabel()
-	{
-		return false;
-	}
+    public FieldSchemaUUID(String tagToUse)
+    {
+        super(tagToUse);
+    }
 
-	@Override
-	public int getType()
-	{
-		return ObjectType.FAKE;
-	}
+    @Override
+    public ObjectData createField(BaseObject baseObjectToUse)
+    {
+        return new UUIDData(getTag());
+    }
+
+    @Override
+    public boolean isUUIDFieldSchema()
+    {
+        return true;
+    }
 }

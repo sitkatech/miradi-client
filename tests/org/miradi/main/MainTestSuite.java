@@ -128,7 +128,8 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestProjectSaver.class));
 		addTest(new TestSuite(TestMpzToMpfConverter.class));
 		addTest(new TestSuite(TestMpfToMpzConverter.class));
-		
+		addTest(new TestSuite(TestObjectUUIDs.class));
+
 		//questions package
 		addTest(new TestSuite(TestChoiceItem.class));
 		addTest(new TestSuite(TestChoiceQuestion.class));

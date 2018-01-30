@@ -30,6 +30,8 @@ public class ProjectSummaryScopeSchema extends AbstractProjectSummarySchema
 	@Override
 	protected void fillFieldSchemas()
 	{
+		super.fillFieldSchemas();
+
 		ProjectMetadataSchema schema = new ProjectMetadataSchema();
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_SHORT_PROJECT_SCOPE));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_PROJECT_SCOPE));

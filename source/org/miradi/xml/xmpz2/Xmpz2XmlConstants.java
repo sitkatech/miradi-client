@@ -58,6 +58,7 @@ public interface Xmpz2XmlConstants
 	public static final String URI_RESTRICTED_TEXT = "uri_restricted_text";
 	public static final String NON_EMPTY_STRING = "non_empty_string";
 	
+	public static final String UUID = "uuid";
 	public static final String ID = "Id";
 	public static final String IDS = ID + "s";
 	public static final String IDENTIFIER = "Identifier";

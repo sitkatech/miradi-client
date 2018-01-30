@@ -39,6 +39,8 @@ public class ProjectSummarySchema extends AbstractProjectSummarySchema
 	@Override
 	protected void fillFieldSchemas()
 	{
+		super.fillFieldSchemas();
+
 		ProjectMetadataSchema schema = new ProjectMetadataSchema();
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_PROJECT_NAME));
 		addFieldSchema(createFieldSchemaRequiredChoice(TncProjectData.TAG_PROJECT_SHARING_CODE, ProjectSharingQuestion.class));

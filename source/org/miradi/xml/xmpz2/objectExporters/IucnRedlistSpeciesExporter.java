@@ -37,6 +37,7 @@ public class IucnRedlistSpeciesExporter extends BaseObjectExporter
 	public void writeBaseObjectDataSchemaElement(BaseObject baseObject)	throws Exception
 	{
 		getWriter().writeStartElementWithAttribute(IUCN_REDLIST_SPECIES, ID, baseObject.getId().toString());
+		getWriter().writeElement(IUCN_REDLIST_SPECIES, BaseObject.TAG_UUID, baseObject.getUUID());
 		getWriter().writeElement(IUCN_REDLIST_SPECIES, IucnRedlistSpecies.TAG_LABEL, baseObject.getLabel());
 		getWriter().writeEndElement(IUCN_REDLIST_SPECIES);
 	}

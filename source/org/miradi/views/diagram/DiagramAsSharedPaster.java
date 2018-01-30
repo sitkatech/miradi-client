@@ -34,7 +34,6 @@ import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.AbstractTransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.*;
 import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.utils.CommandVector;
@@ -121,11 +120,6 @@ public class DiagramAsSharedPaster extends DiagramPaster
 		}
 
 		private HashMap<ORef, ORef> newToOldORefMap;
-	}
-
-	public void pasteDiagramLinks() throws Exception
-	{
-		createNewDiagramLinks();
 	}
 
 	@Override

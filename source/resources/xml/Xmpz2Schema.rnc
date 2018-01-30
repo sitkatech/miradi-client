@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Jan 11 16:43:55 GMT 2018 $
+# $LastChangedDate: Mon Jan 29 16:01:12 GMT 2018 $
 # $LastChangedRevision: 237 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/237'
 start = ConservationProject.element
@@ -264,6 +264,7 @@ Task.element = element miradi:Task
   element miradi:TaskResourceAssignmentIds { ResourceAssignmentId.element* }? &
   element miradi:TaskTimeframe { CalculatedTimeframe.element }? &
   element miradi:TaskTimeframeIds { TimeframeId.element* }? &
+  element miradi:TaskUUID { uuid } &
   TaxonomyClassificationContainer.element?
 }
 
@@ -292,6 +293,7 @@ Resource.element = element miradi:Resource
   element miradi:ResourcePosition { text }? &
   element miradi:ResourceResourceType { vocabulary_resource_type } &
   element miradi:ResourceSurname { text }? &
+  element miradi:ResourceUUID { uuid } &
   ResourceRoleCodesContainer.element ? &
   TaxonomyClassificationContainer.element?
 }
@@ -314,6 +316,7 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorRelevantStrategyIds { StrategyId.element* }? &
   element miradi:IndicatorThresholds { IndicatorThreshold.element* }? &
   element miradi:IndicatorUnit { text }? &
+  element miradi:IndicatorUUID { uuid } &
   element miradi:IndicatorViabilityRatingsComments { formatted_text }? &
   TaxonomyClassificationContainer.element?
 }
@@ -330,6 +333,7 @@ Objective.element = element miradi:Objective
   element miradi:ObjectiveRelevantActivityIds { ActivityId.element* }? &
   element miradi:ObjectiveRelevantIndicatorIds { IndicatorId.element* }? &
   element miradi:ObjectiveRelevantStrategyIds { StrategyId.element* }? &
+  element miradi:ObjectiveUUID { uuid } &
   TaxonomyClassificationContainer.element?
 }
 
@@ -345,6 +349,7 @@ Goal.element = element miradi:Goal
   element miradi:GoalRelevantActivityIds { ActivityId.element* }? &
   element miradi:GoalRelevantIndicatorIds { IndicatorId.element* }? &
   element miradi:GoalRelevantStrategyIds { StrategyId.element* }? &
+  element miradi:GoalUUID { uuid } &
   TaxonomyClassificationContainer.element?
 }
 
@@ -358,7 +363,8 @@ DiagramLink.element = element miradi:DiagramLink
   element miradi:DiagramLinkGroupedDiagramLinkIds { DiagramLinkId.element* }? &
   element miradi:DiagramLinkIsBidirectionalLink { xsd:boolean }? &
   element miradi:DiagramLinkName { formatted_text }? &
-  element miradi:DiagramLinkToDiagramFactorId { LinkableFactorId.element }
+  element miradi:DiagramLinkToDiagramFactorId { LinkableFactorId.element } &
+  element miradi:DiagramLinkUUID { uuid }
 }
 
 ResourceAssignmentPool.element = element miradi:ResourceAssignmentPool { ResourceAssignment.element* }
@@ -373,6 +379,7 @@ ResourceAssignment.element = element miradi:ResourceAssignment
   element miradi:ResourceAssignmentFundingSourceId { FundingSourceId.element }? &
   element miradi:ResourceAssignmentName { formatted_text }? &
   element miradi:ResourceAssignmentResourceId { ResourceId.element }? &
+  element miradi:ResourceAssignmentUUID { uuid } &
   TaxonomyClassificationContainer.element?
 }
 
@@ -382,7 +389,8 @@ AccountingCode.element = element miradi:AccountingCode
   attribute Id {xsd:integer} &
   element miradi:AccountingCodeCode { text }? &
   element miradi:AccountingCodeComments { formatted_text }? &
-  element miradi:AccountingCodeName { formatted_text }?
+  element miradi:AccountingCodeName { formatted_text }? &
+  element miradi:AccountingCodeUUID { uuid }
 }
 
 FundingSourcePool.element = element miradi:FundingSourcePool { FundingSource.element* }
@@ -391,7 +399,8 @@ FundingSource.element = element miradi:FundingSource
   attribute Id {xsd:integer} &
   element miradi:FundingSourceCode { text }? &
   element miradi:FundingSourceComments { formatted_text }? &
-  element miradi:FundingSourceName { formatted_text }?
+  element miradi:FundingSourceName { formatted_text }? &
+  element miradi:FundingSourceUUID { uuid }
 }
 
 KeyEcologicalAttributePool.element = element miradi:KeyEcologicalAttributePool { KeyEcologicalAttribute.element* }
@@ -404,6 +413,7 @@ KeyEcologicalAttribute.element = element miradi:KeyEcologicalAttribute
   element miradi:KeyEcologicalAttributeIndicatorIds { IndicatorId.element* }? &
   element miradi:KeyEcologicalAttributeKeyEcologicalAttributeType { vocabulary_key_ecological_attribute_type }? &
   element miradi:KeyEcologicalAttributeName { formatted_text }? &
+  element miradi:KeyEcologicalAttributeUUID { uuid } &
   TaxonomyClassificationContainer.element?
 }
 
@@ -418,6 +428,7 @@ DiagramFactor.element = element miradi:DiagramFactor
   element miradi:DiagramFactorStyle { Style.element }? &
   element miradi:DiagramFactorTaggedObjectSetIds { TaggedObjectSetId.element* }? &
   element miradi:DiagramFactorTextBoxZOrderCode { vocabulary_text_box_z_order } &
+  element miradi:DiagramFactorUUID { uuid } &
   element miradi:DiagramFactorWrappedFactorId { WrappedByDiagramFactorId.element }
 }
 
@@ -434,6 +445,7 @@ ConceptualModel.element = element miradi:ConceptualModel
   element miradi:ConceptualModelIsTaggingEnabled { xsd:boolean }? &
   element miradi:ConceptualModelName { formatted_text }? &
   element miradi:ConceptualModelSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }? &
+  element miradi:ConceptualModelUUID { uuid } &
   element miradi:ConceptualModelZoomScale { xsd:decimal }? &
   TaxonomyClassificationContainer.element?
 }
@@ -451,6 +463,7 @@ Cause.element = element miradi:Cause
   element miradi:CauseName { formatted_text }? &
   element miradi:CauseObjectiveIds { ObjectiveId.element* }? &
   element miradi:CauseStandardClassification { vocabulary_cause_taxonomy_code }? &
+  element miradi:CauseUUID { uuid } &
   TaxonomyClassificationContainer.element?
 }
 
@@ -477,6 +490,7 @@ Strategy.element = element miradi:Strategy
   element miradi:StrategyStatus { vocabulary_strategy_status } &
   element miradi:StrategyTimeframe { CalculatedTimeframe.element }? &
   element miradi:StrategyTimeframeIds { TimeframeId.element* }? &
+  element miradi:StrategyUUID { uuid } &
   TaxonomyClassificationContainer.element?
 }
 
@@ -499,6 +513,7 @@ BiodiversityTarget.element = element miradi:BiodiversityTarget
   element miradi:BiodiversityTargetSpeciesLatinName { text }? &
   element miradi:BiodiversityTargetStressIds { StressId.element* }? &
   element miradi:BiodiversityTargetSubTargetIds { SubTargetId.element* }? &
+  element miradi:BiodiversityTargetUUID { uuid } &
   element miradi:BiodiversityTargetViabilityMode { vocabulary_target_viability_mode } &
   TaxonomyClassificationContainer.element?
 }
@@ -512,7 +527,8 @@ IntermediateResult.element = element miradi:IntermediateResult
   element miradi:IntermediateResultIdentifier { text }? &
   element miradi:IntermediateResultIndicatorIds { IndicatorId.element* }? &
   element miradi:IntermediateResultName { formatted_text }? &
-  element miradi:IntermediateResultObjectiveIds { ObjectiveId.element* }?
+  element miradi:IntermediateResultObjectiveIds { ObjectiveId.element* }? &
+  element miradi:IntermediateResultUUID { uuid }
 }
 
 ResultsChainPool.element = element miradi:ResultsChainPool { ResultsChain.element* }
@@ -527,6 +543,7 @@ ResultsChain.element = element miradi:ResultsChain
   element miradi:ResultsChainIsTaggingEnabled { xsd:boolean }? &
   element miradi:ResultsChainName { formatted_text }? &
   element miradi:ResultsChainSelectedTaggedObjectSetIds { TaggedObjectSetId.element* }? &
+  element miradi:ResultsChainUUID { uuid } &
   element miradi:ResultsChainZoomScale { xsd:decimal }? &
   ResultsChainHiddenTypesContainer.element ? &
   TaxonomyClassificationContainer.element?
@@ -543,6 +560,7 @@ ThreatReductionResult.element = element miradi:ThreatReductionResult
   element miradi:ThreatReductionResultName { formatted_text }? &
   element miradi:ThreatReductionResultObjectiveIds { ObjectiveId.element* }? &
   element miradi:ThreatReductionResultRelatedDirectThreatId { ThreatId.element }? &
+  element miradi:ThreatReductionResultUUID { uuid } &
   TaxonomyClassificationContainer.element?
 }
 
@@ -553,7 +571,8 @@ TextBox.element = element miradi:TextBox
   element miradi:TextBoxComments { formatted_text }? &
   element miradi:TextBoxDetails { formatted_text }? &
   element miradi:TextBoxIdentifier { text }? &
-  element miradi:TextBoxName { formatted_text }?
+  element miradi:TextBoxName { formatted_text }? &
+  element miradi:TextBoxUUID { uuid }
 }
 
 PlanningViewConfigurationPool.element = element miradi:PlanningViewConfigurationPool { PlanningViewConfiguration.element* }
@@ -565,6 +584,7 @@ PlanningViewConfiguration.element = element miradi:PlanningViewConfiguration
   element miradi:PlanningViewConfigurationName { formatted_text }? &
   element miradi:PlanningViewConfigurationStrategyObjectiveOrder { vocabulary_planning_tree_objective_strategy_node_order } &
   element miradi:PlanningViewConfigurationTargetNodePosition { vocabulary_planning_tree_target_node_position } &
+  element miradi:PlanningViewConfigurationUUID { uuid } &
   PlanningViewConfigurationColumnNamesContainer.element ? &
   PlanningViewConfigurationRowObjectTypesContainer.element ?
 }
@@ -583,7 +603,8 @@ Measurement.element = element miradi:Measurement
   element miradi:MeasurementSamplePrecisionType { vocabulary_precision_type }? &
   element miradi:MeasurementSampleSize { xsd:integer }? &
   element miradi:MeasurementSource { vocabulary_measurement_status_confidence }? &
-  element miradi:MeasurementTrend { vocabulary_measurement_trend }?
+  element miradi:MeasurementTrend { vocabulary_measurement_trend }? &
+  element miradi:MeasurementUUID { uuid }
 }
 
 StressPool.element = element miradi:StressPool { Stress.element* }
@@ -597,6 +618,7 @@ Stress.element = element miradi:Stress
   element miradi:StressName { formatted_text }? &
   element miradi:StressScopeRating { vocabulary_scope_rating }? &
   element miradi:StressSeverityRating { vocabulary_severity_rating }? &
+  element miradi:StressUUID { uuid } &
   TaxonomyClassificationContainer.element?
 }
 
@@ -607,7 +629,8 @@ GroupBox.element = element miradi:GroupBox
   element miradi:GroupBoxComments { formatted_text }? &
   element miradi:GroupBoxDetails { formatted_text }? &
   element miradi:GroupBoxIdentifier { text }? &
-  element miradi:GroupBoxName { formatted_text }?
+  element miradi:GroupBoxName { formatted_text }? &
+  element miradi:GroupBoxUUID { uuid }
 }
 
 SubTargetPool.element = element miradi:SubTargetPool { SubTarget.element* }
@@ -616,7 +639,8 @@ SubTarget.element = element miradi:SubTarget
   attribute Id {xsd:integer} &
   element miradi:SubTargetDetails { formatted_text }? &
   element miradi:SubTargetIdentifier { text }? &
-  element miradi:SubTargetName { formatted_text }?
+  element miradi:SubTargetName { formatted_text }? &
+  element miradi:SubTargetUUID { uuid }
 }
 
 ProgressReportPool.element = element miradi:ProgressReportPool { ProgressReport.element* }
@@ -625,7 +649,8 @@ ProgressReport.element = element miradi:ProgressReport
   attribute Id {xsd:integer} &
   element miradi:ProgressReportDetails { formatted_text }? &
   element miradi:ProgressReportProgressDate { vocabulary_date }? &
-  element miradi:ProgressReportProgressStatus { vocabulary_progress_report_status }?
+  element miradi:ProgressReportProgressStatus { vocabulary_progress_report_status }? &
+  element miradi:ProgressReportUUID { uuid }
 }
 
 OrganizationPool.element = element miradi:OrganizationPool { Organization.element* }
@@ -639,7 +664,8 @@ Organization.element = element miradi:Organization
   element miradi:OrganizationName { formatted_text }? &
   element miradi:OrganizationPhoneNumber { text }? &
   element miradi:OrganizationRolesDescription { text }? &
-  element miradi:OrganizationSurname { text }?
+  element miradi:OrganizationSurname { text }? &
+  element miradi:OrganizationUUID { uuid }
 }
 
 ProgressPercentPool.element = element miradi:ProgressPercentPool { ProgressPercent.element* }
@@ -648,7 +674,8 @@ ProgressPercent.element = element miradi:ProgressPercent
   attribute Id {xsd:integer} &
   element miradi:ProgressPercentDetails { formatted_text }? &
   element miradi:ProgressPercentPercentComplete { xsd:decimal }? &
-  element miradi:ProgressPercentPercentDate { vocabulary_date }?
+  element miradi:ProgressPercentPercentDate { vocabulary_date }? &
+  element miradi:ProgressPercentUUID { uuid }
 }
 
 TaggedObjectSetPool.element = element miradi:TaggedObjectSetPool { TaggedObjectSet.element* }
@@ -657,7 +684,8 @@ TaggedObjectSet.element = element miradi:TaggedObjectSet
   attribute Id {xsd:integer} &
   element miradi:TaggedObjectSetComments { formatted_text }? &
   element miradi:TaggedObjectSetIdentifier { text }? &
-  element miradi:TaggedObjectSetName { formatted_text }?
+  element miradi:TaggedObjectSetName { formatted_text }? &
+  element miradi:TaggedObjectSetUUID { uuid }
 }
 
 ScopeBoxPool.element = element miradi:ScopeBoxPool { ScopeBox.element* }
@@ -668,7 +696,8 @@ ScopeBox.element = element miradi:ScopeBox
   element miradi:ScopeBoxDetails { formatted_text }? &
   element miradi:ScopeBoxIdentifier { text }? &
   element miradi:ScopeBoxName { formatted_text }? &
-  element miradi:ScopeBoxScopeBoxTypeCode { vocabulary_scope_box_type }
+  element miradi:ScopeBoxScopeBoxTypeCode { vocabulary_scope_box_type } &
+  element miradi:ScopeBoxUUID { uuid }
 }
 
 ExpenseAssignmentPool.element = element miradi:ExpenseAssignmentPool { ExpenseAssignment.element* }
@@ -682,6 +711,7 @@ ExpenseAssignment.element = element miradi:ExpenseAssignment
   element miradi:ExpenseAssignmentDetails { DateUnitExpense.element* }? &
   element miradi:ExpenseAssignmentFundingSourceId { FundingSourceId.element }? &
   element miradi:ExpenseAssignmentName { formatted_text }? &
+  element miradi:ExpenseAssignmentUUID { uuid } &
   TaxonomyClassificationContainer.element?
 }
 
@@ -700,6 +730,7 @@ HumanWellbeingTarget.element = element miradi:HumanWellbeingTarget
   element miradi:HumanWellbeingTargetName { formatted_text }? &
   element miradi:HumanWellbeingTargetSimpleViabilityStatus { vocabulary_target_status }? &
   element miradi:HumanWellbeingTargetSubTargetIds { SubTargetId.element* }? &
+  element miradi:HumanWellbeingTargetUUID { uuid } &
   element miradi:HumanWellbeingTargetViabilityMode { vocabulary_target_viability_mode } &
   TaxonomyClassificationContainer.element?
 }
@@ -708,14 +739,16 @@ IUCNRedListSpeciesPool.element = element miradi:IUCNRedListSpeciesPool { IUCNRed
 IUCNRedListSpecies.element = element miradi:IUCNRedListSpecies
 {
   attribute Id {xsd:integer} &
-  element miradi:IUCNRedListSpeciesName { formatted_text }?
+  element miradi:IUCNRedListSpeciesName { formatted_text }? &
+  element miradi:IUCNRedListSpeciesUUID { uuid }
 }
 
 OtherNotableSpeciesPool.element = element miradi:OtherNotableSpeciesPool { OtherNotableSpecies.element* }
 OtherNotableSpecies.element = element miradi:OtherNotableSpecies
 {
   attribute Id {xsd:integer} &
-  element miradi:OtherNotableSpeciesName { formatted_text }?
+  element miradi:OtherNotableSpeciesName { formatted_text }? &
+  element miradi:OtherNotableSpeciesUUID { uuid }
 }
 
 AudiencePool.element = element miradi:AudiencePool { Audience.element* }
@@ -724,7 +757,8 @@ Audience.element = element miradi:Audience
   attribute Id {xsd:integer} &
   element miradi:AudienceName { formatted_text }? &
   element miradi:AudiencePeopleCount { xsd:integer }? &
-  element miradi:AudienceSummary { formatted_text }?
+  element miradi:AudienceSummary { formatted_text }? &
+  element miradi:AudienceUUID { uuid }
 }
 
 BudgetCategoryOnePool.element = element miradi:BudgetCategoryOnePool { BudgetCategoryOne.element* }
@@ -733,7 +767,8 @@ BudgetCategoryOne.element = element miradi:BudgetCategoryOne
   attribute Id {xsd:integer} &
   element miradi:BudgetCategoryOneCode { text }? &
   element miradi:BudgetCategoryOneComments { formatted_text }? &
-  element miradi:BudgetCategoryOneName { formatted_text }?
+  element miradi:BudgetCategoryOneName { formatted_text }? &
+  element miradi:BudgetCategoryOneUUID { uuid }
 }
 
 BudgetCategoryTwoPool.element = element miradi:BudgetCategoryTwoPool { BudgetCategoryTwo.element* }
@@ -742,14 +777,16 @@ BudgetCategoryTwo.element = element miradi:BudgetCategoryTwo
   attribute Id {xsd:integer} &
   element miradi:BudgetCategoryTwoCode { text }? &
   element miradi:BudgetCategoryTwoComments { formatted_text }? &
-  element miradi:BudgetCategoryTwoName { formatted_text }?
+  element miradi:BudgetCategoryTwoName { formatted_text }? &
+  element miradi:BudgetCategoryTwoUUID { uuid }
 }
 
 DashboardPool.element = element miradi:DashboardPool { Dashboard.element* }
 Dashboard.element = element miradi:Dashboard
 {
   attribute Id {xsd:integer} &
-  element miradi:DashboardStatusEntries { StatusEntry.element* }?
+  element miradi:DashboardStatusEntries { StatusEntry.element* }? &
+  element miradi:DashboardUUID { uuid }
 }
 
 TaxonomyPool.element = element miradi:TaxonomyPool { Taxonomy.element* }
@@ -770,7 +807,8 @@ FutureStatus.element = element miradi:FutureStatus
   element miradi:FutureStatusDetails { formatted_text }? &
   element miradi:FutureStatusName { formatted_text }? &
   element miradi:FutureStatusRating { vocabulary_status }? &
-  element miradi:FutureStatusSummary { text }?
+  element miradi:FutureStatusSummary { text }? &
+  element miradi:FutureStatusUUID { uuid }
 }
 
 BiophysicalFactorPool.element = element miradi:BiophysicalFactorPool { BiophysicalFactor.element* }
@@ -783,6 +821,7 @@ BiophysicalFactor.element = element miradi:BiophysicalFactor
   element miradi:BiophysicalFactorIndicatorIds { IndicatorId.element* }? &
   element miradi:BiophysicalFactorName { formatted_text }? &
   element miradi:BiophysicalFactorObjectiveIds { ObjectiveId.element* }? &
+  element miradi:BiophysicalFactorUUID { uuid } &
   TaxonomyClassificationContainer.element?
 }
 
@@ -796,6 +835,7 @@ BiophysicalResult.element = element miradi:BiophysicalResult
   element miradi:BiophysicalResultIndicatorIds { IndicatorId.element* }? &
   element miradi:BiophysicalResultName { formatted_text }? &
   element miradi:BiophysicalResultObjectiveIds { ObjectiveId.element* }? &
+  element miradi:BiophysicalResultUUID { uuid } &
   TaxonomyClassificationContainer.element?
 }
 
@@ -804,7 +844,8 @@ Timeframe.element = element miradi:Timeframe
 {
   attribute Id {xsd:integer} &
   element miradi:TimeframeDetails { DateUnitTimeframe.element* }? &
-  element miradi:TimeframeName { formatted_text }?
+  element miradi:TimeframeName { formatted_text }? &
+  element miradi:TimeframeUUID { uuid }
 }
 
 MethodPool.element = element miradi:MethodPool { Method.element* }
@@ -816,6 +857,7 @@ Method.element = element miradi:Method
   element miradi:MethodIdentifier { text }? &
   element miradi:MethodName { formatted_text }? &
   element miradi:MethodUrl { text }? &
+  element miradi:MethodUUID { uuid } &
   TaxonomyClassificationContainer.element?
 }
 
@@ -827,7 +869,8 @@ ExtendedProgressReport.element = element miradi:ExtendedProgressReport
   element miradi:ExtendedProgressReportLessonsLearned { formatted_text }? &
   element miradi:ExtendedProgressReportNextSteps { formatted_text }? &
   element miradi:ExtendedProgressReportProgressDate { vocabulary_date }? &
-  element miradi:ExtendedProgressReportProgressStatus { vocabulary_progress_report_status }?
+  element miradi:ExtendedProgressReportProgressStatus { vocabulary_progress_report_status }? &
+  element miradi:ExtendedProgressReportUUID { uuid }
 }
 
 SimpleThreatRatingPool.element = element miradi:SimpleThreatRatingPool { SimpleThreatRating.element* }
@@ -1004,6 +1047,7 @@ vocabulary_tnc_terrestrial_eco_region_subset_2 = '10166'|'10410'|'10352'|'10353'
 vocabulary_diagram_factor_header_height = xsd:integer { minInclusive='0' maxInclusive='9' }
 uri_restricted_text = xsd:string { pattern = '([a-zA-Z0-9]|=|\?|\.|-|#|@|:|\+|/|&|_|~|%)*' }
 non_empty_string = xsd:string { pattern = '\S+' }
+uuid = xsd:string { pattern = '[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}' }
 ConceptualModelId.element = element miradi:ConceptualModelId { xsd:integer }
 ResultsChainId.element = element miradi:ResultsChainId { xsd:integer }
 DiagramFactorId.element = element miradi:DiagramFactorId { xsd:integer }

@@ -29,6 +29,8 @@ public class ProjectSummaryPlanningSchema extends AbstractProjectSummarySchema
 	@Override
 	protected void fillFieldSchemas()
 	{
+		super.fillFieldSchemas();
+
 		ProjectMetadataSchema schema = new ProjectMetadataSchema();
 		
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_START_DATE));

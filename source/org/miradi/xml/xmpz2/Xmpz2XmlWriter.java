@@ -28,6 +28,7 @@ import java.util.Set;
 
 import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeWriter;
+import org.miradi.exceptions.XmlValidationException;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objectdata.ChoiceData;
@@ -56,6 +57,13 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		project = projectToUse;
 		writer = writerToUse;
 		tagToElementNameMap = new Xmpz2TagToElementNameMap();
+		uuidList = new HashSet<String>();
+
+		invalidXmlFileMessage =
+				(EAM.text("An error is preventing this project from exporting correctly. " +
+						"Most likely, the project has been corrupted. Please contact " +
+						"the Miradi team for help and advice. We recommend that you do not " +
+						"make any changes to this project until this problem has been resolved."));
 	}
 	
 	public void writeStartPoolElement(String startElementName) throws Exception
@@ -123,6 +131,15 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	public void writeStringData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string) throws Exception
 	{
 		writeField(baseObjectSchema, fieldSchema, string);
+	}
+
+	public void writeUUIDData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string) throws Exception
+	{
+		if (uuidList.contains(string))
+			throw new XmlValidationException(invalidXmlFileMessage);
+
+		writeStringData(baseObjectSchema, fieldSchema, string);
+		uuidList.add(string);
 	}
 
 	public void writeCodeListData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, ChoiceQuestion questionToUse, String codeListAsString) throws Exception
@@ -691,4 +708,6 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	private Project project;
 	private UnicodeWriter writer;
 	private Xmpz2TagToElementNameMap tagToElementNameMap;
+	private HashSet<String> uuidList;
+	String invalidXmlFileMessage;
 }

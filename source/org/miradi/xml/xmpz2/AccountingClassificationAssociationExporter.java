@@ -50,9 +50,12 @@ public class AccountingClassificationAssociationExporter extends BaseObjectExpor
 	@Override
 	protected boolean shouldOmitField(String tag)
 	{
-		if (tag.equals(AbstractTaxonomyAssociationSchema.TAG_BASE_OBJECT_TYPE))
+		if (tag.equals(BaseObject.TAG_UUID))
 			return true;
 		
+		if (tag.equals(AbstractTaxonomyAssociationSchema.TAG_BASE_OBJECT_TYPE))
+			return true;
+
 		if (tag.equals(AccountingClassificationAssociationSchema.TAG_ACCOUNTING_CLASSIFICATION_ASSOCIATION_POOL_NAME))
 			return true;
 		

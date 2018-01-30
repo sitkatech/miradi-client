@@ -37,17 +37,8 @@ import org.miradi.main.TransferableMiradiListVersion4;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.FactorLink;
-import org.miradi.objects.Goal;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Target;
-import org.miradi.objects.Task;
+import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.*;
 import org.miradi.project.FactorDeleteHelper;
 import org.miradi.project.ProjectRepairer;
 import org.miradi.schemas.CauseSchema;
@@ -73,7 +64,8 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		
 		targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
 		threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
-		
+
+		target = (Target) targetDiagramFactor.getWrappedFactor();
 		threat = (Cause) threatDiagramFactor.getWrappedFactor();
 		getProject().enableAsThreat(threatDiagramFactor.getWrappedORef());
 		
@@ -208,7 +200,38 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 		assertEquals("Orphaned threats?", 0, repairer.getFactorsWithoutDiagramFactors(CauseSchema.getObjectType()).size());
 		assertEquals("Orphaned groups?", 0, repairer.getFactorsWithoutDiagramFactors(GroupBoxSchema.getObjectType()).size());
 	}
-	
+
+	public void testPasteShared() throws Exception
+	{
+		AbstractTransferableMiradiList transferableListBeforeCut = createTransferable(getDiagramModel(), getDiagramModel().getAllDiagramFactors(), new Vector<DiagramLink>());
+		pasteShared(diagramModelToPasteInto, transferableListBeforeCut);
+
+		for (DiagramFactor diagramFactor : diagramModelToPasteInto.getAllDiagramFactors())
+		{
+			Factor wrappedFactor = diagramFactor.getWrappedFactor();
+			if (wrappedFactor.getType() == ObjectType.TARGET)
+			{
+				verifyObjectUUIDsDoNotMatch(diagramFactor, targetDiagramFactor);
+				verifyObjectUUIDsMatch(target, wrappedFactor);
+			}
+			if (wrappedFactor.getType() == ObjectType.CAUSE)
+			{
+				verifyObjectUUIDsDoNotMatch(diagramFactor, threatDiagramFactor);
+				verifyObjectUUIDsMatch(threat, wrappedFactor);
+			}
+		}
+	}
+
+	private void verifyObjectUUIDsMatch(BaseObject copiedObject, BaseObject pastedObject)
+	{
+		assertEquals("UUIDs should match", copiedObject.getData(BaseObject.TAG_UUID), pastedObject.getData(BaseObject.TAG_UUID));
+	}
+
+	private void verifyObjectUUIDsDoNotMatch(BaseObject copiedObject, BaseObject pastedObject)
+	{
+		assertNotEquals("UUIDs should not match", copiedObject.getData(BaseObject.TAG_UUID), pastedObject.getData(BaseObject.TAG_UUID));
+	}
+
 	public void testPasteSharedGroupWithLinkOnlyThreatExists() throws Exception
 	{	
 		threatTargetDiagramLink = createThreatTargetLink();
@@ -553,6 +576,7 @@ public class TestDiagramAliasPaster extends TestCaseWithProject
 	private DiagramModel diagramModelToPasteInto;
 	private DiagramFactor targetDiagramFactor;
 	private DiagramFactor threatDiagramFactor;
+	private Target target;
 	private Cause threat;
 	private DiagramLink threatTargetDiagramLink;
 	private DiagramFactor groupBoxDiagramFactor;

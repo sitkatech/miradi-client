@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2;
 
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
+import org.miradi.exceptions.XmlValidationException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.AbstractUserTextDataWithHtmlFormatting;
@@ -48,10 +49,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.xpath.XPathExpressionException;
 import java.awt.*;
-import java.util.HashMap;
-import java.util.LinkedHashMap;
-import java.util.Set;
-import java.util.Vector;
+import java.util.*;
 
 public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlConstants
 {
@@ -61,6 +59,13 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		
 		tagToElementNameMap = new Xmpz2TagToElementNameMap();
 		progressIndicator = progressIndicatorToUse;
+
+		uuidList = new HashSet<String>();
+		invalidXmlFileMessage =
+				(EAM.text("An error is preventing this project from importing correctly. " +
+						"Most likely, the project has been corrupted. Please contact " +
+						"the Miradi team for help and advice. We recommend that you do not " +
+						"make any changes to this project until this problem has been resolved."));
 	}
 	
 	@Override
@@ -449,6 +454,22 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		importField(node, poolName + elementName, destinationRef, destinationTag);
 	}
 	
+	public void importUUIDField(Node node, String poolName, ORef destinationRef, String destinationTag) throws Exception
+	{
+		String elementName = findElementName(poolName, destinationTag);
+		String path = poolName + elementName;
+		String[] elements = new String[]{path,};
+
+		String data = getPathData(node, elements);
+		data = escapeDueToParserUnescaping(data);
+
+		if (uuidList.contains(data))
+			throw new XmlValidationException(invalidXmlFileMessage);
+
+		importField(destinationRef, destinationTag, data);
+		uuidList.add(data);
+	}
+
 	public void importFormattedStringField(Node node, String poolName, ORef destinationRef, String destinationTag) throws Exception
 	{
 		try
@@ -727,4 +748,6 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 	private Xmpz2TagToElementNameMap tagToElementNameMap;
 	protected ProgressInterface progressIndicator;
 	private HashMap<String, Integer> elementNameToTypeMap;
+	private HashSet<String> uuidList;
+	String invalidXmlFileMessage;
 }

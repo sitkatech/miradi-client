@@ -31,6 +31,8 @@ public class ProjectSummaryTncProjectDataSchema extends AbstractProjectSummarySc
 	@Override
 	protected void fillFieldSchemas()
 	{
+		super.fillFieldSchemas();
+
 		ProjectMetadataSchema schema = new ProjectMetadataSchema();
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_TNC_DATABASE_DOWNLOAD_DATE));
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS));

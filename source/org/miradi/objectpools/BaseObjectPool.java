@@ -21,6 +21,7 @@ package org.miradi.objectpools;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdAssigner;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -28,19 +29,23 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.schemas.BaseObjectSchema;
 
+import java.util.UUID;
+
 abstract public class BaseObjectPool extends PoolWithIdAssigner
 {
 	public BaseObjectPool(IdAssigner idAssignerToUse, int objectTypeToStore)
 	{
 		super(objectTypeToStore, idAssignerToUse);
 	}
-	
+
 	public BaseObject createObject(ObjectManager objectManager, BaseId objectId) throws Exception
 	{
 		BaseId actualId = idAssigner.obtainRealId(objectId);
 		BaseObject created = createRawObject(objectManager, actualId);
+		if (ObjectType.requiresUUID(created.getType()))
+			created.setData(BaseObject.TAG_UUID, UUID.randomUUID().toString());
 		put(created.getId(), created);
-		
+
 		return created;
 	}
 	

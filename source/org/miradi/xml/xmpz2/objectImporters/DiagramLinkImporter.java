@@ -83,7 +83,7 @@ public class DiagramLinkImporter extends BaseObjectImporter
 
 	private Node getFactorNodeId(NodeList childNodes) throws Exception
 	{
-		//FIXME medium - Instead of looping nodes, use expath to find our node, Example getXpath.evaluate(*ID).
+		//FIXME medium - Instead of looping nodes, use xpath to find our node, Example getXpath.evaluate(*ID).
 		for (int index = 0; index < childNodes.getLength(); ++index)
 		{
 			Node node = childNodes.item(index);

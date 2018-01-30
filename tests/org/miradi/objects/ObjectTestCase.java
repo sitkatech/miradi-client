@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import java.awt.Point;
+import java.util.UUID;
 import java.util.Vector;
 
 import org.martus.util.MultiCalendar;
@@ -171,13 +172,16 @@ public class ObjectTestCase extends TestCaseWithProject
 		assertTrue("current contents mismatch?", object.getField(tag).isCurrentValue(sampleData));
 		
 		assertEquals("did't set " + tag + "?", sampleData, object.getData(tag));
-		
+
+		project.executeBeginTransaction();
 		Vector<CommandSetObjectData> commandsToClear = object.createCommandsToClear();
 		for(int i = 0; i < commandsToClear.size(); ++i)
 		{
 			assertNotEquals("Tried to clear Id?", BaseObject.TAG_ID, commandsToClear.get(i).getFieldTag());
 			project.executeCommand(commandsToClear.get(i));
 		}
+		project.executeEndTransaction();
+
 		assertEquals("Didn't clear " + tag + "?", emptyData, object.getData(tag));
 		project.undo();
 		assertEquals("Didn't restore " + tag + "?", sampleData, object.getData(tag));
@@ -214,6 +218,10 @@ public class ObjectTestCase extends TestCaseWithProject
 			IdList list = new IdList(0);
 			list.add(new BaseId(7));
 			return list.toString();
+		}
+		else if(field instanceof UUIDData)
+		{
+			return UUID.randomUUID().toString();
 		}
 		else if(field instanceof CodeToUserStringMapData)
 		{

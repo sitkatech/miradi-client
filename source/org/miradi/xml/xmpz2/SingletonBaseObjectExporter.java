@@ -34,4 +34,13 @@ public class SingletonBaseObjectExporter extends BaseObjectExporter
 	{
 		getWriter().writeObjectElementStartWithoutAttribute(baseObject);
 	}
+
+	@Override
+	protected boolean shouldOmitField(String tag)
+	{
+		if (tag.equals(BaseObject.TAG_UUID))
+			return true;
+
+		return false;
+	}
 }

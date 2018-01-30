@@ -109,6 +109,7 @@ public class ObjectType
 	// - IF it is a user-visible object, add a case to getUserFriendlyObjectTypeName below
 	// - IF it is a top-level object, add it to getTopLevelObjectTypes below
 	// - add appropriate entry to FieldLabels.properties file
+	// - update requiresUUID (and related importer / exporter, etc.) as applicable
 
 	public static final int OBJECT_TYPE_COUNT = 71;
 
@@ -158,6 +159,62 @@ public class ObjectType
 		};
 		
 		return new HashSet<Integer>(Arrays.asList(types));
+	}
+
+	public static boolean requiresUUID(int objectType)
+	{
+		if (objectType == ObjectType.FAKE)
+			return false;
+
+		if (objectType == ObjectType.RATING_CRITERION)
+			return false;
+
+		if (objectType == ObjectType.FACTOR_LINK)
+			return false;
+
+		if (objectType == ObjectType.TABLE_SETTINGS)
+			return false;
+
+		if (objectType == ObjectType.THREAT_RATING_COMMENTS_DATA)
+			return false;
+
+		if (objectType == ObjectType.VALUE_OPTION)
+			return false;
+
+		if (objectType == ObjectType.FOS_PROJECT_DATA)
+			return false;
+
+		if (objectType == ObjectType.MIRADI_SHARE_PROJECT_DATA)
+			return false;
+
+		if (objectType == ObjectType.MIRADI_SHARE_TAXONOMY)
+			return false;
+
+		if (objectType == ObjectType.TAXONOMY_ASSOCIATION)
+			return false;
+
+		if (objectType == ObjectType.ACCOUNTING_CLASSIFICATION_ASSOCIATION)
+			return false;
+
+		if (objectType == ObjectType.PROJECT_METADATA)
+			return false;
+
+		if (objectType == ObjectType.RARE_PROJECT_DATA)
+			return false;
+
+		if (objectType == ObjectType.TNC_PROJECT_DATA)
+			return false;
+
+		if (objectType == ObjectType.WCPA_PROJECT_DATA)
+			return false;
+
+		if (objectType == ObjectType.WCS_PROJECT_DATA)
+			return false;
+
+		if (objectType == ObjectType.WWF_PROJECT_DATA)
+			return false;
+
+		return true;
 	}
 }
 

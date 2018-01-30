@@ -71,6 +71,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeVocabularyDefinitions();
 		writeUriRestrictedSchemaElement();
 		writeNonEmptyStringSchemaElement();
+		writeUUIDSchemaElement();
 		writeObjectTypeIdElements();
 		writeWrappedByDiagramFactorSchemaElement();
 		writeLinkableFactorIds();
@@ -329,6 +330,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return createElementSchema(baseObjectSchema, fieldSchema, TEXT_ELEMENT_TYPE);
 	}
 
+	public String createUUIDSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		return createRequiredElementSchema(baseObjectSchema, fieldSchema, UUID);
+	}
+
 	public String createUserTextSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
 		return createElementSchema(baseObjectSchema, fieldSchema, FORMATTED_TEXT_TYPE);
@@ -365,7 +371,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		String fieldName = getIdElementName(baseObjectSchema, fieldSchema);
 		return createRequiredSchemaElement(baseObjectSchema, fieldSchema, fieldName);
 	}
-	
+
 	public String createRequiredBaseIdSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType)
 	{
 		String objectName = getIdElementName(baseObjectSchema, fieldSchema, objectType);
@@ -700,6 +706,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void writeNonEmptyStringSchemaElement()
 	{
 		writeRegexRestrictedElement(NON_EMPTY_STRING, "'\\S+'");
+	}
+
+	private void writeUUIDSchemaElement()
+	{
+		writeRegexRestrictedElement(UUID, "'[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}'");
 	}
 
 	private void writeRegexRestrictedElement(final String elementName, final String regex)
@@ -1296,12 +1307,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 		return items;
 	}
-	
+
 	private String createIdName(String objectName)
 	{
 		return objectName + ID;
 	}
-	
 
 	public ChoiceQuestionToSchemaElementNameMap getChoiceQuestionToSchemaElementNameMap()
 	{

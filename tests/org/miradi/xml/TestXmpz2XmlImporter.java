@@ -58,7 +58,7 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 		Vector<String> storedFieldTags = tncProjectData.getStoredFieldTags();
 		for(String tag : storedFieldTags)
 		{
-			if (!tag.equals(BaseObject.TAG_LABEL))
+			if (!tag.equals(BaseObject.TAG_LABEL) && !tag.equals(BaseObject.TAG_UUID))
 				assertTrue("Field should contain data for " + tag + "?", tncProjectData.getData(tag).length() > 0);
 		}
 	}

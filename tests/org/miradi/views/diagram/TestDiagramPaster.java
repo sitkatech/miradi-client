@@ -81,6 +81,9 @@ public class TestDiagramPaster extends TestCaseWithProject
 		DiagramFactor trrDiagramFactor = DiagramFactor.find(getProject(), resultsChainDiagramFactorRefs.get(0));
 		ThreatReductionResult trr = ThreatReductionResult.find(getProject(), trrDiagramFactor.getWrappedORef());
 		assertEquals("", trr.getData(trr.TAG_TAXONOMY_CLASSIFICATION_CONTAINER));
+
+		verifyObjectUUIDsDoNotMatch(threatDiagramFactor, trrDiagramFactor);
+		verifyObjectUUIDsDoNotMatch(threat, trr);
 	}
 	
 	public void testPseudoRefListNotPasted() throws Exception
@@ -152,9 +155,11 @@ public class TestDiagramPaster extends TestCaseWithProject
 		
 		Vector<Task> activities = projectToPasteInto.getTaskPool().getAllActivities();
 		assertEquals("Incorrect activity count?", 1, activities.size());
-		Task pastedActitivy = activities.get(0);
-		verifyEmptyTag(pastedActitivy, BaseObject.TAG_ASSIGNED_LEADER_RESOURCE);
-		
+		Task pastedActivity = activities.get(0);
+		verifyEmptyTag(pastedActivity, BaseObject.TAG_ASSIGNED_LEADER_RESOURCE);
+
+		verifyObjectUUIDsDoNotMatch(activity, pastedActivity);
+
 		ORefList resourceAssignmentRefs = projectToPasteInto.getAssignmentPool().getRefList();
 		assertEquals("ResourceAssignment was not pasted?", 1, resourceAssignmentRefs.size());
 		ResourceAssignment pastedResourceAssignment = ResourceAssignment.find(projectToPasteInto, resourceAssignmentRefs.getFirstElement());
@@ -163,7 +168,9 @@ public class TestDiagramPaster extends TestCaseWithProject
 		verifyEmptyTag(pastedResourceAssignment, ResourceAssignment.TAG_ACCOUNTING_CODE_ID);
 		verifyEmptyTag(pastedResourceAssignment, ResourceAssignment.TAG_CATEGORY_ONE_REF);
 		verifyEmptyTag(pastedResourceAssignment, ResourceAssignment.TAG_CATEGORY_TWO_REF);
-		
+
+		verifyObjectUUIDsDoNotMatch(resourceAssignment, pastedResourceAssignment);
+
 		ORefList expenseAssignmentRefs = projectToPasteInto.getExpenseAssignmentPool().getRefList();
 		assertEquals("ExpenseAssignment was not pasted", 1, expenseAssignmentRefs.size());
 		ExpenseAssignment pastedExpenseAssignment = ExpenseAssignment.find(projectToPasteInto, expenseAssignmentRefs.getFirstElement());
@@ -171,6 +178,8 @@ public class TestDiagramPaster extends TestCaseWithProject
 		verifyEmptyTag(pastedExpenseAssignment, ExpenseAssignment.TAG_ACCOUNTING_CODE_REF);
 		verifyEmptyTag(pastedExpenseAssignment, ExpenseAssignment.TAG_CATEGORY_ONE_REF);
 		verifyEmptyTag(pastedExpenseAssignment, ExpenseAssignment.TAG_CATEGORY_TWO_REF);
+
+		verifyObjectUUIDsDoNotMatch(expenseAssignment, pastedExpenseAssignment);
 	}
 	
 	private void verifyEmptyTag(BaseObject baseObject, String tag)
@@ -263,6 +272,13 @@ public class TestDiagramPaster extends TestCaseWithProject
 		ORef newThreatReductionResultRef = oldToNewRefMap.get(threatReductionResult.getRef());
 		ThreatReductionResult newThreatReductionResult = ThreatReductionResult.find(projectToPasteInto, newThreatReductionResultRef);
 		assertEquals("did not blank out related threat ref?", ORef.INVALID, newThreatReductionResult.getRelatedDirectThreatRef());
+
+		verifyObjectUUIDsDoNotMatch(threatReductionResult, newThreatReductionResult);
+	}
+
+	private void verifyObjectUUIDsDoNotMatch(BaseObject copiedObject, BaseObject pastedObject)
+	{
+		assertNotEquals("UUIDs should not match", copiedObject.getData(BaseObject.TAG_UUID), pastedObject.getData(BaseObject.TAG_UUID));
 	}
 
 	private ProjectForTesting createNewProject() throws Exception
@@ -299,6 +315,9 @@ public class TestDiagramPaster extends TestCaseWithProject
 		HashMap oldToNewFactorRefMap = paster.getOldToNewObjectRefMap();
 		ORef newRef = (ORef) oldToNewFactorRefMap.get(factor.getRef());
 		Factor newFactor = (Factor) getProject().findObject(newRef);
+
+		verifyObjectUUIDsDoNotMatch(factor, newFactor);
+
 		IdList newAnnotationIds = new IdList(annotationType, newFactor.getData(annotationFactorTag));
 		assertFalse("contains wrong old id?", newAnnotationIds.contains(annotationRef1));
 		assertFalse("contains wrong old id?", newAnnotationIds.contains(annotationRef2));

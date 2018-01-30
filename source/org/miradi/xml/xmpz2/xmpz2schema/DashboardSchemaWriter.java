@@ -37,8 +37,9 @@ public class DashboardSchemaWriter extends BaseObjectSchemaWriter
 		Vector<String> schemaElements = new Vector<String>();
 		
 		schemaElements.add("attribute " + ID + " "+ "{xsd:integer}");
+		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createSchemaElement(getXmpz2ElementName() + UUID.toUpperCase(), UUID));
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(getXmpz2ElementName() + DASHBOARD_STATUS_ENTRIES, (DASHBOARD_STATUS_ENTRY + ".element*")));
-		
+
 		return schemaElements;
 	}
 }

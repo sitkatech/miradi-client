@@ -33,10 +33,12 @@ public class TableSettingsSchema extends BaseObjectSchema
 	{
 		super();
 	}
-	
+
 	@Override
 	public void fillFieldSchemas()
 	{
+		super.fillFieldSchemas();
+
 		createFieldSchemaCode(TableSettings.TAG_TABLE_IDENTIFIER);
 		createFieldSchemaInteger(TableSettings.TAG_ROW_HEIGHT);
 		createFieldSchemaDateUnitList(TableSettings.TAG_DATE_UNIT_LIST_DATA);
@@ -50,6 +52,12 @@ public class TableSettingsSchema extends BaseObjectSchema
 		createFieldSchemaChoice(TableSettings.TAG_COLUMN_SORT_DIRECTION, SortDirectionQuestion.class).setNavigationField();
 		createFieldSchemaChoice(TableSettings.TAG_WORK_PLAN_DIAGRAM_FILTER, DiagramChoiceQuestion.class);
 		createFieldSchemaChoice(TableSettings.TAG_WORK_PLAN_PROJECT_RESOURCE_CONFIGURATION, WorkPlanProjectResourceConfigurationQuestion.class);
+	}
+
+	@Override
+	protected boolean hasLabel()
+	{
+		return false;
 	}
 
 	public static int getObjectType()

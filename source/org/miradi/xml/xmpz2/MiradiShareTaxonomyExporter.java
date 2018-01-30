@@ -40,9 +40,12 @@ public class MiradiShareTaxonomyExporter extends BaseObjectExporter
 	@Override
 	protected boolean shouldOmitField(String tag)
 	{
-		if (tag.equals(MiradiShareTaxonomySchema.TAG_TAXONOMY_CODE))
+		if (tag.equals(BaseObject.TAG_UUID))
 			return true;
 		
+		if (tag.equals(MiradiShareTaxonomySchema.TAG_TAXONOMY_CODE))
+			return true;
+
 		return super.shouldOmitField(tag);
 	}
 }

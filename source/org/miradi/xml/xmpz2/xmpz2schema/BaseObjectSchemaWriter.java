@@ -24,6 +24,8 @@ import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.objectdata.ObjectData;
+import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.BaseObject;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
@@ -71,6 +73,9 @@ public class BaseObjectSchemaWriter implements Xmpz2XmlConstants
 	
 	protected boolean shouldOmitField(String tag)
 	{
+		if (tag.equalsIgnoreCase(BaseObject.TAG_UUID) && !ObjectType.requiresUUID(baseObjectSchema.getType()))
+			return true;
+
 		return false;
 	}
 	

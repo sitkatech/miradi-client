@@ -42,9 +42,26 @@ public class DashboardExporter extends BaseObjectExporter
 	@Override
 	protected void writeFields(final BaseObject baseObject,	BaseObjectSchema baseObjectSchema) throws Exception
 	{
+		super.writeFields(baseObject, baseObjectSchema);
+
 		writeDashboardElement((Dashboard)baseObject);
 	}
-	
+
+	@Override
+	protected boolean shouldOmitField(String tag)
+	{
+		if (tag.equals(Dashboard.TAG_PROGRESS_CHOICE_MAP))
+			return true;
+
+		if (tag.equalsIgnoreCase(Dashboard.TAG_COMMENTS_MAP))
+			return true;
+
+		if (tag.equalsIgnoreCase(Dashboard.TAG_FLAGS_MAP))
+			return true;
+
+		return false;
+	}
+
 	private void writeDashboardElement(Dashboard dashboard) throws Exception
 	{
 		final CodeToUserStringMap commentsMap = dashboard.getCommentsMap();

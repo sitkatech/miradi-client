@@ -951,6 +951,9 @@ abstract public class DiagramPaster
                 continue;
             }
 
+            if (tag.equalsIgnoreCase(BaseObject.TAG_UUID))
+            	continue;
+
             CommandSetObjectData setDataCommand = new CommandSetObjectData(baseObject.getRef(), tag, value);
             commands.add(setDataCommand);
 		}

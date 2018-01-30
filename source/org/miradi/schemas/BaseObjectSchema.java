@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objectdata.ObjectData;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DynamicChoiceQuestion;
@@ -274,7 +275,12 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 	{
 		return addFieldSchema(new FieldSchemaTaxonomyElementList(tag));
 	}
-	
+
+	public AbstractFieldSchema createFieldSchemaUUID(String tag)
+	{
+		return addFieldSchema(new FieldSchemaUUID(tag));
+	}
+
 	public void createPseudoFieldSchemaString(final String fieldTag)
 	{
 		addPseudoFieldSchema(new FieldSchemaPseudoStringField(fieldTag));
@@ -310,6 +316,8 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 	
 	protected void fillFieldSchemas()
 	{
+		if (ObjectType.requiresUUID(getType()))
+			createFieldSchemaUUID(BaseObject.TAG_UUID);
 		if (hasLabel())
 			createFieldSchemaExpandingUserText(BaseObject.TAG_LABEL);
 	}
@@ -365,6 +373,11 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 		return getFieldSchema(tag).isPseudoField();
 	}
 	
+	public boolean isUUIDField(final String tag)
+	{
+		return getFieldSchema(tag).isUUIDFieldSchema();
+	}
+
 	public String getXmpz2ElementName()
 	{
 		return getObjectName();
