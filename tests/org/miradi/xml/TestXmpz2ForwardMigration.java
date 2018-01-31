@@ -20,12 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml;
 
+import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.main.TestCaseWithProject;
 import org.miradi.migrations.forward.MigrationTo10;
 import org.miradi.migrations.forward.MigrationTo19;
 import org.miradi.migrations.forward.MigrationTo20;
+import org.miradi.objects.BaseObject;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.UnicodeXmlWriter;
 import org.miradi.xml.xmpz2.*;
@@ -33,6 +35,8 @@ import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
+
+import java.util.Vector;
 
 
 public class TestXmpz2ForwardMigration extends TestCaseWithProject
@@ -185,7 +189,49 @@ public class TestXmpz2ForwardMigration extends TestCaseWithProject
 		assertTrue("Expected schema version to be updated", migrationResult.getSchemaVersionWasUpdated());
 		assertEquals("Expected document schema version to match", migrationResult.getDocumentSchemaVersion(), olderSchemaVersion);
 	}
-	
+
+	public void testAdditionOfUUIDFields() throws Exception
+	{
+		Document document = convertProjectToDocument();
+		Element rootElement = document.getDocumentElement();
+
+		NodeList childNodes = rootElement.getChildNodes();
+
+		Vector<ImmutablePair<Node, Node>> nodesToRemove = new Vector<ImmutablePair<Node, Node>>();
+
+		for (int index = 0; index < childNodes.getLength(); ++index)
+		{
+			Node node = childNodes.item(index);
+			nodesToRemove.addAll(removeUUIDFields(node));
+		}
+
+		for (ImmutablePair<Node, Node> nodePair : nodesToRemove)
+		{
+			nodePair.right.removeChild(nodePair.left);
+		}
+
+		verifyMigratedXmpz2(document);
+	}
+
+	private Vector<ImmutablePair<Node, Node>> removeUUIDFields(Node node)
+	{
+		Vector<ImmutablePair<Node, Node>> nodesToRemove = new Vector<ImmutablePair<Node, Node>>();
+
+		if (node.getNodeName().endsWith(BaseObject.TAG_UUID))
+		{
+			nodesToRemove.add(new ImmutablePair<>(node, node.getParentNode()));
+		}
+
+		NodeList childNodes = node.getChildNodes();
+		for (int index = 0; index < childNodes.getLength(); ++index)
+		{
+			Node childNode = childNodes.item(index);
+			nodesToRemove.addAll(removeUUIDFields(childNode));
+		}
+
+		return nodesToRemove;
+	}
+
 	private Document convertProjectToDocument() throws Exception
 	{
 		UnicodeXmlWriter projectWriter = TestXmpz2XmlImporter.createWriter(getProject());

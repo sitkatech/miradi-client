@@ -51,10 +51,7 @@ import org.xml.sax.InputSource;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Vector;
+import java.util.*;
 
 import static org.miradi.xml.xmpz2.objectExporters.ExtraDataExporter.FIELD_TAG_ESCAPE_TOKEN;
 import static org.miradi.xml.xmpz2.objectExporters.ExtraDataExporter.TYPE_ID_TAG_SPLIT_TOKEN;
@@ -79,6 +76,7 @@ public class Xmpz2ForwardMigration
 		moveIndicatorWorkPlanDataToExtraData(document);
 		moveProjectStatusDataToExtraData(document);
 		moveTaggedObjectSetTaggedFactorRefListToExtraData(document);
+		addUUIDFields(document);
 
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
@@ -337,6 +335,48 @@ public class Xmpz2ForwardMigration
 		}
 
 		return mappedObjectType;
+	}
+
+	private void addUUIDFields(Document document) throws Exception
+	{
+		Element rootElement = document.getDocumentElement();
+		NodeList childNodes = rootElement.getChildNodes();
+
+		for (int index = 0; index < childNodes.getLength(); ++index)
+		{
+			Node childNode = childNodes.item(index);
+			addUUIDFieldToElementIfApplicable(document, childNode);
+		}
+	}
+
+	private void addUUIDFieldToElementIfApplicable(Document document, Node node) throws Exception
+	{
+		NamedNodeMap attributes = node.getAttributes();
+		if (attributes != null)
+		{
+			Node attributeNode = attributes.getNamedItem(Xmpz2XmlConstants.ID);
+			if (attributeNode != null && attributeNode.getNodeType() == Node.ATTRIBUTE_NODE)
+			{
+				final String alias = getNameSpaceAliasName(document.getDocumentElement());
+				String parentNodeName = node.getNodeName().replace(alias, "").replace(COLON, "");
+				String uuidNodeName = parentNodeName + Xmpz2XmlConstants.UUID.toUpperCase();
+				Node uuidNode = findNode(node, uuidNodeName);
+				if (uuidNode == null)
+				{
+					Node uuidNodeNew = document.createElement(alias + COLON + uuidNodeName);
+					uuidNodeNew.setTextContent(UUID.randomUUID().toString());
+					node.appendChild(uuidNodeNew);
+				}
+			}
+		}
+
+		NodeList childNodes = node.getChildNodes();
+
+		for (int index = 0; index < childNodes.getLength(); ++index)
+		{
+			Node childNode = childNodes.item(index);
+			addUUIDFieldToElementIfApplicable(document, childNode);
+		}
 	}
 
 	private void moveDataToExtraData(Document document, String extraDataItemName, String extraDataItemValue) throws Exception
