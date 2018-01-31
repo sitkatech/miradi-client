@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-01-25 05:03-0800\n"
+"POT-Creation-Date: 2018-01-31 09:03-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Chinese (http://www.transifex.com/projects/p/miradi-client/"
@@ -290,7 +290,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br> \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:168
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:169
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1446
 msgid "(%s)"
 msgstr ""
@@ -2024,6 +2024,22 @@ msgid ""
 msgstr ""
 "出错，该图表不能正常显示。极有可能该项目已被损坏。请联系Miradi团队以获取帮助"
 "和建议。我们建议您不要对该该项目做任何改动直到此问题解决为止。 \t\t"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/xml/xmpz2/Xmpz2XmlWriter.java:63
+msgid ""
+"An error is preventing this project from exporting correctly. Most likely, "
+"the project has been corrupted. Please contact the Miradi team for help and "
+"advice. We recommend that you do not make any changes to this project until "
+"this problem has been resolved."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:65
+msgid ""
+"An error is preventing this project from importing correctly. Most likely, "
+"the project has been corrupted. Please contact the Miradi team for help and "
+"advice. We recommend that you do not make any changes to this project until "
+"this problem has been resolved."
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/MainWindowAction.java:87
 msgid "An internal error prevented this operation"
@@ -4190,7 +4206,7 @@ msgstr "导入... \t\t"
 msgid "Importing MPZ"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:78
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/xml/xmpz2/Xmpz2XmlImporter.java:83
 msgid "Importing XML..."
 msgstr ""
 
@@ -7976,6 +7992,10 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo39.java:88
 msgid "This migration adds Progress Reports to the Project Summary."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo46.java:85
+msgid "This migration adds a UUID field to all objects that require it."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:72
