@@ -227,8 +227,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 			setExtendedState(getExtendedState() | MAXIMIZED_BOTH);
 		}
 		
-		NotifyDialog.notify(this, NotifyDialogTemplateFactory.notifyUserOfNewFileStructure());
-
         File preferredHomeDir = EAM.getPreferredHomeDirectory();
         if (!EAM.isPreferredHomeDirectoryValid(preferredHomeDir))
         {

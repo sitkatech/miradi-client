@@ -54,22 +54,6 @@ public class NotifyDialogTemplateFactory
 		return new NotifyDialogTemplate("PastedSharedFactors", title, notificationTextToUse);
 	}
 	
-	public static NotifyDialogTemplate notifyUserOfNewFileStructure()
-	{
-		String title = EAM.text("New File Structure Reminder");
-		String notificationTextToUse = "<html><div class='WizardText'>" + EAM.text("<b><font color=\"#990000\">IMPORTANT: Miradi has a new file structure</font></b><br/><br/>" +
-									   "Please read the <a href=\"https://miradi.org/files/Instructions_for_New_Miradi_File_Structure.pdf\">complete instructions</a> on this new file structure.  <br/><br/>" +
-									   "For Miradi 4.0 and beyond, we will be using a new file structure which is designed to decrease the size of Miradi projects and make the sharing of projects more straightforward.  In addition, writing and backing up of files will be quicker.  The main implications are:" +
-									   "<ul>" +
-									   "<li>You can share Miradi 4.0 (and beyond) files directly without zipping them</li>" +
-									   "<li>You can import or export to older versions of Miradi using the mpz format, and thus you can share data and projects with people running older versions of Miradi</li>" +
-									   "<li>There are new icons to denote a Miradi 4.0 (and beyond) file, an mpz file, and a 3.x (and earlier) file </li>" +
-									   "</ul><br/><br/>" +
-									   "<b><u>Please do not contact Miradi Support with questions unless you have read through the full instructions and are still experiencing problems.</b></u><br/><br/>");
-		
-		return new NotifyDialogTemplate("NewFileStructure", title, notificationTextToUse);
-	}
-
 	public static NotifyDialogTemplate notifyUserOfInvalidPreferredHomeDirectory(File preferredHomeDir)
 	{
 		String title = EAM.text("Home Folder Not Found");
