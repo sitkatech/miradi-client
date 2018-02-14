@@ -967,7 +967,25 @@
 		shortversion="${version.full}"
 		version="${version.timestamp}"
 		icon="${eam.icons}/miradi.icns"
-		mainclassname="org.miradi.main.Miradi">
+		mainclassname="org.miradi.main.Miradi"
+		plistClassPaths="$APP_ROOT/Contents/Java/miradi.jar,
+						 $APP_ROOT/Contents/Java/BrowserLauncher2-all-10rc4.jar,
+						 $APP_ROOT/Contents/Java/junit.jar,
+						 $APP_ROOT/Contents/Java/commons-lang3-3.1.jar,
+						 $APP_ROOT/Contents/Java/jcalendar-1.3.2.jar,
+						 $APP_ROOT/Contents/Java/miradi-jgraph-5.12.2.2b.jar,
+						 $APP_ROOT/Contents/Java/isorelax.jar,
+						 $APP_ROOT/Contents/Java/jing.jar,
+						 $APP_ROOT/Contents/Java/saxon.jar,
+						 $APP_ROOT/Contents/Java/xercesImpl.jar,
+						 $APP_ROOT/Contents/Java/xml-apis.jar,
+						 $APP_ROOT/Contents/Java/jortho.jar,
+						 $APP_ROOT/Contents/Java/martus-swing.jar,
+						 $APP_ROOT/Contents/Java/martus-utils.jar,
+						 $APP_ROOT/Contents/Java/jtidy-8.0.jar,
+						 $APP_ROOT/Contents/Java/sam.jar,
+						 $APP_ROOT/Contents/Java/shef.jar,
+						 $APP_ROOT/Contents/Java/swingx-0.9.7.jar">
 
 		<arch name="x86_64"/>
 		<arch name="i386"/>
@@ -975,7 +993,6 @@
 		<classpath file="${dist.dir}/miradi.jar" />
 		<classpath file="${dist.temp.jars}/BrowserLauncher2/BrowserLauncher2-all-10rc4.jar" />
 		<classpath file="${dist.temp.jars}/JUnit/bin/junit.jar" />
-		<classpath file="${dist.temp.jars}/commons-lang3/3.1/commons-lang3-3.1-sources.jar" />
 		<classpath file="${dist.temp.jars}/commons-lang3/3.1/commons-lang3-3.1.jar" />
 		<classpath file="${dist.temp.jars}/jcalendar-1.3.2/jcalendar-1.3.2.jar" />
 		<classpath file="${dist.temp.jars}/jgraph/miradi-jgraph-5.12.2.2b.jar" />
@@ -986,11 +1003,8 @@
 		<classpath file="${dist.temp.jars}/jing/bin/xml-apis.jar" />
 		<classpath file="${dist.temp.jars}/jortho/bin/jortho.jar" />
 		<classpath file="${dist.temp.jars}/martus-swing/bin/martus-swing.jar" />
-		<classpath file="${dist.temp.jars}/martus-swing/source/martus-swing-src.jar" />
 		<classpath file="${dist.temp.jars}/martus-utils/bin/martus-utils.jar" />
-		<classpath file="${dist.temp.jars}/martus-utils/source/martus-utils-src.jar" />
 		<classpath file="${dist.temp.jars}/shef/0.5/jtidy-8.0.jar" />
-		<classpath file="${dist.temp.jars}/shef/0.5/sam-src.jar" />
 		<classpath file="${dist.temp.jars}/shef/0.5/sam.jar" />
 		<classpath file="${dist.temp.jars}/shef/0.5/shef.jar" />
 		<classpath file="${dist.temp.jars}/swingx/0.9.7/swingx-0.9.7.jar" />
