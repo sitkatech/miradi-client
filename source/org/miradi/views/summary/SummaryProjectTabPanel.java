@@ -28,9 +28,9 @@ import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
+import org.miradi.schemas.MiradiShareProjectDataSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
 
 import javax.swing.*;
@@ -45,7 +45,8 @@ public class SummaryProjectTabPanel extends ObjectDataInputPanelWithSections
 		addSubPanelWithTitledBorder(new SummaryProjectPanel(mainWindow, refToUse));
 		addSubPanelWithTitledBorder(new ExtendedProgressReportSubPanel(getMainWindow()));
 
-		setObjectRefs(new ORefList(refToUse));
+		setObjectRefs(new ORef[]{refToUse, getProject().getSingletonObjectRef(MiradiShareProjectDataSchema.getObjectType()),});
+
 		updateFieldsFromProject();
 	}
 

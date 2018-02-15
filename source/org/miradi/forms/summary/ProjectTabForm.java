@@ -20,7 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.forms.summary;
 
 import org.miradi.forms.FieldPanelSpec;
+import org.miradi.objects.MiradiShareProjectData;
 import org.miradi.objects.ProjectMetadata;
+import org.miradi.schemas.MiradiShareProjectDataSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.views.summary.SummaryProjectPanel;
 
@@ -41,5 +43,7 @@ public class ProjectTabForm extends FieldPanelSpec
 		addLabelAndField(type, ProjectMetadata.TAG_OTHER_ORG_RELATED_PROJECTS);
 		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_URL);
 		addLabelAndField(type, ProjectMetadata.TAG_PROJECT_DESCRIPTION);
+
+		addMultipleTaxonomyWithEditButtonFields(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 	}
 }

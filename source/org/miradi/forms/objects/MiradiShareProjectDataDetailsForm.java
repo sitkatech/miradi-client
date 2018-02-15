@@ -27,9 +27,9 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
 
-public class MiradiShareProjectDataForm extends FieldPanelSpec
+public class MiradiShareProjectDataDetailsForm extends FieldPanelSpec
 {
-	public MiradiShareProjectDataForm()
+	public MiradiShareProjectDataDetailsForm()
 	{
 		addLabelAndReadOnlySingleLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROJECT_ID);
 		addLabelAndReadOnlySingleLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROJECT_URL);

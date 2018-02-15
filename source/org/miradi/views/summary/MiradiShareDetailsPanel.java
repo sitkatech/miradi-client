@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.summary;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.forms.objects.MiradiShareProjectDataForm;
+import org.miradi.forms.objects.MiradiShareProjectDataDetailsForm;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
@@ -30,7 +30,7 @@ public class MiradiShareDetailsPanel extends ObjectDataInputPanel
 {
 	public MiradiShareDetailsPanel(Project projectToUse, ORef[] orefsToUse) throws Exception
 	{
-		super(projectToUse, orefsToUse, new MiradiShareProjectDataForm());
+		super(projectToUse, orefsToUse, new MiradiShareProjectDataDetailsForm());
 	}
 
 	@Override

@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.summary;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.forms.objects.MiradiShareTaxonomyDataForm;
+import org.miradi.forms.objects.MiradiShareProjectDataBasicsForm;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.MiradiShareProjectData;
@@ -37,7 +37,7 @@ public class MiradiShareBasicsPanel extends ObjectDataInputPanel
 		
 		String upperHelpContent = getUpperHelpContent();
 		String lowerHelpContent = getLowerHelpContent();
-		createFieldsFromForm(new MiradiShareTaxonomyDataForm(upperHelpContent, lowerHelpContent));
+		createFieldsFromForm(new MiradiShareProjectDataBasicsForm(upperHelpContent, lowerHelpContent));
 
 		updateFieldsFromProject();
 	}

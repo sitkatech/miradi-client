@@ -26,14 +26,13 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
 
-public class MiradiShareTaxonomyDataForm extends FieldPanelSpec
+public class MiradiShareProjectDataBasicsForm extends FieldPanelSpec
 {
-	public MiradiShareTaxonomyDataForm(String upperHelpContant, String lowerHelpContent)
+	public MiradiShareProjectDataBasicsForm(String upperHelpContent, String lowerHelpContent)
 	{
-		addTextHtmlPanel(upperHelpContant);
+		addTextHtmlPanel(upperHelpContent);
 		addDisplayField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_PROJECT_NAME);
 		addHtmlLink(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROJECT_URL);
-		addMultipleTaxonomyWithEditButtonFields(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 		addTextHtmlPanel(lowerHelpContent);
 	}
 }

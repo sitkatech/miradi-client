@@ -58,6 +58,8 @@ public class SummaryProjectPanel extends ObjectDataInputPanel
 		addField(createStringField(ProjectMetadata.TAG_PROJECT_URL));
 		addField(createMultilineField(ProjectMetadata.TAG_PROJECT_DESCRIPTION));
 
+		addTaxonomyFields(MiradiShareProjectDataSchema.getObjectType());
+
 		createLatestExtendedProgressReportFields(ObjectType.PROJECT_METADATA);
 
 		setObjectRefs(new ORef[]{refToUse, getProject().getSingletonObjectRef(TncProjectDataSchema.getObjectType()), getProject().getSingletonObjectRef(MiradiShareProjectDataSchema.getObjectType()),});
