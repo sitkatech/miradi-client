@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-07 06:33-0800\n"
+"POT-Creation-Date: 2018-02-20 06:33-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -31,6 +31,12 @@ msgstr ""
 msgid ""
 "\n"
 "Are you sure you want to delete this person or group?"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/doers/RemoveMiradiShareAssociationDoer.java:66
+msgid ""
+"\n"
+"Are you sure you want to remove the %s?"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/SummaryPlanningFinancialSubPanel.java:48
@@ -1657,6 +1663,10 @@ msgstr "Арга хэмжээ|Удирдах|Үйл явцын тайланг у
 msgid "Action|Manage|Move Activity to this Strategy"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionRemoveMiradiShareAssociation.java:36
+msgid "Action|Manage|Remove Miradi Share Association"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/views/ActionViewMap.java:35
 msgid "Action|Maps"
 msgstr "Арга хэмжээ|Газрын зургууд"
@@ -2420,7 +2430,7 @@ msgstr "8 дугаар сар"
 msgid "Automatic"
 msgstr "Автомат"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/MiradiShareBasicsPanel.java:72
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/MiradiShareBasicsPanel.java:106
 msgid "Basics"
 msgstr ""
 
@@ -3606,7 +3616,7 @@ msgstr "Ангилахад алдаа гарлаа"
 msgid "Error Retrieving Data"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/RedoDoer.java:55
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/RedoDoer.java:58
 msgid "Error during redo"
 msgstr "Redo хийхэд алдаа гарлаа"
 
@@ -4818,7 +4828,7 @@ msgstr "Манлайлагч/ Менежер"
 msgid "Leaf Only"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:69
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:71
 msgid "Learn about Miradi Share"
 msgstr ""
 
@@ -5314,11 +5324,15 @@ msgstr ""
 msgid "Miradi Share"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:70
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/doers/RemoveMiradiShareAssociationDoer.java:213
+msgid "Miradi Share Association"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:72
 msgid "Miradi Share Program"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/forms/objects/MiradiShareProjectDataForm.java:45
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/forms/objects/MiradiShareProjectDataDetailsForm.java:45
 msgid "Miradi Share Project Id"
 msgstr ""
 
@@ -5508,6 +5522,7 @@ msgid "New project name: "
 msgstr "Шинэ төслийн нэр: "
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:73
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/doers/RemoveMiradiShareAssociationDoer.java:64
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:129
 msgid "No"
@@ -5692,7 +5707,7 @@ msgstr "Улбар шар"
 msgid "Ordered List"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/doers/DeleteOranizationDoer.java:32
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/doers/DeleteOrganizationDoer.java:32
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:236
 msgid "Organization"
 msgstr "Байгууллага"
@@ -6037,7 +6052,7 @@ msgid "Progress Reports"
 msgstr "Хэрэгжилтийн тайлангууд"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:244
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/SummaryProjectTabPanel.java:83
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/SummaryProjectTabPanel.java:84
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/wizard/noproject/projectlist/ProjectListTreeTableModel.java:102
 msgid "Project"
@@ -6212,6 +6227,14 @@ msgstr "Хамааралтай төслүүд"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/doers/AbstractStrategyActivityRelevancyListDoer.java:40
 msgid "Relevant Strategies and Activities"
 msgstr "Холбогдох стратеги ба үйл ажиллагаа"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/doers/RemoveMiradiShareAssociationDoer.java:65
+msgid "Remove %s"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/MiradiShareBasicsPanel.java:55
+msgid "Remove Association"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/resource/ResourcePropertiesPanel.java:175
 msgid "Remove Team Member"
@@ -6873,7 +6896,7 @@ msgstr "Эрчтэй бууралт"
 msgid "Strong Increase"
 msgstr "Эрчтэй өсөлт"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:117
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:119
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:143
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:69
@@ -7609,6 +7632,10 @@ msgstr "TT|Сүүлийн буцаасан үйлдлийг буцаах"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionGroupBoxRemoveFactor.java:41
 msgid "TT|Remove Factor(s) from Group Box"
 msgstr "TT|Бүлгийн хайрцгаас хүчин зүйлийг(үүдийг) хасах"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionRemoveMiradiShareAssociation.java:42
+msgid "TT|Remove Miradi Share Association"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionDeleteTeamMember.java:41
 msgid "TT|Remove a member from the team"
@@ -9427,6 +9454,7 @@ msgid "Yen (Japan)"
 msgstr "Иен (Япон)"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DeleteResourceDoer.java:73
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/doers/RemoveMiradiShareAssociationDoer.java:64
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/doers/DeletePoolObjectDoer.java:57
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogfields/WhoAssignedCodeListEditorComponent.java:129
 msgid "Yes"
@@ -13152,28 +13180,27 @@ msgstr ""
 
 msgid ""
 "html|/resources/MiradiShareProjectHelpLowerText.html|  <body bgcolor="
-"\"#DAEDF5\"><div class=''><table cellpadding='10'><tr><td>Miradi Share is a "
+"\"#DAEDF5\"><div class=''><table cellpadding='0'><tr><td>Miradi Share is a "
 "web-based software system that helps organizations adaptively manage "
-"portfolios of conservation projects and grants.<br/> Miradi Share builds on "
+"portfolios of conservation projects and grants. Miradi Share builds on "
 "Miradi desktop software’s tools for designing, managing and monitoring "
-"individual conservation projects using <br/>The Open Standards for the "
-"Practice of Conservation. In particular, Miradi Share enables sibling "
-"projects within an overall program to <br/>build their individual plans "
-"using a common framework and vocabulary and to work collaboratively over the "
-"web. With Miradi Share, <br/>program managers can track and oversee the "
-"implementation of all the projects for which they are responsible, and can "
-"roll-up project <br/>information to compile performance reports to drive "
-"management decisions. And through Miradi Share, practitioners throughout the "
-"<br/>conservation community can share experiences and learn from one "
-"another. Miradi Share also provides a platform for new tools like <br/"
-">online workplanning, archetypal results chains, and spatial analysis of "
-"Open Standards information. <br/><br/>All Miradi desktop users will be able "
-"to upload and share an individual project or browse through and download "
-"publically available<br/> projects for free. Miradi Share’s portfolio "
-"management tools are available through a software-as-a-service license. <br/"
-"><br/>To learn more or to start sharing your Miradi files, go to <a "
-"href='http://www.miradishare.org'>www.miradishare.org</a> !!  </td></tr></"
-"table></div></body>"
+"individual conservation projects using  The Open Standards for the Practice "
+"of Conservation. In particular, Miradi Share enables sibling projects within "
+"an overall program to build their individual plans using a common framework "
+"and vocabulary and to work collaboratively over the web. With Miradi Share, "
+"program managers can track and oversee the implementation of all the "
+"projects for which they are responsible, and can roll-up project information "
+"to compile performance reports to drive management decisions. And through "
+"Miradi Share, practitioners throughout the conservation community can share "
+"experiences and learn from one another. Miradi Share also provides a "
+"platform for new tools like online workplanning, archetypal results chains, "
+"and spatial analysis of Open Standards information. <br/><br/>All Miradi "
+"desktop users will be able to upload and share an individual project or "
+"browse through and download publicly available projects for free. Miradi "
+"Share’s portfolio management tools are available through a software-as-a-"
+"service license. <br/><br/>To learn more or to start sharing your Miradi "
+"files, go to <a href='http://www.miradishare.org'>www.miradishare.org</"
+"a> !!  </td></tr></table></div></body>"
 msgstr ""
 
 msgid ""
@@ -13310,7 +13337,7 @@ msgid ""
 "platform for new tools like online workplanning, archetypal results chains, "
 "and spatial analysis of Open Standards information. <br/><br/>All Miradi "
 "desktop users will be able to upload and share an individual project or "
-"browse through and download publically available projects for free. Miradi "
+"browse through and download publicly available projects for free. Miradi "
 "Share’s portfolio management tools are available through a software-as-a-"
 "service license. <br/><br/>To learn more or to start sharing your Miradi "
 "files, go to <a href='http://www.miradishare.org/'>www.miradishare.org</"
@@ -13325,6 +13352,23 @@ msgid ""
 "<input name='WWFMiradiHelp.html' value='Miradi Help for WWF Practitioners' "
 "type='submit'></input></td></tr></table><p><strong>Specific fields for WWF "
 "projects: </p></div>"
+msgstr ""
+
+msgid ""
+"html|/resources/MiradiShareProjectHelpMiddleText.html|<body bgcolor="
+"\"#DAEDF5\"><div class=''>    <table cellpadding='0'>        <tr>            "
+"<td>                This Miradi project contains metadata that associates "
+"the project to the %s program in Miradi Share. This means "
+"that                 <ul>                    <li>Version history for the "
+"project is managed via Miradi Share</li>                    <li>The project "
+"may contain taxonomy information and classification selections related to "
+"its Miradi Share program</li>                </ul>                Click this "
+"button to remove the association between this Miradi project and Miradi "
+"Share. This will remove any taxonomy information and classification "
+"selections, and all metadata that relates this project to Miradi "
+"Share.                 This operation will allow you to create a new Miradi "
+"project based on the data in this file, and subsequently associate it with "
+"Miradi Share.             </td>        </tr>    </table></div></body>"
 msgstr ""
 
 msgid ""
