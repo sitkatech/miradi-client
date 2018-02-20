@@ -39,16 +39,7 @@ public class UndoDoer extends MainWindowDoer
 		if(!isAvailable())
 			return;
 
-		undoImpl();
-	}
-
-	private void undoImpl() throws Exception
-	{
 		undo(getProject());
-
-		UmbrellaView currentView = getMainWindow().getCurrentView();
-		if (currentView != null)
-			currentView.refresh();
 	}
 
 	public static void undo(Project project) throws CommandFailedException

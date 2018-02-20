@@ -77,7 +77,7 @@ public class RemoveMiradiShareAssociationDoer extends ObjectsDoer
             {
                 BaseObject miradiShareProjectData = getSingleSelectedObject();
                 if (miradiShareProjectData != null)
-                    getProject().executeCommands(createCommandsToRemoveMiradiShareAssociation(miradiShareProjectData));
+                    getProject().executeWithoutRecording(createCommandsToRemoveMiradiShareAssociation(miradiShareProjectData));
             }
             finally
             {

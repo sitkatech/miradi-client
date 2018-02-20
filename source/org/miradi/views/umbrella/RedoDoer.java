@@ -36,16 +36,10 @@ public class RedoDoer extends MainWindowDoer
 	@Override
 	protected void doIt() throws Exception
 	{
-		redoImpl();
-	}
+		if(!isAvailable())
+			return;
 
-	private void redoImpl() throws Exception
-	{
 		redo(getProject());
-
-		UmbrellaView currentView = getMainWindow().getCurrentView();
-		if (currentView != null)
-			currentView.refresh();
 	}
 
 	public static void redo(Project project) throws CommandFailedException

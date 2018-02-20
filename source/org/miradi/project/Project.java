@@ -1104,6 +1104,11 @@ public class Project implements ProjectInterface
 		getCommandExecutor().redo();
 	}
 
+	public void executeWithoutRecording(CommandVector commands) throws CommandFailedException
+	{
+		getCommandExecutor().executeWithoutRecording(commands);
+	}
+
 	private void executeWithoutRecording(Command command) throws CommandFailedException
 	{
 		getCommandExecutor().executeWithoutRecording(command);

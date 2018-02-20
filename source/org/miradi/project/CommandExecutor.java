@@ -155,7 +155,7 @@ public class CommandExecutor
 	{
 		executeCommands(commands.toArray(new Command[0]));
 	}
-	
+
 	public void executeCommands(Command[] commands) throws CommandFailedException
 	{
 		executeInCorrectMode(new CommandBeginTransaction());
@@ -255,20 +255,33 @@ public class CommandExecutor
 		}
 	}
 
+	protected void executeWithoutRecording(CommandVector commands) throws CommandFailedException
+	{
+		executeWithoutRecording(commands.toArray(new Command[0]));
+	}
+
+	protected void executeWithoutRecording(Command[] commands) throws CommandFailedException
+	{
+		for(int i = 0; i < commands.length; ++i)
+		{
+			executeWithoutRecording(commands[i]);
+		}
+	}
+
 	protected void executeWithoutRecording(Command command) throws CommandFailedException
 	{
-		try 
+		try
 		{
 			EAM.logVerbose("Executing: " + command.toString());
 			command.executeAndLog(getProject());
 			EAM.logVerbose("Finished : " + command.toString());
-		} 
-		catch (CommandFailedException e) 
+		}
+		catch (CommandFailedException e)
 		{
 			throw(e);
 		}
 	}
-	
+
 	public void executeAsSideEffect(CommandVector commands) throws CommandFailedException
 	{
 		for (int index = 0; index < commands.size(); ++index)
