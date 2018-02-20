@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-20 06:33-0800\n"
+"POT-Creation-Date: 2018-02-20 12:03-0800\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -10506,7 +10506,7 @@ msgstr ""
 msgid "FieldLabel|14.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
-msgid "FieldLabel|14.AccountingClassificationContainer|Program Classifications"
+msgid "FieldLabel|14.AccountingClassificationContainer|Program Accounting"
 msgstr ""
 
 msgid "FieldLabel|15.Label|Accounting Code Name"
@@ -11400,7 +11400,7 @@ msgstr ""
 msgid "FieldLabel|51.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
-msgid "FieldLabel|51.AccountingClassificationContainer|Program Classifications"
+msgid "FieldLabel|51.AccountingClassificationContainer|Program Accounting"
 msgstr ""
 
 msgid "FieldLabel|52.HumanWelfareTarget|Human Wellbeing Target"
