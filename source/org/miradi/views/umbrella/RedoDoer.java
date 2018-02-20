@@ -23,9 +23,9 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.NothingToRedoException;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
-import org.miradi.views.ProjectDoer;
+import org.miradi.views.MainWindowDoer;
 
-public class RedoDoer extends ProjectDoer
+public class RedoDoer extends MainWindowDoer
 {
 	@Override
 	public boolean isAvailable()
@@ -36,7 +36,16 @@ public class RedoDoer extends ProjectDoer
 	@Override
 	protected void doIt() throws Exception
 	{
+		redoImpl();
+	}
+
+	private void redoImpl() throws Exception
+	{
 		redo(getProject());
+
+		UmbrellaView currentView = getMainWindow().getCurrentView();
+		if (currentView != null)
+			currentView.refresh();
 	}
 
 	public static void redo(Project project) throws CommandFailedException

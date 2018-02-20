@@ -71,9 +71,9 @@ public class AccountingClassificationAssociation extends AbstractTaxonomyAssocia
 		return false;
 	}
 	
-	public static boolean is(final int onbjectType)
+	public static boolean is(final int objectType)
 	{
-		return AccountingClassificationAssociationSchema.getObjectType() == onbjectType;
+		return AccountingClassificationAssociationSchema.getObjectType() == objectType;
 	}
 	
 	public static AccountingClassificationAssociation find(ObjectManager objectManager, ORef miradiShareAccountingClassificationAssociationRef)

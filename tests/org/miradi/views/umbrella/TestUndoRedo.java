@@ -74,14 +74,10 @@ public class TestUndoRedo extends MiradiTestCase
 		assertEquals("Should have 1 node now.", 1, project.getTestingDiagramModel().getFactorCount());
 		
 		project.getTestingDiagramModel().getFactorCellByWrappedRef(insertedRef);
-		UndoDoer undo = new UndoDoer();
-		undo.setProject(project);
-		undo.safeDoIt();
+		UndoDoer.undo(project);
 		assertEquals("Should have 0 nodes now.", 0, project.getTestingDiagramModel().getFactorCount());
 
-		RedoDoer redo = new RedoDoer();
-		redo.setProject(project);
-		redo.safeDoIt();
+		RedoDoer.redo(project);
 
 		DiagramFactor[] diagramFactors = project.getAllDiagramFactors();
 		
@@ -92,8 +88,8 @@ public class TestUndoRedo extends MiradiTestCase
 		
 		Factor factor = Factor.findFactor(project, node.getWrappedORef());
 		assertEquals("Incorrect label?", target1Text, factor.getLabel());
-		
-		undo.safeDoIt();
+
+		UndoDoer.undo(project);
 		assertEquals("Should have 0 nodes again.", 0, project.getTestingDiagramModel().getFactorCount());
 	}
 
@@ -119,27 +115,19 @@ public class TestUndoRedo extends MiradiTestCase
 		String foundSizeAsString2 = getSizeAsString(insertedRef);
 		assertEquals(newSize2, foundSizeAsString2);
 
-		UndoDoer undo = new UndoDoer();
-		undo.setProject(project);
-		undo.safeDoIt();
+		UndoDoer.undo(project);
 		String foundSizeAsString3 = getSizeAsString(insertedRef);
 		assertEquals(newSize1, foundSizeAsString3);
 
-		undo = new UndoDoer();
-		undo.setProject(project);
-		undo.safeDoIt();
+		UndoDoer.undo(project);
 		String foundSizeAsString4 = getSizeAsString(insertedRef);
 		assertEquals(originalSize, foundSizeAsString4);
 
-		RedoDoer redo = new RedoDoer();
-		redo.setProject(project);
-		redo.safeDoIt();
+		RedoDoer.redo(project);
 		String foundSizeAsString5 = getSizeAsString(insertedRef);
 		assertEquals(newSize1, foundSizeAsString5);
 
-		redo = new RedoDoer();
-		redo.setProject(project);
-		redo.safeDoIt();
+		RedoDoer.redo(project);
 		String foundSizeAsString6 = getSizeAsString(insertedRef);
 		assertEquals(newSize2, foundSizeAsString6);
 	}

@@ -203,7 +203,8 @@ public class Actions
 		registerAction(new ActionDeleteOtherNotableSpecies(mainWindow));
 		registerAction(new ActionCreateAudience(mainWindow));
 		registerAction(new ActionDeleteAudience(mainWindow));
-		
+		registerAction(new ActionRemoveMiradiShareAssociation(mainWindow));
+
 		registerAction(new ActionDeleteWorkPlanNode(mainWindow));
 		registerAction(new ActionPreferences(mainWindow));
 		registerAction(new ActionToggleSpellChecker(mainWindow));

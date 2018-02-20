@@ -17,22 +17,24 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views;
+package org.miradi.views.summary.doers;
 
-import org.miradi.project.Project;
+import org.miradi.main.EAM;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.Organization;
+import org.miradi.views.umbrella.doers.DeletePoolObjectDoer;
 
-abstract public class ProjectDoer extends Doer
+public class DeleteOrganizationDoer extends DeletePoolObjectDoer
 {
 	@Override
-	public void setProject(Project projectToUse)
+	protected String getCustomText()
 	{
-		project = projectToUse;
+		return EAM.text("Organization");
 	}
 
-	public Project getProject()
+	@Override
+	protected boolean canDelete(BaseObject singleSelectedObject)
 	{
-		return project;
+		return Organization.is(singleSelectedObject);
 	}
-
-	Project project;
 }

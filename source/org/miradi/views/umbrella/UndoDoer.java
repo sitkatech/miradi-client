@@ -23,9 +23,9 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.NothingToUndoException;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
-import org.miradi.views.ProjectDoer;
+import org.miradi.views.MainWindowDoer;
 
-public class UndoDoer extends ProjectDoer
+public class UndoDoer extends MainWindowDoer
 {
 	@Override
 	public boolean isAvailable()
@@ -39,7 +39,16 @@ public class UndoDoer extends ProjectDoer
 		if(!isAvailable())
 			return;
 
+		undoImpl();
+	}
+
+	private void undoImpl() throws Exception
+	{
 		undo(getProject());
+
+		UmbrellaView currentView = getMainWindow().getCurrentView();
+		if (currentView != null)
+			currentView.refresh();
 	}
 
 	public static void undo(Project project) throws CommandFailedException
@@ -59,5 +68,4 @@ public class UndoDoer extends ProjectDoer
 		}
 		EAM.logVerbose("Undo finished");
 	}
-
 }

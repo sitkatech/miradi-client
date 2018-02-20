@@ -59,12 +59,22 @@ public class MiradiShareProjectData extends BaseObject
 	{
 		return false;
 	}
-	
+
+	public static boolean is(BaseObject object)
+	{
+		return is(object.getRef());
+	}
+
+	public static boolean is(ORef ref)
+	{
+		return is(ref.getObjectType());
+	}
+
 	public static boolean is(final int otherObjectType)
 	{
 		return MiradiShareProjectDataSchema.getObjectType() == otherObjectType;
 	}
-	
+
 	public static MiradiShareProjectData find(ObjectManager objectManager, ORef miradiShareProjectDataRef)
 	{
 		return (MiradiShareProjectData) objectManager.findObject(miradiShareProjectDataRef);
