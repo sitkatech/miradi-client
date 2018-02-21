@@ -36,16 +36,18 @@ import org.miradi.utils.CommandVector;
 
 public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 {
-	public static FactorLinkPropertiesPanel createWithOnlyBidirectionalAndColorPropertiesPanel(Project projectToUse, DiagramLink link)
+	public static FactorLinkPropertiesPanel createWithOnlyBidirectionalAndColorPropertiesPanel(Project projectToUse, DiagramLink link) throws Exception
 	{
 		return new FactorLinkPropertiesPanel(projectToUse, link);
 	}
 	
-	private FactorLinkPropertiesPanel(Project projectToUse, DiagramLink link)
+	private FactorLinkPropertiesPanel(Project projectToUse, DiagramLink link) throws Exception
 	{
 		super(projectToUse, link.getRef());
 
 		addField(createCheckBoxField(DiagramLinkSchema.getObjectType(), DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, DiagramLink.BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_FALSE));
+		addField(createCheckBoxField(DiagramLinkSchema.getObjectType(), DiagramLink.TAG_IS_UNCERTAIN_LINK, DiagramLink.UNCERTAIN_LINK, BooleanData.BOOLEAN_FALSE));
+		addField(createMultilineField(DiagramLinkSchema.getObjectType(), DiagramLink.TAG_ANNOTATION));
 		addField(createChoiceField(DiagramLinkSchema.getObjectType(), DiagramLink.TAG_COLOR, new DiagramLinkColorQuestion()));
 		
 		setObjectRefs(new ORefList(link));

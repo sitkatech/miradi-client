@@ -47,6 +47,7 @@ public class DiagramLinkExporter extends BaseObjectExporter
 		final String objectName = diagramLink.getSchema().getObjectName();
 		getWriter().writeReflist(objectName + GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID, DIAGRAM_LINK, diagramLink.getGroupedDiagramLinkRefs());
 		writeBidirectionalCode(objectName, diagramLink);
+		writeUncertainCode(objectName, diagramLink);
 	}
 
 	private void writeBidirectionalCode(String poolName, DiagramLink diagramLink) throws Exception
@@ -54,6 +55,11 @@ public class DiagramLinkExporter extends BaseObjectExporter
 		getWriter().writeBooleanElement(poolName + DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, diagramLink.isBidirectional());
 	}
 	
+	private void writeUncertainCode(String poolName, DiagramLink diagramLink) throws Exception
+	{
+		getWriter().writeBooleanElement(poolName + DiagramLink.TAG_IS_UNCERTAIN_LINK, diagramLink.isUncertain());
+	}
+
 	private void writeFromDiagramFactorId(DiagramLink diagramLink) throws Exception
 	{
 		getWriter().writeStartElement(DIAGRAM_LINK + FROM_DIAGRAM_FACTOR_ID);
@@ -89,6 +95,9 @@ public class DiagramLinkExporter extends BaseObjectExporter
 		if (tag.equals(DiagramLink.TAG_IS_BIDIRECTIONAL_LINK))
 			return true;
 		
+		if (tag.equals(DiagramLink.TAG_IS_UNCERTAIN_LINK))
+			return true;
+
 		if (tag.equals(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID))
 			return true;
 		

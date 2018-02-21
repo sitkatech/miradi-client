@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Mon Jan 29 16:01:12 GMT 2018 $
+# $LastChangedDate: Wed Feb 21 12:20:54 GMT 2018 $
 # $LastChangedRevision: 237 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/237'
 start = ConservationProject.element
@@ -357,11 +357,13 @@ DiagramLinkPool.element = element miradi:DiagramLinkPool { DiagramLink.element* 
 DiagramLink.element = element miradi:DiagramLink
 {
   attribute Id {xsd:integer} &
+  element miradi:DiagramLinkAnnotation { formatted_text }? &
   element miradi:DiagramLinkBendPoints { DiagramPoint.element* }? &
   element miradi:DiagramLinkColor { vocabulary_diagram_link_color }? &
   element miradi:DiagramLinkFromDiagramFactorId { LinkableFactorId.element } &
   element miradi:DiagramLinkGroupedDiagramLinkIds { DiagramLinkId.element* }? &
   element miradi:DiagramLinkIsBidirectionalLink { xsd:boolean }? &
+  element miradi:DiagramLinkIsUncertainLink { xsd:boolean }? &
   element miradi:DiagramLinkName { formatted_text }? &
   element miradi:DiagramLinkToDiagramFactorId { LinkableFactorId.element } &
   element miradi:DiagramLinkUUID { uuid }

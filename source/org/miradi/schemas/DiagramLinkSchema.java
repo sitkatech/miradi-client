@@ -43,6 +43,9 @@ public class DiagramLinkSchema extends BaseObjectSchema
 		createFieldSchemaReflist(DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, DIAGRAM_LINK);
 		createFieldSchemaChoice(DiagramLink.TAG_COLOR, DiagramLinkColorQuestion.class);
 		createFieldSchemaBoolean(DiagramLink.TAG_IS_BIDIRECTIONAL_LINK);
+		createFieldSchemaBoolean(DiagramLink.TAG_IS_UNCERTAIN_LINK);
+		createFieldSchemaMultiLineUserText(DiagramLink.TAG_ANNOTATION);
+
 	}
 
 	public static int getObjectType()

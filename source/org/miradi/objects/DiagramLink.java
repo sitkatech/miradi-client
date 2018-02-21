@@ -238,6 +238,16 @@ public class DiagramLink extends BaseObject
 		return getBooleanData(TAG_IS_BIDIRECTIONAL_LINK);
 	}
 	
+	public boolean isUncertain()
+	{
+		return getBooleanData(TAG_IS_UNCERTAIN_LINK);
+	}
+
+	public String getAnnotation()
+	{
+		return getStringData(TAG_ANNOTATION);
+	}
+
 	public FactorLink getWrappedFactorLink()
 	{
 		return FactorLink.find(getProject(), getWrappedRef());
@@ -278,7 +288,11 @@ public class DiagramLink extends BaseObject
 		Factor toFactor = Factor.findFactor(getProject(), toDiagramFactor.getWrappedORef());
 		String toolTipText = "<html><b>From : " + fromFactor.getLabel() + "</b><BR>" +
 				           		   "<b>To : " + toFactor.getLabel() + "</b>";
-		
+
+		String annotation = getAnnotation();
+		if (!annotation.isEmpty())
+			toolTipText += "<BR><BR>" + annotation;
+
 		return toolTipText;
 	}
 	
@@ -358,8 +372,11 @@ public class DiagramLink extends BaseObject
 	public static final String TAG_GROUPED_DIAGRAM_LINK_REFS = "GroupedDiagramLinkRefs";
 	public static final String TAG_COLOR = "Color";
 	public static final String TAG_IS_BIDIRECTIONAL_LINK = "IsBidirectionalLink";
-	
+	public static final String TAG_IS_UNCERTAIN_LINK = "IsUncertainLink";
+	public static final String TAG_ANNOTATION = "Annotation";
+
 	public static final int FROM = 1;
 	public static final int TO = 2;
 	public static final String BIDIRECTIONAL_LINK = BooleanData.BOOLEAN_TRUE;
+	public static final String UNCERTAIN_LINK = BooleanData.BOOLEAN_TRUE;
 }
