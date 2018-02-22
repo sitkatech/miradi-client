@@ -47,6 +47,7 @@ public class IndicatorSchema extends BaseObjectSchema
 		createOwnedFieldSchemaReflist(Indicator.TAG_MEASUREMENT_REFS, MEASUREMENT);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_DETAIL);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_COMMENTS);
+		createFieldSchemaMultiLineUserText(BaseObject.TAG_EVIDENCE_NOTES);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
 		createFieldSchemaSingleLineUserText(Indicator.TAG_UNIT);
         createOwnedFieldSchemaReflist(Indicator.TAG_FUTURE_STATUS_REFS, FUTURE_STATUS);

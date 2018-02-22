@@ -48,6 +48,7 @@ public class ModelessTargetSubPanel extends ObjectDataInputPanel
 
 		addField(createMultilineField(targetType, AbstractTarget.TAG_TEXT));
 		addField(createMultilineField(targetType, AbstractTarget.TAG_COMMENTS));
+		addField(createMultilineField(targetType, AbstractTarget.TAG_EVIDENCE_NOTES));
 
 		updateFieldsFromProject();
 	}

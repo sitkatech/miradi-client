@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
 
 abstract public class DesireSchema extends BaseObjectSchema
@@ -37,6 +38,7 @@ abstract public class DesireSchema extends BaseObjectSchema
 		createFieldSchemaSingleLineUserText(Desire.TAG_SHORT_LABEL);
 		createFieldSchemaMultiLineUserText(Desire.TAG_FULL_TEXT);
 		createFieldSchemaMultiLineUserText(Desire.TAG_COMMENTS);
+		createFieldSchemaMultiLineUserText(BaseObject.TAG_EVIDENCE_NOTES);
 		createFieldSchemaRelevancyOverrideSet(Desire.TAG_RELEVANT_INDICATOR_SET);
 		createFieldSchemaRelevancyOverrideSet(Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
 		createOwnedFieldSchemaReflist(Desire.TAG_PROGRESS_PERCENT_REFS, PROGRESS_PERCENT);

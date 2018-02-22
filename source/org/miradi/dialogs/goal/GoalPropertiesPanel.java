@@ -51,7 +51,8 @@ public class GoalPropertiesPanel extends ObjectDataInputPanelWithSections
 		addSubPanelWithTitledBorder(new ProgressPercentSubPanel(getProject()));
 		addTaxonomyFields(GoalSchema.getObjectType());
 		addField(createMultilineField(Goal.TAG_COMMENTS));
-		
+		addField(createMultilineField(Goal.TAG_EVIDENCE_NOTES));
+
 		updateFieldsFromProject();
 	}
 

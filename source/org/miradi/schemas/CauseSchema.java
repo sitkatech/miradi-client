@@ -24,7 +24,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Cause;
 import org.miradi.questions.ThreatClassificationQuestion;
 
-public class CauseSchema extends FactorSchema
+public class CauseSchema extends EvidenceFactorSchema
 {
 	public CauseSchema()
 	{

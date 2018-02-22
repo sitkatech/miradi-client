@@ -30,11 +30,12 @@ public class GoalPropertiesForm extends FieldPanelSpec
 	public GoalPropertiesForm()
 	{
 		addLabelAndFieldsWithLabels(EAM.text("Goal"), GoalSchema.getObjectType(), new String[]{Goal.TAG_SHORT_LABEL, Goal.TAG_LABEL});
-		addLabelAndField(GoalSchema.getObjectType(), Desire.TAG_FULL_TEXT);
+		addLabelAndField(GoalSchema.getObjectType(), Goal.TAG_FULL_TEXT);
 		
-		addLabelAndField(GoalSchema.getObjectType(), Desire.PSEUDO_TAG_FACTOR);
-		addLabelAndField(GoalSchema.getObjectType(), Desire.PSEUDO_TAG_DIRECT_THREATS);
-		addLabelAndField(GoalSchema.getObjectType(), Desire.TAG_COMMENTS);
+		addLabelAndField(GoalSchema.getObjectType(), Goal.PSEUDO_TAG_FACTOR);
+		addLabelAndField(GoalSchema.getObjectType(), Goal.PSEUDO_TAG_DIRECT_THREATS);
+		addLabelAndField(GoalSchema.getObjectType(), Goal.TAG_COMMENTS);
+		addLabelAndField(GoalSchema.getObjectType(), Goal.TAG_EVIDENCE_NOTES);
 		addMultipleTaxonomyWithEditButtonFields(GoalSchema.getObjectType(), Goal.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 	}
 }

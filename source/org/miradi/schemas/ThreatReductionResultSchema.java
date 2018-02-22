@@ -23,7 +23,7 @@ package org.miradi.schemas;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ThreatReductionResult;
 
-public class ThreatReductionResultSchema extends FactorSchema
+public class ThreatReductionResultSchema extends EvidenceFactorSchema
 {
 	public ThreatReductionResultSchema()
 	{

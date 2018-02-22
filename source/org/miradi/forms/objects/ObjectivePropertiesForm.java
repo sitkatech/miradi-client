@@ -32,14 +32,15 @@ public class ObjectivePropertiesForm extends FieldPanelSpec
 	{
 		int type = ObjectiveSchema.getObjectType();
 		addLabelAndFieldsWithLabels(EAM.text("Objective"), type, new String[]{Objective.TAG_SHORT_LABEL, Objective.TAG_LABEL});
-		addLabelAndField(type, Desire.TAG_FULL_TEXT);
+		addLabelAndField(type, Objective.TAG_FULL_TEXT);
 		addLabelAndField(type, Objective.PSEUDO_TAG_FACTOR);
 		addLabelAndField(type, Objective.PSEUDO_TAG_DIRECT_THREATS);
 		addLabelAndField(type, Objective.PSEUDO_TAG_TARGETS);
 		addLabelAndField(type, Objective.PSEUDO_TAG_RELEVANT_INDICATOR_REFS);
 		addLabelAndField(type, Objective.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS);
 		addLabelAndFieldsWithLabels(EAM.text("Progress Percents"), type, new String[]{Objective.TAG_PROGRESS_PERCENT_REFS});
-		addLabelAndField(type, Goal.TAG_COMMENTS);
+		addLabelAndField(type, Objective.TAG_COMMENTS);
+		addLabelAndField(type, Objective.TAG_EVIDENCE_NOTES);
 		addMultipleTaxonomyWithEditButtonFields(ObjectiveSchema.getObjectType(), Objective.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 	}
 }

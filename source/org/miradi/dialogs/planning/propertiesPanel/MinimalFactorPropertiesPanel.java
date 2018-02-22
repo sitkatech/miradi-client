@@ -45,6 +45,7 @@ public class MinimalFactorPropertiesPanel extends ObjectDataInputPanelWithSectio
 		
 		addField(createMultilineField(Factor.TAG_TEXT));
 		addField(createMultilineField(Factor.TAG_COMMENTS));
+		addField(createMultilineField(Factor.TAG_EVIDENCE_NOTES));
 	}
 
 	protected void addCustomInBetweenFields()

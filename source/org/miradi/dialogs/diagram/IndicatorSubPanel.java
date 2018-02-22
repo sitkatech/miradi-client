@@ -48,6 +48,7 @@ public class IndicatorSubPanel extends ObjectDataInputPanel
 		addField(createMultilineField(IndicatorSchema.getObjectType(), Indicator.TAG_DETAIL, COLUMNS));
 		addTaxonomyFields(IndicatorSchema.getObjectType());
 		addField(createMultilineField(IndicatorSchema.getObjectType(), Indicator.TAG_COMMENTS, COLUMNS));
+		addField(createMultilineField(IndicatorSchema.getObjectType(), Indicator.TAG_EVIDENCE_NOTES, COLUMNS));
 
 		addFieldWithEditButton(EAM.text("Strategies And Activities"), createReadOnlyObjectList(IndicatorSchema.getObjectType(), Indicator.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditIndicatorStrategyActivityRelevancyList.class), getPicker()));
 

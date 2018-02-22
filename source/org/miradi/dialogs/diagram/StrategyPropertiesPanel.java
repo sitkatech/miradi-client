@@ -27,6 +27,7 @@ import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.schemas.StrategySchema;
 
 public class StrategyPropertiesPanel extends ObjectDataInputPanelWithSections
@@ -39,7 +40,7 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanelWithSections
 
 		addSubPanelWithTitledBorder(new StrategyCoreSubpanel(getProject(), getMainWindow().getActions(), StrategySchema.getObjectType()));
 		addSubPanelWithTitledBorder(new RelatedItemsSubpanel(getProject(), StrategySchema.getObjectType()));
-		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getMainWindow().getActions(), StrategySchema.getObjectType()));
+		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getProject().getObjectManager().getSchemas().get(ObjectType.STRATEGY)));
 		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
 		addSubPanelWithTitledBorder(new TimeframePropertiesSubPanel(getProject(), ORef.createInvalidWithType(StrategySchema.getObjectType())));
 		addSubPanelWithTitledBorder(new AssignmentsPropertiesSubPanel(getMainWindow(), StrategySchema.getObjectType(), getPicker()));

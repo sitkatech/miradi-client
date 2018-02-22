@@ -22,7 +22,7 @@ package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
 
-public class BiophysicalFactorSchema extends FactorSchema
+public class BiophysicalFactorSchema extends EvidenceFactorSchema
 {
 	public BiophysicalFactorSchema()
 	{

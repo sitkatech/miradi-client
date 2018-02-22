@@ -25,7 +25,7 @@ import org.miradi.objects.Stress;
 import org.miradi.questions.StressScopeChoiceQuestion;
 import org.miradi.questions.StressSeverityChoiceQuestion;
 
-public class StressSchema extends FactorSchema
+public class StressSchema extends EvidenceFactorSchema
 {
 	public StressSchema()
 	{

@@ -23,7 +23,7 @@ package org.miradi.schemas;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Task;
 
-public class TaskSchema extends FactorSchema
+public class TaskSchema extends EvidenceFactorSchema
 {
 	public TaskSchema()
 	{

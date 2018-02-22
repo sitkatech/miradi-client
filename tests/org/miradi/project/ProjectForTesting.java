@@ -1210,6 +1210,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return ThreatReductionResult.find(this, threatReductionResultRef);
 	}
 	
+	public IntermediateResult createIntermediateResult() throws Exception
+	{
+		ORef intermediateResultRef = createObject(IntermediateResultSchema.getObjectType());
+		return IntermediateResult.find(this, intermediateResultRef);
+	}
+	
 	public Organization createOrganization() throws Exception
 	{
 		ORef organizationRef = createObject(OrganizationSchema.getObjectType());
@@ -1245,6 +1251,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(target, AbstractTarget.TAG_LABEL, "Reefs " + target.getId().toString());
 		fillObjectUsingCommand(target, AbstractTarget.TAG_TEXT, "Some Description Text");
 		fillObjectUsingCommand(target, AbstractTarget.TAG_COMMENTS, "Some comment Text");
+		fillObjectUsingCommand(target, AbstractTarget.TAG_EVIDENCE_NOTES, "Some evidence Text");
 		fillObjectUsingCommand(target, AbstractTarget.TAG_CURRENT_STATUS_JUSTIFICATION, "Some status justification");
 		fillObjectUsingCommand(target, AbstractTarget.TAG_TARGET_STATUS, StatusQuestion.VERY_GOOD);
 		turnOnTncMode(target);
@@ -1264,6 +1271,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(biophysicalFactor, BiophysicalFactor.TAG_LABEL, "Biophysical Factor " + biophysicalFactor.getId().toString());
 		fillObjectUsingCommand(biophysicalFactor, BiophysicalFactor.TAG_TEXT, "Some Description Text");
 		fillObjectUsingCommand(biophysicalFactor, BiophysicalFactor.TAG_COMMENTS, "Some comment Text");
+		fillObjectUsingCommand(biophysicalFactor, BiophysicalFactor.TAG_EVIDENCE_NOTES, "Some evidence Text");
 
         IdList objectiveIds = new IdList(ObjectiveSchema.getObjectType());
         final Objective objective = createAndPopulateObjective(biophysicalFactor);
@@ -1281,6 +1289,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(biophysicalResult, BiophysicalResult.TAG_LABEL, "Biophysical Result " + biophysicalResult.getId().toString());
 		fillObjectUsingCommand(biophysicalResult, BiophysicalResult.TAG_TEXT, "Some Description Text");
 		fillObjectUsingCommand(biophysicalResult, BiophysicalResult.TAG_COMMENTS, "Some comment Text");
+		fillObjectUsingCommand(biophysicalResult, BiophysicalResult.TAG_EVIDENCE_NOTES, "Some evidence Text");
 
         IdList objectiveIds = new IdList(ObjectiveSchema.getObjectType());
         final Objective objective = createAndPopulateObjective(biophysicalResult);
@@ -1311,7 +1320,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void populateCause(Cause cause) throws Exception
 	{
 		fillObjectUsingCommand(cause.getRef(), Cause.TAG_LABEL, "SomeCauseLabel");
-		
+		fillObjectUsingCommand(cause.getRef(), Cause.TAG_EVIDENCE_NOTES, "Some evidence text");
+
 		ChoiceQuestion question = StaticQuestionManager.getQuestion(ThreatClassificationQuestion.class);
 		final int FIRST_CODE = 0;
 		fillObjectUsingCommand(cause.getRef(), Cause.TAG_TAXONOMY_CODE, question.getCode(FIRST_CODE));
@@ -1326,6 +1336,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(stress, Stress.TAG_LABEL, "SomeStressLabel");
 		fillObjectUsingCommand(stress, Stress.TAG_DETAIL, "Some Stress Details");
 		fillObjectUsingCommand(stress, Stress.TAG_COMMENTS, "Some Stress Comments");
+		fillObjectUsingCommand(stress, Stress.TAG_EVIDENCE_NOTES, "Some Stress Evidence");
 		fillObjectUsingCommand(stress, Stress.TAG_SEVERITY, StatusQuestion.GOOD);
 		fillObjectUsingCommand(stress, Stress.TAG_SCOPE, StatusQuestion.GOOD);
 	}
@@ -1406,6 +1417,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public void populateIndicator(Indicator indicator) throws Exception
 	{
 		fillObjectUsingCommand(indicator, Indicator.TAG_LABEL, "Some Indicator Label");
+		fillObjectUsingCommand(indicator, Indicator.TAG_EVIDENCE_NOTES, "Some Indicator Evidence");
 		fillObjectUsingCommand(indicator, Indicator.TAG_UNIT, "km/hr");
 		fillObjectUsingCommand(indicator, Indicator.TAG_PRIORITY, PriorityRatingQuestion.HIGH_CODE);
 		fillObjectUsingCommand(indicator, Indicator.TAG_DETAIL, "Some Indicator detail");
@@ -1505,7 +1517,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(objective, Objective.TAG_LABEL, "Some Objective label");
 		fillObjectUsingCommand(objective, Objective.TAG_FULL_TEXT, "Some objective full text data");
 		fillObjectUsingCommand(objective, Objective.TAG_COMMENTS, "Some Objective comments");
-		
+		fillObjectUsingCommand(objective, Objective.TAG_EVIDENCE_NOTES, "Some Objective evidence");
+
 		Cause threat = createAndPopulateThreat();
 		ORefList relevantIndicatorRefs = threat.getObjectiveRefs();
 		addRelevantBaseObjects(objective, relevantIndicatorRefs, Objective.TAG_RELEVANT_INDICATOR_SET);
@@ -1584,7 +1597,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		fillObjectUsingCommand(strategy, Strategy.TAG_LABEL, "Some Strategy label");
 		fillObjectUsingCommand(strategy, Strategy.TAG_COMMENTS, "Some Strategy comments");
-		
+		fillObjectUsingCommand(strategy, Strategy.TAG_EVIDENCE_NOTES, "Some Strategy evidence");
+
 		final int FIRST_CODE = 0;
 		ChoiceQuestion question = StaticQuestionManager.getQuestion(StrategyTaxonomyQuestion.class);
 		fillObjectUsingCommand(strategy, Strategy.TAG_TAXONOMY_CODE, question.getCode(FIRST_CODE));
@@ -1643,11 +1657,22 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectWithSampleStringData(threatReductionResult.getRef(), ThreatReductionResult.TAG_LABEL);
 		fillObjectWithSampleStringData(threatReductionResult.getRef(), ThreatReductionResult.TAG_SHORT_LABEL);
 		fillObjectWithSampleStringData(threatReductionResult.getRef(), ThreatReductionResult.TAG_COMMENTS);
+		fillObjectWithSampleStringData(threatReductionResult.getRef(), ThreatReductionResult.TAG_EVIDENCE_NOTES);
 		fillObjectWithSampleStringData(threatReductionResult.getRef(), ThreatReductionResult.TAG_TEXT);
 		addObjective(threatReductionResult);
 		
 		Cause threat = createCause();
 		fillObjectUsingCommand(threatReductionResult, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, threat.getRef().toString());
+	}
+	
+	public void createAndPopulateIntermediateResult() throws Exception
+	{
+		IntermediateResult intermediateResult = createIntermediateResult();
+		fillObjectWithSampleStringData(intermediateResult.getRef(), IntermediateResult.TAG_LABEL);
+		fillObjectWithSampleStringData(intermediateResult.getRef(), IntermediateResult.TAG_SHORT_LABEL);
+		fillObjectWithSampleStringData(intermediateResult.getRef(), IntermediateResult.TAG_COMMENTS);
+		fillObjectWithSampleStringData(intermediateResult.getRef(), IntermediateResult.TAG_EVIDENCE_NOTES);
+		fillObjectWithSampleStringData(intermediateResult.getRef(), IntermediateResult.TAG_TEXT);
 	}
 	
 	public void populateStressBasedThreatRatingCommentsData() throws Exception

@@ -58,6 +58,7 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanelWithSections
 
 		addTaxonomyFields(ObjectiveSchema.getObjectType());
 		addField(createMultilineField(Objective.TAG_COMMENTS));
+		addField(createMultilineField(Objective.TAG_EVIDENCE_NOTES));
 
 		updateFieldsFromProject();
 	}

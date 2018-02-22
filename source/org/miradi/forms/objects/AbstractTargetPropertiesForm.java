@@ -38,6 +38,7 @@ abstract public class AbstractTargetPropertiesForm extends FieldPanelSpec
 		addCustomFields();
 		addLabelAndField(getTargetType(), AbstractTarget.TAG_TEXT);
 		addLabelAndField(getTargetType(), AbstractTarget.TAG_COMMENTS);
+		addLabelAndField(getTargetType(), AbstractTarget.TAG_EVIDENCE_NOTES);
 		addMultipleTaxonomyWithEditButtonFields(getTargetType(), AbstractTarget.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 	}
 

@@ -72,6 +72,7 @@ public class TaskDetailsPanel extends ObjectDataInputPanel
 		addCustomFields(mainWindowToUse.getActions());
 		addTaxonomyFields(TaskSchema.getObjectType());
 		addField(createMultilineField(TaskSchema.getObjectType(), Task.TAG_COMMENTS));
+		addField(createMultilineField(TaskSchema.getObjectType(), Task.TAG_EVIDENCE_NOTES));
 	}
 
 	protected void addCustomFields(Actions actionsToUse)

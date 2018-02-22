@@ -27,7 +27,7 @@ import org.miradi.questions.StrategyImpactQuestion;
 import org.miradi.questions.StrategyStatusQuestion;
 import org.miradi.questions.StrategyTaxonomyQuestion;
 
-public class StrategySchema extends FactorSchema
+public class StrategySchema extends EvidenceFactorSchema
 {
 	public StrategySchema()
 	{

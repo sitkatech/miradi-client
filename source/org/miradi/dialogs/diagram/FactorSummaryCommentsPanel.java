@@ -19,19 +19,23 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.diagram;
 
-import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class FactorSummaryCommentsPanel extends ObjectDataInputPanel
 {
-	public FactorSummaryCommentsPanel(Project project, Actions actions, int factorType) throws Exception
+	public FactorSummaryCommentsPanel(Project project, BaseObjectSchema factorSchema) throws Exception
 	{
-		super(project, factorType);
+		super(project, factorSchema.getType());
 
-		addField(createMultilineField(factorType, Factor.TAG_COMMENTS));		
+		addField(createMultilineField(factorSchema.getType(), Factor.TAG_COMMENTS));
+
+		if (canHaveEvidenceNotes(factorSchema))
+			addField(createMultilineField(factorSchema.getType(), Factor.TAG_EVIDENCE_NOTES));
 	}
 
 	@Override
@@ -40,4 +44,11 @@ public class FactorSummaryCommentsPanel extends ObjectDataInputPanel
 		return EAM.text("Comments");
 	}
 
+	private boolean canHaveEvidenceNotes(BaseObjectSchema factorSchema)
+	{
+		if (factorSchema.containsField(BaseObject.TAG_EVIDENCE_NOTES))
+			return true;
+
+		return false;
+	}
 }

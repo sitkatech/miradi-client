@@ -136,6 +136,7 @@ public class TestMigrationTo27 extends AbstractTestMigration
 		Vector<String> ignoredTags = new Vector<String>();
 		ignoredTags.add(ResourceAssignment.TAG_TIMEFRAME_IDS);	// added by migration 22 and so not present on original object
 		ignoredTags.add(BaseObject.TAG_UUID);	// added by migration 46 and so not present on original object
+		ignoredTags.add(BaseObject.TAG_EVIDENCE_NOTES);	// added by migration 48 and so not present on original object
 
 		for (String tag : storedTags)
 		{
