@@ -142,6 +142,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 
 		setTail(arrowTailStyle);
 		setLineStyle();
+		setLineEndFill();
 		updateBendPoints();
 	}
 	
@@ -200,7 +201,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 	private void setTail(int arrowStyle)
 	{
 		GraphConstants.setLineBegin(getAttributes(), arrowStyle);
-		GraphConstants.setBeginFill(getAttributes(), true);
+		setLineBeginFill();
 		GraphConstants.setBeginSize(getAttributes(), 10);
 	}
 
@@ -210,6 +211,21 @@ public class LinkCell extends EAMGraphCell implements Edge
 			GraphConstants.setDashPattern(getAttributes(), MiradiGraphConstants.getDashStyle());
 		else
 			GraphConstants.setDashPattern(getAttributes(), MiradiGraphConstants.getSolidStyle());
+	}
+
+	private void setLineBeginFill()
+	{
+		GraphConstants.setBeginFill(getAttributes(), getLineFill());
+	}
+
+	private void setLineEndFill()
+	{
+		GraphConstants.setEndFill(getAttributes(), getLineFill());
+	}
+
+	private boolean getLineFill()
+	{
+		return !getDiagramLink().hasAnnotation();
 	}
 
 	public Point getFromLocation()
@@ -255,7 +271,7 @@ public class LinkCell extends EAMGraphCell implements Edge
 		setLineStyle();
 
 		GraphConstants.setLineEnd(getAttributes(), GraphConstants.ARROW_TECHNICAL);
-		GraphConstants.setEndFill(getAttributes(), true);
+		setLineEndFill();
 	}
 	
 	public void autoSelect(DiagramComponent diagram)

@@ -248,6 +248,11 @@ public class DiagramLink extends BaseObject
 		return getStringData(TAG_ANNOTATION);
 	}
 
+	public Boolean hasAnnotation()
+	{
+		return !getAnnotation().isEmpty();
+	}
+
 	public FactorLink getWrappedFactorLink()
 	{
 		return FactorLink.find(getProject(), getWrappedRef());
