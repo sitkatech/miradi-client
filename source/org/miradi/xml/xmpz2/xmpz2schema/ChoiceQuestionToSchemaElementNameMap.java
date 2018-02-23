@@ -71,6 +71,8 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(ProgressReportLongStatusQuestion.class, VOCABULARY_PROGRESS_REPORT_STATUS);
 		addItem(TrendQuestion.class, VOCABULARY_MEASUREMENT_TREND);
 		addItem(MeasurementStatusQuestion.class, VOCABULARY_MEASUREMENT_STATUS);
+		addItem(EvidenceConfidenceQuestion.class, VOCABULARY_EVIDENCE_CONFIDENCE);
+		addItem(StrategyEvidenceConfidenceQuestion.class, VOCABULARY_EVIDENCE_CONFIDENCE);
 		addItem(StatusConfidenceQuestion.class, VOCABULARY_MEASUREMENT_STATUS_CONFIDENCE);
 		addItem(CountriesQuestion.class, VOCABULARY_COUNTRIES);
 		addItem(ThreatRatingQuestion.class, VOCABULARY_THREAT_RATING);

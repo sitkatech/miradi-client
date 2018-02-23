@@ -23,6 +23,7 @@ package org.miradi.xml.xmpz2.objectExporters;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
+import org.miradi.questions.EvidenceConfidenceQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
@@ -43,6 +44,9 @@ public class DesireExporter extends BaseObjectExporter
 
 		final Desire desire = (Desire) baseObject;
 		final String objectName = baseObjectSchema.getObjectName();
+
+		getWriter().writeNonOptionalCodeElement(objectName, Desire.TAG_EVIDENCE_CONFIDENCE, new EvidenceConfidenceQuestion(), desire.getChoiceItemData(Desire.TAG_EVIDENCE_CONFIDENCE).getCode());
+
 		writeRelevantIndicatorIds(objectName, desire);
 		writeRelevantStrategyIds(objectName, desire);
 		writeRelevantActivityIds(objectName, desire);
@@ -51,6 +55,9 @@ public class DesireExporter extends BaseObjectExporter
 	@Override
 	protected boolean doesFieldRequireSpecialHandling(final String tag)
 	{
+		if (tag.equalsIgnoreCase(Desire.TAG_EVIDENCE_CONFIDENCE))
+			return true;
+
 		if (tag.equals(Desire.TAG_RELEVANT_INDICATOR_SET))
 			return true;
 		

@@ -1632,6 +1632,7 @@ abstract public class BaseObject
 	public static final String TAG_ASSIGNED_LEADER_RESOURCE = "AssignedLeaderResource";
 	public static final String TAG_TAXONOMY_CLASSIFICATION_CONTAINER = "TaxonomyClassificationContainer";
 	public static final String TAG_EVIDENCE_NOTES = "EvidenceNotes";
+	public static final String TAG_EVIDENCE_CONFIDENCE = "EvidenceConfidence";
 
 	public final static String PSEUDO_TAG_TIMEFRAME_TOTAL = "TimeframeDatesTotal";
 	public final static String PSEUDO_TAG_ASSIGNED_WHEN_TOTAL = "AssignedEffortDatesTotal";

@@ -31,6 +31,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Objective;
 import org.miradi.project.Project;
+import org.miradi.questions.EvidenceConfidenceQuestion;
 import org.miradi.schemas.ObjectiveSchema;
 
 public class ObjectivePropertiesPanel extends ObjectDataInputPanelWithSections
@@ -58,6 +59,7 @@ public class ObjectivePropertiesPanel extends ObjectDataInputPanelWithSections
 
 		addTaxonomyFields(ObjectiveSchema.getObjectType());
 		addField(createMultilineField(Objective.TAG_COMMENTS));
+		addField(createRadioButtonEditorField(ObjectiveSchema.getObjectType(), Objective.TAG_EVIDENCE_CONFIDENCE, getQuestion(EvidenceConfidenceQuestion.class)));
 		addField(createMultilineField(Objective.TAG_EVIDENCE_NOTES));
 
 		updateFieldsFromProject();

@@ -120,6 +120,8 @@ public class StaticQuestionManager
 		addQuestion(new ProjectScaleQuestion());
 		addQuestion(new DiagramChoiceQuestion());
 		addQuestion(new WorkPlanProjectResourceConfigurationQuestion());
+		addQuestion(new EvidenceConfidenceQuestion());
+		addQuestion(new StrategyEvidenceConfidenceQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)

@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.forms.objects;
 
 import org.miradi.forms.FieldPanelSpec;
-import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
 import org.miradi.schemas.StrategySchema;
 
@@ -29,6 +28,7 @@ public class StrategySummaryCommentsSubForm extends FieldPanelSpec
 	public StrategySummaryCommentsSubForm()
 	{
 		addLabelAndField(StrategySchema.getObjectType(), Strategy.TAG_COMMENTS);
+		addLabelAndField(StrategySchema.getObjectType(), Strategy.TAG_EVIDENCE_CONFIDENCE);
 		addLabelAndField(StrategySchema.getObjectType(), Strategy.TAG_EVIDENCE_NOTES);
 	}
 }

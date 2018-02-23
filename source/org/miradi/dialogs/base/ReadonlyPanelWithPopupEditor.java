@@ -86,8 +86,8 @@ abstract public class ReadonlyPanelWithPopupEditor extends MiradiPanel
 				ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), popupEditorDialogTitle);
 				addDialogMainPanel(dialog, editorPanel);
 				dialog.becomeActive();
-				Utilities.centerDlg(dialog);
 				setFixedDialogWidth(dialog);
+				Utilities.centerDlg(dialog);
 				dialog.setVisible(true);
 			}
 			catch (Exception e)

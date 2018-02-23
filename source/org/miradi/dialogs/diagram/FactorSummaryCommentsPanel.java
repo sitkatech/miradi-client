@@ -24,6 +24,7 @@ import org.miradi.main.EAM;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.project.Project;
+import org.miradi.questions.EvidenceConfidenceQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 
 public class FactorSummaryCommentsPanel extends ObjectDataInputPanel
@@ -34,6 +35,9 @@ public class FactorSummaryCommentsPanel extends ObjectDataInputPanel
 
 		addField(createMultilineField(factorSchema.getType(), Factor.TAG_COMMENTS));
 
+		if (canHaveEvidenceConfidence(factorSchema))
+			addField(createRadioButtonEditorField(factorSchema.getType(), BaseObject.TAG_EVIDENCE_CONFIDENCE, EvidenceConfidenceQuestion.getQuestion(factorSchema)));
+
 		if (canHaveEvidenceNotes(factorSchema))
 			addField(createMultilineField(factorSchema.getType(), Factor.TAG_EVIDENCE_NOTES));
 	}
@@ -42,6 +46,14 @@ public class FactorSummaryCommentsPanel extends ObjectDataInputPanel
 	public String getPanelDescription()
 	{
 		return EAM.text("Comments");
+	}
+
+	private boolean canHaveEvidenceConfidence(BaseObjectSchema factorSchema)
+	{
+		if (factorSchema.containsField(BaseObject.TAG_EVIDENCE_CONFIDENCE))
+			return true;
+
+		return false;
 	}
 
 	private boolean canHaveEvidenceNotes(BaseObjectSchema factorSchema)

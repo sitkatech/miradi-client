@@ -22,9 +22,7 @@ package org.miradi.xml.xmpz2.objectExporters;
 
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
-import org.miradi.questions.StrategyFeasibilityQuestion;
-import org.miradi.questions.StrategyImpactQuestion;
-import org.miradi.questions.StrategyTaxonomyQuestion;
+import org.miradi.questions.*;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
@@ -49,6 +47,7 @@ public class StrategyExporter extends BaseObjectWithLeaderResourceFieldExporter
 		getWriter().writeNonOptionalCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_TAXONOMY_CODE, new StrategyTaxonomyQuestion(), strategy.getTaxonomyCode());
 		getWriter().writeNonOptionalCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_IMPACT_RATING, new StrategyImpactQuestion(), strategy.getChoiceItemData(Strategy.TAG_IMPACT_RATING).getCode());
 		getWriter().writeNonOptionalCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_FEASIBILITY_RATING, new StrategyFeasibilityQuestion(), strategy.getChoiceItemData(Strategy.TAG_FEASIBILITY_RATING).getCode());
+		getWriter().writeNonOptionalCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_EVIDENCE_CONFIDENCE, new StrategyEvidenceConfidenceQuestion(), strategy.getChoiceItemData(Strategy.TAG_EVIDENCE_CONFIDENCE).getCode());
 	}
 	
 	@Override
@@ -64,6 +63,9 @@ public class StrategyExporter extends BaseObjectWithLeaderResourceFieldExporter
 			return true;
 		
 		if (tag.equals(Strategy.TAG_FEASIBILITY_RATING))
+			return true;
+
+		if (tag.equalsIgnoreCase(Strategy.TAG_EVIDENCE_CONFIDENCE))
 			return true;
 
 		return super.doesFieldRequireSpecialHandling(tag);

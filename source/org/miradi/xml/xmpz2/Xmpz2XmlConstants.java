@@ -418,6 +418,7 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_PROGRESS_REPORT_STATUS = "vocabulary_progress_report_status";
 	public static final String VOCABULARY_MEASUREMENT_TREND = "vocabulary_measurement_trend";
 	
+	public static final String VOCABULARY_EVIDENCE_CONFIDENCE = "vocabulary_evidence_confidence";
 	public static final String VOCABULARY_MEASUREMENT_STATUS_CONFIDENCE = "vocabulary_measurement_status_confidence";
 	public static final String VOCABULARY_COUNTRIES = "vocabulary_countries";
 	public static final String VOCABULARY_TEXT_BOX_Z_ORDER = "vocabulary_text_box_z_order";

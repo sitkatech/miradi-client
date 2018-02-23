@@ -31,6 +31,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Desire;
 import org.miradi.objects.Goal;
 import org.miradi.project.Project;
+import org.miradi.questions.EvidenceConfidenceQuestion;
 import org.miradi.schemas.GoalSchema;
 
 public class GoalPropertiesPanel extends ObjectDataInputPanelWithSections
@@ -51,6 +52,7 @@ public class GoalPropertiesPanel extends ObjectDataInputPanelWithSections
 		addSubPanelWithTitledBorder(new ProgressPercentSubPanel(getProject()));
 		addTaxonomyFields(GoalSchema.getObjectType());
 		addField(createMultilineField(Goal.TAG_COMMENTS));
+		addField(createRadioButtonEditorField(GoalSchema.getObjectType(), Goal.TAG_EVIDENCE_CONFIDENCE, getQuestion(EvidenceConfidenceQuestion.class)));
 		addField(createMultilineField(Goal.TAG_EVIDENCE_NOTES));
 
 		updateFieldsFromProject();

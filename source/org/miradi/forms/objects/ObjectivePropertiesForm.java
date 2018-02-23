@@ -21,8 +21,6 @@ package org.miradi.forms.objects;
 
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.main.EAM;
-import org.miradi.objects.Desire;
-import org.miradi.objects.Goal;
 import org.miradi.objects.Objective;
 import org.miradi.schemas.ObjectiveSchema;
 
@@ -40,6 +38,7 @@ public class ObjectivePropertiesForm extends FieldPanelSpec
 		addLabelAndField(type, Objective.PSEUDO_TAG_RELEVANT_STRATEGY_ACTIVITY_REFS);
 		addLabelAndFieldsWithLabels(EAM.text("Progress Percents"), type, new String[]{Objective.TAG_PROGRESS_PERCENT_REFS});
 		addLabelAndField(type, Objective.TAG_COMMENTS);
+		addLabelAndField(type, Objective.TAG_EVIDENCE_CONFIDENCE);
 		addLabelAndField(type, Objective.TAG_EVIDENCE_NOTES);
 		addMultipleTaxonomyWithEditButtonFields(ObjectiveSchema.getObjectType(), Objective.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 	}

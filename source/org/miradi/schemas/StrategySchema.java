@@ -22,10 +22,7 @@ package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Strategy;
-import org.miradi.questions.StrategyFeasibilityQuestion;
-import org.miradi.questions.StrategyImpactQuestion;
-import org.miradi.questions.StrategyStatusQuestion;
-import org.miradi.questions.StrategyTaxonomyQuestion;
+import org.miradi.questions.*;
 
 public class StrategySchema extends EvidenceFactorSchema
 {
@@ -45,6 +42,8 @@ public class StrategySchema extends EvidenceFactorSchema
 		createFieldSchemaChoice(Strategy.TAG_IMPACT_RATING, StrategyImpactQuestion.class);
 		createFieldSchemaChoice(Strategy.TAG_FEASIBILITY_RATING, StrategyFeasibilityQuestion.class);
 		createFieldSchemaMultiLineUserText(Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
+		createFieldSchemaChoice(Strategy.TAG_EVIDENCE_CONFIDENCE, StrategyEvidenceConfidenceQuestion.class);
+
 		createFieldSchemaOptionalRef(Strategy.TAG_ASSIGNED_LEADER_RESOURCE);
 		createBudgetSchemas();
 		createProgressReportSchema();

@@ -1518,6 +1518,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(objective, Objective.TAG_FULL_TEXT, "Some objective full text data");
 		fillObjectUsingCommand(objective, Objective.TAG_COMMENTS, "Some Objective comments");
 		fillObjectUsingCommand(objective, Objective.TAG_EVIDENCE_NOTES, "Some Objective evidence");
+		fillObjectUsingCommand(objective, Objective.TAG_EVIDENCE_CONFIDENCE, EvidenceConfidenceQuestion.ROUGH_GUESS_CODE);
 
 		Cause threat = createAndPopulateThreat();
 		ORefList relevantIndicatorRefs = threat.getObjectiveRefs();
@@ -1598,6 +1599,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(strategy, Strategy.TAG_LABEL, "Some Strategy label");
 		fillObjectUsingCommand(strategy, Strategy.TAG_COMMENTS, "Some Strategy comments");
 		fillObjectUsingCommand(strategy, Strategy.TAG_EVIDENCE_NOTES, "Some Strategy evidence");
+		fillObjectUsingCommand(strategy, Strategy.TAG_EVIDENCE_CONFIDENCE, StrategyEvidenceConfidenceQuestion.ROUGH_GUESS_CODE);
 
 		final int FIRST_CODE = 0;
 		ChoiceQuestion question = StaticQuestionManager.getQuestion(StrategyTaxonomyQuestion.class);

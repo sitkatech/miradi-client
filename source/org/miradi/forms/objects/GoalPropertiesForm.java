@@ -21,7 +21,6 @@ package org.miradi.forms.objects;
 
 import org.miradi.forms.FieldPanelSpec;
 import org.miradi.main.EAM;
-import org.miradi.objects.Desire;
 import org.miradi.objects.Goal;
 import org.miradi.schemas.GoalSchema;
 
@@ -35,6 +34,7 @@ public class GoalPropertiesForm extends FieldPanelSpec
 		addLabelAndField(GoalSchema.getObjectType(), Goal.PSEUDO_TAG_FACTOR);
 		addLabelAndField(GoalSchema.getObjectType(), Goal.PSEUDO_TAG_DIRECT_THREATS);
 		addLabelAndField(GoalSchema.getObjectType(), Goal.TAG_COMMENTS);
+		addLabelAndField(GoalSchema.getObjectType(), Goal.TAG_EVIDENCE_CONFIDENCE);
 		addLabelAndField(GoalSchema.getObjectType(), Goal.TAG_EVIDENCE_NOTES);
 		addMultipleTaxonomyWithEditButtonFields(GoalSchema.getObjectType(), Goal.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 	}

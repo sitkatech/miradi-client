@@ -22,6 +22,7 @@ package org.miradi.schemas;
 
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Desire;
+import org.miradi.questions.EvidenceConfidenceQuestion;
 
 abstract public class DesireSchema extends BaseObjectSchema
 {
@@ -39,6 +40,7 @@ abstract public class DesireSchema extends BaseObjectSchema
 		createFieldSchemaMultiLineUserText(Desire.TAG_FULL_TEXT);
 		createFieldSchemaMultiLineUserText(Desire.TAG_COMMENTS);
 		createFieldSchemaMultiLineUserText(BaseObject.TAG_EVIDENCE_NOTES);
+		createFieldSchemaChoice(Desire.TAG_EVIDENCE_CONFIDENCE, EvidenceConfidenceQuestion.class);
 		createFieldSchemaRelevancyOverrideSet(Desire.TAG_RELEVANT_INDICATOR_SET);
 		createFieldSchemaRelevancyOverrideSet(Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
 		createOwnedFieldSchemaReflist(Desire.TAG_PROGRESS_PERCENT_REFS, PROGRESS_PERCENT);
