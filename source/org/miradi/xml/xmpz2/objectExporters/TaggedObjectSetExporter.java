@@ -35,7 +35,7 @@ public class TaggedObjectSetExporter extends BaseObjectExporter
 	@Override
 	protected boolean shouldOmitField(String tag)
 	{
-		// TODO: field to be deprecated in post 5.0 release...
+		// TODO: field to be deprecated in post 4.5 release...
 		if (tag.equals(TaggedObjectSet.TAG_TAGGED_OBJECT_REFS))
 			return true;
 

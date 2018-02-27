@@ -36,19 +36,7 @@ import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.EmptyChoiceItem;
-import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
-import org.miradi.questions.ProgressReportShortStatusQuestion;
-import org.miradi.questions.RatingSourceQuestion;
-import org.miradi.questions.StaticQuestionManager;
-import org.miradi.questions.StatusConfidenceQuestion;
-import org.miradi.questions.StatusQuestion;
-import org.miradi.questions.TaglessChoiceItem;
-import org.miradi.questions.TextAndIconChoiceItem;
-import org.miradi.questions.TrendQuestion;
-import org.miradi.questions.ViabilityModeQuestion;
+import org.miradi.questions.*;
 import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
@@ -99,9 +87,9 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (isKeaAttributeTypeCell(row, modelColumn))
 			return KeyEcologicalAttributeTypeQuestion.class;
 
-		if (isIndicatorRatingSourceColumn(row, modelColumn))
-			return RatingSourceQuestion.class;
-		
+		if (isIndicatorRatingEvidenceConfidenceColumn(row, modelColumn))
+			return ViabilityRatingEvidenceConfidence.class;
+
 		if (isMeasurementStatusConfidenceColumn(row, modelColumn))
 			return StatusConfidenceQuestion.class;
 		
@@ -134,7 +122,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 
 	private boolean isKeaAttributeTypeCell(int row, int column)
 	{
-		String tag = COLUMN_TAGS_KEAS[column];
+		String tag = COLUMN_TAGS_FOR_KEAS[column];
 		BaseObject baseObject = getBaseObjectForRow(row);
 		if (KeyEcologicalAttribute.is(baseObject) && tag.equals(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE))
 			return true;
@@ -176,13 +164,13 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (isThresholdColumn(modelColumn))
 			return true;
 		
-		if (isIndicatorRatingSourceColumn(row, modelColumn))
+		if (isIndicatorRatingEvidenceConfidenceColumn(row, modelColumn))
 			return true;
 		
 		return false;
 	}
 
-	private boolean isIndicatorRatingSourceColumn(int row, int modelColumn)
+	private boolean isIndicatorRatingEvidenceConfidenceColumn(int row, int modelColumn)
 	{
 		final BaseObject baseObject = getBaseObjectForRow(row);
 		if (!Indicator.is(baseObject))
@@ -191,8 +179,8 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		String columnTag = COLUMN_TAGS_FOR_INDICATORS[modelColumn];
 		if (!isViabilityIndicator((Indicator) baseObject))
 			return false;
-		
-		return columnTag.equals(Indicator.TAG_RATING_SOURCE);
+
+		return columnTag.equals(Indicator.TAG_VIABILITY_RATINGS_EVIDENCE_CONFIDENCE);
 	}
 
 	private boolean isMeasurementStatusConfidenceColumn(int row, int modelColumn)
@@ -294,9 +282,9 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 			map.putUserString(Integer.toString(thresholdColumn), value.toString());
 			setValueUsingCommand(baseObject.getRef(), Indicator.TAG_THRESHOLDS_MAP, map.toJsonString());
 		}
-		if (isIndicatorRatingSourceColumn(row, column))
+		if (isIndicatorRatingEvidenceConfidenceColumn(row, column))
 		{
-			setChoiceValueUsingCommand(baseObject, Indicator.TAG_RATING_SOURCE, (ChoiceItem) value);
+			setChoiceValueUsingCommand(baseObject, Indicator.TAG_VIABILITY_RATINGS_EVIDENCE_CONFIDENCE, (ChoiceItem) value);
 		}
 	}
 
@@ -336,7 +324,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 
 	private ChoiceItem getValueForKea(KeyEcologicalAttribute kea, int row, int column)
 	{
-		String tag = COLUMN_TAGS_KEAS[column];
+		String tag = COLUMN_TAGS_FOR_KEAS[column];
 		String rawValue = kea.getData(tag);
 		if (tag.equals(KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS))
 			return getStatusQuestion().findChoiceByCode(rawValue);
@@ -365,9 +353,9 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		
 		String data = baseObject.getData(tag);
 		
-		if(tag.equals(Indicator.TAG_RATING_SOURCE) && isViabilityIndicator(indicator))
-			return StaticQuestionManager.getQuestion(RatingSourceQuestion.class).findChoiceByCode(data);
-		
+		if(tag.equals(Indicator.TAG_VIABILITY_RATINGS_EVIDENCE_CONFIDENCE) && isViabilityIndicator(indicator))
+			return StaticQuestionManager.getQuestion(ViabilityRatingEvidenceConfidence.class).findChoiceByCode(data);
+
 		if (tag.equals(Indicator.TAG_THRESHOLDS_MAP))
 		{
 			int thresholdColumn = calculateRatingCodeFromColumn(column);
@@ -463,7 +451,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		
 		return EAM.fieldLabel(getObjectTypeForColumnLabel(columnTag), columnTag);
 	}
-	
+
 	private int getObjectTypeForColumnLabel(String tag)
 	{
 		if(tag.equals(Target.TAG_VIABILITY_MODE))
@@ -488,7 +476,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if(columnTag.equals(Measurement.TAG_STATUS_CONFIDENCE))
 			return true;
 		
-		if(columnTag.equals(Indicator.TAG_RATING_SOURCE))
+		if(columnTag.equals(Indicator.TAG_VIABILITY_RATINGS_EVIDENCE_CONFIDENCE))
 			return true;
 		
 		if(columnTag.equals(Measurement.TAG_STATUS))
@@ -531,8 +519,8 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	
 	private int calculateRatingCodeFromColumn(int column)
 	{
-		int threasholdColumn = (1 + column) - getFirstColumnIndexOfThreshold();
-		return threasholdColumn;
+		int thresholdColumn = (1 + column) - getFirstColumnIndexOfThreshold();
+		return thresholdColumn;
 	}
 	
 	private int getFirstColumnIndexOfThreshold()
@@ -581,7 +569,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		Indicator.TAG_THRESHOLDS_MAP,
 		Indicator.TAG_THRESHOLDS_MAP,
 		Indicator.TAG_THRESHOLDS_MAP,
-		Indicator.TAG_RATING_SOURCE,
+		Indicator.TAG_VIABILITY_RATINGS_EVIDENCE_CONFIDENCE,
 		BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 	};
 	
@@ -597,7 +585,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		BaseObject.TAG_EMPTY,
 		};
 	
-	private static final String[] COLUMN_TAGS_KEAS = {
+	private static final String[] COLUMN_TAGS_FOR_KEAS = {
 		BaseObject.TAG_EMPTY,
 		KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS, 
 		KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE,

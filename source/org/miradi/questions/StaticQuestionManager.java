@@ -122,6 +122,7 @@ public class StaticQuestionManager
 		addQuestion(new WorkPlanProjectResourceConfigurationQuestion());
 		addQuestion(new EvidenceConfidenceQuestion());
 		addQuestion(new StrategyEvidenceConfidenceQuestion());
+		addQuestion(new ViabilityRatingEvidenceConfidence());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)

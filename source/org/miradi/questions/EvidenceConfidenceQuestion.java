@@ -31,10 +31,18 @@ public class EvidenceConfidenceQuestion extends StaticChoiceQuestionSortableByCo
         super(EAM.text("To track the confidence of your evidence, use the following scale:"));
     }
 
+    public EvidenceConfidenceQuestion(String questionDescriptionToUse)
+    {
+        super(questionDescriptionToUse);
+    }
+
     public static ChoiceQuestion getQuestion(BaseObjectSchema factorSchema)
     {
         if (factorSchema.getType() == ObjectType.STRATEGY)
             return StaticQuestionManager.getQuestion(StrategyEvidenceConfidenceQuestion.class);
+
+        if (factorSchema.getType() == ObjectType.INDICATOR)
+            return StaticQuestionManager.getQuestion(ViabilityRatingEvidenceConfidence.class);
 
         return StaticQuestionManager.getQuestion(EvidenceConfidenceQuestion.class);
     }

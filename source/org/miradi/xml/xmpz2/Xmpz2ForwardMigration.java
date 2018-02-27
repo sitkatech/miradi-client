@@ -32,10 +32,7 @@ import org.miradi.migrations.forward.MigrationTo20;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.ExtendedProgressReport;
-import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.TaggedObjectSet;
+import org.miradi.objects.*;
 import org.miradi.questions.DayColumnsVisibilityQuestion;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
@@ -77,6 +74,7 @@ public class Xmpz2ForwardMigration
 		moveProjectStatusDataToExtraData(document);
 		moveTaggedObjectSetTaggedFactorRefListToExtraData(document);
 		addUUIDFields(document);
+		moveIndicatorRatingSourceToExtraData(document);
 
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
@@ -335,6 +333,43 @@ public class Xmpz2ForwardMigration
 		}
 
 		return mappedObjectType;
+	}
+
+	private void moveIndicatorRatingSourceToExtraData(Document document) throws Exception
+	{
+		Element rootElement = document.getDocumentElement();
+
+		Node indicatorPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.INDICATOR));
+		if (indicatorPool != null)
+		{
+			NodeList indicatorNodes = indicatorPool.getChildNodes();
+			for (int index = 0; index < indicatorNodes.getLength(); ++index)
+			{
+				Node indicatorNode = indicatorNodes.item(index);
+				if (indicatorNode != null && indicatorNode.getNodeType() == Node.ELEMENT_NODE)
+				{
+					moveIndicatorRatingSourceElementToExtraData(document, indicatorNode);
+				}
+			}
+		}
+	}
+
+	private void moveIndicatorRatingSourceElementToExtraData(Document document, Node indicatorNode) throws Exception
+	{
+		String idAsString = getAttributeValue(indicatorNode, Xmpz2XmlConstants.ID);
+
+		String elementNameWithoutAlias = Xmpz2XmlConstants.INDICATOR + Xmpz2XmlConstants.RATING + Xmpz2XmlConstants.SOURCE;
+		String tagName = Indicator.TAG_RATING_SOURCE;
+
+		Node nodeToMove = findNode(indicatorNode, elementNameWithoutAlias);
+		if (nodeToMove != null && nodeToMove.getNodeType() == Node.ELEMENT_NODE)
+		{
+			String extraDataItemName = ExtraDataExporter.getExtraDataItemName(IndicatorSchema.OBJECT_NAME, new BaseId(idAsString), tagName);
+			String extraDataItemValue = nodeToMove.getTextContent();
+			moveDataToExtraData(document, extraDataItemName, extraDataItemValue);
+
+			indicatorNode.removeChild(nodeToMove);
+		}
 	}
 
 	private void addUUIDFields(Document document) throws Exception

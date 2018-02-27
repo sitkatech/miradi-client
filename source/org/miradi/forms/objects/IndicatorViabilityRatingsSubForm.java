@@ -31,16 +31,17 @@ public class IndicatorViabilityRatingsSubForm extends FieldPanelSpec
 	public IndicatorViabilityRatingsSubForm()
 	{
 		ChoiceQuestion statusQuestion = new StatusQuestion();
-		createThreshholdField(statusQuestion.findChoiceByCode(StatusQuestion.POOR));
-		createThreshholdField(statusQuestion.findChoiceByCode(StatusQuestion.FAIR));
-		createThreshholdField(statusQuestion.findChoiceByCode(StatusQuestion.GOOD));
-		createThreshholdField(statusQuestion.findChoiceByCode(StatusQuestion.VERY_GOOD));
+		createThresholdField(statusQuestion.findChoiceByCode(StatusQuestion.POOR));
+		createThresholdField(statusQuestion.findChoiceByCode(StatusQuestion.FAIR));
+		createThresholdField(statusQuestion.findChoiceByCode(StatusQuestion.GOOD));
+		createThresholdField(statusQuestion.findChoiceByCode(StatusQuestion.VERY_GOOD));
 				
-		addLabelAndField(IndicatorSchema.getObjectType(), Indicator.TAG_RATING_SOURCE);
+		addLabelAndField(IndicatorSchema.getObjectType(), Indicator.TAG_VIABILITY_RATINGS_EVIDENCE_CONFIDENCE);
 		addLabelAndField(IndicatorSchema.getObjectType(), Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
+		addLabelAndField(IndicatorSchema.getObjectType(), Indicator.TAG_VIABILITY_RATINGS_EVIDENCE_NOTES);
 	}
 	
-	private void createThreshholdField(ChoiceItem choiceItem)
+	private void createThresholdField(ChoiceItem choiceItem)
 	{
 		addLabelAndFieldsWithLabels(choiceItem.getLabel(), IndicatorSchema.getObjectType(), new String[]{Indicator.TAG_THRESHOLDS_MAP, Indicator.TAG_THRESHOLD_DETAILS_MAP});
 	}

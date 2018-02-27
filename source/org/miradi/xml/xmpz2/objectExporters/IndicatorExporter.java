@@ -23,11 +23,8 @@ package org.miradi.xml.xmpz2.objectExporters;
 import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
-import org.miradi.objects.Desire;
 import org.miradi.objects.Indicator;
-import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.StaticQuestionManager;
-import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.*;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.StrategySchema;
@@ -47,7 +44,7 @@ public class IndicatorExporter extends BaseObjectExporter
 	protected void writeFields(final BaseObject baseObject,	BaseObjectSchema baseObjectSchema) throws Exception
 	{
 		super.writeFields(baseObject, baseObjectSchema);
-		
+
 		final Indicator indicator = (Indicator) baseObject;
 		writeMethodRefs(baseObjectSchema, indicator);
 		writeThreshold(indicator);
@@ -55,6 +52,8 @@ public class IndicatorExporter extends BaseObjectExporter
 		final String objectName = baseObjectSchema.getObjectName();
 		writeRelevantStrategyIds(objectName, indicator);
 		writeRelevantActivityIds(objectName, indicator);
+
+		getWriter().writeNonOptionalCodeElement(baseObjectSchema.getObjectName(), Indicator.TAG_VIABILITY_RATINGS_EVIDENCE_CONFIDENCE, new ViabilityRatingEvidenceConfidence(), indicator.getChoiceItemData(Indicator.TAG_VIABILITY_RATINGS_EVIDENCE_CONFIDENCE).getCode());
 	}
 
 	private void writeMethodRefs(BaseObjectSchema baseObjectSchema, final Indicator indicator) throws Exception
@@ -74,7 +73,10 @@ public class IndicatorExporter extends BaseObjectExporter
 		if (tag.equals(Indicator.TAG_METHOD_IDS))
 			return true;
 
-		if (tag.equals(Desire.TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
+		if (tag.equals(Indicator.TAG_RELEVANT_STRATEGY_ACTIVITY_SET))
+			return true;
+
+		if (tag.equalsIgnoreCase(Indicator.TAG_VIABILITY_RATINGS_EVIDENCE_CONFIDENCE))
 			return true;
 
 		return super.doesFieldRequireSpecialHandling(tag);

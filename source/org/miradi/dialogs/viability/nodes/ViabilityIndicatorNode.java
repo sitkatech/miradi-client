@@ -31,11 +31,7 @@ import org.miradi.objects.FutureStatus;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
-import org.miradi.questions.EmptyChoiceItem;
-import org.miradi.questions.ProgressReportShortStatusQuestion;
-import org.miradi.questions.RatingSourceQuestion;
-import org.miradi.questions.StatusQuestion;
-import org.miradi.questions.TaglessChoiceItem;
+import org.miradi.questions.*;
 import org.miradi.schemas.FutureStatusSchema;
 
 public class ViabilityIndicatorNode extends TreeTableNode
@@ -110,9 +106,9 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		
 		String data = getObject().getData(tag);
 		
-		if(tag.equals(Indicator.TAG_RATING_SOURCE) && isViabilityIndicator())
-			return new RatingSourceQuestion().findChoiceByCode(data);
-		
+		if(tag.equals(Indicator.TAG_VIABILITY_RATINGS_EVIDENCE_CONFIDENCE) && isViabilityIndicator())
+			return new ViabilityRatingEvidenceConfidence().findChoiceByCode(data);
+
 		if (tag.equals(Indicator.TAG_THRESHOLDS_MAP))
 		{
 			int thresholdColumn = (column + 1) - getFirstIndexOfThreshold();
@@ -197,7 +193,7 @@ public class ViabilityIndicatorNode extends TreeTableNode
 		Indicator.TAG_THRESHOLDS_MAP,
 		Indicator.TAG_THRESHOLDS_MAP,
 		
-		Indicator.TAG_RATING_SOURCE,
+		Indicator.TAG_VIABILITY_RATINGS_EVIDENCE_CONFIDENCE,
 		BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 	};
 	

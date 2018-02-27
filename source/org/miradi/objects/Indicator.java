@@ -19,8 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import java.util.Vector;
-
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.ChainWalker;
 import org.miradi.ids.IdList;
@@ -30,7 +28,6 @@ import org.miradi.objectdata.CodeToUserStringMapData;
 import org.miradi.objecthelpers.*;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.StatusQuestion;
 import org.miradi.schemas.*;
 import org.miradi.utils.CommandVector;
 
@@ -496,6 +493,8 @@ public class Indicator extends BaseObject implements StrategyActivityRelevancyIn
 	public static final String TAG_DETAIL = "Detail";
 	public static final String TAG_COMMENTS = "Comments";
 	public static final String TAG_VIABILITY_RATINGS_COMMENTS = "ViabilityRatingsComment";
+	public static final String TAG_VIABILITY_RATINGS_EVIDENCE_CONFIDENCE = "ViabilityRatingsEvidenceConfidence";
+	public static final String TAG_VIABILITY_RATINGS_EVIDENCE_NOTES = "ViabilityRatingsEvidenceNotes";
 	public static final String TAG_FUTURE_STATUS_REFS = "FutureStatusRefs";
 	public static final String TAG_RELEVANT_STRATEGY_ACTIVITY_SET = "RelevantStrategySet";
 	public static final String TAG_UNIT = "Unit";

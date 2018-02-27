@@ -649,19 +649,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return strategy;
 	}
 	
-	public Indicator createIndicatorContainingWhiteSpacePaddedCode() throws Exception
-	{
-		Cause threat = createAndPopulateThreat();
-		ORefList indicatorRefs = threat.getDirectOrIndirectIndicatorRefs();
-		ORef indicatorRef = indicatorRefs.getRefForType(IndicatorSchema.getObjectType());
-		Indicator indicator = Indicator.find(this, indicatorRef);
-		
-		final String STRING_TO_TRIM = "<br/>\t  \t";
-		fillObjectUsingCommand(indicator, Indicator.TAG_RATING_SOURCE, STRING_TO_TRIM + RatingSourceQuestion.ONSITE_RESEARCH_CODE + STRING_TO_TRIM);
-		
-		return indicator;
-	}
-
 	public Strategy createAndPopulateDraftStrategy() throws Exception
 	{
 		Strategy strategy = createAndPopulateStrategy();
@@ -1422,8 +1409,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(indicator, Indicator.TAG_PRIORITY, PriorityRatingQuestion.HIGH_CODE);
 		fillObjectUsingCommand(indicator, Indicator.TAG_DETAIL, "Some Indicator detail");
 		fillObjectUsingCommand(indicator, Indicator.TAG_VIABILITY_RATINGS_COMMENTS, "Some Indicator viability ratings comment");
-		fillObjectUsingCommand(indicator, Indicator.TAG_RATING_SOURCE, RatingSourceQuestion.ONSITE_RESEARCH_CODE);
-		
+		fillObjectUsingCommand(indicator, Indicator.TAG_VIABILITY_RATINGS_EVIDENCE_CONFIDENCE, ViabilityRatingEvidenceConfidence.ONSITE_RESEARCH_CODE);
+		fillObjectUsingCommand(indicator, Indicator.TAG_VIABILITY_RATINGS_EVIDENCE_NOTES, "Some Indicator viability ratings evidence notes");
+
 		createAndPopulateMethod(indicator, "Some Method Name");
 
 		Measurement measurement = createAndPopulateMeasurement();

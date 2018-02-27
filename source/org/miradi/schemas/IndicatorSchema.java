@@ -25,6 +25,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.questions.PriorityRatingQuestion;
 import org.miradi.questions.RatingSourceQuestion;
+import org.miradi.questions.ViabilityRatingEvidenceConfidence;
 
 public class IndicatorSchema extends BaseObjectSchema
 {
@@ -43,12 +44,13 @@ public class IndicatorSchema extends BaseObjectSchema
 		createFieldSchemaIdList(Indicator.TAG_METHOD_IDS, MethodSchema.getObjectType());
 		createFieldSchemaCodeToUserStringMap(Indicator.TAG_THRESHOLDS_MAP);
 		createFieldSchemaCodeToUserStringMap(Indicator.TAG_THRESHOLD_DETAILS_MAP);
-		createFieldSchemaChoice(Indicator.TAG_RATING_SOURCE, RatingSourceQuestion.class);
 		createOwnedFieldSchemaReflist(Indicator.TAG_MEASUREMENT_REFS, MEASUREMENT);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_DETAIL);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_COMMENTS);
-		createFieldSchemaMultiLineUserText(BaseObject.TAG_EVIDENCE_NOTES);
+		createFieldSchemaMultiLineUserText(Indicator.TAG_EVIDENCE_NOTES);
 		createFieldSchemaMultiLineUserText(Indicator.TAG_VIABILITY_RATINGS_COMMENTS);
+		createFieldSchemaChoice(Indicator.TAG_VIABILITY_RATINGS_EVIDENCE_CONFIDENCE, ViabilityRatingEvidenceConfidence.class);
+		createFieldSchemaMultiLineUserText(Indicator.TAG_VIABILITY_RATINGS_EVIDENCE_NOTES);
 		createFieldSchemaSingleLineUserText(Indicator.TAG_UNIT);
         createOwnedFieldSchemaReflist(Indicator.TAG_FUTURE_STATUS_REFS, FUTURE_STATUS);
 		createFieldSchemaRelevancyOverrideSet(Indicator.TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
@@ -58,6 +60,9 @@ public class IndicatorSchema extends BaseObjectSchema
 		createFieldSchemaOptionalRef(BaseObject.TAG_ASSIGNED_LEADER_RESOURCE);
 		createOwnedFieldSchemaIdList(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignmentSchema.getObjectType());
 		createOwnedFieldSchemaReflist(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT);
+
+		// TODO: fields to be deprecated in post 4.5 release...only here to support migrations
+		createFieldSchemaChoice(Indicator.TAG_RATING_SOURCE, RatingSourceQuestion.class);
 
 		createTaxonomyClassificationSchemaField();
 

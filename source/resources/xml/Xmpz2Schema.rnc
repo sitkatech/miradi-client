@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri Feb 23 11:03:40 GMT 2018 $
+# $LastChangedDate: Mon Feb 26 15:41:23 GMT 2018 $
 # $LastChangedRevision: 237 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/237'
 start = ConservationProject.element
@@ -313,13 +313,14 @@ Indicator.element = element miradi:Indicator
   element miradi:IndicatorOrderedMethodIds { MethodId.element* }? &
   element miradi:IndicatorPriority { vocabulary_priority_rating_code }? &
   element miradi:IndicatorProgressReportIds { ProgressReportId.element* }? &
-  element miradi:IndicatorRatingSource { vocabulary_rating_source }? &
   element miradi:IndicatorRelevantActivityIds { ActivityId.element* }? &
   element miradi:IndicatorRelevantStrategyIds { StrategyId.element* }? &
   element miradi:IndicatorThresholds { IndicatorThreshold.element* }? &
   element miradi:IndicatorUnit { text }? &
   element miradi:IndicatorUUID { uuid } &
   element miradi:IndicatorViabilityRatingsComments { formatted_text }? &
+  element miradi:IndicatorViabilityRatingsEvidenceConfidence { vocabulary_evidence_confidence }? &
+  element miradi:IndicatorViabilityRatingsEvidenceNotes { formatted_text }? &
   TaxonomyClassificationContainer.element?
 }
 
@@ -1024,7 +1025,6 @@ vocabulary_tnc_project_scale = ''|'Global'|'Regional'|'Local'
 vocabulary_share_outside_organization = 'Private'|'ShareWithAnyone'
 vocabulary_protected_area_categories = 'Ia'|'Ib'|'II'|'III'|'IV'|'V'|'VI'
 vocabulary_quarter_columns_visibility = 'ShowQuarterColumns'|'HideQuarterColumns'
-vocabulary_rating_source = ''|'RoughGuess'|'ExpertKnowlege'|'ExternalResearch'|'OnsiteResearch'
 vocabulary_resource_role_codes = 'TeamMember'|'Contact'|'Leader'|'Facilitator'|'Advisor'|'Stakeholder'
 vocabulary_resource_type = 'Person'|'Group'
 vocabulary_scope_box_type = 'Biodiversity'|'HumanWellbeing'

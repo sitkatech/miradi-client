@@ -73,6 +73,7 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(MeasurementStatusQuestion.class, VOCABULARY_MEASUREMENT_STATUS);
 		addItem(EvidenceConfidenceQuestion.class, VOCABULARY_EVIDENCE_CONFIDENCE);
 		addItem(StrategyEvidenceConfidenceQuestion.class, VOCABULARY_EVIDENCE_CONFIDENCE);
+		addItem(ViabilityRatingEvidenceConfidence.class, VOCABULARY_EVIDENCE_CONFIDENCE);
 		addItem(StatusConfidenceQuestion.class, VOCABULARY_MEASUREMENT_STATUS_CONFIDENCE);
 		addItem(CountriesQuestion.class, VOCABULARY_COUNTRIES);
 		addItem(ThreatRatingQuestion.class, VOCABULARY_THREAT_RATING);
@@ -84,7 +85,6 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(QuarterColumnsVisibilityQuestion.class, VOCABULARY_QUARTER_COLUMNS_VISIBILITY);
 		addItem(DayColumnsVisibilityQuestion.class, VOCABULARY_DAY_COLUMNS_VISIBILITY);
 		addItem(BudgetTimePeriodQuestion.class, VOCABULARY_WORK_PLAN_TIME_UNIT);
-		addItem(RatingSourceQuestion.class, VOCABULARY_RATING_SOURCE);
 		addItem(CurrencyTypeQuestion.class, VOCABULARY_CURRENCY_TYPE);
 		addItem(TextBoxZOrderQuestion.class, VOCABULARY_TEXT_BOX_Z_ORDER);
 		addItem(StrategyStatusQuestion.class, VOCABULARY_STRATEGY_STATUS);

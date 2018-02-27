@@ -483,10 +483,13 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private boolean shouldOmitQuestion(Class<? extends ChoiceQuestion> questionClass)
 	{
-		// shares vocabulary with base class impl
+		// evidence questions share vocabulary with base class impl
 		if (questionClass.equals(StrategyEvidenceConfidenceQuestion.class))
 			return true;
-		
+
+		if (questionClass.equals(ViabilityRatingEvidenceConfidence.class))
+			return true;
+
 		if (questionClass.equals(InternalQuestionWithoutValues.class))
 			return true;
 
