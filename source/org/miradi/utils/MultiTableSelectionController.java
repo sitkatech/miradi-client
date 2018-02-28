@@ -44,7 +44,10 @@ public class MultiTableSelectionController implements ListSelectionListener
 	{
 		if (!shouldPropagateSelections())
 			return;
-		
+
+		if (event.getValueIsAdjusting())
+			return;
+
 		selectionChangingListener.beginSelectionChangingProcess();
 		stopPropagatingSelections();
 		try

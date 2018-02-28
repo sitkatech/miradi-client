@@ -34,14 +34,14 @@ abstract public class AbstractMultiPropertiesPanel extends OverlaidObjectDataInp
 		super(mainWindowToUse, orefToUse);
 	}
 	
-	private boolean isVibilityFutureStatus(ORefList refList)
+	private boolean isViabilityFutureStatus(ORefList refList)
 	{
 		return refList.getFilteredBy(KeyEcologicalAttributeSchema.getObjectType()).hasRefs();
 	}
 
 	protected AbstractObjectDataInputPanel getFutureStatusForViabilityMode(ORefList refList) throws Exception
 	{
-		if (isVibilityFutureStatus(refList))
+		if (isViabilityFutureStatus(refList))
 			return getViabilityFutureStatusPanel();
 		
 		return getFutureStatusPanel();
