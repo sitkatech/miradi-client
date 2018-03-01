@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-02-20 12:03-0800\n"
+"POT-Creation-Date: 2018-03-01 04:33-0800\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/miradi-client/"
@@ -302,7 +302,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:169
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:176
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1444
 msgid "(%s)"
 msgstr ""
@@ -2049,7 +2049,7 @@ msgstr ""
 "páginas de Modelo Conceitual"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:203
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:118
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:119
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:57
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:425
 msgid "Activity"
@@ -2475,6 +2475,31 @@ msgstr "ago"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/TableRowHeightModeQuestion.java:38
 msgid "Automatic"
 msgstr "Automático"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceQuestion.java:75
+msgid ""
+"Based on estimates by experienced observers who have the expertise to "
+"provide reliable information in the project context and/or based on other "
+"similar project sites."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceQuestion.java:70
+msgid ""
+"Based on estimates by project team members or other individuals without "
+"specialized knowledge; often an initial estimate to be improved over time."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceQuestion.java:80
+msgid ""
+"Based on research at other comparable project sites, often obtained from "
+"published or unpublished scientific literature."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceQuestion.java:85
+msgid ""
+"Based on research at the project site including adaptive management by the "
+"project team."
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/MiradiShareBasicsPanel.java:106
 msgid "Basics"
@@ -2965,7 +2990,7 @@ msgstr "Comprimir a Coluna Selecionada"
 msgid "Column groups"
 msgstr "Grupos de Colunas"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCommentsPanel.java:40
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCommentsPanel.java:48
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:138
 msgid "Comments"
 msgstr "Comentários"
@@ -3172,7 +3197,7 @@ msgstr "Multi-plataforma Serif"
 msgid "Currency|Other"
 msgstr "Outra"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:64
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:61
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:36
 msgid "Current Status"
 msgstr "Estado Atual"
@@ -3280,7 +3305,7 @@ msgstr ""
 "Os dados foram exportados  de formato delimitado por marcas de tabulação "
 "('tabs')"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:54
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:51
 msgid "Date"
 msgstr "Data"
 
@@ -3398,7 +3423,7 @@ msgid "Detailed work planning"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/MiradiShareDetailsPanel.java:39
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:67
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:68
 msgid "Details"
 msgstr "Detalhes"
 
@@ -3476,9 +3501,17 @@ msgstr "Diagrama"
 msgid "Diagram Data Inclusion Chooser"
 msgstr "Selecionador de Dados a serem incluidos no diagrama"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo47.java:42
+msgid "Diagram Link Annotation"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/DiagramLinkColorSubPanel.java:44
 msgid "Diagram Link Color Panel"
 msgstr "Painel  Cor de Ligação no diagrama"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo47.java:41
+msgid "Diagram Link Uncertain Flag"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:47
 msgid ""
@@ -3743,7 +3776,9 @@ msgid "Expense"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:608
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:38
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:37
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceQuestion.java:56
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RatingSourceQuestion.java:37
 msgid "Expert Knowledge"
 msgstr "Conhecimento especializado"
@@ -3784,6 +3819,7 @@ msgstr "Exportar..."
 msgid "Exported project file does not validate."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceQuestion.java:57
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RatingSourceQuestion.java:38
 msgid "External Research"
 msgstr "Pesquisa Externa"
@@ -4113,9 +4149,9 @@ msgid "Global"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:31
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:42
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:45
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/forms/objects/GoalPropertiesForm.java:32
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:43
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:46
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/forms/objects/GoalPropertiesForm.java:31
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:49
 msgid "Goal"
 msgstr "Objetivo"
@@ -4477,8 +4513,8 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:63
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:87
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:54
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:49
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:55
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:50
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/task/ActivityDetailsPanelWithRelevancyOverrideFields.java:48
 msgid "Indicators"
 msgstr "Indicadores"
@@ -4543,6 +4579,7 @@ msgid "Instructions"
 msgstr "Instruções"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:610
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:40
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:39
 msgid "Intensive Assessment"
 msgstr "Avaliação Intensiva"
@@ -4974,7 +5011,7 @@ msgstr "Amarelo Claro"
 msgid "Link Direct Threats to Targets"
 msgstr "Ligar as Ameaças Diretas aos Alvos"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorLinkPropertiesPanel.java:58
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorLinkPropertiesPanel.java:60
 msgid "Link Properties"
 msgstr "Propriedades da Ligação"
 
@@ -5232,8 +5269,8 @@ msgid "May"
 msgstr "Maio"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:327
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:52
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:53
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:49
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:50
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/forms/objects/MeasurementPropertiesForm.java:33
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:59
 msgid "Measurement"
@@ -5483,7 +5520,7 @@ msgstr ""
 msgid "Monitoring"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:115
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:116
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:58
 msgid "Monitoring Activity"
 msgstr ""
@@ -5658,8 +5695,10 @@ msgstr "Não Efetivo"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:606
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MiradiShareTaxonomyQuestion.java:58
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:35
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProjectScaleQuestion.java:35
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceQuestion.java:54
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressScopeChoiceQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressSeverityChoiceQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/KeyEcologicalAttributeTypeQuestion.java:35
@@ -5699,9 +5738,9 @@ msgid "Nov"
 msgstr "nov"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:174
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:42
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:46
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:34
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:43
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:47
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:32
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:50
 msgid "Objective"
 msgstr "Meta"
@@ -5771,6 +5810,10 @@ msgstr "Somente Páginas de Modelo Conceitual"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramObjectDataInclusionQuestion.java:40
 msgid "Only Results Chains"
 msgstr "Somente Cadeias de Resultados"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceQuestion.java:58
+msgid "Onsite / Project Research"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RatingSourceQuestion.java:39
 msgid "Onsite Research"
@@ -6154,7 +6197,7 @@ msgstr "5C. Criar Ambiente de Aprendizagem"
 msgid "Progress"
 msgstr "Progresso"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/forms/objects/ObjectivePropertiesForm.java:39
 msgid "Progress Percents"
 msgstr "Porcentuais de Andamento"
 
@@ -6303,6 +6346,7 @@ msgid "Rank draft strategies"
 msgstr "Classificar os rascunhos de estratégias"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:609
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:39
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:38
 msgid "Rapid Assessment"
 msgstr "Levantamento Rápido"
@@ -6449,7 +6493,9 @@ msgid "Rocky Areas [e.g. inland cliffs, mountain peaks]"
 msgstr "Áreas Rochosas [e.g. falésias terrestres, picos de montanhas]"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:607
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:36
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceQuestion.java:55
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RatingSourceQuestion.java:36
 msgid "Rough Guess"
 msgstr "Estimativa Aproximada"
@@ -6488,7 +6534,7 @@ msgstr "Passo"
 msgid "SWOT"
 msgstr "FOFA (SWOT)"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:76
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:73
 msgid "Sample"
 msgstr ""
 
@@ -6835,6 +6881,10 @@ msgstr ""
 " Nos menus suspensos ('drop-down') das atribuições de trabalho e despesas, "
 "especificar valores para análise."
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:29
+msgid "Specify your confidence in the source of the indicator measurement:"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResourceRoleQuestion.java:56
 msgid "Stakeholder"
 msgstr "Ator"
@@ -6900,9 +6950,9 @@ msgstr ""
 "inclui as descrições do escopo, da visão do projeto, dos alvos de "
 "conservação, análises da situação, plano de ação e plano operacional."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:52
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:55
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:50
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:53
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:56
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:51
 msgid "Strategies And Activities"
 msgstr "Estratégias e Atividades"
 
@@ -6950,6 +7000,31 @@ msgstr ""
 "Efetividade da Estratégia - Informações utilizadas para responder a "
 "pergunta: As ações de conservação que estamos executando estão atingindo os "
 "resultados desejados?"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyEvidenceConfidenceQuestion.java:47
+msgid ""
+"Strategy is recommended based on research at other comparable project sites, "
+"often obtained from published or unpublished scientific literature."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyEvidenceConfidenceQuestion.java:53
+msgid ""
+"Strategy is recommended based on research at the project site including "
+"adaptive management by the project team."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyEvidenceConfidenceQuestion.java:41
+msgid ""
+"Strategy is recommended by experienced observers who have the expertise to "
+"provide reliable information in the project context and/or based on other "
+"similar project sites."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyEvidenceConfidenceQuestion.java:35
+msgid ""
+"Strategy is recommended by project team members or other individuals without "
+"specialized knowledge."
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:51
@@ -7017,11 +7092,11 @@ msgstr "Aumento Forte"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:143
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:69
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:146
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:75
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:76
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/indicator/MethodPropertiesPanel.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:38
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:168
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:169
 msgid "Summary"
 msgstr "Resumo"
 
@@ -8086,7 +8161,7 @@ msgid "Targets within Diagrams"
 msgstr "Alvos dentro dos Diagramas"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:207
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:120
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/task/TaskDetailsPanel.java:121
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:55
 msgid "Task"
 msgstr "Tarefa"
@@ -8362,6 +8437,12 @@ msgstr ""
 msgid "This migration adds a UUID field to all objects that require it."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo50.java:61
+msgid ""
+"This migration adds a new Viability Rating Evidence Notes field to the "
+"Indicator properties."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:72
 msgid ""
 "This migration adds a new day columns visibility field to the Project "
@@ -8402,6 +8483,16 @@ msgid ""
 "This migration adds a new field to the Results Chain Diagram properties."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo49.java:84
+msgid ""
+"This migration adds an Evidence Confidence field to Strategies, Goals & "
+"Objectives."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo48.java:84
+msgid "This migration adds an Evidence Notes field to all factors."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo21.java:88
 msgid ""
 "This migration adds new default assigned who / when total columns to the "
@@ -8410,6 +8501,10 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:90
 msgid "This migration adds new default rows to the work plan customize panel."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo47.java:62
+msgid "This migration adds new fields to the Diagram Link properties."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo5.java:69
@@ -8515,8 +8610,21 @@ msgstr ""
 msgid "This migration removes superseded assignments from the work plan."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo52.java:84
+msgid ""
+"This migration removes the Sampling Based choice for Measurement Source."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo10.java:53
 msgid "This migration renames 2 fields"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo51.java:86
+msgid "This migration renames the Rating Source field on Indicator objects."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo53.java:86
+msgid "This migration renames the Source field on Measurement objects."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo19.java:86
@@ -8826,7 +8934,7 @@ msgid "Title|Export Image Scale"
 msgstr "Exportar Escala de Imagem"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramView.java:856
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:57
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:58
 msgid "Title|Factor Properties"
 msgstr "Propriedades de Fatores"
 
@@ -8842,7 +8950,7 @@ msgstr "Ligações Corruptas encontradas"
 msgid "Title|Funding Source Properties"
 msgstr "Propriedades de Fontes de Financiamento"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:61
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/goal/GoalPropertiesPanel.java:64
 msgid "Title|Goal Properties"
 msgstr "Propriedades de Objetivos"
 
@@ -8883,7 +8991,7 @@ msgstr "Ligar Criar Diálogo"
 msgid "Title|MPZ Export Warning"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:133
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:131
 msgid "Title|Measurement Properties"
 msgstr "Propriedades de Medidas"
 
@@ -8899,7 +9007,7 @@ msgstr ""
 msgid "Title|Nested Target Properties"
 msgstr "Propriedades de Alvos Aninhados"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:68
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/objective/ObjectivePropertiesPanel.java:71
 msgid "Title|Objective Properties"
 msgstr "Propriedades de Metas"
 
@@ -8968,11 +9076,11 @@ msgstr "Classificação Simples de Ameaças"
 msgid "Title|Simple Viability"
 msgstr "Viabilidade Simples"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/StrategyPropertiesPanel.java:53
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/StrategyPropertiesPanel.java:54
 msgid "Title|Strategy Properties"
 msgstr "Propriedades de Estratégias"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/stress/StressCommentsSubPanel.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/stress/StressCommentsSubPanel.java:42
 msgid "Title|Stress Comments"
 msgstr "Comentários de Estresse"
 
@@ -9031,6 +9139,14 @@ msgstr "Ver..."
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:49
 msgid "Title|XSL Template Properties"
 msgstr "Propriedades de Modelo XSL"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceQuestion.java:31
+msgid "To track the confidence of your evidence, use the following scale:"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ViabilityRatingEvidenceConfidence.java:29
+msgid "To track the confidence of your rating source, use the following scale:"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ExpenseAssignmentMainTableModel.java:46
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:50
@@ -9133,7 +9249,7 @@ msgstr ""
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr "Um erro inesperado não permitiu o sucesso da operação de tag"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:58
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:55
 msgid "Unit"
 msgstr ""
 
@@ -9203,9 +9319,38 @@ msgstr "Utilizar produtos de comunicação de outros"
 msgid "User Defined Extension"
 msgstr "Extensão Definido por Usuário"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:56
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/MeasurementPropertiesPanel.java:53
 msgid "Value"
 msgstr "Valor"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:57
+msgid ""
+"Values are based on estimates by experienced observers who have the "
+"expertise to provide reliable information in the project context and/or by "
+"extrapolating from other similar project sites."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:52
+msgid ""
+"Values are based on estimates by project team members or other individuals "
+"without specialized knowledge; often an initial estimate to be improved over "
+"time."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:62
+msgid ""
+"Values are derived from data collected about this specific project site "
+"using relatively simple methods that typically provide either presence/"
+"absence, categorical, or other basic qualitative data."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:67
+msgid ""
+"Values are derived from data collected about this specific project site "
+"using relatively systematic methods that typically provide detailed "
+"quantitative or qualitative data, and often include a formal estimate of "
+"error."
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/FontFamiliyQuestion.java:44
 msgid "Verdana"
@@ -9246,8 +9391,12 @@ msgstr "Muito Pequeno"
 msgid "Viability Analysis Mode"
 msgstr "Modo de Análise de Viabilidade"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo50.java:41
+msgid "Viability Rating Evidence Notes"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:321
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:118
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/IndicatorViabilityRatingsSubPanel.java:119
 msgid "Viability Ratings"
 msgstr "Classificações de Viabilidade"
 
@@ -9732,6 +9881,9 @@ msgstr "Relatórios de Progresso"
 msgid "FieldLabel|3.Comments|Comments"
 msgstr "Comentários"
 
+msgid "FieldLabel|3.EvidenceNotes|Evidence Notes"
+msgstr ""
+
 msgid "FieldLabel|3.AssignedLeaderResource|Leader"
 msgstr ""
 
@@ -9903,8 +10055,17 @@ msgstr "Detalhes"
 msgid "FieldLabel|8.Comments|Comments"
 msgstr "Comentários"
 
+msgid "FieldLabel|8.EvidenceNotes|Evidence Notes"
+msgstr ""
+
+msgid "FieldLabel|8.ViabilityRatingsEvidenceConfidence|Rating Source"
+msgstr ""
+
 msgid "FieldLabel|8.ViabilityRatingsComment|Comments"
 msgstr "Comentários"
+
+msgid "FieldLabel|8.ViabilityRatingsEvidenceNotes|Evidence Notes"
+msgstr ""
 
 msgid "FieldLabel|8.PseudoLatestProgressReportCode|Progress"
 msgstr "Progresso"
@@ -9990,6 +10151,12 @@ msgstr "Estratégias Relevantes"
 msgid "FieldLabel|9.Comments|Comments"
 msgstr "Comentários"
 
+msgid "FieldLabel|9.EvidenceConfidence|Objective Evidence"
+msgstr ""
+
+msgid "FieldLabel|9.EvidenceNotes|Evidence Notes"
+msgstr ""
+
 msgid "FieldLabel|9.PseudoRelevantIndicatorRefs|Relevant Indicators"
 msgstr "Indicadores Relevantes"
 
@@ -10025,6 +10192,12 @@ msgstr "Ameaças Diretas Relacionadas"
 
 msgid "FieldLabel|10.Comments|Comments"
 msgstr "Comentários"
+
+msgid "FieldLabel|10.EvidenceConfidence|Goal Evidence"
+msgstr ""
+
+msgid "FieldLabel|10.EvidenceNotes|Evidence Notes"
+msgstr ""
 
 msgid "FieldLabel|10.RelevantIndicatorSet|Relevant Indicators"
 msgstr "Indicadores Relevantes"
@@ -10521,6 +10694,12 @@ msgstr "Cor"
 msgid "FieldLabel|13.IsBidirectionalLink|Bidirectional Link"
 msgstr "Ligação Bidirecional"
 
+msgid "FieldLabel|13.IsUncertainLink|Uncertain (- - -)"
+msgstr ""
+
+msgid "FieldLabel|13.Annotation|Annotation"
+msgstr ""
+
 msgid "FieldLabel|14.ResourceAssignment|Assignment"
 msgstr "Designação"
 
@@ -10674,6 +10853,9 @@ msgstr "ID"
 msgid "FieldLabel|20.Comments|Comments"
 msgstr "Comentários"
 
+msgid "FieldLabel|20.EvidenceNotes|Evidence Notes"
+msgstr ""
+
 msgid "FieldLabel|20.TaxonomyCode|Standard Classification"
 msgstr "Classificação Padrão"
 
@@ -10715,6 +10897,12 @@ msgstr "Rascunho"
 
 msgid "FieldLabel|21.Comments|Comments"
 msgstr "Comentários"
+
+msgid "FieldLabel|21.EvidenceNotes|Evidence Notes"
+msgstr ""
+
+msgid "FieldLabel|21.EvidenceConfidence|Strategy Evidence"
+msgstr ""
 
 msgid "FieldLabel|21.TaxonomyCode|Standard Classification"
 msgstr "Classificação Padrão"
@@ -10830,6 +11018,9 @@ msgstr "Nome Científico da Espécie"
 msgid "FieldLabel|22.Comments|Comments"
 msgstr "Comentários"
 
+msgid "FieldLabel|22.EvidenceNotes|Evidence Notes"
+msgstr ""
+
 msgid "FieldLabel|22.Text|Details"
 msgstr "Detalhes"
 
@@ -10859,6 +11050,9 @@ msgstr "Detalhes"
 
 msgid "FieldLabel|23.Comments|Comment"
 msgstr "Comentários"
+
+msgid "FieldLabel|23.EvidenceNotes|Evidence Notes"
+msgstr ""
 
 msgid "FieldLabel|24.Label|Results Chain Name"
 msgstr "Nome de Cadeia de Resultados"
@@ -10922,6 +11116,9 @@ msgstr "Detalhes"
 
 msgid "FieldLabel|25.Comments|Comment"
 msgstr "Comentários"
+
+msgid "FieldLabel|25.EvidenceNotes|Evidence Notes"
+msgstr ""
 
 msgid "FieldLabel|25.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
@@ -11028,6 +11225,12 @@ msgstr ""
 msgid "FieldLabel|32.SamplingBasedEnabled|Sampling Based Enabled"
 msgstr ""
 
+msgid "FieldLabel|32.EvidenceConfidence|Source"
+msgstr ""
+
+msgid "FieldLabel|32.EvidenceNotes|Evidence Notes"
+msgstr ""
+
 msgid "FieldLabel|33.Stress|Stress"
 msgstr "Estresse"
 
@@ -11051,6 +11254,9 @@ msgstr "Severidade"
 
 msgid "FieldLabel|33.Comments|Comments"
 msgstr "Comentários"
+
+msgid "FieldLabel|33.EvidenceNotes|Evidence Notes"
+msgstr ""
 
 msgid "FieldLabel|33.Contribution|Contribution"
 msgstr "Contibuição"
@@ -11448,6 +11654,9 @@ msgstr "Cadieas de Resultados"
 msgid "FieldLabel|52.Comments|Comment"
 msgstr "Comentários"
 
+msgid "FieldLabel|52.EvidenceNotes|Evidence Notes"
+msgstr ""
+
 msgid "FieldLabel|52.CurrentStatusJustification|Current Status Justification"
 msgstr "Justificativa do Estado Atual"
 
@@ -11621,6 +11830,9 @@ msgstr "ID"
 msgid "FieldLabel|65.Comments|Comments"
 msgstr "Comentários"
 
+msgid "FieldLabel|65.EvidenceNotes|Evidence Notes"
+msgstr ""
+
 #, fuzzy
 msgid "FieldLabel|65.PseudoTagObjectives|Related Objectives"
 msgstr "Metas Relacionadas"
@@ -11655,6 +11867,9 @@ msgstr "ID"
 #, fuzzy
 msgid "FieldLabel|66.Comments|Comments"
 msgstr "Comentários"
+
+msgid "FieldLabel|66.EvidenceNotes|Evidence Notes"
+msgstr ""
 
 #, fuzzy
 msgid "FieldLabel|66.PseudoTagDiagramRefs|Conceptual Model Pages"
