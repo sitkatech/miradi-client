@@ -35,10 +35,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Indicator;
 import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
-import org.miradi.questions.PrecisionTypeQuestion;
-import org.miradi.questions.StatusConfidenceQuestion;
-import org.miradi.questions.StatusQuestion;
-import org.miradi.questions.TrendQuestion;
+import org.miradi.questions.*;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.KeyEcologicalAttributeSchema;
 import org.miradi.schemas.MeasurementSchema;
@@ -68,7 +65,7 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 		PanelTitleLabel trendLabelField = new PanelFieldLabel(trendField.getObjectType(), trendField.getTag());
 		addFieldsOnOneLine(statusLabel, new Object[]{statusLabelField, statusField, trendLabelField, trendField});
 
-		addField(createChoiceField(ObjectType.MEASUREMENT, Measurement.TAG_STATUS_CONFIDENCE, new StatusConfidenceQuestion()));
+		addField(createRadioButtonEditorField(ObjectType.MEASUREMENT, Measurement.TAG_EVIDENCE_CONFIDENCE, new MeasurementEvidenceConfidenceQuestion()));
 		ObjectDataInputField sampleSizeField = createNumericField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_SIZE);
 		ObjectDataInputField samplePrecisionField = createNumericField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_PRECISION);
 		ObjectDataInputField samplePrecisionTypeField = createChoiceField(MeasurementSchema.getObjectType(), Measurement.TAG_SAMPLE_PRECISION_TYPE, getQuestion(PrecisionTypeQuestion.class));
@@ -77,6 +74,7 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 		add(samplingBasedPanel);
 		
 		addField(createMultilineField(ObjectType.MEASUREMENT, Measurement.TAG_COMMENTS));
+		addField(createMultilineField(ObjectType.MEASUREMENT, Measurement.TAG_EVIDENCE_NOTES));
 
 		updateFieldsFromProject();
 	}
@@ -92,7 +90,7 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 			isVisible = false;
 			
 		setVisibilityOfRatingField(isVisible);
-		setVisibilityOfSampleBasedFields();
+		setVisibilityOfSampleFields();
 	}
 
 	private void setVisibilityOfRatingField(boolean isVisible)
@@ -106,25 +104,25 @@ public class MeasurementPropertiesPanel extends ObjectDataInputPanelWithSections
 	{
 		super.commandExecuted(event);
 		
-		if (event.isSetDataCommandWithThisTypeAndTag(MeasurementSchema.getObjectType(), Measurement.TAG_STATUS_CONFIDENCE))
-			setVisibilityOfSampleBasedFields();
+		if (event.isSetDataCommandWithThisTypeAndTag(MeasurementSchema.getObjectType(), Measurement.TAG_EVIDENCE_CONFIDENCE))
+			setVisibilityOfSampleFields();
 	}
 	
-	private void setVisibilityOfSampleBasedFields()
+	private void setVisibilityOfSampleFields()
 	{
-		final boolean shouldShowSampleBasedFields = areSampleBasedFieldsVisible();
-		samplingBasedPanel.setVisible(shouldShowSampleBasedFields);
-		samplingBasedLabel.setVisible(shouldShowSampleBasedFields);
+		final boolean shouldShowSampleFields = areSampleFieldsVisible();
+		samplingBasedPanel.setVisible(shouldShowSampleFields);
+		samplingBasedLabel.setVisible(shouldShowSampleFields);
 	}
 
-	public boolean areSampleBasedFieldsVisible()
+	public boolean areSampleFieldsVisible()
 	{
 		ORef measurementRef = getRefForType(MeasurementSchema.getObjectType());
 		if (measurementRef.isInvalid())
 			return false;
 		
 		Measurement measurement = Measurement.find(getProject(), measurementRef);
-		return measurement.isSampleBased();
+		return measurement.supportsSampleFields();
 	}
 
 	@Override

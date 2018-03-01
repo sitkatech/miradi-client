@@ -24,12 +24,14 @@ import org.miradi.main.EAM;
 import org.miradi.migrations.*;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.utils.BiDirectionalHashMap;
 
+import java.util.HashSet;
 import java.util.Vector;
 
-public class MigrationTo48 extends AbstractMigration
+public class MigrationTo53 extends AbstractMigration
 {
-    public MigrationTo48(RawProject rawProjectToUse)
+    public MigrationTo53(RawProject rawProjectToUse)
     {
         super(rawProjectToUse);
     }
@@ -54,7 +56,7 @@ public class MigrationTo48 extends AbstractMigration
 
         for(Integer typeToVisit : typesToVisit)
         {
-            final EvidenceNotesVisitor visitor = new EvidenceNotesVisitor(typeToVisit, reverseMigration);
+            final RenameMeasurementSourceFieldVisitor visitor = new RenameMeasurementSourceFieldVisitor(typeToVisit, reverseMigration);
             visitAllORefsInPool(visitor);
             final MigrationResult thisMigrationResult = visitor.getMigrationResult();
             if (migrationResult == null)
@@ -81,37 +83,24 @@ public class MigrationTo48 extends AbstractMigration
     @Override
     protected String getDescription()
     {
-        return EAM.text("This migration adds an Evidence Notes field to all factors.");
+        return EAM.text("This migration renames the Source field on Measurement objects.");
     }
 
     private Vector<Integer> getTypesToMigrate()
     {
         Vector<Integer> typesToMigrate = new Vector<Integer>();
-
-        typesToMigrate.add(ObjectType.TASK);
-        typesToMigrate.add(ObjectType.INDICATOR);
         typesToMigrate.add(ObjectType.MEASUREMENT);
-        typesToMigrate.add(ObjectType.OBJECTIVE);
-        typesToMigrate.add(ObjectType.GOAL);
-        typesToMigrate.add(ObjectType.CAUSE);
-        typesToMigrate.add(ObjectType.STRATEGY);
-        typesToMigrate.add(ObjectType.TARGET);
-        typesToMigrate.add(ObjectType.INTERMEDIATE_RESULT);
-        typesToMigrate.add(ObjectType.THREAT_REDUCTION_RESULT);
-        typesToMigrate.add(ObjectType.STRESS);
-        typesToMigrate.add(ObjectType.HUMAN_WELFARE_TARGET);
-        typesToMigrate.add(ObjectType.BIOPHYSICAL_FACTOR);
-        typesToMigrate.add(ObjectType.BIOPHYSICAL_RESULT);
 
         return typesToMigrate;
     }
 
-    private class EvidenceNotesVisitor extends AbstractMigrationORefVisitor
+    private class RenameMeasurementSourceFieldVisitor extends AbstractMigrationORefVisitor
     {
-        public EvidenceNotesVisitor(int typeToVisit, boolean reverseMigration)
+        public RenameMeasurementSourceFieldVisitor(int typeToVisit, boolean reverseMigration)
         {
             type = typeToVisit;
             isReverseMigration = reverseMigration;
+            oldToNewTagMap = createLegacyToNewTagMap();
         }
 
         public int getTypeToVisit()
@@ -122,45 +111,52 @@ public class MigrationTo48 extends AbstractMigration
         @Override
         public MigrationResult internalVisit(ORef rawObjectRef) throws Exception
         {
-            MigrationResult migrationResult = MigrationResult.createUninitializedResult();
-
             RawObject rawObject = getRawProject().findObject(rawObjectRef);
             if (rawObject != null)
             {
                 if (isReverseMigration)
-                    migrationResult = removeFields(rawObject);
+                    return renameFields(rawObject, oldToNewTagMap.reverseMap());
                 else
-                    migrationResult = addFields(rawObject);
+                    return renameFields(rawObject, oldToNewTagMap);
+            }
+
+            return MigrationResult.createSuccess();
+        }
+
+        private MigrationResult renameFields(RawObject rawObject, BiDirectionalHashMap oldToNewTagMapToUse)
+        {
+            MigrationResult migrationResult = MigrationResult.createSuccess();
+            HashSet<String> legacyTags = oldToNewTagMapToUse.getKeys();
+            for(String legacyTag : legacyTags)
+            {
+                if (rawObject.containsKey(legacyTag))
+                {
+                    String newTag = oldToNewTagMapToUse.getValue(legacyTag);
+                    String data = rawObject.get(legacyTag);
+                    rawObject.remove(legacyTag);
+                    rawObject.put(newTag, data);
+                }
             }
 
             return migrationResult;
         }
 
-        private MigrationResult addFields(RawObject rawObject) throws Exception
+        protected BiDirectionalHashMap createLegacyToNewTagMap()
         {
-            MigrationResult migrationResult = MigrationResult.createSuccess();
+            BiDirectionalHashMap oldToNewTagMap = new BiDirectionalHashMap();
+            oldToNewTagMap.put(LEGACY_TAG_STATUS_CONFIDENCE, TAG_EVIDENCE_CONFIDENCE);
 
-            rawObject.setData(TAG_EVIDENCE_NOTES, "");
-
-            return migrationResult;
-        }
-
-        private MigrationResult removeFields(RawObject rawObject) throws Exception
-        {
-            MigrationResult migrationResult = MigrationResult.createSuccess();
-
-            if (rawObject.hasValue(TAG_EVIDENCE_NOTES))
-                rawObject.remove(TAG_EVIDENCE_NOTES);
-
-            return migrationResult;
+            return oldToNewTagMap;
         }
 
         private int type;
         private boolean isReverseMigration;
+        private BiDirectionalHashMap oldToNewTagMap;
     }
 
-    public static final int VERSION_FROM = 47;
-    public static final int VERSION_TO = 48;
+    public static final int VERSION_FROM = 52;
+    public static final int VERSION_TO = 53;
 
-    public static final String TAG_EVIDENCE_NOTES = "EvidenceNotes";
+    public static final String LEGACY_TAG_STATUS_CONFIDENCE = "StatusConfidence";
+    public static final String TAG_EVIDENCE_CONFIDENCE = "EvidenceConfidence";
 }

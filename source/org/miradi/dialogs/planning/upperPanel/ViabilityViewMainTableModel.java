@@ -90,8 +90,8 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (isIndicatorRatingEvidenceConfidenceColumn(row, modelColumn))
 			return ViabilityRatingEvidenceConfidence.class;
 
-		if (isMeasurementStatusConfidenceColumn(row, modelColumn))
-			return StatusConfidenceQuestion.class;
+		if (isMeasurementEvidenceConfidenceColumn(row, modelColumn))
+			return MeasurementEvidenceConfidenceQuestion.class;
 		
 		return null;
 	}
@@ -145,7 +145,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 
 	private boolean isMeasurementCellEditable(int row, int column)
 	{
-		if (isMeasurementStatusConfidenceColumn(row, column))
+		if (isMeasurementEvidenceConfidenceColumn(row, column))
 			return true;
 		
 		if (isMeasurementThresholdCell(row, column))
@@ -183,11 +183,11 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		return columnTag.equals(Indicator.TAG_VIABILITY_RATINGS_EVIDENCE_CONFIDENCE);
 	}
 
-	private boolean isMeasurementStatusConfidenceColumn(int row, int modelColumn)
+	private boolean isMeasurementEvidenceConfidenceColumn(int row, int modelColumn)
 	{
 		String columnTag = COLUMN_TAGS_FOR_MEASUREMENTS[modelColumn];
 		
-		return Measurement.is(getBaseObjectForRow(row)) && columnTag.equals(Measurement.TAG_STATUS_CONFIDENCE);
+		return Measurement.is(getBaseObjectForRow(row)) && columnTag.equals(Measurement.TAG_EVIDENCE_CONFIDENCE);
 	}
 
 	private boolean isThresholdColumn(int modelColumn)
@@ -248,9 +248,9 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 
 	private void setMeasurementValue(BaseObject baseObject, Object value, int row, int column)
 	{
-		if (isMeasurementStatusConfidenceColumn(row, column))
+		if (isMeasurementEvidenceConfidenceColumn(row, column))
 		{
-			setChoiceValueUsingCommand(baseObject, Measurement.TAG_STATUS_CONFIDENCE, (ChoiceItem) value);
+			setChoiceValueUsingCommand(baseObject, Measurement.TAG_EVIDENCE_CONFIDENCE, (ChoiceItem) value);
 		}
 		
 		if (isThresholdColumn(column))
@@ -386,8 +386,8 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	private ChoiceItem getValueForMeasurement(BaseObject baseObject, int row, int column)
 	{
 		String tag = COLUMN_TAGS_FOR_MEASUREMENTS[column];
-		if (tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
-			return createStatusConfidenceChoiceItem(baseObject, tag);
+		if (tag.equals(Measurement.TAG_EVIDENCE_CONFIDENCE))
+			return createEvidenceConfidenceChoiceItem(baseObject, tag);
 
 		return getStatusColumnChoiceItem(tag, baseObject, Measurement.TAG_SUMMARY, Measurement.TAG_STATUS, getTrendIcon(baseObject));
 	}
@@ -457,7 +457,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if(tag.equals(Target.TAG_VIABILITY_MODE))
 			return TargetSchema.getObjectType();
 			
-		else if(tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
+		else if(tag.equals(Measurement.TAG_EVIDENCE_CONFIDENCE))
 			return MeasurementSchema.getObjectType();
 			
 		else if (tag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
@@ -473,7 +473,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	public boolean isChoiceItemColumn(int column)
 	{
 		String columnTag = getColumnTag(column);
-		if(columnTag.equals(Measurement.TAG_STATUS_CONFIDENCE))
+		if(columnTag.equals(Measurement.TAG_EVIDENCE_CONFIDENCE))
 			return true;
 		
 		if(columnTag.equals(Indicator.TAG_VIABILITY_RATINGS_EVIDENCE_CONFIDENCE))
@@ -502,10 +502,10 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		return getStatusQuestion().findChoiceByCode(columnTag);	
 	}
 	
-	private ChoiceItem createStatusConfidenceChoiceItem(BaseObject baseObject, String tag)
+	private ChoiceItem createEvidenceConfidenceChoiceItem(BaseObject baseObject, String tag)
 	{
 		String rawValue = baseObject.getData(tag);
-		return StaticQuestionManager.getQuestion(StatusConfidenceQuestion.class).findChoiceByCode(rawValue);
+		return StaticQuestionManager.getQuestion(MeasurementEvidenceConfidenceQuestion.class).findChoiceByCode(rawValue);
 	}
 
 	private Icon getTrendIcon(BaseObject baseObject)
@@ -605,7 +605,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		FAIR,
 		GOOD,
 		VERY_GOOD,
-		Measurement.TAG_STATUS_CONFIDENCE,
+		Measurement.TAG_EVIDENCE_CONFIDENCE,
 		BaseObject.TAG_EMPTY,};
 	
 	private static final String[] COLUMN_TAGS_FOR_FUTURE_RESULTS = {

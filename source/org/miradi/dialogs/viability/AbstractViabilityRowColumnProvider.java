@@ -46,7 +46,7 @@ abstract public class AbstractViabilityRowColumnProvider extends AbstractPlannin
 				 ViabilityMeasurementNode.FAIR,
 				 ViabilityMeasurementNode.GOOD,
 				 ViabilityMeasurementNode.VERY_GOOD,
-				 Measurement.TAG_STATUS_CONFIDENCE,
+				 Measurement.TAG_EVIDENCE_CONFIDENCE,
 				 BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
 		});
 	}

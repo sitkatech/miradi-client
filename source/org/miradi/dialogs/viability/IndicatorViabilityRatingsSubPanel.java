@@ -75,7 +75,7 @@ public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 			return true;
 
 		// apparently the rating source is mapped via the measurement status confidence tag in the upper panel
-		if (isStatusConfidenceTag(tagToUse))
+		if (isEvidenceConfidenceTag(tagToUse))
 			return true;
 
 		return super.doesSectionContainFieldWithTag(tagToUse);
@@ -98,9 +98,9 @@ public class IndicatorViabilityRatingsSubPanel extends ObjectDataInputPanel
 		return false;
 	}
 
-	private boolean isStatusConfidenceTag(String tagToUse)
+	private boolean isEvidenceConfidenceTag(String tagToUse)
 	{
-		if (tagToUse.equals(Measurement.TAG_STATUS_CONFIDENCE))
+		if (tagToUse.equals(Measurement.TAG_EVIDENCE_CONFIDENCE))
 			return true;
 
 		return false;

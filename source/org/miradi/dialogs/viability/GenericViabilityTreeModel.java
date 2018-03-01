@@ -63,7 +63,7 @@ abstract public class GenericViabilityTreeModel extends GenericTreeTableModel
 		if(tag.equals(Target.TAG_VIABILITY_MODE))
 			return TargetSchema.getObjectType();
 			
-		else if(tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
+		else if(tag.equals(Measurement.TAG_EVIDENCE_CONFIDENCE))
 			return MeasurementSchema.getObjectType();
 			
 		else if (tag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))

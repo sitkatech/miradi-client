@@ -48,7 +48,7 @@ public class IndicatorViabilityRowColumnProvider extends AbstractViabilityRowCol
 	{
 		return new CodeList(new String[] {
 				 Measurement.TAG_SUMMARY,
-				 Measurement.TAG_STATUS_CONFIDENCE,
+				 Measurement.TAG_EVIDENCE_CONFIDENCE,
 		});
 	}
 }

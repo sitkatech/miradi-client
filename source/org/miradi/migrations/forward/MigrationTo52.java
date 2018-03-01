@@ -27,9 +27,9 @@ import org.miradi.objecthelpers.ObjectType;
 
 import java.util.Vector;
 
-public class MigrationTo48 extends AbstractMigration
+public class MigrationTo52 extends AbstractMigration
 {
-    public MigrationTo48(RawProject rawProjectToUse)
+    public MigrationTo52(RawProject rawProjectToUse)
     {
         super(rawProjectToUse);
     }
@@ -54,7 +54,7 @@ public class MigrationTo48 extends AbstractMigration
 
         for(Integer typeToVisit : typesToVisit)
         {
-            final EvidenceNotesVisitor visitor = new EvidenceNotesVisitor(typeToVisit, reverseMigration);
+            final MeasurementVisitor visitor = new MeasurementVisitor(typeToVisit, reverseMigration);
             visitAllORefsInPool(visitor);
             final MigrationResult thisMigrationResult = visitor.getMigrationResult();
             if (migrationResult == null)
@@ -81,34 +81,20 @@ public class MigrationTo48 extends AbstractMigration
     @Override
     protected String getDescription()
     {
-        return EAM.text("This migration adds an Evidence Notes field to all factors.");
+        return EAM.text("This migration removes the Sampling Based choice for Measurement Source.");
     }
 
     private Vector<Integer> getTypesToMigrate()
     {
         Vector<Integer> typesToMigrate = new Vector<Integer>();
-
-        typesToMigrate.add(ObjectType.TASK);
-        typesToMigrate.add(ObjectType.INDICATOR);
         typesToMigrate.add(ObjectType.MEASUREMENT);
-        typesToMigrate.add(ObjectType.OBJECTIVE);
-        typesToMigrate.add(ObjectType.GOAL);
-        typesToMigrate.add(ObjectType.CAUSE);
-        typesToMigrate.add(ObjectType.STRATEGY);
-        typesToMigrate.add(ObjectType.TARGET);
-        typesToMigrate.add(ObjectType.INTERMEDIATE_RESULT);
-        typesToMigrate.add(ObjectType.THREAT_REDUCTION_RESULT);
-        typesToMigrate.add(ObjectType.STRESS);
-        typesToMigrate.add(ObjectType.HUMAN_WELFARE_TARGET);
-        typesToMigrate.add(ObjectType.BIOPHYSICAL_FACTOR);
-        typesToMigrate.add(ObjectType.BIOPHYSICAL_RESULT);
 
         return typesToMigrate;
     }
 
-    private class EvidenceNotesVisitor extends AbstractMigrationORefVisitor
+    private class MeasurementVisitor extends AbstractMigrationORefVisitor
     {
-        public EvidenceNotesVisitor(int typeToVisit, boolean reverseMigration)
+        public MeasurementVisitor(int typeToVisit, boolean reverseMigration)
         {
             type = typeToVisit;
             isReverseMigration = reverseMigration;
@@ -128,39 +114,66 @@ public class MigrationTo48 extends AbstractMigration
             if (rawObject != null)
             {
                 if (isReverseMigration)
-                    migrationResult = removeFields(rawObject);
+                    migrationResult = addSamplingBasedChoiceItem(rawObject);
                 else
-                    migrationResult = addFields(rawObject);
+                    migrationResult = removeSamplingBasedChoiceItem(rawObject);
             }
 
             return migrationResult;
         }
 
-        private MigrationResult addFields(RawObject rawObject) throws Exception
+        private MigrationResult removeSamplingBasedChoiceItem(RawObject rawObject) throws Exception
         {
             MigrationResult migrationResult = MigrationResult.createSuccess();
 
-            rawObject.setData(TAG_EVIDENCE_NOTES, "");
+            if (rawObject.hasValue(TAG_STATUS_CONFIDENCE))
+                if (rawObject.getData(TAG_STATUS_CONFIDENCE).equals(SAMPLING_BASED))
+                    rawObject.setData(TAG_STATUS_CONFIDENCE, INTENSIVE_ASSESSMENT_CODE);
 
             return migrationResult;
         }
 
-        private MigrationResult removeFields(RawObject rawObject) throws Exception
+        private MigrationResult addSamplingBasedChoiceItem(RawObject rawObject) throws Exception
         {
             MigrationResult migrationResult = MigrationResult.createSuccess();
 
-            if (rawObject.hasValue(TAG_EVIDENCE_NOTES))
-                rawObject.remove(TAG_EVIDENCE_NOTES);
+            if (rawObject.hasValue(TAG_STATUS_CONFIDENCE))
+                if (rawObject.getData(TAG_STATUS_CONFIDENCE).equals(INTENSIVE_ASSESSMENT_CODE))
+                    if (anySampleFieldPopulated(rawObject))
+                        rawObject.setData(TAG_STATUS_CONFIDENCE, SAMPLING_BASED);
 
             return migrationResult;
+        }
+
+        private boolean anySampleFieldPopulated(RawObject rawObject)
+        {
+            if (rawObject.hasValue(TAG_SAMPLE_SIZE))
+                if (!rawObject.getData(TAG_SAMPLE_SIZE).isEmpty())
+                    return true;
+
+            if (rawObject.hasValue(TAG_SAMPLE_PRECISION))
+                if (!rawObject.getData(TAG_SAMPLE_PRECISION).isEmpty())
+                    return true;
+
+            if (rawObject.hasValue(TAG_SAMPLE_PRECISION_TYPE))
+                if (!rawObject.getData(TAG_SAMPLE_PRECISION_TYPE).isEmpty())
+                    return true;
+
+            return false;
         }
 
         private int type;
         private boolean isReverseMigration;
     }
 
-    public static final int VERSION_FROM = 47;
-    public static final int VERSION_TO = 48;
+    public static final int VERSION_FROM = 51;
+    public static final int VERSION_TO = 52;
 
-    public static final String TAG_EVIDENCE_NOTES = "EvidenceNotes";
+    public static final String INTENSIVE_ASSESSMENT_CODE = "IntensiveAssessment";
+	public static final String SAMPLING_BASED = "SamplingBased";
+
+    public static final String TAG_STATUS_CONFIDENCE = "StatusConfidence";
+    public static final String TAG_SAMPLE_SIZE = "SampleSize";
+    public static final String TAG_SAMPLE_PRECISION = "SamplePrecision";
+    public static final String TAG_SAMPLE_PRECISION_TYPE = "SamplePrecisionType";
 }

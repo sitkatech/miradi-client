@@ -1157,6 +1157,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (Method.is(baseObjectSchema.getType()))
 			return new MethodSchemaWriter(this, baseObjectSchema);
 
+		if (Measurement.is(baseObjectSchema.getType()))
+			return new MeasurementSchemaWriter(this, baseObjectSchema);
+
 		if (Desire.isDesire(baseObjectSchema.getType()))
 			return new DesireSchemaWriter(this, baseObjectSchema);
 		

@@ -24,7 +24,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.StatusConfidenceQuestion;
+import org.miradi.questions.MeasurementEvidenceConfidenceQuestion;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.MeasurementSchema;
 
@@ -56,9 +56,9 @@ public class Measurement extends BaseObject
 		return false;
 	}
 	
-	public boolean isSampleBased()
+	public boolean supportsSampleFields()
 	{
-		return getChoiceItemData(TAG_STATUS_CONFIDENCE).isSameCode(StatusConfidenceQuestion.SAMPLING_BASED);
+		return getChoiceItemData(TAG_EVIDENCE_CONFIDENCE).isSameCode(MeasurementEvidenceConfidenceQuestion.INTENSIVE_ASSESSMENT_CODE);
 	}
 	
 	public String getStatus()

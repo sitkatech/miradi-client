@@ -123,6 +123,9 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 		if (typeName.equals(IndicatorSchema.OBJECT_NAME))
 			return IndicatorSchema.getObjectType();
 
+		if (typeName.equals(MeasurementSchema.OBJECT_NAME))
+			return MeasurementSchema.getObjectType();
+
 		if (typeName.equals(TaggedObjectSetSchema.OBJECT_NAME))
 			return TaggedObjectSetSchema.getObjectType();
 

@@ -60,10 +60,10 @@ public class TestMigrationTo9 extends AbstractTestMigration
 		verifyValueIsReverseMigrated(MigrationTo9.TAG_SAMPLE_SIZE);
 	}
 
-	private MigrationResult verifyStatusConfidenceCode(final String expectedStatucConfidenceCode, final String actualStatucConfidenceCode) throws Exception
+	private MigrationResult verifyStatusConfidenceCode(final String expectedStatucConfidenceCode, final String actualStatusConfidenceCode) throws Exception
 	{
 		Measurement measurement = getProject().createMeasurement();
-		getProject().fillObjectUsingCommand(measurement, MigrationTo9.TAG_STATUS_CONFIDENCE, actualStatucConfidenceCode);
+		getProject().fillObjectUsingCommand(measurement, MigrationTo9.TAG_STATUS_CONFIDENCE, actualStatusConfidenceCode);
 		
 		String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), new VersionRange(9));
 		final RawProject projectToMigrate = RawProjectLoader.loadProject(projectAsString);

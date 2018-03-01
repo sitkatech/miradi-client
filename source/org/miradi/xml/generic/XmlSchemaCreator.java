@@ -733,7 +733,7 @@ public class XmlSchemaCreator implements XmlConstants
 	public static final String PROGRESS_REPORT_STATUS = ProgressReport.TAG_PROGRESS_STATUS;
 	public static final String MEASUREMENT_TREND = Measurement.TAG_TREND;
 	public static final String MEASUREMENT_STATUS = Measurement.TAG_STATUS;	
-	public static final String MEASUREMENT_STATUS_CONFIDENCE = Measurement.TAG_STATUS_CONFIDENCE;
+	public static final String MEASUREMENT_STATUS_CONFIDENCE = Measurement.TAG_EVIDENCE_CONFIDENCE;
 	public static final String COUNTRIES = ProjectMetadata.TAG_COUNTRIES;
 	public static final String CODE_ELEMENT_NAME = "code";
 	public static final String METHOD = "Method";

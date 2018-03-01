@@ -35,6 +35,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.*;
 import org.miradi.questions.DayColumnsVisibilityQuestion;
 import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.MeasurementSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.utils.BiDirectionalHashMap;
@@ -75,6 +76,7 @@ public class Xmpz2ForwardMigration
 		moveTaggedObjectSetTaggedFactorRefListToExtraData(document);
 		addUUIDFields(document);
 		moveIndicatorRatingSourceToExtraData(document);
+		moveMeasurementSourceToExtraData(document);
 
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
@@ -369,6 +371,43 @@ public class Xmpz2ForwardMigration
 			moveDataToExtraData(document, extraDataItemName, extraDataItemValue);
 
 			indicatorNode.removeChild(nodeToMove);
+		}
+	}
+
+	private void moveMeasurementSourceToExtraData(Document document) throws Exception
+	{
+		Element rootElement = document.getDocumentElement();
+
+		Node measurementPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.MEASUREMENT));
+		if (measurementPool != null)
+		{
+			NodeList measurementNodes = measurementPool.getChildNodes();
+			for (int index = 0; index < measurementNodes.getLength(); ++index)
+			{
+				Node measurementNode = measurementNodes.item(index);
+				if (measurementNode != null && measurementNode.getNodeType() == Node.ELEMENT_NODE)
+				{
+					moveMeasurementSourceElementToExtraData(document, measurementNode);
+				}
+			}
+		}
+	}
+	
+	private void moveMeasurementSourceElementToExtraData(Document document, Node measurementNode) throws Exception
+	{
+		String idAsString = getAttributeValue(measurementNode, Xmpz2XmlConstants.ID);
+
+		String elementNameWithoutAlias = Xmpz2XmlConstants.MEASUREMENT + Xmpz2XmlConstants.SOURCE;
+		String tagName = Measurement.TAG_STATUS_CONFIDENCE;
+
+		Node nodeToMove = findNode(measurementNode, elementNameWithoutAlias);
+		if (nodeToMove != null && nodeToMove.getNodeType() == Node.ELEMENT_NODE)
+		{
+			String extraDataItemName = ExtraDataExporter.getExtraDataItemName(MeasurementSchema.OBJECT_NAME, new BaseId(idAsString), tagName);
+			String extraDataItemValue = nodeToMove.getTextContent();
+			moveDataToExtraData(document, extraDataItemName, extraDataItemValue);
+
+			measurementNode.removeChild(nodeToMove);
 		}
 	}
 

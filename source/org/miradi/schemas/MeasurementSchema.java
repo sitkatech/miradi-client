@@ -23,6 +23,7 @@ package org.miradi.schemas;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Measurement;
 import org.miradi.questions.PrecisionTypeQuestion;
+import org.miradi.questions.MeasurementEvidenceConfidenceQuestion;
 import org.miradi.questions.StatusConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TrendQuestion;
@@ -44,11 +45,15 @@ public class MeasurementSchema extends BaseObjectSchema
 		createFieldSchemaDate(Measurement.TAG_DATE);
 		createFieldSchemaExpandingUserText(Measurement.TAG_SUMMARY);
 		createFieldSchemaMultiLineUserText(Measurement.TAG_DETAIL);
-		createFieldSchemaChoice(Measurement.TAG_STATUS_CONFIDENCE, StatusConfidenceQuestion.class);
+		createFieldSchemaChoice(Measurement.TAG_EVIDENCE_CONFIDENCE, MeasurementEvidenceConfidenceQuestion.class);
 		createFieldSchemaMultiLineUserText(Measurement.TAG_COMMENTS);
+		createFieldSchemaMultiLineUserText(Measurement.TAG_EVIDENCE_NOTES);
 		createFieldSchemaInteger(Measurement.TAG_SAMPLE_SIZE);
 		createFieldSchemaNumber(Measurement.TAG_SAMPLE_PRECISION);
 		createFieldSchemaChoice(Measurement.TAG_SAMPLE_PRECISION_TYPE, PrecisionTypeQuestion.class);
+
+		// TODO: field to be deprecated in post 4.5 release...only here to support migrations
+		createFieldSchemaChoice(Measurement.TAG_STATUS_CONFIDENCE, StatusConfidenceQuestion.class);
 	}
 
 	public static int getObjectType()

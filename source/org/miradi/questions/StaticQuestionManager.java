@@ -123,6 +123,7 @@ public class StaticQuestionManager
 		addQuestion(new EvidenceConfidenceQuestion());
 		addQuestion(new StrategyEvidenceConfidenceQuestion());
 		addQuestion(new ViabilityRatingEvidenceConfidence());
+		addQuestion(new MeasurementEvidenceConfidenceQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)

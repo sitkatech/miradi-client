@@ -32,7 +32,7 @@ import org.miradi.objects.Measurement;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
-import org.miradi.questions.StatusConfidenceQuestion;
+import org.miradi.questions.MeasurementEvidenceConfidenceQuestion;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.schemas.FutureStatusSchema;
 import org.miradi.schemas.MeasurementSchema;
@@ -53,7 +53,7 @@ public class IndicatorViabilityTableModel extends PlanningViewAbstractTreeTableS
 	{
 		if (Measurement.is(getBaseObjectForRow(row)))
 		{
-			if (isStatusConfidenceColumn(column))
+			if (isEvidenceConfidenceColumn(column))
 				return true;
 
 			if (isSummaryColumn(column))
@@ -75,7 +75,7 @@ public class IndicatorViabilityTableModel extends PlanningViewAbstractTreeTableS
 	@Override
 	public boolean isChoiceItemColumn(int column)
 	{
-		if(isStatusConfidenceColumn(column))
+		if(isEvidenceConfidenceColumn(column))
 			return true;
 		
 		return super.isChoiceItemColumn(column);
@@ -84,15 +84,15 @@ public class IndicatorViabilityTableModel extends PlanningViewAbstractTreeTableS
 	@Override
 	public Class getCellQuestion(int row, int modelColumn)
 	{
-		if (isStatusConfidenceColumn(modelColumn))
-			return StatusConfidenceQuestion.class;
+		if (isEvidenceConfidenceColumn(modelColumn))
+			return MeasurementEvidenceConfidenceQuestion.class;
 		
 		return super.getCellQuestion(row, modelColumn);
 	}
 	
-	private boolean isStatusConfidenceColumn(int column)
+	private boolean isEvidenceConfidenceColumn(int column)
 	{
-		return getColumnTag(column).equals(Measurement.TAG_STATUS_CONFIDENCE);
+		return getColumnTag(column).equals(Measurement.TAG_EVIDENCE_CONFIDENCE);
 	}
 	
 	private boolean isSummaryColumn(int column)

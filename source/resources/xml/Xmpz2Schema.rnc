@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Mon Feb 26 15:41:23 GMT 2018 $
+# $LastChangedDate: Thu Mar 01 10:29:24 GMT 2018 $
 # $LastChangedRevision: 237 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/237'
 start = ConservationProject.element
@@ -611,13 +611,14 @@ Measurement.element = element miradi:Measurement
   element miradi:MeasurementComments { formatted_text }? &
   element miradi:MeasurementDate { vocabulary_date }? &
   element miradi:MeasurementDetail { formatted_text }? &
+  element miradi:MeasurementEvidenceConfidence { vocabulary_measurement_evidence_confidence }? &
+  element miradi:MeasurementEvidenceNotes { formatted_text }? &
   element miradi:MeasurementMeasurementValue { formatted_text }? &
   element miradi:MeasurementName { formatted_text }? &
   element miradi:MeasurementRating { vocabulary_status }? &
   element miradi:MeasurementSamplePrecision { xsd:decimal }? &
   element miradi:MeasurementSamplePrecisionType { vocabulary_precision_type }? &
   element miradi:MeasurementSampleSize { xsd:integer }? &
-  element miradi:MeasurementSource { vocabulary_measurement_status_confidence }? &
   element miradi:MeasurementTrend { vocabulary_measurement_trend }? &
   element miradi:MeasurementUUID { uuid }
 }
@@ -1014,6 +1015,7 @@ vocabulary_fiscal_year_start_month = ''|'10'|'7'|'4'
 vocabulary_fos_training_type = ''|'1'|'2'|'3'|'4'
 vocabulary_biodiversity_target_habitat_association = '1'|'1.1'|'1.2'|'1.3'|'1.4'|'1.5'|'1.6'|'1.7'|'1.8'|'1.9'|'2'|'2.1'|'2.2'|'3'|'3.1'|'3.2'|'3.3'|'3.4'|'3.5'|'3.6'|'3.7'|'3.8'|'4'|'4.1'|'4.2'|'4.3'|'4.4'|'4.5'|'4.6'|'4.7'|'5'|'5.1'|'5.2'|'5.3'|'5.4'|'5.5'|'5.6'|'5.7'|'5.8'|'5.9'|'5.10'|'5.11'|'5.12'|'5.13'|'5.14'|'5.15'|'5.16'|'5.17'|'5.18'|'6'|'7'|'7.1'|'7.2'|'8'|'8.1'|'8.2'|'8.3'|'9'|'9.1'|'9.2'|'9.3'|'9.5'|'9.6'|'9.7'|'9.8'|'9.8.1'|'9.8.2'|'9.8.3'|'9.8.4'|'9.8.5'|'9.8.6'|'9.9'|'9.10'|'10'|'10.1'|'10.2'|'10.3'|'10.4'|'11'|'11.1'|'11.1.1'|'11.1.2'|'11.2'|'11.3'|'11.4'|'11.5'|'11.6'|'12'|'12.1'|'12.2'|'12.3'|'12.4'|'12.5'|'12.6'|'12.7'|'13'|'13.1'|'13.2'|'13.3'|'13.4'|'13.5'|'14'|'14.1'|'14.2'|'14.3'|'14.4'|'14.5'|'14.6'|'15'|'15.1'|'15.2'|'15.3'|'15.4'|'15.5'|'15.6'|'15.7'|'15.8'|'15.9'|'15.10'|'15.11'|'15.12'|'15.13'|'16'|'TNC1'|'TNC2'|'TNC3'|'17'|'18'
 vocabulary_key_ecological_attribute_type = ''|'10'|'20'|'30'
+vocabulary_measurement_evidence_confidence = ''|'RoughGuess'|'ExpertKnowledge'|'RapidAssessment'|'IntensiveAssessment'
 vocabulary_measurement_status = ''|'1'|'2'|'3'|'4'
 vocabulary_dashboard_row_progress = ''|'1'|'2'|'3'|'4'
 vocabulary_planning_tree_target_node_position = 'TargetNodesChildrenOfDiagramObjects'|'TargetNodesTopOfPlanningTree'
@@ -1028,7 +1030,6 @@ vocabulary_quarter_columns_visibility = 'ShowQuarterColumns'|'HideQuarterColumns
 vocabulary_resource_role_codes = 'TeamMember'|'Contact'|'Leader'|'Facilitator'|'Advisor'|'Stakeholder'
 vocabulary_resource_type = 'Person'|'Group'
 vocabulary_scope_box_type = 'Biodiversity'|'HumanWellbeing'
-vocabulary_measurement_status_confidence = ''|'RoughGuess'|'ExpertKnowledge'|'RapidAssessment'|'IntensiveAssessment'|'SamplingBased'
 vocabulary_status = ''|'1'|'2'|'3'|'4'
 vocabulary_strategy_feasibility_rating_code = ''|'1'|'2'|'3'|'4'
 vocabulary_strategy_impact_rating_code = ''|'1'|'2'|'3'|'4'

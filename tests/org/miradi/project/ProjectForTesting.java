@@ -1464,9 +1464,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		fillObjectUsingCommand(measurement, Measurement.TAG_STATUS, StatusQuestion.GOOD);
 		fillObjectUsingCommand(measurement, Measurement.TAG_DATE, "2007-03-19");
-		fillObjectUsingCommand(measurement, Measurement.TAG_STATUS_CONFIDENCE, StatusConfidenceQuestion.ROUGH_GUESS_CODE);
+		fillObjectUsingCommand(measurement, Measurement.TAG_EVIDENCE_CONFIDENCE, MeasurementEvidenceConfidenceQuestion.ROUGH_GUESS_CODE);
 		fillObjectUsingCommand(measurement, Measurement.TAG_TREND, TrendQuestion.STRONG_DECREASE_CODE);
 		fillObjectUsingCommand(measurement, Measurement.TAG_COMMENTS, "Some Measurement comment");
+		fillObjectUsingCommand(measurement, Measurement.TAG_EVIDENCE_NOTES, "Some Measurement evidence notes");
 		fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLE_PRECISION, "3");
 		fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLE_PRECISION_TYPE, PrecisionTypeQuestion.SD_CODE);
 		fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLE_SIZE, "10");

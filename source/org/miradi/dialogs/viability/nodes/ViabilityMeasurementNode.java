@@ -29,7 +29,7 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.StaticQuestionManager;
-import org.miradi.questions.StatusConfidenceQuestion;
+import org.miradi.questions.MeasurementEvidenceConfidenceQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.TextAndIconChoiceItem;
 import org.miradi.questions.TrendQuestion;
@@ -109,16 +109,16 @@ public class ViabilityMeasurementNode extends TreeTableNode
 		if (tag.equals(VERY_GOOD) && StatusQuestion.VERY_GOOD.equals(statusData))
 			return textAndIconChoiceItem;
 		
-		if (tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
-			return createStatusConfidenceChoiceItem(tag);
+		if (tag.equals(Measurement.TAG_EVIDENCE_CONFIDENCE))
+			return createEvidenceConfidenceChoiceItem(tag);
 		
 		return new EmptyChoiceItem();
 	}
 
-	private Object createStatusConfidenceChoiceItem(String tag)
+	private Object createEvidenceConfidenceChoiceItem(String tag)
 	{
 		String rawValue = getObject().getData(tag);
-		return StaticQuestionManager.getQuestion(StatusConfidenceQuestion.class).findChoiceByCode(rawValue);
+		return StaticQuestionManager.getQuestion(MeasurementEvidenceConfidenceQuestion.class).findChoiceByCode(rawValue);
 	}
 
 	public Icon getTrendIcon()
@@ -148,7 +148,7 @@ public class ViabilityMeasurementNode extends TreeTableNode
 												FAIR,
 												GOOD,
 												VERY_GOOD,
-												Measurement.TAG_STATUS_CONFIDENCE,
+												Measurement.TAG_EVIDENCE_CONFIDENCE,
 												Measurement.TAG_EMPTY,};
 	
 	private Measurement measurement;

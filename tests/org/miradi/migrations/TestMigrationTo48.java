@@ -40,6 +40,7 @@ public class TestMigrationTo48 extends AbstractTestMigration
         Objective objective = getProject().createAndPopulateObjective(strategy);
         Goal goal = getProject().createAndPopulateGoal(target);
         Indicator indicator = getProject().createAndPopulateIndicator(strategy);
+        Measurement measurement = getProject().createAndPopulateMeasurement();
         BiophysicalFactor biophysicalFactor = getProject().createAndPopulateBiophysicalFactor();
         BiophysicalResult biophysicalResult = getProject().createAndPopulateBiophysicalResult();
         Cause threat = getProject().createAndPopulateThreat();
@@ -56,6 +57,7 @@ public class TestMigrationTo48 extends AbstractTestMigration
         verifyEvidenceFieldRemoved(rawProject, ObjectiveSchema.getObjectType());
         verifyEvidenceFieldRemoved(rawProject, GoalSchema.getObjectType());
         verifyEvidenceFieldRemoved(rawProject, IndicatorSchema.getObjectType());
+        verifyEvidenceFieldRemoved(rawProject, MeasurementSchema.getObjectType());
         verifyEvidenceFieldRemoved(rawProject, BiophysicalFactorSchema.getObjectType());
         verifyEvidenceFieldRemoved(rawProject, BiophysicalResultSchema.getObjectType());
         verifyEvidenceFieldRemoved(rawProject, CauseSchema.getObjectType());

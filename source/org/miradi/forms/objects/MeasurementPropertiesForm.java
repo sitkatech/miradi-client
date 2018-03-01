@@ -34,7 +34,8 @@ public class MeasurementPropertiesForm extends FieldPanelSpec
 		addLabelAndField(type, Measurement.TAG_DETAIL);
 		
 		addLabelAndFieldsWithLabels(EAM.text("Current Status"), MeasurementSchema.getObjectType(), new String[]{Measurement.TAG_STATUS, Measurement.TAG_TREND, });
-		addLabelAndField(type, Measurement.TAG_STATUS_CONFIDENCE);
+		addLabelAndField(type, Measurement.TAG_EVIDENCE_CONFIDENCE);
 		addLabelAndField(type, Measurement.TAG_COMMENTS);
+		addLabelAndField(type, Measurement.TAG_EVIDENCE_CONFIDENCE);
 	}
 }

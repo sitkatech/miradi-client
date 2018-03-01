@@ -54,7 +54,7 @@ public class ViabilityTreeModel extends GenericViabilityTreeModel
 										 ViabilityMeasurementNode.FAIR,
 										 ViabilityMeasurementNode.GOOD,
 										 ViabilityMeasurementNode.VERY_GOOD,
-										 Measurement.TAG_STATUS_CONFIDENCE,
+										 Measurement.TAG_EVIDENCE_CONFIDENCE,
 										 BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,};
 
 	public static final String VIRTUAL_TAG_STATUS = "Status";

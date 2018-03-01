@@ -33,7 +33,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.EmptyChoiceItem;
-import org.miradi.questions.StatusConfidenceQuestion;
+import org.miradi.questions.MeasurementEvidenceConfidenceQuestion;
 import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.questions.TrendQuestion;
 import org.miradi.schemas.MeasurementSchema;
@@ -116,8 +116,8 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 		if(columnTag.equals(Measurement.TAG_TREND))
 			return new TrendQuestion();
 		
-		if(columnTag.equals(Measurement.TAG_STATUS_CONFIDENCE))
-			return new StatusConfidenceQuestion();
+		if(columnTag.equals(Measurement.TAG_EVIDENCE_CONFIDENCE))
+			return new MeasurementEvidenceConfidenceQuestion();
 		
 		return null;
 	}
@@ -145,6 +145,6 @@ public class PlanningViewMeasurementTableModel extends PlanningViewAbstractTreeT
 		Measurement.TAG_DATE, 
 		Measurement.TAG_SUMMARY, 
 		Measurement.TAG_TREND, 
-		Measurement.TAG_STATUS_CONFIDENCE
+		Measurement.TAG_EVIDENCE_CONFIDENCE
 		};
 }

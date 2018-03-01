@@ -313,7 +313,6 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	private HashMap<String, String> createMeasurementMap()
 	{
 		HashMap<String, String> map = createBaseObjectMap();
-		map.put(Measurement.TAG_STATUS_CONFIDENCE, SOURCE);
 		map.put(Measurement.TAG_SUMMARY, MEASUREMENT_VALUE);
 		map.put(Measurement.TAG_STATUS, RATING);
 		
