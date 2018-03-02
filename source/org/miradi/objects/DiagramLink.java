@@ -38,6 +38,7 @@ import org.miradi.schemas.*;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
+import org.miradi.utils.XmlUtilities2;
 
 public class DiagramLink extends BaseObject
 {
@@ -298,7 +299,9 @@ public class DiagramLink extends BaseObject
 		if (!annotation.isEmpty())
 			toolTipText += "<BR><BR>" + annotation;
 
-		return toolTipText;
+		toolTipText += "</html>";
+
+		return XmlUtilities2.convertXmlTextToHtmlWithoutSurroundingHtmlTags(toolTipText);
 	}
 	
 	public PointList getBendPoints()
