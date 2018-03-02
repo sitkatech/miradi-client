@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-01 04:33-0800\n"
+"POT-Creation-Date: 2018-03-02 01:48-0800\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/miradi-client/"
@@ -2416,26 +2416,26 @@ msgstr "Серпень"
 msgid "Automatic"
 msgstr "Автоматичний"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceQuestion.java:75
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceTypeAQuestion.java:56
 msgid ""
 "Based on estimates by experienced observers who have the expertise to "
 "provide reliable information in the project context and/or based on other "
 "similar project sites."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceQuestion.java:70
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceTypeAQuestion.java:51
 msgid ""
 "Based on estimates by project team members or other individuals without "
 "specialized knowledge; often an initial estimate to be improved over time."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceQuestion.java:80
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceTypeAQuestion.java:61
 msgid ""
 "Based on research at other comparable project sites, often obtained from "
 "published or unpublished scientific literature."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceQuestion.java:85
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceTypeAQuestion.java:66
 msgid ""
 "Based on research at the project site including adaptive management by the "
 "project team."
@@ -3694,9 +3694,9 @@ msgid "Expense"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:608
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:38
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:37
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceQuestion.java:56
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceTypeAQuestion.java:43
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceTypeBQuestion.java:38
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RatingSourceQuestion.java:37
 msgid "Expert Knowledge"
 msgstr "Спеціальне знання"
@@ -3737,7 +3737,7 @@ msgstr "Експортувати..."
 msgid "Exported project file does not validate."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceQuestion.java:57
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceTypeAQuestion.java:44
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RatingSourceQuestion.java:38
 msgid "External Research"
 msgstr "Зовнішні дослідження"
@@ -4478,8 +4478,8 @@ msgid "Instructions"
 msgstr "Інструкції"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:610
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:40
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:39
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceTypeBQuestion.java:40
 msgid "Intensive Assessment"
 msgstr "Інтенсивна оцінка"
 
@@ -5564,13 +5564,13 @@ msgstr "Не ефективний"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:606
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MiradiShareTaxonomyQuestion.java:58
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:35
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProjectScaleQuestion.java:35
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceQuestion.java:54
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceTypeAQuestion.java:41
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressScopeChoiceQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressSeverityChoiceQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/KeyEcologicalAttributeTypeQuestion.java:35
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceTypeBQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RatingSourceQuestion.java:35
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatRatingQuestion.java:42
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:37
@@ -5680,7 +5680,7 @@ msgstr ""
 msgid "Only Results Chains"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceQuestion.java:58
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceTypeAQuestion.java:45
 msgid "Onsite / Project Research"
 msgstr ""
 
@@ -6210,8 +6210,8 @@ msgid "Rank draft strategies"
 msgstr "Ранжирувати проекти стратегій"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:609
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:39
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:38
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceTypeBQuestion.java:39
 msgid "Rapid Assessment"
 msgstr "Швидка оцінка"
 
@@ -6292,6 +6292,35 @@ msgstr "Шаблон звіту"
 msgid "Report to project team and stakeholders"
 msgstr "Звітуватися робочій групі проекту і зацікавленим сторонам"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultEvidenceConfidenceQuestion.java:39
+msgid ""
+"Result status based on estimates by experienced observers who have the "
+"expertise to provide reliable information in the project context and/or by "
+"extrapolating from other similar project sites."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultEvidenceConfidenceQuestion.java:34
+msgid ""
+"Result status based on estimates by project team members or other "
+"individuals without specialized knowledge; often an initial estimate to be "
+"improved over time."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultEvidenceConfidenceQuestion.java:44
+msgid ""
+"Result status derived from data collected about this specific project site "
+"using relatively simple methods that typically provide either presence/"
+"absence, categorical, or other basic qualitative data."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultEvidenceConfidenceQuestion.java:49
+msgid ""
+"Result status derived from data collected about this specific project site "
+"using relatively systematic methods that typically provide detailed "
+"quantitative or qualitative data, and often include a formal estimate of "
+"error."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/project/ResultsChainCreatorHelper.java:196
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:39
@@ -6357,9 +6386,9 @@ msgid "Rocky Areas [e.g. inland cliffs, mountain peaks]"
 msgstr "Скелясті ділянки  [наприклад, внутрішні скелі, гірські піки]"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:607
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:36
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceQuestion.java:55
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceTypeAQuestion.java:42
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceTypeBQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RatingSourceQuestion.java:36
 msgid "Rough Guess"
 msgstr "Грубе припущення"
@@ -8309,8 +8338,8 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo49.java:84
 msgid ""
-"This migration adds an Evidence Confidence field to Strategies, Goals & "
-"Objectives."
+"This migration adds an Evidence Confidence field to Strategies, Goals, "
+"Objectives and Result factors."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo48.java:84
@@ -8957,7 +8986,12 @@ msgstr "Title|Вид..."
 msgid "Title|XSL Template Properties"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceQuestion.java:31
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultEvidenceConfidenceQuestion.java:29
+msgid ""
+"To track the confidence of the result evidence, use the following scale:"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceTypeAQuestion.java:29
 msgid "To track the confidence of your evidence, use the following scale:"
 msgstr ""
 
@@ -9136,28 +9170,28 @@ msgstr ""
 msgid "Value"
 msgstr "Цінність"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:57
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:39
 msgid ""
 "Values are based on estimates by experienced observers who have the "
 "expertise to provide reliable information in the project context and/or by "
 "extrapolating from other similar project sites."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:52
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:34
 msgid ""
 "Values are based on estimates by project team members or other individuals "
 "without specialized knowledge; often an initial estimate to be improved over "
 "time."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:62
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:44
 msgid ""
 "Values are derived from data collected about this specific project site "
 "using relatively simple methods that typically provide either presence/"
 "absence, categorical, or other basic qualitative data."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:67
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MeasurementEvidenceConfidenceQuestion.java:49
 msgid ""
 "Values are derived from data collected about this specific project site "
 "using relatively systematic methods that typically provide detailed "
@@ -10870,6 +10904,9 @@ msgstr "FieldLabel|23.Comments|Коментарі"
 msgid "FieldLabel|23.EvidenceNotes|Evidence Notes"
 msgstr ""
 
+msgid "FieldLabel|23.EvidenceConfidence|Result Evidence"
+msgstr ""
+
 msgid "FieldLabel|24.Label|Results Chain Name"
 msgstr "FieldLabel|24.Label|Назва ланцюга результатів"
 
@@ -10934,6 +10971,9 @@ msgid "FieldLabel|25.Comments|Comment"
 msgstr "FieldLabel|25.Comments|Коментарі"
 
 msgid "FieldLabel|25.EvidenceNotes|Evidence Notes"
+msgstr ""
+
+msgid "FieldLabel|25.EvidenceConfidence|Result Evidence"
 msgstr ""
 
 msgid "FieldLabel|25.TaxonomyClassificationContainer|Program Classifications"
@@ -11695,6 +11735,9 @@ msgid "FieldLabel|66.Comments|Comments"
 msgstr "FieldLabel|16.Comments|Коментарі"
 
 msgid "FieldLabel|66.EvidenceNotes|Evidence Notes"
+msgstr ""
+
+msgid "FieldLabel|66.EvidenceConfidence|Result Evidence"
 msgstr ""
 
 #, fuzzy
