@@ -21,6 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.IntermediateResult;
+import org.miradi.questions.ResultEvidenceConfidenceQuestion;
 
 public class IntermediateResultSchema extends EvidenceFactorSchema
 {
@@ -36,6 +38,7 @@ public class IntermediateResultSchema extends EvidenceFactorSchema
 		
 	    writeIndicatorIds();
 		writeObjectiveIds();
+		createFieldSchemaChoice(IntermediateResult.TAG_EVIDENCE_CONFIDENCE, ResultEvidenceConfidenceQuestion.class);
 	}
 
 	public static int getObjectType()

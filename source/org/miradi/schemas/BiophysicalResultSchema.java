@@ -21,6 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.BiophysicalResult;
+import org.miradi.questions.ResultEvidenceConfidenceQuestion;
 
 public class BiophysicalResultSchema extends EvidenceFactorSchema
 {
@@ -36,6 +38,7 @@ public class BiophysicalResultSchema extends EvidenceFactorSchema
 		
 	    writeIndicatorIds();
 		writeObjectiveIds();
+		createFieldSchemaChoice(BiophysicalResult.TAG_EVIDENCE_CONFIDENCE, ResultEvidenceConfidenceQuestion.class);
 		createTaxonomyClassificationSchemaField();
 	}
 

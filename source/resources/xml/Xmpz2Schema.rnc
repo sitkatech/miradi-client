@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Mar 01 10:29:24 GMT 2018 $
+# $LastChangedDate: Thu Mar 01 17:03:48 GMT 2018 $
 # $LastChangedRevision: 237 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/237'
 start = ConservationProject.element
@@ -537,6 +537,7 @@ IntermediateResult.element = element miradi:IntermediateResult
   attribute Id {xsd:integer} &
   element miradi:IntermediateResultComments { formatted_text }? &
   element miradi:IntermediateResultDetails { formatted_text }? &
+  element miradi:IntermediateResultEvidenceConfidence { vocabulary_result_evidence_confidence }? &
   element miradi:IntermediateResultEvidenceNotes { formatted_text }? &
   element miradi:IntermediateResultIdentifier { text }? &
   element miradi:IntermediateResultIndicatorIds { IndicatorId.element* }? &
@@ -569,6 +570,7 @@ ThreatReductionResult.element = element miradi:ThreatReductionResult
   attribute Id {xsd:integer} &
   element miradi:ThreatReductionResultComments { formatted_text }? &
   element miradi:ThreatReductionResultDetails { formatted_text }? &
+  element miradi:ThreatReductionResultEvidenceConfidence { vocabulary_result_evidence_confidence }? &
   element miradi:ThreatReductionResultEvidenceNotes { formatted_text }? &
   element miradi:ThreatReductionResultIdentifier { text }? &
   element miradi:ThreatReductionResultIndicatorIds { IndicatorId.element* }? &
@@ -850,6 +852,7 @@ BiophysicalResult.element = element miradi:BiophysicalResult
   attribute Id {xsd:integer} &
   element miradi:BiophysicalResultComments { formatted_text }? &
   element miradi:BiophysicalResultDetails { formatted_text }? &
+  element miradi:BiophysicalResultEvidenceConfidence { vocabulary_result_evidence_confidence }? &
   element miradi:BiophysicalResultEvidenceNotes { formatted_text }? &
   element miradi:BiophysicalResultIdentifier { text }? &
   element miradi:BiophysicalResultIndicatorIds { IndicatorId.element* }? &
@@ -1002,6 +1005,7 @@ vocabulary_custom_rows = 'ConceptualModel'|'ResultsChain'|'BiodiversityTarget'|'
 vocabulary_custom_columns = 'SpeciesLatinName'|'ThreatRating'|'Methods'|'Activities'|'Indicators'|'AssociatedFactor'|'Priority'|'LatestProjectReport'|'LatestProgressReport'|'TaxonomyCodeValue'|'AssignedWhoTotal'|'TimeframeTotal'|'Measurements'|'FutureStatuses'|'Comments'|'Details'
 vocabulary_dashboard_row_flags = 'needsAttention'
 vocabulary_day_columns_visibility = 'ShowDayColumns'|'HideDayColumns'
+vocabulary_evidence_confidence = ''|'RoughGuess'|'ExpertKnowledge'|'ExternalResearch'|'OnsiteResearch'
 vocabulary_diagram_factor_background_color = 'LightGray'|'White'|'Pink'|'Orange'|'LightYellow'|'LightGreen'|'LightBlue'|'LightPurple'|'Tan'|'Black'|'DarkGray'|'Red'|'DarkOrange'|'DarkYellow'|'DarkGreen'|'DarkBlue'|'DarkPurple'|'Brown'
 vocabulary_diagram_factor_foreground_color = '#000000'|'#4E4848'|'#FF0000'|'#FF6600'|'#FFCC00'|'#007F00'|'#0000CC'|'#9900FF'|'#C85A17'|'#6D7B8D'|'#FFFFFF'|'#FF00FF'|'#FF8040'|'#FFFFCC'|'#5FFB17'|'#00CCFF'|'#CC99FF'|'#EDE275'
 vocabulary_diagram_factor_font_size = '1.0'|'0.5'|'0.75'|'0.9'|'1.25'|'1.75'|'2.5'
@@ -1009,7 +1013,6 @@ vocabulary_diagram_factor_font_style = ''|'Bold'|'Underline'|'StrikeThrough'
 vocabulary_hidden_types = 'Strategy'|'DraftStrategy'|'ContributingFactor'|'DirectThreat'|'Target'|'HumanWellbeingTarget'|'BiophysicalFactor'|'BiophysicalResult'|'Link'|'Goal'|'Objective'|'Indicator'|'TextBox'|'ScopeBox'|'Stress'|'Activity'|'IntermediateResult'|'ThreatReductionResult'|'GroupBox'
 vocabulary_diagram_link_color = 'black'|'darkGray'|'red'|'DarkOrange'|'DarkYellow'|'darkGreen'|'darkBlue'|'DarkPurple'|'brown'|'lightGray'|'White'|'pink'|'orange'|'yellow'|'lightGreen'|'lightBlue'|'LightPurple'|'tan'
 vocabulary_included_diagram_types = 'AllTypes'|'IncludeConceptualModelData'|'IncludeResultsChainData'
-vocabulary_evidence_confidence = ''|'RoughGuess'|'ExpertKnowledge'|'ExternalResearch'|'OnsiteResearch'
 vocabulary_factor_mode = 'IncludeBiophysicalFactorsAndResults'|'ContributingFactorsAndIntermediateResultsOnly'
 vocabulary_fiscal_year_start_month = ''|'10'|'7'|'4'
 vocabulary_fos_training_type = ''|'1'|'2'|'3'|'4'
@@ -1029,6 +1032,7 @@ vocabulary_protected_area_categories = 'Ia'|'Ib'|'II'|'III'|'IV'|'V'|'VI'
 vocabulary_quarter_columns_visibility = 'ShowQuarterColumns'|'HideQuarterColumns'
 vocabulary_resource_role_codes = 'TeamMember'|'Contact'|'Leader'|'Facilitator'|'Advisor'|'Stakeholder'
 vocabulary_resource_type = 'Person'|'Group'
+vocabulary_result_evidence_confidence = ''|'RoughGuess'|'ExpertKnowledge'|'RapidAssessment'|'IntensiveAssessment'
 vocabulary_scope_box_type = 'Biodiversity'|'HumanWellbeing'
 vocabulary_status = ''|'1'|'2'|'3'|'4'
 vocabulary_strategy_feasibility_rating_code = ''|'1'|'2'|'3'|'4'

@@ -20,31 +20,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.questions;
 
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.ObjectType;
-import org.miradi.schemas.BaseObjectSchema;
 
 
-public class EvidenceConfidenceQuestion extends StaticChoiceQuestionSortableByCode
+public class EvidenceConfidenceTypeAQuestion extends EvidenceConfidenceTypeQuestion
 {
-    public EvidenceConfidenceQuestion()
+    public EvidenceConfidenceTypeAQuestion()
     {
         super(EAM.text("To track the confidence of your evidence, use the following scale:"));
     }
 
-    public EvidenceConfidenceQuestion(String questionDescriptionToUse)
+    public EvidenceConfidenceTypeAQuestion(String questionDescriptionToUse)
     {
         super(questionDescriptionToUse);
-    }
-
-    public static ChoiceQuestion getQuestion(BaseObjectSchema factorSchema)
-    {
-        if (factorSchema.getType() == ObjectType.STRATEGY)
-            return StaticQuestionManager.getQuestion(StrategyEvidenceConfidenceQuestion.class);
-
-        if (factorSchema.getType() == ObjectType.INDICATOR)
-            return StaticQuestionManager.getQuestion(ViabilityRatingEvidenceConfidence.class);
-
-        return StaticQuestionManager.getQuestion(EvidenceConfidenceQuestion.class);
     }
 
     @Override
@@ -57,12 +44,6 @@ public class EvidenceConfidenceQuestion extends StaticChoiceQuestionSortableByCo
                 new ChoiceItemWithLongDescriptionProvider(EXTERNAL_RESEARCH_CODE, EAM.text("External Research"), getExternalResearchChoiceItemDescription()),
                 new ChoiceItemWithLongDescriptionProvider(ONSITE_RESEARCH_CODE, EAM.text("Onsite / Project Research"), getOnsiteResearchChoiceItemDescription()),
         };
-    }
-
-    @Override
-    public boolean hasAdditionalText()
-    {
-        return true;
     }
 
     protected String getRoughGuessChoiceItemDescription()

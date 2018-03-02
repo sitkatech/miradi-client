@@ -19,13 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.questions;
 
-import org.miradi.main.EAM;
 
-
-public class ViabilityRatingEvidenceConfidence extends EvidenceConfidenceTypeAQuestion
+public class DesireEvidenceConfidenceQuestion extends EvidenceConfidenceTypeAQuestion
 {
-    public ViabilityRatingEvidenceConfidence()
+    public DesireEvidenceConfidenceQuestion()
     {
-        super(EAM.text("To track the confidence of your rating source, use the following scale:"));
+        super();
     }
 }

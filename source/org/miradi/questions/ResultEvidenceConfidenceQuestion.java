@@ -22,30 +22,30 @@ package org.miradi.questions;
 import org.miradi.main.EAM;
 
 
-public class MeasurementEvidenceConfidenceQuestion extends EvidenceConfidenceTypeBQuestion
+public class ResultEvidenceConfidenceQuestion extends EvidenceConfidenceTypeBQuestion
 {
-    public MeasurementEvidenceConfidenceQuestion()
+    public ResultEvidenceConfidenceQuestion()
     {
-        super(EAM.text("Specify your confidence in the source of the indicator measurement:"));
+        super(EAM.text("To track the confidence of the result evidence, use the following scale:"));
     }
 
     protected String getRoughGuessChoiceItemDescription()
     {
-        return EAM.text("Values are based on estimates by project team members or other individuals without specialized knowledge; often an initial estimate to be improved over time.");
+        return EAM.text("Result status based on estimates by project team members or other individuals without specialized knowledge; often an initial estimate to be improved over time.");
     }
 
     protected String getExpertKnowledgeChoiceItemDescription()
     {
-        return EAM.text("Values are based on estimates by experienced observers who have the expertise to provide reliable information in the project context and/or by extrapolating from other similar project sites.");
+        return EAM.text("Result status based on estimates by experienced observers who have the expertise to provide reliable information in the project context and/or by extrapolating from other similar project sites.");
     }
 
     protected String getRapidAssessmentChoiceItemDescription()
     {
-        return EAM.text("Values are derived from data collected about this specific project site using relatively simple methods that typically provide either presence/absence, categorical, or other basic qualitative data.");
+        return EAM.text("Result status derived from data collected about this specific project site using relatively simple methods that typically provide either presence/absence, categorical, or other basic qualitative data.");
     }
 
     protected String getIntensiveAssessmentChoiceItemDescription()
     {
-        return EAM.text("Values are derived from data collected about this specific project site using relatively systematic methods that typically provide detailed quantitative or qualitative data, and often include a formal estimate of error.");
+        return EAM.text("Result status derived from data collected about this specific project site using relatively systematic methods that typically provide detailed quantitative or qualitative data, and often include a formal estimate of error.");
     }
 }
