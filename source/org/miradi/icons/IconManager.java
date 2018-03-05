@@ -73,6 +73,7 @@ public class IconManager
 		addIcon(new AssignmentIcon());
 		addIcon(new ProgressReportIcon());
 		addIcon(new ProgressPercentIcon());
+		addIcon(new ResultReportIcon());
 		addIcon(new SubTargetIcon());
 		addIcon(new HyphenIcon());
 		addIcon(new OpenStandardsAutomaticIcon());
@@ -503,6 +504,11 @@ public class IconManager
 	public static Icon getProgressReportIcon()
 	{
 		return getIcon(ProgressReportIcon.class);
+	}
+
+	public static Icon getResultReportIcon()
+	{
+		return getIcon(ResultReportIcon.class);
 	}
 
 	public static Icon getProgressPercentIcon()

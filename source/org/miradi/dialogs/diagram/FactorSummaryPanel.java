@@ -24,14 +24,12 @@ import org.miradi.actions.jump.*;
 import org.miradi.dialogs.assignment.AssignmentsPropertiesSubPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
+import org.miradi.dialogs.resultReport.ResultReportSubPanel;
 import org.miradi.icons.*;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.Factor;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Task;
+import org.miradi.objects.*;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
@@ -53,6 +51,9 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 
 		if(getFactor().isStrategy())
 			addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
+
+		if (canHaveResultReportSideTab())
+			addSubPanelWithTitledBorder(new ResultReportSubPanel(getMainWindow()));
 
 		if (canHaveWorkPlanSideTab())
 		{
@@ -83,6 +84,20 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 			return true;
 
 		if (Task.is(getCurrentDiagramFactor().getWrappedORef()))
+			return true;
+
+		return false;
+	}
+
+	private boolean canHaveResultReportSideTab()
+	{
+		if (IntermediateResult.is(getCurrentDiagramFactor().getWrappedORef()))
+			return true;
+
+		if (ThreatReductionResult.is(getCurrentDiagramFactor().getWrappedORef()))
+			return true;
+
+		if (BiophysicalResult.is(getCurrentDiagramFactor().getWrappedORef()))
 			return true;
 
 		return false;

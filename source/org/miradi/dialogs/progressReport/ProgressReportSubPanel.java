@@ -26,7 +26,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.schemas.ProgressReportSchema;
-import org.miradi.views.umbrella.ActionCreateProgressReport;
+import org.miradi.actions.ActionCreateProgressReport;
 import org.miradi.views.umbrella.ObjectPicker;
 
 import java.util.LinkedHashMap;

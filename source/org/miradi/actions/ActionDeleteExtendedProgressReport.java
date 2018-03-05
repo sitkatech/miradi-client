@@ -17,28 +17,14 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi;
+package org.miradi.actions;
 
-import org.miradi.actions.ObjectsAction;
-import org.miradi.icons.DeleteIcon;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class AbstractActionDeleteProgressReport extends ObjectsAction
+public class ActionDeleteExtendedProgressReport extends AbstractActionDeleteProgressReport
 {
-	public AbstractActionDeleteProgressReport(MainWindow mainWindowToUse)
+	public ActionDeleteExtendedProgressReport(MainWindow mainWindowToUse)
 	{
-		super(mainWindowToUse, getLabel(), new DeleteIcon());
-	}
-
-	private static String getLabel()
-	{
-		return EAM.text("Action|Manage|Delete Progress Report");
-	}
-
-	@Override
-	public String getToolTipText()
-	{
-		return EAM.text("TT|Delete Progress Report");
+		super(mainWindowToUse);
 	}
 }

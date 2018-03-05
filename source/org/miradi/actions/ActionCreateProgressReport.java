@@ -17,13 +17,13 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi;
+package org.miradi.actions;
 
 import org.miradi.main.MainWindow;
 
-public class ActionDeleteExtendedProgressReport extends AbstractActionDeleteProgressReport
+public class ActionCreateProgressReport extends AbstractActionCreateProgressReport
 {
-	public ActionDeleteExtendedProgressReport(MainWindow mainWindowToUse)
+	public ActionCreateProgressReport(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse);
 	}

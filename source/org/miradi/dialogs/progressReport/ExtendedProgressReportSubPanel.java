@@ -20,13 +20,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.progressReport;
 
-import org.miradi.ActionDeleteExtendedProgressReport;
+import org.miradi.actions.ActionDeleteExtendedProgressReport;
 import org.miradi.dialogs.base.EditableObjectRefsTableModel;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.schemas.ExtendedProgressReportSchema;
-import org.miradi.views.umbrella.ActionCreateExtendedProgressReport;
+import org.miradi.actions.ActionCreateExtendedProgressReport;
 import org.miradi.views.umbrella.ObjectPicker;
 
 import java.util.LinkedHashMap;

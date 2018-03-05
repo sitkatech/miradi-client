@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions;
 
-import org.miradi.AbstractActionDeleteProgressReport;
 import org.miradi.main.MainWindow;
 
 public class ActionDeleteProgressReport extends AbstractActionDeleteProgressReport

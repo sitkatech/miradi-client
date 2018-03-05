@@ -819,6 +819,7 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 
 		return fieldPanel;
 	}
+
 	protected void createLatestExtendedProgressReportFields(int objectType) throws Exception
 	{
 		PanelTitleLabel progressReportLabel = new PanelTitleLabel(EAM.text("Progress Report"));

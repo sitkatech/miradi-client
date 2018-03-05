@@ -21,7 +21,6 @@ package org.miradi.views.umbrella;
 
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
-import org.miradi.ActionDeleteExtendedProgressReport;
 import org.miradi.actions.*;
 import org.miradi.actions.jump.*;
 import org.miradi.actions.views.*;
@@ -233,6 +232,9 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionDeleteProgressReport.class, new DeleteProgressReportDoer());
 		addDoerToMap(ActionDeleteExtendedProgressReport.class, new DeleteExtendedProgressReportDoer());
 
+		addDoerToMap(ActionCreateResultReport.class, new CreateResultReportDoer());
+		addDoerToMap(ActionDeleteResultReport.class, new DeleteResultReportDoer());
+
 		addDoerToMap(ActionCreateProgressPercent.class, new CreateProgressPercentDoer());
 		addDoerToMap(ActionDeleteProgressPercent.class, new DeleteProgressPercentDoer());
 		
@@ -421,7 +423,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		closeActivePropertiesDialogIfWeDeletedItsObject(event.getCommand());
 	}
 
-	void closeActivePropertiesDialogIfWeDeletedItsObject(Command rawCommand)
+	private void closeActivePropertiesDialogIfWeDeletedItsObject(Command rawCommand)
 	{
 		if(!rawCommand.getCommandName().equals(CommandDeleteObject.COMMAND_NAME))
 			return;

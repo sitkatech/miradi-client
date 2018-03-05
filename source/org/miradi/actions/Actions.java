@@ -19,14 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.actions;
 
-import org.miradi.ActionDeleteExtendedProgressReport;
 import org.miradi.actions.jump.*;
 import org.miradi.actions.openstandards.*;
 import org.miradi.actions.views.*;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.views.umbrella.ActionCreateExtendedProgressReport;
-import org.miradi.views.umbrella.ActionCreateProgressReport;
 
 import javax.swing.*;
 import java.util.Collection;
@@ -402,6 +399,10 @@ public class Actions
 		registerAction(new ActionCreateExtendedProgressReport(mainWindow));
 		registerAction(new ActionDeleteProgressReport(mainWindow));
 		registerAction(new ActionDeleteExtendedProgressReport(mainWindow));
+
+		registerAction(new ActionCreateResultReport(mainWindow));
+		registerAction(new ActionDeleteResultReport(mainWindow));
+
 		registerAction(new ActionDeleteOrganization(mainWindow));
 		registerAction(new ActionCreateOrganization(mainWindow));
 		registerAction(new ActionExportTable(mainWindow));
