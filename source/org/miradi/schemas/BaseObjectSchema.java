@@ -363,6 +363,19 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 		createPseudoFieldSchemaString(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_LESSONS_LEARNED);
 	}
 
+	protected void createResultReportSchema()
+	{
+		createOwnedFieldSchemaReflist(BaseObject.TAG_RESULT_REPORT_REFS, RESULT_REPORT);
+		createResultReportPseudoFields();
+	}
+
+	private void createResultReportPseudoFields()
+	{
+		createPseudoFieldSchemaQuestion(BaseObject.PSEUDO_TAG_LATEST_RESULT_REPORT_DATE);
+		createPseudoFieldSchemaQuestion(BaseObject.PSEUDO_TAG_LATEST_RESULT_REPORT_CODE);
+		createPseudoFieldSchemaString(BaseObject.PSEUDO_TAG_LATEST_RESULT_REPORT_DETAILS);
+	}
+
 	protected void createTaxonomyClassificationSchemaField()
 	{
 		createTaxonomyClassifications(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);

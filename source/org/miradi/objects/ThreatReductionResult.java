@@ -25,6 +25,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.ThreatReductionResultSchema;
+import org.miradi.utils.CommandVector;
 
 public class ThreatReductionResult extends Factor
 {
@@ -60,7 +61,16 @@ public class ThreatReductionResult extends Factor
 	{
 		return true;
 	}
-	
+
+	@Override
+	public CommandVector createCommandsToDeleteChildren() throws Exception
+	{
+		CommandVector commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
+		commandsToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_RESULT_REPORT_REFS));
+
+		return commandsToDeleteChildren;
+	}
+
 	public String getRelatedDirectThreatRefAsString()
 	{
 		return getData(TAG_RELATED_DIRECT_THREAT_REF);

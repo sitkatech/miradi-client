@@ -25,6 +25,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.BiophysicalResultSchema;
+import org.miradi.utils.CommandVector;
 
 public class BiophysicalResult extends Factor
 {
@@ -59,6 +60,15 @@ public class BiophysicalResult extends Factor
 	public int[] getTypesThatCanOwnUs()
 	{
 		return NO_OWNERS;
+	}
+
+	@Override
+	public CommandVector createCommandsToDeleteChildren() throws Exception
+	{
+		CommandVector commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
+		commandsToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_RESULT_REPORT_REFS));
+
+		return commandsToDeleteChildren;
 	}
 
 	public static boolean is(ORef ref)

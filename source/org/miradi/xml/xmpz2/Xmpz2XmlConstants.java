@@ -118,6 +118,7 @@ public interface Xmpz2XmlConstants
 	public static final String EXPENSE_ASSIGNMENT = "ExpenseAssignment";
 	public static final String PROGRESS_REPORT = "ProgressReport";
 	public static final String EXTENDED_PROGRESS_REPORT = "ExtendedProgressReport";
+	public static final String RESULT_REPORT = "ResultReport";
 	public static final String PROGRESS_PERCENT = "ProgressPercent";
 	public static final String THREAT = "Threat";
 	public static final String TARGET = TargetSchema.OBJECT_NAME;
@@ -172,6 +173,7 @@ public interface Xmpz2XmlConstants
 	public static final String BUDGET_CATEGORY_TWO_ID = "BudgetCategoryTwoId";
 	public static final String PROGRESS_REPORT_IDS = "ProgressReportIds";
 	public static final String EXTENDED_PROGRESS_REPORT_IDS = "ExtendedProgressReportIds";
+	public static final String RESULTS_REPORT_IDS = "ResultReportIds";
 	public static final String PROGRESS_PERCENT_IDS = "ProgressPercentIds";
 	public static final String RELATED_THREAT_ID = "RelatedDirectThreat" + ID;
 	public static final String THREAT_ID = "ThreatId";
@@ -416,6 +418,7 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_WWF_ECOREGIONS = "vocabulary_wwf_ecoregions";
 	public static final String VOCABULARY_FOS_TRAINING_TYPE = "vocabulary_fos_training_type";
 	public static final String VOCABULARY_PROGRESS_REPORT_STATUS = "vocabulary_progress_report_status";
+	public static final String VOCABULARY_RESULT_REPORT_STATUS = "vocabulary_result_report_status";
 	public static final String VOCABULARY_MEASUREMENT_TREND = "vocabulary_measurement_trend";
 	
 	public static final String VOCABULARY_EVIDENCE_CONFIDENCE = "vocabulary_evidence_confidence";

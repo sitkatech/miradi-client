@@ -69,6 +69,7 @@ public class ObjectTypeToExporterMap extends HashMap<Integer, BaseObjectExporter
 		addGenericExporterToMap(SubTargetSchema.getObjectType());
 		addGenericExporterToMap(ProgressReportSchema.getObjectType());
 		addGenericExporterToMap(ExtendedProgressReportSchema.getObjectType());
+		addGenericExporterToMap(ResultReportSchema.getObjectType());
 		addGenericExporterToMap(OrganizationSchema.getObjectType());
 		addGenericExporterToMap(ProgressPercentSchema.getObjectType());
 		addGenericExporterToMap(ScopeBoxSchema.getObjectType());

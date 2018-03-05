@@ -35,7 +35,8 @@ public class IntermediateResultSchema extends EvidenceFactorSchema
 	protected void fillFieldSchemas()
 	{
 		super.fillFieldSchemas();
-		
+
+		createResultReportSchema();
 	    writeIndicatorIds();
 		writeObjectiveIds();
 		createFieldSchemaChoice(IntermediateResult.TAG_EVIDENCE_CONFIDENCE, ResultEvidenceConfidenceQuestion.class);

@@ -37,6 +37,7 @@ public class ThreatReductionResultSchema extends EvidenceFactorSchema
 		super.fillFieldSchemas();
 
 		createFieldSchemaOptionalRef(ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF);
+		createResultReportSchema();
 	    writeIndicatorIds();
 		writeObjectiveIds();
 		createFieldSchemaChoice(ThreatReductionResult.TAG_EVIDENCE_CONFIDENCE, ResultEvidenceConfidenceQuestion.class);

@@ -35,7 +35,8 @@ public class BiophysicalResultSchema extends EvidenceFactorSchema
 	protected void fillFieldSchemas()
 	{
 		super.fillFieldSchemas();
-		
+
+		createResultReportSchema();
 	    writeIndicatorIds();
 		writeObjectiveIds();
 		createFieldSchemaChoice(BiophysicalResult.TAG_EVIDENCE_CONFIDENCE, ResultEvidenceConfidenceQuestion.class);

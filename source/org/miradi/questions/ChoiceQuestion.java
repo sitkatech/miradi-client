@@ -244,6 +244,6 @@ public abstract class ChoiceQuestion implements Comparable<ChoiceQuestion>
 	public static final Color COLOR_GREAT = ColorManager.DARK_GREEN;
 	public static final Color COLOR_ABANDONED = ColorManager.DARK_GREY;
 	public static final Color COLOR_PLANNED = ColorManager.LIGHT_BLUE;
-
+	public static final Color COLOR_NOT_KNOWN = ColorManager.LIGHT_GREY;
 	private String questionDescription;
 }

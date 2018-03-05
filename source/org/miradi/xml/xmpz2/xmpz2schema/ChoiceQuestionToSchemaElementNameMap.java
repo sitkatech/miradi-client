@@ -101,6 +101,7 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(new CustomPlanningColumnsQuestion(), VOCABULARY_CUSTOM_COLUMNS);
 		addItem(ProjectFocusQuestion.class, VOCABULARY_PROJECT_FOCUS);
 		addItem(ProjectScaleQuestion.class, VOCABULARY_PROJECT_SCALE);
+		addItem(ResultReportLongStatusQuestion.class, VOCABULARY_RESULT_REPORT_STATUS);
 	}
 	
 	private void addItem(Class questionClass, String value)

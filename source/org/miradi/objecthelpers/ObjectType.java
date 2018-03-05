@@ -103,6 +103,7 @@ public class ObjectType
 	public static final int ACCOUNTING_CLASSIFICATION_ASSOCIATION = 68;
 	public static final int METHOD = 69;
 	public static final int EXTENDED_PROGRESS_REPORT = 70;
+	public static final int RESULT_REPORT = 71;
 
 	// When you add a new type, be sure to:
 	// - increment OBJECT_TYPE_COUNT
@@ -111,7 +112,7 @@ public class ObjectType
 	// - add appropriate entry to FieldLabels.properties file
 	// - update requiresUUID (and related importer / exporter, etc.) as applicable
 
-	public static final int OBJECT_TYPE_COUNT = 71;
+	public static final int OBJECT_TYPE_COUNT = 72;
 
 	public static String getUserFriendlyObjectTypeName(Project project, int objectType)
 	{

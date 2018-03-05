@@ -125,6 +125,8 @@ public class StaticQuestionManager
 		addQuestion(new ViabilityRatingEvidenceConfidence());
 		addQuestion(new MeasurementEvidenceConfidenceQuestion());
 		addQuestion(new ResultEvidenceConfidenceQuestion());
+		addQuestion(new ResultReportShortStatusQuestion());
+		addQuestion(new ResultReportLongStatusQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)

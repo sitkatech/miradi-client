@@ -82,6 +82,7 @@ public class ObjectManager
 		addNormalPool(new SubTargetPool(ida), SubTargetSchema.OBJECT_NAME);
 		addNormalPool(new ProgressReportPool(ida), ProgressReportSchema.OBJECT_NAME);
 		addNormalPool(new ExtendedProgressReportPool(ida), ExtendedProgressReportSchema.OBJECT_NAME);
+		addNormalPool(new ResultReportPool(ida), ResultReportSchema.OBJECT_NAME);
 		addNormalPool(new RareProjectDataPool(ida), RareProjectDataSchema.OBJECT_NAME);
 		addNormalPool(new WcsProjectDataPool(ida), WcsProjectDataSchema.OBJECT_NAME);
 		addNormalPool(new TncProjectDataPool(ida), TncProjectDataSchema.OBJECT_NAME);
@@ -354,6 +355,7 @@ public class ObjectManager
 			ObjectType.GROUP_BOX,
 			ObjectType.SUB_TARGET,
 			ObjectType.PROGRESS_REPORT,
+			ObjectType.RESULT_REPORT,
 			ObjectType.RARE_PROJECT_DATA,
 			ObjectType.WCS_PROJECT_DATA,
 			ObjectType.TNC_PROJECT_DATA,

@@ -64,6 +64,7 @@ public class Schemas
 		registerSchema(new SubTargetSchema());
 		registerSchema(new ProgressReportSchema());
 		registerSchema(new ExtendedProgressReportSchema());
+		registerSchema(new ResultReportSchema());
 		registerSchema(new RareProjectDataSchema());
 		registerSchema(new WcsProjectDataSchema());
 		registerSchema(new TncProjectDataSchema());

@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.migrations;
 
 import org.miradi.migrations.forward.MigrationTo36;
-import org.miradi.migrations.forward.MigrationTo37;
 import org.miradi.migrations.forward.MigrationTo39;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ExtendedProgressReport;
@@ -69,12 +68,12 @@ public class TestMigrationTo36 extends AbstractTestMigration
 	@Override
 	protected int getFromVersion()
 	{
-		return MigrationTo37.VERSION_FROM;
+		return MigrationTo36.VERSION_FROM;
 	}
 	
 	@Override
 	protected int getToVersion()
 	{
-		return MigrationTo37.VERSION_TO;
+		return MigrationTo36.VERSION_TO;
 	}
 }

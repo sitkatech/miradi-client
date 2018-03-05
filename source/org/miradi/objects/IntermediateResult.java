@@ -25,6 +25,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.IntermediateResultSchema;
+import org.miradi.utils.CommandVector;
 
 public class IntermediateResult extends Factor
 {
@@ -60,7 +61,16 @@ public class IntermediateResult extends Factor
 	{
 		return true;
 	}
-	
+
+	@Override
+	public CommandVector createCommandsToDeleteChildren() throws Exception
+	{
+		CommandVector commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
+		commandsToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_RESULT_REPORT_REFS));
+
+		return commandsToDeleteChildren;
+	}
+
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());

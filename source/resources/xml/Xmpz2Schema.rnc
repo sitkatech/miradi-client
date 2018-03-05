@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Mar 01 17:03:48 GMT 2018 $
+# $LastChangedDate: Mon Mar 05 10:57:22 GMT 2018 $
 # $LastChangedRevision: 237 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/237'
 start = ConservationProject.element
@@ -61,6 +61,7 @@ ConservationProject.element = element miradi:ConservationProject
   TimeframePool.element? &
   MethodPool.element? &
   ExtendedProgressReportPool.element? &
+  ResultReportPool.element? &
   SimpleThreatRatingPool.element? &
   StressBasedThreatRatingPool.element? &
   MiradiShareProjectDataTaxonomyAssociationPool.element? &
@@ -543,6 +544,7 @@ IntermediateResult.element = element miradi:IntermediateResult
   element miradi:IntermediateResultIndicatorIds { IndicatorId.element* }? &
   element miradi:IntermediateResultName { formatted_text }? &
   element miradi:IntermediateResultObjectiveIds { ObjectiveId.element* }? &
+  element miradi:IntermediateResultResultReportIds { ResultReportId.element* }? &
   element miradi:IntermediateResultUUID { uuid }
 }
 
@@ -577,6 +579,7 @@ ThreatReductionResult.element = element miradi:ThreatReductionResult
   element miradi:ThreatReductionResultName { formatted_text }? &
   element miradi:ThreatReductionResultObjectiveIds { ObjectiveId.element* }? &
   element miradi:ThreatReductionResultRelatedDirectThreatId { ThreatId.element }? &
+  element miradi:ThreatReductionResultResultReportIds { ResultReportId.element* }? &
   element miradi:ThreatReductionResultUUID { uuid } &
   TaxonomyClassificationContainer.element?
 }
@@ -858,6 +861,7 @@ BiophysicalResult.element = element miradi:BiophysicalResult
   element miradi:BiophysicalResultIndicatorIds { IndicatorId.element* }? &
   element miradi:BiophysicalResultName { formatted_text }? &
   element miradi:BiophysicalResultObjectiveIds { ObjectiveId.element* }? &
+  element miradi:BiophysicalResultResultReportIds { ResultReportId.element* }? &
   element miradi:BiophysicalResultUUID { uuid } &
   TaxonomyClassificationContainer.element?
 }
@@ -894,6 +898,16 @@ ExtendedProgressReport.element = element miradi:ExtendedProgressReport
   element miradi:ExtendedProgressReportProgressDate { vocabulary_date }? &
   element miradi:ExtendedProgressReportProgressStatus { vocabulary_progress_report_status }? &
   element miradi:ExtendedProgressReportUUID { uuid }
+}
+
+ResultReportPool.element = element miradi:ResultReportPool { ResultReport.element* }
+ResultReport.element = element miradi:ResultReport
+{
+  attribute Id {xsd:integer} &
+  element miradi:ResultReportDetails { formatted_text }? &
+  element miradi:ResultReportResultDate { vocabulary_date }? &
+  element miradi:ResultReportResultStatus { vocabulary_result_report_status }? &
+  element miradi:ResultReportUUID { uuid }
 }
 
 SimpleThreatRatingPool.element = element miradi:SimpleThreatRatingPool { SimpleThreatRating.element* }
@@ -1033,6 +1047,7 @@ vocabulary_quarter_columns_visibility = 'ShowQuarterColumns'|'HideQuarterColumns
 vocabulary_resource_role_codes = 'TeamMember'|'Contact'|'Leader'|'Facilitator'|'Advisor'|'Stakeholder'
 vocabulary_resource_type = 'Person'|'Group'
 vocabulary_result_evidence_confidence = ''|'RoughGuess'|'ExpertKnowledge'|'RapidAssessment'|'IntensiveAssessment'
+vocabulary_result_report_status = ''|'NotKnown'|'NotYet'|'NotAchieved'|'MinorIssues'|'OnTrack'|'Achieved'|'NoLongerRelevant'
 vocabulary_scope_box_type = 'Biodiversity'|'HumanWellbeing'
 vocabulary_status = ''|'1'|'2'|'3'|'4'
 vocabulary_strategy_feasibility_rating_code = ''|'1'|'2'|'3'|'4'
@@ -1102,6 +1117,7 @@ BudgetCategoryOneId.element = element miradi:BudgetCategoryOneId { xsd:integer }
 BudgetCategoryTwoId.element = element miradi:BudgetCategoryTwoId { xsd:integer }
 ProgressReportId.element = element miradi:ProgressReportId { xsd:integer }
 ExtendedProgressReportId.element = element miradi:ExtendedProgressReportId { xsd:integer }
+ResultReportId.element = element miradi:ResultReportId { xsd:integer }
 ProgressPercentId.element = element miradi:ProgressPercentId { xsd:integer }
 ExpenseAssignmentId.element = element miradi:ExpenseAssignmentId { xsd:integer }
 ResourceAssignmentId.element = element miradi:ResourceAssignmentId { xsd:integer }

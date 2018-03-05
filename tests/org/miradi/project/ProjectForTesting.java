@@ -678,6 +678,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return progressReport;
 	}
 
+	public ResultReport createAndPopulateResultReport() throws Exception
+	{
+		ResultReport resultReport = createResultReport();
+		populateResultReport(resultReport);
+
+		return resultReport;
+	}
+	
 	public ProgressPercent createAndPopulateProgressPercent() throws Exception
 	{
 		ProgressPercent progressPercent = createProgressPercent();
@@ -1081,6 +1089,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef progressReportRef = createObject(ExtendedProgressReportSchema.getObjectType());
 		return ExtendedProgressReport.find(this, progressReportRef);
+	}
+
+	public ResultReport createResultReport() throws Exception
+	{
+		ORef ResultReportRef = createObject(ResultReportSchema.getObjectType());
+		return ResultReport.find(this, ResultReportRef);
 	}
 
 	public ProgressPercent createProgressPercent() throws Exception
@@ -1643,7 +1657,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(timeframe, Timeframe.TAG_DATEUNIT_DETAILS, dateUnitEffortList.toString());
 	}
 	
-	public void createAndPopulateThreatReductionResult() throws Exception
+	public ThreatReductionResult createAndPopulateThreatReductionResult() throws Exception
 	{
 		ThreatReductionResult threatReductionResult = createThreatReductionResult();
 		fillObjectWithSampleStringData(threatReductionResult.getRef(), ThreatReductionResult.TAG_LABEL);
@@ -1656,9 +1670,11 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		Cause threat = createCause();
 		fillObjectUsingCommand(threatReductionResult, ThreatReductionResult.TAG_RELATED_DIRECT_THREAT_REF, threat.getRef().toString());
+
+		return threatReductionResult;
 	}
 	
-	public void createAndPopulateIntermediateResult() throws Exception
+	public IntermediateResult createAndPopulateIntermediateResult() throws Exception
 	{
 		IntermediateResult intermediateResult = createIntermediateResult();
 		fillObjectWithSampleStringData(intermediateResult.getRef(), IntermediateResult.TAG_LABEL);
@@ -1667,6 +1683,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(intermediateResult, IntermediateResult.TAG_EVIDENCE_CONFIDENCE, ResultEvidenceConfidenceQuestion.ROUGH_GUESS_CODE);
 		fillObjectWithSampleStringData(intermediateResult.getRef(), IntermediateResult.TAG_EVIDENCE_NOTES);
 		fillObjectWithSampleStringData(intermediateResult.getRef(), IntermediateResult.TAG_TEXT);
+
+		return intermediateResult;
 	}
 	
 	public void populateStressBasedThreatRatingCommentsData() throws Exception
@@ -1779,6 +1797,20 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return progressReport;
 	}
 
+	public ResultReport addResultReport(BaseObject baseObject) throws Exception
+	{
+		ResultReport resultReport = createAndPopulateResultReport();
+		return addResultReport(baseObject, resultReport);
+	}
+
+	public ResultReport addResultReport(BaseObject baseObject, ResultReport resultReport) throws Exception
+	{
+		ORefList resultReportRefs = new ORefList(resultReport.getRef());
+		fillObjectUsingCommand(baseObject, baseObject.TAG_RESULT_REPORT_REFS, resultReportRefs.toString());
+
+		return resultReport;
+	}
+	
 	public void addProgressPercent(Desire desire) throws Exception
 	{
 		ProgressPercent progressPercent = createAndPopulateProgressPercent();
@@ -1822,6 +1854,18 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(progressReport, ExtendedProgressReport.TAG_LESSONS_LEARNED, lessonsLearned);
 	}
 
+	public void populateResultReport(ResultReport resultReport) throws Exception
+	{
+		populateResultReport(resultReport, "2008-01-23", ResultReportLongStatusQuestion.ACHIEVED_CODE, "some result report details");
+	}
+
+	public void populateResultReport(ResultReport resultReport, String dateAsString, String status, String details) throws Exception
+	{
+		fillObjectUsingCommand(resultReport, ResultReport.TAG_RESULT_DATE, dateAsString);
+		fillObjectUsingCommand(resultReport, ResultReport.TAG_RESULT_STATUS, status);
+		fillObjectUsingCommand(resultReport, ResultReport.TAG_DETAILS, details);
+	}
+	
 	public void populateProgressPercent(ProgressPercent progressPercent) throws Exception
 	{
 		fillObjectUsingCommand(progressPercent, ProgressPercent.TAG_DATE, "2009-01-23");
