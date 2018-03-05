@@ -80,7 +80,12 @@ public class IntermediateResult extends Factor
 	{
 		return objectType == IntermediateResultSchema.getObjectType();
 	}
-	
+
+	public static boolean is(BaseObject baseObject)
+	{
+		return is(baseObject.getType());
+	}
+
 	public static IntermediateResult find(ObjectManager objectManager, ORef intermediateResultRef)
 	{
 		return (IntermediateResult) objectManager.findObject(intermediateResultRef);

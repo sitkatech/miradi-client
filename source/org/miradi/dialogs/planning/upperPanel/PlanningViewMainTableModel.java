@@ -255,6 +255,8 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		String columnTag = getColumnTag(column);
 		if(columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 			return true;
+		if(columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_RESULT_REPORT_CODE))
+			return true;
 		if(columnTag.equals(Objective.PSEUDO_TAG_LATEST_PROGRESS_PERCENT_COMPLETE))
 			return true;
 		
@@ -348,9 +350,12 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			
 			if(columnTag.equals(ProjectResource.TAG_RESOURCE_TYPE))
 				return StaticQuestionManager.getQuestion(ResourceTypeQuestion.class).findChoiceByCode(rawValue);
-			
+
 			if(columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
 				return new ProgressReportShortStatusQuestion().findChoiceByCode(rawValue);
+
+			if(columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_RESULT_REPORT_CODE))
+				return new ResultReportShortStatusQuestion().findChoiceByCode(rawValue);
 
 			if (Desire.isDesire(baseObject.getRef()) && columnTag.equals(Desire.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
 				return createAppendedRelevantIndicatorLabels(baseObject);
@@ -540,7 +545,23 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		if(ThreatReductionResult.is(nodeType))
 		{
 			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
-				return "";
+				return BaseObject.PSEUDO_TAG_LATEST_RESULT_REPORT_CODE;
+			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS))
+				return BaseObject.PSEUDO_TAG_LATEST_RESULT_REPORT_DETAILS;
+		}
+		if(IntermediateResult.is(nodeType))
+		{
+			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+				return BaseObject.PSEUDO_TAG_LATEST_RESULT_REPORT_CODE;
+			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS))
+				return BaseObject.PSEUDO_TAG_LATEST_RESULT_REPORT_DETAILS;
+		}
+		if(BiophysicalResult.is(nodeType))
+		{
+			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
+				return BaseObject.PSEUDO_TAG_LATEST_RESULT_REPORT_CODE;
+			if (columnTag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS))
+				return BaseObject.PSEUDO_TAG_LATEST_RESULT_REPORT_DETAILS;
 		}
 		if(Objective.is(nodeType))
 		{

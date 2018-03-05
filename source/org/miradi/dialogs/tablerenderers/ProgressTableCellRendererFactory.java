@@ -80,6 +80,15 @@ public class ProgressTableCellRendererFactory extends ObjectTableCellEditorOrRen
 		if (Task.is(baseObject))
 			return true;
 		
+		if (ThreatReductionResult.is(baseObject))
+			return true;
+
+		if (IntermediateResult.is(baseObject))
+			return true;
+
+		if (BiophysicalResult.is(baseObject))
+			return true;
+
 		return false;
 	}
 	
