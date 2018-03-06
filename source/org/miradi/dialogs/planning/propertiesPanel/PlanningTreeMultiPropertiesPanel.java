@@ -298,7 +298,7 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 	{
 		if(intermediateResultPropertiesPanel == null)
 		{
-			intermediateResultPropertiesPanel = new PlanningViewIntermediateResultPropertiesPanel(getProject());
+			intermediateResultPropertiesPanel = new PlanningViewIntermediateResultPropertiesPanel(getMainWindow());
 			addPanel(intermediateResultPropertiesPanel);
 		}
 		return intermediateResultPropertiesPanel;
@@ -308,7 +308,7 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 	{
 		if (threatReductionResultPropertiesPanel == null)
 		{
-			threatReductionResultPropertiesPanel = new PlanningViewThreatReductionResultPropertiesPanel(getProject());
+			threatReductionResultPropertiesPanel = new PlanningViewThreatReductionResultPropertiesPanel(getMainWindow());
 			addPanel(threatReductionResultPropertiesPanel);
 		}
 		return threatReductionResultPropertiesPanel;
@@ -404,11 +404,11 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
         return biophysicalFactorPropertiesPanel;
 	}
 
-	private MinimalFactorPropertiesPanel getBiophysicalResultPropertiesPanel() throws Exception
+	private AbstractObjectDataInputPanel getBiophysicalResultPropertiesPanel() throws Exception
 	{
         if(biophysicalResultPropertiesPanel == null)
         {
-            biophysicalResultPropertiesPanel = new PlanningViewBiophysicalResultPropertiesPanel(getProject());
+            biophysicalResultPropertiesPanel = new PlanningViewBiophysicalResultPropertiesPanel(getMainWindow());
             addPanel(biophysicalResultPropertiesPanel);
         }
         return biophysicalResultPropertiesPanel;

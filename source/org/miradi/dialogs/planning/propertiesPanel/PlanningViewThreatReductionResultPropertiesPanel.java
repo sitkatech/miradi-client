@@ -19,18 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import org.miradi.icons.ThreatReductionResultIcon;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.project.Project;
 
-public class PlanningViewThreatReductionResultPropertiesPanel extends MinimalFactorPropertiesPanel
+public class PlanningViewThreatReductionResultPropertiesPanel extends ResultFactorPropertiesPanel
 {
-	public PlanningViewThreatReductionResultPropertiesPanel(Project projectToUse) throws Exception
+	public PlanningViewThreatReductionResultPropertiesPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		super(projectToUse, projectToUse.getObjectManager().getSchemas().get(ObjectType.THREAT_REDUCTION_RESULT));
-		
-		createAndAddFields(EAM.text("Threat Reduction Result"), new ThreatReductionResultIcon());
+		super(mainWindowToUse, mainWindowToUse.getProject().getObjectManager().getSchemas().get(ObjectType.THREAT_REDUCTION_RESULT));
 	}
 
 	@Override
@@ -38,5 +35,4 @@ public class PlanningViewThreatReductionResultPropertiesPanel extends MinimalFac
 	{
 		return EAM.text("Title|Threat Reduction Result Properties");
 	}
-
 }

@@ -33,6 +33,8 @@ public class FactorSummaryCommentsPanel extends ObjectDataInputPanel
 	{
 		super(project, factorSchema.getType());
 
+		addFactorCoreFields(factorSchema);
+
 		addField(createMultilineField(factorSchema.getType(), Factor.TAG_COMMENTS));
 
 		if (canHaveEvidenceConfidence(factorSchema))
@@ -46,6 +48,10 @@ public class FactorSummaryCommentsPanel extends ObjectDataInputPanel
 	public String getPanelDescription()
 	{
 		return EAM.text("Comments");
+	}
+
+	protected void addFactorCoreFields(BaseObjectSchema factorSchema) throws Exception
+	{
 	}
 
 	private boolean canHaveEvidenceConfidence(BaseObjectSchema factorSchema)

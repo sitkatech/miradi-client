@@ -188,6 +188,15 @@ public class IconManager
 		if (Method.is(type))
 			return getMethodIcon();
 
+		if (ThreatReductionResult.is(type))
+			return getThreatReductionResultIcon();
+
+		if (IntermediateResult.is(type))
+			return getIntermediateResultIcon();
+
+		if (BiophysicalResult.is(type))
+			return getBiophysicalResultIcon();
+
 		throw new RuntimeException("Could not find icon for type:" + type);
 	}
 

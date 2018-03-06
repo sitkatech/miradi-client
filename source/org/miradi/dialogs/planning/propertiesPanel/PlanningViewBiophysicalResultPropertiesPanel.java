@@ -19,18 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import org.miradi.icons.BiophysicalResultIcon;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.project.Project;
 
-public class PlanningViewBiophysicalResultPropertiesPanel extends MinimalFactorPropertiesPanel
+public class PlanningViewBiophysicalResultPropertiesPanel extends ResultFactorPropertiesPanel
 {
-	public PlanningViewBiophysicalResultPropertiesPanel(Project projectToUse) throws Exception
+	public PlanningViewBiophysicalResultPropertiesPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		super(projectToUse, projectToUse.getObjectManager().getSchemas().get(ObjectType.BIOPHYSICAL_RESULT));
-		
-		createAndAddFields(EAM.text("Biophysical Result"), new BiophysicalResultIcon());
+		super(mainWindowToUse, mainWindowToUse.getProject().getObjectManager().getSchemas().get(ObjectType.BIOPHYSICAL_RESULT));
 	}
 
 	@Override

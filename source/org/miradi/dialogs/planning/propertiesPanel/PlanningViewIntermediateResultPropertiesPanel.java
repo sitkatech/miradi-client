@@ -19,18 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import org.miradi.icons.IntermediateResultIcon;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.project.Project;
 
-public class PlanningViewIntermediateResultPropertiesPanel extends MinimalFactorPropertiesPanel
+public class PlanningViewIntermediateResultPropertiesPanel extends ResultFactorPropertiesPanel
 {
-	public PlanningViewIntermediateResultPropertiesPanel(Project projectToUse) throws Exception
+	public PlanningViewIntermediateResultPropertiesPanel(MainWindow mainWindowToUse) throws Exception
 	{
-		super(projectToUse, projectToUse.getObjectManager().getSchemas().get(ObjectType.INTERMEDIATE_RESULT));
-		
-		createAndAddFields(EAM.text("Intermediate Result"), new IntermediateResultIcon());
+		super(mainWindowToUse, mainWindowToUse.getProject().getObjectManager().getSchemas().get(ObjectType.INTERMEDIATE_RESULT));
 	}
 
 	@Override

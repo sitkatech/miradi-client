@@ -74,5 +74,5 @@ public class MinimalFactorPropertiesPanel extends ObjectDataInputPanelWithSectio
 		return false;
 	}
 
-	BaseObjectSchema factorSchema;
+	private BaseObjectSchema factorSchema;
 }
