@@ -21,14 +21,14 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.icons.IntermediateResultIcon;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.Project;
-import org.miradi.schemas.IntermediateResultSchema;
 
 public class PlanningViewIntermediateResultPropertiesPanel extends MinimalFactorPropertiesPanel
 {
 	public PlanningViewIntermediateResultPropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, IntermediateResultSchema.getObjectType());
+		super(projectToUse, projectToUse.getObjectManager().getSchemas().get(ObjectType.INTERMEDIATE_RESULT));
 		
 		createAndAddFields(EAM.text("Intermediate Result"), new IntermediateResultIcon());
 	}

@@ -21,14 +21,14 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.icons.ContributingFactorIcon;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.Project;
-import org.miradi.schemas.CauseSchema;
 
 public class PlanningViewContributingFactorPropertiesPanel extends MinimalFactorPropertiesPanel
 {
 	public PlanningViewContributingFactorPropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, CauseSchema.getObjectType());
+		super(projectToUse, projectToUse.getObjectManager().getSchemas().get(ObjectType.CAUSE));
 		
 		createAndAddFields(EAM.text("Contributing Factor"), new ContributingFactorIcon());
 	}

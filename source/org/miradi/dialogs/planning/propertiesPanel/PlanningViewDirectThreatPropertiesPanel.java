@@ -21,6 +21,7 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.icons.DirectThreatIcon;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Cause;
 import org.miradi.project.Project;
 import org.miradi.questions.ThreatClassificationQuestion;
@@ -30,7 +31,7 @@ public class PlanningViewDirectThreatPropertiesPanel extends MinimalFactorProper
 {
 	public PlanningViewDirectThreatPropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, CauseSchema.getObjectType());
+		super(projectToUse, projectToUse.getObjectManager().getSchemas().get(ObjectType.CAUSE));
 		
 		createAndAddFields(EAM.text("Threat"), new DirectThreatIcon());
 	}

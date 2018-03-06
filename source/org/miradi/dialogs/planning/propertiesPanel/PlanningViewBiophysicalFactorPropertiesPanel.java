@@ -21,14 +21,14 @@ package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.icons.BiophysicalFactorIcon;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.Project;
-import org.miradi.schemas.BiophysicalFactorSchema;
 
 public class PlanningViewBiophysicalFactorPropertiesPanel extends MinimalFactorPropertiesPanel
 {
 	public PlanningViewBiophysicalFactorPropertiesPanel(Project projectToUse) throws Exception
 	{
-		super(projectToUse, BiophysicalFactorSchema.getObjectType());
+		super(projectToUse, projectToUse.getObjectManager().getSchemas().get(ObjectType.BIOPHYSICAL_FACTOR));
 		
 		createAndAddFields(EAM.text("Biophysical Factor"), new BiophysicalFactorIcon());
 	}

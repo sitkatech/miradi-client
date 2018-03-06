@@ -24,14 +24,18 @@ import javax.swing.Icon;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.main.EAM;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.project.Project;
+import org.miradi.questions.EvidenceConfidenceTypeQuestion;
+import org.miradi.schemas.BaseObjectSchema;
 
 public class MinimalFactorPropertiesPanel extends ObjectDataInputPanelWithSections
 {
-	public MinimalFactorPropertiesPanel(Project projectToUse, int objectType)
+	public MinimalFactorPropertiesPanel(Project projectToUse, BaseObjectSchema factorSchemaToUse)
 	{
-		super(projectToUse, objectType);
+		super(projectToUse, factorSchemaToUse.getType());
+		factorSchema = factorSchemaToUse;
 		createSingleSection(EAM.text("Summary"));
 	}
 	
@@ -45,6 +49,10 @@ public class MinimalFactorPropertiesPanel extends ObjectDataInputPanelWithSectio
 		
 		addField(createMultilineField(Factor.TAG_TEXT));
 		addField(createMultilineField(Factor.TAG_COMMENTS));
+
+		if (canHaveEvidenceConfidence(factorSchema))
+			addField(createRadioButtonEditorField(factorSchema.getType(), BaseObject.TAG_EVIDENCE_CONFIDENCE, EvidenceConfidenceTypeQuestion.getQuestion(factorSchema)));
+
 		addField(createMultilineField(Factor.TAG_EVIDENCE_NOTES));
 	}
 
@@ -58,4 +66,13 @@ public class MinimalFactorPropertiesPanel extends ObjectDataInputPanelWithSectio
 		return EAM.text("Title|Factor Properties");
 	}
 
+	private boolean canHaveEvidenceConfidence(BaseObjectSchema factorSchema)
+	{
+		if (factorSchema.containsField(BaseObject.TAG_EVIDENCE_CONFIDENCE))
+			return true;
+
+		return false;
+	}
+
+	BaseObjectSchema factorSchema;
 }
