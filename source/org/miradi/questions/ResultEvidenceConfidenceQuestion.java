@@ -22,7 +22,7 @@ package org.miradi.questions;
 import org.miradi.main.EAM;
 
 
-public class ResultEvidenceConfidenceQuestion extends EvidenceConfidenceTypeBQuestion
+public class ResultEvidenceConfidenceQuestion extends EvidenceConfidenceTypeProjectQuestion
 {
     public ResultEvidenceConfidenceQuestion()
     {

@@ -22,9 +22,9 @@ package org.miradi.questions;
 import org.miradi.main.EAM;
 
 
-public abstract class EvidenceConfidenceTypeBQuestion extends EvidenceConfidenceTypeQuestion
+public abstract class EvidenceConfidenceTypeProjectQuestion extends EvidenceConfidenceTypeQuestion
 {
-    public EvidenceConfidenceTypeBQuestion(String questionDescriptionToUse)
+    public EvidenceConfidenceTypeProjectQuestion(String questionDescriptionToUse)
     {
         super(questionDescriptionToUse);
     }

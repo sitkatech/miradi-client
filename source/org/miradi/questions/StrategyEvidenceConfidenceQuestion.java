@@ -22,7 +22,7 @@ package org.miradi.questions;
 import org.miradi.main.EAM;
 
 
-public class StrategyEvidenceConfidenceQuestion extends EvidenceConfidenceTypeAQuestion
+public class StrategyEvidenceConfidenceQuestion extends EvidenceConfidenceTypeExternalQuestion
 {
     public StrategyEvidenceConfidenceQuestion()
     {

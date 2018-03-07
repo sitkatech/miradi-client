@@ -22,14 +22,14 @@ package org.miradi.questions;
 import org.miradi.main.EAM;
 
 
-public class EvidenceConfidenceTypeAQuestion extends EvidenceConfidenceTypeQuestion
+public class EvidenceConfidenceTypeExternalQuestion extends EvidenceConfidenceTypeQuestion
 {
-    public EvidenceConfidenceTypeAQuestion()
+    public EvidenceConfidenceTypeExternalQuestion()
     {
         super(EAM.text("To track the confidence of your evidence, use the following scale:"));
     }
 
-    public EvidenceConfidenceTypeAQuestion(String questionDescriptionToUse)
+    public EvidenceConfidenceTypeExternalQuestion(String questionDescriptionToUse)
     {
         super(questionDescriptionToUse);
     }

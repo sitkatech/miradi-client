@@ -22,7 +22,7 @@ package org.miradi.questions;
 import org.miradi.main.EAM;
 
 
-public class ViabilityRatingEvidenceConfidence extends EvidenceConfidenceTypeAQuestion
+public class ViabilityRatingEvidenceConfidence extends EvidenceConfidenceTypeExternalQuestion
 {
     public ViabilityRatingEvidenceConfidence()
     {

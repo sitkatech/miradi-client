@@ -421,9 +421,8 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_RESULT_REPORT_STATUS = "vocabulary_result_report_status";
 	public static final String VOCABULARY_MEASUREMENT_TREND = "vocabulary_measurement_trend";
 	
-	public static final String VOCABULARY_EVIDENCE_CONFIDENCE = "vocabulary_evidence_confidence";
-	public static final String VOCABULARY_MEASUREMENT_EVIDENCE_CONFIDENCE = "vocabulary_measurement_evidence_confidence";
-	public static final String VOCABULARY_RESULT_EVIDENCE_CONFIDENCE = "vocabulary_result_evidence_confidence";
+	public static final String VOCABULARY_EVIDENCE_CONFIDENCE_EXTERNAL = "vocabulary_evidence_confidence_external";
+	public static final String VOCABULARY_EVIDENCE_CONFIDENCE_PROJECT = "vocabulary_evidence_confidence_project";
 	public static final String VOCABULARY_COUNTRIES = "vocabulary_countries";
 	public static final String VOCABULARY_TEXT_BOX_Z_ORDER = "vocabulary_text_box_z_order";
 	public static final String VOCABULARY_THREAT_RATING = "vocabulary_threat_rating";

@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.questions;
 
 
-public class DesireEvidenceConfidenceQuestion extends EvidenceConfidenceTypeAQuestion
+public class DesireEvidenceConfidenceQuestion extends EvidenceConfidenceTypeExternalQuestion
 {
     public DesireEvidenceConfidenceQuestion()
     {
