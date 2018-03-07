@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-02 01:48-0800\n"
+"POT-Creation-Date: 2018-03-07 07:18-0800\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/miradi-client/"
@@ -301,7 +301,7 @@ msgstr "%s données de terrain seront perdues pour les mesures"
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:176
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:180
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1444
 msgid "(%s)"
 msgstr "(%s)"
@@ -1134,6 +1134,14 @@ msgstr ""
 "généralement des chaînes hiérarchiques de chiffres et/ou de lettres (le "
 "code) avec une description."
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:61
+msgid "Achieved"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportLongStatusQuestion.java:60
+msgid "Achieved - Desired result has been successfully achieved"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:211
 msgid "Action Plan: Objective-based"
 msgstr "Plan d'action : basé sur les objectfs"
@@ -1613,12 +1621,16 @@ msgstr "Créer d'autres espèces notables"
 msgid "Action|Manage|Create Progress Percent"
 msgstr "Créer un Pourcentage d'avancement"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractActionCreateProgressReport.java:36
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/AbstractActionCreateProgressReport.java:35
 msgid "Action|Manage|Create Progress Report"
 msgstr "Créer un Rapport d'avancement"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionTreeCreateExpenseAssignment.java:35
 msgid "Action|Manage|Create Projected Expense"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionCreateResultReport.java:35
+msgid "Action|Manage|Create Result Report"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionCreateTask.java:40
@@ -1695,9 +1707,13 @@ msgstr ""
 msgid "Action|Manage|Delete Progress Percent"
 msgstr "Supprimer Pourcentage d'avancement"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/AbstractActionDeleteProgressReport.java:36
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/AbstractActionDeleteProgressReport.java:35
 msgid "Action|Manage|Delete Progress Report"
 msgstr "Supprimer Rapport d'avancement"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionDeleteResultReport.java:35
+msgid "Action|Manage|Delete Result Report"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/AbstractActionMoveActivity.java:36
 msgid "Action|Manage|Move Activity to this Strategy"
@@ -2277,6 +2293,10 @@ msgstr "Êtes-vous sûr de vouloir supprimer ce Pourcentage d'avancement ?"
 msgid "Are you sure you want to delete this Progress Report?"
 msgstr "Êtes-vous sûr de vouloir supprimer ce Rapport d'avancement ?"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/doers/DeleteResultReportDoer.java:50
+msgid "Are you sure you want to delete this Result Report?"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/doers/DeleteStressDoer.java:52
 msgid "Are you sure you want to delete this Stress?"
 msgstr "Êtes-vous sûr de vouloir supprimer ce Stress ?"
@@ -2554,13 +2574,16 @@ msgid ""
 "Miradi."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewBiophysicalResultPropertiesPanel.java:33
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:43
 msgid "Biophysical Result"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:252
 msgid "Biophysical Result (Lavender Blue)"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo57.java:40
+msgid "Biophysical Results Result Reports"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:68
@@ -2993,7 +3016,7 @@ msgstr "Réduire la colonne sélectionnée"
 msgid "Column groups"
 msgstr "Groupes de colonnes"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCommentsPanel.java:48
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCommentsPanel.java:50
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:138
 msgid "Comments"
 msgstr "Commentaires"
@@ -4598,7 +4621,6 @@ msgid "Intensive Assessment"
 msgstr "Évaluation intensive"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:315
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewIntermediateResultPropertiesPanel.java:33
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:46
 msgid "Intermediate Result"
 msgstr "Résultat intermédiaire"
@@ -4617,6 +4639,10 @@ msgstr ""
 "un résultat spécifique dérivant de la mise en œuvre d'une ou plusieurs "
 "stratégies de conservation. Dans Miradi, un résultat intermédiaire est "
 "représenté par un rectangle bleu."
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo55.java:40
+msgid "Intermediate Results Result Reports"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/wizard/WizardTitlePanel.java:69
 msgid "Intro to View"
@@ -5686,9 +5712,29 @@ msgstr "Nouveau nom du projet :"
 msgid "No"
 msgstr "Non"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:67
+msgid "No Longer Relevant"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportLongStatusQuestion.java:66
+msgid ""
+"No Longer Relevant - Result is now assumed to be not achievable and/or not "
+"necessary"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/objecthelpers/DateUnit.java:177
 msgid "No date range for date Unit = "
 msgstr "Aucune plage de dates pour l'unité date ="
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:43
+msgid "Not Achieved"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportLongStatusQuestion.java:42
+msgid ""
+"Not Achieved - Available info shows desired result has failed to be achieved "
+"and/or undesired result produced"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/OpenStandardsProgressStatusQuestion.java:36
 msgid "Not Applicable"
@@ -5698,10 +5744,19 @@ msgstr "Non applicable"
 msgid "Not Effective"
 msgstr "Non efficace"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:30
+msgid "Not Known"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportLongStatusQuestion.java:30
+msgid "Not Known - Lack of sufficient info to assess result status"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:196
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:45
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/utils/Translation.java:356
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:606
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/AbstractResultReportStatusQuestion.java:38
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MiradiShareTaxonomyQuestion.java:58
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:35
@@ -5729,6 +5784,14 @@ msgstr "Non spécifié"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/OpenStandardsProgressStatusQuestion.java:33
 msgid "Not Started"
 msgstr "Non démarré"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:37
+msgid "Not Yet"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportLongStatusQuestion.java:36
+msgid "Not Yet - Too early to expect desired result"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:442
 msgid "Not all factors are being shown because %s tag(s) are checked"
@@ -5801,9 +5864,14 @@ msgstr "Oct"
 msgid "October to September"
 msgstr "D'octobre à septembre"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:55
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:42
 msgid "On-Track"
 msgstr "Sur la bonne voie"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportLongStatusQuestion.java:54
+msgid "On-Track - Desired result likely to be successfully achieved"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:42
 msgid "On-Track - Ongoing, generally on track"
@@ -5916,6 +5984,16 @@ msgstr "Classement général des menaces"
 msgid "Page:"
 msgstr "Page :"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:49
+msgid "Partially Achieved"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportLongStatusQuestion.java:48
+msgid ""
+"Partially Achieved - Desired result has been only partially achieved and/or "
+"mixture of success and failure"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:109
 msgid "Paste"
 msgstr "Coller"
@@ -5962,7 +6040,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/workplan/ProjectResourceManagementConfiguration.java:58
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/assignment/AssignmentsPropertiesSubPanel.java:134
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:308
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:310
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:47
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:196
 msgid "People"
@@ -6211,7 +6289,7 @@ msgstr "Avancement"
 msgid "Progress Percents"
 msgstr "Pourcentages d'avancement"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:824
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:825
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:166
 msgid "Progress Report"
 msgstr "Rapport d'avancement"
@@ -7141,8 +7219,9 @@ msgid "Strong Increase"
 msgstr "Forte augmentation"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:119
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:35
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:143
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResultFactorSummaryCommentsPanel.java:55
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:39
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:158
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:69
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:146
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:76
@@ -7390,9 +7469,13 @@ msgstr "Créer une nouvelle Méthode"
 msgid "TT|Create a new Progress Percent"
 msgstr "Créer un nouveau Pourcentage d'avancement"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractActionCreateProgressReport.java:42
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/AbstractActionCreateProgressReport.java:41
 msgid "TT|Create a new Progress Report"
 msgstr "Créer un nouveau Rapport d'avancement"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionCreateResultReport.java:41
+msgid "TT|Create a new Result Report"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionCreatePlanningViewEmptyConfiguration.java:41
 msgid "TT|Create a new blank Custom Planning View"
@@ -7518,9 +7601,13 @@ msgstr "Supprimer l'Organisation"
 msgid "TT|Delete Progress Percent"
 msgstr "Supprimer le Pourcentage d'avancement"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/AbstractActionDeleteProgressReport.java:42
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/AbstractActionDeleteProgressReport.java:41
 msgid "TT|Delete Progress Report"
 msgstr "Supprimer le Rapport d'avancement"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionDeleteResultReport.java:41
+msgid "TT|Delete Result Report"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionDeleteBendPoint.java:40
 msgid "TT|Delete a Bend Point"
@@ -8487,6 +8574,18 @@ msgstr ""
 msgid "This migration adds Progress Reports to the Project Summary."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo57.java:66
+msgid "This migration adds Result Reports to Biophysical Results."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo55.java:66
+msgid "This migration adds Result Reports to Intermediate Results."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo56.java:66
+msgid "This migration adds Result Reports to Threat Reduction Results."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo46.java:85
 msgid "This migration adds a UUID field to all objects that require it."
 msgstr ""
@@ -8599,6 +8698,10 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo36.java:66
 msgid "This migration handles the removal of extended progress reports."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo54.java:66
+msgid "This migration handles the removal of result reports."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo43.java:84
@@ -8806,7 +8909,7 @@ msgstr ""
 msgid "This will replace the existing file."
 msgstr "Ceci va remplacer le fichier existant"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:35
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:36
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:62
 msgid "Threat"
 msgstr "Menace"
@@ -8844,7 +8947,6 @@ msgstr "Évaluations de la menace - Détails"
 msgid "Threat Ratings - Table"
 msgstr "Évaluations de la menace - Tableau"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewThreatReductionResultPropertiesPanel.java:33
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:47
 msgid "Threat Reduction Result"
 msgstr "Résultat de réduction de la menace"
@@ -8865,6 +8967,10 @@ msgstr ""
 "dérive de la mise en œuvre d'une ou plusieurs stratégies de conservation. "
 "Dans Miradi, le résultat de réduction de la menace est représenté par un "
 "rectangle violet."
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo56.java:40
+msgid "Threat Reduction Results Result Reports"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/jump/ActionJumpThreatRatingWizardCheckTotalsStep.java:35
 msgid "Threat rating summary"
@@ -8935,7 +9041,7 @@ msgstr "Publics"
 msgid "Title|Biophysical Factor Properties"
 msgstr "Propriétés du facteur"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewBiophysicalResultPropertiesPanel.java:39
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewBiophysicalResultPropertiesPanel.java:36
 #, fuzzy
 msgid "Title|Biophysical Result Properties"
 msgstr "Propriétés du résultat intermédiaire"
@@ -8972,7 +9078,7 @@ msgstr "Panneau du diagramme"
 msgid "Title|Diagram Properties"
 msgstr "Propriétés du diagramme"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:49
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewDirectThreatPropertiesPanel.java:50
 msgid "Title|Direct Threat Properties"
 msgstr "Propriétés de la menace directe"
 
@@ -8989,7 +9095,7 @@ msgid "Title|Export Image Scale"
 msgstr "Expoter l'échelle de l'image"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramView.java:856
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:58
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:66
 msgid "Title|Factor Properties"
 msgstr "Propriétés du facteur"
 
@@ -9026,7 +9132,7 @@ msgstr "Propriétés de l'indicateur"
 msgid "Title|Information"
 msgstr "Informations"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewIntermediateResultPropertiesPanel.java:39
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewIntermediateResultPropertiesPanel.java:36
 msgid "Title|Intermediate Result Properties"
 msgstr "Propriétés du résultat intermédiaire"
 
@@ -9111,6 +9217,10 @@ msgstr "Nom de fichier du projet"
 msgid "Title|Report Template Properties"
 msgstr "Propriétés du modèle de rapport"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/resultReport/ResultReportSubPanel.java:53
+msgid "Title|Result Report"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:58
 msgid "Title|Results Chain Properties"
 msgstr "Propriétés de la chaîne de résultats"
@@ -9179,7 +9289,7 @@ msgstr "Équipe"
 msgid "Title|Team Properties"
 msgstr "Propriétés de l'équipe"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewThreatReductionResultPropertiesPanel.java:39
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/PlanningViewThreatReductionResultPropertiesPanel.java:36
 msgid "Title|Threat Reduction Result Properties"
 msgstr "Propriétés du résultat réduction de la menace"
 
@@ -9845,7 +9955,7 @@ msgstr ""
 "fichiers zip pour les sauvegardes du projet créées pendant les migrations au "
 "format. "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:381
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:386
 msgid "[Error]"
 msgstr "[Erreur]"
 
@@ -11138,6 +11248,18 @@ msgstr ""
 msgid "FieldLabel|23.EvidenceConfidence|Result Evidence"
 msgstr ""
 
+msgid "FieldLabel|23.ResultReportRefs|Result Reports"
+msgstr ""
+
+msgid "FieldLabel|23.PseudoLatestResultReportDate|Date"
+msgstr ""
+
+msgid "FieldLabel|23.PseudoLatestResultReportCode|Status"
+msgstr ""
+
+msgid "FieldLabel|23.PseudoLatestResultReportDetails|Result Report Details"
+msgstr ""
+
 msgid "FieldLabel|24.Label|Results Chain Name"
 msgstr "Nom de la chaîne de résultats"
 
@@ -11208,6 +11330,18 @@ msgid "FieldLabel|25.EvidenceConfidence|Result Evidence"
 msgstr ""
 
 msgid "FieldLabel|25.TaxonomyClassificationContainer|Program Classifications"
+msgstr ""
+
+msgid "FieldLabel|25.ResultReportRefs|Result Reports"
+msgstr ""
+
+msgid "FieldLabel|25.PseudoLatestResultReportDate|Date"
+msgstr ""
+
+msgid "FieldLabel|25.PseudoLatestResultReportCode|Status"
+msgstr ""
+
+msgid "FieldLabel|25.PseudoLatestResultReportDetails|Result Report Details"
 msgstr ""
 
 msgid "FieldLabel|26.Label|Text"
@@ -11976,6 +12110,18 @@ msgstr "Détails"
 msgid "FieldLabel|66.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
+msgid "FieldLabel|66.ResultReportRefs|Result Reports"
+msgstr ""
+
+msgid "FieldLabel|66.PseudoLatestResultReportDate|Date"
+msgstr ""
+
+msgid "FieldLabel|66.PseudoLatestResultReportCode|Status"
+msgstr ""
+
+msgid "FieldLabel|66.PseudoLatestResultReportDetails|Result Report Details"
+msgstr ""
+
 msgid "FieldLabel|67.Timeframe|Timeframe"
 msgstr ""
 
@@ -12021,6 +12167,18 @@ msgid "FieldLabel|70.NextSteps|Next Steps"
 msgstr ""
 
 msgid "FieldLabel|70.LessonsLearned|Lessons Learned"
+msgstr ""
+
+msgid "FieldLabel|71.ResultReport|Result Report"
+msgstr ""
+
+msgid "FieldLabel|71.ResultStatus|Result Status"
+msgstr ""
+
+msgid "FieldLabel|71.ResultDate|Result Date"
+msgstr ""
+
+msgid "FieldLabel|71.Details|Details"
 msgstr ""
 
 msgid ""
