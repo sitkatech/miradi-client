@@ -28,17 +28,17 @@ public class StrategyImpactQuestion extends StaticChoiceQuestionSortableByCode
 {
 	public StrategyImpactQuestion()
 	{
-		super(getImpactChoices(), EAM.text("If implemented, will the strategy lead to desired changes in the situation at your project site?"));
+		super(getImpactChoices(), EAM.text("To track the confidence of your evidence that the strategy will achieve its desired goals and/or objectives, use the following scale:"));
 	}
 	
 	static ChoiceItem[] getImpactChoices()
 	{
 		return new ChoiceItem[] {
 			new ChoiceItemWithLongDescriptionProvider("", EAM.text("Not Specified"), Color.WHITE),
-			new ChoiceItemWithLongDescriptionProvider(LOW_CODE, EAM.text("Low"), EAM.text("The strategy will probably not contribute to meaningful threat mitigation or target restoration."), COLOR_ALERT),
-			new ChoiceItemWithLongDescriptionProvider(MEDIUM_CODE, EAM.text("Medium"), EAM.text("The strategy could possibly help mitigate a threat or restore a target."), COLOR_CAUTION),
-			new ChoiceItemWithLongDescriptionProvider(HIGH_CODE, EAM.text("High"), EAM.text("The strategy is likely to help mitigate a threat or restore a target."), COLOR_OK),
-			new ChoiceItemWithLongDescriptionProvider(VERY_HIGH_CODE, EAM.text("Very High"), EAM.text("The strategy is very likely to completely mitigate a threat or restore a target."), COLOR_GREAT),
+			new ChoiceItemWithLongDescriptionProvider(LOW_CODE, EAM.text("Low"), EAM.text("The strategy is unlikely to meaningfully contribute to project goals and/or objectives."), COLOR_ALERT),
+			new ChoiceItemWithLongDescriptionProvider(MEDIUM_CODE, EAM.text("Medium"), EAM.text("The strategy could meaningfully contribute to project goals and/or objectives, but would need pilot-testing to ensure it is effective under this project’s conditions."), COLOR_CAUTION),
+			new ChoiceItemWithLongDescriptionProvider(HIGH_CODE, EAM.text("High"), EAM.text("The strategy is likely to meaningfully contribute to project goals and/or objectives, but would need effectiveness monitoring to ensure it is effective under this project’s conditions."), COLOR_OK),
+			new ChoiceItemWithLongDescriptionProvider(VERY_HIGH_CODE, EAM.text("Very High"), EAM.text("The strategy is very likely to meaningfully contribute to one or more project goals and/or objectives and can be implemented at scale with only implementation monitoring."), COLOR_GREAT),
 		};
 	}
 	

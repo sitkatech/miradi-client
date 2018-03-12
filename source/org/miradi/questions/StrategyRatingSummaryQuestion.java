@@ -36,7 +36,7 @@ public class StrategyRatingSummaryQuestion extends StaticChoiceQuestionSortableB
 		return new ChoiceItem[] {
 			new ChoiceItem(UNKNOWN_CODE, EAM.text("Unknown"), Color.WHITE),
 			new ChoiceItem("1", EAM.text("Not Effective"), COLOR_ALERT),
-			new ChoiceItem("2", EAM.text("Less Effective"), COLOR_CAUTION),
+			new ChoiceItem("2", EAM.text("Need More Info"), COLOR_CAUTION),
 			new ChoiceItem("3", EAM.text("Effective"), COLOR_OK),
 			new ChoiceItem("4", EAM.text("Very Effective"), COLOR_GREAT),
 		};
