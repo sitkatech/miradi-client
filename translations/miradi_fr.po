@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-07 08:18-0800\n"
+"POT-Creation-Date: 2018-03-12 06:18-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/miradi-client/"
@@ -4388,14 +4388,6 @@ msgstr "Identifier les compétences clés"
 msgid "If a notification dialog in this list is checked, "
 msgstr "Si une boîte de dialogue de notification est cochée dans cette liste,"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:31
-msgid ""
-"If implemented, will the strategy lead to desired changes in the situation "
-"at your project site?"
-msgstr ""
-"Si mise en oeuvre, la stratégie mènera-t-elle aux changements désirés de la "
-"situation sur votre site de projet ?"
-
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:677
 msgid ""
 "If you continue with this migration, some data will be lost.\n"
@@ -5002,10 +4994,6 @@ msgstr "Classements Legacy TNC"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:161
 msgid "Legend Table"
 msgstr "Tableau de légende"
-
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:39
-msgid "Less Effective"
-msgstr "Moins efficace"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramLinkColorQuestion.java:51
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorFontColorQuestion.java:52
@@ -5674,6 +5662,10 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:373
 msgid "Name = '"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:39
+msgid "Need More Info"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DashboardFlagsQuestion.java:36
@@ -8470,9 +8462,11 @@ msgid ""
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:39
-msgid "The strategy could possibly help mitigate a threat or restore a target."
+msgid ""
+"The strategy could meaningfully contribute to project goals and/or "
+"objectives, but would need pilot-testing to ensure it is effective under "
+"this project’s conditions."
 msgstr ""
-"La stratégie pourrait aider à atténuer une menace ou restaurer une cible. "
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyFeasibilityQuestion.java:40
 msgid ""
@@ -8496,7 +8490,10 @@ msgstr ""
 "La stratégie est éthiquement, techniquement ET financièrement faisable. "
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:40
-msgid "The strategy is likely to help mitigate a threat or restore a target."
+msgid ""
+"The strategy is likely to meaningfully contribute to project goals and/or "
+"objectives, but would need effectiveness monitoring to ensure it is "
+"effective under this project’s conditions."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyFeasibilityQuestion.java:38
@@ -8505,21 +8502,18 @@ msgstr ""
 "La stratégie n'est pas éthiquement, techniquement OU financièrement "
 "faisable. "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:41
-msgid ""
-"The strategy is very likely to completely mitigate a threat or restore a "
-"target."
-msgstr ""
-"La stratégie risque fort d'atténuer complètement une menace ou de restaurer "
-"une cible."
-
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:38
 msgid ""
-"The strategy will probably not contribute to meaningful threat mitigation or "
-"target restoration."
+"The strategy is unlikely to meaningfully contribute to project goals and/or "
+"objectives."
 msgstr ""
-"La stratégie ne contribuera probablement pas à l'atténuation significative "
-"de la menace ou de la restauration de la cible."
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:41
+msgid ""
+"The strategy is very likely to meaningfully contribute to one or more "
+"project goals and/or objectives and can be implemented at scale with only "
+"implementation monitoring."
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogfields/AnalysisLevelsEditorComponent.java:65
 msgid "Then by"
@@ -9337,6 +9331,12 @@ msgstr "Propriétés du modèle XSL"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultEvidenceConfidenceQuestion.java:29
 msgid ""
 "To track the confidence of the result evidence, use the following scale:"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:31
+msgid ""
+"To track the confidence of your evidence that the strategy will achieve its "
+"desired goals and/or objectives, use the following scale:"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatRatingEvidenceConfidenceQuestion.java:29
@@ -31852,6 +31852,35 @@ msgid ""
 msgstr ""
 "Marin___Atlantique tropical occidental___Écorégion marine du versant nord-"
 "est du Brésil___Brésil"
+
+#~ msgid ""
+#~ "If implemented, will the strategy lead to desired changes in the "
+#~ "situation at your project site?"
+#~ msgstr ""
+#~ "Si mise en oeuvre, la stratégie mènera-t-elle aux changements désirés de "
+#~ "la situation sur votre site de projet ?"
+
+#~ msgid "Less Effective"
+#~ msgstr "Moins efficace"
+
+#~ msgid ""
+#~ "The strategy could possibly help mitigate a threat or restore a target."
+#~ msgstr ""
+#~ "La stratégie pourrait aider à atténuer une menace ou restaurer une cible. "
+
+#~ msgid ""
+#~ "The strategy is very likely to completely mitigate a threat or restore a "
+#~ "target."
+#~ msgstr ""
+#~ "La stratégie risque fort d'atténuer complètement une menace ou de "
+#~ "restaurer une cible."
+
+#~ msgid ""
+#~ "The strategy will probably not contribute to meaningful threat mitigation "
+#~ "or target restoration."
+#~ msgstr ""
+#~ "La stratégie ne contribuera probablement pas à l'atténuation "
+#~ "significative de la menace ou de la restauration de la cible."
 
 #~ msgid ""
 #~ "<b><font color=\"#990000\">IMPORTANT: Miradi has a new file structure</"
