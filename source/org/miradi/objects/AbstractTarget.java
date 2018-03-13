@@ -33,9 +33,6 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.project.TNCViabilityFormula;
-import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.BaseObjectSchema;
@@ -89,12 +86,6 @@ abstract public class AbstractTarget extends Factor
 	}
 
 	@Override
-	public boolean canHaveKeyEcologicalAttribures()
-	{
-		return true;
-	}
-
-	@Override
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_SUB_TARGET_REFS))
@@ -126,12 +117,7 @@ abstract public class AbstractTarget extends Factor
 		}
 	}
 
-	public ORefList findAllKeaIndicatorRefs()
-	{
-		return new ORefList(IndicatorSchema.getObjectType(), findAllKeaIndicators());
-	}
-
-	public IdList findAllKeaIndicators()
+	private IdList findAllKeaIndicators()
 	{
 		IdList list = new IdList(IndicatorSchema.getObjectType());
 		IdList keas = getKeyEcologicalAttributes();
@@ -164,16 +150,6 @@ abstract public class AbstractTarget extends Factor
 		return getData(TAG_VIABILITY_MODE);
 	}
 
-	public ChoiceItem[] getKeyEcologicalAttributesTypes()
-	{
-		if (isViabilityModeTNC())
-		{
-			ChoiceQuestion question = new KeyEcologicalAttributeTypeQuestion();
-			return question.getChoices();
-		}
-		return new ChoiceItem[0];
-	}
-
 	public String getTargetViability()
 	{
 		if(isViabilityModeTNC())
@@ -181,7 +157,7 @@ abstract public class AbstractTarget extends Factor
 		return getBasicTargetStatus();
 	}
 
-	public String computeTNCViability()
+	private String computeTNCViability()
 	{
 		CodeList ratingForEachType = new CodeList();
 		
@@ -197,9 +173,9 @@ abstract public class AbstractTarget extends Factor
 		return TNCViabilityFormula.getAverageRatingCode(ratingForEachType);
 	}
 
-	public String computeTNCViabilityOfKEAType(String typeCode)
+	private String computeTNCViabilityOfKEAType(String typeCode)
 	{
-		KeyEcologicalAttribute[] keas = getKeasForType(typeCode);
+		KeyEcologicalAttribute[] keas = getKEAsForType(typeCode);
 		CodeList codes = new CodeList();
 		for(int i = 0; i < keas.length; ++i)
 		{
@@ -208,7 +184,7 @@ abstract public class AbstractTarget extends Factor
 		return TNCViabilityFormula.getTotalCategoryRatingCode(codes);
 	}
 
-	public KeyEcologicalAttribute[] getKeasForType(String typeCode)
+	private KeyEcologicalAttribute[] getKEAsForType(String typeCode)
 	{
 		IdList keyEcologicalAttributeIds = getKeyEcologicalAttributes();
 		int childCount = keyEcologicalAttributeIds.size();
@@ -238,7 +214,7 @@ abstract public class AbstractTarget extends Factor
 		return TNCViabilityFormula.getAverageRatingCode(codes);
 	}
 
-	public CodeList getActiveKeyEcologicalAttributeTypes()
+	private CodeList getActiveKeyEcologicalAttributeTypes()
 	{
 		CodeList allCodes = new CodeList();
 		IdList keas = getKeyEcologicalAttributes();

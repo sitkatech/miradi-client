@@ -40,7 +40,6 @@ import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
-import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.utils.CommandVector;
 
 abstract public class Factor extends BaseObject
@@ -302,11 +301,6 @@ abstract public class Factor extends BaseObject
 		return false;
 	}
 
-	public boolean canHaveKeyEcologicalAttribures()
-	{
-		return false;
-	}
-	
 	public boolean mustBeDeletedBecauseParentIsGone()
 	{
 		ORefList referrers = findObjectsThatReferToUs(getObjectManager(), ObjectType.DIAGRAM_FACTOR, getRef());
