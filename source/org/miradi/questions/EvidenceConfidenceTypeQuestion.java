@@ -38,28 +38,37 @@ public abstract class EvidenceConfidenceTypeQuestion extends StaticChoiceQuestio
 
     public static ChoiceQuestion getQuestion(int objectType)
     {
+        Class questionClass = getQuestionClass(objectType);
+        return StaticQuestionManager.getQuestion(questionClass);
+    }
+
+    public static Class getQuestionClass(int objectType)
+    {
         if (objectType == ObjectType.STRATEGY)
-            return StaticQuestionManager.getQuestion(StrategyEvidenceConfidenceQuestion.class);
+            return StrategyEvidenceConfidenceQuestion.class;
 
         if (objectType == ObjectType.INDICATOR)
-            return StaticQuestionManager.getQuestion(ViabilityRatingEvidenceConfidence.class);
+            return ViabilityRatingEvidenceConfidence.class;
+
+        if (objectType == ObjectType.MEASUREMENT)
+            return MeasurementEvidenceConfidenceQuestion.class;
 
         if (objectType == ObjectType.GOAL)
-            return StaticQuestionManager.getQuestion(DesireEvidenceConfidenceQuestion.class);
+            return DesireEvidenceConfidenceQuestion.class;
 
         if (objectType == ObjectType.OBJECTIVE)
-            return StaticQuestionManager.getQuestion(DesireEvidenceConfidenceQuestion.class);
+            return DesireEvidenceConfidenceQuestion.class;
 
         if (objectType == ObjectType.THREAT_REDUCTION_RESULT)
-            return StaticQuestionManager.getQuestion(ResultEvidenceConfidenceQuestion.class);
+            return ResultEvidenceConfidenceQuestion.class;
 
         if (objectType == ObjectType.INTERMEDIATE_RESULT)
-            return StaticQuestionManager.getQuestion(ResultEvidenceConfidenceQuestion.class);
+            return ResultEvidenceConfidenceQuestion.class;
 
         if (objectType == ObjectType.BIOPHYSICAL_RESULT)
-            return StaticQuestionManager.getQuestion(ResultEvidenceConfidenceQuestion.class);
+            return ResultEvidenceConfidenceQuestion.class;
 
-        throw new RuntimeException("Need to implement getQuestion for object type: " + objectType);
+        throw new RuntimeException("Need to implement getQuestionClass for object type: " + objectType);
     }
 
     public static ChoiceQuestion getQuestion(BaseObjectSchema factorSchema)

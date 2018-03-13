@@ -102,7 +102,10 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		
 		if (isCommentsColumn(modelColumn))
 			return true;
-		
+
+		if (isEvidenceNotesColumn(modelColumn))
+			return true;
+
 		return super.isFormattedColumn(modelColumn);
 	}
 
@@ -187,7 +190,14 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		
 		if (isPriorityColumn(modelColumn))
 			return PriorityRatingQuestion.class;
-		
+
+		if(isEvidenceConfidenceColumn(modelColumn))
+		{
+			BaseObject baseObject = getBaseObjectForRow(row);
+			if(baseObject != null)
+				return EvidenceConfidenceTypeQuestion.getQuestionClass(baseObject.getType());
+		}
+
 		return null;
 	}
 	
@@ -203,7 +213,10 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		
 		if(isProjectResourceTypeColumn(column))
 			return true;
-		
+
+		if(isEvidenceConfidenceColumn(column))
+			return true;
+
 		return false;
 	}
 	
@@ -377,6 +390,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 
 			if(isAssignedWhenColumn(columnTag))
 				return getFilteredWhenForAssignments(baseObject);
+
+			if (columnTag.equals(BaseObject.TAG_EVIDENCE_CONFIDENCE))
+				return EvidenceConfidenceTypeQuestion.getQuestion(baseObject.getType()).findChoiceByCode(rawValue);
 
 			return new TaglessChoiceItem(rawValue);
 		}
@@ -644,6 +660,22 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			return true;
 		
 		return getColumnTag(column).equals(Desire.TAG_FULL_TEXT);
+	}
+
+	private boolean isEvidenceNotesColumn(int column)
+	{
+		if (getColumnTag(column).equals(BaseObject.TAG_EVIDENCE_NOTES))
+			return true;
+
+		return false;
+	}
+
+	private boolean isEvidenceConfidenceColumn(int column)
+	{
+		if (getColumnTag(column).equals(BaseObject.TAG_EVIDENCE_CONFIDENCE))
+			return true;
+
+		return false;
 	}
 
 	private boolean isIndicatorsColumn(int column)
