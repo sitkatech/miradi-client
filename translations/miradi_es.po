@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-12 06:18-0700\n"
+"POT-Creation-Date: 2018-03-13 03:18-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/miradi-client/"
@@ -5916,7 +5916,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/workplan/ProjectResourceManagementConfiguration.java:58
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:218
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/assignment/AssignmentsPropertiesSubPanel.java:134
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:310
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:323
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/WorkPlanCategoryTypesQuestion.java:47
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:196
 msgid "People"
@@ -9806,7 +9806,7 @@ msgstr ""
 "comandos exportar e importar. Miradi también creará archivos zip para las "
 "copias de seguridad del proyecto creadas durante las migraciones de formato."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:386
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/upperPanel/PlanningViewMainTableModel.java:402
 msgid "[Error]"
 msgstr "[Error]"
 
@@ -10719,6 +10719,12 @@ msgid "FieldLabel|12.Rating|Rating"
 msgstr "Clasificación"
 
 msgid "FieldLabel|12.ActivityTypeLabel|Monitoring"
+msgstr ""
+
+msgid "FieldLabel|12.EvidenceNotes|Evidence Notes"
+msgstr ""
+
+msgid "FieldLabel|12.EvidenceConfidence|Evidence Rating"
 msgstr ""
 
 msgid "FieldLabel|13.DiagramLink|Diagram Link"
