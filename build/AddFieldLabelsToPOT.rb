@@ -13,6 +13,7 @@ File.open(pot_file, 'a') do | output |
 			next
 		end
 		value.strip!
+    value.gsub! '\u' '\\u'
 		if value.length == 0
 			next
 		end
