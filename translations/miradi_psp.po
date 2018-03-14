@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-14 01:33-0700\n"
+"POT-Creation-Date: 2018-03-14 06:33-0700\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -11383,11 +11383,11 @@ msgstr "FieldLabel|32.Detail|Details"
 msgid "FieldLabel|32.Trend|Trend"
 msgstr "FieldLabel|32.Trend|Trend"
 
-msgid "FieldLabel|32.SampleSize|Size"
-msgstr "FieldLabel|32.SampleSize|Size"
+msgid "FieldLabel|32.SampleSize|Sample Size (n)"
+msgstr ""
 
-msgid "FieldLabel|32.SamplePrecision|Precision ±"
-msgstr "FieldLabel|32.SamplePrecision|Precision ±"
+msgid "FieldLabel|32.SamplePrecision|Statistical Precision (\\u00B1)"
+msgstr ""
 
 msgid "FieldLabel|32.SamplePrecisionType|Precision Type"
 msgstr "FieldLabel|32.SamplePrecisionType|Precision Type"
@@ -37451,6 +37451,12 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "FieldLabel|32.SampleSize|Size"
+#~ msgstr "FieldLabel|32.SampleSize|Size"
+
+#~ msgid "FieldLabel|32.SamplePrecision|Precision ±"
+#~ msgstr "FieldLabel|32.SamplePrecision|Precision ±"
 
 #~ msgid ""
 #~ "If implemented, will the strategy lead to desired changes in the "
