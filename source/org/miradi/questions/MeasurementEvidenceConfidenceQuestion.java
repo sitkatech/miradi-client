@@ -46,6 +46,6 @@ public class MeasurementEvidenceConfidenceQuestion extends EvidenceConfidenceTyp
 
     protected String getIntensiveAssessmentChoiceItemDescription()
     {
-        return EAM.text("Values are derived from data collected about this specific project site using relatively systematic methods that typically provide detailed quantitative or qualitative data, and often include a formal estimate of error.");
+        return EAM.text("Values are derived from data collected about this specific project site using relatively systematic methods that typically provide detailed quantitative or qualitative data, and often include a formal estimate of statistical precision.");
     }
 }
