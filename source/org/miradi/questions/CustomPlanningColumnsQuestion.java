@@ -92,7 +92,6 @@ public class CustomPlanningColumnsQuestion extends MultipleSelectStaticChoiceQue
 				createChoiceItem(Indicator.META_COLUMN_TAG),
 				createChoiceItem(Factor.TAG_COMMENTS),
 				createChoiceItem(Desire.TAG_FULL_TEXT),
-				createChoiceItem(BaseObject.TAG_EVIDENCE_CONFIDENCE),
 				createChoiceItem(BaseObject.TAG_EVIDENCE_NOTES),
 		};
 	}
