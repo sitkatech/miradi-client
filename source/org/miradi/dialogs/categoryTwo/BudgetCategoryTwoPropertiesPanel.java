@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.categoryTwo;
 
-import org.miradi.dialogs.base.AbsractBudgetCategoryPropertiesPanel;
+import org.miradi.dialogs.base.AbstractBudgetCategoryPropertiesPanel;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.schemas.BudgetCategoryTwoSchema;
 
-public class BudgetCategoryTwoPropertiesPanel extends AbsractBudgetCategoryPropertiesPanel
+public class BudgetCategoryTwoPropertiesPanel extends AbstractBudgetCategoryPropertiesPanel
 {
 	public BudgetCategoryTwoPropertiesPanel(Project projectToUse) throws Exception
 	{

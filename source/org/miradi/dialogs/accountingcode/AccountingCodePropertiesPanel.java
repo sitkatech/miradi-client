@@ -19,12 +19,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.accountingcode;
 
-import org.miradi.dialogs.base.AbsractBudgetCategoryPropertiesPanel;
+import org.miradi.dialogs.base.AbstractBudgetCategoryPropertiesPanel;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
 import org.miradi.schemas.AccountingCodeSchema;
 
-public class AccountingCodePropertiesPanel extends AbsractBudgetCategoryPropertiesPanel
+public class AccountingCodePropertiesPanel extends AbstractBudgetCategoryPropertiesPanel
 {
 	public AccountingCodePropertiesPanel(Project projectToUse) throws Exception
 	{

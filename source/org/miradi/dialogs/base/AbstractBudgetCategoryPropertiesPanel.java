@@ -17,23 +17,16 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.dialogs.fundingsource;
 
-import org.miradi.dialogs.base.AbstractBudgetCategoryPropertiesPanel;
-import org.miradi.main.EAM;
+package org.miradi.dialogs.base;
+
+import org.miradi.forms.objects.BudgetCategoryPropertiesForm;
 import org.miradi.project.Project;
-import org.miradi.schemas.FundingSourceSchema;
 
-public class FundingSourcePropertiesPanel extends AbstractBudgetCategoryPropertiesPanel
+abstract public class AbstractBudgetCategoryPropertiesPanel extends ObjectDataInputPanel
 {
-	public FundingSourcePropertiesPanel(Project projectToUse) throws Exception
+	public AbstractBudgetCategoryPropertiesPanel(Project projectToUse, int objectType) throws Exception
 	{
-		super(projectToUse, FundingSourceSchema.getObjectType());
-	}
-
-	@Override
-	public String getPanelDescription()
-	{
-		return EAM.text("Title|Funding Source Properties");
+		super(projectToUse, objectType, new BudgetCategoryPropertiesForm(objectType));
 	}
 }
