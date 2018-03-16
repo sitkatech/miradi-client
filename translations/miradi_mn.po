@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-14 06:33-0700\n"
+"POT-Creation-Date: 2018-03-16 05:48-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -6889,7 +6889,7 @@ msgstr ""
 msgid "Start:"
 msgstr "Эхлэх:"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:56
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:57
 msgid "Status"
 msgstr "Статус"
 
@@ -7078,7 +7078,7 @@ msgstr "Эрчтэй өсөлт"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:158
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:69
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:146
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:76
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:79
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/indicator/MethodPropertiesPanel.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:38
@@ -8969,7 +8969,7 @@ msgstr "Гарчиг|Санхүүжилтийн эх үүсвэрийн  агу�
 msgid "Title|Goal Properties"
 msgstr "Гарчиг|Зорилгын  агуулга"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:93
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:94
 msgid "Title|Human Wellbeing Target Properties"
 msgstr ""
 
@@ -9123,7 +9123,7 @@ msgstr "Гарчиг|Дарамтад суурилсан аюул заналын
 msgid "Title|Tag Properties Panel"
 msgstr "Гарчиг|Тэмдэглэгээний агуулга"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:95
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:96
 msgid "Title|Target Properties"
 msgstr "Гарчиг|Хамгаалах зүйлийн  агуулга"
 
@@ -10890,6 +10890,9 @@ msgstr "БаганыХаяг|17.Объект|Объект"
 msgid "FieldLabel|17.Status|Status"
 msgstr "БаганыХаяг|17.Статус|Статус"
 
+msgid "FieldLabel|17.FutureStatus|Future Status"
+msgstr ""
+
 msgid "FieldLabel|17.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
@@ -11133,6 +11136,9 @@ msgid "FieldLabel|22.TargetViability|Target Viability Status"
 msgstr ""
 "БаганыХаяг|22.ХамгаалахЗүйлийнАмьдрахЧадвар|Хамгаалах зүйлийн амьдрах "
 "чадварын байдал"
+
+msgid "FieldLabel|22.TargetFutureViability|Target Viability Future Status"
+msgstr ""
 
 msgid "FieldLabel|22.Goals|Related Goals"
 msgstr "БаганыХаяг|22.Зорилгууд|Холбогдох зорилгууд"
@@ -11889,6 +11895,9 @@ msgid "FieldLabel|52.TargetViability|Target Viability Status"
 msgstr ""
 "БаганыХаяг|52.Хамгаалах зүйлийн амьдрах чадвар|Хамгаалах зүйлийн амьдрах "
 "чадвар статус"
+
+msgid "FieldLabel|52.TargetFutureViability|Target Viability Future Status"
+msgstr ""
 
 msgid "FieldLabel|52.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""

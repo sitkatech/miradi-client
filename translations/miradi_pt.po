@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-14 06:33-0700\n"
+"POT-Creation-Date: 2018-03-16 05:48-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/miradi-client/"
@@ -7004,7 +7004,7 @@ msgstr ""
 msgid "Start:"
 msgstr "Iníciar:"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:56
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:57
 msgid "Status"
 msgstr "Estatus"
 
@@ -7192,7 +7192,7 @@ msgstr "Aumento Forte"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:158
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:69
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:146
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:76
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:79
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/indicator/MethodPropertiesPanel.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:38
@@ -9110,7 +9110,7 @@ msgstr "Propriedades de Fontes de Financiamento"
 msgid "Title|Goal Properties"
 msgstr "Propriedades de Objetivos"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:93
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:94
 msgid "Title|Human Wellbeing Target Properties"
 msgstr ""
 
@@ -9264,7 +9264,7 @@ msgstr "Classificação de Alvo Baseada em Estresse"
 msgid "Title|Tag Properties Panel"
 msgstr "Painel de Propriedades de Tag"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:95
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:96
 msgid "Title|Target Properties"
 msgstr "Propriedades de Alvo"
 
@@ -10947,6 +10947,9 @@ msgstr "Item"
 msgid "FieldLabel|17.Status|Status"
 msgstr "Estado"
 
+msgid "FieldLabel|17.FutureStatus|Future Status"
+msgstr ""
+
 msgid "FieldLabel|17.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
@@ -11171,6 +11174,9 @@ msgstr "Estado de Viabilidade do Alvo"
 
 msgid "FieldLabel|22.TargetViability|Target Viability Status"
 msgstr "Estado de Viabilidade do Alvo"
+
+msgid "FieldLabel|22.TargetFutureViability|Target Viability Future Status"
+msgstr ""
 
 msgid "FieldLabel|22.Goals|Related Goals"
 msgstr "Objetivos Relacionados"
@@ -11873,6 +11879,9 @@ msgstr "Modo Viabilidade"
 
 msgid "FieldLabel|52.TargetViability|Target Viability Status"
 msgstr "Estado de Viabilidade do Alvo"
+
+msgid "FieldLabel|52.TargetFutureViability|Target Viability Future Status"
+msgstr ""
 
 msgid "FieldLabel|52.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-14 06:33-0700\n"
+"POT-Creation-Date: 2018-03-16 05:48-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/miradi-client/"
@@ -6810,7 +6810,7 @@ msgstr ""
 msgid "Start:"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:56
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:57
 msgid "Status"
 msgstr "Status "
 
@@ -6999,7 +6999,7 @@ msgstr "Kenaikan Besar"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:158
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:69
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:146
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:76
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:79
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/indicator/MethodPropertiesPanel.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:38
@@ -8893,7 +8893,7 @@ msgstr "Sifat-sifat Sumber Dana "
 msgid "Title|Goal Properties"
 msgstr "Sifat-sifat Sasaran "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:93
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:94
 msgid "Title|Human Wellbeing Target Properties"
 msgstr ""
 
@@ -9047,7 +9047,7 @@ msgstr "Peringkat Ancaman Berdasarkan Tekanan "
 msgid "Title|Tag Properties Panel"
 msgstr "Panel Sifat-sifat Tag"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:95
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:96
 msgid "Title|Target Properties"
 msgstr "Properti Target "
 
@@ -10738,6 +10738,9 @@ msgstr "Butir "
 msgid "FieldLabel|17.Status|Status"
 msgstr "Status "
 
+msgid "FieldLabel|17.FutureStatus|Future Status"
+msgstr ""
+
 msgid "FieldLabel|17.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
@@ -10962,6 +10965,9 @@ msgstr "Status Kelangsungan Target "
 
 msgid "FieldLabel|22.TargetViability|Target Viability Status"
 msgstr "Status Kelangsungan Target "
+
+msgid "FieldLabel|22.TargetFutureViability|Target Viability Future Status"
+msgstr ""
 
 msgid "FieldLabel|22.Goals|Related Goals"
 msgstr "Sasaran Terkait "
@@ -11664,6 +11670,9 @@ msgstr "Mode Kelangsungan "
 
 msgid "FieldLabel|52.TargetViability|Target Viability Status"
 msgstr "Status Kelangsungan Target "
+
+msgid "FieldLabel|52.TargetFutureViability|Target Viability Future Status"
+msgstr ""
 
 msgid "FieldLabel|52.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""

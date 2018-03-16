@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-14 06:33-0700\n"
+"POT-Creation-Date: 2018-03-16 05:48-0700\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -6966,7 +6966,7 @@ msgstr ""
 msgid "Start:"
 msgstr "Start:"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:56
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:57
 msgid "Status"
 msgstr "Status"
 
@@ -7152,7 +7152,7 @@ msgstr "Strong Increase"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:158
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:69
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:146
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:76
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:79
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/indicator/MethodPropertiesPanel.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/TargetViabilityKeaPropertiesPanel.java:38
@@ -9066,7 +9066,7 @@ msgstr "Title|Funding Source Properties"
 msgid "Title|Goal Properties"
 msgstr "Title|Goal Properties"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:93
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:94
 msgid "Title|Human Wellbeing Target Properties"
 msgstr "Title|Human Wellbeing Component Properties"
 
@@ -9220,7 +9220,7 @@ msgstr "Title|Stress-Based Pressure Rating"
 msgid "Title|Tag Properties Panel"
 msgstr "Title|Tag Properties Panel"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:95
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:96
 msgid "Title|Target Properties"
 msgstr "Title|Component Properties"
 
@@ -10912,6 +10912,9 @@ msgstr "FieldLabel|17.Item|Item"
 msgid "FieldLabel|17.Status|Status"
 msgstr "FieldLabel|17.Status|Status"
 
+msgid "FieldLabel|17.FutureStatus|Future Status"
+msgstr ""
+
 msgid "FieldLabel|17.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
@@ -11136,6 +11139,9 @@ msgstr "FieldLabel|22.TargetStatus|Component Viability Status"
 
 msgid "FieldLabel|22.TargetViability|Target Viability Status"
 msgstr "FieldLabel|22.TargetViability|Component Viability Status"
+
+msgid "FieldLabel|22.TargetFutureViability|Target Viability Future Status"
+msgstr ""
 
 msgid "FieldLabel|22.Goals|Related Goals"
 msgstr "FieldLabel|22.Goals|Related Goals"
@@ -11850,6 +11856,9 @@ msgstr "FieldLabel|52.ViabilityMode|Viability Mode"
 
 msgid "FieldLabel|52.TargetViability|Target Viability Status"
 msgstr "FieldLabel|52.TargetViability|Component Viability Status"
+
+msgid "FieldLabel|52.TargetFutureViability|Target Viability Future Status"
+msgstr ""
 
 msgid "FieldLabel|52.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
