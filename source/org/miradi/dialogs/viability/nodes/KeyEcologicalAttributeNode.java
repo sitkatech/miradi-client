@@ -81,7 +81,10 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 		String rawValue = kea.getData(tag);
 		if (tag.equals(KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS))
 			return new StatusQuestion().findChoiceByCode(rawValue);
-		
+
+		if (tag.equals(KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_FUTURE_STATUS))
+			return new StatusQuestion().findChoiceByCode(rawValue);
+
 		if (tag.equals(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE))
 			return new KeyEcologicalAttributeTypeQuestion().findChoiceByCode(rawValue);
 		
@@ -90,7 +93,6 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 		
 		return new TaglessChoiceItem(kea.getData(tag));
 	}
-
 
 	@Override
 	public String getNodeLabel()
@@ -121,6 +123,7 @@ public class KeyEcologicalAttributeNode extends TreeTableNode
 		KeyEcologicalAttribute.TAG_LABEL, 
 		KeyEcologicalAttribute.TAG_EMPTY,
 		KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS, 
+		KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_FUTURE_STATUS,
 		KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE,
 		KeyEcologicalAttribute.TAG_EMPTY,
 		KeyEcologicalAttribute.TAG_EMPTY,

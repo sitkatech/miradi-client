@@ -95,6 +95,7 @@ public class SingletonObjectExporter implements Xmpz2XmlConstants
 		writeProjectSummaryElement(ProjectMetadata.TAG_PROJECT_DESCRIPTION);
 		writeOverallProjectThreatRating();
 		writeOverallProjectViabilityRating();
+		writeOverallProjectViabilityFutureRating();
 		writeExternalAppIds();
 		getWriter().writeNonOptionalCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_THREAT_RATING_MODE, new ThreatRatingModeChoiceQuestion(), getMetadata().getThreatRatingMode());
 		getWriter().writeNonOptionalCodeElement(PROJECT_SUMMARY, ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE, new TargetModeQuestion(), getMetadata().getData(ProjectMetadata.TAG_HUMAN_WELFARE_TARGET_MODE));
@@ -125,12 +126,20 @@ public class SingletonObjectExporter implements Xmpz2XmlConstants
 	
 	private void writeOverallProjectViabilityRating() throws Exception
 	{
-		String code = Target.computeTNCViability(getProject());
+		String code = Target.computeOverallProjectViability(getProject());
 		ChoiceItem choiceItem = StaticQuestionManager.getQuestion(StatusQuestion.class).findChoiceByCode(code);
 		
 		getWriter().writeElement(PROJECT_SUMMARY + OVERALL_PROJECT_VIABILITY_RATING, choiceItem.getCode());
 	}
 	
+	private void writeOverallProjectViabilityFutureRating() throws Exception
+	{
+		String code = Target.computeOverallProjectFutureViability(getProject());
+		ChoiceItem choiceItem = StaticQuestionManager.getQuestion(StatusQuestion.class).findChoiceByCode(code);
+
+		getWriter().writeElement(PROJECT_SUMMARY + OVERALL_PROJECT_VIABILITY_FUTURE_RATING, choiceItem.getCode());
+	}
+
 	private void writeExternalAppIds() throws Exception
 	{
 		String stringRefMapAsString = getMetadata().getData(ProjectMetadata.TAG_XENODATA_STRING_REF_MAP);

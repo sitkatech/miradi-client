@@ -53,6 +53,7 @@ public class NonDiagramAbstractTargetPropertiesPanel extends ObjectDataInputPane
 
 		Vector<String> sectionTags = new Vector<String>();
 		sectionTags.add(CustomPlanningColumnsQuestion.META_CURRENT_RATING);
+		sectionTags.add(ViabilityTreeModel.VIRTUAL_TAG_FUTURE_STATUS);
 		createSingleSection(EAM.text("Status"), sectionTags);
 		addSubPanelField(simpleModeStatusSubPanel);
 		addSubPanelField(viabilityModeStatusSubPanel);
@@ -72,11 +73,11 @@ public class NonDiagramAbstractTargetPropertiesPanel extends ObjectDataInputPane
 		if (abstractTargetRef.isValid())
 		{
 			AbstractTarget abstractTarget = AbstractTarget.findTarget(getProject(), abstractTargetRef);
-			simpleModeStatusSubPanel.setVisible(!abstractTarget.isViabilityModeTNC());
-			viabilityModeStatusSubPanel.setVisible(abstractTarget.isViabilityModeTNC());
+			simpleModeStatusSubPanel.setVisible(!abstractTarget.isViabilityModeKEA());
+			viabilityModeStatusSubPanel.setVisible(abstractTarget.isViabilityModeKEA());
 		}
 	}
-	
+
 	private ORef extractTargetRef(ORefList refs)
 	{
 		ORef targetRef = refs.getRefForType(TargetSchema.getObjectType());
@@ -94,7 +95,7 @@ public class NonDiagramAbstractTargetPropertiesPanel extends ObjectDataInputPane
 
 		return EAM.text("Title|Target Properties");
 	}
-	
+
 	private class SimpleModeStatusSubPanel extends ObjectDataInputPanel
 	{
 		public SimpleModeStatusSubPanel(Project projectToUse, ORef refToUse)
@@ -110,7 +111,7 @@ public class NonDiagramAbstractTargetPropertiesPanel extends ObjectDataInputPane
 			return "SimpleModeStatusSubPanel";
 		}
 	}
-	
+
 	private class ViabilityModeStatusSubPanel extends ObjectDataInputPanel
 	{
 		public ViabilityModeStatusSubPanel(Project projectToUse, ORef refToUse)
@@ -118,6 +119,7 @@ public class NonDiagramAbstractTargetPropertiesPanel extends ObjectDataInputPane
 			super(projectToUse, refToUse);
 			
 			addField(createReadOnlyChoiceField(targetType, AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY, StaticQuestionManager.getQuestion(StatusQuestion.class)));
+			addField(createReadOnlyChoiceField(targetType, AbstractTarget.PSEUDO_TAG_TARGET_FUTURE_VIABILITY, StaticQuestionManager.getQuestion(StatusQuestion.class)));
 		}
 
 		@Override

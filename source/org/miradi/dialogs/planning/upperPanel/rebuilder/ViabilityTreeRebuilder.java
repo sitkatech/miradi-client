@@ -112,7 +112,7 @@ public class ViabilityTreeRebuilder extends AbstractTreeRebuilder
 		AbstractTarget target = AbstractTarget.findTarget(getProject(), targetRef);
 		childRefs.addAll(new ORefList(IndicatorSchema.getObjectType(), target.getDirectOrIndirectIndicators()));
 		
-		if (target.isViabilityModeTNC()) 
+		if (target.isViabilityModeKEA())
 			childRefs.addAll(getSortedKeaRefs(target));
 		
 		return childRefs;

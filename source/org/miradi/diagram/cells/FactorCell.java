@@ -482,7 +482,7 @@ abstract public class FactorCell extends EAMGraphCell
 	
 	public boolean isPointInViability(Point pointRelativeToOrigin)
 	{
-		if (isTarget() && ((Target)getWrappedFactor()).isViabilityModeTNC())
+		if (isTarget() && ((Target)getWrappedFactor()).isViabilityModeKEA())
 		{
 			return (isPointInIndicator(pointRelativeToOrigin));
 		}

@@ -37,7 +37,7 @@ public class CreateKeyEcologicalAttributeDoer extends CreateAnnotationDoer
 			return false;
 		
 		if (AbstractTarget.isAbstractTarget(selectedParent))
-			return ((AbstractTarget)selectedParent).isViabilityModeTNC();
+			return ((AbstractTarget)selectedParent).isViabilityModeKEA();
 
 		return false;
 	}

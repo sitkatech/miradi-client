@@ -37,7 +37,7 @@ abstract public class AbstractTargetExporter extends BaseObjectWithThreatRatingE
 	{
 		super(writerToUse, objectTypeToUse);
 	}
-	
+
 	@Override
 	protected void writeFields(final BaseObject baseObject, final BaseObjectSchema baseObjectSchema) throws Exception
 	{
@@ -46,6 +46,7 @@ abstract public class AbstractTargetExporter extends BaseObjectWithThreatRatingE
 		AbstractTarget abstractTarget = (AbstractTarget) baseObject;
 		writeNonOptionalCodeElement(AbstractTarget.TAG_VIABILITY_MODE, ViabilityModeQuestion.class, abstractTarget.getViabilityMode());
 		getWriter().writeOptionalCodeElement(getContainerElementName(), TARGET_CALCULATED_STATUS_ELEMENT_NAME, abstractTarget.getTargetViability());
+		getWriter().writeOptionalCodeElement(getContainerElementName(), TARGET_CALCULATED_FUTURE_STATUS_ELEMENT_NAME, abstractTarget.getTargetFutureViability());
 	}
 
 	private void writeNonOptionalCodeElement(final String elementName, final Class questionClass, final String code) throws Exception

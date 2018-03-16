@@ -26,7 +26,7 @@ import java.util.HashSet;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.utils.CodeList;
 
-public class TNCViabilityFormula
+public class KEAViabilityFormula
 {
 	public static double getValueFromRatingCode(String code)
 	{

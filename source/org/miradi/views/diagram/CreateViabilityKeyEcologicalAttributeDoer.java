@@ -39,7 +39,7 @@ public class CreateViabilityKeyEcologicalAttributeDoer  extends CreateAnnotation
 			return false;
 		
 		if (selectedObject().getType() == ObjectType.TARGET)
-			return ((Target)selectedObject()).isViabilityModeTNC();
+			return ((Target)selectedObject()).isViabilityModeKEA();
 		
 		if (selectedObject().getType()  == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
 			return true;

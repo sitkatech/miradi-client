@@ -45,10 +45,11 @@ public class ViabilityTreeModel extends GenericViabilityTreeModel
 	}
 	
 	private static final String UNIQUE_TREE_TABLE_IDENTIFIER = "ViabilityTreeModel";
-	
-	public static String[] columnTags = {DEFAULT_COLUMN, 
+
+	public static String[] columnTags = {DEFAULT_COLUMN,
 										 Target.TAG_VIABILITY_MODE,
 										 ViabilityTreeModel.VIRTUAL_TAG_STATUS,
+										 ViabilityTreeModel.VIRTUAL_TAG_FUTURE_STATUS,
 										 KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE,
 										 ViabilityMeasurementNode.POOR,
 										 ViabilityMeasurementNode.FAIR,
@@ -58,4 +59,5 @@ public class ViabilityTreeModel extends GenericViabilityTreeModel
 										 BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,};
 
 	public static final String VIRTUAL_TAG_STATUS = "Status";
+	public static final String VIRTUAL_TAG_FUTURE_STATUS = "FutureStatus";
 }

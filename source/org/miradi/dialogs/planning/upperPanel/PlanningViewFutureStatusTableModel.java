@@ -81,7 +81,7 @@ public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTree
 		
 		return new EmptyChoiceItem();
 	}
-	
+
 	private ChoiceItem getLatestFutureStatusData(Indicator indicator, String tag)
 	{
 		ORef latestFutureStatusRef = indicator.getLatestFutureStatusRef();

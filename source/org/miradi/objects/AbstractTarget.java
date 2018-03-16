@@ -22,6 +22,7 @@ package org.miradi.objects;
 
 import java.util.Arrays;
 import java.util.Vector;
+import java.util.function.Function;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
@@ -32,7 +33,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.project.TNCViabilityFormula;
+import org.miradi.project.KEAViabilityFormula;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.BaseObjectSchema;
@@ -79,7 +80,7 @@ abstract public class AbstractTarget extends Factor
 	@Override
 	public boolean canDirectlyOwnIndicators()
 	{
-		if (isViabilityModeTNC())
+		if (isViabilityModeKEA())
 			return false;
 		
 		return true;
@@ -108,6 +109,9 @@ abstract public class AbstractTarget extends Factor
 			if(fieldTag.equals(PSEUDO_TAG_TARGET_VIABILITY))
 				return getTargetViability();
 			
+			if(fieldTag.equals(PSEUDO_TAG_TARGET_FUTURE_VIABILITY))
+				return getTargetFutureViability();
+
 			return super.getPseudoData(fieldTag);
 		}
 		catch(Exception e)
@@ -135,14 +139,14 @@ abstract public class AbstractTarget extends Factor
 		return getData(TAG_TARGET_STATUS);
 	}
 
-	public boolean isViabilityModeTNC()
+	public boolean isViabilityModeKEA()
 	{
 		return getViabilityMode().equals(ViabilityModeQuestion.TNC_STYLE_CODE);
 	}
 	
 	public boolean isSimpleMode()
 	{
-		return !isViabilityModeTNC();
+		return !isViabilityModeKEA();
 	}
 
 	public String getViabilityMode()
@@ -152,36 +156,43 @@ abstract public class AbstractTarget extends Factor
 
 	public String getTargetViability()
 	{
-		if(isViabilityModeTNC())
-			return computeTNCViability();
+		if(isViabilityModeKEA())
+			return computeViability(KeyEcologicalAttribute::computeViability);
 		return getBasicTargetStatus();
 	}
 
-	private String computeTNCViability()
+	public String getTargetFutureViability()
+	{
+		if(isViabilityModeKEA())
+			return computeViability(KeyEcologicalAttribute::computeFutureViability);
+		return getBasicTargetStatus();
+	}
+
+	private String computeViability(Function<KeyEcologicalAttribute, String> keaViabilityFn)
 	{
 		CodeList ratingForEachType = new CodeList();
-		
+
 		CodeList allCodes = getActiveKeyEcologicalAttributeTypes();
 		for(int i = 0; i < allCodes.size(); ++i)
 		{
 			String code = allCodes.get(i);
 			if(code.equals(StatusQuestion.UNSPECIFIED))
 				continue;
-			ratingForEachType.add(computeTNCViabilityOfKEAType(allCodes.get(i)));
+			ratingForEachType.add(computeViabilityOfKEAType(allCodes.get(i), keaViabilityFn));
 		}
-	
-		return TNCViabilityFormula.getAverageRatingCode(ratingForEachType);
+
+		return KEAViabilityFormula.getAverageRatingCode(ratingForEachType);
 	}
 
-	private String computeTNCViabilityOfKEAType(String typeCode)
+	private String computeViabilityOfKEAType(String typeCode, Function<KeyEcologicalAttribute, String> keaViabilityFn)
 	{
 		KeyEcologicalAttribute[] keas = getKEAsForType(typeCode);
 		CodeList codes = new CodeList();
 		for(int i = 0; i < keas.length; ++i)
 		{
-			codes.add(keas[i].computeTNCViability());
+			codes.add(keaViabilityFn.apply(keas[i]));
 		}
-		return TNCViabilityFormula.getTotalCategoryRatingCode(codes);
+		return KEAViabilityFormula.getTotalCategoryRatingCode(codes);
 	}
 
 	private KeyEcologicalAttribute[] getKEAsForType(String typeCode)
@@ -200,7 +211,17 @@ abstract public class AbstractTarget extends Factor
 		return KeyEcologicalAttributes.toArray(new KeyEcologicalAttribute[0]);
 	}
 
-	public static String computeTNCViability(Project project)
+	public static String computeOverallProjectViability(Project project)
+	{
+		return computeOverallProjectViability(project, AbstractTarget::getTargetViability);
+	}
+
+	public static String computeOverallProjectFutureViability(Project project)
+	{
+		return computeOverallProjectViability(project, AbstractTarget::getTargetFutureViability);
+	}
+
+	private static String computeOverallProjectViability(Project project, Function<AbstractTarget, String> targetViabilityFn)
 	{
 		Vector<AbstractTarget> targets = new Vector<AbstractTarget>();
 		targets.addAll(Arrays.asList(project.getHumanWelfareTargetPool().getSortedHumanWelfareTargets()));
@@ -208,10 +229,10 @@ abstract public class AbstractTarget extends Factor
 		CodeList codes = new CodeList();
 		for(AbstractTarget target : targets)
 		{
-			codes.add(target.getTargetViability());
+			codes.add(targetViabilityFn.apply(target));
 		}
-		
-		return TNCViabilityFormula.getAverageRatingCode(codes);
+
+		return KEAViabilityFormula.getAverageRatingCode(codes);
 	}
 
 	private CodeList getActiveKeyEcologicalAttributeTypes()
@@ -254,7 +275,7 @@ abstract public class AbstractTarget extends Factor
 	@Override
 	public IdList getDirectOrIndirectIndicators()
 	{
-		if(!isViabilityModeTNC())
+		if(!isViabilityModeKEA())
 			return super.getOnlyDirectIndicatorIds();
 		
 		return findAllKeaIndicators();
@@ -274,6 +295,7 @@ abstract public class AbstractTarget extends Factor
 	public static final String TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS = "KeyEcologicalAttributeIds";
 
 	public static final String PSEUDO_TAG_TARGET_VIABILITY = "TargetViability";
+	public static final String PSEUDO_TAG_TARGET_FUTURE_VIABILITY = "TargetFutureViability";
 	public static final String PSEUDO_TAG_TARGET_STATUS_VALUE = "TargetStatusValue";
 	public static final String PSEUDO_TAG_VIABILITY_MODE_VALUE = "ViabilityModeValue";
 }

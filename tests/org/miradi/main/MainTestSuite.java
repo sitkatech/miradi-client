@@ -118,7 +118,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestProjectInfo.class));
 		addTest(new TestSuite(TestSimpleThreatRatingFramework.class));
 		addTest(new TestSuite(TestSimpleThreatFormula.class));
-		addTest(new TestSuite(TestTNCViabilityFormula.class));
+		addTest(new TestSuite(TestKEAViabilityFormula.class));
 		addTest(new TestSuite(TestFactorDeleteHelper.class));
 		addTest(new TestSuite(TestStressBasedThreatFormula.class));
 		addTest(new TestSuite(TestStressBasedThreatRatingFramework.class));

@@ -107,6 +107,7 @@ public class ViabilityFutureStatusNode extends TreeTableNode
 		BaseObject.TAG_EMPTY,
 		BaseObject.TAG_EMPTY,
 		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
 		
 		StatusQuestion.POOR,
 		StatusQuestion.FAIR,

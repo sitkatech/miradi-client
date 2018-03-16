@@ -88,7 +88,10 @@ public class TargetViabilityNode extends TreeTableNode
 		
 		if (tag.equals(Target.PSEUDO_TAG_TARGET_VIABILITY))
 			return new StatusQuestion().findChoiceByCode(rawValue);
-		
+
+		if (tag.equals(Target.PSEUDO_TAG_TARGET_FUTURE_VIABILITY))
+			return new StatusQuestion().findChoiceByCode(rawValue);
+
 		if(tag.equals(Target.TAG_EMPTY))
 			return new EmptyChoiceItem();
 		
@@ -114,7 +117,7 @@ public class TargetViabilityNode extends TreeTableNode
 
 	private TreeTableNode[] buildChildrenNodes() throws Exception
 	{
-		if (target.isViabilityModeTNC())
+		if (target.isViabilityModeKEA())
 			return getKeaNodes(target);
 		
 		return getTargetIndicatorNodes();
@@ -134,9 +137,9 @@ public class TargetViabilityNode extends TreeTableNode
 		return viabilityIndicatorNodes.toArray(new ViabilityIndicatorNode[0]);
 	}
 
-	static public KeyEcologicalAttributeNode[] getKeaNodes(AbstractTarget target) throws Exception
+	private static KeyEcologicalAttributeNode[] getKeaNodes(AbstractTarget target) throws Exception
 	{
-		if (!target.isViabilityModeTNC())
+		if (!target.isViabilityModeKEA())
 			return new KeyEcologicalAttributeNode[0];
 		
 		Project project = target.getProject();
@@ -153,7 +156,7 @@ public class TargetViabilityNode extends TreeTableNode
 		return keaNodes;
 	}
 	
-	static public void sortObjectList(KeyEcologicalAttributeNode[] objectList, KeaNodeComparator comparator)
+	private static void sortObjectList(KeyEcologicalAttributeNode[] objectList, KeaNodeComparator comparator)
 	{
 		Arrays.sort(objectList, comparator);
 	}
@@ -162,11 +165,12 @@ public class TargetViabilityNode extends TreeTableNode
 	{
 		return project;
 	}
-	
+
 	public static final String[] COLUMN_TAGS = {
 		Target.TAG_EMPTY, 
 		Target.TAG_VIABILITY_MODE, 
 		Target.PSEUDO_TAG_TARGET_VIABILITY,
+		Target.PSEUDO_TAG_TARGET_FUTURE_VIABILITY,
 		Target.TAG_EMPTY,
 		Target.TAG_EMPTY,
 		Target.TAG_EMPTY,

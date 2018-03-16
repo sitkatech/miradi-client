@@ -35,12 +35,13 @@ abstract public class AbstractViabilityRowColumnProvider extends AbstractPlannin
 	{
 		super(projectToUse);
 	}
-	
+
 	public CodeList getColumnCodesToShow() throws Exception
 	{
 		return new CodeList(new String[] {
 				 Target.TAG_VIABILITY_MODE,
 				 ViabilityTreeModel.VIRTUAL_TAG_STATUS,
+				 ViabilityTreeModel.VIRTUAL_TAG_FUTURE_STATUS,
 				 KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE,
 				 ViabilityMeasurementNode.POOR,
 				 ViabilityMeasurementNode.FAIR,

@@ -22,25 +22,7 @@ package org.miradi.rtf;
 import org.miradi.forms.HumanWelfareTargetPropertiesForm;
 import org.miradi.forms.PanelHolderSpec;
 import org.miradi.forms.PropertiesPanelSpec;
-import org.miradi.forms.objects.ActivityPropertiesForm;
-import org.miradi.forms.objects.BudgetCategoryPropertiesForm;
-import org.miradi.forms.objects.GoalPropertiesForm;
-import org.miradi.forms.objects.IndicatorPropertiesForm;
-import org.miradi.forms.objects.IntermediateResultsPropertiesForm;
-import org.miradi.forms.objects.KeyEcologicalAttributePropertiesForm;
-import org.miradi.forms.objects.MeasurementPropertiesForm;
-import org.miradi.forms.objects.MethodPropertiesForm;
-import org.miradi.forms.objects.ObjectivePropertiesForm;
-import org.miradi.forms.objects.OrganizationPropertiesForm;
-import org.miradi.forms.objects.ResourcePropertiesForm;
-import org.miradi.forms.objects.ResultsChainPropertiesForm;
-import org.miradi.forms.objects.StrategyPropertiesForm;
-import org.miradi.forms.objects.TargetPropertiesForm;
-import org.miradi.forms.objects.TaskPropertiesForm;
-import org.miradi.forms.objects.ThreatPropertiesForm;
-import org.miradi.forms.objects.ThreatReductionResultPropertiesForm;
-import org.miradi.forms.objects.ViabilityIndicatorPropertiesForm;
-import org.miradi.forms.objects.ViabilityProjectForm;
+import org.miradi.forms.objects.*;
 import org.miradi.objects.*;
 
 public class ViabilityObjectToFormMap
@@ -104,6 +86,9 @@ public class ViabilityObjectToFormMap
 		
 		if (ProjectMetadata.is(objectType))
 			return new ViabilityProjectForm();
+
+		if (FutureStatus.is(objectType))
+			return new FutureStatusPropertiesForm();
 
 		throw new RuntimeException("Form not found for type:" + objectType);
 	}

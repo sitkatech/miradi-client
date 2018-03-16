@@ -64,6 +64,9 @@ public class IndicatorSubPanel extends ObjectDataInputPanel
 		if (tagToUse.equals(ViabilityTreeModel.VIRTUAL_TAG_STATUS))
 			return true;
 
+		if (tagToUse.equals(ViabilityTreeModel.VIRTUAL_TAG_FUTURE_STATUS))
+			return true;
+
 		if (tagToUse.equals(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE))
 			return true;
 

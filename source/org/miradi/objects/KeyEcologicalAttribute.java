@@ -26,9 +26,11 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.project.TNCViabilityFormula;
+import org.miradi.project.KEAViabilityFormula;
 import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
+
+import java.util.function.Function;
 
 public class KeyEcologicalAttribute extends BaseObject
 {
@@ -79,37 +81,45 @@ public class KeyEcologicalAttribute extends BaseObject
 	{
 		return getData(TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE);
 	}
-	
+
 	@Override
 	public String getPseudoData(String fieldTag)
 	{
 		if(fieldTag.equals(PSEUDO_TAG_VIABILITY_STATUS))
-			return computeTNCViability();
+			return computeViability();
+		if(fieldTag.equals(PSEUDO_TAG_VIABILITY_FUTURE_STATUS))
+			return computeFutureViability();
 		return super.getPseudoData(fieldTag);
 	}
 	
-	public String computeTNCViability()
+	public String computeViability()
+	{
+		return computeIndicatorViability(Indicator::getCurrentStatus);
+	}
+
+	public String computeFutureViability()
+	{
+		return computeIndicatorViability(Indicator::getFutureStatus);
+	}
+
+	private String computeIndicatorViability(Function<Indicator, String> indicatorStatusFn)
 	{
 		CodeList statuses = new CodeList();
 		IdList indicatorIds = getIndicatorIds();
 		for(int i = 0; i < indicatorIds.size(); ++i)
 		{
 			Indicator indicator = (Indicator) objectManager.findObject(new ORef(IndicatorSchema.getObjectType(), indicatorIds.get(i)));
-			ORef latestMeasurementRef = indicator.getLatestMeasurementRef();
-			if (latestMeasurementRef.isInvalid())
-				continue;
-			
-			String status = objectManager.getObjectData(latestMeasurementRef, Measurement.TAG_STATUS);
+			String status = indicatorStatusFn.apply(indicator);
 			statuses.add(status);
 		}
-		return TNCViabilityFormula.getAverageRatingCode(statuses);
+		return KEAViabilityFormula.getAverageRatingCode(statuses);
 	}
-	
+
 	public boolean isActive()
 	{
 		ORef targetRef = getOwnerRef();
 		AbstractTarget target = AbstractTarget.findTarget(getProject(), targetRef);
-		return target.isViabilityModeTNC();
+		return target.isViabilityModeKEA();
 	}
 
 	@Override
@@ -155,4 +165,5 @@ public class KeyEcologicalAttribute extends BaseObject
 	public static final String TAG_DETAILS = "Details";
 	public static final String TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE = "KeyEcologicalAttributeType";
 	public static final String PSEUDO_TAG_VIABILITY_STATUS = "ViabilityStatus";
+	public static final String PSEUDO_TAG_VIABILITY_FUTURE_STATUS = "ViabilityFutureStatus";
 }

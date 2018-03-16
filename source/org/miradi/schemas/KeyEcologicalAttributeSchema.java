@@ -44,6 +44,7 @@ public class KeyEcologicalAttributeSchema extends BaseObjectSchema
 		createTaxonomyClassificationSchemaField();
 		
 		createPseudoFieldSchemaString(KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS);
+		createPseudoFieldSchemaString(KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_FUTURE_STATUS);
 	}
 
 	public static int getObjectType()

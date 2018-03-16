@@ -175,7 +175,7 @@ public class TestObjectManager extends MiradiTestCase
 		return kea;
 	}
 	
-	public void testComputeTNCViabilityOfKEA() throws Exception
+	public void testComputeViabilityOfKEA() throws Exception
 	{
 		String FAIR = "2";
 		String GOOD = "3";

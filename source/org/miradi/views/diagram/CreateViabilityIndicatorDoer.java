@@ -59,7 +59,7 @@ public class CreateViabilityIndicatorDoer extends AbstractKeyEcologicalAttribute
 			return false;
 		
 		Target target = Target.find(getProject(), targetRef);
-		if (target.isViabilityModeTNC())
+		if (target.isViabilityModeKEA())
 			return false;
 		
 		return true;

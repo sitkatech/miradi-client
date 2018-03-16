@@ -160,7 +160,10 @@ public class Indicator extends BaseObject implements StrategyActivityRelevancyIn
 		
 		if(fieldTag.equals(PSEUDO_TAG_STATUS_VALUE))
 			return getCurrentStatus();
-		
+
+		if (fieldTag.equals(PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE))
+			return getFutureStatus();
+
 		return super.getPseudoData(fieldTag);
 	}
 
@@ -185,7 +188,7 @@ public class Indicator extends BaseObject implements StrategyActivityRelevancyIn
 	private boolean isOwningTargetInSimpleMode(ORef targetRef)
 	{
 		AbstractTarget target = AbstractTarget.findTarget(getProject(), targetRef);
-		return !target.isViabilityModeTNC();
+		return !target.isViabilityModeKEA();
 	}
 
 	public String getCurrentStatus()
@@ -196,6 +199,17 @@ public class Indicator extends BaseObject implements StrategyActivityRelevancyIn
 		
 		Measurement measurement = (Measurement)getProject().findObject(measurementRef);
 		String statusCode = measurement.getData(Measurement.TAG_STATUS);
+		return statusCode;
+	}
+
+	public String getFutureStatus()
+	{
+		ORef futureStatusRef = getLatestFutureStatusRef();
+		if (futureStatusRef == null || futureStatusRef.isInvalid())
+			return "";
+
+		FutureStatus futureStatus = (FutureStatus) getProject().findObject(futureStatusRef);
+		String statusCode = futureStatus.getData(FutureStatusSchema.TAG_FUTURE_STATUS_RATING);
 		return statusCode;
 	}
 

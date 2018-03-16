@@ -123,7 +123,7 @@ public class ProjectRepairer
 		for(ORef abstractTargetRef : abstractTargetRefs)
 		{
 			AbstractTarget target = AbstractTarget.findTarget(getProject(), abstractTargetRef);
-			if (target.isViabilityModeTNC())
+			if (target.isViabilityModeKEA())
 			{
 				deleteMissingIndicatorsFromTarget(target);
 			}

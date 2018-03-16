@@ -60,6 +60,7 @@ public class ProjectSummarySchema extends AbstractProjectSummarySchema
 		addFieldSchema(schema.getFieldSchema(ProjectMetadata.TAG_WORKPLAN_TIME_UNIT));
 		addFieldSchema(new FieldSchemaChoice(OVERALL_PROJECT_THREAT_RATING, getQuestion(ThreatRatingQuestion.class)));
 		addFieldSchema(new FieldSchemaChoice(OVERALL_PROJECT_VIABILITY_RATING, getQuestion(StatusQuestion.class)));
+		addFieldSchema(new FieldSchemaChoice(OVERALL_PROJECT_VIABILITY_FUTURE_RATING, getQuestion(StatusQuestion.class)));
 	}
 
 	@Override

@@ -46,6 +46,7 @@ abstract public class AbstractTargetSchema extends EvidenceFactorSchema
 	    createTaxonomyClassificationSchemaField();
 
 		createPseudoFieldSchemaString(AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY);
+		createPseudoFieldSchemaString(AbstractTarget.PSEUDO_TAG_TARGET_FUTURE_VIABILITY);
 		createPseudoFieldSchemaQuestion(AbstractTarget.PSEUDO_TAG_TARGET_STATUS_VALUE);
 		createPseudoFieldSchemaQuestion(AbstractTarget.PSEUDO_TAG_VIABILITY_MODE_VALUE);
 	}

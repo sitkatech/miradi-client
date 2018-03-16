@@ -37,7 +37,8 @@ public class AbstractTargetSchemaWriter extends BaseObjectSchemaWriterWithTaxono
 	{
 		Vector<String> schemaElements = super.createFieldSchemas();
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(getXmpz2ElementName() + TARGET_CALCULATED_STATUS_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_TARGET_STATUS));
-		
+		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(getXmpz2ElementName() + TARGET_CALCULATED_FUTURE_STATUS_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_TARGET_STATUS));
+
 		return schemaElements;
 	}	
 }

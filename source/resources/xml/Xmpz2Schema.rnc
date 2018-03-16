@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue Mar 13 18:59:19 GMT 2018 $
+# $LastChangedDate: Thu Mar 15 17:20:48 GMT 2018 $
 # $LastChangedRevision: 237 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/237'
 start = ConservationProject.element
@@ -93,6 +93,7 @@ ConservationProject.element = element miradi:ConservationProject
 ProjectSummary.element = element miradi:ProjectSummary
 {
   element miradi:ProjectSummaryCalculatedOverallProjectThreatRating { vocabulary_threat_rating }? &
+  element miradi:ProjectSummaryCalculatedOverallProjectViabilityFutureRating { vocabulary_status }? &
   element miradi:ProjectSummaryCalculatedOverallProjectViabilityRating { vocabulary_status }? &
   element miradi:ProjectSummaryDataEffectiveDate { vocabulary_date }? &
   element miradi:ProjectSummaryExtendedProgressReportIds { ExtendedProgressReportId.element* }? &
@@ -513,6 +514,7 @@ BiodiversityTarget.element = element miradi:BiodiversityTarget
   attribute Id {xsd:integer} &
   BiodiversityTargetHabitatAssociationContainer.element ? &
   element miradi:BiodiversityTargetCalculatedThreatRating { vocabulary_threat_rating }? &
+  element miradi:BiodiversityTargetCalculatedViabilityFutureStatus { vocabulary_target_status }? &
   element miradi:BiodiversityTargetCalculatedViabilityStatus { vocabulary_target_status }? &
   element miradi:BiodiversityTargetComments { formatted_text }? &
   element miradi:BiodiversityTargetCurrentStatusJustification { formatted_text }? &
@@ -741,6 +743,7 @@ HumanWellbeingTargetPool.element = element miradi:HumanWellbeingTargetPool { Hum
 HumanWellbeingTarget.element = element miradi:HumanWellbeingTarget
 {
   attribute Id {xsd:integer} &
+  element miradi:HumanWellbeingTargetCalculatedViabilityFutureStatus { vocabulary_target_status }? &
   element miradi:HumanWellbeingTargetCalculatedViabilityStatus { vocabulary_target_status }? &
   element miradi:HumanWellbeingTargetComments { formatted_text }? &
   element miradi:HumanWellbeingTargetCurrentStatusJustification { formatted_text }? &

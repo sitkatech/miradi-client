@@ -220,6 +220,7 @@ public interface Xmpz2XmlConstants
 	public static final String CALCULATED_THREAT_RATING = "CalculatedThreatRating";
 	public static final String OVERALL_PROJECT_THREAT_RATING = "CalculatedOverallProjectThreatRating";
 	public static final String OVERALL_PROJECT_VIABILITY_RATING = "CalculatedOverallProjectViabilityRating";
+	public static final String OVERALL_PROJECT_VIABILITY_FUTURE_RATING = "CalculatedOverallProjectViabilityFutureRating";
 	public static final String IUCN_REDLIST_SPECIES = "IUCNRedListSpecies";
 	public static final String OTHER_NOTABLE_SPECIES = "OtherNotableSpecies";
 	public static final String AUDIENCE = "Audience";
@@ -270,6 +271,7 @@ public interface Xmpz2XmlConstants
 	public static final String LESSONS_LEARNED = "LessonsLearned";
 	public static final String TARGET_STATUS_ELEMENT_NAME = "SimpleViabilityStatus";
 	public static final String TARGET_CALCULATED_STATUS_ELEMENT_NAME = "CalculatedViabilityStatus";
+	public static final String TARGET_CALCULATED_FUTURE_STATUS_ELEMENT_NAME = "CalculatedViabilityFutureStatus";
 	public static final String TNC_OPERATING_UNITS = "TNCOperatingUnits";
 	public static final String TNC_CAP_STANDARDS_SCORECARD = "CAPStandardsScorecard";
 	public static final String TNC_TERRESTRIAL_ECO_REGION = "TNCTerrestrialEcoRegion";

@@ -121,7 +121,7 @@ public class ViabilityMeasurementNode extends TreeTableNode
 		return StaticQuestionManager.getQuestion(MeasurementEvidenceConfidenceQuestion.class).findChoiceByCode(rawValue);
 	}
 
-	public Icon getTrendIcon()
+	private Icon getTrendIcon()
 	{
 		String trendData = getObject().getData(Measurement.TAG_TREND);
 		ChoiceQuestion trendQuestion = StaticQuestionManager.getQuestion(TrendQuestion.class);
@@ -141,6 +141,7 @@ public class ViabilityMeasurementNode extends TreeTableNode
 	public static final String VERY_GOOD = StatusQuestion.VERY_GOOD;
 	
 	public static final String[] COLUMN_TAGS = {Measurement.TAG_EMPTY, 
+												Measurement.TAG_EMPTY,
 												Measurement.TAG_EMPTY,
 												Measurement.TAG_EMPTY,
 												Measurement.TAG_EMPTY,

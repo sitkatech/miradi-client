@@ -44,13 +44,20 @@ abstract public class TestAbstractTarget extends ObjectTestCase
 		AbstractTarget target = AbstractTarget.findTarget(getProject(), abstractTargetRef);
 		getProject().fillObjectUsingCommand(target, AbstractTarget.TAG_TARGET_STATUS, StatusQuestion.VERY_GOOD);
 		verifyOverallViabilityRating(StatusQuestion.VERY_GOOD);
+		verifyOverallViabilityFutureRating(StatusQuestion.VERY_GOOD);
 	}
 
 	private void verifyOverallViabilityRating(String expectedRating)
 	{
-		String actualRating = AbstractTarget.computeTNCViability(getProject());
+		String actualRating = AbstractTarget.computeOverallProjectViability(getProject());
 		assertEquals("Incorrect overall viability calculated?", expectedRating, actualRating);
 	}
 	
+	private void verifyOverallViabilityFutureRating(String expectedRating)
+	{
+		String actualRating = AbstractTarget.computeOverallProjectFutureViability(getProject());
+		assertEquals("Incorrect overall future viability calculated?", expectedRating, actualRating);
+	}
+
 	abstract protected int getTargetType();
 }

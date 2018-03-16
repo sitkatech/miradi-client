@@ -23,6 +23,7 @@ package org.miradi.dialogs.planning.upperPanel;
 import javax.swing.Icon;
 
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.dialogs.viability.ViabilityTreeModel;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.CodeToUserStringMap;
@@ -101,7 +102,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		String tag = COLUMN_TAGS_FOR_TARGETS[column];
 		if (!tag.equals(AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY))
 			return false;
-		
+
 		BaseObject baseObject = getBaseObjectForRow(row);
 		if (!AbstractTarget.isAbstractTarget(baseObject))
 			return false;
@@ -207,7 +208,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		
 		return false;
 	}
-	
+
 	@Override
 	public void setValueAt(Object value, int row, int column)
 	{
@@ -317,8 +318,11 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	{
 		String tag = COLUMN_TAGS_FOR_PROJECT[column];
 		if (tag.equals(AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY))
-			return getStatusQuestion().findChoiceByCode(AbstractTarget.computeTNCViability(getProject()));
+			return getStatusQuestion().findChoiceByCode(AbstractTarget.computeOverallProjectViability(getProject()));
 				
+		if (tag.equals(AbstractTarget.PSEUDO_TAG_TARGET_FUTURE_VIABILITY))
+			return getStatusQuestion().findChoiceByCode(AbstractTarget.computeOverallProjectFutureViability(getProject()));
+
 		return new EmptyChoiceItem();
 	}
 
@@ -326,7 +330,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	{
 		String tag = COLUMN_TAGS_FOR_KEAS[column];
 		String rawValue = kea.getData(tag);
-		if (tag.equals(KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS))
+		if (tag.equals(KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS) || tag.equals(KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_FUTURE_STATUS))
 			return getStatusQuestion().findChoiceByCode(rawValue);
 		
 		if (tag.equals(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE))
@@ -342,7 +346,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	{
 		String tag = COLUMN_TAGS_FOR_INDICATORS[column];
 		Indicator indicator = (Indicator)baseObject;
-		if (tag.equals(Indicator.PSEUDO_TAG_STATUS_VALUE))
+		if (tag.equals(Indicator.PSEUDO_TAG_STATUS_VALUE) || tag.equals(Indicator.PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE))
 			return getStatusQuestion().findChoiceByCode(baseObject.getPseudoData(tag));
 		
 		if (tag.equals(BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE))
@@ -377,7 +381,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if(tag.equals(AbstractTarget.TAG_VIABILITY_MODE))
 			return StaticQuestionManager.getQuestion(ViabilityModeQuestion.class).findChoiceByCode(rawValue);
 		
-		if (tag.equals(AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY))
+		if (tag.equals(AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY) || tag.equals(AbstractTarget.PSEUDO_TAG_TARGET_FUTURE_VIABILITY))
 			return getStatusQuestion().findChoiceByCode(rawValue);
 		
 		return new EmptyChoiceItem();
@@ -468,7 +472,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		
 		return KeyEcologicalAttributeSchema.getObjectType();
 	}
-	
+
 	@Override
 	public boolean isChoiceItemColumn(int column)
 	{
@@ -480,6 +484,9 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 			return true;
 		
 		if(columnTag.equals(Measurement.TAG_STATUS))
+			return true;
+
+		if(columnTag.equals(ViabilityTreeModel.VIRTUAL_TAG_FUTURE_STATUS))
 			return true;
 
 		if(columnTag.equals(AbstractTarget.TAG_VIABILITY_MODE))
@@ -548,10 +555,11 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	private static final String FAIR = StatusQuestion.FAIR;
 	private static final String GOOD = StatusQuestion.GOOD;
 	private static final String VERY_GOOD = StatusQuestion.VERY_GOOD;
-	
+
 	private static final String[] COLUMN_TAGS_FOR_PROJECT = {
 		BaseObject.TAG_EMPTY, 
 		AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY,
+		AbstractTarget.PSEUDO_TAG_TARGET_FUTURE_VIABILITY,
 		BaseObject.TAG_EMPTY,
 		BaseObject.TAG_EMPTY,
 		BaseObject.TAG_EMPTY,
@@ -564,6 +572,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	private static final String[] COLUMN_TAGS_FOR_INDICATORS = {
 		BaseObject.TAG_EMPTY,
 		Indicator.PSEUDO_TAG_STATUS_VALUE,
+		Indicator.PSEUDO_TAG_FUTURE_STATUS_RATING_VALUE,
 		BaseObject.TAG_EMPTY,
 		Indicator.TAG_THRESHOLDS_MAP,
 		Indicator.TAG_THRESHOLDS_MAP,
@@ -576,6 +585,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	private static final String[] COLUMN_TAGS_FOR_TARGETS = {
 		Target.TAG_VIABILITY_MODE, 
 		AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY,
+		AbstractTarget.PSEUDO_TAG_TARGET_FUTURE_VIABILITY,
 		BaseObject.TAG_EMPTY,
 		BaseObject.TAG_EMPTY,
 		BaseObject.TAG_EMPTY,
@@ -587,7 +597,8 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 	
 	private static final String[] COLUMN_TAGS_FOR_KEAS = {
 		BaseObject.TAG_EMPTY,
-		KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS, 
+		KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS,
+		KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_FUTURE_STATUS,
 		KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE,
 		BaseObject.TAG_EMPTY,
 		BaseObject.TAG_EMPTY,
@@ -601,6 +612,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		BaseObject.TAG_EMPTY,
 		BaseObject.TAG_EMPTY,
 		BaseObject.TAG_EMPTY,
+		BaseObject.TAG_EMPTY,
 		POOR,
 		FAIR,
 		GOOD,
@@ -609,6 +621,7 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		BaseObject.TAG_EMPTY,};
 	
 	private static final String[] COLUMN_TAGS_FOR_FUTURE_RESULTS = {
+		BaseObject.TAG_EMPTY,
 		BaseObject.TAG_EMPTY,
 		BaseObject.TAG_EMPTY,
 		BaseObject.TAG_EMPTY,
