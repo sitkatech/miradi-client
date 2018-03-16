@@ -62,12 +62,16 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 	{
 		int indexToSelect = findSectionWithTag(tag);
 		if (indexToSelect >= 0)
-			tabPanel.setSelectedIndex(indexToSelect);
-		else
+		{
+			AbstractObjectDataInputPanel panel = (AbstractObjectDataInputPanel) tabPanel.getComponentAt(indexToSelect);
+			if (panel.shouldBeEnabled())
+				tabPanel.setSelectedIndex(indexToSelect);
+			else
 			if (tabPanel.getTabCount() > 0)
 				tabPanel.setSelectedIndex(0);
+		}
 	}
-	
+
 	private int findSectionWithTag(String tag)
 	{
 		if (!tag.isEmpty())
@@ -75,10 +79,10 @@ abstract public class ObjectDataInputPanelWithSections extends AbstractObjectDat
 			for (int index = 0; index < tabPanel.getTabCount(); ++index)
 			{
 				AbstractObjectDataInputPanel panel = (AbstractObjectDataInputPanel) tabPanel.getComponentAt(index);
-				if (tag.equals(panel.getPanelDescription()) && panel.shouldBeEnabled())
+				if (tag.equals(panel.getPanelDescription()))
 					return index;
 
-				if (panel.doesSectionContainFieldWithTag(tag) && panel.shouldBeEnabled())
+				if (panel.doesSectionContainFieldWithTag(tag))
 					return index;
 			}
 		}
