@@ -117,12 +117,14 @@ public class NonDiagramAbstractTargetPropertiesPanel extends ObjectDataInputPane
 
 	private class ViabilityModeStatusSubPanel extends ObjectDataInputPanel
 	{
-		public ViabilityModeStatusSubPanel(Project projectToUse, ORef refToUse)
+		public ViabilityModeStatusSubPanel(Project projectToUse, ORef refToUse) throws Exception
 		{
 			super(projectToUse, refToUse);
 			
 			addField(createReadOnlyChoiceField(targetType, AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY, StaticQuestionManager.getQuestion(StatusQuestion.class)));
+			addField(createMultilineField(targetType, AbstractTarget.TAG_CURRENT_STATUS_JUSTIFICATION));
 			addField(createReadOnlyChoiceField(targetType, AbstractTarget.PSEUDO_TAG_TARGET_FUTURE_VIABILITY, StaticQuestionManager.getQuestion(StatusQuestion.class)));
+			addField(createMultilineField(targetType, AbstractTarget.TAG_FUTURE_STATUS_JUSTIFICATION));
 		}
 
 		@Override

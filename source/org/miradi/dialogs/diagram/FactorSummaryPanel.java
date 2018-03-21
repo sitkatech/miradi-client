@@ -47,6 +47,9 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 		corePanel = new FactorSummaryCorePanel(getProject(), getActions(), getCurrentDiagramFactor());
 		addSubPanelWithTitledBorder(corePanel);
 
+		if (AbstractTarget.isAbstractTarget(getFactor()))
+			addSubPanelWithTitledBorder(new TargetStatusPanel(getProject(), getFactor(), getCurrentDiagramFactor().getWrappedFactor().getSchema()));
+
 		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getCurrentDiagramFactor().getWrappedFactor().getSchema()));
 
 		if(getFactor().isStrategy())

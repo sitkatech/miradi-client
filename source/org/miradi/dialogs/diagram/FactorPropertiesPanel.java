@@ -67,7 +67,6 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DirectThreatPoolQuestion;
 import org.miradi.questions.FilteredDiagramFactorsQuestion;
-import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.HumanWelfareTargetSchema;
@@ -355,7 +354,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		
 		if (AbstractTarget.isAbstractTarget(factor))
 		{
-			grid.addField(createTargetStatusField(factor));
 			ObjectDataInputField modeField = grid.createChoiceField(factor.getType(), AbstractTarget.TAG_VIABILITY_MODE, new ViabilityModeQuestion());
 			grid.addFieldWithCustomLabel(modeField, EAM.text("Viability Analysis Mode"));
 		}
@@ -375,15 +373,9 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		String factorLabel = EAM.fieldLabel(factor.getType(), factor.getTypeName());
 		return new PanelTitleLabel(factorLabel, factorIcon, UiLabel.LEADING);
 	}
-	
-	private ObjectDataInputField createTargetStatusField(Factor factor)
-	{
-		return grid.createReadOnlyChoiceField(factor.getType(), AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY, new StatusQuestion());
-	}
-	
+
 	class FactorInputPanel extends ObjectDataInputPanel
 	{
-
 		public FactorInputPanel(Project projectToUse, ORef oRefToUse)
 		{
 			super(projectToUse, oRefToUse);

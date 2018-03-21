@@ -19,32 +19,22 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.diagram;
 
-import java.awt.BorderLayout;
-
-import javax.swing.BorderFactory;
-import javax.swing.Icon;
-import javax.swing.border.Border;
-
 import org.miradi.dialogs.base.ModelessDialogPanel;
-import org.miradi.dialogs.indicator.SimpleViabilityFieldsPanel;
 import org.miradi.dialogs.viability.AbstractViabilityManagementPanel;
 import org.miradi.dialogs.viability.IndicatorViabilityTreeManagementPanel;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
 
+import javax.swing.*;
+import java.awt.*;
+
 public class SimpleViabilityPanel extends ModelessDialogPanel
 {
 	public SimpleViabilityPanel(MainWindow mainWindow, ORef factorRef) throws Exception
 	{
 		simpleViabilityManagementPanel = IndicatorViabilityTreeManagementPanel.createManagementPanel(mainWindow, factorRef);
-		
-		simpleViabilityPropertiesPanel = new SimpleViabilityFieldsPanel(mainWindow.getProject(), factorRef);
-		Border border = BorderFactory.createTitledBorder(simpleViabilityPropertiesPanel.getPanelDescription());
-		simpleViabilityPropertiesPanel.setBorder(border);
-		
-		add(simpleViabilityPropertiesPanel, BorderLayout.BEFORE_FIRST_LINE);
-		add(simpleViabilityManagementPanel, BorderLayout.CENTER);	
+		add(simpleViabilityManagementPanel, BorderLayout.CENTER);
 	}
 	
 	@Override
@@ -69,9 +59,6 @@ public class SimpleViabilityPanel extends ModelessDialogPanel
 		super.dispose();
 		disposePanel(simpleViabilityManagementPanel);
 		simpleViabilityManagementPanel = null;
-		
-		disposePanel(simpleViabilityPropertiesPanel);
-		simpleViabilityPropertiesPanel = null;
 	}
 	
 	@Override
@@ -91,11 +78,5 @@ public class SimpleViabilityPanel extends ModelessDialogPanel
 		return simpleViabilityManagementPanel.getObject();
 	}
 	
-	public void updateSplitterLocation()
-	{
-		simpleViabilityManagementPanel.updateSplitterLocation();
-	}
-		
 	private AbstractViabilityManagementPanel simpleViabilityManagementPanel;
-	private SimpleViabilityFieldsPanel simpleViabilityPropertiesPanel;
 }
