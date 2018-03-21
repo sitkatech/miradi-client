@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-16 05:48-0700\n"
+"POT-Creation-Date: 2018-03-21 05:48-0700\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -291,7 +291,7 @@ msgstr "%s field data will be lost for measurement"
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:180
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:182
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1444
 msgid "(%s)"
 msgstr "(%s)"
@@ -3432,7 +3432,7 @@ msgid "Detailed work planning"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/MiradiShareDetailsPanel.java:39
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:68
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/ModelessTargetSubPanel.java:66
 msgid "Details"
 msgstr "Details"
 
@@ -8152,6 +8152,16 @@ msgstr "Tan"
 msgid "Target"
 msgstr "Component"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo59.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo58.java:41
+msgid "Target Future Viability Status"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo59.java:42
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo58.java:42
+msgid "Target Future Viability Status Justification"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:156
 msgid "Target Viability - Details"
 msgstr "Component Viability - Details"
@@ -8582,6 +8592,14 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo22.java:90
 msgid "This migration adds new default rows to the work plan customize panel."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo59.java:62
+msgid "This migration adds new fields to Human Welfare Target properties."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo58.java:62
+msgid "This migration adds new fields to Target properties."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo47.java:62
@@ -11176,6 +11194,12 @@ msgstr "FieldLabel|22.HabitatAssociation|Habitat Association (IUCN v3.0)"
 msgid "FieldLabel|22.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
+msgid "FieldLabel|22.TargetFutureStatus|Target Viability Future Status"
+msgstr ""
+
+msgid "FieldLabel|22.FutureStatusJustification|Future Status Justification"
+msgstr ""
+
 msgid "FieldLabel|23.IntermediateResult|Intermediate Result"
 msgstr "FieldLabel|23.IntermediateResult|Intermediate Result"
 
@@ -11861,6 +11885,12 @@ msgid "FieldLabel|52.TargetFutureViability|Target Viability Future Status"
 msgstr ""
 
 msgid "FieldLabel|52.TaxonomyClassificationContainer|Program Classifications"
+msgstr ""
+
+msgid "FieldLabel|52.TargetFutureStatus|Target Viability Future Status"
+msgstr ""
+
+msgid "FieldLabel|52.FutureStatusJustification|Future Status Justification"
 msgstr ""
 
 msgid "FieldLabel|53.IucnRedlistSpecies|IUCN Redlist Species"
