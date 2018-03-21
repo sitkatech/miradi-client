@@ -36,9 +36,11 @@ abstract public class AbstractTargetSchema extends EvidenceFactorSchema
 	{
 		super.fillFieldSchemas();
 
-		createFieldSchemaChoice(AbstractTarget.TAG_TARGET_STATUS, TargetStatusQuestion.class);
 		createFieldSchemaRequiredChoice(AbstractTarget.TAG_VIABILITY_MODE, ViabilityModeQuestion.class);
+		createFieldSchemaChoice(AbstractTarget.TAG_TARGET_STATUS, TargetStatusQuestion.class);
 		createFieldSchemaMultiLineUserText(AbstractTarget.TAG_CURRENT_STATUS_JUSTIFICATION);
+		createFieldSchemaChoice(AbstractTarget.TAG_TARGET_FUTURE_STATUS, TargetStatusQuestion.class);
+		createFieldSchemaMultiLineUserText(AbstractTarget.TAG_FUTURE_STATUS_JUSTIFICATION);
 		createOwnedFieldSchemaReflist(AbstractTarget.TAG_SUB_TARGET_REFS, SUB_TARGET);
 		createOwnedFieldSchemaIdList(AbstractTarget.TAG_GOAL_IDS, GoalSchema.getObjectType());
 		createOwnedFieldSchemaIdList(AbstractTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, KeyEcologicalAttributeSchema.getObjectType());
@@ -47,7 +49,5 @@ abstract public class AbstractTargetSchema extends EvidenceFactorSchema
 
 		createPseudoFieldSchemaString(AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY);
 		createPseudoFieldSchemaString(AbstractTarget.PSEUDO_TAG_TARGET_FUTURE_VIABILITY);
-		createPseudoFieldSchemaQuestion(AbstractTarget.PSEUDO_TAG_TARGET_STATUS_VALUE);
-		createPseudoFieldSchemaQuestion(AbstractTarget.PSEUDO_TAG_VIABILITY_MODE_VALUE);
 	}
 }

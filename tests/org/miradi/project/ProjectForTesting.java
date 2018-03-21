@@ -1255,6 +1255,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(target, AbstractTarget.TAG_EVIDENCE_NOTES, "Some evidence Text");
 		fillObjectUsingCommand(target, AbstractTarget.TAG_CURRENT_STATUS_JUSTIFICATION, "Some status justification");
 		fillObjectUsingCommand(target, AbstractTarget.TAG_TARGET_STATUS, StatusQuestion.VERY_GOOD);
+		fillObjectUsingCommand(target, AbstractTarget.TAG_FUTURE_STATUS_JUSTIFICATION, "Some future status justification");
+		fillObjectUsingCommand(target, AbstractTarget.TAG_TARGET_FUTURE_STATUS, StatusQuestion.VERY_GOOD);
 		turnOnTncMode(target);
 				
 		SubTarget subTarget = createAndPopulateSubTarget();

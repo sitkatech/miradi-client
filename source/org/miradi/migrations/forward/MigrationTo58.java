@@ -23,22 +23,23 @@ package org.miradi.migrations.forward;
 import org.miradi.main.EAM;
 import org.miradi.migrations.NewlyAddedFieldsMigration;
 import org.miradi.migrations.RawProject;
-import org.miradi.schemas.IndicatorSchema;
+import org.miradi.schemas.TargetSchema;
 
 import java.util.HashMap;
 
-public class MigrationTo50 extends NewlyAddedFieldsMigration
+public class MigrationTo58 extends NewlyAddedFieldsMigration
 {
-    public MigrationTo50(RawProject rawProjectToUse)
+    public MigrationTo58(RawProject rawProjectToUse)
     {
-        super(rawProjectToUse, IndicatorSchema.getObjectType());
+        super(rawProjectToUse, TargetSchema.getObjectType());
     }
 
     @Override
     protected HashMap<String, String> createFieldsToLabelMapToModify()
     {
         HashMap<String, String> fieldsToAdd = new HashMap<String, String>();
-        fieldsToAdd.put(TAG_VIABILITY_RATINGS_EVIDENCE_NOTES, EAM.text("Viability Rating Evidence Notes"));
+        fieldsToAdd.put(TAG_TARGET_FUTURE_STATUS, EAM.text("Target Future Viability Status"));
+        fieldsToAdd.put(TAG_FUTURE_STATUS_JUSTIFICATION, EAM.text("Target Future Viability Status Justification"));
 
         return fieldsToAdd;
     }
@@ -58,11 +59,12 @@ public class MigrationTo50 extends NewlyAddedFieldsMigration
     @Override
     protected String getDescription()
     {
-        return EAM.text("This migration adds a new Viability Rating Evidence Notes field to the Indicator properties.");
+        return EAM.text("This migration adds new fields to Target properties.");
     }
 
-    public static final int VERSION_FROM = 49;
-    public static final int VERSION_TO = 50;
+    public static final int VERSION_FROM = 57;
+    public static final int VERSION_TO = 58;
 
-    public static final String TAG_VIABILITY_RATINGS_EVIDENCE_NOTES = "ViabilityRatingsEvidenceNotes";
+    public static final String TAG_TARGET_FUTURE_STATUS = "TargetFutureStatus";
+    public static final String TAG_FUTURE_STATUS_JUSTIFICATION = "FutureStatusJustification";
 }

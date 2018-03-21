@@ -35,6 +35,8 @@ abstract public class AbstractTargetPropertiesForm extends FieldPanelSpec
 		addChoiceField(targetType, AbstractTarget.TAG_VIABILITY_MODE, new ViabilityModeQuestion());
 		addChoiceField(targetType, AbstractTarget.TAG_TARGET_STATUS, new StatusQuestion());
 		addLabelAndField(targetType, AbstractTarget.TAG_CURRENT_STATUS_JUSTIFICATION);
+		addChoiceField(targetType, AbstractTarget.TAG_TARGET_FUTURE_STATUS, new StatusQuestion());
+		addLabelAndField(targetType, AbstractTarget.TAG_FUTURE_STATUS_JUSTIFICATION);
 		addCustomFields();
 		addLabelAndField(getTargetType(), AbstractTarget.TAG_TEXT);
 		addLabelAndField(getTargetType(), AbstractTarget.TAG_COMMENTS);

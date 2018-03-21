@@ -393,6 +393,26 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestMigrationTo37.class));
 		addTest(new TestSuite(TestMigrationTo38.class));
 		addTest(new TestSuite(TestMigrationTo39.class));
+		addTest(new TestSuite(TestMigrationTo40.class));
+		addTest(new TestSuite(TestMigrationTo41.class));
+		addTest(new TestSuite(TestMigrationTo42.class));
+		addTest(new TestSuite(TestMigrationTo43.class));
+		addTest(new TestSuite(TestMigrationTo44.class));
+		addTest(new TestSuite(TestMigrationTo45.class));
+		addTest(new TestSuite(TestMigrationTo46.class));
+		addTest(new TestSuite(TestMigrationTo47.class));
+		addTest(new TestSuite(TestMigrationTo48.class));
+		addTest(new TestSuite(TestMigrationTo49.class));
+		addTest(new TestSuite(TestMigrationTo50.class));
+		addTest(new TestSuite(TestMigrationTo51.class));
+		addTest(new TestSuite(TestMigrationTo52.class));
+		addTest(new TestSuite(TestMigrationTo53.class));
+		addTest(new TestSuite(TestMigrationTo54.class));
+		addTest(new TestSuite(TestMigrationTo55.class));
+		addTest(new TestSuite(TestMigrationTo56.class));
+		addTest(new TestSuite(TestMigrationTo57.class));
+		addTest(new TestSuite(TestMigrationTo58.class));
+		addTest(new TestSuite(TestMigrationTo59.class));
 
 		addTest(new TestSuite(TestReverseMigration.class));
 		addTest(new TestSuite(TestVersionRange.class));

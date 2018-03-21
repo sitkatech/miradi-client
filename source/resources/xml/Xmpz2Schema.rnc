@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Mar 15 17:20:48 GMT 2018 $
+# $LastChangedDate: Wed Mar 21 09:38:56 GMT 2018 $
 # $LastChangedRevision: 237 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/237'
 start = ConservationProject.element
@@ -520,11 +520,13 @@ BiodiversityTarget.element = element miradi:BiodiversityTarget
   element miradi:BiodiversityTargetCurrentStatusJustification { formatted_text }? &
   element miradi:BiodiversityTargetDetails { formatted_text }? &
   element miradi:BiodiversityTargetEvidenceNotes { formatted_text }? &
+  element miradi:BiodiversityTargetFutureStatusJustification { formatted_text }? &
   element miradi:BiodiversityTargetGoalIds { GoalId.element* }? &
   element miradi:BiodiversityTargetIdentifier { text }? &
   element miradi:BiodiversityTargetIndicatorIds { IndicatorId.element* }? &
   element miradi:BiodiversityTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* }? &
   element miradi:BiodiversityTargetName { formatted_text }? &
+  element miradi:BiodiversityTargetSimpleViabilityFutureStatus { vocabulary_target_status }? &
   element miradi:BiodiversityTargetSimpleViabilityStatus { vocabulary_target_status }? &
   element miradi:BiodiversityTargetSpeciesLatinName { text }? &
   element miradi:BiodiversityTargetStressIds { StressId.element* }? &
@@ -749,11 +751,13 @@ HumanWellbeingTarget.element = element miradi:HumanWellbeingTarget
   element miradi:HumanWellbeingTargetCurrentStatusJustification { formatted_text }? &
   element miradi:HumanWellbeingTargetDetails { formatted_text }? &
   element miradi:HumanWellbeingTargetEvidenceNotes { formatted_text }? &
+  element miradi:HumanWellbeingTargetFutureStatusJustification { formatted_text }? &
   element miradi:HumanWellbeingTargetGoalIds { GoalId.element* }? &
   element miradi:HumanWellbeingTargetIdentifier { text }? &
   element miradi:HumanWellbeingTargetIndicatorIds { IndicatorId.element* }? &
   element miradi:HumanWellbeingTargetKeyEcologicalAttributeIds { KeyEcologicalAttributeId.element* }? &
   element miradi:HumanWellbeingTargetName { formatted_text }? &
+  element miradi:HumanWellbeingTargetSimpleViabilityFutureStatus { vocabulary_target_status }? &
   element miradi:HumanWellbeingTargetSimpleViabilityStatus { vocabulary_target_status }? &
   element miradi:HumanWellbeingTargetSubTargetIds { SubTargetId.element* }? &
   element miradi:HumanWellbeingTargetUUID { uuid } &

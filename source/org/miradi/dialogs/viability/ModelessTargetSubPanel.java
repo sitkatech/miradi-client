@@ -33,9 +33,7 @@ public class ModelessTargetSubPanel extends ObjectDataInputPanel
 	public ModelessTargetSubPanel(Project projectToUse, int targetType) throws Exception
 	{
 		super(projectToUse, targetType);
-		
-		addField(createMultilineField(targetType, AbstractTarget.TAG_CURRENT_STATUS_JUSTIFICATION));
-		
+
 		if (Target.is(targetType))
 		{
 			addField(createStringField(TargetSchema.getObjectType(), Target.TAG_SPECIES_LATIN_NAME));

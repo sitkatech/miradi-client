@@ -289,7 +289,8 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		HashMap<String, String> map = createFactorMap();
 		map.put(Target.TAG_SUB_TARGET_REFS, SUB_TARGET_IDS_ELEMENT);
 		map.put(Target.TAG_TARGET_STATUS, TARGET_STATUS_ELEMENT_NAME);
-		
+		map.put(Target.TAG_TARGET_FUTURE_STATUS, TARGET_FUTURE_STATUS_ELEMENT_NAME);
+
 		return map;
 	}
 

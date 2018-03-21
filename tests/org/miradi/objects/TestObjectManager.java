@@ -41,10 +41,7 @@ import org.miradi.project.ProjectSaver;
 import org.miradi.questions.HabitatAssociationQuestion;
 import org.miradi.questions.KeyEcologicalAttributeTypeQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.KeyEcologicalAttributeSchema;
-import org.miradi.schemas.MeasurementSchema;
-import org.miradi.schemas.StrategySchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.NullProgressMeter;
 
@@ -134,7 +131,7 @@ public class TestObjectManager extends MiradiTestCase
 		String notRated = project.getObjectData(target.getRef(), Target.PSEUDO_TAG_TARGET_VIABILITY);
 		assertEquals("Didn't return detailed viability?", NOT_SPECIFIED, notRated);
 		
-		Indicator condition1Indicator = createIndicator(FAIR);
+		Indicator condition1Indicator = createIndicatorWithMeasurement(FAIR);
 		KeyEcologicalAttribute conditionKea = createKEA(new Indicator[] {condition1Indicator});
 
 		IdList keas = new IdList(KeyEcologicalAttributeSchema.getObjectType());
@@ -147,18 +144,61 @@ public class TestObjectManager extends MiradiTestCase
 		conditionKea.setData(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, KeyEcologicalAttributeTypeQuestion.CONDITION);
 		String fair = project.getObjectData(target.getRef(), Target.PSEUDO_TAG_TARGET_VIABILITY);
 		assertEquals("Didn't compute for one kea one indicator?", FAIR, fair);
-		
 	}
 
-	private Indicator createIndicator(String status) throws Exception
+	public void testPseudoTagTargetFutureViability() throws Exception
+	{
+		String NOT_SPECIFIED = "";
+		String FAIR = "2";
+		String sampleStatusCode = FAIR;
+
+		ORef targetRef = project.createObject(ObjectType.TARGET);
+		Target target = Target.find(project, targetRef);
+		target.setData(Target.TAG_TARGET_FUTURE_STATUS, sampleStatusCode);
+
+		String simple = project.getObjectData(target.getRef(), Target.PSEUDO_TAG_TARGET_FUTURE_VIABILITY);
+		assertEquals("Didn't return simple viability?", sampleStatusCode, simple);
+
+		target.setData(Target.TAG_VIABILITY_MODE, ViabilityModeQuestion.TNC_STYLE_CODE);
+		String notRated = project.getObjectData(target.getRef(), Target.PSEUDO_TAG_TARGET_FUTURE_VIABILITY);
+		assertEquals("Didn't return detailed viability?", NOT_SPECIFIED, notRated);
+
+		Indicator condition1Indicator = createIndicatorWithFutureStatus(FAIR);
+		KeyEcologicalAttribute conditionKea = createKEA(new Indicator[] {condition1Indicator});
+
+		IdList keas = new IdList(KeyEcologicalAttributeSchema.getObjectType());
+		keas.add(conditionKea.id);
+		target.setData(Target.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS, keas.toString());
+
+		String keaWithoutCategory = project.getObjectData(target.getRef(), Target.PSEUDO_TAG_TARGET_FUTURE_VIABILITY);
+		assertEquals("Included uncategorized KEA?", NOT_SPECIFIED, keaWithoutCategory);
+
+		conditionKea.setData(KeyEcologicalAttribute.TAG_KEY_ECOLOGICAL_ATTRIBUTE_TYPE, KeyEcologicalAttributeTypeQuestion.CONDITION);
+		String fair = project.getObjectData(target.getRef(), Target.PSEUDO_TAG_TARGET_FUTURE_VIABILITY);
+		assertEquals("Didn't compute for one kea one indicator?", FAIR, fair);
+	}
+
+	private Indicator createIndicatorWithMeasurement(String measurementStatus) throws Exception
 	{
 		ORef indicatorRef = project.createObject(IndicatorSchema.getObjectType());
 		ORef measurementRef = project.createObject(MeasurementSchema.getObjectType());
-		project.setObjectData(measurementRef, Measurement.TAG_STATUS, status);
+		project.setObjectData(measurementRef, Measurement.TAG_STATUS, measurementStatus);
 		ORefList measurementRefs = new ORefList();
 		measurementRefs.add(measurementRef);
 		
 		project.setObjectData(indicatorRef, Indicator.TAG_MEASUREMENT_REFS, measurementRefs.toString());
+		return (Indicator)project.findObject(indicatorRef);
+	}
+
+	private Indicator createIndicatorWithFutureStatus(String futureStatus) throws Exception
+	{
+		ORef indicatorRef = project.createObject(IndicatorSchema.getObjectType());
+		ORef futureStatusRef = project.createObject(FutureStatusSchema.getObjectType());
+		project.setObjectData(futureStatusRef, FutureStatusSchema.TAG_FUTURE_STATUS_RATING, futureStatus);
+		ORefList futureStatusRefs = new ORefList();
+		futureStatusRefs.add(futureStatusRef);
+		
+		project.setObjectData(indicatorRef, Indicator.TAG_FUTURE_STATUS_REFS, futureStatusRefs.toString());
 		return (Indicator)project.findObject(indicatorRef);
 	}
 
@@ -181,12 +221,24 @@ public class TestObjectManager extends MiradiTestCase
 		String GOOD = "3";
 		String VERY_GOOD = "4";
 
-		Indicator fair = createIndicator(FAIR);
-		Indicator veryGood = createIndicator(VERY_GOOD);
+		Indicator fair = createIndicatorWithMeasurement(FAIR);
+		Indicator veryGood = createIndicatorWithMeasurement(VERY_GOOD);
 		KeyEcologicalAttribute kea = createKEA(new Indicator[] {fair, veryGood});
 		assertEquals(GOOD, kea.getData(KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_STATUS));
 	}
 	
+	public void testComputeFutureViabilityOfKEA() throws Exception
+	{
+		String FAIR = "2";
+		String GOOD = "3";
+		String VERY_GOOD = "4";
+
+		Indicator fair = createIndicatorWithFutureStatus(FAIR);
+		Indicator veryGood = createIndicatorWithFutureStatus(VERY_GOOD);
+		KeyEcologicalAttribute kea = createKEA(new Indicator[] {fair, veryGood});
+		assertEquals(GOOD, kea.getData(KeyEcologicalAttribute.PSEUDO_TAG_VIABILITY_FUTURE_STATUS));
+	}
+
 	private void verifyObjectLifecycle(int type) throws Exception
 	{
 		BaseId createdId = manager.createObject(type, BaseId.INVALID);
@@ -195,7 +247,7 @@ public class TestObjectManager extends MiradiTestCase
 		verifyGetPool(type, createdId);
 	}
 	
-	public void verifyBasicObjectLifecycle(int type, BaseId createdId) throws Exception
+	private void verifyBasicObjectLifecycle(int type, BaseId createdId) throws Exception
 	{
 		assertNotEquals(type + " Created with invalid id", BaseId.INVALID, createdId);
 		assertNotNull(manager.findObject(type, createdId));

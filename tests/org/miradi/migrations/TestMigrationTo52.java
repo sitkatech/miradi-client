@@ -23,7 +23,6 @@ package org.miradi.migrations;
 import org.miradi.migrations.forward.MigrationTo51;
 import org.miradi.migrations.forward.MigrationTo52;
 import org.miradi.objects.Measurement;
-import org.miradi.project.Project;
 import org.miradi.project.ProjectSaverForTesting;
 import org.miradi.questions.PrecisionTypeQuestion;
 
@@ -36,15 +35,15 @@ public class TestMigrationTo52 extends AbstractTestMigration
 
     public void testMeasurementSourceForwardMigration() throws Exception
     {
-        Measurement measurement = getProject().createAndPopulateMeasurement();
+        Measurement measurement = getProject().createMeasurement();
         getProject().fillObjectUsingCommand(measurement, MigrationTo52.TAG_STATUS_CONFIDENCE, MigrationTo52.SAMPLING_BASED);
         getProject().fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLE_PRECISION, "3");
         getProject().fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLE_PRECISION_TYPE, PrecisionTypeQuestion.SD_CODE);
         getProject().fillObjectUsingCommand(measurement, Measurement.TAG_SAMPLE_SIZE, "10");
 
-        String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), new VersionRange(MigrationTo52.VERSION_TO));
+        String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), new VersionRange(MigrationTo52.VERSION_FROM));
         final RawProject projectToMigrate = RawProjectLoader.loadProject(projectAsString);
-        migrateProject(projectToMigrate, new VersionRange(Project.VERSION_HIGH));
+        migrateProject(projectToMigrate, new VersionRange(MigrationTo52.VERSION_TO));
 
         RawObject rawMeasurement = projectToMigrate.findObject(measurement.getRef());
         assertNotNull(rawMeasurement);
@@ -53,7 +52,7 @@ public class TestMigrationTo52 extends AbstractTestMigration
         assertEquals(rawMeasurement.getData(Measurement.TAG_SAMPLE_PRECISION_TYPE), PrecisionTypeQuestion.SD_CODE);
         assertEquals(rawMeasurement.getData(Measurement.TAG_SAMPLE_SIZE), "10");
 
-        verifyFullCircleMigrations(new VersionRange(MigrationTo52.VERSION_TO, MigrationTo51.VERSION_TO));
+        verifyFullCircleMigrations(new VersionRange(MigrationTo51.VERSION_TO, MigrationTo52.VERSION_TO));
     }
 
     public void testMeasurementSourceReverseMigration_IntensiveAssessment() throws Exception
@@ -86,7 +85,7 @@ public class TestMigrationTo52 extends AbstractTestMigration
 
         RawObject rawMeasurement = projectToMigrate.findObject(measurement.getRef());
         assertNotNull(rawMeasurement);
-        assertEquals(rawMeasurement.getData(MigrationTo52.TAG_STATUS_CONFIDENCE), MigrationTo52.SAMPLING_BASED);
+        assertEquals(rawMeasurement.getData(MigrationTo52.TAG_STATUS_CONFIDENCE), MigrationTo52.INTENSIVE_ASSESSMENT_CODE);
     }
 
     @Override

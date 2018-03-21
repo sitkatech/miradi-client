@@ -270,6 +270,7 @@ public interface Xmpz2XmlConstants
 	public static final String PROJECT_SHARE_OUTSIDE_ORGANIZATION = "ShareOutsideOrganization";
 	public static final String LESSONS_LEARNED = "LessonsLearned";
 	public static final String TARGET_STATUS_ELEMENT_NAME = "SimpleViabilityStatus";
+	public static final String TARGET_FUTURE_STATUS_ELEMENT_NAME = "SimpleViabilityFutureStatus";
 	public static final String TARGET_CALCULATED_STATUS_ELEMENT_NAME = "CalculatedViabilityStatus";
 	public static final String TARGET_CALCULATED_FUTURE_STATUS_ELEMENT_NAME = "CalculatedViabilityFutureStatus";
 	public static final String TNC_OPERATING_UNITS = "TNCOperatingUnits";

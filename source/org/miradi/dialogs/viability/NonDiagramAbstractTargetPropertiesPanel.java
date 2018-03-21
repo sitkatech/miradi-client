@@ -98,11 +98,14 @@ public class NonDiagramAbstractTargetPropertiesPanel extends ObjectDataInputPane
 
 	private class SimpleModeStatusSubPanel extends ObjectDataInputPanel
 	{
-		public SimpleModeStatusSubPanel(Project projectToUse, ORef refToUse)
+		public SimpleModeStatusSubPanel(Project projectToUse, ORef refToUse) throws Exception
 		{
 			super(projectToUse, refToUse);
 			
 			addField(createRatingChoiceField(targetType, Target.TAG_TARGET_STATUS, StaticQuestionManager.getQuestion(StatusQuestion.class)));
+			addField(createMultilineField(targetType, AbstractTarget.TAG_CURRENT_STATUS_JUSTIFICATION));
+			addField(createRatingChoiceField(targetType, Target.TAG_TARGET_FUTURE_STATUS, StaticQuestionManager.getQuestion(StatusQuestion.class)));
+			addField(createMultilineField(targetType, AbstractTarget.TAG_FUTURE_STATUS_JUSTIFICATION));
 		}
 
 		@Override

@@ -305,7 +305,7 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 		getProject().populateSimpleThreatRatingValues();
 		validateUsingStringWriter();
 	}
-	
+
 	public void testImportAbstractTargetStatus() throws Exception
 	{
 		HumanWelfareTarget humanWelfareTarget = getProject().createHumanWelfareTarget();
@@ -317,6 +317,17 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 		validateUsingStringWriter();
 	}
 	
+	public void testImportAbstractTargetFutureStatus() throws Exception
+	{
+		HumanWelfareTarget humanWelfareTarget = getProject().createHumanWelfareTarget();
+		getProject().fillObjectUsingCommand(humanWelfareTarget, HumanWelfareTarget.TAG_TARGET_FUTURE_STATUS, StatusQuestion.FAIR);
+
+		Target target = getProject().createTarget();
+		getProject().fillObjectUsingCommand(target, Target.TAG_TARGET_FUTURE_STATUS, StatusQuestion.GOOD);
+
+		validateUsingStringWriter();
+	}
+
 	public void testTaggedObjectSetIdsForDiagrams() throws Exception
 	{
 		DiagramFactor diagramFactor = getProject().createAndPopulateDiagramFactor();

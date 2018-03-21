@@ -139,6 +139,11 @@ abstract public class AbstractTarget extends Factor
 		return getData(TAG_TARGET_STATUS);
 	}
 
+	private String getBasicTargetFutureStatus()
+	{
+		return getData(TAG_TARGET_FUTURE_STATUS);
+	}
+
 	public boolean isViabilityModeKEA()
 	{
 		return getViabilityMode().equals(ViabilityModeQuestion.TNC_STYLE_CODE);
@@ -165,7 +170,7 @@ abstract public class AbstractTarget extends Factor
 	{
 		if(isViabilityModeKEA())
 			return computeViability(KeyEcologicalAttribute::computeFutureViability);
-		return getBasicTargetStatus();
+		return getBasicTargetFutureStatus();
 	}
 
 	private String computeViability(Function<KeyEcologicalAttribute, String> keaViabilityFn)
@@ -286,16 +291,16 @@ abstract public class AbstractTarget extends Factor
 	{
 		return getSafeRefListData(TAG_GOAL_IDS);
 	}
-	
-	public static final String TAG_TARGET_STATUS = "TargetStatus";
+
 	public static final String TAG_VIABILITY_MODE = "ViabilityMode";
+	public static final String TAG_TARGET_STATUS = "TargetStatus";
 	public static final String TAG_CURRENT_STATUS_JUSTIFICATION = "CurrentStatusJustification";
+	public static final String TAG_TARGET_FUTURE_STATUS = "TargetFutureStatus";
+	public static final String TAG_FUTURE_STATUS_JUSTIFICATION = "FutureStatusJustification";
 	public static final String TAG_SUB_TARGET_REFS = "SubTargetRefs";
 	public static final String TAG_GOAL_IDS = "GoalIds"; 
 	public static final String TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS = "KeyEcologicalAttributeIds";
 
 	public static final String PSEUDO_TAG_TARGET_VIABILITY = "TargetViability";
 	public static final String PSEUDO_TAG_TARGET_FUTURE_VIABILITY = "TargetFutureViability";
-	public static final String PSEUDO_TAG_TARGET_STATUS_VALUE = "TargetStatusValue";
-	public static final String PSEUDO_TAG_VIABILITY_MODE_VALUE = "ViabilityModeValue";
 }

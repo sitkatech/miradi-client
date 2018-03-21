@@ -61,6 +61,9 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (isAbstractTargetSimpleViabilityRatingCell(row, column))
 			return true;
 
+		if (isAbstractTargetSimpleViabilityFutureRatingCell(row, column))
+			return true;
+
 		if (isKeaAttributeTypeCell(row, column))
 			return true;
 		
@@ -85,6 +88,9 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (isAbstractTargetSimpleViabilityRatingCell(row, modelColumn))
 			return StatusQuestion.class;
 
+		if (isAbstractTargetSimpleViabilityFutureRatingCell(row, modelColumn))
+			return StatusQuestion.class;
+
 		if (isKeaAttributeTypeCell(row, modelColumn))
 			return KeyEcologicalAttributeTypeQuestion.class;
 
@@ -103,10 +109,24 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (!tag.equals(AbstractTarget.PSEUDO_TAG_TARGET_VIABILITY))
 			return false;
 
+		return isRowTargetInSimpleMode(row);
+	}
+
+	private boolean isAbstractTargetSimpleViabilityFutureRatingCell(int row, int column)
+	{
+		String tag = COLUMN_TAGS_FOR_TARGETS[column];
+		if (!tag.equals(AbstractTarget.PSEUDO_TAG_TARGET_FUTURE_VIABILITY))
+			return false;
+
+		return isRowTargetInSimpleMode(row);
+	}
+
+	private boolean isRowTargetInSimpleMode(int row)
+	{
 		BaseObject baseObject = getBaseObjectForRow(row);
 		if (!AbstractTarget.isAbstractTarget(baseObject))
 			return false;
-		
+
 		AbstractTarget abstractTarget = (AbstractTarget) baseObject;
 		return abstractTarget.isSimpleMode();
 	}
@@ -223,6 +243,10 @@ public class ViabilityViewMainTableModel extends PlanningViewMainTableModel
 		if (isAbstractTargetSimpleViabilityRatingCell(row, column))
 		{
 			setChoiceValueUsingCommand(baseObject, AbstractTarget.TAG_TARGET_STATUS, (ChoiceItem) value);
+		}
+		if (isAbstractTargetSimpleViabilityFutureRatingCell(row, column))
+		{
+			setChoiceValueUsingCommand(baseObject, AbstractTarget.TAG_TARGET_FUTURE_STATUS, (ChoiceItem) value);
 		}
 		if (isKeaAttributeTypeCell(row, column))
 		{

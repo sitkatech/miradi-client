@@ -20,42 +20,39 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
-import org.miradi.migrations.forward.MigrationTo50;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.*;
-import org.miradi.schemas.IndicatorSchema;
+import org.miradi.migrations.forward.MigrationTo59;
+import org.miradi.objects.HumanWelfareTarget;
 
-public class TestMigrationTo50 extends AbstractTestMigration
+public class TestMigrationTo59 extends AbstractTestMigration
 {
-    public TestMigrationTo50(String name)
+    public TestMigrationTo59(String name)
     {
         super(name);
     }
 
     public void testFieldsRemovedAfterReverseMigration() throws Exception
     {
-        Strategy strategy = getProject().createAndPopulateStrategy();
-        Indicator indicator = getProject().createAndPopulateIndicator(strategy);
+        HumanWelfareTarget hwbTarget = getProject().createAndPopulateHumanWelfareTarget();
 
-        RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo50.VERSION_TO));
+        RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo59.VERSION_TO));
 
-        RawPool rawIndicatorPool = rawProject.getRawPoolForType(IndicatorSchema.getObjectType());
-        for(ORef ref : rawIndicatorPool.keySet())
-        {
-            RawObject rawIndicator = rawIndicatorPool.get(ref);
-            assertFalse("Field should have been removed during reverse migration?", rawIndicator.containsKey(MigrationTo50.TAG_VIABILITY_RATINGS_EVIDENCE_NOTES));
-        }
+        RawObject rawTarget = rawProject.findObject(hwbTarget.getRef());
+        assertNotNull(rawTarget);
+        assertFalse("Field should have been removed during reverse migration?", rawTarget.containsKey(MigrationTo59.TAG_TARGET_FUTURE_STATUS));
+        assertFalse("Field should have been removed during reverse migration?", rawTarget.containsKey(MigrationTo59.TAG_FUTURE_STATUS_JUSTIFICATION));
     }
 
     @Override
     protected int getFromVersion()
     {
-        return MigrationTo50.VERSION_FROM;
+        return MigrationTo59.VERSION_FROM;
     }
 
     @Override
     protected int getToVersion()
     {
-        return MigrationTo50.VERSION_TO;
+        return MigrationTo59.VERSION_TO;
     }
 }
+
+

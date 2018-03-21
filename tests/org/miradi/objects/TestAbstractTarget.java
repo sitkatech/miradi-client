@@ -35,7 +35,7 @@ abstract public class TestAbstractTarget extends ObjectTestCase
 	{
 		verifyFields(getTargetType());
 	}
-	
+
 	public void testOverallProjectViabilityRating() throws Exception
 	{
 		verifyOverallViabilityRating("");
@@ -44,7 +44,8 @@ abstract public class TestAbstractTarget extends ObjectTestCase
 		AbstractTarget target = AbstractTarget.findTarget(getProject(), abstractTargetRef);
 		getProject().fillObjectUsingCommand(target, AbstractTarget.TAG_TARGET_STATUS, StatusQuestion.VERY_GOOD);
 		verifyOverallViabilityRating(StatusQuestion.VERY_GOOD);
-		verifyOverallViabilityFutureRating(StatusQuestion.VERY_GOOD);
+		getProject().fillObjectUsingCommand(target, AbstractTarget.TAG_TARGET_FUTURE_STATUS, StatusQuestion.FAIR);
+		verifyOverallViabilityFutureRating(StatusQuestion.FAIR);
 	}
 
 	private void verifyOverallViabilityRating(String expectedRating)
