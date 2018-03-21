@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-21 05:48-0700\n"
+"POT-Creation-Date: 2018-03-21 09:33-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Italian (http://www.transifex.com/projects/p/miradi-client/"
@@ -3837,7 +3837,7 @@ msgstr "FTE (Dipendenti a Tempo Pieno) Giorni per Anno:"
 msgid "Factor Mode"
 msgstr "Proprietà del Fattore"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:423
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:415
 msgid "Factor Properties"
 msgstr "Proprietà del Fattore"
 
@@ -6943,6 +6943,7 @@ msgstr ""
 msgid "Start:"
 msgstr "Inizio:"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/TargetStatusPanel.java:58
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/NonDiagramAbstractTargetPropertiesPanel.java:57
 msgid "Status"
 msgstr "Stato(Status)"
@@ -7131,9 +7132,9 @@ msgstr "Forte Aumento"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:119
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResultFactorSummaryCommentsPanel.java:55
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:39
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:158
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryPanel.java:161
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:69
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:146
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:145
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/IndicatorSubPanel.java:79
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/indicator/MethodPropertiesPanel.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/viability/TargetCoreSubPanel.java:67
@@ -8124,7 +8125,7 @@ msgstr "Elementi Etichettati"
 msgid "Tagging Enabled Flag"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:125
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:124
 msgid "Tags"
 msgstr "Etichette"
 
@@ -9180,10 +9181,6 @@ msgstr "Proprietà del blocco Ambito geografico"
 msgid "Title|Simple Threat Rating"
 msgstr "Analisi Semplificata della Minacce"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/indicator/SimpleViabilityFieldsPanel.java:43
-msgid "Title|Simple Viability"
-msgstr "Vitalità semplificata"
-
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/StrategyPropertiesPanel.java:54
 msgid "Title|Strategy Properties"
 msgstr "Proprietà Strategia"
@@ -9502,7 +9499,7 @@ msgstr "Molto Grande"
 msgid "Very Small"
 msgstr "Molto Piccolo"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:360
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:358
 msgid "Viability Analysis Mode"
 msgstr "Modalità Analisi Vitalità"
 
@@ -29149,6 +29146,9 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "Title|Simple Viability"
+#~ msgstr "Vitalità semplificata"
 
 #~ msgid "Less Effective"
 #~ msgstr "Meno efficace"
