@@ -30,9 +30,9 @@ public class RoundRectangleRenderer extends RectangleRenderer
 		minimumArcSize = 5;
 	}
 	
-	public RoundRectangleRenderer(int minumArcSizeToUse)
+	public RoundRectangleRenderer(int minimumArcSizeToUse)
 	{
-		minimumArcSize = minumArcSizeToUse;
+		minimumArcSize = minimumArcSizeToUse;
 	}
 	
 	@Override

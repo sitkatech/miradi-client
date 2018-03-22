@@ -166,7 +166,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	private ChoiceItem getLatestReportStatus(Project project, ORef resultObjectRef)
     {
         String latestReportCode = project.getObjectData(resultObjectRef, IntermediateResult.PSEUDO_TAG_LATEST_RESULT_REPORT_CODE);
-        ResultReportShortStatusQuestion question = new ResultReportShortStatusQuestion();
+		ResultReportDiagramStatusQuestion question = new ResultReportDiagramStatusQuestion();
         return question.findChoiceByCode(latestReportCode);
     }
 
@@ -488,23 +488,35 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 
     private String getRatingText()
     {
+		FactorCell factorCell = getFactorCell();
+		if (isResultFactor(factorCell))
+			return getRating().getLabel();
+
         return getRating().getLabel().substring(0,1);
     }
 
     protected int getRatingHeight()
     {
+        FactorCell factorCell = getFactorCell();
+        if (isResultFactor(factorCell))
+            return MultilineCellRenderer.ANNOTATIONS_HEIGHT;
+
         return RATING_HEIGHT;
     }
 
     protected int getRatingWidth()
     {
+        FactorCell factorCell = getFactorCell();
+        if (isResultFactor(factorCell))
+            return MultilineCellRenderer.ANNOTATIONS_WIDTH;
+
         return RATING_WIDTH;
     }
 
 	protected void drawRatingBubble(Graphics2D g2, Rectangle rect)
 	{
 		Rectangle smallRect = getRatingBubbleRect(rect);
-		
+
 		Paint oldPaint = g2.getPaint();
 		setPaint(g2, smallRect, getRatingColor());
 		g2.fill(getShape(smallRect));
