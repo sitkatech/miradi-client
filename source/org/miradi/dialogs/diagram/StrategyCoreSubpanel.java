@@ -30,10 +30,7 @@ import org.miradi.main.EAM;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
-import org.miradi.questions.StrategyClassificationQuestion;
-import org.miradi.questions.StrategyFeasibilityQuestion;
-import org.miradi.questions.StrategyImpactQuestion;
-import org.miradi.questions.StrategyRatingSummaryQuestion;
+import org.miradi.questions.*;
 import org.miradi.schemas.StrategySchema;
 
 
@@ -61,6 +58,18 @@ public class StrategyCoreSubpanel extends ObjectDataInputPanel
 		addFieldWithEditButton(EAM.text("Objectives"), createReadOnlyObjectList(StrategySchema.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyObjectiveRelevancyList.class), getPicker()));
 		addFieldWithEditButton(EAM.text("Goals"), createReadOnlyObjectList(StrategySchema.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_GOAL_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyGoalRelevancyList.class), getPicker()));
 		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(StrategySchema.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyIndicatorRelevancyList.class), getPicker()));
+	}
+
+	@Override
+	protected boolean doesSectionContainFieldWithTag(String tagToUse)
+	{
+		if (tagToUse.equals(Factor.PSEUDO_TAG_TAXONOMY_CODE_VALUE))
+			return true;
+
+		if (tagToUse.equals(CustomPlanningColumnsQuestion.META_CURRENT_RATING))
+			return true;
+
+		return super.doesSectionContainFieldWithTag(tagToUse);
 	}
 
 	@Override
