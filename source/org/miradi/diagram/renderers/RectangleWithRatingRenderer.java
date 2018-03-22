@@ -42,20 +42,20 @@ public class RectangleWithRatingRenderer extends RectangleRenderer
 	@Override
 	Dimension getInsetDimension()
 	{
-		return new Dimension(0, PRIORITY_HEIGHT);
+		return new Dimension(0, RATING_HEIGHT);
 	}
 
-	void drawPriority(Graphics g, Rectangle rect, Graphics2D g2) 
+	private void drawPriority(Graphics g, Rectangle rect, Graphics2D g2)
 	{		
-		if (priority == null)
+		if (getRating() == null)
 			return;
 		
-		if (priority.getCode().length() == 0)
+		if (getRating().getCode().length() == 0)
 			return;
 		
-		if (priority.getCode().equals("0"))
+		if (getRating().getCode().equals("0"))
 			return;
 
-		drawRatingBubble(g2, rect, priority.getColor(), priority.getLabel().substring(0,1));
+		drawRatingBubble(g2, rect, getRating().getColor(), getRating().getLabel().substring(0,1));
 	}
 }

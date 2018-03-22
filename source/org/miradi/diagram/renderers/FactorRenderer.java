@@ -46,8 +46,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
  * ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE
  * POSSIBILITY OF SUCH DAMAGE.
  */
-
-
 package org.miradi.diagram.renderers;
 
 import org.jgraph.JGraph;
@@ -66,10 +64,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.ThreatRatingFramework;
-import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.DiagramFactorFontColorQuestion;
-import org.miradi.questions.DiagramFactorFontStyleQuestion;
-import org.miradi.questions.StatusQuestion;
+import org.miradi.questions.*;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.StrategySchema;
@@ -79,7 +74,6 @@ import org.miradi.utils.Utility;
 import org.miradi.utils.XmlUtilities2;
 
 import java.awt.*;
-
 
 public abstract class FactorRenderer extends MultilineCellRenderer implements CellViewRenderer
 {
@@ -95,12 +89,13 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			DiagramComponent diagram = (DiagramComponent)graphToUse;
 			DiagramModel model = diagram.getDiagramModel();
 			ThreatRatingFramework framework = model.getThreatRatingFramework();
-			priority = null;
-			if(getFactorCell().isDirectThreat())
+			rating = null;
+
+			if (getFactorCell().isDirectThreat())
 			{
-				priority = framework.getThreatThreatRatingValue(getFactorCell().getWrappedFactorRef());
+				rating = framework.getThreatThreatRatingValue(getFactorCell().getWrappedFactorRef());
 			}
-			if(getFactorCell().isTarget() || getFactorCell().isHumanWelfareTarget())
+			if (getFactorCell().isTarget() || getFactorCell().isHumanWelfareTarget())
 			{
 				AbstractTarget target = (AbstractTarget)getFactorCell().getWrappedFactor();
 				String ratingCode = model.getProject().getObjectData(target.getRef(), Target.PSEUDO_TAG_TARGET_VIABILITY);
@@ -108,13 +103,21 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 				rating = question.findChoiceByCode(ratingCode);
 			}
 			
-			if(getFactorCell().isStrategy())
+			if (getFactorCell().isStrategy())
 			{
 				Strategy strategy = (Strategy)getFactorCell().getWrappedFactor();
 				rating = strategy.getStrategyRating();
 				strategyInResultsChain = shouldDisplayResultsChainIcon(model, strategy);
 			}
-			
+
+			if (getFactorCell().isIntermediateResult())
+			{
+				IntermediateResult intermediateResult = (IntermediateResult)getFactorCell().getWrappedFactor();
+				String latestReportCode = model.getProject().getObjectData(intermediateResult.getRef(), IntermediateResult.PSEUDO_TAG_LATEST_RESULT_REPORT_CODE);
+				ResultReportShortStatusQuestion question = new ResultReportShortStatusQuestion();
+				rating = question.findChoiceByCode(latestReportCode);
+			}
+
 			isAliased = shouldMarkAsShared(model);
 			isOwnedByGroup = getFactorCell().getDiagramFactor().isCoveredByGroupBox();
 			
@@ -311,7 +314,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return resultsChains.size() > 0;
 	}
 	
-	public void setRatingBubbleFont(Graphics2D g2)
+	private void setRatingBubbleFont(Graphics2D g2)
 	{
 		g2.setFont(g2.getFont().deriveFont(9.0f).deriveFont(Font.BOLD));
 	}
@@ -409,6 +412,11 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return super.getStroke();
 	}
 
+	protected ChoiceItem getRating()
+	{
+		return rating;
+	}
+
 	private Stroke getRelatedIsSelectedStroke()
 	{
 		return new BasicStroke(getSelectedStrokeWidth(), BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER);
@@ -420,22 +428,32 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return new BasicStroke(borderThickness, BasicStroke.CAP_SQUARE, BasicStroke.JOIN_MITER, 10.0f, dashes, 0.0f);
 	}
 
-	protected Rectangle getBubbleRect(Rectangle rect)
+	private Rectangle getRatingBubbleRect(Rectangle rect)
 	{
 		Rectangle smallRect = new Rectangle();
-		smallRect.x = rect.x;
-		if (getFactorCell().isCause())
-			smallRect.y  = rect.y;
-		else
-			smallRect.y = getSize().height/2 - PRIORITY_HEIGHT/2;
-		smallRect.width = PRIORITY_WIDTH;
-		smallRect.height = PRIORITY_HEIGHT;
+		smallRect.x = getRatingBubbleX(rect);
+		smallRect.y = getRatingBubbleY(getFactorCell(), rect);
+		smallRect.width = RATING_WIDTH;
+		smallRect.height = RATING_HEIGHT;
 		return smallRect;
+	}
+
+	private int getRatingBubbleX(Rectangle borderRect)
+	{
+		return borderRect.x;
+	}
+
+	private int getRatingBubbleY(FactorCell factorCell, Rectangle borderRect)
+	{
+		if (factorCell.isCause())
+			return borderRect.y;
+
+		return getSize().height/2 - RATING_HEIGHT /2;
 	}
 
 	protected void drawRatingBubble(Graphics2D g2, Rectangle rect, Color ratingColor, String ratingText)
 	{
-		Rectangle smallRect = getBubbleRect(rect);
+		Rectangle smallRect = getRatingBubbleRect(rect);
 		
 		Paint oldPaint = g2.getPaint();
 		setPaint(g2, smallRect, ratingColor);
@@ -448,7 +466,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		Utility.drawStringCentered(g2, ratingText, smallRect);
 	}
 	
-	protected void drawCommentTriangle(Graphics2D g2, Point upperRight)
+	private void drawCommentTriangle(Graphics2D g2, Point upperRight)
 	{
 		if(!shouldShowCommentTriangle())
 			return;
@@ -478,16 +496,15 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return node;
 	}
 
-	protected static final int PRIORITY_WIDTH = 16;
-	protected static final int PRIORITY_HEIGHT = 8;
-	protected ChoiceItem priority;
+	protected static final int RATING_WIDTH = 16;
+	protected static final int RATING_HEIGHT = 8;
 	private FactorCell node;
-	protected ChoiceItem rating;
+	private ChoiceItem rating;
 	private String indicatorText;
 	private String objectivesText;
 	private String goalsText;
-	boolean strategyInResultsChain;
-	boolean isAliased;
-	boolean isOwnedByGroup;
+	private boolean strategyInResultsChain;
+	private boolean isAliased;
+	private boolean isOwnedByGroup;
 	private boolean isRelatedToSelectedFactor;
 }

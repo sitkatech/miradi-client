@@ -32,5 +32,5 @@ public class IconHexagonRenderer extends HexagonRenderer
 		return isDraft;
 	}
 
-	boolean isDraft;
+	private boolean isDraft;
 }

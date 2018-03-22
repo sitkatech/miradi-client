@@ -41,17 +41,17 @@ public class RoundRectangleRenderer extends RectangleRenderer
 		return new RoundRectangle2D.Double(rect.x, rect.y, rect.width, rect.height, getArcWidth(rect), getArcHeight(rect));
 	}
 
-	int getArcWidth(Rectangle rect)
+	private int getArcWidth(Rectangle rect)
 	{
 		return getMinimumArcSize();
 	}
 	
-	int getArcHeight(Rectangle rect)
+	private int getArcHeight(Rectangle rect)
 	{
 		return getMinimumArcSize();
 	}
 
-	public int getMinimumArcSize()
+	private int getMinimumArcSize()
 	{
 		return minimumArcSize;
 	}

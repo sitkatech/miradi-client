@@ -38,11 +38,11 @@ public class EllipseWithRatingRenderer extends EllipseRenderer
 		g2.setPaint(oldPaint);
 	}
 	
-	void drawRating(Graphics g, Rectangle rect, Graphics2D g2) 
+	private void drawRating(Graphics g, Rectangle rect, Graphics2D g2)
 	{
-		if(rating == null || rating.getCode().length() == 0)
+		if(getRating() == null || getRating().getCode().length() == 0)
 			return;
 
-		drawRatingBubble(g2, rect, rating.getColor(), rating.getLabel().substring(0,1));
+		drawRatingBubble(g2, rect, getRating().getColor(), getRating().getLabel().substring(0,1));
 	}
 }

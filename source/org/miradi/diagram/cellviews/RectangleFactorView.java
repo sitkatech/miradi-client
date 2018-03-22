@@ -61,5 +61,5 @@ public class RectangleFactorView extends FactorView
 		return ((RectangleRenderer)getRenderer()).getPerimeterPoint(p, getBounds());
 	}
 	
-	protected static RectangleRenderer rectangleRenderer = new RectangleWithRatingRenderer();
+	private static RectangleRenderer rectangleRenderer = new RectangleWithRatingRenderer();
 }

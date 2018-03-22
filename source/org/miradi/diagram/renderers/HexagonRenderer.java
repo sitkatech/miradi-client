@@ -60,7 +60,7 @@ public class HexagonRenderer extends FactorRenderer
 		return getFactorCell().isStatusDraft();
 	}
 
-	BasicStroke getDashedStroke(BasicStroke originalStroke)
+	private BasicStroke getDashedStroke(BasicStroke originalStroke)
 	{
 		BasicStroke defaultStroke = new BasicStroke();
 		float[] dashes = {2, 7};

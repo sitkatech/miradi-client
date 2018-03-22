@@ -30,7 +30,6 @@ public class ResultReportShortStatusQuestion extends AbstractResultReportStatusQ
         return EAM.text("Not Known");
     }
 
-
     @Override
     protected String getNotYetLabel()
     {
