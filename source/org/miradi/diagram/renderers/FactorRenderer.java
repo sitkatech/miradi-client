@@ -91,6 +91,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			DiagramModel model = diagram.getDiagramModel();
 			ThreatRatingFramework framework = model.getThreatRatingFramework();
 			rating = null;
+			resultReportStatus = null;
 
 			if (getFactorCell().isDirectThreat())
 			{
@@ -115,19 +116,19 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			if (getFactorCell().isIntermediateResult())
 			{
 				IntermediateResult intermediateResult = (IntermediateResult)getFactorCell().getWrappedFactor();
-				rating = getLatestReportStatus(model.getProject(), intermediateResult.getRef());
+				resultReportStatus = getLatestResultReportStatus(model.getProject(), intermediateResult.getRef());
 			}
 
 			if (getFactorCell().isThreatReductionResult())
 			{
 				ThreatReductionResult threatReductionResult = (ThreatReductionResult)getFactorCell().getWrappedFactor();
-				rating = getLatestReportStatus(model.getProject(), threatReductionResult.getRef());
+				resultReportStatus = getLatestResultReportStatus(model.getProject(), threatReductionResult.getRef());
 			}
 
 			if (getFactorCell().isBiophysicalResult())
 			{
 				BiophysicalResult biophysicalResult = (BiophysicalResult)getFactorCell().getWrappedFactor();
-				rating = getLatestReportStatus(model.getProject(), biophysicalResult.getRef());
+				resultReportStatus = getLatestResultReportStatus(model.getProject(), biophysicalResult.getRef());
 			}
 
 			isAliased = shouldMarkAsShared(model);
@@ -163,7 +164,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return this;
 	}
 
-	private ChoiceItem getLatestReportStatus(Project project, ORef resultObjectRef)
+	private ChoiceItem getLatestResultReportStatus(Project project, ORef resultObjectRef)
     {
         String latestReportCode = project.getObjectData(resultObjectRef, IntermediateResult.PSEUDO_TAG_LATEST_RESULT_REPORT_CODE);
 		ResultReportDiagramStatusQuestion question = new ResultReportDiagramStatusQuestion();
@@ -363,7 +364,10 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		
 		if(strategyInResultsChain)
 			drawChainIcon(rect, g2);
-		
+
+		if (resultReportStatus != null)
+			drawResultReportStatus(rect, g2);
+
 		drawCommentTriangle(g2, new Point(rect.width, 0));
 	}
 	
@@ -394,7 +398,16 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		Rectangle rectangle = getResultChainRectWithinNode();
 		icon.paintIcon(null, g2,rectangle.x, rectangle.y);
 	}
-	
+
+	private void drawResultReportStatus(Rectangle rect, Graphics2D g2)
+	{
+		if (resultReportStatus == null || resultReportStatus.getCode().equals(ResultReportDiagramStatusQuestion.NOT_SPECIFIED))
+			return;
+
+		Rectangle rectangle = getResultReportStatusRectWithinNode();
+		drawAnnotationCellRect(g2, rectangle, new RoundRectangleRenderer(), resultReportStatus.getLabel(), resultReportStatus.getColor());
+	}
+
 	private Rectangle getResultChainRectWithinNode()
 	{
 		return getFactorCell().getResultChainRectWithinNode();
@@ -403,6 +416,11 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	private Rectangle getIndicatorRectWithinNode()
 	{
 		return getFactorCell().getIndicatorRectWithinNode();
+	}
+
+	private Rectangle getResultReportStatusRectWithinNode()
+	{
+		return getFactorCell().getResultReportStatusRectWithinNode();
 	}
 
 	@Override
@@ -457,16 +475,8 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return smallRect;
 	}
 
-	private boolean isResultFactor(FactorCell factorCell)
-    {
-        return factorCell.isBiophysicalResult() || factorCell.isThreatReductionResult() || factorCell.isIntermediateResult();
-    }
-
 	private int getRatingBubbleX(FactorCell factorCell, Rectangle borderRect)
 	{
-	    if (isResultFactor(factorCell))
-	        return (borderRect.x + borderRect.width) - getRatingWidth();
-
 		return borderRect.x;
 	}
 
@@ -474,9 +484,6 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	{
 		if (factorCell.isCause())
 			return borderRect.y;
-
-        if (isResultFactor(factorCell))
-            return (borderRect.y + borderRect.height) - getRatingHeight();
 
         return getSize().height/2 - getRatingHeight() /2;
 	}
@@ -488,28 +495,16 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 
     private String getRatingText()
     {
-		FactorCell factorCell = getFactorCell();
-		if (isResultFactor(factorCell))
-			return getRating().getLabel();
-
         return getRating().getLabel().substring(0,1);
     }
 
     protected int getRatingHeight()
     {
-        FactorCell factorCell = getFactorCell();
-        if (isResultFactor(factorCell))
-            return MultilineCellRenderer.ANNOTATIONS_HEIGHT;
-
         return RATING_HEIGHT;
     }
 
     protected int getRatingWidth()
     {
-        FactorCell factorCell = getFactorCell();
-        if (isResultFactor(factorCell))
-            return MultilineCellRenderer.ANNOTATIONS_WIDTH;
-
         return RATING_WIDTH;
     }
 
@@ -562,6 +557,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
     private static final int RATING_HEIGHT = 8;
 	private FactorCell node;
 	private ChoiceItem rating;
+	private ChoiceItem resultReportStatus;
 	private String indicatorText;
 	private String objectivesText;
 	private String goalsText;

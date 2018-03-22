@@ -310,7 +310,7 @@ abstract public class FactorCell extends EAMGraphCell
 	{
 		return getWrappedFactor().isTextBox();
 	}
-	
+
 	public boolean isIntermediateResult()
 	{
 		return getWrappedFactor().isIntermediateResult();
@@ -507,9 +507,9 @@ abstract public class FactorCell extends EAMGraphCell
 	private Rectangle getAnnotationRectWithinNode()
 	{
 		Rectangle rect = new Rectangle();
-		rect.x = MultilineCellRenderer.INDICATOR_WIDTH;
+		rect.x = MultilineCellRenderer.ANNOTATIONS_WIDTH;
 		rect.y = getSize().height - MultilineCellRenderer.ANNOTATIONS_HEIGHT;
-		rect.width = getSize().width -  2*MultilineCellRenderer.INDICATOR_WIDTH;
+		rect.width = getSize().width -  2*MultilineCellRenderer.ANNOTATIONS_WIDTH;
 		rect.height = MultilineCellRenderer.ANNOTATIONS_HEIGHT;
 		return rect;
 	}
@@ -525,15 +525,25 @@ abstract public class FactorCell extends EAMGraphCell
 		return smallTriangle;
 	}
 
-	//TODO: this logic should not refere to INDICATOR_WIDTH...but maybe indicator width should be general annoation box width?
 	public Rectangle getResultChainRectWithinNode()
 	{
 		Rectangle annotationsRectangle = getIndicatorRectWithinNode();
-		annotationsRectangle.x =  getSize().width - MultilineCellRenderer.INDICATOR_WIDTH ;
-		annotationsRectangle.y =  getSize().height/2 - MultilineCellRenderer.INDICATOR_HEIGHT/2;
+		annotationsRectangle.x =  getSize().width - MultilineCellRenderer.ANNOTATIONS_WIDTH ;
+		annotationsRectangle.y =  getSize().height/2 - MultilineCellRenderer.ANNOTATIONS_HEIGHT/2;
 		return annotationsRectangle;
 	}
-	
+
+	public Rectangle getResultReportStatusRectWithinNode()
+	{
+		Rectangle rect = new Rectangle();
+		int avoidGoingPastClippingEdge = 1;
+		rect.x = getSize().width - MultilineCellRenderer.ANNOTATIONS_WIDTH - avoidGoingPastClippingEdge;
+		rect.y = getSize().height - MultilineCellRenderer.ANNOTATIONS_HEIGHT - avoidGoingPastClippingEdge;
+		rect.width = MultilineCellRenderer.ANNOTATIONS_WIDTH;
+		rect.height = MultilineCellRenderer.ANNOTATIONS_HEIGHT;
+		return rect;
+	}
+
 	private DefaultPort port;
 	private Dimension previousSize;
 	private Point previousLocation;

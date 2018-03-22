@@ -200,19 +200,24 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		g2.translate(-labelRectangle.x, -labelRectangle.y);
 	}
 
-	void drawAnnotationCellRect(Rectangle rect, Graphics2D g2, FactorRenderer annotationRenderer, String annotationText) 
+	void drawAnnotationCellRect(Graphics2D g2, Rectangle annotationsRectangle, FactorRenderer annotationRenderer, String annotationText, Color annotationColor)
 	{
 		if(annotationText == null)
 			return;
 
-		Rectangle annotationsRectangle = getAnnotationsRectFromCellRect(rect);
-		setPaint(g2, annotationsRectangle, ANNOTATIONS_COLOR);
-		drawAnnotation(annotationsRectangle, g2, annotationRenderer, annotationText);
+		setPaint(g2, annotationsRectangle, annotationColor);
+		drawAnnotation(annotationsRectangle, g2, annotationRenderer, annotationText, annotationColor);
 	}
 
-	void drawAnnotation(Rectangle annotationsRectangle, Graphics2D g2, FactorRenderer annotationRenderer, String annotationText)
+	void drawAnnotationCellRect(Rectangle rect, Graphics2D g2, FactorRenderer annotationRenderer, String annotationText)
 	{
-		annotationRenderer.fillShape(g2, annotationsRectangle, ANNOTATIONS_COLOR);
+		Rectangle annotationsRectangle = getAnnotationsRectFromCellRect(rect);
+		drawAnnotationCellRect(g2, annotationsRectangle, annotationRenderer, annotationText, ANNOTATIONS_COLOR);
+	}
+
+	private void drawAnnotation(Rectangle annotationsRectangle, Graphics2D g2, FactorRenderer annotationRenderer, String annotationText, Color annotationColor)
+	{
+		annotationRenderer.fillShape(g2, annotationsRectangle, annotationColor);
 		drawAnnotationBorder(g2, annotationsRectangle, annotationRenderer);
 		
 		//TODO allow multiple Objectives
@@ -229,7 +234,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		annotationRenderer.drawBorder(g2, annotationsRectangle, color);
 	}
 
-	Rectangle getAnnotationsRectFromCellRect(Rectangle rect) 
+	private Rectangle getAnnotationsRectFromCellRect(Rectangle rect)
 	{
 		Rectangle annotationsRectangle = new Rectangle();
 		annotationsRectangle.x = getAnnotationX(rect.x);
@@ -239,32 +244,32 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		return annotationsRectangle;
 	}
 	
-	int getAnnotationX(int cellX)
+	private int getAnnotationX(int cellX)
 	{
 		return cellX + getAnnotationLeftOffset();
 	}
 	
-	int getAnnotationY(int cellY, int cellHeight)
+	private int getAnnotationY(int cellY, int cellHeight)
 	{
 		return cellY + cellHeight - getAnnotationsHeight();
 	}
 
-	int getAnnotationsWidth(int cellWidth)
+	private int getAnnotationsWidth(int cellWidth)
 	{
 		return cellWidth - getAnnotationLeftOffset() - getAnnotationRightInset();
 	}
 
-	int getAnnotationsHeight()
+	private int getAnnotationsHeight()
 	{
 		return ANNOTATIONS_HEIGHT;
 	}
 
-	int getAnnotationLeftOffset()
+	private int getAnnotationLeftOffset()
 	{
 		return INDICATOR_WIDTH;
 	}
 	
-	int getAnnotationRightInset()
+	private int getAnnotationRightInset()
 	{
 		return INDICATOR_WIDTH;
 	}
@@ -275,7 +280,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 				getSize().width - borderThickness, getSize().height - borderThickness);
 	}
 
-	protected void installAttributes(Map attributes)
+	private void installAttributes(Map attributes)
 	{
 		setOpaque(GraphConstants.isOpaque(attributes));
 		Color foreground = GraphConstants.getForeground(attributes);
