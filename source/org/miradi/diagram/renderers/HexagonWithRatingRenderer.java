@@ -25,7 +25,6 @@ import java.awt.Graphics2D;
 import java.awt.Paint;
 import java.awt.Rectangle;
 
-
 public class HexagonWithRatingRenderer extends HexagonRenderer
 {
 	@Override
@@ -44,6 +43,6 @@ public class HexagonWithRatingRenderer extends HexagonRenderer
 		if(getRating() == null || getRating().getCode().length() == 0)
 			return;
 
-		drawRatingBubble(g2, rect, getRating().getColor(), getRating().getLabel().substring(0,1));
+		drawRatingBubble(g2, rect);
 	}
 }

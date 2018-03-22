@@ -43,6 +43,6 @@ public class EllipseWithRatingRenderer extends EllipseRenderer
 		if(getRating() == null || getRating().getCode().length() == 0)
 			return;
 
-		drawRatingBubble(g2, rect, getRating().getColor(), getRating().getLabel().substring(0,1));
+		drawRatingBubble(g2, rect);
 	}
 }

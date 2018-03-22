@@ -60,6 +60,7 @@ import org.miradi.icons.ResultsChainIcon;
 import org.miradi.ids.IdList;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.*;
 import org.miradi.project.Project;
@@ -95,6 +96,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			{
 				rating = framework.getThreatThreatRatingValue(getFactorCell().getWrappedFactorRef());
 			}
+
 			if (getFactorCell().isTarget() || getFactorCell().isHumanWelfareTarget())
 			{
 				AbstractTarget target = (AbstractTarget)getFactorCell().getWrappedFactor();
@@ -113,9 +115,19 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			if (getFactorCell().isIntermediateResult())
 			{
 				IntermediateResult intermediateResult = (IntermediateResult)getFactorCell().getWrappedFactor();
-				String latestReportCode = model.getProject().getObjectData(intermediateResult.getRef(), IntermediateResult.PSEUDO_TAG_LATEST_RESULT_REPORT_CODE);
-				ResultReportShortStatusQuestion question = new ResultReportShortStatusQuestion();
-				rating = question.findChoiceByCode(latestReportCode);
+				rating = getLatestReportStatus(model.getProject(), intermediateResult.getRef());
+			}
+
+			if (getFactorCell().isThreatReductionResult())
+			{
+				ThreatReductionResult threatReductionResult = (ThreatReductionResult)getFactorCell().getWrappedFactor();
+				rating = getLatestReportStatus(model.getProject(), threatReductionResult.getRef());
+			}
+
+			if (getFactorCell().isBiophysicalResult())
+			{
+				BiophysicalResult biophysicalResult = (BiophysicalResult)getFactorCell().getWrappedFactor();
+				rating = getLatestReportStatus(model.getProject(), biophysicalResult.getRef());
 			}
 
 			isAliased = shouldMarkAsShared(model);
@@ -150,6 +162,13 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		
 		return this;
 	}
+
+	private ChoiceItem getLatestReportStatus(Project project, ORef resultObjectRef)
+    {
+        String latestReportCode = project.getObjectData(resultObjectRef, IntermediateResult.PSEUDO_TAG_LATEST_RESULT_REPORT_CODE);
+        ResultReportShortStatusQuestion question = new ResultReportShortStatusQuestion();
+        return question.findChoiceByCode(latestReportCode);
+    }
 
 	private String buildFontStyle(boolean isAliased)
 	{
@@ -431,15 +450,23 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	private Rectangle getRatingBubbleRect(Rectangle rect)
 	{
 		Rectangle smallRect = new Rectangle();
-		smallRect.x = getRatingBubbleX(rect);
+		smallRect.x = getRatingBubbleX(getFactorCell(), rect);
 		smallRect.y = getRatingBubbleY(getFactorCell(), rect);
-		smallRect.width = RATING_WIDTH;
-		smallRect.height = RATING_HEIGHT;
+		smallRect.width = getRatingWidth();
+		smallRect.height = getRatingHeight();
 		return smallRect;
 	}
 
-	private int getRatingBubbleX(Rectangle borderRect)
+	private boolean isResultFactor(FactorCell factorCell)
+    {
+        return factorCell.isBiophysicalResult() || factorCell.isThreatReductionResult() || factorCell.isIntermediateResult();
+    }
+
+	private int getRatingBubbleX(FactorCell factorCell, Rectangle borderRect)
 	{
+	    if (isResultFactor(factorCell))
+	        return (borderRect.x + borderRect.width) - getRatingWidth();
+
 		return borderRect.x;
 	}
 
@@ -448,22 +475,45 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		if (factorCell.isCause())
 			return borderRect.y;
 
-		return getSize().height/2 - RATING_HEIGHT /2;
+        if (isResultFactor(factorCell))
+            return (borderRect.y + borderRect.height) - getRatingHeight();
+
+        return getSize().height/2 - getRatingHeight() /2;
 	}
 
-	protected void drawRatingBubble(Graphics2D g2, Rectangle rect, Color ratingColor, String ratingText)
+	private Color getRatingColor()
+    {
+        return getRating().getColor();
+    }
+
+    private String getRatingText()
+    {
+        return getRating().getLabel().substring(0,1);
+    }
+
+    protected int getRatingHeight()
+    {
+        return RATING_HEIGHT;
+    }
+
+    protected int getRatingWidth()
+    {
+        return RATING_WIDTH;
+    }
+
+	protected void drawRatingBubble(Graphics2D g2, Rectangle rect)
 	{
 		Rectangle smallRect = getRatingBubbleRect(rect);
 		
 		Paint oldPaint = g2.getPaint();
-		setPaint(g2, smallRect, ratingColor);
+		setPaint(g2, smallRect, getRatingColor());
 		g2.fill(getShape(smallRect));
 		g2.setPaint(oldPaint);
 
 		drawBorder(g2, smallRect, Color.BLACK);
 		setRatingBubbleFont(g2);
 		g2.setColor(Color.BLACK);
-		Utility.drawStringCentered(g2, ratingText, smallRect);
+		Utility.drawStringCentered(g2, getRatingText(), smallRect);
 	}
 	
 	private void drawCommentTriangle(Graphics2D g2, Point upperRight)
@@ -496,8 +546,8 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return node;
 	}
 
-	protected static final int RATING_WIDTH = 16;
-	protected static final int RATING_HEIGHT = 8;
+	private static final int RATING_WIDTH = 16;
+    private static final int RATING_HEIGHT = 8;
 	private FactorCell node;
 	private ChoiceItem rating;
 	private String indicatorText;
