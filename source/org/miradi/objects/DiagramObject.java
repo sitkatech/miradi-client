@@ -513,6 +513,11 @@ abstract public class DiagramObject extends BaseObject
 		return isToggleDiagramTagging;
 	}
 
+	public boolean isResultReportStatusEnabled()
+	{
+		return getBooleanData(TAG_IS_RESULT_REPORT_STATUS_ENABLED);
+	}
+
 	@Override
 	public CommandVector createCommandsToDeleteChildren() throws Exception
 	{
@@ -592,6 +597,7 @@ abstract public class DiagramObject extends BaseObject
 	public static final String TAG_HIDDEN_TYPES = "HiddenTypes";
 	public static final String TAG_IS_TAGGING_ENABLED = "IsTaggingEnabled";
 	public static final String TAG_SELECTED_TAGGED_OBJECT_SET_REFS = "SelectedTaggedObjectSetRefs";
+	public static final String TAG_IS_RESULT_REPORT_STATUS_ENABLED = "IsResultReportStatusEnabled";
 	public static final String TAG_ZOOM_SCALE = "ZoomScale";
 	
 	public static final String PSEUDO_COMBINED_LABEL = "PseudoCombinedLabel";

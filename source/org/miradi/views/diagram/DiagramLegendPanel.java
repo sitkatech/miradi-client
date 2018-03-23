@@ -29,6 +29,7 @@ import org.miradi.dialogs.base.AbstractDialogWithClose;
 import org.miradi.dialogs.base.ObjectManagementPanel;
 import org.miradi.dialogs.base.ObjectRefListEditorPanel;
 import org.miradi.dialogs.fieldComponents.PanelButton;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.taggedObjectSet.TaggedObjectSetManagementPanel;
 import org.miradi.dialogs.taggedObjectSet.TaggedObjectSetPoolTable;
 import org.miradi.dialogs.taggedObjectSet.TaggedObjectSetPoolTableModel;
@@ -47,6 +48,7 @@ import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.questions.DiagramObjectTaggedObjectSetQuestion;
 import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.views.umbrella.LegendPanel;
 import org.miradi.views.umbrella.doers.AbstractPopUpEditDoer;
 
@@ -202,7 +204,19 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		
 		addButtonLineWithCheckBox(jpanel, TextBoxSchema.getObjectType(), TextBoxSchema.OBJECT_NAME, actions.get(ActionInsertTextBox.class));
 		addButtonLineWithCheckBox(jpanel, GroupBoxSchema.getObjectType(), GroupBoxSchema.OBJECT_NAME, actions.get(ActionInsertGroupBox.class));
-		
+
+		DiagramObject diagramObject = getCurrentDiagramObject();
+		if (diagramObject != null)
+		{
+			ObjectCheckBoxField enableResultReportStatusCheckBox = new ObjectCheckBoxField(getProject(), diagramObject.getRef(), DiagramObject.TAG_IS_RESULT_REPORT_STATUS_ENABLED, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE);
+			enableResultReportStatusCheckBox.getComponent().setBackground(AppPreferences.getControlPanelBackgroundColor());
+			enableResultReportStatusCheckBox.updateFromObject();
+			jpanel.add(enableResultReportStatusCheckBox.getComponent());
+
+			String label = EAM.fieldLabel(diagramObject.getType(), DiagramObject.TAG_IS_RESULT_REPORT_STATUS_ENABLED);
+			jpanel.add(new PanelTitleLabel(label, new MiradiResourceImageIcon("icons/showRatings.png")));
+		}
+
 		return jpanel;
 	}
 

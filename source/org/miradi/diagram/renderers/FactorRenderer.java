@@ -92,6 +92,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			ThreatRatingFramework framework = model.getThreatRatingFramework();
 			rating = null;
 			resultReportStatus = null;
+			boolean displayResultReportStatus = diagram.getDiagramObject().isResultReportStatusEnabled();
 
 			if (getFactorCell().isDirectThreat())
 			{
@@ -113,22 +114,25 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 				strategyInResultsChain = shouldDisplayResultsChainIcon(model, strategy);
 			}
 
-			if (getFactorCell().isIntermediateResult())
+			if (displayResultReportStatus)
 			{
-				IntermediateResult intermediateResult = (IntermediateResult)getFactorCell().getWrappedFactor();
-				resultReportStatus = getLatestResultReportStatus(model.getProject(), intermediateResult.getRef());
-			}
+				if (getFactorCell().isIntermediateResult())
+				{
+					IntermediateResult intermediateResult = (IntermediateResult)getFactorCell().getWrappedFactor();
+					resultReportStatus = getLatestResultReportStatus(model.getProject(), intermediateResult.getRef());
+				}
 
-			if (getFactorCell().isThreatReductionResult())
-			{
-				ThreatReductionResult threatReductionResult = (ThreatReductionResult)getFactorCell().getWrappedFactor();
-				resultReportStatus = getLatestResultReportStatus(model.getProject(), threatReductionResult.getRef());
-			}
+				if (getFactorCell().isThreatReductionResult())
+				{
+					ThreatReductionResult threatReductionResult = (ThreatReductionResult)getFactorCell().getWrappedFactor();
+					resultReportStatus = getLatestResultReportStatus(model.getProject(), threatReductionResult.getRef());
+				}
 
-			if (getFactorCell().isBiophysicalResult())
-			{
-				BiophysicalResult biophysicalResult = (BiophysicalResult)getFactorCell().getWrappedFactor();
-				resultReportStatus = getLatestResultReportStatus(model.getProject(), biophysicalResult.getRef());
+				if (getFactorCell().isBiophysicalResult())
+				{
+					BiophysicalResult biophysicalResult = (BiophysicalResult)getFactorCell().getWrappedFactor();
+					resultReportStatus = getLatestResultReportStatus(model.getProject(), biophysicalResult.getRef());
+				}
 			}
 
 			isAliased = shouldMarkAsShared(model);
@@ -405,7 +409,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			return;
 
 		Rectangle rectangle = getResultReportStatusRectWithinNode();
-		drawAnnotationCellRect(g2, rectangle, new RoundRectangleRenderer(), resultReportStatus.getLabel(), resultReportStatus.getColor());
+		drawAnnotationCellRect(g2, rectangle, new RoundRectangleRenderer(), XmlUtilities2.getXmlDecoded(resultReportStatus.getLabel()), resultReportStatus.getColor());
 	}
 
 	private Rectangle getResultChainRectWithinNode()

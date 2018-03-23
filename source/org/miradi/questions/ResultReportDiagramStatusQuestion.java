@@ -31,7 +31,7 @@ public class ResultReportDiagramStatusQuestion extends AbstractResultReportStatu
     @Override
     protected String getNotYetLabel()
     {
-        return ">";
+        return "&gt;";
     }
 
     @Override
