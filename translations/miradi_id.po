@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-22 00:48-0700\n"
+"POT-Creation-Date: 2018-03-23 02:33-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/miradi-client/"
@@ -274,11 +274,11 @@ msgstr ""
 msgid "%s (old project)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:226
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:253
 msgid "%s Goals"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:234
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:261
 msgid "%s Objs"
 msgstr ""
 
@@ -298,7 +298,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br> "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:182
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:184
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1444
 msgid "(%s)"
 msgstr ""
@@ -369,11 +369,11 @@ msgstr "- Gua-gua"
 msgid "- Other Subterranean Habitats"
 msgstr "- Habitat Bawah Tanah Lainnya"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:223
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:250
 msgid "1 Goal"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:231
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:258
 msgid "1 Obj"
 msgstr ""
 
@@ -1014,7 +1014,7 @@ msgstr ""
 "meliputi deretan hierarkies dari angka-angka dan/atau huruf-huruf (kode) "
 "bersama dengan keterangan teks."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:61
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:60
 msgid "Achieved"
 msgstr ""
 
@@ -4918,8 +4918,8 @@ msgstr ""
 msgid "Manage Stresses for "
 msgstr "Mengelola Tekanan untuk "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:135
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:439
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:137
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:453
 msgid "Manage Tags"
 msgstr ""
 
@@ -5520,7 +5520,7 @@ msgstr "Nama proyek baru: "
 msgid "No"
 msgstr "Tidak"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:67
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:66
 msgid "No Longer Relevant"
 msgstr ""
 
@@ -5534,7 +5534,7 @@ msgstr ""
 msgid "No date range for date Unit = "
 msgstr "Tidak ada rangkaian tanggal untuk Unit tanggal = "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:43
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:42
 msgid "Not Achieved"
 msgstr ""
 
@@ -5593,7 +5593,7 @@ msgstr "Tidak Terspesifikasi "
 msgid "Not Started"
 msgstr "Tidak Dimulai"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:37
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:36
 msgid "Not Yet"
 msgstr ""
 
@@ -5671,7 +5671,7 @@ msgstr ""
 msgid "October to September"
 msgstr "Oktober sampai September "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:55
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:54
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:42
 msgid "On-Track"
 msgstr "Sesuai Aturan "
@@ -5786,7 +5786,7 @@ msgstr "Keseluruhan Peringkat Ancaman"
 msgid "Page:"
 msgstr "Halaman: "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:49
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:48
 msgid "Partially Achieved"
 msgstr ""
 
@@ -6314,6 +6314,11 @@ msgstr "Templat Laporan"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:41
 msgid "Report to project team and stakeholders"
 msgstr "Laporkan kepada pemilik kepentingan dan tim proyek "
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo61.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo60.java:41
+msgid "Result Report Status Enabled Flag"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultEvidenceConfidenceQuestion.java:39
 msgid ""
@@ -8376,6 +8381,7 @@ msgstr ""
 msgid "This migration adds a new field to the Activity properties."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo60.java:61
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo41.java:61
 msgid ""
 "This migration adds a new field to the Conceptual Model Diagram properties."
@@ -8395,6 +8401,7 @@ msgstr ""
 msgid "This migration adds a new field to the Project Metadata properties."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo61.java:61
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo42.java:61
 msgid ""
 "This migration adds a new field to the Results Chain Diagram properties."
@@ -10825,6 +10832,9 @@ msgstr ""
 msgid "FieldLabel|19.PseudoLatestProgressReportLessonsLearned|Lessons Learned"
 msgstr ""
 
+msgid "FieldLabel|19.IsResultReportStatusEnabled|Result Report Status"
+msgstr ""
+
 msgid "FieldLabel|20.Cause|Cause"
 msgstr ""
 
@@ -11099,6 +11109,9 @@ msgid "FieldLabel|24.PseudoLatestProgressReportNextSteps|Next Steps"
 msgstr ""
 
 msgid "FieldLabel|24.PseudoLatestProgressReportLessonsLearned|Lessons Learned"
+msgstr ""
+
+msgid "FieldLabel|24.IsResultReportStatusEnabled|Result Report Status"
 msgstr ""
 
 msgid "FieldLabel|25.ThreatReductionResult|Threat Reduction Result"
