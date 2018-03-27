@@ -33,10 +33,7 @@ import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.dialogs.taggedObjectSet.TaggedObjectSetManagementPanel;
 import org.miradi.dialogs.taggedObjectSet.TaggedObjectSetPoolTable;
 import org.miradi.dialogs.taggedObjectSet.TaggedObjectSetPoolTableModel;
-import org.miradi.icons.GoalIcon;
-import org.miradi.icons.IconManager;
-import org.miradi.icons.ObjectiveIcon;
-import org.miradi.icons.TaggedObjectSetIcon;
+import org.miradi.icons.*;
 import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.*;
 import org.miradi.objectdata.BooleanData;
@@ -48,7 +45,6 @@ import org.miradi.questions.DiagramLegendQuestion;
 import org.miradi.questions.DiagramObjectTaggedObjectSetQuestion;
 import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
-import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.views.umbrella.LegendPanel;
 import org.miradi.views.umbrella.doers.AbstractPopUpEditDoer;
 
@@ -206,7 +202,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		addButtonLineWithCheckBox(jpanel, GroupBoxSchema.getObjectType(), GroupBoxSchema.OBJECT_NAME, actions.get(ActionInsertGroupBox.class));
 
 		DiagramObject diagramObject = getCurrentDiagramObject();
-		if (diagramObject != null)
+		if (diagramObject != null && diagramObject.isResultsChain())
 		{
 			ObjectCheckBoxField enableResultReportStatusCheckBox = new ObjectCheckBoxField(getProject(), diagramObject.getRef(), DiagramObject.TAG_IS_RESULT_REPORT_STATUS_ENABLED, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE);
 			enableResultReportStatusCheckBox.getComponent().setBackground(AppPreferences.getControlPanelBackgroundColor());
@@ -214,7 +210,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 			jpanel.add(enableResultReportStatusCheckBox.getComponent());
 
 			String label = EAM.fieldLabel(diagramObject.getType(), DiagramObject.TAG_IS_RESULT_REPORT_STATUS_ENABLED);
-			jpanel.add(new PanelTitleLabel(label, new MiradiResourceImageIcon("icons/showRatings.png")));
+			jpanel.add(new PanelTitleLabel(label, new ResultReportIcon()));
 		}
 
 		return jpanel;
