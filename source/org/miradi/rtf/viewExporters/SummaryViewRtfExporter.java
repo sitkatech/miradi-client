@@ -40,6 +40,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
@@ -187,14 +188,22 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 		formExporter.exportForm(form);
 		writer.newParagraph();
 	}
-	
+
 	private RtfFormExporter createMetadataRtfFormExporter(RtfWriter writer)
 	{
-		return new RtfFormExporter(getProject(), writer, getProjectMetadataRef());
+		ORefList refsForForm = new ORefList();
+		refsForForm.add(getProjectMetadataRef());
+		refsForForm.add(getMiradiShareProjectDataRef());
+		return new RtfFormExporter(getProject(), writer, refsForForm);
 	}
 	
 	private ORef getProjectMetadataRef()
 	{
 		return getProject().getMetadata().getRef();
+	}
+
+	private ORef getMiradiShareProjectDataRef()
+	{
+		return getProject().getSingletonObjectRef(ObjectType.MIRADI_SHARE_PROJECT_DATA);
 	}
 }
