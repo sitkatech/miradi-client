@@ -20,9 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
-import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.ThreatRatingCommentsData;
+import org.miradi.objects.AbstractThreatRatingData;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.xml.xmpz2.objectImporters.AbstractXmpz2ObjectImporter;
@@ -41,16 +40,11 @@ abstract public class AbstractThreatRatingImporter extends AbstractXmpz2ObjectIm
 		ORef threatRef = getThreatRef(threatRatingNode);
 		
 		Node commentsNode = getImporter().getNamedChildNode(threatRatingNode, getParentElementName() + COMMENTS);
-		ThreatRatingCommentsData threatRatingCommentsData = getProject().getSingletonThreatRatingCommentsData();
+		AbstractThreatRatingData threatRatingData = getThreatRatingData();
 		if (commentsNode != null)
 		{
 			String comments = getImporter().getFormattedNodeContent(commentsNode);
-			CodeToUserStringMap commentsMap = getThreatRatingCommentsMap(threatRatingNode, threatRatingCommentsData);
-			String threatTargetKey = ThreatRatingCommentsData.createKey(threatRef, targetRef);
-			
-			commentsMap.putUserString(threatTargetKey, comments);
-			String commentsMapTag = getCommentsMapTag(threatRatingNode);
-			getImporter().setData(threatRatingCommentsData, commentsMapTag, commentsMap.toJsonString());
+			threatRatingData.updateComment(threatRef, targetRef, comments);
 		}
 	}
 	
@@ -73,9 +67,7 @@ abstract public class AbstractThreatRatingImporter extends AbstractXmpz2ObjectIm
 		return Integer.parseInt(node.getTextContent());
 	}
 
-	abstract protected CodeToUserStringMap getThreatRatingCommentsMap(Node threatRatingNode, ThreatRatingCommentsData threatRatingCommentsData) throws Exception;
-
-	abstract protected String getCommentsMapTag(Node threatRatingNode) throws Exception;
-	
 	abstract protected String getParentElementName();
+
+	abstract protected AbstractThreatRatingData getThreatRatingData();
 }

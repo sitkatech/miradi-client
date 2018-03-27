@@ -26,12 +26,7 @@ import org.miradi.dialogs.threatrating.upperPanel.TargetThreatLinkTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
-import org.miradi.objects.Stress;
-import org.miradi.objects.Target;
-import org.miradi.objects.ThreatRatingCommentsData;
-import org.miradi.objects.ThreatStressRating;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
@@ -109,7 +104,7 @@ public class ThreatStressRatingDetailsTableExporter extends	AbstractThreatRating
 	@Override
 	protected String getThreatRatingCommentsTag()
 	{
-		return ThreatRatingCommentsData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP;
+		return AbstractThreatRatingData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP;
 	}
 
 	public static ChoiceItem getIrreversibility(Project project, ORef targetRef, ORef threatRef, Stress stress)
@@ -160,7 +155,7 @@ public class ThreatStressRatingDetailsTableExporter extends	AbstractThreatRating
 			Stress.TAG_SCOPE, 
 			Stress.PSEUDO_STRESS_RATING, 
 			ThreatStressRating.TAG_CONTRIBUTION, 
-			ThreatStressRating.TAG_IRREVERSIBILITY, 
-			ThreatRatingCommentsData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP,
+			ThreatStressRating.TAG_IRREVERSIBILITY,
+			AbstractThreatRatingData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP,
 			};
 }

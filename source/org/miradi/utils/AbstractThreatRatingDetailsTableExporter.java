@@ -25,8 +25,8 @@ import java.util.Vector;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.AbstractThreatRatingData;
 import org.miradi.objects.Target;
-import org.miradi.objects.ThreatRatingCommentsData;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.TaglessChoiceItem;
@@ -124,11 +124,11 @@ abstract public class AbstractThreatRatingDetailsTableExporter extends AbstractS
 	{
 		return getColumnTag(modelColumn).equals(getThreatRatingCommentsTag());
 	}
-	
+
 	protected ChoiceItem getThreatRatingComments(final ORef threatRef)
 	{
-		ThreatRatingCommentsData threatRatingCommentsData = getProject().getSingletonThreatRatingCommentsData();
-		String threatRatingComments = threatRatingCommentsData.findComment(threatRef, getTargetRef());
+		AbstractThreatRatingData threatRatingData = getProject().getSingletonThreatRatingData();
+		String threatRatingComments = threatRatingData.findComment(threatRef, getTargetRef());
 		
 		return new TaglessChoiceItem(threatRatingComments);
 	}

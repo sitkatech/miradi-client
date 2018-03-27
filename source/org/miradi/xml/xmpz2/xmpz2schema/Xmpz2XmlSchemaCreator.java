@@ -1267,7 +1267,10 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (TableSettings.is(objectType))
 			return false;
 
-		if (ThreatRatingCommentsData.is(objectType))
+		if (ThreatStressRatingData.is(objectType))
+			return false;
+
+		if (ThreatSimpleRatingData.is(objectType))
 			return false;
 
 		if (RatingCriterion.is(objectType))

@@ -19,8 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatrating.properties;
 
-import javax.swing.JComponent;
-
+import com.inet.jortho.SpellChecker;
 import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogfields.FieldSaver;
@@ -28,10 +27,9 @@ import org.miradi.dialogfields.ObjectScrollingMultilineInputField;
 import org.miradi.dialogfields.SavableField;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.main.EAM;
-import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.ThreatRatingCommentsData;
+import org.miradi.objects.AbstractThreatRatingData;
 import org.miradi.project.Project;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
@@ -39,7 +37,7 @@ import org.miradi.utils.EditableHtmlPane;
 import org.miradi.utils.HtmlEditorRightClickMouseHandler;
 import org.miradi.utils.MiradiScrollPane;
 
-import com.inet.jortho.SpellChecker;
+import javax.swing.*;
 
 public class ThreatRatingCommentsEditorComponent extends SavableField
 {
@@ -73,15 +71,15 @@ public class ThreatRatingCommentsEditorComponent extends SavableField
 	{
 		ORef threatRef = getThreatRef();
 		ORef targetRef = getTargetRef();
-		String comments = getThreatRatingCommentsData().findComment(threatRef, targetRef);
+		String comments = getThreatRatingData().findComment(threatRef, targetRef);
 		
 		getTextArea().setText(comments);
 		getTextArea().invalidate();
 	}
 
-	private ThreatRatingCommentsData getThreatRatingCommentsData()
+	private AbstractThreatRatingData getThreatRatingData()
 	{
-		return getProject().getSingletonThreatRatingCommentsData();
+		return getProject().getSingletonThreatRatingData();
 	}
 
 	public JComponent getComponent()
@@ -122,11 +120,8 @@ public class ThreatRatingCommentsEditorComponent extends SavableField
 	{
 		try
 		{
-			ThreatRatingCommentsData threatRatingCommentsData = getThreatRatingCommentsData();
-			CodeToUserStringMap commentsMap = threatRatingCommentsData.getThreatRatingCommentsMap();
-			String threatTargetKey = ThreatRatingCommentsData.createKey(getThreatRef(), getTargetRef());
-			commentsMap.putUserString(threatTargetKey, getTextArea().getText());
-			CommandSetObjectData setComment = new CommandSetObjectData(threatRatingCommentsData.getRef(), threatRatingCommentsData.getThreatRatingCommentsMapTag(), commentsMap.toJsonString());
+			AbstractThreatRatingData threatRatingCommentsData = getThreatRatingData();
+			CommandSetObjectData setComment = threatRatingCommentsData.createCommandToUpdateComment(getThreatRef(), getTargetRef(), getTextArea().getText());
 			getProject().executeCommand(setComment);
 		}
 		catch (Exception  e)

@@ -339,13 +339,27 @@ public class Project implements ProjectInterface
 	{
 		return (TableSettingsPool) getPool(ObjectType.TABLE_SETTINGS);
 	}
-	
-	public ThreatRatingCommentsData getSingletonThreatRatingCommentsData()
+
+	public AbstractThreatRatingData getSingletonThreatRatingData()
 	{
-		ORef threatRatingCommentsDataRef = getSingletonObjectRef(ThreatRatingCommentsDataSchema.getObjectType());
-		return ThreatRatingCommentsData.find(this, threatRatingCommentsDataRef);
+		if (isSimpleThreatRatingMode())
+			return getSingletonSimpleThreatRatingData();
+		else
+			return getSingletonStressThreatRatingData();
 	}
 	
+	public AbstractThreatRatingData getSingletonSimpleThreatRatingData()
+	{
+		ORef threatRatingCommentsDataRef = getSingletonObjectRef(ThreatSimpleRatingDataSchema.getObjectType());
+		return (AbstractThreatRatingData) getObjectManager().findObject(threatRatingCommentsDataRef);
+	}
+
+	public AbstractThreatRatingData getSingletonStressThreatRatingData()
+	{
+		ORef threatRatingCommentsDataRef = getSingletonObjectRef(ThreatStressRatingDataSchema.getObjectType());
+		return (AbstractThreatRatingData) getObjectManager().findObject(threatRatingCommentsDataRef);
+	}
+
 	public ORef getSafeSingleObjectRef(int objectType)
 	{
 		if (getPool(objectType).size() == 1)
@@ -885,7 +899,8 @@ public class Project implements ProjectInterface
 		createDefaultProjectDataObject(TncProjectDataSchema.getObjectType());
 		createDefaultProjectDataObject(FosProjectDataSchema.getObjectType());
 		createDefaultProjectDataObject(WcpaProjectDataSchema.getObjectType());
-		createDefaultProjectDataObject(ThreatRatingCommentsDataSchema.getObjectType());
+		createDefaultProjectDataObject(ThreatStressRatingDataSchema.getObjectType());
+		createDefaultProjectDataObject(ThreatSimpleRatingDataSchema.getObjectType());
 		createDefaultProjectDataObject(DashboardSchema.getObjectType());
 		createDefaultProjectDataObject(MiradiShareProjectDataSchema.getObjectType());
 	}
@@ -1474,6 +1489,6 @@ public class Project implements ProjectInterface
 	
 	public CommandExecutor commandExecutor;
 	
-	public static final int VERSION_LOW = 61;
-	public static final int VERSION_HIGH = 61;
+	public static final int VERSION_LOW = 63;
+	public static final int VERSION_HIGH = 63;
 }

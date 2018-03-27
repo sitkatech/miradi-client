@@ -21,11 +21,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.ThreatRatingCommentsData;
 
-public class ThreatRatingCommentsDataSchema extends BaseObjectSchema
+public class ThreatStressRatingDataSchema extends AbstractThreatRatingDataSchema
 {
-	public ThreatRatingCommentsDataSchema()
+	public ThreatStressRatingDataSchema()
 	{
 		super();
 	}
@@ -34,14 +33,11 @@ public class ThreatRatingCommentsDataSchema extends BaseObjectSchema
 	protected void fillFieldSchemas()
 	{
 		super.fillFieldSchemas();
-		
-		createFieldSchemaCodeToUserStringMap(ThreatRatingCommentsData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP);
-		createFieldSchemaCodeToUserStringMap(ThreatRatingCommentsData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP);
 	}
 
 	public static int getObjectType()
 	{
-		return ObjectType.THREAT_RATING_COMMENTS_DATA;
+		return ObjectType.THREAT_STRESS_RATING_DATA;
 	}
 	
 	@Override
@@ -56,5 +52,5 @@ public class ThreatRatingCommentsDataSchema extends BaseObjectSchema
 		return OBJECT_NAME;
 	}
 	
-	public static final String OBJECT_NAME = "ThreatRatingCommentsData";
+	public static final String OBJECT_NAME = "ThreatStressRatingData";
 }

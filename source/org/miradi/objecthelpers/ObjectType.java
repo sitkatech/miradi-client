@@ -80,7 +80,7 @@ public class ObjectType
 	public static final int REPORT_TEMPLATE = 46;
 	public static final int TAGGED_OBJECT_SET = 47;
 	public static final int TABLE_SETTINGS = 48;
-	public static final int THREAT_RATING_COMMENTS_DATA = 49;
+	public static final int THREAT_STRESS_RATING_DATA = 49;
 	public static final int SCOPE_BOX = 50;
 	public static final int EXPENSE_ASSIGNMENT = 51;
 	public static final int HUMAN_WELFARE_TARGET = 52;
@@ -104,6 +104,7 @@ public class ObjectType
 	public static final int METHOD = 69;
 	public static final int EXTENDED_PROGRESS_REPORT = 70;
 	public static final int RESULT_REPORT = 71;
+	public static final int THREAT_SIMPLE_RATING_DATA = 72;
 
 	// When you add a new type, be sure to:
 	// - increment OBJECT_TYPE_COUNT
@@ -112,7 +113,7 @@ public class ObjectType
 	// - add appropriate entry to FieldLabels.properties file
 	// - update requiresUUID (and related importer / exporter, etc.) as applicable
 
-	public static final int OBJECT_TYPE_COUNT = 72;
+	public static final int OBJECT_TYPE_COUNT = 73;
 
 	public static String getUserFriendlyObjectTypeName(Project project, int objectType)
 	{
@@ -145,7 +146,8 @@ public class ObjectType
 			ReportTemplateSchema.getObjectType(),
 			TaggedObjectSetSchema.getObjectType(),
 			TableSettingsSchema.getObjectType(),
-			ThreatRatingCommentsDataSchema.getObjectType(),
+			ThreatStressRatingDataSchema.getObjectType(),
+			ThreatSimpleRatingDataSchema.getObjectType(),
 			IucnRedlistSpeciesSchema.getObjectType(),
 			OtherNotableSpeciesSchema.getObjectType(),
 			AudienceSchema.getObjectType(),
@@ -176,7 +178,10 @@ public class ObjectType
 		if (objectType == ObjectType.TABLE_SETTINGS)
 			return false;
 
-		if (objectType == ObjectType.THREAT_RATING_COMMENTS_DATA)
+		if (objectType == ObjectType.THREAT_STRESS_RATING_DATA)
+			return false;
+
+		if (objectType == ObjectType.THREAT_SIMPLE_RATING_DATA)
 			return false;
 
 		if (objectType == ObjectType.VALUE_OPTION)

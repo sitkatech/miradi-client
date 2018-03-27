@@ -19,10 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import org.miradi.objecthelpers.ORef;
 import org.miradi.project.ProjectForTesting;
-import org.miradi.schemas.ThreatRatingCommentsDataSchema;
-
+import org.miradi.schemas.ThreatSimpleRatingDataSchema;
+import org.miradi.schemas.ThreatStressRatingDataSchema;
 
 public class TestThreatRatingCommentsData extends ObjectTestCase
 {
@@ -31,27 +30,36 @@ public class TestThreatRatingCommentsData extends ObjectTestCase
 		super(name);
 	}
 	
-	public void testFields() throws Exception
+	public void testSimpleRatingDataFields() throws Exception
 	{
-		verifyFields(ThreatRatingCommentsDataSchema.getObjectType());
+		verifyFields(ThreatSimpleRatingDataSchema.getObjectType());
 	}
 	
+	public void testStressRatingDataFields() throws Exception
+	{
+		verifyFields(ThreatStressRatingDataSchema.getObjectType());
+	}
+
 	public void testFindComment() throws Exception
 	{
-		ORef threatRatingCommentsDataRef = getProject().getSingletonObjectRef(ThreatRatingCommentsDataSchema.getObjectType());
-		assertTrue("singlton threat rating comments data does not exist?", !threatRatingCommentsDataRef.isInvalid());
-		ThreatRatingCommentsData threatRatingCommentsData = ThreatRatingCommentsData.find(getProject(), threatRatingCommentsDataRef);
 		Cause cause = getProject().createCause();
 		Target target = getProject().createTarget();
-		getProject().populateThreatRatingCommentsData(threatRatingCommentsData, cause.getRef(), target.getRef());
-		
+
 		assertTrue("project is not in simple threat rating mode?", getProject().isSimpleThreatRatingMode());
-		String simpleThreatRatingComment = threatRatingCommentsData.findComment(cause.getRef(), target.getRef());
+		getProject().populateSimpleThreatRatingCommentsData(cause.getRef(), target.getRef(), ProjectForTesting.SIMPLE_THREAT_RATING_COMMENT);
+
+		AbstractThreatRatingData threatRatingData = getProject().getSingletonThreatRatingData();
+		assertNotNull(threatRatingData);
+		String simpleThreatRatingComment = threatRatingData.findComment(cause.getRef(), target.getRef());
 		assertEquals("wrong simple based threat rating comment?", ProjectForTesting.SIMPLE_THREAT_RATING_COMMENT, simpleThreatRatingComment);
-		
+
 		getProject().switchToStressBaseMode();
 		assertTrue("project is not in stress based threat rating mode?", getProject().isStressBaseMode());
-		String stressBasedThreatRatingComment = threatRatingCommentsData.findComment(cause.getRef(), target.getRef());
-		assertEquals("wrong simple based threat rating comment?", ProjectForTesting.STRESS_BASED_THREAT_RATING_COMMENT, stressBasedThreatRatingComment);		
+		getProject().populateStressThreatRatingCommentsData(cause.getRef(), target.getRef(), ProjectForTesting.STRESS_BASED_THREAT_RATING_COMMENT);
+
+		threatRatingData = getProject().getSingletonThreatRatingData();
+		assertNotNull(threatRatingData);
+		String stressBasedThreatRatingComment = threatRatingData.findComment(cause.getRef(), target.getRef());
+		assertEquals("wrong stress based threat rating comment?", ProjectForTesting.STRESS_BASED_THREAT_RATING_COMMENT, stressBasedThreatRatingComment);
 	}
 }

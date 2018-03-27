@@ -94,7 +94,8 @@ public class ObjectManager
 		addNormalPool(new ReportTemplatePool(ida), ReportTemplateSchema.OBJECT_NAME);
 		addNormalPool(new TaggedObjectSetPool(ida), TaggedObjectSetSchema.OBJECT_NAME);
 		addNormalPool(new TableSettingsPool(ida), TableSettingsSchema.OBJECT_NAME);
-		addNormalPool(new ThreatRatingCommentsDataPool(ida), ThreatRatingCommentsDataSchema.OBJECT_NAME);
+		addNormalPool(new ThreatStressRatingDataPool(ida), ThreatStressRatingDataSchema.OBJECT_NAME);
+		addNormalPool(new ThreatSimpleRatingDataPool(ida), ThreatSimpleRatingDataSchema.OBJECT_NAME);
 		addNormalPool(new ScopeBoxPool(ida), ScopeBoxSchema.OBJECT_NAME);
 		addNormalPool(new ExpenseAssignmentPool(ida), ExpenseAssignmentSchema.OBJECT_NAME);
 		addNormalPool(new HumanWelfareTargetPool(ida), HumanWelfareTargetSchema.OBJECT_NAME);
@@ -367,7 +368,8 @@ public class ObjectManager
 			ObjectType.REPORT_TEMPLATE,
 			ObjectType.TAGGED_OBJECT_SET,
 			ObjectType.TABLE_SETTINGS,
-			ObjectType.THREAT_RATING_COMMENTS_DATA,
+			ObjectType.THREAT_STRESS_RATING_DATA,
+			ObjectType.THREAT_SIMPLE_RATING_DATA,
 			ObjectType.SCOPE_BOX,
 			ObjectType.EXPENSE_ASSIGNMENT,
 			ObjectType.HUMAN_WELFARE_TARGET,

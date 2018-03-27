@@ -76,7 +76,8 @@ public class Schemas
 		registerSchema(new ReportTemplateSchema());
 		registerSchema(new TaggedObjectSetSchema());
 		registerSchema(new TableSettingsSchema());
-		registerSchema(new ThreatRatingCommentsDataSchema());
+		registerSchema(new ThreatStressRatingDataSchema());
+		registerSchema(new ThreatSimpleRatingDataSchema());
 		registerSchema(new ScopeBoxSchema());
 		registerSchema(new ExpenseAssignmentSchema());
 		registerSchema(new HumanWelfareTargetSchema());

@@ -20,9 +20,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
-import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.ThreatRatingCommentsData;
+import org.miradi.objects.AbstractThreatRatingData;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
@@ -64,17 +63,11 @@ public class SimpleThreatRatingImporter extends	AbstractThreatRatingImporter
 	}
 
 	@Override
-	protected CodeToUserStringMap getThreatRatingCommentsMap(Node threatRatingNode, ThreatRatingCommentsData threatRatingCommentsData) throws Exception
+	protected AbstractThreatRatingData getThreatRatingData()
 	{
-		return threatRatingCommentsData.getSimpleThreatRatingCommentsMap();
+		return getProject().getSingletonSimpleThreatRatingData();
 	}
 
-	@Override
-	protected String getCommentsMapTag(Node threatRatingNode) throws Exception
-	{
-		return ThreatRatingCommentsData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP;
-	}
-	
 	@Override
 	protected String getParentElementName()
 	{

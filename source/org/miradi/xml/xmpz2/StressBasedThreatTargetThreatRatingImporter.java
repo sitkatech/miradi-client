@@ -21,11 +21,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2;
 
 import org.miradi.objectdata.BooleanData;
-import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
-import org.miradi.objects.ThreatRatingCommentsData;
+import org.miradi.objects.AbstractThreatRatingData;
 import org.miradi.objects.ThreatStressRating;
 import org.miradi.questions.StressContributionQuestion;
 import org.miradi.questions.StressIrreversibilityQuestion;
@@ -82,18 +81,6 @@ public class StressBasedThreatTargetThreatRatingImporter extends AbstractThreatR
 		importThreatRatingsComment(threatRatingNode);
 	}
 	
-	@Override
-	protected CodeToUserStringMap getThreatRatingCommentsMap(Node threatRatingNode, ThreatRatingCommentsData threatRatingCommentsData) throws Exception
-	{
-		return threatRatingCommentsData.getStressBasedThreatRatingCommentsMap();
-	}
-
-	@Override
-	protected String getCommentsMapTag(Node threatRatingNode) throws Exception
-	{
-		return ThreatRatingCommentsData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP;
-	}
-	
 	private void importStressBasedThreatRating(Node stressBasedThreatRatingNode) throws Exception
 	{
 		ORef threatRef = getThreatRef(stressBasedThreatRatingNode);
@@ -133,7 +120,13 @@ public class StressBasedThreatTargetThreatRatingImporter extends AbstractThreatR
 		ORef stressRef = getImporter().getNodeAsRef(stressIdNode,  STRESS_ID, StressSchema.getObjectType());
 		return stressRef;
 	}
-	
+
+	@Override
+	protected AbstractThreatRatingData getThreatRatingData()
+	{
+		return getProject().getSingletonStressThreatRatingData();
+	}
+
 	@Override
 	protected String getParentElementName()
 	{

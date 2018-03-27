@@ -1688,39 +1688,44 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 		return intermediateResult;
 	}
-	
-	public void populateStressBasedThreatRatingCommentsData() throws Exception
+
+	public void populateSimpleThreatRatingCommentsData(String comments) throws Exception
 	{
-		populateStressBasedThreatRatingCommentsData("Some Comment for Threat and Target" + getSampleUserText());
+		AbstractThreatRatingData threatRatingData = getSingletonSimpleThreatRatingData();
+		populateThreatRatingCommentsData(threatRatingData, comments);
 	}
 
-	public void populateStressBasedThreatRatingCommentsData(String comment)	throws Exception
+	public void populateSimpleThreatRatingCommentsData(ORef threatRef, ORef targetRef, String comments) throws Exception
 	{
-		populateThreatTargetCommentsData(ThreatRatingCommentsData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP,	comment);
-	}
-	
-	public void populateSimpleThreatRatingCommentsData() throws Exception
-	{
-		populateSimpleThreatRatingCommentsData("Some Comment for Threat and Target" + getSampleUserText());
+		AbstractThreatRatingData threatRatingData = getSingletonSimpleThreatRatingData();
+		populateThreatRatingCommentsData(threatRatingData, threatRef, targetRef, comments);
 	}
 
-	public void populateSimpleThreatRatingCommentsData(String comment)	throws Exception
+	public void populateStressThreatRatingCommentsData(String comments) throws Exception
 	{
-		populateThreatTargetCommentsData(ThreatRatingCommentsData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP,	comment);
+		AbstractThreatRatingData threatRatingData = getSingletonStressThreatRatingData();
+		populateThreatRatingCommentsData(threatRatingData, comments);
 	}
 
-	private void populateThreatTargetCommentsData(String tagStressBasedThreatRatingCommentsMap, String comment) throws Exception
+	public void populateStressThreatRatingCommentsData(ORef threatRef, ORef targetRef, String comments) throws Exception
 	{
-		ThreatRatingCommentsData threatRatingCommentsData = getSingletonThreatRatingCommentsData();
+		AbstractThreatRatingData threatRatingData = getSingletonStressThreatRatingData();
+		populateThreatRatingCommentsData(threatRatingData, threatRef, targetRef, comments);
+	}
+
+	private void populateThreatRatingCommentsData(AbstractThreatRatingData threatRatingData, ORef threatRef, ORef targetRef, String comments) throws Exception
+	{
+		CommandSetObjectData updateCommentCommand = threatRatingData.createCommandToUpdateComment(threatRef, targetRef, comments);
+		executeCommand(updateCommentCommand);
+	}
+
+	private void populateThreatRatingCommentsData(AbstractThreatRatingData threatRatingData, String comments) throws Exception
+	{
 		DiagramLink diagramLink = createThreatTargetDiagramLink();
 		FactorLink factorLink = diagramLink.getWrappedFactorLink();
-		String commentsKey = ThreatRatingCommentsData.createKey(factorLink.getFromFactorRef(), factorLink.getToFactorRef());
-		CodeToUserStringMap map = new CodeToUserStringMap();
-		map.putUserString(commentsKey, comment);
-		
-		fillObjectUsingCommand(threatRatingCommentsData, tagStressBasedThreatRatingCommentsMap, map.toJsonString());
+		populateThreatRatingCommentsData(threatRatingData, factorLink.getFromFactorRef(), factorLink.getToFactorRef(), comments);
 	}
-	
+
 	public void populateObjectTreeTableConfiguration(ObjectTreeTableConfiguration objectTreeTableConfiguration) throws Exception
 	{
 		CodeList rowCodes = new CustomPlanningAllRowsQuestion().getAllCodes();
@@ -1885,20 +1890,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORefList groupBoxChildren = new ORefList(groupBoxChild);
 		fillObjectUsingCommand(groupBoxDiagramFactor, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, groupBoxChildren.toString());
 	}
-	
-	public void populateThreatRatingCommentsData(ThreatRatingCommentsData threatRatingCommentsData, ORef threatRef, ORef targetRef) throws Exception
-	{
-		String threatTargetKey = ThreatRatingCommentsData.createKey(threatRef, targetRef);
-				
-		CodeToUserStringMap simpleThreatRatingCommentsMap = threatRatingCommentsData.getSimpleThreatRatingCommentsMap();
-		simpleThreatRatingCommentsMap.putUserString(threatTargetKey, SIMPLE_THREAT_RATING_COMMENT);
-		fillObjectUsingCommand(threatRatingCommentsData, ThreatRatingCommentsData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP, simpleThreatRatingCommentsMap.toJsonString());
-	
-		CodeToUserStringMap stressBasedThreatRatingCommentsMap = threatRatingCommentsData.getStressBasedThreatRatingCommentsMap();
-		stressBasedThreatRatingCommentsMap.putUserString(threatTargetKey, STRESS_BASED_THREAT_RATING_COMMENT);
-		fillObjectUsingCommand(threatRatingCommentsData, ThreatRatingCommentsData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP, stressBasedThreatRatingCommentsMap.toJsonString());
-	}
-	
+
 	public void populateOrganization(Organization organization) throws Exception
 	{
 		fillObjectUsingCommand(organization, Organization.TAG_LABEL, "Some organization name");

@@ -25,12 +25,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Cause;
-import org.miradi.objects.Stress;
-import org.miradi.objects.Target;
-import org.miradi.objects.ThreatRatingCommentsData;
-import org.miradi.objects.ThreatStressRating;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
@@ -109,7 +104,7 @@ public class SimpleThreatRatingDetailsTableExporter extends AbstractThreatRating
 	@Override
 	protected String getThreatRatingCommentsTag()
 	{
-		return ThreatRatingCommentsData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP;
+		return AbstractThreatRatingData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP;
 	}
 
 	@Override
@@ -126,6 +121,6 @@ public class SimpleThreatRatingDetailsTableExporter extends AbstractThreatRating
 								Stress.TAG_SEVERITY,
 								ThreatStressRating.TAG_IRREVERSIBILITY,
 								Stress.PSEUDO_STRESS_RATING,
-								ThreatRatingCommentsData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP,
+								AbstractThreatRatingData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP,
 			};
 }
