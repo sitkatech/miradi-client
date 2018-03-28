@@ -90,6 +90,7 @@ public class SimpleThreatRatingDetailsTableExporter extends AbstractThreatRating
 				String threatRatingBundleValueCode = new ThreatTargetVirtualLinkHelper(getProject()).getCalculatedThreatRatingBundleValue(threatForRow.getRef(), getTargetRef());
 				return simpleThreatRatingFramework.convertToChoiceItem(threatRatingBundleValueCode);
 			}
+
 			if (isCommentsColumn(modelColumn))
 				return getThreatRatingComments(threatForRow.getRef());
 		}
@@ -101,12 +102,6 @@ public class SimpleThreatRatingDetailsTableExporter extends AbstractThreatRating
 		return new EmptyChoiceItem();
 	}
 	
-	@Override
-	protected String getThreatRatingCommentsTag()
-	{
-		return AbstractThreatRatingData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP;
-	}
-
 	@Override
 	public BaseObject getBaseObjectForRow(int row)
 	{
@@ -121,6 +116,6 @@ public class SimpleThreatRatingDetailsTableExporter extends AbstractThreatRating
 								Stress.TAG_SEVERITY,
 								ThreatStressRating.TAG_IRREVERSIBILITY,
 								Stress.PSEUDO_STRESS_RATING,
-								AbstractThreatRatingData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP,
+								AbstractThreatRatingData.TAG_COMMENTS,
 			};
 }

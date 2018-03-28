@@ -43,10 +43,9 @@ public class ThreatStressRatingData extends AbstractThreatRatingData
 		return (ThreatStressRatingDataSchema) objectManager.getSchemas().get(ObjectType.THREAT_STRESS_RATING_DATA);
 	}
 
-	@Override
-	protected String getThreatRatingCommentsMapTag()
+	public static AbstractThreatRatingData findThreatRatingData(Project project, ORef threatRef, ORef targetRef)
 	{
-		return AbstractThreatRatingData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP;
+		return AbstractThreatRatingData.findThreatRatingData(project, threatRef, targetRef, ObjectType.THREAT_STRESS_RATING_DATA);
 	}
 
 	public static boolean is(BaseObject object)

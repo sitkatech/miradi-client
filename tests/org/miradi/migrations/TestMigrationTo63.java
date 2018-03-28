@@ -24,7 +24,9 @@ import org.miradi.migrations.forward.MigrationTo63;
 import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.*;
+import org.miradi.objects.AbstractThreatRatingData;
+import org.miradi.objects.Cause;
+import org.miradi.objects.Target;
 import org.miradi.project.ProjectForTesting;
 
 public class TestMigrationTo63 extends AbstractTestMigration
@@ -42,13 +44,12 @@ public class TestMigrationTo63 extends AbstractTestMigration
         assertTrue("project is not in simple threat rating mode?", getProject().isSimpleThreatRatingMode());
         getProject().populateSimpleThreatRatingCommentsData(cause.getRef(), target.getRef(), ProjectForTesting.SIMPLE_THREAT_RATING_COMMENT);
 
-        AbstractThreatRatingData simpleThreatRatingData = getProject().getSingletonSimpleThreatRatingData();
+        AbstractThreatRatingData simpleThreatRatingData = AbstractThreatRatingData.findThreatRatingData(getProject(), cause.getRef(), target.getRef(), ObjectType.THREAT_SIMPLE_RATING_DATA);
         assertNotNull(simpleThreatRatingData);
-        assertEquals(ProjectForTesting.SIMPLE_THREAT_RATING_COMMENT, simpleThreatRatingData.findComment(cause.getRef(), target.getRef()));
+        assertEquals(ProjectForTesting.SIMPLE_THREAT_RATING_COMMENT, simpleThreatRatingData.getComments());
 
-        AbstractThreatRatingData stressThreatRatingData = getProject().getSingletonStressThreatRatingData();
-        assertNotNull(stressThreatRatingData);
-        assertEquals("", stressThreatRatingData.findComment(cause.getRef(), target.getRef()));
+        AbstractThreatRatingData stressThreatRatingData = AbstractThreatRatingData.findThreatRatingData(getProject(), cause.getRef(), target.getRef(), ObjectType.THREAT_STRESS_RATING_DATA);
+        assertNull(stressThreatRatingData);
 
         RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo63.VERSION_TO));
 
@@ -57,9 +58,14 @@ public class TestMigrationTo63 extends AbstractTestMigration
         RawObject rawStressThreatRatingData = rawProject.findObject(stressThreatRatingDataRef);
         String rawStressThreatRatingCommentsMapAsString = rawStressThreatRatingData.getData(MigrationTo63.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP);
         CodeToUserStringMap rawStressThreatRatingCommentsMap = new CodeToUserStringMap(rawStressThreatRatingCommentsMapAsString);
-        String commentsMapKey = AbstractThreatRatingData.createKey(cause.getRef(), target.getRef());
+        String commentsMapKey = createLegacyThreatRatingDataMapKey(cause.getRef(), target.getRef());
         assertTrue(rawStressThreatRatingCommentsMap.contains(commentsMapKey));
         assertEquals(ProjectForTesting.SIMPLE_THREAT_RATING_COMMENT, rawStressThreatRatingCommentsMap.getUserString(commentsMapKey));
+    }
+
+    private String createLegacyThreatRatingDataMapKey(ORef threatRef, ORef targetRef)
+    {
+        return threatRef.toString() + targetRef.toString();
     }
 
     @Override

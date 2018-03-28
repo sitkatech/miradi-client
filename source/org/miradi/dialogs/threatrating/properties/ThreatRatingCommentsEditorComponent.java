@@ -71,15 +71,16 @@ public class ThreatRatingCommentsEditorComponent extends SavableField
 	{
 		ORef threatRef = getThreatRef();
 		ORef targetRef = getTargetRef();
-		String comments = getThreatRatingData().findComment(threatRef, targetRef);
+		String comments = getComments(threatRef, targetRef);
 		
 		getTextArea().setText(comments);
 		getTextArea().invalidate();
 	}
 
-	private AbstractThreatRatingData getThreatRatingData()
+	private String getComments(ORef threatRef, ORef targetRef)
 	{
-		return getProject().getSingletonThreatRatingData();
+		AbstractThreatRatingData threatRatingData = AbstractThreatRatingData.findThreatRatingData(getProject(), threatRef, targetRef);
+		return threatRatingData != null ? threatRatingData.getComments() : "";
 	}
 
 	public JComponent getComponent()
@@ -120,11 +121,12 @@ public class ThreatRatingCommentsEditorComponent extends SavableField
 	{
 		try
 		{
-			AbstractThreatRatingData threatRatingCommentsData = getThreatRatingData();
-			CommandSetObjectData setComment = threatRatingCommentsData.createCommandToUpdateComment(getThreatRef(), getTargetRef(), getTextArea().getText());
-			getProject().executeCommand(setComment);
+			String comments = getTextArea().getText();
+			AbstractThreatRatingData threatRatingData = AbstractThreatRatingData.findOrCreateThreatRatingData(getProject(), getThreatRef(), getTargetRef());
+			CommandSetObjectData command = new CommandSetObjectData(threatRatingData.getRef(), AbstractThreatRatingData.TAG_COMMENTS, comments);
+			getProject().executeCommand(command);
 		}
-		catch (Exception  e)
+		catch(Exception e)
 		{
 			EAM.logException(e);
 		}

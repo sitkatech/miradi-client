@@ -93,18 +93,12 @@ public class ThreatStressRatingDetailsTableExporter extends	AbstractThreatRating
 		
 		if (columnTag.equals(ThreatStressRating.TAG_IRREVERSIBILITY))
 			return getIrreversibility(getProject(), getTargetRef(), threat.getRef(), stressForRow);
-		
+
 		if (isCommentsColumn(modelColumn))
 			return getThreatRatingComments(threat.getRef());
 		
 		String valueToConvert = stressForRow.getData(columnTag);
 		return TargetThreatLinkTableModel.convertThreatRatingCodeToChoiceItem(valueToConvert);
-	}
-
-	@Override
-	protected String getThreatRatingCommentsTag()
-	{
-		return AbstractThreatRatingData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP;
 	}
 
 	public static ChoiceItem getIrreversibility(Project project, ORef targetRef, ORef threatRef, Stress stress)
@@ -156,6 +150,6 @@ public class ThreatStressRatingDetailsTableExporter extends	AbstractThreatRating
 			Stress.PSEUDO_STRESS_RATING, 
 			ThreatStressRating.TAG_CONTRIBUTION, 
 			ThreatStressRating.TAG_IRREVERSIBILITY,
-			AbstractThreatRatingData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP,
+			AbstractThreatRatingData.TAG_COMMENTS,
 			};
 }

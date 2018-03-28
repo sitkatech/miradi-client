@@ -33,18 +33,30 @@ abstract public class AbstractThreatRatingImporter extends AbstractXmpz2ObjectIm
 	{
 		super(importerToUse);
 	}
-	
+
+	protected void endUsingCommandsToSetData()
+	{
+		getProject().endCommandSideEffectMode();
+	}
+
+	protected void beginUsingCommandsToSetData()
+	{
+		getProject().beginCommandSideEffectMode();
+	}
+
+	protected abstract AbstractThreatRatingData findOrCreateThreatRatingData(ORef threatRef, ORef targetRef) throws Exception;
+
 	protected void importThreatRatingsComment(Node threatRatingNode) throws Exception
 	{
 		ORef targetRef = getTargetRef(threatRatingNode);
 		ORef threatRef = getThreatRef(threatRatingNode);
 		
 		Node commentsNode = getImporter().getNamedChildNode(threatRatingNode, getParentElementName() + COMMENTS);
-		AbstractThreatRatingData threatRatingData = getThreatRatingData();
+		AbstractThreatRatingData threatRatingData = findOrCreateThreatRatingData(threatRef, targetRef);
 		if (commentsNode != null)
 		{
 			String comments = getImporter().getFormattedNodeContent(commentsNode);
-			threatRatingData.updateComment(threatRef, targetRef, comments);
+			threatRatingData.setData(AbstractThreatRatingData.TAG_COMMENTS, comments);
 		}
 	}
 	
@@ -68,6 +80,4 @@ abstract public class AbstractThreatRatingImporter extends AbstractXmpz2ObjectIm
 	}
 
 	abstract protected String getParentElementName();
-
-	abstract protected AbstractThreatRatingData getThreatRatingData();
 }

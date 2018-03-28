@@ -34,6 +34,11 @@ public abstract class AbstractThreatRatingDataSchema extends BaseObjectSchema
     {
         super.fillFieldSchemas();
 
+        createFieldSchemaRequiredRef(AbstractThreatRatingData.TAG_THREAT_REF);
+        createFieldSchemaRequiredRef(AbstractThreatRatingData.TAG_TARGET_REF);
+        createFieldSchemaMultiLineUserText(AbstractThreatRatingData.TAG_COMMENTS);
+
+        // TODO: fields to be deprecated in post 4.5 release...only here to support migrations
         createFieldSchemaCodeToUserStringMap(AbstractThreatRatingData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP);
         createFieldSchemaCodeToUserStringMap(AbstractThreatRatingData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP);
     }

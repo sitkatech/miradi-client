@@ -42,7 +42,7 @@ public class SimpleThreatRatingPropertiesPanel extends ObjectDataInputPanel
 		
 		addSubPanelField(factorNamesPanel);
 		addSubPanelField(dropdownsPanel);
-		addSubPanelWithoutTitledBorder(new ThreatRatingCommentsSubpanel(project, mainWindowToUse.getActions()));
+		addSubPanelWithoutTitledBorder(new ThreatRatingDataSubPanel(project, mainWindowToUse.getActions()));
 		
 		updateFieldsFromProject();
 	}

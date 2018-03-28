@@ -148,8 +148,10 @@ public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
 	
 	private void exportThreatRatingComment(ORef threatRef, ORef targetRef) throws Exception
 	{
-		AbstractThreatRatingData threatRatingData = getProject().getSingletonStressThreatRatingData();
-		String threatRatingComments = threatRatingData.findComment(threatRef, targetRef);
+		String threatRatingComments = "";
+		AbstractThreatRatingData threatRatingData = ThreatStressRatingData.findThreatRatingData(getProject(), threatRef, targetRef);
+		if (threatRatingData != null)
+			threatRatingComments = threatRatingData.getComments();
 		getWriter().writeElement(getParentElementName() + COMMENTS, threatRatingComments);
 	}
 	

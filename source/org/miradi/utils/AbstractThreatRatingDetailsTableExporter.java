@@ -122,24 +122,22 @@ abstract public class AbstractThreatRatingDetailsTableExporter extends AbstractS
 	
 	protected boolean isCommentsColumn(int modelColumn)
 	{
-		return getColumnTag(modelColumn).equals(getThreatRatingCommentsTag());
+		return getColumnTag(modelColumn).equals(AbstractThreatRatingData.TAG_COMMENTS);
 	}
 
 	protected ChoiceItem getThreatRatingComments(final ORef threatRef)
 	{
-		AbstractThreatRatingData threatRatingData = getProject().getSingletonThreatRatingData();
-		String threatRatingComments = threatRatingData.findComment(threatRef, getTargetRef());
-		
+		AbstractThreatRatingData threatRatingData = AbstractThreatRatingData.findThreatRatingData(getProject(), threatRef, getTargetRef());
+		String threatRatingComments = threatRatingData != null ? threatRatingData.getComments() : "";
+
 		return new TaglessChoiceItem(threatRatingComments);
 	}
-	
+
 	protected String getCommentsColumnName()
 	{
 		return EAM.text("Comments");
 	}
 	
-	abstract protected String getThreatRatingCommentsTag();
-
 	private static final int THREAT_NAME_COLUMN_INDEX = 0;
 	private Target target;
 	private String[] columnTags;

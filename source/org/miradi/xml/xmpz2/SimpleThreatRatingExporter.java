@@ -33,6 +33,7 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.AbstractThreatRatingData;
 import org.miradi.objects.Target;
+import org.miradi.objects.ThreatSimpleRatingData;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
@@ -118,8 +119,10 @@ public class SimpleThreatRatingExporter implements Xmpz2XmlConstants
 
 	private void exportThreatRatingComment(ORef threatRef, ORef targetRef) throws Exception
 	{
-		AbstractThreatRatingData threatRatingData = getProject().getSingletonSimpleThreatRatingData();
-		String threatRatingComments = threatRatingData.findComment(threatRef, targetRef);
+		String threatRatingComments = "";
+		AbstractThreatRatingData threatRatingData = ThreatSimpleRatingData.findThreatRatingData(getProject(), threatRef, targetRef);
+		if (threatRatingData != null)
+			threatRatingComments = threatRatingData.getComments();
 		getWriter().writeElement(getParentElementName() + COMMENTS, threatRatingComments);
 	}
 	

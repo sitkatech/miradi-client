@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
+import org.miradi.commands.CommandDeleteObject;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
@@ -100,6 +101,28 @@ public class Cause extends Factor
 		}
 		
 		return super.getPseudoData(fieldTag);
+	}
+
+	@Override
+	protected CommandVector createCommandsToDereferenceObject() throws Exception
+	{
+		CommandVector commandsToDereferences = super.createCommandsToDereferenceObject();
+		commandsToDereferences.addAll(buildCommandsToDeleteRelatedAbstractThreatData());
+
+		return commandsToDereferences;
+	}
+
+	private CommandVector buildCommandsToDeleteRelatedAbstractThreatData()
+	{
+		CommandVector commands = new CommandVector();
+
+		ORefList abstractThreatRatingRefs = AbstractThreatRatingData.findThreatRatingDataRefsForThreat(getProject(), getRef());
+		for (ORef abstractThreatRatingRef : abstractThreatRatingRefs)
+		{
+			commands.add(new CommandDeleteObject(abstractThreatRatingRef));
+		}
+
+		return commands;
 	}
 
 	public CommandVector getCommandsToRemoveFromThreatReductionResults()

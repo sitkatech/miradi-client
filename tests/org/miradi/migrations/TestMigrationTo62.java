@@ -22,7 +22,9 @@ package org.miradi.migrations;
 
 import org.miradi.migrations.forward.MigrationTo62;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.*;
+import org.miradi.objects.AbstractThreatRatingData;
+import org.miradi.objects.Cause;
+import org.miradi.objects.Target;
 import org.miradi.project.ProjectForTesting;
 
 public class TestMigrationTo62 extends AbstractTestMigration
@@ -40,7 +42,7 @@ public class TestMigrationTo62 extends AbstractTestMigration
         assertTrue("project is not in simple threat rating mode?", getProject().isSimpleThreatRatingMode());
         getProject().populateSimpleThreatRatingCommentsData(cause.getRef(), target.getRef(), ProjectForTesting.SIMPLE_THREAT_RATING_COMMENT);
 
-        AbstractThreatRatingData threatRatingData = getProject().getSingletonSimpleThreatRatingData();
+        AbstractThreatRatingData threatRatingData = AbstractThreatRatingData.findThreatRatingData(getProject(), cause.getRef(), target.getRef(), ObjectType.THREAT_SIMPLE_RATING_DATA);
         assertNotNull(threatRatingData);
 
         RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo62.VERSION_TO));

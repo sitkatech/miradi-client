@@ -22,6 +22,7 @@ package org.miradi.xml.xmpz2;
 
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.ThreatStressRatingEnsurer;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.AbstractThreatRatingData;
@@ -63,16 +64,6 @@ public class StressBasedThreatTargetThreatRatingImporter extends AbstractThreatR
 			Node threatRatingNode = threatRatingNodes.item(index);
 			importStressBasedThreatRatings(threatRatingNode);
 		}		
-	}
-
-	private void endUsingCommandsToSetData()
-	{
-		getProject().endCommandSideEffectMode();
-	}
-
-	private void beginUsingCommandsToSetData()
-	{
-		getProject().beginCommandSideEffectMode();
 	}
 
 	private void importStressBasedThreatRatings(Node threatRatingNode) throws Exception
@@ -122,9 +113,9 @@ public class StressBasedThreatTargetThreatRatingImporter extends AbstractThreatR
 	}
 
 	@Override
-	protected AbstractThreatRatingData getThreatRatingData()
+	protected AbstractThreatRatingData findOrCreateThreatRatingData(ORef threatRef, ORef targetRef) throws Exception
 	{
-		return getProject().getSingletonStressThreatRatingData();
+		return AbstractThreatRatingData.findOrCreateThreatRatingData(getProject(), threatRef, targetRef, ObjectType.THREAT_STRESS_RATING_DATA);
 	}
 
 	@Override

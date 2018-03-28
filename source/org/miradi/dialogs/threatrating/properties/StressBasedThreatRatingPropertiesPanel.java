@@ -48,7 +48,7 @@ public class StressBasedThreatRatingPropertiesPanel extends ObjectDataInputPanel
 
 		addSubPanelWithoutTitledBorder(factorsPanel);
 		addSubPanelWithoutTitledBorder(threatStressRatingFieldPanel);
-		addSubPanelWithoutTitledBorder(new ThreatRatingCommentsSubpanel(getProject(), mainWindowToUse.getActions()));
+		addSubPanelWithoutTitledBorder(new ThreatRatingDataSubPanel(getProject(), mainWindowToUse.getActions()));
 		add(editorComponent);
 		
 		updateFieldsFromProject();

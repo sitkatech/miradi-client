@@ -1691,39 +1691,36 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	public void populateSimpleThreatRatingCommentsData(String comments) throws Exception
 	{
-		AbstractThreatRatingData threatRatingData = getSingletonSimpleThreatRatingData();
-		populateThreatRatingCommentsData(threatRatingData, comments);
-	}
-
-	public void populateSimpleThreatRatingCommentsData(ORef threatRef, ORef targetRef, String comments) throws Exception
-	{
-		AbstractThreatRatingData threatRatingData = getSingletonSimpleThreatRatingData();
-		populateThreatRatingCommentsData(threatRatingData, threatRef, targetRef, comments);
+		DiagramLink diagramLink = createThreatTargetDiagramLink();
+		FactorLink factorLink = diagramLink.getWrappedFactorLink();
+		ORef threatRef = factorLink.getFromFactorRef();
+		ORef targetRef = factorLink.getToFactorRef();
+		populateSimpleThreatRatingCommentsData(threatRef, targetRef, comments);
 	}
 
 	public void populateStressThreatRatingCommentsData(String comments) throws Exception
 	{
-		AbstractThreatRatingData threatRatingData = getSingletonStressThreatRatingData();
-		populateThreatRatingCommentsData(threatRatingData, comments);
+		DiagramLink diagramLink = createThreatTargetDiagramLink();
+		FactorLink factorLink = diagramLink.getWrappedFactorLink();
+		ORef threatRef = factorLink.getFromFactorRef();
+		ORef targetRef = factorLink.getToFactorRef();
+		populateStressThreatRatingCommentsData(threatRef, targetRef, comments);
+	}
+
+	public void populateSimpleThreatRatingCommentsData(ORef threatRef, ORef targetRef, String comments) throws Exception
+	{
+		populateSimpleThreatRatingCommentsData(threatRef, targetRef, comments, ObjectType.THREAT_SIMPLE_RATING_DATA);
 	}
 
 	public void populateStressThreatRatingCommentsData(ORef threatRef, ORef targetRef, String comments) throws Exception
 	{
-		AbstractThreatRatingData threatRatingData = getSingletonStressThreatRatingData();
-		populateThreatRatingCommentsData(threatRatingData, threatRef, targetRef, comments);
+		populateSimpleThreatRatingCommentsData(threatRef, targetRef, comments, ObjectType.THREAT_STRESS_RATING_DATA);
 	}
 
-	private void populateThreatRatingCommentsData(AbstractThreatRatingData threatRatingData, ORef threatRef, ORef targetRef, String comments) throws Exception
+	public void populateSimpleThreatRatingCommentsData(ORef threatRef, ORef targetRef, String comments, int objectType) throws Exception
 	{
-		CommandSetObjectData updateCommentCommand = threatRatingData.createCommandToUpdateComment(threatRef, targetRef, comments);
-		executeCommand(updateCommentCommand);
-	}
-
-	private void populateThreatRatingCommentsData(AbstractThreatRatingData threatRatingData, String comments) throws Exception
-	{
-		DiagramLink diagramLink = createThreatTargetDiagramLink();
-		FactorLink factorLink = diagramLink.getWrappedFactorLink();
-		populateThreatRatingCommentsData(threatRatingData, factorLink.getFromFactorRef(), factorLink.getToFactorRef(), comments);
+		AbstractThreatRatingData threatRatingData = AbstractThreatRatingData.findOrCreateThreatRatingData(this, threatRef, targetRef, objectType);
+		fillObjectUsingCommand(threatRatingData.getRef(), AbstractThreatRatingData.TAG_COMMENTS, comments);
 	}
 
 	public void populateObjectTreeTableConfiguration(ObjectTreeTableConfiguration objectTreeTableConfiguration) throws Exception

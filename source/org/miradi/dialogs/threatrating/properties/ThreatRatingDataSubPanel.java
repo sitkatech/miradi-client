@@ -30,12 +30,12 @@ import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.schemas.ProjectMetadataSchema;
 
-public class ThreatRatingCommentsSubpanel extends ObjectDataInputPanel
+public class ThreatRatingDataSubPanel extends ObjectDataInputPanel
 {
-	public ThreatRatingCommentsSubpanel(Project projectToUse, Actions actions) throws Exception
+	public ThreatRatingDataSubPanel(Project projectToUse, Actions actions) throws Exception
 	{
 		super(projectToUse, ORef.INVALID);
-		
+
 		addHtmlWrappedLabel(EAM.text("Label|Comments"));
 		commentsField = new ThreatRatingCommentsEditorComponent(getProject(), actions);
 		add(commentsField.getComponent());
@@ -66,7 +66,7 @@ public class ThreatRatingCommentsSubpanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return "ThreatRatingCommentsSubpanel";
+		return "ThreatRatingDataSubPanel";
 	}
 	
 	private ThreatRatingCommentsEditorComponent commentsField;

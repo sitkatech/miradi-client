@@ -43,10 +43,9 @@ public class ThreatSimpleRatingData extends AbstractThreatRatingData
         return (ThreatSimpleRatingDataSchema) objectManager.getSchemas().get(ObjectType.THREAT_SIMPLE_RATING_DATA);
     }
 
-    @Override
-    protected String getThreatRatingCommentsMapTag()
+    public static AbstractThreatRatingData findThreatRatingData(Project project, ORef threatRef, ORef targetRef)
     {
-        return AbstractThreatRatingData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP;
+        return AbstractThreatRatingData.findThreatRatingData(project, threatRef, targetRef, ObjectType.THREAT_SIMPLE_RATING_DATA);
     }
 
 	public static boolean is(BaseObject object)

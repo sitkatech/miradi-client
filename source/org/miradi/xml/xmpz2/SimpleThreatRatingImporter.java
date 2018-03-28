@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2;
 
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AbstractThreatRatingData;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
@@ -34,14 +35,22 @@ public class SimpleThreatRatingImporter extends	AbstractThreatRatingImporter
 	
 	public void importFields() throws Exception
 	{
-		String poolName = Xmpz2XmlWriter.createPoolElementName(getParentElementName());
-		Node threatRatingPoolNode = getImporter().getNamedChildNode(getImporter().getRootNode(), poolName);
-		NodeList threatRatingNodes = getImporter().getNodes(threatRatingPoolNode, new String[]{getParentElementName(), });
-		for (int index = 0; index < threatRatingNodes.getLength(); ++index)
+		beginUsingCommandsToSetData();
+		try
 		{
-			Node threatRatingNode = threatRatingNodes.item(index);
-			importSimpleThreatRating(threatRatingNode);
-		}		
+			String poolName = Xmpz2XmlWriter.createPoolElementName(getParentElementName());
+			Node threatRatingPoolNode = getImporter().getNamedChildNode(getImporter().getRootNode(), poolName);
+			NodeList threatRatingNodes = getImporter().getNodes(threatRatingPoolNode, new String[]{getParentElementName(), });
+			for (int index = 0; index < threatRatingNodes.getLength(); ++index)
+			{
+				Node threatRatingNode = threatRatingNodes.item(index);
+				importSimpleThreatRating(threatRatingNode);
+			}
+		}
+		finally
+		{
+			endUsingCommandsToSetData();
+		}
 	}
 
 	private void importSimpleThreatRating(Node threatRatingNode) throws Exception
@@ -63,9 +72,9 @@ public class SimpleThreatRatingImporter extends	AbstractThreatRatingImporter
 	}
 
 	@Override
-	protected AbstractThreatRatingData getThreatRatingData()
+	protected AbstractThreatRatingData findOrCreateThreatRatingData(ORef threatRef, ORef targetRef) throws Exception
 	{
-		return getProject().getSingletonSimpleThreatRatingData();
+		return AbstractThreatRatingData.findOrCreateThreatRatingData(getProject(), threatRef, targetRef, ObjectType.THREAT_SIMPLE_RATING_DATA);
 	}
 
 	@Override

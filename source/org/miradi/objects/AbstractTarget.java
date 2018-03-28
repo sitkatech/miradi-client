@@ -24,6 +24,7 @@ import java.util.Arrays;
 import java.util.Vector;
 import java.util.function.Function;
 
+import org.miradi.commands.CommandDeleteObject;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
@@ -36,12 +37,9 @@ import org.miradi.project.Project;
 import org.miradi.project.KEAViabilityFormula;
 import org.miradi.questions.StatusQuestion;
 import org.miradi.questions.ViabilityModeQuestion;
-import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.KeyEcologicalAttributeSchema;
-import org.miradi.schemas.SubTargetSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.CommandVector;
 
 abstract public class AbstractTarget extends Factor
 {
@@ -84,6 +82,28 @@ abstract public class AbstractTarget extends Factor
 			return false;
 		
 		return true;
+	}
+
+	@Override
+	protected CommandVector createCommandsToDereferenceObject() throws Exception
+	{
+		CommandVector commandsToDereferences = super.createCommandsToDereferenceObject();
+		commandsToDereferences.addAll(buildCommandsToDeleteRelatedAbstractThreatData());
+
+		return commandsToDereferences;
+	}
+
+	private CommandVector buildCommandsToDeleteRelatedAbstractThreatData()
+	{
+		CommandVector commands = new CommandVector();
+
+		ORefList abstractThreatRatingRefs = AbstractThreatRatingData.findThreatRatingDataRefsForTarget(getProject(), getRef());
+		for (ORef abstractThreatRatingRef : abstractThreatRatingRefs)
+		{
+			commands.add(new CommandDeleteObject(abstractThreatRatingRef));
+		}
+
+		return commands;
 	}
 
 	@Override
