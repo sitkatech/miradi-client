@@ -28,6 +28,8 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.*;
 import org.miradi.objects.*;
 import org.miradi.project.ProjectForTesting;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ThreatRatingEvidenceConfidenceQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.StrategySchema;
@@ -94,7 +96,28 @@ public class TestXmpz2XmlExporter extends TestCaseForXmpz2ExportAndImport
 		assertEquals(new ORefList(indicator.getRef()), goal.getRelevantIndicatorRefList());
 		verifyRoundTripExportImport();
 	}
-	
+
+	public void testThreatRatingEvidenceData() throws Exception
+	{
+		ORef targetRef = getProject().populateSimpleThreatRatingValues();
+		Target target = (Target) getProject().findObject(targetRef);
+		ORef threatRef = ORef.INVALID;
+		for (Factor factor :target.getUpstreamDownstreamFactors())
+		{
+			if (factor.isDirectThreat())
+			{
+				threatRef = factor.getRef();
+				break;
+			}
+		}
+		assertTrue(threatRef.isValid());
+
+		assertTrue("project is not in simple threat rating mode?", getProject().isSimpleThreatRatingMode());
+		ChoiceItem evidenceConfidenceChoice = new ThreatRatingEvidenceConfidenceQuestion().findChoiceByCode(ThreatRatingEvidenceConfidenceQuestion.ROUGH_GUESS_CODE);
+		getProject().populateSimpleThreatRatingEvidenceData(threatRef, targetRef, "Sample evidence notes", evidenceConfidenceChoice, ObjectType.THREAT_SIMPLE_RATING_DATA);
+		verifyRoundTripExportImport();
+	}
+
 	public void testGroupBoxes() throws Exception
 	{
 		DiagramFactor groupBoxDiagramFactor = getProject().createAndAddFactorToDiagram(GroupBoxSchema.getObjectType());

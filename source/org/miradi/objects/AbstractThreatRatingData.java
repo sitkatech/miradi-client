@@ -20,11 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
+import org.miradi.objectdata.ChoiceData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.BaseObjectSchema;
 
 import java.util.function.Function;
@@ -55,6 +58,19 @@ public abstract class AbstractThreatRatingData extends BaseObject
     public String getComments()
     {
         return getStringData(TAG_COMMENTS);
+    }
+
+    public ChoiceItem getEvidenceConfidence()
+    {
+        ChoiceData data = (ChoiceData)getField(TAG_EVIDENCE_CONFIDENCE);
+        ChoiceQuestion question = data.getChoiceQuestion();
+        String code = data.get();
+        return question.findChoiceByCode(code);
+    }
+
+    public String getEvidenceNotes()
+    {
+        return getStringData(TAG_EVIDENCE_NOTES);
     }
 
     public static AbstractThreatRatingData findOrCreateThreatRatingData(Project project, ORef threatRef, ORef targetRef) throws Exception

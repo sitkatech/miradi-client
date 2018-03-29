@@ -31,7 +31,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.*;
-import org.miradi.project.Project;
 import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
@@ -39,11 +38,11 @@ import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.ThreatStressRatingChoiceQuestion;
 import org.miradi.utils.ThreatStressRatingDetailsTableExporter;
 
-public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
+public class StressBasedThreatRatingExporter extends AbstractThreatRatingExporter implements Xmpz2XmlConstants
 {
 	public StressBasedThreatRatingExporter(Xmpz2XmlWriter writerToUse)
 	{
-		writer = writerToUse;
+		super(writerToUse);
 	}
 
 	public void writeThreatRatings() throws Exception
@@ -85,7 +84,7 @@ public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
 			ORef threatRef = threat.getRef();
 			exportThreatId(threatRef);
 			exportTargetId(targetRef);
-			exportStressBasedRatingComment(threatRef, targetRef);
+			exportThreatRatingData(threatRef, targetRef);
 			exportStressBasedCalculatedThreatTargetRating(target.getRef(), threat.getRef());
 			writeThreatStressRatings(target, threat);
 			getWriter().writeEndElement(getParentElementName());
@@ -141,23 +140,10 @@ public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
 		getWriter().writeCodeElement(getParentElementName(), elementName, rating);
 	}
 
-	private void exportStressBasedRatingComment(ORef threatRef, ORef targetRef) throws Exception
+	@Override
+	protected AbstractThreatRatingData findThreatRatingData(ORef threatRef, ORef targetRef)
 	{
-		exportThreatRatingComment(threatRef, targetRef);
-	}
-	
-	private void exportThreatRatingComment(ORef threatRef, ORef targetRef) throws Exception
-	{
-		String threatRatingComments = "";
-		AbstractThreatRatingData threatRatingData = ThreatStressRatingData.findThreatRatingData(getProject(), threatRef, targetRef);
-		if (threatRatingData != null)
-			threatRatingComments = threatRatingData.getComments();
-		getWriter().writeElement(getParentElementName() + COMMENTS, threatRatingComments);
-	}
-	
-	private void exportThreatId(ORef threatRef) throws Exception
-	{
-		exportThreatId(getParentElementName(), threatRef);
+		return ThreatStressRatingData.findThreatRatingData(getProject(), threatRef, targetRef);
 	}
 
 	private void exportThreatId(final String parentElementName, ORef threatRef)	throws Exception
@@ -165,41 +151,14 @@ public class StressBasedThreatRatingExporter implements Xmpz2XmlConstants
 		exportId(parentElementName + THREAT, THREAT, threatRef);
 	}
 
-	private void exportTargetId(ORef targetRef) throws Exception
-	{
-		exportId(getParentElementName() + TARGET, BIODIVERSITY_TARGET, targetRef);
-	}
-	
 	private void exportStressId(ORef stressRef) throws Exception
 	{
 		exportId(THREAT_STRESS_RATING + STRESS, STRESS, stressRef);
 	}
 
-	private void exportId(String parentElementName, String idElementName, ORef ref) throws Exception
-	{
-		getWriter().writeStartElement(parentElementName + ID);
-		
-		getWriter().writeStartElement(idElementName + ID);
-		getWriter().writeXmlText(ref.getObjectId().toString());
-		getWriter().writeEndElement(idElementName + ID);
-		
-		getWriter().writeEndElement(parentElementName + ID);
-	}
-	
-	private String getParentElementName()
+	@Override
+	protected String getParentElementName()
 	{
 		return STRESS_BASED_THREAT_RATING;
 	}
-	
-	private Xmpz2XmlWriter getWriter()
-	{
-		return writer;
-	}
-	
-	private Project getProject()
-	{
-		return getWriter().getProject();
-	}
-
-	private Xmpz2XmlWriter writer;
 }

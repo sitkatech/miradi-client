@@ -34,18 +34,17 @@ import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.AbstractThreatRatingData;
 import org.miradi.objects.Target;
 import org.miradi.objects.ThreatSimpleRatingData;
-import org.miradi.project.Project;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.questions.ThreatRatingQuestion;
 
-public class SimpleThreatRatingExporter implements Xmpz2XmlConstants
+public class SimpleThreatRatingExporter extends AbstractThreatRatingExporter implements Xmpz2XmlConstants
 {
 	public SimpleThreatRatingExporter(Xmpz2XmlWriter writerToUse)
 	{
-		writer = writerToUse;
+		super(writerToUse);
 	}
 
 	public void writeThreatRatings() throws Exception
@@ -73,7 +72,7 @@ public class SimpleThreatRatingExporter implements Xmpz2XmlConstants
 				exportTargetId(targetRef);
 				exportThreatId(threatRef);
 				exportThreatRating(targetRef, threatRef);
-				exportSimpleRatingComment(threatRef, targetRef);				
+				exportThreatRatingData(threatRef, targetRef);
 				exportSimpleBaseThreatRatingDetails(threatRef, targetRef);
 				
 				getWriter().writeEndElement(getParentElementName());
@@ -112,58 +111,20 @@ public class SimpleThreatRatingExporter implements Xmpz2XmlConstants
 		getWriter().writeNonOptionalCodeElement(getParentElementName(), SIMPLE_THREAT_TARGET_CALCULATED_RATING, threatRatingQuestion, threatRatingCode);
 	}
 
-	private void exportSimpleRatingComment(ORef threatRef, ORef targetRef) throws Exception
+	@Override
+	protected AbstractThreatRatingData findThreatRatingData(ORef threatRef, ORef targetRef)
 	{
-		exportThreatRatingComment(threatRef, targetRef);
+		return ThreatSimpleRatingData.findThreatRatingData(getProject(), threatRef, targetRef);
 	}
 
-	private void exportThreatRatingComment(ORef threatRef, ORef targetRef) throws Exception
-	{
-		String threatRatingComments = "";
-		AbstractThreatRatingData threatRatingData = ThreatSimpleRatingData.findThreatRatingData(getProject(), threatRef, targetRef);
-		if (threatRatingData != null)
-			threatRatingComments = threatRatingData.getComments();
-		getWriter().writeElement(getParentElementName() + COMMENTS, threatRatingComments);
-	}
-	
-	private void exportThreatId(ORef threatRef) throws Exception
-	{
-		exportId(getParentElementName() + THREAT, THREAT, threatRef);
-	}
-
-	private void exportTargetId(ORef targetRef) throws Exception
-	{
-		exportId(getParentElementName() + TARGET, BIODIVERSITY_TARGET, targetRef);
-	}
-
-	private void exportId(String parentElementName, String idElementName, ORef ref) throws Exception
-	{
-		getWriter().writeStartElement(parentElementName + ID);
-		getWriter().writeStartElement(idElementName + ID);
-		getWriter().writeXmlText(ref.getObjectId().toString());
-		getWriter().writeEndElement(idElementName + ID);
-		getWriter().writeEndElement(parentElementName + ID);
-	}
-	
 	private SimpleThreatRatingFramework getSimpleThreatRatingFramework()
 	{
 		return getProject().getSimpleThreatRatingFramework();
 	}
-	
-	private String getParentElementName()
+
+	@Override
+	protected String getParentElementName()
 	{
 		return SIMPLE_BASED_THREAT_RATING;
 	}
-	
-	private Xmpz2XmlWriter getWriter()
-	{
-		return writer;
-	}
-	
-	private Project getProject()
-	{
-		return getWriter().getProject();
-	}
-
-	private Xmpz2XmlWriter writer;
 }

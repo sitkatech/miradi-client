@@ -69,7 +69,7 @@ public class StressBasedThreatTargetThreatRatingImporter extends AbstractThreatR
 	private void importStressBasedThreatRatings(Node threatRatingNode) throws Exception
 	{
 		importStressBasedThreatRating(threatRatingNode);
-		importThreatRatingsComment(threatRatingNode);
+		importThreatRatingsData(threatRatingNode);
 	}
 	
 	private void importStressBasedThreatRating(Node stressBasedThreatRatingNode) throws Exception

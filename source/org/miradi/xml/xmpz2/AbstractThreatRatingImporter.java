@@ -22,6 +22,7 @@ package org.miradi.xml.xmpz2;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AbstractThreatRatingData;
+import org.miradi.questions.ThreatRatingEvidenceConfidenceQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.xml.xmpz2.objectImporters.AbstractXmpz2ObjectImporter;
@@ -46,17 +47,31 @@ abstract public class AbstractThreatRatingImporter extends AbstractXmpz2ObjectIm
 
 	protected abstract AbstractThreatRatingData findOrCreateThreatRatingData(ORef threatRef, ORef targetRef) throws Exception;
 
-	protected void importThreatRatingsComment(Node threatRatingNode) throws Exception
+	protected void importThreatRatingsData(Node threatRatingNode) throws Exception
 	{
 		ORef targetRef = getTargetRef(threatRatingNode);
 		ORef threatRef = getThreatRef(threatRatingNode);
-		
-		Node commentsNode = getImporter().getNamedChildNode(threatRatingNode, getParentElementName() + COMMENTS);
+
 		AbstractThreatRatingData threatRatingData = findOrCreateThreatRatingData(threatRef, targetRef);
+
+		Node commentsNode = getImporter().getNamedChildNode(threatRatingNode, getParentElementName() + COMMENTS);
 		if (commentsNode != null)
 		{
 			String comments = getImporter().getFormattedNodeContent(commentsNode);
 			threatRatingData.setData(AbstractThreatRatingData.TAG_COMMENTS, comments);
+		}
+
+		Node evidenceConfidenceNode = getImporter().getNamedChildNode(threatRatingNode, getParentElementName() + EVIDENCE_CONFIDENCE);
+		if (evidenceConfidenceNode != null)
+		{
+			getImporter().importCodeField(threatRatingNode, getParentElementName(), threatRatingData.getRef(), AbstractThreatRatingData.TAG_EVIDENCE_CONFIDENCE, new ThreatRatingEvidenceConfidenceQuestion());
+		}
+
+		Node evidenceNotesNode = getImporter().getNamedChildNode(threatRatingNode, getParentElementName() + EVIDENCE_NOTES);
+		if (evidenceNotesNode != null)
+		{
+			String evidenceNotes = getImporter().getFormattedNodeContent(evidenceNotesNode);
+			threatRatingData.setData(AbstractThreatRatingData.TAG_EVIDENCE_NOTES, evidenceNotes);
 		}
 	}
 	

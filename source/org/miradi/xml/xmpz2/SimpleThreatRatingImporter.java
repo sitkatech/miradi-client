@@ -55,7 +55,7 @@ public class SimpleThreatRatingImporter extends	AbstractThreatRatingImporter
 
 	private void importSimpleThreatRating(Node threatRatingNode) throws Exception
 	{
-		importThreatRatingsComment(threatRatingNode);
+		importThreatRatingsData(threatRatingNode);
 		ORef threatRef = getThreatRef(threatRatingNode);
 		ORef targetRef = getTargetRef(threatRatingNode);
 		Node scopeNode = getImporter().getNamedChildNode(threatRatingNode, getParentElementName() + SCOPE);

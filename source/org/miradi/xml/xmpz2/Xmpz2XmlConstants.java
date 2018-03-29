@@ -129,6 +129,8 @@ public interface Xmpz2XmlConstants
 	public static final String CONTRIBUTION = "ContributionRating";
 	public static final String IS_ACTIVE = "IsActive";
 	public static final String COMMENTS = "Comments";
+	public static final String EVIDENCE_NOTES = "EvidenceNotes";
+	public static final String EVIDENCE_CONFIDENCE = "EvidenceConfidence";
 	public static final String THREAT_STRESS_RATING = "ThreatStressRating";
 	public static final String SIMPLE_BASED_THREAT_RATING = "SimpleThreatRating";
 	public static final String STRESS_BASED_THREAT_RATING = "StressBasedThreatRating";

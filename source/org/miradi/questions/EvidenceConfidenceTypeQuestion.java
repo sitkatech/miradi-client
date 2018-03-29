@@ -68,6 +68,12 @@ public abstract class EvidenceConfidenceTypeQuestion extends StaticChoiceQuestio
         if (objectType == ObjectType.BIOPHYSICAL_RESULT)
             return ResultEvidenceConfidenceQuestion.class;
 
+        if (objectType == ObjectType.THREAT_SIMPLE_RATING_DATA)
+            return ThreatRatingEvidenceConfidenceQuestion.class;
+
+        if (objectType == ObjectType.THREAT_STRESS_RATING_DATA)
+            return ThreatRatingEvidenceConfidenceQuestion.class;
+
         throw new RuntimeException("Need to implement getQuestionClass for object type: " + objectType);
     }
 

@@ -1723,6 +1723,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(threatRatingData.getRef(), AbstractThreatRatingData.TAG_COMMENTS, comments);
 	}
 
+	public void populateSimpleThreatRatingEvidenceData(ORef threatRef, ORef targetRef, String evidenceNotes, ChoiceItem evidenceConfidence, int objectType) throws Exception
+	{
+		AbstractThreatRatingData threatRatingData = AbstractThreatRatingData.findOrCreateThreatRatingData(this, threatRef, targetRef, objectType);
+		fillObjectUsingCommand(threatRatingData.getRef(), AbstractThreatRatingData.TAG_EVIDENCE_NOTES, evidenceNotes);
+		fillObjectUsingCommand(threatRatingData.getRef(), AbstractThreatRatingData.TAG_EVIDENCE_CONFIDENCE, evidenceConfidence.getCode());
+	}
+
 	public void populateObjectTreeTableConfiguration(ObjectTreeTableConfiguration objectTreeTableConfiguration) throws Exception
 	{
 		CodeList rowCodes = new CustomPlanningAllRowsQuestion().getAllCodes();
