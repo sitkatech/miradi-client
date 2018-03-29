@@ -21,11 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.forms.objects;
 
 import org.miradi.forms.FieldPanelSpec;
-import org.miradi.main.EAM;
 import org.miradi.objects.MiradiShareProjectData;
-import org.miradi.objects.ProjectMetadata;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
-import org.miradi.schemas.ProjectMetadataSchema;
 
 public class MiradiShareProjectDataDetailsForm extends FieldPanelSpec
 {
@@ -42,6 +39,5 @@ public class MiradiShareProjectDataDetailsForm extends FieldPanelSpec
 		addLabelAndReadOnlySingleLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_NAME);
 		addLabelAndReadOnlySingleLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION_ID);
 		addLabelAndReadOnlySingleLineField(MiradiShareProjectDataSchema.getObjectType(), MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION);
-		addLabelAndExternalProjectIdField(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_XENODATA_STRING_REF_MAP, "Tanager", EAM.text("Miradi Share Project Id"));
 	}
 }
