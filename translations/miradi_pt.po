@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-23 02:33-0700\n"
+"POT-Creation-Date: 2018-03-30 02:33-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/miradi-client/"
@@ -302,7 +302,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:184
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:188
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1444
 msgid "(%s)"
 msgstr ""
@@ -2483,7 +2483,7 @@ msgstr ""
 "efeito colateral."
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/doers/DeleteAudienceDoer.java:38
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/rtf/viewExporters/SummaryViewRtfExporter.java:155
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/rtf/viewExporters/SummaryViewRtfExporter.java:156
 msgid "Audience"
 msgstr "Público "
 
@@ -4350,7 +4350,7 @@ msgid "Human Wellbeing Targets Only"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/doers/DeleteIucnRedlistSpeciesDoer.java:38
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/rtf/viewExporters/SummaryViewRtfExporter.java:122
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/rtf/viewExporters/SummaryViewRtfExporter.java:123
 msgid "IUCN Redlist Species"
 msgstr "Espécie da Lista Vermelha da UICN"
 
@@ -4784,10 +4784,6 @@ msgstr "Campanha"
 msgid "Label|Campaign Planning"
 msgstr "Planejamento de Campanha"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/threatrating/properties/ThreatRatingCommentsSubpanel.java:39
-msgid "Label|Comments"
-msgstr "Comentários"
-
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/SummaryPlanningFinancialSubPanel.java:40
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/forms/summary/PlanningTabFinancialSubPanelForm.java:35
 msgid "Label|Currency"
@@ -5070,8 +5066,8 @@ msgstr ""
 msgid "Manage Stresses for "
 msgstr "Gerenciar Estresses para"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:137
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:453
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:133
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:449
 msgid "Manage Tags"
 msgstr "Gerenciar \"Tags\""
 
@@ -5480,10 +5476,6 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/SummaryProjectPanel.java:72
 msgid "Miradi Share Program"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/forms/objects/MiradiShareProjectDataDetailsForm.java:45
-msgid "Miradi Share Project Id"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/MainWindowAction.java:143
@@ -5941,7 +5933,7 @@ msgid "Other"
 msgstr "Outro"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/doers/DeleteOtherNotableSpeciesDoer.java:38
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/rtf/viewExporters/SummaryViewRtfExporter.java:123
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/rtf/viewExporters/SummaryViewRtfExporter.java:124
 msgid "Other Notable Species"
 msgstr "Outras Espécies Notáveis"
 
@@ -7133,7 +7125,7 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/stress/StressDetailsSubPanel.java:51
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:73
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/utils/ThreatStressRatingDetailsTableExporter.java:68
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:52
 msgid "Stress"
 msgstr "Estresse"
@@ -8545,6 +8537,12 @@ msgstr ""
 msgid "This migration adds 2 new TNC fields."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo65.java:84
+msgid ""
+"This migration adds Evidence Notes and Confidence fields to both Simple and "
+"Stress based Threat Ratings."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo38.java:66
 msgid "This migration adds Progress Reports to Conceptual Model Diagrams."
 msgstr ""
@@ -8689,6 +8687,12 @@ msgid ""
 "resource or date range is specified)."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo62.java:66
+msgid ""
+"This migration handles the removal of a separate pool for simple threat "
+"rating data comments."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo36.java:66
 msgid "This migration handles the removal of extended progress reports."
 msgstr ""
@@ -8790,6 +8794,12 @@ msgid ""
 "for the total planned effort (timeframe) dates."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo64.java:87
+msgid ""
+"This migration restructures the underlying data structures for both Simple "
+"and Stress Threat Rating comments."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo27.java:90
 msgid ""
 "This migration splits shared activities out to separate activity entries."
@@ -8797,6 +8807,11 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo28.java:90
 msgid "This migration splits shared methods out to separate method entries."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo63.java:84
+msgid ""
+"This migration splits the comments for Simple and Stress Threat Rating modes."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/AbstractBudgetDetailsTableModel.java:89
@@ -9975,7 +9990,7 @@ msgstr "[NÃO ESPECIFICADO]"
 msgid "[New Results Chain]"
 msgstr "[Nova Cadeia de Resultados]"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/project/Project.java:954
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/project/Project.java:947
 msgid "[No Project]"
 msgstr "[Sem Projeto]"
 
@@ -11824,8 +11839,17 @@ msgstr ""
 msgid "FieldLabel|48.WorkPlanProjectResourceConfiguration|Display"
 msgstr ""
 
-msgid "FieldLabel|49.ThreatRatingCommentsData|Threat Rating Comments"
-msgstr "Comentários de Classificação de Ameaça"
+msgid "FieldLabel|49.ThreatStressRatingData|Threat Rating Comments"
+msgstr ""
+
+msgid "FieldLabel|49.Comments|Comments"
+msgstr ""
+
+msgid "FieldLabel|49.EvidenceNotes|Evidence Notes"
+msgstr ""
+
+msgid "FieldLabel|49.EvidenceConfidence|Threat Rating Evidence"
+msgstr ""
 
 msgid "FieldLabel|50.ProjectScopeBox|Project Scope Box"
 msgstr "Caixa de Escopo do Projeto"
@@ -12212,6 +12236,18 @@ msgid "FieldLabel|71.ResultDate|Result Date"
 msgstr ""
 
 msgid "FieldLabel|71.Details|Details"
+msgstr ""
+
+msgid "FieldLabel|72.ThreatSimpleRatingData|Threat Rating Comments"
+msgstr ""
+
+msgid "FieldLabel|72.Comments|Comments"
+msgstr ""
+
+msgid "FieldLabel|72.EvidenceNotes|Evidence Notes"
+msgstr ""
+
+msgid "FieldLabel|72.EvidenceConfidence|Threat Rating Evidence"
 msgstr ""
 
 msgid ""
@@ -29001,6 +29037,12 @@ msgid ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
 msgstr ""
+
+#~ msgid "Label|Comments"
+#~ msgstr "Comentários"
+
+#~ msgid "FieldLabel|49.ThreatRatingCommentsData|Threat Rating Comments"
+#~ msgstr "Comentários de Classificação de Ameaça"
 
 #~ msgid "Title|Simple Viability"
 #~ msgstr "Viabilidade Simples"
