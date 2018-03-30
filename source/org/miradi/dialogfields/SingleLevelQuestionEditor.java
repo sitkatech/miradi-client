@@ -27,7 +27,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 
-public class SingleLevelQuestionEditor extends QuestionEditorWithHierarchichalRows
+public class SingleLevelQuestionEditor extends QuestionEditorWithHierarchicalRows
 {
 	public SingleLevelQuestionEditor(MainWindow mainWindowToUse, ChoiceQuestion questionToUse)
 	{

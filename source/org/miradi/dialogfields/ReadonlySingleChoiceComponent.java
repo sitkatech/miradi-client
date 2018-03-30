@@ -35,10 +35,10 @@ public class ReadonlySingleChoiceComponent extends AbstractReadonlyChoiceCompone
 		super(questionToUse, columnCount);
 		
 		currentCode = "";
-		initliazeRadioButtons();
+		initializeRadioButtons();
 	}
 
-	private void initliazeRadioButtons()
+	private void initializeRadioButtons()
 	{
 		setText(currentCode);
 	}

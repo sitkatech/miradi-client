@@ -148,7 +148,7 @@ public abstract class AbstractThreatRatingData extends BaseObject
         return threatRatingDataRefs;
     }
 
-    private static int getThreatRatingDataObjectType(Project project)
+    public static int getThreatRatingDataObjectType(Project project)
     {
         return project.isSimpleThreatRatingMode() ? ObjectType.THREAT_SIMPLE_RATING_DATA : ObjectType.THREAT_STRESS_RATING_DATA;
     }

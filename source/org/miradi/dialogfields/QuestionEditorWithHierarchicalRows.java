@@ -35,9 +35,9 @@ import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceItemWithLongDescriptionProvider;
 import org.miradi.questions.ChoiceQuestion;
 
-public class QuestionEditorWithHierarchichalRows extends QuestionBasedEditorComponent
+public class QuestionEditorWithHierarchicalRows extends QuestionBasedEditorComponent
 {
-	public QuestionEditorWithHierarchichalRows(MainWindow mainWindowToUse, ChoiceQuestion questionToUse)
+	public QuestionEditorWithHierarchicalRows(MainWindow mainWindowToUse, ChoiceQuestion questionToUse)
 	{
 		super(questionToUse, SINGLE_COLUMN);
 		

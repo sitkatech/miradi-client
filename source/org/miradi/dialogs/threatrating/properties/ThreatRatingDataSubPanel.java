@@ -26,23 +26,54 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
+import org.miradi.objects.AbstractThreatRatingData;
+import org.miradi.objects.Cause;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
+import org.miradi.questions.EvidenceConfidenceTypeQuestion;
+import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
+import org.miradi.schemas.TargetSchema;
 
 public class ThreatRatingDataSubPanel extends ObjectDataInputPanel
 {
 	public ThreatRatingDataSubPanel(Project projectToUse, Actions actions) throws Exception
 	{
-		super(projectToUse, ORef.INVALID);
+		super(projectToUse, ORef.createInvalidWithType(AbstractThreatRatingData.getThreatRatingDataObjectType(projectToUse)));
 
-		addHtmlWrappedLabel(EAM.text("Label|Comments"));
-		commentsField = new ThreatRatingCommentsEditorComponent(getProject(), actions);
-		add(commentsField.getComponent());
-		
-		updateFieldsFromProject();
+		rebuild();
 	}
-	
+
+	private void rebuild() throws Exception
+	{
+		removeAll();
+		getFields().clear();
+
+		int threatRatingDataObjectType = AbstractThreatRatingData.getThreatRatingDataObjectType(getProject());
+
+		addField(createMultilineField(threatRatingDataObjectType, AbstractThreatRatingData.TAG_COMMENTS));
+		addField(createRadioButtonEditorField(threatRatingDataObjectType, AbstractThreatRatingData.TAG_EVIDENCE_CONFIDENCE, EvidenceConfidenceTypeQuestion.getQuestion(threatRatingDataObjectType)));
+		addField(createMultilineField(threatRatingDataObjectType, AbstractThreatRatingData.TAG_EVIDENCE_NOTES));
+
+		updateFieldsFromProject();
+
+		doLayout();
+
+		validate();
+		repaint();
+	}
+
+	private ORef getTargetRef()
+	{
+		return getSelectedRefs().getRefForType(TargetSchema.getObjectType());
+	}
+
+	private ORef getThreatRef()
+	{
+		return getSelectedRefs().getRefForType(CauseSchema.getObjectType());
+	}
+
 	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
@@ -57,17 +88,40 @@ public class ThreatRatingDataSubPanel extends ObjectDataInputPanel
 	@Override
 	public void setObjectRefs(ORef[] orefsToUse)
 	{
-		commentsField.setObjectRefs(new ORefList(orefsToUse));
-		
-		super.setObjectRefs(orefsToUse);
-	}
+		try
+		{
+			ORefList refList = new ORefList(orefsToUse);
 
+			ORef threatRef = getThreatRef();
+			ORef targetRef = getTargetRef();
+
+			threatRatingData = null;
+
+			if (threatRef.isValid() && targetRef.isValid())
+			{
+				Cause cause = (Cause) getProject().findObject(threatRef);
+				if (ThreatTargetVirtualLinkHelper.canSupportThreatRatings(getProject(), cause, targetRef))
+					threatRatingData = AbstractThreatRatingData.findOrCreateThreatRatingData(getProject(), threatRef, targetRef);
+			}
+
+			if (threatRatingData != null)
+				refList.add(threatRatingData.getRef());
+
+			super.setObjectRefs(refList.toArray());
+
+			rebuild();
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+		}
+	}
 
 	@Override
 	public String getPanelDescription()
 	{
 		return "ThreatRatingDataSubPanel";
 	}
-	
-	private ThreatRatingCommentsEditorComponent commentsField;
+
+	private AbstractThreatRatingData threatRatingData;
 }

@@ -34,7 +34,7 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DataPanelFlexibleWidthHtmlViewer;
 
-public class RadioButtonEditorComponentWithHierarchicalRows extends QuestionEditorWithHierarchichalRows
+public class RadioButtonEditorComponentWithHierarchicalRows extends QuestionEditorWithHierarchicalRows
 {
 	public RadioButtonEditorComponentWithHierarchicalRows(MainWindow mainWindowToUse, ChoiceQuestion questionToUse)
 	{
