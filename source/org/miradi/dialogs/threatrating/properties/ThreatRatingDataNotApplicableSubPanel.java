@@ -38,7 +38,7 @@ public class ThreatRatingDataNotApplicableSubPanel extends AbstractThreatRatingD
     protected void addFields(int threatRatingDataObjectType) throws Exception
     {
         notApplicableField = createCheckBoxField(threatRatingDataObjectType, AbstractThreatRatingData.TAG_IS_THREAT_RATING_NOT_APPLICABLE, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE);
-        addFieldWithPopUpInformation((ObjectDataInputField) notApplicableField, "NotApplicableThreatRatingFieldDescription.html");
+        addFieldWithPopUpInformation((ObjectDataInputField) notApplicableField, "ThreatRatingNotApplicableFieldDescription.html");
     }
 
     @Override

@@ -1,0 +1,52 @@
+<!--
+Copyright 2005-2018, Foundations of Success, Bethesda, Maryland
+on behalf of the Conservation Measures Partnership ("CMP").
+Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
+
+This file is part of Miradi
+
+Miradi is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License version 3,
+as published by the Free Software Foundation.
+
+Miradi is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
+-->
+<html>
+    <head>
+    </head>
+    <body>
+        <div>
+            <h3>Explanation of Threat Rating N/A Option</h3>
+            <p>
+                The "N/A" checkbox allows users to designate a threat-target rating relationship as not applicable.
+            </p>
+            <p>
+                Miradi's general rule is to create a rating cell for any threat that is connected, directly or indirectly, to a conservation target.  In some cases, this can lead to double counting of a threat effect.
+            </p>
+            <p>
+                Consider the following diagram:
+            </p>
+            <br/>
+            <img src="images/ThreatRatingNotApplicable1.png"  width='586' height='198'>
+            <p>
+                Because all threats and targets are connected by arrows, Miradi generates a threat rating view that suggests all threat-target pairs should be rated:
+            </p>
+            <br/>
+            <img src="images/ThreatRatingNotApplicable2.png" width='639' height='170'>
+            <p>
+                However, rating all pairs may not be appropriate.   If the only way that new roads affect jaguars is via forest habitat destruction, then the team would be rating that threat effect twice – once for forests, and once again for jaguars.
+                A similar situation would occur with new roads as they affect rivers.  Here, a team might even wonder why that cell is considered a threat-target pair in their table because, in their context, roads do not directly affect rivers.
+            </p>
+            <p>
+                For such situations, the "N/A" checkbox allows a user to signal that this threat-target pair is not applicable for rating.  It does not disable or delete rating entries, but serves instead as an override.
+                If "N/A" is checked, any ratings entered for that threat-target pair are ignored but not lost (unchecking "N/A" would cause any prior ratings to reappear and be included in the summary roll-up).
+            </p>
+        </div>
+    </body>
+</html>
