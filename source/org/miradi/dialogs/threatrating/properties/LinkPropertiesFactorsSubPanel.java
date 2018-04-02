@@ -39,9 +39,9 @@ import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.schemas.TargetSchema;
 
 //TODO need to rename and remove link from name
-public class LinkPropertiesFactorsSubpanel extends ObjectDataInputPanel
+public class LinkPropertiesFactorsSubPanel extends ObjectDataInputPanel
 {
-	public LinkPropertiesFactorsSubpanel(Project projectToUse, Actions actions) throws Exception
+	public LinkPropertiesFactorsSubPanel(Project projectToUse, Actions actions) throws Exception
 	{
 		super(projectToUse, ORef.INVALID);
 		final OneRowGridLayout layout = new OneRowGridLayout();
@@ -115,7 +115,7 @@ public class LinkPropertiesFactorsSubpanel extends ObjectDataInputPanel
 	@Override
 	public String getPanelDescription()
 	{
-		return "LinkPropertiesFactorsSubpanel";
+		return "LinkPropertiesFactorsSubPanel";
 	}
 	
 	private PanelTitleLabel threatLabel;

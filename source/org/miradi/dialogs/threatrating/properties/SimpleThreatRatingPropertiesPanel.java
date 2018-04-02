@@ -19,39 +19,44 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatrating.properties;
 
-import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.project.Project;
 import org.miradi.schemas.FactorLinkSchema;
+import org.miradi.schemas.ThreatSimpleRatingDataSchema;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class SimpleThreatRatingPropertiesPanel extends ObjectDataInputPanel
+public class SimpleThreatRatingPropertiesPanel extends AbstractThreatRatingPropertiesPanel
 {
 	public SimpleThreatRatingPropertiesPanel(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(mainWindowToUse.getProject(), FactorLinkSchema.getObjectType());
+		super(mainWindowToUse.getProject(), FactorLinkSchema.getObjectType(), ThreatSimpleRatingDataSchema.getObjectType());
 		
 		setLayout(new OneColumnGridLayout());
 		
 		final Project project = mainWindowToUse.getProject();
-		factorNamesPanel = new LinkPropertiesFactorsSubpanel(project, mainWindowToUse.getActions());
+		factorNamesPanel = new LinkPropertiesFactorsSubPanel(project, mainWindowToUse.getActions());
 		dropdownsPanel = new SimpleThreatRatingDropdownsPanel(project);
 		
 		addSubPanelField(factorNamesPanel);
+		addSubPanelWithoutTitledBorder(new ThreatRatingDataNotApplicableSubPanel(project, mainWindowToUse.getActions()));
 		addSubPanelField(dropdownsPanel);
-		addSubPanelWithoutTitledBorder(new ThreatRatingDataSubPanel(project, mainWindowToUse.getActions()));
+		addSubPanelWithoutTitledBorder(new ThreatRatingDataEvidenceSubPanel(project, mainWindowToUse.getActions()));
 		
 		updateFieldsFromProject();
 	}
 
 	@Override
-	public void setObjectRefs(ORef[] hierarchyToSelectedRef)
+	protected void setEditorEnabled(boolean isEditable)
 	{
-		super.setObjectRefs(hierarchyToSelectedRef);
-		
+		dropdownsPanel.setEnabled(isEditable);
+	}
+
+	@Override
+	protected void setEditorObjectRefs(ORef[] hierarchyToSelectedRef)
+	{
 		factorNamesPanel.setObjectRefs(hierarchyToSelectedRef);
 		dropdownsPanel.setObjectRefs(hierarchyToSelectedRef);
 	}
@@ -62,6 +67,6 @@ public class SimpleThreatRatingPropertiesPanel extends ObjectDataInputPanel
 		return EAM.text("Title|Simple Threat Rating");
 	}
 
-	private LinkPropertiesFactorsSubpanel factorNamesPanel;
+	private LinkPropertiesFactorsSubPanel factorNamesPanel;
 	private SimpleThreatRatingDropdownsPanel dropdownsPanel;
 }

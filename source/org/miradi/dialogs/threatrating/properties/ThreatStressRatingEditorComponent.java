@@ -64,7 +64,7 @@ public class ThreatStressRatingEditorComponent extends DisposablePanel
 		buttonPanel.setVerticalMargin(20);
 		buttonPanel.setBackground(AppPreferences.getDataPanelBackgroundColor());
 
-		ObjectsActionButton manageStressesButton = createObjectsActionButton(actions.getObjectsAction(ActionManageStresses.class), objectPicker);
+		manageStressesButton = createObjectsActionButton(actions.getObjectsAction(ActionManageStresses.class), objectPicker);
 		buttonPanel.add(manageStressesButton);
 		buttonPanel.add(new PanelTitleLabel(EAM.text("(Create, manage, and rate the stresses for this target)")));
 		return buttonPanel;
@@ -85,7 +85,14 @@ public class ThreatStressRatingEditorComponent extends DisposablePanel
 		JPanel manageStressesPanel = createManageStressesComponent(mainWindow.getActions());
 		add(manageStressesPanel, BorderLayout.BEFORE_FIRST_LINE);
 	}
-	
+
+	@Override
+	public void setEnabled(boolean isEditable)
+	{
+		manageStressesButton.setEnabled(isEditable);
+		threatStressRatingTable.setEnabled(isEditable);
+	}
+
 	private ObjectPicker getObjectPicker()
 	{
 		return objectPicker;
@@ -117,6 +124,7 @@ public class ThreatStressRatingEditorComponent extends DisposablePanel
 	
 	private ThreatStressRatingTableModel threatStressRatingTableModel;
 	private ThreatStressRatingTable threatStressRatingTable;
+	private ObjectsActionButton manageStressesButton;
 	private MainWindow mainWindow;
 	private ObjectPicker objectPicker;
 }

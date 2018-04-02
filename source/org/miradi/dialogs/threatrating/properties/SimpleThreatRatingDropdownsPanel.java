@@ -180,7 +180,15 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 			EAM.logException(e);
 		}
 	}
-	
+
+	@Override
+	public void setEnabled(boolean isEditable)
+	{
+		scopeEditorComponent.setEnabled(isEditable);
+		severityEditorComponent.setEnabled(isEditable);
+		irreversibilityEditorComponent.setEnabled(isEditable);
+	}
+
 	private ORef getTargetRef()
 	{
 		return getRefForType(TargetSchema.getObjectType());

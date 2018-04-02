@@ -62,10 +62,10 @@ public class ThreatStressRatingValueReadonlyComponent extends MiradiPanel
 		getComponent().setFocusable(false);
 	}
 	
-	public void setObjectRefs(ORefList selectedHeirearchy)
+	public void setObjectRefs(ORefList selectedHierarchy)
 	{
-		ORef threatRef = selectedHeirearchy.getRefForType(CauseSchema.getObjectType());
-		ORef targetRef = selectedHeirearchy.getRefForType(TargetSchema.getObjectType());
+		ORef threatRef = selectedHierarchy.getRefForType(CauseSchema.getObjectType());
+		ORef targetRef = selectedHierarchy.getRefForType(TargetSchema.getObjectType());
 		String threatRatingBundleValueCode = "";
 		if (!threatRef.isInvalid() && !targetRef.isInvalid())
 			threatRatingBundleValueCode = new ThreatTargetVirtualLinkHelper(getProject()).getCalculatedThreatRatingBundleValue(threatRef, targetRef);

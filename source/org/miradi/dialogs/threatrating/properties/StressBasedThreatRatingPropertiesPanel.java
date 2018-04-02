@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.threatrating.properties;
 
-import java.awt.Component;
-
-import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.EAM;
@@ -31,24 +28,29 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Target;
 import org.miradi.schemas.StressSchema;
 import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.ThreatStressRatingDataSchema;
 import org.miradi.schemas.ThreatStressRatingSchema;
 import org.miradi.views.umbrella.ObjectPicker;
 
-public class StressBasedThreatRatingPropertiesPanel extends ObjectDataInputPanel
+import java.awt.*;
+
+public class StressBasedThreatRatingPropertiesPanel extends AbstractThreatRatingPropertiesPanel
 {
 	public StressBasedThreatRatingPropertiesPanel(MainWindow mainWindowToUse, ObjectPicker objectPickerToUse) throws Exception
 	{
-		super(mainWindowToUse.getProject(), ObjectType.THREAT_STRESS_RATING);
+		super(mainWindowToUse.getProject(), ObjectType.THREAT_STRESS_RATING, ThreatStressRatingDataSchema.getObjectType());
 		
 		setLayout(new OneColumnGridLayout());
 		
-		factorsPanel = new LinkPropertiesFactorsSubpanel(getProject(), mainWindowToUse.getActions());
-		threatStressRatingFieldPanel = new ThreatRatingCommonPropertiesSubpanel(mainWindowToUse.getProject(), mainWindowToUse.getActions()); 
+		factorsPanel = new LinkPropertiesFactorsSubPanel(getProject(), mainWindowToUse.getActions());
+		threatRatingDataNotApplicableSubPanel = new ThreatRatingDataNotApplicableSubPanel(mainWindowToUse.getProject(), mainWindowToUse.getActions());
+		threatStressRatingFieldPanel = new ThreatRatingCommonPropertiesSubPanel(mainWindowToUse.getProject(), mainWindowToUse.getActions());
 		editorComponent = new ThreatStressRatingEditorComponent(mainWindowToUse, objectPickerToUse);
 
 		addSubPanelWithoutTitledBorder(factorsPanel);
+		addSubPanelWithoutTitledBorder(threatRatingDataNotApplicableSubPanel);
 		addSubPanelWithoutTitledBorder(threatStressRatingFieldPanel);
-		addSubPanelWithoutTitledBorder(new ThreatRatingDataSubPanel(getProject(), mainWindowToUse.getActions()));
+		addSubPanelWithoutTitledBorder(new ThreatRatingDataEvidenceSubPanel(getProject(), mainWindowToUse.getActions()));
 		add(editorComponent);
 		
 		updateFieldsFromProject();
@@ -73,14 +75,19 @@ public class StressBasedThreatRatingPropertiesPanel extends ObjectDataInputPanel
 	{
 		add(component);
 	}
-	
+
 	@Override
-	public void setObjectRefs(ORef[] orefsToUse)
+	protected void setEditorEnabled(boolean isEditable)
 	{
-		super.setObjectRefs(orefsToUse);
+		editorComponent.setEnabled(isEditable);
+	}
+
+	@Override
+	protected void setEditorObjectRefs(ORef[] hierarchyToSelectedRef)
+	{
 		editorComponent.refreshModel();
 	}
-	
+
 	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
@@ -96,7 +103,8 @@ public class StressBasedThreatRatingPropertiesPanel extends ObjectDataInputPanel
 			editorComponent.refreshModel();
 	}
 	
-	private LinkPropertiesFactorsSubpanel factorsPanel;
-	private ThreatRatingCommonPropertiesSubpanel threatStressRatingFieldPanel;
+	private LinkPropertiesFactorsSubPanel factorsPanel;
+	private ThreatRatingDataNotApplicableSubPanel threatRatingDataNotApplicableSubPanel;
+	private ThreatRatingCommonPropertiesSubPanel threatStressRatingFieldPanel;
 	private ThreatStressRatingEditorComponent editorComponent;
 }
