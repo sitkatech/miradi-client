@@ -45,7 +45,9 @@ public class StressBasedThreatRatingSchemaWriter extends BaseObjectSchemaWriter
 
 		String vocabularyName = getXmpz2XmlSchemaCreator().getChoiceQuestionToSchemaElementNameMap().findVocabulary(new ThreatRatingQuestion());
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(STRESS_BASED_THREAT_RATING + CALCULATED_THREAT_TARGET_RATING, vocabularyName));
-		
+
+		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(STRESS_BASED_THREAT_RATING + IS_NOT_APPLICABLE, "xsd:boolean"));
+
 		return schemaElements;
 	}
 	

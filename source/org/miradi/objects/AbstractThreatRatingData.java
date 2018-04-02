@@ -73,6 +73,11 @@ public abstract class AbstractThreatRatingData extends BaseObject
         return getStringData(TAG_EVIDENCE_NOTES);
     }
 
+    public boolean isThreatRatingNotApplicable()
+    {
+        return getBooleanData(TAG_IS_THREAT_RATING_NOT_APPLICABLE);
+    }
+
     public static AbstractThreatRatingData findOrCreateThreatRatingData(Project project, ORef threatRef, ORef targetRef) throws Exception
     {
         int objectType = getThreatRatingDataObjectType(project);
@@ -156,6 +161,8 @@ public abstract class AbstractThreatRatingData extends BaseObject
     public static final String TAG_THREAT_REF = "ThreatRef";
     public static final String TAG_TARGET_REF = "TargetRef";
     public static final String TAG_COMMENTS = "Comments";
+    public static final String TAG_IS_THREAT_RATING_NOT_APPLICABLE = "IsThreatRatingNotApplicable";
+
     public static final String TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP = "SimpleThreatRatingCommentsMap";
     public static final String TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP = "StressBasedThreatRatingCommentsMap";
 }

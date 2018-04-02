@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2;
 
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AbstractThreatRatingData;
 import org.miradi.questions.ThreatRatingEvidenceConfidenceQuestion;
@@ -73,6 +74,14 @@ abstract public class AbstractThreatRatingImporter extends AbstractXmpz2ObjectIm
 			String evidenceNotes = getImporter().getFormattedNodeContent(evidenceNotesNode);
 			threatRatingData.setData(AbstractThreatRatingData.TAG_EVIDENCE_NOTES, evidenceNotes);
 		}
+
+		String isNotApplicableValue = BooleanData.BOOLEAN_FALSE;
+		Node isNotApplicableNode = getImporter().getNamedChildNode(threatRatingNode, getParentElementName() + IS_NOT_APPLICABLE);
+		if (isNotApplicableNode != null && getImporter().isTrue(isNotApplicableNode.getTextContent()))
+		{
+			isNotApplicableValue = BooleanData.BOOLEAN_TRUE;
+		}
+		threatRatingData.setData(AbstractThreatRatingData.TAG_IS_THREAT_RATING_NOT_APPLICABLE, isNotApplicableValue);
 	}
 	
 	protected ORef getThreatRef(Node threatRatingNode) throws Exception

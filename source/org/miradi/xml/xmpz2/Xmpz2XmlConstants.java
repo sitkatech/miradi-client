@@ -134,6 +134,7 @@ public interface Xmpz2XmlConstants
 	public static final String THREAT_STRESS_RATING = "ThreatStressRating";
 	public static final String SIMPLE_BASED_THREAT_RATING = "SimpleThreatRating";
 	public static final String STRESS_BASED_THREAT_RATING = "StressBasedThreatRating";
+	public static final String IS_NOT_APPLICABLE = "IsNotApplicable";
 	public static final String MEASUREMENT = MeasurementSchema.OBJECT_NAME;
 	public static final String MEASUREMENT_IDS = "MeasurementIds";
 	public static final String FUTURE_STATUS_IDS = "FutureStatusIds";

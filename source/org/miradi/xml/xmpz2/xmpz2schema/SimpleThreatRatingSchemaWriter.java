@@ -46,6 +46,7 @@ public class SimpleThreatRatingSchemaWriter extends BaseObjectSchemaWriter
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(SIMPLE_BASED_THREAT_RATING + COMMENTS, "formatted_text"));
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(SIMPLE_BASED_THREAT_RATING + EVIDENCE_CONFIDENCE, VOCABULARY_EVIDENCE_CONFIDENCE_PROJECT));
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(SIMPLE_BASED_THREAT_RATING + EVIDENCE_NOTES, "formatted_text"));
+		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(SIMPLE_BASED_THREAT_RATING + IS_NOT_APPLICABLE, "xsd:boolean"));
 
 		return schemaElements;
 	}

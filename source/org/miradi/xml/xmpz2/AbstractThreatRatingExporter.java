@@ -36,6 +36,7 @@ public abstract class AbstractThreatRatingExporter implements Xmpz2XmlConstants
         AbstractThreatRatingData threatRatingData = findThreatRatingData(threatRef, targetRef);
         exportThreatRatingComments(threatRatingData);
         exportEvidenceFields(threatRatingData);
+        exportIsNotApplicableField(threatRatingData);
     }
 
     protected void exportThreatRatingComments(AbstractThreatRatingData threatRatingData) throws Exception
@@ -51,6 +52,12 @@ public abstract class AbstractThreatRatingExporter implements Xmpz2XmlConstants
             getWriter().writeOptionalCodeElement(getParentElementName(), EVIDENCE_CONFIDENCE, threatRatingData.getEvidenceConfidence().getCode());
             getWriter().writeElement(getParentElementName() + EVIDENCE_NOTES, threatRatingData.getEvidenceNotes());
         }
+    }
+
+    protected void exportIsNotApplicableField(AbstractThreatRatingData threatRatingData) throws Exception
+    {
+        boolean isThreatRatingNotApplicable = threatRatingData != null && threatRatingData.isThreatRatingNotApplicable();
+        getWriter().writeBooleanElement(getParentElementName() + IS_NOT_APPLICABLE, isThreatRatingNotApplicable);
     }
 
     protected void exportId(String parentElementName, String idElementName, ORef ref) throws Exception

@@ -38,7 +38,7 @@ public abstract class AbstractThreatRatingDataSchema extends BaseObjectSchema
         createFieldSchemaRequiredRef(AbstractThreatRatingData.TAG_THREAT_REF);
         createFieldSchemaRequiredRef(AbstractThreatRatingData.TAG_TARGET_REF);
         createFieldSchemaMultiLineUserText(AbstractThreatRatingData.TAG_COMMENTS);
-
+        createFieldSchemaBoolean(AbstractThreatRatingData.TAG_IS_THREAT_RATING_NOT_APPLICABLE);
         createFieldSchemaChoice(AbstractThreatRatingData.TAG_EVIDENCE_CONFIDENCE, ThreatRatingEvidenceConfidenceQuestion.class);
         createFieldSchemaMultiLineUserText(AbstractThreatRatingData.TAG_EVIDENCE_NOTES);
 

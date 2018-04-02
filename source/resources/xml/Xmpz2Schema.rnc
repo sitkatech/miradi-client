@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Wed Mar 28 16:07:24 BST 2018 $
+# $LastChangedDate: Mon Apr 02 08:37:53 BST 2018 $
 # $LastChangedRevision: 237 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/237'
 start = ConservationProject.element
@@ -927,6 +927,7 @@ SimpleThreatRating.element = element miradi:SimpleThreatRating
   element miradi:SimpleThreatRatingEvidenceConfidence { vocabulary_evidence_confidence_project }? &
   element miradi:SimpleThreatRatingEvidenceNotes { formatted_text }? &
   element miradi:SimpleThreatRatingIrreversibilityRating { vocabulary_irreversibility_rating }? &
+  element miradi:SimpleThreatRatingIsNotApplicable { xsd:boolean }? &
   element miradi:SimpleThreatRatingScopeRating { vocabulary_scope_rating }? &
   element miradi:SimpleThreatRatingSeverityRating { vocabulary_severity_rating }? &
   element miradi:SimpleThreatRatingTargetId { BiodiversityTargetId.element } &
@@ -940,6 +941,7 @@ StressBasedThreatRating.element = element miradi:StressBasedThreatRating
   element miradi:StressBasedThreatRatingComments { formatted_text }? &
   element miradi:StressBasedThreatRatingEvidenceConfidence { vocabulary_evidence_confidence_project }? &
   element miradi:StressBasedThreatRatingEvidenceNotes { formatted_text }? &
+  element miradi:StressBasedThreatRatingIsNotApplicable { xsd:boolean }? &
   element miradi:StressBasedThreatRatingTargetId { BiodiversityTargetId.element } &
   element miradi:StressBasedThreatRatingThreatId { ThreatId.element } &
   element miradi:StressBasedThreatRatingThreatStressRating { ThreatStressRating.element* }
