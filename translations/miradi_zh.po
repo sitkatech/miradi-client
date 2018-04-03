@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-03-30 02:33-0700\n"
+"POT-Creation-Date: 2018-04-03 09:33-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Chinese (http://www.transifex.com/projects/p/miradi-client/"
@@ -296,7 +296,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br> \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:188
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:189
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1444
 msgid "(%s)"
 msgstr ""
@@ -743,10 +743,6 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/threatrating/upperPanel/ThreatRatingMultiTablePanel.java:435
 msgid "<html><b>Overall<br>Project<br>Rating</b></html>"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:98
-msgid "<html><b>Summary<br>Target-Threat<br>Rating"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/IrreversibilityThreatRatingQuestion.java:53
@@ -4430,7 +4426,7 @@ msgid "Invalid project name: %s"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:227
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:107
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:90
 msgid "Irreversibility"
 msgstr "不可逆性"
 
@@ -5335,6 +5331,10 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:225
 msgid "Must be a positive number"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatRatingQuestion.java:75
+msgid "N/A"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:150
@@ -6528,7 +6528,7 @@ msgid "Settings"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:231
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:106
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:89
 msgid "Severity"
 msgstr "严重性"
 
@@ -7893,7 +7893,7 @@ msgstr ""
 msgid "Target Viability - Table"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/threatrating/properties/ThreatRatingCommonPropertiesSubpanel.java:49
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/threatrating/properties/ThreatRatingDataRollupSubPanel.java:63
 msgid "Target-Threat Rating"
 msgstr ""
 
@@ -8214,6 +8214,12 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo56.java:66
 msgid "This migration adds Result Reports to Threat Reduction Results."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo66.java:84
+msgid ""
+"This migration adds a N/A field to both Simple and Stress based Threat "
+"Ratings."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo46.java:85
@@ -8664,7 +8670,7 @@ msgstr "威胁因子 \t\t"
 msgid "Threats at Site"
 msgstr "现场威胁因子 \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:105
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:88
 msgid "Threat|Scope"
 msgstr ""
 
@@ -8905,7 +8911,7 @@ msgstr "保存 %s 文件  \t\t"
 msgid "Title|Scope Box Properties"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:62
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingPropertiesPanel.java:67
 msgid "Title|Simple Threat Rating"
 msgstr ""
 
@@ -11465,6 +11471,9 @@ msgstr ""
 msgid "FieldLabel|49.EvidenceConfidence|Threat Rating Evidence"
 msgstr ""
 
+msgid "FieldLabel|49.IsThreatRatingNotApplicable|N/A - not a direct link"
+msgstr ""
+
 msgid "FieldLabel|50.ProjectScopeBox|Project Scope Box"
 msgstr ""
 
@@ -11862,6 +11871,9 @@ msgid "FieldLabel|72.EvidenceNotes|Evidence Notes"
 msgstr ""
 
 msgid "FieldLabel|72.EvidenceConfidence|Threat Rating Evidence"
+msgstr ""
+
+msgid "FieldLabel|72.IsThreatRatingNotApplicable|N/A - not a direct link"
 msgstr ""
 
 msgid ""
@@ -13072,6 +13084,38 @@ msgid ""
 "need to send the file to someone not yet using Miradi 4.x. Be aware that "
 "some of the newer features supported by Miradi 4.x will not be retained in "
 "the MPZ exports.</p></HTML>"
+msgstr ""
+
+msgid ""
+"html|/resources/ThreatRatingNotApplicableFieldDescription.html|<html>    "
+"<head>    </head>    <body>        <div>            <h3>Explanation of "
+"Threat Rating N/A Option</h3>            <p>                The \"N/A\" "
+"checkbox allows users to designate a threat-target rating relationship as "
+"not applicable.             </p>            <p>                Miradi's "
+"general rule is to create a rating cell for any threat that is connected, "
+"directly or indirectly, to a conservation target.  In some cases, this can "
+"lead to double counting of a threat effect.             </p>            "
+"<p>                Consider the following diagram:             </"
+"p>            <br/>            <img src=\"images/ThreatRatingNotApplicable1."
+"png\"  width='586' height='198'>            <p>                Because all "
+"threats and targets are connected by arrows, Miradi generates a threat "
+"rating view that suggests all threat-target pairs should be "
+"rated:             </p>            <br/>            <img src=\"images/"
+"ThreatRatingNotApplicable2.png\" width='639' height='170'>            "
+"<p>                However, rating all pairs may not be appropriate.   If "
+"the only way that new roads affect jaguars is via forest habitat "
+"destruction, then the team would be rating that threat effect twice – once "
+"for forests, and once again for jaguars.                 A similar situation "
+"would occur with new roads as they affect rivers.  Here, a team might even "
+"wonder why that cell is considered a threat-target pair in their table "
+"because, in their context, roads do not directly affect rivers.             "
+"</p>            <p>                For such situations, the \"N/A\" checkbox "
+"allows a user to signal that this threat-target pair is not applicable for "
+"rating.  It does not disable or delete rating entries, but serves instead as "
+"an override.                 If \"N/A\" is checked, any ratings entered for "
+"that threat-target pair are ignored but not lost (unchecking \"N/A\" would "
+"cause any prior ratings to reappear and be included in the summary roll-"
+"up).             </p>        </div>    </body></html>"
 msgstr ""
 
 msgid ""
