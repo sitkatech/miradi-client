@@ -25,16 +25,20 @@ import org.miradi.dialogfields.ObjectDataField;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogfields.ThreatRatingValueReadonlyComponent;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.layout.OneRowGridLayout;
 import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objects.AbstractThreatRatingData;
 import org.miradi.project.Project;
+import org.miradi.utils.FillerLabel;
 
 public class ThreatRatingDataRollupSubPanel extends AbstractThreatRatingDataSubPanel
 {
     public ThreatRatingDataRollupSubPanel(Project projectToUse, Actions actions) throws Exception
     {
         super(projectToUse, actions);
+
+        setLayout(new OneRowGridLayout());
     }
 
     @Override
@@ -43,7 +47,12 @@ public class ThreatRatingDataRollupSubPanel extends AbstractThreatRatingDataSubP
         rollupField = new ThreatRatingValueReadonlyComponent(getProject());
         PanelTitleLabel rollupLabel = new PanelTitleLabel(getTargetThreatRatingLabel());
         add(rollupLabel);
+        add(new FillerLabel());
         add(rollupField.getComponent());
+
+        add(new FillerLabel());
+        add(new FillerLabel());
+        add(new FillerLabel());
 
         notApplicableField = createCheckBoxField(threatRatingDataObjectType, AbstractThreatRatingData.TAG_IS_THREAT_RATING_NOT_APPLICABLE, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE);
         addFieldWithPopUpInformation((ObjectDataInputField) notApplicableField, "ThreatRatingNotApplicableFieldDescription.html");

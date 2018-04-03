@@ -118,28 +118,34 @@ abstract public class ObjectDataInputPanel extends AbstractObjectDataInputPanelW
 		components.add(new FillerLabel());
 		components.add(createHyperLinkPanel(htmlFileName));
 		
-		return addComponentsFieldWithCustomLabel(field, "", components.toArray(new JComponent[0]));
+		return addComponentsFieldWithCustomLabel(field, "", false, components.toArray(new JComponent[0]));
 	}
 	
 	public ObjectDataInputField addComponentsFieldWithCustomLabel(ObjectDataInputField field, String customLabel, JComponent[] components)
 	{
+		return addComponentsFieldWithCustomLabel(field, customLabel, true, components);
+	}
+	
+	public ObjectDataInputField addComponentsFieldWithCustomLabel(ObjectDataInputField field, String customLabel, boolean addHorizontalStrut, JComponent[] components)
+	{
 		addFieldToList(field);
-		
+
 		Box box = Box.createHorizontalBox();
 		box.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		box.add(Box.createHorizontalStrut(20));
+		if (addHorizontalStrut)
+			box.add(Box.createHorizontalStrut(20));
 		box.add(new PanelTitleLabel(customLabel));
 		for(JComponent component : components)
 		{
-			box.add(component);	
+			box.add(component);
 		}
-		
+
 		addLabel(field.getObjectType(), field.getTag());
 		addFieldComponent(box);
-		
+
 		return field;
 	}
-	
+
 	public ObjectDataInputField addFieldWithCustomLabelAndHint(ObjectDataInputField field, String hint)
 	{
 		addFieldToList(field);
