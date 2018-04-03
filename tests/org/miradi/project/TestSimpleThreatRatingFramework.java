@@ -30,14 +30,10 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.MiradiTestCase;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.RatingCriterion;
-import org.miradi.objects.Target;
-import org.miradi.objects.ValueOption;
+import org.miradi.objects.*;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.SimpleThreatFrameworkJson;
 import org.miradi.project.threatrating.ThreatRatingBundle;
@@ -188,7 +184,7 @@ public class TestSimpleThreatRatingFramework extends MiradiTestCase
 		
 	}
 
-	public static ThreatRatingBundle createThreatTargetAndBundle(ProjectForTesting projectToUse, SimpleThreatRatingFramework frameworkToUse) throws Exception
+	private static ThreatRatingBundle createThreatTargetAndBundle(ProjectForTesting projectToUse, SimpleThreatRatingFramework frameworkToUse) throws Exception
 	{
 		FactorId threatId = createThreat(projectToUse).getWrappedId();
 		FactorId targetId = createTarget(projectToUse).getWrappedId();
@@ -240,8 +236,57 @@ public class TestSimpleThreatRatingFramework extends MiradiTestCase
 		assertEquals("target1 not very high?", veryHigh, framework.getTargetThreatRatingValue(target1.getWrappedId()));
 		assertEquals("target2 not very high?", veryHigh, framework.getTargetThreatRatingValue(target2.getWrappedId()));
 	}
-	
-	public static void createLinkageAndBundle(ProjectForTesting projectToUse, DiagramFactor threat, DiagramFactor target, ValueOption value) throws Exception
+
+	public void testGetSummaryRating() throws Exception
+	{
+		assertTrue("project is not in simple threat rating mode?", project.isSimpleThreatRatingMode());
+
+		DiagramFactor threatDiagramFactor = createThreat(project);
+		DiagramFactor targetDiagramFactor = createTarget(project);
+
+		ValueOption high = framework.findValueOptionByNumericValue(3);
+		createLinkageAndBundle(project, threatDiagramFactor, targetDiagramFactor, high);
+
+		assertEquals("", 2, framework.get2PrimeSummaryRatingValue(targetDiagramFactor.getWrappedFactor()));
+		assertEquals("wrong threat summary rating for project?", 3, project.getProjectSummaryThreatRating());
+	}
+
+	public void testGetSummaryRatingWithNotApplicableRating() throws Exception
+	{
+		assertTrue("project is not in simple threat rating mode?", project.isSimpleThreatRatingMode());
+
+		DiagramFactor threatDiagramFactor = createThreat(project);
+		DiagramFactor targetDiagramFactor = createTarget(project);
+
+		ValueOption high = framework.findValueOptionByNumericValue(3);
+		createLinkageAndBundle(project, threatDiagramFactor, targetDiagramFactor, high);
+
+		project.populateThreatRatingDataField(threatDiagramFactor.getWrappedORef(), targetDiagramFactor.getWrappedORef(), ObjectType.THREAT_SIMPLE_RATING_DATA, AbstractThreatRatingData.TAG_IS_THREAT_RATING_NOT_APPLICABLE, BooleanData.BOOLEAN_TRUE);
+
+		assertEquals("", 0, framework.get2PrimeSummaryRatingValue(targetDiagramFactor.getWrappedFactor()));
+	}
+
+	public void testGetOverallProjectRatingWithNotApplicableRating() throws Exception
+	{
+		assertTrue("project is not in simple threat rating mode?", project.isSimpleThreatRatingMode());
+
+		DiagramFactor threatDiagramFactor1 = createThreat(project);
+		DiagramFactor targetDiagramFactor1 = createTarget(project);
+
+		ValueOption high = framework.findValueOptionByNumericValue(3);
+		createLinkageAndBundle(project, threatDiagramFactor1, targetDiagramFactor1, high);
+
+		DiagramFactor threatDiagramFactor2 = createThreat(project);
+		DiagramFactor targetDiagramFactor2 = createTarget(project);
+
+		createLinkageAndBundle(project, threatDiagramFactor2, targetDiagramFactor2, high);
+
+		project.populateThreatRatingDataField(threatDiagramFactor2.getWrappedORef(), targetDiagramFactor2.getWrappedORef(), ObjectType.THREAT_SIMPLE_RATING_DATA, AbstractThreatRatingData.TAG_IS_THREAT_RATING_NOT_APPLICABLE, BooleanData.BOOLEAN_TRUE);
+
+		assertEquals("wrong threat summary rating for project?", 3, project.getProjectSummaryThreatRating());
+	}
+
+	private static void createLinkageAndBundle(ProjectForTesting projectToUse, DiagramFactor threat, DiagramFactor target, ValueOption value) throws Exception
 	{
 		createDiagramLink(projectToUse, threat, target);
 		
@@ -387,7 +432,7 @@ public class TestSimpleThreatRatingFramework extends MiradiTestCase
 		return threatDiagramFactor;
 	}
 	
-	public static void populateBundle(SimpleThreatRatingFramework frameworkToUse, FactorId threatId, FactorId targetId, ValueOption value) throws Exception
+	private static void populateBundle(SimpleThreatRatingFramework frameworkToUse, FactorId threatId, FactorId targetId, ValueOption value) throws Exception
 	{
 		ThreatRatingBundle bundle = frameworkToUse.getBundle(threatId, targetId);
 		RatingCriterion criteria[] = frameworkToUse.getCriteria();
@@ -402,7 +447,7 @@ public class TestSimpleThreatRatingFramework extends MiradiTestCase
 		return fillFrameWork(tempProject, bundleValues);
 	}
 
-	public static SimpleThreatRatingFramework fillFrameWork(ProjectForTesting projectToUse, int[][] bundleValues) throws Exception
+	private static SimpleThreatRatingFramework fillFrameWork(ProjectForTesting projectToUse, int[][] bundleValues) throws Exception
 	{
 		SimpleThreatRatingFramework trf = projectToUse.getSimpleThreatRatingFramework();
 		int threatCount = bundleValues.length;

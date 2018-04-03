@@ -19,17 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.project;
 
+import org.apache.commons.lang3.tuple.ImmutablePair;
 import org.miradi.main.TestCaseWithProject;
+import org.miradi.objectdata.BooleanData;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
-import org.miradi.objects.Cause;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.Stress;
-import org.miradi.objects.Target;
-import org.miradi.objects.ThreatStressRating;
+import org.miradi.objects.*;
 import org.miradi.project.threatrating.StressBasedThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.ThreatRatingModeChoiceQuestion;
@@ -52,13 +49,45 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 
 	public void testGetSummaryRating() throws Exception
 	{
-		DiagramFactor target = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
-		DiagramFactor threat = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
-		getProject().enableAsThreat((Cause) threat.getWrappedFactor());
-		createThreatFactorLink(getProject(), threat, target);
-	
+		ImmutablePair<Cause, Target> threatTargetPair = createTestThreatAndTarget();
+
 		ThreatRatingFramework frameWork = new StressBasedThreatRatingFramework(getProject());
-		assertEquals("wrong summary rating for target?", 3, frameWork.get2PrimeSummaryRatingValue(target.getWrappedFactor()));
+		assertEquals("wrong summary rating for targetDiagramFactor?", 3, frameWork.get2PrimeSummaryRatingValue(threatTargetPair.right));
+		assertEquals("wrong threat summary rating for project?", 4, getProject().getProjectSummaryThreatRating());
+	}
+
+	public void testGetSummaryRatingWithNotApplicableRating() throws Exception
+	{
+		ImmutablePair<Cause, Target> threatTargetPair = createTestThreatAndTarget();
+
+		assertTrue("project is not in stress threat rating mode?", getProject().isStressBaseMode());
+		getProject().populateThreatRatingDataField(threatTargetPair.left.getRef(), threatTargetPair.right.getRef(), ObjectType.THREAT_STRESS_RATING_DATA, AbstractThreatRatingData.TAG_IS_THREAT_RATING_NOT_APPLICABLE, BooleanData.BOOLEAN_TRUE);
+
+		ThreatRatingFramework frameWork = new StressBasedThreatRatingFramework(getProject());
+		assertEquals("wrong summary rating for targetDiagramFactor?", 0, frameWork.get2PrimeSummaryRatingValue(threatTargetPair.right));
+	}
+
+	public void testGetOverallProjectRatingWithNotApplicableRating() throws Exception
+	{
+		assertTrue("project is not in stress threat rating mode?", getProject().isStressBaseMode());
+
+		ImmutablePair<Cause, Target> threatTargetPair = createTestThreatAndTarget();
+		ImmutablePair<Cause, Target> threatTargetPairNotApplicable = createTestThreatAndTarget();
+		getProject().populateThreatRatingDataField(threatTargetPairNotApplicable.left.getRef(), threatTargetPairNotApplicable.right.getRef(), ObjectType.THREAT_STRESS_RATING_DATA, AbstractThreatRatingData.TAG_IS_THREAT_RATING_NOT_APPLICABLE, BooleanData.BOOLEAN_TRUE);
+
+		assertEquals("wrong threat summary rating for project?", 4, getProject().getProjectSummaryThreatRating());
+	}
+
+	private ImmutablePair<Cause, Target> createTestThreatAndTarget() throws Exception
+	{
+		DiagramFactor targetDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
+		DiagramFactor threatDiagramFactor = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
+		Cause threat = (Cause) threatDiagramFactor.getWrappedFactor();
+		getProject().enableAsThreat(threat);
+		createThreatFactorLink(getProject(), threatDiagramFactor, targetDiagramFactor);
+		Target target = (Target) targetDiagramFactor.getWrappedFactor();
+
+		return new ImmutablePair<>(threat, target);
 	}
 
 	public void testGetRollupRatingOfThreats() throws Exception
@@ -71,8 +100,8 @@ public class TestStressBasedThreatRatingFramework extends TestCaseWithProject
 		StressBasedThreatRatingFramework frameWork = new StressBasedThreatRatingFramework(getProject());
 		assertEquals("wrong rollup rating of threats?", 3, frameWork.getRollupRatingOfThreats());
 	}
-	
-	public static void createThreatFactorLink(ProjectForTesting project, DiagramFactor cause, DiagramFactor target) throws Exception
+
+	private static void createThreatFactorLink(ProjectForTesting project, DiagramFactor cause, DiagramFactor target) throws Exception
 	{
 		DiagramLink diagramLink = project.createDiagramLinkAndAddToDiagramModel(cause, target);
 		

@@ -53,7 +53,7 @@ public class TestMigrationTo66 extends AbstractTestMigration
         assertTrue(threatRef.isValid());
 
         assertTrue("project is not in simple threat rating mode?", getProject().isSimpleThreatRatingMode());
-        getProject().populateSimpleThreatRatingDataField(threatRef, targetRef, ObjectType.THREAT_SIMPLE_RATING_DATA, AbstractThreatRatingData.TAG_IS_THREAT_RATING_NOT_APPLICABLE, BooleanData.BOOLEAN_TRUE);
+        getProject().populateThreatRatingDataField(threatRef, targetRef, ObjectType.THREAT_SIMPLE_RATING_DATA, AbstractThreatRatingData.TAG_IS_THREAT_RATING_NOT_APPLICABLE, BooleanData.BOOLEAN_TRUE);
 
         String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), new VersionRange(getToVersion()));
         final RawProject projectToMigrate = RawProjectLoader.loadProject(projectAsString);

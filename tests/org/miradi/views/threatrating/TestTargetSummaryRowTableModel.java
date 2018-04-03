@@ -29,9 +29,9 @@ import org.miradi.objects.Stress;
 import org.miradi.objects.Target;
 import org.miradi.project.ProjectForTesting;
 
-public class TestTargetSummartyRowTableModel extends TestCaseWithProject
+public class TestTargetSummaryRowTableModel extends TestCaseWithProject
 {
-	public TestTargetSummartyRowTableModel(String name)
+	public TestTargetSummaryRowTableModel(String name)
 	{
 		super(name);
 	}

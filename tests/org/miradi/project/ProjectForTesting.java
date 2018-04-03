@@ -1730,7 +1730,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(threatRatingData.getRef(), AbstractThreatRatingData.TAG_EVIDENCE_CONFIDENCE, evidenceConfidence.getCode());
 	}
 
-	public void populateSimpleThreatRatingDataField(ORef threatRef, ORef targetRef, int objectType, String fieldTag, String fieldValue) throws Exception
+	public void populateThreatRatingDataField(ORef threatRef, ORef targetRef, int objectType, String fieldTag, String fieldValue) throws Exception
 	{
 		AbstractThreatRatingData threatRatingData = AbstractThreatRatingData.findOrCreateThreatRatingData(this, threatRef, targetRef, objectType);
 		fillObjectUsingCommand(threatRatingData.getRef(), fieldTag, fieldValue);

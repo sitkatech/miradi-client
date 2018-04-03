@@ -54,7 +54,7 @@ import org.miradi.views.planning.TestFullTimeEmployeeCalculationsInsideModel;
 import org.miradi.views.planning.TestPlanningViewMainTableModel;
 import org.miradi.views.planning.TestTreeRebuilder;
 import org.miradi.views.planning.TestWorkPlanRowColumnProvider;
-import org.miradi.views.threatrating.TestTargetSummartyRowTableModel;
+import org.miradi.views.threatrating.TestTargetSummaryRowTableModel;
 import org.miradi.views.umbrella.TestUndoRedo;
 import org.miradi.views.workplan.TestDeleteActivity;
 import org.miradi.xml.TestXmpz2ForwardMigration;
@@ -335,7 +335,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestImportAccountingCodesDoer.class));
 		
 		// view.threatmatrix package
-		addTest(new TestSuite(TestTargetSummartyRowTableModel.class));
+		addTest(new TestSuite(TestTargetSummaryRowTableModel.class));
 		
 		// view.summary.doers package
 
