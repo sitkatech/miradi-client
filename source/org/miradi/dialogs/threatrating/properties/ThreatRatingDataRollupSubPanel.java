@@ -23,13 +23,16 @@ package org.miradi.dialogs.threatrating.properties;
 import org.miradi.actions.Actions;
 import org.miradi.dialogfields.ObjectDataField;
 import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.dialogfields.ThreatRatingValueReadonlyComponent;
+import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
+import org.miradi.main.EAM;
 import org.miradi.objectdata.BooleanData;
 import org.miradi.objects.AbstractThreatRatingData;
 import org.miradi.project.Project;
 
-public class ThreatRatingDataNotApplicableSubPanel extends AbstractThreatRatingDataSubPanel
+public class ThreatRatingDataRollupSubPanel extends AbstractThreatRatingDataSubPanel
 {
-    public ThreatRatingDataNotApplicableSubPanel(Project projectToUse, Actions actions) throws Exception
+    public ThreatRatingDataRollupSubPanel(Project projectToUse, Actions actions) throws Exception
     {
         super(projectToUse, actions);
     }
@@ -37,15 +40,34 @@ public class ThreatRatingDataNotApplicableSubPanel extends AbstractThreatRatingD
     @Override
     protected void addFields(int threatRatingDataObjectType) throws Exception
     {
+        rollupField = new ThreatRatingValueReadonlyComponent(getProject());
+        PanelTitleLabel rollupLabel = new PanelTitleLabel(getTargetThreatRatingLabel());
+        add(rollupLabel);
+        add(rollupField.getComponent());
+
         notApplicableField = createCheckBoxField(threatRatingDataObjectType, AbstractThreatRatingData.TAG_IS_THREAT_RATING_NOT_APPLICABLE, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE);
         addFieldWithPopUpInformation((ObjectDataInputField) notApplicableField, "ThreatRatingNotApplicableFieldDescription.html");
+    }
+
+    private String getTargetThreatRatingLabel()
+    {
+        return EAM.text("Target-Threat Rating");
+    }
+
+    @Override
+    public void updateFieldsFromProject()
+    {
+        super.updateFieldsFromProject();
+
+        rollupField.setObjectRefs(getSelectedRefs());
     }
 
     @Override
     public String getPanelDescription()
     {
-        return "ThreatRatingDataNotApplicableSubPanel";
+        return "ThreatRatingDataRollupSubPanel";
     }
 
     private ObjectDataField notApplicableField;
+    private ThreatRatingValueReadonlyComponent rollupField;
 }

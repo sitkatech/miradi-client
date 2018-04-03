@@ -44,9 +44,9 @@ import org.miradi.questions.ThreatRatingQuestion;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
 
-public class ThreatStressRatingValueReadonlyComponent extends MiradiPanel
+public class ThreatRatingValueReadonlyComponent extends MiradiPanel
 {
-	public ThreatStressRatingValueReadonlyComponent(Project projectToUse)
+	public ThreatRatingValueReadonlyComponent(Project projectToUse)
 	{
 		super();
 		

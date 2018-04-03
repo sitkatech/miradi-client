@@ -43,13 +43,11 @@ public class StressBasedThreatRatingPropertiesPanel extends AbstractThreatRating
 		setLayout(new OneColumnGridLayout());
 		
 		factorsPanel = new LinkPropertiesFactorsSubPanel(getProject(), mainWindowToUse.getActions());
-		threatRatingDataNotApplicableSubPanel = new ThreatRatingDataNotApplicableSubPanel(mainWindowToUse.getProject(), mainWindowToUse.getActions());
-		threatStressRatingFieldPanel = new ThreatRatingCommonPropertiesSubPanel(mainWindowToUse.getProject(), mainWindowToUse.getActions());
+		threatRatingDataRollupSubPanel = new ThreatRatingDataRollupSubPanel(mainWindowToUse.getProject(), mainWindowToUse.getActions());
 		editorComponent = new ThreatStressRatingEditorComponent(mainWindowToUse, objectPickerToUse);
 
 		addSubPanelWithoutTitledBorder(factorsPanel);
-		addSubPanelWithoutTitledBorder(threatRatingDataNotApplicableSubPanel);
-		addSubPanelWithoutTitledBorder(threatStressRatingFieldPanel);
+		addSubPanelWithoutTitledBorder(threatRatingDataRollupSubPanel);
 		addSubPanelWithoutTitledBorder(new ThreatRatingDataEvidenceSubPanel(getProject(), mainWindowToUse.getActions()));
 		add(editorComponent);
 		
@@ -104,7 +102,6 @@ public class StressBasedThreatRatingPropertiesPanel extends AbstractThreatRating
 	}
 	
 	private LinkPropertiesFactorsSubPanel factorsPanel;
-	private ThreatRatingDataNotApplicableSubPanel threatRatingDataNotApplicableSubPanel;
-	private ThreatRatingCommonPropertiesSubPanel threatStressRatingFieldPanel;
+	private ThreatRatingDataRollupSubPanel threatRatingDataRollupSubPanel;
 	private ThreatStressRatingEditorComponent editorComponent;
 }

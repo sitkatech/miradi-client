@@ -20,20 +20,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.threatrating.properties;
 
-import java.awt.Color;
-
-import javax.swing.BorderFactory;
-import javax.swing.Box;
-import javax.swing.JComponent;
-import javax.swing.border.Border;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
 import org.miradi.commands.CommandSetThreatRating;
 import org.miradi.dialogfields.ChoiceItemListSelectionEvent;
-import org.miradi.dialogfields.ThreatStressRatingValueReadonlyComponent;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.layout.OneRowGridLayout;
@@ -45,18 +34,16 @@ import org.miradi.objects.ValueOption;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
-import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.IrreversibilityThreatRatingQuestion;
-import org.miradi.questions.ScopeThreatRatingQuestion;
-import org.miradi.questions.SeverityThreatRatingQuestion;
-import org.miradi.questions.StaticQuestionManager;
-import org.miradi.questions.ThreatRatingQuestion;
+import org.miradi.questions.*;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.schemas.TargetSchema;
 import org.miradi.schemas.ValueOptionSchema;
 import org.miradi.utils.QuestionPopupEditorComponent;
 import org.miradi.utils.SimpleThreatRatingQuestionPopupEditorComponent;
+
+import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 
 public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 {
@@ -91,17 +78,13 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 
 	private void addComponents()
 	{
-		add(rollupField);
 		addEditComponent(scopeEditorComponent);
 		addEditComponent(severityEditorComponent);
 		addEditComponent(irreversibilityEditorComponent);
-		PanelTitleLabel rollupLabel = new PanelTitleLabel(EAM.text("<html><b>Summary<br>Target-Threat<br>Rating"));
-		add(createGridCell(rollupLabel, rollupField.getComponent()));
 	}
 
 	private void createComponents() throws Exception
 	{
-		rollupField = new ThreatStressRatingValueReadonlyComponent(getProject());
 		scopeEditorComponent = new SimpleThreatRatingQuestionPopupEditorComponent(getProject(), new ListSelectionHandler(getScopeId()), getScopeRatingQuestion(), EAM.text("Threat|Scope"));
 		severityEditorComponent = new SimpleThreatRatingQuestionPopupEditorComponent(getProject(), new ListSelectionHandler(getSeverityId()), getSeverityRatingQuestion(), EAM.text("Severity"));
 		irreversibilityEditorComponent = new SimpleThreatRatingQuestionPopupEditorComponent(getProject(), new ListSelectionHandler(getIrreversibilityId()), getIrreversibilityRatingQuestion(), EAM.text("Irreversibility"));
@@ -114,18 +97,6 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		panel.setBorder(BorderFactory.createEtchedBorder());
 		panel.add(component);
 		add(panel);
-	}
-	
-	private JComponent createGridCell(JComponent label, JComponent field)
-	{
-		Box cellPanel = Box.createHorizontalBox();
-		cellPanel.add(label);
-		cellPanel.add(Box.createHorizontalStrut(5));
-		cellPanel.add(field);
-		final Border lineBorder = BorderFactory.createLineBorder(Color.BLACK);
-		final Border emptyBorder = BorderFactory.createEmptyBorder(5,5,5,5);
-		cellPanel.setBorder(BorderFactory.createCompoundBorder(lineBorder, emptyBorder));
-		return cellPanel;
 	}
 
 	private BaseId getScopeId()
@@ -173,7 +144,6 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 			updateRatingComponent(getScopeRatingQuestion(), getScopeId(), scopeEditorComponent);
 			updateRatingComponent(getRatingQuestion(), getSeverityId(), severityEditorComponent);
 			updateRatingComponent(getRatingQuestion(), getIrreversibilityId(), irreversibilityEditorComponent);
-			rollupField.setObjectRefs(getSelectedRefs());
 		}
 		catch (Exception e)
 		{
@@ -278,8 +248,7 @@ public class SimpleThreatRatingDropdownsPanel extends ObjectDataInputPanel
 		
 		private BaseId criterionId;
 	}
-	
-	private ThreatStressRatingValueReadonlyComponent rollupField;
+
 	private SimpleThreatRatingQuestionPopupEditorComponent scopeEditorComponent;
 	private SimpleThreatRatingQuestionPopupEditorComponent severityEditorComponent;
 	private SimpleThreatRatingQuestionPopupEditorComponent irreversibilityEditorComponent;

@@ -41,8 +41,8 @@ public class SimpleThreatRatingPropertiesPanel extends AbstractThreatRatingPrope
 		dropdownsPanel = new SimpleThreatRatingDropdownsPanel(project);
 		
 		addSubPanelField(factorNamesPanel);
-		addSubPanelWithoutTitledBorder(new ThreatRatingDataNotApplicableSubPanel(project, mainWindowToUse.getActions()));
 		addSubPanelField(dropdownsPanel);
+		addSubPanelWithoutTitledBorder(new ThreatRatingDataRollupSubPanel(project, mainWindowToUse.getActions()));
 		addSubPanelWithoutTitledBorder(new ThreatRatingDataEvidenceSubPanel(project, mainWindowToUse.getActions()));
 		
 		updateFieldsFromProject();
