@@ -114,8 +114,11 @@ abstract public class ThreatRatingFramework
 		{
 			for(ORef targetRef : downstreamTargets)
 			{
-				int threatRatingBundleValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threatRef, targetRef);
-				calculatedSummaryRatingValues.add(threatRatingBundleValue);
+				if (!ThreatTargetVirtualLinkHelper.isThreatRatingNotApplicable(getProject(), threatRef, targetRef))
+				{
+					int threatRatingBundleValue = threatTargetVirtualLink.calculateThreatRatingBundleValue(threatRef, targetRef);
+					calculatedSummaryRatingValues.add(threatRatingBundleValue);
+				}
 			}
 		}
 		

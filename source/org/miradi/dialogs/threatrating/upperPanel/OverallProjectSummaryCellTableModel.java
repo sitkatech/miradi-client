@@ -45,7 +45,7 @@ public class OverallProjectSummaryCellTableModel extends AbstractThreatTargetTab
 		return 1;
 	}
 
-	public Object getValueAt(int arg0, int arg1)
+	public Object getValueAt(int row, int column)
 	{
 		int overallProjectRating = getProject().getProjectSummaryThreatRating();
 		

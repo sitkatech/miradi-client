@@ -50,7 +50,7 @@ public class BundleIcon extends AbstractMiradiIcon
 	{
 		threat = threatToUse;
 		target = targetToUse;
-		threatTargetVirualLink = new ThreatTargetVirtualLinkHelper(getProject());
+		threatTargetVirtualLink = new ThreatTargetVirtualLinkHelper(getProject());
 	}
 	
 	public void paintIcon(Component c, Graphics g, int x, int y)
@@ -72,9 +72,11 @@ public class BundleIcon extends AbstractMiradiIcon
 
 	private void paintSummaryColoredSection(Graphics g) throws Exception
 	{
-		int value = threatTargetVirualLink.calculateThreatRatingBundleValue(getThreatRef(), getTargetRef());
+		int value = threatTargetVirtualLink.calculateThreatRatingBundleValue(getThreatRef(), getTargetRef());
 		ThreatRatingQuestion question = getThreatRatingQuestion();
-		g.setColor(question.findChoiceByNumericValue(value).getColor());
+		ThreatRatingBundle bundle = getBundle();
+		ChoiceItem choice = question.findChoiceByNumericValue(value);
+		g.setColor(getChoiceColor(bundle, choice));
 		g.fillRect(getSummaryX(), 0, getSummaryWidth(), getSummaryHeight());
 	}
 
@@ -87,20 +89,29 @@ public class BundleIcon extends AbstractMiradiIcon
 	{
 		ThreatRatingQuestion question = getThreatRatingQuestion();
 		ThreatRatingBundle bundle = getBundle();
+
 		ChoiceItem scope = question.findChoiceByNumericValue(getFramework().getScopeNumericValue(bundle));
 		ChoiceItem severity = question.findChoiceByNumericValue(getFramework().getSeverityNumericValue(bundle));
 		ChoiceItem irreversibility = question.findChoiceByNumericValue(getFramework().getIrreversibilityNumericValue(bundle));
 
-		drawCriterionRectangle(g, 0, scope);
-		drawCriterionRectangle(g, 1, severity);
-		drawCriterionRectangle(g, 2, irreversibility);
+		drawCriterionRectangle(g, 0, getChoiceColor(bundle, scope));
+		drawCriterionRectangle(g, 1, getChoiceColor(bundle, severity));
+		drawCriterionRectangle(g, 2, getChoiceColor(bundle, irreversibility));
 	}
 
-	private void drawCriterionRectangle(Graphics g, int criterionIndex, ChoiceItem choice)
+	private Color getChoiceColor(ThreatRatingBundle bundle, ChoiceItem choice)
+	{
+		if (ThreatTargetVirtualLinkHelper.isThreatRatingNotApplicable(getProject(), bundle))
+			return ThreatRatingQuestion.NOT_APPLICABLE_COLOR;
+
+		return choice.getColor();
+	}
+
+	private void drawCriterionRectangle(Graphics g, int criterionIndex, Color choiceColor)
 	{
 		int criterionHeight = getIconHeight() / 3;
 		int top = criterionHeight * criterionIndex;
-		g.setColor(choice.getColor());
+		g.setColor(choiceColor);
 		g.fillRect(0, top, getCriterionWidth(), criterionHeight);
 		
 		g.setColor(Color.BLACK);
@@ -171,6 +182,6 @@ public class BundleIcon extends AbstractMiradiIcon
 	private Cause threat;
 	private Target target;
 	private AppPreferences preferences;
-	private ThreatTargetVirtualLinkHelper threatTargetVirualLink;
+	private ThreatTargetVirtualLinkHelper threatTargetVirtualLink;
 	private int rowHeight;
 }

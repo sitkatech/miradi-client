@@ -23,11 +23,7 @@ import java.util.Vector;
 
 import org.miradi.diagram.ThreatTargetChainWalker;
 import org.miradi.main.EAM;
-import org.miradi.objects.Cause;
-import org.miradi.objects.Stress;
-import org.miradi.objects.Target;
-import org.miradi.objects.ThreatStressRating;
-import org.miradi.objects.ValueOption;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.SimpleThreatRatingFramework;
 import org.miradi.project.threatrating.ThreatRatingBundle;
@@ -87,7 +83,6 @@ public class ThreatTargetVirtualLinkHelper
 		}
 		return upstreamOfStressThreatRefs;
 	}
-
 
 	public String getCalculatedThreatRatingBundleValue(ORef threatRef, ORef targetRef)
 	{
@@ -165,7 +160,7 @@ public class ThreatTargetVirtualLinkHelper
 		return ORef.createInvalidWithType(ThreatStressRatingSchema.getObjectType());
 	}
 	
-	public ORefList getThreatStressRatingRefs(ORef threatRef, ORef targetRef)
+	private ORefList getThreatStressRatingRefs(ORef threatRef, ORef targetRef)
 	{
 		try
 		{
@@ -197,6 +192,25 @@ public class ThreatTargetVirtualLinkHelper
 			EAM.logException(e);
 			return false;
 		}
+	}
+
+	public static boolean isThreatRatingNotApplicable(Project project, ThreatRatingBundle bundle)
+	{
+		ORef threatRef = new ORef(ObjectType.CAUSE, bundle.getThreatId());
+		if (project.findObject(threatRef) == null)
+			return false;
+
+		ORef targetRef = new ORef(ObjectType.TARGET, bundle.getTargetId());
+		if (project.findObject(targetRef) == null)
+			return false;
+
+		return isThreatRatingNotApplicable(project, threatRef, targetRef);
+	}
+
+	public static boolean isThreatRatingNotApplicable(Project project, ORef threatRef, ORef targetRef)
+	{
+		AbstractThreatRatingData threatRatingData = AbstractThreatRatingData.findThreatRatingData(project, threatRef, targetRef);
+		return threatRatingData != null && threatRatingData.isThreatRatingNotApplicable();
 	}
 
 	private Project project;

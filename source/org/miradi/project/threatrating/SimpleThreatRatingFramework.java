@@ -52,7 +52,6 @@ import org.miradi.schemas.ValueOptionSchema;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.Utility;
 
-
 public class SimpleThreatRatingFramework extends ThreatRatingFramework
 {
 	public SimpleThreatRatingFramework(Project projectToUse)
@@ -84,7 +83,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		return convertToIdList(getValueOptions(), ValueOptionSchema.getObjectType());
 	}
 	
-	public IdList getCriterionIds()
+	private IdList getCriterionIds()
 	{
 		return convertToIdList(getCriteria(), RatingCriterionSchema.getObjectType());
 	}
@@ -213,9 +212,8 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		SimpleThreatFormula formula = getSimpleThreatFormula();
 		int numericResult = formula.computeBundleValue(bundle);
 		return findValueOptionByNumericValue(numericResult);
-		
 	}
-	
+
 	public int getHighestValueForTarget(BaseId targetId)
 	{
 		ThreatRatingBundle[] bundleArray = getBundlesForThisTarget(targetId);
@@ -253,13 +251,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 			return majority;
 		return rollup;
 	}
-	
-	public ChoiceItem getOverallProjectRatingAsChoiceItem()
-	{
-		int rawOverallProjectRating = getOverallProjectRating().getNumericValue();
-		return convertToChoiceItem(rawOverallProjectRating);
-	}
-	
+
 	@Override
 	public ChoiceItem getThreatThreatRatingValue(ORef threatRef) throws Exception
 	{
@@ -267,7 +259,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		String code = getSafeThreatRatingCode(valueOption.getNumericValue());
 		return new ChoiceItem(code, valueOption.getLabel(), valueOption.getColor());
 	}
-	
+
 	public ValueOption getThreatThreatRatingValue(BaseId threatId)
 	{
 		ThreatRatingBundle[] bundleArray = getBundlesForThisThreat(threatId);
@@ -288,7 +280,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		ThreatRatingBundle[] bundleArray = bundlesForThisThreat.toArray(new ThreatRatingBundle[0]);
 		return bundleArray;
 	}
-	
+
 	public ValueOption getTargetThreatRatingValue(BaseId targetId)
 	{
 		ThreatRatingBundle[] bundleArray = getBundlesForThisTarget(targetId);
@@ -316,7 +308,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		return bundleArray;
 	}
 	
-	public ValueOption getProjectRollupRating()
+	private ValueOption getProjectRollupRating()
 	{
 		Factor[] threats = getProject().getCausePool().getDirectThreats();
 		int[] numericValues = new int[threats.length];
@@ -330,6 +322,9 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 
 	public boolean isBundleForLinkedThreatAndTarget(ThreatRatingBundle bundle)
 	{
+		if (ThreatTargetVirtualLinkHelper.isThreatRatingNotApplicable(getProject(), bundle))
+			return false;
+
 		FactorId threatId = bundle.getThreatId();
 		ORef threatRef = new ORef(CauseSchema.getObjectType(), threatId);
 		Cause threat = Cause.find(getProject(), threatRef);
@@ -337,12 +332,10 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 			return false;
 		
 		ORef targetRef = new ORef(TargetSchema.getObjectType(), bundle.getTargetId());
-		ThreatTargetVirtualLinkHelper helper = new ThreatTargetVirtualLinkHelper(getProject());
-	
-		return helper.canSupportThreatRatings(getProject(), threat, targetRef);		
+		return ThreatTargetVirtualLinkHelper.canSupportThreatRatings(getProject(), threat, targetRef);
 	}
 	
-	public ValueOption getSummaryOfBundles(ThreatRatingBundle[] bundlesToSummarize)
+	private ValueOption getSummaryOfBundles(ThreatRatingBundle[] bundlesToSummarize)
 	{
 		int[] bundleValues = new int[bundlesToSummarize.length];
 		for(int i = 0; i < bundlesToSummarize.length; ++i)
@@ -351,7 +344,7 @@ public class SimpleThreatRatingFramework extends ThreatRatingFramework
 		return getSummaryOfNumericValues(bundleValues);
 	}
 
-	protected ValueOption getSummaryOfNumericValues(int[] bundleValues)
+	private ValueOption getSummaryOfNumericValues(int[] bundleValues)
 	{
 		SimpleThreatFormula formula = getSimpleThreatFormula();
 		int numericResult = formula.getSummaryOfBundlesWithTwoPrimeRule(bundleValues);

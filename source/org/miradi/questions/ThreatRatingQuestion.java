@@ -71,4 +71,8 @@ public class ThreatRatingQuestion extends StaticChoiceQuestionSortableByCode
 	public static final String MEDIUM_RATING_CODE = "2";
 	public static final String HIGH_RATING_CODE = "3";
 	public static final String VERY_HIGH_RATING_CODE = "4";
+
+	public static final String NOT_APPLICABLE = EAM.text("N/A");
+	public static final Color NOT_APPLICABLE_COLOR = Color.WHITE;
+
 }

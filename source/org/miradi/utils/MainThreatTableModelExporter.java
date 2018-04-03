@@ -24,7 +24,10 @@ import java.util.Vector;
 import org.miradi.dialogs.threatrating.upperPanel.AbstractThreatTargetTableModel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.Cause;
+import org.miradi.objects.Target;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.EmptyChoiceItem;
 import org.miradi.questions.StaticQuestionManager;
@@ -93,8 +96,15 @@ public class MainThreatTableModelExporter extends AbstractSingleTableExporter
 		
 		ChoiceItem foundChoiceItem = threatRatingQuestion.findChoiceByLabel(value.toString());
 		if (foundChoiceItem != null)
+		{
+			Cause threat = (Cause) mainThreatTableModel.getDirectThreat(row);
+			Target target = mainThreatTableModel.getTarget(modelColumn);
+			if (ThreatTargetVirtualLinkHelper.isThreatRatingNotApplicable(getProject(), threat.getRef(), target.getRef()))
+				return new TaglessChoiceItem(ThreatRatingQuestion.NOT_APPLICABLE);
+
 			return foundChoiceItem;
-		
+		}
+
 		return new TaglessChoiceItem(value.toString());
 	}
 

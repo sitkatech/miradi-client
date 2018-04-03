@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.tablerenderers;
 
-import java.awt.Component;
+import java.awt.*;
 
 import javax.swing.Icon;
 import javax.swing.JLabel;
@@ -34,6 +34,7 @@ import org.miradi.objecthelpers.ThreatTargetVirtualLinkHelper;
 import org.miradi.objects.Cause;
 import org.miradi.objects.Target;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.ThreatRatingQuestion;
 
 public class ThreatTargetTableCellRendererFactory extends ChoiceItemTableCellRendererFactory
 {
@@ -49,47 +50,85 @@ public class ThreatTargetTableCellRendererFactory extends ChoiceItemTableCellRen
 	public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int tableColumn)
 	{
 		JLabel renderer = (JLabel)super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, tableColumn);
-		String labelText = getLabelText(value);
-
-		if(!isSelected)
-			renderer.setBackground(getBackgroundColor(getChoiceItem(value)));
-
-		renderer.setText(labelText);
 
 		int modelColumn = table.convertColumnIndexToModel(tableColumn);
-		Icon configuredIcon = getConfiguredIcon(table, row, modelColumn, getChoiceItem(value));
+
+		TargetThreatLinkTableModel model = getModel(table);
+		Cause threat = getThreat(table, row);
+		Target target = getTarget(table, modelColumn);
+
+		if(!isSelected)
+			renderer.setBackground(getBackgroundColor(model, threat, target, value));
+
+		String labelText = getText(model, threat, target, value);
+		renderer.setText(labelText);
+
+		Icon configuredIcon = getConfiguredIcon(model, threat, target, table, row, getChoiceItem(value));
 		renderer.setIcon(configuredIcon);
+
 		return renderer;
 	}
 
-	protected Icon getConfiguredIcon(JTable table, int row, int modelColumn, ChoiceItem choice)
+	private Color getBackgroundColor(TargetThreatLinkTableModel model, Cause threat, Target target, Object value)
+	{
+		if (ThreatTargetVirtualLinkHelper.isThreatRatingNotApplicable(model.getProject(), threat.getRef(), target.getRef()))
+			return ThreatRatingQuestion.NOT_APPLICABLE_COLOR;
+		else
+			return getBackgroundColor(getChoiceItem(value));
+	}
+
+	private String getText(TargetThreatLinkTableModel model, Cause threat, Target target, Object value)
+	{
+		if (ThreatTargetVirtualLinkHelper.isThreatRatingNotApplicable(model.getProject(), threat.getRef(), target.getRef()))
+			return ThreatRatingQuestion.NOT_APPLICABLE;
+		else
+			return getLabelText(value);
+	}
+
+	private TargetThreatLinkTableModel getModel(JTable table)
+	{
+		TargetThreatLinkTable targetThreatLinkTable = (TargetThreatLinkTable) table;
+		return targetThreatLinkTable.getTargetThreatLinkTableModel();
+	}
+
+	private Cause getThreat(JTable table, int row)
 	{
 		TargetThreatLinkTable targetThreatLinkTable = (TargetThreatLinkTable) table;
 		TargetThreatLinkTableModel model = targetThreatLinkTable.getTargetThreatLinkTableModel();
-		Cause threat = (Cause)model.getDirectThreat(row);
-		Target target = model.getTarget(modelColumn);
+		return (Cause) model.getDirectThreat(row);
+	}
 
+	private Target getTarget(JTable table, int modelColumn)
+	{
+		TargetThreatLinkTable targetThreatLinkTable = (TargetThreatLinkTable) table;
+		TargetThreatLinkTableModel model = targetThreatLinkTable.getTargetThreatLinkTableModel();
+		return model.getTarget(modelColumn);
+	}
+
+	private Icon getConfiguredIcon(TargetThreatLinkTableModel model, Cause threat, Target target, JTable table, int row, ChoiceItem choice)
+	{
 		if(!ThreatTargetVirtualLinkHelper.canSupportThreatRatings(model.getProject(), threat, target.getRef()))
 			return null;
-		
+
 		if(model.getProject().isStressBaseMode())
 		{
+			if (ThreatTargetVirtualLinkHelper.isThreatRatingNotApplicable(model.getProject(), threat.getRef(), target.getRef()))
+			{
+				stressBasedIcon.setColor(ThreatRatingQuestion.NOT_APPLICABLE_COLOR);
+				return stressBasedIcon;
+			}
+
 			if (choice == null)
 				return null;
 
 			stressBasedIcon.setColor(choice.getColor());
 			return stressBasedIcon;
 		}
-		
-		if (threat != null && target != null)
-		{
-			simpleIcon.setThreatTarget(threat, target);
-			simpleIcon.setRowHeight(table.getRowHeight(row));
-			
-			return simpleIcon;
-		}
-		
-		return null;
+
+		simpleIcon.setThreatTarget(threat, target);
+		simpleIcon.setRowHeight(table.getRowHeight(row));
+
+		return simpleIcon;
 	}
 	
 	private BundleIcon simpleIcon;
