@@ -71,18 +71,20 @@ public class ThreatTargetTableCellRendererFactory extends ChoiceItemTableCellRen
 
 	private Color getBackgroundColor(TargetThreatLinkTableModel model, Cause threat, Target target, Object value)
 	{
-		if (ThreatTargetVirtualLinkHelper.isThreatRatingNotApplicable(model.getProject(), threat.getRef(), target.getRef()))
-			return ThreatRatingQuestion.NOT_APPLICABLE_COLOR;
-		else
-			return getBackgroundColor(getChoiceItem(value));
+		if (ThreatTargetVirtualLinkHelper.canSupportThreatRatings(model.getProject(), threat, target.getRef()))
+			if (ThreatTargetVirtualLinkHelper.isThreatRatingNotApplicable(model.getProject(), threat.getRef(), target.getRef()))
+				return ThreatRatingQuestion.NOT_APPLICABLE_COLOR;
+
+		return getBackgroundColor(getChoiceItem(value));
 	}
 
 	private String getText(TargetThreatLinkTableModel model, Cause threat, Target target, Object value)
 	{
-		if (ThreatTargetVirtualLinkHelper.isThreatRatingNotApplicable(model.getProject(), threat.getRef(), target.getRef()))
-			return ThreatRatingQuestion.NOT_APPLICABLE;
-		else
-			return getLabelText(value);
+		if (ThreatTargetVirtualLinkHelper.canSupportThreatRatings(model.getProject(), threat, target.getRef()))
+			if (ThreatTargetVirtualLinkHelper.isThreatRatingNotApplicable(model.getProject(), threat.getRef(), target.getRef()))
+				return ThreatRatingQuestion.NOT_APPLICABLE;
+
+		return getLabelText(value);
 	}
 
 	private TargetThreatLinkTableModel getModel(JTable table)

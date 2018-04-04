@@ -99,8 +99,9 @@ public class MainThreatTableModelExporter extends AbstractSingleTableExporter
 		{
 			Cause threat = (Cause) mainThreatTableModel.getDirectThreat(row);
 			Target target = mainThreatTableModel.getTarget(modelColumn);
-			if (ThreatTargetVirtualLinkHelper.isThreatRatingNotApplicable(getProject(), threat.getRef(), target.getRef()))
-				return new TaglessChoiceItem(ThreatRatingQuestion.NOT_APPLICABLE);
+			if (ThreatTargetVirtualLinkHelper.canSupportThreatRatings(getProject(), threat, target.getRef()))
+				if (ThreatTargetVirtualLinkHelper.isThreatRatingNotApplicable(getProject(), threat.getRef(), target.getRef()))
+					return new TaglessChoiceItem(ThreatRatingQuestion.NOT_APPLICABLE);
 
 			return foundChoiceItem;
 		}
