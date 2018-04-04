@@ -59,6 +59,9 @@ public class DashboardExporter extends BaseObjectExporter
 		if (tag.equalsIgnoreCase(Dashboard.TAG_FLAGS_MAP))
 			return true;
 
+		if (tag.equalsIgnoreCase(Dashboard.TAG_CURRENT_DASHBOARD_TAB))
+			return true;
+
 		return false;
 	}
 
