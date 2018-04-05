@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-03 09:33-0700\n"
+"POT-Creation-Date: 2018-04-05 05:33-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -299,7 +299,7 @@ msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%нэрээс' -> '%нэрэнд'<br>"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:189
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1444
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1450
 msgid "(%s)"
 msgstr ""
 
@@ -932,7 +932,7 @@ msgid ""
 "<html>An error occurred<br/><br/>Perhaps the destination is full or readonly."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:215
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:188
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Import амжилтгүй болсон: <br><p> %s </p></html>"
 
@@ -1019,16 +1019,18 @@ msgstr ""
 msgid "A file or folder with that name already exists"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/ModalProjectOverwriteDialog.java:76
+msgid ""
+"A project or file by this name already exists - enter a new name or choose "
+"Overwrite to replace the existing file."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/noproject/RenameOldProjectDoer.java:87
 msgid "A project or file by this name already exists: "
 msgstr "Ийм нэр бүхий төсөл эсвэл файл байна:"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1440
-msgid "A project or file by this name already exists: %s"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:558
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:560
 msgid "A project with this name already exists."
 msgstr ""
 
@@ -2638,14 +2640,6 @@ msgstr "Товч|Үргэлжлүүлэх"
 msgid "Button|Delete"
 msgstr "Товч|Устгах"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:188
-msgid "Button|Don't Import"
-msgstr "Товч|Import хийгдэхгүй"
-
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:189
-msgid "Button|Exit"
-msgstr "Товч|Гарах"
-
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/ExportMpzDoer.java:107
 msgid "Button|Export"
 msgstr ""
@@ -2653,10 +2647,6 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/ImageExportScaleDialog.java:78
 msgid "Button|Export..."
 msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:187
-msgid "Button|Import"
-msgstr "Товч|Импорт хийх"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/InitialSplashPanel.java:131
 msgid "Button|Install..."
@@ -2722,6 +2712,7 @@ msgid "Button|Retain"
 msgstr "Товч|Хэвээр нь үлдээх"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:120
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/ModalProjectOverwriteDialog.java:86
 msgid "Button|Save"
 msgstr "Товч|Хадгалах"
 
@@ -2781,15 +2772,15 @@ msgstr "Үүнийг өөртэй нь холбох боломжгүй байн�
 msgid "Cancel"
 msgstr "Цуцлах"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:580
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:582
 msgid "Cancelled"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:156
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:147
 msgid "Cannot import project file %s because it does not exist"
 msgstr "Төслийн файл орохгүй байна %s яагаад гэвэл байхгүй учраас"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:163
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:154
 msgid "Cannot import project file %s because it is a directory, not a file"
 msgstr "Төслийн файл орохгүй байна%sяагаад гэвэл энэ нь файл биш, заавар юм"
 
@@ -3120,7 +3111,7 @@ msgstr "Шинээр үүсгэх амжилтгүй болов:"
 msgid "Create Folder"
 msgstr "Фолдер үүсгэх"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:719
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:721
 msgid "Create Project"
 msgstr ""
 
@@ -3191,7 +3182,7 @@ msgid ""
 "normal mode, press this button: "
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:75
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:70
 msgid ""
 "Currently, Miradi can only import one project file at a time.  Importing "
 "first file only."
@@ -3525,10 +3516,6 @@ msgstr ""
 "болох ба 'IUCN-CMP Шууд үйлчлэх аюулын нэгдсэн ангилал'-ын дагуу ангилж "
 "болно. "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:173
-msgid "Do you want to attempt to import %s into Miradi?"
-msgstr "Миради -д импорт-лох оролдлого хийх үү?"
-
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/SampleInstaller.java:75
 msgid "Do you want to install the sample project?"
 msgstr "Жишээ төслийг суулгах уу?"
@@ -3638,7 +3625,7 @@ msgid "Enter As: "
 msgstr "-ээр орох: "
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/noproject/RenameOldProjectDoer.java:118
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1474
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1473
 msgid "Enter New Name"
 msgstr "Шинэ нэрээр оруулах"
 
@@ -3697,7 +3684,7 @@ msgstr ""
 msgid "Error occurred while trying to export to a tab delimited file."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:207
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:175
 msgid "Error reading %s. Perhaps it is not a valid zip file."
 msgstr "Унших алдаа %s. Zip файл хүчингүй байж болзошгүй."
 
@@ -3709,7 +3696,7 @@ msgstr "Алдаа сэргээгдэж байна"
 msgid "Euro"
 msgstr "Евро"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:987
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:989
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr "Өөр санхүүгийн жилийн байгаа мэдээлэл хасагдаж байна."
 
@@ -4297,7 +4284,7 @@ msgstr "Гол ур чадварыг олж тогтоох"
 msgid "If a notification dialog in this list is checked, "
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:677
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:679
 msgid ""
 "If you continue with this migration, some data will be lost.\n"
 "\n"
@@ -4333,8 +4320,7 @@ msgid "Implement work plan"
 msgstr "Ажлын төлөвлөгөөг хэрэгжүүлэх"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/utils/XslImportFileChooser.java:44
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:75
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:174
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:70
 msgid "Import"
 msgstr "Импорт хийх"
 
@@ -4345,10 +4331,6 @@ msgstr "Тооцооны код импорт хийх"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:74
 msgid "Import Completed"
 msgstr "Импорт хийх бүрэн дууссан"
-
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:197
-msgid "Import Completed.  Would you like to open %s?"
-msgstr "импорт хийх бүрэн дууссан. Нээж харах уу%?"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:63
 msgid "Import Project"
@@ -4378,7 +4360,7 @@ msgstr ""
 msgid "Importing XML..."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:155
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:138
 msgid "Importing..."
 msgstr ""
 
@@ -4551,10 +4533,6 @@ msgstr "Танилцуулга"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/noproject/RenameOldProjectDoer.java:93
 msgid "Invalid project name:"
 msgstr "Төслийн нэр хүчингүй:"
-
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1449
-msgid "Invalid project name: %s"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:227
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:90
@@ -5334,8 +5312,8 @@ msgstr ""
 msgid "Migrating..."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:659
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:681
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:661
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:683
 msgid "Migration"
 msgstr ""
 
@@ -5393,15 +5371,15 @@ msgstr ""
 msgid "Miradi data directory:"
 msgstr "Миради-гийн мэдээллийн директорууд:"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:210
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:178
 msgid "Miradi did not recognize the file: %s as importable."
 msgstr "Оруулах боломжтой Файл: %s гэж  Миради таниагүй."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:80
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:75
 msgid "Miradi does not recognize %s as a project file"
 msgstr "Миради төслийн файлыг танихгүй байна"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:807
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:809
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5770,8 +5748,7 @@ msgstr "Нээх"
 msgid "Open Anyway"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:198
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:721
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:723
 msgid "Open Project"
 msgstr "Төслийг Нээх"
 
@@ -6169,7 +6146,7 @@ msgstr "Төсөл"
 msgid "Project Advisor"
 msgstr "Төслийн Зөвлөх"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:805
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:807
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -6185,7 +6162,7 @@ msgstr "Төслийн шилжилт зайлшгүй шаардлагатай"
 msgid "Project Number"
 msgstr "Төслийн дугаар"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:985
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:987
 msgid "Project People Filter Is On"
 msgstr ""
 
@@ -6226,6 +6203,10 @@ msgid ""
 msgstr ""
 "Төслийн файлын нэрэнд цэг, зураас болон зай зэргээс өөр дүрсүүд байж "
 "болохгүй; ба тэдгээр нь 32 тэмдэгтээс илүүгүй байна."
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/ModalProjectOverwriteDialog.java:73
+msgid "Project name: "
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/legacyprojects/DataUpgrader.java:107
 msgid "Project was migrated to the current data format"
@@ -6542,6 +6523,7 @@ msgstr "Саванн- Чийглэг Саванн"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/noproject/CopyProject.java:42
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:64
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1445
 msgid "Save As..."
 msgstr "Нэр, төрөл, байрлал...сольж хадгалах"
 
@@ -6874,7 +6856,7 @@ msgstr "Оролцогч тал"
 msgid "Standard Reports"
 msgstr "Стандарт тайлан"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1024
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1026
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently "
 "%endDate)"
@@ -8204,7 +8186,7 @@ msgstr "Текст|Огноог ЖЖЖЖ-СС-ӨӨ форматаар бичнэ
 msgid "Text|Unknown error prevented saving this data"
 msgstr "Текст|Мэдээллийг хадгалахад үл мэдэгдэх алдаа саад болж байна."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:604
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:606
 msgid "That file is not a valid Miradi project"
 msgstr ""
 
@@ -8216,19 +8198,19 @@ msgstr "Тэр хэлний багцыг хэдийнээ байна.  Түүн�
 msgid "That language pack is already installed"
 msgstr "Тэр хэлний багцыг хэдийнээ суулгасан байна."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:613
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:617
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:615
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:619
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "Miradi"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:621
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:623
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr "Тэр төслийг мэдээллийн энэ форматад шилжүүлэхээс нааш нээх боломжгүй."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:600
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:602
 msgid "That project is in use by another copy of this application"
 msgstr "Энэ программын өөр хуулбарт тэр төслийг хэрэглэж байна"
 
@@ -8242,7 +8224,7 @@ msgstr ""
 "Мэдээллийн орчин үеийн хэлбэрт шилжүүлэхийн тулд та  Miradi 1.0-ийг ашиглах "
 "боломжтой ба үүний дараа түүнийг нээж мөн энэ хувилбарт шилжүүлж болно."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:608
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:610
 msgid "That project is too old to be opened with this version of Miradi"
 msgstr ""
 
@@ -8380,7 +8362,7 @@ msgid ""
 "strategies."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:258
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:231
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -8712,7 +8694,7 @@ msgid ""
 "damaged. Please contact Miradi support for recovery options."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:796
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:798
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -8727,7 +8709,7 @@ msgstr ""
 "өмнө мэдээллийн одоогийн форматад шижлүүлэх шаардлагатай. Ямар нэгэн зүйл "
 "буруу болох тохиолдолд эхлээд backup хийгдэнэ. Шилжилтийг автоматаар хийх үү?"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:654
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:656
 #, fuzzy
 msgid ""
 "This project was saved using an older version of Miradi. Before it can be "
@@ -9110,7 +9092,7 @@ msgstr "Гарчиг|Явцын хувь"
 msgid "Title|Progress Report"
 msgstr "Гарчиг|Явцын тайлан"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/utils/ModalRenameDialog.java:45
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/ModalProjectRenameDialog.java:41
 msgid "Title|Project Filename"
 msgstr "Гарчиг|Төслийн Файлын нэр"
 
@@ -9264,7 +9246,7 @@ msgid ""
 "both Latitude and Longitude are required)."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1416
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1418
 msgid "Unable to launch external web browser"
 msgstr "Вэб хуудас эхлүүлэх боломжгүй байна"
 
@@ -9285,7 +9267,7 @@ msgstr ""
 "Программын өөр хуулбарыг ашиглаж байгаа үед энэхүү төслийн нэрийг өөрчилж "
 "болохгүй байна:\n"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1181
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1183
 msgid "Unable to save preferences"
 msgstr "Сонголтуудийг хадгалах боломжгүй байна"
 
@@ -9307,7 +9289,7 @@ msgstr "Тогтоогдоогүй"
 msgid "Underline"
 msgstr "Доогуур зурах/тодруулах"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:214
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:187
 msgid "Unexpected error"
 msgstr ""
 
@@ -9340,7 +9322,7 @@ msgstr "Их сургууль"
 msgid "Unknown"
 msgstr "Тодорхой бус"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:595
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:597
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -9358,7 +9340,7 @@ msgstr "Тодорхой бус код: "
 msgid "Unknown error displaying diagram"
 msgstr "Тодорхой бус шалтгаанаар диаграммыг үзүүлэх боломжгүй"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:626
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:628
 msgid "Unknown error prevented opening that project"
 msgstr "Энэ төсөл тодорхой бус алдаанаас болж нээгдэхгүй байна."
 
@@ -33154,6 +33136,21 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid "Button|Don't Import"
+#~ msgstr "Товч|Import хийгдэхгүй"
+
+#~ msgid "Button|Exit"
+#~ msgstr "Товч|Гарах"
+
+#~ msgid "Button|Import"
+#~ msgstr "Товч|Импорт хийх"
+
+#~ msgid "Do you want to attempt to import %s into Miradi?"
+#~ msgstr "Миради -д импорт-лох оролдлого хийх үү?"
+
+#~ msgid "Import Completed.  Would you like to open %s?"
+#~ msgstr "импорт хийх бүрэн дууссан. Нээж харах уу%?"
 
 #~ msgid "<html><b>Summary<br>Target-Threat<br>Rating"
 #~ msgstr "<html><b>Дүгнэлт<br>Хамгаалах зүйл- Аюул занал<br>Үнэлгээ"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-03 09:33-0700\n"
+"POT-Creation-Date: 2018-04-05 05:33-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/miradi-client/"
@@ -299,7 +299,7 @@ msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br> "
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:189
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1444
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1450
 msgid "(%s)"
 msgstr ""
 
@@ -859,7 +859,7 @@ msgid ""
 "<html>An error occurred<br/><br/>Perhaps the destination is full or readonly."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:215
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:188
 msgid "<html>Import failed: <br><p> %s </p></html>"
 msgstr "<html>Impor gagal: <br><p> %s </p></html> "
 
@@ -938,16 +938,18 @@ msgstr ""
 msgid "A file or folder with that name already exists"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/ModalProjectOverwriteDialog.java:76
+msgid ""
+"A project or file by this name already exists - enter a new name or choose "
+"Overwrite to replace the existing file."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/noproject/RenameOldProjectDoer.java:57
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/noproject/RenameOldProjectDoer.java:87
 msgid "A project or file by this name already exists: "
 msgstr "Sudah ada proyek atau berkas lain yang memakai nama ini: "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1440
-msgid "A project or file by this name already exists: %s"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:558
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:560
 msgid "A project with this name already exists."
 msgstr ""
 
@@ -2557,24 +2559,12 @@ msgstr "Lanjutkan "
 msgid "Button|Delete"
 msgstr "Hapus "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:188
-msgid "Button|Don't Import"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:189
-msgid "Button|Exit"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/ExportMpzDoer.java:107
 msgid "Button|Export"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/ImageExportScaleDialog.java:78
 msgid "Button|Export..."
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:187
-msgid "Button|Import"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/InitialSplashPanel.java:131
@@ -2641,6 +2631,7 @@ msgid "Button|Retain"
 msgstr "Pertahankan "
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:120
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/ModalProjectOverwriteDialog.java:86
 msgid "Button|Save"
 msgstr "Simpan "
 
@@ -2700,15 +2691,15 @@ msgstr "Tidak bisa menautkan butir dengan butir itu sendiri "
 msgid "Cancel"
 msgstr "Batalkan "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:580
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:582
 msgid "Cancelled"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:156
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:147
 msgid "Cannot import project file %s because it does not exist"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:163
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:154
 msgid "Cannot import project file %s because it is a directory, not a file"
 msgstr ""
 
@@ -3040,7 +3031,7 @@ msgstr "Pembuatan gagal: "
 msgid "Create Folder"
 msgstr "Buat Folder "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:719
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:721
 msgid "Create Project"
 msgstr ""
 
@@ -3113,7 +3104,7 @@ msgstr ""
 "Sedang dalam mode sumbang saran, jadi beberapa faktor tersembunyi. Untuk "
 "kembali ke mode normal, tekan tombol ini: "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:75
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:70
 msgid ""
 "Currently, Miradi can only import one project file at a time.  Importing "
 "first file only."
@@ -3447,10 +3438,6 @@ msgstr ""
 "Terpadu IUCN-CMP’, yang tersedia di internet di alamat www."
 "conservationmeasures.org."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:173
-msgid "Do you want to attempt to import %s into Miradi?"
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/SampleInstaller.java:75
 msgid "Do you want to install the sample project?"
 msgstr "Apakah Anda ingin menginstal proyek contoh? "
@@ -3560,7 +3547,7 @@ msgid "Enter As: "
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/noproject/RenameOldProjectDoer.java:118
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1474
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1473
 msgid "Enter New Name"
 msgstr "Masukkan Nama Baru "
 
@@ -3624,7 +3611,7 @@ msgid "Error occurred while trying to export to a tab delimited file."
 msgstr ""
 "Terjadi kesalahan saat mencoba mengekspor ke berkas yang dibatasi tab. "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:207
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:175
 msgid "Error reading %s. Perhaps it is not a valid zip file."
 msgstr ""
 
@@ -3636,7 +3623,7 @@ msgstr "Kesalahan dalam memulihkan status diagram "
 msgid "Euro"
 msgstr "Euro"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:987
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:989
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -4228,7 +4215,7 @@ msgstr "Kenali keahlian kunci "
 msgid "If a notification dialog in this list is checked, "
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:677
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:679
 msgid ""
 "If you continue with this migration, some data will be lost.\n"
 "\n"
@@ -4264,8 +4251,7 @@ msgid "Implement work plan"
 msgstr "Laksanakan rencana kerja "
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/utils/XslImportFileChooser.java:44
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:75
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:174
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:70
 msgid "Import"
 msgstr "Impor "
 
@@ -4276,10 +4262,6 @@ msgstr "Impor Kode Akuntansi "
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/planning/doers/ImportAccountingCodesDoer.java:74
 msgid "Import Completed"
 msgstr "Impor Selesai "
-
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:197
-msgid "Import Completed.  Would you like to open %s?"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:63
 msgid "Import Project"
@@ -4309,7 +4291,7 @@ msgstr ""
 msgid "Importing XML..."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:155
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:138
 msgid "Importing..."
 msgstr ""
 
@@ -4483,10 +4465,6 @@ msgstr "Pendahuluan "
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/noproject/RenameOldProjectDoer.java:93
 msgid "Invalid project name:"
 msgstr "Nama proyek tidak valid: "
-
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1449
-msgid "Invalid project name: %s"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:227
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/threatrating/properties/SimpleThreatRatingDropdownsPanel.java:90
@@ -5276,8 +5254,8 @@ msgstr ""
 msgid "Migrating..."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:659
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:681
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:661
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:683
 msgid "Migration"
 msgstr ""
 
@@ -5331,15 +5309,15 @@ msgstr ""
 msgid "Miradi data directory:"
 msgstr "Direktori data Miradi: "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:210
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:178
 msgid "Miradi did not recognize the file: %s as importable."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:80
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/CommandLineProjectFileImporterHelper.java:75
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:807
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:809
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5705,8 +5683,7 @@ msgstr "Buka \t"
 msgid "Open Anyway"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:198
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:721
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:723
 msgid "Open Project"
 msgstr ""
 
@@ -6100,7 +6077,7 @@ msgstr "Proyek "
 msgid "Project Advisor"
 msgstr "Penasihat Proyek"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:805
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:807
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -6116,7 +6093,7 @@ msgstr "Memerlukan Migrasi Proyek"
 msgid "Project Number"
 msgstr "Nomor Proyek "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:985
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:987
 msgid "Project People Filter Is On"
 msgstr ""
 
@@ -6157,6 +6134,10 @@ msgid ""
 msgstr ""
 "Nama berkas proyek tidak boleh mengandung tanda baca selain titik, tanda "
 "sambung, dan spasi; serta tidak boleh lebih dari 32 karakter. "
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/ModalProjectOverwriteDialog.java:73
+msgid "Project name: "
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/legacyprojects/DataUpgrader.java:107
 msgid "Project was migrated to the current data format"
@@ -6474,6 +6455,7 @@ msgstr "Savana – Savana Basah"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/noproject/CopyProject.java:42
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:64
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1445
 msgid "Save As..."
 msgstr "Simpan Sebagai... "
 
@@ -6797,7 +6779,7 @@ msgstr "Pemilik Kepentingan"
 msgid "Standard Reports"
 msgstr "Laporan Standar "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1024
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1026
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently "
 "%endDate)"
@@ -8128,7 +8110,7 @@ msgstr "Tanggal harus dalam format YYYY-MM-DD  "
 msgid "Text|Unknown error prevented saving this data"
 msgstr "Kesalahan tak dikenal mencegah penyimpanan data ini "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:604
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:606
 msgid "That file is not a valid Miradi project"
 msgstr ""
 
@@ -8140,21 +8122,21 @@ msgstr "Paket bahasa ini sudah ada. Ganti? "
 msgid "That language pack is already installed"
 msgstr "Paket bahasa ini sudah diinstal"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:613
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:617
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:615
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:619
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "Miradi"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:621
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:623
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 "Proyek tersebut tidak bisa dibuka sebelum dipindahkan ke format data saat "
 "ini "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:600
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:602
 msgid "That project is in use by another copy of this application"
 msgstr "Proyek tersebut sedang digunakan oleh salinan lain dari aplikasi ini "
 
@@ -8168,7 +8150,7 @@ msgstr ""
 "menggunakan Miradi 1.0 untuk memindahkannya ke format data modern, dan "
 "sesudahnya bisa dibuka dan dipindahkan dengan versi ini. "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:608
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:610
 msgid "That project is too old to be opened with this version of Miradi"
 msgstr ""
 
@@ -8302,7 +8284,7 @@ msgid ""
 "strategies."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:258
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:231
 msgid ""
 "This file cannot be imported because it is a newer format than this version "
 "of Miradi supports. <br>Please make sure you are running the latest version "
@@ -8635,7 +8617,7 @@ msgid ""
 "damaged. Please contact Miradi support for recovery options."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:796
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:798
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -8651,7 +8633,7 @@ msgstr ""
 "berkas akan disimpan terlebih dahulu untuk berjaga-jaga apabila terjadi "
 "kesalahan. Lakukan migrasi secara otomatis?"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:654
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:656
 #, fuzzy
 msgid ""
 "This project was saved using an older version of Miradi. Before it can be "
@@ -9034,7 +9016,7 @@ msgstr ""
 msgid "Title|Progress Report"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/utils/ModalRenameDialog.java:45
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/ModalProjectRenameDialog.java:41
 msgid "Title|Project Filename"
 msgstr "Nama berkas proyek "
 
@@ -9188,7 +9170,7 @@ msgid ""
 "both Latitude and Longitude are required)."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1416
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1418
 msgid "Unable to launch external web browser"
 msgstr "Tidak bisa meluncurkan perambah web eksternal "
 
@@ -9209,7 +9191,7 @@ msgstr ""
 "Tidak bisa mengganti nama proyek karena sedang digunakan oleh salinan lain "
 "dari aplikasi ini:\n"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1181
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1183
 msgid "Unable to save preferences"
 msgstr "Tidak bisa menyimpan preferensi "
 
@@ -9231,7 +9213,7 @@ msgstr "Tidak terdefinisi"
 msgid "Underline"
 msgstr "Garis Bawah"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:214
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:187
 msgid "Unexpected error"
 msgstr ""
 
@@ -9264,7 +9246,7 @@ msgstr "Universitas"
 msgid "Unknown"
 msgstr "Tidak Dikenal"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:595
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:597
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -9282,7 +9264,7 @@ msgstr "Kode tak dikenal: "
 msgid "Unknown error displaying diagram"
 msgstr "Kesalahan tak dikenal saat menampilkan diagram "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:626
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:628
 msgid "Unknown error prevented opening that project"
 msgstr "Kesalahan tak dikenal mencegah dibukanya proyek "
 
