@@ -53,12 +53,7 @@ public class CommandLineProjectFileImporterHelper
 			if (importedFile != null)
 				ProjectListTreeTable.doProjectOpen(mainWindowToUse, importedFile);
 		}
-		catch (ZipException e)
-		{
-			EAM.errorDialog(e.getMessage());
-			EAM.logException(e);
-		}
-		catch (UnrecognizedFileToImportException e)
+		catch (ZipException | UnrecognizedFileToImportException e)
 		{
 			EAM.errorDialog(e.getMessage());
 			EAM.logException(e);
@@ -93,8 +88,7 @@ public class CommandLineProjectFileImporterHelper
 		}
 		else
 		{
-			if (getUserImportConfirmation(projectFileToImport.getName()))
-				return importZippedProject(projectFileToImport);
+            return importZippedProject(projectFileToImport);
 		}
 		
 		return projectFileToImport;
@@ -108,10 +102,7 @@ public class CommandLineProjectFileImporterHelper
 
 	private File importMpfFile(File projectFileToImport) throws Exception
 	{
-		if (!getUserImportConfirmation(projectFileToImport.getName()))
-			return null;
-		
-		String projectName = getMainWindow().askForDestinationProjectName(projectFileToImport);
+		String projectName = getMainWindow().getDestinationProjectFileName(projectFileToImport);
 		if (projectName == null)
 			return null;
 
@@ -166,31 +157,8 @@ public class CommandLineProjectFileImporterHelper
 		}
 		
 		return true;
-	}	
-	
-	private boolean getUserImportConfirmation(String fileNameToImport) throws Exception
-	{
-		String message = EAM.substituteSingleString(EAM.text("Do you want to attempt to import %s into Miradi?"), fileNameToImport);
-		int userConfirmationChoice = confirmImportDialog(EAM.text("Import"), message);
-		if (userConfirmationChoice == IMPORT_CHOICE)
-			return true;
-		
-		if (userConfirmationChoice == EXIT_CHOICE)
-			getMainWindow().exitNormally();
-		
-		return false;
 	}
-	
-	private static int confirmImportDialog(String title, String body)
-	{
-		String[] buttons = new String[3];
-		buttons[IMPORT_CHOICE] = EAM.text("Button|Import");
-		buttons[DO_NOT_IMPORT_CHOICE] = EAM.text("Button|Don't Import");
-		buttons[EXIT_CHOICE] = EAM.text("Button|Exit");
-		
-		return EAM.confirmDialog(title, body, buttons);
-	}
-	
+
 	private AbstractProjectImporter createImporter(File projectFile) throws ZipException, Exception
 	{
 		try
@@ -248,11 +216,5 @@ public class CommandLineProjectFileImporterHelper
 	}
 	
 	private MainWindow mainWindow;
-	public static String PROJECTINFO_FILE = "project";
-	private static final String TAG_END_DELIMITER = "=";
-	public static final String COMMANDLINE_TAG_IMPORT_MPZ = "--importmpz" + TAG_END_DELIMITER;
-	public static final String COMMANDLINE_TAG_IMPORT_CPMZ = "--importcpmz" + TAG_END_DELIMITER;
-	private static final int IMPORT_CHOICE = 0;
-	private static final int DO_NOT_IMPORT_CHOICE = 1;
-	private static final int EXIT_CHOICE = 2;
+	private static String PROJECTINFO_FILE = "project";
 }

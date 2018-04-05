@@ -27,7 +27,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.utils.FileUtilities;
-import org.miradi.utils.ModalRenameDialog;
+import org.miradi.dialogs.ModalProjectRenameDialog;
 import org.miradi.wizard.noproject.WelcomeCreateStep;
 
 //FIXME low - This class started out as a duplication of RenameProjectDoer and still has many duplicated parts.  
@@ -112,7 +112,7 @@ public class RenameOldProjectDoer
 	private static String askUserForProjectName(MainWindow mainWindow, String projectName) throws Exception
 	{
 		String legalProjectName = Project.makeProjectNameLegal(projectName);
-		return ModalRenameDialog.showDialog(mainWindow, RenameOldProjectDoer.RENAME_TEXT, legalProjectName);
+		return ModalProjectRenameDialog.showDialog(mainWindow, RenameOldProjectDoer.RENAME_TEXT, legalProjectName);
 	}
 
 	public static final String RENAME_TEXT = "<html>" + EAM.text("Enter New Name") + 

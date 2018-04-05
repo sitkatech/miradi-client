@@ -31,11 +31,11 @@ public class RenameProjectDoer
 	{
 		try
 		{
-			String newDirectoryName = mainWindow.askForDestinationProjectName(projectFileToRename);
-			if (newDirectoryName == null)
+			String newProjectFileName = mainWindow.getDestinationProjectFileName(projectFileToRename);
+			if (newProjectFileName == null)
 				return;
 
-			File newFile = new File(projectFileToRename.getParentFile(), newDirectoryName);
+			File newFile = new File(projectFileToRename.getParentFile(), newProjectFileName);
 			FileUtilities.renameExistingWithRetries(projectFileToRename, newFile);
 		}
 		catch (Exception e)

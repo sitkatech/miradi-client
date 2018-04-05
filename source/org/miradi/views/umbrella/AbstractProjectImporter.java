@@ -76,7 +76,7 @@ public abstract class AbstractProjectImporter
 			long elapsedInSeconds = sw.elapsedInSeconds();
 			EAM.logDebug("xmpz2 import took: " + elapsedInSeconds + " seconds");
 			if (importedFile != null)
-				userConfirmOpenImportedProject(importedFile);
+				getMainWindow().createOrOpenProject(importedFile);
 		}
 		catch (CorruptSimpleThreatRatingDataException e)
 		{
@@ -123,37 +123,20 @@ public abstract class AbstractProjectImporter
 		showImportFailedErrorDialog(IMPORT_FAILED_MESSAGE);
 	}
 
-	private String getNameWithoutExtension(File fileToImport)
-	{
-		GenericMiradiFileFilter[] fileFilters = getFileFilters();
-		final String fileName = fileToImport.getName();
-		for (int index = 0; index < fileFilters.length; ++index)
-		{
-			final String fileExtension = fileFilters[index].getFileExtension();
-			if (fileName.endsWith(fileExtension))
-			{
-				final int indexOfExtension = fileName.lastIndexOf(fileExtension);
-				return fileName.substring(0, indexOfExtension);
-			}
-		}
-		
-		return fileName;
-	}
-
-    public File importProject(File fileToImport) throws Exception
+	public File importProject(File fileToImport) throws Exception
     {
         return importProject(EAM.getHomeDirectory(), fileToImport, fileToImport);
     }
 
 	public File importProject(File projectDirectory, File fileToImport, final File proposedProjectFile) throws Exception
 	{
-		String projectFileName = getMainWindow().askForDestinationProjectName(proposedProjectFile);
-		if (projectFileName == null)
+		String proposedProjectFileName = getMainWindow().getDestinationProjectFileName(proposedProjectFile);
+		if (proposedProjectFileName == null)
 			return null;
 		
 		possiblyNotifyUserOfAutomaticMigration(fileToImport);
 		ProgressDialog progressDialog = new ProgressDialog(getMainWindow(), EAM.text("Importing..."));
-		Worker worker = new Worker(progressDialog, projectDirectory, fileToImport, projectFileName);
+		Worker worker = new Worker(progressDialog, projectDirectory, fileToImport, proposedProjectFileName);
 		progressDialog.doWorkInBackgroundWhileShowingProgress(worker);
 		
 		refreshNoProjectPanel();
@@ -190,16 +173,6 @@ public abstract class AbstractProjectImporter
 		private File fileToImport;
 		private String projectFileName;
 		private File newProjectFile;
-	}
-
-	private void userConfirmOpenImportedProject(File projectFile) throws Exception
-	{
-		String openProjectMessage = EAM.substituteSingleString(EAM.text("Import Completed.  Would you like to open %s?"), projectFile.getName());
-		boolean shouldOpenProjectAfterImport = EAM.confirmOpenDialog(EAM.text("Open Project"), openProjectMessage);
-		if (shouldOpenProjectAfterImport)
-		{
-			getMainWindow().createOrOpenProject(projectFile);
-		}
 	}
 
 	private void addFileFilters(JFileChooser fileChooser)

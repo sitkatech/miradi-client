@@ -30,6 +30,8 @@ import org.miradi.actions.Actions;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogfields.FieldSaver;
+import org.miradi.dialogs.ModalProjectOverwriteDialog;
+import org.miradi.dialogs.ModalProjectRenameDialog;
 import org.miradi.dialogs.ProjectCorruptionDialog;
 import org.miradi.dialogs.base.ProgressDialog;
 import org.miradi.dialogs.notify.NotifyDialog;
@@ -1422,39 +1424,36 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		return linkDescription.startsWith(HTTP_PROTOCOL) || linkDescription.startsWith(HTTPS_PROTOCOL) || linkDescription.startsWith(MAIL_PROTOCOL);
 	}
 
-    public String askForDestinationProjectName(File proposedProjectFile) throws Exception
+    public String getDestinationProjectFileName(File proposedProjectFile) throws Exception
     {
-        while (true)
-        {
-            String fileNameWithoutExtension = FileUtilities.fileNameWithoutExtension(proposedProjectFile.getName());
-            String projectName = askUserForProjectName(fileNameWithoutExtension);
-            if (projectName == null)
-            {
-                return null;
-            }
+		String proposedProjectName = FileUtilities.fileNameWithoutExtension(proposedProjectFile.getName());
+		String proposedProjectFileName = AbstractMpfFileFilter.createNameWithExtension(proposedProjectName);
+		if (!Project.isValidProjectName(proposedProjectName))
+		{
+			String userEnteredProjectName = askUserForProjectName(proposedProjectName);
+			if (userEnteredProjectName == null)
+			{
+				return null;
+			}
+			proposedProjectName = userEnteredProjectName;
+			proposedProjectFileName = AbstractMpfFileFilter.createNameWithExtension(userEnteredProjectName);
+		}
 
-            String projectFileName =  AbstractMpfFileFilter.createNameWithExtension(projectName);
-            proposedProjectFile = new File(EAM.getHomeDirectory(), projectFileName);
-            if (projectExists(proposedProjectFile))
-            {
-                boolean shouldOverwrite = EAM.confirmOverwriteDialog("", EAM.substituteSingleString(EAM.text("A project or file by this name already exists: %s"), projectFileName));
-                if (!shouldOverwrite)
-                    continue;
+		proposedProjectFile = new File(EAM.getHomeDirectory(), proposedProjectFileName);
+		if (projectExists(proposedProjectFile))
+		{
+			String overwrittenProjectFileName = ModalProjectOverwriteDialog.showDialog(this, EAM.text("Save As..."), proposedProjectName);
+			if (overwrittenProjectFileName == null)
+				return null;
 
-                FileUtilities.createMpfBackup(proposedProjectFile, EAM.substituteSingleString(EAM.text("(%s)"), "Overridden-backup"));
-            }
+			proposedProjectFileName = AbstractMpfFileFilter.createNameWithExtension(overwrittenProjectFileName);
+			FileUtilities.createMpfBackup(proposedProjectFile, EAM.substituteSingleString(EAM.text("(%s)"), "Overridden-backup"));
+		}
 
-            if (!Project.isValidProjectName(projectName))
-            {
-                EAM.errorDialog(EAM.substituteSingleString(EAM.text("Invalid project name: %s"), projectName));
-                continue;
-            }
-
-            return projectFileName;
-        }
+		return proposedProjectFileName;
     }
 
-	private static boolean projectExists(File file) throws Exception
+	public static boolean projectExists(File file) throws Exception
 	{
 		if(LegacyProjectUtilities.isExistingLocalProject(file))
 			return true;
@@ -1468,10 +1467,10 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	private String askUserForProjectName(String projectName) throws Exception
 	{
 		String legalProjectName = Project.makeProjectNameLegal(projectName);
-		return ModalRenameDialog.showDialog(this, RENAME_TEXT, legalProjectName);
+		return ModalProjectRenameDialog.showDialog(this, RENAME_TEXT, legalProjectName);
 	}
 
-	public static final String RENAME_TEXT = "<html>" + EAM.text("Enter New Name") + 
+	private static final String RENAME_TEXT = "<html>" + EAM.text("Enter New Name") +
 			"<br>&nbsp;&nbsp;&nbsp;<i>" + WelcomeCreateStep.getLegalProjectNameNote();
 
 	private static String HTTP_PROTOCOL = "http";
