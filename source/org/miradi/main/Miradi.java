@@ -159,7 +159,7 @@ public class Miradi
 
 	public static void switchToLanguage(String languageCode) throws Exception
 	{
-		if(languageCode == null)
+		if(languageCode == null || languageCode.equalsIgnoreCase(Translation.DEFAULT_LANGUAGE_CODE))
 		{
 			Miradi.restoreDefaultLocalization();
 			return;
@@ -170,7 +170,7 @@ public class Miradi
 		EAM.logDebug("Loading language pack: " + jarFile.getAbsolutePath());
 		Miradi.setLocalization(jarFile.toURI().toURL(), languageCode);
 	}
-	
+
 	public static void switchToLanguage(File poFileToLoad) throws Exception
 	{
 		Translation.setLocalization(poFileToLoad);

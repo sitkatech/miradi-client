@@ -35,6 +35,7 @@ import org.miradi.objectdata.DiagramPointData;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.Translation;
 
 //TODO: look into replace individual fields with MapList or hash maps
 public class AppPreferences
@@ -83,7 +84,7 @@ public class AppPreferences
 		return isMaximized;
 	}
 	
-	public void setMainWindowHeigth(int mainWindowHeightToUse)
+	public void setMainWindowHeight(int mainWindowHeightToUse)
 	{
 		mainWindowHeight = mainWindowHeightToUse;
 	}
@@ -151,11 +152,11 @@ public class AppPreferences
 		
 		return point;
 	}
-	
+
 	public void setLanguageCode(String newLanguageCode)
 	{
 		if(newLanguageCode == null)
-			newLanguageCode = DEFAULT_LANGUAGE_CODE;
+			newLanguageCode = Translation.DEFAULT_LANGUAGE_CODE;
 		languageCode = newLanguageCode;
 	}
 	
@@ -471,7 +472,7 @@ public class AppPreferences
 		mainWindowXPosition = json.optInt(TAG_MAIN_WINDOW_X_POSITION, DEFAULT_MAIN_WINDOW_X_POSITION);
 		mainWindowYPosition = json.optInt(TAG_MAIN_WINDOW_Y_POSITION, DEFAULT_MAIN_WINDOW_Y_POSITION);
 		isCellRatingsVisible = json.optBoolean(TAG_CELL_RATINGS_VISIBLE, DEFAULT_IS_CELL_RATING_VISIBLE);
-		languageCode = json.optString(TAG_LANGUAGE_CODE, DEFAULT_LANGUAGE_CODE);
+		languageCode = json.optString(TAG_LANGUAGE_CODE, Translation.DEFAULT_LANGUAGE_CODE);
 		newsText = json.optString(TAG_NEWS_TEXT);
 		newsDate = json.optString(TAG_NEWS_DATE);
 		installedSampleVersions = new CodeList(json.optString(TAG_INSTALLED_SAMPLE_VERSIONS));
@@ -777,7 +778,6 @@ public class AppPreferences
 	private static final boolean DEFAULT_GRID_VISIBILITY_VALUE = false;
 	private static final boolean DEFAULT_IS_MAXIMIZED_VALUE = false;
 	private static final boolean DEFAULT_IS_CELL_RATING_VISIBLE = false;
-	private static final String DEFAULT_LANGUAGE_CODE = "en";
 	private static final int DEFAULT_MAIN_WINDOW_HEIGHT = 600;
 	private static final int DEFAULT_MAIN_WINDOW_WIDTH = 800;
 

@@ -156,29 +156,15 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		setSize(0,0);
 		setLocation(-100, -100);
 		setVisible(true);
-		if(!commandLineArguments.contains("--nosplash"))
-		{
-			InitialSplashPanel splash = new InitialSplashPanel(this);
-			splash.showAsOkDialog();
-			
-			File poFileIfAny = Miradi.getPoFileIfAny();
-			if(poFileIfAny == null)
-			{
-				String languageCode = splash.getSelectedLanguageCode();
-				if(languageCode != null && !languageCode.equals("en"))
-					setLanguage(languageCode);
-	
-				getAppPreferences().setLanguageCode(languageCode);
-			}
-			else
-			{
-				setLanguageFromPoFile(poFileIfAny);
-			}
-		}
+
+		File poFileIfAny = Miradi.getPoFileIfAny();
+		if(poFileIfAny != null)
+			setLanguageFromPoFile(poFileIfAny);
+		else
+			setLanguage(getAppPreferences().getLanguageCode());
 
 		new SampleInstaller(getAppPreferences()).installSampleProjects(new NullProgressMeter());
 
-	
 		setIconImage(new MiradiResourceImageIcon("images/appIcon.png").getImage());
 		EAM.logDebug("\n\n\n");
 
@@ -1193,7 +1179,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		preferences.setIsMaximized(isMaximized);
 		if(!isMaximized)
 		{
-			preferences.setMainWindowHeigth(getHeight());
+			preferences.setMainWindowHeight(getHeight());
 			preferences.setMainWindowWidth(getWidth());
 			preferences.setMainWindowXPosition(getLocation().x);
 			preferences.setMainWindowYPosition(getLocation().y);
@@ -1467,10 +1453,12 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	private String askUserForProjectName(String projectName) throws Exception
 	{
 		String legalProjectName = Project.makeProjectNameLegal(projectName);
-		return ModalProjectRenameDialog.showDialog(this, RENAME_TEXT, legalProjectName);
+		return ModalProjectRenameDialog.showDialog(this, PROJECT_NAME_TEXT, legalProjectName);
 	}
 
-	private static final String RENAME_TEXT = "<html>" + EAM.text("Enter New Name") +
+	private static final String PROJECT_NAME_TEXT = "<html>" +
+			EAM.text("<div>The selected project's name contains invalid characters.</div>") +
+			EAM.text("<div>The below alternative name is valid. Edit this name as desired.</div>") +
 			"<br>&nbsp;&nbsp;&nbsp;<i>" + WelcomeCreateStep.getLegalProjectNameNote();
 
 	private static String HTTP_PROTOCOL = "http";

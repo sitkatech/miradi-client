@@ -38,7 +38,7 @@ public class ModalProjectRenameDialog
 	{
 		ProjectNameRestrictedTextField textField = new ProjectNameRestrictedTextField(initialValue);
 		JOptionPane optionPane = new JOptionPane(new Object[]{new JLabel(message), textField}, JOptionPane.QUESTION_MESSAGE, JOptionPane.OK_CANCEL_OPTION);
-		JDialog optionDialog = optionPane.createDialog(mainWindow, EAM.text("Title|Project Filename"));
+		JDialog optionDialog = optionPane.createDialog(mainWindow, EAM.text("Title|Edit Project Filename"));
 		optionDialog.pack();
         Utilities.centerDlg(optionDialog);
         optionDialog.addWindowListener(new WindowListenerHandler(textField));

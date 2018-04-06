@@ -100,7 +100,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		
 		if(getProject().isOpen())
 		{
-			tabPane.addTab(EAM.text("Systemwide"), createSystemwideTab());
+			tabPane.addTab(EAM.text("Systemwide"), createSystemWideTab());
 			tabPane.addTab(EAM.text("Diagram"), createDiagramTab());
 
 			summaryPlanningPanel = new SummaryPlanningPanel(getMainWindow(), getProject().getMetadata().getRef());
@@ -116,8 +116,8 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		}
 		
 		tabPane.addTab(EAM.text("Notifications"), createNeverShowAgainPanel());
-			
-		
+		tabPane.addTab(EAM.text("Languages"), createLanguagesPanel());
+
 		return tabPane;
 	}
 
@@ -130,8 +130,13 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	{
 		return new NeverShowAgainPanel(getMainWindow());
 	}
-	
-	private JPanel createSystemwideTab()
+
+	private JPanel createLanguagesPanel()
+	{
+		return new LanguagesPanel(getMainWindow());
+	}
+
+	private JPanel createSystemWideTab()
 	{
 		JPanel htmlTab = new JPanel(new BasicGridLayout(0,2));
 		htmlTab.setBackground(AppPreferences.getDataPanelBackgroundColor());
@@ -210,7 +215,6 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		}
 		combo.setSelectedIndex(-1);
 	}
-	
 
 	private JPanel createThreatRatingTab()
 	{
