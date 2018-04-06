@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-06 00:48-0700\n"
+"POT-Creation-Date: 2018-04-06 06:03-0700\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -6284,13 +6284,11 @@ msgstr "Project Summary"
 msgid "Project does not exist: "
 msgstr "Project does not exist: "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:319
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:320
 msgid ""
 "Project filenames cannot contain punctuation other than dots, dashes, and "
-"spaces; and they cannot be longer than 32 characters. "
+"spaces; and they cannot be longer than %s characters. "
 msgstr ""
-"Project filenames cannot contain punctuation other than dots, dashes, and "
-"spaces; and they cannot be longer than 32 characters. "
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/ModalProjectOverwriteDialog.java:73
 msgid "Project name: "
@@ -9958,7 +9956,7 @@ msgstr "[NOT SPECIFIED]"
 msgid "[New Results Chain]"
 msgstr "[New Results Chain]"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/project/Project.java:947
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/project/Project.java:948
 msgid "[No Project]"
 msgstr "[No Project]"
 
@@ -37582,6 +37580,13 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid ""
+#~ "Project filenames cannot contain punctuation other than dots, dashes, and "
+#~ "spaces; and they cannot be longer than 32 characters. "
+#~ msgstr ""
+#~ "Project filenames cannot contain punctuation other than dots, dashes, and "
+#~ "spaces; and they cannot be longer than 32 characters. "
 
 #~ msgid "Language: "
 #~ msgstr "Language: "

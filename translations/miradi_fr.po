@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-06 00:48-0700\n"
+"POT-Creation-Date: 2018-04-06 06:03-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/miradi-client/"
@@ -6332,14 +6332,11 @@ msgstr "Résumé du projet"
 msgid "Project does not exist: "
 msgstr "Le projet n'existe pas :"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:319
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:320
 msgid ""
 "Project filenames cannot contain punctuation other than dots, dashes, and "
-"spaces; and they cannot be longer than 32 characters. "
+"spaces; and they cannot be longer than %s characters. "
 msgstr ""
-"Les noms de fichier du projet ne peuvent pas dépasser les 32 caractères et "
-"les signes de ponctuation admis sont les points, les traits d'union et les "
-"espaces. "
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/ModalProjectOverwriteDialog.java:73
 msgid "Project name: "
@@ -10042,7 +10039,7 @@ msgstr "[NON SPÉCIFIÉ]"
 msgid "[New Results Chain]"
 msgstr "[Nouvelle chaîne de résultats]"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/project/Project.java:947
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/project/Project.java:948
 msgid "[No Project]"
 msgstr "[Aucun projet]"
 
@@ -31986,6 +31983,14 @@ msgid ""
 msgstr ""
 "Marin___Atlantique tropical occidental___Écorégion marine du versant nord-"
 "est du Brésil___Brésil"
+
+#~ msgid ""
+#~ "Project filenames cannot contain punctuation other than dots, dashes, and "
+#~ "spaces; and they cannot be longer than 32 characters. "
+#~ msgstr ""
+#~ "Les noms de fichier du projet ne peuvent pas dépasser les 32 caractères "
+#~ "et les signes de ponctuation admis sont les points, les traits d'union et "
+#~ "les espaces. "
 
 #~ msgid "Language: "
 #~ msgstr "Langue :"

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-06 00:48-0700\n"
+"POT-Creation-Date: 2018-04-06 06:03-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/miradi-client/"
@@ -6189,13 +6189,11 @@ msgstr "Резюме проекту"
 msgid "Project does not exist: "
 msgstr "Проект не існує:"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:319
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:320
 msgid ""
 "Project filenames cannot contain punctuation other than dots, dashes, and "
-"spaces; and they cannot be longer than 32 characters. "
+"spaces; and they cannot be longer than %s characters. "
 msgstr ""
-"Назви файлів проекту не можуть містити іншу пунктуацію, ніж крапки, пробіли "
-"і _ ; і вони не можуть бути довшими, ніж 32 знаки."
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/ModalProjectOverwriteDialog.java:73
 msgid "Project name: "
@@ -9812,7 +9810,7 @@ msgstr "[НЕ ВКАЗАНИЙ]"
 msgid "[New Results Chain]"
 msgstr "[Новий ланцюг результатів]"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/project/Project.java:947
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/project/Project.java:948
 msgid "[No Project]"
 msgstr "[Проект не вибраний]"
 
@@ -33290,6 +33288,13 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Marine___Western Tropical "
 "Atlantic___Northeast Brazil Shelf Marine___Brazil"
+
+#~ msgid ""
+#~ "Project filenames cannot contain punctuation other than dots, dashes, and "
+#~ "spaces; and they cannot be longer than 32 characters. "
+#~ msgstr ""
+#~ "Назви файлів проекту не можуть містити іншу пунктуацію, ніж крапки, "
+#~ "пробіли і _ ; і вони не можуть бути довшими, ніж 32 знаки."
 
 #~ msgid "Language: "
 #~ msgstr "Мова: "

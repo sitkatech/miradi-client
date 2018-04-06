@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-06 00:48-0700\n"
+"POT-Creation-Date: 2018-04-06 06:03-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -6328,13 +6328,11 @@ msgstr "Обобщение на проект"
 msgid "Project does not exist: "
 msgstr "Проектът не съществува:"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:319
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:320
 msgid ""
 "Project filenames cannot contain punctuation other than dots, dashes, and "
-"spaces; and they cannot be longer than 32 characters. "
+"spaces; and they cannot be longer than %s characters. "
 msgstr ""
-"Имената на проектови файлове не могат да съдържат пунктуация различна от "
-"точки, тирета и прази интервали; и не могат да са по-дълги от 32 символа."
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/ModalProjectOverwriteDialog.java:73
 msgid "Project name: "
@@ -9995,7 +9993,7 @@ msgstr "[НЕУТОЧНЕН]"
 msgid "[New Results Chain]"
 msgstr "[Нова верига на резултатите]"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/project/Project.java:947
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/project/Project.java:948
 msgid "[No Project]"
 msgstr "[Няма проект]"
 
@@ -33949,6 +33947,13 @@ msgid ""
 msgstr ""
 "choice|/resources/fieldoptions/EcoRegions.tsv|Морски___Западен тропически "
 "Атлантически океан___Североизточен бразилски шелф___Бразилия"
+
+#~ msgid ""
+#~ "Project filenames cannot contain punctuation other than dots, dashes, and "
+#~ "spaces; and they cannot be longer than 32 characters. "
+#~ msgstr ""
+#~ "Имената на проектови файлове не могат да съдържат пунктуация различна от "
+#~ "точки, тирета и прази интервали; и не могат да са по-дълги от 32 символа."
 
 #~ msgid "Language: "
 #~ msgstr "Език"
