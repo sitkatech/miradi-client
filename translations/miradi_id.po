@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-05 05:33-0700\n"
+"POT-Creation-Date: 2018-04-06 00:48-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Indonesian (http://www.transifex.com/projects/p/miradi-client/"
@@ -299,7 +299,7 @@ msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br> "
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:189
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1450
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1436
 msgid "(%s)"
 msgstr ""
 
@@ -550,7 +550,7 @@ msgstr ""
 "<br> Operasi ini berhasil dilaksanakan, tetapi fungsi Urung/Ulangi mungkin "
 "tidak berfungsi dengan benar. "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:262
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:266
 msgid ""
 "<div class='DataPanel'><p>Why are my choices limited to one color family for "
 "each type of factor?</p>"
@@ -609,6 +609,15 @@ msgid ""
 msgstr ""
 "<div class='WizardText'>Untuk <strong>memulai proyek baru</strong> di "
 "komputer ini, pilih: "
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1461
+msgid ""
+"<div>The below alternative name is valid. Edit this name as desired.</div>"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1460
+msgid "<div>The selected project's name contains invalid characters.</div>"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/IrreversibilityThreatRatingQuestion.java:47
 msgid ""
@@ -949,7 +958,7 @@ msgstr ""
 msgid "A project or file by this name already exists: "
 msgstr "Sudah ada proyek atau berkas lain yang memakai nama ini: "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:560
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:546
 msgid "A project with this name already exists."
 msgstr ""
 
@@ -1986,7 +1995,7 @@ msgstr ""
 msgid "Add stresses and/or biophysical factors (optional)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/InitialSplashPanel.java:139
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/LanguagesPanel.java:137
 msgid ""
 "Additional languages are supported by installing Miradi Language Packs,<br> "
 "which are files with a name like: <em>%s</em><br><br>If you already have a "
@@ -2413,11 +2422,11 @@ msgstr "Fitur Keanekaragaman Hayati "
 msgid "Biodiversity Target"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:247
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:251
 msgid "Biodiversity Target (Lighter Green)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:249
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:253
 msgid "Biodiversity Target Scope (Darker Green)"
 msgstr ""
 
@@ -2431,7 +2440,7 @@ msgstr "Fitur Keanekaragaman Hayati "
 msgid "Biophysical Factor"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:245
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:249
 msgid "Biophysical Factor (Olive)"
 msgstr ""
 
@@ -2445,7 +2454,7 @@ msgstr ""
 msgid "Biophysical Result"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:252
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:256
 msgid "Biophysical Result (Lavender Blue)"
 msgstr ""
 
@@ -2530,12 +2539,12 @@ msgstr "Aturan Bundel"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/ImageExportScaleDialog.java:80
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:242
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/confirm/ConfirmDialogTemplate.java:51
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/LanguagesPanel.java:130
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/LanguagesPanel.java:167
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/project/OldProjectDirToMpfConverter.java:57
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/wizard/noproject/projectlist/DirectoryChooserDialog.java:76
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/legacyprojects/DataUpgrader.java:54
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/legacyprojects/DataUpgrader.java:66
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/InitialSplashPanel.java:132
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/InitialSplashPanel.java:171
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MiradiStrings.java:39
 msgid "Button|Cancel"
 msgstr "Batalkan "
@@ -2551,7 +2560,6 @@ msgid "Button|Close"
 msgstr "Tutup "
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:50
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/InitialSplashPanel.java:64
 msgid "Button|Continue"
 msgstr "Lanjutkan "
 
@@ -2567,7 +2575,7 @@ msgstr ""
 msgid "Button|Export..."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/InitialSplashPanel.java:131
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/LanguagesPanel.java:129
 msgid "Button|Install..."
 msgstr "Instal... "
 
@@ -2618,7 +2626,7 @@ msgstr "Tempelkan Isi… "
 msgid "Button|Paste Shared"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/InitialSplashPanel.java:170
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/LanguagesPanel.java:166
 msgid "Button|Replace"
 msgstr "Ganti "
 
@@ -2691,7 +2699,7 @@ msgstr "Tidak bisa menautkan butir dengan butir itu sendiri "
 msgid "Cancel"
 msgstr "Batalkan "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:582
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:568
 msgid "Cancelled"
 msgstr ""
 
@@ -2783,6 +2791,10 @@ msgstr ""
 "yang diharapkan dari pelaksanaan suatu strategi. Oleh karena itu rangkaian "
 "mewakili asumsi-asumsi yang Anda buat mengenai lokasi proyek Anda."
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/LanguagesPanel.java:58
+msgid "Changes will be applied on restarting Miradi."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/CurrencyTypeQuestion.java:43
 msgid "Chinese Yuan Renminbi"
 msgstr "Yuan Renminbi Cina"
@@ -2835,7 +2847,7 @@ msgstr ""
 msgid "Choose tags for this diagram"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:242
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:246
 msgid "Choose the colors that look best on your system:"
 msgstr "Pilih warna yang tampak paling baik dalam sistem Anda: "
 
@@ -2953,7 +2965,7 @@ msgstr ""
 msgid "Contributing Factor"
 msgstr "Faktor Kontribusi"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:246
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:250
 msgid "Contributing Factor (Orange)"
 msgstr "Faktor Kontribusi (Jingga) "
 
@@ -3031,7 +3043,7 @@ msgstr "Pembuatan gagal: "
 msgid "Create Folder"
 msgstr "Buat Folder "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:721
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:707
 msgid "Create Project"
 msgstr ""
 
@@ -3413,7 +3425,7 @@ msgstr "Ikhtisar diagram "
 msgid "Direct Threat"
 msgstr "Ancaman Langsung"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:244
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:248
 msgid "Direct Threat (Pink)"
 msgstr "Ancaman Langsung (Merah Muda) "
 
@@ -3534,7 +3546,7 @@ msgid ""
 "Effective end date for project planning date range is before start date."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:156
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:161
 msgid "Enable Spell Checking"
 msgstr ""
 
@@ -3547,7 +3559,6 @@ msgid "Enter As: "
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/noproject/RenameOldProjectDoer.java:118
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1473
 msgid "Enter New Name"
 msgstr "Masukkan Nama Baru "
 
@@ -3623,7 +3634,7 @@ msgstr "Kesalahan dalam memulihkan status diagram "
 msgid "Euro"
 msgstr "Euro"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:989
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:975
 msgid "Existing data for a different fiscal year is being excluded"
 msgstr ""
 
@@ -3869,11 +3880,11 @@ msgstr ""
 msgid "Font"
 msgstr "Fon"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:143
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:148
 msgid "Font Family"
 msgstr "Keluarga Fon "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:140
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:145
 msgid "Font Size"
 msgstr "Ukuran Fon "
 
@@ -4163,11 +4174,11 @@ msgstr "Manusia Pemilik Kepentingan "
 msgid "Human Wellbeing Target"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:248
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:252
 msgid "Human Wellbeing Target (Lighter Brown)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:250
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:254
 msgid "Human Wellbeing Target Scope (Darker Brown)"
 msgstr ""
 
@@ -4215,7 +4226,7 @@ msgstr "Kenali keahlian kunci "
 msgid "If a notification dialog in this list is checked, "
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:679
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:665
 msgid ""
 "If you continue with this migration, some data will be lost.\n"
 "\n"
@@ -4404,7 +4415,7 @@ msgstr ""
 msgid "Install"
 msgstr "Instal "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/InitialSplashPanel.java:146
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/LanguagesPanel.java:144
 msgid "Install Language Pack"
 msgstr "Instal Paket Bahasa "
 
@@ -4412,7 +4423,7 @@ msgstr "Instal Paket Bahasa "
 msgid "Install Sample Project"
 msgstr "Instal Proyek Contoh "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/InitialSplashPanel.java:191
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/LanguagesPanel.java:187
 msgid "Installed successfully"
 msgstr "Berhasil diinstal "
 
@@ -4432,7 +4443,7 @@ msgstr "Penilaian Intensif"
 msgid "Intermediate Result"
 msgstr "Hasil Antara"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:251
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:255
 msgid "Intermediate Result (Light Blue)"
 msgstr "Hasil Antara (Biru Muda) "
 
@@ -4759,9 +4770,10 @@ msgstr ""
 msgid "Label|Workplan Dates"
 msgstr "Tanggal Rencana Kerja "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/InitialSplashPanel.java:74
-msgid "Language: "
-msgstr "Bahasa: "
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/LanguagesPanel.java:200
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:119
+msgid "Languages"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorFontSizeQuestion.java:39
 msgid "Large"
@@ -5254,8 +5266,8 @@ msgstr ""
 msgid "Migrating..."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:661
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:683
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:647
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:669
 msgid "Migration"
 msgstr ""
 
@@ -5317,7 +5329,7 @@ msgstr ""
 msgid "Miradi does not recognize %s as a project file"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:809
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:795
 msgid ""
 "Miradi has detected one or more problems with this project which could cause "
 "errors or further damage in the future. \n"
@@ -5402,7 +5414,7 @@ msgstr "Harus bilangan positif "
 msgid "N/A"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:150
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:155
 msgid ""
 "NOTE: Automatic Table Row Height Mode may impact the speed of expand and "
 "<br>collapse actions in the tables this setting affects. For better "
@@ -5429,7 +5441,7 @@ msgid ""
 "for some quarters."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:164
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:169
 msgid ""
 "NOTE: Spell checking is currently only available in English. <br>If the "
 "'Primary Project Data Language' in the Project tab of the Summary view "
@@ -5683,7 +5695,7 @@ msgstr "Buka \t"
 msgid "Open Anyway"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:723
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:709
 msgid "Open Project"
 msgstr ""
 
@@ -5951,7 +5963,7 @@ msgstr "Jelek"
 msgid "Pound (United Kingdom)"
 msgstr "Ponsterling (Inggris)"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:406
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:410
 msgid "Preferences"
 msgstr "Preferensi "
 
@@ -6077,7 +6089,7 @@ msgstr "Proyek "
 msgid "Project Advisor"
 msgstr "Penasihat Proyek"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:807
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:793
 msgid "Project Corruption Detected"
 msgstr ""
 
@@ -6093,7 +6105,7 @@ msgstr "Memerlukan Migrasi Proyek"
 msgid "Project Number"
 msgstr "Nomor Proyek "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:987
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:973
 msgid "Project People Filter Is On"
 msgstr ""
 
@@ -6271,7 +6283,7 @@ msgstr "Mengganti Nama Tidak Berhasil "
 msgid "Rename..."
 msgstr "Ganti nama… "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/InitialSplashPanel.java:174
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/LanguagesPanel.java:170
 msgid "Replace Language Pack"
 msgstr "Ganti Paket Bahasa "
 
@@ -6455,7 +6467,7 @@ msgstr "Savana – Savana Basah"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/noproject/CopyProject.java:42
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:64
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:41
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1445
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1431
 msgid "Save As..."
 msgstr "Simpan Sebagai... "
 
@@ -6529,6 +6541,10 @@ msgstr "Pilih target konservasi "
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/OpenStandardsConceptualizeQuestion.java:88
 msgid "Select initial team members"
 msgstr "Pilih anggota tim awal "
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/LanguagesPanel.java:55
+msgid "Select language from choices below, "
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/MoveActivitySelectionDialog.java:43
 msgid ""
@@ -6651,7 +6667,7 @@ msgstr ""
 msgid "Show Day Columns"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:277
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:281
 msgid "Show Diagram Grid"
 msgstr "Tampakkan Kisi-kisi Diagram "
 
@@ -6659,7 +6675,7 @@ msgstr "Tampakkan Kisi-kisi Diagram "
 msgid "Show Quarter Columns"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:220
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:224
 msgid "Show Ratings in Cell"
 msgstr "Tampakkan Peringkat dalam Sel "
 
@@ -6779,7 +6795,7 @@ msgstr "Pemilik Kepentingan"
 msgid "Standard Reports"
 msgstr "Laporan Standar "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1026
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1012
 msgid ""
 "Start date (currently %startDate) must be earlier than end date (currently "
 "%endDate)"
@@ -6858,7 +6874,7 @@ msgstr ""
 msgid "Strategy"
 msgstr "Strategi "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:243
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:247
 msgid "Strategy (Yellow)"
 msgstr "Strategi (Kuning) "
 
@@ -7882,7 +7898,7 @@ msgstr ""
 "atau lembar bentang akan memungkinkan Anda untuk membuat suatu tabel lalu "
 "mengekspornya sebagai berkas yang dipisahkan tab."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:148
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:153
 msgid "Table Row Height Mode"
 msgstr "Mode Tinggi Baris Tabel"
 
@@ -8110,33 +8126,33 @@ msgstr "Tanggal harus dalam format YYYY-MM-DD  "
 msgid "Text|Unknown error prevented saving this data"
 msgstr "Kesalahan tak dikenal mencegah penyimpanan data ini "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:606
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:592
 msgid "That file is not a valid Miradi project"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/InitialSplashPanel.java:172
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/LanguagesPanel.java:168
 msgid "That language pack already exists. Replace it?"
 msgstr "Paket bahasa ini sudah ada. Ganti? "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/InitialSplashPanel.java:164
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/LanguagesPanel.java:160
 msgid "That language pack is already installed"
 msgstr "Paket bahasa ini sudah diinstal"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:615
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:619
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:601
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:605
 msgid ""
 "That project cannot be opened because it was created by a newer version of "
 "Miradi"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:623
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:609
 msgid ""
 "That project cannot be opened until it is migrated to the current data format"
 msgstr ""
 "Proyek tersebut tidak bisa dibuka sebelum dipindahkan ke format data saat "
 "ini "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:602
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:588
 msgid "That project is in use by another copy of this application"
 msgstr "Proyek tersebut sedang digunakan oleh salinan lain dari aplikasi ini "
 
@@ -8150,7 +8166,7 @@ msgstr ""
 "menggunakan Miradi 1.0 untuk memindahkannya ke format data modern, dan "
 "sesudahnya bisa dibuka dan dipindahkan dengan versi ini. "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:610
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:596
 msgid "That project is too old to be opened with this version of Miradi"
 msgstr ""
 
@@ -8617,7 +8633,7 @@ msgid ""
 "damaged. Please contact Miradi support for recovery options."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:798
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:784
 msgid ""
 "This project has been optimized to remove data that is no longer needed.\n"
 msgstr ""
@@ -8633,7 +8649,7 @@ msgstr ""
 "berkas akan disimpan terlebih dahulu untuk berjaga-jaga apabila terjadi "
 "kesalahan. Lakukan migrasi secara otomatis?"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:656
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:642
 #, fuzzy
 msgid ""
 "This project was saved using an older version of Miradi. Before it can be "
@@ -8730,7 +8746,7 @@ msgstr "Peringkat Ancaman - Tabel "
 msgid "Threat Reduction Result"
 msgstr "Hasil Pengurangan Ancaman"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:253
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:257
 msgid "Threat Reduction Result (Light Purple)"
 msgstr "Hasil Pengurangan Ancaman (Ungu Muda) "
 
@@ -8889,6 +8905,10 @@ msgstr "Sifat-sifat Diagram "
 msgid "Title|Direct Threat Properties"
 msgstr "Sifat-sifat Ancaman Langsung"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/ModalProjectRenameDialog.java:41
+msgid "Title|Edit Project Filename"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MiradiStrings.java:64
 msgid "Title|Error"
 msgstr "Kesalahan"
@@ -9015,10 +9035,6 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/progressReport/AbstractProgressReportSubPanel.java:47
 msgid "Title|Progress Report"
 msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/ModalProjectRenameDialog.java:41
-msgid "Title|Project Filename"
-msgstr "Nama berkas proyek "
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/reportTemplate/ReportTemplatePropertiesPanel.java:51
 msgid "Title|Report Template Properties"
@@ -9170,7 +9186,7 @@ msgid ""
 "both Latitude and Longitude are required)."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1418
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1404
 msgid "Unable to launch external web browser"
 msgstr "Tidak bisa meluncurkan perambah web eksternal "
 
@@ -9191,7 +9207,7 @@ msgstr ""
 "Tidak bisa mengganti nama proyek karena sedang digunakan oleh salinan lain "
 "dari aplikasi ini:\n"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1183
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1169
 msgid "Unable to save preferences"
 msgstr "Tidak bisa menyimpan preferensi "
 
@@ -9217,7 +9233,7 @@ msgstr "Garis Bawah"
 msgid "Unexpected error"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/InitialSplashPanel.java:196
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/LanguagesPanel.java:192
 msgid "Unexpected error prevented installing that language pack"
 msgstr "Kesalahan tak terduga membuat paket bahasa tidak dapat diinstal "
 
@@ -9246,7 +9262,7 @@ msgstr "Universitas"
 msgid "Unknown"
 msgstr "Tidak Dikenal"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:597
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:583
 msgid ""
 "Unknown Command\n"
 "You are probably trying to load an old project that contains obsolete "
@@ -9264,7 +9280,7 @@ msgstr "Kode tak dikenal: "
 msgid "Unknown error displaying diagram"
 msgstr "Kesalahan tak dikenal saat menampilkan diagram "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:628
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:614
 msgid "Unknown error prevented opening that project"
 msgstr "Kesalahan tak dikenal mencegah dibukanya proyek "
 
@@ -9452,7 +9468,7 @@ msgstr "WWF"
 msgid "Warning"
 msgstr "Peringatan "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:263
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:267
 msgid ""
 "We are trying to create a standard set of symbols that can be recognized "
 "globally. Just like people the world over recognize a red octagon as a stop "
@@ -9791,6 +9807,10 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/NeverShowAgainPanel.java:48
 msgid "it will not be shown. Uncheck it to have Miradi "
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/LanguagesPanel.java:56
+msgid "or install a new language pack."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractImageSaverDoer.java:96
@@ -31406,6 +31426,12 @@ msgid ""
 msgstr ""
 "Perairan Laut___Atlantik Tropis Barat___Perairan Laut Paparan Brazil Timur "
 "Laut___Brazil \t\t"
+
+#~ msgid "Language: "
+#~ msgstr "Bahasa: "
+
+#~ msgid "Title|Project Filename"
+#~ msgstr "Nama berkas proyek "
 
 #~ msgid "<html><b>Summary<br>Target-Threat<br>Rating"
 #~ msgstr "<html><b>Ringkasan<br>Peringkat<br>Ancaman-Target "
