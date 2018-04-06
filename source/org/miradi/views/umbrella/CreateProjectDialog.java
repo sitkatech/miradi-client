@@ -316,7 +316,8 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 
 	public static String getInvalidProjectNameMessage()
 	{
-		return EAM.text("Project filenames cannot contain punctuation other than dots, dashes, and spaces; and they cannot be longer than 32 characters. ");
+		int maxNameLength = Project.getMaximumProjectNameLength();
+		return EAM.substituteSingleInteger(EAM.text("Project filenames cannot contain punctuation other than dots, dashes, and spaces; and they cannot be longer than %s characters. "), maxNameLength);
 	}
 
 	public void cancel()

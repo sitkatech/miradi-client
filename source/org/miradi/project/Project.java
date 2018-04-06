@@ -27,6 +27,7 @@ import org.miradi.exceptions.UnexpectedNonSideEffectException;
 import org.miradi.exceptions.UnexpectedSideEffectException;
 import org.miradi.files.AbstractMpfFileFilter;
 import org.miradi.ids.*;
+import org.miradi.main.AutomaticProjectSaver;
 import org.miradi.main.CommandExecutedListener;
 import org.miradi.main.EAM;
 import org.miradi.main.VersionConstants;
@@ -1409,7 +1410,7 @@ public class Project implements ProjectInterface
 
 	public static int getMaximumProjectNameLength()
 	{
-		return MAX_PROJECT_FILENAME_LENGTH - AbstractMpfFileFilter.EXTENSION.length();
+		return MAX_PROJECT_FILENAME_LENGTH - (AbstractMpfFileFilter.EXTENSION.length() + AutomaticProjectSaver.SESSION_EXTENSION.length());
 	}
 	
 	public static VersionRange getMiradiVersionRange() throws Exception
