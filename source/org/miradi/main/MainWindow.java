@@ -565,7 +565,15 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		}
 		catch(UserCanceledException e)
 		{
-			EAM.notifyDialog(EAM.text("Cancelled"));
+			EAM.notifyDialog(EAM.text("Action canceled"));
+			try
+			{
+				closeProject(false);
+			}
+			catch(Exception exceptionDuringClose)
+			{
+				throw new RuntimeException("Unable to close the partially-opened project", exceptionDuringClose);
+			}
 		}
 		catch(AlreadyHandledException e)
 		{
@@ -725,15 +733,21 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		@Override
 		protected void doRealWork() throws Exception
 		{
+			ProgressInterface progressMeter = getProgressIndicator();
+
 			if(projectFile.exists())
 			{
+				progressMeter.setStatusMessage(EAM.text("Opening project file..."), 3);
+				progressMeter.incrementProgress();
 				String contents = UnicodeReader.getFileContents(projectFile);
+				progressMeter.incrementProgress();
 				ProjectLoader.loadProject(new UnicodeStringReader(contents), project);
 				project.finishOpeningAfterLoad(projectFile);
+				progressMeter.incrementProgress();
 			}
 			else
 			{
-				project.createWithDefaultObjectsAndDiagramHelp(projectFile, getProgressIndicator());
+				project.createWithDefaultObjectsAndDiagramHelp(projectFile, progressMeter);
 			}
 		}
 
@@ -858,15 +872,21 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 
 	public void closeProject() throws Exception
 	{
+		closeProject(true);
+	}
+	
+	private void closeProject(boolean setOverViewStep) throws Exception
+	{
 		projectSaver.stopSaving();
 		project.close();
 		EAM.logDebug(getMemoryStatistics());
-		getWizardManager().setOverViewStep(NoProjectView.getViewName());
+		if (setOverViewStep)
+			getWizardManager().setOverViewStep(NoProjectView.getViewName());
 
 		updateTitle();
 		getMainStatusBar().clear();
 	}
-	
+
 	public void refreshWizard() throws Exception
 	{
 		if (getWizard() == null)

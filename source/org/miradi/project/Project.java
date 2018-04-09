@@ -619,13 +619,19 @@ public class Project implements ProjectInterface
 	public void createWithDefaultObjectsAndDiagramHelp(File projectFileToUse, ProgressInterface progressMeter) throws Exception
 	{
 		boolean didProjectAlreadyExist = projectFileToUse.exists();
+
+		progressMeter.setStatusMessage(EAM.text("Creating project file..."), 2);
+		progressMeter.incrementProgress();
+
 		createOrOpenWithDefaultObjects(projectFileToUse, progressMeter);
-		
+
 		if (!didProjectAlreadyExist)
 		{
 			createDefaultHelpTextBoxDiagramFactor();
 			turnOnBudgetRelatedColumnsAndRowsInWorkPlan();
 		}
+
+		progressMeter.incrementProgress();
 	}
 
 	public void createOrOpenWithDefaultObjects(File projectFileToUse, ProgressInterface progressMeter) throws Exception

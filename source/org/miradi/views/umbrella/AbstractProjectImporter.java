@@ -78,46 +78,63 @@ public abstract class AbstractProjectImporter
 			if (importedFile != null)
 				getMainWindow().createOrOpenProject(importedFile);
 		}
-		catch (CorruptSimpleThreatRatingDataException e)
+		catch (Exception e)
 		{
-			EAM.logException(e);
-			EAM.errorDialog(EAM.text("This project cannot be imported because its Threat Rating data is missing or damaged. " +
-									  "Please contact Miradi support for recovery options."));
-		}
-		catch (UserCanceledException e)
-		{
-			EAM.notifyDialog(EAM.text("Import was canceled!"));
-		}
-		catch (UnsupportedNewVersionSchemaException e)
-		{
-			logTooNewVersionException(e);
-		}
-		catch (XmlVersionTooOldException e)
-		{
-			EAM.alertUserOfNonFatalException(e);
-		}
-		catch (XmlValidationException e)
-		{
-			EAM.logException(e);
-			showImportFailedErrorDialog(e.getMessage());
-		}
-		catch (FutureSchemaVersionException e)
-		{
-			EAM.logException(e);
-			showImportFailedErrorDialog("This project cannot be imported by this version of Miradi because it <BR>" +
-										"is in a newer data format. Please upgrade to the latest version of Miradi.");
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			String message = e.getMessage();
-			if(message == null)
-				message = "";
-			showImportFailedErrorDialog(message);
+			handleImportException(e);
 		}
 	}
 
-	public static void logTooNewVersionException(UnsupportedNewVersionSchemaException e)
+	public static void handleImportException(Exception e)
+	{
+		if (e instanceof CorruptSimpleThreatRatingDataException)
+		{
+			EAM.logException(e);
+			EAM.errorDialog(EAM.text("This project cannot be imported because its Threat Rating data is missing or damaged. " +
+					"Please contact Miradi support for recovery options."));
+			return;
+		}
+
+		if (e instanceof UserCanceledException)
+		{
+			EAM.notifyDialog(EAM.text("Import was canceled!"));
+			return;
+		}
+
+		if (e instanceof UnsupportedNewVersionSchemaException)
+		{
+			logTooNewVersionException(e);
+			return;
+		}
+
+		if (e instanceof XmlVersionTooOldException)
+		{
+			EAM.alertUserOfNonFatalException(e);
+			return;
+		}
+
+		if (e instanceof XmlValidationException)
+		{
+			EAM.logException(e);
+			showImportFailedErrorDialog(e.getMessage());
+			return;
+		}
+
+		if (e instanceof FutureSchemaVersionException)
+		{
+			EAM.logException(e);
+			showImportFailedErrorDialog("This project cannot be imported by this version of Miradi because it <BR>" +
+					"is in a newer data format. Please upgrade to the latest version of Miradi.");
+			return;
+		}
+
+		EAM.logException(e);
+		String message = e.getMessage();
+		if(message == null)
+			message = "";
+		showImportFailedErrorDialog(message);
+	}
+
+	public static void logTooNewVersionException(Exception e)
 	{
 		EAM.logException(e);
 		showImportFailedErrorDialog(IMPORT_FAILED_MESSAGE);

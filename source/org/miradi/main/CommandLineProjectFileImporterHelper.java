@@ -53,10 +53,9 @@ public class CommandLineProjectFileImporterHelper
 			if (importedFile != null)
 				ProjectListTreeTable.doProjectOpen(mainWindowToUse, importedFile);
 		}
-		catch (ZipException | UnrecognizedFileToImportException e)
+		catch (Exception e)
 		{
-			EAM.errorDialog(e.getMessage());
-			EAM.logException(e);
+			AbstractProjectImporter.handleImportException(e);
 		}
 	}
 	
