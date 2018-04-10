@@ -675,7 +675,7 @@ public class EAM
 	public static final String MIRADI_DATA_DIRECTORY_KEY = "MiradiDataDirectory";
 	public static final String STRING_TO_SUBSTITUTE = "%s";
 	public static final char DASH = '-';
-	public static final String LEGAL_NON_ALPHA_NUMERIC_CHARACTERS = "_. " + DASH;
+	public static final String LEGAL_NON_ALPHA_NUMERIC_CHARACTERS = "_. ()" + DASH;
 	
 	public static final String EXCEPTIONS_LOG_FILE_NAME = "exceptions.log";
 	private final static String FILEINUSE_ERROR_MESSAGE_FILE_NAME = "FileInUseErrorMessage.html";

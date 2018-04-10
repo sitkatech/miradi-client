@@ -256,7 +256,7 @@ public class TestProject extends MiradiTestCase
 
 	public void testIsValidMpfProjectFilename() throws Exception
 	{
-		assertTrue("AlphaNumericDotDashSpace", Project.isValidMpfProjectFilename("AZaz09_.Miradi"));
+		assertTrue("AlphaNumericDotDashSpace", Project.isValidMpfProjectFilename("AZaz09_().Miradi"));
 		assertFalse("allowed really long name?", Project.isValidMpfProjectFilename(createLargerThanAllowedProjectName() + MpfFileFilterWithDirectories.EXTENSION));
 		assertFalse("Other Punct", Project.isValidMpfProjectFilename("$.Miradi"));
 		final char ACCENT_A_LOWER = 0xE1;
@@ -272,8 +272,8 @@ public class TestProject extends MiradiTestCase
 		assertEquals("didn't fix long?", legalExpectedProjectName, Project.makeProjectNameLegal(longest));
 		String allGood = "abc_123. -";
 		assertEquals("Ruined a good name?", allGood, Project.makeProjectNameLegal(allGood));
-		String bad = "`~!@#$%^&*()=+[]\\{}|;':\',<>/?. -";
-		assertEquals("Didn't fix bad?", "-----------------------------. -", Project.makeProjectNameLegal(bad));
+		String bad = "`~!@#$%^&*=+[]\\{}|;':\',<>/?. -";
+		assertEquals("Didn't fix bad?", "---------------------------. -", Project.makeProjectNameLegal(bad));
 	}
 
 	private String createLargerThanAllowedProjectName()
