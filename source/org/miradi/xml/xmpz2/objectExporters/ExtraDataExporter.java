@@ -23,6 +23,7 @@ package org.miradi.xml.xmpz2.objectExporters;
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.schemas.ReportTemplateSchema;
 import org.miradi.schemas.TableSettingsSchema;
@@ -45,6 +46,7 @@ public class ExtraDataExporter implements Xmpz2XmlConstants
 	{
 		getWriter().writeStartElement(EXTRA_DATA);
 		getWriter().writeStartElementWithAttribute(EXTRA_DATA_SECTION, EXTRA_DATA_SECTION_OWNER_ATTRIBUTE, MIRADI_CLIENT_EXTRA_DATA_SECTION);
+		writeExtraDataElement(project.getMetadata(), ProjectMetadata.TAG_CURRENT_WIZARD_SCREEN_NAME);
 		exportPool(ViewDataSchema.getObjectType());
 		exportPool(TableSettingsSchema.getObjectType());
 		exportPool(XslTemplateSchema.getObjectType());
@@ -69,16 +71,21 @@ public class ExtraDataExporter implements Xmpz2XmlConstants
 		for (int index = 0; index < fieldTags.length; ++index)
 		{
 			String fieldTag = fieldTags[index];
-			String extraDataItemName = getExtraDataItemName(baseObject.getTypeName(), baseObject.getId(), fieldTag);
-			String data = baseObject.getData(fieldTag);
-			if (data.length() > 0)
-			{
-				getWriter().writeStartElementWithAttribute(EXTRA_DATA_ITEM, EXTRA_DATA_ITEM_NAME, extraDataItemName);
-				data = StringUtilities.escapeQuotesWithBackslash(data);
-				data = XmlUtilities2.getXmlEncoded(data);
-				getWriter().writeElement(EXTRA_DATA_ITEM_VALUE, data);
-				getWriter().writeEndElement(EXTRA_DATA_ITEM);
-			}
+			writeExtraDataElement(baseObject, fieldTag);
+		}
+	}
+
+	private void writeExtraDataElement(BaseObject baseObject, String fieldTag) throws Exception
+	{
+		String extraDataItemName = getExtraDataItemName(baseObject.getTypeName(), baseObject.getId(), fieldTag);
+		String data = baseObject.getData(fieldTag);
+		if (data.length() > 0)
+		{
+			getWriter().writeStartElementWithAttribute(EXTRA_DATA_ITEM, EXTRA_DATA_ITEM_NAME, extraDataItemName);
+			data = StringUtilities.escapeQuotesWithBackslash(data);
+			data = XmlUtilities2.getXmlEncoded(data);
+			getWriter().writeElement(EXTRA_DATA_ITEM_VALUE, data);
+			getWriter().writeEndElement(EXTRA_DATA_ITEM);
 		}
 	}
 
