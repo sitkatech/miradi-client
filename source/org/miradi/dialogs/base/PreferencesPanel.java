@@ -109,14 +109,15 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 			
 			projectSettingsPanel = new ProjectSettingsPanel(getProject());
 			tabPane.addTab(EAM.text("Project Settings"), projectSettingsPanel);
+			tabPane.addTab(EAM.text("Notifications"), createNeverShowAgainPanel());
+			tabPane.addTab(EAM.text("Languages"), createLanguagesPanel());
 		}
 		else
 		{
+			tabPane.addTab(EAM.text("Languages"), createLanguagesPanel());
 			tabPane.addTab(EAM.text("Data Location"), createDataLocationTab());
+			tabPane.addTab(EAM.text("Notifications"), createNeverShowAgainPanel());
 		}
-		
-		tabPane.addTab(EAM.text("Notifications"), createNeverShowAgainPanel());
-		tabPane.addTab(EAM.text("Languages"), createLanguagesPanel());
 
 		return tabPane;
 	}
