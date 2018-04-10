@@ -191,6 +191,13 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		if (isPriorityColumn(modelColumn))
 			return PriorityRatingQuestion.class;
 
+		if (isEvidenceConfidenceColumn(modelColumn))
+		{
+			BaseObject baseObject = getBaseObjectForRow(row);
+			if(baseObject != null)
+				return EvidenceConfidenceTypeQuestion.getQuestionClass(baseObject.getType());
+		}
+
 		return null;
 	}
 	
@@ -198,13 +205,16 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	public boolean isChoiceItemColumn(int column)
 	{
 		String columnTag = getColumnTag(column);
-		if(isPriorityColumn(column))
+		if (isPriorityColumn(column))
 			return true;
 		
-		if(columnTag.equals(CustomPlanningColumnsQuestion.META_CURRENT_RATING))
+		if (columnTag.equals(CustomPlanningColumnsQuestion.META_CURRENT_RATING))
 			return true;
 		
-		if(isProjectResourceTypeColumn(column))
+		if (isProjectResourceTypeColumn(column))
+			return true;
+
+		if (isEvidenceConfidenceColumn(column))
 			return true;
 
 		return false;
@@ -381,6 +391,9 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if(isAssignedWhenColumn(columnTag))
 				return getFilteredWhenForAssignments(baseObject);
 
+			if (isEvidenceConfidenceColumn(column))
+				return getEvidenceConfidenceChoiceItem(baseObject);
+
 			return new TaglessChoiceItem(rawValue);
 		}
 		catch (Exception e)
@@ -419,6 +432,13 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			return getStrategyRating((Strategy) baseObject);
 		
 		return new EmptyChoiceItem();
+	}
+
+	private ChoiceItem getEvidenceConfidenceChoiceItem(BaseObject baseObject)
+	{
+		String rawValue = baseObject.getData(BaseObject.TAG_EVIDENCE_CONFIDENCE);
+		ChoiceQuestion evidenceConfidenceQuestion = EvidenceConfidenceTypeQuestion.getQuestion(baseObject.getType());
+		return evidenceConfidenceQuestion.findChoiceByCode(rawValue);
 	}
 
 	private ChoiceItem getStrategyRating(Strategy strategy)
@@ -652,6 +672,14 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	private boolean isEvidenceNotesColumn(int column)
 	{
 		if (getColumnTag(column).equals(BaseObject.TAG_EVIDENCE_NOTES))
+			return true;
+
+		return false;
+	}
+
+	private boolean isEvidenceConfidenceColumn(int column)
+	{
+		if (getColumnTag(column).equals(BaseObject.TAG_EVIDENCE_CONFIDENCE))
 			return true;
 
 		return false;
