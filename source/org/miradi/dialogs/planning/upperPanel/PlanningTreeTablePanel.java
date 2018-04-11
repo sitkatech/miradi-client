@@ -166,8 +166,7 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		updateResourceFilter();
 		updateDiagramFilter();
 		updateCustomizeTableFilter();
-		multiTableModel.updateColumnsToShow();
-		
+
 		// NOTE: The following rebuild the tree but don't touch the columns
 		getTreeTableModel().rebuildEntireTree();
 		measurementModel.fireTableDataChanged();
@@ -185,7 +184,9 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		rollupReportsExpenseModel.fireTableDataChanged();
 		rollupReportsBudgetDetailsModel.fireTableDataChanged();
 		restoreTreeExpansionState();
+
 		updateRightSideTablePanels();
+		multiTableModel.updateColumnsToShow();
 
 		selectObjectAfterSwingClearsItDueToTreeStructureChange(getMainTable(), selectionHierarchy, selectedRow, selectedColumn);
 
