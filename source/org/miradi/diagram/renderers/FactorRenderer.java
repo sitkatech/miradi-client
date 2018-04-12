@@ -123,6 +123,12 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 					progressReportStatus = getLatestProgressReportStatus(model.getProject(), strategy.getRef());
 				}
 
+				if (getFactorCell().isActivity())
+				{
+					Task task = (Task)getFactorCell().getWrappedFactor();
+					progressReportStatus = getLatestProgressReportStatus(model.getProject(), task.getRef());
+				}
+
 				if (getFactorCell().isIntermediateResult())
 				{
 					IntermediateResult intermediateResult = (IntermediateResult)getFactorCell().getWrappedFactor();
@@ -175,9 +181,9 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return this;
 	}
 
-	private ChoiceItem getLatestProgressReportStatus(Project project, ORef strategyRef)
+	private ChoiceItem getLatestProgressReportStatus(Project project, ORef strategyOrTaskRef)
     {
-        String latestReportCode = project.getObjectData(strategyRef, Strategy.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE);
+        String latestReportCode = project.getObjectData(strategyOrTaskRef, BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE);
 		ProgressReportDiagramStatusQuestion question = new ProgressReportDiagramStatusQuestion();
         return question.findChoiceByCode(latestReportCode);
     }
