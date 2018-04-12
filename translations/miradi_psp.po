@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-10 04:03-0700\n"
+"POT-Creation-Date: 2018-04-12 06:33-0700\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -267,11 +267,11 @@ msgstr ""
 msgid "%s (old project)"
 msgstr "%s (old project)"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:253
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:273
 msgid "%s Goals"
 msgstr "%s Goals"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:261
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:281
 msgid "%s Objs"
 msgstr "%s Objs"
 
@@ -362,11 +362,11 @@ msgstr "- Caves"
 msgid "- Other Subterranean Habitats"
 msgstr "- Other Subterranean Habitats"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:250
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:270
 msgid "1 Goal"
 msgstr "1 Goal"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:258
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:278
 msgid "1 Obj"
 msgstr "1 Obj"
 
@@ -3864,6 +3864,11 @@ msgstr ""
 msgid "Factor Properties"
 msgstr "Factor Properties"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo61.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo60.java:41
+msgid "Factor Status Display Enabled Flag"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusQuestion.java:38
 msgid "Fair"
 msgstr "Fair"
@@ -5701,7 +5706,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RatingSourceQuestion.java:35
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatRatingQuestion.java:42
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:37
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/AbstractProgressReportStatusQuestion.java:38
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/AbstractProgressReportStatusQuestion.java:50
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/PriorityRatingQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/TrendQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
@@ -6451,11 +6456,6 @@ msgstr "Report Template"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:41
 msgid "Report to project team and stakeholders"
 msgstr "Report to project team and stakeholders"
-
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo61.java:41
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo60.java:41
-msgid "Result Report Status Enabled Flag"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultEvidenceConfidenceQuestion.java:39
 msgid ""
@@ -11040,7 +11040,7 @@ msgstr ""
 msgid "FieldLabel|19.PseudoLatestProgressReportLessonsLearned|Lessons Learned"
 msgstr ""
 
-msgid "FieldLabel|19.IsResultReportStatusEnabled|Result Report Status"
+msgid "FieldLabel|19.IsFactorStatusDisplayEnabled|Progress Status"
 msgstr ""
 
 msgid "FieldLabel|20.Cause|Cause"
@@ -11319,7 +11319,7 @@ msgstr ""
 msgid "FieldLabel|24.PseudoLatestProgressReportLessonsLearned|Lessons Learned"
 msgstr ""
 
-msgid "FieldLabel|24.IsResultReportStatusEnabled|Result Report Status"
+msgid "FieldLabel|24.IsFactorStatusDisplayEnabled|Result / Progress Status"
 msgstr ""
 
 msgid "FieldLabel|25.ThreatReductionResult|Threat Reduction Result"
