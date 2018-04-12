@@ -204,12 +204,12 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		DiagramObject diagramObject = getCurrentDiagramObject();
 		if (diagramObject != null && diagramObject.isResultsChain())
 		{
-			ObjectCheckBoxField enableResultReportStatusCheckBox = new ObjectCheckBoxField(getProject(), diagramObject.getRef(), DiagramObject.TAG_IS_RESULT_REPORT_STATUS_ENABLED, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE);
-			enableResultReportStatusCheckBox.getComponent().setBackground(AppPreferences.getControlPanelBackgroundColor());
-			enableResultReportStatusCheckBox.updateFromObject();
-			jpanel.add(enableResultReportStatusCheckBox.getComponent());
+			ObjectCheckBoxField enableFactorStatusCheckBox = new ObjectCheckBoxField(getProject(), diagramObject.getRef(), DiagramObject.TAG_IS_FACTOR_STATUS_DISPLAY_ENABLED, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE);
+			enableFactorStatusCheckBox.getComponent().setBackground(AppPreferences.getControlPanelBackgroundColor());
+			enableFactorStatusCheckBox.updateFromObject();
+			jpanel.add(enableFactorStatusCheckBox.getComponent());
 
-			String label = EAM.fieldLabel(diagramObject.getType(), DiagramObject.TAG_IS_RESULT_REPORT_STATUS_ENABLED);
+			String label = EAM.fieldLabel(diagramObject.getType(), DiagramObject.TAG_IS_FACTOR_STATUS_DISPLAY_ENABLED);
 			jpanel.add(new PanelTitleLabel(label, new ResultReportIcon()));
 		}
 

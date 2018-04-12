@@ -40,7 +40,7 @@ public class TestMigrationTo60 extends AbstractTestMigration
         for(ORef ref : rawConceptualModelDiagramPool.keySet())
         {
             RawObject rawConceptualModelDiagram = rawConceptualModelDiagramPool.get(ref);
-            assertFalse("Field should have been removed during reverse migration?", rawConceptualModelDiagram.containsKey(MigrationTo60.TAG_IS_RESULT_REPORT_STATUS_ENABLED));
+            assertFalse("Field should have been removed during reverse migration?", rawConceptualModelDiagram.containsKey(MigrationTo60.TAG_IS_FACTOR_STATUS_DISPLAY_ENABLED));
         }
     }
 

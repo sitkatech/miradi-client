@@ -40,7 +40,7 @@ public class TestMigrationTo61 extends AbstractTestMigration
         for(ORef ref : rawResultsChainDiagramPool.keySet())
         {
             RawObject rawResultsChainDiagram = rawResultsChainDiagramPool.get(ref);
-            assertFalse("Field should have been removed during reverse migration?", rawResultsChainDiagram.containsKey(MigrationTo61.TAG_IS_RESULT_REPORT_STATUS_ENABLED));
+            assertFalse("Field should have been removed during reverse migration?", rawResultsChainDiagram.containsKey(MigrationTo61.TAG_IS_FACTOR_STATUS_DISPLAY_ENABLED));
         }
     }
 

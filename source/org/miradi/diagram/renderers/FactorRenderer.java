@@ -91,8 +91,9 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			DiagramModel model = diagram.getDiagramModel();
 			ThreatRatingFramework framework = model.getThreatRatingFramework();
 			rating = null;
+			progressReportStatus = null;
 			resultReportStatus = null;
-			boolean displayResultReportStatus = diagram.getDiagramObject().isResultReportStatusEnabled();
+			boolean displayFactorStatus = diagram.getDiagramObject().isFactorStatusDisplayEnabled();
 
 			if (getFactorCell().isDirectThreat())
 			{
@@ -114,8 +115,14 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 				strategyInResultsChain = shouldDisplayResultsChainIcon(model, strategy);
 			}
 
-			if (displayResultReportStatus)
+			if (displayFactorStatus)
 			{
+				if (getFactorCell().isStrategy())
+				{
+					Strategy strategy = (Strategy)getFactorCell().getWrappedFactor();
+					progressReportStatus = getLatestProgressReportStatus(model.getProject(), strategy.getRef());
+				}
+
 				if (getFactorCell().isIntermediateResult())
 				{
 					IntermediateResult intermediateResult = (IntermediateResult)getFactorCell().getWrappedFactor();
@@ -167,6 +174,13 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		
 		return this;
 	}
+
+	private ChoiceItem getLatestProgressReportStatus(Project project, ORef strategyRef)
+    {
+        String latestReportCode = project.getObjectData(strategyRef, Strategy.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE);
+		ProgressReportDiagramStatusQuestion question = new ProgressReportDiagramStatusQuestion();
+        return question.findChoiceByCode(latestReportCode);
+    }
 
 	private ChoiceItem getLatestResultReportStatus(Project project, ORef resultObjectRef)
     {
@@ -369,6 +383,9 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		if(strategyInResultsChain)
 			drawChainIcon(rect, g2);
 
+		if (progressReportStatus != null)
+			drawProgressReportStatus(rect, g2);
+
 		if (resultReportStatus != null)
 			drawResultReportStatus(rect, g2);
 
@@ -401,6 +418,15 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		AbstractMiradiIcon icon = new ResultsChainIcon();
 		Rectangle rectangle = getResultChainRectWithinNode();
 		icon.paintIcon(null, g2,rectangle.x, rectangle.y);
+	}
+
+	private void drawProgressReportStatus(Rectangle rect, Graphics2D g2)
+	{
+		if (progressReportStatus == null || progressReportStatus.getCode().equals(ProgressReportDiagramStatusQuestion.NOT_SPECIFIED))
+			return;
+
+		Rectangle rectangle = getResultReportStatusRectWithinNode();
+		drawAnnotationCellRect(g2, rectangle, new RoundRectangleRenderer(), XmlUtilities2.getXmlDecoded(progressReportStatus.getLabel()), progressReportStatus.getColor());
 	}
 
 	private void drawResultReportStatus(Rectangle rect, Graphics2D g2)
@@ -561,6 +587,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
     private static final int RATING_HEIGHT = 8;
 	private FactorCell node;
 	private ChoiceItem rating;
+	private ChoiceItem progressReportStatus;
 	private ChoiceItem resultReportStatus;
 	private String indicatorText;
 	private String objectivesText;

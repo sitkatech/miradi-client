@@ -38,7 +38,7 @@ public class MigrationTo60 extends NewlyAddedFieldsMigration
     protected HashMap<String, String> createFieldsToLabelMapToModify()
     {
         HashMap<String, String> fieldsToAdd = new HashMap<String, String>();
-        fieldsToAdd.put(TAG_IS_RESULT_REPORT_STATUS_ENABLED, EAM.text("Result Report Status Enabled Flag"));
+        fieldsToAdd.put(TAG_IS_FACTOR_STATUS_DISPLAY_ENABLED, EAM.text("Factor Status Display Enabled Flag"));
 
         return fieldsToAdd;
     }
@@ -64,5 +64,5 @@ public class MigrationTo60 extends NewlyAddedFieldsMigration
     public static final int VERSION_FROM = 59;
     public static final int VERSION_TO = 60;
 
-    public static final String TAG_IS_RESULT_REPORT_STATUS_ENABLED = "IsResultReportStatusEnabled";
+    public static final String TAG_IS_FACTOR_STATUS_DISPLAY_ENABLED = "IsFactorStatusDisplayEnabled";
 }

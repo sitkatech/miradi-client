@@ -35,7 +35,7 @@ abstract public class AbstractProgressReportStatusQuestion extends StaticChoiceQ
 	protected ChoiceItem[] createChoices()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItem(NOT_SPECIFIED, EAM.text("Not Specified"), Color.WHITE),
+				new ChoiceItem(NOT_SPECIFIED, getNotSpecifiedLabel(), Color.WHITE),
 				new ChoiceItem(PLANNED_CODE, getPlannedLabel(), COLOR_PLANNED),
 				new ChoiceItem(MAJOR_ISSUES_CODE, getMajorIssuesLabel(), COLOR_ALERT),
 				new ChoiceItem(MINOR_ISSUES_CODE, getMinorIssuesLabel(), COLOR_CAUTION),
@@ -44,7 +44,12 @@ abstract public class AbstractProgressReportStatusQuestion extends StaticChoiceQ
 				new ChoiceItem(ABANDONED_CODE, getAbandonedLabel(), COLOR_ABANDONED),
 		};
 	}
-	
+
+	protected String getNotSpecifiedLabel()
+	{
+		return EAM.text("Not Specified");
+	}
+
 	abstract protected String getAbandonedLabel();
 	
 	abstract protected String getCompletedLabel();
