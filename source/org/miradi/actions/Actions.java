@@ -227,6 +227,7 @@ public class Actions
 		registerAction(new ActionManageFactorTags(mainWindow));
 		registerAction(new ActionCreateNamedTaggedObjectSet(mainWindow));
 		registerAction(new ActionInvokeDashboard(mainWindow));
+		registerAction(new ActionLinkToMiradiShare(mainWindow));
 
 		registerAction(new ActionCopyDiagramFactorFormat(mainWindow));
 		registerAction(new ActionPasteDiagramFactorFormat(mainWindow));

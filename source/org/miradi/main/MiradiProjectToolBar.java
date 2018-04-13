@@ -26,14 +26,7 @@ import javax.swing.Action;
 import javax.swing.Box;
 import javax.swing.JComponent;
 
-import org.miradi.actions.ActionHelpButtonExamples;
-import org.miradi.actions.ActionHelpButtonMoreInfo;
-import org.miradi.actions.ActionHelpButtonWorkshop;
-import org.miradi.actions.ActionInvokeDashboard;
-import org.miradi.actions.ActionRedo;
-import org.miradi.actions.ActionToggleSpellChecker;
-import org.miradi.actions.ActionUndo;
-import org.miradi.actions.Actions;
+import org.miradi.actions.*;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.utils.ToolBarButton;
 import org.miradi.views.umbrella.HelpButtonData;
@@ -64,6 +57,10 @@ public class MiradiProjectToolBar extends MiradiToolBar
 		}
 		
 		add(Box.createHorizontalGlue());
+
+		add(new MiradiShareButton(actions.get(ActionLinkToMiradiShare.class)));
+
+		addSeparator();
 
 		add(new DashboardButton(actions.get(ActionInvokeDashboard.class)));
 		add(new MoreInfoButton(actions.get(ActionHelpButtonMoreInfo.class)));
@@ -104,6 +101,14 @@ abstract class HelpButton extends PanelButton
 	public Dimension getMaximumSize()
 	{
 		return super.getPreferredSize();
+	}
+}
+
+class MiradiShareButton extends HelpButton
+{
+	public MiradiShareButton(Action action)
+	{
+		super(action, AppPreferences.getWizardBackgroundColor());
 	}
 }
 

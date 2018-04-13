@@ -73,14 +73,14 @@ public class MiradiShareBasicsPanel extends ObjectDataInputPanel
 	{
 		String html = Translation.getHtmlContent("MiradiShareProjectHelpUpperText.html");
 
-		return  EAM.substituteSingleString(html, getMiradiShareProjectUrl());
+		return  EAM.substituteSingleString(html, getMiradiShareProgramUrl());
 	}
 
 	private String getMiddleHelpContent() throws Exception
 	{
 		String html = Translation.getHtmlContent("MiradiShareProjectHelpMiddleText.html");
 
-		return  EAM.substituteSingleString(html, getMiradiShareProjectUrl());
+		return  EAM.substituteSingleString(html, getMiradiShareProgramUrl());
 	}
 
 	private String getLowerHelpContent() throws Exception
@@ -88,7 +88,7 @@ public class MiradiShareBasicsPanel extends ObjectDataInputPanel
 		return Translation.getHtmlContent("MiradiShareProjectHelpLowerText.html");
 	}
 
-	private String getMiradiShareProjectUrl()
+	private String getMiradiShareProgramUrl()
 	{
 		ORef miradiShareProjectDataRef = getProject().getSingletonObjectRef(MiradiShareProjectDataSchema.getObjectType());
 		MiradiShareProjectData miradiShareProjectData = MiradiShareProjectData.find(getProject(), miradiShareProjectDataRef);
