@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-13 01:03-0700\n"
+"POT-Creation-Date: 2018-04-19 07:18-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -1140,7 +1140,7 @@ msgstr ""
 "\". Ако характеристиката се намира извън този допустим диапазон, тя се "
 "дефинира като \"деградирала\" характеристика."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:715
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:720
 msgid "Accounting"
 msgstr ""
 
@@ -3012,7 +3012,7 @@ msgstr ""
 msgid "Choose the colors that look best on your system:"
 msgstr "Избор на най-подходящия за вашата система цвят:"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:701
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:706
 msgid "Classifications"
 msgstr ""
 
@@ -3340,7 +3340,7 @@ msgstr "Тъмно червен"
 msgid "Dark Yellow"
 msgstr "Тъмно жълт"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/dashboard/DashboardDialog.java:36
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/dashboard/DashboardDialog.java:37
 msgid "Dashboard"
 msgstr "Табло"
 
@@ -4156,7 +4156,7 @@ msgstr "Сладководни езера"
 msgid "Full Conceptual Model"
 msgstr "Цялостен концептуален модел"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:62
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:63
 msgid "Full Report"
 msgstr "Пълен доклад"
 
@@ -4325,7 +4325,7 @@ msgstr ""
 msgid "Home Folder Not Found"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:102
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:103
 msgid "How Reports Work"
 msgstr "Как действат докладите"
 
@@ -6122,7 +6122,7 @@ msgstr "План за съхраняване на данни"
 msgid "Plan project lifespan and exit strategy"
 msgstr "Планиране на проектна продължителност и exit strategy"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/SummaryPlanningPanel.java:59
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/PlanningPanel.java:59
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:108
 msgid "Planning"
 msgstr "Планиране"
@@ -6277,7 +6277,7 @@ msgstr "Напредък"
 msgid "Progress Percents"
 msgstr "Проценти напредък"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:825
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/AbstractObjectDataInputPanel.java:830
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:166
 msgid "Progress Report"
 msgstr "Доклад за напредък"
@@ -6618,7 +6618,7 @@ msgstr "Рубла (Русия)"
 msgid "Run XSL Report"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:122
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:123
 msgid "Run..."
 msgstr "Стартирай..."
 
@@ -6775,7 +6775,7 @@ msgstr "Изберете междинните цели, към които се �
 msgid "Select the Objectives which this Strategy helps to achieve"
 msgstr "Изберете междинните цели, към които се стреми тази стратегия"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:79
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:80
 msgid ""
 "Select the report that you want to run. Miradi will then prompt you to save "
 "the report as a Rich Text Format (RTF) file. Once you have created this "
@@ -7213,7 +7213,7 @@ msgstr "Силно нарастване"
 msgid "Summary"
 msgstr "Обобщение"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:63
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:64
 msgid "Summary Report"
 msgstr "Доклад за обобщение"
 
@@ -8176,7 +8176,7 @@ msgstr "Tab|Жизнеспособност"
 msgid "Tab|Work Plan"
 msgstr "Tab|Работен план"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/xslTemplate/XslTemplateManagmentPanel.java:49
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/xslTemplate/XslTemplateManagementPanel.java:49
 msgid "Tab|XSL Templates"
 msgstr ""
 
@@ -8521,6 +8521,12 @@ msgid ""
 "temporary container. In the Work Plan view, use the Move Activity command "
 "(under the Create… button) to move monitoring activities to their proper "
 "strategies."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/fieldComponents/RemovedFeatureLabel.java:38
+msgid ""
+"This feature is scheduled to be removed in the next release (click for "
+"details)."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/AbstractProjectImporter.java:248
@@ -13548,6 +13554,24 @@ msgid ""
 "that threat-target pair are ignored but not lost (unchecking \"N/A\" would "
 "cause any prior ratings to reappear and be included in the summary roll-"
 "up).             </p>        </div>    </body></html>"
+msgstr ""
+
+msgid ""
+"html|/resources/FeaturesToBeRemovedInNextRelease.html|<html><head></"
+"head><body><div>    <h3>Features to be Removed in Next Release</h3>    "
+"<p>        The following features are scheduled to be removed in the next "
+"release.  Please contact <A href=\"mailto:feedback@miradi.org"
+"\">feedback@miradi.org</A> if you have questions or concerns about the "
+"removal of a feature.     </p>    <p>        <b>Summary view / Planning:</b> "
+"The content of this tab will continue to be available (1) in the Settings "
+"tab of the Work Plan view and in the Planning tab of Miradi Preferences "
+"(select Edit / Preferences from the main menu).     </p>    <p>        "
+"<b>Summary view / TNC, WWF, WCS, RARE, FOS:</b> These tabs store legacy data "
+"that is presumed to be no longer necessary.     </p>    <p>        "
+"<b>Reports view / Standard Reports:</b> The content in the standard reports "
+"will continue to be available as selections for report templates created at "
+"the Report Templates tab.     </p>    <p>        <b>Dashboard:</b> This "
+"feature is presumed to be unused.     </p></div></body></html>"
 msgstr ""
 
 msgid ""
