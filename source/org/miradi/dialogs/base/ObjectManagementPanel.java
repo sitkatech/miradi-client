@@ -134,7 +134,12 @@ abstract public class ObjectManagementPanel extends VerticalSplitPanel implement
 	{
 		return false;
 	}
-	
+
+	public boolean isFeatureToBeRemoved()
+	{
+		return false;
+	}
+
 	public BufferedImage getImage(int scale) throws Exception
 	{
 		return null;

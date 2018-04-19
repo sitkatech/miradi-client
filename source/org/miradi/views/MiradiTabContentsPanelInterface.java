@@ -28,7 +28,7 @@ import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.rtf.RtfWriter;
 import org.miradi.utils.TableExporter;
 
-public interface MiradiTabContentsPanelInterface
+public interface MiradiTabContentsPanelInterface extends MiradiFeatureInterface
 {
 	public String getTabName();
 	public Icon getIcon();

@@ -194,6 +194,11 @@ abstract public class DiagramPanel extends DisposablePanelWithDescription implem
 		return getTabContentsComponent() != null;
 	}
 
+	public boolean isFeatureToBeRemoved()
+	{
+		return false;
+	}
+
 	public TableExporter getTableExporter()
 	{
 		return null;

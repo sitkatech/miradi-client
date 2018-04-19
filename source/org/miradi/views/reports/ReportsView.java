@@ -31,7 +31,7 @@ import org.miradi.actions.ActionRunXslTemplate;
 import org.miradi.dialogs.base.ObjectPoolManagementPanel;
 import org.miradi.dialogs.reportTemplate.ReportTemplateManagementPanel;
 import org.miradi.dialogs.reportTemplate.StandardReportPanel;
-import org.miradi.dialogs.xslTemplate.XslTemplateManagmentPanel;
+import org.miradi.dialogs.xslTemplate.XslTemplateManagementPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.main.MiradiToolBar;
@@ -86,7 +86,7 @@ public class ReportsView extends TabbedView
 	{
 		reportTemplateManagementPanel = new ReportTemplateManagementPanel(getMainWindow());
 		standardReportPanel = new StandardReportPanel(getMainWindow());
-		xslTemplateManagmentPanel = new XslTemplateManagmentPanel(getMainWindow()); 
+		xslTemplateManagmentPanel = new XslTemplateManagementPanel(getMainWindow());
 
 		addTab(EAM.text("Standard Reports"), new MiradiScrollPane(standardReportPanel));
 		addNonScrollingTab(reportTemplateManagementPanel);

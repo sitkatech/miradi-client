@@ -28,8 +28,17 @@ public class MiradiScrollPane extends FastScrollPane
 	public MiradiScrollPane(Component view)
 	{
 		super(view);
-		
+
+		viewComponent = view;
+
 		setBackground(AppPreferences.getDataPanelBackgroundColor());
 		getViewport().setBackground(AppPreferences.getDataPanelBackgroundColor());
-	}	
+	}
+
+	public Component getViewComponent()
+	{
+		return viewComponent;
+	}
+
+	private Component viewComponent;
 }

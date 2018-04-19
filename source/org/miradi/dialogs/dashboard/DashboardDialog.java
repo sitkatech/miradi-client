@@ -20,11 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
-import java.awt.Dimension;
-import java.awt.Point;
+import java.awt.*;
+import java.util.Vector;
 
 import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.ModalDialogWithClose;
+import org.miradi.dialogs.fieldComponents.RemovedFeatureLabel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -57,7 +58,18 @@ public class DashboardDialog extends ModalDialogWithClose
 		setSize(getSavedDialogSize());
 		setLocation(getSavedDialogPosition());
 	}
-	
+
+	@Override
+	protected Vector<Component> getButtonBarComponents()
+	{
+		Vector<Component> defaultButtonBarComponents = super.getButtonBarComponents();
+
+		RemovedFeatureLabel removedFeatureLabel = new RemovedFeatureLabel();
+		defaultButtonBarComponents.add(0, removedFeatureLabel);
+
+		return defaultButtonBarComponents;
+	}
+
 	private Dimension getSavedDialogSize()
 	{
 		AppPreferences preferences = getMainWindow().getAppPreferences();

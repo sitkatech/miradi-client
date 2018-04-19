@@ -27,9 +27,9 @@ import org.miradi.icons.XslTemplateIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class XslTemplateManagmentPanel extends ObjectPoolManagementPanel
+public class XslTemplateManagementPanel extends ObjectPoolManagementPanel
 {
-	public XslTemplateManagmentPanel(MainWindow mainWindowToUse) throws Exception
+	public XslTemplateManagementPanel(MainWindow mainWindowToUse) throws Exception
 	{
 		super(mainWindowToUse, new XslTemplatePoolTablePanel(mainWindowToUse), new XslTemplatePropertiesPanel(mainWindowToUse.getProject()));
 	}

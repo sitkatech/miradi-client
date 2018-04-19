@@ -115,6 +115,11 @@ class OrganizationalTabPanel extends DisposablePanelWithDescription implements M
 		return wrappedPanel.isImageAvailable();
 	}
 
+	public boolean isFeatureToBeRemoved()
+	{
+		return false;
+	}
+
 	public boolean isPrintable()
 	{
 		return wrappedPanel.isPrintable();

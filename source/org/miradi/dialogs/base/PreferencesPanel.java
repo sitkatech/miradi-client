@@ -55,7 +55,7 @@ import org.miradi.questions.TableRowHeightModeQuestion;
 import org.miradi.utils.FillerLabel;
 import org.miradi.utils.HyperlinkLabel;
 import org.miradi.views.ProjectSettingsPanel;
-import org.miradi.views.summary.SummaryPlanningPanel;
+import org.miradi.views.summary.PlanningPanel;
 
 import com.jhlabs.awt.BasicGridLayout;
 
@@ -79,8 +79,8 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		disposePanel(diagramProjectPreferencesPanel);
 		diagramProjectPreferencesPanel = null;
 		
-		disposePanel(summaryPlanningPanel);
-		summaryPlanningPanel = null;
+		disposePanel(planningPanel);
+		planningPanel = null;
 		
 		disposePanel(projectSettingsPanel);
 		projectSettingsPanel = null;
@@ -103,9 +103,9 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 			tabPane.addTab(EAM.text("Systemwide"), createSystemWideTab());
 			tabPane.addTab(EAM.text("Diagram"), createDiagramTab());
 
-			summaryPlanningPanel = new SummaryPlanningPanel(getMainWindow(), getProject().getMetadata().getRef());
+			planningPanel = new PlanningPanel(getMainWindow(), getProject().getMetadata().getRef());
 			tabPane.addTab(EAM.text("Threat Ratings"), createThreatRatingTab());
-			tabPane.addTab(EAM.text("Planning"), summaryPlanningPanel);
+			tabPane.addTab(EAM.text("Planning"), planningPanel);
 			
 			projectSettingsPanel = new ProjectSettingsPanel(getProject());
 			tabPane.addTab(EAM.text("Project Settings"), projectSettingsPanel);
@@ -429,7 +429,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	private MainWindow mainWindow;
 	private DiagramProjectPreferencesPanel diagramProjectPreferencesPanel;
 	private ThreatRatingPreferencesPanel threatRatingPreferencesPanel;
-	private SummaryPlanningPanel summaryPlanningPanel;
+	private PlanningPanel planningPanel;
 	private ProjectSettingsPanel projectSettingsPanel;
 	private NeverShowAgainPanel neverShowAgainPanel;
 	

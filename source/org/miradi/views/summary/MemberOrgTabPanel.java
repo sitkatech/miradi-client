@@ -94,7 +94,12 @@ public class MemberOrgTabPanel extends DisposablePanelWithDescription implements
 	{
 		return dataPanel.isImageAvailable();
 	}
-	
+
+	public boolean isFeatureToBeRemoved()
+	{
+		return true;
+	}
+
 	public JComponent getPrintableComponent() throws Exception
 	{
 		return dataPanel.getPrintableComponent();

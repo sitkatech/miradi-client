@@ -202,6 +202,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return false;
 	}
 
+	public boolean isFeatureToBeRemoved()
+	{
+		return false;
+	}
+
 	public BufferedImage getImage(int scale)
 	{
 		return null;

@@ -29,14 +29,22 @@ import org.miradi.main.EAM;
 
 public class ClickablePanelTitleLabel extends PanelTitleLabel
 {
-	public ClickablePanelTitleLabel(Icon icon, String diaglogHtmlFileNameToUse)
+	public ClickablePanelTitleLabel(String text, Icon icon, String dialogHtmlFileNameToUse)
 	{
-		super(icon);
+		super(text, icon);
 		
-		diaglogHtmlFileName = diaglogHtmlFileNameToUse;
+		dialogHtmlFileName = dialogHtmlFileNameToUse;
 		addMouseListener(new MouseClickedHandler());
 	}
 	
+	public ClickablePanelTitleLabel(Icon icon, String dialogHtmlFileNameToUse)
+	{
+		super(icon);
+
+		dialogHtmlFileName = dialogHtmlFileNameToUse;
+		addMouseListener(new MouseClickedHandler());
+	}
+
 	private class MouseClickedHandler extends MouseAdapter
 	{
 		@Override
@@ -46,7 +54,7 @@ public class ClickablePanelTitleLabel extends PanelTitleLabel
 			
 			try
 			{
-				EAM.showHtmlInfoMessageOkDialog(diaglogHtmlFileName);
+				EAM.showHtmlInfoMessageOkDialog(dialogHtmlFileName);
 			}
 			catch (Exception e)
 			{
@@ -55,5 +63,5 @@ public class ClickablePanelTitleLabel extends PanelTitleLabel
 		}
 	}
 	
-	private String diaglogHtmlFileName;
+	private String dialogHtmlFileName;
 }

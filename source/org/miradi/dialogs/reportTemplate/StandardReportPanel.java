@@ -41,10 +41,11 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.DefaultHyperlinkHandler;
+import org.miradi.views.MiradiFeatureInterface;
 import org.miradi.views.reports.doers.RunReportTemplateDoer;
 import org.miradi.wizard.MiradiHtmlViewer;
 
-public class StandardReportPanel extends TwoColumnPanel
+public class StandardReportPanel extends TwoColumnPanel implements MiradiFeatureInterface
 {
 	public StandardReportPanel(MainWindow mainWindowToUse)
 	{
@@ -167,6 +168,12 @@ public class StandardReportPanel extends TwoColumnPanel
 	private MainWindow getMainWindow()
 	{
 		return mainWindow;
+	}
+
+	@Override
+	public boolean isFeatureToBeRemoved()
+	{
+		return true;
 	}
 
 	class ActionHandler implements ActionListener

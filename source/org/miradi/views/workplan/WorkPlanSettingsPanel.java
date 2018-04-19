@@ -22,9 +22,9 @@ package org.miradi.views.workplan;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.views.summary.SummaryPlanningPanel;
+import org.miradi.views.summary.PlanningPanel;
 
-public class WorkPlanSettingsPanel extends SummaryPlanningPanel
+public class WorkPlanSettingsPanel extends PlanningPanel
 {
 	public WorkPlanSettingsPanel(MainWindow mainWindowToUse, ORef orefToUse) throws Exception
 	{

@@ -19,18 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.main;
 
-import java.awt.Color;
-import java.awt.Dimension;
-
-import javax.swing.Action;
-import javax.swing.Box;
-import javax.swing.JComponent;
-
 import org.miradi.actions.*;
 import org.miradi.dialogs.fieldComponents.PanelButton;
+import org.miradi.dialogs.fieldComponents.RemovedFeatureLabel;
 import org.miradi.utils.ToolBarButton;
 import org.miradi.views.umbrella.HelpButtonData;
 import org.miradi.views.umbrella.ViewSpecificHelpButtonData;
+
+import javax.swing.*;
+import java.awt.*;
 
 public class MiradiProjectToolBar extends MiradiToolBar
 {
@@ -55,7 +52,12 @@ public class MiradiProjectToolBar extends MiradiToolBar
 			for(int button = 0; button < customButtons[segment].length; ++button)
 				add(customButtons[segment][button]);
 		}
-		
+
+		addSeparator();
+		removedFeatureLabel = new RemovedFeatureLabel();
+		removedFeatureLabel.updateVisibility();
+		add(removedFeatureLabel);
+
 		add(Box.createHorizontalGlue());
 
 		add(new MiradiShareButton(actions.get(ActionLinkToMiradiShare.class)));
@@ -69,13 +71,15 @@ public class MiradiProjectToolBar extends MiradiToolBar
 		
 		updateButtonStates();
 	}
-	
+
 	@Override
 	public void updateButtonStates()
 	{
 		super.updateButtonStates();
 		boolean isSpellCheckerActive = getMainWindow().isSpellCheckerActive();
 		toggleSpellCheckButton.setSelected(isSpellCheckerActive);
+
+		removedFeatureLabel.updateVisibility();
 	}
 	
 	private MainWindow getMainWindow()
@@ -85,6 +89,7 @@ public class MiradiProjectToolBar extends MiradiToolBar
 	}
 
 	private ToolBarButton toggleSpellCheckButton;
+	private RemovedFeatureLabel removedFeatureLabel;
 }
 
 abstract class HelpButton extends PanelButton
