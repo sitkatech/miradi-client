@@ -1310,6 +1310,16 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		return preferences.getRowHeightMode();
 	}
 
+	public void setColorScheme(String colorScheme)
+	{
+		preferences.setColorScheme(colorScheme);
+	}
+
+	public String getColorScheme()
+	{
+		return preferences.getColorScheme();
+	}
+
 	public boolean isRowHeightModeManual()
 	{
 		return !isRowHeightModeAutomatic();
@@ -1320,7 +1330,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		return getRowHeightModeString().equals(TableRowHeightModeQuestion.AUTOMATIC_MODE_CODE);
 	}
 
-	public void lostOwnership(Clipboard clipboard, Transferable contents) 
+	public void lostOwnership(Clipboard clipboard, Transferable contents)
 	{
 	}
 	

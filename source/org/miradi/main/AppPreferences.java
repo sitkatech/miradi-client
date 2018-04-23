@@ -119,7 +119,6 @@ public class AppPreferences
 		return mainWindowYPosition;
 	}
 
-	
 	public int getMainWindowWidth()
 	{
 		return mainWindowWidth;
@@ -228,7 +227,9 @@ public class AppPreferences
 			return intermediateResultColor;
 		if(tag.equals(TAG_COLOR_THREAT_REDUCTION_RESULT))
 			return threatReductionResultColor;
-			
+		if(tag.equals(TAG_COLOR_INDICATOR))
+			return indicatorColor;
+
 		throw new RuntimeException(tag);
 	}
 	
@@ -260,6 +261,8 @@ public class AppPreferences
 			intermediateResultColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_THREAT_REDUCTION_RESULT))
 			threatReductionResultColor = colorToUse;
+		else if(tag.equals(TAG_COLOR_INDICATOR))
+			indicatorColor = colorToUse;
 		else
 			throw new RuntimeException(tag);
 	}
@@ -365,7 +368,17 @@ public class AppPreferences
 	{
 		return rowHeightModeCode;
 	}
-	
+
+	public void setColorScheme(String colorScheme)
+	{
+		colorSchemeCode = colorScheme;
+	}
+
+	public String getColorScheme()
+	{
+		return colorSchemeCode;
+	}
+
 	public void setDiagramImageExportScalePercent(int newPercent)
 	{
 		diagramImageExportScalePercent = newPercent;
@@ -379,6 +392,9 @@ public class AppPreferences
 	public EnhancedJsonObject toJson()
 	{
 		EnhancedJsonObject json = new EnhancedJsonObject();
+
+		json.put(TAG_COLOR_SCHEME, colorSchemeCode);
+
 		json.put(TAG_COLOR_STRATEGY, strategyColor);
 		json.put(TAG_COLOR_ACTIVITIES, activitiesColor);
 		json.put(TAG_COLOR_MONITORING_ACTIVITIES, monitoringActivitiesColor);
@@ -392,6 +408,8 @@ public class AppPreferences
 		json.put(TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX, humanWelfareScopeColor);
 		json.put(TAG_COLOR_INTERMEDIATE_RESULT, intermediateResultColor);
 		json.put(TAG_COLOR_THREAT_REDUCTION_RESULT, threatReductionResultColor);
+		json.put(TAG_COLOR_INDICATOR, indicatorColor);
+
 		json.put(TAG_IS_MAXIMIZED, isMaximized);
 		json.put(TAG_MAIN_WINDOW_HEIGHT, mainWindowHeight);
 		json.put(TAG_MAIN_WINDOW_WIDTH, mainWindowWidth);
@@ -451,6 +469,8 @@ public class AppPreferences
 	
 	public void loadFrom(EnhancedJsonObject json) throws Exception
 	{
+		colorSchemeCode = json.optString(TAG_COLOR_SCHEME);
+
 		strategyColor = json.optColor(TAG_COLOR_STRATEGY, DiagramConstants.DEFAULT_STRATEGY_COLOR);
 		activitiesColor = json.optColor(TAG_COLOR_ACTIVITIES, DiagramConstants.DEFAULT_ACTIVITIES_COLOR);
 		monitoringActivitiesColor = json.optColor(TAG_COLOR_MONITORING_ACTIVITIES, DiagramConstants.DEFAULT_MONITORING_ACTIVITIES_COLOR);
@@ -460,11 +480,12 @@ public class AppPreferences
 		biophysicalResultColor = json.optColor(TAG_COLOR_BIOPHYSICAL_RESULT, DiagramConstants.DEFAULT_BIOPHYSICAL_RESULT_COLOR);
 		targetColor = json.optColor(TAG_COLOR_TARGET, DiagramConstants.DEFAULT_TARGET_COLOR);
 		humanWelfareTargetColor = json.optColor(TAG_COLOR_HUMAN_WELFARE_TARGET, DiagramConstants.DEFAULT_HUMAN_WELFARE_TARGET_COLOR);
-		scopeColor = json.optColor(TAG_COLOR_SCOPE_BOX, DiagramConstants.DEFAULT_SCOPE_COLOR);
+		scopeColor = json.optColor(TAG_COLOR_SCOPE_BOX, DiagramConstants.DEFAULT_BIODIVERSITY_TARGET_SCOPE_COLOR);
 		humanWelfareScopeColor = json.optColor(TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX, DiagramConstants.DEFAULT_HUMAN_WELFARE_SCOPE_COLOR);
 		intermediateResultColor = json.optColor(TAG_COLOR_INTERMEDIATE_RESULT, DiagramConstants.DEFAULT_INTERMEDIATE_RESULT_COLOR);
 		threatReductionResultColor = json.optColor(TAG_COLOR_THREAT_REDUCTION_RESULT, DiagramConstants.DEFAULT_THREAT_REDUCTION_RESULT_COLOR);
-		
+		indicatorColor = json.optColor(TAG_COLOR_INDICATOR, DiagramConstants.DEFAULT_INDICATOR_COLOR);
+
 		isGridVisible = json.optBoolean(TAG_GRID_VISIBLE, DEFAULT_GRID_VISIBILITY_VALUE);
 		isMaximized = json.optBoolean(TAG_IS_MAXIMIZED, DEFAULT_IS_MAXIMIZED_VALUE);
 		mainWindowHeight = json.optInt(TAG_MAIN_WINDOW_HEIGHT, DEFAULT_MAIN_WINDOW_HEIGHT);
@@ -534,10 +555,12 @@ public class AppPreferences
 	{
 		wizardTitleBackgroundColor = colorToUse;
 	}
+
 	public static Color getWizardTitleBackground()
 	{
 		return Color.decode(getWizardTitleBackgroundColorForCss());
 	}
+
 	public static String getWizardTitleBackgroundColorForCss()
 	{
 		return wizardTitleBackgroundColor;
@@ -552,6 +575,7 @@ public class AppPreferences
 	{
 		return Color.decode(getWizardBackgroundColorForCss());
 	}
+
 	public static String getWizardBackgroundColorForCss()
 	{
 		return wizardBackgroundColor;
@@ -576,6 +600,7 @@ public class AppPreferences
 	{
 		darkPanelBackgroundColor = Color.decode(colorToUse);
 	}
+
 	public static Color getDarkPanelBackgroundColor()
 	{
 		return darkPanelBackgroundColor;
@@ -642,6 +667,7 @@ public class AppPreferences
 		return EXPENSE_AMOUNT_ASSIGNMENT_BACKGROUND;
 	}
 
+	@SuppressWarnings({"Duplicates"})
 	public static Color getExpenseAmountBackgroundColor(DateUnit dateUnit)
 	{
 		if(dateUnit.isProjectTotal())
@@ -657,7 +683,8 @@ public class AppPreferences
 		EAM.logWarning("Unknown work units date unit type: " + dateUnit);
 		return WORK_UNITS_TOTAL_BACKGROUND;
 	}
-	
+
+	@SuppressWarnings({"Duplicates"})
 	public static Color getBudgetDetailsBackgroundColor(DateUnit dateUnit)
 	{
 		if(dateUnit.isProjectTotal())
@@ -691,6 +718,8 @@ public class AppPreferences
 		return notifyDialogsToNeverShowAgain.contains(dialogCode);
 	}
 
+	public static final String TAG_COLOR_SCHEME = "ColorScheme";
+
 	public static final String TAG_COLOR_STRATEGY = "ColorIntervention";
 	public static final String TAG_COLOR_ACTIVITIES = "ColorActivities";
 	public static final String TAG_COLOR_MONITORING_ACTIVITIES = "ColorMonitoringActivities";
@@ -704,6 +733,8 @@ public class AppPreferences
 	public static final String TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX = "ColorHumanWelfareScope";
 	public static final String TAG_COLOR_INTERMEDIATE_RESULT = "ColorIntermediateResult";
 	public static final String TAG_COLOR_THREAT_REDUCTION_RESULT = "ColorThreatReductionResult";
+	public static final String TAG_COLOR_INDICATOR = "ColorIndicator";
+
 	public static final String TAG_IS_MAXIMIZED = "IsMaximized";
 	public static final String TAG_MAIN_WINDOW_HEIGHT = "MainWindowHeight";
 	public static final String TAG_MAIN_WINDOW_WIDTH = "MainWindowWidth";
@@ -747,12 +778,9 @@ public class AppPreferences
 
 	private static String controlPanelBackgroundColorForCss = "#E8DA97";
 
-	private static final Color LIGHT_PURPLE = new Color(204,153,255);
-	public static final Color INDICATOR_COLOR = LIGHT_PURPLE;
-	
-	public static final Color RESOURCE_TABLE_BACKGROUND = new Color(0x99, 0xcc, 0xff);
-	public static final Color BUDGET_TABLE_BACKGROUND = new Color(0xcc, 0xff, 0xcc);
-	public static final Color MEASUREMENT_COLOR_BACKGROUND = new Color(0xff, 0xf0, 0xb6);
+	public static final Color RESOURCE_TABLE_BACKGROUND	=				new Color(0x99, 0xcc, 0xff);
+	public static final Color BUDGET_TABLE_BACKGROUND =					new Color(0xcc, 0xff, 0xcc);
+	public static final Color MEASUREMENT_COLOR_BACKGROUND =			new Color(0xff, 0xf0, 0xb6);
 
 	private static final Color WORK_UNITS_TOTAL_BACKGROUND =   		    new Color(0xff, 0xCC, 0x55);
 	private static final Color WORK_UNITS_YEAR_BACKGROUND =    		    new Color(0xff, 0xDD, 0x66);
@@ -784,6 +812,8 @@ public class AppPreferences
 	private static final int DEFAULT_MAIN_WINDOW_X_POSITION = 100;
 	private static final int DEFAULT_MAIN_WINDOW_Y_POSITION = 100;
 
+	private String colorSchemeCode;
+
 	public Color strategyColor;
 	public Color activitiesColor;
 	public Color monitoringActivitiesColor;
@@ -797,7 +827,8 @@ public class AppPreferences
 	public Color humanWelfareScopeColor;
 	public Color intermediateResultColor;
 	public Color threatReductionResultColor;
-	
+	public Color indicatorColor;
+
 	private boolean isGridVisible; 
 	private boolean isCellRatingsVisible;
 	private boolean isMaximized;

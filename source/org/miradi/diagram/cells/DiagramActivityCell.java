@@ -21,7 +21,8 @@ package org.miradi.diagram.cells;
 
 import java.awt.Color;
 
-import org.miradi.diagram.DiagramConstants;
+import org.miradi.main.AppPreferences;
+import org.miradi.main.EAM;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Task;
 
@@ -36,8 +37,8 @@ public class DiagramActivityCell extends FactorCell
 	public Color getColor()
 	{
 		if(isMonitoringActivity())
-			return DiagramConstants.DEFAULT_MONITORING_ACTIVITIES_COLOR;
+			return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_MONITORING_ACTIVITIES);
 
-		return DiagramConstants.DEFAULT_ACTIVITIES_COLOR;
+		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_ACTIVITIES);
 	}
 }

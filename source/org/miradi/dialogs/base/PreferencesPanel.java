@@ -46,12 +46,7 @@ import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.FontFamiliyQuestion;
-import org.miradi.questions.FontSizeQuestion;
-import org.miradi.questions.StaticQuestionManager;
-import org.miradi.questions.TableRowHeightModeQuestion;
+import org.miradi.questions.*;
 import org.miradi.utils.FillerLabel;
 import org.miradi.utils.HyperlinkLabel;
 import org.miradi.views.ProjectSettingsPanel;
@@ -70,7 +65,8 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		
 		setBackground(AppPreferences.getDarkPanelBackgroundColor());
 		setBorder(BorderFactory.createEmptyBorder(0,3,3,3));
-		
+
+		isUpdatingColorScheme= false;
 	}
 
 	@Override
@@ -245,6 +241,10 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		
 		diagramTab.add(new UiLabel(" "));
 		diagramTab.add(new PanelTitleLabel(EAM.text("Choose the colors that look best on your system:")));
+
+		String colorScheme = getMainWindow().getColorScheme();
+		colorSchemeCombo = createAndAddLabelAndCombo(diagramSystemPreferencesTab, EAM.text("Color Scheme"), StaticQuestionManager.getQuestion(ColorSchemeQuestion.class), colorScheme);
+
 		interventionDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Strategy (Yellow)"), DiagramConstants.strategyColorChoices, AppPreferences.TAG_COLOR_STRATEGY);
 		directThreatDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Direct Threat (Pink)"), DiagramConstants.directThreatColorChoices, AppPreferences.TAG_COLOR_DIRECT_THREAT);
 		biophysicalFactorDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Biophysical Factor (Olive)"), DiagramConstants.biophysicalFactorColorChoices, AppPreferences.TAG_COLOR_BIOPHYSICAL_FACTOR);
@@ -257,7 +257,6 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		biophysicalResultDropdown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Biophysical Result (Lavender Blue)"), DiagramConstants.biophysicalResultColorChoices, AppPreferences.TAG_COLOR_BIOPHYSICAL_RESULT);
 		threatReductionResultDropDown = createAndAddColorDropdown(diagramSystemPreferencesTab, EAM.text("Threat Reduction Result (Light Purple)"), DiagramConstants.threatReductionResultChoices, AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT);
 
-		
 		diagramTab.add(new UiLabel(" "));
 		diagramTab.add(new UiLabel(" "));
 		
@@ -303,6 +302,9 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 
 	private void update()
 	{
+		String colorScheme = getSelectedItemQuestionBox(colorSchemeCombo);
+		getMainWindow().setColorScheme(colorScheme);
+
 		setColorPreference(interventionDropdown, AppPreferences.TAG_COLOR_STRATEGY);
 		setColorPreference(indirectFactorDropdown, AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR);
 		setColorPreference(directThreatDropdown, AppPreferences.TAG_COLOR_DIRECT_THREAT);
@@ -314,7 +316,14 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		setColorPreference(humanWelfareScopeDropDown, AppPreferences.TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX);
 		setColorPreference(intermediateResultDropDown, AppPreferences.TAG_COLOR_INTERMEDIATE_RESULT);
 		setColorPreference(threatReductionResultDropDown, AppPreferences.TAG_COLOR_THREAT_REDUCTION_RESULT);
-		
+
+		// set those that don't have an exposed preference choice
+		getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_ACTIVITIES, (Color) interventionDropdown.getSelectedItem());
+		if (isLegacyColorScheme())
+			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_INDICATOR, DiagramConstants.LEGACY_DEFAULT_INDICATOR_COLOR);
+		else
+			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_INDICATOR, DiagramConstants.DEFAULT_INDICATOR_COLOR);
+
 		getMainWindow().setBooleanPreference(AppPreferences.TAG_GRID_VISIBLE, gridVisibleCheckBox.isSelected());
 		
 		if(cellRatingsVisibleCheckBox != null)
@@ -342,10 +351,10 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		return Integer.parseInt(panelFontSizeValue);
 	}
 
-	private void setColorPreference(UiComboBox colorDropDown, String tagColorStrategy)
+	private void setColorPreference(UiComboBox colorDropDown, String tagColor)
 	{
-		Color interventionColor = (Color)colorDropDown.getSelectedItem();
-		getMainWindow().setColorPreference(tagColorStrategy, interventionColor);
+		Color color = (Color)colorDropDown.getSelectedItem();
+		getMainWindow().setColorPreference(tagColor, color);
 	}
 	
 	private String getSelectedItemQuestionBox(UiComboBox combo)
@@ -413,9 +422,65 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 
 	public void actionPerformed(ActionEvent e)
 	{
-		update();
+		if (isUpdatingColorScheme)
+			return;
+
+		boolean isColorSchemeChange = e.getSource() == colorSchemeCombo;
+		if (isColorSchemeChange)
+		{
+			isUpdatingColorScheme = true;
+			setColorScheme();
+			isUpdatingColorScheme = false;
+		}
+
+		if (!isUpdatingColorScheme)
+			update();
 	}
-	
+
+	private boolean isLegacyColorScheme()
+	{
+		String colorScheme = getSelectedItemQuestionBox(colorSchemeCombo);
+		return colorScheme.equalsIgnoreCase(ColorSchemeQuestion.LEGACY_COLOR_SCHEME);
+	}
+
+	private void setColorScheme()
+	{
+		if (isLegacyColorScheme())
+			setDefaultColorScheme();
+		else
+			setNewColorScheme();
+	}
+
+	private void setDefaultColorScheme()
+	{
+		interventionDropdown.setSelectedItem(DiagramConstants.LEGACY_DEFAULT_STRATEGY_COLOR);
+		directThreatDropdown.setSelectedItem(DiagramConstants.LEGACY_DEFAULT_DIRECT_THREAT_COLOR);
+		biophysicalFactorDropdown.setSelectedItem(DiagramConstants.LEGACY_DEFAULT_BIOPHYSICAL_FACTOR_COLOR);
+		biophysicalResultDropdown.setSelectedItem(DiagramConstants.LEGACY_DEFAULT_BIOPHYSICAL_RESULT_COLOR);
+		indirectFactorDropdown.setSelectedItem(DiagramConstants.LEGACY_DEFAULT_CONTRIBUTING_FACTOR_COLOR);
+		biodiversityTargetDropdown.setSelectedItem(DiagramConstants.LEGACY_DEFAULT_TARGET_COLOR);
+		humanWelfareTargetDropdown.setSelectedItem(DiagramConstants.LEGACY_DEFAULT_HUMAN_WELFARE_TARGET_COLOR);
+		biodiversityTargetScopeDropdown.setSelectedItem(DiagramConstants.LEGACY_DEFAULT_BIODIVERSITY_TARGET_SCOPE_COLOR);
+		humanWelfareScopeDropDown.setSelectedItem(DiagramConstants.LEGACY_DEFAULT_HUMAN_WELFARE_SCOPE_COLOR);
+		intermediateResultDropDown.setSelectedItem(DiagramConstants.LEGACY_DEFAULT_INTERMEDIATE_RESULT_COLOR);
+		threatReductionResultDropDown.setSelectedItem(DiagramConstants.LEGACY_DEFAULT_THREAT_REDUCTION_RESULT_COLOR);
+	}
+
+	private void setNewColorScheme()
+	{
+		interventionDropdown.setSelectedItem(DiagramConstants.DEFAULT_STRATEGY_COLOR);
+		directThreatDropdown.setSelectedItem(DiagramConstants.DEFAULT_DIRECT_THREAT_COLOR);
+		biophysicalFactorDropdown.setSelectedItem(DiagramConstants.DEFAULT_BIOPHYSICAL_FACTOR_COLOR);
+		biophysicalResultDropdown.setSelectedItem(DiagramConstants.DEFAULT_BIOPHYSICAL_RESULT_COLOR);
+		indirectFactorDropdown.setSelectedItem(DiagramConstants.DEFAULT_CONTRIBUTING_FACTOR_COLOR);
+		biodiversityTargetDropdown.setSelectedItem(DiagramConstants.DEFAULT_TARGET_COLOR);
+		humanWelfareTargetDropdown.setSelectedItem(DiagramConstants.DEFAULT_HUMAN_WELFARE_TARGET_COLOR);
+		biodiversityTargetScopeDropdown.setSelectedItem(DiagramConstants.DEFAULT_BIODIVERSITY_TARGET_SCOPE_COLOR);
+		humanWelfareScopeDropDown.setSelectedItem(DiagramConstants.DEFAULT_HUMAN_WELFARE_SCOPE_COLOR);
+		intermediateResultDropDown.setSelectedItem(DiagramConstants.DEFAULT_INTERMEDIATE_RESULT_COLOR);
+		threatReductionResultDropDown.setSelectedItem(DiagramConstants.DEFAULT_THREAT_REDUCTION_RESULT_COLOR);
+	}
+
 	private Project getProject()
 	{
 		return getMainWindow().getProject();
@@ -432,6 +497,9 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	private PlanningPanel planningPanel;
 	private ProjectSettingsPanel projectSettingsPanel;
 	private NeverShowAgainPanel neverShowAgainPanel;
+
+	private boolean isUpdatingColorScheme;
+	private UiComboBox colorSchemeCombo;
 	
 	private UiComboBox interventionDropdown;
 	private UiComboBox directThreatDropdown;
@@ -444,6 +512,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	private UiComboBox humanWelfareScopeDropDown;
 	private UiComboBox intermediateResultDropDown;
 	private UiComboBox threatReductionResultDropDown;
+	
 	private UiCheckBox gridVisibleCheckBox; 
 	private UiCheckBox cellRatingsVisibleCheckBox;
 	private UiCheckBox enableSpellCheckingCheckBox;

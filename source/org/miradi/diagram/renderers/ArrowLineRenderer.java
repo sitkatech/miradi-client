@@ -37,6 +37,7 @@ import org.jgraph.graph.EdgeRenderer;
 import org.jgraph.graph.EdgeView;
 import org.jgraph.graph.GraphConstants;
 import org.miradi.diagram.DiagramComponent;
+import org.miradi.diagram.DiagramConstants;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
@@ -52,7 +53,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 		linkSelected = sel;
 		if(sel || isAttachedToSelectedFactor())
 		{
-			renderer.lineWidth = 4;
+			renderer.lineWidth = DiagramConstants.BORDER_SELECTED_STROKE_WIDTH;
 		}
 
 		return renderer;

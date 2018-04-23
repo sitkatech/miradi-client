@@ -47,6 +47,7 @@ import org.jgraph.graph.CellViewRenderer;
 import org.jgraph.graph.GraphConstants;
 import org.jgraph.graph.VertexView;
 import org.miradi.diagram.DiagramComponent;
+import org.miradi.diagram.DiagramConstants;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.XmlUtilities2;
@@ -119,13 +120,13 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		g2.setClip(clip);
 		
 		
-		if (bordercolor != null)
+		if (borderColor != null)
 		{
-			Color color = bordercolor;
+			Color color = borderColor;
 			Stroke stroke = getStroke();
 			g2.setColor(color);
 			g2.setStroke(stroke);
-			drawBorder(g2, rect, Color.BLACK);
+			drawBorder(g2, rect, DiagramConstants.BORDER_COLOR);
 		}
 		
 		graph.setHandleSize(HANDLE_SIZE);
@@ -136,7 +137,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 			Stroke stroke = getSelectionStroke();
 			g2.setColor(color);
 			g2.setStroke(stroke);
-			drawBorder(g2, rect, Color.BLACK);
+			drawBorder(g2, rect, DiagramConstants.BORDER_SELECTED_COLOR);
 		}
 	}
 
@@ -177,7 +178,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 
 	protected int getSelectedStrokeWidth()
 	{
-		return borderThickness + 4;
+		return borderThickness + DiagramConstants.BORDER_SELECTED_STROKE_WIDTH;
 	}
 
 	Color getFillColor()
@@ -227,7 +228,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 
 	void drawAnnotationBorder(Graphics2D g2, Rectangle annotationsRectangle, FactorRenderer annotationRenderer) 
 	{
-		Color color = Color.BLACK;
+		Color color = DiagramConstants.BORDER_COLOR;
 		Stroke stroke = new BasicStroke(borderThickness);
 		g2.setColor(color);
 		g2.setStroke(stroke);
@@ -290,14 +291,14 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 		Font font = GraphConstants.getFont(attributes);
 		htmlFormViewer.setFont((font != null) ? font : graph.getFont());
 		Border border = GraphConstants.getBorder(attributes);
-		bordercolor = GraphConstants.getBorderColor(attributes);
+		borderColor = GraphConstants.getBorderColor(attributes);
 		if (border != null)
 			setBorder(border);
-		else if (bordercolor != null)
+		else if (borderColor != null)
 		{
 			borderThickness = Math.max(1, Math.round(GraphConstants
 					.getLineWidth(attributes)));
-			setBorder(BorderFactory.createLineBorder(bordercolor, borderThickness));
+			setBorder(BorderFactory.createLineBorder(borderColor, borderThickness));
 		}
 		gradientColor = GraphConstants.getGradientColor(attributes);
 	
@@ -392,7 +393,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	JGraph graph;
 	FactorHtmlViewer htmlFormViewer;
 	int borderThickness;
-	Color bordercolor;
+	Color borderColor;
 	Color gradientColor;
 	boolean selected;
 	boolean preview;

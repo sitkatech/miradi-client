@@ -52,6 +52,7 @@ import org.jgraph.JGraph;
 import org.jgraph.graph.CellView;
 import org.jgraph.graph.CellViewRenderer;
 import org.miradi.diagram.DiagramComponent;
+import org.miradi.diagram.DiagramConstants;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
@@ -411,8 +412,9 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		TriangleRenderer indicatorRenderer = new TriangleRenderer();
 		Rectangle smallTriangle = getIndicatorRectWithinNode();
 		smallTriangle.translate(rect.x, rect.y);
-		setPaint(g2, smallTriangle, AppPreferences.INDICATOR_COLOR);
-		indicatorRenderer.fillShape(g2, smallTriangle, AppPreferences.INDICATOR_COLOR);
+		Color indicatorColor = EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_INDICATOR);
+		setPaint(g2, smallTriangle, indicatorColor);
+		indicatorRenderer.fillShape(g2, smallTriangle, indicatorColor);
 		drawAnnotationBorder(g2, smallTriangle, indicatorRenderer);
 		smallTriangle.setLocation(smallTriangle.x, smallTriangle.y + (INDICATOR_HEIGHT / 4));
 		
@@ -553,7 +555,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		g2.fill(getShape(smallRect));
 		g2.setPaint(oldPaint);
 
-		drawBorder(g2, smallRect, Color.BLACK);
+		drawBorder(g2, smallRect, DiagramConstants.BORDER_COLOR);
 		setRatingBubbleFont(g2);
 		g2.setColor(Color.BLACK);
 		Utility.drawStringCentered(g2, getRatingText(), smallRect);
