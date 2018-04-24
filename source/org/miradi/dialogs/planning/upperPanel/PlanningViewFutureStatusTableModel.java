@@ -21,9 +21,9 @@ package org.miradi.dialogs.planning.upperPanel;
 
 import java.awt.Color;
 
-import org.miradi.diagram.renderers.FactorRenderer;
 import org.miradi.dialogs.planning.propertiesPanel.PlanningViewAbstractTreeTableSyncedTableModel;
 import org.miradi.dialogs.tablerenderers.RowColumnBaseObjectProvider;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.BaseObject;
@@ -94,7 +94,7 @@ public class PlanningViewFutureStatusTableModel extends PlanningViewAbstractTree
 	@Override
 	public Color getCellBackgroundColor(int row, int column)
 	{
-		return FactorRenderer.FUTURE_STATUS_COLOR;
+		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_OBJECTIVE);
 	}
 	
 	public void updateColumnsToShow() throws Exception

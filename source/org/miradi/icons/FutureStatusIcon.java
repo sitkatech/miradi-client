@@ -26,8 +26,9 @@ import java.awt.Graphics;
 import java.awt.Polygon;
 import java.awt.Rectangle;
 
-import org.miradi.diagram.renderers.FactorRenderer;
 import org.miradi.diagram.renderers.TriangleRenderer;
+import org.miradi.main.AppPreferences;
+import org.miradi.main.EAM;
 
 public class FutureStatusIcon extends AbstractMiradiIcon
 {
@@ -57,6 +58,6 @@ public class FutureStatusIcon extends AbstractMiradiIcon
 
 	private Color getFutureStatusIconFillColor()
 	{
-		return FactorRenderer.FUTURE_STATUS_COLOR;
+		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_OBJECTIVE);
 	}
 }

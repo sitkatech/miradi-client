@@ -390,8 +390,6 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	protected static final int CORNER_SIZE = 20;
 	private static final int HANDLE_SIZE = 4;
 
-	public static final Color FUTURE_STATUS_COLOR = DiagramConstants.LEGACY_DEFAULT_OBJECTIVE_COLOR;
-
 	JGraph graph;
 	FactorHtmlViewer htmlFormViewer;
 	int borderThickness;
