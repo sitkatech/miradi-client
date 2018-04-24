@@ -20,7 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.icons;
 
 
+import org.miradi.main.AppPreferences;
+import org.miradi.main.EAM;
+
 import javax.swing.Icon;
+import java.awt.*;
 
 
 public abstract class DesireIcon implements Icon
@@ -33,6 +37,11 @@ public abstract class DesireIcon implements Icon
 	public int getIconWidth()
 	{
 		return WIDTH;
+	}
+
+	protected Color getIconColor()
+	{
+		return EAM.getMainWindow().getColorPreference(AppPreferences.TAG_COLOR_OBJECTIVE);
 	}
 
 	protected static final int WIDTH = 16;

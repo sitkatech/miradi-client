@@ -49,6 +49,8 @@ import org.jgraph.graph.VertexView;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramConstants;
 import org.miradi.diagram.cells.EAMGraphCell;
+import org.miradi.main.AppPreferences;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.XmlUtilities2;
 
@@ -213,7 +215,8 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	void drawAnnotationCellRect(Rectangle rect, Graphics2D g2, FactorRenderer annotationRenderer, String annotationText)
 	{
 		Rectangle annotationsRectangle = getAnnotationsRectFromCellRect(rect);
-		drawAnnotationCellRect(g2, annotationsRectangle, annotationRenderer, annotationText, ANNOTATIONS_COLOR);
+		Color annotationsColor = EAM.getMainWindow().getAppPreferences().getColor(AppPreferences.TAG_COLOR_OBJECTIVE);
+		drawAnnotationCellRect(g2, annotationsRectangle, annotationRenderer, annotationText, annotationsColor);
 	}
 
 	private void drawAnnotation(Rectangle annotationsRectangle, Graphics2D g2, FactorRenderer annotationRenderer, String annotationText, Color annotationColor)
@@ -387,8 +390,7 @@ public class MultilineCellRenderer extends JComponent implements CellViewRendere
 	protected static final int CORNER_SIZE = 20;
 	private static final int HANDLE_SIZE = 4;
 
-	private static final Color LIGHT_BLUE = new Color(204,238,255);
-	public static final Color ANNOTATIONS_COLOR = LIGHT_BLUE;
+	public static final Color FUTURE_STATUS_COLOR = DiagramConstants.LEGACY_DEFAULT_OBJECTIVE_COLOR;
 
 	JGraph graph;
 	FactorHtmlViewer htmlFormViewer;

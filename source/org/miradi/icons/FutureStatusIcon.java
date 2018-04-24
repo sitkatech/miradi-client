@@ -57,6 +57,6 @@ public class FutureStatusIcon extends AbstractMiradiIcon
 
 	private Color getFutureStatusIconFillColor()
 	{
-		return FactorRenderer.ANNOTATIONS_COLOR;
+		return FactorRenderer.FUTURE_STATUS_COLOR;
 	}
 }

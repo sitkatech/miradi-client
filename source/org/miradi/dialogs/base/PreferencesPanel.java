@@ -323,6 +323,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		if (isLegacyColorScheme())
 		{
 			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_INDICATOR, DiagramConstants.LEGACY_DEFAULT_INDICATOR_COLOR);
+			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_OBJECTIVE, DiagramConstants.LEGACY_DEFAULT_OBJECTIVE_COLOR);
 			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_ALERT, ColorManager.LEGACY_RED);
 			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_CAUTION, ColorManager.LEGACY_DARK_YELLOW);
 			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_OK, ColorManager.LEGACY_LIGHT_GREEN);
@@ -334,6 +335,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		else
 		{
 			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_INDICATOR, DiagramConstants.DEFAULT_INDICATOR_COLOR);
+			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_OBJECTIVE, DiagramConstants.DEFAULT_OBJECTIVE_COLOR);
 			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_ALERT, ColorManager.RED);
 			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_CAUTION, ColorManager.DARK_YELLOW);
 			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_OK, ColorManager.LIGHT_GREEN);

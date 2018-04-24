@@ -230,6 +230,8 @@ public class AppPreferences
 			return threatReductionResultColor;
 		if(tag.equals(TAG_COLOR_INDICATOR))
 			return indicatorColor;
+		if(tag.equals(TAG_COLOR_OBJECTIVE))
+			return objectiveColor;
 		if(tag.equals(TAG_COLOR_ALERT))
 			return alertColor;
 		if(tag.equals(TAG_COLOR_CAUTION))
@@ -278,6 +280,8 @@ public class AppPreferences
 			threatReductionResultColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_INDICATOR))
 			indicatorColor = colorToUse;
+		else if(tag.equals(TAG_COLOR_OBJECTIVE))
+			objectiveColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_ALERT))
 			alertColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_CAUTION))
@@ -438,6 +442,7 @@ public class AppPreferences
 		json.put(TAG_COLOR_INTERMEDIATE_RESULT, intermediateResultColor);
 		json.put(TAG_COLOR_THREAT_REDUCTION_RESULT, threatReductionResultColor);
 		json.put(TAG_COLOR_INDICATOR, indicatorColor);
+		json.put(TAG_COLOR_OBJECTIVE, objectiveColor);
 
 		json.put(TAG_COLOR_ALERT, alertColor);
 		json.put(TAG_COLOR_CAUTION, cautionColor);
@@ -522,6 +527,7 @@ public class AppPreferences
 		intermediateResultColor = json.optColor(TAG_COLOR_INTERMEDIATE_RESULT, DiagramConstants.DEFAULT_INTERMEDIATE_RESULT_COLOR);
 		threatReductionResultColor = json.optColor(TAG_COLOR_THREAT_REDUCTION_RESULT, DiagramConstants.DEFAULT_THREAT_REDUCTION_RESULT_COLOR);
 		indicatorColor = json.optColor(TAG_COLOR_INDICATOR, DiagramConstants.DEFAULT_INDICATOR_COLOR);
+		objectiveColor = json.optColor(TAG_COLOR_OBJECTIVE, DiagramConstants.DEFAULT_OBJECTIVE_COLOR);
 
 		alertColor = json.optColor(TAG_COLOR_ALERT, ColorManager.LEGACY_RED);
 		cautionColor = json.optColor(TAG_COLOR_CAUTION, ColorManager.LEGACY_DARK_YELLOW);
@@ -779,6 +785,7 @@ public class AppPreferences
 	public static final String TAG_COLOR_INTERMEDIATE_RESULT = "ColorIntermediateResult";
 	public static final String TAG_COLOR_THREAT_REDUCTION_RESULT = "ColorThreatReductionResult";
 	public static final String TAG_COLOR_INDICATOR = "ColorIndicator";
+	public static final String TAG_COLOR_OBJECTIVE = "ColorObjective";
 
 	public static final String TAG_COLOR_ALERT = "ColorAlert";
 	public static final String TAG_COLOR_CAUTION = "ColorCaution";
@@ -881,6 +888,7 @@ public class AppPreferences
 	private Color intermediateResultColor;
 	private Color threatReductionResultColor;
 	private Color indicatorColor;
+	private Color objectiveColor;
 
 	private Color alertColor;
 	private Color cautionColor;

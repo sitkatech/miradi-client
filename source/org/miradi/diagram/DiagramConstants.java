@@ -47,6 +47,7 @@ public class DiagramConstants
 	public static final Color LEGACY_DEFAULT_INTERMEDIATE_RESULT_COLOR = new Color(150, 240, 255);
 	public static final Color LEGACY_DEFAULT_THREAT_REDUCTION_RESULT_COLOR = new Color(240, 150, 255);
 	public static final Color LEGACY_DEFAULT_INDICATOR_COLOR = new Color(204,153,255);
+	public static final Color LEGACY_DEFAULT_OBJECTIVE_COLOR = new Color(204,238,255);
 
 	// new default colors as of Miradi 4.5
 	public static final Color DEFAULT_TARGET_COLOR = new Color(0xbae5ba);
@@ -63,6 +64,7 @@ public class DiagramConstants
 	public static final Color DEFAULT_ACTIVITIES_COLOR = new Color(0xfbee69);
 	public static final Color DEFAULT_MONITORING_ACTIVITIES_COLOR = new Color(204,153,255);
 	public static final Color DEFAULT_INDICATOR_COLOR = new Color(0xc48ed6);
+	public static final Color DEFAULT_OBJECTIVE_COLOR = new Color(0xcae8ea);
 
 	public static final Color[] targetColorChoices = {
 		DEFAULT_TARGET_COLOR,
