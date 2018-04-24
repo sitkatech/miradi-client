@@ -21,6 +21,7 @@ package org.miradi.questions;
 
 import java.awt.Color;
 
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 
 
@@ -35,10 +36,10 @@ public class StrategyImpactQuestion extends StaticChoiceQuestionSortableByCode
 	{
 		return new ChoiceItem[] {
 			new ChoiceItemWithLongDescriptionProvider("", EAM.text("Not Specified"), Color.WHITE),
-			new ChoiceItemWithLongDescriptionProvider(LOW_CODE, EAM.text("Low"), EAM.text("The strategy is unlikely to meaningfully contribute to project goals and/or objectives."), COLOR_ALERT),
-			new ChoiceItemWithLongDescriptionProvider(MEDIUM_CODE, EAM.text("Medium"), EAM.text("The strategy could meaningfully contribute to project goals and/or objectives, but would need pilot-testing to ensure it is effective under this project’s conditions."), COLOR_CAUTION),
-			new ChoiceItemWithLongDescriptionProvider(HIGH_CODE, EAM.text("High"), EAM.text("The strategy is likely to meaningfully contribute to project goals and/or objectives, but would need effectiveness monitoring to ensure it is effective under this project’s conditions."), COLOR_OK),
-			new ChoiceItemWithLongDescriptionProvider(VERY_HIGH_CODE, EAM.text("Very High"), EAM.text("The strategy is very likely to meaningfully contribute to one or more project goals and/or objectives and can be implemented at scale with only implementation monitoring."), COLOR_GREAT),
+			new ChoiceItemWithDynamicColorAndLongDescriptionProvider(LOW_CODE, EAM.text("Low"), EAM.text("The strategy is unlikely to meaningfully contribute to project goals and/or objectives."), AppPreferences.TAG_COLOR_ALERT),
+			new ChoiceItemWithDynamicColorAndLongDescriptionProvider(MEDIUM_CODE, EAM.text("Medium"), EAM.text("The strategy could meaningfully contribute to project goals and/or objectives, but would need pilot-testing to ensure it is effective under this project’s conditions."), AppPreferences.TAG_COLOR_CAUTION),
+			new ChoiceItemWithDynamicColorAndLongDescriptionProvider(HIGH_CODE, EAM.text("High"), EAM.text("The strategy is likely to meaningfully contribute to project goals and/or objectives, but would need effectiveness monitoring to ensure it is effective under this project’s conditions."), AppPreferences.TAG_COLOR_OK),
+			new ChoiceItemWithDynamicColorAndLongDescriptionProvider(VERY_HIGH_CODE, EAM.text("Very High"), EAM.text("The strategy is very likely to meaningfully contribute to one or more project goals and/or objectives and can be implemented at scale with only implementation monitoring."), AppPreferences.TAG_COLOR_GREAT),
 		};
 	}
 	

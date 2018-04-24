@@ -47,6 +47,7 @@ import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.questions.*;
+import org.miradi.utils.ColorManager;
 import org.miradi.utils.FillerLabel;
 import org.miradi.utils.HyperlinkLabel;
 import org.miradi.views.ProjectSettingsPanel;
@@ -320,9 +321,27 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		// set those that don't have an exposed preference choice
 		getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_ACTIVITIES, (Color) interventionDropdown.getSelectedItem());
 		if (isLegacyColorScheme())
+		{
 			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_INDICATOR, DiagramConstants.LEGACY_DEFAULT_INDICATOR_COLOR);
+			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_ALERT, ColorManager.LEGACY_RED);
+			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_CAUTION, ColorManager.LEGACY_DARK_YELLOW);
+			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_OK, ColorManager.LEGACY_LIGHT_GREEN);
+			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_GREAT, ColorManager.LEGACY_DARK_GREEN);
+			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_ABANDONED, ColorManager.LEGACY_DARK_GREY);
+			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_PLANNED, ColorManager.LEGACY_LIGHT_BLUE);
+			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_NOT_KNOWN, ColorManager.LEGACY_LIGHT_GREY);
+		}
 		else
+		{
 			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_INDICATOR, DiagramConstants.DEFAULT_INDICATOR_COLOR);
+			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_ALERT, ColorManager.RED);
+			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_CAUTION, ColorManager.DARK_YELLOW);
+			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_OK, ColorManager.LIGHT_GREEN);
+			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_GREAT, ColorManager.DARK_GREEN);
+			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_ABANDONED, ColorManager.DARK_GREY);
+			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_PLANNED, ColorManager.LIGHT_BLUE);
+			getMainWindow().setColorPreference(AppPreferences.TAG_COLOR_NOT_KNOWN, ColorManager.LIGHT_GREY);
+		}
 
 		getMainWindow().setBooleanPreference(AppPreferences.TAG_GRID_VISIBLE, gridVisibleCheckBox.isSelected());
 		
@@ -433,8 +452,10 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 			isUpdatingColorScheme = false;
 		}
 
-		if (!isUpdatingColorScheme)
-			update();
+		update();
+
+		if (isColorSchemeChange)
+			ColorManager.instance().clear();
 	}
 
 	private boolean isLegacyColorScheme()

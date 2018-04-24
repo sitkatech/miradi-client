@@ -21,6 +21,7 @@ package org.miradi.questions;
 
 import java.awt.Color;
 
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 
 
@@ -35,10 +36,10 @@ public class StrategyRatingSummaryQuestion extends StaticChoiceQuestionSortableB
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem(UNKNOWN_CODE, EAM.text("Unknown"), Color.WHITE),
-			new ChoiceItem("1", EAM.text("Not Effective"), COLOR_ALERT),
-			new ChoiceItem("2", EAM.text("Need More Info"), COLOR_CAUTION),
-			new ChoiceItem("3", EAM.text("Effective"), COLOR_OK),
-			new ChoiceItem("4", EAM.text("Very Effective"), COLOR_GREAT),
+			new ChoiceItemWithDynamicColor("1", EAM.text("Not Effective"), AppPreferences.TAG_COLOR_ALERT),
+			new ChoiceItemWithDynamicColor("2", EAM.text("Need More Info"), AppPreferences.TAG_COLOR_CAUTION),
+			new ChoiceItemWithDynamicColor("3", EAM.text("Effective"), AppPreferences.TAG_COLOR_OK),
+			new ChoiceItemWithDynamicColor("4", EAM.text("Very Effective"), AppPreferences.TAG_COLOR_GREAT),
 		};
 	}
 

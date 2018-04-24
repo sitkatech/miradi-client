@@ -57,16 +57,11 @@ public class LegacyScopeBoxTypeQuestion extends MultiSelectDynamicChoiceQuestion
 	public ChoiceItem[] getChoices()
 	{
 		return new ChoiceItem[] {
-				new ChoiceItemWithDynamicColor(BIODIVERSITY_TARGET_CODE, EAM.text("Biodiversity Target"), getAppPreferences(), AppPreferences.TAG_COLOR_SCOPE_BOX),
-				new ChoiceItemWithDynamicColor(HUMAN_WELFARE_TARGET_CODE, EAM.text("Human Wellbeing Target"), getAppPreferences(), AppPreferences.TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX),
+				new ChoiceItemWithDynamicColor(BIODIVERSITY_TARGET_CODE, EAM.text("Biodiversity Target"), AppPreferences.TAG_COLOR_SCOPE_BOX),
+				new ChoiceItemWithDynamicColor(HUMAN_WELFARE_TARGET_CODE, EAM.text("Human Wellbeing Target"), AppPreferences.TAG_COLOR_HUMAN_WELFARE_SCOPE_BOX),
 			};
 	}
 
-	private AppPreferences getAppPreferences()
-	{
-		return appPreferences;
-	}
-	
 	@Override
 	public boolean hasReadableAlternativeDefaultCode()
 	{

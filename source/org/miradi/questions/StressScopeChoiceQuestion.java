@@ -21,6 +21,7 @@ package org.miradi.questions;
 
 import java.awt.Color;
 
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 
 public class StressScopeChoiceQuestion extends StaticChoiceQuestionSortableByCode
@@ -34,10 +35,10 @@ public class StressScopeChoiceQuestion extends StaticChoiceQuestionSortableByCod
 	{
 		return new ChoiceItem[] {
 			new ChoiceItem("", EAM.text("Not Specified"), Color.WHITE),
-			new ChoiceItem("1", EAM.text("Low"), COLOR_GREAT),
-			new ChoiceItem("2", EAM.text("Medium"), COLOR_OK),
-			new ChoiceItem("3", EAM.text("High"), COLOR_CAUTION),
-			new ChoiceItem("4", EAM.text("Very High"), COLOR_ALERT),
+			new ChoiceItemWithDynamicColor("1", EAM.text("Low"), AppPreferences.TAG_COLOR_GREAT),
+			new ChoiceItemWithDynamicColor("2", EAM.text("Medium"), AppPreferences.TAG_COLOR_OK),
+			new ChoiceItemWithDynamicColor("3", EAM.text("High"), AppPreferences.TAG_COLOR_CAUTION),
+			new ChoiceItemWithDynamicColor("4", EAM.text("Very High"), AppPreferences.TAG_COLOR_ALERT),
 		};
 	}
 }

@@ -21,6 +21,7 @@ package org.miradi.questions;
 
 import java.awt.Color;
 
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 
 public class ThreatRatingQuestion extends StaticChoiceQuestionSortableByCode
@@ -40,10 +41,10 @@ public class ThreatRatingQuestion extends StaticChoiceQuestionSortableByCode
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem(UNSPECIFIED_CODE, EAM.text("Not Specified"), Color.WHITE, UNSPECIFIED_CODE),
-				new ChoiceItem("1", EAM.text("Low"), COLOR_GREAT, getLowRatingChoiceItemDescription()),
-				new ChoiceItem(MEDIUM_RATING_CODE, EAM.text("Medium"), COLOR_OK, getMediumRatingChoiceItemDescription()),
-				new ChoiceItem(HIGH_RATING_CODE, EAM.text("High"), COLOR_CAUTION, getHighRatingChoiceItemDescription()),
-				new ChoiceItem(VERY_HIGH_RATING_CODE, EAM.text("Very High"), COLOR_ALERT, getVeryHighRatingChoiceItemDescription()),
+				new ChoiceItemWithDynamicColor("1", EAM.text("Low"), AppPreferences.TAG_COLOR_GREAT, getLowRatingChoiceItemDescription()),
+				new ChoiceItemWithDynamicColor(MEDIUM_RATING_CODE, EAM.text("Medium"), AppPreferences.TAG_COLOR_OK, getMediumRatingChoiceItemDescription()),
+				new ChoiceItemWithDynamicColor(HIGH_RATING_CODE, EAM.text("High"), AppPreferences.TAG_COLOR_CAUTION, getHighRatingChoiceItemDescription()),
+				new ChoiceItemWithDynamicColor(VERY_HIGH_RATING_CODE, EAM.text("Very High"), AppPreferences.TAG_COLOR_ALERT, getVeryHighRatingChoiceItemDescription()),
 		};
 	}
 	

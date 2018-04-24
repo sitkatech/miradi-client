@@ -21,6 +21,7 @@ package org.miradi.questions;
 
 import java.awt.Color;
 
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 
 public class StatusQuestion extends StaticChoiceQuestionSortableByCode
@@ -34,10 +35,10 @@ public class StatusQuestion extends StaticChoiceQuestionSortableByCode
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem("", EAM.text("Not Specified"), Color.WHITE),
-				new ChoiceItem("1", EAM.text("Poor"), COLOR_ALERT),
-				new ChoiceItem("2", EAM.text("Fair"), COLOR_CAUTION),
-				new ChoiceItem("3", EAM.text("Good"), COLOR_OK),
-				new ChoiceItem("4", EAM.text("Very Good"), COLOR_GREAT),
+				new ChoiceItemWithDynamicColor("1", EAM.text("Poor"), AppPreferences.TAG_COLOR_ALERT),
+				new ChoiceItemWithDynamicColor("2", EAM.text("Fair"), AppPreferences.TAG_COLOR_CAUTION),
+				new ChoiceItemWithDynamicColor("3", EAM.text("Good"), AppPreferences.TAG_COLOR_OK),
+				new ChoiceItemWithDynamicColor("4", EAM.text("Very Good"), AppPreferences.TAG_COLOR_GREAT),
 		};
 	}
 	

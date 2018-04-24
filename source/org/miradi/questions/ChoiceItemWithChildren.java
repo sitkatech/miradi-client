@@ -28,11 +28,6 @@ import org.miradi.main.EAM;
 
 public class ChoiceItemWithChildren extends ChoiceItemWithLongDescriptionProvider
 {
-	public ChoiceItemWithChildren(String codeToUse, AbstractLongDescriptionProvider providerToUse)
-	{
-		this(codeToUse, "", "", providerToUse);
-	}
-	
 	public ChoiceItemWithChildren(String codeToUse, String additionalTextToUse, AbstractLongDescriptionProvider providerToUse)
 	{
 		this(codeToUse, additionalTextToUse, "", providerToUse);

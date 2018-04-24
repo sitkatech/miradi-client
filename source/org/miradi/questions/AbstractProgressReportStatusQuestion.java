@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 
 import java.awt.*;
@@ -36,16 +37,16 @@ abstract public class AbstractProgressReportStatusQuestion extends StaticChoiceQ
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem(NOT_SPECIFIED, getNotSpecifiedLabel(), Color.WHITE),
-				new ChoiceItem(PLANNED_CODE, getPlannedLabel(), COLOR_PLANNED),
-				new ChoiceItem(MAJOR_ISSUES_CODE, getMajorIssuesLabel(), COLOR_ALERT),
-				new ChoiceItem(MINOR_ISSUES_CODE, getMinorIssuesLabel(), COLOR_CAUTION),
-				new ChoiceItem(ON_TRACK_CODE, getOnTrackLabel(), COLOR_OK),
-				new ChoiceItem(COMPLETED_CODE, getCompletedLabel(), COLOR_GREAT),
-				new ChoiceItem(ABANDONED_CODE, getAbandonedLabel(), COLOR_ABANDONED),
+				new ChoiceItemWithDynamicColor(PLANNED_CODE, getPlannedLabel(), AppPreferences.TAG_COLOR_PLANNED),
+				new ChoiceItemWithDynamicColor(MAJOR_ISSUES_CODE, getMajorIssuesLabel(), AppPreferences.TAG_COLOR_ALERT),
+				new ChoiceItemWithDynamicColor(MINOR_ISSUES_CODE, getMinorIssuesLabel(), AppPreferences.TAG_COLOR_CAUTION),
+				new ChoiceItemWithDynamicColor(ON_TRACK_CODE, getOnTrackLabel(), AppPreferences.TAG_COLOR_OK),
+				new ChoiceItemWithDynamicColor(COMPLETED_CODE, getCompletedLabel(), AppPreferences.TAG_COLOR_GREAT),
+				new ChoiceItemWithDynamicColor(ABANDONED_CODE, getAbandonedLabel(), AppPreferences.TAG_COLOR_ABANDONED),
 		};
 	}
 
-	protected String getNotSpecifiedLabel()
+	private String getNotSpecifiedLabel()
 	{
 		return EAM.text("Not Specified");
 	}

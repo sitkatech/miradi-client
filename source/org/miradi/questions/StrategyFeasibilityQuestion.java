@@ -21,6 +21,7 @@ package org.miradi.questions;
 
 import java.awt.Color;
 
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 
 
@@ -35,10 +36,10 @@ public class StrategyFeasibilityQuestion extends StaticChoiceQuestionSortableByC
 	{
 		return new ChoiceItem[] {
 			new ChoiceItemWithLongDescriptionProvider("", EAM.text("Not Specified"), Color.WHITE),
-			new ChoiceItemWithLongDescriptionProvider(LOW_CODE, EAM.text("Low"), EAM.text("The strategy is not ethically, technically, OR financially feasible."), COLOR_ALERT),
-			new ChoiceItemWithLongDescriptionProvider(MEDIUM_CODE, EAM.text("Medium"), EAM.text("The strategy is ethically feasible, but either technically OR financially difficult without substantial additional resources."), COLOR_CAUTION),
-			new ChoiceItemWithLongDescriptionProvider(HIGH_CODE, EAM.text("High"), EAM.text("The strategy is ethically and technically feasible, but may require some additional financial resources."), COLOR_OK),
-			new ChoiceItemWithLongDescriptionProvider(VERY_HIGH_CODE, EAM.text("Very High"), EAM.text("The strategy is ethically, technically, AND financially feasible."), COLOR_GREAT),
+			new ChoiceItemWithDynamicColorAndLongDescriptionProvider(LOW_CODE, EAM.text("Low"), EAM.text("The strategy is not ethically, technically, OR financially feasible."), AppPreferences.TAG_COLOR_ALERT),
+			new ChoiceItemWithDynamicColorAndLongDescriptionProvider(MEDIUM_CODE, EAM.text("Medium"), EAM.text("The strategy is ethically feasible, but either technically OR financially difficult without substantial additional resources."), AppPreferences.TAG_COLOR_CAUTION),
+			new ChoiceItemWithDynamicColorAndLongDescriptionProvider(HIGH_CODE, EAM.text("High"), EAM.text("The strategy is ethically and technically feasible, but may require some additional financial resources."), AppPreferences.TAG_COLOR_OK),
+			new ChoiceItemWithDynamicColorAndLongDescriptionProvider(VERY_HIGH_CODE, EAM.text("Very High"), EAM.text("The strategy is ethically, technically, AND financially feasible."), AppPreferences.TAG_COLOR_GREAT),
 		};
 	}
 	

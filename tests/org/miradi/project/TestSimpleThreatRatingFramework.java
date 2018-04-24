@@ -127,7 +127,7 @@ public class TestSimpleThreatRatingFramework extends MiradiTestCase
 		ValueOption medium = findValueOptionByNumeric(options, 2);
 		assertEquals("wrong order or label?", "Very High", veryHigh.getLabel());
 		assertEquals("wrong numeric value? ", 3, high.getNumericValue());
-		assertEquals("bad color?", ColorManager.LIGHT_GREEN, medium.getColor());
+		assertEquals("bad color?", ColorManager.LEGACY_LIGHT_GREEN, medium.getColor());
 	}
 	
 	private ValueOption findValueOptionByNumeric(ValueOption[] options, int lookFor)

@@ -22,12 +22,14 @@ package org.miradi.objects;
 import java.awt.Color;
 
 import org.miradi.ids.BaseId;
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceQuestion;
 import org.miradi.schemas.ValueOptionSchema;
+import org.miradi.utils.ColorManager;
 
 public class ValueOption extends BaseObject
 {
@@ -73,19 +75,30 @@ public class ValueOption extends BaseObject
 	// ValueOptions and RatingCriteria with the new RatingQuestion classes
 	public Color getColor()
 	{
+		AppPreferences appPreferences = getAppPreferences();
+
 		switch(getNumericValue())
 		{
 			case -1: return INVALID_GRAY;
 			case 0: return Color.WHITE;
-			case 1: return ChoiceQuestion.COLOR_GREAT;
-			case 2: return ChoiceQuestion.COLOR_OK;
-			case 3: return ChoiceQuestion.COLOR_CAUTION;
-			case 4: return ChoiceQuestion.COLOR_ALERT;
+			case 1: if (appPreferences != null) return appPreferences.getColor(AppPreferences.TAG_COLOR_GREAT); else return ColorManager.LEGACY_DARK_GREEN;
+			case 2: if (appPreferences != null) return appPreferences.getColor(AppPreferences.TAG_COLOR_OK); else return ColorManager.LEGACY_LIGHT_GREEN;
+			case 3: if (appPreferences != null) return appPreferences.getColor(AppPreferences.TAG_COLOR_CAUTION); else return ColorManager.LEGACY_DARK_YELLOW;
+			case 4: if (appPreferences != null) return appPreferences.getColor(AppPreferences.TAG_COLOR_ALERT); else return ColorManager.LEGACY_RED;
 		}
 		EAM.logDebug("ValueOption.getColor for unknown numeric value: " + getNumericValue());
 		return Color.BLACK;
 	}
-	
+
+	private AppPreferences getAppPreferences()
+	{
+		MainWindow mainWindow = EAM.getMainWindow();
+		if (mainWindow != null)
+			return mainWindow.getAppPreferences();
+
+		return null;
+	}
+
 	@Override
 	public String toString()
 	{

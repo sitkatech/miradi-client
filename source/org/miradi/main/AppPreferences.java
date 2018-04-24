@@ -34,6 +34,7 @@ import org.miradi.objectdata.DimensionData;
 import org.miradi.objectdata.DiagramPointData;
 import org.miradi.objecthelpers.DateUnit;
 import org.miradi.utils.CodeList;
+import org.miradi.utils.ColorManager;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.Translation;
 
@@ -229,6 +230,20 @@ public class AppPreferences
 			return threatReductionResultColor;
 		if(tag.equals(TAG_COLOR_INDICATOR))
 			return indicatorColor;
+		if(tag.equals(TAG_COLOR_ALERT))
+			return alertColor;
+		if(tag.equals(TAG_COLOR_CAUTION))
+			return cautionColor;
+		if(tag.equals(TAG_COLOR_OK))
+			return okColor;
+		if(tag.equals(TAG_COLOR_GREAT))
+			return greatColor;
+		if(tag.equals(TAG_COLOR_ABANDONED))
+			return abandonedColor;
+		if(tag.equals(TAG_COLOR_PLANNED))
+			return plannedColor;
+		if(tag.equals(TAG_COLOR_NOT_KNOWN))
+			return notKnownColor;
 
 		throw new RuntimeException(tag);
 	}
@@ -263,6 +278,20 @@ public class AppPreferences
 			threatReductionResultColor = colorToUse;
 		else if(tag.equals(TAG_COLOR_INDICATOR))
 			indicatorColor = colorToUse;
+		else if(tag.equals(TAG_COLOR_ALERT))
+			alertColor = colorToUse;
+		else if(tag.equals(TAG_COLOR_CAUTION))
+			cautionColor = colorToUse;
+		else if(tag.equals(TAG_COLOR_OK))
+			okColor = colorToUse;
+		else if(tag.equals(TAG_COLOR_GREAT))
+			greatColor = colorToUse;
+		else if(tag.equals(TAG_COLOR_ABANDONED))
+			abandonedColor = colorToUse;
+		else if(tag.equals(TAG_COLOR_PLANNED))
+			plannedColor = colorToUse;
+		else if(tag.equals(TAG_COLOR_NOT_KNOWN))
+			notKnownColor = colorToUse;
 		else
 			throw new RuntimeException(tag);
 	}
@@ -410,6 +439,14 @@ public class AppPreferences
 		json.put(TAG_COLOR_THREAT_REDUCTION_RESULT, threatReductionResultColor);
 		json.put(TAG_COLOR_INDICATOR, indicatorColor);
 
+		json.put(TAG_COLOR_ALERT, alertColor);
+		json.put(TAG_COLOR_CAUTION, cautionColor);
+		json.put(TAG_COLOR_OK, okColor);
+		json.put(TAG_COLOR_GREAT, greatColor);
+		json.put(TAG_COLOR_ABANDONED, abandonedColor);
+		json.put(TAG_COLOR_PLANNED, plannedColor);
+		json.put(TAG_COLOR_NOT_KNOWN, notKnownColor);
+
 		json.put(TAG_IS_MAXIMIZED, isMaximized);
 		json.put(TAG_MAIN_WINDOW_HEIGHT, mainWindowHeight);
 		json.put(TAG_MAIN_WINDOW_WIDTH, mainWindowWidth);
@@ -467,7 +504,7 @@ public class AppPreferences
 		return taggedIntJson;
 	}
 	
-	public void loadFrom(EnhancedJsonObject json) throws Exception
+	private void loadFrom(EnhancedJsonObject json) throws Exception
 	{
 		colorSchemeCode = json.optString(TAG_COLOR_SCHEME);
 
@@ -485,6 +522,14 @@ public class AppPreferences
 		intermediateResultColor = json.optColor(TAG_COLOR_INTERMEDIATE_RESULT, DiagramConstants.DEFAULT_INTERMEDIATE_RESULT_COLOR);
 		threatReductionResultColor = json.optColor(TAG_COLOR_THREAT_REDUCTION_RESULT, DiagramConstants.DEFAULT_THREAT_REDUCTION_RESULT_COLOR);
 		indicatorColor = json.optColor(TAG_COLOR_INDICATOR, DiagramConstants.DEFAULT_INDICATOR_COLOR);
+
+		alertColor = json.optColor(TAG_COLOR_ALERT, ColorManager.LEGACY_RED);
+		cautionColor = json.optColor(TAG_COLOR_CAUTION, ColorManager.LEGACY_DARK_YELLOW);
+		okColor = json.optColor(TAG_COLOR_OK, ColorManager.LEGACY_LIGHT_GREEN);
+		greatColor = json.optColor(TAG_COLOR_GREAT, ColorManager.LEGACY_DARK_GREEN);
+		abandonedColor = json.optColor(TAG_COLOR_ABANDONED, ColorManager.LEGACY_DARK_GREY);
+		plannedColor = json.optColor(TAG_COLOR_PLANNED, ColorManager.LEGACY_LIGHT_BLUE);
+		notKnownColor = json.optColor(TAG_COLOR_NOT_KNOWN, ColorManager.LEGACY_LIGHT_GREY);
 
 		isGridVisible = json.optBoolean(TAG_GRID_VISIBLE, DEFAULT_GRID_VISIBILITY_VALUE);
 		isMaximized = json.optBoolean(TAG_IS_MAXIMIZED, DEFAULT_IS_MAXIMIZED_VALUE);
@@ -735,6 +780,14 @@ public class AppPreferences
 	public static final String TAG_COLOR_THREAT_REDUCTION_RESULT = "ColorThreatReductionResult";
 	public static final String TAG_COLOR_INDICATOR = "ColorIndicator";
 
+	public static final String TAG_COLOR_ALERT = "ColorAlert";
+	public static final String TAG_COLOR_CAUTION = "ColorCaution";
+	public static final String TAG_COLOR_OK = "ColorOK";
+	public static final String TAG_COLOR_GREAT = "ColorGreat";
+	public static final String TAG_COLOR_ABANDONED = "ColorAbandoned";
+	public static final String TAG_COLOR_PLANNED = "ColorPlanned";
+	public static final String TAG_COLOR_NOT_KNOWN = "ColorNotKnown";
+
 	public static final String TAG_IS_MAXIMIZED = "IsMaximized";
 	public static final String TAG_MAIN_WINDOW_HEIGHT = "MainWindowHeight";
 	public static final String TAG_MAIN_WINDOW_WIDTH = "MainWindowWidth";
@@ -814,21 +867,29 @@ public class AppPreferences
 
 	private String colorSchemeCode;
 
-	public Color strategyColor;
-	public Color activitiesColor;
-	public Color monitoringActivitiesColor;
-	public Color contributingFactorColor;
-	public Color directThreatColor;
-	public Color biophysicalFactorColor;
-	public Color biophysicalResultColor;
-	public Color targetColor;
-	public Color humanWelfareTargetColor;
-	public Color scopeColor;
-	public Color humanWelfareScopeColor;
-	public Color intermediateResultColor;
-	public Color threatReductionResultColor;
-	public Color indicatorColor;
+	private Color strategyColor;
+	private Color activitiesColor;
+	private Color monitoringActivitiesColor;
+	private Color contributingFactorColor;
+	private Color directThreatColor;
+	private Color biophysicalFactorColor;
+	private Color biophysicalResultColor;
+	private Color targetColor;
+	private Color humanWelfareTargetColor;
+	private Color scopeColor;
+	private Color humanWelfareScopeColor;
+	private Color intermediateResultColor;
+	private Color threatReductionResultColor;
+	private Color indicatorColor;
 
+	private Color alertColor;
+	private Color cautionColor;
+	private Color okColor;
+	private Color greatColor;
+	private Color abandonedColor;
+	private Color plannedColor;
+	private Color notKnownColor;
+	
 	private boolean isGridVisible; 
 	private boolean isCellRatingsVisible;
 	private boolean isMaximized;

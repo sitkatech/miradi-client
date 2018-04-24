@@ -24,21 +24,6 @@ import java.awt.Color;
 
 public class ChoiceItemWithAdditionalText extends ChoiceItem
 {
-	public ChoiceItemWithAdditionalText(String codeToUse)
-	{
-		this(codeToUse, "", "");
-	}
-	
-	public ChoiceItemWithAdditionalText(String codeToUse, String additionalTextToUse)
-	{
-		this(codeToUse, additionalTextToUse, "");
-	}
-	
-	public ChoiceItemWithAdditionalText(String codeToUse, String leftLabelToUse, String additionalTextToUse)
-	{
-		this(codeToUse, leftLabelToUse, additionalTextToUse, (Color)null);
-	}
-	
 	public ChoiceItemWithAdditionalText(String codeToUse, String leftLabelToUse, String additionalTextToUse, Color colorToUse)
 	{
 		super(codeToUse, leftLabelToUse, colorToUse);
@@ -46,11 +31,6 @@ public class ChoiceItemWithAdditionalText extends ChoiceItem
 		additionalText = additionalTextToUse;
 	}
 
-	public void setRightLabel(String additionalTextToUse)
-	{
-		additionalText = additionalTextToUse;
-	}
-	
 	@Override
 	public String getAdditionalText()
 	{

@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.questions;
 
+import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
 
 import java.awt.*;
@@ -36,13 +37,13 @@ abstract public class AbstractResultReportStatusQuestion extends StaticChoiceQue
     {
         return new ChoiceItem[] {
                 new ChoiceItem(NOT_SPECIFIED, EAM.text("Not Specified"), Color.WHITE),
-                new ChoiceItem(NOT_KNOWN_CODE, getNotKnownLabel(), COLOR_NOT_KNOWN),
-                new ChoiceItem(NOT_YET_CODE, getNotYetLabel(), COLOR_PLANNED),
-                new ChoiceItem(NOT_ACHIEVED_CODE, getNotAchievedLabel(), COLOR_ALERT),
-                new ChoiceItem(PARTIALLY_ACHIEVED_CODE, getPartiallyAchievedLabel(), COLOR_CAUTION),
-                new ChoiceItem(ON_TRACK_CODE, getOnTrackLabel(), COLOR_OK),
-                new ChoiceItem(ACHIEVED_CODE, getAchievedLabel(), COLOR_GREAT),
-                new ChoiceItem(NO_LONGER_RELEVANT_CODE, getNoLongerRelevantLabel(), COLOR_ABANDONED),
+                new ChoiceItemWithDynamicColor(NOT_KNOWN_CODE, getNotKnownLabel(), AppPreferences.TAG_COLOR_NOT_KNOWN),
+                new ChoiceItemWithDynamicColor(NOT_YET_CODE, getNotYetLabel(), AppPreferences.TAG_COLOR_PLANNED),
+                new ChoiceItemWithDynamicColor(NOT_ACHIEVED_CODE, getNotAchievedLabel(), AppPreferences.TAG_COLOR_ALERT),
+                new ChoiceItemWithDynamicColor(PARTIALLY_ACHIEVED_CODE, getPartiallyAchievedLabel(), AppPreferences.TAG_COLOR_CAUTION),
+                new ChoiceItemWithDynamicColor(ON_TRACK_CODE, getOnTrackLabel(), AppPreferences.TAG_COLOR_OK),
+                new ChoiceItemWithDynamicColor(ACHIEVED_CODE, getAchievedLabel(), AppPreferences.TAG_COLOR_GREAT),
+                new ChoiceItemWithDynamicColor(NO_LONGER_RELEVANT_CODE, getNoLongerRelevantLabel(), AppPreferences.TAG_COLOR_ABANDONED),
         };
     }
 

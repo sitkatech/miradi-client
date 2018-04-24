@@ -23,23 +23,37 @@ package org.miradi.questions;
 import java.awt.Color;
 
 import org.miradi.main.AppPreferences;
+import org.miradi.main.EAM;
 
 public class ChoiceItemWithDynamicColor extends ChoiceItem
 {
-	public ChoiceItemWithDynamicColor(String codeToUse, String labelToUse, AppPreferences appPreferencesToUse, String colorTagToUse)
+	public ChoiceItemWithDynamicColor(String codeToUse, String labelToUse, String colorTagToUse)
 	{
-		super(codeToUse, labelToUse);
-		
-		appPreferences = appPreferencesToUse;
+		this(codeToUse, labelToUse, colorTagToUse, "");
+	}
+
+	public ChoiceItemWithDynamicColor(String codeToUse, String labelToUse, String colorTagToUse, String descriptionToUse)
+	{
+		super(codeToUse, labelToUse, descriptionToUse);
+
 		colorTag = colorTagToUse;
 	}
-	
+
 	@Override
 	public Color getColor()
 	{
-		return appPreferences.getColor(colorTag);
+		return getColor(colorTag);
 	}
-	
-	private AppPreferences appPreferences;
+
+	private Color getColor(String colorTag)
+	{
+		return getAppPreferences().getColor(colorTag);
+	}
+
+	private AppPreferences getAppPreferences()
+	{
+		return EAM.getMainWindow().getAppPreferences();
+	}
+
 	private String colorTag;
 }
