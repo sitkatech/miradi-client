@@ -110,12 +110,12 @@ public class ColorManager
 	public static final Color LEGACY_DARK_GREY = new Color(0x80, 0x80, 0x80);
 	public static final Color LEGACY_LIGHT_BLUE = new Color(0x87, 0xCE, 0xFA);
 
-	// new colors as of Miradi 4.5	
-	public static final Color RED = new Color(0xc62526);
+	// new colors as of Miradi 4.5
+	public static final Color RED = new Color(0xc15046);
 	public static final Color DARK_YELLOW = new Color(0xefd61d);
 	public static final Color LIGHT_GREEN = new Color(0xbae5ba);
 	public static final Color DARK_GREEN = new Color(0x50a550);
 	public static final Color LIGHT_GREY = new Color(0xCC, 0xCC, 0xCC);
 	public static final Color DARK_GREY = new Color(0x82817f);
-	public static final Color LIGHT_BLUE = new Color(0x69acb8);
+	public static final Color LIGHT_BLUE = new Color(0x4f95a0);
 }

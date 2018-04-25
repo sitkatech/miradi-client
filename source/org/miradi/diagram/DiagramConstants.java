@@ -63,7 +63,7 @@ public class DiagramConstants
 	public static final Color DEFAULT_THREAT_REDUCTION_RESULT_COLOR = new Color(0xc48ed6);
 	public static final Color DEFAULT_ACTIVITIES_COLOR = new Color(0xfbee69);
 	public static final Color DEFAULT_MONITORING_ACTIVITIES_COLOR = new Color(204,153,255);
-	public static final Color DEFAULT_INDICATOR_COLOR = new Color(0xc48ed6);
+	public static final Color DEFAULT_INDICATOR_COLOR = new Color(0xaa6eae);
 	public static final Color DEFAULT_OBJECTIVE_COLOR = new Color(0xcae8ea);
 
 	public static final Color[] targetColorChoices = {
