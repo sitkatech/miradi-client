@@ -38,18 +38,12 @@ public class TestMigrationTo49 extends AbstractTestMigration
         Strategy strategy = getProject().createAndPopulateStrategy();
         Objective objective = getProject().createAndPopulateObjective(strategy);
         Goal goal = getProject().createAndPopulateGoal(target);
-        getProject().createAndPopulateIntermediateResult();
-        getProject().createAndPopulateBiophysicalResult();
-        getProject().createAndPopulateThreatReductionResult();
 
         RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo49.VERSION_TO));
 
         verifyEvidenceFieldRemoved(rawProject, StrategySchema.getObjectType());
         verifyEvidenceFieldRemoved(rawProject, ObjectiveSchema.getObjectType());
         verifyEvidenceFieldRemoved(rawProject, GoalSchema.getObjectType());
-        verifyEvidenceFieldRemoved(rawProject, IntermediateResultSchema.getObjectType());
-        verifyEvidenceFieldRemoved(rawProject, BiophysicalResultSchema.getObjectType());
-        verifyEvidenceFieldRemoved(rawProject, ThreatReductionResultSchema.getObjectType());
     }
 
     private void verifyEvidenceFieldRemoved(RawProject rawProject, int objectType)

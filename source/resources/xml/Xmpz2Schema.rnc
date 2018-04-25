@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Wed Apr 25 11:16:04 BST 2018 $
+# $LastChangedDate: Wed Apr 25 14:59:41 BST 2018 $
 # $LastChangedRevision: 237 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/237'
 start = ConservationProject.element
@@ -543,7 +543,6 @@ IntermediateResult.element = element miradi:IntermediateResult
   attribute Id {xsd:integer} &
   element miradi:IntermediateResultComments { formatted_text }? &
   element miradi:IntermediateResultDetails { formatted_text }? &
-  element miradi:IntermediateResultEvidenceConfidence { vocabulary_evidence_confidence_project }? &
   element miradi:IntermediateResultEvidenceNotes { formatted_text }? &
   element miradi:IntermediateResultIdentifier { text }? &
   element miradi:IntermediateResultIndicatorIds { IndicatorId.element* }? &
@@ -578,7 +577,6 @@ ThreatReductionResult.element = element miradi:ThreatReductionResult
   attribute Id {xsd:integer} &
   element miradi:ThreatReductionResultComments { formatted_text }? &
   element miradi:ThreatReductionResultDetails { formatted_text }? &
-  element miradi:ThreatReductionResultEvidenceConfidence { vocabulary_evidence_confidence_project }? &
   element miradi:ThreatReductionResultEvidenceNotes { formatted_text }? &
   element miradi:ThreatReductionResultIdentifier { text }? &
   element miradi:ThreatReductionResultIndicatorIds { IndicatorId.element* }? &
@@ -864,7 +862,6 @@ BiophysicalResult.element = element miradi:BiophysicalResult
   attribute Id {xsd:integer} &
   element miradi:BiophysicalResultComments { formatted_text }? &
   element miradi:BiophysicalResultDetails { formatted_text }? &
-  element miradi:BiophysicalResultEvidenceConfidence { vocabulary_evidence_confidence_project }? &
   element miradi:BiophysicalResultEvidenceNotes { formatted_text }? &
   element miradi:BiophysicalResultIdentifier { text }? &
   element miradi:BiophysicalResultIndicatorIds { IndicatorId.element* }? &

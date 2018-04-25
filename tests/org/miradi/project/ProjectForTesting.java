@@ -1293,7 +1293,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(biophysicalResult, BiophysicalResult.TAG_TEXT, "Some Description Text");
 		fillObjectUsingCommand(biophysicalResult, BiophysicalResult.TAG_COMMENTS, "Some comment Text");
 		fillObjectUsingCommand(biophysicalResult, BiophysicalResult.TAG_EVIDENCE_NOTES, "Some evidence Text");
-		fillObjectUsingCommand(biophysicalResult, BiophysicalResult.TAG_EVIDENCE_CONFIDENCE, ResultEvidenceConfidenceQuestion.ROUGH_GUESS_CODE);
 
         IdList objectiveIds = new IdList(ObjectiveSchema.getObjectType());
         final Objective objective = createAndPopulateObjective(biophysicalResult);
@@ -1666,7 +1665,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectWithSampleStringData(threatReductionResult.getRef(), ThreatReductionResult.TAG_SHORT_LABEL);
 		fillObjectWithSampleStringData(threatReductionResult.getRef(), ThreatReductionResult.TAG_COMMENTS);
 		fillObjectWithSampleStringData(threatReductionResult.getRef(), ThreatReductionResult.TAG_EVIDENCE_NOTES);
-		fillObjectUsingCommand(threatReductionResult, ThreatReductionResult.TAG_EVIDENCE_CONFIDENCE, ResultEvidenceConfidenceQuestion.ROUGH_GUESS_CODE);
 		fillObjectWithSampleStringData(threatReductionResult.getRef(), ThreatReductionResult.TAG_TEXT);
 		addObjective(threatReductionResult);
 		
@@ -1682,7 +1680,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectWithSampleStringData(intermediateResult.getRef(), IntermediateResult.TAG_LABEL);
 		fillObjectWithSampleStringData(intermediateResult.getRef(), IntermediateResult.TAG_SHORT_LABEL);
 		fillObjectWithSampleStringData(intermediateResult.getRef(), IntermediateResult.TAG_COMMENTS);
-		fillObjectUsingCommand(intermediateResult, IntermediateResult.TAG_EVIDENCE_CONFIDENCE, ResultEvidenceConfidenceQuestion.ROUGH_GUESS_CODE);
 		fillObjectWithSampleStringData(intermediateResult.getRef(), IntermediateResult.TAG_EVIDENCE_NOTES);
 		fillObjectWithSampleStringData(intermediateResult.getRef(), IntermediateResult.TAG_TEXT);
 

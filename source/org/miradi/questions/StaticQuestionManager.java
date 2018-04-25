@@ -127,7 +127,6 @@ public class StaticQuestionManager
 		addQuestion(new ViabilityRatingEvidenceConfidence());
 		addQuestion(new MeasurementEvidenceConfidenceQuestion());
 		addQuestion(new ThreatRatingEvidenceConfidenceQuestion());
-		addQuestion(new ResultEvidenceConfidenceQuestion());
 		addQuestion(new ResultReportShortStatusQuestion());
 		addQuestion(new ResultReportLongStatusQuestion());
 		addQuestion(new ResultReportDiagramStatusQuestion());

@@ -81,7 +81,7 @@ public class MigrationTo49 extends AbstractMigration
     @Override
     protected String getDescription()
     {
-        return EAM.text("This migration adds an Evidence Confidence field to Strategies, Goals, Objectives and Result factors.");
+        return EAM.text("This migration adds an Evidence Confidence field to Strategies, Goals, and Objectives.");
     }
 
     private Vector<Integer> getTypesToMigrate()
@@ -91,9 +91,6 @@ public class MigrationTo49 extends AbstractMigration
         typesToMigrate.add(ObjectType.STRATEGY);
         typesToMigrate.add(ObjectType.OBJECTIVE);
         typesToMigrate.add(ObjectType.GOAL);
-        typesToMigrate.add(ObjectType.INTERMEDIATE_RESULT);
-        typesToMigrate.add(ObjectType.THREAT_REDUCTION_RESULT);
-        typesToMigrate.add(ObjectType.BIOPHYSICAL_RESULT);
 
         return typesToMigrate;
     }

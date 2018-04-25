@@ -59,15 +59,6 @@ public abstract class EvidenceConfidenceTypeQuestion extends StaticChoiceQuestio
         if (objectType == ObjectType.OBJECTIVE)
             return DesireEvidenceConfidenceQuestion.class;
 
-        if (objectType == ObjectType.THREAT_REDUCTION_RESULT)
-            return ResultEvidenceConfidenceQuestion.class;
-
-        if (objectType == ObjectType.INTERMEDIATE_RESULT)
-            return ResultEvidenceConfidenceQuestion.class;
-
-        if (objectType == ObjectType.BIOPHYSICAL_RESULT)
-            return ResultEvidenceConfidenceQuestion.class;
-
         if (objectType == ObjectType.THREAT_SIMPLE_RATING_DATA)
             return ThreatRatingEvidenceConfidenceQuestion.class;
 

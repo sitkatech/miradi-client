@@ -22,7 +22,6 @@ package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.ThreatReductionResult;
-import org.miradi.questions.ResultEvidenceConfidenceQuestion;
 
 public class ThreatReductionResultSchema extends EvidenceFactorSchema
 {
@@ -40,7 +39,6 @@ public class ThreatReductionResultSchema extends EvidenceFactorSchema
 		createResultReportSchema();
 	    writeIndicatorIds();
 		writeObjectiveIds();
-		createFieldSchemaChoice(ThreatReductionResult.TAG_EVIDENCE_CONFIDENCE, ResultEvidenceConfidenceQuestion.class);
 		createTaxonomyClassificationSchemaField();
 	}
 
