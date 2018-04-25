@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-25 06:33-0700\n"
+"POT-Creation-Date: 2018-04-25 07:48-0700\n"
 "PO-Revision-Date: 2015-07-29 01:52-0700\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -6182,35 +6182,6 @@ msgstr ""
 msgid "Report to project team and stakeholders"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultEvidenceConfidenceQuestion.java:39
-msgid ""
-"Result status based on estimates by experienced observers who have the "
-"expertise to provide reliable information in the project context and/or by "
-"extrapolating from other similar project sites."
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultEvidenceConfidenceQuestion.java:34
-msgid ""
-"Result status based on estimates by project team members or other "
-"individuals without specialized knowledge; often an initial estimate to be "
-"improved over time."
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultEvidenceConfidenceQuestion.java:44
-msgid ""
-"Result status derived from data collected about this specific project site "
-"using relatively simple methods that typically provide either presence/"
-"absence, categorical, or other basic qualitative data."
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultEvidenceConfidenceQuestion.java:49
-msgid ""
-"Result status derived from data collected about this specific project site "
-"using relatively systematic methods that typically provide detailed "
-"quantitative or qualitative data, and often include a formal estimate of "
-"statistical precision."
-msgstr ""
-
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/project/ResultsChainCreatorHelper.java:196
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:39
@@ -8227,8 +8198,8 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo49.java:84
 msgid ""
-"This migration adds an Evidence Confidence field to Strategies, Goals, "
-"Objectives and Result factors."
+"This migration adds an Evidence Confidence field to Strategies, Goals, and "
+"Objectives."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo48.java:84
@@ -8931,11 +8902,6 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/xslTemplate/XslTemplatePropertiesPanel.java:49
 msgid "Title|XSL Template Properties"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultEvidenceConfidenceQuestion.java:29
-msgid ""
-"To track the confidence of the result evidence, use the following scale:"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:32
@@ -10845,9 +10811,6 @@ msgstr ""
 msgid "FieldLabel|23.EvidenceNotes|Evidence Notes"
 msgstr ""
 
-msgid "FieldLabel|23.EvidenceConfidence|Result Evidence"
-msgstr ""
-
 msgid "FieldLabel|23.ResultReportRefs|Result Reports"
 msgstr ""
 
@@ -10927,9 +10890,6 @@ msgid "FieldLabel|25.Comments|Comment"
 msgstr ""
 
 msgid "FieldLabel|25.EvidenceNotes|Evidence Notes"
-msgstr ""
-
-msgid "FieldLabel|25.EvidenceConfidence|Result Evidence"
 msgstr ""
 
 msgid "FieldLabel|25.TaxonomyClassificationContainer|Program Classifications"
@@ -11702,9 +11662,6 @@ msgid "FieldLabel|66.Comments|Comments"
 msgstr ""
 
 msgid "FieldLabel|66.EvidenceNotes|Evidence Notes"
-msgstr ""
-
-msgid "FieldLabel|66.EvidenceConfidence|Result Evidence"
 msgstr ""
 
 msgid "FieldLabel|66.PseudoTagDiagramRefs|Conceptual Model Pages"
