@@ -40,6 +40,14 @@ and then click the <code class='toolbarbutton'>&lt;Create Progress Report&gt;</c
 
 <p class='hint'><strong>Hint:</strong> Tags can be a powerful tool to help manage the visual complexity of a model.</p>
 
+<p class='hint'><strong>New Feature Hint:</strong> Tags have been updated; here are the major changes:</p>
+<ol>
+<li><b>A checkbox has been added next to the <code class='toolbarbutton'>&lt;Manage Tags&gt;</code> button on the toolbar to “enable” the application of the tags.</b>  When this box is unchecked, all factors are displayed in the diagram.  When this box is checked, only factors with the checked tags are displayed.</li>
+<li><b>The application of a tag to a factor is now diagram-specific.</b>  In the past, when a tag was applied to a target, it applied for every conceptual model and result chain that contained that target.  Now, checking a tag for a factor applies that tag only for the active diagram.  In migration from prior Miradi versions, all prior tag applications are retained, so conscientious taggers will likely want to cleanup their prior tag applications.</li>
+<li><b>Only the tags that have been applied to factors in the active diagram are displayed in the list in the Control Bar.</b>  In the past, all tags were displayed in every diagram.</li>
+<li><b>All menu options to add and remove tags have been modified to be diagram-specific.</b>  A “Remove All Tags” option has been added to the right-click context menu; this option clears all tags applied to the active diagram for one or more selected factors.  The “Remove Tag” option displays only the tags that have been applied for the selected factors for the active diagram, and clears the selected tag for the active diagram only.  The Add Tag options display all tags so that tags may be applied to diagrams for the first time. 
+</ol> 
+
 <p>To <b>employ tags</b>:
 <ol>
 <li>Click on the <code class='toolbarbutton'>&lt;Manage Tags&gt;</code> button on the toolbar.</li>
@@ -47,5 +55,5 @@ and then click the <code class='toolbarbutton'>&lt;Create Progress Report&gt;</c
 <li>Returning to the diagram, hold the shift key down and select the factors that you want to apply a tag to, and then use the <code class='toolbarbutton'>&lt;Actions/Tag/Untag...&gt;</code> menu command, or the <code class='toolbarbutton'>&lt;Add Tag to Selected Items&gt;</code> command on the right (alt) click mouse  button to apply the tag.</li>
 <li>Repeat with other tags as needed.</li>
 <li>You can then use the check boxes in the control bar to set the visibility of each tag group.</li>
-<li>Remember that once at least one tag is checked, then only checked tags will be visible. It is often helpful to create a tag called <b>Show All Factors</b> and assign it to all factors on the diagram so that you can rapidly bring them back without having to check and uncheck all the tags.</li>
+<li>Remember that once at least one tag is checked, then only checked tags will be visible. </li>
 </ol> 
