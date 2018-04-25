@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-04-19 07:18-0700\n"
+"POT-Creation-Date: 2018-04-25 06:33-0700\n"
 "Language: psp\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -267,11 +267,11 @@ msgstr ""
 msgid "%s (old project)"
 msgstr "%s (old project)"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:273
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:274
 msgid "%s Goals"
 msgstr "%s Goals"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:281
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:282
 msgid "%s Objs"
 msgstr "%s Objs"
 
@@ -291,8 +291,8 @@ msgstr "%s field data will be lost for measurement"
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%FromName' -> '%ToName'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:189
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1456
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:190
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1466
 msgid "(%s)"
 msgstr "(%s)"
 
@@ -362,11 +362,11 @@ msgstr "- Caves"
 msgid "- Other Subterranean Habitats"
 msgstr "- Other Subterranean Habitats"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:270
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:271
 msgid "1 Goal"
 msgstr "1 Goal"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:278
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:279
 msgid "1 Obj"
 msgstr "1 Obj"
 
@@ -604,12 +604,12 @@ msgstr ""
 "<div class='WizardText'>To <strong>start a new project</strong> on this "
 "computer, choose:"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1481
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1491
 msgid ""
 "<div>The below alternative name is valid. Edit this name as desired.</div>"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1480
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1490
 msgid "<div>The selected project's name contains invalid characters.</div>"
 msgstr ""
 
@@ -2553,11 +2553,11 @@ msgstr "Biodiversity Features"
 msgid "Biodiversity Target"
 msgstr "Biodiversity Component"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:252
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:253
 msgid "Biodiversity Target (Lighter Green)"
 msgstr "Biodiversity Component (Lighter Green)"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:254
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:255
 msgid "Biodiversity Target Scope (Darker Green)"
 msgstr "Biodiversity Component Scope (Darker Green)"
 
@@ -2570,8 +2570,12 @@ msgstr ""
 msgid "Biophysical Factor"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:250
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:251
 msgid "Biophysical Factor (Olive)"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:41
+msgid "Biophysical Factor Light Olive"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo17.java:103
@@ -2584,8 +2588,12 @@ msgstr ""
 msgid "Biophysical Result"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:257
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:258
 msgid "Biophysical Result (Lavender Blue)"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:45
+msgid "Biophysical Result Light Lavender"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo57.java:40
@@ -2603,7 +2611,7 @@ msgstr ""
 msgid "BiophysicalFactor"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:46
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:59
 msgid "Black"
 msgstr "Black"
 
@@ -2624,7 +2632,7 @@ msgstr "Brain Storm"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramLinkColorQuestion.java:44
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorFontColorQuestion.java:45
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:55
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:68
 msgid "Brown"
 msgstr "Brown"
 
@@ -2975,7 +2983,7 @@ msgstr "Choose Stress to Create from"
 msgid "Choose tags for this diagram"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:247
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:244
 msgid "Choose the colors that look best on your system:"
 msgstr "Choose the colors that look best on your system:"
 
@@ -3002,6 +3010,10 @@ msgstr "Close"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/AbstractCollapseColumnAction.java:29
 msgid "Collapse Selected Column"
 msgstr "Collapse Selected Column"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:247
+msgid "Color Scheme"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:52
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:63
@@ -3096,9 +3108,13 @@ msgstr "Context"
 msgid "Contributing Factor"
 msgstr "Contributing Factor"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:251
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:252
 msgid "Contributing Factor (Orange)"
 msgstr "Contributing Factor (Orange)"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:43
+msgid "Contributing Factor Light Orange"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/FactorModeQuestion.java:38
 msgid "Contributing Factors and Intermediate Results Only"
@@ -3271,42 +3287,42 @@ msgstr "Cut"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramLinkColorQuestion.java:42
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorFontColorQuestion.java:43
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:53
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:66
 msgid "Dark Blue"
 msgstr "Dark Blue"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramLinkColorQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorFontColorQuestion.java:38
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:47
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:60
 msgid "Dark Gray"
 msgstr "Dark Gray"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramLinkColorQuestion.java:41
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorFontColorQuestion.java:42
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:52
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:65
 msgid "Dark Green"
 msgstr "Dark Green"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramLinkColorQuestion.java:39
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorFontColorQuestion.java:40
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:50
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:63
 msgid "Dark Orange"
 msgstr "Dark Orange"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramLinkColorQuestion.java:43
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorFontColorQuestion.java:44
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:54
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:67
 msgid "Dark Purple"
 msgstr "Dark Purple"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorFontColorQuestion.java:39
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:49
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:62
 msgid "Dark Red"
 msgstr "Dark Red"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramLinkColorQuestion.java:40
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorFontColorQuestion.java:41
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:51
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:64
 msgid "Dark Yellow"
 msgstr "Dark Yellow"
 
@@ -3314,7 +3330,7 @@ msgstr "Dark Yellow"
 msgid "Dashboard"
 msgstr "Dashboard"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:118
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:115
 msgid "Data Location"
 msgstr "Data Location"
 
@@ -3509,7 +3525,7 @@ msgid "Develop target viability"
 msgstr "Develop component viability"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/taggedObjectSet/TaggedObjectSetPropertiesPanel.java:101
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:104
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:101
 msgid "Diagram"
 msgstr "Diagram"
 
@@ -3568,7 +3584,7 @@ msgstr "Diagram overview"
 msgid "Direct Threat"
 msgstr "Pressure"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:249
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:250
 msgid "Direct Threat (Pink)"
 msgstr "Pressure (Pink)"
 
@@ -3680,7 +3696,7 @@ msgstr "Edit.."
 msgid "Editor"
 msgstr "Editor"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:40
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:41
 msgid "Effective"
 msgstr "Effective"
 
@@ -3689,7 +3705,7 @@ msgid ""
 "Effective end date for project planning date range is before start date."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:162
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:159
 msgid "Enable Spell Checking"
 msgstr "Enable Spell Checking"
 
@@ -3873,7 +3889,7 @@ msgstr "Factor Properties"
 msgid "Factor Status Display Enabled Flag"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusQuestion.java:38
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusQuestion.java:39
 msgid "Fair"
 msgstr "Fair"
 
@@ -4022,11 +4038,11 @@ msgstr "FolderName|BackupsFromMigrationToMiradi4"
 msgid "Font"
 msgstr "Font"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:149
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:146
 msgid "Font Family"
 msgstr "Font Family"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:146
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:143
 msgid "Font Size"
 msgstr "Font Size"
 
@@ -4195,7 +4211,7 @@ msgstr "Goals Only"
 msgid "Goals:"
 msgstr "Goals:"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusQuestion.java:39
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusQuestion.java:40
 msgid "Good"
 msgstr "Good"
 
@@ -4255,6 +4271,10 @@ msgstr "Group Box Properties"
 msgid "Group by"
 msgstr "Group by"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:40
+msgid "HWB Target Light Tan"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/forms/summary/RareTabCampaignSubPanelForm.java:55
 msgid "Habitat"
 msgstr "Habitat"
@@ -4275,14 +4295,14 @@ msgstr ""
 msgid "Hide Quarter Columns"
 msgstr "Hide Quarter Columns"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:39
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressScopeChoiceQuestion.java:39
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressSeverityChoiceQuestion.java:39
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatRatingQuestion.java:45
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:40
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:40
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressScopeChoiceQuestion.java:40
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressSeverityChoiceQuestion.java:40
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatRatingQuestion.java:46
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:41
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/PriorityRatingQuestion.java:39
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressRatingChoiceQuestion.java:39
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyFeasibilityQuestion.java:40
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressRatingChoiceQuestion.java:40
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyFeasibilityQuestion.java:41
 msgid "High"
 msgstr "High"
 
@@ -4314,11 +4334,11 @@ msgstr "Human Stakeholders"
 msgid "Human Wellbeing Target"
 msgstr "Human Wellbeing Component"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:253
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:254
 msgid "Human Wellbeing Target (Lighter Brown)"
 msgstr "Human Wellbeing Component (Lighter Brown)"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:255
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:256
 msgid "Human Wellbeing Target Scope (Darker Brown)"
 msgstr "Human Wellbeing Component Scope (Darker Brown)"
 
@@ -4503,6 +4523,10 @@ msgstr ""
 "measurable, precise, consistent, and sensitive. In Miradi, an indicator is "
 "represented by a purple triangle."
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:49
+msgid "Indicator Purple"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/RelevancyIndicatorPanel.java:42
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/RelevancyIndicatorOverridePanel.java:41
 msgid "Indicator Relevancy Panel"
@@ -4590,7 +4614,7 @@ msgstr "Intensive Assessment"
 msgid "Intermediate Result"
 msgstr "Intermediate Result"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:256
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:257
 msgid "Intermediate Result (Light Blue)"
 msgstr "Intermediate Result (Light Blue)"
 
@@ -4603,6 +4627,10 @@ msgstr ""
 "Intermediate Result - A factor in a results chain that describes a specific "
 "outcome that results from implementing one or more conservation strategies. "
 "In Miradi, an intermediate result is represented by a blue rectangle."
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:47
+msgid "Intermediate Result Light Blue"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo55.java:40
 msgid "Intermediate Results Result Reports"
@@ -4917,8 +4945,8 @@ msgid "Label|Workplan Dates"
 msgstr "Label|Workplan Dates"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/LanguagesPanel.java:200
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:113
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:117
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:110
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:114
 msgid "Languages"
 msgstr ""
 
@@ -4950,6 +4978,10 @@ msgstr "Leaf Only"
 msgid "Learn about Miradi Share"
 msgstr "Learn about Miradi Share"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ColorSchemeQuestion.java:37
+msgid "Legacy Color Scheme"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:56
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCorePanel.java:84
 msgid "Legacy TNC Ratings"
@@ -4962,7 +4994,7 @@ msgstr "Legend Table"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramLinkColorQuestion.java:51
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorFontColorQuestion.java:52
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:43
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:56
 msgid "Light Blue"
 msgstr "Light Blue"
 
@@ -4977,23 +5009,23 @@ msgstr "Light Gray (Default)"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramLinkColorQuestion.java:50
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorFontColorQuestion.java:51
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:42
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:55
 msgid "Light Green"
 msgstr "Light Green"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorFontColorQuestion.java:49
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:40
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:53
 msgid "Light Orange"
 msgstr "Light Orange"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramLinkColorQuestion.java:52
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorFontColorQuestion.java:53
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:44
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:57
 msgid "Light Purple"
 msgstr "Light Purple"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorFontColorQuestion.java:50
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:54
 msgid "Light Yellow"
 msgstr "Light Yellow"
 
@@ -5022,14 +5054,14 @@ msgstr "Local"
 msgid "Location"
 msgstr "Location"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:37
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressScopeChoiceQuestion.java:37
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressSeverityChoiceQuestion.java:37
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatRatingQuestion.java:43
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:38
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:38
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressScopeChoiceQuestion.java:38
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressSeverityChoiceQuestion.java:38
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatRatingQuestion.java:44
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:39
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/PriorityRatingQuestion.java:37
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressRatingChoiceQuestion.java:37
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyFeasibilityQuestion.java:38
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressRatingChoiceQuestion.java:38
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyFeasibilityQuestion.java:39
 msgid "Low"
 msgstr "Low"
 
@@ -5264,14 +5296,14 @@ msgstr ""
 msgid "Measures"
 msgstr "Measures"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:38
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressScopeChoiceQuestion.java:38
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressSeverityChoiceQuestion.java:38
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatRatingQuestion.java:44
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:39
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:39
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressScopeChoiceQuestion.java:39
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressSeverityChoiceQuestion.java:39
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatRatingQuestion.java:45
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:40
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/PriorityRatingQuestion.java:38
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressRatingChoiceQuestion.java:38
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyFeasibilityQuestion.java:39
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressRatingChoiceQuestion.java:39
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyFeasibilityQuestion.java:40
 msgid "Medium"
 msgstr "Medium"
 
@@ -5553,11 +5585,11 @@ msgstr "Multi Selection"
 msgid "Must be a positive number"
 msgstr "Must be a positive number"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatRatingQuestion.java:75
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatRatingQuestion.java:76
 msgid "N/A"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:156
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:153
 msgid ""
 "NOTE: Automatic Table Row Height Mode may impact the speed of expand and "
 "<br>collapse actions in the tables this setting affects. For better "
@@ -5589,7 +5621,7 @@ msgstr ""
 "NOTE: Quarter columns cannot be hidden because this project already has data "
 "for some quarters."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:170
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:167
 msgid ""
 "NOTE: Spell checking is currently only available in English. <br>If the "
 "'Primary Project Data Language' in the Project tab of the Summary view "
@@ -5614,7 +5646,7 @@ msgstr ""
 msgid "Name = '"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:39
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:40
 msgid "Need More Info"
 msgstr ""
 
@@ -5638,6 +5670,10 @@ msgstr ""
 "components whose conservation needs are subsumed in one or more focal "
 "conservation components. Often includes ecoregional components that a team "
 "wants to note and/or track."
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ColorSchemeQuestion.java:38
+msgid "New Miradi 4.5 Color Scheme"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:95
 msgid "New Project Filename:"
@@ -5682,7 +5718,7 @@ msgstr ""
 msgid "Not Applicable"
 msgstr "Not Applicable"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:38
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:39
 msgid "Not Effective"
 msgstr "Not Effective"
 
@@ -5698,27 +5734,27 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:45
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/utils/Translation.java:356
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/xml/generic/XmlSchemaCreator.java:606
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/AbstractResultReportStatusQuestion.java:38
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:36
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/AbstractResultReportStatusQuestion.java:39
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/MiradiShareTaxonomyQuestion.java:58
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceTypeProjectQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusConfidenceQuestion.java:35
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProjectScaleQuestion.java:35
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressScopeChoiceQuestion.java:36
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressSeverityChoiceQuestion.java:36
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressScopeChoiceQuestion.java:37
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressSeverityChoiceQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/KeyEcologicalAttributeTypeQuestion.java:35
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RatingSourceQuestion.java:35
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatRatingQuestion.java:42
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:37
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/AbstractProgressReportStatusQuestion.java:50
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatRatingQuestion.java:43
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:38
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/AbstractProgressReportStatusQuestion.java:51
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/PriorityRatingQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/TrendQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/EvidenceConfidenceTypeExternalQuestion.java:41
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusQuestion.java:36
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProjectFocusQuestion.java:35
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressRatingChoiceQuestion.java:36
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyFeasibilityQuestion.java:37
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressRatingChoiceQuestion.java:37
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyFeasibilityQuestion.java:38
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/objecthelpers/TaxonomyFileLoader.java:38
 msgid "Not Specified"
 msgstr "Not Specified"
@@ -5743,8 +5779,8 @@ msgstr "Not all factors are being shown because %s tag(s) are checked"
 msgid "Notification Dialogs"
 msgstr "Notification Dialogs"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:112
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:119
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:109
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:116
 msgid "Notifications"
 msgstr "Notifications"
 
@@ -5773,6 +5809,10 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/RelevancyObjectiveOverridePanel.java:41
 msgid "Objective Relevancy Panel"
 msgstr "Objective Relevancy Panel"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:48
+msgid "Objective/Goal Blue"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/StrategyCoreSubpanel.java:58
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/RelatedItemsSubpanel.java:44
@@ -6052,7 +6092,7 @@ msgstr "Peso (Mexico)"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramLinkColorQuestion.java:47
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorFontColorQuestion.java:48
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:39
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:52
 msgid "Pink"
 msgstr "Pink"
 
@@ -6079,7 +6119,7 @@ msgid "Plan project lifespan and exit strategy"
 msgstr "Plan project lifespan and exit strategy"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/PlanningPanel.java:59
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:108
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:105
 msgid "Planning"
 msgstr "Planning"
 
@@ -6119,7 +6159,7 @@ msgstr ""
 msgid "Policy and Practice"
 msgstr "Policy and Practice"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusQuestion.java:37
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusQuestion.java:38
 msgid "Poor"
 msgstr "Poor"
 
@@ -6127,7 +6167,7 @@ msgstr "Poor"
 msgid "Pound (United Kingdom)"
 msgstr "Pound (United Kingdom)"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:411
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:441
 msgid "Preferences"
 msgstr "Preferences"
 
@@ -6291,7 +6331,7 @@ msgid "Project Scope"
 msgstr "Project Scope"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/ProjectSettingsPanel.java:51
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:111
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:108
 msgid "Project Settings"
 msgstr "Project Settings"
 
@@ -6627,7 +6667,7 @@ msgstr "Savanna - Moist Savana"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/noproject/CopyProject.java:42
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:64
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/wizard/noproject/projectlist/ProjectListSaveAsAction.java:41
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1451
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1461
 msgid "Save As..."
 msgstr "Save As..."
 
@@ -6833,7 +6873,7 @@ msgstr "Show Diagram Grid"
 msgid "Show Quarter Columns"
 msgstr "Show Quarter Columns"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:225
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:222
 msgid "Show Ratings in Cell"
 msgstr "Show Ratings in Cell"
 
@@ -7041,7 +7081,7 @@ msgstr "Strategies contain Objectives"
 msgid "Strategy"
 msgstr "Strategy"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:248
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:249
 msgid "Strategy (Yellow)"
 msgstr "Strategy (Yellow)"
 
@@ -7092,6 +7132,10 @@ msgstr ""
 msgid ""
 "Strategy is recommended by project team members or other individuals without "
 "specialized knowledge."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:44
+msgid "Strategy/Activity Light Yellow"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:60
@@ -7188,7 +7232,7 @@ msgstr "Summary View - Project Description, Scope, and Vision fields"
 msgid "Superseded "
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:103
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:100
 msgid "Systemwide"
 msgstr "Systemwide"
 
@@ -8060,7 +8104,7 @@ msgstr ""
 "commands.  Most word processors or spreadsheet programs will allow you to "
 "create a table and then export as a tab delimited file."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:154
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:151
 msgid "Table Row Height Mode"
 msgstr "Table Row Height Mode"
 
@@ -8150,7 +8194,7 @@ msgstr "Tahoma"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramLinkColorQuestion.java:53
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorFontColorQuestion.java:54
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:45
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:58
 msgid "Tan"
 msgstr "Tan"
 
@@ -8168,6 +8212,10 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo59.java:42
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo58.java:42
 msgid "Target Future Viability Status Justification"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:39
+msgid "Target Light Green"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ReportTemplateContentQuestion.java:156
@@ -8417,51 +8465,51 @@ msgstr ""
 "%DIRECTORY%<br/><br/>Do you want to go ahead and migrate and open this "
 "project?"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:39
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:40
 msgid ""
 "The strategy could meaningfully contribute to project goals and/or "
 "objectives, but would need pilot-testing to ensure it is effective under "
 "this project’s conditions."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyFeasibilityQuestion.java:41
+msgid ""
+"The strategy is ethically and technically feasible, but may require some "
+"additional financial resources."
+msgstr ""
+"The strategy is ethically and technically feasible, but may require some "
+"additional financial resources."
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyFeasibilityQuestion.java:40
 msgid ""
-"The strategy is ethically and technically feasible, but may require some "
-"additional financial resources."
-msgstr ""
-"The strategy is ethically and technically feasible, but may require some "
-"additional financial resources."
-
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyFeasibilityQuestion.java:39
-msgid ""
 "The strategy is ethically feasible, but either technically OR financially "
 "difficult without substantial additional resources."
 msgstr ""
 "The strategy is ethically feasible, but either technically OR financially "
 "difficult without substantial additional resources."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyFeasibilityQuestion.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyFeasibilityQuestion.java:42
 msgid "The strategy is ethically, technically, AND financially feasible."
 msgstr "The strategy is ethically, technically, AND financially feasible."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:40
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:41
 msgid ""
 "The strategy is likely to meaningfully contribute to project goals and/or "
 "objectives, but would need effectiveness monitoring to ensure it is "
 "effective under this project’s conditions."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyFeasibilityQuestion.java:38
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyFeasibilityQuestion.java:39
 msgid "The strategy is not ethically, technically, OR financially feasible."
 msgstr "The strategy is not ethically, technically, OR financially feasible."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:38
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:39
 msgid ""
 "The strategy is unlikely to meaningfully contribute to project goals and/or "
 "objectives."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:42
 msgid ""
 "The strategy is very likely to meaningfully contribute to one or more "
 "project goals and/or objectives and can be implemented at scale with only "
@@ -8670,6 +8718,12 @@ msgstr ""
 msgid ""
 "This migration creates timeframe entries for resource assignments (where a "
 "resource or date range is specified)."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo67.java:69
+msgid ""
+"This migration downgrades any background color choices not supported in the "
+"earlier version of Miradi."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo62.java:66
@@ -8907,6 +8961,10 @@ msgstr "Pressure"
 msgid "Threat Calculations"
 msgstr "Pressure Calculations"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:42
+msgid "Threat Light Pink"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/threatrating/properties/ThreatStressRatingTableModel.java:160
 msgid "Threat Name"
 msgstr "Pressure Name"
@@ -8923,7 +8981,7 @@ msgstr "Pressure Rating Preferences Panel"
 msgid "Threat Rating Properties Panel"
 msgstr "Pressure Rating Properties Panel"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:107
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:104
 msgid "Threat Ratings"
 msgstr "Pressure Ratings"
 
@@ -8939,7 +8997,7 @@ msgstr "Pressure Ratings - Table"
 msgid "Threat Reduction Result"
 msgstr "Pressure Reduction Result"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:258
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:259
 msgid "Threat Reduction Result (Light Purple)"
 msgstr "Pressure Reduction Result (Light Purple)"
 
@@ -8954,6 +9012,10 @@ msgstr ""
 "desired change in a pressure that results from implementing one or more "
 "conservation strategies. In Miradi, a pressure reduction result is "
 "represented by a purple rectangle."
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:46
+msgid "Threat Reduction Result Light Purple"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo56.java:40
 msgid "Threat Reduction Results Result Reports"
@@ -9320,7 +9382,7 @@ msgid ""
 "To track the confidence of the result evidence, use the following scale:"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:31
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:32
 msgid ""
 "To track the confidence of your evidence that the strategy will achieve its "
 "desired goals and/or objectives, use the following scale:"
@@ -9377,7 +9439,7 @@ msgid ""
 "both Latitude and Longitude are required)."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1424
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1434
 msgid "Unable to launch external web browser"
 msgstr "Unable to launch external web browser"
 
@@ -9447,7 +9509,7 @@ msgstr "University"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/HabitatAssociationQuestion.java:161
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/TrendQuestion.java:38
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:37
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:38
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/wizard/noproject/FileSystemTreeNode.java:108
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/legacyprojects/LegacyProjectUtilities.java:69
 msgid "Unknown"
@@ -9463,7 +9525,7 @@ msgstr ""
 "You are probably trying to load an old project that contains obsolete "
 "commands that are no longer supported"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ChoiceQuestion.java:135
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ChoiceQuestion.java:133
 msgid "Unknown code: "
 msgstr "Unknown code: "
 
@@ -9544,22 +9606,22 @@ msgstr "Verdana"
 msgid "Version: "
 msgstr "Version: "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyRatingSummaryQuestion.java:42
 msgid "Very Effective"
 msgstr "Very Effective"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusQuestion.java:40
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusQuestion.java:41
 msgid "Very Good"
 msgstr "Very Good"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:40
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressScopeChoiceQuestion.java:40
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressSeverityChoiceQuestion.java:40
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatRatingQuestion.java:46
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatStressRatingChoiceQuestion.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressScopeChoiceQuestion.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressSeverityChoiceQuestion.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatRatingQuestion.java:47
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:42
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/PriorityRatingQuestion.java:40
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressRatingChoiceQuestion.java:40
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyFeasibilityQuestion.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StressRatingChoiceQuestion.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyFeasibilityQuestion.java:42
 msgid "Very High"
 msgstr "Very High"
 
@@ -9788,7 +9850,7 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramLinkColorQuestion.java:46
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorFontColorQuestion.java:47
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:38
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/DiagramFactorBackgroundQuestion.java:51
 msgid "White"
 msgstr "White"
 
@@ -9889,7 +9951,7 @@ msgstr "Workplan"
 msgid "Workshop"
 msgstr "Workshop"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyFeasibilityQuestion.java:31
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyFeasibilityQuestion.java:32
 msgid ""
 "Would your project team be able to implement the strategy within likely "
 "time, financial, staffing, ethical, and other constraints?"
