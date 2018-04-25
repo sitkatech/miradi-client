@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Wed Apr 11 17:43:06 BST 2018 $
+# $LastChangedDate: Wed Apr 25 11:16:04 BST 2018 $
 # $LastChangedRevision: 237 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/237'
 start = ConservationProject.element
@@ -1035,7 +1035,7 @@ vocabulary_custom_columns = 'SpeciesLatinName'|'ThreatRating'|'Methods'|'Activit
 vocabulary_dashboard_row_flags = 'needsAttention'
 vocabulary_day_columns_visibility = 'ShowDayColumns'|'HideDayColumns'
 vocabulary_evidence_confidence_external = ''|'RoughGuess'|'ExpertKnowledge'|'ExternalResearch'|'OnsiteResearch'
-vocabulary_diagram_factor_background_color = 'LightGray'|'White'|'Pink'|'Orange'|'LightYellow'|'LightGreen'|'LightBlue'|'LightPurple'|'Tan'|'Black'|'DarkGray'|'Red'|'DarkOrange'|'DarkYellow'|'DarkGreen'|'DarkBlue'|'DarkPurple'|'Brown'
+vocabulary_diagram_factor_background_color = 'LightGray'|'TargetLightGreen'|'HWBTargetLightTan'|'BiophysicalFactorLightOlive'|'ThreatLightPink'|'ContributingFactorLightOrange'|'StrategyActivityLightYellow'|'BiophysicalResultLightLavender'|'ThreatReductionResultLightPurple'|'IntermediateResultLightBlue'|'ObjectiveGoalBlue'|'IndicatorPurple'|'White'|'Pink'|'Orange'|'LightYellow'|'LightGreen'|'LightBlue'|'LightPurple'|'Tan'|'Black'|'DarkGray'|'Red'|'DarkOrange'|'DarkYellow'|'DarkGreen'|'DarkBlue'|'DarkPurple'|'Brown'
 vocabulary_diagram_factor_foreground_color = '#000000'|'#4E4848'|'#FF0000'|'#FF6600'|'#FFCC00'|'#007F00'|'#0000CC'|'#9900FF'|'#C85A17'|'#6D7B8D'|'#FFFFFF'|'#FF00FF'|'#FF8040'|'#FFFFCC'|'#5FFB17'|'#00CCFF'|'#CC99FF'|'#EDE275'
 vocabulary_diagram_factor_font_size = '1.0'|'0.5'|'0.75'|'0.9'|'1.25'|'1.75'|'2.5'
 vocabulary_diagram_factor_font_style = ''|'Bold'|'Underline'|'StrikeThrough'
