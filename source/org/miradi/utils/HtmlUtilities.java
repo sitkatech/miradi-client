@@ -264,7 +264,8 @@ public class HtmlUtilities
 		final String START_PARA_REGEX = createStartTagRegex(PARA_TAG_NAME);
 		final String END_PARA_REGEX = createEndTagRegex(PARA_TAG_NAME);
 		text = replaceAll(START_PARA_REGEX, text, DIV_START_TAG);
-		return replaceAll(END_PARA_REGEX, text, DIV_END_TAG);
+		text = replaceAll(END_PARA_REGEX, text, DIV_END_TAG);
+		return text.replaceAll(PARA_EMPTY_TAG, DIV_EMPTY_TAG);
 	}
 
 	public static int getLabelLineCount(String labelToUse)
@@ -527,6 +528,7 @@ public class HtmlUtilities
 	private static final String DIV_EMPTY_TAG = "<div/>";
 	private static final String OFFICE_PARA_TAG_NAME = "o:p";
 	public static final String PARA_TAG_NAME = "p";
+	public static final String PARA_EMPTY_TAG = "<p/>";
 	public static final String ANCHOR_ELEMENT_NAME = "a";
 	public static final String HREF_ATTRIBUTE_NAME = "href";
 	public static final String NAME_ATTRIBUTE_NAME = "name";

@@ -76,7 +76,7 @@ public class TestHtmlUtilities extends MiradiTestCase
 		assertEquals("quotes and apostrophes should have been escaped?", expectedValue, HtmlUtilities.encodeAllUserQuotesAndApostrophes(actualValue));
 	}
 
-	public void testIllegaleAnchorElements() throws Exception
+	public void testIllegalAnchorElements() throws Exception
 	{
 		verifyAnchorElements("a b c", "a b c");
 		verifyAnchorElements("<a href=\"http://www.miradi.org\">miradi</a>", "<a href=\"http://www.miradi.org\">miradi</a>");
@@ -169,7 +169,13 @@ public class TestHtmlUtilities extends MiradiTestCase
 		String htmlText = "we'll";
 		assertEquals("wrong new lines inserted?", "we&apos;ll", HtmlUtilitiesRelatedToShef.getNormalizedAndSanitizedHtmlText(htmlText, getAllowedHtmlTags()));
 	}
-	
+
+	public void testReplacementOfParaTagsWithDivTags() throws Exception
+	{
+		verifySpaceRemovalAroundElement("X<div>Y</div>", "X<p>Y</p>");
+		verifySpaceRemovalAroundElement("X<div/>Y", "X<p/>Y");
+	}
+
 	public void testSpacesAroundElementShouldNotBeCompletelyRemoved() throws Exception
 	{
 		verifySpaceRemovalAroundElement("X<b/>Y", "X<b/>Y");
