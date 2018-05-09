@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-03 12:48-0700\n"
+"POT-Creation-Date: 2018-05-09 04:48-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -2195,7 +2195,7 @@ msgstr "По време на сортирането възникна грешк�
 msgid "An error has occurred while writing assignment data."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:347
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:348
 msgid ""
 "An error is preventing this diagram from displaying correctly. Most likely, "
 "the project has been corrupted. Please contact the Miradi team for help and "
@@ -5110,8 +5110,8 @@ msgstr ""
 msgid "Manage Stresses for "
 msgstr "Управление на стрес за"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:133
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:449
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:117
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:425
 msgid "Manage Tags"
 msgstr ""
 
@@ -5814,7 +5814,7 @@ msgstr ""
 msgid "Not Yet - Too early to expect desired result"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:442
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramSplitPane.java:450
 msgid "Not all factors are being shown because %s tag(s) are checked"
 msgstr "Не са показани всички фактори, защото % етикет(и) са проверени"
 
