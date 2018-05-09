@@ -70,9 +70,6 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	{
 		super.becomeActive();
 
-		if (editListPanel != null)
-			editListPanel.becomeActive();
-
 		getProject().addCommandExecutedListener(this);
 	}
 	
@@ -81,22 +78,9 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	{
 		getProject().removeCommandExecutedListener(this);
 
-		if (editListPanel != null)
-			editListPanel.becomeInactive();
-		
-		super.becomeInactive();	
+		super.becomeInactive();
 	}
 	
-	@Override
-	public void dispose()
-	{
-		if(editListPanel != null)
-			editListPanel.dispose();
-		editListPanel = null;
-		
-		super.dispose();
-	}
-
 	public void rebuild() throws Exception
 	{
 		removeAll();
@@ -114,7 +98,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		DiagramObject diagramObject = getCurrentDiagramObject();
 		if (diagramObject != null)
 			addTaggedObjectSetPanel(diagramObject);
-		
+
 		updateDiagramLegendCheckBoxes();
 		setMinimumSize(new Dimension(0,0));
 	}
@@ -137,7 +121,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		add(manageTagsPanel);
 
 		ChoiceQuestion question = new DiagramObjectTaggedObjectSetQuestion(getProject(), diagramObject);
-		editListPanel = new ObjectRefListEditorPanel(getProject(), ORef.createInvalidWithType(getDiagramType()), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, question);
+		ObjectRefListEditorPanel editListPanel = new ObjectRefListEditorPanel(getProject(), ORef.createInvalidWithType(getDiagramType()), DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, question);
 		editListPanel.setObjectRef(diagramObject.getRef());
 		editListPanel.setBackground(AppPreferences.getControlPanelBackgroundColor());
 		boolean isTaggingEnabled = diagramObject.isTaggingEnabled();
@@ -342,11 +326,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 			{
 				DiagramObject diagramObject = getCurrentDiagramObject();
 				if (diagramObject != null)
-				{
-					boolean isTaggingEnabled = diagramObject.isTaggingEnabled();
-					if (editListPanel != null)
-						editListPanel.setEditable(isTaggingEnabled);
-				}
+					rebuild();
 			}
 
 			if (shouldResetDiagramLegendCheckBoxes(event))
@@ -356,11 +336,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 				rebuild();
 
 			if (isUpdateTaggedObjectSetsCommand(event))
-			{
-				DiagramObject diagramObject = getCurrentDiagramObject();
-				if (diagramObject != null && editListPanel != null)
-					editListPanel.setObjectRef(diagramObject.getRef());
-			}
+				rebuild();
 		}
 		catch (Exception e)
 		{
@@ -473,5 +449,4 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 	abstract protected int getDiagramType();
 
 	private MainWindow mainWindow;
-	private ObjectRefListEditorPanel editListPanel;
 }

@@ -251,6 +251,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 			if (ref.isInvalid())
 			{
 				displayResultsChainHelpText();
+				getLegendPanel().rebuild();
 				return;
 			}
 			
@@ -264,7 +265,7 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 				getDiagramModel().updateGroupBoxCells();
 			}
 		}
-		
+
 		private void displayResultsChainHelpText()
 		{
 			if (!selectionPanel.isResultsChainPageList())
@@ -436,8 +437,15 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 
 	private void updateStatusBar()
 	{
-		boolean isTaggingEnabled = getCurrentDiagramComponent().getDiagramObject().isTaggingEnabled();
-		ORefList selectedTaggedObjectSetRefs = getCurrentDiagramComponent().getDiagramObject().getSelectedTaggedObjectSetRefs();
+		DiagramComponent currentDiagramComponent = getCurrentDiagramComponent();
+		if (currentDiagramComponent == null)
+		{
+			getMainWindow().clearStatusBar();
+			return;
+		}
+
+		boolean isTaggingEnabled = currentDiagramComponent.getDiagramObject().isTaggingEnabled();
+		ORefList selectedTaggedObjectSetRefs = currentDiagramComponent.getDiagramObject().getSelectedTaggedObjectSetRefs();
 		if (selectedTaggedObjectSetRefs.hasRefs() && isTaggingEnabled)
 			getMainWindow().setStatusBarWarningMessage(EAM.substituteSingleInteger(EAM.text("Not all factors are being shown because %s tag(s) are checked"), selectedTaggedObjectSetRefs.size()));
 		else
