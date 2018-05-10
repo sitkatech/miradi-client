@@ -59,6 +59,22 @@ public class DiagramFactorTaggedObjectSetHelper
         return commands;
     }
 
+    public Vector<CommandSetObjectData> createCommandsToUntagDiagramFactors(DiagramFactor[] diagramFactors, TaggedObjectSet taggedObjectSet) throws Exception
+    {
+        Vector<CommandSetObjectData> commands = new Vector<CommandSetObjectData>();
+
+        for (DiagramFactor diagramFactor : diagramFactors)
+        {
+            CommandSetObjectData commandToUntagDiagramFactor = CommandSetObjectData.createRemoveORefCommand(diagramFactor, DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS, taggedObjectSet.getRef());
+            commands.add(commandToUntagDiagramFactor);
+        }
+
+        Vector<CommandSetObjectData> commandsToRemoveSelectedTaggedObjectSetFromDiagramObjects = createCommandsToRemoveSelectedTaggedObjectSetsFromDiagramObjects(diagramFactors, new ORefSet(taggedObjectSet));
+        commands.addAll(commandsToRemoveSelectedTaggedObjectSetFromDiagramObjects);
+
+        return commands;
+    }
+
     public Vector<CommandSetObjectData> createCommandsToRemoveSelectedTaggedObjectSetsFromDiagramObjects(DiagramFactor[] diagramFactors, ORefSet taggedObjectRefSet) throws Exception
     {
         Vector<CommandSetObjectData> commands = new Vector<CommandSetObjectData>();

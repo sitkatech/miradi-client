@@ -116,10 +116,11 @@ public class DiagramContextMenuHandler
 
 	abstract class AbstractActionTagUntagFactor extends AbstractAction
 	{
-		public AbstractActionTagUntagFactor(ORefSet DiagramFactorRefsToTag, TaggedObjectSet tagSetToApply)
+		public AbstractActionTagUntagFactor(boolean isTagActionToUse, ORefSet DiagramFactorRefsToTag, TaggedObjectSet tagSetToApply)
 		{
 			super(tagSetToApply.getLabel(), new TaggedObjectSetIcon());
 
+			isTagAction = isTagActionToUse;
 			diagramFactorTaggedObjectSetHelper = new DiagramFactorTaggedObjectSetHelper(getProject());
 			diagramFactorRefs = DiagramFactorRefsToTag;
 			tagSet = tagSetToApply;
@@ -144,11 +145,20 @@ public class DiagramContextMenuHandler
 			try
 			{
 				CommandVector commandsToApplyTag = new CommandVector();
+				DiagramFactor[] diagramFactors = getDiagramFactors();
 
-				for (ORef diagramFactorRef : getDiagramFactorRefs())
+				if (isTagAction)
 				{
-					DiagramFactor diagramFactor = DiagramFactor.find(getProject(), diagramFactorRef);
-					commandsToApplyTag.addAll(createCommandsToApplyTagToDiagramFactor(diagramFactor, getTaggedObjectSet()));
+					for (DiagramFactor diagramFactor : diagramFactors)
+					{
+						Vector<CommandSetObjectData> commandsToUntagDiagramFactors = diagramFactorTaggedObjectSetHelper.createCommandsToTagDiagramFactor(diagramFactor, getTaggedObjectSet());
+						commandsToApplyTag.addAll(commandsToUntagDiagramFactors);
+					}
+				}
+				else
+				{
+					Vector<CommandSetObjectData> commandsToUntagDiagramFactors = diagramFactorTaggedObjectSetHelper.createCommandsToUntagDiagramFactors(diagramFactors, getTaggedObjectSet());
+					commandsToApplyTag.addAll(commandsToUntagDiagramFactors);
 				}
 
 				getProject().executeCommands(commandsToApplyTag);
@@ -159,14 +169,22 @@ public class DiagramContextMenuHandler
 			}
 		}
 
-		protected DiagramFactorTaggedObjectSetHelper getDiagramFactorTaggedObjectSetHelper()
-		{
-			return diagramFactorTaggedObjectSetHelper;
-		}
-
 		protected ORefSet getDiagramFactorRefs()
 		{
 			return diagramFactorRefs;
+		}
+
+		protected DiagramFactor[] getDiagramFactors()
+		{
+			Vector<DiagramFactor> diagramFactors = new Vector<DiagramFactor>();
+
+			for (ORef diagramFactorRef : diagramFactorRefs)
+			{
+				DiagramFactor diagramFactor = DiagramFactor.find(getProject(), diagramFactorRef);
+				diagramFactors.add(diagramFactor);
+			}
+
+			return diagramFactors.toArray(new DiagramFactor[0]);
 		}
 
 		protected TaggedObjectSet getTaggedObjectSet()
@@ -174,8 +192,7 @@ public class DiagramContextMenuHandler
 			return tagSet;
 		}
 
-		abstract protected Vector<CommandSetObjectData> createCommandsToApplyTagToDiagramFactor(DiagramFactor diagramFactor, TaggedObjectSet tag) throws Exception;
-
+		private boolean isTagAction;
 		private DiagramFactorTaggedObjectSetHelper diagramFactorTaggedObjectSetHelper;
 		private ORefSet diagramFactorRefs;
 		private TaggedObjectSet tagSet;
@@ -185,13 +202,7 @@ public class DiagramContextMenuHandler
 	{
 		public ActionTagFactors(ORefSet diagramFactorRefsToTag, TaggedObjectSet tagSetToApply)
 		{
-			super(diagramFactorRefsToTag, tagSetToApply);
-		}
-
-		@Override
-		protected Vector<CommandSetObjectData> createCommandsToApplyTagToDiagramFactor(DiagramFactor diagramFactor, TaggedObjectSet tag) throws Exception
-		{
-			return getDiagramFactorTaggedObjectSetHelper().createCommandsToTagDiagramFactor(diagramFactor, tag);
+			super(true, diagramFactorRefsToTag, tagSetToApply);
 		}
 	}
 
@@ -199,13 +210,7 @@ public class DiagramContextMenuHandler
 	{
 		public ActionUntagFactors(ORefSet diagramFactorRefsToTag, TaggedObjectSet tagSetToApply)
 		{
-			super(diagramFactorRefsToTag, tagSetToApply);
-		}
-
-		@Override
-		protected Vector<CommandSetObjectData> createCommandsToApplyTagToDiagramFactor(DiagramFactor diagramFactor, TaggedObjectSet tag) throws Exception
-		{
-			return getDiagramFactorTaggedObjectSetHelper().createCommandsToUntagDiagramFactor(diagramFactor, tag);
+			super(false, diagramFactorRefsToTag, tagSetToApply);
 		}
 	}
 	
