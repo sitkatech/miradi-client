@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-10 05:03-0700\n"
+"POT-Creation-Date: 2018-05-10 06:03-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Bulgarian (http://www.transifex.com/projects/p/miradi-client/"
@@ -5394,7 +5394,7 @@ msgstr "Menu|4. Анализиране, използване, адаптиран
 msgid "Menu|5. Capture and Share Learning"
 msgstr "Menu|5. Придобиване и споделяне на знание"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:235
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:240
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Menu|Добавяне на етикет към %n маркирания(ите) елемент(и)"
 
@@ -5406,7 +5406,7 @@ msgstr "Menu|Експортиране на текуща страница кат�
 msgid "Menu|Export Current Project as..."
 msgstr "Menu|Експортиране на текущ проект като..."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:381
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:386
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:421
 msgid "Menu|Group Box"
 msgstr "Menu|Кутия за групиране"
@@ -5415,15 +5415,15 @@ msgstr "Menu|Кутия за групиране"
 msgid "Menu|Import"
 msgstr "Menu|Импортиране"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:392
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:397
 msgid "Menu|Insert"
 msgstr "Menu|Вмъкване"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:344
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:349
 msgid "Menu|Remove All Tags from %n Selected Item(s)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:245
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:250
 msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr "Menu|Премахване на етикет от %n маркирания(ите) елемент(и)"
 
@@ -9495,8 +9495,8 @@ msgstr ""
 msgid "Unexpected error prevented installing that language pack"
 msgstr "Неочаквана грешка попречи на инсталирането на този езиков пакет"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:137
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:302
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:138
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:307
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr "Неочаквана грешка попречи на изпълнението на операцията по отбелязване"
 
