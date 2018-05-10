@@ -19,13 +19,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.taggedObjectSet;
 
+import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.SingleBooleanColumnEditableModel;
 import org.miradi.dialogs.treetables.TreeTableNode;
 import org.miradi.dialogs.treetables.TreeTableWithStateSaving;
 import org.miradi.main.EAM;
 import org.miradi.objects.*;
+import org.miradi.project.DiagramFactorTaggedObjectSetHelper;
 import org.miradi.project.Project;
+
+import java.util.Vector;
 
 public class TaggedObjectSetEditableTableModel extends SingleBooleanColumnEditableModel
 {
@@ -67,10 +71,13 @@ public class TaggedObjectSetEditableTableModel extends SingleBooleanColumnEditab
 			if (diagramFactor != null)
 			{
 				boolean isSelected = (boolean) value;
-				CommandSetObjectData commandToTagUntagDiagramFactor =
-						isSelected ? CommandSetObjectData.createAppendORefCommand(diagramFactor, DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS, taggedObjectSet.getRef()) :
-									 CommandSetObjectData.createRemoveORefCommand(diagramFactor, DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS, taggedObjectSet.getRef());
-				getProject().executeCommand(commandToTagUntagDiagramFactor);
+
+				DiagramFactorTaggedObjectSetHelper helper = new DiagramFactorTaggedObjectSetHelper(getProject());
+				Vector<CommandSetObjectData> commandsToTagUntagDiagramFactor =
+						isSelected ? helper.createCommandsToTagDiagramFactor(diagramFactor, taggedObjectSet) :
+								helper.createCommandsToUntagDiagramFactor(diagramFactor, taggedObjectSet);
+
+				getProject().executeCommands(commandsToTagUntagDiagramFactor.toArray(new Command[0]));
 			}
 		}
 		catch (Exception e)

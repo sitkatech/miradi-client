@@ -35,6 +35,7 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objectpools.TaggedObjectSetPool;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.TaggedObjectSet;
+import org.miradi.project.DiagramFactorTaggedObjectSetHelper;
 import org.miradi.project.Project;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.HtmlUtilities;
@@ -118,6 +119,8 @@ public class DiagramContextMenuHandler
 		public AbstractActionTagUntagFactor(ORefSet DiagramFactorRefsToTag, TaggedObjectSet tagSetToApply)
 		{
 			super(tagSetToApply.getLabel(), new TaggedObjectSetIcon());
+
+			diagramFactorTaggedObjectSetHelper = new DiagramFactorTaggedObjectSetHelper(getProject());
 			diagramFactorRefs = DiagramFactorRefsToTag;
 			tagSet = tagSetToApply;
 		}
@@ -145,7 +148,7 @@ public class DiagramContextMenuHandler
 				for (ORef diagramFactorRef : getDiagramFactorRefs())
 				{
 					DiagramFactor diagramFactor = DiagramFactor.find(getProject(), diagramFactorRef);
-					commandsToApplyTag.add(createCommandToApplyTagToDiagramFactor(diagramFactor, getTaggedObjectSet()));
+					commandsToApplyTag.addAll(createCommandsToApplyTagToDiagramFactor(diagramFactor, getTaggedObjectSet()));
 				}
 
 				getProject().executeCommands(commandsToApplyTag);
@@ -154,6 +157,11 @@ public class DiagramContextMenuHandler
 			{
 				getProject().executeCommand(new CommandEndTransaction());
 			}
+		}
+
+		protected DiagramFactorTaggedObjectSetHelper getDiagramFactorTaggedObjectSetHelper()
+		{
+			return diagramFactorTaggedObjectSetHelper;
 		}
 
 		protected ORefSet getDiagramFactorRefs()
@@ -166,8 +174,9 @@ public class DiagramContextMenuHandler
 			return tagSet;
 		}
 
-		abstract protected CommandSetObjectData createCommandToApplyTagToDiagramFactor(DiagramFactor diagramFactor, TaggedObjectSet tag) throws Exception;
+		abstract protected Vector<CommandSetObjectData> createCommandsToApplyTagToDiagramFactor(DiagramFactor diagramFactor, TaggedObjectSet tag) throws Exception;
 
+		private DiagramFactorTaggedObjectSetHelper diagramFactorTaggedObjectSetHelper;
 		private ORefSet diagramFactorRefs;
 		private TaggedObjectSet tagSet;
 	}
@@ -180,9 +189,9 @@ public class DiagramContextMenuHandler
 		}
 
 		@Override
-		protected CommandSetObjectData createCommandToApplyTagToDiagramFactor(DiagramFactor diagramFactor, TaggedObjectSet tag) throws Exception
+		protected Vector<CommandSetObjectData> createCommandsToApplyTagToDiagramFactor(DiagramFactor diagramFactor, TaggedObjectSet tag) throws Exception
 		{
-			return CommandSetObjectData.createAppendORefCommand(diagramFactor, DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS, tag.getRef());
+			return getDiagramFactorTaggedObjectSetHelper().createCommandsToTagDiagramFactor(diagramFactor, tag);
 		}
 	}
 
@@ -194,20 +203,20 @@ public class DiagramContextMenuHandler
 		}
 
 		@Override
-		protected CommandSetObjectData createCommandToApplyTagToDiagramFactor(DiagramFactor diagramFactor, TaggedObjectSet tag) throws Exception
+		protected Vector<CommandSetObjectData> createCommandsToApplyTagToDiagramFactor(DiagramFactor diagramFactor, TaggedObjectSet tag) throws Exception
 		{
-			return CommandSetObjectData.createRemoveORefCommand(diagramFactor, DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS, tag.getRef());
+			return getDiagramFactorTaggedObjectSetHelper().createCommandsToUntagDiagramFactor(diagramFactor, tag);
 		}
 	}
 	
 	interface ActionCreator
 	{
-		Action createAction(ORefSet DiagramFactorRefs, TaggedObjectSet tag);
+		AbstractActionTagUntagFactor createAction(ORefSet DiagramFactorRefs, TaggedObjectSet tag);
 	}
 	
 	class TagActionCreator implements ActionCreator
 	{
-		public Action createAction(ORefSet DiagramFactorRefs, TaggedObjectSet tag)
+		public ActionTagFactors createAction(ORefSet DiagramFactorRefs, TaggedObjectSet tag)
 		{
 			return new ActionTagFactors(DiagramFactorRefs, tag);
 		}
@@ -215,7 +224,7 @@ public class DiagramContextMenuHandler
 
 	class UntagActionCreator implements ActionCreator
 	{
-		public Action createAction(ORefSet DiagramFactorRefs, TaggedObjectSet tag)
+		public ActionUntagFactors createAction(ORefSet DiagramFactorRefs, TaggedObjectSet tag)
 		{
 			return new ActionUntagFactors(DiagramFactorRefs, tag);
 		}
@@ -228,7 +237,7 @@ public class DiagramContextMenuHandler
 		TaggedObjectSetPool pool = getProject().getTaggedObjectSetPool();
 		Vector<TaggedObjectSet> tags = pool.getAllTaggedObjectSets();
 
-		return createTagUntagFactorsMenu(template, new TagActionCreator(), tags);
+		return createTagUntagFactorsMenu(getDiagramComponent(), template, new TagActionCreator(), tags);
 	}
 
 	private UiMenu createUntagFactorsMenu()
@@ -236,7 +245,7 @@ public class DiagramContextMenuHandler
 		String template = EAM.text("Menu|Remove Tag from %n Selected Item(s)");
 
 		ORefSet taggedObjectSetRefSet = new ORefSet();
-		for (DiagramFactor diagramFactor : diagramComponent.getOnlySelectedDiagramFactors())
+		for (DiagramFactor diagramFactor : getDiagramComponent().getOnlySelectedDiagramFactors())
 		{
 			taggedObjectSetRefSet.addAllRefs(diagramFactor.getTaggedObjectSetRefs());
 		}
@@ -248,10 +257,10 @@ public class DiagramContextMenuHandler
 			tags.add(taggedObjectSet);
 		}
 
-		return createTagUntagFactorsMenu(template, new UntagActionCreator(), tags);
+		return createTagUntagFactorsMenu(getDiagramComponent(), template, new UntagActionCreator(), tags);
 	}
 
-	private UiMenu createTagUntagFactorsMenu(String template, ActionCreator actionCreator, Vector<TaggedObjectSet> tags)
+	private UiMenu createTagUntagFactorsMenu(DiagramComponent diagramComponent, String template, ActionCreator actionCreator, Vector<TaggedObjectSet> tags)
 	{
 		ORefSet diagramFactorRefs = new ORefSet(new ORefList(diagramComponent.getOnlySelectedDiagramFactors()));
 
@@ -276,6 +285,7 @@ public class DiagramContextMenuHandler
     {
         public ActionUntagAllFactors(DiagramFactor[] diagramFactorsToUntag)
         {
+        	diagramFactorTaggedObjectSetHelper = new DiagramFactorTaggedObjectSetHelper(getProject());
             diagramFactors = diagramFactorsToUntag;
         }
 
@@ -299,11 +309,18 @@ public class DiagramContextMenuHandler
             try
             {
                 CommandVector commandsToRemoveTags = new CommandVector();
+				ORefSet taggedObjectRefsToRemove = new ORefSet();
+				DiagramFactor[] diagramFactors = getDiagramFactors();
 
-                for (DiagramFactor diagramFactor : getDiagramFactors())
+				for (DiagramFactor diagramFactor : diagramFactors)
                 {
+                	taggedObjectRefsToRemove.addAllRefs(diagramFactor.getTaggedObjectSetRefs());
                     commandsToRemoveTags.add(new CommandSetObjectData(diagramFactor, DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS, new ORefList()));
                 }
+
+                Vector<CommandSetObjectData> commandsToRemoveSelectedTaggedObjectSetsFromDiagramObjects =
+						diagramFactorTaggedObjectSetHelper.createCommandsToRemoveSelectedTaggedObjectSetsFromDiagramObjects(diagramFactors, taggedObjectRefsToRemove);
+				commandsToRemoveTags.addAll(commandsToRemoveSelectedTaggedObjectSetsFromDiagramObjects);
 
                 getProject().executeCommands(commandsToRemoveTags);
             }
@@ -318,6 +335,7 @@ public class DiagramContextMenuHandler
             return diagramFactors;
         }
 
+        private DiagramFactorTaggedObjectSetHelper diagramFactorTaggedObjectSetHelper;
         private DiagramFactor[] diagramFactors;
     }
 
@@ -325,7 +343,7 @@ public class DiagramContextMenuHandler
     {
         String template = EAM.text("Menu|Remove All Tags from %n Selected Item(s)");
 
-        DiagramFactor[] selectedDiagramFactors = diagramComponent.getOnlySelectedDiagramFactors();
+        DiagramFactor[] selectedDiagramFactors = getDiagramComponent().getOnlySelectedDiagramFactors();
 
         String label = EAM.substitute(template, "%n", Integer.toString(selectedDiagramFactors.length));
 
@@ -351,6 +369,11 @@ public class DiagramContextMenuHandler
 	private Project getProject()
 	{
 		return mainWindow.getProject();
+	}
+
+	private DiagramComponent getDiagramComponent()
+	{
+		return diagramComponent;
 	}
 
 	private UiMenu getGroupBoxMenu(Point menuInvokedAt)

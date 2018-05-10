@@ -19,14 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogfields;
 
-import java.util.Set;
-
-import javax.swing.Icon;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JToggleButton;
-import javax.swing.event.ListSelectionListener;
-
+import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.icons.IconManager;
@@ -39,12 +32,18 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.TaggedObjectSet;
+import org.miradi.project.DiagramFactorTaggedObjectSetHelper;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.TaggedObjectSetQuestion;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.TaggedObjectSetSchema;
 import org.miradi.utils.XmlUtilities2;
+
+import javax.swing.*;
+import javax.swing.event.ListSelectionListener;
+import java.util.Set;
+import java.util.Vector;
 
 public class FactorTagListEditor extends AbstractQuestionEditorComponent implements CommandExecutedListener
 {
@@ -123,17 +122,23 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 	{
 		labelPanelWithIcon.add(new JLabel(" "));
 	}
-	
+
 	@Override
 	protected void toggleButtonStateChanged(ChoiceItem choiceItem, boolean isSelected) throws Exception
 	{
 		String refAsCode = choiceItem.getCode();
+
 		ORef taggedObjectSetRef = ORef.createFromString(refAsCode);
+		TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), taggedObjectSetRef);
+
 		DiagramFactor diagramFactor = getDiagramObject().getDiagramFactor(getFactorToTag().getRef());
-		CommandSetObjectData commandToTagUntagDiagramFactor =
-				isSelected ? CommandSetObjectData.createAppendORefCommand(diagramFactor, DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS, taggedObjectSetRef) :
-						CommandSetObjectData.createRemoveORefCommand(diagramFactor, DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS, taggedObjectSetRef);
-		getProject().executeCommand(commandToTagUntagDiagramFactor);
+
+		DiagramFactorTaggedObjectSetHelper helper = new DiagramFactorTaggedObjectSetHelper(getProject());
+		Vector<CommandSetObjectData> commandsToTagUntagDiagramFactor =
+				isSelected ? helper.createCommandsToTagDiagramFactor(diagramFactor, taggedObjectSet) :
+				helper.createCommandsToUntagDiagramFactor(diagramFactor, taggedObjectSet);
+
+		getProject().executeCommands(commandsToTagUntagDiagramFactor.toArray(new Command[0]));
 	}
 
 	public void commandExecuted(CommandExecutedEvent event)
@@ -141,7 +146,7 @@ public class FactorTagListEditor extends AbstractQuestionEditorComponent impleme
 		if (isTaggedObjectRelatedCommand(event))
 			updateCheckboxesToMatchCurrentTaggedObjectSets();
 	}
-	
+
 	private boolean isTaggedObjectRelatedCommand(CommandExecutedEvent event)
 	{
 		if (event.isCreateCommandForThisType(TaggedObjectSetSchema.getObjectType()))
