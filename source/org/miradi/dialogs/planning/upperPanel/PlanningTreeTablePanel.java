@@ -185,8 +185,8 @@ abstract public class PlanningTreeTablePanel extends AbstractTreeTablePanel
 		rollupReportsBudgetDetailsModel.fireTableDataChanged();
 		restoreTreeExpansionState();
 
-		updateRightSideTablePanels();
 		multiTableModel.updateColumnsToShow();
+		updateRightSideTablePanels();
 
 		selectObjectAfterSwingClearsItDueToTreeStructureChange(getMainTable(), selectionHierarchy, selectedRow, selectedColumn);
 

@@ -208,7 +208,10 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 
 		if(wereProgressReportsAddedOrRemoved(event))
 			return true;
-		
+
+		if(wereResultReportsAddedOrRemoved(event))
+			return true;
+
 		if(wereKeasAddedOrRemoved(event))
 			return true;
 		
@@ -264,6 +267,11 @@ abstract public class AbstractTreeTablePanel extends MultiTreeTablePanel
 		return event.isSetDataCommandWithThisTag(BaseObject.TAG_PROGRESS_REPORT_REFS);
 	}
 	
+	private boolean wereResultReportsAddedOrRemoved(CommandExecutedEvent event)
+	{
+		return event.isSetDataCommandWithThisTag(BaseObject.TAG_RESULT_REPORT_REFS);
+	}
+
 	private boolean wereKeasAddedOrRemoved(CommandExecutedEvent event)
 	{
 		if (event.isSetDataCommandWithThisTypeAndTag(HumanWelfareTargetSchema.getObjectType(), HumanWelfareTarget.TAG_KEY_ECOLOGICAL_ATTRIBUTE_IDS))
