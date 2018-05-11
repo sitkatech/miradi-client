@@ -49,6 +49,9 @@ import org.miradi.objects.Indicator;
 import org.miradi.objects.Objective;
 import org.miradi.objects.Target;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.questions.ProgressReportShortStatusQuestion;
+import org.miradi.questions.ResultReportShortStatusQuestion;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.utils.Utility;
@@ -91,23 +94,43 @@ abstract public class FactorCell extends EAMGraphCell
 		String header = "";
 		String detailsTag = "";
 		ORefList bullets = new ORefList();
+		String listContents = "";
+		String listStyle = "margin-left: 20px;";
+
 		if(isPointInIndicator(pointRelativeToCellOrigin))
 		{
 			header = EAM.text("Indicators:");
 			detailsTag = Indicator.TAG_DETAIL;
 			bullets = new ORefList(IndicatorSchema.getObjectType(), factor.getDirectOrIndirectIndicators());
+			listContents = buildListContentsFromBullets(bullets, detailsTag);
 		}
 		else if(isPointInGoal(pointRelativeToCellOrigin))
 		{
 			header = EAM.text("Goals:");
 			detailsTag = Goal.TAG_FULL_TEXT;
 			bullets = factor.getGoalRefs();
+			listContents = buildListContentsFromBullets(bullets, detailsTag);
 		}
 		else if(isPointInObjective(pointRelativeToCellOrigin))
 		{
 			header = EAM.text("Objectives:");
 			detailsTag = Objective.TAG_FULL_TEXT;
 			bullets = new ORefList(ObjectiveSchema.getObjectType(), factor.getObjectiveIds());
+			listContents = buildListContentsFromBullets(bullets, detailsTag);
+		}
+		else if(isPointInResultReportStatus(pointRelativeToCellOrigin))
+		{
+			listStyle = "margin-left: 10px; list-style-type: none;";
+			if (factor.isThreatReductionResult() || factor.isIntermediateResult() || factor.isBiophysicalResult())
+			{
+				header = EAM.text("Result Status:");
+				listContents = buildListContentForResultStatus(factor);
+			}
+			else
+			{
+				header = EAM.text("Progress Status:");
+				listContents = buildListContentForProgressStatus(factor);
+			}
 		}
 		else if(factor.getDetails().length() > 0)
 		{
@@ -115,29 +138,66 @@ abstract public class FactorCell extends EAMGraphCell
 			tip += "<BR>" + factor.getDetails();
 		}
 		
-		if(bullets.size() == 0)
+		if(bullets.size() == 0 && header.isEmpty())
 			return XmlUtilities2.convertXmlTextToHtmlWithoutSurroundingHtmlTags(tip);
 		
-		tip += "<BR>" + header + "<UL>";
-		
+		tip += "<BR>" + header + "<UL style='" + listStyle + "'>";
+		tip += listContents;
+		tip += "</UL>";
+		tip += "</TD></TR></TABLE>";
+
+		return XmlUtilities2.convertXmlTextToHtmlWithoutSurroundingHtmlTags(tip);
+	}
+
+	private String buildListContentsFromBullets(ORefList bullets, String detailsTag)
+	{
+		String listContents = "";
+
 		Vector<BaseObject> sortedObjectsAsBullets = getSortedBullets(bullets);
 		for(int i = 0; i < sortedObjectsAsBullets.size(); ++i)
 		{
 			BaseObject baseObject = sortedObjectsAsBullets.get(i);
-			tip += getObjectText(baseObject, baseObject.getData(detailsTag));
-		}	
-		tip += "</UL>";
-		
-		tip += "</TD></TR></TABLE>";
-		return XmlUtilities2.convertXmlTextToHtmlWithoutSurroundingHtmlTags(tip);
+			listContents += getObjectText(baseObject, baseObject.getData(detailsTag));
+		}
+
+		return listContents;
 	}
 
-	private Vector<BaseObject> getSortedBullets(ORefList refsAsbullets)
+	private String buildListContentForResultStatus(Factor factor)
+	{
+		return buildListContentForResultProgressStatus(factor, new ResultReportShortStatusQuestion(), BaseObject.PSEUDO_TAG_LATEST_RESULT_REPORT_DATE, BaseObject.PSEUDO_TAG_LATEST_RESULT_REPORT_CODE, BaseObject.PSEUDO_TAG_LATEST_RESULT_REPORT_DETAILS);
+	}
+
+	private String buildListContentForProgressStatus(Factor factor)
+	{
+		return buildListContentForResultProgressStatus(factor, new ProgressReportShortStatusQuestion(), BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE, BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
+	}
+
+	private String buildListContentForResultProgressStatus(Factor factor, ChoiceQuestion statusQuestion, String dateTag, String statusTag, String detailsTag)
+	{
+		String listContents = "";
+
+		String reportDate = factor.getData(dateTag);
+		String reportStatusCode = factor.getData(statusTag);
+		String reportStatus = reportStatusCode.isEmpty() ? "" : statusQuestion.findChoiceByCode(reportStatusCode).getLabel();
+		String reportDetails = factor.getData(detailsTag);
+
+		if (!(reportDate.isEmpty() && reportStatus.isEmpty() && reportDetails.isEmpty()))
+		{
+			listContents += "<LI>" + EAM.text("Status: ") + reportStatus + "</LI>";
+			listContents += "<LI>" + EAM.text("Date: ") + reportDate + "</LI>";
+			listContents += "<LI>" + EAM.text("Details: ") + reportDetails + "</LI>";
+		}
+
+		return listContents;
+	}
+
+	private Vector<BaseObject> getSortedBullets(ORefList refsAsBullets)
 	{
 		Vector<BaseObject> sortedObjects = new Vector<BaseObject>();
-		for(int index = 0; index < refsAsbullets.size(); ++index)
+		for(int index = 0; index < refsAsBullets.size(); ++index)
 		{
-			BaseObject baseObject = getProject().findObject(refsAsbullets.get(index));
+			BaseObject baseObject = getProject().findObject(refsAsBullets.get(index));
 			sortedObjects.add(baseObject);
 		}
 		
@@ -256,7 +316,6 @@ abstract public class FactorCell extends EAMGraphCell
 		return new Point((int)bounds.getX(), (int)bounds.getY());
 	}
 
-	
 	public void setLocation(Point2D snappedLocation)
 	{
 		Rectangle2D bounds = GraphConstants.getBounds(getAttributes());
@@ -488,7 +547,12 @@ abstract public class FactorCell extends EAMGraphCell
 		}
 		return false;
 	}
-	
+
+	public boolean isPointInResultReportStatus(Point pointRelativeToOrigin)
+	{
+		return getResultReportStatusRectWithinNode().contains(pointRelativeToOrigin);
+	}
+
 	public Dimension getInsetDimension()
 	{
 		return new Dimension(0, 0);
