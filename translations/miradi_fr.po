@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-10 06:03-0700\n"
+"POT-Creation-Date: 2018-05-11 03:33-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/miradi-client/"
@@ -3358,6 +3358,10 @@ msgstr "Date"
 msgid "Date Chooser"
 msgstr "Sélecteur de Date"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:188
+msgid "Date: "
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:52
 msgid "Day Columns Visibility feature"
 msgstr ""
@@ -3475,9 +3479,13 @@ msgstr "Détails"
 msgid "Details = '"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:114
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:137
 msgid "Details:"
 msgstr "Détails :"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:189
+msgid "Details: "
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/jump/ActionJumpFinancialOverviewStep.java:35
 msgid "Develop Project Budgets"
@@ -4233,7 +4241,7 @@ msgstr "Buts"
 msgid "Goals Only"
 msgstr "Buts seulement"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:102
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:109
 msgid "Goals:"
 msgstr "Buts :"
 
@@ -4576,7 +4584,7 @@ msgstr "Indicateurs"
 msgid "Indicators Only"
 msgstr "Indicateurs seulement"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:96
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:102
 msgid "Indicators:"
 msgstr "Indicateurs :"
 
@@ -5872,7 +5880,7 @@ msgstr "Uniquement objectifs"
 msgid "Objectives contain Strategies"
 msgstr "Les objectifs contiennent les Stratégies"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:108
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:116
 msgid "Objectives:"
 msgstr "Objectifs :"
 
@@ -6325,6 +6333,10 @@ msgstr "Rapport d'avancement"
 msgid "Progress Reports"
 msgstr "Rapports d'avancement"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:131
+msgid "Progress Status:"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:244
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/SummaryProjectTabPanel.java:84
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:37
@@ -6544,6 +6556,10 @@ msgstr "Modèle de rapport"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:41
 msgid "Report to project team and stakeholders"
 msgstr "Signaler à l'équipe de projet et aux parties prenantes"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:126
+msgid "Result Status:"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/project/ResultsChainCreatorHelper.java:196
@@ -7061,6 +7077,10 @@ msgstr ""
 "changent-ils ? Les réponses à ces questions, même lorsqu'il n'y a aucune "
 "action qui se produit, sont importantes pour déterminer s'il faut mettre en "
 "place des actions futures."
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:187
+msgid "Status: "
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/wizard/WizardTitlePanel.java:71
 msgid "Step "

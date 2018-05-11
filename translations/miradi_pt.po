@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-10 06:03-0700\n"
+"POT-Creation-Date: 2018-05-11 03:33-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Portuguese (http://www.transifex.com/projects/p/miradi-client/"
@@ -3359,6 +3359,10 @@ msgstr "Data"
 msgid "Date Chooser"
 msgstr "Selecionador de Data"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:188
+msgid "Date: "
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:52
 msgid "Day Columns Visibility feature"
 msgstr ""
@@ -3477,9 +3481,13 @@ msgstr "Detalhes"
 msgid "Details = '"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:114
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:137
 msgid "Details:"
 msgstr "Detalhes:"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:189
+msgid "Details: "
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/jump/ActionJumpFinancialOverviewStep.java:35
 msgid "Develop Project Budgets"
@@ -4226,7 +4234,7 @@ msgstr "Objetivos"
 msgid "Goals Only"
 msgstr "Somente Objetivos"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:102
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:109
 msgid "Goals:"
 msgstr "Objetivos"
 
@@ -4564,7 +4572,7 @@ msgstr "Indicadores"
 msgid "Indicators Only"
 msgstr "Somente indicadores"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:96
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:102
 msgid "Indicators:"
 msgstr "Indicadores:"
 
@@ -5863,7 +5871,7 @@ msgstr "Somente Metas"
 msgid "Objectives contain Strategies"
 msgstr "Metas contêm Estratégias"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:108
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:116
 msgid "Objectives:"
 msgstr "Metas:"
 
@@ -6316,6 +6324,10 @@ msgstr "Relatório de Progresso"
 msgid "Progress Reports"
 msgstr "Relatórios de Progresso"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:131
+msgid "Progress Status:"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:244
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/SummaryProjectTabPanel.java:84
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:37
@@ -6535,6 +6547,10 @@ msgstr "Modelo de Relatório"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:41
 msgid "Report to project team and stakeholders"
 msgstr "Relatar à equipe do projeto e aos atores"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:126
+msgid "Result Status:"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/project/ResultsChainCreatorHelper.java:196
@@ -7042,6 +7058,10 @@ msgstr ""
 "Como os alvos chave, ameaças, e outros fatores estão alterando?  As "
 "respostas a estas perguntas, mesmo que nenhuma ação estiver ocorrendo, são "
 "importantes para determinar se ações serão necessárias no futuro."
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:187
+msgid "Status: "
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/wizard/WizardTitlePanel.java:71
 msgid "Step "

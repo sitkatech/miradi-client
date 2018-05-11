@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-10 06:03-0700\n"
+"POT-Creation-Date: 2018-05-11 03:33-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Ukrainian (http://www.transifex.com/projects/p/miradi-client/"
@@ -3287,6 +3287,10 @@ msgstr "Дата"
 msgid "Date Chooser"
 msgstr "Вибирач даних"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:188
+msgid "Date: "
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:52
 msgid "Day Columns Visibility feature"
 msgstr ""
@@ -3405,9 +3409,13 @@ msgstr "Деталі"
 msgid "Details = '"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:114
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:137
 msgid "Details:"
 msgstr "Деталі:"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:189
+msgid "Details: "
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/jump/ActionJumpFinancialOverviewStep.java:35
 msgid "Develop Project Budgets"
@@ -4132,7 +4140,7 @@ msgstr "Мета"
 msgid "Goals Only"
 msgstr "Тільки цілі (як мета)"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:102
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:109
 msgid "Goals:"
 msgstr "Цілі:"
 
@@ -4466,7 +4474,7 @@ msgstr "Індикатори"
 msgid "Indicators Only"
 msgstr "Тільки індикатори"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:96
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:102
 msgid "Indicators:"
 msgstr "Індикатори:"
 
@@ -5734,7 +5742,7 @@ msgstr "Тільки завдання"
 msgid "Objectives contain Strategies"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:108
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:116
 msgid "Objectives:"
 msgstr "Завдання:"
 
@@ -6183,6 +6191,10 @@ msgstr "Проміжний звіт"
 msgid "Progress Reports"
 msgstr "Проміжні звіти"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:131
+msgid "Progress Status:"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:244
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/SummaryProjectTabPanel.java:84
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:37
@@ -6401,6 +6413,10 @@ msgstr "Шаблон звіту"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:41
 msgid "Report to project team and stakeholders"
 msgstr "Звітуватися робочій групі проекту і зацікавленим сторонам"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:126
+msgid "Result Status:"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/project/ResultsChainCreatorHelper.java:196
@@ -6895,6 +6911,10 @@ msgstr ""
 "змінюються ключові цілі, загрози та інші фактори. Відповіді на ці питання, "
 "навіть якщо ніякі дії не відбуваються, є важливими, щоб визначити, чи будуть "
 "потрібні якісь заходи в майбутньому. "
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:187
+msgid "Status: "
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/wizard/WizardTitlePanel.java:71
 msgid "Step "

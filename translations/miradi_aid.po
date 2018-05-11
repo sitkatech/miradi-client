@@ -9,7 +9,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-10 06:03-0700\n"
+"POT-Creation-Date: 2018-05-11 03:33-0700\n"
 "PO-Revision-Date: 2014-05-28 17:01+0000\n"
 "Last-Translator: nsalafsky <nick@fosonline.org>\n"
 "Language-Team: English (Estonia) (http://www.transifex.com/projects/p/miradi-"
@@ -3355,6 +3355,10 @@ msgstr "Date"
 msgid "Date Chooser"
 msgstr "Date Chooser"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:188
+msgid "Date: "
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:52
 msgid "Day Columns Visibility feature"
 msgstr ""
@@ -3472,9 +3476,13 @@ msgstr "Details"
 msgid "Details = '"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:114
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:137
 msgid "Details:"
 msgstr "Details:"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:189
+msgid "Details: "
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/jump/ActionJumpFinancialOverviewStep.java:35
 msgid "Develop Project Budgets"
@@ -4216,7 +4224,7 @@ msgstr "Sub-purposes"
 msgid "Goals Only"
 msgstr "Sub-purposes Only"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:102
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:109
 msgid "Goals:"
 msgstr "Sub-purposes:"
 
@@ -4557,7 +4565,7 @@ msgstr "Indicators"
 msgid "Indicators Only"
 msgstr "Indicators Only"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:96
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:102
 msgid "Indicators:"
 msgstr "Indicators:"
 
@@ -5835,7 +5843,7 @@ msgstr "Outcomes Only"
 msgid "Objectives contain Strategies"
 msgstr "Outcomes contain Interventions"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:108
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:116
 msgid "Objectives:"
 msgstr "Outcomes:"
 
@@ -6287,6 +6295,10 @@ msgstr "Progress Report"
 msgid "Progress Reports"
 msgstr "Progress Reports"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:131
+msgid "Progress Status:"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:244
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/summary/SummaryProjectTabPanel.java:84
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RtfLegendObjectsQuestion.java:37
@@ -6505,6 +6517,10 @@ msgstr "Report Template"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/OpenStandardsCaptureAndShareLearningQuestion.java:41
 msgid "Report to project team and stakeholders"
 msgstr "Report to project team and stakeholders"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:126
+msgid "Result Status:"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/project/ResultsChainCreatorHelper.java:196
@@ -7013,6 +7029,10 @@ msgstr ""
 "interests, pressures, and other factors changing? Answers to these "
 "questions, even when no actions are occurring, are important to determine if "
 "future actions are needed."
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:187
+msgid "Status: "
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/wizard/WizardTitlePanel.java:71
 msgid "Step "
