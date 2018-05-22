@@ -31,25 +31,25 @@ public class ProgressReportDiagramStatusQuestion extends AbstractProgressReportS
     @Override
     protected String getCompletedLabel()
     {
-        return "\u2713";
+        return "++";
     }
 
     @Override
     protected String getOnTrackLabel()
     {
-        return "ok";
+        return "+";
     }
 
     @Override
     protected String getMinorIssuesLabel()
     {
-        return "?";
+        return "\u00B1";
     }
 
     @Override
     protected String getMajorIssuesLabel()
     {
-        return "!";
+        return "-";
     }
 
     @Override
