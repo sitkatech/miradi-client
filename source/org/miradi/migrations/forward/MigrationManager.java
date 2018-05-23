@@ -150,6 +150,7 @@ public class MigrationManager extends AbstractMigrationManager
 		migrations.add(new MigrationTo66(rawProject));
 		migrations.add(new MigrationTo67(rawProject));
 		migrations.add(new MigrationTo68(rawProject));
+		migrations.add(new MigrationTo69(rawProject));
 
 		return migrations;
 	}
@@ -160,7 +161,7 @@ public class MigrationManager extends AbstractMigrationManager
 
 		// 4.5 -> 237
 		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_237))
-			return MigrationTo68.VERSION_TO;
+			return MigrationTo69.VERSION_TO;
 
 		// 4.4 -> 236
 		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_236))

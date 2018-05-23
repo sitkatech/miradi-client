@@ -84,7 +84,7 @@ public class DiagramFactorFontColorQuestion extends StaticChoiceQuestion
 	public static final String DARK_PURPLE_HEX = "#9900FF";
 	public static final String BROWN_HEX = "#C85A17";
 	public static final String WHITE_HEX = "#FFFFFF";
-	public static final String RED_HEX = "#FF0000";
+	public static final String RED_HEX = "#D31913";
 	public static final String PINK_HEX = "#FF00FF";
 	public static final String LIGHT_ORANGE_HEX = "#FF8040";
 	public static final String LIGHT_YELLOW_HEX = "#FFFFCC";

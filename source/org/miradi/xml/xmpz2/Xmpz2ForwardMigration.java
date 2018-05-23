@@ -25,10 +25,7 @@ import org.martus.util.inputstreamwithseek.StringInputStreamWithSeek;
 import org.miradi.exceptions.XmlVersionTooOldException;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
-import org.miradi.migrations.forward.MigrationTo10;
-import org.miradi.migrations.forward.MigrationTo11;
-import org.miradi.migrations.forward.MigrationTo19;
-import org.miradi.migrations.forward.MigrationTo20;
+import org.miradi.migrations.forward.*;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -70,6 +67,7 @@ public class Xmpz2ForwardMigration
 		renameTncFields(document);
 		renameLeaderResourceFields(document);
 		adjustWhoWhenAssignedFields(document);
+		adjustDiagramFactorFontColorFields(document);
 		addDayColumnsVisibilityField(document);
 		moveIndicatorWorkPlanDataToExtraData(document);
 		moveProjectStatusDataToExtraData(document);
@@ -615,6 +613,42 @@ public class Xmpz2ForwardMigration
 							Node newNode = document.createElement(alias + COLON +  Xmpz2XmlConstants.CODE_ELEMENT_NAME);
 							newNode.setTextContent(code);
 							columnNamesContainer.appendChild(newNode);
+						}
+					}
+				}
+			}
+		}
+	}
+
+	private void adjustDiagramFactorFontColorFields(Document document) throws Exception
+	{
+		Element rootElement = document.getDocumentElement();
+
+		Node diagramFactorPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.DIAGRAM_FACTOR));
+
+		if (diagramFactorPool == null)
+			return;
+
+		NodeList diagramFactorNodes = diagramFactorPool.getChildNodes();
+		for (int index = 0; index < diagramFactorNodes.getLength(); ++index)
+		{
+			Node diagramFactor = diagramFactorNodes.item(index);
+			if (diagramFactor != null)
+			{
+				Node diagramFactorStyle = findNode(diagramFactor.getChildNodes(), Xmpz2XmlConstants.DIAGRAM_FACTOR + Xmpz2XmlConstants.STYLE);
+				if (diagramFactorStyle != null)
+				{
+					Node style = findNode(diagramFactorStyle.getChildNodes(), Xmpz2XmlConstants.STYLE);
+					if (style != null)
+					{
+						Node diagramFactorFontColor = findNode(style.getChildNodes(), Xmpz2XmlConstants.DIAGRAM_FACTOR + Xmpz2XmlConstants.DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME);
+						if (diagramFactorFontColor != null)
+						{
+							String fontColorValue = diagramFactorFontColor.getTextContent().trim();
+							if (fontColorValue.equalsIgnoreCase(MigrationTo69.LEGACY_RED_HEX))
+							{
+								diagramFactorFontColor.setTextContent(MigrationTo69.RED_HEX);
+							}
 						}
 					}
 				}
