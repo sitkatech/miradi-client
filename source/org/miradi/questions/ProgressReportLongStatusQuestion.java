@@ -25,6 +25,12 @@ import org.miradi.main.EAM;
 public class ProgressReportLongStatusQuestion extends AbstractProgressReportStatusQuestion
 {
 	@Override
+	protected String getNotKnownLabel()
+	{
+		return EAM.text("Not Known - Lack of sufficient info to assess progress status");
+	}
+
+	@Override
 	protected String getAbandonedLabel()
 	{
 		return EAM.text("Abandoned - No longer relevant or useful");

@@ -37,6 +37,7 @@ abstract public class AbstractProgressReportStatusQuestion extends StaticChoiceQ
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem(NOT_SPECIFIED, getNotSpecifiedLabel(), Color.WHITE),
+				new ChoiceItemWithDynamicColor(NOT_KNOWN_CODE, getNotKnownLabel(), AppPreferences.TAG_COLOR_NOT_KNOWN),
 				new ChoiceItemWithDynamicColor(PLANNED_CODE, getPlannedLabel(), AppPreferences.TAG_COLOR_PLANNED),
 				new ChoiceItemWithDynamicColor(MAJOR_ISSUES_CODE, getMajorIssuesLabel(), AppPreferences.TAG_COLOR_ALERT),
 				new ChoiceItemWithDynamicColor(MINOR_ISSUES_CODE, getMinorIssuesLabel(), AppPreferences.TAG_COLOR_CAUTION),
@@ -51,6 +52,8 @@ abstract public class AbstractProgressReportStatusQuestion extends StaticChoiceQ
 		return EAM.text("Not Specified");
 	}
 
+	abstract protected String getNotKnownLabel();
+
 	abstract protected String getAbandonedLabel();
 	
 	abstract protected String getCompletedLabel();
@@ -64,6 +67,7 @@ abstract public class AbstractProgressReportStatusQuestion extends StaticChoiceQ
 	abstract protected String getPlannedLabel();
 
 	public static final String NOT_SPECIFIED = "";
+	public static final String NOT_KNOWN_CODE = "NotKnown";
 	public static final String PLANNED_CODE = "Planned";
 	public static final String MAJOR_ISSUES_CODE = "MajorIssues";
 	public static final String MINOR_ISSUES_CODE = "MinorIssues";

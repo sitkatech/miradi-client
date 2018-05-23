@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Wed Apr 25 14:59:41 BST 2018 $
+# $LastChangedDate: Wed May 23 07:00:13 BST 2018 $
 # $LastChangedRevision: 237 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/237'
 start = ConservationProject.element
@@ -1050,7 +1050,7 @@ vocabulary_dashboard_row_progress = ''|'1'|'2'|'3'|'4'
 vocabulary_planning_tree_target_node_position = 'TargetNodesChildrenOfDiagramObjects'|'TargetNodesTopOfPlanningTree'
 vocabulary_precision_type = ''|'StandardDeviation'|'StandardError'|'ConfidenceInterval95Percent'|'ConfidenceIntervalOther'
 vocabulary_priority_rating_code = ''|'1'|'2'|'3'|'4'
-vocabulary_progress_report_status = ''|'Planned'|'MajorIssues'|'MinorIssues'|'OnTrack'|'Completed'|'Abandoned'
+vocabulary_progress_report_status = ''|'NotKnown'|'Planned'|'MajorIssues'|'MinorIssues'|'OnTrack'|'Completed'|'Abandoned'
 vocabulary_tnc_project_focus = ''|'Place'|'PolicyAndPractice'|'Performance'
 vocabulary_tnc_project_scale = ''|'Global'|'Regional'|'Local'
 vocabulary_share_outside_organization = 'Private'|'ShareWithAnyone'

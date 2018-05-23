@@ -25,6 +25,12 @@ import org.miradi.main.EAM;
 public class ProgressReportShortStatusQuestion extends AbstractProgressReportStatusQuestion
 {
 	@Override
+	protected String getNotKnownLabel()
+	{
+		return EAM.text("Not Known");
+	}
+
+	@Override
 	protected String getAbandonedLabel()
 	{
 		return EAM.text("Abandoned");
