@@ -67,7 +67,7 @@ abstract public class AbstractTreeTableOrModelExporter extends AbstractSingleTab
 		if (columnTag.equals(Factor.TAG_TEXT))
 			return true;
 		
-		if (columnTag.equals(Factor.TAG_COMMENTS))
+		if (columnTag.equals(BaseObject.TAG_COMMENTS))
 			return true;
 		
 		return false;

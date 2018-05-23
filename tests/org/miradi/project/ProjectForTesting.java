@@ -1384,6 +1384,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(subTarget, SubTarget.TAG_LABEL, "Some SubTarget Label");
 		fillObjectUsingCommand(subTarget, SubTarget.TAG_SHORT_LABEL, "ShortL");
 		fillObjectUsingCommand(subTarget, SubTarget.TAG_DETAIL, "Some SubTarget detail text");
+		fillObjectUsingCommand(subTarget, SubTarget.TAG_COMMENTS, "Some SubTarget Comments");
 	}
 	
 	public void populateKea(KeyEcologicalAttribute kea) throws Exception

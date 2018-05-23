@@ -511,7 +511,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		String columnTag = getColumnTag(column);
 		if (isCommentsColumn(column))
 		{
-			columnTag = Factor.TAG_COMMENTS;
+			columnTag = BaseObject.TAG_COMMENTS;
 		}
 		if (isIndicatorsColumn(column))
 		{
@@ -655,7 +655,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 	
 	private boolean isCommentsColumn(int column)
 	{
-		if (getColumnTag(column).equals(Factor.TAG_COMMENTS))
+		if (getColumnTag(column).equals(BaseObject.TAG_COMMENTS))
 			return true;
 		
 		return getColumnTag(column).equals(WorkPlanColumnConfigurationQuestion.COMMENTS_COLUMN_CODE);

@@ -64,7 +64,12 @@ public class SubTarget extends BaseObject
 	{
 		return getData(TAG_SHORT_LABEL);
 	}
-	
+
+	public String getComment()
+	{
+		return getStringData(TAG_COMMENTS);
+	}
+
 	@Override
 	public String toString()
 	{

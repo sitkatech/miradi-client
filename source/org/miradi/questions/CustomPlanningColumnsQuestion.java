@@ -90,7 +90,7 @@ public class CustomPlanningColumnsQuestion extends MultipleSelectStaticChoiceQue
 				createChoiceItem(META_TIMEFRAME_TOTAL),
 				createChoiceItem(Measurement.META_COLUMN_TAG),
 				createChoiceItem(Indicator.META_COLUMN_TAG),
-				createChoiceItem(Factor.TAG_COMMENTS),
+				createChoiceItem(BaseObject.TAG_COMMENTS),
 				createChoiceItem(Desire.TAG_FULL_TEXT),
 				createChoiceItem(BaseObject.TAG_EVIDENCE_NOTES),
 				createChoiceItem(BaseObject.TAG_EVIDENCE_CONFIDENCE),

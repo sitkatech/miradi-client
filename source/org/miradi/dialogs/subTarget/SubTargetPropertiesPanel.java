@@ -38,7 +38,8 @@ public class SubTargetPropertiesPanel extends ObjectDataInputPanel
 		addFieldsOnOneLine(EAM.text("Nested Target"), new SubTargetIcon(), new ObjectDataInputField[]{shortLabelField, labelField});
 	
 		addField(createMultilineField(SubTarget.TAG_DETAIL));
-		
+		addField(createMultilineField(SubTarget.TAG_COMMENTS));
+
 		updateFieldsFromProject();
 	}
 	

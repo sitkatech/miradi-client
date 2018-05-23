@@ -37,6 +37,7 @@ public class SubTargetSchema extends BaseObjectSchema
 
 		createFieldSchemaSingleLineUserText(SubTarget.TAG_SHORT_LABEL);
 		createFieldSchemaMultiLineUserText(SubTarget.TAG_DETAIL);
+		createFieldSchemaMultiLineUserText(SubTarget.TAG_COMMENTS);
 	}
 
 	public static int getObjectType()

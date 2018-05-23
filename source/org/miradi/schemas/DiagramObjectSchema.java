@@ -39,6 +39,7 @@ abstract public class DiagramObjectSchema extends BaseObjectSchema
 		createOwnedFieldSchemaIdList(DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, DiagramLinkSchema.getObjectType());
 		createFieldSchemaSingleLineUserText(DiagramObject.TAG_SHORT_LABEL);
 		createFieldSchemaMultiLineUserText(DiagramObject.TAG_DETAIL);
+		createFieldSchemaMultiLineUserText(DiagramObject.TAG_COMMENTS);
 		createFieldSchemaCodeList(DiagramObject.TAG_HIDDEN_TYPES, getQuestion(DiagramLegendQuestion.class));
 		createFieldSchemaBoolean(DiagramObject.TAG_IS_TAGGING_ENABLED);
 		createFieldSchemaReflist(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TAGGED_OBJECT_SET_ELEMENT_NAME);

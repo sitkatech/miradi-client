@@ -423,6 +423,9 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestMigrationTo67.class));
 		addTest(new TestSuite(TestMigrationTo68.class));
 		addTest(new TestSuite(TestMigrationTo69.class));
+		addTest(new TestSuite(TestMigrationTo70.class));
+		addTest(new TestSuite(TestMigrationTo71.class));
+		addTest(new TestSuite(TestMigrationTo72.class));
 
 		addTest(new TestSuite(TestReverseMigration.class));
 		addTest(new TestSuite(TestVersionRange.class));

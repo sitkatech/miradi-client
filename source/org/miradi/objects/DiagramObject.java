@@ -541,7 +541,12 @@ abstract public class DiagramObject extends BaseObject
 	{
 		return getStringData(TAG_SHORT_LABEL);
 	}
-	
+
+	public String getComment()
+	{
+		return getStringData(TAG_COMMENTS);
+	}
+
 	@Override
 	public String toString()
 	{

@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Wed May 23 10:04:37 BST 2018 $
+# $LastChangedDate: Wed May 23 13:38:01 BST 2018 $
 # $LastChangedRevision: 237 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/237'
 start = ConservationProject.element
@@ -448,6 +448,7 @@ ConceptualModel.element = element miradi:ConceptualModel
 {
   attribute Id {xsd:integer} &
   ConceptualModelHiddenTypesContainer.element ? &
+  element miradi:ConceptualModelComments { formatted_text }? &
   element miradi:ConceptualModelDetails { formatted_text }? &
   element miradi:ConceptualModelDiagramFactorIds { DiagramFactorId.element* }? &
   element miradi:ConceptualModelDiagramLinkIds { DiagramLinkId.element* }? &
@@ -556,6 +557,7 @@ ResultsChainPool.element = element miradi:ResultsChainPool { ResultsChain.elemen
 ResultsChain.element = element miradi:ResultsChain
 {
   attribute Id {xsd:integer} &
+  element miradi:ResultsChainComments { formatted_text }? &
   element miradi:ResultsChainDetails { formatted_text }? &
   element miradi:ResultsChainDiagramFactorIds { DiagramFactorId.element* }? &
   element miradi:ResultsChainDiagramLinkIds { DiagramLinkId.element* }? &
@@ -663,6 +665,7 @@ SubTargetPool.element = element miradi:SubTargetPool { SubTarget.element* }
 SubTarget.element = element miradi:SubTarget
 {
   attribute Id {xsd:integer} &
+  element miradi:SubTargetComments { formatted_text }? &
   element miradi:SubTargetDetails { formatted_text }? &
   element miradi:SubTargetIdentifier { text }? &
   element miradi:SubTargetName { formatted_text }? &

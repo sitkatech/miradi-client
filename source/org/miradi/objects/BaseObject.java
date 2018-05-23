@@ -1667,6 +1667,7 @@ abstract public class BaseObject
 	public static final String TAG_ID = "Id";
 	public static final String TAG_UUID = "UUID";
 	public static final String TAG_LABEL = "Label";
+	public static final String TAG_COMMENTS = "Comments";
 	public static final String TAG_EMPTY = "EMPTY";
 	public static final String TAG_TIMEFRAME_IDS = "TimeframeIds";
 	public static final String TAG_RESOURCE_ASSIGNMENT_IDS = "AssignmentIds";
