@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-11 03:33-0700\n"
+"POT-Creation-Date: 2018-05-24 00:18-0700\n"
 "PO-Revision-Date: 2015-07-29 01:52-0700\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -269,11 +269,11 @@ msgstr ""
 msgid "%s (old project)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:274
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:278
 msgid "%s Goals"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:282
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:286
 msgid "%s Objs"
 msgstr ""
 
@@ -293,7 +293,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:190
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:195
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1466
 msgid "(%s)"
 msgstr ""
@@ -364,11 +364,11 @@ msgstr ""
 msgid "- Other Subterranean Habitats"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:271
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:275
 msgid "1 Goal"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:279
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:283
 msgid "1 Obj"
 msgstr ""
 
@@ -936,11 +936,11 @@ msgstr ""
 msgid "A project with this name already exists."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:30
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:36
 msgid "Abandoned"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:30
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:36
 msgid "Abandoned - No longer relevant or useful"
 msgstr ""
 
@@ -2835,6 +2835,9 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCommentsPanel.java:50
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:138
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo70.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo71.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo72.java:41
 msgid "Comments"
 msgstr ""
 
@@ -2842,11 +2845,11 @@ msgstr ""
 msgid "Complete"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:36
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:42
 msgid "Completed"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:36
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:42
 msgid "Completed - Successfully accomplished"
 msgstr ""
 
@@ -3658,11 +3661,6 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:415
 msgid "Factor Properties"
-msgstr ""
-
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo61.java:41
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo60.java:41
-msgid "Factor Status Display Enabled Flag"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusQuestion.java:39
@@ -4804,11 +4802,11 @@ msgstr ""
 msgid "Low"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:54
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:60
 msgid "Major Issues"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:54
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:60
 msgid "Major Issues - Ongoing, major issues that need attention"
 msgstr ""
 
@@ -4817,7 +4815,7 @@ msgid "Manage Stresses for "
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:117
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:425
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:431
 msgid "Manage Tags"
 msgstr ""
 
@@ -5185,11 +5183,11 @@ msgstr ""
 msgid "Mild Increase"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:48
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:54
 msgid "Minor Issues"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:48
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:54
 msgid "Minor Issues - Ongoing, has minor issues that need attention"
 msgstr ""
 
@@ -5429,7 +5427,12 @@ msgid "Not Effective"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:30
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:30
 msgid "Not Known"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:30
+msgid "Not Known - Lack of sufficient info to assess progress status"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportLongStatusQuestion.java:30
@@ -5452,7 +5455,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RatingSourceQuestion.java:35
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatRatingQuestion.java:43
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:38
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/AbstractProgressReportStatusQuestion.java:51
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/AbstractProgressReportStatusQuestion.java:52
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/PriorityRatingQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/TrendQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
@@ -5546,7 +5549,7 @@ msgid "October to September"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:54
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:42
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:48
 msgid "On-Track"
 msgstr ""
 
@@ -5554,7 +5557,7 @@ msgstr ""
 msgid "On-Track - Desired result likely to be successfully achieved"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:42
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:48
 msgid "On-Track - Ongoing, generally on track"
 msgstr ""
 
@@ -5970,6 +5973,11 @@ msgstr ""
 msgid "Progress Reports"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo61.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo60.java:41
+msgid "Progress Status Display Enabled Flag"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:131
 msgid "Progress Status:"
 msgstr ""
@@ -6190,6 +6198,11 @@ msgstr ""
 msgid "Report to project team and stakeholders"
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo61.java:42
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo60.java:42
+msgid "Result Status Display Enabled Flag"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:126
 msgid "Result Status:"
 msgstr ""
@@ -6335,11 +6348,11 @@ msgstr ""
 msgid "Save..."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:60
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:66
 msgid "Scheduled"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:60
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:66
 msgid "Scheduled for future implementation"
 msgstr ""
 
@@ -8190,7 +8203,7 @@ msgstr ""
 msgid "This migration adds a new field to the Activity properties."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo60.java:61
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo70.java:61
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo41.java:61
 msgid ""
 "This migration adds a new field to the Conceptual Model Diagram properties."
@@ -8206,12 +8219,16 @@ msgid ""
 "Strategy / Activity relevancy."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo72.java:61
+msgid "This migration adds a new field to the Nested Target properties."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo18.java:61
 msgid "This migration adds a new field to the Project Metadata properties."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo61.java:61
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo42.java:61
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo71.java:61
 msgid ""
 "This migration adds a new field to the Results Chain Diagram properties."
 msgstr ""
@@ -8246,6 +8263,18 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo47.java:62
 msgid "This migration adds new fields to the Diagram Link properties."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo60.java:62
+msgid ""
+"This migration adds new progress / result status display flags to the "
+"Conceptual Model Diagram properties."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo61.java:62
+msgid ""
+"This migration adds new progress / result status display flags to the "
+"Results Chain Diagram properties."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo5.java:69
@@ -8308,6 +8337,12 @@ msgstr ""
 msgid "This migration modifies diagram tags so that they are diagram-specific."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo69.java:84
+msgid ""
+"This migration modifies the 'red' color choice for Diagram Factor font color "
+"styling."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:94
 msgid "This migration moves child tasks up to the activity level."
 msgstr ""
@@ -8365,6 +8400,11 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:99
 msgid "This migration removes superseded assignments from the work plan."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo68.java:84
+msgid ""
+"This migration removes the Not Known choice for Progress Report Statuses."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo52.java:84
@@ -8697,7 +8737,7 @@ msgstr ""
 msgid "Title|Diagram Panel"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:61
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:62
 msgid "Title|Diagram Properties"
 msgstr ""
 
@@ -8791,7 +8831,7 @@ msgstr ""
 msgid "Title|Migrate Project"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:48
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:49
 msgid "Title|Nested Target Properties"
 msgstr ""
 
@@ -8844,7 +8884,7 @@ msgstr ""
 msgid "Title|Result Report"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:58
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:59
 msgid "Title|Results Chain Properties"
 msgstr ""
 
@@ -10582,6 +10622,9 @@ msgstr ""
 msgid "FieldLabel|19.Detail|Details"
 msgstr ""
 
+msgid "FieldLabel|19.Comments|Comments"
+msgstr ""
+
 msgid "FieldLabel|19.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
@@ -10606,7 +10649,10 @@ msgstr ""
 msgid "FieldLabel|19.PseudoLatestProgressReportLessonsLearned|Lessons Learned"
 msgstr ""
 
-msgid "FieldLabel|19.IsFactorStatusDisplayEnabled|Progress Status"
+msgid "FieldLabel|19.IsProgressStatusDisplayEnabled|Progress Status"
+msgstr ""
+
+msgid "FieldLabel|19.IsResultStatusDisplayEnabled|Results Status"
 msgstr ""
 
 msgid "FieldLabel|20.Cause|Cause"
@@ -10861,6 +10907,9 @@ msgstr ""
 msgid "FieldLabel|24.Detail|Details"
 msgstr ""
 
+msgid "FieldLabel|24.Comments|Comments"
+msgstr ""
+
 msgid "FieldLabel|24.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
@@ -10882,7 +10931,10 @@ msgstr ""
 msgid "FieldLabel|24.PseudoLatestProgressReportLessonsLearned|Lessons Learned"
 msgstr ""
 
-msgid "FieldLabel|24.IsFactorStatusDisplayEnabled|Result / Progress Status"
+msgid "FieldLabel|24.IsProgressStatusDisplayEnabled|Progress Status"
+msgstr ""
+
+msgid "FieldLabel|24.IsResultStatusDisplayEnabled|Results Status"
 msgstr ""
 
 msgid "FieldLabel|25.ThreatReductionResult|Threat Reduction Result"
@@ -11099,6 +11151,9 @@ msgid "FieldLabel|36.Label|Name"
 msgstr ""
 
 msgid "FieldLabel|36.Detail|Details"
+msgstr ""
+
+msgid "FieldLabel|36.Comments|Comments"
 msgstr ""
 
 msgid "FieldLabel|37.ProgressReport|Progress Report"

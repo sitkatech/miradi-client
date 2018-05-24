@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-05-11 03:33-0700\n"
+"POT-Creation-Date: 2018-05-24 00:18-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Mongolian (http://www.transifex.com/projects/p/miradi-client/"
@@ -274,11 +274,11 @@ msgstr ""
 msgid "%s (old project)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:274
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:278
 msgid "%s Goals"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:282
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:286
 msgid "%s Objs"
 msgstr ""
 
@@ -298,7 +298,7 @@ msgstr ""
 msgid "'%FromName' -> '%ToName'<br>"
 msgstr "'%нэрээс' -> '%нэрэнд'<br>"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:190
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationManager.java:195
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MainWindow.java:1466
 msgid "(%s)"
 msgstr ""
@@ -369,11 +369,11 @@ msgstr "- Агуй"
 msgid "- Other Subterranean Habitats"
 msgstr "- Газар доорхи амьдрах орчин"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:271
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:275
 msgid "1 Goal"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:279
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/renderers/FactorRenderer.java:283
 msgid "1 Obj"
 msgstr ""
 
@@ -1043,11 +1043,11 @@ msgstr "Ийм нэр бүхий төсөл эсвэл файл байна:"
 msgid "A project with this name already exists."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:30
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:36
 msgid "Abandoned"
 msgstr "Орхигдсон"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:30
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:36
 msgid "Abandoned - No longer relevant or useful"
 msgstr "Орхигдсон - хамааралгүй эсвэл хэрэггүй болсон"
 
@@ -2981,6 +2981,9 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorSummaryCommentsPanel.java:50
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/utils/AbstractThreatRatingDetailsTableExporter.java:138
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo70.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo71.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo72.java:41
 msgid "Comments"
 msgstr "Тайлбар"
 
@@ -2988,11 +2991,11 @@ msgstr "Тайлбар"
 msgid "Complete"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:36
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:42
 msgid "Completed"
 msgstr "Бүрэн дуусгасан"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:36
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:42
 msgid "Completed - Successfully accomplished"
 msgstr "Бүрэн дуусгасан- Амжилттай хийж дуусгасан"
 
@@ -3832,11 +3835,6 @@ msgstr "Хүчин зүйлийн шинж чанар"
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/FactorPropertiesPanel.java:415
 msgid "Factor Properties"
 msgstr "Хүчин зүйлийн шинж чанар"
-
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo61.java:41
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo60.java:41
-msgid "Factor Status Display Enabled Flag"
-msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StatusQuestion.java:39
 msgid "Fair"
@@ -5008,11 +5006,11 @@ msgstr "Байршил"
 msgid "Low"
 msgstr " бага"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:54
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:60
 msgid "Major Issues"
 msgstr "Гол асуудлууд"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:54
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:60
 msgid "Major Issues - Ongoing, major issues that need attention"
 msgstr "Гол асуудлууд - Анхаарал хандуулах ёстой одоо болж буй гол асуудлууд"
 
@@ -5021,7 +5019,7 @@ msgid "Manage Stresses for "
 msgstr ".....ны дарамтыг  зохицуулах "
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:117
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:425
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramLegendPanel.java:431
 msgid "Manage Tags"
 msgstr ""
 
@@ -5395,11 +5393,11 @@ msgstr "Аажим бууралт"
 msgid "Mild Increase"
 msgstr "Аажим өсөлт"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:48
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:54
 msgid "Minor Issues"
 msgstr "Чухал бус асуудлууд"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:48
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:54
 msgid "Minor Issues - Ongoing, has minor issues that need attention"
 msgstr ""
 "Чухал бус асуудлууд - Үргэлжилж байгаа, анхаарал хандуулах шаардлагатай  "
@@ -5658,7 +5656,12 @@ msgid "Not Effective"
 msgstr "Үр ашиггүй"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:30
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:30
 msgid "Not Known"
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:30
+msgid "Not Known - Lack of sufficient info to assess progress status"
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportLongStatusQuestion.java:30
@@ -5681,7 +5684,7 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/RatingSourceQuestion.java:35
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ThreatRatingQuestion.java:43
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/StrategyImpactQuestion.java:38
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/AbstractProgressReportStatusQuestion.java:51
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/AbstractProgressReportStatusQuestion.java:52
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/PriorityRatingQuestion.java:36
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/TrendQuestion.java:37
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/FosTrainingTypeQuestion.java:35
@@ -5778,7 +5781,7 @@ msgid "October to September"
 msgstr "Арваас есдүгээр сар"
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:54
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:42
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:48
 msgid "On-Track"
 msgstr "Мөрөөр нь явах"
 
@@ -5786,7 +5789,7 @@ msgstr "Мөрөөр нь явах"
 msgid "On-Track - Desired result likely to be successfully achieved"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:42
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:48
 msgid "On-Track - Ongoing, generally on track"
 msgstr ""
 
@@ -6210,6 +6213,11 @@ msgstr "Хэрэгжилтийн тайлан"
 msgid "Progress Reports"
 msgstr "Хэрэгжилтийн тайлангууд"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo61.java:41
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo60.java:41
+msgid "Progress Status Display Enabled Flag"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:131
 msgid "Progress Status:"
 msgstr ""
@@ -6433,6 +6441,11 @@ msgstr "Тайлангийн Загвар"
 msgid "Report to project team and stakeholders"
 msgstr "Төслийн баг ба оролцогч талуудад тайлагнах"
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo61.java:42
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo60.java:42
+msgid "Result Status Display Enabled Flag"
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/cells/FactorCell.java:126
 msgid "Result Status:"
 msgstr ""
@@ -6578,11 +6591,11 @@ msgstr "Нэр, төрөл, байрлал...сольж хадгалах"
 msgid "Save..."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:60
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:66
 msgid "Scheduled"
 msgstr "Хуваарьт"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:60
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:66
 msgid "Scheduled for future implementation"
 msgstr "Ирээдүйд хэрэгжүүлэхээр хуваарьт оруулсан"
 
@@ -8517,7 +8530,7 @@ msgstr ""
 msgid "This migration adds a new field to the Activity properties."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo60.java:61
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo70.java:61
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo41.java:61
 msgid ""
 "This migration adds a new field to the Conceptual Model Diagram properties."
@@ -8533,12 +8546,16 @@ msgid ""
 "Strategy / Activity relevancy."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo72.java:61
+msgid "This migration adds a new field to the Nested Target properties."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo18.java:61
 msgid "This migration adds a new field to the Project Metadata properties."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo61.java:61
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo42.java:61
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo71.java:61
 msgid ""
 "This migration adds a new field to the Results Chain Diagram properties."
 msgstr ""
@@ -8573,6 +8590,18 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo47.java:62
 msgid "This migration adds new fields to the Diagram Link properties."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo60.java:62
+msgid ""
+"This migration adds new progress / result status display flags to the "
+"Conceptual Model Diagram properties."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo61.java:62
+msgid ""
+"This migration adds new progress / result status display flags to the "
+"Results Chain Diagram properties."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo5.java:69
@@ -8635,6 +8664,12 @@ msgstr ""
 msgid "This migration modifies diagram tags so that they are diagram-specific."
 msgstr ""
 
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo69.java:84
+msgid ""
+"This migration modifies the 'red' color choice for Diagram Factor font color "
+"styling."
+msgstr ""
+
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo26.java:94
 msgid "This migration moves child tasks up to the activity level."
 msgstr ""
@@ -8692,6 +8727,11 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo25.java:99
 msgid "This migration removes superseded assignments from the work plan."
+msgstr ""
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo68.java:84
+msgid ""
+"This migration removes the Not Known choice for Progress Report Statuses."
 msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/migrations/forward/MigrationTo52.java:84
@@ -9044,7 +9084,7 @@ msgstr "Гарчиг|Устгах"
 msgid "Title|Diagram Panel"
 msgstr "Гарчиг|Диаграммын жагсаалт"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:61
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/ConceptualModelPropertiesPanel.java:62
 msgid "Title|Diagram Properties"
 msgstr "Гарчиг|Диаграммын  агуулга"
 
@@ -9138,7 +9178,7 @@ msgstr "гарчиг|Арга Зүйн  агуулга"
 msgid "Title|Migrate Project"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:48
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/subTarget/SubTargetPropertiesPanel.java:49
 msgid "Title|Nested Target Properties"
 msgstr "Гарчиг|Давхар хамгаалагдах зүйлийн шинж чанар"
 
@@ -9191,7 +9231,7 @@ msgstr "Гарчиг|Тайлангийн загварын агуулга"
 msgid "Title|Result Report"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:58
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/ResultsChainPropertiesPanel.java:59
 msgid "Title|Results Chain Properties"
 msgstr "Гарчиг|Үр дүнгийн  хэлхээсийн шинж чанарууд"
 
@@ -11052,6 +11092,9 @@ msgstr "БаганыХаяг|19.СонгогдонТэмдэглэгдсэнБа
 msgid "FieldLabel|19.Detail|Details"
 msgstr "БаганыХаяг|19.Дэлгэрэнгүй байдал|Дэлгэрэнгүй  байдал"
 
+msgid "FieldLabel|19.Comments|Comments"
+msgstr ""
+
 msgid "FieldLabel|19.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
@@ -11076,7 +11119,10 @@ msgstr ""
 msgid "FieldLabel|19.PseudoLatestProgressReportLessonsLearned|Lessons Learned"
 msgstr ""
 
-msgid "FieldLabel|19.IsFactorStatusDisplayEnabled|Progress Status"
+msgid "FieldLabel|19.IsProgressStatusDisplayEnabled|Progress Status"
+msgstr ""
+
+msgid "FieldLabel|19.IsResultStatusDisplayEnabled|Results Status"
 msgstr ""
 
 msgid "FieldLabel|20.Cause|Cause"
@@ -11359,6 +11405,9 @@ msgstr "БаганыХаяг|24.СонгосонТэмдэглэгдсэнБаг
 msgid "FieldLabel|24.Detail|Details"
 msgstr "БаганыХаяг|24.ДэлгэрэнгүйБайдал|Дэлгэрэнгүй:"
 
+msgid "FieldLabel|24.Comments|Comments"
+msgstr ""
+
 msgid "FieldLabel|24.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
 
@@ -11380,7 +11429,10 @@ msgstr ""
 msgid "FieldLabel|24.PseudoLatestProgressReportLessonsLearned|Lessons Learned"
 msgstr ""
 
-msgid "FieldLabel|24.IsFactorStatusDisplayEnabled|Result / Progress Status"
+msgid "FieldLabel|24.IsProgressStatusDisplayEnabled|Progress Status"
+msgstr ""
+
+msgid "FieldLabel|24.IsResultStatusDisplayEnabled|Results Status"
 msgstr ""
 
 msgid "FieldLabel|25.ThreatReductionResult|Threat Reduction Result"
@@ -11607,6 +11659,9 @@ msgstr "БаганыХаяг|36.Хаяг|Нэр"
 
 msgid "FieldLabel|36.Detail|Details"
 msgstr "БаганыХаяг|36.Дэлгэрэнгүй|Дэлгэрэнгүй"
+
+msgid "FieldLabel|36.Comments|Comments"
+msgstr ""
 
 msgid "FieldLabel|37.ProgressReport|Progress Report"
 msgstr ""
