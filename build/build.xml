@@ -29,6 +29,11 @@
     <property name="mac.build.server" value="${env.SITKA.MAC.BUILDSERVER}" />
     <property name="mac.build.password" value="${env.SITKA.MAC.BUILDPASSWORD}" />
     <property name="mac.build.certname" value="${env.SITKA.MAC.BUILDCERT}" />
+    <property name="windows.build.user" value="${env.SITKA.WINDOWS.BUILDUSER}" />
+    <property name="windows.build.server" value="${env.SITKA.WINDOWS.BUILDSERVER}" />
+    <property name="windows.build.password" value="${env.SITKA.WINDOWS.BUILDPASSWORD}" />
+    <property name="windows.build.ev.certname" value="${env.SITKA.WINDOWS.EV.BUILDCERT}" />
+	<property name="windows.build.ev.certname.password" value="${env.SITKA.WINDOWS.EV.BUILDCERT.PASSWORD}" />
     <property name="windows.build.certname.spc" value="${env.SITKA.WINDOWS.BUILDCERT.SPC}" />
     <property name="windows.build.certname.pvk" value="${env.SITKA.WINDOWS.BUILDCERT.PVK}" />
     <property name="windows.build.certname.password" value="${env.SITKA.WINDOWS.BUILDCERT.PASSWORD}" />
@@ -1110,23 +1115,47 @@
 	<!-- sign built exe -->
 	<echo message="Signing ${windows.setup.name}.exe" />
 
-	<exec executable="osslsigncode" failonerror="true">
-		<arg value="-certs"/>
-		<arg value="${windows.build.certname.spc}"/>
-		<arg value="-key"/>
-		<arg value="${windows.build.certname.pvk}"/>
-		<arg value="-pass"/>
-		<arg value="${windows.build.certname.password}"/>
-		<arg value="-n"/>
-		<arg value="'Miradi'"/>
-		<arg value="-i"/>
-		<arg value="http://${miradi.web.domain}"/>
-		<arg value="-t"/>
-		<arg value="http://timestamp.verisign.com/scripts/timstamp.dll"/>
-		<arg value="-in"/>
+	<property name="windows.build.temp.dir" value="C:\\temp\\miradi-build-temp" />
+
+	<!-- delete / create temp folder on windows build machine -->
+	<echo message="Creating ${windows.build.temp.dir} folder on ${windows.build.user}@${windows.build.server}" />
+	<exec executable="ssh" failonerror="true">
+		<arg value="${windows.build.user}@${windows.build.server}"/>
+		<arg value="rmdir /s /q ${windows.build.temp.dir};
+                    mkdir ${windows.build.temp.dir};
+                    exit;"/>
+	</exec>
+
+	<!-- copy over necessary files -->
+	<echo message="Copying files to ${windows.build.user}@${windows.build.server}:${windows.build.temp.dir}" />
+	<exec executable="scp" failonerror="true">
+		<arg value="-r"/>
 		<arg value="${dist.dir}/${windows.setup.name}.exe"/>
-		<arg value="-out"/>
+		<arg value="${windows.build.user}@${windows.build.server}:${windows.build.temp.dir}"/>
+	</exec>
+
+	<!-- ssh to windows build machine and sign exe -->
+	<echo message="Signing ${windows.setup.name}.exe" />
+	<exec executable="ssh" failonerror="true">
+		<arg value="${windows.build.user}@${windows.build.server}"/>
+		<arg value="cd ${windows.build.temp.dir};
+					signtool sign /tr http://timestamp.comodoca.com /td sha256 /fd sha256 /a /n '${windows.build.ev.certname}' ${windows.setup.name}.exe
+                    exit;"/>
+	</exec>
+
+	<!-- copy back over signed exe -->
+	<echo message="Copying ${windows.build.user}@${windows.build.server}:${windows.build.temp.dir}\\${windows.setup.name}.exe to ${dist.dir}/${windows.setup.name}_signed.exe" />
+	<exec executable="scp" failonerror="true">
+		<arg value="${windows.build.user}@${windows.build.server}:${windows.build.temp.dir}\\${windows.setup.name}.exe"/>
 		<arg value="${dist.dir}/${windows.setup.name}_signed.exe"/>
+	</exec>
+
+	<!-- delete temp folder on windows build machine -->
+	<echo message="Deleting ${windows.build.temp.dir} on ${windows.build.user}@${windows.build.server}" />
+	<exec executable="ssh" failonerror="true">
+		<arg value="${windows.build.user}@${windows.build.server}"/>
+		<arg value="rmdir /s /q ${windows.build.temp.dir};
+                    exit;"/>
 	</exec>
 
 	<!-- clean up -->
