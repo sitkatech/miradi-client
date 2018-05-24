@@ -513,9 +513,14 @@ abstract public class DiagramObject extends BaseObject
 		return isToggleDiagramTagging;
 	}
 
-	public boolean isFactorStatusDisplayEnabled()
+	public boolean isProgressStatusDisplayEnabled()
 	{
-		return getBooleanData(TAG_IS_FACTOR_STATUS_DISPLAY_ENABLED);
+		return getBooleanData(TAG_IS_PROGRESS_STATUS_DISPLAY_ENABLED);
+	}
+
+	public boolean isResultStatusDisplayEnabled()
+	{
+		return getBooleanData(TAG_IS_RESULT_STATUS_DISPLAY_ENABLED);
 	}
 
 	@Override
@@ -602,7 +607,8 @@ abstract public class DiagramObject extends BaseObject
 	public static final String TAG_HIDDEN_TYPES = "HiddenTypes";
 	public static final String TAG_IS_TAGGING_ENABLED = "IsTaggingEnabled";
 	public static final String TAG_SELECTED_TAGGED_OBJECT_SET_REFS = "SelectedTaggedObjectSetRefs";
-	public static final String TAG_IS_FACTOR_STATUS_DISPLAY_ENABLED = "IsFactorStatusDisplayEnabled";
+	public static final String TAG_IS_PROGRESS_STATUS_DISPLAY_ENABLED = "IsProgressStatusDisplayEnabled";
+	public static final String TAG_IS_RESULT_STATUS_DISPLAY_ENABLED = "IsResultStatusDisplayEnabled";
 	public static final String TAG_ZOOM_SCALE = "ZoomScale";
 	
 	public static final String PSEUDO_COMBINED_LABEL = "PseudoCombinedLabel";

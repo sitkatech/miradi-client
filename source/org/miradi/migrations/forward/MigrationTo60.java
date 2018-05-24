@@ -38,7 +38,8 @@ public class MigrationTo60 extends NewlyAddedFieldsMigration
     protected HashMap<String, String> createFieldsToLabelMapToModify()
     {
         HashMap<String, String> fieldsToAdd = new HashMap<String, String>();
-        fieldsToAdd.put(TAG_IS_FACTOR_STATUS_DISPLAY_ENABLED, EAM.text("Factor Status Display Enabled Flag"));
+        fieldsToAdd.put(TAG_IS_PROGRESS_STATUS_DISPLAY_ENABLED, EAM.text("Progress Status Display Enabled Flag"));
+        fieldsToAdd.put(TAG_IS_RESULT_STATUS_DISPLAY_ENABLED, EAM.text("Result Status Display Enabled Flag"));
 
         return fieldsToAdd;
     }
@@ -58,11 +59,12 @@ public class MigrationTo60 extends NewlyAddedFieldsMigration
     @Override
     protected String getDescription()
     {
-        return EAM.text("This migration adds a new field to the Conceptual Model Diagram properties.");
+        return EAM.text("This migration adds new progress / result status display flags to the Conceptual Model Diagram properties.");
     }
 
     public static final int VERSION_FROM = 59;
     public static final int VERSION_TO = 60;
 
-    public static final String TAG_IS_FACTOR_STATUS_DISPLAY_ENABLED = "IsFactorStatusDisplayEnabled";
+    public static final String TAG_IS_PROGRESS_STATUS_DISPLAY_ENABLED = "IsProgressStatusDisplayEnabled";
+    public static final String TAG_IS_RESULT_STATUS_DISPLAY_ENABLED = "IsResultStatusDisplayEnabled";
 }

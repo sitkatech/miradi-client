@@ -94,7 +94,8 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			rating = null;
 			progressReportStatus = null;
 			resultReportStatus = null;
-			boolean displayFactorStatus = diagram.getDiagramObject().isFactorStatusDisplayEnabled();
+			boolean displayProgressStatus = diagram.getDiagramObject().isProgressStatusDisplayEnabled();
+			boolean displayResultStatus = diagram.getDiagramObject().isResultStatusDisplayEnabled();
 
 			if (getFactorCell().isDirectThreat())
 			{
@@ -116,7 +117,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 				strategyInResultsChain = shouldDisplayResultsChainIcon(model, strategy);
 			}
 
-			if (displayFactorStatus)
+			if (displayProgressStatus)
 			{
 				if (getFactorCell().isStrategy())
 				{
@@ -129,7 +130,10 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 					Task task = (Task)getFactorCell().getWrappedFactor();
 					progressReportStatus = getLatestProgressReportStatus(model.getProject(), task.getRef());
 				}
+			}
 
+			if (displayResultStatus)
+			{
 				if (getFactorCell().isIntermediateResult())
 				{
 					IntermediateResult intermediateResult = (IntermediateResult)getFactorCell().getWrappedFactor();

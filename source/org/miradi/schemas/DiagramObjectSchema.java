@@ -43,7 +43,8 @@ abstract public class DiagramObjectSchema extends BaseObjectSchema
 		createFieldSchemaCodeList(DiagramObject.TAG_HIDDEN_TYPES, getQuestion(DiagramLegendQuestion.class));
 		createFieldSchemaBoolean(DiagramObject.TAG_IS_TAGGING_ENABLED);
 		createFieldSchemaReflist(DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, TAGGED_OBJECT_SET_ELEMENT_NAME);
-		createFieldSchemaBoolean(DiagramObject.TAG_IS_FACTOR_STATUS_DISPLAY_ENABLED);
+		createFieldSchemaBoolean(DiagramObject.TAG_IS_PROGRESS_STATUS_DISPLAY_ENABLED);
+		createFieldSchemaBoolean(DiagramObject.TAG_IS_RESULT_STATUS_DISPLAY_ENABLED);
 		createFieldSchemaNumber(DiagramObject.TAG_ZOOM_SCALE);
 
 		createExtendedProgressReportSchema();

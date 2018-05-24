@@ -188,16 +188,22 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		DiagramObject diagramObject = getCurrentDiagramObject();
 		if (diagramObject != null && diagramObject.isResultsChain())
 		{
-			ObjectCheckBoxField enableFactorStatusCheckBox = new ObjectCheckBoxField(getProject(), diagramObject.getRef(), DiagramObject.TAG_IS_FACTOR_STATUS_DISPLAY_ENABLED, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE);
-			enableFactorStatusCheckBox.getComponent().setBackground(AppPreferences.getControlPanelBackgroundColor());
-			enableFactorStatusCheckBox.updateFromObject();
-			jpanel.add(enableFactorStatusCheckBox.getComponent());
-
-			String label = EAM.fieldLabel(diagramObject.getType(), DiagramObject.TAG_IS_FACTOR_STATUS_DISPLAY_ENABLED);
-			jpanel.add(new PanelTitleLabel(label, new ResultReportIcon()));
+			addStatusCheckBoxToPanel(jpanel, diagramObject, DiagramObject.TAG_IS_PROGRESS_STATUS_DISPLAY_ENABLED);
+			addStatusCheckBoxToPanel(jpanel, diagramObject, DiagramObject.TAG_IS_RESULT_STATUS_DISPLAY_ENABLED);
 		}
 
 		return jpanel;
+	}
+
+	private void addStatusCheckBoxToPanel(TwoColumnPanel panel, DiagramObject diagramObject, String statusTag)
+	{
+		ObjectCheckBoxField enableProgressStatusCheckBox = new ObjectCheckBoxField(getProject(), diagramObject.getRef(), statusTag, BooleanData.BOOLEAN_TRUE, BooleanData.BOOLEAN_FALSE);
+		enableProgressStatusCheckBox.getComponent().setBackground(AppPreferences.getControlPanelBackgroundColor());
+		enableProgressStatusCheckBox.updateFromObject();
+		panel.add(enableProgressStatusCheckBox.getComponent());
+
+		String label = EAM.fieldLabel(diagramObject.getType(), statusTag);
+		panel.add(new PanelTitleLabel(label, new ResultReportIcon()));
 	}
 
 	protected void addActivityLine(TwoColumnPanel jpanel)
