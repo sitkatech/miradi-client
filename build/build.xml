@@ -1115,50 +1115,23 @@
 	<!-- sign built exe -->
 	<echo message="Signing ${windows.setup.name}.exe" />
 
-	<property name="windows.build.temp.dir" value="C:\\temp\\miradi-build-temp" />
-
-	<!-- delete temp folder on windows build machine -->
-	<echo message="Deleting ${windows.build.temp.dir} folder on ${windows.build.user}@${windows.build.server}" />
-    <exec executable="sshpass" failonerror="true">
-        <arg value="-p '${windows.build.password}' ssh ${windows.build.user}@${windows.build.server}"/>
-        <arg value="if exist ${windows.build.temp.dir} rmdir /s /q ${windows.build.temp.dir};"/>
-    </exec>
-
-	<!-- create temp folder on windows build machine -->
-	<echo message="Creating ${windows.build.temp.dir} folder on ${windows.build.user}@${windows.build.server}" />
-    <exec executable="sshpass" failonerror="true">
-        <arg value="-p '${windows.build.password}' ssh ${windows.build.user}@${windows.build.server}"/>
-        <arg value="mkdir ${windows.build.temp.dir};"/>
-    </exec>
-
-	<!-- copy over necessary files -->
-	<echo message="Copying files to ${windows.build.user}@${windows.build.server}:${windows.build.temp.dir}" />
-	<exec executable="sshpass" failonerror="true">
-		<arg value="-p '${windows.build.password}' scp -r"/>
+	<exec executable="osslsigncode" failonerror="true">
+		<arg value="-certs"/>
+		<arg value="${windows.build.certname.spc}"/>
+		<arg value="-key"/>
+		<arg value="${windows.build.certname.pvk}"/>
+		<arg value="-pass"/>
+		<arg value="${windows.build.certname.password}"/>
+		<arg value="-n"/>
+		<arg value="'Miradi'"/>
+		<arg value="-i"/>
+		<arg value="http://${miradi.web.domain}"/>
+		<arg value="-t"/>
+		<arg value="http://timestamp.verisign.com/scripts/timstamp.dll"/>
+		<arg value="-in"/>
 		<arg value="${dist.dir}/${windows.setup.name}.exe"/>
-		<arg value="${windows.build.user}@${windows.build.server}:${windows.build.temp.dir}"/>
-	</exec>
-
-	<!-- ssh to windows build machine and sign exe -->
-	<echo message="Signing ${windows.setup.name}.exe" />
-	<exec executable="sshpass" failonerror="true">
-		<arg value="-p '${windows.build.password}' ssh ${windows.build.user}@${windows.build.server}"/>
-		<arg value="signtool sign /tr http://timestamp.comodoca.com /td sha256 /fd sha256 /a /n \&quot;${windows.build.ev.certname}\&quot; ${windows.build.temp.dir}\\${windows.setup.name}.exe"/>
-	</exec>
-
-	<!-- copy back over signed exe -->
-	<echo message="Copying ${windows.build.user}@${windows.build.server}:${windows.build.temp.dir}\\${windows.setup.name}.exe to ${dist.dir}/${windows.setup.name}_signed.exe" />
-	<exec executable="sshpass" failonerror="true">
-		<arg value="-p '${windows.build.password}' scp"/>
-		<arg value="${windows.build.user}@${windows.build.server}:${windows.build.temp.dir}\\${windows.setup.name}.exe"/>
+		<arg value="-out"/>
 		<arg value="${dist.dir}/${windows.setup.name}_signed.exe"/>
-	</exec>
-
-	<!-- delete temp folder on windows build machine -->
-	<echo message="Deleting ${windows.build.temp.dir} on ${windows.build.user}@${windows.build.server}" />
-	<exec executable="sshpass" failonerror="true">
-		<arg value="-p '${windows.build.password}' ssh ${windows.build.user}@${windows.build.server}"/>
-		<arg value="if exist ${windows.build.temp.dir} rmdir /s /q ${windows.build.temp.dir};"/>
 	</exec>
 
 	<!-- clean up -->
