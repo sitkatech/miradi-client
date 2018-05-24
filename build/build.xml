@@ -1119,12 +1119,19 @@
 
 	<!-- delete / create temp folder on windows build machine -->
 	<echo message="Creating ${windows.build.temp.dir} folder on ${windows.build.user}@${windows.build.server}" />
+    <sshexec host="${windows.build.server}"
+             username="${windows.build.user}"
+             password="${windows.build.password}"
+             command="rmdir /s /q ${windows.build.temp.dir}; mkdir ${windows.build.temp.dir}; exit;"/>
+
+    <!--
 	<exec executable="ssh" failonerror="true">
 		<arg value="${windows.build.user}@${windows.build.server}"/>
 		<arg value="rmdir /s /q ${windows.build.temp.dir};
                     mkdir ${windows.build.temp.dir};
                     exit;"/>
 	</exec>
+    -->
 
 	<!-- copy over necessary files -->
 	<echo message="Copying files to ${windows.build.user}@${windows.build.server}:${windows.build.temp.dir}" />
