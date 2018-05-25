@@ -27,6 +27,7 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.TaggedObjectSet;
 
+import java.util.HashMap;
 import java.util.Vector;
 
 public class DiagramFactorTaggedObjectSetHelper
@@ -85,6 +86,8 @@ public class DiagramFactorTaggedObjectSetHelper
             diagramFactorRefs.add(diagramFactor.getRef());
         }
 
+        HashMap<DiagramObject, ORefList> diagramObjectTaggedObjectSetRefList = new HashMap<DiagramObject, ORefList>();
+
         for (ORef taggedObjectSetRef : taggedObjectRefSet)
         {
             TaggedObjectSet taggedObjectSet = TaggedObjectSet.find(getProject(), taggedObjectSetRef);
@@ -96,11 +99,24 @@ public class DiagramFactorTaggedObjectSetHelper
                     DiagramObject diagramObject = DiagramObject.findDiagramObject(getProject(), diagramObjectRef);
                     if (shouldRemoveTaggedObjectSetFromDiagramSelectedTaggedObjectSetRefs(diagramObject, diagramFactorRefs, taggedObjectSet))
                     {
-                        CommandSetObjectData removeTagFromSelection =  CommandSetObjectData.createRemoveORefCommand(diagramObject, DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, taggedObjectSet.getRef());
-                        commands.add(removeTagFromSelection);
+                        if (!diagramObjectTaggedObjectSetRefList.containsKey(diagramObject))
+                            diagramObjectTaggedObjectSetRefList.put(diagramObject, new ORefList());
+
+                        ORefList currentTaggedObjectSetRefList = diagramObjectTaggedObjectSetRefList.get(diagramObject);
+                        if (!currentTaggedObjectSetRefList.contains(taggedObjectSet.getRef()))
+                        {
+                            currentTaggedObjectSetRefList.add(taggedObjectSet.getRef());
+                            diagramObjectTaggedObjectSetRefList.put(diagramObject, currentTaggedObjectSetRefList);
+                        }
                     }
                 }
             }
+        }
+
+        for (DiagramObject diagramObject: diagramObjectTaggedObjectSetRefList.keySet())
+        {
+            CommandSetObjectData removeTagsFromDiagramObject =  CommandSetObjectData.createRemoveORefListCommand(diagramObject, DiagramObject.TAG_SELECTED_TAGGED_OBJECT_SET_REFS, diagramObjectTaggedObjectSetRefList.get(diagramObject));
+            commands.add(removeTagsFromDiagramObject);
         }
 
         return commands;

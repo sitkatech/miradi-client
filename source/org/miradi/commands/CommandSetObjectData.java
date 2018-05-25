@@ -84,6 +84,15 @@ public class CommandSetObjectData extends Command
 		return new CommandSetObjectData(object.getType(), object.getId(), oRefListTag, newList.toString());
 	}
 
+	static public CommandSetObjectData createRemoveORefListCommand(BaseObject object, String oRefListTag, ORefList refListToRemove) throws ParseException
+	{
+		ensureRefList(object, oRefListTag);
+
+		ORefList newList = new ORefList(object.getData(oRefListTag));
+		newList.removeAll(refListToRemove);
+		return new CommandSetObjectData(object.getType(), object.getId(), oRefListTag, newList.toString());
+	}
+
 	static public CommandSetObjectData createCommandToAppendList(BaseObject object, String idListTag, IdList listToAppend) throws ParseException
 	{
 		ensureIdList(object, idListTag);
