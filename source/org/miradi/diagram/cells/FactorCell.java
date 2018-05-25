@@ -40,14 +40,7 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.BaseObjectByFullNameSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.Factor;
-import org.miradi.objects.Goal;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.Objective;
-import org.miradi.objects.Target;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.ProgressReportShortStatusQuestion;
@@ -59,7 +52,6 @@ import org.miradi.utils.XmlUtilities2;
 
 abstract public class FactorCell extends EAMGraphCell
 {
-	
 	protected FactorCell(Factor factorToWrap, DiagramFactor diagramFactorToUse)
 	{
 		wrappedFactor = factorToWrap;
@@ -84,6 +76,8 @@ abstract public class FactorCell extends EAMGraphCell
 	public String getToolTipString(Point pointRelativeToCellOrigin) 
 	{
 		Factor factor = getWrappedFactor();
+		boolean isFactorWithProgressStatus = factor.isStrategy() || factor.isActivity() || factor.isMonitoringActivity();
+		boolean isFactorWithResultStatus = factor.isThreatReductionResult() || factor.isIntermediateResult() || factor.isBiophysicalResult();
 
 		String tip = "<html>";
 
@@ -97,12 +91,19 @@ abstract public class FactorCell extends EAMGraphCell
 		String listContents = "";
 		String listStyle = "margin-left: 20px;";
 
+		DiagramObject diagramObject = EAM.getMainWindow().getDiagramView().getCurrentDiagramObject();
+		boolean progressStatusDisplayed = diagramObject.isProgressStatusDisplayEnabled();
+		boolean resultStatusDisplayed = diagramObject.isResultStatusDisplayEnabled();
+
+		boolean noContentToDisplay = true;
+
 		if(isPointInIndicator(pointRelativeToCellOrigin))
 		{
 			header = EAM.text("Indicators:");
 			detailsTag = Indicator.TAG_DETAIL;
 			bullets = new ORefList(IndicatorSchema.getObjectType(), factor.getDirectOrIndirectIndicators());
 			listContents = buildListContentsFromBullets(bullets, detailsTag);
+			noContentToDisplay = bullets.size() == 0;
 		}
 		else if(isPointInGoal(pointRelativeToCellOrigin))
 		{
@@ -110,6 +111,7 @@ abstract public class FactorCell extends EAMGraphCell
 			detailsTag = Goal.TAG_FULL_TEXT;
 			bullets = factor.getGoalRefs();
 			listContents = buildListContentsFromBullets(bullets, detailsTag);
+			noContentToDisplay = bullets.size() == 0;
 		}
 		else if(isPointInObjective(pointRelativeToCellOrigin))
 		{
@@ -117,20 +119,21 @@ abstract public class FactorCell extends EAMGraphCell
 			detailsTag = Objective.TAG_FULL_TEXT;
 			bullets = new ORefList(ObjectiveSchema.getObjectType(), factor.getObjectiveIds());
 			listContents = buildListContentsFromBullets(bullets, detailsTag);
+			noContentToDisplay = bullets.size() == 0;
 		}
-		else if(isPointInResultReportStatus(pointRelativeToCellOrigin))
+		else if(isFactorWithProgressStatus && progressStatusDisplayed && isPointInStatus(pointRelativeToCellOrigin))
 		{
 			listStyle = "margin-left: 10px; list-style-type: none;";
-			if (factor.isThreatReductionResult() || factor.isIntermediateResult() || factor.isBiophysicalResult())
-			{
-				header = EAM.text("Result Status:");
-				listContents = buildListContentForResultStatus(factor);
-			}
-			else
-			{
-				header = EAM.text("Progress Status:");
-				listContents = buildListContentForProgressStatus(factor);
-			}
+			header = EAM.text("Progress Status:");
+			listContents = buildListContentForProgressStatus(factor);
+			noContentToDisplay = listContents.isEmpty();
+		}
+		else if(isFactorWithResultStatus && resultStatusDisplayed && isPointInStatus(pointRelativeToCellOrigin))
+		{
+			listStyle = "margin-left: 10px; list-style-type: none;";
+			header = EAM.text("Result Status:");
+			listContents = buildListContentForResultStatus(factor);
+			noContentToDisplay = listContents.isEmpty();
 		}
 		else if(factor.getDetails().length() > 0)
 		{
@@ -138,7 +141,7 @@ abstract public class FactorCell extends EAMGraphCell
 			tip += "<BR>" + factor.getDetails();
 		}
 		
-		if(bullets.size() == 0 && header.isEmpty())
+		if(noContentToDisplay)
 			return XmlUtilities2.convertXmlTextToHtmlWithoutSurroundingHtmlTags(tip);
 		
 		tip += "<BR>" + header + "<UL style='" + listStyle + "'>";
@@ -165,25 +168,27 @@ abstract public class FactorCell extends EAMGraphCell
 
 	private String buildListContentForResultStatus(Factor factor)
 	{
-		return buildListContentForResultProgressStatus(factor, new ResultReportShortStatusQuestion(), BaseObject.PSEUDO_TAG_LATEST_RESULT_REPORT_DATE, BaseObject.PSEUDO_TAG_LATEST_RESULT_REPORT_CODE, BaseObject.PSEUDO_TAG_LATEST_RESULT_REPORT_DETAILS);
+		return buildListContentForResultProgressStatus(factor, new ResultReportShortStatusQuestion(), BaseObject.TAG_RESULT_REPORT_REFS, BaseObject.PSEUDO_TAG_LATEST_RESULT_REPORT_DATE, BaseObject.PSEUDO_TAG_LATEST_RESULT_REPORT_CODE, BaseObject.PSEUDO_TAG_LATEST_RESULT_REPORT_DETAILS);
 	}
 
 	private String buildListContentForProgressStatus(Factor factor)
 	{
-		return buildListContentForResultProgressStatus(factor, new ProgressReportShortStatusQuestion(), BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE, BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
+		return buildListContentForResultProgressStatus(factor, new ProgressReportShortStatusQuestion(), BaseObject.TAG_PROGRESS_REPORT_REFS, BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DATE, BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE, BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_DETAILS);
 	}
 
-	private String buildListContentForResultProgressStatus(Factor factor, ChoiceQuestion statusQuestion, String dateTag, String statusTag, String detailsTag)
+	private String buildListContentForResultProgressStatus(Factor factor, ChoiceQuestion statusQuestion, String statusRefListTag, String dateTag, String statusTag, String detailsTag)
 	{
 		String listContents = "";
 
-		String reportDate = factor.getData(dateTag);
-		String reportStatusCode = factor.getData(statusTag);
-		String reportStatus = reportStatusCode.isEmpty() ? "" : statusQuestion.findChoiceByCode(reportStatusCode).getLabel();
-		String reportDetails = factor.getData(detailsTag);
+		ORefList statusRefList = factor.getSafeRefListData(statusRefListTag);
 
-		if (!(reportDate.isEmpty() && reportStatus.isEmpty() && reportDetails.isEmpty()))
+		if (!statusRefList.isEmpty())
 		{
+			String reportDate = factor.getData(dateTag);
+			String reportStatusCode = factor.getData(statusTag);
+			String reportStatus = statusQuestion.findChoiceByCode(reportStatusCode).getLabel();
+			String reportDetails = factor.getData(detailsTag);
+
 			listContents += "<LI>" + EAM.text("Status: ") + reportStatus + "</LI>";
 			listContents += "<LI>" + EAM.text("Date: ") + reportDate + "</LI>";
 			listContents += "<LI>" + EAM.text("Details: ") + reportDetails + "</LI>";
@@ -548,9 +553,9 @@ abstract public class FactorCell extends EAMGraphCell
 		return false;
 	}
 
-	public boolean isPointInResultReportStatus(Point pointRelativeToOrigin)
+	public boolean isPointInStatus(Point pointRelativeToOrigin)
 	{
-		return getResultReportStatusRectWithinNode().contains(pointRelativeToOrigin);
+		return getStatusRectWithinNode().contains(pointRelativeToOrigin);
 	}
 
 	public Dimension getInsetDimension()
@@ -597,7 +602,7 @@ abstract public class FactorCell extends EAMGraphCell
 		return annotationsRectangle;
 	}
 
-	public Rectangle getResultReportStatusRectWithinNode()
+	public Rectangle getStatusRectWithinNode()
 	{
 		Rectangle rect = new Rectangle();
 		int avoidGoingPastClippingEdge = 1;

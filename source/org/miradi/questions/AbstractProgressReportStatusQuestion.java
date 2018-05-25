@@ -47,7 +47,7 @@ abstract public class AbstractProgressReportStatusQuestion extends StaticChoiceQ
 		};
 	}
 
-	private String getNotSpecifiedLabel()
+	protected String getNotSpecifiedLabel()
 	{
 		return EAM.text("Not Specified");
 	}

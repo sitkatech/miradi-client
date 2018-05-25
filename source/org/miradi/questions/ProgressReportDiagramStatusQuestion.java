@@ -23,6 +23,12 @@ package org.miradi.questions;
 public class ProgressReportDiagramStatusQuestion extends AbstractProgressReportStatusQuestion
 {
     @Override
+    protected String getNotSpecifiedLabel()
+    {
+        return "";
+    }
+
+    @Override
     protected String getNotKnownLabel()
     {
         return "?";

@@ -36,7 +36,7 @@ abstract public class AbstractResultReportStatusQuestion extends StaticChoiceQue
     protected ChoiceItem[] createChoices()
     {
         return new ChoiceItem[] {
-                new ChoiceItem(NOT_SPECIFIED, EAM.text("Not Specified"), Color.WHITE),
+                new ChoiceItem(NOT_SPECIFIED, getNotSpecifiedLabel(), Color.WHITE),
                 new ChoiceItemWithDynamicColor(NOT_KNOWN_CODE, getNotKnownLabel(), AppPreferences.TAG_COLOR_NOT_KNOWN),
                 new ChoiceItemWithDynamicColor(NOT_YET_CODE, getNotYetLabel(), AppPreferences.TAG_COLOR_PLANNED),
                 new ChoiceItemWithDynamicColor(NOT_ACHIEVED_CODE, getNotAchievedLabel(), AppPreferences.TAG_COLOR_ALERT),
@@ -45,6 +45,11 @@ abstract public class AbstractResultReportStatusQuestion extends StaticChoiceQue
                 new ChoiceItemWithDynamicColor(ACHIEVED_CODE, getAchievedLabel(), AppPreferences.TAG_COLOR_GREAT),
                 new ChoiceItemWithDynamicColor(NO_LONGER_RELEVANT_CODE, getNoLongerRelevantLabel(), AppPreferences.TAG_COLOR_ABANDONED),
         };
+    }
+
+    protected String getNotSpecifiedLabel()
+    {
+        return EAM.text("Not Specified");
     }
 
     abstract protected String getNotKnownLabel();

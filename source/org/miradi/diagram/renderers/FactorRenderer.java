@@ -188,6 +188,11 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 
 	private ChoiceItem getLatestProgressReportStatus(Project project, ORef strategyOrTaskRef)
     {
+		BaseObject strategyOrTask = project.findObject(strategyOrTaskRef);
+		ORefList statusRefList = strategyOrTask.getSafeRefListData(BaseObject.TAG_PROGRESS_REPORT_REFS);
+		if (statusRefList.isEmpty())
+			return null;
+
         String latestReportCode = project.getObjectData(strategyOrTaskRef, BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE);
 		ProgressReportDiagramStatusQuestion question = new ProgressReportDiagramStatusQuestion();
         return question.findChoiceByCode(latestReportCode);
@@ -195,6 +200,11 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 
 	private ChoiceItem getLatestResultReportStatus(Project project, ORef resultObjectRef)
     {
+		BaseObject resultObject = project.findObject(resultObjectRef);
+		ORefList statusRefList = resultObject.getSafeRefListData(BaseObject.TAG_RESULT_REPORT_REFS);
+		if (statusRefList.isEmpty())
+			return null;
+
         String latestReportCode = project.getObjectData(resultObjectRef, IntermediateResult.PSEUDO_TAG_LATEST_RESULT_REPORT_CODE);
 		ResultReportDiagramStatusQuestion question = new ResultReportDiagramStatusQuestion();
         return question.findChoiceByCode(latestReportCode);
@@ -434,19 +444,19 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 
 	private void drawProgressReportStatus(Rectangle rect, Graphics2D g2)
 	{
-		if (progressReportStatus == null || progressReportStatus.getCode().equals(ProgressReportDiagramStatusQuestion.NOT_SPECIFIED))
+		if (progressReportStatus == null)
 			return;
 
-		Rectangle rectangle = getResultReportStatusRectWithinNode();
+		Rectangle rectangle = getStatusRectWithinNode();
 		drawAnnotationCellRect(g2, rectangle, new RoundRectangleRenderer(), XmlUtilities2.getXmlDecoded(progressReportStatus.getLabel()), progressReportStatus.getColor());
 	}
 
 	private void drawResultReportStatus(Rectangle rect, Graphics2D g2)
 	{
-		if (resultReportStatus == null || resultReportStatus.getCode().equals(ResultReportDiagramStatusQuestion.NOT_SPECIFIED))
+		if (resultReportStatus == null)
 			return;
 
-		Rectangle rectangle = getResultReportStatusRectWithinNode();
+		Rectangle rectangle = getStatusRectWithinNode();
 		drawAnnotationCellRect(g2, rectangle, new RoundRectangleRenderer(), XmlUtilities2.getXmlDecoded(resultReportStatus.getLabel()), resultReportStatus.getColor());
 	}
 
@@ -460,9 +470,9 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return getFactorCell().getIndicatorRectWithinNode();
 	}
 
-	private Rectangle getResultReportStatusRectWithinNode()
+	private Rectangle getStatusRectWithinNode()
 	{
-		return getFactorCell().getResultReportStatusRectWithinNode();
+		return getFactorCell().getStatusRectWithinNode();
 	}
 
 	@Override
