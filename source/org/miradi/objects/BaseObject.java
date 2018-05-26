@@ -1266,6 +1266,11 @@ abstract public class BaseObject
 		return HtmlUtilities.createHtmlBulletList(labels);
 	}
 
+	public String getCleanedLabel()
+	{
+		return HtmlUtilities.replaceHtmlTags(getLabel(), HtmlUtilities.DIV_TAG_NAME, "");
+	}
+
 	public String combineShortLabelAndLabel(String shortLabel, String longLabel)
 	{
 		String cleanedLongLabel = HtmlUtilities.replaceHtmlTags(longLabel, HtmlUtilities.DIV_TAG_NAME, "");
