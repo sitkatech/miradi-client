@@ -165,7 +165,19 @@ indicate when that is the case.
 
 Notable changes in 4.5.0:
 
-- Tags are now diagram specific
+- Evidence fields added to various factor types
+- Result reports added to result factors
+- Diagram improvements
+    - New color scheme
+    - Tags are now diagram specific
+    - Ability to cope / paste formatting to multiple factors
+    - Overlays for Progress / Result Status of factors
+- Threat ratings
+    - Added ability to exclude specific target-threat pairs
+- Project open / import workflow streamlined
+- Added ability to detach projects from Miradi Share
+- Various bug fixes
+- Updated wizard / help content
 
 
 Notable changes in 4.4.0:
