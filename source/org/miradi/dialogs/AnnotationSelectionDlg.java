@@ -40,6 +40,6 @@ public class AnnotationSelectionDlg extends AbstractSelectionDialog
 	@Override
 	protected String getPanelTitleInstructions()
 	{
-		return EAM.text("Please select which item should be created into this factor, then press the Create from Existing  button");
+		return EAM.text("Please select which item should be created into this factor, then press the Create from Existing button");
 	}
 }

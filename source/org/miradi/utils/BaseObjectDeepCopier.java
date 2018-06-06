@@ -34,42 +34,50 @@ abstract public class BaseObjectDeepCopier
 		project = projectToUse;
 	}
 	
-	public BaseObject createDeepCopier(BaseObject baseObejctToClone) throws Exception
+	public BaseObject createDeepCopier(BaseObject baseObjectToClone) throws Exception
 	{
-		return createCopy(baseObejctToClone);
+		return createCopy(baseObjectToClone);
 	}
 	
-	private BaseObject createCopy(BaseObject baseObejctToClone) throws Exception
+	private BaseObject createCopy(BaseObject baseObjectToClone) throws Exception
 	{
-		ORef copiedBaseObjectRef = createBaseObject(baseObejctToClone);
+		ORef copiedBaseObjectRef = createBaseObject(baseObjectToClone);
 		BaseObject copiedBaseObject = BaseObject.find(getProject(), copiedBaseObjectRef);
-		copyBaseObject(baseObejctToClone, copiedBaseObject);
+		copyBaseObject(baseObjectToClone, copiedBaseObject);
 
 		return copiedBaseObject;
 	}
 
-	public void copyBaseObject(BaseObject baseObejctToClone, BaseObject copiedBaseObjectToFill) throws Exception
+	public void copyBaseObject(BaseObject baseObjectToClone, BaseObject copiedBaseObjectToFill) throws Exception
 	{	
-		Vector<String> storedTags = baseObejctToClone.getStoredFieldTags();
-		for (String tag : storedTags)
+		Vector<String> tagsToCopy = getFieldTagsToCopy(baseObjectToClone);
+		for (String tag : tagsToCopy)
 		{
-			final boolean isOwnedField = baseObejctToClone.isOwnedField(tag);
+			final boolean isOwnedField = baseObjectToClone.isOwnedField(tag);
 			String dataToBeSaved = "";
-			if (baseObejctToClone.isRefList(tag) && isOwnedField)
+			if (baseObjectToClone.isRefList(tag) && isOwnedField)
 			{
-				dataToBeSaved = copyOwnedObjectRefs(baseObejctToClone.getSafeRefListData(tag)).toString();
+				dataToBeSaved = copyOwnedObjectRefs(baseObjectToClone.getSafeRefListData(tag)).toString();
 			}
-			else if (baseObejctToClone.isIdListTag(tag) && isOwnedField)
+			else if (baseObjectToClone.isIdListTag(tag) && isOwnedField)
 			{
-				dataToBeSaved = copyOwnedObjectIds(baseObejctToClone.getSafeRefListData(tag));
+				dataToBeSaved = copyOwnedObjectIds(baseObjectToClone.getSafeRefListData(tag));
 			}
 			else
 			{
-				dataToBeSaved = baseObejctToClone.getData(tag); 
+				dataToBeSaved = baseObjectToClone.getData(tag);
 			}
 			
 			setBaseObjectData(copiedBaseObjectToFill, tag, dataToBeSaved);
 		}
+	}
+
+	private Vector<String> getFieldTagsToCopy(BaseObject baseObjectToClone)
+	{
+		Vector<String> tagsToCopy = baseObjectToClone.getStoredFieldTags();
+		Vector<String> tagsToSkip = baseObjectToClone.getFieldTagsToSkipOnCopy();
+		tagsToCopy.removeAll(tagsToSkip);
+		return tagsToCopy;
 	}
 
 	private String copyOwnedObjectIds(final ORefList baseObjectRefsToCopy) throws Exception
@@ -96,7 +104,7 @@ abstract public class BaseObjectDeepCopier
 		return copiedRefs;
 	}
 	
-	abstract protected ORef createBaseObject(BaseObject baseObejctToClone) throws Exception;
+	abstract protected ORef createBaseObject(BaseObject baseObjectToClone) throws Exception;
 	
 	abstract protected void setBaseObjectData(BaseObject copiedBaseObjectToFill, String tag, String dataToBeSaved) throws Exception;
 

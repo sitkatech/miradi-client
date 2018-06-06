@@ -62,13 +62,13 @@ public class TestBaseObjectDeepCopier extends TestCaseWithProject
 		verifyUsingDeepCopier(new BaseObjectDeepCopierUsingCommands(getProject()), baseObjectToCopier);
 	}
 
-	public void verifyUsingDeepCopier(BaseObjectDeepCopier copier, BaseObject baseObjectToCopier) throws Exception
+	private void verifyUsingDeepCopier(BaseObjectDeepCopier copier, BaseObject baseObjectToCopier) throws Exception
 	{
 		BaseObject copiedBaseObject = copier.createDeepCopier(baseObjectToCopier);
-		assertTrue("Cloned baseObject is not the same as actaul baseObject?", areEquals(baseObjectToCopier, copiedBaseObject));
+		assertTrue("Cloned baseObject does match actual baseObject as expected?", matchAsExpected(baseObjectToCopier, copiedBaseObject));
 	}
 
-	private boolean areEquals(BaseObject baseObjectToCopy,	BaseObject copiedBaseObject)
+	private boolean matchAsExpected(BaseObject baseObjectToCopy, BaseObject copiedBaseObject)
 	{
 		Vector<String> storedFieldTags = baseObjectToCopy.getStoredFieldTags();
 		for(String tag : storedFieldTags)
@@ -84,8 +84,17 @@ public class TestBaseObjectDeepCopier extends TestCaseWithProject
 			{
 				String actualData = baseObjectToCopy.getData(tag);
 				String copiedData = copiedBaseObject.getData(tag);
-				if (!actualData.equals(copiedData))
-					return false; 
+
+				if (tag.equalsIgnoreCase(BaseObject.TAG_UUID))
+				{
+					if (actualData.equals(copiedData))
+						return false;
+				}
+				else
+				{
+					if (!actualData.equals(copiedData))
+						return false;
+				}
 			}
 		}
 		

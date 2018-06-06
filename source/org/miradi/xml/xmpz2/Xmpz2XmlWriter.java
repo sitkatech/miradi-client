@@ -136,7 +136,10 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 	public void writeUUIDData(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String string) throws Exception
 	{
 		if (uuidList.contains(string))
+		{
+			EAM.logWarning("Found non-unique UUID: " + string);
 			throw new XmlValidationException(invalidXmlFileMessage);
+		}
 
 		writeStringData(baseObjectSchema, fieldSchema, string);
 		uuidList.add(string);

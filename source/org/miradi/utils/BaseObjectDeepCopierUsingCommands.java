@@ -34,9 +34,9 @@ public class BaseObjectDeepCopierUsingCommands extends BaseObjectDeepCopier
 	}
 	
 	@Override
-	protected ORef createBaseObject(BaseObject baseObejctToClone) throws Exception
+	protected ORef createBaseObject(BaseObject baseObjectToClone) throws Exception
 	{
-		final CommandCreateObject createCommand = new CommandCreateObject(baseObejctToClone.getType());
+		final CommandCreateObject createCommand = new CommandCreateObject(baseObjectToClone.getType());
 		getProject().executeCommand(createCommand);
 		
 		return createCommand.getObjectRef();

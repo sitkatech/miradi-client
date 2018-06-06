@@ -1064,6 +1064,13 @@ abstract public class BaseObject
 		return storedFieldTags;
 	}
 
+	public Vector<String> getFieldTagsToSkipOnCopy()
+	{
+		Vector<String> tagsToSkipOnCopy = new Vector<String>();
+		tagsToSkipOnCopy.add(BaseObject.TAG_UUID);
+		return tagsToSkipOnCopy;
+	}
+
 	public ObjectData getField(String fieldTag)
 	{
 		ObjectData data = getFields().get(fieldTag);

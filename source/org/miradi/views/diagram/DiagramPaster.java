@@ -951,9 +951,6 @@ abstract public class DiagramPaster
                 continue;
             }
 
-            if (tag.equalsIgnoreCase(BaseObject.TAG_UUID))
-            	continue;
-
             CommandSetObjectData setDataCommand = new CommandSetObjectData(baseObject.getRef(), tag, value);
             commands.add(setDataCommand);
 		}
@@ -966,41 +963,41 @@ abstract public class DiagramPaster
 		final Vector<String> storedFieldTags = baseObject.getStoredFieldTags();
 		int oldType = getTypeFromJson(json);
 		int newType = baseObject.getType();
-		final Vector<String> tagsToSkip = getTagsToSkipWhenLoadingJsonData(oldType, newType);
+		final Vector<String> tagsToSkip = getTagsToSkipWhenLoadingJsonData(baseObject, oldType, newType);
 		storedFieldTags.removeAll(tagsToSkip);
 		
 		return storedFieldTags;
 	}
-	
-	private static Vector<String> getTagsToSkipWhenLoadingJsonData(int oldType, int newType)
+
+	private static Vector<String> getTagsToSkipWhenLoadingJsonData(BaseObject baseObject, int oldType, int newType)
 	{
 		// NOTE: DF has already been switched to the new pattern.
 		// When these other classes are switched to match it,
 		// this whole method will go away.
-		Vector<String> tags = new Vector<String>();
+		Vector<String> tagsToSkip = baseObject.getFieldTagsToSkipOnCopy();
 
 		if (Cause.is(oldType) && ThreatReductionResult.is(newType))
 		{
-			tags.add(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
+			tagsToSkip.add(BaseObject.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
 		}
 		else if (FactorLink.is(newType))
 		{
-			tags.add(FactorLink.TAG_FROM_REF);
-			tags.add(FactorLink.TAG_TO_REF);
+			tagsToSkip.add(FactorLink.TAG_FROM_REF);
+			tagsToSkip.add(FactorLink.TAG_TO_REF);
 		}
 		else if (DiagramLink.is(newType))
 		{
-			tags.add(DiagramLink.TAG_WRAPPED_ID);
-			tags.add(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
-			tags.add(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
+			tagsToSkip.add(DiagramLink.TAG_WRAPPED_ID);
+			tagsToSkip.add(DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID);
+			tagsToSkip.add(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
 		}
 		else if (ThreatStressRating.is(newType))
 		{
-			tags.add(ThreatStressRating.TAG_STRESS_REF);
-			tags.add(ThreatStressRating.TAG_THREAT_REF);
+			tagsToSkip.add(ThreatStressRating.TAG_STRESS_REF);
+			tagsToSkip.add(ThreatStressRating.TAG_THREAT_REF);
 		}
 		
-		return tags;
+		return tagsToSkip;
 	}
 
 	abstract public ORef getFactorLinkRef(ORef oldWrappedFactorLinkRef);	

@@ -32,9 +32,9 @@ public class BaseObjectDeepCopierNotUsingCommands extends BaseObjectDeepCopier
 	}
 	
 	@Override
-	protected ORef createBaseObject(BaseObject baseObejctToClone) throws Exception
+	protected ORef createBaseObject(BaseObject baseObjectToClone) throws Exception
 	{
-		return getProject().createObject(baseObejctToClone.getType());
+		return getProject().createObject(baseObjectToClone.getType());
 	}
 
 	@Override
