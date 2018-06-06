@@ -26,6 +26,7 @@ import java.util.Set;
 import java.util.Vector;
 
 import org.miradi.main.EAM;
+import org.miradi.utils.HtmlUtilities;
 
 
 public class MigrationResult extends HashSet<String>
@@ -126,7 +127,7 @@ public class MigrationResult extends HashSet<String>
 	{
 		remove(UNINITIALIZED);
 	}
-	
+
 	public String getUserFriendlyGroupedDataLossMessagesAsString()
 	{
 		HashMap<String, Integer> messageToCountMap = groupMessagesWithCount(this.dataLossMessages);
@@ -136,7 +137,7 @@ public class MigrationResult extends HashSet<String>
 		{
 			int messageCount = messageToCountMap.get(message);
 			String dataLossMessage = getMessageWithCount(message, messageCount);
-			messagesAsString.append(dataLossMessage + "\n");
+			messagesAsString.append(HtmlUtilities.stripAllHtmlTags(dataLossMessage) + "\n");
 		}
 		
 		return messagesAsString.toString();
@@ -149,7 +150,7 @@ public class MigrationResult extends HashSet<String>
 		StringBuffer messagesAsString = new StringBuffer();
 		for(String message : messages)
 		{
-			messagesAsString.append(message + "\n");
+			messagesAsString.append(HtmlUtilities.stripAllHtmlTags(message) + "\n");
 		}
 
 		return messagesAsString.toString();
