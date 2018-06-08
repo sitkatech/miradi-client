@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-08 07:03-0700\n"
+"POT-Creation-Date: 2018-06-08 07:48-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Chinese (http://www.transifex.com/projects/p/miradi-client/"
@@ -5118,7 +5118,7 @@ msgstr "中"
 msgid "Medium (Default)"
 msgstr "中等（默认）"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:229
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:230
 msgid "MenuBar|Actions"
 msgstr "动作 \t\t"
 
@@ -5130,15 +5130,15 @@ msgstr "编辑 \t\t"
 msgid "MenuBar|File"
 msgstr "文件 \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:574
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:575
 msgid "MenuBar|Help"
 msgstr "帮助 \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:505
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:506
 msgid "MenuBar|Step-by-Step"
 msgstr "一步一步 \t\t"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:432
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:433
 msgid "MenuBar|View"
 msgstr "视图 \t\t"
 
@@ -5175,7 +5175,7 @@ msgid "Menu|Export Current Project as..."
 msgstr "导出当前项目为... "
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:387
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:420
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:421
 msgid "Menu|Group Box"
 msgstr "组合框 \t\t"
 

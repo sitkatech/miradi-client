@@ -10,7 +10,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-08 07:03-0700\n"
+"POT-Creation-Date: 2018-06-08 07:48-0700\n"
 "PO-Revision-Date: 2015-03-21 19:17+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: French (http://www.transifex.com/projects/p/miradi-client/"
@@ -5363,7 +5363,7 @@ msgstr "Moyen"
 msgid "Medium (Default)"
 msgstr "Moyen (Par défaut)"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:229
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:230
 msgid "MenuBar|Actions"
 msgstr "Actions"
 
@@ -5375,15 +5375,15 @@ msgstr "Modifier"
 msgid "MenuBar|File"
 msgstr "Fichier"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:574
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:575
 msgid "MenuBar|Help"
 msgstr "Aide"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:505
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:506
 msgid "MenuBar|Step-by-Step"
 msgstr "Étape par étape"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:432
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:433
 msgid "MenuBar|View"
 msgstr "Afficher"
 
@@ -5420,7 +5420,7 @@ msgid "Menu|Export Current Project as..."
 msgstr "Exporter le projet actuel sous..."
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:387
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:420
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:421
 msgid "Menu|Group Box"
 msgstr "Boîte de regroupement"
 
