@@ -181,7 +181,7 @@ public class MainMenuBar extends JMenuBar
 		menu.addSeparator();
 
 		JMenuItem delete = addMenuItem(actions, menu, ActionDelete.class, KeyEvent.VK_DELETE);
-		delete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0));
+		delete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, KeyBinder.KEY_MODIFIER_NONE));
 		if(isPlanningView())
 		{
 			addMenuItem(actions, menu, ActionDeletePlanningViewTreeNode.class);
@@ -199,7 +199,8 @@ public class MainMenuBar extends JMenuBar
 		if(isDiagramView())
 		{
 			addMenuItem(actions, menu, ActionSelectChain.class, KeyEvent.VK_H);
-            addMenuItem(actions, menu, ActionClearAll.class, KeyEvent.VK_ESCAPE);
+			JMenuItem clearAll = addMenuItem(actions, menu, ActionClearAll.class, KeyEvent.VK_ESCAPE);
+			clearAll.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_ESCAPE, KeyBinder.KEY_MODIFIER_NONE));
             menu.addSeparator();
 		}
 
