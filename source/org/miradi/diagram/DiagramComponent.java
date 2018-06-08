@@ -43,14 +43,7 @@ import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.GraphModel;
 import org.jgraph.graph.PortView;
 import org.martus.swing.Utilities;
-import org.miradi.actions.ActionContextualHelp;
-import org.miradi.actions.ActionDelete;
-import org.miradi.actions.ActionNudgeDown;
-import org.miradi.actions.ActionNudgeLeft;
-import org.miradi.actions.ActionNudgeRight;
-import org.miradi.actions.ActionNudgeUp;
-import org.miradi.actions.ActionSelectAll;
-import org.miradi.actions.Actions;
+import org.miradi.actions.*;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
@@ -684,6 +677,9 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		
 		Action selectAll = actions.get(ActionSelectAll.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_A, KeyBinder.KEY_MODIFIER_CTRL, selectAll);
+
+		Action clearAll = actions.get(ActionClearAll.class);
+		KeyBinder.bindKey(this, KeyEvent.VK_ESCAPE, KeyBinder.KEY_MODIFIER_NONE, clearAll);
 	}
 	
 	@Override

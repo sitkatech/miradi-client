@@ -105,6 +105,7 @@ public class DiagramContextMenuHandler
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionDelete.class)));
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionSelectAll.class)));
 		menu.add(new MenuItemWithoutLocation(actions.get(ActionSelectChain.class)));
+        menu.add(new MenuItemWithoutLocation(actions.get(ActionClearAll.class)));
 		menu.add(getModeSwitchMenuItem());
 		DiagramView diagramView = (DiagramView) mainWindow.getCurrentView();
 		menu.add(getDiagramModeSwitchItem(diagramView, actions));

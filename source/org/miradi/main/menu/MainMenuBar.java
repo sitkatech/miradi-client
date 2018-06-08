@@ -199,7 +199,8 @@ public class MainMenuBar extends JMenuBar
 		if(isDiagramView())
 		{
 			addMenuItem(actions, menu, ActionSelectChain.class, KeyEvent.VK_H);
-			menu.addSeparator();
+            addMenuItem(actions, menu, ActionClearAll.class, KeyEvent.VK_ESCAPE);
+            menu.addSeparator();
 		}
 
 		addMenuItem(actions, menu, ActionPreferences.class, KeyEvent.VK_P);

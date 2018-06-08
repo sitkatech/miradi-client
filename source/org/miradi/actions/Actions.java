@@ -87,6 +87,7 @@ public class Actions
 		registerAction(new ActionPasteWithoutLinks(mainWindow));
 		registerAction(new ActionRedo(mainWindow));
 		registerAction(new ActionSelectAll(mainWindow));
+		registerAction(new ActionClearAll(mainWindow));
 		registerAction(new ActionSelectChain(mainWindow));
 		registerAction(new ActionUndo(mainWindow));
 		
