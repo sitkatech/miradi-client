@@ -25,7 +25,7 @@ import java.util.Vector;
 import javax.swing.Box;
 import javax.swing.JDialog;
 
-import org.martus.swing.UiButton;
+import org.miradi.dialogs.fieldComponents.MiradiUIButton;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -60,7 +60,7 @@ abstract public class AbstractDialogWithClose extends DialogWithDisposablePanelA
 	
 	protected Vector<Component> getButtonBarComponents()
 	{
-		UiButton closeButton = new PanelButton(EAM.text("Button|Close"));
+		MiradiUIButton closeButton = new PanelButton(EAM.text("Button|Close"));
 		setSimpleCloseButton(closeButton);
 		
 		Vector<Component> components = new Vector<Component>(); 

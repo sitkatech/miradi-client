@@ -19,11 +19,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.dialogs.diagram;
 
-import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 import org.miradi.actions.ActionShowFullModelMode;
 import org.miradi.actions.Actions;
 import org.miradi.actions.MiradiAction;
+import org.miradi.dialogs.fieldComponents.MiradiUIButton;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.EAM;
 
@@ -34,7 +34,7 @@ public class BrainstormModePanel extends OneRowPanel
 		add(new UiLabel(EAM.text("Currently in brainstorm mode, so some factors are hidden. " +
 				"To return to normal mode, press this button: ")));
 		fullModelAction = actions.get(ActionShowFullModelMode.class);
-		add(new UiButton(fullModelAction));
+		add(new MiradiUIButton(fullModelAction));
 		updateVisibility();
 	}
 	

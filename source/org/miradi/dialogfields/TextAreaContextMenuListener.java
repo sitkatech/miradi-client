@@ -38,6 +38,7 @@ import org.miradi.actions.ActionUndo;
 import org.miradi.actions.Actions;
 import org.miradi.actions.MiradiAction;
 import org.miradi.main.EAM;
+import org.miradi.main.KeyBinder;
 import org.miradi.utils.MenuItemWithoutLocation;
 import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.views.umbrella.CopyTextAction;
@@ -83,12 +84,12 @@ class TextAreaContextMenuListener extends MiradiCheckerListener
 
 		Action undoAction = getUndoAction();
 		MenuItemWithoutLocation menuItemUndo = new MenuItemWithoutLocation(undoAction);
-		menuItemUndo.setAccelerator(KeyStroke.getKeyStroke('Z', KeyEvent.CTRL_DOWN_MASK));
+		menuItemUndo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Z, KeyBinder.KEY_MODIFIER_CTRL));
 		menu.add(menuItemUndo);
 		
 		Action redoAction = getRedoAction();
 		MenuItemWithoutLocation menuItemRedo = new MenuItemWithoutLocation(redoAction);
-		menuItemRedo.setAccelerator(KeyStroke.getKeyStroke('Y', KeyEvent.CTRL_DOWN_MASK));
+		menuItemRedo.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_Y, KeyBinder.KEY_MODIFIER_CTRL));
 		menu.add(menuItemRedo);
 		
 		menu.addSeparator();
@@ -96,18 +97,18 @@ class TextAreaContextMenuListener extends MiradiCheckerListener
 		JMenuItem menuItemCut = createMenuItem(new CutTextAction(getTextField()), "icons/cut.gif");
 		menuItemCut.setEnabled(getTextField().isEditable());
 		menuItemCut.setText(EAM.text("Cut"));
-		menuItemCut.setAccelerator(KeyStroke.getKeyStroke('X', KeyEvent.CTRL_DOWN_MASK));
+		menuItemCut.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_X, KeyBinder.KEY_MODIFIER_CTRL));
 		menu.add(menuItemCut);
 		
 		JMenuItem menuItemCopy = createMenuItem(new CopyTextAction(getTextField()), "icons/copy.gif");
 		menuItemCopy.setText(EAM.text("Copy"));
-		menuItemCopy.setAccelerator(KeyStroke.getKeyStroke('C', KeyEvent.CTRL_DOWN_MASK));
+		menuItemCopy.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_C, KeyBinder.KEY_MODIFIER_CTRL));
 		menu.add(menuItemCopy);
 	
 		JMenuItem menuItemPaste = createMenuItem(createPasteAction(), "icons/paste.gif");
 		menuItemPaste.setEnabled(getTextField().isEditable());
 		menuItemPaste.setText(EAM.text("Paste"));
-		menuItemPaste.setAccelerator(KeyStroke.getKeyStroke('V', KeyEvent.CTRL_DOWN_MASK));
+		menuItemPaste.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_V, KeyBinder.KEY_MODIFIER_CTRL));
 		menu.add(menuItemPaste);
 		
 	}

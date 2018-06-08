@@ -36,6 +36,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.ObjectPoolTable;
 import org.miradi.dialogs.base.ObjectPoolTableModel;
 import org.miradi.main.EAM;
+import org.miradi.main.KeyBinder;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -72,13 +73,13 @@ abstract public class DiagramPageList extends ObjectPoolTable
 	private void ignoreKeystrokesThatShouldGoToDiagram()
 	{
 		InputMap im = getInputMap(javax.swing.JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT);
-		KeyStroke ctrlA = KeyStroke.getKeyStroke('A', KeyEvent.CTRL_DOWN_MASK);
+		KeyStroke ctrlA = KeyStroke.getKeyStroke(KeyEvent.VK_A, KeyBinder.KEY_MODIFIER_CTRL);
 		im.put(ctrlA, "none");
-		KeyStroke ctrlX = KeyStroke.getKeyStroke('X', KeyEvent.CTRL_DOWN_MASK);
+		KeyStroke ctrlX = KeyStroke.getKeyStroke(KeyEvent.VK_X, KeyBinder.KEY_MODIFIER_CTRL);
 		im.put(ctrlX, "none");
-		KeyStroke ctrlC = KeyStroke.getKeyStroke('C', KeyEvent.CTRL_DOWN_MASK);
+		KeyStroke ctrlC = KeyStroke.getKeyStroke(KeyEvent.VK_C, KeyBinder.KEY_MODIFIER_CTRL);
 		im.put(ctrlC, "none");
-		KeyStroke ctrlV = KeyStroke.getKeyStroke('V', KeyEvent.CTRL_DOWN_MASK);
+		KeyStroke ctrlV = KeyStroke.getKeyStroke(KeyEvent.VK_V, KeyBinder.KEY_MODIFIER_CTRL);
 		im.put(ctrlV, "none");
 	}
 	

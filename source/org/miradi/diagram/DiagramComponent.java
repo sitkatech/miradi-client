@@ -19,19 +19,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.diagram;
 
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Point;
-import java.awt.Rectangle;
+import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
 import java.awt.geom.Rectangle2D;
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.*;
 import java.util.List;
-import java.util.Vector;
 
+import javax.accessibility.Accessible;
+import javax.accessibility.AccessibleContext;
+import javax.accessibility.AccessibleRole;
+import javax.accessibility.AccessibleStateSet;
 import javax.swing.Action;
 
 import org.jgraph.JGraph;
@@ -104,6 +103,60 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		addGraphSelectionListener(mouseHandler);
 		
 		enableToolTips();
+	}
+
+	// MRD-5868 - need to implement this (albeit bare bones) so that NPE in CAccessibility.propertyChange doesn't prevent
+	// focusChanged being called (and diagram no longer responds to KeyEvents since it doesn't have focus)
+	@Override
+	public AccessibleContext getAccessibleContext()
+	{
+		return new DiagramComponentAccessibleContext(this);
+	}
+
+	public class DiagramComponentAccessibleContext extends AccessibleContext
+	{
+		public DiagramComponentAccessibleContext(DiagramComponent diagramComponentToUse)
+		{
+			diagramComponent = diagramComponentToUse;
+		}
+
+		@Override
+		public AccessibleRole getAccessibleRole()
+		{
+			return AccessibleRole.PANEL;
+		}
+
+		@Override
+		public AccessibleStateSet getAccessibleStateSet()
+		{
+			return null;
+		}
+
+		@Override
+		public int getAccessibleIndexInParent()
+		{
+			return -1;
+		}
+
+		@Override
+		public int getAccessibleChildrenCount()
+		{
+			return 0;
+		}
+
+		@Override
+		public Accessible getAccessibleChild(int i)
+		{
+			return null;
+		}
+
+		@Override
+		public Locale getLocale() throws IllegalComponentStateException
+		{
+			return diagramComponent.getLocale();
+		}
+
+		private DiagramComponent diagramComponent;
 	}
 
 	private void enableToolTips()
@@ -605,27 +658,32 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	{
 		Action helpAction = actions.get(ActionContextualHelp.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_F1, KeyBinder.KEY_MODIFIER_NONE, helpAction);
+
 		Action deleteAction = actions.get(ActionDelete.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_DELETE, KeyBinder.KEY_MODIFIER_NONE, deleteAction);
 		KeyBinder.bindKey(this, KeyEvent.VK_BACK_SPACE, KeyBinder.KEY_MODIFIER_NONE, deleteAction);
+
 		//JAVA ISSUE: We had to create new actions here since the key pressed which caused this action
 		//Is not sent to the action.
 		//javax.swing.SwingUtilities doesn't pass the keycode to the action. 
 		Action nudgeActionUp = actions.get(ActionNudgeUp.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_UP, KeyBinder.KEY_MODIFIER_NONE, nudgeActionUp);
 		KeyBinder.bindKey(this, KeyEvent.VK_KP_UP, KeyBinder.KEY_MODIFIER_NONE, nudgeActionUp);
+
 		Action nudgeActionDown = actions.get(ActionNudgeDown.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_DOWN, KeyBinder.KEY_MODIFIER_NONE, nudgeActionDown);
 		KeyBinder.bindKey(this, KeyEvent.VK_KP_DOWN, KeyBinder.KEY_MODIFIER_NONE, nudgeActionDown);
+
 		Action nudgeActionLeft = actions.get(ActionNudgeLeft.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_LEFT, KeyBinder.KEY_MODIFIER_NONE, nudgeActionLeft);
 		KeyBinder.bindKey(this, KeyEvent.VK_KP_LEFT, KeyBinder.KEY_MODIFIER_NONE, nudgeActionLeft);
+
 		Action nudgeActionRight = actions.get(ActionNudgeRight.class);
 		KeyBinder.bindKey(this, KeyEvent.VK_RIGHT, KeyBinder.KEY_MODIFIER_NONE, nudgeActionRight);
 		KeyBinder.bindKey(this, KeyEvent.VK_KP_RIGHT, KeyBinder.KEY_MODIFIER_NONE, nudgeActionRight);
 		
 		Action selectAll = actions.get(ActionSelectAll.class);
-		KeyBinder.bindKey(this, KeyEvent.VK_A, KeyEvent.CTRL_DOWN_MASK, selectAll);
+		KeyBinder.bindKey(this, KeyEvent.VK_A, KeyBinder.KEY_MODIFIER_CTRL, selectAll);
 	}
 	
 	@Override

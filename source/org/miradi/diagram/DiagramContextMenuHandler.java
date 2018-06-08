@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.diagram;
 
-import org.martus.swing.UiMenu;
 import org.martus.swing.UiPopupMenu;
 import org.miradi.actions.*;
 import org.miradi.commands.CommandBeginTransaction;
@@ -28,6 +27,7 @@ import org.miradi.commands.CommandSetObjectData;
 import org.miradi.icons.TaggedObjectSetIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.main.menu.MiradiUIMenu;
 import org.miradi.objecthelpers.BaseObjectByFullNameSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -235,7 +235,7 @@ public class DiagramContextMenuHandler
 		}
 	}
 
-	private UiMenu createTagFactorsMenu()
+	private MiradiUIMenu createTagFactorsMenu()
 	{
 		String template = EAM.text("Menu|Add Tag to %n Selected Item(s)");
 
@@ -245,7 +245,7 @@ public class DiagramContextMenuHandler
 		return createTagUntagFactorsMenu(getDiagramComponent(), template, new TagActionCreator(), tags);
 	}
 
-	private UiMenu createUntagFactorsMenu()
+	private MiradiUIMenu createUntagFactorsMenu()
 	{
 		String template = EAM.text("Menu|Remove Tag from %n Selected Item(s)");
 
@@ -265,12 +265,12 @@ public class DiagramContextMenuHandler
 		return createTagUntagFactorsMenu(getDiagramComponent(), template, new UntagActionCreator(), tags);
 	}
 
-	private UiMenu createTagUntagFactorsMenu(DiagramComponent diagramComponent, String template, ActionCreator actionCreator, Vector<TaggedObjectSet> tags)
+	private MiradiUIMenu createTagUntagFactorsMenu(DiagramComponent diagramComponent, String template, ActionCreator actionCreator, Vector<TaggedObjectSet> tags)
 	{
 		ORefSet diagramFactorRefs = new ORefSet(new ORefList(diagramComponent.getOnlySelectedDiagramFactors()));
 
 		String label = EAM.substitute(template, "%n", Integer.toString(diagramFactorRefs.size()));
-		UiMenu menu = new UiMenu(label);
+		MiradiUIMenu menu = new MiradiUIMenu(label);
 
 		Collections.sort(tags, new BaseObjectByFullNameSorter());
 		for(TaggedObjectSet set : tags)
@@ -381,9 +381,9 @@ public class DiagramContextMenuHandler
 		return diagramComponent;
 	}
 
-	private UiMenu getGroupBoxMenu(Point menuInvokedAt)
+	private MiradiUIMenu getGroupBoxMenu(Point menuInvokedAt)
 	{
-		UiMenu groupBoxMenu = new UiMenu(EAM.text("Menu|Group Box"));
+		MiradiUIMenu groupBoxMenu = new MiradiUIMenu(EAM.text("Menu|Group Box"));
 		groupBoxMenu.add(createMenuItem(ActionInsertGroupBox.class, menuInvokedAt));
 		groupBoxMenu.add(createMenuItem(ActionGroupBoxAddFactor.class, menuInvokedAt));
 		groupBoxMenu.add(createMenuItem(ActionGroupBoxRemoveFactor.class, menuInvokedAt));
@@ -392,9 +392,9 @@ public class DiagramContextMenuHandler
 		return groupBoxMenu;
 	}	
 	
-	private UiMenu getInsertMenu(Point menuInvokedAt)
+	private MiradiUIMenu getInsertMenu(Point menuInvokedAt)
 	{
-		UiMenu insertMenu = new UiMenu(EAM.text("Menu|Insert"));
+		MiradiUIMenu insertMenu = new MiradiUIMenu(EAM.text("Menu|Insert"));
 
 		insertMenu.add(createMenuItem(ActionInsertDraftStrategy.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertStrategy.class, menuInvokedAt));

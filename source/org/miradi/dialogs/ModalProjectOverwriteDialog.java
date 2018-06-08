@@ -20,11 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs;
 
 import com.jhlabs.awt.GridLayoutPlus;
-import org.martus.swing.UiButton;
 import org.martus.swing.UiLabel;
 import org.martus.swing.Utilities;
 import org.miradi.dialogs.base.DialogWithButtonBar;
 import org.miradi.dialogs.base.MiradiPanel;
+import org.miradi.dialogs.fieldComponents.MiradiUIButton;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
 import org.miradi.files.AbstractMpfFileFilter;
@@ -182,8 +182,8 @@ public class ModalProjectOverwriteDialog extends DialogWithButtonBar implements 
     private String proposedProjectName;
     private UiLabel warningMessageField;
     private ProjectNameRestrictedTextField projectNameField;
-    private UiButton overwriteButton;
-    private UiButton saveAsButton;
-    private UiButton cancelButton;
+    private MiradiUIButton overwriteButton;
+    private MiradiUIButton saveAsButton;
+    private MiradiUIButton cancelButton;
 
 }

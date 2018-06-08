@@ -16,10 +16,9 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/ 
+*/
 package org.miradi.main.menu;
 
-import org.martus.swing.UiMenu;
 import org.miradi.actions.*;
 import org.miradi.actions.jump.ActionJumpCloseTheLoop;
 import org.miradi.main.*;
@@ -37,13 +36,12 @@ import org.miradi.views.workplan.WorkPlanView;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.Vector;
 
 public class MainMenuBar extends JMenuBar
 {
-	
+
 	public MainMenuBar(MainWindow mainWindowToUse)
 	{
 		mainWindow = mainWindowToUse;
@@ -53,7 +51,7 @@ public class MainMenuBar extends JMenuBar
 	{
 		createMenus(actions);
 	}
-	
+
 	public void updateMenuOptions()
 	{
 		createMenus(mainWindow.getActions());
@@ -71,15 +69,15 @@ public class MainMenuBar extends JMenuBar
 
 		if(actionsMenu != null)
 			add(actionsMenu);
-		
+
 		if(!isWelcomeView())
 			add(createProcessMenu(actions));
 		add(createHelpMenu(actions));
 	}
 
-    private JMenu createFileMenu(Actions actions)
+    private MiradiMenu createFileMenu(Actions actions)
     {
-        JMenu menu = new JMenu(EAM.text("MenuBar|File"));
+		MiradiMenu menu = new MiradiMenu(EAM.text("MenuBar|File"));
         menu.setMnemonic(KeyEvent.VK_F);
 
         addMenuItem(actions, menu, ActionSaveProjectAs.class, KeyEvent.VK_A);
@@ -102,11 +100,11 @@ public class MainMenuBar extends JMenuBar
         return menu;
     }
 
-	private JMenu createExportMenu(Actions actions)
+	private MiradiMenu createExportMenu(Actions actions)
 	{
-		JMenu menu = new JMenu(EAM.text("Menu|Export Current Project as..."));
+		MiradiMenu menu = new MiradiMenu(EAM.text("Menu|Export Current Project as..."));
 		menu.setMnemonic(KeyEvent.VK_R);
-		
+
 		addMenuItem(actions, menu, ActionExportMpf.class);
 		addMenuItem(actions, menu, ActionExportXmpz2.class);
 
@@ -116,32 +114,32 @@ public class MainMenuBar extends JMenuBar
 		if(Miradi.isDemoMode())
 		{
 			menu.addSeparator();
-			
+
 			JMenuItem item = addMenuItem(actions, menu, ActionDatabasesDemo.class, KeyEvent.VK_D);
 			item.putClientProperty(HelpButtonData.class, new HelpButtonData(HelpButtonData.DEMO, HelpButtonData.IMPORT_AND_EXPORT_HTML));
 		}
-		
+
 		return menu;
 	}
-	
-	private JMenu createExportCurrentPageMenu(Actions actions)
+
+	private MiradiMenu createExportCurrentPageMenu(Actions actions)
 	{
-		JMenu menu = new JMenu(EAM.text("Menu|Export Current Page as..."));
+		MiradiMenu menu = new MiradiMenu(EAM.text("Menu|Export Current Page as..."));
 		menu.setMnemonic(KeyEvent.VK_E);
-		
+
 		addMenuItem(actions, menu, ActionSaveImageJPEG.class, KeyEvent.VK_J);
 		addMenuItem(actions, menu, ActionSaveImagePng.class, KeyEvent.VK_P);
 		addMenuItem(actions, menu, ActionExportRtf.class, KeyEvent.VK_R);
 		addMenuItem(actions, menu, ActionExportTable.class, KeyEvent.VK_T);
-		
+
 		return menu;
 	}
-	
-	private JMenu createImportMenu(Actions actions)
+
+	private MiradiMenu createImportMenu(Actions actions)
 	{
-		JMenu menu = new JMenu(EAM.text("Menu|Import"));
+		MiradiMenu menu = new MiradiMenu(EAM.text("Menu|Import"));
 		menu.setMnemonic(KeyEvent.VK_I);
-		
+
 		addMenuItem(actions, menu, ActionImportMpf.class, KeyEvent.VK_F);
 		addMenuItem(actions, menu, ActionImportXmpz2.class);
 		menu.addSeparator();
@@ -154,36 +152,36 @@ public class MainMenuBar extends JMenuBar
 		}
 
 		return menu;
-	}	
-	
-	private JMenu createEditMenu(Actions actions)
+	}
+
+	private MiradiMenu createEditMenu(Actions actions)
 	{
-		JMenu menu = new JMenu(EAM.text("MenuBar|Edit"));
+		MiradiMenu menu = new MiradiMenu(EAM.text("MenuBar|Edit"));
 		menu.setMnemonic(KeyEvent.VK_E);
-		
+
 		JMenuItem undo = addMenuItem(actions, menu, ActionUndo.class, KeyEvent.VK_U);
-		setControlKeyAccelerator(undo, 'Z');
+		setControlKeyAccelerator(undo, KeyEvent.VK_Z);
 		JMenuItem redo = addMenuItem(actions, menu, ActionRedo.class, KeyEvent.VK_R);
-		setControlKeyAccelerator(redo, 'Y');
+		setControlKeyAccelerator(redo, KeyEvent.VK_Y);
 		menu.addSeparator();
-		
+
 		JMenuItem cut = addMenuItem(actions, menu, ActionCut.class, KeyEvent.VK_T);
-		setControlKeyAccelerator(cut, 'X');
+		setControlKeyAccelerator(cut, KeyEvent.VK_X);
 		JMenuItem copy = addMenuItem(actions, menu, ActionCopy.class, KeyEvent.VK_C);
-		setControlKeyAccelerator(copy, 'C');
+		setControlKeyAccelerator(copy, KeyEvent.VK_C);
 		JMenuItem paste = addMenuItem(actions, menu, ActionPaste.class, KeyEvent.VK_P);
-		setControlKeyAccelerator(paste, 'V');
-		
+		setControlKeyAccelerator(paste, KeyEvent.VK_V);
+
 		if(isDiagramView())
 		{
 			addMenuItem(actions, menu, ActionPasteFactorContent.class, KeyEvent.VK_F);
 			addMenuItem(actions, menu, ActionPasteWithoutLinks.class, -1);
 		}
-		
+
 		menu.addSeparator();
 
 		JMenuItem delete = addMenuItem(actions, menu, ActionDelete.class, KeyEvent.VK_DELETE);
-		delete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0));	
+		delete.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_DELETE, 0));
 		if(isPlanningView())
 		{
 			addMenuItem(actions, menu, ActionDeletePlanningViewTreeNode.class);
@@ -194,48 +192,48 @@ public class MainMenuBar extends JMenuBar
 			addMenuItem(actions, menu, ActionDeletePlanningViewTreeNode.class);
 		}
 		menu.addSeparator();
-		
+
 		JMenuItem selectAll = addMenuItem(actions, menu, ActionSelectAll.class, KeyEvent.VK_A);
-		setControlKeyAccelerator(selectAll, 'A');
-		
+		setControlKeyAccelerator(selectAll, KeyEvent.VK_A);
+
 		if(isDiagramView())
 		{
 			addMenuItem(actions, menu, ActionSelectChain.class, KeyEvent.VK_H);
 			menu.addSeparator();
 		}
-		
+
 		addMenuItem(actions, menu, ActionPreferences.class, KeyEvent.VK_P);
 		return menu;
 	}
-	
-	private JMenu createActionsMenu(Actions actions)
+
+	private MiradiMenu createActionsMenu(Actions actions)
 	{
 		if(isDiagramView())
 			return createDiagramActionsMenu(actions);
-		
+
 		if(isPlanningView())
 			return createPlanningActionsMenu(actions);
-		
+
 		if(isViabilityView())
 			return createViabilityActionsMenu(actions);
-		
+
 		if (isWorkPlanView())
 			return createWorkPlanActionsMenu(actions);
-		
+
 		return null;
 	}
 
-	private JMenu createEmptyActionsMenu()
+	private MiradiMenu createEmptyActionsMenu()
 	{
-		JMenu menu = new JMenu(EAM.text("MenuBar|Actions"));
+		MiradiMenu menu = new MiradiMenu(EAM.text("MenuBar|Actions"));
 		menu.setMnemonic(KeyEvent.VK_A);
 		return menu;
 	}
 
-	private JMenu createDiagramActionsMenu(Actions actions)
+	private MiradiMenu createDiagramActionsMenu(Actions actions)
 	{
-		JMenu menu = createEmptyActionsMenu();
-		
+		MiradiMenu menu = createEmptyActionsMenu();
+
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertDraftStrategy.class),KeyEvent.VK_D));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertStrategy.class),KeyEvent.VK_S));
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertContributingFactor.class),KeyEvent.VK_C));
@@ -260,11 +258,11 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionInsertLink.class, KeyEvent.VK_I);
 		addMenuItem(actions, menu, ActionCreateBendPoint.class, KeyEvent.VK_B);
 		addMenuItem(actions, menu, ActionDeleteBendPoint.class, KeyEvent.VK_DELETE);
-		
+
 		addMenuItem(actions, menu, ActionCreateIncomingJunction.class, KeyEvent.VK_J);
 		addMenuItem(actions, menu, ActionCreateOutgoingJunction.class, KeyEvent.VK_O);
 		addMenuItem(actions, menu, ActionManageFactorTagsFromMenu.class, KeyEvent.VK_G);
-		
+
 		menu.addSeparator();
 
 		addMenuItem(actions, menu, ActionShowConceptualModel.class, KeyEvent.VK_A);
@@ -272,7 +270,7 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionCreateResultsChain.class);
 		addMenuItem(actions, menu, ActionRenameResultsChain.class);
 		addMenuItem(actions, menu, ActionDeleteResultsChain.class);
-		
+
 		menu.addSeparator();
 
 		addMenuItem(actions, menu, ActionCreateConceptualModel.class);
@@ -286,7 +284,7 @@ public class MainMenuBar extends JMenuBar
 		menu.addSeparator();
 
 		addMenuItem(actions, menu, ActionDiagramProperties.class);
-		
+
 		return menu;
 	}
 
@@ -300,10 +298,10 @@ public class MainMenuBar extends JMenuBar
 		return getMainWindow().getProject().getMetadata().isBiophysicalFactorMode();
 	}
 
-	private JMenu createPlanningActionsMenu(Actions actions)
+	private MiradiMenu createPlanningActionsMenu(Actions actions)
 	{
-		JMenu menu = createEmptyActionsMenu();
-		
+		MiradiMenu menu = createEmptyActionsMenu();
+
 		addMenuItem(actions, menu, ActionTreeCreateObjective.class);
 		addMenuItem(actions, menu, ActionTreeCreateIndicator.class);
 
@@ -321,19 +319,19 @@ public class MainMenuBar extends JMenuBar
 
 		addMenuItem(actions, menu, ActionCreateTask.class);
 		addMenuItem(actions, menu, ActionCreateSameLevelTask.class);
-		
+
 		menu.addSeparator();
-		
+
 		addMenuItem(actions, menu, ActionTreeNodeUp.class);
 		addMenuItem(actions, menu, ActionTreeNodeDown.class);
 
 		return menu;
 	}
-	
-	private JMenu createWorkPlanActionsMenu(Actions actions)
+
+	private MiradiMenu createWorkPlanActionsMenu(Actions actions)
 	{
-		JMenu menu = createEmptyActionsMenu();
-		
+		MiradiMenu menu = createEmptyActionsMenu();
+
 		addMenuItem(actions, menu, ActionTreeCreateActivity.class);
 		addMenuItem(actions, menu, ActionTreeCreateMonitoringActivity.class);
 		addMenuItem(actions, menu, ActionTreeMoveActivity.class);
@@ -348,7 +346,7 @@ public class MainMenuBar extends JMenuBar
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionCreateTask.class);
 		addMenuItem(actions, menu, ActionCreateSameLevelTask.class);
-		
+
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionTreeNodeUp.class);
 		addMenuItem(actions, menu, ActionTreeNodeDown.class);
@@ -357,10 +355,10 @@ public class MainMenuBar extends JMenuBar
 		return menu;
 	}
 
-	private JMenu createViabilityActionsMenu(Actions actions)
+	private MiradiMenu createViabilityActionsMenu(Actions actions)
 	{
-		JMenu menu = createEmptyActionsMenu();
-		
+		MiradiMenu menu = createEmptyActionsMenu();
+
 		addMenuItem(actions, menu, ActionCreateKeyEcologicalAttribute.class);
 		addMenuItem(actions, menu, ActionCreateKeyEcologicalAttributeIndicator.class);
 		addMenuItem(actions, menu, ActionCreateKeyEcologicalAttributeMeasurement.class);
@@ -372,7 +370,7 @@ public class MainMenuBar extends JMenuBar
 	{
 		if(mainWindow == null)
 			return false;
-		
+
 		return NoProjectView.is(mainWindow.getCurrentView());
 	}
 
@@ -380,15 +378,15 @@ public class MainMenuBar extends JMenuBar
 	{
 		if(mainWindow == null)
 			return false;
-		
+
 		return PlanningView.is(mainWindow.getCurrentView());
 	}
-	
+
 	private boolean isWorkPlanView()
 	{
 		if(mainWindow == null)
 			return false;
-		
+
 		return WorkPlanView.is(mainWindow.getCurrentView());
 	}
 
@@ -396,7 +394,7 @@ public class MainMenuBar extends JMenuBar
 	{
 		if(mainWindow == null)
 			return false;
-		
+
 		return DiagramView.is(mainWindow.getCurrentView());
 	}
 
@@ -404,7 +402,7 @@ public class MainMenuBar extends JMenuBar
 	{
 		if(mainWindow == null)
 			return false;
-		
+
 		return TargetViabilityView.is(mainWindow.getCurrentView());
 	}
 
@@ -412,27 +410,27 @@ public class MainMenuBar extends JMenuBar
 	{
 		if(mainWindow == null)
 			return false;
-		
+
 		return ThreatMatrixView.is(mainWindow.getCurrentView());
 	}
 
 	private JMenu createGroupBoxMenu(Actions actions)
 	{
-		UiMenu groupBoxMenu = new UiMenu(EAM.text("Menu|Group Box"));	
-		groupBoxMenu.setMnemonic(KeyEvent.VK_G);		
+		MiradiUIMenu groupBoxMenu = new MiradiUIMenu(EAM.text("Menu|Group Box"));
+		groupBoxMenu.setMnemonic(KeyEvent.VK_G);
 		groupBoxMenu.add(createJMenuItemCenterLocation(actions.get(ActionInsertGroupBox.class), KeyEvent.VK_G));
 		groupBoxMenu.add(createJMenuItemCenterLocation(actions.get(ActionGroupBoxAddFactor.class), KeyEvent.VK_R));
 		groupBoxMenu.add(createJMenuItemCenterLocation(actions.get(ActionGroupBoxRemoveFactor.class), KeyEvent.VK_P));
 		groupBoxMenu.add(createJMenuItemCenterLocation(actions.get(ActionDeleteGroupBox.class), KeyEvent.VK_D));
-			
+
 		return groupBoxMenu;
 	}
-		
-	private JMenu createViewMenu(Actions actions)
+
+	private MiradiMenu createViewMenu(Actions actions)
 	{
-		JMenu menu = new JMenu(EAM.text("MenuBar|View"));
+		MiradiMenu menu = new MiradiMenu(EAM.text("MenuBar|View"));
 		menu.setMnemonic(KeyEvent.VK_V);
-		
+
 		Action[] viewSwitchActions = ViewSwitcher.getViewSwitchActions(actions);
 		for(int i = 0; i < viewSwitchActions.length; ++i)
 			menu.add(viewSwitchActions[i]);
@@ -441,28 +439,28 @@ public class MainMenuBar extends JMenuBar
 //		addMenuItem(actions, menu, ActionToggleSlideShowPanel.class, KeyEvent.VK_E);
 //		addMenuItem(actions, menu, ActionSlideShowViewer.class, KeyEvent.VK_S);
 //		menu.addSeparator();
-		
+
 		if(isDiagramView())
 		{
 			JMenuItem zoomIn = addMenuItem(actions, menu, ActionZoomIn.class, KeyEvent.VK_I);
-			setControlKeyAccelerator(zoomIn, '=');
+			setControlKeyAccelerator(zoomIn, KeyEvent.VK_EQUALS);
 			JMenuItem zoomOut = addMenuItem(actions, menu, ActionZoomOut.class, KeyEvent.VK_O);
-			setControlKeyAccelerator(zoomOut, '-');
+			setControlKeyAccelerator(zoomOut, KeyEvent.VK_MINUS);
 			JMenuItem zoomToFit = addMenuItem(actions, menu, ActionZoomToFit.class, KeyEvent.VK_Z);
-			setControlKeyAccelerator(zoomToFit, '0');
+			setControlKeyAccelerator(zoomToFit, KeyEvent.VK_0);
 			JMenuItem createMargin = addMenuItem(actions, menu, ActionCreateDiagramMargin.class, KeyEvent.VK_M);
-			setControlKeyAccelerator(createMargin, 'M');		
-	
+			setControlKeyAccelerator(createMargin, KeyEvent.VK_M);
+
 			menu.addSeparator();
 		}
-		
+
 		if(isDiagramView())
 		{
 			addMenuItem(actions, menu, ActionConfigureLayers.class, KeyEvent.VK_C);
 			addMenuItem(actions, menu, ActionShowSelectedChainMode.class, KeyEvent.VK_S);
 			addMenuItem(actions, menu, ActionShowFullModelMode.class, KeyEvent.VK_F);
 		}
-		
+
 		if(isPlanningView() || isViabilityView() || isWorkPlanView())
 		{
 			addMenuItem(actions, menu, ActionExpandAllRows.class);
@@ -480,30 +478,30 @@ public class MainMenuBar extends JMenuBar
 			addMenuItem(actions, menu, ActionExpandToTarget.class);
 			if (isHumanWelfareTargetMode())
 				addMenuItem(actions, menu, ActionExpandToHumanWelfareTarget.class);
-			
+
 			addMenuItem(actions, menu, ActionExpandToKeyEcologicalAttribute.class);
 			addMenuItem(actions, menu, ActionExpandToIndicator.class);
 			addMenuItem(actions, menu, ActionExpandToMeasurement.class);
 			addMenuItem(actions, menu, ActionExpandToFutureStatus.class);
 		}
-		
+
 		if(isThreatView())
 		{
 			addMenuItem(actions, menu, ActionShowCellRatings.class);
 			addMenuItem(actions, menu, ActionHideCellRatings.class);
 		}
-		
+
 		menu.addSeparator();
 		addMenuItem(actions, menu, ActionInvokeDashboard.class);
-		
+
 		return menu;
 	}
-	
-	private JMenu createProcessMenu(Actions actions)
+
+	private MiradiMenu createProcessMenu(Actions actions)
 	{
 		try
 		{
-			JMenu menu = new JMenu(EAM.text("MenuBar|Step-by-Step"));
+			MiradiMenu menu = new MiradiMenu(EAM.text("MenuBar|Step-by-Step"));
 			menu.setMnemonic(KeyEvent.VK_S);
 
 			menu.add(createQuestionBasedMenu(actions, new OpenStandardsConceptualizeQuestion()));
@@ -521,27 +519,27 @@ public class MainMenuBar extends JMenuBar
 		catch (Exception e)
 		{
 			EAM.alertUserOfNonFatalException(e);
-			
+
 			return null;
 		}
 	}
 
-	public JMenu createQuestionBasedMenu(Actions actions, DynamicChoiceWithRootChoiceItem question) throws Exception
+	public MiradiMenu createQuestionBasedMenu(Actions actions, DynamicChoiceWithRootChoiceItem question) throws Exception
 	{
 		ChoiceItem headerChoiceItem  = question.getHeaderChoiceItem();
 		AbstractJumpMenuAction action = actions.getJumpMenuAction(headerChoiceItem.getCode());
-		JMenu headerMenu = new JMenu(headerChoiceItem.getLabel());
+		MiradiMenu headerMenu = new MiradiMenu(headerChoiceItem.getLabel());
 		headerMenu.setMnemonic(action.getMnemonic());
 		addSubMenus(actions, headerMenu, headerChoiceItem.getChildren());
-		
+
 		return headerMenu;
 	}
-	
+
 	private void addSubMenus(Actions actions, JMenu headerMenu, Vector<ChoiceItem> children)
 	{
 		for(ChoiceItem subHeaderChoiceItem : children)
 		{
-			JMenu menu = new JMenu(subHeaderChoiceItem.getLabel());
+			MiradiMenu menu = new MiradiMenu(subHeaderChoiceItem.getLabel());
 			String code = subHeaderChoiceItem.getCode();
 			AbstractJumpMenuAction action = actions.getJumpMenuAction(code);
 			menu.setMnemonic(action.getMnemonic());
@@ -572,97 +570,95 @@ public class MainMenuBar extends JMenuBar
 
 	private JMenu createHelpMenu(Actions actions)
 	{
-		JMenu menu = new JMenu(EAM.text("MenuBar|Help"));
+		MiradiMenu menu = new MiradiMenu(EAM.text("MenuBar|Help"));
 		menu.setMnemonic(KeyEvent.VK_H);
-		
+
 		JMenuItem item  = addMenuItem(actions, menu, ActionHelpButtonMoreInfo.class, KeyEvent.VK_I);
-		item.putClientProperty(HelpButtonData.class, 
+		item.putClientProperty(HelpButtonData.class,
 				new ViewSpecificHelpButtonData(getMainWindow(), HelpButtonData.MORE_INFO, HelpButtonData.MORE_INFO_HTML));
-		
+
 		item = addMenuItem(actions, menu, ActionHelpButtonExamples.class, KeyEvent.VK_E);
-		item.putClientProperty(HelpButtonData.class, 
+		item.putClientProperty(HelpButtonData.class,
 				new ViewSpecificHelpButtonData(getMainWindow(), HelpButtonData.EXAMPLES, HelpButtonData.EXAMPLES_HTML));
-		
+
 		item  = addMenuItem(actions, menu, ActionHelpButtonWorkshop.class, KeyEvent.VK_W);
-		item.putClientProperty(HelpButtonData.class, 
+		item.putClientProperty(HelpButtonData.class,
 				new ViewSpecificHelpButtonData(getMainWindow(), HelpButtonData.WORKSHOP, HelpButtonData.WORKSHOP_HTML));
-		
+
 		menu.addSeparator();
-		
+
 		item  = addMenuItem(actions, menu, ActionHelpCMPStandards.class, KeyEvent.VK_O);
-		item.putClientProperty(HelpButtonData.class, 
+		item.putClientProperty(HelpButtonData.class,
 				new HelpButtonData(HelpButtonData.CMP_STANDARDS,HelpButtonData.CMP_STANDARDS_HTML));
 
 
 		item  = addMenuItem(actions, menu, ActionHelpAdaptiveManagement.class, KeyEvent.VK_M);
-		item.putClientProperty(HelpButtonData.class, 
+		item.putClientProperty(HelpButtonData.class,
 				new HelpButtonData(HelpButtonData.ADAPTIVE_MANAGEMENT,HelpButtonData.ADAPTIVE_MANAGEMENT_HTML));
 
-		
+
 		item  = addMenuItem(actions, menu, ActionHelpAgileSoftware.class, KeyEvent.VK_S);
-		item.putClientProperty(HelpButtonData.class, 
+		item.putClientProperty(HelpButtonData.class,
 				new HelpButtonData(HelpButtonData.AGILE_SOFTWARE,HelpButtonData.AGILE_SOFTWARE_HTML));
 
 		menu.addSeparator();
-		
+
 		item  = addMenuItem(actions, menu, ActionHelpComingAttractions.class, KeyEvent.VK_T);
-		item.putClientProperty(HelpButtonData.class, 
+		item.putClientProperty(HelpButtonData.class,
 				new HelpButtonData(HelpButtonData.COMING_ATTACTIONS, HelpButtonData.COMING_ATTRACTIONS_HTML));
 
-		
+
 		item  = addMenuItem(actions, menu, ActionHelpCredits.class, KeyEvent.VK_R);
-		item.putClientProperty(HelpButtonData.class, 
+		item.putClientProperty(HelpButtonData.class,
 				new HelpButtonData(HelpButtonData.CREDITS,HelpButtonData.CREDITS_HTML));
-		
+
 		item  = addMenuItem(actions, menu, ActionAboutCMP.class, KeyEvent.VK_C);
-		item.putClientProperty(HelpButtonData.class, 
+		item.putClientProperty(HelpButtonData.class,
 				new HelpButtonData(HelpButtonData.ABOUT_CMP,HelpButtonData.ABOUT_CMP_HTML));
 
 		menu.addSeparator();
-		
+
 		item  = addMenuItem(actions, menu, ActionHelpButtonSupport.class, KeyEvent.VK_P);
-		item.putClientProperty(HelpButtonData.class, 
+		item.putClientProperty(HelpButtonData.class,
 				new HelpButtonData(HelpButtonData.SUPPORT, HelpButtonData.SUPPORT_HTML));
-		
+
 		addMenuItem(actions, menu, ActionAbout.class, KeyEvent.VK_A);
-		
-		
+
+
 		return menu;
 	}
-	
-	
+
 	private JMenuItem addMenuItem(Actions actions, JMenu menu, Class class1)
 	{
 		MiradiHtmlMenuItem menuItemNewProject = new MiradiHtmlMenuItem(actions.get(class1));
 		menu.add(menuItemNewProject);
-		return menuItemNewProject; 
+		return menuItemNewProject;
 	}
-	
+
 	private JMenuItem addMenuItem(Actions actions, JMenu menu, Class class1, int mnemonic)
 	{
 		MiradiHtmlMenuItem menuItemNewProject = new MiradiHtmlMenuItem(actions.get(class1), mnemonic);
 		menu.add(menuItemNewProject);
-		return menuItemNewProject; 
+		return menuItemNewProject;
 	}
-	
-	
+
 	private JMenuItem createJMenuItemCenterLocation(MiradiAction action, int mnemonic)
 	{
 		JMenuItem centeredLocationAction = new MenuItemWithoutLocation(action);
 		centeredLocationAction.setMnemonic(mnemonic);
 		return centeredLocationAction;
 	}
-	
-	private void setControlKeyAccelerator(JMenuItem menuItem, char keyLetter)
+
+	private void setControlKeyAccelerator(JMenuItem menuItem, int keyCode)
 	{
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(keyLetter, InputEvent.CTRL_DOWN_MASK));
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(keyCode, KeyBinder.KEY_MODIFIER_CTRL));
 	}
-	
+
 	private MainWindow getMainWindow()
 	{
 		return mainWindow;
 	}
-	
+
 	private MainWindow mainWindow;
 
 }

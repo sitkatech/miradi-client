@@ -24,12 +24,11 @@ import java.awt.Insets;
 import javax.swing.Action;
 import javax.swing.Icon;
 
-import org.martus.swing.UiButton;
 import org.miradi.actions.MiradiAction;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class PanelButton extends UiButton
+public class PanelButton extends MiradiUIButton
 {
 	public PanelButton(String text)
 	{
@@ -60,7 +59,7 @@ public class PanelButton extends UiButton
 		this((Action)action);
 		setToolTipText(action.getToolTipText());
 	}
-	
+
 	//TODO should not use static ref here
 	public MainWindow getMainWindow()
 	{

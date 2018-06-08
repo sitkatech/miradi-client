@@ -24,10 +24,10 @@ import java.awt.BorderLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JComponent;
 
-import org.martus.swing.UiButton;
 import org.miradi.actions.Actions;
 import org.miradi.actions.MiradiAction;
 import org.miradi.actions.ObjectsAction;
+import org.miradi.dialogs.fieldComponents.MiradiUIButton;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
@@ -132,7 +132,7 @@ abstract public class ObjectCollectionPanel extends DisposablePanel implements C
 			addNonObjectActionButton(actionClass);
 	}
 	
-	private void addButton(UiButton button)
+	private void addButton(MiradiUIButton button)
 	{
 		buttons.add(button);
 	}

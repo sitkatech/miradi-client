@@ -27,7 +27,7 @@ import javax.swing.JPanel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import org.martus.swing.UiButton;
+import org.miradi.dialogs.fieldComponents.MiradiUIButton;
 import org.miradi.layout.OneRowPanel;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
@@ -58,7 +58,7 @@ public class TreeBasedProjectList extends JPanel
 		buttonBar.setGaps(3);
 		for(Action action : actions)
 		{
-			buttonBar.add(new UiButton(action));		
+			buttonBar.add(new MiradiUIButton(action));
 		}
 		
 		String instructions = EAM.text("<div class='WizardText'>To <strong>continue work</strong> on an existing project, or <strong>browse an example</strong>, choose a project below:");

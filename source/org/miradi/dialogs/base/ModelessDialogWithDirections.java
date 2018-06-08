@@ -24,9 +24,9 @@ import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.util.Vector;
 
-import org.martus.swing.UiButton;
 import org.miradi.actions.MiradiAction;
 import org.miradi.actions.MainWindowAction;
+import org.miradi.dialogs.fieldComponents.MiradiUIButton;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -47,7 +47,7 @@ public class ModelessDialogWithDirections extends ModelessDialogWithClose
 	protected Vector<Component> getButtonBarComponents()
 	{
 		actionDirections = new ActionDirections(getMainWindow());
-		UiButton  help = new PanelButton(actionDirections);
+		MiradiUIButton help = new PanelButton(actionDirections);
 
 		Vector<Component> components = new Vector<Component>(); 
 		components.add(help);

@@ -19,16 +19,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.main;
 
-import java.awt.event.KeyEvent;
-
-import javax.swing.Action;
-import javax.swing.JComponent;
-import javax.swing.KeyStroke;
+import javax.swing.*;
+import java.awt.*;
 
 public class KeyBinder
 {
 	public static final int KEY_MODIFIER_NONE = 0;
-	public static final int KEY_MODIFIER_CTRL = KeyEvent.CTRL_DOWN_MASK;
+	public static final int KEY_MODIFIER_CTRL = Toolkit.getDefaultToolkit().getMenuShortcutKeyMask();
 	
 	public static void bindKey(JComponent component, int key, int keyModifier, Action contextMenuAction)
 	{
@@ -36,5 +33,4 @@ public class KeyBinder
 		component.getActionMap().put(thisName, contextMenuAction);
 		component.getInputMap().put(KeyStroke.getKeyStroke(key, keyModifier), thisName);
 	}
-
 }

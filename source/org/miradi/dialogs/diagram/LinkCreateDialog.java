@@ -32,17 +32,13 @@ import javax.swing.Box;
 import javax.swing.JPanel;
 import javax.swing.ListSelectionModel;
 
-import org.martus.swing.UiButton;
 import org.martus.swing.UiVBox;
 import org.martus.swing.Utilities;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.dialogs.base.DialogWithButtonBar;
-import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.dialogs.fieldComponents.ListWithHtmlRenderer;
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.dialogs.fieldComponents.UiList;
+import org.miradi.dialogs.fieldComponents.*;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -288,6 +284,6 @@ public class LinkCreateDialog extends DialogWithButtonBar implements ActionListe
 	private boolean result;
 	private UiList linkFromList;
 	private UiList linkToList;
-	private UiButton okButton;
-	private UiButton cancelButton;
+	private MiradiUIButton okButton;
+	private MiradiUIButton cancelButton;
 }

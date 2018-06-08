@@ -22,11 +22,11 @@ package org.miradi.diagram;
 import java.awt.Component;
 import java.awt.Point;
 import java.awt.event.InputEvent;
+import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 
 import javax.swing.JButton;
 
-import org.miradi.diagram.BendPointSelectionHelper;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.main.MiradiTestCase;
 import org.miradi.project.ProjectForTesting;
@@ -103,7 +103,7 @@ public class TestBendPointSelectionHelper extends MiradiTestCase
 	{
 		LinkCell linkCell = project.createLinkCell();
 		BendPointSelectionHelper selectionHelper = new BendPointSelectionHelper(linkCell);
-		MouseEvent mouseEventControl = getMouseEvent(InputEvent.CTRL_DOWN_MASK);
+		MouseEvent mouseEventControl = getMouseEvent(KeyEvent.CTRL_DOWN_MASK);
 		int index1 = 1;
 		int index2 = 2;
 		int index3 = 3;

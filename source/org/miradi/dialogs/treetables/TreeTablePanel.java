@@ -32,11 +32,11 @@ import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
 import javax.swing.tree.TreePath;
 
-import org.martus.swing.UiButton;
 import org.miradi.actions.Actions;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.dialogs.base.ColumnMarginResizeListenerValidator;
 import org.miradi.dialogs.base.ObjectCollectionPanel;
+import org.miradi.dialogs.fieldComponents.MiradiUIButton;
 import org.miradi.dialogs.treetables.MultiTreeTablePanel.ScrollPaneWithHideableScrollBar;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.CommandExecutedEvent;
@@ -163,7 +163,7 @@ abstract public class TreeTablePanel extends ObjectCollectionPanel  implements T
 		}
 		else
 		{
-			UiButton button = createObjectsActionButton(actions.getObjectsAction(actionClass), tree);
+			MiradiUIButton button = createObjectsActionButton(actions.getObjectsAction(actionClass), tree);
 			box.add(button);
 		}
 	}

@@ -38,16 +38,12 @@ import javax.swing.event.DocumentListener;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
-import org.martus.swing.UiButton;
 import org.martus.swing.UiScrollPane;
 import org.martus.swing.UiTextField;
 import org.martus.util.DirectoryUtils;
 import org.miradi.dialogs.base.DialogWithButtonBar;
 import org.miradi.dialogs.base.MiradiPanel;
-import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.dialogs.fieldComponents.PanelTextFieldWithSelectAllOnFocusGained;
-import org.miradi.dialogs.fieldComponents.PanelTitleLabel;
-import org.miradi.dialogs.fieldComponents.UiList;
+import org.miradi.dialogs.fieldComponents.*;
 import org.miradi.legacyprojects.LegacyProjectUtilities;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -342,6 +338,6 @@ public class CreateProjectDialog extends DialogWithButtonBar implements ActionLi
 	private boolean result;
 	private UiList existingProjectList;
 	private UiTextField projectFilenameField;
-	private UiButton okButton;
-	private UiButton cancelButton;
+	private MiradiUIButton okButton;
+	private MiradiUIButton cancelButton;
 }
