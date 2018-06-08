@@ -14,7 +14,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi Client\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-06 04:03-0700\n"
+"POT-Creation-Date: 2018-06-08 07:03-0700\n"
 "PO-Revision-Date: 2015-03-22 13:35+0000\n"
 "Last-Translator: Andy Phenix <andy@sitkatech.com>\n"
 "Language-Team: Spanish (http://www.transifex.com/projects/p/miradi-client/"
@@ -838,7 +838,7 @@ msgid ""
 "within ten years or three generations.</html>"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:109
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:105
 msgid ""
 "<html><br><em><strong>HINT:</strong> You can quickly add links by selecting "
 "both factors in the diagram before hitting the Create Link button. <br>On "
@@ -1134,6 +1134,10 @@ msgstr ""
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionManageFactorTags.java:35
 msgid "Action|Choose..."
 msgstr "Seleccionar…"
+
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionClearAll.java:34
+msgid "Action|Clear Selection(s)"
+msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/actions/ActionClose.java:35
 msgid "Action|Close Project"
@@ -2015,7 +2019,7 @@ msgstr ""
 msgid "Adaptive Management Software for Conservation Projects"
 msgstr "Software de manejo adaptivo para proyectos de conservación"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:150
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:151
 msgid "Add '%s' to User Dictionary"
 msgstr "Agregar '%s' al diccionario"
 
@@ -2580,12 +2584,12 @@ msgid "Bundle Rules"
 msgstr "Reglas del paquete "
 
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/doers/AbstractPasteDoer.java:114
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:234
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:230
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/ExportMpzDoer.java:108
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/doers/DeleteLegacyTncStrategyRankingDoer.java:53
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/doers/SaveProjectAsDoer.java:49
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/ImageExportScaleDialog.java:80
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:242
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:238
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/confirm/ConfirmDialogTemplate.java:51
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/LanguagesPanel.java:130
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/base/LanguagesPanel.java:167
@@ -2640,7 +2644,7 @@ msgstr "Mover"
 msgid "Button|No"
 msgstr "No"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:239
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:235
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/MiradiStrings.java:49
 msgid "Button|OK"
 msgstr "OK"
@@ -2686,7 +2690,7 @@ msgstr "Reemplazar copia de seguridad"
 msgid "Button|Retain"
 msgstr "Retener"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:120
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:116
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/ModalProjectOverwriteDialog.java:86
 msgid "Button|Save"
 msgstr "Guardar"
@@ -2765,11 +2769,11 @@ msgstr ""
 "No se puede mover a la carpeta del proyecto, porque un proyecto con el mismo "
 "nombre ya existe en la carpeta."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:295
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:291
 msgid "Cannot overwrite an open project"
 msgstr "No se puede sobrescribir un proyecto abierto."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:279
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:275
 msgid "Cannot save a project back to its existing name"
 msgstr "No se puede volver a guardar un proyecto con su nombre existente."
 
@@ -3067,7 +3071,7 @@ msgstr ""
 msgid "Control Bar"
 msgstr "Barra de control"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:103
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:104
 msgid "Copy"
 msgstr "Copiar"
 
@@ -3167,11 +3171,11 @@ msgstr ""
 msgid "Current page was exported as RTF."
 msgstr "La página actual se exportó en formato RTF."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:92
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:88
 msgid "Current project directory:"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:95
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:91
 msgid "Current project name:"
 msgstr "Nombre del proyecto actual: "
 
@@ -3199,7 +3203,7 @@ msgstr ""
 msgid "Customize..."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:98
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:99
 msgid "Cut"
 msgstr "Cortar"
 
@@ -3819,7 +3823,7 @@ msgstr ""
 "No se pudo crear el archivo. Esto puede ser debido a caracteres incorrectos "
 "en el nombre del archivo."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:302
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:298
 msgid "File exists: Cannot overwrite a non project folder"
 msgstr ""
 "Ya existe el archivo: no se puede sobrescribir una carpeta que no pertenezca "
@@ -4007,7 +4011,7 @@ msgstr "Bosque - Pantanoso tropical/subtropical"
 msgid "Forest - Temperate"
 msgstr "Bosque - Templado "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramView.java:369
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramView.java:370
 msgid "Found Corrupted Data:"
 msgstr "Se encontraron datos dañados."
 
@@ -4407,7 +4411,7 @@ msgstr ""
 msgid "Include Human Wellbeing Targets (default)"
 msgstr "Modo Objeto de Conservación de Bienestar Humano"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:259
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:255
 msgid "Incomplete Link"
 msgstr "Enlace incompleto"
 
@@ -4497,7 +4501,7 @@ msgstr "Insertar"
 msgid "Insert FTE Fraction"
 msgstr "Insertar fracción FTE"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:228
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:224
 msgid "Insert Factor Link dialog|No Label Specified"
 msgstr ""
 
@@ -4682,7 +4686,7 @@ msgstr "(Fuente de financiamiento sin definir)"
 msgid "Label|(Undefined Person)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:98
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:94
 msgid "Label|--- affects -->"
 msgstr "--- afecta -->"
 
@@ -4720,7 +4724,7 @@ msgstr "Planificación de campañas"
 msgid "Label|Currency"
 msgstr "Moneda"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:107
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:103
 msgid "Label|Existing Projects:"
 msgstr "Proyectos existentes:"
 
@@ -5263,27 +5267,27 @@ msgstr "Medio "
 msgid "Medium (Default)"
 msgstr "Medio (Predeterminado) "
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:230
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:229
 msgid "MenuBar|Actions"
 msgstr "Acciones"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:161
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:159
 msgid "MenuBar|Edit"
 msgstr "Editar"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:82
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:80
 msgid "MenuBar|File"
 msgstr "Archivo"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:575
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:574
 msgid "MenuBar|Help"
 msgstr "Ayuda"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:506
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:505
 msgid "MenuBar|Step-by-Step"
 msgstr "Paso a paso"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:433
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:432
 msgid "MenuBar|View"
 msgstr "Ver"
 
@@ -5307,36 +5311,36 @@ msgstr "4. Analizar, usar, adaptar"
 msgid "Menu|5. Capture and Share Learning"
 msgstr "5. Capturar y compartir el aprendizaje"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:240
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:241
 msgid "Menu|Add Tag to %n Selected Item(s)"
 msgstr "Agregar etiqueta a los elementos seleccionados de %n"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:129
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:127
 msgid "Menu|Export Current Page as..."
 msgstr "Exportar página actual como..."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:107
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:105
 msgid "Menu|Export Current Project as..."
 msgstr "Exportar proyecto actual como..."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:386
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:421
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:387
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:420
 msgid "Menu|Group Box"
 msgstr "Cuadro de grupo"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:142
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/main/menu/MainMenuBar.java:140
 msgid "Menu|Import"
 msgstr "Importar"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:397
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:398
 msgid "Menu|Insert"
 msgstr "Insertar"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:349
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:350
 msgid "Menu|Remove All Tags from %n Selected Item(s)"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:250
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:251
 msgid "Menu|Remove Tag from %n Selected Item(s)"
 msgstr "Quitar etiqueta de los elementos seleccionados de %n"
 
@@ -5439,7 +5443,7 @@ msgstr ""
 "Por favor cierre Miradi e intente nuevamente. \n"
 "Si eso no funcion, contacte al soporte de Miradi."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:104
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:100
 msgid "Miradi data directory:"
 msgstr "Directorio de datos de Miradi: "
 
@@ -5512,7 +5516,7 @@ msgstr ""
 msgid "Month Selection: "
 msgstr "Selección de mes:"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:122
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:123
 msgid "More Suggestions"
 msgstr "Más Sugerencias"
 
@@ -5621,7 +5625,7 @@ msgstr ""
 msgid "New Project Filename:"
 msgstr "Nombre de archivo del nuevo proyecto:"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:98
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:94
 msgid "New project name: "
 msgstr "Nombre del nuevo proyecto: "
 
@@ -5917,7 +5921,7 @@ msgid ""
 "mixture of success and failure"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:109
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogfields/TextAreaContextMenuListener.java:110
 msgid "Paste"
 msgstr "Pegar"
 
@@ -6288,7 +6292,7 @@ msgstr "Resumen del proyecto "
 msgid "Project does not exist: "
 msgstr "El proyecto no existe."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:320
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:316
 msgid ""
 "Project filenames cannot contain punctuation other than dots, dashes, "
 "parentheses, and spaces; and they cannot be longer than %s characters. "
@@ -8880,7 +8884,7 @@ msgstr ""
 "Esto reemplazará todo el contenido del factor seleccionado con el contenido "
 "del factor que se cortó/copió antes. ¿Está seguro de que desea hacer esto?"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:308
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:304
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/utils/MiradiFileSaveChooser.java:107
 msgid "This will replace the existing file."
 msgstr "Esto reemplazará el archivo existente."
@@ -9110,7 +9114,7 @@ msgstr ""
 msgid "Title|Export Image Scale"
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramView.java:856
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramView.java:857
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/planning/propertiesPanel/MinimalFactorPropertiesPanel.java:66
 msgid "Title|Factor Properties"
 msgstr "Propiedades del factor"
@@ -9161,7 +9165,7 @@ msgid "Title|Legacy TNC Strategy Editor Ranking Properties"
 msgstr ""
 "Propiedades de jerarquización del editor de estrategias de TNC heredadas"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:65
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:61
 msgid "Title|Link Create Dialog"
 msgstr "Diálogo para crear Enlace"
 
@@ -9209,7 +9213,7 @@ msgstr ""
 msgid "Title|Other Orgs"
 msgstr "Otras organizaciones"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:307
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/umbrella/CreateProjectDialog.java:303
 #: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/utils/MiradiFileSaveChooser.java:102
 msgid "Title|Overwrite existing file?"
 msgstr "¿Desea sobrescribir el archivo existente?"
@@ -9423,8 +9427,8 @@ msgstr ""
 msgid "Unexpected error prevented installing that language pack"
 msgstr "Un error inesperado impidió la instalación del paquete de idiomas."
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:138
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:307
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:139
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/diagram/DiagramContextMenuHandler.java:308
 msgid "Unexpected error prevented the tag operation from succeeding"
 msgstr "Un error inesperado impidió el funcionamiento exitoso de la etiqueta."
 
@@ -9462,7 +9466,7 @@ msgstr ""
 msgid "Unknown code: "
 msgstr "Código desconocido:"
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramView.java:279
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/views/diagram/DiagramView.java:280
 msgid "Unknown error displaying diagram"
 msgstr "Error desconocido al mostrar el diagrama"
 
@@ -9929,7 +9933,7 @@ msgid ""
 "appear in the list of Team Members in the Summary View. "
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:260
+#: /usr/share/jenkins/jobs/Miradi_4.5/workspace/source/org/miradi/dialogs/diagram/LinkCreateDialog.java:256
 msgid "You must select one item in each of the two lists"
 msgstr "Debe seleccionar un elemento en cada una de las dos listas."
 
