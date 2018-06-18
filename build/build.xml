@@ -1080,7 +1080,7 @@
         <arg value="cd ${mac.build.temp.dir};
                     security unlock-keychain -p ${mac.build.password};
                     codesign -s ${mac.build.certname} -f ${mac.build.temp.dir}/${mac.app.name}.app;
-                    dmgbuild -s ${mac.dmgbuild.settings} -D app=${mac.app.name}.app sample_project=${samples.marine.miradi.version} '${mac.build.dmg.name}' ${mac.build.dmg};
+                    dmgbuild -s ${mac.dmgbuild.settings} -D app=${mac.app.name}.app;sample_project=${samples.marine.miradi.version} '${mac.build.dmg.name}' ${mac.build.dmg};
                     exit;"/>
     </exec>
 
