@@ -1110,7 +1110,7 @@
         <variable name="version.full" value="${version.full}"/>
         <variable name="windows.setup.name" value="${windows.setup.name}"/>
         <variable name="dist.dir" value="${dist.dir}"/>
-		<variable name="samples.marine.miradi.version" value="samples.marine.miradi.version"/>
+		<variable name="samples.marine.miradi.version" value="${samples.marine.miradi.version}"/>
         <variable name="dist.temp.jars" value="${dist.temp.jars}"/>
         <variable name="jres.path" value="${env.INSTALL4J.JRES.PATH}"/>
     </install4j>
