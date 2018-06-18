@@ -116,10 +116,10 @@ Mac OS X:
   Miradi will no longer work with Apple's 1.6 version of Java (which is no longer maintained by Apple).
   
   
-- Download the Miradi-4.4.0.dmg file
-- Using the mac Finder navigate to the folder containing Miradi-4.4.0.dmg
-- Double click the file Miradi-4.4.0.dmg
-- In the Finder's left panel select the Miradi "Miradi 4.4.0 Mac Install" drive
+- Download the Miradi-4.5.0.dmg file
+- Using the mac Finder navigate to the folder containing Miradi-4.5.0.dmg
+- Double click the file Miradi-4.5.0.dmg
+- In the Finder's left panel select the Miradi "Miradi 4.5.0 Mac Install" drive
 - In the right you will see the contents of the drive
 - Copy the Miradi app into your applications folder
 - Select the Miradi app file and bring up the context menu 
@@ -128,7 +128,7 @@ Mac OS X:
 - Note: You can also double click the .app file. However 
   depending on security settings, the warning dialog might 
   not provide an open option,  in which case, use the context menu step instead.
-- MarineExample.Miradi is a sample project that can be imported into Miradi
+- MarineExample_4_5_0.Miradi is a sample project that can be imported into Miradi
   after you start the app
 
 
@@ -139,14 +139,14 @@ GNU/Linux:
   with OpenJDK or any other non-Oracle Java alternatives.
 
 - Obtain Miradi-Linux.zip from http://miradi.org and unzip the contents 
-  into a directory, perhaps /usr/local/lib or ~/Miradi-4.4.0
+  into a directory, perhaps /usr/local/lib or ~/Miradi-4.5.0
   (We recommend not installing to ~/Miradi because that is the default 
   location for project data).
 
 - To run Miradi, use this command line:
     java -Xmx512m -jar <path-to-miradi.jar>
     
-- MarineExample.Miradi is a sample project that can be imported into Miradi
+- MarineExample_4_5_0.Miradi is a sample project that can be imported into Miradi
   after you start the app
 
 
@@ -176,6 +176,7 @@ Notable changes in 4.5.0:
     - Added ability to exclude specific target-threat pairs
 - Project open / import workflow streamlined
 - Added ability to detach projects from Miradi Share
+- Addressed various issues with OS X shortcut keys
 - Various bug fixes
 - Updated wizard / help content
 

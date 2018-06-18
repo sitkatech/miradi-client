@@ -115,7 +115,8 @@
 	<property name="installer.mac.dmgbuild.dir" value="${installer.mac.dir}/dmgbuild" />
 
 	<property name="samples.marine.miradi" value="MarineExample.Miradi"/>
-	
+	<property name="samples.marine.miradi.version" value="MarineExample_${version.full.installer}.Miradi"/>
+
 	<property name="dist.mactree" value="${dist.dir}/MiradiMacInstall" />
 	<property name="mac.app.name" value="Miradi-${version.full}" />
 	<property name="windows.setup.name" value="MiradiSetup_${version.full.installer}" />
@@ -572,13 +573,16 @@
 <!-- ================================================================== -->
 <target name='zips' depends='ThirdParty, jar' description='Create Linux/Mac Zip Files'>
 	<property name='JarFolder' value='ThirdParty'/>
-	
+
+	<copy file="${installer.buildfiles.dir}/${samples.marine.miradi}" tofile="${dist.dir}/${samples.marine.miradi.version}" />
+	<copy file="${installer.buildfiles.dir}/README.txt" todir="${dist.dir}" />
+
     <zip destfile="${dist.dir}/Miradi-Linux.zip">
 		<zipfileset dir="${installer.buildfiles.dir}" includes="README.txt"/>
 		<zipfileset dir="${installer.buildfiles.dir}" includes="LICENSE.txt"/>
 		<zipfileset dir="${installer.buildfiles.dir}" includes="LicenseOverview.txt"/>
     	<zipfileset dir="${dist.dir}" includes="miradi.jar"/>
-		<zipfileset dir="${installer.buildfiles.dir}" includes="${samples.marine.miradi}" />
+		<zipfileset dir="${dist.dir}" includes="${samples.marine.miradi.version}" />
     	
     	<!-- ThirdParty jars -->
     	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='${JarFolder}' includes="BrowserLauncher*.jar" />
@@ -625,8 +629,6 @@
     	<zipfileset dir="${dist.temp.jars}/shef/0.5/" prefix="source" includes="jtidy-src.zip" />
 	</zip>
 	
-	<copy file="${installer.buildfiles.dir}/${samples.marine.miradi}" todir="${dist.dir}" />
-	<copy file="${installer.buildfiles.dir}/README.txt" todir="${dist.dir}" />
 </target>
 	
 <!-- ================================================================== -->
@@ -1067,7 +1069,7 @@
         <arg value="${dist.mactree}/${mac.dmgbuild.background}"/>
         <arg value="${installer.buildfiles.dir}/README.txt"/>
         <arg value="${installer.buildfiles.dir}/LICENSE.txt"/>
-        <arg value="${installer.buildfiles.dir}/${samples.marine.miradi}" />
+        <arg value="${dist.dir}/${samples.marine.miradi.version}" />
         <arg value="${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}"/>
     </exec>
 
@@ -1078,7 +1080,7 @@
         <arg value="cd ${mac.build.temp.dir};
                     security unlock-keychain -p ${mac.build.password};
                     codesign -s ${mac.build.certname} -f ${mac.build.temp.dir}/${mac.app.name}.app;
-                    dmgbuild -s ${mac.dmgbuild.settings} -D app=${mac.app.name}.app '${mac.build.dmg.name}' ${mac.build.dmg};
+                    dmgbuild -s ${mac.dmgbuild.settings} -D app=${mac.app.name}.app sample_project=${samples.marine.miradi.version} '${mac.build.dmg.name}' ${mac.build.dmg};
                     exit;"/>
     </exec>
 
@@ -1108,6 +1110,7 @@
         <variable name="version.full" value="${version.full}"/>
         <variable name="windows.setup.name" value="${windows.setup.name}"/>
         <variable name="dist.dir" value="${dist.dir}"/>
+		<variable name="samples.marine.miradi.version" value="samples.marine.miradi.version"/>
         <variable name="dist.temp.jars" value="${dist.temp.jars}"/>
         <variable name="jres.path" value="${env.INSTALL4J.JRES.PATH}"/>
     </install4j>
