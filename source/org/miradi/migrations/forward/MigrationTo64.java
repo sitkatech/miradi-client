@@ -140,6 +140,10 @@ public class MigrationTo64 extends AbstractMigration
                     Set<String> codes = commentsStringMap.getCodes();
                     for(String code : codes)
                     {
+                        // ignore empty (nee invalid) codes
+                        if (code.isEmpty())
+                            continue;
+
                         // ugly regex to work around lack of delimiter in comments map key
                         String[] keyRefs = code.split("(?<=})");
 
