@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Miradi pre-3.3\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2018-06-19 23:22-0700\n"
+"POT-Creation-Date: 2018-07-10 02:36-0700\n"
 "PO-Revision-Date: 2011-03-17 08:40-0500\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -8441,7 +8441,7 @@ msgid ""
 "for the total planned effort (timeframe) dates."
 msgstr ""
 
-#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo64.java:87
+#: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo64.java:88
 msgid ""
 "This migration restructures the underlying data structures for both Simple "
 "and Stress Threat Rating comments."
