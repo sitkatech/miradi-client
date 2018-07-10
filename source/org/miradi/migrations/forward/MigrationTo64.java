@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.CodeToUserStringMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.utils.EnhancedJsonObject;
+import org.miradi.utils.HtmlUtilities;
 
 import java.util.Set;
 import java.util.Vector;
@@ -173,7 +174,7 @@ public class MigrationTo64 extends AbstractMigration
                             RawObject threatRatingData = getRawProject().findObject(threatRatingDataRef);
                             threatRatingData.setData(TAG_THREAT_REF, threatRef.toJson().toString());
                             threatRatingData.setData(TAG_TARGET_REF, targetRef.toJson().toString());
-                            threatRatingData.setData(TAG_COMMENTS, comments);
+                            threatRatingData.setData(TAG_COMMENTS, HtmlUtilities.replaceNonHtmlNewlines(comments));
                         }
                     }
                 }
@@ -217,7 +218,7 @@ public class MigrationTo64 extends AbstractMigration
                         CodeToUserStringMap commentsStringMap = new CodeToUserStringMap(commentsMapAsString);
                         String code = createLegacyThreatRatingDataMapKey(threatRef, targetRef);
                         if (!commentsStringMap.contains(code))
-                            commentsStringMap.putUserString(code, comments);
+                            commentsStringMap.putUserString(code, HtmlUtilities.replaceHtmlBrsWithNewlines(comments));
                         threatRatingDataSingleton.setData(commentsMapTag, commentsStringMap.toJsonString());
                     }
                 }
