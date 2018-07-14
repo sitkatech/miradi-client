@@ -29,6 +29,7 @@ import org.miradi.views.umbrella.AbstractProjectImporter;
 
 import javax.swing.*;
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.util.HashSet;
@@ -164,11 +165,20 @@ public class Miradi
 			Miradi.restoreDefaultLocalization();
 			return;
 		}
-		
-		String jarName = LANGUAGE_PACK_PREFIX + languageCode + ".jar";
-		File jarFile = findLanguageJar(jarName);
-		EAM.logDebug("Loading language pack: " + jarFile.getAbsolutePath());
-		Miradi.setLocalization(jarFile.toURI().toURL(), languageCode);
+
+		try
+		{
+			String jarName = LANGUAGE_PACK_PREFIX + languageCode + ".jar";
+			File jarFile = findLanguageJar(jarName);
+			EAM.logDebug("Loading language pack: " + jarFile.getAbsolutePath());
+			Miradi.setLocalization(jarFile.toURI().toURL(), languageCode);
+		}
+		catch (FileNotFoundException ex)
+		{
+			EAM.logWarning(ex.getLocalizedMessage());
+			EAM.logWarning("Defaulting to language code: " + Translation.DEFAULT_LANGUAGE_CODE);
+			Miradi.restoreDefaultLocalization();
+		}
 	}
 
 	public static void switchToLanguage(File poFileToLoad) throws Exception
@@ -205,7 +215,7 @@ public class Miradi
 		return results;
 	}
 
-	private static File findLanguageJar(String jarName) throws URISyntaxException
+	private static File findLanguageJar(String jarName) throws URISyntaxException, FileNotFoundException
 	{
 		File jarFile = new File(EAM.getHomeDirectory(), jarName);
 		if(jarFile.exists())
@@ -215,9 +225,7 @@ public class Miradi
 		if(jarFile.exists())
 			return jarFile;
 
-		EAM.logError("Unable to find content file: " + jarFile.getAbsolutePath());
-		System.exit(2);
-		return null;
+		throw new FileNotFoundException("Unable to find language jar: " + jarName);
 	}
 	
 	public static void addThirdPartyJarsToClasspath() throws Exception
