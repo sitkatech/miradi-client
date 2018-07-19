@@ -22,10 +22,7 @@ package org.miradi.migrations.forward;
 
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
-import org.miradi.migrations.AbstractMigrationORefVisitor;
-import org.miradi.migrations.MigrationResult;
-import org.miradi.migrations.RawObject;
-import org.miradi.migrations.RawProject;
+import org.miradi.migrations.*;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
@@ -116,6 +113,21 @@ public class SplitSharedTasksVisitor extends AbstractMigrationORefVisitor
 						parentTaskIdList.removeId(taskId);
 						parentTaskIdList.add(newTaskRef.getObjectId());
 						parent.setData(getTaskIdsTag(), parentTaskIdList.toJson().toString());
+
+						// for all diagrams on which the new parent strategy appears, check to see if the original task is shown
+						// if it is, and the diagram doesn't also contain the old parent strategy, then update the diagram factor ref to the new cloned task
+						if (parentRef.getObjectType() == ObjectType.STRATEGY)
+						{
+							ORefList conceptualModelDiagramsThatReferToOldParent = findDiagramsForFactorRef(ObjectType.CONCEPTUAL_MODEL_DIAGRAM, rawObjectRef);
+							ORefList conceptualModelDiagramsThatReferToNewParent = findDiagramsForFactorRef(ObjectType.CONCEPTUAL_MODEL_DIAGRAM, parentRef);
+							conceptualModelDiagramsThatReferToNewParent.removeAll(conceptualModelDiagramsThatReferToOldParent);
+							updateDiagramFactorRefsForTask(conceptualModelDiagramsThatReferToNewParent, taskRef, newTaskRef);
+
+							ORefList resultsChainDiagramsThatReferToOldParent = findDiagramsForFactorRef(ObjectType.RESULTS_CHAIN_DIAGRAM, rawObjectRef);
+							ORefList resultsChainDiagramsThatReferToNewParent = findDiagramsForFactorRef(ObjectType.RESULTS_CHAIN_DIAGRAM, parentRef);
+							resultsChainDiagramsThatReferToNewParent.removeAll(resultsChainDiagramsThatReferToOldParent);
+							updateDiagramFactorRefsForTask(resultsChainDiagramsThatReferToNewParent, taskRef, newTaskRef);
+						}
 					}
 				}
 
@@ -127,6 +139,66 @@ public class SplitSharedTasksVisitor extends AbstractMigrationORefVisitor
 		}
 
 		return rawTask;
+	}
+
+	private ORefList findDiagramsForFactorRef(int diagramObjectType, ORef factorRef) throws Exception
+	{
+		ORefList diagramRefs = new ORefList();
+
+		getRawProject().ensurePoolExists(diagramObjectType);
+		ORefList diagramRefsToCheck = getRawProject().getAllRefsForType(diagramObjectType);
+
+		for (ORef diagramRef : diagramRefsToCheck)
+		{
+			RawObject diagram = getRawProject().findObject(diagramRef);
+			String diagramFactorIdsAsString = safeGetTag(diagram, TAG_DIAGRAM_FACTOR_IDS);
+			if (!diagramFactorIdsAsString.isEmpty())
+			{
+				IdList diagramFactorIdList = new IdList(ObjectType.DIAGRAM_FACTOR, diagramFactorIdsAsString);
+				for (int i = 0; i < diagramFactorIdList.size(); i++)
+				{
+					BaseId diagramFactorId = diagramFactorIdList.get(i);
+					ORef diagramFactorRef = new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId);
+					RawObject diagramFactor = getRawProject().findObject(diagramFactorRef);
+
+					String wrappedFactorRefAsString = safeGetTag(diagramFactor, TAG_WRAPPED_REF);
+					ORef wrappedFactorRef = ORef.createFromString(wrappedFactorRefAsString);
+					if (wrappedFactorRef.equals(factorRef) && !diagramRefs.contains(diagramRef))
+					{
+						diagramRefs.add(diagramRef);
+						break;
+					}
+				}
+			}
+		}
+
+		return diagramRefs;
+	}
+
+	private void updateDiagramFactorRefsForTask(ORefList diagramRefs, ORef oldTaskRef, ORef newTaskRef) throws Exception
+	{
+		for (ORef diagramRef : diagramRefs)
+		{
+			RawObject diagram = getRawProject().findObject(diagramRef);
+			String diagramFactorIdsAsString = safeGetTag(diagram, TAG_DIAGRAM_FACTOR_IDS);
+			if (!diagramFactorIdsAsString.isEmpty())
+			{
+				IdList diagramFactorIdList = new IdList(ObjectType.DIAGRAM_FACTOR, diagramFactorIdsAsString);
+				for (int i = 0; i < diagramFactorIdList.size(); i++)
+				{
+					BaseId diagramFactorId = diagramFactorIdList.get(i);
+					ORef diagramFactorRef = new ORef(ObjectType.DIAGRAM_FACTOR, diagramFactorId);
+					RawObject diagramFactor = getRawProject().findObject(diagramFactorRef);
+
+					String wrappedFactorRefAsString = safeGetTag(diagramFactor, TAG_WRAPPED_REF);
+					ORef wrappedFactorRef = ORef.createFromString(wrappedFactorRefAsString);
+					if (wrappedFactorRef.equals(oldTaskRef))
+					{
+						diagramFactor.setData(TAG_WRAPPED_REF, newTaskRef.toJson().toString());
+					}
+				}
+			}
+		}
 	}
 
 	private void proportionSubTasks(RawObject rawTask, int proportionShare) throws Exception
@@ -504,4 +576,8 @@ public class SplitSharedTasksVisitor extends AbstractMigrationORefVisitor
 	// progress report specific fields
 	public static final String TAG_PROGRESS_STATUS = "ProgressStatus";
 	public static final String TAG_PROGRESS_DATE = "ProgressDate";
+
+	// diagram / diagram factor fields
+	public static final String TAG_WRAPPED_REF = "WrappedFactorRef";
+	public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
 }
