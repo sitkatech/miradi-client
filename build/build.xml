@@ -965,6 +965,7 @@
 	</delete>
 
 	<appbundler
+		isDebug="true"
 		jvmrequired="1.8"
 		outputdirectory="${dist.mactree}"
 		name="${mac.app.name}"
