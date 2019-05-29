@@ -1379,7 +1379,7 @@ return console.askYesNo(message, true);
     </styles>
   </installerGui>
   <mediaSets>
-    <windows name="Windows" id="22" customizedId="" mediaFileName="" installDir="Miradi" overridePrincipalLanguage="false" jreBitType="32" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" downloadURL="" includeAllDownloadableComponents="false" includedJRE="windows-x86-8.0_adoptopenjdk.tar.gz" manualJREEntry="false" bundleType="2" jreURL="${compiler:jres.path}/windows-x86-8.0_adoptopenjdk.tar.gz" jreShared="true" directDownload="false" installOnlyIfNecessary="true" customInstallBaseDir="" contentFilesType="1" verifyIntegrity="true">
+    <windows name="Windows" id="22" customizedId="" mediaFileName="" installDir="Miradi" overridePrincipalLanguage="false" jreBitType="32" runPostProcessor="false" postProcessor="" failOnPostProcessorError="false" useLegacyMediaFileIds="false" legacyMediaFileIds="" downloadURL="" includeAllDownloadableComponents="false" includedJRE="zulu8.38.0.13-ca-jre8.0.212-win_i686.tar.gz" manualJREEntry="false" bundleType="2" jreURL="${compiler:jres.path}/zulu8.38.0.13-ca-jre8.0.212-win_i686.tar.gz" jreShared="true" directDownload="false" installOnlyIfNecessary="true" customInstallBaseDir="" contentFilesType="1" verifyIntegrity="true">
       <excludedComponents />
       <includedDownloadableComponents />
       <excludedLaunchers />
