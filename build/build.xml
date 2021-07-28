@@ -25,21 +25,23 @@
 	<property environment="env"/>
 
     <!-- env vars from build machine -->
-    <property name="mac.build.user" value="${env.SITKA.MAC.BUILDUSER}" />
-    <property name="mac.build.server" value="${env.SITKA.MAC.BUILDSERVER}" />
-    <property name="mac.build.password" value="${env.SITKA.MAC.BUILDPASSWORD}" />
-    <property name="mac.build.certname" value="${env.SITKA.MAC.BUILDCERT}" />
+    <property name="mac.build.user" value="${env.SITKA_MAC_BUILDUSER}" />
+    <property name="mac.build.server" value="${env.SITKA_MAC_BUILDSERVER}" />
+    <property name="mac.build.password" value="${env.SITKA_MAC_BUILDPASSWORD}" />
+    <property name="mac.build.certname" value="${env.SITKA_MAC_BUILDCERT}" />
+	<!--
     <property name="windows.build.user" value="${env.SITKA.WINDOWS.BUILDUSER}" />
     <property name="windows.build.server" value="${env.SITKA.WINDOWS.BUILDSERVER}" />
     <property name="windows.build.password" value="${env.SITKA.WINDOWS.BUILDPASSWORD}" />
-    <property name="windows.build.ev.certname" value="${env.SITKA.WINDOWS.EV.BUILDCERT}" />
-	<property name="windows.build.ev.certname.password" value="${env.SITKA.WINDOWS.EV.BUILDCERT.PASSWORD}" />
-    <property name="windows.build.certname.spc" value="${env.SITKA.WINDOWS.BUILDCERT.SPC}" />
-    <property name="windows.build.certname.pvk" value="${env.SITKA.WINDOWS.BUILDCERT.PVK}" />
-    <property name="windows.build.certname.password" value="${env.SITKA.WINDOWS.BUILDCERT.PASSWORD}" />
-    <property name="miradi.web.domain" value="${env.SITKA.MIRADI.WEB.DOMAIN}" />
+    -->
+    <property name="windows.build.ev.certname" value="${env.SITKA_WINDOWS_EV_BUILDCERT}" />
+	<property name="windows.build.ev.certname.password" value="${env.SITKA_WINDOWS_EV_BUILDCERT_PASSWORD}" />
+    <property name="windows.build.certname.spc" value="${env.SITKA_WINDOWS_BUILDCERT_SPC}" />
+    <property name="windows.build.certname.pvk" value="${env.SITKA_WINDOWS_BUILDCERT_PVK}" />
+    <property name="windows.build.certname.password" value="${env.SITKA_WINDOWS_BUILDCERT_PASSWORD}" />
+    <property name="miradi.web.domain" value="${env.SITKA_MIRADI_WEB_DOMAIN}" />
     <property name="jenkins.workspace" value="${env.WORKSPACE}"/>
-	<property name="scm.miradi-client.branch" value="${env.SCM.BRANCH}"/>
+	<property name="scm.miradi-client.branch" value="${env.SCM_BRANCH}"/>
 
     <!-- repos -->
     <property name="scm.miradi-client" value="git@github.com:sitkatech/miradi-client.git"/>
@@ -107,10 +109,14 @@
     
     <!-- defined values -->
 	<property name="installer.top" value="${build.dir}/installer"/>
+	<!--
 	<property name="installer.win32" value="${installer.top}/Win32_NSIS/"/>
+	-->
 	<property name="installer.buildfiles.dir" value="${installer.top}/BuildFiles"/>
+	<!--
     <property name="installer.src" value="${installer.win32}"/>
     <property name="installer.bin" value="${installer.win32}/bin"/>
+    -->
 	<property name="installer.mac.dir" value="${installer.top}/Mac" />
 	<property name="installer.mac.dmgbuild.dir" value="${installer.mac.dir}/dmgbuild" />
 
@@ -121,9 +127,11 @@
 	<property name="mac.app.name" value="Miradi-${version.full}" />
 	<property name="windows.setup.name" value="MiradiSetup_${version.full.installer}" />
 
+	<!--
 	<condition property="nsis.executable" value="makensis.exe" else="makensis">
 		<os family="windows"/>
 	</condition>
+	-->
 
 	<!-- translations -->
 	<property name="miradi.pot" value="${dist.dir}/miradi-${version.langpack}.pot" />
@@ -161,17 +169,19 @@
     <fail message="env.WORKSPACE is not defined" unless="env.WORKSPACE"/>
     <echo message="env.WORKSPACE = ${env.WORKSPACE}"/>
 
-    <fail message="env.JAVA.BOOT.CLASSPATH is not defined" unless="env.JAVA.BOOT.CLASSPATH"/>
-    <echo message="env.JAVA.BOOT.CLASSPATH = ${env.JAVA.BOOT.CLASSPATH}"/>
+    <fail message="env.JAVA_BOOT_CLASSPATH is not defined" unless="env.JAVA_BOOT_CLASSPATH"/>
+    <echo message="env.JAVA_BOOT_CLASSPATH = ${env.JAVA_BOOT_CLASSPATH}"/>
 
+	<!--
     <fail message="env.INSTALL4J.INSTALL.PATH is not defined" unless="env.INSTALL4J.INSTALL.PATH"/>
     <echo message="env.INSTALL4J.INSTALL.PATH = ${env.INSTALL4J.INSTALL.PATH}"/>
 
     <fail message="env.INSTALL4J.JRES.PATH is not defined" unless="env.INSTALL4J.JRES.PATH"/>
     <echo message="env.INSTALL4J.JRES.PATH = ${env.INSTALL4J.JRES.PATH}"/>
+	-->
 
-	<fail message="env.SCM.BRANCH is not defined" unless="env.SCM.BRANCH"/>
-	<echo message="env.SCM.BRANCH = ${env.SCM.BRANCH}"/>
+	<fail message="env.SCM_BRANCH is not defined" unless="env.SCM_BRANCH"/>
+	<echo message="env.SCM_BRANCH = ${env.SCM_BRANCH}"/>
 
 	<condition property="isLinux">
         <and>
@@ -207,18 +217,18 @@
 <!-- B U I L D                                                          -->
 <!-- ================================================================== -->
 <target name="build" depends="init, ThirdParty" description="Compile Miradi">
-<mkdir dir="${eam.class.root}"/>
+	<mkdir dir="${eam.class.root}"/>
 
-<javac source="1.8" target="1.8" compiler="javac1.8" optimize="on" failonerror="true"
-        includeantruntime="false"
-        debug="true" debuglevel="lines,source"
-        srcdir="${eam.src.root}" destdir="${eam.class.root}"
-        bootclasspath="${env.JAVA.BOOT.CLASSPATH}" >
-    <compilerarg value="-Xlint:unchecked" />
-    <compilerarg value="-Werror" />
-    <classpath refid="eam.class.path"/>
-    <include name="**/*.java"/>
-</javac>
+	<javac source="1.8" target="1.8" compiler="javac1.8" optimize="on" failonerror="true"
+			includeantruntime="false"
+			debug="true" debuglevel="lines,source"
+			srcdir="${eam.src.root}" destdir="${eam.class.root}"
+			bootclasspath="${env.JAVA_BOOT_CLASSPATH}" >
+		<compilerarg value="-Xlint:unchecked" />
+		<compilerarg value="-Werror" />
+		<classpath refid="eam.class.path"/>
+		<include name="**/*.java"/>
+	</javac>
 
 </target>
 
@@ -226,44 +236,44 @@
 <!-- T E S T                                                            -->
 <!-- ================================================================== -->
 <target name="test" depends="init, build" description="Run unit tests">
-<mkdir dir="${eam.test.class.root}"/>
-<javac source="1.8" target="1.8" compiler="javac1.8" optimize="on" failonerror="true"
-        srcdir="${eam.test.src.root}" destdir="${eam.test.class.root}" >
-    <compilerarg value="-Xlint:unchecked" />
-    <classpath refid="eam.class.path"/>
-    <classpath location='${junit.jar}' />
-    <include name="**/*.java"/>
-</javac>
+	<mkdir dir="${eam.test.class.root}"/>
+	<javac source="1.8" target="1.8" compiler="javac1.8" optimize="on" failonerror="true"
+			srcdir="${eam.test.src.root}" destdir="${eam.test.class.root}" >
+		<compilerarg value="-Xlint:unchecked" />
+		<classpath refid="eam.class.path"/>
+		<classpath location='${junit.jar}' />
+		<include name="**/*.java"/>
+	</javac>
 
-<copy todir="${eam.test.class.root}/resources">
-    <fileset dir="${eam.resources}" />
-</copy>
-<copy todir="${eam.test.class.root}/translations">
-    <fileset dir="${eam.test.src.root}/translations" />
-</copy>
-<copy todir="${eam.test.class.root}">
-    <fileset dir="${eam.src.root}">
-        <include name="**/*.txt" />
-    </fileset>
-</copy>
-<copy todir="${eam.test.class.root}">
-    <fileset dir="${eam.test.src.root}">
-        <include name="**/*.xls" />
-        <include name="**/*.mpz" />
-        <include name="**/*.Miradi" />
-    </fileset>
-</copy>
+	<copy todir="${eam.test.class.root}/resources">
+		<fileset dir="${eam.resources}" />
+	</copy>
+	<copy todir="${eam.test.class.root}/translations">
+		<fileset dir="${eam.test.src.root}/translations" />
+	</copy>
+	<copy todir="${eam.test.class.root}">
+		<fileset dir="${eam.src.root}">
+			<include name="**/*.txt" />
+		</fileset>
+	</copy>
+	<copy todir="${eam.test.class.root}">
+		<fileset dir="${eam.test.src.root}">
+			<include name="**/*.xls" />
+			<include name="**/*.mpz" />
+			<include name="**/*.Miradi" />
+		</fileset>
+	</copy>
 
-<junit haltonfailure='on' showoutput='on'>
-    <classpath location='${junit.jar}' />
-    <classpath refid='eam.class.path' />
-    <classpath location='${eam.class.root}' />
+	<junit haltonfailure='on' showoutput='on'>
+		<classpath location='${junit.jar}' />
+		<classpath refid='eam.class.path' />
+		<classpath location='${eam.class.root}' />
 
-    <test name='org.miradi.main.MainTests' todir='${eam.test.class.root}' />
+		<test name='org.miradi.main.MainTests' todir='${eam.test.class.root}' />
 
-    <formatter type="plain" />
+		<formatter type="plain" />
 
-</junit>
+	</junit>
 </target>
 
 <!-- ================================================================== -->
@@ -560,6 +570,7 @@
 <!-- ================================================================== -->
 <!-- C U S T O M  T A S K   D E S                                       -->
 <!-- ================================================================== -->
+<!--
 <taskdef name="appbundler"
          classname="com.oracle.appbundler.AppBundlerTask"
          classpath="${installer.mac.dir}/appbundler-1.0ea/appbundler-1.0ea.jar" />
@@ -567,6 +578,7 @@
 <taskdef name="install4j"
          classname="com.install4j.Install4JTask"
          classpath="${env.INSTALL4J.INSTALL.PATH}\ant.jar"/>
+-->
 
 <!-- ================================================================== -->
 <!-- Z I P S                                                            -->
@@ -922,7 +934,9 @@
 	<condition property="FilesWereModified">
 		<length string="${output}" trim="true" when="greater" length="0" />
 	</condition>
+	<!--
 	<antcall target="CommitTranslations" />
+	-->
 </target>
 
 <target name="CommitTranslations" if="FilesWereModified">
@@ -957,6 +971,7 @@
 <!-- ================================================================== -->
 <!-- M A C   A P P   B U N D L E                                        -->
 <!-- ================================================================== -->
+
 <target name="macappbundle" depends="" description="create a jar app bundle for the mac">
 
 	<mkdir dir="${dist.mactree}" />
@@ -1154,7 +1169,10 @@
 <!-- ================================================================== -->
 <!-- R E L E A S E                                                      -->
 <!-- ================================================================== -->
+<!--
 <target name="release" depends="translations, source, zips, macdmgfile, win32installer, cleanup, permissions">
+-->
+<target name="release" depends="translations, source, zips, cleanup">
     <echo message="Release Built"/>
     <echo message="REMEMBER TO TAG THIS RELEASE WITH ${version.timestamp} !"/>
 </target>
