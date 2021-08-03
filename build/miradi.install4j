@@ -713,7 +713,7 @@ return console.askYesNo(message, true);
   </installerGui>
   <mediaSets>
     <windows name="Windows" id="22" installDir="Miradi" jreBitType="32">
-      <jreBundle jreBundleSource="preCreated" includedJre="windows-x86-1.8.0_212.tar.gz" bundleType="dynamic" bundleUrl="${compiler:jres.path}/windows-x86-1.8.0_212.tar.gz" directDownload="true" installOnlyIfNecessary="true" />
+      <jreBundle jreBundleSource="none" bundleType="dynamic" bundleUrl="${compiler:jres.path}/windows-x86-1.8.0_212.tar.gz" directDownload="true" installOnlyIfNecessary="true" />
     </windows>
   </mediaSets>
   <buildIds buildAll="false">

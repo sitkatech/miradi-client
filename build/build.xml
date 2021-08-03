@@ -33,9 +33,10 @@
     <property name="windows.build.user" value="${env.SITKA.WINDOWS.BUILDUSER}" />
     <property name="windows.build.server" value="${env.SITKA.WINDOWS.BUILDSERVER}" />
     <property name="windows.build.password" value="${env.SITKA.WINDOWS.BUILDPASSWORD}" />
-    -->
     <property name="windows.build.ev.certname" value="${env.SITKA_WINDOWS_EV_BUILDCERT}" />
 	<property name="windows.build.ev.certname.password" value="${env.SITKA_WINDOWS_EV_BUILDCERT_PASSWORD}" />
+    -->
+    <property name="windows.build.certname.pfx" value="${env.SITKA_WINDOWS_BUILDCERT_PFX}" />
     <property name="windows.build.certname.spc" value="${env.SITKA_WINDOWS_BUILDCERT_SPC}" />
     <property name="windows.build.certname.pvk" value="${env.SITKA_WINDOWS_BUILDCERT_PVK}" />
     <property name="windows.build.certname.password" value="${env.SITKA_WINDOWS_BUILDCERT_PASSWORD}" />
@@ -44,8 +45,8 @@
 	<property name="scm.miradi-client.branch" value="${env.SCM_BRANCH}"/>
 
     <!-- repos -->
-    <property name="scm.miradi-client" value="git@github.com:sitkatech/miradi-client.git"/>
-    <property name="scm.miradi-client-thirdparty" value="git@github.com:sitkatech/miradi-client-thirdparty.git"/>
+    <property name="scm.miradi-client" value="https://github.com/sitkatech/miradi-client"/>
+    <property name="scm.miradi-client-thirdparty" value="https://github.com/sitkatech/miradi-client-thirdparty"/>
 
 	<!-- directories -->
 	<property name="build.dir" value="${jenkins.workspace}/build"/>
@@ -203,14 +204,14 @@
 <!-- C L E A N                                                          -->
 <!-- ================================================================== -->
 <target name="clean" description="Remove all class files and jars">
-<delete dir="${dist.dir}"/>
+	<delete dir="${dist.dir}"/>
 </target>
 
 <!-- ================================================================== -->
 <!-- CLEANUP                                                          -->
 <!-- ================================================================== -->
 <target name="cleanup" description="Delete temp files">
-<delete dir="${dist.temp}"/>
+	<delete dir="${dist.temp}"/>
 </target>
 
 <!-- ================================================================== -->
@@ -280,16 +281,16 @@
 <!-- J A R                                                          -->
 <!-- ================================================================== -->
 <target name="jar" depends="test" description="Create jar">
-        <mkdir dir="${dist.dir}"/>
-        <jar destfile="${dist.dir}/miradi.jar">
-          	<manifest>
-          		<attribute name="main-class" value="org.miradi.main.Miradi"/>
-          	</manifest>
-            <fileset dir="${eam.class.root}" includes="**/*.class"/>
-            <fileset dir="${eam.src.root}" includes="resources/**/*" />
-            <fileset dir="${eam.src.root}" includes="org/miradi/xml/**/*.txt" />
-        	<fileset dir="${dist.dir}" includes="*.txt" />
-        </jar>
+	<mkdir dir="${dist.dir}"/>
+	<jar destfile="${dist.dir}/miradi.jar">
+		<manifest>
+			<attribute name="main-class" value="org.miradi.main.Miradi"/>
+		</manifest>
+		<fileset dir="${eam.class.root}" includes="**/*.class"/>
+		<fileset dir="${eam.src.root}" includes="resources/**/*" />
+		<fileset dir="${eam.src.root}" includes="org/miradi/xml/**/*.txt" />
+		<fileset dir="${dist.dir}" includes="*.txt" />
+	</jar>
 </target>
 
 <!-- ================================================================== -->
@@ -574,11 +575,10 @@
 <taskdef name="appbundler"
          classname="com.oracle.appbundler.AppBundlerTask"
          classpath="${installer.mac.dir}/appbundler-1.0ea/appbundler-1.0ea.jar" />
-
+-->
 <taskdef name="install4j"
          classname="com.install4j.Install4JTask"
          classpath="${env.INSTALL4J.INSTALL.PATH}\ant.jar"/>
--->
 
 <!-- ================================================================== -->
 <!-- Z I P S                                                            -->
@@ -805,60 +805,60 @@
 <!-- ITALIAN                                                            -->
 <!-- ================================================================== -->
 <target name="italian" depends="pot" description="Update Italian Content">
-<antcall target="update-po">
-	<param name="po.file" value="${miradi.po.it}"/>
-	<param name="language.code" value="it"/>
-</antcall>
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.it}"/>
+		<param name="language.code" value="it"/>
+	</antcall>
 </target>
 
 <!-- ================================================================== -->
 <!-- MALAGASY (PLATEAU)                                                 -->
 <!-- ================================================================== -->
 <target name="malagasy" depends="pot" description="Update Malagasy Content">
-<antcall target="update-po">
-	<param name="po.file" value="${miradi.po.plt}"/>
-	<param name="language.code" value="plt"/>
-</antcall>
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.plt}"/>
+		<param name="language.code" value="plt"/>
+	</antcall>
 </target>
 
 <!-- ================================================================== -->
 <!-- MONGOLIAN (CYRILLIC SCRIPT)                                        -->
 <!-- ================================================================== -->
 <target name="mongolian" depends="pot" description="Update Mongolian Content">
-<antcall target="update-po">
-	<param name="po.file" value="${miradi.po.mn}"/>
-	<param name="language.code" value="mn"/>
-</antcall>
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.mn}"/>
+		<param name="language.code" value="mn"/>
+	</antcall>
 </target>
 
 <!-- ================================================================== -->
 <!-- NEPALESE					                                        -->
 <!-- ================================================================== -->
 <target name="nepalese" depends="pot" description="Update Nepalese Content">
-<antcall target="update-po">
-	<param name="po.file" value="${miradi.po.ne}"/>
-	<param name="language.code" value="ne"/>
-</antcall>
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.ne}"/>
+		<param name="language.code" value="ne"/>
+	</antcall>
 </target>
 
 <!-- ================================================================== -->
 <!-- PORTUGUESE                                                         -->
 <!-- ================================================================== -->
 <target name="portuguese" depends="pot" description="Update Portuguese Content">
-<antcall target="update-po">
-	<param name="po.file" value="${miradi.po.pt}"/>
-	<param name="language.code" value="pt"/>
-</antcall>
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.pt}"/>
+		<param name="language.code" value="pt"/>
+	</antcall>
 </target>
 
 <!-- ================================================================== -->
 <!-- PSP (English, but with some terms substituted                      -->
 <!-- ================================================================== -->
 <target name="psp-langpack" depends="pot" description="Update PSP Language Pack Content">
-<antcall target="update-po">
-	<param name="po.file" value="${miradi.po.psp}"/>
-	<param name="language.code" value="psp"/>
-</antcall>
+	<antcall target="update-po">
+		<param name="po.file" value="${miradi.po.psp}"/>
+		<param name="language.code" value="psp"/>
+	</antcall>
 </target>
 
 <!-- ================================================================== -->
@@ -971,7 +971,6 @@
 <!-- ================================================================== -->
 <!-- M A C   A P P   B U N D L E                                        -->
 <!-- ================================================================== -->
-
 <target name="macappbundle" depends="" description="create a jar app bundle for the mac">
 
 	<mkdir dir="${dist.mactree}" />
@@ -1134,7 +1133,11 @@
 	<!-- sign built exe -->
 	<echo message="Signing ${windows.setup.name}.exe" />
 
-	<exec executable="osslsigncode" failonerror="true">
+	<exec executable="signtool" failonerror="true" osfamily="windows">
+		<arg line="sign /t http://timestamp.digicert.com /f ${windows.build.certname.pfx} /p ${windows.build.certname.password} ${dist.dir}/${windows.setup.name}.exe"/>
+	</exec>
+
+	<exec executable="osslsigncode" failonerror="true" osfamily="unix">
 		<arg value="-certs"/>
 		<arg value="${windows.build.certname.spc}"/>
 		<arg value="-key"/>
@@ -1156,7 +1159,6 @@
 	<!-- clean up -->
 	<delete file="${dist.dir}/${windows.setup.name}.exe"/>
 	<move file="${dist.dir}/${windows.setup.name}_signed.exe" tofile="${dist.dir}/${windows.setup.name}.exe"/>
-
 </target>
 
 <!-- ================================================================== -->
@@ -1172,7 +1174,7 @@
 <!--
 <target name="release" depends="translations, source, zips, macdmgfile, win32installer, cleanup, permissions">
 -->
-<target name="release" depends="translations, source, zips, cleanup">
+<target name="release" depends="source, zips, cleanup">
     <echo message="Release Built"/>
     <echo message="REMEMBER TO TAG THIS RELEASE WITH ${version.timestamp} !"/>
 </target>
