@@ -1,4 +1,4 @@
-/* 
+/*
 Copyright 2005-2018, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
@@ -6,7 +6,7 @@ Material developed between 2005-2013 is jointly copyright by Beneficent Technolo
 This file is part of Miradi
 
 Miradi is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License version 3, 
+it under the terms of the GNU General Public License version 3,
 as published by the Free Software Foundation.
 
 Miradi is distributed in the hope that it will be useful,
@@ -15,19 +15,19 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/ 
+along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
-package org.miradi.xml.xmpz2.xmpz2schema;
+package org.miradi.xml.xmpz2;
 
 import org.miradi.objects.MiradiShareProjectData;
-import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.MiradiShareProjectDataSchema;
 
-public class MiradiShareProjectDataSchemaWriter extends SingletonSchemaWriter
+public class MiradiShareProjectDataExporter extends SingletonBaseObjectExporter
 {
-	public MiradiShareProjectDataSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
+	public MiradiShareProjectDataExporter(Xmpz2XmlWriter writerToUse)
 	{
-		super(creatorToUse, baseObjectSchemaToUse);
+		super(writerToUse, MiradiShareProjectDataSchema.getObjectType());
 	}
 
 	@Override

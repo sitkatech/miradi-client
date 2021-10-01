@@ -22,10 +22,7 @@ package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.ids.BaseId;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.TaggedObjectSet;
+import org.miradi.objects.*;
 import org.miradi.schemas.*;
 import org.miradi.utils.StringUtilities;
 import org.miradi.utils.XmlUtilities2;
@@ -46,35 +43,38 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 	public void importFields() throws Exception
 	{
 		Node extraDataNode = getImporter().getNamedChildNode(getImporter().getRootNode(), EXTRA_DATA);
-		Node extraDataSection = getImporter().getNamedChildNode(extraDataNode, EXTRA_DATA_SECTION);
-		if (extraDataSection == null)
-			return;
-		
-		String sectionOwner = getImporter().getAttributeValue(extraDataSection, EXTRA_DATA_SECTION_OWNER_ATTRIBUTE);
-		if (!sectionOwner.equals(MIRADI_CLIENT_EXTRA_DATA_SECTION))
-			return;
-		
-		NodeList extraDataNodes = getImporter().getNodes(extraDataSection, new String[]{EXTRA_DATA_ITEM, });
-		for (int index = 0; index < extraDataNodes.getLength(); ++index)
+
+		NodeList extraDataSectionNodes = getImporter().getNodes(extraDataNode, new String[]{EXTRA_DATA_SECTION, });
+		for (int i = 0; i < extraDataSectionNodes.getLength(); ++i)
 		{
-			Node extraDataItemNode = extraDataNodes.item(index);
-			String extraDataName = getImporter().getAttributeValue(extraDataItemNode, EXTRA_DATA_ITEM_NAME);
-			String[] splitValues = extraDataName.split(TYPE_ID_TAG_SPLIT_TOKEN_FOR_REGULAR_EXPRESSION);
-			if (splitValues.length != 3)
-				throw new RuntimeException("Incorrect number if values split of extra data name, Raw name before split = " + extraDataName);
-			String typeName = splitValues[0];
-			String id = splitValues[1];
-			String tag = splitValues[2].replace(FIELD_TAG_ESCAPE_TOKEN, TYPE_ID_TAG_SPLIT_TOKEN);
-			
-			BaseObject baseObject = createOrGetExisting(typeName, id);
-			Node extraDataItemValueNode = getImporter().getNamedChildNode(extraDataItemNode, EXTRA_DATA_ITEM_VALUE);
-			if (extraDataItemValueNode != null)
+			Node extraDataSectionNode = extraDataSectionNodes.item(i);
+
+			String sectionOwner = getImporter().getAttributeValue(extraDataSectionNode, EXTRA_DATA_SECTION_OWNER_ATTRIBUTE);
+			if (!(sectionOwner.equals(MIRADI_CLIENT_EXTRA_DATA_SECTION) || sectionOwner.equals(MIRADI_SHARE_EXTRA_DATA_SECTION)))
+				return;
+
+			NodeList extraDataNodes = getImporter().getNodes(extraDataSectionNode, new String[]{EXTRA_DATA_ITEM, });
+			for (int j = 0; j < extraDataNodes.getLength(); ++j)
 			{
-				String value = extraDataItemValueNode.getTextContent();
-				if (doesFieldRequireDataToBeXmlDecoded(typeName, tag))
-					value = XmlUtilities2.getXmlDecoded(value);
-				value = StringUtilities.unescapeQuotesWithBackslash(value);
-				baseObject.setData(tag, value);
+				Node extraDataItemNode = extraDataNodes.item(j);
+				String extraDataName = getImporter().getAttributeValue(extraDataItemNode, EXTRA_DATA_ITEM_NAME);
+				String[] splitValues = extraDataName.split(TYPE_ID_TAG_SPLIT_TOKEN_FOR_REGULAR_EXPRESSION);
+				if (splitValues.length != 3)
+					throw new RuntimeException("Incorrect number if values split of extra data name, Raw name before split = " + extraDataName);
+				String typeName = splitValues[0];
+				String id = splitValues[1];
+				String tag = splitValues[2].replace(FIELD_TAG_ESCAPE_TOKEN, TYPE_ID_TAG_SPLIT_TOKEN);
+
+				BaseObject baseObject = createOrGetExisting(typeName, id);
+				Node extraDataItemValueNode = getImporter().getNamedChildNode(extraDataItemNode, EXTRA_DATA_ITEM_VALUE);
+				if (extraDataItemValueNode != null)
+				{
+					String value = extraDataItemValueNode.getTextContent();
+					if (doesFieldRequireDataToBeXmlDecoded(typeName, tag))
+						value = XmlUtilities2.getXmlDecoded(value);
+					value = StringUtilities.unescapeQuotesWithBackslash(value);
+					baseObject.setData(tag, value);
+				}
 			}
 		}
 	}
@@ -111,6 +111,9 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 		if (typeName.equals(ProjectMetadataSchema.OBJECT_NAME))
 			return ProjectMetadataSchema.getObjectType();
 
+		if (typeName.equals(MiradiShareProjectDataSchema.OBJECT_NAME))
+			return MiradiShareProjectDataSchema.getObjectType();
+
 		if (typeName.equals(TableSettingsSchema.OBJECT_NAME))
 			return TableSettingsSchema.getObjectType();
 		
@@ -137,6 +140,9 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 		if (typeName.equals(ProjectMetadataSchema.OBJECT_NAME))
 			return true;
 
+		if (typeName.equals(MiradiShareProjectDataSchema.OBJECT_NAME))
+			return true;
+
 		return false;
 	}
 
@@ -144,6 +150,12 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 	{
 		if (typeName.equals(ProjectMetadataSchema.OBJECT_NAME))
 			return getProject().getMetadata();
+
+		if (typeName.equals(MiradiShareProjectDataSchema.OBJECT_NAME))
+		{
+			ORef miradiShareProjectDataRef = getProject().getSingletonObjectRef(MiradiShareProjectDataSchema.getObjectType());
+			return MiradiShareProjectData.find(getProject(), miradiShareProjectDataRef);
+		}
 
 		throw new RuntimeException("Do not know how to retrieve singleton object for type name, " + typeName);
 	}
@@ -154,6 +166,11 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 		{
 			getProject().createProjectMetadata();
 			return getProject().getMetadata().getRef();
+		}
+
+		if (typeName.equals(MiradiShareProjectDataSchema.OBJECT_NAME))
+		{
+			return getProject().getSingletonObjectRef(MiradiShareProjectDataSchema.getObjectType());
 		}
 
 		throw new RuntimeException("Do not know how to create singleton object for type name, " + typeName);
@@ -168,6 +185,9 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 			return true;
 
 		if (typeName.equals(ProjectMetadataSchema.OBJECT_NAME) && tag.equals(ProjectMetadata.TAG_NEXT_STEPS))
+			return true;
+
+		if (typeName.equals(MiradiShareProjectDataSchema.OBJECT_NAME) && tag.equals(MiradiShareProjectData.TAG_EXTRA_DATA))
 			return true;
 
 		if (typeName.equals(IndicatorSchema.OBJECT_NAME) && tag.equals(Indicator.TAG_ASSIGNED_LEADER_RESOURCE))

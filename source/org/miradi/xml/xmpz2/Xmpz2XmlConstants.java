@@ -21,6 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2;
 
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.MiradiShareProjectData;
 import org.miradi.schemas.*;
 
 public interface Xmpz2XmlConstants
@@ -251,6 +252,7 @@ public interface Xmpz2XmlConstants
 	public static final String EXTRA_DATA_SECTION = "ExtraDataSection";
 	public static final String EXTRA_DATA_SECTION_OWNER_ATTRIBUTE = "owner";
 	public static final String MIRADI_CLIENT_EXTRA_DATA_SECTION = "MiradiClient";
+	public static final String MIRADI_SHARE_EXTRA_DATA_SECTION = MiradiShareProjectData.MIRADI_SHARE_PROJECT_CODE;
 	public static final String EXTRA_DATA_ITEM = "ExtraDataItem";
 	public static final String EXTRA_DATA_ITEM_NAME = "ExtraDataItemName";
 	public static final String EXTRA_DATA_ITEM_VALUE = "ExtraDataItemValue";

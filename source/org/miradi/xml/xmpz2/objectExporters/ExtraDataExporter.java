@@ -21,14 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.objectExporters;
 
 import org.miradi.ids.BaseId;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.objects.MiradiShareProjectData;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
-import org.miradi.schemas.ReportTemplateSchema;
-import org.miradi.schemas.TableSettingsSchema;
-import org.miradi.schemas.ViewDataSchema;
-import org.miradi.schemas.XslTemplateSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.StringUtilities;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
@@ -45,6 +44,16 @@ public class ExtraDataExporter implements Xmpz2XmlConstants
 	public void exportExtraData() throws Exception
 	{
 		getWriter().writeStartElement(EXTRA_DATA);
+		exportMiradiClientExtraData();
+		if (getProject().getMetadata().isMiradiShareProject())
+		{
+			exportMiradiShareExtraData();
+		}
+		getWriter().writeEndElement(EXTRA_DATA);
+	}
+
+	private void exportMiradiClientExtraData() throws Exception
+	{
 		getWriter().writeStartElementWithAttribute(EXTRA_DATA_SECTION, EXTRA_DATA_SECTION_OWNER_ATTRIBUTE, MIRADI_CLIENT_EXTRA_DATA_SECTION);
 		writeExtraDataElement(project.getMetadata(), ProjectMetadata.TAG_CURRENT_WIZARD_SCREEN_NAME);
 		exportPool(ViewDataSchema.getObjectType());
@@ -52,9 +61,17 @@ public class ExtraDataExporter implements Xmpz2XmlConstants
 		exportPool(XslTemplateSchema.getObjectType());
 		exportPool(ReportTemplateSchema.getObjectType());
 		getWriter().writeEndElement(EXTRA_DATA_SECTION);
-		getWriter().writeEndElement(EXTRA_DATA);
 	}
-	
+
+	private void exportMiradiShareExtraData() throws Exception
+	{
+		getWriter().writeStartElementWithAttribute(EXTRA_DATA_SECTION, EXTRA_DATA_SECTION_OWNER_ATTRIBUTE, MIRADI_SHARE_EXTRA_DATA_SECTION);
+		ORef miradiShareProjectDataRef = getProject().getSingletonObjectRef(MiradiShareProjectDataSchema.getObjectType());
+		MiradiShareProjectData miradiShareProjectData = MiradiShareProjectData.find(getProject(), miradiShareProjectDataRef);
+		writeExtraDataElement(miradiShareProjectData, MiradiShareProjectData.TAG_EXTRA_DATA);
+		getWriter().writeEndElement(EXTRA_DATA_SECTION);
+	}
+
 	private void exportPool(int poolTypeToImport) throws Exception
 	{
 		ORefList objectRefs = getProject().getPool(poolTypeToImport).getSortedRefList();

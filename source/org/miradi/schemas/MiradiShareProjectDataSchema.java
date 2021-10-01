@@ -46,6 +46,7 @@ public class MiradiShareProjectDataSchema extends BaseObjectSchema
 		createFieldSchemaSingleLineUserText(MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_NAME);
 		createFieldSchemaSingleLineUserText(MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION_ID);
 		createFieldSchemaSingleLineUserText(MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION);
+		createFieldSchemaSingleLineUserText(MiradiShareProjectData.TAG_EXTRA_DATA);
 		createTaxonomyClassificationSchemaField();
 	}
 
