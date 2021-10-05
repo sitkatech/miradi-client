@@ -71,7 +71,11 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		{
 			addField(createRadioButtonEditorField(CauseSchema.getObjectType(), Cause.TAG_TAXONOMY_CODE, new ThreatClassificationQuestion()));
 		}
-		
+		if (factorToEdit.isIntermediateResult())
+		{
+			addTaxonomyFields(IntermediateResultSchema.getObjectType());
+		}
+
 		if(factorToEdit.isStrategy())
 		{
 			addOptionalDraftStatusCheckBox(Strategy.TAG_STATUS);

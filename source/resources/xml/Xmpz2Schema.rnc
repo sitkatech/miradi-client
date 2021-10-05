@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Wed May 23 16:13:09 BST 2018 $
-# $LastChangedRevision: 237 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/237'
+# $LastChangedDate: Tue Oct 05 16:25:20 BST 2021 $
+# $LastChangedRevision: 238 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/238'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -71,6 +71,7 @@ ConservationProject.element = element miradi:ConservationProject
   BiophysicalResultTaxonomyAssociationPool.element? &
   ContributingFactorTaxonomyAssociationPool.element? &
   DirectThreatTaxonomyAssociationPool.element? &
+  IntermediateResultTaxonomyAssociationPool.element? &
   StrategyTaxonomyAssociationPool.element? &
   ResultsChainTaxonomyAssociationPool.element? &
   ConceptualModelTaxonomyAssociationPool.element? &
@@ -551,7 +552,8 @@ IntermediateResult.element = element miradi:IntermediateResult
   element miradi:IntermediateResultName { formatted_text }? &
   element miradi:IntermediateResultObjectiveIds { ObjectiveId.element* }? &
   element miradi:IntermediateResultResultReportIds { ResultReportId.element* }? &
-  element miradi:IntermediateResultUUID { uuid }
+  element miradi:IntermediateResultUUID { uuid } &
+  TaxonomyClassificationContainer.element?
 }
 
 ResultsChainPool.element = element miradi:ResultsChainPool { ResultsChain.element* }
@@ -1307,6 +1309,7 @@ BiophysicalFactorTaxonomyAssociationPool.element = element miradi:BiophysicalFac
 BiophysicalResultTaxonomyAssociationPool.element = element miradi:BiophysicalResultTaxonomyAssociationPool { TaxonomyAssociation.element* }
 ContributingFactorTaxonomyAssociationPool.element = element miradi:ContributingFactorTaxonomyAssociationPool { TaxonomyAssociation.element* }
 DirectThreatTaxonomyAssociationPool.element = element miradi:DirectThreatTaxonomyAssociationPool { TaxonomyAssociation.element* }
+IntermediateResultTaxonomyAssociationPool.element = element miradi:IntermediateResultTaxonomyAssociationPool { TaxonomyAssociation.element* }
 StrategyTaxonomyAssociationPool.element = element miradi:StrategyTaxonomyAssociationPool { TaxonomyAssociation.element* }
 ResultsChainTaxonomyAssociationPool.element = element miradi:ResultsChainTaxonomyAssociationPool { TaxonomyAssociation.element* }
 ConceptualModelTaxonomyAssociationPool.element = element miradi:ConceptualModelTaxonomyAssociationPool { TaxonomyAssociation.element* }

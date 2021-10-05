@@ -123,6 +123,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(BIOPHYSICAL_RESULT_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(CONTRIBUTING_FACTOR_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(DIRECT_THREAT_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(INTERMEDIATE_RESULT_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(STRATEGY_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(RESULTS_CHAIN_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(CONCEPTUAL_MODEL_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
@@ -184,6 +185,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		elementNames.add(createOptionalSchemaElement(BIOPHYSICAL_RESULT_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(CONTRIBUTING_FACTOR_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(DIRECT_THREAT_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(INTERMEDIATE_RESULT_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(STRATEGY_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(RESULTS_CHAIN_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(CONCEPTUAL_MODEL_TAXONOMY_ASSOCIATION_POOL));
@@ -1211,6 +1213,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (ThreatReductionResult.is(baseObjectSchema.getType()))
 			return new ThreatReductionResultSchemaWriter(this, baseObjectSchema);
 		
+		if (IntermediateResult.is(baseObjectSchema.getType()))
+			return new IntermediateResultSchemaWriter(this, baseObjectSchema);
+
 		if (MiradiShareTaxonomy.is(baseObjectSchema.getType()))
 			return new MiradiShareTaxonomySchemaWriter(this, baseObjectSchema);
 		

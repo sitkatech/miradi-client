@@ -37,6 +37,7 @@ public class IntermediateResultSchema extends EvidenceFactorSchema
 		createResultReportSchema();
 	    writeIndicatorIds();
 		writeObjectiveIds();
+		createTaxonomyClassificationSchemaField();
 	}
 
 	public static int getObjectType()

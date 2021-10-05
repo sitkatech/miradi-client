@@ -33,8 +33,9 @@ public interface Xmpz2XmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String DOT_ELEMENT = ".element";
 	
-	public static final String NAME_SPACE_VERSION = "237";
+	public static final String NAME_SPACE_VERSION = "238";
 
+	public static final String NAME_SPACE_VERSION_238 = "238";
 	public static final String NAME_SPACE_VERSION_237 = "237";
 	public static final String NAME_SPACE_VERSION_236 = "236";
 	public static final String NAME_SPACE_VERSION_235 = "235";
@@ -325,6 +326,7 @@ public interface Xmpz2XmlConstants
 	public static final String BIOPHYSICAL_RESULT_TAXONOMY_ASSOCIATION_POOL = "BiophysicalResultTaxonomyAssociationPool";
 	public static final String CONTRIBUTING_FACTOR_TAXONOMY_ASSOCIATION_POOL = "ContributingFactorTaxonomyAssociationPool";
 	public static final String DIRECT_THREAT_TAXONOMY_ASSOCIATION_POOL = "DirectThreatTaxonomyAssociationPool";
+	public static final String INTERMEDIATE_RESULT_TAXONOMY_ASSOCIATION_POOL = "IntermediateResultTaxonomyAssociationPool";
 	public static final String STRATEGY_TAXONOMY_ASSOCIATION_POOL = "StrategyTaxonomyAssociationPool";
 	public static final String RESULTS_CHAIN_TAXONOMY_ASSOCIATION_POOL = "ResultsChainTaxonomyAssociationPool";
 	public static final String CONCEPTUAL_MODEL_TAXONOMY_ASSOCIATION_POOL = "ConceptualModelTaxonomyAssociationPool";
