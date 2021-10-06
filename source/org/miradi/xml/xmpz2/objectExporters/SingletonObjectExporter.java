@@ -43,6 +43,7 @@ import org.miradi.schemas.WcpaProjectDataSchema;
 import org.miradi.schemas.WcsProjectDataSchema;
 import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.utils.CodeList;
+import org.miradi.xml.xmpz2.MiradiShareProjectDataExporter;
 import org.miradi.xml.xmpz2.SingletonBaseObjectExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
@@ -375,7 +376,7 @@ public class SingletonObjectExporter implements Xmpz2XmlConstants
 	
 	private void writeMiradiShareProjectDataElement() throws Exception
 	{
-		SingletonBaseObjectExporter exporter = new SingletonBaseObjectExporter(getWriter(), MiradiShareProjectDataSchema.getObjectType());
+		MiradiShareProjectDataExporter exporter = new MiradiShareProjectDataExporter(getWriter());
 		exporter.writeBaseObjectDataSchemaElement(getMiradiShareProjectData());
 	}
 	
