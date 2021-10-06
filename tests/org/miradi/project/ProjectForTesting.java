@@ -873,7 +873,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectWithSampleStringData(miradiShareProjectData, MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_NAME);
 		fillObjectWithSampleStringData(miradiShareProjectData, MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION_ID);
 		fillObjectWithSampleStringData(miradiShareProjectData, MiradiShareProjectData.TAG_PROGRAM_TAXONOMY_SET_VERSION);
-		
+		fillObjectWithSampleStringData(miradiShareProjectData, MiradiShareProjectData.TAG_EXTRA_DATA);
+
 		return miradiShareProjectData;
 	}
 	
