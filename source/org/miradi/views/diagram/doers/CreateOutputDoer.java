@@ -17,80 +17,23 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
-
 package org.miradi.views.diagram.doers;
 
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Task;
-import org.miradi.project.Project;
-import org.miradi.schemas.OutputSchema;
+import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Factor;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 
 public class CreateOutputDoer extends CreateAnnotationDoer
 {
-    @Override
-    public boolean isAvailable()
-    {
-        if(!super.isAvailable())
-            return false;
+	@Override
+	public int getAnnotationType()
+	{
+		return ObjectType.OUTPUT;
+	}
 
-        final ORef actualSelectedRef = getSelectedRef();
-        return canHaveOutputs(actualSelectedRef);
-    }
-
-    private boolean canHaveOutputs(ORef selectedRef)
-    {
-        if (Strategy.is(selectedRef))
-            return true;
-
-        return Task.is(selectedRef);
-    }
-
-    @Override
-    public BaseObject getSelectedParentFactor()
-    {
-        if (getPicker() == null)
-            return null;
-
-        ORefList[] selectedHierarchies = getPicker().getSelectedHierarchies();
-        if (selectedHierarchies.length == 0)
-            return null;
-
-        ORefList selectionRefs = selectedHierarchies[0];
-        return extractOutputParentCandidate(getProject(), selectionRefs, getAnnotationType());
-    }
-
-    public static BaseObject extractOutputParentCandidate(Project projectToUse, ORefList selectionRefs, int objectTypeToRemove)
-    {
-        removeFirstRefInPlace(selectionRefs, objectTypeToRemove);
-        if (selectionRefs.isEmpty())
-            return null;
-
-        ORef ref = selectionRefs.getFirstElement();
-        if (ref.isInvalid())
-            return null;
-
-        return BaseObject.find(projectToUse, ref);
-    }
-
-    private static void removeFirstRefInPlace(ORefList selectionRefs, int objectTypeToRemove)
-    {
-        ORef firstInstanceOfTypeToRemove = selectionRefs.getRefForType(objectTypeToRemove);
-        selectionRefs.remove(firstInstanceOfTypeToRemove);
-    }
-
-    @Override
-    public String getAnnotationListTag()
-    {
-        return BaseObject.TAG_OUTPUT_REFS;
-    }
-
-    @Override
-    public int getAnnotationType()
-    {
-        return OutputSchema.getObjectType();
-    }
+	@Override
+	public String getAnnotationListTag()
+	{
+		return Factor.TAG_OUTPUT_REFS;
+	}
 }

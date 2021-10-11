@@ -20,33 +20,27 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.diagram.doers;
 
 import org.miradi.main.EAM;
-import org.miradi.objects.BaseObject;
+import org.miradi.objects.Factor;
 import org.miradi.schemas.OutputSchema;
 import org.miradi.views.diagram.DeleteAnnotationDoer;
 
 public class DeleteOutputDoer extends DeleteAnnotationDoer
 {
-    @Override
-    protected BaseObject getParent(BaseObject annotationToDelete)
-    {
-        return getReferrerParent(annotationToDelete);
-    }
+	@Override
+	public String[] getDialogText()
+	{
+		return new String[] { EAM.text("Are you sure you want to delete this Output?"),};
+	}
 
-    @Override
-    public String getAnnotationIdListTag()
-    {
-        return BaseObject.TAG_OUTPUT_REFS;
-    }
+	@Override
+	public String getAnnotationIdListTag()
+	{
+		return Factor.TAG_OUTPUT_REFS;
+	}
 
-    @Override
-    public int getAnnotationType()
-    {
-        return OutputSchema.getObjectType();
-    }
-
-    @Override
-    public String[] getDialogText()
-    {
-        return new String[] { EAM.text("Are you sure you want to delete this Output?"),};
-    }
+	@Override
+	public int getAnnotationType()
+	{
+		return OutputSchema.getObjectType();
+	}
 }

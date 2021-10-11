@@ -282,7 +282,10 @@ abstract public class Factor extends BaseObject
 		
 		if (Indicator.is(type))
 			return canDirectlyOwnIndicators();
-		
+
+		if (Output.is(type))
+			return canHaveOutputs();
+
 		return false;
 	}
 	
@@ -292,6 +295,11 @@ abstract public class Factor extends BaseObject
 	}
 	
 	public boolean canHaveObjectives()
+	{
+		return false;
+	}
+
+	public boolean canHaveOutputs()
 	{
 		return false;
 	}

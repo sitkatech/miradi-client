@@ -74,6 +74,7 @@ public class IconManager
 		addIcon(new ProgressReportIcon());
 		addIcon(new ProgressPercentIcon());
 		addIcon(new ResultReportIcon());
+		addIcon(new OutputIcon());
 		addIcon(new SubTargetIcon());
 		addIcon(new HyphenIcon());
 		addIcon(new OpenStandardsAutomaticIcon());

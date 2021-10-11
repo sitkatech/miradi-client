@@ -88,7 +88,13 @@ public class Strategy extends Factor
 	{
 		return true;
 	}
-	
+
+	@Override
+	public boolean canHaveOutputs()
+	{
+		return true;
+	}
+
 	public boolean isStatusReal()
 	{
 		return !isStatusDraft();

@@ -103,7 +103,7 @@ public class DeleteActivityDoer extends ObjectsDoer
 		CommandVector commandToDeleteTasks = createDeleteCommands(project, selectionHierarchy, selectedTask);
 		executeDeleteCommands(project, commandToDeleteTasks);
 		
-		if (! selectedTask.isOrphanedTask())
+		if (!selectedTask.isOrphanedTask())
 			return;
 		
 		CommandVector commandsToDeleteTask = selectedTask.createCommandsToDeleteChildrenAndObject();

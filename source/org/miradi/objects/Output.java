@@ -60,11 +60,6 @@ public class Output extends BaseObject
         };
     }
 
-    public String getDetails()
-    {
-        return getStringData(TAG_DETAILS);
-    }
-
     public static boolean is(ORef ref)
     {
         return is(ref.getObjectType());
@@ -90,6 +85,5 @@ public class Output extends BaseObject
         return find(project.getObjectManager(), outputRef);
     }
 
-    public static final String TAG_DETAILS = "Details";
 	public static final String TAG_URL = "Url";
 }

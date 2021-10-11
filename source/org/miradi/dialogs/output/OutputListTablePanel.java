@@ -17,15 +17,23 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
-package org.miradi.icons;
+package org.miradi.dialogs.output;
 
-import org.miradi.utils.MiradiResourceImageIcon;
+import org.miradi.actions.*;
+import org.miradi.dialogs.base.ObjectListTablePanel;
+import org.miradi.main.MainWindow;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.views.umbrella.StaticPicker;
 
-public class OutputIcon extends MiradiResourceImageIcon
+public class OutputListTablePanel extends ObjectListTablePanel
 {
-    public OutputIcon()
+    public OutputListTablePanel(MainWindow mainWindowToUse, ORef nodeRef)
     {
-        super("icons/document16.png");
-    }
-}
+        super(mainWindowToUse, new OutputListTableModel(mainWindowToUse.getProject(), nodeRef), new StaticPicker(nodeRef), DEFAULT_SORT_COLUMN);
 
+        addObjectActionButton(ActionCreateOutput.class, getParentPicker());
+        addUnknownTypeOfButton(ActionDeleteOutput.class);
+    }
+
+    private static final int DEFAULT_SORT_COLUMN = 0;
+}
