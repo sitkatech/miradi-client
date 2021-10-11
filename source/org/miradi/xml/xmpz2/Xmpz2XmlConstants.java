@@ -111,6 +111,7 @@ public interface Xmpz2XmlConstants
 	public static final String ORDERED_ACTIVITY_IDS = "OrderedActivityIds";
 	public static final String METHOD = MethodSchema.OBJECT_NAME;
 	public static final String TASK = TaskSchema.OBJECT_NAME;
+	public static final String OUTPUT = OutputSchema.OBJECT_NAME;
 	public static final String SUB_TASK = "SubTask";
 	public static final String ASSIGNED_LEADER_RESOURCE_ID = "AssignedLeaderResourceId";
 	public static final String TIMEFRAME = "Timeframe";
@@ -180,6 +181,7 @@ public interface Xmpz2XmlConstants
 	public static final String EXTENDED_PROGRESS_REPORT_IDS = "ExtendedProgressReportIds";
 	public static final String RESULTS_REPORT_IDS = "ResultReportIds";
 	public static final String PROGRESS_PERCENT_IDS = "ProgressPercentIds";
+	public static final String OUTPUT_IDS = "OutputIds";
 	public static final String RELATED_THREAT_ID = "RelatedDirectThreat" + ID;
 	public static final String THREAT_ID = "ThreatId";
 	public static final String RELEVANT_ACTIVITY_IDS = "RelevantActivityIds";
@@ -343,6 +345,7 @@ public interface Xmpz2XmlConstants
 	public static final String PROJECT_RESOURCE_TAXONOMY_ASSOCIATION_POOL = "ProjectResourceTaxonomyAssociationPool";
 	public static final String RESOURCE_ASSIGNMENT_TAXONOMY_ASSOCIATION_POOL = "ResourceAssignmentTaxonomyAssociationPool";
 	public static final String EXPENSE_ASSIGNMENT_TAXONOMY_ASSOCIATION_POOL = "ExpenseAssignmentTaxonomyAssociationPool";
+	public static final String OUTPUT_TAXONOMY_ASSOCIATION_POOL = "OutputTaxonomyAssociationPool";
 	public static final String TAXONOMY = "Taxonomy";
 	public static final String TAXONOMY_POOL = "TaxonomyPool";
 	public static final String TAXONOMY_ASSOCIATION = "TaxonomyAssociation";

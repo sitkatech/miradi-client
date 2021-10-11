@@ -382,6 +382,9 @@ abstract public class BaseObject
 		if (tag.equals(TAG_RESULT_REPORT_REFS))
 			return ResultReportSchema.getObjectType();
 
+		if (tag.equals(TAG_OUTPUT_REFS))
+			return OutputSchema.getObjectType();
+
 		throw new RuntimeException("Cannot find annotation type for " + tag);
 	}
 	
@@ -1687,6 +1690,7 @@ abstract public class BaseObject
 	public static final String TAG_PROGRESS_REPORT_REFS = "ProgressReportRefs";
 	public static final String TAG_EXTENDED_PROGRESS_REPORT_REFS = "ExtendedProgressReportRefs";
 	public static final String TAG_RESULT_REPORT_REFS = "ResultReportRefs";
+	public static final String TAG_OUTPUT_REFS = "OutputRefs";
 	public static final String TAG_ASSIGNED_LEADER_RESOURCE = "AssignedLeaderResource";
 	public static final String TAG_TAXONOMY_CLASSIFICATION_CONTAINER = "TaxonomyClassificationContainer";
 	public static final String TAG_EVIDENCE_NOTES = "EvidenceNotes";

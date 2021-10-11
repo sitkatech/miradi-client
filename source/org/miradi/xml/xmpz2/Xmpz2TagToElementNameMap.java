@@ -58,6 +58,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(METHOD, createTaskMap());
 		map.put(ACTIVITY, createTaskMap());
 		map.put(TASK, createTaskMap());
+		map.put(OUTPUT, createOutputMap());
 		map.put(PROJECT_RESOURCE, createProjectResourceMap());
 		map.put(INDICATOR, createIndicatorMap());
 		map.put(OBJECTIVE, createDesireMap());
@@ -156,6 +157,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(BaseObject.TAG_PROGRESS_REPORT_REFS, PROGRESS_REPORT_IDS);
 		map.put(BaseObject.TAG_EXTENDED_PROGRESS_REPORT_REFS, EXTENDED_PROGRESS_REPORT_IDS);
 		map.put(BaseObject.TAG_RESULT_REPORT_REFS, RESULTS_REPORT_IDS);
+		map.put(BaseObject.TAG_OUTPUT_REFS, OUTPUT_IDS);
 		map.put(BaseObject.TAG_TIMEFRAME_IDS, TIMEFRAME + IDS);
 		map.put(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, RESOURCE_ASSIGNMENT + IDS);
 		map.put(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT + IDS);
@@ -202,6 +204,12 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	{
 		HashMap<String, String> map = createFactorMap();
 		map.put(Task.TAG_SUBTASK_IDS, SUB_TASK_IDS);
+		return map;
+	}
+
+	private HashMap<String, String> createOutputMap()
+	{
+		HashMap<String, String> map = createFactorMap();
 		return map;
 	}
 

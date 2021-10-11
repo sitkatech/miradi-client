@@ -49,6 +49,7 @@ public class StrategySchema extends EvidenceFactorSchema
 		createProgressReportSchema();
 	    writeIndicatorIds();
 		writeObjectiveIds();
+		createOutputSchema();
 		createTaxonomyClassificationSchemaField();
 	
 		createPseudoFieldSchemaString(Strategy.PSEUDO_TAG_RATING_SUMMARY);

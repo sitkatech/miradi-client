@@ -520,6 +520,11 @@ public class IconManager
 		return getIcon(ResultReportIcon.class);
 	}
 
+	public static Icon getOutputIcon()
+	{
+		return getIcon(OutputIcon.class);
+	}
+
 	public static Icon getProgressPercentIcon()
 	{
 		return getIcon(ProgressPercentIcon.class);

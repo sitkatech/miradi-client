@@ -77,6 +77,7 @@ public class ObjectTypeToExporterMap extends HashMap<Integer, BaseObjectExporter
 		addGenericExporterToMap(AudienceSchema.getObjectType());
 		addGenericExporterToMap(FutureStatusSchema.getObjectType());
 		addGenericExporterToMap(MethodSchema.getObjectType());
+		addGenericExporterToMap(OutputSchema.getObjectType());
 	}
 	
 	private void addGenericExporterToMap(final int objectType) throws Exception
