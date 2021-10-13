@@ -17,24 +17,20 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
-package org.miradi.dialogs.output;
+package org.miradi.actions;
 
-import org.miradi.actions.ActionCreateOutput;
-import org.miradi.actions.ActionDeleteOutput;
-import org.miradi.dialogs.base.ObjectListTablePanel;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.views.umbrella.StaticPicker;
 
-public class OutputListTablePanel extends ObjectListTablePanel
+public class AbstractActionEditOutputs extends ObjectsAction
 {
-    public OutputListTablePanel(MainWindow mainWindowToUse, ORefList selectionHierarchy)
+    public AbstractActionEditOutputs(MainWindow mainWindow)
     {
-        super(mainWindowToUse, new OutputListTableModel(mainWindowToUse.getProject(), selectionHierarchy), new StaticPicker(selectionHierarchy), DEFAULT_SORT_COLUMN);
-
-        addObjectActionButton(ActionCreateOutput.class, getParentPicker());
-        addUnknownTypeOfButton(ActionDeleteOutput.class);
+        super(mainWindow, getLabel());
     }
 
-    private static final int DEFAULT_SORT_COLUMN = 0;
+    public static String getLabel()
+    {
+        return EAM.text("Action|Edit Outputs...");
+    }
 }

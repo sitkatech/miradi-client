@@ -232,8 +232,8 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 
 		if(factor.canHaveOutputs())
 		{
-			OutputListTablePanel objectListPanel = new OutputListTablePanel(mainWindow, getCurrentDiagramFactor().getWrappedORef());
-			outputsTab = new OutputListManagementPanel(mainWindow, getCurrentDiagramFactor().getWrappedORef(), mainWindow.getActions(), objectListPanel);
+			OutputListTablePanel objectListPanel = new OutputListTablePanel(mainWindow, new ORefList(getCurrentDiagramFactor().getWrappedORef()));
+			outputsTab = new OutputListManagementPanel(mainWindow, objectListPanel);
 			addTab(outputsTab);
 		}
 

@@ -17,35 +17,21 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
-package org.miradi.dialogs.output;
+package org.miradi.actions;
 
-import org.miradi.dialogs.base.ObjectListTableModel;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Factor;
-import org.miradi.project.Project;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-public class OutputListTableModel extends ObjectListTableModel
+public class ActionEditStrategyOutputs extends AbstractActionEditOutputs
 {
-    public OutputListTableModel(Project projectToUse, ORefList selectedHierarchy)
+    public ActionEditStrategyOutputs(MainWindow mainWindow)
     {
-        super(projectToUse, selectedHierarchy, Factor.TAG_OUTPUT_REFS, ObjectType.OUTPUT, getColumnTags());
-    }
-
-    private static String[] getColumnTags()
-    {
-        return new String[] {
-            Factor.TAG_SHORT_LABEL,
-            Factor.TAG_LABEL,
-            Factor.TAG_TEXT,
-        };
+        super(mainWindow);
     }
 
     @Override
-    public String getUniqueTableModelIdentifier()
+    public String getToolTipText()
     {
-        return UNIQUE_MODEL_IDENTIFIER;
+        return EAM.text("TT|Edit the outputs for this strategy");
     }
-
-    private static final String UNIQUE_MODEL_IDENTIFIER = "OutputListTableModel";
 }

@@ -19,18 +19,23 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.dialogs.output;
 
-import org.miradi.actions.Actions;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.icons.OutputIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 
 import javax.swing.*;
 
 public class OutputListManagementPanel extends ObjectListManagementPanel
 {
-    public OutputListManagementPanel(MainWindow mainWindowToUse, ORef nodeRef, Actions actions, OutputListTablePanel objectListPanel) throws Exception
+    public static OutputListManagementPanel create(MainWindow mainWindow, ORefList selectionHierarchy) throws Exception
+	{
+		OutputListTablePanel tablePanel = new OutputListTablePanel(mainWindow, selectionHierarchy);
+		return new OutputListManagementPanel(mainWindow, tablePanel);
+	}
+
+    public OutputListManagementPanel(MainWindow mainWindowToUse, OutputListTablePanel objectListPanel) throws Exception
     {
         super(mainWindowToUse, objectListPanel, new OutputPropertiesPanel(mainWindowToUse));
     }

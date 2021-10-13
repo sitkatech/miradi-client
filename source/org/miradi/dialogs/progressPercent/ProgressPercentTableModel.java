@@ -51,7 +51,7 @@ public class ProgressPercentTableModel extends EditableObjectRefsTableModel
 	@Override
 	protected ORefList extractOutEditableRefs(ORefList hierarchyToSelectedRef)
 	{
-		BaseObject parent = AbstractCreateProgressDoer.extractProgressParentCandidate(getProject(), hierarchyToSelectedRef, getObjectType());
+		BaseObject parent = AbstractCreateProgressDoer.extractAnnotationParentCandidate(getProject(), hierarchyToSelectedRef, getObjectType());
 		if (parent == null)
 			return new ORefList();
 		

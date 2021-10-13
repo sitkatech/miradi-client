@@ -44,7 +44,7 @@ public class ResultReportTableModel extends EditableObjectRefsTableModel
     @Override
     protected ORefList extractOutEditableRefs(ORefList hierarchyToSelectedRef)
     {
-        BaseObject resultReportParent = CreateResultReportDoer.extractResultReportParentCandidate(getProject(), hierarchyToSelectedRef, getObjectType());
+        BaseObject resultReportParent = CreateResultReportDoer.extractAnnotationParentCandidate(getProject(), hierarchyToSelectedRef, getObjectType());
         if (resultReportParent == null)
             return new ORefList();
 

@@ -17,35 +17,22 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
-package org.miradi.dialogs.output;
+package org.miradi.views.umbrella.doers;
 
-import org.miradi.dialogs.base.ObjectListTableModel;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Factor;
-import org.miradi.project.Project;
+import org.miradi.dialogs.base.ObjectListManagementPanel;
+import org.miradi.dialogs.output.OutputListManagementPanel;
+import org.miradi.main.EAM;
 
-public class OutputListTableModel extends ObjectListTableModel
+public class AbstractEditOutputsDoer extends AbstractPopUpEditDoer
 {
-    public OutputListTableModel(Project projectToUse, ORefList selectedHierarchy)
+    public AbstractEditOutputsDoer(int objectTypeToUse)
     {
-        super(projectToUse, selectedHierarchy, Factor.TAG_OUTPUT_REFS, ObjectType.OUTPUT, getColumnTags());
-    }
-
-    private static String[] getColumnTags()
-    {
-        return new String[] {
-            Factor.TAG_SHORT_LABEL,
-            Factor.TAG_LABEL,
-            Factor.TAG_TEXT,
-        };
+        super(objectTypeToUse, EAM.text("Edit Outputs"));
     }
 
     @Override
-    public String getUniqueTableModelIdentifier()
+    protected ObjectListManagementPanel createManagementPanel() throws Exception
     {
-        return UNIQUE_MODEL_IDENTIFIER;
+        return OutputListManagementPanel.create(getMainWindow(), getPicker().getSelectionHierarchy());
     }
-
-    private static final String UNIQUE_MODEL_IDENTIFIER = "OutputListTableModel";
 }

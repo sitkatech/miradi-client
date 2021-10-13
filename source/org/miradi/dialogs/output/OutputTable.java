@@ -17,35 +17,35 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
+
 package org.miradi.dialogs.output;
 
-import org.miradi.dialogs.base.ObjectListTableModel;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Factor;
-import org.miradi.project.Project;
+import org.miradi.dialogs.base.DynamicWidthEditableObjectTable;
+import org.miradi.dialogs.base.EditableObjectTableModel;
+import org.miradi.main.MainWindow;
 
-public class OutputListTableModel extends ObjectListTableModel
+public class OutputTable extends DynamicWidthEditableObjectTable
 {
-    public OutputListTableModel(Project projectToUse, ORefList selectedHierarchy)
+    public OutputTable(MainWindow mainWindowToUse, EditableObjectTableModel modelToUse) throws Exception
     {
-        super(projectToUse, selectedHierarchy, Factor.TAG_OUTPUT_REFS, ObjectType.OUTPUT, getColumnTags());
+        super(mainWindowToUse, modelToUse);
     }
 
-    private static String[] getColumnTags()
+    private OutputTableModel getOutputTableModel()
     {
-        return new String[] {
-            Factor.TAG_SHORT_LABEL,
-            Factor.TAG_LABEL,
-            Factor.TAG_TEXT,
-        };
+        return (OutputTableModel) getModel();
     }
 
     @Override
-    public String getUniqueTableModelIdentifier()
+    public void rebuildColumnEditorsAndRenderers()
     {
-        return UNIQUE_MODEL_IDENTIFIER;
+        OutputTableModel outputTableModel = getOutputTableModel();
+        for (int tableColumn = 0; tableColumn < outputTableModel.getColumnCount(); ++tableColumn)
+        {
+            int modelColumn = convertColumnIndexToModel(tableColumn);
+            if (outputTableModel.isDetailsColumn(modelColumn))
+                createWrappableTextFieldColumn(tableColumn);
+        }
     }
-
-    private static final String UNIQUE_MODEL_IDENTIFIER = "OutputListTableModel";
 }
+

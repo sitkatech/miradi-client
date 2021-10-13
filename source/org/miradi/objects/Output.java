@@ -85,5 +85,10 @@ public class Output extends BaseObject
         return find(project.getObjectManager(), outputRef);
     }
 
+    public String getDetails()
+	{
+		return getStringData(Factor.TAG_TEXT);
+	}
+
 	public static final String TAG_URL = "Url";
 }

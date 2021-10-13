@@ -28,7 +28,9 @@ import org.miradi.dialogs.base.ObjectTablePanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
+import org.miradi.project.Project;
 import org.miradi.utils.BaseObjectDeepCopierUsingCommands;
 import org.miradi.views.ObjectsDoer;
 import org.miradi.views.umbrella.ObjectPicker;
@@ -89,6 +91,25 @@ public abstract class CreateAnnotationDoer extends ObjectsDoer
 		
 		return CommandSetObjectData.createAppendIdCommand(parent, listTag, refToAppend.getObjectId());
 	}
+
+    public static BaseObject extractAnnotationParentCandidate(Project projectToUse, ORefList selectionRefs, int objectTypeToRemove)
+    {
+        removeFirstRefInPlace(selectionRefs, objectTypeToRemove);
+        if (selectionRefs.isEmpty())
+            return null;
+
+        ORef ref = selectionRefs.getFirstElement();
+        if (ref.isInvalid())
+            return null;
+
+        return BaseObject.find(projectToUse, ref);
+    }
+
+    private static void removeFirstRefInPlace(ORefList selectionRefs, int objectTypeToRemove)
+    {
+        ORef firstInstanceOfTypeToRemove = selectionRefs.getRefForType(objectTypeToRemove);
+        selectionRefs.remove(firstInstanceOfTypeToRemove);
+    }
 
 	protected ORef createObject() throws Exception
 	{

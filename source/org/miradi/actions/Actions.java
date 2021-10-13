@@ -405,6 +405,8 @@ public class Actions
 		registerAction(new ActionCreateResultReport(mainWindow));
 		registerAction(new ActionDeleteResultReport(mainWindow));
 
+		registerAction(new ActionEditStrategyOutputs(mainWindow));
+		registerAction(new ActionEditTaskOutputs(mainWindow));
 		registerAction(new ActionCreateOutput(mainWindow));
 		registerAction(new ActionDeleteOutput(mainWindow));
 

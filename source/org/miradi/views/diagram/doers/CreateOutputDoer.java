@@ -19,7 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.views.diagram.doers;
 
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 
@@ -35,5 +37,19 @@ public class CreateOutputDoer extends CreateAnnotationDoer
 	public String getAnnotationListTag()
 	{
 		return Factor.TAG_OUTPUT_REFS;
+	}
+
+	@Override
+	public BaseObject getSelectedParentFactor()
+	{
+		if (getPicker() == null)
+			return null;
+
+		ORefList[] selectedHierarchies = getPicker().getSelectedHierarchies();
+		if (selectedHierarchies.length == 0)
+			return null;
+
+		ORefList selectionRefs = selectedHierarchies[0];
+		return extractAnnotationParentCandidate(getProject(), selectionRefs, getAnnotationType());
 	}
 }

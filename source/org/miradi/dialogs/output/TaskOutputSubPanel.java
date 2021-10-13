@@ -17,35 +17,28 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
+
 package org.miradi.dialogs.output;
 
-import org.miradi.dialogs.base.ObjectListTableModel;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Factor;
-import org.miradi.project.Project;
+import org.miradi.actions.ActionEditTaskOutputs;
+import org.miradi.main.MainWindow;
+import org.miradi.views.umbrella.ObjectPicker;
 
-public class OutputListTableModel extends ObjectListTableModel
+import java.util.LinkedHashMap;
+
+public class TaskOutputSubPanel extends AbstractOutputSubPanel
 {
-    public OutputListTableModel(Project projectToUse, ORefList selectedHierarchy)
+    public TaskOutputSubPanel(MainWindow mainWindow) throws Exception
     {
-        super(projectToUse, selectedHierarchy, Factor.TAG_OUTPUT_REFS, ObjectType.OUTPUT, getColumnTags());
-    }
-
-    private static String[] getColumnTags()
-    {
-        return new String[] {
-            Factor.TAG_SHORT_LABEL,
-            Factor.TAG_LABEL,
-            Factor.TAG_TEXT,
-        };
+        super(mainWindow);
     }
 
     @Override
-    public String getUniqueTableModelIdentifier()
+    protected LinkedHashMap<Class, ObjectPicker> getButtonsActionsPickerMap()
     {
-        return UNIQUE_MODEL_IDENTIFIER;
+        LinkedHashMap<Class, ObjectPicker> buttonsMap = new LinkedHashMap<Class, ObjectPicker>();
+        buttonsMap.put(ActionEditTaskOutputs.class, getPicker());
+        return buttonsMap;
     }
-
-    private static final String UNIQUE_MODEL_IDENTIFIER = "OutputListTableModel";
 }
+
