@@ -28,8 +28,6 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Output;
 import org.miradi.project.Project;
-import org.miradi.questions.EmptyChoiceItem;
-import org.miradi.questions.TaglessChoiceItem;
 import org.miradi.schemas.OutputSchema;
 import org.miradi.views.diagram.doers.CreateOutputDoer;
 
@@ -72,36 +70,16 @@ public class OutputTableModel extends EditableObjectRefsTableModel
         return "OutputTableModel";
     }
 
+	@Override
+	public boolean isCellEditable(int row, int column)
+	{
+		return false;
+	}
+
     public Object getValueAt(int rowIndex, int columnIndex)
     {
         Output output = getOutputForRow(rowIndex, columnIndex);
-
-        if (isDetailsColumn(columnIndex))
-            return new TaglessChoiceItem(output.getDetails());
-
-        return new EmptyChoiceItem();
-    }
-
-    @Override
-    public void setValueAt(Object value, int row, int column)
-    {
-        if (value == null)
-            return;
-
-        ORef ref = getBaseObjectForRowColumn(row, column).getRef();
-
-        if (isDetailsColumn(column))
-            setOutputValue(ref, column, value.toString());
-    }
-
-    private void setOutputValue(ORef ref, int column, String value)
-    {
-        setValueUsingCommand(ref, getColumnTag(column), value);
-    }
-
-    public boolean isDetailsColumn(int columnIndex)
-    {
-        return isColumnForTag(columnIndex, Factor.TAG_TEXT);
+        return getProject().getObjectData(output.getRef(), getColumnTag(columnIndex));
     }
 
     private Output getOutputForRow(int rowIndex, int columnIndex)

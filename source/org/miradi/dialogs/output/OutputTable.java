@@ -30,22 +30,5 @@ public class OutputTable extends DynamicWidthEditableObjectTable
     {
         super(mainWindowToUse, modelToUse);
     }
-
-    private OutputTableModel getOutputTableModel()
-    {
-        return (OutputTableModel) getModel();
-    }
-
-    @Override
-    public void rebuildColumnEditorsAndRenderers()
-    {
-        OutputTableModel outputTableModel = getOutputTableModel();
-        for (int tableColumn = 0; tableColumn < outputTableModel.getColumnCount(); ++tableColumn)
-        {
-            int modelColumn = convertColumnIndexToModel(tableColumn);
-            if (outputTableModel.isDetailsColumn(modelColumn))
-                createWrappableTextFieldColumn(tableColumn);
-        }
-    }
 }
 
