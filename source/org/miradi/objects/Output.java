@@ -91,4 +91,5 @@ public class Output extends BaseObject
 	}
 
 	public static final String TAG_URL = "Url";
+	public static final String TAG_DUE_DATE = "DueDate";
 }

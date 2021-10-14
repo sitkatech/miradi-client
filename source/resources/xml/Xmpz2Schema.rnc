@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Mon Oct 11 10:31:36 BST 2021 $
+# $LastChangedDate: Thu Oct 14 08:18:29 BST 2021 $
 # $LastChangedRevision: 238 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/238'
 start = ConservationProject.element
@@ -933,8 +933,10 @@ Output.element = element miradi:Output
   attribute Id {xsd:integer} &
   element miradi:OutputComments { formatted_text }? &
   element miradi:OutputDetails { formatted_text }? &
+  element miradi:OutputDueDate { vocabulary_date }? &
   element miradi:OutputIdentifier { text }? &
   element miradi:OutputName { formatted_text }? &
+  element miradi:OutputProgressReportIds { ProgressReportId.element* }? &
   element miradi:OutputUrl { text }? &
   element miradi:OutputUUID { uuid } &
   TaxonomyClassificationContainer.element?

@@ -20,14 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.output;
 
-import org.miradi.dialogfields.ObjectDataInputField;
+import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
-import org.miradi.icons.IconManager;
+import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.objects.Factor;
-import org.miradi.objects.Method;
-import org.miradi.objects.Output;
 import org.miradi.schemas.OutputSchema;
 
 public class OutputPropertiesPanel extends ObjectDataInputPanelWithSections
@@ -36,21 +33,16 @@ public class OutputPropertiesPanel extends ObjectDataInputPanelWithSections
     {
         super(mainWindow.getProject(), OutputSchema.getObjectType());
 
-        createSingleSection(EAM.text("Summary"));
-        ObjectDataInputField shortLabelField = createStringField(OutputSchema.getObjectType(), Method.TAG_SHORT_LABEL, 10);
-        ObjectDataInputField labelField = createExpandableField(OutputSchema.getObjectType(), Method.TAG_LABEL);
-        addFieldsOnOneLine(EAM.text("Output"), IconManager.getOutputIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
+		addSubPanelWithTitledBorder(createDetailsPanel());
+		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
 
-        addField(createMultilineField(OutputSchema.getObjectType(), Factor.TAG_TEXT));
-
-        addTaxonomyFields(OutputSchema.getObjectType());
-
-        addField(createMultilineField(OutputSchema.getObjectType(), Factor.TAG_COMMENTS));
-
-        addField(createStringField(OutputSchema.getObjectType(), Output.TAG_URL));
-
-        updateFieldsFromProject();
+		updateFieldsFromProject();
     }
+
+    protected ObjectDataInputPanel createDetailsPanel() throws Exception
+	{
+		return new OutputDetailsPanel(getProject());
+	}
 
     @Override
     public String getPanelDescription()

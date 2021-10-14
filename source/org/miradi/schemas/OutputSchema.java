@@ -40,7 +40,9 @@ public class OutputSchema extends BaseObjectSchema
 		addDetailsField();
 		createFieldSchemaSingleLineUserText(Factor.TAG_SHORT_LABEL);
 		createFieldSchemaSingleLineUserText(Output.TAG_URL);
+		createFieldSchemaDate(Output.TAG_DUE_DATE);
 
+		createProgressReportSchema();
 		createTaxonomyClassificationSchemaField();
 	}
 
