@@ -48,6 +48,8 @@
       <fileEntry mountPoint="95" file="${compiler:dist.temp.jars}/shef/0.5/LICENSE-shef.txt" overrideFileMode="true" overrideOverwriteMode="true" overrideUninstallMode="true" />
       <fileEntry mountPoint="95" file="${compiler:dist.temp.jars}/commons-lang3/ApacheCommons-license.txt" overrideFileMode="true" overrideOverwriteMode="true" overrideUninstallMode="true" />
       <fileEntry mountPoint="95" file="${compiler:dist.temp.jars}/commons-lang3/3.1/commons-lang3-3.1.jar" overrideFileMode="true" overrideOverwriteMode="true" overrideUninstallMode="true" />
+      <fileEntry mountPoint="95" file="${compiler:dist.temp.jars}/flatlaf/flatlaf-1.6.1.jar" overrideFileMode="true" overrideOverwriteMode="true" overrideUninstallMode="true" />
+      <fileEntry mountPoint="95" file="${compiler:dist.temp.jars}/flatlaf/flatlaf-intellij-themes-1.6.1.jar" overrideFileMode="true" overrideOverwriteMode="true" overrideUninstallMode="true" />
       <fileEntry mountPoint="17" file="${compiler:dist.dir}/${compiler:samples.marine.miradi.version}" overrideFileMode="true" overrideOverwriteMode="true" overrideUninstallMode="true" />
       <fileEntry mountPoint="17" file="./installer/BuildFiles/LicenseOverview.txt" overrideFileMode="true" overrideOverwriteMode="true" overrideUninstallMode="true" />
       <fileEntry mountPoint="17" file="./installer/BuildFiles/LICENSE.txt" overrideFileMode="true" overrideOverwriteMode="true" overrideUninstallMode="true" />

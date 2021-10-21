@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.main;
 
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubIJTheme;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.questions.AllLanguagesQuestion;
 import org.miradi.questions.ChoiceItem;
@@ -277,12 +278,24 @@ public class Miradi
 		}
 	}
 
-	static void setBestLookAndFeel() throws Exception
+	static void setBestLookAndFeel(LookAndFeel newLookAndFeel) throws Exception
 	{
 		if(isLinux())
 			return;
-		
-		UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+
+		try
+		{
+			UIManager.setLookAndFeel(newLookAndFeel);
+		}
+		catch( Exception ex ) {
+			EAM.logDebug("Failed to initialize LaF - defaulting to system");
+			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+		}
+	}
+
+	static void setBestLookAndFeel() throws Exception
+	{
+		setBestLookAndFeel(new FlatGitHubIJTheme());
 	}
 
 	public static boolean isLinux()
