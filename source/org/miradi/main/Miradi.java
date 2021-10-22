@@ -19,12 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.main;
 
+import com.formdev.flatlaf.FlatLightLaf;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubIJTheme;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.questions.AllLanguagesQuestion;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.LanguagePackFileFilter;
+import org.miradi.utils.StringUtilities;
 import org.miradi.utils.Translation;
 import org.miradi.views.umbrella.AbstractProjectImporter;
 
@@ -37,6 +39,8 @@ import java.util.HashSet;
 import java.util.Locale;
 import java.util.Vector;
 
+import static org.miradi.utils.StringUtilities.EMPTY_STRING;
+
 
 public class Miradi
 {
@@ -45,7 +49,7 @@ public class Miradi
 		try
 		{
 			addThirdPartyJarsToClasspath();
-			setBestLookAndFeel();
+			setBestLookAndFeel(EMPTY_STRING);
 		}
 		catch(Exception e)
 		{
@@ -278,24 +282,28 @@ public class Miradi
 		}
 	}
 
-	static void setBestLookAndFeel(LookAndFeel newLookAndFeel) throws Exception
+	public static void setBestLookAndFeel(String lookAndFeelThemeClassName) throws Exception
 	{
 		if(isLinux())
 			return;
 
 		try
 		{
-			UIManager.setLookAndFeel(newLookAndFeel);
+			FlatLightLaf.setup();
+
+			if (StringUtilities.isNullOrEmpty(lookAndFeelThemeClassName))
+			{
+				UIManager.setLookAndFeel(FlatGitHubIJTheme.class.getName());
+			}
+			else
+			{
+				UIManager.setLookAndFeel(lookAndFeelThemeClassName);
+			}
 		}
 		catch( Exception ex ) {
 			EAM.logDebug("Failed to initialize LaF - defaulting to system");
 			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
 		}
-	}
-
-	static void setBestLookAndFeel() throws Exception
-	{
-		setBestLookAndFeel(new FlatGitHubIJTheme());
 	}
 
 	public static boolean isLinux()

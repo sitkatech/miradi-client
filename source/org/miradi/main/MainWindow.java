@@ -132,6 +132,8 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		File appPreferencesFile = getPreferencesFile();
 		preferences.load(appPreferencesFile);
 
+		Miradi.setBestLookAndFeel(preferences.getLookAndFeelThemeName());
+
 		ensureFontSizeIsSet();
 		
 		humanWelfareModeHandler = new HumanWelfareTargetModeChangeHandler();
@@ -147,7 +149,7 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		ToolTipManager.sharedInstance().setInitialDelay(TOOLTIP_DELAY_MILLIS);
 		ToolTipManager.sharedInstance().setReshowDelay(0);
 		ToolTipManager.sharedInstance().setDismissDelay(Integer.MAX_VALUE);
-		
+
 		loadCustomAppColors();
 		addWindowListener(new WindowEventHandler());
 		setSize(new Dimension(900, 700));
@@ -1318,6 +1320,16 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	public String getColorScheme()
 	{
 		return preferences.getColorScheme();
+	}
+
+	public void setLookAndFeelThemeName(String lookAndFeelTheme)
+	{
+		preferences.setLookAndFeelThemeName(lookAndFeelTheme);
+	}
+
+	public String getLookAndFeelThemeName()
+	{
+		return preferences.getLookAndFeelThemeName();
 	}
 
 	public boolean isRowHeightModeManual()

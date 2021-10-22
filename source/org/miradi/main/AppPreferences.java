@@ -412,6 +412,16 @@ public class AppPreferences
 		return colorSchemeCode;
 	}
 
+	public void setLookAndFeelThemeName(String lookAndFeelTheme)
+	{
+		lookAndFeelThemeName = lookAndFeelTheme;
+	}
+
+	public String getLookAndFeelThemeName()
+	{
+		return lookAndFeelThemeName;
+	}
+
 	public void setDiagramImageExportScalePercent(int newPercent)
 	{
 		diagramImageExportScalePercent = newPercent;
@@ -427,6 +437,7 @@ public class AppPreferences
 		EnhancedJsonObject json = new EnhancedJsonObject();
 
 		json.put(TAG_COLOR_SCHEME, colorSchemeCode);
+		json.put(TAG_LOOK_AND_FEEL_THEME, lookAndFeelThemeName);
 
 		json.put(TAG_COLOR_STRATEGY, strategyColor);
 		json.put(TAG_COLOR_ACTIVITIES, activitiesColor);
@@ -512,6 +523,7 @@ public class AppPreferences
 	private void loadFrom(EnhancedJsonObject json) throws Exception
 	{
 		colorSchemeCode = json.optString(TAG_COLOR_SCHEME);
+		lookAndFeelThemeName = json.optString(TAG_LOOK_AND_FEEL_THEME);
 
 		strategyColor = json.optColor(TAG_COLOR_STRATEGY, DiagramConstants.DEFAULT_STRATEGY_COLOR);
 		activitiesColor = json.optColor(TAG_COLOR_ACTIVITIES, DiagramConstants.DEFAULT_ACTIVITIES_COLOR);
@@ -770,6 +782,7 @@ public class AppPreferences
 	}
 
 	public static final String TAG_COLOR_SCHEME = "ColorScheme";
+	public static final String TAG_LOOK_AND_FEEL_THEME = "LookAndFeelTheme";
 
 	public static final String TAG_COLOR_STRATEGY = "ColorIntervention";
 	public static final String TAG_COLOR_ACTIVITIES = "ColorActivities";
@@ -873,6 +886,7 @@ public class AppPreferences
 	private static final int DEFAULT_MAIN_WINDOW_Y_POSITION = 100;
 
 	private String colorSchemeCode;
+	private String lookAndFeelThemeName;
 
 	private Color strategyColor;
 	private Color activitiesColor;
