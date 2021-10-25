@@ -5,7 +5,7 @@
  */</template><template autoinsert="true" context="constructorcomment_context" deleted="false" description="Comment for created constructors" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.constructorcomment" name="constructorcomment">/**
  * ${tags}
  */</template><template autoinsert="false" context="filecomment_context" deleted="false" description="Comment for created Java files" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.filecomment" name="filecomment">/* 
-Copyright 2005-2018, Foundations of Success, Bethesda, Maryland
+Copyright 2005-2021, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
 
@@ -37,7 +37,7 @@ along with Miradi.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
  * ${tags}
  * ${see_to_target}
  */</template><template autoinsert="false" context="newtype_context" deleted="false" description="Newly created files" enabled="true" id="org.eclipse.jdt.ui.text.codetemplates.newtype" name="newtype">/* 
-Copyright 2005-2018, Foundations of Success, Bethesda, Maryland
+Copyright 2005-2021, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
 
