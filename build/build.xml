@@ -88,6 +88,8 @@
 	<property name="sam.jar" value="${dist.temp.jars}/shef/0.5/sam.jar" />
 	<property name="jtidy.jar" value="${dist.temp.jars}/shef/0.5/jtidy-8.0.jar" />
 	<property name="junit.jar" value="${dist.temp.jars}/JUnit/bin/junit.jar" />
+	<property name="flatlaf.jar" value="${dist.temp.jars}/flatlaf/flatlaf-1.6.1.jar" />
+	<property name="flatlaf-intellij-themes.jar" value="${dist.temp.jars}/flatlaf/flatlaf-intellij-themes-1.6.1.jar" />
 
 	<!-- classpath -->
     <path id="eam.class.path">
@@ -106,6 +108,8 @@
     	<pathelement path="${sam.jar}"/>
     	<pathelement path="${jtidy.jar}"/>
     	<pathelement path="${junit.jar}"/>
+    	<pathelement path="${flatlaf.jar}"/>
+    	<pathelement path="${flatlaf-intellij-themes.jar}"/>
      </path>
     
     <!-- defined values -->
@@ -566,6 +570,15 @@
 		<param name='directory' value='shef/0.5' />
 		<param name='filename' value='jtidy-src.zip' />
 	</antcall>
+
+	<antcall target='copy-thirdparty'>
+		<param name='directory' value='flatlaf' />
+		<param name='filename' value='flatlaf-1.6.1.jar' />
+	</antcall>
+	<antcall target='copy-thirdparty'>
+		<param name='directory' value='flatlaf' />
+		<param name='filename' value='flatlaf-intellij-themes-1.6.1.jar' />
+	</antcall>
 </target>
 
 <!-- ================================================================== -->
@@ -622,6 +635,8 @@
        	<zipfileset dir="${dist.temp.jars}/shef/0.5/" prefix="${JarFolder}" includes="LICENSE-sam.txt" />
        	<zipfileset dir="${dist.temp.jars}/shef/0.5/" prefix="${JarFolder}" includes="jtidy-8.0.jar" />
         <zipfileset dir="${dist.temp.jars}/shef/0.5/" prefix="${JarFolder}" includes="LICENSE-jtidy.txt" />
+        <zipfileset dir="${dist.temp.jars}/flatlaf/" prefix="${JarFolder}" includes="flatlaf-1.6.1.jar" />
+        <zipfileset dir="${dist.temp.jars}/flatlaf/" prefix="${JarFolder}" includes="flatlaf-intellij-themes-1.6.1.jar" />
     </zip>
 
 	<!-- Third-party source code -->
@@ -1007,7 +1022,9 @@
 						 $APP_ROOT/Contents/Java/jtidy-8.0.jar,
 						 $APP_ROOT/Contents/Java/sam.jar,
 						 $APP_ROOT/Contents/Java/shef.jar,
-						 $APP_ROOT/Contents/Java/swingx-0.9.7.jar">
+						 $APP_ROOT/Contents/Java/swingx-0.9.7.jar,
+						 $APP_ROOT/Contents/Java/flatlaf-1.6.1.jar,
+						 $APP_ROOT/Contents/Java/flatlaf-intellij-themes-1.6.1.jar">
 
 		<arch name="x86_64"/>
 		<arch name="i386"/>
@@ -1030,6 +1047,8 @@
 		<classpath file="${dist.temp.jars}/shef/0.5/sam.jar" />
 		<classpath file="${dist.temp.jars}/shef/0.5/shef.jar" />
 		<classpath file="${dist.temp.jars}/swingx/0.9.7/swingx-0.9.7.jar" />
+		<classpath file="${dist.temp.jars}/flatlaf/flatlaf-1.6.1.jar" />
+		<classpath file="${dist.temp.jars}/flatlaf/flatlaf-intellij-themes-1.6.1.jar" />
 
 		<!-- Workaround as com.apple.mrj.application.apple.menu.about.name property may no longer work -->
 		<option value="-Xdock:name=${mac.app.name}"/>

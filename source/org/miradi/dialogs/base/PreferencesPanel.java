@@ -67,7 +67,8 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		setBackground(AppPreferences.getDarkPanelBackgroundColor());
 		setBorder(BorderFactory.createEmptyBorder(0,3,3,3));
 
-		isUpdatingColorScheme= false;
+		isUpdatingColorScheme = false;
+		isUpdatingSystemTheme = false;
 	}
 
 	@Override
@@ -138,6 +139,13 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	{
 		JPanel htmlTab = new JPanel(new BasicGridLayout(0,2));
 		htmlTab.setBackground(AppPreferences.getDataPanelBackgroundColor());
+
+		String lookAndFeelTheme = getMainWindow().getLookAndFeelThemeName();
+		lookAndFeelThemeCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("System Theme"), StaticQuestionManager.getQuestion(LookAndFeelThemeQuestion.class), lookAndFeelTheme);
+		htmlTab.add(new FillerLabel());
+		htmlTab.add(new PanelTitleLabel("<html><i>" + EAM.text("" +
+				"NOTE: Changes will be applied on restarting Miradi. <br>")));
+		createAndAddBlankRow(htmlTab);
 
 		String panelSizeAsString = getDataPanelFontSizeCode();
 		panelFontSizeCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("Font Size"), StaticQuestionManager.getQuestion(FontSizeQuestion.class), panelSizeAsString);
@@ -306,6 +314,9 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		String colorScheme = getSelectedItemQuestionBox(colorSchemeCombo);
 		getMainWindow().setColorScheme(colorScheme);
 
+		String lookAndColorTheme = getSelectedItemQuestionBox(lookAndFeelThemeCombo);
+		getMainWindow().setLookAndFeelThemeName(lookAndColorTheme);
+
 		setColorPreference(interventionDropdown, AppPreferences.TAG_COLOR_STRATEGY);
 		setColorPreference(indirectFactorDropdown, AppPreferences.TAG_COLOR_CONTRIBUTING_FACTOR);
 		setColorPreference(directThreatDropdown, AppPreferences.TAG_COLOR_DIRECT_THREAT);
@@ -443,7 +454,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 
 	public void actionPerformed(ActionEvent e)
 	{
-		if (isUpdatingColorScheme)
+		if (isUpdatingColorScheme || isUpdatingSystemTheme)
 			return;
 
 		boolean isColorSchemeChange = e.getSource() == colorSchemeCombo;
@@ -452,6 +463,14 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 			isUpdatingColorScheme = true;
 			setColorScheme();
 			isUpdatingColorScheme = false;
+		}
+
+		boolean isSystemThemeChange = e.getSource() == lookAndFeelThemeCombo;
+		if (isSystemThemeChange)
+		{
+			isUpdatingSystemTheme = true;
+			// no-op...updated preference will be applied on restart
+			isUpdatingSystemTheme = false;
 		}
 
 		update();
@@ -522,8 +541,11 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 	private NeverShowAgainPanel neverShowAgainPanel;
 
 	private boolean isUpdatingColorScheme;
-	private UiComboBox colorSchemeCombo;
+	private boolean isUpdatingSystemTheme;
 	
+	private UiComboBox colorSchemeCombo;
+	private UiComboBox lookAndFeelThemeCombo;
+
 	private UiComboBox interventionDropdown;
 	private UiComboBox directThreatDropdown;
 	private UiComboBox biophysicalFactorDropdown;
