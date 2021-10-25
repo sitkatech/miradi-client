@@ -27,6 +27,8 @@ import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubIJTheme;
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatLightOwlIJTheme;
 import org.miradi.main.EAM;
 
+import javax.swing.*;
+
 public class LookAndFeelThemeQuestion extends StaticChoiceQuestion
 {
     public LookAndFeelThemeQuestion()
@@ -37,6 +39,7 @@ public class LookAndFeelThemeQuestion extends StaticChoiceQuestion
     private static ChoiceItem[] getLookAndFeelThemeChoices()
     {
         return new ChoiceItem[] {
+                new ChoiceItem(DEFAULT_SYSTEM_LOOK_AND_FEEL_THEME_CLASS_NAME, EAM.text("System default")),
                 new ChoiceItem(FlatLightLaf.class.getName(), EAM.text(FlatLightLaf.NAME)),
                 new ChoiceItem(FlatIntelliJLaf.class.getName(), EAM.text(FlatIntelliJLaf.NAME)),
                 new ChoiceItem(FlatArcIJTheme.class.getName(), EAM.text(FlatArcIJTheme.NAME)),
@@ -45,10 +48,13 @@ public class LookAndFeelThemeQuestion extends StaticChoiceQuestion
                 new ChoiceItem(FlatLightFlatIJTheme.class.getName(), EAM.text(FlatLightFlatIJTheme.NAME)),
                 new ChoiceItem(FlatSolarizedLightIJTheme.class.getName(), EAM.text(FlatSolarizedLightIJTheme.NAME)),
                 new ChoiceItem(FlatAtomOneLightIJTheme.class.getName(), EAM.text(FlatAtomOneLightIJTheme.NAME)),
-                new ChoiceItem(FlatGitHubIJTheme.class.getName(), EAM.text(FlatGitHubIJTheme.NAME)),
+                new ChoiceItem(DEFAULT_LOOK_AND_FEEL_THEME_CLASS_NAME, EAM.substituteSingleString(EAM.text("%s (default)"), FlatGitHubIJTheme.NAME)),
                 new ChoiceItem(FlatLightOwlIJTheme.class.getName(), EAM.text(FlatLightOwlIJTheme.NAME)),
                 new ChoiceItem(FlatSolarizedLightIJTheme.class.getName(), EAM.text(FlatSolarizedLightIJTheme.NAME)),
         };
     }
+
+	public static final String DEFAULT_LOOK_AND_FEEL_THEME_CLASS_NAME = FlatGitHubIJTheme.class.getName();
+	public static final String DEFAULT_SYSTEM_LOOK_AND_FEEL_THEME_CLASS_NAME = UIManager.getSystemLookAndFeelClassName();
 }
 

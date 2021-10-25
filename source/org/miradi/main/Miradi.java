@@ -24,6 +24,7 @@ import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubIJTheme;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.questions.AllLanguagesQuestion;
 import org.miradi.questions.ChoiceItem;
+import org.miradi.questions.LookAndFeelThemeQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.LanguagePackFileFilter;
 import org.miradi.utils.StringUtilities;
@@ -293,7 +294,7 @@ public class Miradi
 
 			if (StringUtilities.isNullOrEmpty(lookAndFeelThemeClassName))
 			{
-				UIManager.setLookAndFeel(FlatGitHubIJTheme.class.getName());
+				UIManager.setLookAndFeel(LookAndFeelThemeQuestion.DEFAULT_LOOK_AND_FEEL_THEME_CLASS_NAME);
 			}
 			else
 			{
@@ -302,7 +303,7 @@ public class Miradi
 		}
 		catch( Exception ex ) {
 			EAM.logDebug("Failed to initialize LaF - defaulting to system");
-			UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+			UIManager.setLookAndFeel(LookAndFeelThemeQuestion.DEFAULT_SYSTEM_LOOK_AND_FEEL_THEME_CLASS_NAME);
 		}
 	}
 
