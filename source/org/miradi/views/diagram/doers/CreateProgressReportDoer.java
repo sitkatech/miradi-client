@@ -43,7 +43,10 @@ public class CreateProgressReportDoer extends AbstractCreateProgressDoer
 		if (Indicator.is(selectedRef))
 			return true;
 		
-		return Task.is(selectedRef);
+		if (Task.is(selectedRef))
+			return true;
+
+		return Output.is(selectedRef);
 	}
 	
 	@Override

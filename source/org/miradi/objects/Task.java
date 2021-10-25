@@ -71,6 +71,7 @@ public class Task extends Factor
 	{
 		CommandVector commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
 		commandsToDeleteChildren.addAll(createCommandsToDeleteBudgetChildren());
+		commandsToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_OUTPUT_REFS));
 		commandsToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_PROGRESS_REPORT_REFS));
 		commandsToDeleteChildren.addAll(getDeleteSelfAndSubtasksCommands(getProject()));
 		

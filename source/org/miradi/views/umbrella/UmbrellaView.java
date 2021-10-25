@@ -235,6 +235,11 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionCreateResultReport.class, new CreateResultReportDoer());
 		addDoerToMap(ActionDeleteResultReport.class, new DeleteResultReportDoer());
 
+		addDoerToMap(ActionEditStrategyOutputs.class, new EditStrategyOutputsDoer());
+		addDoerToMap(ActionEditTaskOutputs.class, new EditTaskOutputsDoer());
+		addDoerToMap(ActionCreateOutput.class, new CreateOutputDoer());
+		addDoerToMap(ActionDeleteOutput.class, new DeleteOutputDoer());
+
 		addDoerToMap(ActionCreateProgressPercent.class, new CreateProgressPercentDoer());
 		addDoerToMap(ActionDeleteProgressPercent.class, new DeleteProgressPercentDoer());
 		
@@ -377,8 +382,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addJumpDoerToMap(ActionJumpStrategicPlanHowToConstructStep.class);
 		
 		addJumpDoerToMap(ActionJumpDevelopDraftStrategiesStep.class);
-		
-		
+
 		addJumpDoerToMap(ActionJumpWorkPlanAssignResourcesStep.class);
 		addJumpDoerToMap(ActionJumpDiagramWizardReviewModelAndAdjustStep.class);
 		addJumpDoerToMap(ActionJumpThreatRatingWizardCheckTotalsStep.class);

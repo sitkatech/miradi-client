@@ -50,6 +50,7 @@ public class ProgressReport extends AbstractProgressReport
 			StrategySchema.getObjectType(),
 			IndicatorSchema.getObjectType(),
 			TaskSchema.getObjectType(),
+			OutputSchema.getObjectType(),
 		};
 	}
 

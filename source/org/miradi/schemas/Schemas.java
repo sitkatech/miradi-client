@@ -97,6 +97,7 @@ public class Schemas
 		registerSchema(new TimeframeSchema());
 		registerSchema(new AccountingClassificationAssociationSchema());
 		registerSchema(new MethodSchema());
+		registerSchema(new OutputSchema());
 	}
 	
 	public BaseObjectSchema get(final int objectType)

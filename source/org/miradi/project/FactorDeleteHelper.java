@@ -196,14 +196,14 @@ public class FactorDeleteHelper
 	{
 		getProject().executeCommands(factorToDelete.createCommandsToDeleteChildrenAndObject());
 	}
-	
+
 	public void deleteAnnotations(Factor factorToDelete) throws Exception
 	{
 		if (factorToDelete.canHaveObjectives())
-			deleteAnnotationIds(factorToDelete, ObjectType.OBJECTIVE, factorToDelete.TAG_OBJECTIVE_IDS);
+			deleteAnnotationIds(factorToDelete, ObjectType.OBJECTIVE, Factor.TAG_OBJECTIVE_IDS);
 		
 		if (canReferToIndicators(factorToDelete))
-			deleteAnnotationIds(factorToDelete, ObjectType.INDICATOR, factorToDelete.TAG_INDICATOR_IDS);
+			deleteAnnotationIds(factorToDelete, ObjectType.INDICATOR, Factor.TAG_INDICATOR_IDS);
 		
 		//TODO: there is much common code between DeleteAnnotationDoer and DeleteActivity classes and this class; 
 		// for example DeleteActivity.deleteTaskTree( is general and and good not just for activities

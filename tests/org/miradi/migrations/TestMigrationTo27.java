@@ -126,6 +126,9 @@ public class TestMigrationTo27 extends AbstractTestMigration
 		DateUnitEffort dateUnitEffortForRawAddedAssignment1 = dateUnitEffortListForRawAddedAssignment1.getDateUnitEffort(0);
 		assertEquals(dateUnitEffortForRawAddedAssignment1.getQuantity(), numberOfUnits / 2);
 
+		CommandSetObjectData cmdToRemoveActivity1Outputs = new CommandSetObjectData(activity1, Task.TAG_OUTPUT_REFS, "");
+		getProject().executeCommand(cmdToRemoveActivity1Outputs);
+
 		verifyRawObjectMatchesBaseObject(activity1, rawAddedActivity);
 	}
 

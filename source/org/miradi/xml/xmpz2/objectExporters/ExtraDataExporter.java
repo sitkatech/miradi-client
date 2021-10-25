@@ -72,9 +72,9 @@ public class ExtraDataExporter implements Xmpz2XmlConstants
 		getWriter().writeEndElement(EXTRA_DATA_SECTION);
 	}
 
-	private void exportPool(int poolTypeToImport) throws Exception
+	private void exportPool(int poolTypeToExport) throws Exception
 	{
-		ORefList objectRefs = getProject().getPool(poolTypeToImport).getSortedRefList();
+		ORefList objectRefs = getProject().getPool(poolTypeToExport).getSortedRefList();
 		for (int index = 0; index < objectRefs.size(); ++index)
 		{
 			BaseObject baseObject = BaseObject.find(getProject(), objectRefs.get(index));

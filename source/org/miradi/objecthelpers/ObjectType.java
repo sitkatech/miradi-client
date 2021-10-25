@@ -105,6 +105,7 @@ public class ObjectType
 	public static final int EXTENDED_PROGRESS_REPORT = 70;
 	public static final int RESULT_REPORT = 71;
 	public static final int THREAT_SIMPLE_RATING_DATA = 72;
+	public static final int OUTPUT = 73;
 
 	// When you add a new type, be sure to:
 	// - increment OBJECT_TYPE_COUNT
@@ -113,7 +114,7 @@ public class ObjectType
 	// - add appropriate entry to FieldLabels.properties file
 	// - update requiresUUID (and related importer / exporter, etc.) as applicable
 
-	public static final int OBJECT_TYPE_COUNT = 73;
+	public static final int OBJECT_TYPE_COUNT = 74;
 
 	public static String getUserFriendlyObjectTypeName(Project project, int objectType)
 	{

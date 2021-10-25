@@ -40,6 +40,7 @@ public class TaskSchema extends EvidenceFactorSchema
 		createFieldSchemaOptionalRef(Task.TAG_ASSIGNED_LEADER_RESOURCE);
 		createBudgetSchemas();
 		createProgressReportSchema();
+		createOutputSchema();
 		createTaxonomyClassificationSchemaField();
 		
 		createPseudoFieldSchemaString(Task.PSEUDO_TAG_STRATEGY_LABEL);

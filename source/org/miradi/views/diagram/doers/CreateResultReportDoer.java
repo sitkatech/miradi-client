@@ -22,8 +22,10 @@ package org.miradi.views.diagram.doers;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.*;
-import org.miradi.project.Project;
+import org.miradi.objects.BaseObject;
+import org.miradi.objects.BiophysicalResult;
+import org.miradi.objects.IntermediateResult;
+import org.miradi.objects.ThreatReductionResult;
 import org.miradi.schemas.ResultReportSchema;
 import org.miradi.views.diagram.CreateAnnotationDoer;
 
@@ -61,26 +63,7 @@ public class CreateResultReportDoer extends CreateAnnotationDoer
             return null;
 
         ORefList selectionRefs = selectedHierarchies[0];
-        return extractResultReportParentCandidate(getProject(), selectionRefs, getAnnotationType());
-    }
-
-    public static BaseObject extractResultReportParentCandidate(Project projectToUse, ORefList selectionRefs, int objectTypeToRemove)
-    {
-        removeFirstRefInPlace(selectionRefs, objectTypeToRemove);
-        if (selectionRefs.isEmpty())
-            return null;
-
-        ORef ref = selectionRefs.getFirstElement();
-        if (ref.isInvalid())
-            return null;
-
-        return BaseObject.find(projectToUse, ref);
-    }
-
-    private static void removeFirstRefInPlace(ORefList selectionRefs, int objectTypeToRemove)
-    {
-        ORef firstInstanceOfTypeToRemove = selectionRefs.getRefForType(objectTypeToRemove);
-        selectionRefs.remove(firstInstanceOfTypeToRemove);
+        return extractAnnotationParentCandidate(getProject(), selectionRefs, getAnnotationType());
     }
 
     @Override

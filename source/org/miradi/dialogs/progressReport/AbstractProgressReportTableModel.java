@@ -44,7 +44,7 @@ abstract public class AbstractProgressReportTableModel extends EditableObjectRef
 	@Override
 	protected ORefList extractOutEditableRefs(ORefList hierarchyToSelectedRef)
 	{
-		BaseObject progressReportParent = AbstractCreateProgressDoer.extractProgressParentCandidate(getProject(), hierarchyToSelectedRef, getObjectType());
+		BaseObject progressReportParent = AbstractCreateProgressDoer.extractAnnotationParentCandidate(getProject(), hierarchyToSelectedRef, getObjectType());
 		if (progressReportParent == null)
 			return new ORefList();
 		

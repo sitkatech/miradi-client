@@ -163,7 +163,7 @@ public class TestMpfToMpzConverter extends TestCaseWithProject
 
 	private String setHighLowVersionsToLatestMpf(String mpfContent)
 	{
-		String latestHeaderLine = AbstractMiradiProjectSaver.createLowHighVersionHeaderLine(Project.VERSION_HIGH, Project.VERSION_LOW);
+		String latestHeaderLine = AbstractMiradiProjectSaver.createLowHighVersionHeaderLine(Project.VERSION_LOW, Project.VERSION_HIGH);
 		String headerLineForMpz = AbstractMiradiProjectSaver.createLowHighVersionHeaderLine(MpzToMpfConverter.FIRST_LOW_VERSION_OF_MPF, MpzToMpfConverter.FIRST_HIGH_VERSION_OF_MPF);
 		
 		return mpfContent.replaceAll(headerLineForMpz, latestHeaderLine);

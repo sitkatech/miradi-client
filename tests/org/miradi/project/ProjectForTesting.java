@@ -693,7 +693,15 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		return progressPercent;
 	}
-	
+
+	public Output createAndPopulateOutput() throws Exception
+	{
+		Output output = createOutput();
+		populateOutput(output);
+
+		return output;
+	}
+
 	public Xenodata createAndPopulateXenodata(String xenoDataProjectId) throws Exception
 	{
 		Xenodata xenodata = createXenodata();
@@ -1103,7 +1111,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORef progressPercentRef = createObject(ProgressPercentSchema.getObjectType());
 		return ProgressPercent.find(this, progressPercentRef);
 	}
-	
+
+	public Output createOutput() throws Exception
+	{
+		ORef OutputRef = createObject(OutputSchema.getObjectType());
+		return Output.find(this, OutputRef);
+	}
+
 	private Xenodata createXenodata() throws Exception
 	{
 		ORef xenodataRef = createObject(XenodataSchema.getObjectType());
@@ -1470,6 +1484,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		addResourceAssignment(task);
 
 		addExpenseWithValue(task);
+		addOutput(task);
 	}
 
 	public void populateMethod(Method method, String customLabel) throws Exception
@@ -1628,6 +1643,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		
 		addExpenseWithValue(strategy);
 		addProgressReport(strategy);
+		addOutput(strategy);
 	}
 
 	public Timeframe addTimeframe(BaseObject baseObject) throws Exception 
@@ -1822,7 +1838,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	public ResultReport addResultReport(BaseObject baseObject, ResultReport resultReport) throws Exception
 	{
 		ORefList resultReportRefs = new ORefList(resultReport.getRef());
-		fillObjectUsingCommand(baseObject, baseObject.TAG_RESULT_REPORT_REFS, resultReportRefs.toString());
+		fillObjectUsingCommand(baseObject, BaseObject.TAG_RESULT_REPORT_REFS, resultReportRefs.toString());
 
 		return resultReport;
 	}
@@ -1833,7 +1849,21 @@ public class ProjectForTesting extends ProjectWithHelpers
 		ORefList progressReportRefs = new ORefList(progressPercent.getRef());
 		fillObjectUsingCommand(desire, Desire.TAG_PROGRESS_PERCENT_REFS, progressReportRefs.toString());
 	}
-	
+
+	public Output addOutput(BaseObject baseObject) throws Exception
+	{
+		Output output = createAndPopulateOutput();
+		return addOutput(baseObject, output);
+	}
+
+	public Output addOutput(BaseObject baseObject, Output output) throws Exception
+	{
+		ORefList outputRefs = new ORefList(output.getRef());
+		fillObjectUsingCommand(baseObject, BaseObject.TAG_OUTPUT_REFS, outputRefs.toString());
+
+		return output;
+	}
+
 	public Objective addObjective(Factor factor) throws Exception
 	{
 		IdList objectiveIds = new IdList(ObjectiveSchema.getObjectType());
@@ -1887,6 +1917,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(progressPercent, ProgressPercent.TAG_DATE, "2009-01-23");
 		fillObjectUsingCommand(progressPercent, ProgressPercent.TAG_PERCENT_COMPLETE, "21");
 		fillObjectUsingCommand(progressPercent, ProgressPercent.TAG_PERCENT_COMPLETE_NOTES, "some percent complete notes");
+	}
+
+	public void populateOutput(Output output) throws Exception
+	{
+		fillObjectUsingCommand(output, Output.TAG_LABEL, "Some Output label");
+		fillObjectUsingCommand(output, Output.TAG_COMMENTS, "Some Output comments");
 	}
 
 	public void populateXenodata(Xenodata xenodata, String xenoDataProjectId) throws Exception

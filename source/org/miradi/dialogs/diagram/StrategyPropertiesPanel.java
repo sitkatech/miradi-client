@@ -22,6 +22,7 @@ package org.miradi.dialogs.diagram;
 
 import org.miradi.dialogs.assignment.AssignmentsPropertiesSubPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
+import org.miradi.dialogs.output.StrategyOutputSubPanel;
 import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
 import org.miradi.layout.OneColumnGridLayout;
 import org.miradi.main.EAM;
@@ -44,6 +45,7 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanelWithSections
 		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
 		addSubPanelWithTitledBorder(new TimeframePropertiesSubPanel(getProject(), ORef.createInvalidWithType(StrategySchema.getObjectType())));
 		addSubPanelWithTitledBorder(new AssignmentsPropertiesSubPanel(getMainWindow(), StrategySchema.getObjectType(), getPicker()));
+		addSubPanelWithTitledBorder(new StrategyOutputSubPanel(getMainWindow()));
 
 		updateFieldsFromProject();
 	}

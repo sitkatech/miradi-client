@@ -88,7 +88,13 @@ public class Strategy extends Factor
 	{
 		return true;
 	}
-	
+
+	@Override
+	public boolean canHaveOutputs()
+	{
+		return true;
+	}
+
 	public boolean isStatusReal()
 	{
 		return !isStatusDraft();
@@ -283,8 +289,9 @@ public class Strategy extends Factor
 	{
 		CommandVector commandsToDeleteChildren  = super.createCommandsToDeleteChildren();
 		commandsToDeleteChildren.addAll(createCommandsToDeleteBudgetChildren());
+		commandsToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_OUTPUT_REFS));
 		commandsToDeleteChildren.addAll(createCommandsToDeleteRefs(TAG_PROGRESS_REPORT_REFS));
-		
+
 		return commandsToDeleteChildren;
 	}
 	
@@ -345,7 +352,7 @@ public class Strategy extends Factor
 	
 	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
 	public static final String TAG_STATUS = "Status";
-	
+
 	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
 	public static final String TAG_IMPACT_RATING = "ImpactRating";
 	public static final String TAG_FEASIBILITY_RATING = "FeasibilityRating";

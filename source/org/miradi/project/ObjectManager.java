@@ -111,6 +111,8 @@ public class ObjectManager
 		addNormalPool(new TaxonomyAssociationPool(ida), TaxonomyAssociationSchema.OBJECT_NAME);
 		addNormalPool(new FutureStatusPool(ida), FutureStatusSchema.OBJECT_NAME);
 		addNormalPool(new AccountingClassificationAssociationPool(ida), AccountingClassificationAssociationSchema.OBJECT_NAME);
+		addNormalPool(new ResultReportPool(ida), ResultReportSchema.OBJECT_NAME);
+		addNormalPool(new OutputPool(ida), OutputSchema.OBJECT_NAME);
 	}
 
 	public Schemas getSchemas()
@@ -261,6 +263,11 @@ public class ObjectManager
 		return (ObjectTreeTableConfigurationPool) getPool(ObjectTreeTableConfigurationSchema.getObjectType());
 	}
 
+	public OutputPool getOutputPool()
+	{
+		return (OutputPool)getPool(ObjectType.OUTPUT);
+	}
+
 	public BaseId createObject(int objectType, BaseId objectId) throws Exception
 	{
 		BaseId createdId = BaseId.INVALID;
@@ -379,6 +386,7 @@ public class ObjectManager
 			ObjectType.BUDGET_CATEGORY_ONE,
 			ObjectType.BUDGET_CATEGORY_TWO,
 			ObjectType.DASHBOARD,
+			ObjectType.OUTPUT,
 		};
 		return types;
 	}
