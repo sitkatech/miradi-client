@@ -6,9 +6,9 @@
 	
 	<!-- product version -->
 	<property name="version.prefix" value=""/>
-	<property name="version.main" value = "4.5"/>
+	<property name="version.main" value = "4.6"/>
 	<property name="version.minor" value = ".0"/>
-	<property name="version.full" value="${version.main}${version.minor}"/>
+	<property name="version.full" value="A{version.main}${version.minor}"/>
 
 	<loadresource property="version.full.installer">
 		<propertyresource name="version.full"/>
@@ -29,16 +29,19 @@
     <property name="mac.build.server" value="${env.SITKA_MAC_BUILDSERVER}" />
     <property name="mac.build.password" value="${env.SITKA_MAC_BUILDPASSWORD}" />
     <property name="mac.build.certname" value="${env.SITKA_MAC_BUILDCERT}" />
-	<!--
+
     <property name="windows.build.user" value="${env.SITKA.WINDOWS.BUILDUSER}" />
     <property name="windows.build.server" value="${env.SITKA.WINDOWS.BUILDSERVER}" />
     <property name="windows.build.password" value="${env.SITKA.WINDOWS.BUILDPASSWORD}" />
+	<!--
     <property name="windows.build.ev.certname" value="${env.SITKA_WINDOWS_EV_BUILDCERT}" />
 	<property name="windows.build.ev.certname.password" value="${env.SITKA_WINDOWS_EV_BUILDCERT_PASSWORD}" />
     -->
     <property name="windows.build.certname.pfx" value="${env.SITKA_WINDOWS_BUILDCERT_PFX}" />
+	<!--
     <property name="windows.build.certname.spc" value="${env.SITKA_WINDOWS_BUILDCERT_SPC}" />
     <property name="windows.build.certname.pvk" value="${env.SITKA_WINDOWS_BUILDCERT_PVK}" />
+    -->
     <property name="windows.build.certname.password" value="${env.SITKA_WINDOWS_BUILDCERT_PASSWORD}" />
     <property name="miradi.web.domain" value="${env.SITKA_MIRADI_WEB_DOMAIN}" />
     <property name="jenkins.workspace" value="${env.WORKSPACE}"/>
@@ -114,14 +117,7 @@
     
     <!-- defined values -->
 	<property name="installer.top" value="${build.dir}/installer"/>
-	<!--
-	<property name="installer.win32" value="${installer.top}/Win32_NSIS/"/>
-	-->
 	<property name="installer.buildfiles.dir" value="${installer.top}/BuildFiles"/>
-	<!--
-    <property name="installer.src" value="${installer.win32}"/>
-    <property name="installer.bin" value="${installer.win32}/bin"/>
-    -->
 	<property name="installer.mac.dir" value="${installer.top}/Mac" />
 	<property name="installer.mac.dmgbuild.dir" value="${installer.mac.dir}/dmgbuild" />
 
@@ -131,12 +127,6 @@
 	<property name="dist.mactree" value="${dist.dir}/MiradiMacInstall" />
 	<property name="mac.app.name" value="Miradi-${version.full}" />
 	<property name="windows.setup.name" value="MiradiSetup_${version.full.installer}" />
-
-	<!--
-	<condition property="nsis.executable" value="makensis.exe" else="makensis">
-		<os family="windows"/>
-	</condition>
-	-->
 
 	<!-- translations -->
 	<property name="miradi.pot" value="${dist.dir}/miradi-${version.langpack}.pot" />
@@ -177,13 +167,11 @@
     <fail message="env.JAVA_BOOT_CLASSPATH is not defined" unless="env.JAVA_BOOT_CLASSPATH"/>
     <echo message="env.JAVA_BOOT_CLASSPATH = ${env.JAVA_BOOT_CLASSPATH}"/>
 
-	<!--
     <fail message="env.INSTALL4J.INSTALL.PATH is not defined" unless="env.INSTALL4J.INSTALL.PATH"/>
     <echo message="env.INSTALL4J.INSTALL.PATH = ${env.INSTALL4J.INSTALL.PATH}"/>
 
     <fail message="env.INSTALL4J.JRES.PATH is not defined" unless="env.INSTALL4J.JRES.PATH"/>
     <echo message="env.INSTALL4J.JRES.PATH = ${env.INSTALL4J.JRES.PATH}"/>
-	-->
 
 	<fail message="env.SCM_BRANCH is not defined" unless="env.SCM_BRANCH"/>
 	<echo message="env.SCM_BRANCH = ${env.SCM_BRANCH}"/>
@@ -1156,6 +1144,7 @@
 		<arg line="sign /t http://timestamp.digicert.com /f ${windows.build.certname.pfx} /p ${windows.build.certname.password} ${dist.dir}/${windows.setup.name}.exe"/>
 	</exec>
 
+	<!--
 	<exec executable="osslsigncode" failonerror="true" osfamily="unix">
 		<arg value="-certs"/>
 		<arg value="${windows.build.certname.spc}"/>
@@ -1174,10 +1163,13 @@
 		<arg value="-out"/>
 		<arg value="${dist.dir}/${windows.setup.name}_signed.exe"/>
 	</exec>
+	-->
 
 	<!-- clean up -->
+	<!--
 	<delete file="${dist.dir}/${windows.setup.name}.exe"/>
 	<move file="${dist.dir}/${windows.setup.name}_signed.exe" tofile="${dist.dir}/${windows.setup.name}.exe"/>
+	-->
 </target>
 
 <!-- ================================================================== -->
@@ -1193,7 +1185,7 @@
 <!--
 <target name="release" depends="translations, source, zips, macdmgfile, win32installer, cleanup, permissions">
 -->
-<target name="release" depends="source, zips, cleanup">
+<target name="release" depends="source, zips, win32installer, cleanup">
     <echo message="Release Built"/>
     <echo message="REMEMBER TO TAG THIS RELEASE WITH ${version.timestamp} !"/>
 </target>
