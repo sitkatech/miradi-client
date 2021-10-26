@@ -572,11 +572,9 @@
 <!-- ================================================================== -->
 <!-- C U S T O M  T A S K   D E S                                       -->
 <!-- ================================================================== -->
-<!--
 <taskdef name="appbundler"
          classname="com.oracle.appbundler.AppBundlerTask"
          classpath="${installer.mac.dir}/appbundler-1.0ea/appbundler-1.0ea.jar" />
--->
 <taskdef name="install4j"
          classname="com.install4j.Install4JTask"
          classpath="${env.INSTALL4J.INSTALL.PATH}\ant.jar"/>
@@ -1066,7 +1064,7 @@
 <!-- ================================================================== -->
 <!-- M A C   D M G   F I L E                                            -->
 <!-- ================================================================== -->
-<target name="macdmgfile" depends="macappbundle" description="create a mac dmg file" if="isLinux">
+<target name="macdmgfile" depends="macappbundle" description="create a mac dmg file">
     <property name="mac.build.temp.dir" value="/Users/${mac.build.user}/miradi-build-temp" />
     <property name="mac.dmgbuild.settings" value="settings.py" />
     <property name="mac.dmgbuild.background" value="background.png" />
@@ -1100,10 +1098,15 @@
     <exec executable="ssh" failonerror="true">
         <arg value="${mac.build.user}@${mac.build.server}"/>
         <arg value="cd ${mac.build.temp.dir};
+                    /Users/${mac.build.user}/Library/Python/3.8/bin/dmgbuild -s ${mac.dmgbuild.settings} -D app=${mac.app.name}.app -D sample_project=${samples.marine.miradi.version} '${mac.build.dmg.name}' ${mac.build.dmg};
+                    exit;"/>
+		<!--
+        <arg value="cd ${mac.build.temp.dir};
                     security unlock-keychain -p ${mac.build.password};
                     codesign -s ${mac.build.certname} -f ${mac.build.temp.dir}/${mac.app.name}.app;
                     dmgbuild -s ${mac.dmgbuild.settings} -D app=${mac.app.name}.app -D sample_project=${samples.marine.miradi.version} '${mac.build.dmg.name}' ${mac.build.dmg};
                     exit;"/>
+		-->
     </exec>
 
     <!-- copy back over built dmg -->
@@ -1185,7 +1188,7 @@
 <!--
 <target name="release" depends="translations, source, zips, macdmgfile, win32installer, cleanup, permissions">
 -->
-<target name="release" depends="source, zips, win32installer, cleanup">
+<target name="release" depends="source, zips, macdmgfile, win32installer, cleanup">
     <echo message="Release Built"/>
     <echo message="REMEMBER TO TAG THIS RELEASE WITH ${version.timestamp} !"/>
 </target>
