@@ -8,7 +8,7 @@
 	<property name="version.prefix" value=""/>
 	<property name="version.main" value = "4.6"/>
 	<property name="version.minor" value = ".0"/>
-	<property name="version.full" value="A{version.main}${version.minor}"/>
+	<property name="version.full" value="${version.main}${version.minor}"/>
 
 	<loadresource property="version.full.installer">
 		<propertyresource name="version.full"/>
