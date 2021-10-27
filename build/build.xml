@@ -25,27 +25,27 @@
 	<property environment="env"/>
 
     <!-- env vars from build machine -->
-    <property name="mac.build.user" value="${env.SITKA_MAC_BUILDUSER}" />
-    <property name="mac.build.server" value="${env.SITKA_MAC_BUILDSERVER}" />
-    <property name="mac.build.password" value="${env.SITKA_MAC_BUILDPASSWORD}" />
-    <property name="mac.build.certname" value="${env.SITKA_MAC_BUILDCERT}" />
+    <property name="mac.build.user" value="${env.SITKA.MAC.BUILDUSER}" />
+    <property name="mac.build.server" value="${env.SITKA.MAC.BUILDSERVER}" />
+    <property name="mac.build.password" value="${env.SITKA.MAC.BUILDPASSWORD}" />
+    <property name="mac.build.certname" value="${env.SITKA.MAC.BUILDCERT}" />
 
     <property name="windows.build.user" value="${env.SITKA.WINDOWS.BUILDUSER}" />
     <property name="windows.build.server" value="${env.SITKA.WINDOWS.BUILDSERVER}" />
     <property name="windows.build.password" value="${env.SITKA.WINDOWS.BUILDPASSWORD}" />
 	<!--
-    <property name="windows.build.ev.certname" value="${env.SITKA_WINDOWS_EV_BUILDCERT}" />
-	<property name="windows.build.ev.certname.password" value="${env.SITKA_WINDOWS_EV_BUILDCERT_PASSWORD}" />
+    <property name="windows.build.ev.certname" value="${env.SITKA.WINDOWS.EV.BUILDCERT}" />
+	<property name="windows.build.ev.certname.password" value="${env.SITKA.WINDOWS.EV.BUILDCERT.PASSWORD}" />
     -->
-    <property name="windows.build.certname.pfx" value="${env.SITKA_WINDOWS_BUILDCERT_PFX}" />
+    <property name="windows.build.certname.pfx" value="${env.SITKA.WINDOWS.BUILDCERT.PFX}" />
 	<!--
-    <property name="windows.build.certname.spc" value="${env.SITKA_WINDOWS_BUILDCERT_SPC}" />
-    <property name="windows.build.certname.pvk" value="${env.SITKA_WINDOWS_BUILDCERT_PVK}" />
+    <property name="windows.build.certname.spc" value="${env.SITKA.WINDOWS.BUILDCERT.SPC}" />
+    <property name="windows.build.certname.pvk" value="${env.SITKA.WINDOWS.BUILDCERT.PVK}" />
     -->
-    <property name="windows.build.certname.password" value="${env.SITKA_WINDOWS_BUILDCERT_PASSWORD}" />
-    <property name="miradi.web.domain" value="${env.SITKA_MIRADI_WEB_DOMAIN}" />
+    <property name="windows.build.certname.password" value="${env.SITKA.WINDOWS.BUILDCERT.PASSWORD}" />
+    <property name="miradi.web.domain" value="${env.SITKA.MIRADI.WEB.DOMAIN}" />
     <property name="jenkins.workspace" value="${env.WORKSPACE}"/>
-	<property name="scm.miradi-client.branch" value="${env.SCM_BRANCH}"/>
+	<property name="scm.miradi-client.branch" value="${env.SCM.BRANCH}"/>
 
     <!-- repos -->
     <property name="scm.miradi-client" value="https://github.com/sitkatech/miradi-client"/>
@@ -164,8 +164,8 @@
     <fail message="env.WORKSPACE is not defined" unless="env.WORKSPACE"/>
     <echo message="env.WORKSPACE = ${env.WORKSPACE}"/>
 
-    <fail message="env.JAVA_BOOT_CLASSPATH is not defined" unless="env.JAVA_BOOT_CLASSPATH"/>
-    <echo message="env.JAVA_BOOT_CLASSPATH = ${env.JAVA_BOOT_CLASSPATH}"/>
+    <fail message="env.JAVA.BOOT.CLASSPATH is not defined" unless="env.JAVA.BOOT.CLASSPATH"/>
+    <echo message="env.JAVA.BOOT.CLASSPATH = ${env.JAVA.BOOT.CLASSPATH}"/>
 
     <fail message="env.INSTALL4J.INSTALL.PATH is not defined" unless="env.INSTALL4J.INSTALL.PATH"/>
     <echo message="env.INSTALL4J.INSTALL.PATH = ${env.INSTALL4J.INSTALL.PATH}"/>
@@ -173,8 +173,8 @@
     <fail message="env.INSTALL4J.JRES.PATH is not defined" unless="env.INSTALL4J.JRES.PATH"/>
     <echo message="env.INSTALL4J.JRES.PATH = ${env.INSTALL4J.JRES.PATH}"/>
 
-	<fail message="env.SCM_BRANCH is not defined" unless="env.SCM_BRANCH"/>
-	<echo message="env.SCM_BRANCH = ${env.SCM_BRANCH}"/>
+	<fail message="env.SCM.BRANCH is not defined" unless="env.SCM.BRANCH"/>
+	<echo message="env.SCM.BRANCH = ${env.SCM.BRANCH}"/>
 
 	<condition property="isLinux">
         <and>
@@ -209,7 +209,7 @@
 			includeantruntime="false"
 			debug="true" debuglevel="lines,source"
 			srcdir="${eam.src.root}" destdir="${eam.class.root}"
-			bootclasspath="${env.JAVA_BOOT_CLASSPATH}" >
+			bootclasspath="${env.JAVA.BOOT.CLASSPATH}" >
 		<compilerarg value="-Xlint:unchecked" />
 		<compilerarg value="-Werror" />
 		<classpath refid="eam.class.path"/>
