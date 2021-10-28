@@ -1171,7 +1171,10 @@
 <!-- ================================================================== -->
 <!-- R E L E A S E                                                      -->
 <!-- ================================================================== -->
+<!--
 <target name="release" depends="source, zips, macdmgfile, win32installer">
+-->
+<target name="release" depends="source, zips, win32installer">
     <echo message="Release Built"/>
     <echo message="REMEMBER TO TAG THIS RELEASE WITH ${version.timestamp} !"/>
 </target>
