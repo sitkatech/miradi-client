@@ -170,6 +170,8 @@
     <fail message="env.INSTALL4J.INSTALL.PATH is not defined" unless="env.INSTALL4J.INSTALL.PATH"/>
     <echo message="env.INSTALL4J.INSTALL.PATH = ${env.INSTALL4J.INSTALL.PATH}"/>
 
+    <fail message="env.INSTALL4J.LICENSE is not defined" unless="env.INSTALL4J.LICENSE"/>
+
     <fail message="env.INSTALL4J.JRES.PATH is not defined" unless="env.INSTALL4J.JRES.PATH"/>
     <echo message="env.INSTALL4J.JRES.PATH = ${env.INSTALL4J.JRES.PATH}"/>
 
@@ -1131,6 +1133,7 @@
 		<variable name="samples.marine.miradi.version" value="${samples.marine.miradi.version}"/>
         <variable name="dist.temp.jars" value="${dist.temp.jars}"/>
         <variable name="jres.path" value="${env.INSTALL4J.JRES.PATH}"/>
+        <variable name="license" value="${env.INSTALL4J.LICENSE}"/>
     </install4j>
 
 	<!-- sign built exe -->
