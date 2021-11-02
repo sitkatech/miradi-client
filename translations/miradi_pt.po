@@ -3,14 +3,18 @@
 # This file is distributed under the same license as the PACKAGE package.
 # FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
+# Translators:
+# Andy Phenix <andy@sitkatech.com>, 2018
+# Gustavo Gatti <gugatti73@gmail.com>, 2019
+#
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2018-07-24 11:36-0700\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Gustavo Gatti <gugatti73@gmail.com>, 2018\n"
+"PO-Revision-Date: 2018-06-20 06:04+0000\n"
+"Last-Translator: Gustavo Gatti <gugatti73@gmail.com>, 2019\n"
 "Language-Team: Portuguese (https://www.transifex.com/miradi/teams/8546/pt/)\n"
 "Language: pt\n"
 "MIME-Version: 1.0\n"
@@ -1188,7 +1192,7 @@ msgstr "Plano de Ação: Beaseado nas Estratégias"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:568
 msgid "Action canceled"
-msgstr ""
+msgstr "Ação cancelada"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:50
 msgid "Actions"
@@ -1260,7 +1264,7 @@ msgstr "Selecione..."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionClearAll.java:34
 msgid "Action|Clear Selection(s)"
-msgstr ""
+msgstr "Action|Limpar seleção (ou seleções)"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionClose.java:35
 msgid "Action|Close Project"
@@ -1293,7 +1297,7 @@ msgstr "Copiar"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCopyDiagramFactorFormat.java:35
 msgid "Action|Copy Format"
-msgstr ""
+msgstr "Action|Copiar formato"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateTaggedObjectSet.java:35
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateReportTemplate.java:35
@@ -1675,7 +1679,7 @@ msgstr "Criar despesa projetada"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateResultReport.java:35
 msgid "Action|Manage|Create Result Report"
-msgstr ""
+msgstr "Action|Manage|Criar relatório de resultados"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionCreateTask.java:40
 msgid "Action|Manage|Create Task"
@@ -1757,7 +1761,7 @@ msgstr "Apagar Relatório de Progresso"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionDeleteResultReport.java:35
 msgid "Action|Manage|Delete Result Report"
-msgstr ""
+msgstr "Action|Manage|Apagar relatório de resultados"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/AbstractActionMoveActivity.java:36
 msgid "Action|Manage|Move Activity to this Strategy"
@@ -1846,7 +1850,7 @@ msgstr "Action|Colar o conteúdo"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionPasteDiagramFactorFormat.java:35
 msgid "Action|Paste Format"
-msgstr ""
+msgstr "Action|Colar formato"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/ActionPasteWithoutLinks.java:42
 msgid "Action|Paste Without Links"
@@ -2275,7 +2279,7 @@ msgstr "Analisar os resultados e os pressupostos do projeto"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:99
 msgid "Analyzing and using work plan data"
-msgstr ""
+msgstr "Analisando e usando os dados do plano de trabalho"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/CreateResultsChainDoer.java:90
 msgid ""
@@ -2340,7 +2344,7 @@ msgstr "Tem certeza que quer apagar este Relatório de Progresso?"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/doers/DeleteResultReportDoer.java:50
 msgid "Are you sure you want to delete this Result Report?"
-msgstr ""
+msgstr "Você tem certeza que deseja apagar este relatório de resultados?"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/doers/DeleteStressDoer.java:52
 msgid "Are you sure you want to delete this Stress?"
@@ -2673,7 +2677,7 @@ msgstr "Negrito"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramModeQuestion.java:32
 msgid "Brain Storm"
-msgstr ""
+msgstr "Chuva de ideias"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramLinkColorQuestion.java:44
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramFactorFontColorQuestion.java:45
@@ -2704,11 +2708,11 @@ msgstr "Categoria de Orçamento Dois"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/legacyprojects/migrations/RemoveBlankBudgetPlaceHoldersFromDetailsFieldMigration.java:80
 msgid "Budget Override was: "
-msgstr "Sobreposição do Oçamento foi:"
+msgstr "Sobreposição do orçamento foi:"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/legacyprojects/migrations/ConvertHighLevelEstimatesIntoAssignments.java:135
 msgid "Budget Override was: %s"
-msgstr "Sobreposição do Oçamento foi: %s"
+msgstr "Sobreposição do orçamento foi: %s"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:344
 msgid "Bundle Rules"
@@ -3027,7 +3031,7 @@ msgstr "Escolher Estresse para iniciar a Criação"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/diagram/doers/AbstractManageFactorTagDoer.java:57
 msgid "Choose tags for this diagram"
-msgstr ""
+msgstr "Escolha as etiquetas para esse diagrama"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:244
 msgid "Choose the colors that look best on your system:"
@@ -3059,7 +3063,7 @@ msgstr "Comprimir a Coluna Selecionada"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:247
 msgid "Color Scheme"
-msgstr ""
+msgstr "Esquema de cores"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/workplan/EditAnalysisRowsPanel.java:52
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/WorkPlanColumnConfigurationEditorPanel.java:63
@@ -3168,7 +3172,7 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FactorModeQuestion.java:38
 msgid "Contributing Factors and Intermediate Results Only"
-msgstr ""
+msgstr "Somente fatores contribuintes e resultados intermediários"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:106
 msgid ""
@@ -3270,7 +3274,7 @@ msgstr "Criando caixas de grupo..."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/Project.java:623
 msgid "Creating project file..."
-msgstr ""
+msgstr "Criando arquivo de projeto..."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FontFamiliyQuestion.java:40
 msgid "Cross-platform Sans-serif"
@@ -3402,7 +3406,7 @@ msgstr "Selecionador de Data"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/cells/FactorCell.java:193
 msgid "Date: "
-msgstr ""
+msgstr "Data:"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo33.java:52
 msgid "Day Columns Visibility feature"
@@ -3418,7 +3422,7 @@ msgstr "dez"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FontSizeQuestion.java:34
 msgid "Default System Size"
-msgstr ""
+msgstr "Tamanho padrão do sistema"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsPlanActionsAndMonitoringQuestion.java:109
 msgid "Define audiences and information needs"
@@ -3528,7 +3532,7 @@ msgstr "Detalhes:"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/cells/FactorCell.java:194
 msgid "Details: "
-msgstr ""
+msgstr "Detalhes:"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpFinancialOverviewStep.java:35
 msgid "Develop Project Budgets"
@@ -3598,7 +3602,7 @@ msgstr "Selecionador de Dados a serem incluidos no diagrama"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo47.java:42
 msgid "Diagram Link Annotation"
-msgstr ""
+msgstr "Anotação sobre o link do diagrama"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/DiagramLinkColorSubPanel.java:44
 msgid "Diagram Link Color Panel"
@@ -3606,7 +3610,7 @@ msgstr "Painel  Cor de Ligação no diagrama"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo47.java:41
 msgid "Diagram Link Uncertain Flag"
-msgstr ""
+msgstr "Bandeira de incerteza sobre o link do diagrama"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/TncBusinessPlanningSummarySubPanel.java:47
 msgid ""
@@ -3887,7 +3891,7 @@ msgstr "Exportar"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/doers/ExportMpf44VersionDoer.java:90
 msgid "Export 4.4 Miradi"
-msgstr ""
+msgstr "Exportar para formato Miradi 4.4"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/ExportMpzDoer.java:99
 msgid "Export MPZ"
@@ -4211,7 +4215,7 @@ msgstr "Lagos de Água Doce"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/DiagramModeQuestion.java:31
 msgid "Full Conceptual Model"
-msgstr ""
+msgstr "Modelo conceitual completo"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:63
 msgid "Full Report"
@@ -4378,11 +4382,11 @@ msgstr "Alto"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:74
 msgid "High-level work planning"
-msgstr ""
+msgstr "Plano de trabalho de alto nível"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/notify/NotifyDialogTemplateFactory.java:59
 msgid "Home Folder Not Found"
-msgstr ""
+msgstr "Pasta Home não encontrada"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/reportTemplate/StandardReportPanel.java:103
 msgid "How Reports Work"
@@ -4480,7 +4484,7 @@ msgstr "Escala de Imagem %"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/reports/RunXslTemplateDoer.java:171
 msgid "Images dir could not be created!"
-msgstr ""
+msgstr "Diretório de imagens não pode ser criado!"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/actions/jump/ActionJumpPlanningWizardImplementPlans.java:36
 msgid "Implement plans"
@@ -4549,7 +4553,7 @@ msgstr "Em andamento"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/FactorModeQuestion.java:37
 msgid "Include Biophysical Factors and Results (default)"
-msgstr ""
+msgstr "Incluir fatores biofísicos e resultados (padrão)"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/TargetModeQuestion.java:40
 msgid "Include Human Wellbeing Targets (default)"
@@ -4710,7 +4714,7 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/WizardTitlePanel.java:69
 msgid "Intro to View"
-msgstr "Introdução à Visão"
+msgstr "Introdução ao modo de visualização"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/HabitatAssociationQuestion.java:156
 msgid "Introduced Vegetation"
@@ -5604,7 +5608,7 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/project/ProjectRepairer.java:143
 msgid "Missing Indicator(s) was removed!"
-msgstr ""
+msgstr "Os indicadores que faltavam (um ou mais) foram removidos!"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/WorkPlanVisibleRowsQuestion.java:53
 msgid "Monitoring"
@@ -5655,7 +5659,7 @@ msgstr "Mais Sugestões"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/diagram/MoveActivitySelectionDialog.java:37
 msgid "Move"
-msgstr ""
+msgstr "Mover"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/planning/doers/TreeNodeMoveActivityDoer.java:316
 msgid "Move Activity to this Strategy"
@@ -5667,7 +5671,7 @@ msgstr "Mover para..."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/TaxonomyMultiSelectModeQuestion.java:36
 msgid "Multi Selection"
-msgstr ""
+msgstr "Seleção múltipla"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/FullTimeEmployeeDaysPerYearAction.java:225
 msgid "Must be a positive number"
@@ -5675,7 +5679,7 @@ msgstr "Deve ser um número positivo"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ThreatRatingQuestion.java:76
 msgid "N/A"
-msgstr ""
+msgstr "N/A"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/base/PreferencesPanel.java:153
 msgid ""
@@ -5764,7 +5768,7 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ColorSchemeQuestion.java:38
 msgid "New Miradi 4.5 Color Scheme"
-msgstr ""
+msgstr "Novo esquema de cores do Miradi 4.5"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/wizard/noproject/WelcomeCreateStep.java:95
 msgid "New Project Filename:"
@@ -5783,13 +5787,15 @@ msgstr "Não"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:66
 msgid "No Longer Relevant"
-msgstr ""
+msgstr "Não é mais relevante"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ResultReportLongStatusQuestion.java:66
 msgid ""
 "No Longer Relevant - Result is now assumed to be not achievable and/or not "
 "necessary"
 msgstr ""
+"Não é mais relevante - se supõe agora que o resultado não é alcançável e/ou "
+"é desnecessário"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/objecthelpers/DateUnit.java:177
 msgid "No date range for date Unit = "
@@ -5797,7 +5803,7 @@ msgstr "Falta faixa de datas para Unidade de data = "
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:42
 msgid "Not Achieved"
-msgstr ""
+msgstr "Não alcançado"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ResultReportLongStatusQuestion.java:42
 msgid ""
@@ -5816,15 +5822,19 @@ msgstr "Não Efetivo"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:30
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ProgressReportShortStatusQuestion.java:30
 msgid "Not Known"
-msgstr ""
+msgstr "Desconhecido"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ProgressReportLongStatusQuestion.java:30
 msgid "Not Known - Lack of sufficient info to assess progress status"
 msgstr ""
+"Desconhecido - falta de informações suficientes para avaliar o status de "
+"progresso"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ResultReportLongStatusQuestion.java:30
 msgid "Not Known - Lack of sufficient info to assess result status"
 msgstr ""
+"Desconhecido - falta de informações suficientes para avaliar o status do "
+"resultado"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/propertiesPanel/ResourceAssignmentMainTableModel.java:196
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/planning/treenodes/UnspecifiedBaseObject.java:45
@@ -5861,11 +5871,11 @@ msgstr "Não iniciado"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:36
 msgid "Not Yet"
-msgstr ""
+msgstr "Ainda não"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ResultReportLongStatusQuestion.java:36
 msgid "Not Yet - Too early to expect desired result"
-msgstr ""
+msgstr "Ainda não - muito cedo para esperar o resultado desejado"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/dialogs/NeverShowAgainPanel.java:76
 msgid "Notification Dialogs"
@@ -6008,7 +6018,7 @@ msgstr "Abrir hyperlink"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/MainWindow.java:740
 msgid "Opening project file..."
-msgstr ""
+msgstr "Abrindo o arquivo do projeto..."
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/AbstractFileSaverDoer.java:68
 msgid "Operation was canceled!"
@@ -6029,7 +6039,7 @@ msgstr "Organização"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/migrations/forward/MigrationTo11.java:42
 msgid "Organizational Priorities"
-msgstr ""
+msgstr "Prioridades organizacionais"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/HabitatAssociationQuestion.java:160
 msgid "Other"
@@ -6063,7 +6073,7 @@ msgstr "Página"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ResultReportShortStatusQuestion.java:48
 msgid "Partially Achieved"
-msgstr ""
+msgstr "Parcialmente alcançado"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/ResultReportLongStatusQuestion.java:48
 msgid ""
@@ -6337,7 +6347,7 @@ msgstr "3A.  Desenvolver Plano de Trabalho de Curto Prazo"
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:64
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/ProcessSteps.java:37
 msgid "ProcessStep|3B. Develop and Refine Project Budget"
-msgstr "3B. Desenvolver e Refinar o Oçamento do Projeto"
+msgstr "3B. Desenvolver e refinar o orçamento do projeto"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/questions/OpenStandardsImplementActionsAndMonitoringQuestion.java:69
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/main/menu/ProcessSteps.java:38
@@ -6392,7 +6402,7 @@ msgstr ""
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/diagram/cells/FactorCell.java:127
 msgid "Progress Status:"
-msgstr ""
+msgstr "Status de progresso:"
 
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/umbrella/DefinitionCommonTerms.java:244
 #: /usr/share/jenkins/jobs/Miradi/workspace/source/org/miradi/views/summary/SummaryProjectTabPanel.java:84
@@ -10348,7 +10358,7 @@ msgid "FieldLabel|3.PseudoBudgetRollupCost|Budget Rollup"
 msgstr "Sintetização (Rollup) de Orçamento"
 
 msgid "FieldLabel|3.BudgetCostMode|Budget Cost Mode"
-msgstr "Modo Oçamento de Custo"
+msgstr "Modo orçamento de custo"
 
 msgid "FieldLabel|3.TimeframeDatesTotal|Timeframe Total"
 msgstr "Período total"
@@ -10596,7 +10606,7 @@ msgid "FieldLabel|8.Priority|Priority"
 msgstr "Prioridade"
 
 msgid "FieldLabel|8.BudgetCostMode|Budget Cost Mode"
-msgstr "Modo Oçamento de Custo"
+msgstr "Modo orçamento de custo"
 
 msgid "FieldLabel|8.ProgressReportRefs|Progress Reports"
 msgstr "Relatórios de Progresso"
@@ -11329,7 +11339,7 @@ msgid "FieldLabel|19.Detail|Details"
 msgstr "Detalhes"
 
 msgid "FieldLabel|19.Comments|Comments"
-msgstr ""
+msgstr "FieldLabel|19.Comments|Comentários"
 
 msgid "FieldLabel|19.TaxonomyClassificationContainer|Program Classifications"
 msgstr ""
@@ -11356,10 +11366,10 @@ msgid "FieldLabel|19.PseudoLatestProgressReportLessonsLearned|Lessons Learned"
 msgstr "Lições aprendidas"
 
 msgid "FieldLabel|19.IsProgressStatusDisplayEnabled|Progress Status"
-msgstr ""
+msgstr "FieldLabel|19.IsProgressStatusDisplayEnabled|Status de progresso"
 
 msgid "FieldLabel|19.IsResultStatusDisplayEnabled|Results Status"
-msgstr ""
+msgstr "FieldLabel|19.IsResultStatusDisplayEnabled|Status de resultados"
 
 msgid "FieldLabel|20.Cause|Cause"
 msgstr ""
@@ -11437,7 +11447,7 @@ msgid "FieldLabel|21.RatingSummary|Roll-up"
 msgstr "Classificação Total"
 
 msgid "FieldLabel|21.BudgetCostMode|Budget Cost Mode"
-msgstr "Modo Oçamento de Custo"
+msgstr "Modo orçamento de custo"
 
 msgid "FieldLabel|21.PseudoTagGoals|Related Goals"
 msgstr "Objetivos Relacionados"
@@ -11615,7 +11625,7 @@ msgid "FieldLabel|24.Detail|Details"
 msgstr "Detalhes"
 
 msgid "FieldLabel|24.Comments|Comments"
-msgstr ""
+msgstr "FieldLabel|24.Comments|Comentários"
 
 msgid "FieldLabel|24.TaxonomyClassificationContainer|Program Classifications"
 msgstr "Classificações de programa"
@@ -11639,10 +11649,10 @@ msgid "FieldLabel|24.PseudoLatestProgressReportLessonsLearned|Lessons Learned"
 msgstr "Lições aprendidas"
 
 msgid "FieldLabel|24.IsProgressStatusDisplayEnabled|Progress Status"
-msgstr ""
+msgstr "FieldLabel|24.IsProgressStatusDisplayEnabled|Status de progresso"
 
 msgid "FieldLabel|24.IsResultStatusDisplayEnabled|Results Status"
-msgstr ""
+msgstr "FieldLabel|24.IsResultStatusDisplayEnabled|Status de resultados"
 
 msgid "FieldLabel|25.ThreatReductionResult|Threat Reduction Result"
 msgstr "FieldLabel|25.ThreatReductionResult|Resultado de Redução de Ameaça"
@@ -11864,7 +11874,7 @@ msgid "FieldLabel|36.Detail|Details"
 msgstr "Detalhes"
 
 msgid "FieldLabel|36.Comments|Comments"
-msgstr ""
+msgstr "FieldLabel|36.Comments|Comentários"
 
 msgid "FieldLabel|37.ProgressReport|Progress Report"
 msgstr "Relatório de Progresso"
@@ -12154,9 +12164,11 @@ msgstr "Mostrar"
 
 msgid "FieldLabel|49.ThreatStressRatingData|Threat Rating Comments"
 msgstr ""
+"FieldLabel|49.ThreatStressRatingData|Comentários sobre classificação de "
+"ameaças"
 
 msgid "FieldLabel|49.Comments|Comments"
-msgstr ""
+msgstr "FieldLabel|49.Comments|Comentários"
 
 msgid "FieldLabel|49.EvidenceNotes|Evidence Notes"
 msgstr "FieldLabel|49.EvidenceNotes|Notas sobre Evidência"
@@ -12533,7 +12545,7 @@ msgid "FieldLabel|71.ResultReport|Result Report"
 msgstr ""
 
 msgid "FieldLabel|71.ResultStatus|Result Status"
-msgstr ""
+msgstr "FieldLabel|71.ResultStatus|Status de resultados"
 
 msgid "FieldLabel|71.ResultDate|Result Date"
 msgstr ""
@@ -12543,9 +12555,11 @@ msgstr ""
 
 msgid "FieldLabel|72.ThreatSimpleRatingData|Threat Rating Comments"
 msgstr ""
+"FieldLabel|72.ThreatSimpleRatingData|Comentários sobre classificação de "
+"ameaça"
 
 msgid "FieldLabel|72.Comments|Comments"
-msgstr ""
+msgstr "FieldLabel|72.Comments|Comentários"
 
 msgid "FieldLabel|72.EvidenceNotes|Evidence Notes"
 msgstr "FieldLabel|72.EvidenceNotes|Notas sobre Evidência"
@@ -14212,6 +14226,31 @@ msgid ""
 "files, go to <a href='https://www.miradishare.org'>www.miradishare.org</"
 "a> !! </td></tr></table></div></body>"
 msgstr ""
+"html|/resources/MiradiShareProjectHelpLowerText.html|  <body bgcolor="
+"\"#DAEDF5\"><div class=''><table cellpadding='0'><tr><td>Miradi Share é um "
+"sistema de informática baseado na internet que ajuda organizações na gestão "
+"adaptativa de seus portfólios de projetos de conservação e doações. O Miradi "
+"Share funciona com base nas ferramentas para desenho, gestão e monitoramento "
+"de projetos individuais de conservação que utilizam os Padrões Abertos para "
+"a Prática da Conservação presentes no Miradi desktop. Em particular, o "
+"Miradi Share possibilita projetos relacionados/irmãos dentro de um programa "
+"geral a construírem seus planos individuais usando uma estrutura de trabalho "
+"e vocabulário comuns, além de possibilitar o trabalho colaborativo na web. "
+"Com o Miradi Share, gestores de programas podem rastrear e supervisionar a "
+"implementação de todos os projetos pelos quais são responsáveis, e podem "
+"trabalhar com informações dos projetos para compilar relatórios de "
+"desempenho para levar às decisões de gestão. E por meio do Miradi Share, os "
+"praticantes da comunidade de conservação podem compartilhar experiências e "
+"aprender uns dos outros. O Miradi Share também provê uma plataforma para "
+"novas ferramentas, como plano de trabalho on line, cadeias de resultados "
+"modelos, e análise espacial das informações dos Padrões Abertos. <br/><br/"
+">Todos os usuários do Miradi Desktop serão capazes de fazer o upload e "
+"compartilhar um projeto individual ou navegar pelos projetos que estão "
+"disponíveis publicamente e fazer o download sem custo. As ferramentas de "
+"gestão da pasta de projetos do Miradi Share estão disponíveis mediante uma "
+"licença do tipo programa-como-um-serviço. <br/><br/>Para saber mais ou para "
+"começar a compartilhar seus arquivos Miradi, vá para <a href='https://www."
+"miradishare.org'>www.miradishare.org</a> !! </td></tr></table></div></body>"
 
 msgid ""
 "html|/resources/ResultsChainHelp.html|<div class='indented'><p>To use this "
@@ -17984,6 +18023,7 @@ msgid ""
 "<BODY>    <P><B>Report View</FONT></B></P>  </BODY></HTML>"
 msgstr ""
 
+#, fuzzy
 msgid ""
 "html|/resources/help/AboutPart1.html|<!DOCTYPE HTML PUBLIC \"-//W3C//DTD "
 "HTML 4.0 Transitional//EN\"><HTML><HEAD><TITLE></TITLE><STYLE type=text/"
