@@ -1093,15 +1093,10 @@
     <exec executable="ssh" failonerror="true">
         <arg value="${mac.build.user}@${mac.build.server}"/>
         <arg value="cd ${mac.build.temp.dir};
-                    /Users/${mac.build.user}/Library/Python/3.8/bin/dmgbuild -s ${mac.dmgbuild.settings} -D app=${mac.app.name}.app -D sample_project=${samples.marine.miradi.version} '${mac.build.dmg.name}' ${mac.build.dmg};
-                    exit;"/>
-		<!--
-        <arg value="cd ${mac.build.temp.dir};
                     security unlock-keychain -p ${mac.build.password};
                     codesign -s ${mac.build.certname} -f ${mac.build.temp.dir}/${mac.app.name}.app;
-                    dmgbuild -s ${mac.dmgbuild.settings} -D app=${mac.app.name}.app -D sample_project=${samples.marine.miradi.version} '${mac.build.dmg.name}' ${mac.build.dmg};
+                    /Users/${mac.build.user}/Library/Python/3.8/bin/dmgbuild -s ${mac.dmgbuild.settings} -D app=${mac.app.name}.app -D sample_project=${samples.marine.miradi.version} '${mac.build.dmg.name}' ${mac.build.dmg};
                     exit;"/>
-		-->
     </exec>
 
     <!-- copy back over built dmg -->
