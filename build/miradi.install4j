@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="9.0.4" transformSequenceNumber="9">
   <directoryPresets config="./installer/BuildFiles" />
-  <application name="Miradi" applicationId="9257-7778-0919-8416" mediaDir="${compiler:dist.dir}" mediaFilePattern="${compiler:windows.setup.name}" compression="9" lzmaCompression="true" pack200Compression="true" shortName="Miradi" publisher="Miradi" publisherWeb="http://miradi.org" version="${compiler:version.full}" allPathsRelative="true" macVolumeId="829ea082d712de9f" javaMinVersion="1.8" jdkMode="runtimeJre">
+  <application name="Miradi" applicationId="9257-7778-0919-8416" mediaDir="${compiler:dist.dir}" mediaFilePattern="${compiler:windows.setup.name}" compression="9" lzmaCompression="true" pack200Compression="true" shortName="Miradi" publisher="Miradi" publisherWeb="http://miradi.org" version="${compiler:version.full}" allPathsRelative="true" macVolumeId="829ea082d712de9f" javaMinVersion="1.8" javaMaxVersion="1.8" jdkMode="runtimeJre">
     <languages>
       <principalLanguage id="en" customLocalizationFile="./installer/BuildFiles/install4j_messages_en.utf8" />
       <additionalLanguages>
@@ -9,6 +9,7 @@
         <language id="es" />
       </additionalLanguages>
     </languages>
+    <jreBundles jdkProviderId="Zulu" release="8/8u312" />
   </application>
   <files preserveSymlinks="false">
     <roots>
@@ -715,7 +716,7 @@ return console.askYesNo(message, true);
   </installerGui>
   <mediaSets>
     <windows name="Windows" id="22" installDir="Miradi" jreBitType="32">
-      <jreBundle jreBundleSource="none" includedJre="windows-x86-1.8.0_312" bundleType="dynamic" bundleUrl="${compiler:jres.path}/windows-x86-1.8.0_312.tar.gz" directDownload="true" installOnlyIfNecessary="true" />
+      <jreBundle includedJre="windows-x86-1.8.0_312" bundleUrl="${compiler:jres.path}/windows-x86-1.8.0_312.tar.gz" directDownload="true" installOnlyIfNecessary="true" />
     </windows>
   </mediaSets>
   <buildIds buildAll="false">
