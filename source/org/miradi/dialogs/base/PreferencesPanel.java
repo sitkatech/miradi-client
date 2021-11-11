@@ -137,7 +137,7 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 
 	private JPanel createSystemWideTab()
 	{
-		JPanel htmlTab = new JPanel(new BasicGridLayout(0,2));
+		JPanel htmlTab = new JPanel(new BasicGridLayout(0,2, 2, 2, 2, 5));
 		htmlTab.setBackground(AppPreferences.getDataPanelBackgroundColor());
 
 		String lookAndFeelTheme = getMainWindow().getLookAndFeelThemeName();
