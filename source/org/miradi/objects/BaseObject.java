@@ -1415,6 +1415,11 @@ abstract public class BaseObject
 		return new ORefList(ResourceAssignmentSchema.getObjectType(), getSafeIdListData(TAG_RESOURCE_ASSIGNMENT_IDS));
 	}
 
+	public ORefList getOutputRefs()
+	{
+		return getSafeRefListData(BaseObject.TAG_OUTPUT_REFS);
+	}
+
 	public ORefList getOwnedAndRelatedObjectRefs(ORefList deepCopiedFactorRefs)
 	{
 		ORefList objectsToDeepCopy = new ORefList();

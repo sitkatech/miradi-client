@@ -170,7 +170,8 @@ abstract public class AbstractTreeRebuilder
 			IndicatorSchema.getObjectType(),
 			MethodSchema.getObjectType(),
 			TaskSchema.getObjectType(),
-			
+			OutputSchema.getObjectType(),
+
 			MeasurementSchema.getObjectType(),
 			ResourceAssignmentSchema.getObjectType(),
 			ExpenseAssignmentSchema.getObjectType(),

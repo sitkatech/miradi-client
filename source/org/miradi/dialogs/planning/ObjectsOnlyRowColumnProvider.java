@@ -90,6 +90,9 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 		if (propertyName.equals(TaskSchema.OBJECT_NAME))
 			return ObjectsOnlyRowColumnProvider.getTaskColumns();
 		
+		if (propertyName.equals(OutputSchema.OBJECT_NAME))
+			return ObjectsOnlyRowColumnProvider.getOutputColumns();
+
 		if (propertyName.equals(MeasurementSchema.OBJECT_NAME))
 			return ObjectsOnlyRowColumnProvider.getMeasurementColumns();
 		
@@ -126,15 +129,15 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 	}
 
 	private static CodeList getStrategyColumns()
-		{
-			String[] list = {
-					Indicator.TAG_PRIORITY,
-					Strategy.PSEUDO_TAG_TAXONOMY_CODE_VALUE,
-					Strategy.TAG_TEXT,
-			};
-				
-			return new CodeList(list);
-		}
+	{
+		String[] list = {
+				Indicator.TAG_PRIORITY,
+				Strategy.PSEUDO_TAG_TAXONOMY_CODE_VALUE,
+				Strategy.TAG_TEXT,
+		};
+
+		return new CodeList(list);
+	}
 
 	private static CodeList getActivityColumns()
 	{
@@ -146,14 +149,14 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 	}
 
 	private static CodeList getIndicatorColumns()
-		{
-			String[] list = {
-					Indicator.TAG_PRIORITY,
-					BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
-					};
-		
-			return new CodeList(list);
-		}
+	{
+		String[] list = {
+				Indicator.TAG_PRIORITY,
+				BaseObject.PSEUDO_TAG_LATEST_PROGRESS_REPORT_CODE,
+				};
+
+		return new CodeList(list);
+	}
 
 	private static CodeList getMethodColumns()
 	{
@@ -170,6 +173,17 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
 				BaseObject.PSEUDO_TAG_TIMEFRAME_TOTAL,
 				};
 		
+		return new CodeList(list);
+	}
+
+	private static CodeList getOutputColumns()
+	{
+		String[] list = {
+            Factor.TAG_SHORT_LABEL,
+            Factor.TAG_LABEL,
+            Factor.TAG_TEXT,
+				};
+
 		return new CodeList(list);
 	}
 

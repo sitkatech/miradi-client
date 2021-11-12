@@ -60,6 +60,12 @@ public class Output extends BaseObject
         };
     }
 
+	@Override
+	public String toString()
+	{
+		return getLabel();
+	}
+
     public static boolean is(ORef ref)
     {
         return is(ref.getObjectType());

@@ -24,10 +24,7 @@ import org.miradi.objects.BaseObject;
 import org.miradi.objects.PlanningTreeRowColumnProvider;
 import org.miradi.objects.Task;
 import org.miradi.questions.WorkPlanVisibleRowsQuestion;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.IntermediateResultSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CodeList;
 
 public class ProgressReportRowColumnProvider implements RowColumnProvider, PlanningTreeRowColumnProvider
@@ -39,6 +36,7 @@ public class ProgressReportRowColumnProvider implements RowColumnProvider, Plann
 				ObjectiveSchema.OBJECT_NAME,
 				IndicatorSchema.OBJECT_NAME,
 				TaskSchema.ACTIVITY_NAME,				
+				OutputSchema.OBJECT_NAME,
 		});
 	}
 

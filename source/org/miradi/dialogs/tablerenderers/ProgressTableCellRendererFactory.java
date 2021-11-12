@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.tablerenderers;
 
 import org.miradi.objects.*;
+import org.w3c.tidy.Out;
 
 import javax.swing.*;
 import java.awt.*;
@@ -80,6 +81,9 @@ public class ProgressTableCellRendererFactory extends ObjectTableCellEditorOrRen
 		if (Task.is(baseObject))
 			return true;
 		
+		if (Output.is(baseObject))
+			return true;
+
 		if (ThreatReductionResult.is(baseObject))
 			return true;
 

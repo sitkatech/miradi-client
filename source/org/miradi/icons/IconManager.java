@@ -82,6 +82,7 @@ public class IconManager
 		addIcon(new OpenStandardsInProgressIcon());
 		addIcon(new OpenStandardsCompleteIcon());
 		addIcon(new FutureStatusIcon());
+		addIcon(new OutputIcon());
 		addResourceImageIcon(COLLAPSE_ICON_FILE_NAME);
 		addResourceImageIcon(EXPAND_ICON_FILE_NAME);
 		addResourceImageIcon(SPELLCHECK_ICON_FILE_NAME);
@@ -197,6 +198,9 @@ public class IconManager
 
 		if (BiophysicalResult.is(type))
 			return getBiophysicalResultIcon();
+
+		if (Output.is(type))
+			return getOutputIcon();
 
 		throw new RuntimeException("Could not find icon for type:" + type);
 	}

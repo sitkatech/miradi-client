@@ -218,7 +218,9 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
             return childRefs;
 
 		Strategy strategy = Strategy.find(getProject(), parentRef);
+		childRefs.addAll(getOutputs(strategy));
 		childRefs.addAll(getActivities(strategy));
+
 		if (doStrategiesContainObjectives())
 			childRefs.addAll(getRelevantObjectivesAndGoalsOnDiagram(diagram, parentRef));
 
@@ -253,6 +255,13 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 			activityRefsToReturn = ORefList.subtract(activityRefsToReturn, monitoringActivityRefs);
 
 		return activityRefsToReturn;
+	}
+
+	private ORefList getOutputs(BaseObject factor) throws Exception
+	{
+		ORefList outputRefsToReturn = factor.getOutputRefs();
+
+		return outputRefsToReturn;
 	}
 
 	private ORefList getChildrenOfDesire(ORef parentRef, DiagramObject diagram) throws Exception
@@ -325,10 +334,19 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 
 		Task parentTask = Task.find(getProject(), parentTaskRef);
 
+		childRefs.addAll(parentTask.getOutputRefs());
+
 		String rowTypeCode = getRowColumnProvider().getRowTypeCodeForTask(parentTask);
 
 		if(willThisTypeEndUpInTheTree(rowTypeCode))
 			childRefs.addAll(parentTask.getChildTaskRefs());
+
+		ORefList childTaskRefs = parentTask.getChildTaskRefs();
+		for (int index = 0; index < childTaskRefs.size(); ++index)
+		{
+			Task task = Task.find(getProject(), childTaskRefs.get(index));
+			childRefs.addAll(task.getOutputRefs());
+		}
 
 		return childRefs;
 	}

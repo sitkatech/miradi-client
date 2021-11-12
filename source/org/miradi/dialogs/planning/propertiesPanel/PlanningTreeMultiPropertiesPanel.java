@@ -31,6 +31,7 @@ import org.miradi.dialogs.fundingsource.FundingSourcePropertiesPanel;
 import org.miradi.dialogs.goal.GoalPropertiesPanel;
 import org.miradi.dialogs.indicator.MethodPropertiesPanel;
 import org.miradi.dialogs.objective.ObjectivePropertiesPanel;
+import org.miradi.dialogs.output.OutputPropertiesPanel;
 import org.miradi.dialogs.planning.MeasurementPropertiesPanel;
 import org.miradi.dialogs.resource.ResourcePropertiesPanel;
 import org.miradi.dialogs.strategicPlan.IndicatorPropertiesPanel;
@@ -64,6 +65,11 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 	private PlanningViewTaskPropertiesPanel createTaskPropertiesPanel() throws Exception
 	{
 		return new PlanningViewTaskPropertiesPanel(getMainWindow());
+	}
+
+	private OutputPropertiesPanel createOutputPropertiesPanel() throws Exception
+	{
+		return new OutputPropertiesPanel(getMainWindow());
 	}
 
 	private StrategyPropertiesPanel createStrategyPropertiesPanel() throws Exception
@@ -128,6 +134,9 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 			if (TaskSchema.getObjectType() == objectType)
 				return getTaskPropertiesPanel();
 			
+			if (OutputSchema.getObjectType() == objectType)
+				return getOutputPropertiesPanel();
+
 			if (MeasurementSchema.getObjectType() == objectType)
 				return getMeasurementPropertiesPanel();
 			
@@ -253,6 +262,16 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 		return taskPropertiesInputPanel;
 	}
 	
+	private AbstractObjectDataInputPanel getOutputPropertiesPanel() throws Exception
+	{
+		if(outputPropertiesInputPanel == null)
+		{
+			outputPropertiesInputPanel = createOutputPropertiesPanel();
+			addPanel(outputPropertiesInputPanel);
+		}
+		return outputPropertiesInputPanel;
+	}
+
 	private AbstractObjectDataInputPanel getActivityPropertiesPanel() throws Exception
 	{
 		if (activityPropertiesPanel == null)
@@ -484,6 +503,7 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 	private MethodPropertiesPanel methodPropertiesPanel;
 	private StrategyPropertiesPanel strategyPropertiesPanel;
 	private PlanningViewTaskPropertiesPanel taskPropertiesInputPanel;
+	private OutputPropertiesPanel outputPropertiesInputPanel;
 	private WorkPlanActivityPropertiesPanel activityPropertiesPanel;
 	private NonDiagramAbstractTargetPropertiesPanel targetPropertiesPanel;
 	private NonDiagramAbstractTargetPropertiesPanel humanWelfareTargetPropertiesPanel; 

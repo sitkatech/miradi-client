@@ -49,6 +49,7 @@ public class PlanningViewSingleLevelQuestion extends ProjectBasedDynamicQuestion
 		choices.add(new ChoiceItem(Cause.OBJECT_NAME_THREAT, EAM.text("Direct Threats Only")));
 		choices.add(new ChoiceItem(StrategySchema.OBJECT_NAME, EAM.text("Strategies Only")));
 		choices.add(new ChoiceItem(TaskSchema.ACTIVITY_NAME, EAM.text("Activities Only")));
+		choices.add(new ChoiceItem(OutputSchema.OBJECT_NAME, EAM.text("Outputs Only")));
 		choices.add(new ChoiceItem(IndicatorSchema.OBJECT_NAME, EAM.text("Indicators Only")));
 		choices.add(new ChoiceItem(MethodSchema.OBJECT_NAME, EAM.text("Methods Only")));
 
