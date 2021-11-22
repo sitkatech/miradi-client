@@ -101,6 +101,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(TAXONOMY, createTaxonomyMap());
 		map.put(FUTURE_STATUS, createFutureStatusMap());
 		map.put(ANALYTICAL_QUESTION, createFactorMap());
+		map.put(ASSUMPTION, createAssumptionMap());
 
 		return map;
 	}
@@ -211,6 +212,13 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	private HashMap<String, String> createOutputMap()
 	{
 		HashMap<String, String> map = createFactorMap();
+		return map;
+	}
+
+	private HashMap<String, String> createAssumptionMap()
+	{
+		HashMap<String, String> map = createFactorMap();
+		map.put(Assumption.TAG_SUB_ASSUMPTION_IDS, SUB_ASSUMPTION_IDS);
 		return map;
 	}
 

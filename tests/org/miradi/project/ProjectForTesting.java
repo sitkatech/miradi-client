@@ -710,6 +710,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return AnalyticalQuestion;
 	}
 
+	public Assumption createAndPopulateAssumption() throws Exception
+	{
+		Assumption Assumption = createAssumption();
+		populateAssumption(Assumption);
+
+		return Assumption;
+	}
+
 	public Xenodata createAndPopulateXenodata(String xenoDataProjectId) throws Exception
 	{
 		Xenodata xenodata = createXenodata();
@@ -1130,6 +1138,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef AnalyticalQuestionRef = createObject(AnalyticalQuestionSchema.getObjectType());
 		return AnalyticalQuestion.find(this, AnalyticalQuestionRef);
+	}
+
+	public Assumption createAssumption() throws Exception
+	{
+		ORef AssumptionRef = createObject(AssumptionSchema.getObjectType());
+		return Assumption.find(this, AssumptionRef);
 	}
 
 	private Xenodata createXenodata() throws Exception
@@ -1878,6 +1892,16 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return output;
 	}
 
+	public Assumption addAssumption(AnalyticalQuestion analyticalQuestion) throws Exception
+	{
+		Assumption assumption = createAndPopulateAssumption();
+
+		ORefList assumptionRefs = new ORefList(assumption.getRef());
+		fillObjectUsingCommand(analyticalQuestion, AnalyticalQuestion.TAG_ASSUMPTION_IDS, assumptionRefs.toString());
+
+		return assumption;
+	}
+
 	public Objective addObjective(Factor factor) throws Exception
 	{
 		IdList objectiveIds = new IdList(ObjectiveSchema.getObjectType());
@@ -1943,6 +1967,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		fillObjectUsingCommand(analyticalQuestion, AnalyticalQuestion.TAG_LABEL, "Some AnalyticalQuestion label");
 		fillObjectUsingCommand(analyticalQuestion, AnalyticalQuestion.TAG_COMMENTS, "Some AnalyticalQuestion comments");
+	}
+
+	public void populateAssumption(Assumption assumption) throws Exception
+	{
+		fillObjectUsingCommand(assumption, Assumption.TAG_LABEL, "Some Assumption label");
+		fillObjectUsingCommand(assumption, Assumption.TAG_COMMENTS, "Some Assumption comments");
 	}
 
 	public void populateXenodata(Xenodata xenodata, String xenoDataProjectId) throws Exception

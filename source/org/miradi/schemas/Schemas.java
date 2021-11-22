@@ -99,6 +99,7 @@ public class Schemas
 		registerSchema(new MethodSchema());
 		registerSchema(new OutputSchema());
 		registerSchema(new AnalyticalQuestionSchema());
+		registerSchema(new AssumptionSchema());
 	}
 	
 	public BaseObjectSchema get(final int objectType)

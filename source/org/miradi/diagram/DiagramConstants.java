@@ -67,7 +67,8 @@ public class DiagramConstants
 	public static final Color DEFAULT_OBJECTIVE_COLOR = new Color(0xcae8ea);
 
 	// colors added for Miradi 4.6
-	public static final Color DEFAULT_ANALYTICAL_QUESTION_COLOR = new Color(150, 150, 255);
+	public static final Color DEFAULT_ANALYTICAL_QUESTION_COLOR = new Color(100, 100, 200);
+	public static final Color DEFAULT_ASSUMPTION_COLOR = new Color(150, 150, 255);
 
 	public static final Color[] targetColorChoices = {
 		DEFAULT_TARGET_COLOR,

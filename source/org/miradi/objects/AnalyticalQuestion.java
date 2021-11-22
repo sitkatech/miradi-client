@@ -20,11 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.FactorId;
+import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.AnalyticalQuestionSchema;
+import org.miradi.schemas.AssumptionSchema;
 
 public class AnalyticalQuestion extends Factor
 {
@@ -55,6 +58,25 @@ public class AnalyticalQuestion extends Factor
 		return true;
 	}
 
+	public IdList getAssumptionIds()
+	{
+		return getSafeIdListData(TAG_ASSUMPTION_IDS);
+	}
+
+	public ORefList getAssumptionRefs()
+	{
+		return new ORefList(AssumptionSchema.getObjectType(), getAssumptionIds());
+	}
+
+	@Override
+	public int getAnnotationType(String tag)
+	{
+		if (tag.equals(TAG_ASSUMPTION_IDS))
+			return AssumptionSchema.getObjectType();
+
+		return super.getAnnotationType(tag);
+	}
+
     public static boolean is(ORef ref)
     {
         return is(ref.getObjectType());
@@ -80,4 +102,5 @@ public class AnalyticalQuestion extends Factor
         return find(project.getObjectManager(), analyticalQuestionRef);
     }
 
+    public static final String TAG_ASSUMPTION_IDS = "AssumptionIds";
 }

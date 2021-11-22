@@ -277,6 +277,11 @@ abstract public class Factor extends BaseObject
 		return false;
 	}
 
+	public boolean isAssumption()
+	{
+		return false;
+	}
+
 	public boolean canHaveType(final int type)
 	{
 		if (Goal.is(type))
