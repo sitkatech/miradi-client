@@ -66,6 +66,7 @@ abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 				SCOPE_BOX,
 				ACTIVITY,
 				STRESS,
+				ANALYTICAL_QUESTION,
 		};
 	}
 
@@ -126,6 +127,7 @@ abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 		SUB_TASK,
 		FUTURE_STATUS,
 		OUTPUT,
+		ANALYTICAL_QUESTION,
 		};
 		
 		return Utility.convertToVector(objectTypeNames);

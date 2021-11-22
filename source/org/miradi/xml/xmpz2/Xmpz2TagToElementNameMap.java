@@ -100,7 +100,8 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(STRESS_BASED_THREAT_RATING, createStressBasedThreatRatingMap());
 		map.put(TAXONOMY, createTaxonomyMap());
 		map.put(FUTURE_STATUS, createFutureStatusMap());
-		
+		map.put(ANALYTICAL_QUESTION, createFactorMap());
+
 		return map;
 	}
 	

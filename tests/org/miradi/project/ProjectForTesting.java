@@ -702,6 +702,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return output;
 	}
 
+	public AnalyticalQuestion createAndPopulateAnalyticalQuestion() throws Exception
+	{
+		AnalyticalQuestion AnalyticalQuestion = createAnalyticalQuestion();
+		populateAnalyticalQuestion(AnalyticalQuestion);
+
+		return AnalyticalQuestion;
+	}
+
 	public Xenodata createAndPopulateXenodata(String xenoDataProjectId) throws Exception
 	{
 		Xenodata xenodata = createXenodata();
@@ -1116,6 +1124,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef OutputRef = createObject(OutputSchema.getObjectType());
 		return Output.find(this, OutputRef);
+	}
+
+	public AnalyticalQuestion createAnalyticalQuestion() throws Exception
+	{
+		ORef AnalyticalQuestionRef = createObject(AnalyticalQuestionSchema.getObjectType());
+		return AnalyticalQuestion.find(this, AnalyticalQuestionRef);
 	}
 
 	private Xenodata createXenodata() throws Exception
@@ -1923,6 +1937,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		fillObjectUsingCommand(output, Output.TAG_LABEL, "Some Output label");
 		fillObjectUsingCommand(output, Output.TAG_COMMENTS, "Some Output comments");
+	}
+
+	public void populateAnalyticalQuestion(AnalyticalQuestion analyticalQuestion) throws Exception
+	{
+		fillObjectUsingCommand(analyticalQuestion, AnalyticalQuestion.TAG_LABEL, "Some AnalyticalQuestion label");
+		fillObjectUsingCommand(analyticalQuestion, AnalyticalQuestion.TAG_COMMENTS, "Some AnalyticalQuestion comments");
 	}
 
 	public void populateXenodata(Xenodata xenodata, String xenoDataProjectId) throws Exception
