@@ -565,9 +565,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private String createIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementName)
 	{
+		if (isFieldForType(baseObjectSchema, fieldSchema, AssumptionSchema.getObjectType(), Assumption.TAG_DIAGRAM_FACTOR_IDS))
+			return createIdName(DIAGRAM_FACTOR);
+		
 		if (isFieldForType(baseObjectSchema, fieldSchema, AssumptionSchema.getObjectType(), Assumption.TAG_SUB_ASSUMPTION_IDS))
 			return createIdName(SUB_ASSUMPTION);
-		
+
 		if (isFieldForType(baseObjectSchema, fieldSchema, TaskSchema.getObjectType(), Task.TAG_SUBTASK_IDS))
 			return createIdName(SUB_TASK);
 

@@ -131,6 +131,7 @@ public class Assumption extends Factor
         return find(project.getObjectManager(), assumptionRef);
     }
 
+    public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
     public final static String TAG_SUB_ASSUMPTION_IDS = "SubAssumptionIds";
     public final static String TAG_DETAILS = "Details";
     public static final String TAG_EVIDENCE_CONFIDENCE = "EvidenceConfidence";

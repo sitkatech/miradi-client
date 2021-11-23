@@ -191,6 +191,7 @@ public interface Xmpz2XmlConstants
 	public static final String RELEVANT_ACTIVITY_IDS = "RelevantActivityIds";
 	public static final String RELEVANT_STRATEGY_IDS = "RelevantStrategyIds";	
 	public static final String RELEVANT_INDICATOR_IDS = "RelevantIndicatorIds";
+	public static final String RELEVANT_DIAGRAM_FACTOR_IDS = "RelevantDiagramFactorIds";
 	public static final String DATE_UNIT = "DateUnit";
 	public static final String DATE_UNITS_EXPENSE = "DateUnitExpense";
 	public static final String EXPENSE = "Expense";
