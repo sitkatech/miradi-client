@@ -22,6 +22,7 @@ package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Assumption;
+import org.miradi.questions.AssumptionEvidenceConfidenceQuestion;
 
 public class AssumptionSchema extends EvidenceFactorSchema
 {
@@ -35,6 +36,7 @@ public class AssumptionSchema extends EvidenceFactorSchema
     {
         super.fillFieldSchemas();
 
+        createFieldSchemaChoice(Assumption.TAG_EVIDENCE_CONFIDENCE, AssumptionEvidenceConfidenceQuestion.class);
         createOwnedFieldSchemaIdList(Assumption.TAG_SUB_ASSUMPTION_IDS, AssumptionSchema.getObjectType());
         createTaxonomyClassificationSchemaField();
     }

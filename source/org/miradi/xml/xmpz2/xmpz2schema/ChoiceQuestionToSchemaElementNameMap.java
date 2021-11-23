@@ -76,6 +76,7 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(ViabilityRatingEvidenceConfidence.class, VOCABULARY_EVIDENCE_CONFIDENCE_EXTERNAL);
 		addItem(MeasurementEvidenceConfidenceQuestion.class, VOCABULARY_EVIDENCE_CONFIDENCE_PROJECT);
 		addItem(ThreatRatingEvidenceConfidenceQuestion.class, VOCABULARY_EVIDENCE_CONFIDENCE_PROJECT);
+		addItem(AssumptionEvidenceConfidenceQuestion.class, VOCABULARY_EVIDENCE_CONFIDENCE_ASSUMPTION);
 		addItem(CountriesQuestion.class, VOCABULARY_COUNTRIES);
 		addItem(ThreatRatingQuestion.class, VOCABULARY_THREAT_RATING);
 		addItem(DiagramObjectDataInclusionQuestion.class, VOCABULARY_DIAGRAM_OBJECT_DATA_INCLUSION);

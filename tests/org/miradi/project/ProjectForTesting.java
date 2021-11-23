@@ -1973,6 +1973,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		fillObjectUsingCommand(assumption, Assumption.TAG_LABEL, "Some Assumption label");
 		fillObjectUsingCommand(assumption, Assumption.TAG_COMMENTS, "Some Assumption comments");
+		fillObjectUsingCommand(assumption, Assumption.TAG_EVIDENCE_CONFIDENCE, AssumptionEvidenceConfidenceQuestion.CONFIDENT_CODE);
 	}
 
 	public void populateXenodata(Xenodata xenodata, String xenoDataProjectId) throws Exception
