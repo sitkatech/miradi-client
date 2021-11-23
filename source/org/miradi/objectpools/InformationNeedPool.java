@@ -17,38 +17,44 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
+package org.miradi.objectpools;
 
-package org.miradi.migrations;
-
-import org.miradi.migrations.forward.MigrationTo76;
+import org.miradi.ids.BaseId;
+import org.miradi.ids.FactorId;
+import org.miradi.ids.IdAssigner;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.BaseObject;
 import org.miradi.objects.InformationNeed;
+import org.miradi.project.ObjectManager;
+import org.miradi.project.Project;
+import org.miradi.schemas.BaseObjectSchema;
 
-public class TestMigrationTo76 extends AbstractTestMigration
+public class InformationNeedPool extends FactorPool
 {
-    public TestMigrationTo76(String name)
+    public InformationNeedPool(IdAssigner idAssignerToUse)
     {
-        super(name);
+        super(idAssignerToUse, ObjectType.INFORMATION_NEED);
     }
 
-    public void testPoolRemovedAfterReverseMigration() throws Exception
+    public void put(InformationNeed informationNeed) throws Exception
     {
-        InformationNeed informationNeed = getProject().createAndPopulateInformationNeed();
-
-        RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo76.VERSION_TO));
-
-        assertFalse("Pool should have been removed during reverse migration", rawProject.containsAnyObjectsOfType(ObjectType.INFORMATION_NEED));
+        put(informationNeed.getId(), informationNeed);
     }
 
-    @Override
-    protected int getFromVersion()
+    public InformationNeed find(BaseId id)
     {
-        return MigrationTo76.VERSION_FROM;
+        return (InformationNeed) getRawObject(id);
     }
 
     @Override
-    protected int getToVersion()
+    BaseObject createRawObject(ObjectManager objectManager, BaseId actualId) throws Exception
     {
-        return MigrationTo76.VERSION_TO;
+        return new InformationNeed(objectManager ,new FactorId(actualId.asInt()));
+    }
+
+    @Override
+    public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+    {
+        return InformationNeed.createSchema(projectToUse);
     }
 }

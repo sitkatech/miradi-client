@@ -718,6 +718,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return Assumption;
 	}
 
+	public InformationNeed createAndPopulateInformationNeed() throws Exception
+	{
+		InformationNeed InformationNeed = createInformationNeed();
+		populateInformationNeed(InformationNeed);
+
+		return InformationNeed;
+	}
+
 	public Xenodata createAndPopulateXenodata(String xenoDataProjectId) throws Exception
 	{
 		Xenodata xenodata = createXenodata();
@@ -1144,6 +1152,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		ORef AssumptionRef = createObject(AssumptionSchema.getObjectType());
 		return Assumption.find(this, AssumptionRef);
+	}
+
+	public InformationNeed createInformationNeed() throws Exception
+	{
+		ORef InformationNeedRef = createObject(InformationNeedSchema.getObjectType());
+		return InformationNeed.find(this, InformationNeedRef);
 	}
 
 	private Xenodata createXenodata() throws Exception
@@ -1974,6 +1988,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(assumption, Assumption.TAG_LABEL, "Some Assumption label");
 		fillObjectUsingCommand(assumption, Assumption.TAG_COMMENTS, "Some Assumption comments");
 		fillObjectUsingCommand(assumption, Assumption.TAG_EVIDENCE_CONFIDENCE, AssumptionEvidenceConfidenceQuestion.CONFIDENT_CODE);
+	}
+
+	public void populateInformationNeed(InformationNeed informationNeed) throws Exception
+	{
+		fillObjectUsingCommand(informationNeed, InformationNeed.TAG_LABEL, "Some InformationNeed label");
+		fillObjectUsingCommand(informationNeed, InformationNeed.TAG_COMMENTS, "Some InformationNeed comments");
 	}
 
 	public void populateXenodata(Xenodata xenodata, String xenoDataProjectId) throws Exception

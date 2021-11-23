@@ -37,9 +37,10 @@ public class AssumptionSchema extends EvidenceFactorSchema
         super.fillFieldSchemas();
 
         createFieldSchemaChoice(Assumption.TAG_EVIDENCE_CONFIDENCE, AssumptionEvidenceConfidenceQuestion.class);
+        createOwnedFieldSchemaIdList(Assumption.TAG_INFORMATION_NEED_IDS, InformationNeedSchema.getObjectType());
         createOwnedFieldSchemaIdList(Assumption.TAG_SUB_ASSUMPTION_IDS, AssumptionSchema.getObjectType());
-		createOwnedFieldSchemaIdList(Assumption.TAG_DIAGRAM_FACTOR_IDS, DiagramFactorSchema.getObjectType());
-        
+        createFieldSchemaIdList(Assumption.TAG_DIAGRAM_FACTOR_IDS, DiagramFactorSchema.getObjectType());
+
         createTaxonomyClassificationSchemaField();
     }
 

@@ -18,37 +18,54 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package org.miradi.migrations;
+package org.miradi.schemas;
 
-import org.miradi.migrations.forward.MigrationTo76;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Factor;
 import org.miradi.objects.InformationNeed;
 
-public class TestMigrationTo76 extends AbstractTestMigration
+public class InformationNeedSchema extends BaseObjectSchema
 {
-    public TestMigrationTo76(String name)
+    public InformationNeedSchema()
     {
-        super(name);
-    }
-
-    public void testPoolRemovedAfterReverseMigration() throws Exception
-    {
-        InformationNeed informationNeed = getProject().createAndPopulateInformationNeed();
-
-        RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo76.VERSION_TO));
-
-        assertFalse("Pool should have been removed during reverse migration", rawProject.containsAnyObjectsOfType(ObjectType.INFORMATION_NEED));
+        super();
     }
 
     @Override
-    protected int getFromVersion()
+    protected void fillFieldSchemas()
     {
-        return MigrationTo76.VERSION_FROM;
+        super.fillFieldSchemas();
+
+        createFieldSchemaMultiLineUserText(Factor.TAG_COMMENTS);
+        addDetailsField();
+        createFieldSchemaSingleLineUserText(Factor.TAG_SHORT_LABEL);
+
+        createFieldSchemaIdList(InformationNeed.TAG_INDICATOR_IDS, IndicatorSchema.getObjectType());
+		createProgressReportSchema();
+        createTaxonomyClassificationSchemaField();
+    }
+
+    protected void addDetailsField()
+    {
+        createFieldSchemaMultiLineUserText(Factor.TAG_TEXT);
+    }
+
+    public static int getObjectType()
+    {
+        return ObjectType.INFORMATION_NEED;
     }
 
     @Override
-    protected int getToVersion()
+    public int getType()
     {
-        return MigrationTo76.VERSION_TO;
+        return getObjectType();
     }
+
+    @Override
+    public String getObjectName()
+    {
+        return OBJECT_NAME;
+    }
+
+    public static final String OBJECT_NAME = "InformationNeed";
 }

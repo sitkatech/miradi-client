@@ -40,7 +40,7 @@ public class AnalyticalQuestionSchema extends BaseObjectSchema
         addDetailsField();
         createFieldSchemaSingleLineUserText(Factor.TAG_SHORT_LABEL);
 
-        createFieldSchemaIdList(AnalyticalQuestion.TAG_ASSUMPTION_IDS, AssumptionSchema.getObjectType());
+        createOwnedFieldSchemaIdList(AnalyticalQuestion.TAG_ASSUMPTION_IDS, AssumptionSchema.getObjectType());
         createTaxonomyClassificationSchemaField();
     }
 

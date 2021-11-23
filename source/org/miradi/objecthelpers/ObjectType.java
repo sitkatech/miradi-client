@@ -108,6 +108,7 @@ public class ObjectType
 	public static final int OUTPUT = 73;
 	public static final int ANALYTICAL_QUESTION = 74;
 	public static final int ASSUMPTION = 75;
+	public static final int INFORMATION_NEED = 76;
 
 	// When you add a new type, be sure to:
 	// - increment OBJECT_TYPE_COUNT
@@ -116,7 +117,7 @@ public class ObjectType
 	// - add appropriate entry to FieldLabels.properties file
 	// - update requiresUUID (and related importer / exporter, etc.) as applicable
 
-	public static final int OBJECT_TYPE_COUNT = 76;
+	public static final int OBJECT_TYPE_COUNT = 77;
 
 	public static String getUserFriendlyObjectTypeName(Project project, int objectType)
 	{

@@ -21,8 +21,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.migrations;
 
 import org.miradi.migrations.forward.MigrationTo78;
+import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AnalyticalQuestion;
-import org.miradi.objects.Assumption;
 
 public class TestMigrationTo78 extends AbstractTestMigration
 {
@@ -31,16 +31,13 @@ public class TestMigrationTo78 extends AbstractTestMigration
         super(name);
     }
 
-    public void testFieldsRemovedAfterReverseMigration() throws Exception
+    public void testPoolRemovedAfterReverseMigration() throws Exception
     {
         AnalyticalQuestion analyticalQuestion = getProject().createAndPopulateAnalyticalQuestion();
-        Assumption assumption = getProject().addAssumption(analyticalQuestion);
 
         RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo78.VERSION_TO));
 
-        RawObject rawAnalyticalQuestion = rawProject.findObject(analyticalQuestion.getRef());
-        assertNotNull(rawAnalyticalQuestion);
-        assertFalse("Field should have been removed during reverse migration?", rawAnalyticalQuestion.containsKey(MigrationTo78.TAG_ASSUMPTION_REFS));
+        assertFalse("Pool should have been removed during reverse migration", rawProject.containsAnyObjectsOfType(ObjectType.ANALYTICAL_QUESTION));
     }
 
     @Override
@@ -55,4 +52,3 @@ public class TestMigrationTo78 extends AbstractTestMigration
         return MigrationTo78.VERSION_TO;
     }
 }
-
