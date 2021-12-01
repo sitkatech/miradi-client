@@ -115,8 +115,6 @@ public interface Xmpz2XmlConstants
 	public static final String OUTPUT = OutputSchema.OBJECT_NAME;
 	public static final String ANALYTICAL_QUESTION = AnalyticalQuestionSchema.OBJECT_NAME;
 	public static final String ASSUMPTION = AssumptionSchema.OBJECT_NAME;
-	public static final String SUB_ASSUMPTION = "SubAssumption";
-	public static final String INFORMATION_NEED = InformationNeedSchema.OBJECT_NAME;
 	public static final String SUB_TASK = "SubTask";
 	public static final String ASSIGNED_LEADER_RESOURCE_ID = "AssignedLeaderResourceId";
 	public static final String TIMEFRAME = "Timeframe";
@@ -246,8 +244,6 @@ public interface Xmpz2XmlConstants
 	public static final String STATUS_CODE = "StatusCode";
 	public static final String SUB_TASK_IDS = "OrderedSubTaskIds";
 	public static final String ASSUMPTION_IDS = "OrderedAssumptionIds";
-	public static final String SUB_ASSUMPTION_IDS = "OrderedSubAssumptionIds";
-	public static final String INFORMATION_NEED_IDS = "OrderedInformationNeedIds";
 	public static final String EXTERNAL_APP_ELEMENT_NAME = "ExternalApp";
 	public static final String PROJECT_ID = "ProjectId";
 	public static final String LOCATION = "Location";
@@ -357,7 +353,6 @@ public interface Xmpz2XmlConstants
 	public static final String OUTPUT_TAXONOMY_ASSOCIATION_POOL = "OutputTaxonomyAssociationPool";
 	public static final String ANALYTICAL_QUESTION_TAXONOMY_ASSOCIATION_POOL = "AnalyticalQuestionTaxonomyAssociationPool";
 	public static final String ASSUMPTION_TAXONOMY_ASSOCIATION_POOL = "AssumptionTaxonomyAssociationPool";
-	public static final String INFORMATION_NEED_TAXONOMY_ASSOCIATION_POOL = "InformationNeedTaxonomyAssociationPool";
 	public static final String TAXONOMY = "Taxonomy";
 	public static final String TAXONOMY_POOL = "TaxonomyPool";
 	public static final String TAXONOMY_ASSOCIATION = "TaxonomyAssociation";
@@ -446,7 +441,6 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_RESULT_REPORT_STATUS = "vocabulary_result_report_status";
 	public static final String VOCABULARY_MEASUREMENT_TREND = "vocabulary_measurement_trend";
 	
-	public static final String VOCABULARY_EVIDENCE_CONFIDENCE_ASSUMPTION = "vocabulary_evidence_confidence_assumption";
 	public static final String VOCABULARY_EVIDENCE_CONFIDENCE_EXTERNAL = "vocabulary_evidence_confidence_external";
 	public static final String VOCABULARY_EVIDENCE_CONFIDENCE_PROJECT = "vocabulary_evidence_confidence_project";
 	public static final String VOCABULARY_COUNTRIES = "vocabulary_countries";

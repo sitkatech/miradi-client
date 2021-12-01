@@ -17,44 +17,42 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
-package org.miradi.objectpools;
 
-import org.miradi.ids.BaseId;
+package org.miradi.objects;
+
 import org.miradi.ids.FactorId;
-import org.miradi.ids.IdAssigner;
-import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.InformationNeed;
 import org.miradi.project.ObjectManager;
-import org.miradi.project.Project;
 import org.miradi.schemas.BaseObjectSchema;
 
-public class InformationNeedPool extends FactorPool
+abstract public class AbstractAnalyticalQuestion extends Factor
 {
-    public InformationNeedPool(IdAssigner idAssignerToUse)
+    public AbstractAnalyticalQuestion(ObjectManager objectManager, FactorId idToUse, final BaseObjectSchema schemaToUse)
     {
-        super(idAssignerToUse, ObjectType.INFORMATION_NEED);
-    }
-
-    public void put(InformationNeed informationNeed) throws Exception
-    {
-        put(informationNeed.getId(), informationNeed);
-    }
-
-    public InformationNeed find(BaseId id)
-    {
-        return (InformationNeed) getRawObject(id);
+        super(objectManager, idToUse, schemaToUse);
     }
 
     @Override
-    BaseObject createRawObject(ObjectManager objectManager, BaseId actualId) throws Exception
+    public int[] getTypesThatCanOwnUs()
     {
-        return new InformationNeed(objectManager ,new FactorId(actualId.asInt()));
+        return NO_OWNERS;
     }
 
     @Override
-    public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
+    public String getDetails()
     {
-        return InformationNeed.createSchema(projectToUse);
+        return getData(TAG_DETAILS);
     }
+
+    @Override
+    public String toString()
+    {
+        return getLabel();
+    }
+
+	public static final String TAG_SHORT_LABEL = "ShortLabel";
+    public final static String TAG_DETAILS = "Details";
+    public static final String TAG_FUTURE_INFORMATION_NEEDS = "FutureInformationNeeds";
+
+    public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
+    public static final String TAG_INDICATOR_IDS = "IndicatorIds";
 }

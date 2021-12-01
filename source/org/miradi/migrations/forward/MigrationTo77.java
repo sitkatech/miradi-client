@@ -43,7 +43,7 @@ public class MigrationTo77 extends AbstractMigration
     protected MigrationResult reverseMigrate() throws Exception
     {
         MigrationResult migrationResult = MigrationResult.createUninitializedResult();
-        getRawProject().deletePoolWithData(ObjectType.ASSUMPTION);
+        getRawProject().deletePoolWithData(ObjectType.ANALYTICAL_QUESTION);
 
         return migrationResult;
     }
@@ -63,7 +63,7 @@ public class MigrationTo77 extends AbstractMigration
     @Override
     protected String getDescription()
     {
-        return EAM.text("This migration handles the removal of assumptions.");
+        return EAM.text("This migration handles the removal of analytical questions.");
     }
 
     public static final int VERSION_FROM = 76;

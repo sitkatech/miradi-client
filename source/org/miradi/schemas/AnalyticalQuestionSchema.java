@@ -22,9 +22,8 @@ package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AnalyticalQuestion;
-import org.miradi.objects.Factor;
 
-public class AnalyticalQuestionSchema extends BaseObjectSchema
+public class AnalyticalQuestionSchema extends AbstractAnalyticalQuestionSchema
 {
     public AnalyticalQuestionSchema()
     {
@@ -36,17 +35,7 @@ public class AnalyticalQuestionSchema extends BaseObjectSchema
     {
         super.fillFieldSchemas();
 
-        createFieldSchemaMultiLineUserText(Factor.TAG_COMMENTS);
-        addDetailsField();
-        createFieldSchemaSingleLineUserText(Factor.TAG_SHORT_LABEL);
-
         createOwnedFieldSchemaIdList(AnalyticalQuestion.TAG_ASSUMPTION_IDS, AssumptionSchema.getObjectType());
-        createTaxonomyClassificationSchemaField();
-    }
-
-    protected void addDetailsField()
-    {
-        createFieldSchemaMultiLineUserText(Factor.TAG_TEXT);
     }
 
     public static int getObjectType()

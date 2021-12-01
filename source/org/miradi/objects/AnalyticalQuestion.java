@@ -29,7 +29,7 @@ import org.miradi.project.Project;
 import org.miradi.schemas.AnalyticalQuestionSchema;
 import org.miradi.schemas.AssumptionSchema;
 
-public class AnalyticalQuestion extends Factor
+public class AnalyticalQuestion extends AbstractAnalyticalQuestion
 {
     public AnalyticalQuestion(ObjectManager objectManager, FactorId idToUse)
     {

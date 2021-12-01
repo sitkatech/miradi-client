@@ -32,9 +32,7 @@ import org.miradi.xml.xmpz2.Xmpz2TagToElementNameMap;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-import java.util.Collections;
-import java.util.Set;
-import java.util.Vector;
+import java.util.*;
 
 public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 {
@@ -141,7 +139,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(OUTPUT_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(ANALYTICAL_QUESTION_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(ASSUMPTION_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
-		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(INFORMATION_NEED_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(TAXONOMY_CLASSIFICATION_CONTAINER, TAXONOMY_CLASSIFICATION);
 	}
 
@@ -209,7 +206,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		elementNames.add(createOptionalSchemaElement(OUTPUT_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(ANALYTICAL_QUESTION_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(ASSUMPTION_TAXONOMY_ASSOCIATION_POOL));
-		elementNames.add(createOptionalSchemaElement(INFORMATION_NEED_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(ELEMENT_NAME + PREFIX + DELETED_ORPHANS_ELEMENT_NAME +  "{ text }?");
 		getSchemaWriter().defineElements(elementNames);
 		
@@ -569,17 +565,15 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		if (isFieldForType(baseObjectSchema, fieldSchema, AnalyticalQuestionSchema.getObjectType(), AnalyticalQuestion.TAG_ASSUMPTION_IDS))
 			return createIdName(ASSUMPTION);
-		
-		if (isFieldForType(baseObjectSchema, fieldSchema, AssumptionSchema.getObjectType(), Assumption.TAG_DIAGRAM_FACTOR_IDS))
+
+		Vector<Integer> analyticalQuestionSchemas = new Vector<Integer>();
+		analyticalQuestionSchemas.add(AnalyticalQuestionSchema.getObjectType());
+		analyticalQuestionSchemas.add(AssumptionSchema.getObjectType());
+
+		if (isFieldForType(baseObjectSchema, fieldSchema, analyticalQuestionSchemas, AbstractAnalyticalQuestion.TAG_DIAGRAM_FACTOR_IDS))
 			return createIdName(DIAGRAM_FACTOR);
 
-		if (isFieldForType(baseObjectSchema, fieldSchema, AssumptionSchema.getObjectType(), Assumption.TAG_SUB_ASSUMPTION_IDS))
-			return createIdName(SUB_ASSUMPTION);
-
-		if (isFieldForType(baseObjectSchema, fieldSchema, AssumptionSchema.getObjectType(), Assumption.TAG_INFORMATION_NEED_IDS))
-			return createIdName(INFORMATION_NEED);
-
-		if (isFieldForType(baseObjectSchema, fieldSchema, InformationNeedSchema.getObjectType(), InformationNeed.TAG_INDICATOR_IDS))
+		if (isFieldForType(baseObjectSchema, fieldSchema, analyticalQuestionSchemas, AbstractAnalyticalQuestion.TAG_INDICATOR_IDS))
 			return createIdName(INDICATOR);
 
 		if (isFieldForType(baseObjectSchema, fieldSchema, TaskSchema.getObjectType(), Task.TAG_SUBTASK_IDS))
@@ -606,14 +600,25 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return StringUtilities.removeLastChar(elementName);
 	}
 	
+	private boolean isFieldForType(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, Vector<Integer> objectTypes, String tag)
+	{
+		for(Integer objectType: objectTypes)
+		{
+			if (isFieldForType(baseObjectSchema, fieldSchema, (int)objectType, tag))
+				return true;
+		}
+
+		return false;
+	}
+
 	private boolean isFieldForType(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType, String tag)
 	{
 		if (objectType == baseObjectSchema.getType() && fieldSchema.getTag().equals(tag))
 			return true;
-		
+
 		return false;
 	}
-	
+
 	private String getIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
 		if (DiagramFactor.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramFactor.TAG_WRAPPED_REF))

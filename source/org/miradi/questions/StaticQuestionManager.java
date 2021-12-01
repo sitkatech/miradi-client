@@ -131,7 +131,6 @@ public class StaticQuestionManager
 		addQuestion(new ResultReportShortStatusQuestion());
 		addQuestion(new ResultReportLongStatusQuestion());
 		addQuestion(new ResultReportDiagramStatusQuestion());
-		addQuestion(new AssumptionEvidenceConfidenceQuestion());
 	}
 	
 	private static void addQuestion(ChoiceQuestion question)

@@ -115,7 +115,6 @@ public class ObjectManager
 		addNormalPool(new OutputPool(ida), OutputSchema.OBJECT_NAME);
 		addNormalPool(new AnalyticalQuestionPool(ida), AnalyticalQuestionSchema.OBJECT_NAME);
 		addNormalPool(new AssumptionPool(ida), AssumptionSchema.OBJECT_NAME);
-		addNormalPool(new InformationNeedPool(ida), InformationNeedSchema.OBJECT_NAME);
 	}
 
 	public Schemas getSchemas()
@@ -279,11 +278,6 @@ public class ObjectManager
 	public AssumptionPool getAssumptionPool()
 	{
 		return (AssumptionPool)getPool(ObjectType.ASSUMPTION);
-	}
-
-	public InformationNeedPool getInformationNeedPool()
-	{
-		return (InformationNeedPool)getPool(ObjectType.INFORMATION_NEED);
 	}
 
 	public BaseId createObject(int objectType, BaseId objectId) throws Exception

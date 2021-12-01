@@ -20,17 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.FactorId;
-import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.AnalyticalQuestionSchema;
 import org.miradi.schemas.AssumptionSchema;
-import org.miradi.schemas.TaskSchema;
 
-public class Assumption extends Factor
+public class Assumption extends AbstractAnalyticalQuestion
 {
     public Assumption(ObjectManager objectManager, FactorId idToUse)
     {
@@ -52,30 +49,7 @@ public class Assumption extends Factor
     {
         return new int[] {
                 AnalyticalQuestionSchema.getObjectType(),
-                AssumptionSchema.getObjectType(),
         };
-    }
-
-    @Override
-    public String getDetails()
-    {
-        return getData(TAG_DETAILS);
-    }
-
-    public int getSubAssumptionCount()
-    {
-        return getSubAssumptionIdList().size();
-    }
-
-    public IdList getSubAssumptionIdList()
-    {
-        return getSafeIdListData(TAG_SUB_ASSUMPTION_IDS);
-    }
-
-    @Override
-    public String toString()
-    {
-        return getLabel();
     }
 
     @Override
@@ -83,26 +57,6 @@ public class Assumption extends Factor
 	{
 		return true;
 	}
-
-    public ORefList getChildAssumptionRefs()
-    {
-        return new ORefList(TaskSchema.getObjectType(), getSubAssumptionIdList());
-    }
-
-    public static String getAssumptionIdsTag(BaseObject container) throws Exception
-    {
-        int type = container.getType();
-        switch(type)
-        {
-            case ObjectType.ASSUMPTION:
-                return Assumption.TAG_SUB_ASSUMPTION_IDS;
-
-            case ObjectType.ANALYTICAL_QUESTION:
-                return AnalyticalQuestion.TAG_ASSUMPTION_IDS;
-        }
-
-        throw new Exception("getAssumptionIdsTag called for non-assumption container type " + type);
-    }
 
     public static boolean is(BaseObject object)
     {
@@ -130,10 +84,4 @@ public class Assumption extends Factor
     {
         return find(project.getObjectManager(), assumptionRef);
     }
-
-    public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
-    public static final String TAG_INFORMATION_NEED_IDS = "InformationNeedIds";
-    public final static String TAG_SUB_ASSUMPTION_IDS = "SubAssumptionIds";
-    public final static String TAG_DETAILS = "Details";
-    public static final String TAG_EVIDENCE_CONFIDENCE = "EvidenceConfidence";
 }

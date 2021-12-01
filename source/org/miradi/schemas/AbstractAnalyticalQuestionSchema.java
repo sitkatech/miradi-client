@@ -20,11 +20,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.schemas;
 
-import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.AbstractAnalyticalQuestion;
 
-public class AssumptionSchema extends AbstractAnalyticalQuestionSchema
+abstract public class AbstractAnalyticalQuestionSchema extends BaseObjectSchema
 {
-    public AssumptionSchema()
+    public AbstractAnalyticalQuestionSchema()
     {
         super();
     }
@@ -33,24 +33,15 @@ public class AssumptionSchema extends AbstractAnalyticalQuestionSchema
     protected void fillFieldSchemas()
     {
         super.fillFieldSchemas();
-    }
 
-    public static int getObjectType()
-    {
-        return ObjectType.ASSUMPTION;
-    }
+        createFieldSchemaMultiLineUserText(AbstractAnalyticalQuestion.TAG_DETAILS);     // Analysis
+        createFieldSchemaMultiLineUserText(AbstractAnalyticalQuestion.TAG_COMMENTS);    // Implications
+		createFieldSchemaSingleLineUserText(AbstractAnalyticalQuestion.TAG_SHORT_LABEL);
+        createFieldSchemaMultiLineUserText(AbstractAnalyticalQuestion.TAG_FUTURE_INFORMATION_NEEDS);
 
-    @Override
-    public int getType()
-    {
-        return getObjectType();
-    }
+        createFieldSchemaIdList(AbstractAnalyticalQuestion.TAG_DIAGRAM_FACTOR_IDS, DiagramFactorSchema.getObjectType());
+        createFieldSchemaIdList(AbstractAnalyticalQuestion.TAG_INDICATOR_IDS, IndicatorSchema.getObjectType());
 
-    @Override
-    public String getObjectName()
-    {
-        return OBJECT_NAME;
+        createTaxonomyClassificationSchemaField();
     }
-
-    public static final String OBJECT_NAME = "Assumption";
 }

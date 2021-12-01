@@ -130,8 +130,6 @@ abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 		OUTPUT,
 		ANALYTICAL_QUESTION,
 		ASSUMPTION,
-		SUB_ASSUMPTION,
-		INFORMATION_NEED,
 		};
 		
 		return Utility.convertToVector(objectTypeNames);

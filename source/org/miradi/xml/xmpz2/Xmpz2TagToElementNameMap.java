@@ -102,7 +102,6 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(FUTURE_STATUS, createFutureStatusMap());
 		map.put(ANALYTICAL_QUESTION, createAnalyticalQuestionMap());
 		map.put(ASSUMPTION, createAssumptionMap());
-		map.put(INFORMATION_NEED, createInformationNeedMap());
 
 		return map;
 	}
@@ -216,26 +215,24 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		return map;
 	}
 
-	private HashMap<String, String> createAnalyticalQuestionMap()
+	private HashMap<String, String> createAbstractAnalyticalQuestionMap()
 	{
 		HashMap<String, String> map = createFactorMap();
+		map.put(AbstractAnalyticalQuestion.TAG_DIAGRAM_FACTOR_IDS, RELEVANT_DIAGRAM_FACTOR_IDS);
+		map.put(AbstractAnalyticalQuestion.TAG_INDICATOR_IDS, RELEVANT_INDICATOR_IDS);
+		return map;
+	}
+
+	private HashMap<String, String> createAnalyticalQuestionMap()
+	{
+		HashMap<String, String> map = createAbstractAnalyticalQuestionMap();
 		map.put(AnalyticalQuestion.TAG_ASSUMPTION_IDS, ASSUMPTION_IDS);
 		return map;
 	}
 
 	private HashMap<String, String> createAssumptionMap()
 	{
-		HashMap<String, String> map = createFactorMap();
-		map.put(Assumption.TAG_DIAGRAM_FACTOR_IDS, RELEVANT_DIAGRAM_FACTOR_IDS);
-		map.put(Assumption.TAG_INFORMATION_NEED_IDS, INFORMATION_NEED_IDS);
-		map.put(Assumption.TAG_SUB_ASSUMPTION_IDS, SUB_ASSUMPTION_IDS);
-		return map;
-	}
-
-	private HashMap<String, String> createInformationNeedMap()
-	{
-		HashMap<String, String> map = createFactorMap();
-		map.put(InformationNeed.TAG_INDICATOR_IDS, RELEVANT_INDICATOR_IDS);
+		HashMap<String, String> map = createAbstractAnalyticalQuestionMap();
 		return map;
 	}
 
