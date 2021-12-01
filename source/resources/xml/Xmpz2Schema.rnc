@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Wed Dec 01 12:21:15 GMT 2021 $
+# $LastChangedDate: Wed Dec 01 12:37:22 GMT 2021 $
 # $LastChangedRevision: 239 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/239'
 start = ConservationProject.element
@@ -1097,7 +1097,7 @@ vocabulary_diagram_factor_background_color = 'LightGray'|'TargetLightGreen'|'HWB
 vocabulary_diagram_factor_foreground_color = '#000000'|'#4E4848'|'#D31913'|'#FF6600'|'#FFCC00'|'#007F00'|'#0000CC'|'#9900FF'|'#C85A17'|'#6D7B8D'|'#FFFFFF'|'#FF00FF'|'#FF8040'|'#FFFFCC'|'#5FFB17'|'#00CCFF'|'#CC99FF'|'#EDE275'
 vocabulary_diagram_factor_font_size = '1.0'|'0.5'|'0.75'|'0.9'|'1.25'|'1.75'|'2.5'
 vocabulary_diagram_factor_font_style = ''|'Bold'|'Underline'|'StrikeThrough'
-vocabulary_hidden_types = 'Strategy'|'DraftStrategy'|'ContributingFactor'|'DirectThreat'|'Target'|'HumanWellbeingTarget'|'BiophysicalFactor'|'BiophysicalResult'|'Link'|'Goal'|'Objective'|'Indicator'|'TextBox'|'ScopeBox'|'Stress'|'Activity'|'IntermediateResult'|'ThreatReductionResult'|'GroupBox'
+vocabulary_hidden_types = 'Strategy'|'DraftStrategy'|'ContributingFactor'|'DirectThreat'|'Target'|'HumanWellbeingTarget'|'BiophysicalFactor'|'BiophysicalResult'|'Link'|'Goal'|'Objective'|'Indicator'|'TextBox'|'ScopeBox'|'Stress'|'Activity'|'IntermediateResult'|'ThreatReductionResult'|'GroupBox'|'AnalyticalQuestion'|'Assumption'
 vocabulary_diagram_link_color = 'black'|'darkGray'|'red'|'DarkOrange'|'DarkYellow'|'darkGreen'|'darkBlue'|'DarkPurple'|'brown'|'lightGray'|'White'|'pink'|'orange'|'yellow'|'lightGreen'|'lightBlue'|'LightPurple'|'tan'
 vocabulary_included_diagram_types = 'AllTypes'|'IncludeConceptualModelData'|'IncludeResultsChainData'
 vocabulary_factor_mode = 'IncludeBiophysicalFactorsAndResults'|'ContributingFactorsAndIntermediateResultsOnly'
