@@ -434,7 +434,17 @@ abstract public class FactorCell extends EAMGraphCell
 	{
 		return getWrappedFactor().isStrategy();
 	}
-	
+
+	public boolean isAnalyticalQuestion()
+	{
+		return getWrappedFactor().isAnalyticalQuestion();
+	}
+
+	public boolean isAssumption()
+	{
+		return getWrappedFactor().isAssumption();
+	}
+
 	public DefaultPort getPort()
 	{
 		return port;
