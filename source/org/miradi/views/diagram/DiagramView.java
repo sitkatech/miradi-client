@@ -211,6 +211,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionCreateIndicatorMeasurement.class, new CreateKeyEcologicalAttributeMeasurementDoer());
 		addDoerToMap(ActionCreateFutureStatus.class, new CreateFutureStatusDoer());
 		
+		addDoerToMap(ActionCreateAssumption.class, new CreateAssumptionDoer());
+		addDoerToMap(ActionDeleteAssumption.class, new DeleteAssumptionDoer());
+		
 		addDoerToMap(ActionExpandToMenu.class, new ExpandToMenuDoer());
 		addDoerToMap(ActionExpandToIndicator.class, new ExpandToIndicatorDoer());
 		addDoerToMap(ActionExpandToMeasurement.class, new ExpandToMeasurementDoer());
@@ -247,6 +250,9 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 		addDoerToMap(ActionShowActivityBubble.class, new ShowActivityBubbleDoer());
 		addDoerToMap(ActionHideActivityBubble.class, new HideActivityBubbleDoer());
+		
+		addDoerToMap(ActionShowAssumptionBubble.class, new ShowAssumptionBubbleDoer());
+		addDoerToMap(ActionHideAssumptionBubble.class, new HideAssumptionBubbleDoer());
 		
 		addDoerToMap(ActionCreateTaggedObjectSet.class, new CreateTaggedObjectSetDoer());
 		addDoerToMap(ActionDeleteTaggedObjectSet.class, new DeleteTaggedObjectSetDoer());

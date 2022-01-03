@@ -17,28 +17,32 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
+package org.miradi.dialogs.assumption;
 
-package org.miradi.schemas;
+import org.miradi.dialogs.base.ObjectListTableModel;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.AnalyticalQuestion;
+import org.miradi.objects.Task;
+import org.miradi.project.Project;
 
-import org.miradi.objects.AbstractAnalyticalQuestion;
-
-abstract public class AbstractAnalyticalQuestionSchema extends FactorSchema
+public class AssumptionListTableModel extends ObjectListTableModel
 {
-    public AbstractAnalyticalQuestionSchema()
+    public AssumptionListTableModel(Project projectToUse, ORefList selectedHierarchy)
     {
-        super();
+        super(projectToUse, selectedHierarchy, AnalyticalQuestion.TAG_ASSUMPTION_IDS, ObjectType.ASSUMPTION, COLUMN_TAGS);
     }
+
+    private static String[] COLUMN_TAGS = {
+            Task.TAG_SHORT_LABEL,
+            Task.TAG_LABEL,
+    };
 
     @Override
-    protected void fillFieldSchemas()
+    public String getUniqueTableModelIdentifier()
     {
-        super.fillFieldSchemas();
-
-        createFieldSchemaMultiLineUserText(AbstractAnalyticalQuestion.TAG_FUTURE_INFORMATION_NEEDS);
-
-        createFieldSchemaIdList(AbstractAnalyticalQuestion.TAG_DIAGRAM_FACTOR_IDS, DiagramFactorSchema.getObjectType());
-        createFieldSchemaIdList(AbstractAnalyticalQuestion.TAG_INDICATOR_IDS, IndicatorSchema.getObjectType());
-
-        createTaxonomyClassificationSchemaField();
+        return UNIQUE_MODEL_IDENTIFIER;
     }
+
+    private static final String UNIQUE_MODEL_IDENTIFIER = "AssumptionListTableModel";
 }

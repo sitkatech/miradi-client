@@ -178,10 +178,13 @@ public class Actions
 		registerAction(new ActionDeleteKeyEcologicalAttributeIndicator(mainWindow));
 		registerAction(new ActionCreateKeyEcologicalAttributeMeasurement(mainWindow));
 		registerAction(new ActionCreateIndicatorMeasurement(mainWindow));
-		
+
+		registerAction(new ActionCreateAssumption(mainWindow));
+		registerAction(new ActionDeleteAssumption(mainWindow));
+
 		registerAction(new ActionTeamCreateMember(mainWindow));
 		registerAction(new ActionDeleteTeamMember(mainWindow));
-		
+
 		registerAction(new ActionAddAssignment(mainWindow));
 		registerAction(new ActionRemoveAssignment(mainWindow));
 		registerAction(new ActionCreateAccountingCode(mainWindow));
@@ -423,6 +426,8 @@ public class Actions
 		registerAction(new ActionHideStressBubble(mainWindow));
 		registerAction(new ActionShowActivityBubble(mainWindow));
 		registerAction(new ActionHideActivityBubble(mainWindow));
+		registerAction(new ActionShowAssumptionBubble(mainWindow));
+		registerAction(new ActionHideAssumptionBubble(mainWindow));
 		registerAction(new ActionShowCurrentWizardFileName(mainWindow));
 		registerAction(new ActionExpandAllRows(mainWindow));
 		registerAction(new ActionCollapseAllRows(mainWindow));

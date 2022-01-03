@@ -18,27 +18,28 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package org.miradi.schemas;
+package org.miradi.actions;
 
-import org.miradi.objects.AbstractAnalyticalQuestion;
+import org.miradi.icons.AssumptionIcon;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-abstract public class AbstractAnalyticalQuestionSchema extends FactorSchema
+public class ActionCreateAssumption extends ObjectsAction
 {
-    public AbstractAnalyticalQuestionSchema()
+    public ActionCreateAssumption(MainWindow mainWindowToUse)
     {
-        super();
+        super(mainWindowToUse, getLabel(), new AssumptionIcon());
     }
 
-    @Override
-    protected void fillFieldSchemas()
+    private static String getLabel()
     {
-        super.fillFieldSchemas();
+        return EAM.text("Action|Manage|Create Assumption");
+    }
 
-        createFieldSchemaMultiLineUserText(AbstractAnalyticalQuestion.TAG_FUTURE_INFORMATION_NEEDS);
 
-        createFieldSchemaIdList(AbstractAnalyticalQuestion.TAG_DIAGRAM_FACTOR_IDS, DiagramFactorSchema.getObjectType());
-        createFieldSchemaIdList(AbstractAnalyticalQuestion.TAG_INDICATOR_IDS, IndicatorSchema.getObjectType());
-
-        createTaxonomyClassificationSchemaField();
+    @Override
+    public String getToolTipText()
+    {
+        return EAM.text("TT|Create an Assumption for the selected Analytical Question");
     }
 }

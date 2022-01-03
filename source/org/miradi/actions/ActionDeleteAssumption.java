@@ -17,28 +17,27 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
+package org.miradi.actions;
 
-package org.miradi.schemas;
+import org.miradi.icons.DeleteIcon;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-import org.miradi.objects.AbstractAnalyticalQuestion;
-
-abstract public class AbstractAnalyticalQuestionSchema extends FactorSchema
+public class ActionDeleteAssumption extends ObjectsAction
 {
-    public AbstractAnalyticalQuestionSchema()
+    public ActionDeleteAssumption(MainWindow mainWindowToUse)
     {
-        super();
+        super(mainWindowToUse, getLabel(), new DeleteIcon());
+    }
+
+    private static String getLabel()
+    {
+        return EAM.text("Action|Manage|Delete Assumption");
     }
 
     @Override
-    protected void fillFieldSchemas()
+    public String getToolTipText()
     {
-        super.fillFieldSchemas();
-
-        createFieldSchemaMultiLineUserText(AbstractAnalyticalQuestion.TAG_FUTURE_INFORMATION_NEEDS);
-
-        createFieldSchemaIdList(AbstractAnalyticalQuestion.TAG_DIAGRAM_FACTOR_IDS, DiagramFactorSchema.getObjectType());
-        createFieldSchemaIdList(AbstractAnalyticalQuestion.TAG_INDICATOR_IDS, IndicatorSchema.getObjectType());
-
-        createTaxonomyClassificationSchemaField();
+        return EAM.text("TT|Delete the selected Assumption");
     }
 }

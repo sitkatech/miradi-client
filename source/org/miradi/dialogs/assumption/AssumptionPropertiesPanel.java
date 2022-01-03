@@ -18,27 +18,34 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package org.miradi.schemas;
+package org.miradi.dialogs.assumption;
 
-import org.miradi.objects.AbstractAnalyticalQuestion;
+import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-abstract public class AbstractAnalyticalQuestionSchema extends FactorSchema
+public class AssumptionPropertiesPanel extends AbstractAssumptionPropertiesPanel
 {
-    public AbstractAnalyticalQuestionSchema()
+    public AssumptionPropertiesPanel(MainWindow mainWindow) throws Exception
     {
-        super();
+        super(mainWindow);
     }
 
     @Override
-    protected void fillFieldSchemas()
+    protected ObjectDataInputPanel createDetailsPanel(MainWindow mainWindow, AssumptionFactorVisibilityControlPanel assumptionVisibilityButtonPanel) throws Exception
     {
-        super.fillFieldSchemas();
+        return new AssumptionDetailsPanel(getProject(), mainWindow, assumptionVisibilityButtonPanel);
+    }
 
-        createFieldSchemaMultiLineUserText(AbstractAnalyticalQuestion.TAG_FUTURE_INFORMATION_NEEDS);
+    @Override
+    protected boolean shouldHaveVisibilityPanel()
+    {
+        return false;
+    }
 
-        createFieldSchemaIdList(AbstractAnalyticalQuestion.TAG_DIAGRAM_FACTOR_IDS, DiagramFactorSchema.getObjectType());
-        createFieldSchemaIdList(AbstractAnalyticalQuestion.TAG_INDICATOR_IDS, IndicatorSchema.getObjectType());
-
-        createTaxonomyClassificationSchemaField();
+    @Override
+    public String getPanelDescription()
+    {
+        return EAM.text("Title|Assumption Properties");
     }
 }

@@ -17,41 +17,48 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
+package org.miradi.views.diagram.doers;
 
-package org.miradi.objects;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objects.Assumption;
+import org.miradi.objects.Factor;
 
-import org.miradi.ids.FactorId;
-import org.miradi.project.ObjectManager;
-import org.miradi.schemas.BaseObjectSchema;
-
-abstract public class AbstractAnalyticalQuestion extends Factor
+public class HideAssumptionBubbleDoer extends AbstractAssumptionVisibilityDoer
 {
-    public AbstractAnalyticalQuestion(ObjectManager objectManager, FactorId idToUse, final BaseObjectSchema schemaToUse)
+    @Override
+    protected void doWork() throws Exception
     {
-        super(objectManager, idToUse, schemaToUse);
+        hideBubble();
     }
 
     @Override
-    public int[] getTypesThatCanOwnUs()
+    protected boolean isAvailable(ORef selectedFactorRef)
     {
-        return NO_OWNERS;
+        return isShowing(selectedFactorRef);
     }
 
     @Override
-    public String toString()
+    protected Factor getFactor(ORef factorRef)
     {
-        return getLabel();
+        return Assumption.find(getProject(), factorRef);
     }
 
-	@Override
-	public boolean canDirectlyOwnIndicators()
-	{
-		return false;
-	}
+    @Override
+    protected ORef getSelectedAnnotationRef()
+    {
+        return getSelectedAssumptionRef();
+    }
 
-	public static final String TAG_SHORT_LABEL = "ShortLabel";
-    public static final String TAG_FUTURE_INFORMATION_NEEDS = "FutureInformationNeeds";
+    @Override
+    protected ORef getParentRef()
+    {
+        return getSelectedAnalyticalQuestionRef();
+    }
 
-    public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
-    public static final String TAG_INDICATOR_IDS = "IndicatorIds";
+    @Override
+    protected ORefList getAnnotationList()
+    {
+        return new ORefList();
+    }
 }
