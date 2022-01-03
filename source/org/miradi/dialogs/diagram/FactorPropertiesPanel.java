@@ -36,6 +36,7 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.activity.ActivityListManagementPanel;
+import org.miradi.dialogs.assumption.AssumptionListManagementPanel;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.ModelessDialogPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
@@ -237,6 +238,12 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			addTab(outputsTab);
 		}
 
+		if(factor.isAnalyticalQuestion())
+		{
+			assumptionsTab = AssumptionListManagementPanel.create(mainWindow, selectedHierarchy);
+			addTab(assumptionsTab);
+		}
+
 		return tabs;
 	}
 	
@@ -296,6 +303,8 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 				tabs.setSelectedComponent(simpleViabilityTab);
 			case TAB_OUTPUTS:
 				tabs.setSelectedComponent(outputsTab);
+			case TAB_ASSUMPTIONS:
+				tabs.setSelectedComponent(assumptionsTab);
 			default:
 				tabs.setSelectedComponent(detailsTab);
 				break;
@@ -564,6 +573,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	public static final int TAB_SUB_TARGET = 6;
 	public static final int TAB_SIMPLE_VIABILITY = 7;
 	public static final int TAB_OUTPUTS = 8;
+	public static final int TAB_ASSUMPTIONS = 9;
 
 	protected JTabbedPane tabs;
 	private int currentTabIndex;
@@ -578,6 +588,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	private ActivityListManagementPanel activitiesTab;
 	private SubTargetManagementPanel subTargetTab;
 	private OutputListManagementPanel outputsTab;
+	private AssumptionListManagementPanel assumptionsTab;
 	private MainWindow mainWindow;
 	private DiagramComponent diagram;
 	private DiagramFactor currentDiagramFactor;
