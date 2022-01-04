@@ -104,6 +104,8 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		}
 		if (factorToEdit.isAnalyticalQuestion())
 		{
+	        addField(createMultilineField(AnalyticalQuestionSchema.getObjectType(), AbstractAnalyticalQuestion.TAG_COMMENTS));
+	        addField(createMultilineField(AnalyticalQuestionSchema.getObjectType(), AbstractAnalyticalQuestion.TAG_FUTURE_INFORMATION_NEEDS));
 			addTaxonomyFields(AnalyticalQuestionSchema.getObjectType());
 		}
 

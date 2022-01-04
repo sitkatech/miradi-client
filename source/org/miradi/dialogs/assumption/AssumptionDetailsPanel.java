@@ -51,9 +51,9 @@ public class AssumptionDetailsPanel extends ObjectDataInputPanel
 
         addField(createMultilineField(AssumptionSchema.getObjectType(), AbstractAnalyticalQuestion.TAG_TEXT));
 		addCustomFields(mainWindowToUse.getActions());
-        addTaxonomyFields(AssumptionSchema.getObjectType());
         addField(createMultilineField(AssumptionSchema.getObjectType(), AbstractAnalyticalQuestion.TAG_COMMENTS));
         addField(createMultilineField(AssumptionSchema.getObjectType(), AbstractAnalyticalQuestion.TAG_FUTURE_INFORMATION_NEEDS));
+        addTaxonomyFields(AssumptionSchema.getObjectType());
     }
 
     protected void addCustomFields(Actions actionsToUse)
