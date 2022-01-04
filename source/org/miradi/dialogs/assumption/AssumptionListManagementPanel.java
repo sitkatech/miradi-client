@@ -59,5 +59,5 @@ public class AssumptionListManagementPanel extends ObjectListManagementPanel
         return new AssumptionIcon();
     }
 
-    private static String PANEL_DESCRIPTION = EAM.text("Tab|Assumptions");
+    private static final String PANEL_DESCRIPTION = EAM.text("Tab|Assumptions");
 }

@@ -66,6 +66,7 @@ public class DeleteAssumptionDoer extends ObjectsDoer
     public static void deleteAssumptionWithUserConfirmation(Project project, ORefList selectionHierarchy, Assumption selectedAssumption) throws CommandFailedException
     {
         Vector<String> dialogText = new Vector<String>();
+        dialogText.add(EAM.text("Are you sure you want to delete this Assumption?"));
         boolean containsMoreThanOneParent = selectionHierarchy.getOverlappingRefs(selectedAssumption.findAllObjectsThatReferToUs()).size() > 1;
         if (containsMoreThanOneParent)
             dialogText.add(EAM.text("This item is shared, so will be deleted from multiple places."));
@@ -82,8 +83,8 @@ public class DeleteAssumptionDoer extends ObjectsDoer
         project.executeCommand(new CommandBeginTransaction());
         try
         {
-            CommandVector commandToDeleteTasks = createDeleteCommands(project, selectionHierarchy, selectedAssumption);
-            executeDeleteCommands(project, commandToDeleteTasks);
+            CommandVector commandsToDeleteAssumption = createDeleteCommands(project, selectionHierarchy, selectedAssumption);
+            executeDeleteCommands(project, commandsToDeleteAssumption);
         }
         catch(Exception e)
         {
@@ -106,6 +107,7 @@ public class DeleteAssumptionDoer extends ObjectsDoer
         CommandVector commandsToDeleteAssumption = new CommandVector();
         commandsToDeleteAssumption.addAll(buildDeleteDiagramFactors(project, selectionHierarchy, assumption));
         commandsToDeleteAssumption.addAll(buildRemoveCommandsForAssumptionIds(project, selectionHierarchy, assumption));
+        commandsToDeleteAssumption.addAll(assumption.createCommandsToDeleteChildrenAndObject());
 
         return commandsToDeleteAssumption;
     }
