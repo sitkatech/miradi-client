@@ -44,12 +44,6 @@ public class AssumptionPropertiesPanelWithTagPanel extends AbstractAssumptionPro
     }
 
     @Override
-	protected boolean shouldHaveVisibilityPanel()
-	{
-		return true;
-	}
-
-    @Override
     protected ObjectDataInputPanel createDetailsPanel(MainWindow mainWindow, AssumptionFactorVisibilityControlPanel assumptionVisibilityButtonPanel) throws Exception
     {
         return new AssumptionDetailsPanelWithFormatFields(getProject(), mainWindow, assumptionVisibilityButtonPanel);

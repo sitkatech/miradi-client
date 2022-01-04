@@ -30,10 +30,7 @@ public abstract class AbstractAssumptionPropertiesPanel extends ObjectDataInputP
     {
         super(mainWindow.getProject(), AssumptionSchema.getObjectType());
 
-        AssumptionFactorVisibilityControlPanel assumptionVisibilityButtonPanel = null;
-        if(shouldHaveVisibilityPanel())
-            assumptionVisibilityButtonPanel = new AssumptionFactorVisibilityControlPanel(mainWindow);
-
+        AssumptionFactorVisibilityControlPanel assumptionVisibilityButtonPanel = new AssumptionFactorVisibilityControlPanel(mainWindow);
         addSubPanelWithTitledBorder(createDetailsPanel(mainWindow, assumptionVisibilityButtonPanel));
 
         updateFieldsFromProject();
@@ -43,6 +40,4 @@ public abstract class AbstractAssumptionPropertiesPanel extends ObjectDataInputP
     {
         return new AssumptionDetailsPanel(getProject(), mainWindow, assumptionVisibilityButtonPanel);
     }
-
-    abstract protected boolean shouldHaveVisibilityPanel();
 }

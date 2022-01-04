@@ -38,12 +38,6 @@ public class AssumptionPropertiesPanel extends AbstractAssumptionPropertiesPanel
     }
 
     @Override
-    protected boolean shouldHaveVisibilityPanel()
-    {
-        return false;
-    }
-
-    @Override
     public String getPanelDescription()
     {
         return EAM.text("Title|Assumption Properties");
