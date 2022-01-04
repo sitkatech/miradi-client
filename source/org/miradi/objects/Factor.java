@@ -171,6 +171,9 @@ abstract public class Factor extends BaseObject
 		if (typeToUse == ObjectType.GROUP_BOX)
 			return true;
 		
+		if (typeToUse == ObjectType.ANALYTICAL_QUESTION)
+			return true;
+
 		if (typeToUse == ObjectType.STRESS)
 			return true;
 		
