@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.dialogs.assumption;
 
-import org.miradi.actions.jump.ActionJumpEditAllStrategiesStep;
 import org.miradi.dialogs.base.ObjectListManagementPanel;
 import org.miradi.icons.AssumptionIcon;
 import org.miradi.main.EAM;
@@ -58,12 +57,6 @@ public class AssumptionListManagementPanel extends ObjectListManagementPanel
     public Icon getIcon()
     {
         return new AssumptionIcon();
-    }
-
-    @Override
-    public Class getJumpActionClass()
-    {
-        return ActionJumpEditAllStrategiesStep.class;
     }
 
     private static String PANEL_DESCRIPTION = EAM.text("Tab|Assumptions");
