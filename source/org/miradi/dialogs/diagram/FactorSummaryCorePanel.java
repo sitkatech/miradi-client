@@ -102,7 +102,11 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		{
 			addTaxonomyFields(HumanWelfareTargetSchema.getObjectType());
 		}
-		
+		if (factorToEdit.isAnalyticalQuestion())
+		{
+			addTaxonomyFields(AnalyticalQuestionSchema.getObjectType());
+		}
+
 		addField(createReadOnlyObjectList(factorToEdit.getType(), Factor.PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS));
 		addField(createReadOnlyObjectList(factorToEdit.getType(), Factor.PSEUDO_TAG_RESULTS_CHAIN_REFS));
 
