@@ -151,6 +151,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionInsertDirectThreat.class, new InsertDirectThreatDoer());
 		addDoerToMap(ActionInsertStrategy.class, new InsertStrategyDoer());
 		addDoerToMap(ActionInsertDraftStrategy.class, new InsertDraftStrategyDoer());
+		addDoerToMap(ActionInsertAnalyticalQuestion.class, new InsertAnalyticalQuestionDoer());
 		addDoerToMap(ActionInsertLink.class, new InsertLinkDoer());
 		addDoerToMap(ActionCreateBendPoint.class, new CreateBendPointDoer());
 		addDoerToMap(ActionDeleteBendPoint.class, new DeleteBendPointDoer());

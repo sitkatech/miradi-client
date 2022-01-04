@@ -252,6 +252,7 @@ public class MainMenuBar extends JMenuBar
 			menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertHumanWelfareTarget.class), KeyEvent.VK_H));
 
 		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertTextBox.class), KeyEvent.VK_X));
+		menu.add(createJMenuItemCenterLocation(actions.get(ActionInsertAnalyticalQuestion.class), KeyEvent.VK_X));
 		menu.addSeparator();
 
 		menu.add(createGroupBoxMenu(actions));

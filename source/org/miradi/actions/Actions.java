@@ -67,6 +67,7 @@ public class Actions
 		registerAction(new ActionInsertBiophysicalResult(mainWindow));
 		registerAction(new ActionInsertDirectThreat(mainWindow));
 		registerAction(new ActionInsertContributingFactor(mainWindow));
+		registerAction(new ActionInsertAnalyticalQuestion(mainWindow));
 		registerAction(new ActionSaveProjectAs(mainWindow));
 		registerAction(new ActionHowToSave(mainWindow));
 
