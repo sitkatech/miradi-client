@@ -37,7 +37,9 @@ abstract public class AbstractAnalyticalQuestionSchema extends FactorSchema
         createFieldSchemaMultiLineUserText(AbstractAnalyticalQuestion.TAG_FUTURE_INFORMATION_NEEDS);
 
         createFieldSchemaIdList(AbstractAnalyticalQuestion.TAG_DIAGRAM_FACTOR_IDS, DiagramFactorSchema.getObjectType());
-        createFieldSchemaIdList(AbstractAnalyticalQuestion.TAG_INDICATOR_IDS, IndicatorSchema.getObjectType());
+        createFieldSchemaRelevancyOverrideSet(AbstractAnalyticalQuestion.TAG_INDICATOR_IDS);
+
+		createPseudoFieldSchemaRefList(AbstractAnalyticalQuestion.PSEUDO_TAG_RELEVANT_INDICATOR_REFS);
 
         createTaxonomyClassificationSchemaField();
     }

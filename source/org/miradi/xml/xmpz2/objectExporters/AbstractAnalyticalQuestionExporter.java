@@ -20,40 +20,41 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectExporters;
 
-import org.miradi.objects.AnalyticalQuestion;
+import org.miradi.objects.AbstractAnalyticalQuestion;
 import org.miradi.objects.BaseObject;
-import org.miradi.schemas.AnalyticalQuestionSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.xmpz2.BaseObjectExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-public class AnalyticalQuestionExporter extends AbstractAnalyticalQuestionExporter
+abstract public class AbstractAnalyticalQuestionExporter extends BaseObjectExporter
 {
-    public AnalyticalQuestionExporter(Xmpz2XmlWriter writerToUse)
+    public AbstractAnalyticalQuestionExporter(final Xmpz2XmlWriter writerToUse, final int objectTypeToUse)
     {
-        super(writerToUse, AnalyticalQuestionSchema.getObjectType());
+        super(writerToUse, objectTypeToUse);
     }
 
 	@Override
-	protected void writeFields(BaseObject baseObject, BaseObjectSchema baseObjectSchema) throws Exception
+	protected void writeFields(final BaseObject baseObject, BaseObjectSchema baseObjectSchema) throws Exception
 	{
 		super.writeFields(baseObject, baseObjectSchema);
 
-		final AnalyticalQuestion analyticalQuestion = (AnalyticalQuestion) baseObject;
-		writeAssumptionRefs(baseObjectSchema, analyticalQuestion);
+		final AbstractAnalyticalQuestion analyticalQuestionOrAssumption = (AbstractAnalyticalQuestion) baseObject;
+		final String objectName = baseObjectSchema.getObjectName();
+
+		writeRelevantIndicatorIds(objectName, analyticalQuestionOrAssumption);
 	}
 
 	@Override
-	protected boolean doesFieldRequireSpecialHandling(String tag)
+	protected boolean doesFieldRequireSpecialHandling(final String tag)
 	{
-		if (tag.equals(AnalyticalQuestion.TAG_ASSUMPTION_IDS))
+		if (tag.equals(AbstractAnalyticalQuestion.TAG_INDICATOR_IDS))
 			return true;
 
 		return super.doesFieldRequireSpecialHandling(tag);
 	}
 
-	private void writeAssumptionRefs(BaseObjectSchema baseObjectSchema, final AnalyticalQuestion analyticalQuestion) throws Exception
+	private void writeRelevantIndicatorIds(final String objectName, AbstractAnalyticalQuestion analyticalQuestionOrAssumption) throws Exception
 	{
-		getWriter().writeReflist(baseObjectSchema.getObjectName() + ASSUMPTION_IDS, ASSUMPTION, analyticalQuestion.getAssumptionRefs());
+		getWriter().writeReflist(objectName, RELEVANT_INDICATOR_IDS, INDICATOR, analyticalQuestionOrAssumption.getRelevantIndicatorRefList());
 	}
 }

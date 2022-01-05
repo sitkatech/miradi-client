@@ -20,13 +20,23 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectImporters;
 
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.AbstractAnalyticalQuestion;
+import org.miradi.objects.Assumption;
+import org.miradi.project.Project;
 import org.miradi.schemas.AssumptionSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 
-public class AssumptionImporter extends BaseObjectImporter
+public class AssumptionImporter extends AbstractAnalyticalQuestionImporter
 {
     public AssumptionImporter(Xmpz2XmlImporter importerToUse)
     {
         super(importerToUse, new AssumptionSchema());
+    }
+
+    @Override
+    AbstractAnalyticalQuestion findAnalyticalQuestionOrAssumption(Project project, ORef destinationRef)
+    {
+        return Assumption.find(project, destinationRef);
     }
 }

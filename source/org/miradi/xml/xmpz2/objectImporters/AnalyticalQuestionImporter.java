@@ -21,13 +21,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objects.AbstractAnalyticalQuestion;
 import org.miradi.objects.AnalyticalQuestion;
+import org.miradi.project.Project;
 import org.miradi.schemas.AnalyticalQuestionSchema;
 import org.miradi.schemas.AssumptionSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
-public class AnalyticalQuestionImporter extends BaseObjectImporter
+public class AnalyticalQuestionImporter extends AbstractAnalyticalQuestionImporter
 {
     public AnalyticalQuestionImporter(Xmpz2XmlImporter importerToUse)
     {
@@ -48,5 +50,11 @@ public class AnalyticalQuestionImporter extends BaseObjectImporter
             return true;
 
         return super.isCustomImportField(tag);
+    }
+
+    @Override
+    AbstractAnalyticalQuestion findAnalyticalQuestionOrAssumption(Project project, ORef destinationRef)
+    {
+        return AnalyticalQuestion.find(project, destinationRef);
     }
 }

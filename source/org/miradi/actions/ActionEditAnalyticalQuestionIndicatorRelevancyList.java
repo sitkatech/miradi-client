@@ -17,17 +17,26 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
+package org.miradi.actions;
 
-package org.miradi.xml.xmpz2.objectExporters;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-import org.miradi.schemas.AssumptionSchema;
-import org.miradi.xml.xmpz2.BaseObjectExporter;
-import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
-
-public class AssumptionExporter extends AbstractAnalyticalQuestionExporter
+public class ActionEditAnalyticalQuestionIndicatorRelevancyList extends ObjectsAction
 {
-    public AssumptionExporter(Xmpz2XmlWriter writerToUse)
+    public ActionEditAnalyticalQuestionIndicatorRelevancyList(MainWindow mainWindow)
     {
-        super(writerToUse, AssumptionSchema.getObjectType());
+        super(mainWindow, getLabel());
+    }
+
+    private static String getLabel()
+    {
+        return EAM.text("Action|Choose...");
+    }
+
+    @Override
+    public String getToolTipText()
+    {
+        return EAM.text("TT|Choose which indicators are relevant to this analytical question");
     }
 }

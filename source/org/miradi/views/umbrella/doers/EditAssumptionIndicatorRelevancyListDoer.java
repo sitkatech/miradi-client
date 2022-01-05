@@ -17,17 +17,24 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
+package org.miradi.views.umbrella.doers;
 
-package org.miradi.xml.xmpz2.objectExporters;
-
+import org.miradi.objects.AbstractAnalyticalQuestion;
 import org.miradi.schemas.AssumptionSchema;
-import org.miradi.xml.xmpz2.BaseObjectExporter;
-import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
+import org.miradi.views.umbrella.AbstractRelevancyEditListDoer;
 
-public class AssumptionExporter extends AbstractAnalyticalQuestionExporter
+public class EditAssumptionIndicatorRelevancyListDoer extends AbstractRelevancyEditListDoer
 {
-    public AssumptionExporter(Xmpz2XmlWriter writerToUse)
+    @Override
+    protected int getObjectType()
     {
-        super(writerToUse, AssumptionSchema.getObjectType());
+        return AssumptionSchema.getObjectType();
     }
+
+    @Override
+    protected String getIndicatorSetTag()
+    {
+        return AbstractAnalyticalQuestion.TAG_INDICATOR_IDS;
+    }
+
 }

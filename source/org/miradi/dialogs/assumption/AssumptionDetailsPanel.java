@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.dialogs.assumption;
 
+import org.miradi.actions.ActionEditAssumptionIndicatorRelevancyList;
 import org.miradi.actions.Actions;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
@@ -51,8 +52,13 @@ public class AssumptionDetailsPanel extends ObjectDataInputPanel
 
         addField(createMultilineField(AssumptionSchema.getObjectType(), AbstractAnalyticalQuestion.TAG_TEXT));
 		addCustomFields(mainWindowToUse.getActions());
+
+        Actions actionsToUse = mainWindowToUse.getActions();
+		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(AssumptionSchema.getObjectType(), Assumption.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditAssumptionIndicatorRelevancyList.class), getPicker()));
+
         addField(createMultilineField(AssumptionSchema.getObjectType(), AbstractAnalyticalQuestion.TAG_COMMENTS));
         addField(createMultilineField(AssumptionSchema.getObjectType(), AbstractAnalyticalQuestion.TAG_FUTURE_INFORMATION_NEEDS));
+
         addTaxonomyFields(AssumptionSchema.getObjectType());
     }
 

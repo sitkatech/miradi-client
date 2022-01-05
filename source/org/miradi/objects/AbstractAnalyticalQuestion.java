@@ -21,8 +21,13 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.FactorId;
+import org.miradi.ids.IdList;
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORefList;
+import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.schemas.IndicatorSchema;
 
 abstract public class AbstractAnalyticalQuestion extends Factor
 {
@@ -49,9 +54,56 @@ abstract public class AbstractAnalyticalQuestion extends Factor
 		return false;
 	}
 
+	@Override
+	protected RelevancyOverrideSet getIndicatorRelevancyOverrideSet()
+	{
+		return getRawRelevancyOverrideData(TAG_INDICATOR_IDS);
+	}
+
+	@Override
+	public boolean isRelevancyOverrideSet(String tag)
+	{
+		if (tag.equals(AbstractAnalyticalQuestion.TAG_INDICATOR_IDS))
+			return true;
+
+		return false;
+	}
+
+	@Override
+	public String getPseudoData(String fieldTag)
+	{
+		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
+			return getRelevantIndicatorRefsAsString();
+
+		return super.getPseudoData(fieldTag);
+	}
+
+	protected String getRelevantIndicatorRefsAsString()
+	{
+		ORefList refList;
+		try
+		{
+			refList = getRelevantIndicatorRefList();
+			return refList.toString();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+	}
+
+	@Override
+	public IdList getOnlyDirectIndicatorIds()
+	{
+		return new IdList(IndicatorSchema.getObjectType());
+	}
+
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
     public static final String TAG_FUTURE_INFORMATION_NEEDS = "FutureInformationNeeds";
 
     public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
     public static final String TAG_INDICATOR_IDS = "IndicatorIds";
+
+	public static final String PSEUDO_TAG_RELEVANT_INDICATOR_REFS = "PseudoRelevantIndicatorRefs";
 }

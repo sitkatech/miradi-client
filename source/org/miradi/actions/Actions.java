@@ -385,6 +385,7 @@ public class Actions
 		registerAction(new ActionEditMethods(mainWindow));
 		registerAction(new ActionCreateMethod(mainWindow));
 		registerAction(new ActionDeleteMethod(mainWindow));
+
 		registerAction(new ActionEditObjectiveIndicatorRelevancyList(mainWindow));
 		registerAction(new ActionEditGoalIndicatorRelevancyList(mainWindow));
 		registerAction(new ActionEditObjectiveStrategyActivityRelevancyList(mainWindow));
@@ -396,6 +397,9 @@ public class Actions
 		registerAction(new ActionEditActivityObjectiveRelevancyList(mainWindow));
 		registerAction(new ActionEditActivityGoalRelevancyList(mainWindow));
 		registerAction(new ActionEditActivityIndicatorRelevancyList(mainWindow));
+		registerAction(new ActionEditAnalyticalQuestionIndicatorRelevancyList(mainWindow));
+		registerAction(new ActionEditAssumptionIndicatorRelevancyList(mainWindow));
+
 		registerAction(new ActionDeleteGroupBox(mainWindow));
 		registerAction(new ActionCreateSubTarget(mainWindow));
 		registerAction(new ActionDeleteSubTarget(mainWindow));
