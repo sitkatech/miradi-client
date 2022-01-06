@@ -90,6 +90,12 @@ public class ViabilityObjectToFormMap
 		if (FutureStatus.is(objectType))
 			return new FutureStatusPropertiesForm();
 
+		if (AnalyticalQuestion.is(objectType))
+			return new AnalyticalQuestionPropertiesForm();
+
+		if (Assumption.is(objectType))
+			return new AssumptionPropertiesForm();
+
 		throw new RuntimeException("Form not found for type:" + objectType);
 	}
 
