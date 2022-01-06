@@ -147,7 +147,10 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		addImporterToMap(typeToImporterMap, new TaggedObjectSetImporter(this));
 		addImporterToMap(typeToImporterMap, new TaxonomyImporter(this));
 		addImporterToMap(typeToImporterMap, new ObjectTreeTableConfigurationImporter(this));
-		
+
+		addImporterToMap(typeToImporterMap, new AnalyticalQuestionImporter(this));
+		addImporterToMap(typeToImporterMap, new AssumptionImporter(this));
+
 		for(int objectType = ObjectType.FIRST_OBJECT_TYPE; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
 		{
 			if (isCustomImport(objectType))

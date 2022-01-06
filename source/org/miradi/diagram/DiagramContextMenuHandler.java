@@ -413,7 +413,8 @@ public class DiagramContextMenuHandler
 		    insertMenu.add(createMenuItem(ActionInsertBiophysicalResult.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertTextBox.class, menuInvokedAt));
 		insertMenu.add(createMenuItem(ActionInsertScopeBox.class, menuInvokedAt));
-		
+		insertMenu.add(createMenuItem(ActionInsertAnalyticalQuestion.class, menuInvokedAt));
+
 		insertMenu.addSeparator();
 		insertMenu.add(actions.get(ActionInsertLink.class));
 		

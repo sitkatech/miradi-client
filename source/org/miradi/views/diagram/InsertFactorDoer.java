@@ -33,10 +33,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.*;
 import org.miradi.project.FactorCommandHelper;
 import org.miradi.project.Project;
-import org.miradi.schemas.ScopeBoxSchema;
-import org.miradi.schemas.StressSchema;
-import org.miradi.schemas.TaskSchema;
-import org.miradi.schemas.TextBoxSchema;
+import org.miradi.schemas.*;
 
 import java.awt.*;
 import java.util.Vector;
@@ -332,7 +329,10 @@ abstract public class InsertFactorDoer extends LocationDoer
 		if (type == ScopeBoxSchema.getObjectType())
 			return false;
 		
-		return true; 
+		if (type == AnalyticalQuestionSchema.getObjectType())
+			return false;
+
+		return true;
 	}
 	
 	protected void doExtraSetup(DiagramFactor newlyInsertedDiagramFactor, FactorCell[] selectedFactorCells) throws Exception

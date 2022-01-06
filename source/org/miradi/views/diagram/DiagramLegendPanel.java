@@ -145,7 +145,9 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		createCheckBox(TextBoxSchema.OBJECT_NAME);
 		createCheckBox(ScopeBoxSchema.OBJECT_NAME);
 		createCheckBox(GroupBoxSchema.OBJECT_NAME);
-		
+		createCheckBox(AnalyticalQuestionSchema.OBJECT_NAME);
+		createCheckBox(AssumptionSchema.OBJECT_NAME);
+
 		createCheckBox(FactorLinkSchema.OBJECT_NAME);
 		createCheckBox(StressSchema.OBJECT_NAME);
 		createCheckBox(TaskSchema.ACTIVITY_NAME);
@@ -184,6 +186,9 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		
 		addButtonLineWithCheckBox(jpanel, TextBoxSchema.getObjectType(), TextBoxSchema.OBJECT_NAME, actions.get(ActionInsertTextBox.class));
 		addButtonLineWithCheckBox(jpanel, GroupBoxSchema.getObjectType(), GroupBoxSchema.OBJECT_NAME, actions.get(ActionInsertGroupBox.class));
+
+		addButtonLineWithCheckBox(jpanel, AnalyticalQuestionSchema.getObjectType(), AnalyticalQuestionSchema.OBJECT_NAME, actions.get(ActionInsertAnalyticalQuestion.class));
+		addIconLineWithCheckBox(jpanel, AssumptionSchema.getObjectType(), AssumptionSchema.OBJECT_NAME, new AssumptionIcon());
 
 		DiagramObject diagramObject = getCurrentDiagramObject();
 		if (diagramObject != null && diagramObject.isResultsChain())

@@ -67,6 +67,7 @@ public class Actions
 		registerAction(new ActionInsertBiophysicalResult(mainWindow));
 		registerAction(new ActionInsertDirectThreat(mainWindow));
 		registerAction(new ActionInsertContributingFactor(mainWindow));
+		registerAction(new ActionInsertAnalyticalQuestion(mainWindow));
 		registerAction(new ActionSaveProjectAs(mainWindow));
 		registerAction(new ActionHowToSave(mainWindow));
 
@@ -178,10 +179,13 @@ public class Actions
 		registerAction(new ActionDeleteKeyEcologicalAttributeIndicator(mainWindow));
 		registerAction(new ActionCreateKeyEcologicalAttributeMeasurement(mainWindow));
 		registerAction(new ActionCreateIndicatorMeasurement(mainWindow));
-		
+
+		registerAction(new ActionCreateAssumption(mainWindow));
+		registerAction(new ActionDeleteAssumption(mainWindow));
+
 		registerAction(new ActionTeamCreateMember(mainWindow));
 		registerAction(new ActionDeleteTeamMember(mainWindow));
-		
+
 		registerAction(new ActionAddAssignment(mainWindow));
 		registerAction(new ActionRemoveAssignment(mainWindow));
 		registerAction(new ActionCreateAccountingCode(mainWindow));
@@ -381,6 +385,7 @@ public class Actions
 		registerAction(new ActionEditMethods(mainWindow));
 		registerAction(new ActionCreateMethod(mainWindow));
 		registerAction(new ActionDeleteMethod(mainWindow));
+
 		registerAction(new ActionEditObjectiveIndicatorRelevancyList(mainWindow));
 		registerAction(new ActionEditGoalIndicatorRelevancyList(mainWindow));
 		registerAction(new ActionEditObjectiveStrategyActivityRelevancyList(mainWindow));
@@ -392,6 +397,9 @@ public class Actions
 		registerAction(new ActionEditActivityObjectiveRelevancyList(mainWindow));
 		registerAction(new ActionEditActivityGoalRelevancyList(mainWindow));
 		registerAction(new ActionEditActivityIndicatorRelevancyList(mainWindow));
+		registerAction(new ActionEditAnalyticalQuestionIndicatorRelevancyList(mainWindow));
+		registerAction(new ActionEditAssumptionIndicatorRelevancyList(mainWindow));
+
 		registerAction(new ActionDeleteGroupBox(mainWindow));
 		registerAction(new ActionCreateSubTarget(mainWindow));
 		registerAction(new ActionDeleteSubTarget(mainWindow));
@@ -423,6 +431,8 @@ public class Actions
 		registerAction(new ActionHideStressBubble(mainWindow));
 		registerAction(new ActionShowActivityBubble(mainWindow));
 		registerAction(new ActionHideActivityBubble(mainWindow));
+		registerAction(new ActionShowAssumptionBubble(mainWindow));
+		registerAction(new ActionHideAssumptionBubble(mainWindow));
 		registerAction(new ActionShowCurrentWizardFileName(mainWindow));
 		registerAction(new ActionExpandAllRows(mainWindow));
 		registerAction(new ActionCollapseAllRows(mainWindow));

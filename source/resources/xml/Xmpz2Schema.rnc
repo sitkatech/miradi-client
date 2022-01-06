@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Fri Nov 12 14:16:22 GMT 2021 $
-# $LastChangedRevision: 238 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/238'
+# $LastChangedDate: Thu Jan 06 10:46:03 GMT 2022 $
+# $LastChangedRevision: 239 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/239'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -63,6 +63,8 @@ ConservationProject.element = element miradi:ConservationProject
   ExtendedProgressReportPool.element? &
   ResultReportPool.element? &
   OutputPool.element? &
+  AssumptionPool.element? &
+  AnalyticalQuestionPool.element? &
   SimpleThreatRatingPool.element? &
   StressBasedThreatRatingPool.element? &
   MiradiShareProjectDataTaxonomyAssociationPool.element? &
@@ -90,6 +92,8 @@ ConservationProject.element = element miradi:ConservationProject
   ExpenseAssignmentTaxonomyAssociationPool.element? &
   ExpenseAssignmentAccountingClassificationAssociationPool.element? &
   OutputTaxonomyAssociationPool.element? &
+  AnalyticalQuestionTaxonomyAssociationPool.element? &
+  AssumptionTaxonomyAssociationPool.element? &
   element miradi:DeletedOrphans{ text }?
 }
 
@@ -942,6 +946,37 @@ Output.element = element miradi:Output
   TaxonomyClassificationContainer.element?
 }
 
+AssumptionPool.element = element miradi:AssumptionPool { Assumption.element* }
+Assumption.element = element miradi:Assumption
+{
+  attribute Id {xsd:integer} &
+  element miradi:AssumptionComments { formatted_text }? &
+  element miradi:AssumptionDetails { formatted_text }? &
+  element miradi:AssumptionFutureInformationNeeds { formatted_text }? &
+  element miradi:AssumptionIdentifier { text }? &
+  element miradi:AssumptionName { formatted_text }? &
+  element miradi:AssumptionRelevantDiagramFactorIds { DiagramFactorId.element* }? &
+  element miradi:AssumptionRelevantIndicatorIds { IndicatorId.element* }? &
+  element miradi:AssumptionUUID { uuid } &
+  TaxonomyClassificationContainer.element?
+}
+
+AnalyticalQuestionPool.element = element miradi:AnalyticalQuestionPool { AnalyticalQuestion.element* }
+AnalyticalQuestion.element = element miradi:AnalyticalQuestion
+{
+  attribute Id {xsd:integer} &
+  element miradi:AnalyticalQuestionComments { formatted_text }? &
+  element miradi:AnalyticalQuestionDetails { formatted_text }? &
+  element miradi:AnalyticalQuestionFutureInformationNeeds { formatted_text }? &
+  element miradi:AnalyticalQuestionIdentifier { text }? &
+  element miradi:AnalyticalQuestionName { formatted_text }? &
+  element miradi:AnalyticalQuestionOrderedAssumptionIds { AssumptionId.element* }? &
+  element miradi:AnalyticalQuestionRelevantDiagramFactorIds { DiagramFactorId.element* }? &
+  element miradi:AnalyticalQuestionRelevantIndicatorIds { IndicatorId.element* }? &
+  element miradi:AnalyticalQuestionUUID { uuid } &
+  TaxonomyClassificationContainer.element?
+}
+
 SimpleThreatRatingPool.element = element miradi:SimpleThreatRatingPool { SimpleThreatRating.element* }
 SimpleThreatRating.element = element miradi:SimpleThreatRating
 {
@@ -1062,7 +1097,7 @@ vocabulary_diagram_factor_background_color = 'LightGray'|'TargetLightGreen'|'HWB
 vocabulary_diagram_factor_foreground_color = '#000000'|'#4E4848'|'#D31913'|'#FF6600'|'#FFCC00'|'#007F00'|'#0000CC'|'#9900FF'|'#C85A17'|'#6D7B8D'|'#FFFFFF'|'#FF00FF'|'#FF8040'|'#FFFFCC'|'#5FFB17'|'#00CCFF'|'#CC99FF'|'#EDE275'
 vocabulary_diagram_factor_font_size = '1.0'|'0.5'|'0.75'|'0.9'|'1.25'|'1.75'|'2.5'
 vocabulary_diagram_factor_font_style = ''|'Bold'|'Underline'|'StrikeThrough'
-vocabulary_hidden_types = 'Strategy'|'DraftStrategy'|'ContributingFactor'|'DirectThreat'|'Target'|'HumanWellbeingTarget'|'BiophysicalFactor'|'BiophysicalResult'|'Link'|'Goal'|'Objective'|'Indicator'|'TextBox'|'ScopeBox'|'Stress'|'Activity'|'IntermediateResult'|'ThreatReductionResult'|'GroupBox'
+vocabulary_hidden_types = 'Strategy'|'DraftStrategy'|'ContributingFactor'|'DirectThreat'|'Target'|'HumanWellbeingTarget'|'BiophysicalFactor'|'BiophysicalResult'|'Link'|'Goal'|'Objective'|'Indicator'|'TextBox'|'ScopeBox'|'Stress'|'Activity'|'IntermediateResult'|'ThreatReductionResult'|'GroupBox'|'AnalyticalQuestion'|'Assumption'
 vocabulary_diagram_link_color = 'black'|'darkGray'|'red'|'DarkOrange'|'DarkYellow'|'darkGreen'|'darkBlue'|'DarkPurple'|'brown'|'lightGray'|'White'|'pink'|'orange'|'yellow'|'lightGreen'|'lightBlue'|'LightPurple'|'tan'
 vocabulary_included_diagram_types = 'AllTypes'|'IncludeConceptualModelData'|'IncludeResultsChainData'
 vocabulary_factor_mode = 'IncludeBiophysicalFactorsAndResults'|'ContributingFactorsAndIntermediateResultsOnly'
@@ -1165,9 +1200,11 @@ MethodId.element = element miradi:MethodId { xsd:integer }
 SubTaskId.element = element miradi:SubTaskId { xsd:integer }
 FutureStatusId.element = element miradi:FutureStatusId { xsd:integer }
 OutputId.element = element miradi:OutputId { xsd:integer }
+AnalyticalQuestionId.element = element miradi:AnalyticalQuestionId { xsd:integer }
+AssumptionId.element = element miradi:AssumptionId { xsd:integer }
 WrappedByDiagramFactorId.element = element miradi:WrappedByDiagramFactorId
 {
-  BiodiversityTargetId.element|  HumanWellbeingTargetId.element|  BiophysicalFactorId.element|  BiophysicalResultId.element|  CauseId.element|  StrategyId.element|  ThreatReductionResultId.element|  IntermediateResultId.element|  GroupBoxId.element|  TextBoxId.element|  ScopeBoxId.element|  ActivityId.element|  StressId.element
+  BiodiversityTargetId.element|  HumanWellbeingTargetId.element|  BiophysicalFactorId.element|  BiophysicalResultId.element|  CauseId.element|  StrategyId.element|  ThreatReductionResultId.element|  IntermediateResultId.element|  GroupBoxId.element|  TextBoxId.element|  ScopeBoxId.element|  ActivityId.element|  StressId.element|  AnalyticalQuestionId.element|  AssumptionId.element
 }
 
 LinkableFactorId.element = element miradi:LinkableFactorId
@@ -1345,6 +1382,8 @@ ProjectResourceTaxonomyAssociationPool.element = element miradi:ProjectResourceT
 ResourceAssignmentTaxonomyAssociationPool.element = element miradi:ResourceAssignmentTaxonomyAssociationPool { TaxonomyAssociation.element* }
 ExpenseAssignmentTaxonomyAssociationPool.element = element miradi:ExpenseAssignmentTaxonomyAssociationPool { TaxonomyAssociation.element* }
 OutputTaxonomyAssociationPool.element = element miradi:OutputTaxonomyAssociationPool { TaxonomyAssociation.element* }
+AnalyticalQuestionTaxonomyAssociationPool.element = element miradi:AnalyticalQuestionTaxonomyAssociationPool { TaxonomyAssociation.element* }
+AssumptionTaxonomyAssociationPool.element = element miradi:AssumptionTaxonomyAssociationPool { TaxonomyAssociation.element* }
 TaxonomyClassificationContainer.element = element miradi:TaxonomyClassificationContainer { TaxonomyClassification.element* }
 ResourceAssignmentAccountingClassificationAssociationPool.element = element miradi:ResourceAssignmentAccountingClassificationAssociationPool { AccountingClassificationAssociation.element* }
 ExpenseAssignmentAccountingClassificationAssociationPool.element = element miradi:ExpenseAssignmentAccountingClassificationAssociationPool { AccountingClassificationAssociation.element* }

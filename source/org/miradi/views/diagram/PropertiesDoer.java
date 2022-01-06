@@ -26,6 +26,7 @@ import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
+import org.miradi.dialogs.assumption.AssumptionPropertiesPanelWithTagPanel;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.ModelessDialogPanel;
 import org.miradi.dialogs.base.ModelessDialogWithClose;
@@ -42,13 +43,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.GroupBox;
-import org.miradi.objects.ScopeBox;
-import org.miradi.objects.Stress;
-import org.miradi.objects.Task;
-import org.miradi.objects.TextBox;
+import org.miradi.objects.*;
 import org.miradi.views.umbrella.StaticPicker;
 
 public class PropertiesDoer extends LocationDoer
@@ -193,6 +188,8 @@ public class PropertiesDoer extends LocationDoer
 			doActivityProperties(diagramFactor);
 		else if (ScopeBox.is(wrappedType))
 			doScopeBoxProperties(diagramFactor);
+		else if (Assumption.is(wrappedType))
+			doAssumptionProperties(diagramFactor);
 		else
 			doNormalFactorProperties(diagramFactor, tabToStartOn);
 	}
@@ -232,6 +229,17 @@ public class PropertiesDoer extends LocationDoer
 		StaticPicker picker = new StaticPicker(selectionHierarchy);
 		picker.becomeActive();
 		ActivityPropertiesPanelWithTagPanel panel = new ActivityPropertiesPanelWithTagPanel(getMainWindow());
+		addDiagramWrappedRefToHierarchyAndShowPanel(diagramFactor, panel);
+	}
+
+	private void doAssumptionProperties(DiagramFactor diagramFactor) throws Exception
+	{
+		ORefList selectionHierarchy = new ORefList();
+		selectionHierarchy.add(diagramFactor.getWrappedORef());
+		selectionHierarchy.add(diagramFactor.getRef());
+		StaticPicker picker = new StaticPicker(selectionHierarchy);
+		picker.becomeActive();
+		AssumptionPropertiesPanelWithTagPanel panel = new AssumptionPropertiesPanelWithTagPanel(getMainWindow());
 		addDiagramWrappedRefToHierarchyAndShowPanel(diagramFactor, panel);
 	}
 

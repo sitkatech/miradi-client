@@ -67,10 +67,7 @@ import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.project.threatrating.ThreatRatingFramework;
 import org.miradi.questions.*;
-import org.miradi.schemas.GoalSchema;
-import org.miradi.schemas.ObjectiveSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TargetSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.Utility;
 import org.miradi.utils.XmlUtilities2;
@@ -314,7 +311,13 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		
 		if(thisCell.isStrategy())
 			return checkIfOwnedActivityIsSelected(diagram, (Strategy)underlyingFactor);
-		
+
+		if(thisCell.isAssumption())
+			return checkIfOwningAnalyticalQuestionIsSelected(diagram, (Assumption)underlyingFactor);
+
+		if(thisCell.isAnalyticalQuestion())
+			return checkIfOwnedAssumptionIsSelected(diagram, (AnalyticalQuestion)underlyingFactor);
+
 		return false;
 	}
 
@@ -336,6 +339,15 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	private boolean checkIfOwnedStressIsSelected(DiagramComponent diagram, Target target)
 	{
 		return areAnyOfTheseFactorsSelected(diagram, target.getStressRefs());
+	}
+
+	private boolean checkIfOwningAnalyticalQuestionIsSelected(DiagramComponent diagram, Assumption assumption)
+	{
+		return areAnyOfTheseFactorsSelected(diagram, assumption.findObjectsThatReferToUs(AnalyticalQuestionSchema.getObjectType()));
+	}
+	private boolean checkIfOwnedAssumptionIsSelected(DiagramComponent diagram, AnalyticalQuestion analyticalQuestion)
+	{
+		return areAnyOfTheseFactorsSelected(diagram, analyticalQuestion.getAssumptionRefs());
 	}
 
 	private boolean areAnyOfTheseFactorsSelected(DiagramComponent diagram, ORefList relatedRefs)

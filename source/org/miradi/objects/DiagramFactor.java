@@ -339,4 +339,5 @@ public class DiagramFactor extends BaseObject
 
 	public static final Dimension DEFAULT_STRESS_SIZE = new Dimension(60, 30);
 	public static final Dimension DEFAULT_ACTIVITY_SIZE = new Dimension(60, 30);
+	public static final Dimension DEFAULT_ASSUMPTION_SIZE = new Dimension(60, 30);
 }

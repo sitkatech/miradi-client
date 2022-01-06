@@ -40,14 +40,7 @@ import org.miradi.objecthelpers.BaseObjectDeepCopierWithRelatedObjectsToJson;
 import org.miradi.objecthelpers.EAMGraphCellByFactorTypeSorter;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.Factor;
-import org.miradi.objects.FactorLink;
-import org.miradi.objects.Stress;
-import org.miradi.objects.Task;
-import org.miradi.objects.ThreatStressRating;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.views.diagram.DiagramPaster;
@@ -159,6 +152,9 @@ abstract public class AbstractTransferableMiradiList implements Transferable, Se
 		if (Task.is(type))
 			return false;
 		
+		if (Assumption.is(type))
+			return false;
+
 		return true;
 	}
 

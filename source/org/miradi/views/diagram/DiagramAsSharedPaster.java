@@ -220,6 +220,10 @@ public class DiagramAsSharedPaster extends DiagramPaster
 			return true;
 		if(BiophysicalResult.is(objectType))
 			return true;
+		if(AnalyticalQuestion.is(objectType))
+			return true;
+		if(Assumption.is(objectType))
+			return true;
 
 		return false;
 	}

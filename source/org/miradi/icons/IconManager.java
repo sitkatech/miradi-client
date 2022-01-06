@@ -83,6 +83,8 @@ public class IconManager
 		addIcon(new OpenStandardsCompleteIcon());
 		addIcon(new FutureStatusIcon());
 		addIcon(new OutputIcon());
+		addIcon(new AnalyticalQuestionIcon());
+		addIcon(new AssumptionIcon());
 		addResourceImageIcon(COLLAPSE_ICON_FILE_NAME);
 		addResourceImageIcon(EXPAND_ICON_FILE_NAME);
 		addResourceImageIcon(SPELLCHECK_ICON_FILE_NAME);
@@ -202,6 +204,12 @@ public class IconManager
 		if (Output.is(type))
 			return getOutputIcon();
 
+		if (AnalyticalQuestion.is(type))
+			return getAnalyticalQuestionIcon();
+
+		if (Assumption.is(type))
+			return getAssumptionIcon();
+
 		throw new RuntimeException("Could not find icon for type:" + type);
 	}
 
@@ -245,6 +253,12 @@ public class IconManager
 		
 		if (factor.isHumanWelfareTarget())
 			return getHumanWelfareTargetIcon();	
+
+		if (factor.isAnalyticalQuestion())
+			return getAnalyticalQuestionIcon();
+
+		if (factor.isAssumption())
+			return getAssumptionIcon();
 
 		throw new RuntimeException("type is factor but there is no icon for it was found:"  + factor.getType());
 	}
@@ -528,6 +542,16 @@ public class IconManager
 	public static Icon getOutputIcon()
 	{
 		return getIcon(OutputIcon.class);
+	}
+
+	public static Icon getAnalyticalQuestionIcon()
+	{
+		return getIcon(AnalyticalQuestionIcon.class);
+	}
+
+	public static Icon getAssumptionIcon()
+	{
+		return getIcon(AssumptionIcon.class);
 	}
 
 	public static Icon getProgressPercentIcon()

@@ -40,7 +40,7 @@ public class StrategyExporter extends BaseObjectWithLeaderResourceFieldExporter
 		super.writeFields(baseObject, baseObjectSchema);
 		
 		final Strategy strategy = (Strategy) baseObject;
-		writeMethodRefs(baseObjectSchema, strategy);
+		writeActivityRefs(baseObjectSchema, strategy);
 		writeOptionalCalculatedTimePeriodCosts(strategy, baseObjectSchema);
 		writeOptionalCalculatedTimeframe(strategy, baseObjectSchema);
 
@@ -71,7 +71,7 @@ public class StrategyExporter extends BaseObjectWithLeaderResourceFieldExporter
 		return super.doesFieldRequireSpecialHandling(tag);
 	}
 	
-	private void writeMethodRefs(BaseObjectSchema baseObjectSchema, final Strategy strategy) throws Exception
+	private void writeActivityRefs(BaseObjectSchema baseObjectSchema, final Strategy strategy) throws Exception
 	{
 		getWriter().writeReflist(baseObjectSchema.getObjectName() + ORDERED_ACTIVITY_IDS, ACTIVITY, strategy.getActivityRefs());
 	}

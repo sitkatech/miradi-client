@@ -143,6 +143,11 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		helper.setDiagramFactorSize(diagramFactorId, size);
 	}
 	
+	private void setFontColor(FactorCommandHelper helper, DiagramFactorId diagramFactorId, String fontColor) throws CommandFailedException
+	{
+		helper.setDiagramFactorFontColor(diagramFactorId, fontColor);
+	}
+
 	private void selectParentDiagramFactor()
 	{
 		getDiagramView().getCurrentDiagramComponent().selectFactor(getParentRef());
@@ -163,7 +168,19 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 
 		setLocation(helper, annotationDiagramFactorId);
 		setSize(helper, annotationDiagramFactorId, defaultSize);
+
+		String defaultFontColor = getDiagramFactorDefaultFontColor();
+		if (!defaultFontColor.isEmpty())
+		{
+			setFontColor(helper, annotationDiagramFactorId, defaultFontColor);
+		}
+
 		selectParentDiagramFactor();
+	}
+
+	protected String getDiagramFactorDefaultFontColor()
+	{
+		return "";
 	}
 
 	private void applyParentTaggedObjectSets(DiagramFactorId annotationDiagramFactorId) throws Exception {

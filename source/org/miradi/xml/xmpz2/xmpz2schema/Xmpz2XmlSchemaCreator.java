@@ -32,9 +32,7 @@ import org.miradi.xml.xmpz2.Xmpz2TagToElementNameMap;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-import java.util.Collections;
-import java.util.Set;
-import java.util.Vector;
+import java.util.*;
 
 public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 {
@@ -139,6 +137,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(RESOURCE_ASSIGNMENT_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(EXPENSE_ASSIGNMENT_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(OUTPUT_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(ANALYTICAL_QUESTION_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(ASSUMPTION_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(TAXONOMY_CLASSIFICATION_CONTAINER, TAXONOMY_CLASSIFICATION);
 	}
 
@@ -204,6 +204,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		elementNames.add(createOptionalSchemaElement(EXPENSE_ASSIGNMENT_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(EXPENSE_ASSIGNMENT_ACCOUNTING_CLASSIFICATION_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(OUTPUT_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(ANALYTICAL_QUESTION_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(ASSUMPTION_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(ELEMENT_NAME + PREFIX + DELETED_ORPHANS_ELEMENT_NAME +  "{ text }?");
 		getSchemaWriter().defineElements(elementNames);
 		
@@ -270,6 +272,12 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		if (fieldSchema.getTag().equals(Desire.TAG_RELEVANT_INDICATOR_SET))
 			return INDICATOR;
+
+		if (fieldSchema.getTag().equals(AbstractAnalyticalQuestion.TAG_INDICATOR_IDS))
+			return INDICATOR;
+
+		if (fieldSchema.getTag().equals(AbstractAnalyticalQuestion.TAG_DIAGRAM_FACTOR_IDS))
+			return DIAGRAM_FACTOR;
 
 		if (fieldSchema.getTag().equals(RELEVANT_STRATEGY_IDS))
 			return StrategySchema.OBJECT_NAME;
@@ -561,9 +569,22 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private String createIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementName)
 	{
+		if (isFieldForType(baseObjectSchema, fieldSchema, AnalyticalQuestionSchema.getObjectType(), AnalyticalQuestion.TAG_ASSUMPTION_IDS))
+			return createIdName(ASSUMPTION);
+
+		Vector<Integer> analyticalQuestionSchemas = new Vector<Integer>();
+		analyticalQuestionSchemas.add(AnalyticalQuestionSchema.getObjectType());
+		analyticalQuestionSchemas.add(AssumptionSchema.getObjectType());
+
+		if (isFieldForType(baseObjectSchema, fieldSchema, analyticalQuestionSchemas, AbstractAnalyticalQuestion.TAG_DIAGRAM_FACTOR_IDS))
+			return createIdName(DIAGRAM_FACTOR);
+
+		if (isFieldForType(baseObjectSchema, fieldSchema, analyticalQuestionSchemas, AbstractAnalyticalQuestion.TAG_INDICATOR_IDS))
+			return createIdName(INDICATOR);
+
 		if (isFieldForType(baseObjectSchema, fieldSchema, TaskSchema.getObjectType(), Task.TAG_SUBTASK_IDS))
 			return createIdName(SUB_TASK);
-		
+
 		if (isFieldForType(baseObjectSchema, fieldSchema, IndicatorSchema.getObjectType(), Indicator.TAG_METHOD_IDS))
 			return createIdName(METHOD );
 		
@@ -585,14 +606,25 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		return StringUtilities.removeLastChar(elementName);
 	}
 	
+	private boolean isFieldForType(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, Vector<Integer> objectTypes, String tag)
+	{
+		for(Integer objectType: objectTypes)
+		{
+			if (isFieldForType(baseObjectSchema, fieldSchema, (int)objectType, tag))
+				return true;
+		}
+
+		return false;
+	}
+
 	private boolean isFieldForType(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, int objectType, String tag)
 	{
 		if (objectType == baseObjectSchema.getType() && fieldSchema.getTag().equals(tag))
 			return true;
-		
+
 		return false;
 	}
-	
+
 	private String getIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
 		if (DiagramFactor.is(baseObjectSchema.getType()) && fieldSchema.getTag().equals(DiagramFactor.TAG_WRAPPED_REF))
@@ -760,8 +792,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private void writeDashboardFlagsContainer()
 	{
-		String falgsContainerSchema = createCodelistSchemaElement("DashboardFlags", StaticQuestionManager.getQuestion(DashboardFlagsQuestion.class));
-		getSchemaWriter().println(falgsContainerSchema);
+		String flagsContainerSchema = createCodelistSchemaElement("DashboardFlags", StaticQuestionManager.getQuestion(DashboardFlagsQuestion.class));
+		getSchemaWriter().println(flagsContainerSchema);
 	}
 	
 	private void writeDateUnitSchemaElements() 
