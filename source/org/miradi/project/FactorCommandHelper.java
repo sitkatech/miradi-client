@@ -125,6 +125,12 @@ public class FactorCommandHelper
 		return new CommandSetObjectData(ref, Factor.TAG_LABEL, newLabel);
 	}
 
+	public void setDiagramFactorFontColor(DiagramFactorId diagramFactorId, String fontColor) throws CommandFailedException
+	{
+		CommandSetObjectData setLabel = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, diagramFactorId, DiagramFactor.TAG_FOREGROUND_COLOR, fontColor);
+		executeCommand(setLabel);
+	}
+
 	private Project getProject()
 	{
 		return project;

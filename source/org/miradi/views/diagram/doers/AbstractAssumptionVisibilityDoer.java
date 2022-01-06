@@ -21,6 +21,7 @@ package org.miradi.views.diagram.doers;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramObject;
+import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.schemas.AnalyticalQuestionSchema;
 import org.miradi.schemas.AssumptionSchema;
 
@@ -42,6 +43,12 @@ abstract public class AbstractAssumptionVisibilityDoer extends AbstractVisibilit
 
         return isAvailable(selectedAssumptionRef);
     }
+
+    @Override
+	protected String getDiagramFactorDefaultFontColor()
+	{
+		return DiagramFactorFontColorQuestion.WHITE_HEX;
+	}
 
     protected ORef getSelectedAssumptionRef()
     {
