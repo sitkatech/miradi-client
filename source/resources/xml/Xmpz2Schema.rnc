@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Wed Dec 01 12:37:22 GMT 2021 $
+# $LastChangedDate: Thu Jan 06 10:46:03 GMT 2022 $
 # $LastChangedRevision: 239 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/239'
 start = ConservationProject.element
@@ -63,8 +63,8 @@ ConservationProject.element = element miradi:ConservationProject
   ExtendedProgressReportPool.element? &
   ResultReportPool.element? &
   OutputPool.element? &
-  AnalyticalQuestionPool.element? &
   AssumptionPool.element? &
+  AnalyticalQuestionPool.element? &
   SimpleThreatRatingPool.element? &
   StressBasedThreatRatingPool.element? &
   MiradiShareProjectDataTaxonomyAssociationPool.element? &
@@ -946,6 +946,21 @@ Output.element = element miradi:Output
   TaxonomyClassificationContainer.element?
 }
 
+AssumptionPool.element = element miradi:AssumptionPool { Assumption.element* }
+Assumption.element = element miradi:Assumption
+{
+  attribute Id {xsd:integer} &
+  element miradi:AssumptionComments { formatted_text }? &
+  element miradi:AssumptionDetails { formatted_text }? &
+  element miradi:AssumptionFutureInformationNeeds { formatted_text }? &
+  element miradi:AssumptionIdentifier { text }? &
+  element miradi:AssumptionName { formatted_text }? &
+  element miradi:AssumptionRelevantDiagramFactorIds { DiagramFactorId.element* }? &
+  element miradi:AssumptionRelevantIndicatorIds { IndicatorId.element* }? &
+  element miradi:AssumptionUUID { uuid } &
+  TaxonomyClassificationContainer.element?
+}
+
 AnalyticalQuestionPool.element = element miradi:AnalyticalQuestionPool { AnalyticalQuestion.element* }
 AnalyticalQuestion.element = element miradi:AnalyticalQuestion
 {
@@ -959,21 +974,6 @@ AnalyticalQuestion.element = element miradi:AnalyticalQuestion
   element miradi:AnalyticalQuestionRelevantDiagramFactorIds { DiagramFactorId.element* }? &
   element miradi:AnalyticalQuestionRelevantIndicatorIds { IndicatorId.element* }? &
   element miradi:AnalyticalQuestionUUID { uuid } &
-  TaxonomyClassificationContainer.element?
-}
-
-AssumptionPool.element = element miradi:AssumptionPool { Assumption.element* }
-Assumption.element = element miradi:Assumption
-{
-  attribute Id {xsd:integer} &
-  element miradi:AssumptionComments { formatted_text }? &
-  element miradi:AssumptionDetails { formatted_text }? &
-  element miradi:AssumptionFutureInformationNeeds { formatted_text }? &
-  element miradi:AssumptionIdentifier { text }? &
-  element miradi:AssumptionName { formatted_text }? &
-  element miradi:AssumptionRelevantDiagramFactorIds { DiagramFactorId.element* }? &
-  element miradi:AssumptionRelevantIndicatorIds { IndicatorId.element* }? &
-  element miradi:AssumptionUUID { uuid } &
   TaxonomyClassificationContainer.element?
 }
 

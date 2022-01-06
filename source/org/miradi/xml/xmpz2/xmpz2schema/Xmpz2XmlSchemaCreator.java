@@ -276,6 +276,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (fieldSchema.getTag().equals(AbstractAnalyticalQuestion.TAG_INDICATOR_IDS))
 			return INDICATOR;
 
+		if (fieldSchema.getTag().equals(AbstractAnalyticalQuestion.TAG_DIAGRAM_FACTOR_IDS))
+			return DIAGRAM_FACTOR;
+
 		if (fieldSchema.getTag().equals(RELEVANT_STRATEGY_IDS))
 			return StrategySchema.OBJECT_NAME;
 		

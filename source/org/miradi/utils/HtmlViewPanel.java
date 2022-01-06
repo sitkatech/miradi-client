@@ -106,7 +106,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 			return;
 		HtmlFormViewer bodyComponent =  new MiradiHtmlViewer(mainWindow, this);
 		bodyComponent.setText(body);
-		bodyComponent.setFont(Font.getFont("Arial"));
+		bodyComponent.setFont(dlg.getFont());
 		configureBodyComponent(bodyComponent);
 
 		JComponent topSection = createTopPanel();

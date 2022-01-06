@@ -399,6 +399,8 @@ public class ObjectManager
 			ObjectType.BUDGET_CATEGORY_TWO,
 			ObjectType.DASHBOARD,
 			ObjectType.OUTPUT,
+			ObjectType.ANALYTICAL_QUESTION,
+			ObjectType.ASSUMPTION,
 		};
 		return types;
 	}
