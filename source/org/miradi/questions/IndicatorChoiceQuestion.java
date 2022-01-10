@@ -22,6 +22,7 @@ package org.miradi.questions;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Indicator;
 import org.miradi.project.Project;
+import org.miradi.utils.HtmlUtilities;
 
 public class IndicatorChoiceQuestion extends ObjectQuestion
 {
@@ -38,6 +39,7 @@ public class IndicatorChoiceQuestion extends ObjectQuestion
 	@Override
 	protected String getStringToDisplay(BaseObject thisObject)
 	{
-		return thisObject.getFullName() + " (" + thisObject.getDirectOrIndirectOwningFactor().getLabel() + ")";
+		String label = thisObject.getDirectOrIndirectOwningFactor().getLabel();
+		return thisObject.getFullName() + " (" + HtmlUtilities.convertHtmlToPlainText(label) + ")";
 	}
 }
