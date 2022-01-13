@@ -46,6 +46,11 @@ public class Goal extends Desire
 		return (GoalSchema) objectManager.getSchemas().get(ObjectType.GOAL);
 	}
 
+	protected String getOutputRelevancyTag()
+	{
+		return Output.TAG_GOAL_IDS;
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

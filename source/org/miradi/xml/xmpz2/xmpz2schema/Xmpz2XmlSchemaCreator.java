@@ -273,6 +273,15 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (fieldSchema.getTag().equals(Desire.TAG_RELEVANT_INDICATOR_SET))
 			return INDICATOR;
 
+		if (fieldSchema.getTag().equals(Output.TAG_GOAL_IDS))
+			return GOAL;
+
+		if (fieldSchema.getTag().equals(Output.TAG_OBJECTIVE_IDS))
+			return OBJECTIVE;
+
+		if (fieldSchema.getTag().equals(Output.TAG_INDICATOR_IDS))
+			return INDICATOR;
+
 		if (fieldSchema.getTag().equals(AbstractAnalyticalQuestion.TAG_INDICATOR_IDS))
 			return INDICATOR;
 
@@ -569,6 +578,15 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 	private String createIdElementName(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String elementName)
 	{
+		if (isFieldForType(baseObjectSchema, fieldSchema, OutputSchema.getObjectType(), Output.TAG_GOAL_IDS))
+			return createIdName(GOAL);
+
+		if (isFieldForType(baseObjectSchema, fieldSchema, OutputSchema.getObjectType(), Output.TAG_OBJECTIVE_IDS))
+			return createIdName(OBJECTIVE);
+
+		if (isFieldForType(baseObjectSchema, fieldSchema, OutputSchema.getObjectType(), Output.TAG_INDICATOR_IDS))
+			return createIdName(INDICATOR);
+
 		if (isFieldForType(baseObjectSchema, fieldSchema, AnalyticalQuestionSchema.getObjectType(), AnalyticalQuestion.TAG_ASSUMPTION_IDS))
 			return createIdName(ASSUMPTION);
 

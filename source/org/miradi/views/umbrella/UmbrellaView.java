@@ -263,6 +263,10 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionEditGoalStrategyActivityRelevancyList.class, new EditGoalStrategyActivityRelevancyListDoer());
 		addDoerToMap(ActionEditIndicatorStrategyActivityRelevancyList.class, new EditIndicatorStrategyActivityRelevancyListDoer());
 
+		addDoerToMap(ActionEditOutputGoalRelevancyList.class, new EditOutputGoalRelevancyListDoer());		
+		addDoerToMap(ActionEditOutputObjectiveRelevancyList.class, new EditOutputObjectiveRelevancyListDoer());		
+		addDoerToMap(ActionEditOutputIndicatorRelevancyList.class, new EditOutputIndicatorRelevancyListDoer());		
+		
 		addDoerToMap(ActionEditAnalyticalQuestionIndicatorRelevancyList.class, new EditAnalyticalQuestionIndicatorRelevancyListDoer());
 		addDoerToMap(ActionEditAssumptionIndicatorRelevancyList.class, new EditAssumptionIndicatorRelevancyListDoer());
 

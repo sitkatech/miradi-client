@@ -42,6 +42,13 @@ public class OutputSchema extends BaseObjectSchema
 		createFieldSchemaSingleLineUserText(Output.TAG_URL);
 		createFieldSchemaDate(Output.TAG_DUE_DATE);
 
+        createFieldSchemaRelevancyOverrideSet(Output.TAG_GOAL_IDS);
+        createFieldSchemaRelevancyOverrideSet(Output.TAG_OBJECTIVE_IDS);
+        createFieldSchemaRelevancyOverrideSet(Output.TAG_INDICATOR_IDS);
+		createPseudoFieldSchemaRefList(Output.PSEUDO_TAG_RELEVANT_GOAL_REFS);
+		createPseudoFieldSchemaRefList(Output.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS);
+		createPseudoFieldSchemaRefList(Output.PSEUDO_TAG_RELEVANT_INDICATOR_REFS);
+
 		createProgressReportSchema();
 		createTaxonomyClassificationSchemaField();
 	}

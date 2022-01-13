@@ -20,14 +20,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.BaseId;
-import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ObjectType;
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.*;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.OutputSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
+import org.w3c.tidy.Out;
 
 public class Output extends BaseObject
 {
@@ -66,6 +67,143 @@ public class Output extends BaseObject
 		return getLabel();
 	}
 
+	@Override
+	protected RelevancyOverrideSet getIndicatorRelevancyOverrideSet()
+	{
+		return getRawRelevancyOverrideData(TAG_INDICATOR_IDS);
+	}
+    
+	public ORefList getRelevantGoalRefList() throws Exception
+	{
+		ORefSet relevantRefList = getDefaultRelevantGoalRefs();
+		RelevancyOverrideSet relevantOverrides = getGoalRelevancyOverrideSet();
+
+		return calculateRelevantRefList(relevantRefList, relevantOverrides);
+	}
+    
+	public RelevancyOverrideSet getCalculatedRelevantGoalOverrides(ORefList all) throws Exception
+	{
+		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
+		ORefList defaultRelevantRefList = new ORefList();
+		relevantOverrides.addAll(computeRelevancyOverrides(all, defaultRelevantRefList, true));
+		relevantOverrides.addAll(computeRelevancyOverrides(defaultRelevantRefList, all , false));
+
+		return relevantOverrides;
+	}
+    
+	protected ORefSet getDefaultRelevantGoalRefs()
+	{
+		return new ORefSet();
+	}
+    
+	protected RelevancyOverrideSet getGoalRelevancyOverrideSet()
+	{
+		return getRawRelevancyOverrideData(TAG_GOAL_IDS);
+	}
+    
+	public ORefList getRelevantObjectiveRefList() throws Exception
+	{
+		ORefSet relevantRefList = getDefaultRelevantObjectiveRefs();
+		RelevancyOverrideSet relevantOverrides = getObjectiveRelevancyOverrideSet();
+
+		return calculateRelevantRefList(relevantRefList, relevantOverrides);
+	}
+    
+	public RelevancyOverrideSet getCalculatedRelevantObjectiveOverrides(ORefList all) throws Exception
+	{
+		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
+		ORefList defaultRelevantRefList = new ORefList();
+		relevantOverrides.addAll(computeRelevancyOverrides(all, defaultRelevantRefList, true));
+		relevantOverrides.addAll(computeRelevancyOverrides(defaultRelevantRefList, all , false));
+
+		return relevantOverrides;
+	}
+	
+	protected ORefSet getDefaultRelevantObjectiveRefs()
+	{
+		return new ORefSet();
+	}
+    
+	protected RelevancyOverrideSet getObjectiveRelevancyOverrideSet()
+	{
+		return getRawRelevancyOverrideData(TAG_OBJECTIVE_IDS);
+	}
+	
+	@Override
+	public boolean isRelevancyOverrideSet(String tag)
+	{
+		if (tag.equals(Output.TAG_GOAL_IDS))
+			return true;
+
+		if (tag.equals(Output.TAG_OBJECTIVE_IDS))
+			return true;
+
+		if (tag.equals(Output.TAG_INDICATOR_IDS))
+			return true;
+
+		return false;
+	}
+
+	@Override
+	public String getPseudoData(String fieldTag)
+	{
+		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_GOAL_REFS))
+			return getRelevantGoalRefsAsString();
+
+		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS))
+			return getRelevantObjectiveRefsAsString();
+
+		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
+			return getRelevantIndicatorRefsAsString();
+
+		return super.getPseudoData(fieldTag);
+	}
+
+	protected String getRelevantGoalRefsAsString()
+	{
+		ORefList refList;
+		try
+		{
+			refList = getRelevantGoalRefList();
+			return refList.toString();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+	}
+	
+	protected String getRelevantObjectiveRefsAsString()
+	{
+		ORefList refList;
+		try
+		{
+			refList = getRelevantObjectiveRefList();
+			return refList.toString();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+	}
+	
+	protected String getRelevantIndicatorRefsAsString()
+	{
+		ORefList refList;
+		try
+		{
+			refList = getRelevantIndicatorRefList();
+			return refList.toString();
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+	}
+
     public static boolean is(ORef ref)
     {
         return is(ref.getObjectType());
@@ -98,4 +236,11 @@ public class Output extends BaseObject
 
 	public static final String TAG_URL = "Url";
 	public static final String TAG_DUE_DATE = "DueDate";
+    public static final String TAG_GOAL_IDS = "GoalIds";
+    public static final String TAG_OBJECTIVE_IDS = "ObjectiveIds";
+    public static final String TAG_INDICATOR_IDS = "IndicatorIds";
+
+	public static final String PSEUDO_TAG_RELEVANT_GOAL_REFS = "PseudoRelevantGoalRefs";
+	public static final String PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS = "PseudoRelevantObjectiveRefs";
+	public static final String PSEUDO_TAG_RELEVANT_INDICATOR_REFS = "PseudoRelevantIndicatorRefs";
 }

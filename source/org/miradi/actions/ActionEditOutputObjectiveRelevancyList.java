@@ -17,36 +17,26 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
+package org.miradi.actions;
 
-package org.miradi.dialogs.output;
-
-import org.miradi.dialogs.base.ObjectDataInputPanel;
-import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
-import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
-import org.miradi.schemas.OutputSchema;
 
-public class OutputPropertiesPanel extends ObjectDataInputPanelWithSections
+public class ActionEditOutputObjectiveRelevancyList extends ObjectsAction
 {
-    public OutputPropertiesPanel(MainWindow mainWindow) throws Exception
+    public ActionEditOutputObjectiveRelevancyList(MainWindow mainWindow)
     {
-        super(mainWindow.getProject(), OutputSchema.getObjectType());
-
-		addSubPanelWithTitledBorder(createDetailsPanel(mainWindow));
-		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
-
-		updateFieldsFromProject();
+        super(mainWindow, getLabel());
     }
 
-    protected ObjectDataInputPanel createDetailsPanel(MainWindow mainWindow) throws Exception
-	{
-		return new OutputDetailsPanel(getProject(), mainWindow);
-	}
+    private static String getLabel()
+    {
+        return EAM.text("Action|Choose...");
+    }
 
     @Override
-    public String getPanelDescription()
+    public String getToolTipText()
     {
-        return EAM.text("Title|Output Properties");
+        return EAM.text("TT|Choose which objectives are relevant to this output");
     }
 }

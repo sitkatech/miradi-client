@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Jan 06 10:46:03 GMT 2022 $
-# $LastChangedRevision: 239 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/239'
+# $LastChangedDate: Thu Jan 13 17:31:03 GMT 2022 $
+# $LastChangedRevision: 240 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/240'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -941,6 +941,9 @@ Output.element = element miradi:Output
   element miradi:OutputIdentifier { text }? &
   element miradi:OutputName { formatted_text }? &
   element miradi:OutputProgressReportIds { ProgressReportId.element* }? &
+  element miradi:OutputRelevantGoalIds { GoalId.element* }? &
+  element miradi:OutputRelevantIndicatorIds { IndicatorId.element* }? &
+  element miradi:OutputRelevantObjectiveIds { ObjectiveId.element* }? &
   element miradi:OutputUrl { text }? &
   element miradi:OutputUUID { uuid } &
   TaxonomyClassificationContainer.element?

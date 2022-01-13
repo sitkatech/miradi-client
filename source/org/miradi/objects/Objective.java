@@ -45,6 +45,11 @@ public class Objective extends Desire
 		return (ObjectiveSchema) objectManager.getSchemas().get(ObjectType.OBJECTIVE);
 	}
 
+	protected String getOutputRelevancyTag()
+	{
+		return Output.TAG_OBJECTIVE_IDS;
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
