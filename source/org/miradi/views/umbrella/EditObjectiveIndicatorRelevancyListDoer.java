@@ -22,7 +22,7 @@ package org.miradi.views.umbrella;
 import org.miradi.objects.Objective;
 import org.miradi.schemas.ObjectiveSchema;
 
-public class EditObjectiveIndicatorRelevancyListDoer extends AbstractRelevancyEditListDoer
+public class EditObjectiveIndicatorRelevancyListDoer extends AbstractIndicatorRelevancyEditListDoer
 {
 	@Override
 	protected int getObjectType()

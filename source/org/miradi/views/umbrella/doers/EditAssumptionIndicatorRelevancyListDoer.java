@@ -21,9 +21,9 @@ package org.miradi.views.umbrella.doers;
 
 import org.miradi.objects.AbstractAnalyticalQuestion;
 import org.miradi.schemas.AssumptionSchema;
-import org.miradi.views.umbrella.AbstractRelevancyEditListDoer;
+import org.miradi.views.umbrella.AbstractIndicatorRelevancyEditListDoer;
 
-public class EditAssumptionIndicatorRelevancyListDoer extends AbstractRelevancyEditListDoer
+public class EditAssumptionIndicatorRelevancyListDoer extends AbstractIndicatorRelevancyEditListDoer
 {
     @Override
     protected int getObjectType()
