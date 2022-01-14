@@ -29,11 +29,7 @@ import org.miradi.views.umbrella.doers.AbstractEditListDoer;
 
 abstract public class AbstractIndicatorRelevancyEditListDoer extends AbstractEditListDoer
 {
-	protected boolean isInvalidSelection()
-	{	
-		return getSelectionRef().isInvalid();
-	}
-	
+
 	@Override
 	protected DisposablePanel createEditPanel()
 	{

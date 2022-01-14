@@ -19,22 +19,43 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.objects.Output;
+import org.miradi.dialogs.base.DisposablePanel;
+import org.miradi.dialogs.diagram.OutputRelevancyGoalPanel;
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.schemas.OutputSchema;
-import org.miradi.views.umbrella.AbstractIndicatorRelevancyEditListDoer;
 
-public class EditOutputGoalRelevancyListDoer extends AbstractIndicatorRelevancyEditListDoer
+public class EditOutputGoalRelevancyListDoer extends AbstractEditListDoer
 {
+    @Override
+    protected DisposablePanel createEditPanel()
+    {
+        return new OutputRelevancyGoalPanel(getProject(), getSelectionRef());
+    }
+
+    protected ORef getSelectionRef()
+    {
+        ORefList refList = getSelectedHierarchies()[0];
+        ORef ref = refList.getRefForType(getObjectType());
+        return ref;
+    }
+
+    @Override
+    protected String getDialogTitle()
+    {
+        return EAM.text("Choose Relevant Goal(s)");
+    }
+
+    @Override
+    protected boolean shouldHaveScrollBars()
+    {
+        return true;
+    }
+
     @Override
     protected int getObjectType()
     {
         return OutputSchema.getObjectType();
     }
-
-    @Override
-    protected String getIndicatorSetTag()
-    {
-        return Output.TAG_GOAL_IDS;
-    }
-
 }

@@ -16,49 +16,30 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/ 
-package org.miradi.objectpools;
+*/
+package org.miradi.questions;
 
-import org.miradi.ids.BaseId;
-import org.miradi.ids.IdAssigner;
-import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Goal;
-import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.schemas.BaseObjectSchema;
+import org.miradi.utils.HtmlUtilities;
 
-public class GoalPool extends DesirePool
+public class GoalChoiceQuestion extends ObjectQuestion
 {
-	public GoalPool(IdAssigner idAssignerToUse)
-	{
-		super(idAssignerToUse, ObjectType.GOAL);
-	}
-	
-	public Goal find(BaseId id)
-	{
-		return (Goal)findDesire(id);
-	}
+    public GoalChoiceQuestion(Project project)
+    {
+        super(getAllGoals(project));
+    }
 
-	@Override
-	BaseObject createRawObject(ObjectManager objectManager, BaseId actualId)
-	{
-		return new Goal(objectManager, actualId);
-	}
-	
-	public Goal[] getAllGoals()
-	{
-		BaseId[] allIds = getIds();
-		Goal[] allGoals = new Goal[allIds.length];
-		for (int i = 0; i < allGoals.length; i++)
-			allGoals[i] = find(allIds[i]);
-			
-		return allGoals;
-	}
-	
-	@Override
-	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
-	{
-		return Goal.createSchema(projectToUse);
-	}
+    private static Goal[] getAllGoals(Project project)
+    {
+        return project.getGoalPool().getAllGoals();
+    }
+
+    @Override
+    protected String getStringToDisplay(BaseObject thisObject)
+    {
+        String label = thisObject.getDirectOrIndirectOwningFactor().getLabel();
+        return thisObject.getFullName() + " (" + HtmlUtilities.convertHtmlToPlainText(label) + ")";
+    }
 }

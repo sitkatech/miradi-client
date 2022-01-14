@@ -17,45 +17,25 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
-package org.miradi.views.umbrella.doers;
+package org.miradi.dialogs.diagram;
 
-import org.miradi.dialogs.base.DisposablePanel;
-import org.miradi.dialogs.diagram.OutputRelevancyObjectivePanel;
+import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.schemas.OutputSchema;
+import org.miradi.project.Project;
 
-public class EditOutputObjectiveRelevancyListDoer extends AbstractEditListDoer
+public class OutputRelevancyGoalPanel extends ObjectDataInputPanel
 {
-	@Override
-	protected DisposablePanel createEditPanel()
-	{
-		return new OutputRelevancyObjectivePanel(getProject(), getSelectionRef());
-	}
-
-	protected ORef getSelectionRef()
-	{
-		ORefList refList = getSelectedHierarchies()[0];
-		ORef ref = refList.getRefForType(getObjectType());
-		return ref;
-	}
-
-	@Override
-	protected String getDialogTitle()
-	{
-		return EAM.text("Choose Relevant Objective(s)");
-	}
-
-	@Override
-	protected boolean shouldHaveScrollBars()
-	{
-		return true;
-	}
+    public OutputRelevancyGoalPanel(Project projectToUse, ORef orefToUse)
+    {
+        super(projectToUse, orefToUse);
+        addField(createOutputGoalRelevancyOverrideListField());
+        updateFieldsFromProject();
+    }
 
     @Override
-    protected int getObjectType()
+    public String getPanelDescription()
     {
-        return OutputSchema.getObjectType();
+        return EAM.text("Goal Relevancy Panel");
     }
 }
