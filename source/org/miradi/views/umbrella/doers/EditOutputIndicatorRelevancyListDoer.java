@@ -19,22 +19,22 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.objects.AbstractAnalyticalQuestion;
-import org.miradi.schemas.AssumptionSchema;
+import org.miradi.objects.Output;
+import org.miradi.schemas.OutputSchema;
 import org.miradi.views.umbrella.AbstractIndicatorRelevancyEditListDoer;
 
-public class EditAssumptionIndicatorRelevancyListDoer extends AbstractIndicatorRelevancyEditListDoer
+public class EditOutputIndicatorRelevancyListDoer extends AbstractIndicatorRelevancyEditListDoer
 {
     @Override
     protected int getObjectType()
     {
-        return AssumptionSchema.getObjectType();
+        return OutputSchema.getObjectType();
     }
 
     @Override
     protected String getIndicatorSetTag()
     {
-        return AbstractAnalyticalQuestion.TAG_INDICATOR_IDS;
+        return Output.TAG_INDICATOR_IDS;
     }
 
 }

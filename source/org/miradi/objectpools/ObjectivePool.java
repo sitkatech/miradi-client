@@ -45,6 +45,16 @@ public class ObjectivePool extends DesirePool
 	{
 		return new Objective(objectManager, actualId);
 	}
+
+	public Objective[] getAllObjectives()
+	{
+		BaseId[] allIds = getIds();
+		Objective[] allObjectives = new Objective[allIds.length];
+		for (int i = 0; i < allObjectives.length; i++)
+			allObjectives[i] = find(allIds[i]);
+			
+		return allObjectives;
+	}
 	
 	@Override
 	public BaseObjectSchema createBaseObjectSchema(Project projectToUse)

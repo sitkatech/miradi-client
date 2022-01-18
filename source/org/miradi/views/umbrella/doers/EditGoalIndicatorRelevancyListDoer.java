@@ -21,9 +21,9 @@ package org.miradi.views.umbrella.doers;
 
 import org.miradi.objects.Goal;
 import org.miradi.schemas.GoalSchema;
-import org.miradi.views.umbrella.AbstractRelevancyEditListDoer;
+import org.miradi.views.umbrella.AbstractIndicatorRelevancyEditListDoer;
 
-public class EditGoalIndicatorRelevancyListDoer extends AbstractRelevancyEditListDoer
+public class EditGoalIndicatorRelevancyListDoer extends AbstractIndicatorRelevancyEditListDoer
 {
 	@Override
 	protected int getObjectType()

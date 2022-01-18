@@ -397,6 +397,9 @@ public class Actions
 		registerAction(new ActionEditActivityObjectiveRelevancyList(mainWindow));
 		registerAction(new ActionEditActivityGoalRelevancyList(mainWindow));
 		registerAction(new ActionEditActivityIndicatorRelevancyList(mainWindow));
+		registerAction(new ActionEditOutputGoalRelevancyList(mainWindow));
+		registerAction(new ActionEditOutputObjectiveRelevancyList(mainWindow));
+		registerAction(new ActionEditOutputIndicatorRelevancyList(mainWindow));
 		registerAction(new ActionEditAnalyticalQuestionIndicatorRelevancyList(mainWindow));
 		registerAction(new ActionEditAssumptionIndicatorRelevancyList(mainWindow));
 

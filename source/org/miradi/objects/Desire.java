@@ -33,11 +33,7 @@ import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objecthelpers.TargetSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.ProgressPercentSchema;
-import org.miradi.schemas.StrategySchema;
-import org.miradi.schemas.TaskSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.CommandVector;
 
 abstract public class Desire extends BaseObject implements StrategyActivityRelevancyInterface
@@ -118,6 +114,25 @@ abstract public class Desire extends BaseObject implements StrategyActivityRelev
 		
 		return super.getPseudoData(fieldTag);
 	}
+
+	@Override
+	protected CommandVector createCommandsToDereferenceObject() throws Exception
+	{
+		CommandVector commandsToDereferences = super.createCommandsToDereferenceObject();
+		commandsToDereferences.addAll(buildRemoveDesireFromRelevancyListCommands(getRef()));
+
+		return commandsToDereferences;
+	}
+
+	private CommandVector buildRemoveDesireFromRelevancyListCommands(ORef relevantDesireRefToRemove) throws Exception
+	{
+		CommandVector removeFromRelevancyListCommands = new CommandVector();
+		removeFromRelevancyListCommands.addAll(Output.buildRemoveObjectFromRelevancyListCommands(getProject(), OutputSchema.getObjectType(), getOutputRelevancyTag(), relevantDesireRefToRemove));
+
+		return removeFromRelevancyListCommands;
+	}
+
+	abstract protected String getOutputRelevancyTag();
 
 	@Override
 	public boolean isRelevancyOverrideSet(String tag)

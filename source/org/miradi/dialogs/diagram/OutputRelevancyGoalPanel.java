@@ -17,24 +17,25 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
-package org.miradi.views.umbrella.doers;
+package org.miradi.dialogs.diagram;
 
-import org.miradi.objects.AbstractAnalyticalQuestion;
-import org.miradi.schemas.AssumptionSchema;
-import org.miradi.views.umbrella.AbstractIndicatorRelevancyEditListDoer;
+import org.miradi.dialogs.base.ObjectDataInputPanel;
+import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.project.Project;
 
-public class EditAssumptionIndicatorRelevancyListDoer extends AbstractIndicatorRelevancyEditListDoer
+public class OutputRelevancyGoalPanel extends ObjectDataInputPanel
 {
-    @Override
-    protected int getObjectType()
+    public OutputRelevancyGoalPanel(Project projectToUse, ORef orefToUse)
     {
-        return AssumptionSchema.getObjectType();
+        super(projectToUse, orefToUse);
+        addField(createOutputGoalRelevancyOverrideListField());
+        updateFieldsFromProject();
     }
 
     @Override
-    protected String getIndicatorSetTag()
+    public String getPanelDescription()
     {
-        return AbstractAnalyticalQuestion.TAG_INDICATOR_IDS;
+        return EAM.text("Goal Relevancy Panel");
     }
-
 }

@@ -19,10 +19,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.dialogs.output;
 
+import org.miradi.actions.ActionEditOutputGoalRelevancyList;
+import org.miradi.actions.ActionEditOutputIndicatorRelevancyList;
+import org.miradi.actions.ActionEditOutputObjectiveRelevancyList;
+import org.miradi.actions.Actions;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Output;
 import org.miradi.project.Project;
@@ -30,7 +35,7 @@ import org.miradi.schemas.OutputSchema;
 
 public class OutputDetailsPanel extends ObjectDataInputPanel
 {
-    public OutputDetailsPanel(Project projectToUse) throws Exception
+    public OutputDetailsPanel(Project projectToUse, MainWindow mainWindowToUse) throws Exception
     {
 		super(projectToUse, OutputSchema.getObjectType());
 
@@ -39,6 +44,11 @@ public class OutputDetailsPanel extends ObjectDataInputPanel
         addFieldsOnOneLine(EAM.text("Output"), IconManager.getOutputIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 
         addField(createMultilineField(OutputSchema.getObjectType(), Factor.TAG_TEXT));
+
+        Actions actionsToUse = mainWindowToUse.getActions();
+		addFieldWithEditButton(EAM.text("Objectives"), createReadOnlyObjectList(OutputSchema.getObjectType(), Output.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditOutputObjectiveRelevancyList.class), getPicker()));
+		addFieldWithEditButton(EAM.text("Goals"), createReadOnlyObjectList(OutputSchema.getObjectType(), Output.PSEUDO_TAG_RELEVANT_GOAL_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditOutputGoalRelevancyList.class), getPicker()));
+		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(OutputSchema.getObjectType(), Output.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditOutputIndicatorRelevancyList.class), getPicker()));
 
         addTaxonomyFields(OutputSchema.getObjectType());
 

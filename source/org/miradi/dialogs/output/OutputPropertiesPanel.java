@@ -33,15 +33,15 @@ public class OutputPropertiesPanel extends ObjectDataInputPanelWithSections
     {
         super(mainWindow.getProject(), OutputSchema.getObjectType());
 
-		addSubPanelWithTitledBorder(createDetailsPanel());
+		addSubPanelWithTitledBorder(createDetailsPanel(mainWindow));
 		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));
 
 		updateFieldsFromProject();
     }
 
-    protected ObjectDataInputPanel createDetailsPanel() throws Exception
+    protected ObjectDataInputPanel createDetailsPanel(MainWindow mainWindow) throws Exception
 	{
-		return new OutputDetailsPanel(getProject());
+		return new OutputDetailsPanel(getProject(), mainWindow);
 	}
 
     @Override
