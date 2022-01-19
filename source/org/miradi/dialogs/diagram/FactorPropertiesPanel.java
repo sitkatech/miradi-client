@@ -128,9 +128,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 		disposePanel(subTargetTab);
 		subTargetTab = null;
 
-		disposePanel(outputsTab);
-		outputsTab = null;
-
 		disposePanel(grid);
 		grid = null;
 	}
@@ -231,13 +228,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			addTab(subTargetTab);
 		}
 
-		if(factor.canHaveOutputs())
-		{
-			OutputListTablePanel objectListPanel = new OutputListTablePanel(mainWindow, new ORefList(getCurrentDiagramFactor().getWrappedORef()));
-			outputsTab = new OutputListManagementPanel(mainWindow, objectListPanel);
-			addTab(outputsTab);
-		}
-
 		if(factor.isAnalyticalQuestion())
 		{
 			assumptionsTab = AssumptionListManagementPanel.create(mainWindow, selectedHierarchy);
@@ -301,8 +291,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 				tabs.setSelectedComponent(subTargetTab);
 			case TAB_SIMPLE_VIABILITY:
 				tabs.setSelectedComponent(simpleViabilityTab);
-			case TAB_OUTPUTS:
-				tabs.setSelectedComponent(outputsTab);
 			case TAB_ASSUMPTIONS:
 				tabs.setSelectedComponent(assumptionsTab);
 			default:

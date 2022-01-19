@@ -31,6 +31,6 @@ public class AbstractActionEditOutputs extends ObjectsAction
 
     public static String getLabel()
     {
-        return EAM.text("Action|Edit Outputs...");
+        return EAM.text("Action|Manage Outputs...");
     }
 }
