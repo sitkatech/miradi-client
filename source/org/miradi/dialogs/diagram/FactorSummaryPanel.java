@@ -23,6 +23,7 @@ import org.miradi.actions.Actions;
 import org.miradi.actions.jump.*;
 import org.miradi.dialogs.assignment.AssignmentsPropertiesSubPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
+import org.miradi.dialogs.output.StrategyOutputSubPanel;
 import org.miradi.dialogs.progressReport.ProgressReportSubPanel;
 import org.miradi.dialogs.resultReport.ResultReportSubPanel;
 import org.miradi.icons.*;
@@ -64,6 +65,9 @@ public class FactorSummaryPanel extends ObjectDataInputPanelWithSections
 			addSubPanelWithTitledBorder(new TimeframePropertiesSubPanel(getProject(), getCurrentDiagramFactor().getWrappedORef()));
 			addSubPanelWithTitledBorder(new AssignmentsPropertiesSubPanel(getMainWindow(), getObjectTypeForWorkPlanSideTab(), getPicker()));
 		}
+
+		if(getFactor().isStrategy())
+			addSubPanelWithTitledBorder(new StrategyOutputSubPanel(getMainWindow()));
 
 		detailIcon = createIcon();
 		

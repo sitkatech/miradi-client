@@ -27,7 +27,7 @@ public class AbstractEditOutputsDoer extends AbstractPopUpEditDoer
 {
     public AbstractEditOutputsDoer(int objectTypeToUse)
     {
-        super(objectTypeToUse, EAM.text("Edit Outputs"));
+        super(objectTypeToUse, EAM.text("Manage Outputs"));
     }
 
     @Override

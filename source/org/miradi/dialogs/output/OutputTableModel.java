@@ -21,8 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.output;
 
 import org.miradi.dialogs.base.EditableObjectRefsTableModel;
-import org.miradi.dialogs.planning.upperPanel.rebuilder.AbstractTreeRebuilder;
-import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Factor;
@@ -45,17 +43,7 @@ public class OutputTableModel extends EditableObjectRefsTableModel
         if (outputParent == null)
             return new ORefList();
 
-        final ORefList outputRefList = outputParent.getSafeRefListData(BaseObject.TAG_OUTPUT_REFS);
-
-        final ORefList cleanedOutputRefList = new ORefList();
-        for (ORef ref : outputRefList)
-        {
-            if (ref.getObjectType() == getObjectType()) {
-                cleanedOutputRefList.add(ref);
-            }
-        }
-
-        return AbstractTreeRebuilder.getSortedByFieldRefs(getProject(), cleanedOutputRefList, Output.TAG_LABEL);
+        return outputParent.getSafeRefListData(BaseObject.TAG_OUTPUT_REFS);
     }
 
     @Override
