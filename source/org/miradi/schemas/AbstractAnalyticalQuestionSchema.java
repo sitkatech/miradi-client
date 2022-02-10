@@ -34,6 +34,7 @@ abstract public class AbstractAnalyticalQuestionSchema extends FactorSchema
     {
         super.fillFieldSchemas();
 
+        createFieldSchemaMultiLineUserText(AbstractAnalyticalQuestion.TAG_IMPLICATIONS);
         createFieldSchemaMultiLineUserText(AbstractAnalyticalQuestion.TAG_FUTURE_INFORMATION_NEEDS);
         createFieldSchemaRelevancyOverrideSet(AbstractAnalyticalQuestion.TAG_DIAGRAM_FACTOR_IDS);
         createFieldSchemaRelevancyOverrideSet(AbstractAnalyticalQuestion.TAG_INDICATOR_IDS);

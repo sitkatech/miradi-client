@@ -57,6 +57,7 @@ public class AssumptionDetailsPanel extends ObjectDataInputPanel
 		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(AssumptionSchema.getObjectType(), Assumption.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditAssumptionIndicatorRelevancyList.class), getPicker()));
 
         addField(createMultilineField(AssumptionSchema.getObjectType(), AbstractAnalyticalQuestion.TAG_COMMENTS));
+        addField(createMultilineField(AssumptionSchema.getObjectType(), AbstractAnalyticalQuestion.TAG_IMPLICATIONS));
         addField(createMultilineField(AssumptionSchema.getObjectType(), AbstractAnalyticalQuestion.TAG_FUTURE_INFORMATION_NEEDS));
 
         addTaxonomyFields(AssumptionSchema.getObjectType());

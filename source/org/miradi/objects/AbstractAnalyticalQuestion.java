@@ -132,6 +132,7 @@ abstract public class AbstractAnalyticalQuestion extends Factor
 	}
 
 	public static final String TAG_SHORT_LABEL = "ShortLabel";
+    public static final String TAG_IMPLICATIONS = "Implications";
     public static final String TAG_FUTURE_INFORMATION_NEEDS = "FutureInformationNeeds";
 
     public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";

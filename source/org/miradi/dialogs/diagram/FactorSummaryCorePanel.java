@@ -107,6 +107,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 			addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(AnalyticalQuestionSchema.getObjectType(), AnalyticalQuestion.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditAnalyticalQuestionIndicatorRelevancyList.class), getPicker()));
 
 	        addField(createMultilineField(AnalyticalQuestionSchema.getObjectType(), AbstractAnalyticalQuestion.TAG_COMMENTS));
+	        addField(createMultilineField(AnalyticalQuestionSchema.getObjectType(), AbstractAnalyticalQuestion.TAG_IMPLICATIONS));
 	        addField(createMultilineField(AnalyticalQuestionSchema.getObjectType(), AbstractAnalyticalQuestion.TAG_FUTURE_INFORMATION_NEEDS));
 			addTaxonomyFields(AnalyticalQuestionSchema.getObjectType());
 		}
