@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Feb 10 11:12:12 GMT 2022 $
+# $LastChangedDate: Thu Feb 10 15:23:56 GMT 2022 $
 # $LastChangedRevision: 241 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/241'
 start = ConservationProject.element
@@ -955,6 +955,8 @@ Assumption.element = element miradi:Assumption
   attribute Id {xsd:integer} &
   element miradi:AssumptionComments { formatted_text }? &
   element miradi:AssumptionDetails { formatted_text }? &
+  element miradi:AssumptionEvidenceConfidence { vocabulary_evidence_confidence_analytical_question }? &
+  element miradi:AssumptionEvidenceNotes { formatted_text }? &
   element miradi:AssumptionFutureInformationNeeds { formatted_text }? &
   element miradi:AssumptionIdentifier { text }? &
   element miradi:AssumptionImplications { formatted_text }? &
@@ -971,6 +973,8 @@ AnalyticalQuestion.element = element miradi:AnalyticalQuestion
   attribute Id {xsd:integer} &
   element miradi:AnalyticalQuestionComments { formatted_text }? &
   element miradi:AnalyticalQuestionDetails { formatted_text }? &
+  element miradi:AnalyticalQuestionEvidenceConfidence { vocabulary_evidence_confidence_analytical_question }? &
+  element miradi:AnalyticalQuestionEvidenceNotes { formatted_text }? &
   element miradi:AnalyticalQuestionFutureInformationNeeds { formatted_text }? &
   element miradi:AnalyticalQuestionIdentifier { text }? &
   element miradi:AnalyticalQuestionImplications { formatted_text }? &
@@ -1090,6 +1094,7 @@ TaxonomyTopLevelElementCodeContainer.element = element miradi:TaxonomyTopLevelEl
 element miradi:code { uri_restricted_text } *
 }
 
+vocabulary_evidence_confidence_analytical_question = ''|'VeryConfident'|'Confident'|'NeedMoreInfo'|'NotConfident'
 vocabulary_work_plan_time_unit = 'QUARTERLY'|'YEARLY'
 vocabulary_countries = 'ZZZ'|'XXX'|'AFG'|'ALA'|'ALB'|'DZA'|'ASM'|'AND'|'AGO'|'AIA'|'ATA'|'ATG'|'ARG'|'ARM'|'ABW'|'AUS'|'AUT'|'AZE'|'BHS'|'BHR'|'BGD'|'BRB'|'BLR'|'BEL'|'BLZ'|'BEN'|'BMU'|'BTN'|'BOL'|'BIH'|'BWA'|'BVT'|'BRA'|'IOT'|'VGB'|'BRN'|'BGR'|'BFA'|'BDI'|'KHM'|'CMR'|'CAN'|'CPV'|'CYM'|'CAF'|'TCD'|'CHL'|'CHN'|'CXR'|'CCK'|'COL'|'COM'|'COG'|'COK'|'CRI'|'CIV'|'HRV'|'CUB'|'CYP'|'CZE'|'PRK'|'COD'|'DNK'|'DJI'|'DMA'|'DOM'|'ECU'|'EGY'|'SLV'|'GNQ'|'ERI'|'EST'|'ETH'|'FRO'|'FLK'|'FJI'|'FIN'|'FRA'|'FXX'|'GUF'|'PYF'|'ATF'|'GAB'|'GMB'|'GEO'|'DEU'|'GHA'|'GIB'|'GRC'|'GRL'|'GRD'|'GLP'|'GUM'|'GTM'|'GIN'|'GNB'|'GUY'|'HTI'|'HMD'|'VAT'|'HND'|'HKG'|'HUN'|'ISL'|'IND'|'IDN'|'IRN'|'IRQ'|'IRL'|'IMN'|'ISR'|'ITA'|'JAM'|'JPN'|'JOR'|'KAZ'|'KEN'|'KIR'|'KWT'|'KGZ'|'LAO'|'LVA'|'LBN'|'LSO'|'LBR'|'LBY'|'LIE'|'LTU'|'LUX'|'MAC'|'MKD'|'MDG'|'MWI'|'MYS'|'MDV'|'MLI'|'MLT'|'MHL'|'MTQ'|'MRT'|'MUS'|'MYT'|'MEX'|'FSM'|'MCO'|'MNG'|'MSR'|'MAR'|'MOZ'|'MMR'|'NAM'|'NRU'|'NPL'|'NLD'|'ANT'|'NCL'|'NZL'|'NIC'|'NER'|'NGA'|'NIU'|'NFK'|'MNP'|'NOR'|'PSE'|'OMN'|'PAK'|'PLW'|'PAN'|'PNG'|'PRY'|'PER'|'PHL'|'PCN'|'POL'|'PRT'|'PRI'|'QAT'|'KOR'|'MDA'|'REU'|'ROU'|'RUS'|'RWA'|'SHN'|'KNA'|'LCA'|'SPM'|'VCT'|'WSM'|'SMR'|'STP'|'SAU'|'SEN'|'SCG'|'SYC'|'SLE'|'SGP'|'SVK'|'SVN'|'SLB'|'SOM'|'ZAF'|'SGS'|'ESP'|'LKA'|'SDN'|'SUR'|'SJM'|'SWZ'|'SWE'|'CHE'|'SYR'|'TWN'|'TJK'|'THA'|'TLS'|'TGO'|'TKL'|'TON'|'TTO'|'TUN'|'TUR'|'TKM'|'TCA'|'TUV'|'UGA'|'UKR'|'ARE'|'GBR'|'TZA'|'UMI'|'USA'|'VIR'|'URY'|'UZB'|'VUT'|'VEN'|'VNM'|'WLF'|'PSE'|'ESH'|'YEM'|'ZMB'|'ZWE'
 vocabulary_currency_type = ''|'EUR'|'GBP'|'JPY'|'CAD'|'AUD'|'CHF'|'RUB'|'CNY'|'ZAR'|'MXN'|'???'

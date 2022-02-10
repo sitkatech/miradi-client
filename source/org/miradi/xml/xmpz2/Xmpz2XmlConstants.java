@@ -447,6 +447,7 @@ public interface Xmpz2XmlConstants
 	
 	public static final String VOCABULARY_EVIDENCE_CONFIDENCE_EXTERNAL = "vocabulary_evidence_confidence_external";
 	public static final String VOCABULARY_EVIDENCE_CONFIDENCE_PROJECT = "vocabulary_evidence_confidence_project";
+	public static final String VOCABULARY_EVIDENCE_CONFIDENCE_ANALYTICAL_QUESTION = "vocabulary_evidence_confidence_analytical_question";
 	public static final String VOCABULARY_COUNTRIES = "vocabulary_countries";
 	public static final String VOCABULARY_TEXT_BOX_Z_ORDER = "vocabulary_text_box_z_order";
 	public static final String VOCABULARY_THREAT_RATING = "vocabulary_threat_rating";

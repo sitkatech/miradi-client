@@ -511,6 +511,9 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (questionClass.getSuperclass().equals(EvidenceConfidenceTypeProjectQuestion.class))
 			return !questionClass.equals(MeasurementEvidenceConfidenceQuestion.class);
 
+		if (questionClass.getSuperclass().equals(AbstractAnalyticalQuestionEvidenceConfidenceTypeQuestion.class))
+			return !questionClass.equals(AssumptionEvidenceConfidenceTypeQuestion.class);
+
 		if (questionClass.equals(InternalQuestionWithoutValues.class))
 			return true;
 
