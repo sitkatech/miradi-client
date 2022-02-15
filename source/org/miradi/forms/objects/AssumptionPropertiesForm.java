@@ -33,6 +33,9 @@ public class AssumptionPropertiesForm extends FieldPanelSpec
         addLabelAndField(type, Assumption.TAG_TEXT);
         addLabelAndField(type, Assumption.PSEUDO_TAG_RELEVANT_INDICATOR_REFS);
         addLabelAndField(type, Assumption.TAG_COMMENTS);
+		addLabelAndField(type, Assumption.TAG_EVIDENCE_CONFIDENCE);
+		addLabelAndField(type, Assumption.TAG_EVIDENCE_NOTES);
+        addLabelAndField(type, Assumption.TAG_IMPLICATIONS);
         addLabelAndField(type, Assumption.TAG_FUTURE_INFORMATION_NEEDS);
         addMultipleTaxonomyWithEditButtonFields(AssumptionSchema.getObjectType(), Assumption.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
     }

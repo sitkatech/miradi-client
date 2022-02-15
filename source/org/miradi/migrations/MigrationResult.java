@@ -99,7 +99,7 @@ public class MigrationResult extends HashSet<String>
 	
 	public boolean didSucceed()
 	{
-		return contains(SUCCESS);
+		return contains(SUCCESS) || isUninitialized();
 	}
 	
 	public boolean didLoseData()
@@ -109,12 +109,17 @@ public class MigrationResult extends HashSet<String>
 	
 	public boolean didFail()
 	{
-		return contains(FAILED);
+		return contains(FAILED) || !didSucceed();
 	}
 	
 	public boolean cannotMigrate()
 	{
 		return contains(CANNOT_MIGRATE);
+	}
+
+	public boolean isUninitialized()
+	{
+		return this.size() == 1 && contains(UNINITIALIZED);
 	}
 
 	public void addSuccess()

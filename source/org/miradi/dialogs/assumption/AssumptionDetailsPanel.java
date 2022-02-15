@@ -30,7 +30,9 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AbstractAnalyticalQuestion;
 import org.miradi.objects.Assumption;
+import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
+import org.miradi.questions.EvidenceConfidenceTypeQuestion;
 import org.miradi.schemas.AssumptionSchema;
 import org.miradi.utils.FillerLabel;
 
@@ -57,6 +59,9 @@ public class AssumptionDetailsPanel extends ObjectDataInputPanel
 		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(AssumptionSchema.getObjectType(), Assumption.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditAssumptionIndicatorRelevancyList.class), getPicker()));
 
         addField(createMultilineField(AssumptionSchema.getObjectType(), AbstractAnalyticalQuestion.TAG_COMMENTS));
+        addField(createRadioButtonEditorField(AssumptionSchema.getObjectType(), BaseObject.TAG_EVIDENCE_CONFIDENCE, EvidenceConfidenceTypeQuestion.getQuestion(AssumptionSchema.getObjectType())));
+        addField(createMultilineField(AssumptionSchema.getObjectType(), BaseObject.TAG_EVIDENCE_NOTES));
+        addField(createMultilineField(AssumptionSchema.getObjectType(), AbstractAnalyticalQuestion.TAG_IMPLICATIONS));
         addField(createMultilineField(AssumptionSchema.getObjectType(), AbstractAnalyticalQuestion.TAG_FUTURE_INFORMATION_NEEDS));
 
         addTaxonomyFields(AssumptionSchema.getObjectType());

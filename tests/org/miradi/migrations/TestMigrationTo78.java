@@ -20,8 +20,10 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.migrations;
 
+import org.miradi.migrations.forward.MigrationTo77;
 import org.miradi.migrations.forward.MigrationTo78;
 import org.miradi.objects.Output;
+import org.miradi.project.ProjectSaverForTesting;
 
 public class TestMigrationTo78 extends AbstractTestMigration
 {
@@ -34,9 +36,11 @@ public class TestMigrationTo78 extends AbstractTestMigration
     {
         Output output = getProject().createAndPopulateOutput();
 
-        RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo78.VERSION_TO));
+        String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), new VersionRange(getToVersion()));
+        final RawProject projectToMigrate = RawProjectLoader.loadProject(projectAsString);
+        migrateProject(projectToMigrate, new VersionRange(MigrationTo77.VERSION_TO));
 
-        RawObject rawOutput = rawProject.findObject(output.getRef());
+        RawObject rawOutput = projectToMigrate.findObject(output.getRef());
         assertNotNull(rawOutput);
         assertFalse("Field should have been removed during reverse migration?", rawOutput.containsKey(MigrationTo78.TAG_GOAL_IDS));
         assertFalse("Field should have been removed during reverse migration?", rawOutput.containsKey(MigrationTo78.TAG_OBJECTIVE_IDS));

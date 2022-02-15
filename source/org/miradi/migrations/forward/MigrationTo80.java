@@ -27,9 +27,9 @@ import org.miradi.objecthelpers.ObjectType;
 
 import java.util.Vector;
 
-public class MigrationTo75 extends AbstractMigration
+public class MigrationTo80 extends AbstractMigration
 {
-    public MigrationTo75(RawProject rawProjectToUse)
+    public MigrationTo80(RawProject rawProjectToUse)
     {
         super(rawProjectToUse);
     }
@@ -54,7 +54,7 @@ public class MigrationTo75 extends AbstractMigration
 
         for(Integer typeToVisit : typesToVisit)
         {
-            final OutputVisitor visitor = new OutputVisitor(typeToVisit, reverseMigration);
+            final EvidenceConfidenceVisitor visitor = new EvidenceConfidenceVisitor(typeToVisit, reverseMigration);
             visitAllORefsInPool(visitor);
             final MigrationResult thisMigrationResult = visitor.getMigrationResult();
             if (migrationResult == null)
@@ -81,22 +81,22 @@ public class MigrationTo75 extends AbstractMigration
     @Override
     protected String getDescription()
     {
-        return EAM.text("This migration adds Outputs to Strategies / Tasks.");
+        return EAM.text("This migration adds Evidence Confidence and Evidence Notes fields to Analytical Questions and Assumptions.");
     }
 
     private Vector<Integer> getTypesToMigrate()
     {
         Vector<Integer> typesToMigrate = new Vector<Integer>();
 
-        typesToMigrate.add(ObjectType.STRATEGY);
-        typesToMigrate.add(ObjectType.TASK);
+        typesToMigrate.add(ObjectType.ANALYTICAL_QUESTION);
+        typesToMigrate.add(ObjectType.ASSUMPTION);
 
         return typesToMigrate;
     }
 
-    private class OutputVisitor extends AbstractMigrationORefVisitor
+    private class EvidenceConfidenceVisitor extends AbstractMigrationORefVisitor
     {
-        public OutputVisitor(int typeToVisit, boolean reverseMigration)
+        public EvidenceConfidenceVisitor(int typeToVisit, boolean reverseMigration)
         {
             type = typeToVisit;
             isReverseMigration = reverseMigration;
@@ -128,7 +128,8 @@ public class MigrationTo75 extends AbstractMigration
         {
             MigrationResult migrationResult = MigrationResult.createSuccess();
 
-            rawObject.setData(TAG_OUTPUT_REFS, "");
+            rawObject.setData(TAG_EVIDENCE_CONFIDENCE, "");
+            rawObject.setData(TAG_EVIDENCE_NOTES, "");
 
             return migrationResult;
         }
@@ -137,8 +138,11 @@ public class MigrationTo75 extends AbstractMigration
         {
             MigrationResult migrationResult = MigrationResult.createSuccess();
 
-            if (rawObject.hasValue(TAG_OUTPUT_REFS))
-                rawObject.remove(TAG_OUTPUT_REFS);
+            if (rawObject.hasValue(TAG_EVIDENCE_CONFIDENCE))
+                rawObject.remove(TAG_EVIDENCE_CONFIDENCE);
+
+            if (rawObject.hasValue(TAG_EVIDENCE_NOTES))
+                rawObject.remove(TAG_EVIDENCE_NOTES);
 
             return migrationResult;
         }
@@ -147,8 +151,9 @@ public class MigrationTo75 extends AbstractMigration
         private boolean isReverseMigration;
     }
 
-    public static final int VERSION_FROM = 74;
-    public static final int VERSION_TO = 75;
+    public static final int VERSION_FROM = 79;
+    public static final int VERSION_TO = 80;
 
-    public static final String TAG_OUTPUT_REFS = "OutputRefs";
+    public static final String TAG_EVIDENCE_CONFIDENCE = "EvidenceConfidence";
+    public static final String TAG_EVIDENCE_NOTES = "EvidenceNotes";
 }

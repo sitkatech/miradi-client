@@ -27,9 +27,9 @@ import org.miradi.objecthelpers.ObjectType;
 
 import java.util.Vector;
 
-public class MigrationTo75 extends AbstractMigration
+public class MigrationTo79 extends AbstractMigration
 {
-    public MigrationTo75(RawProject rawProjectToUse)
+    public MigrationTo79(RawProject rawProjectToUse)
     {
         super(rawProjectToUse);
     }
@@ -54,7 +54,7 @@ public class MigrationTo75 extends AbstractMigration
 
         for(Integer typeToVisit : typesToVisit)
         {
-            final OutputVisitor visitor = new OutputVisitor(typeToVisit, reverseMigration);
+            final AnalyticalQuestionVisitor visitor = new AnalyticalQuestionVisitor(typeToVisit, reverseMigration);
             visitAllORefsInPool(visitor);
             final MigrationResult thisMigrationResult = visitor.getMigrationResult();
             if (migrationResult == null)
@@ -81,22 +81,22 @@ public class MigrationTo75 extends AbstractMigration
     @Override
     protected String getDescription()
     {
-        return EAM.text("This migration adds Outputs to Strategies / Tasks.");
+        return EAM.text("This migration moves the Comments field contents to an explicit Implications field.");
     }
 
     private Vector<Integer> getTypesToMigrate()
     {
         Vector<Integer> typesToMigrate = new Vector<Integer>();
 
-        typesToMigrate.add(ObjectType.STRATEGY);
-        typesToMigrate.add(ObjectType.TASK);
+        typesToMigrate.add(ObjectType.ANALYTICAL_QUESTION);
+        typesToMigrate.add(ObjectType.ASSUMPTION);
 
         return typesToMigrate;
     }
 
-    private class OutputVisitor extends AbstractMigrationORefVisitor
+    private class AnalyticalQuestionVisitor extends AbstractMigrationORefVisitor
     {
-        public OutputVisitor(int typeToVisit, boolean reverseMigration)
+        public AnalyticalQuestionVisitor(int typeToVisit, boolean reverseMigration)
         {
             type = typeToVisit;
             isReverseMigration = reverseMigration;
@@ -128,7 +128,13 @@ public class MigrationTo75 extends AbstractMigration
         {
             MigrationResult migrationResult = MigrationResult.createSuccess();
 
-            rawObject.setData(TAG_OUTPUT_REFS, "");
+            rawObject.setData(TAG_IMPLICATIONS, "");
+
+            String comments = rawObject.getData(TAG_COMMENTS);
+            if (comments != null)
+                rawObject.setData(TAG_IMPLICATIONS, comments);
+
+            rawObject.setData(TAG_COMMENTS, "");
 
             return migrationResult;
         }
@@ -137,8 +143,14 @@ public class MigrationTo75 extends AbstractMigration
         {
             MigrationResult migrationResult = MigrationResult.createSuccess();
 
-            if (rawObject.hasValue(TAG_OUTPUT_REFS))
-                rawObject.remove(TAG_OUTPUT_REFS);
+            if (rawObject.hasValue(TAG_IMPLICATIONS))
+            {
+                String implications = rawObject.getData(TAG_IMPLICATIONS);
+                if (implications != null)
+                    rawObject.setData(TAG_COMMENTS, implications);
+
+                rawObject.remove(TAG_IMPLICATIONS);
+            }
 
             return migrationResult;
         }
@@ -147,8 +159,9 @@ public class MigrationTo75 extends AbstractMigration
         private boolean isReverseMigration;
     }
 
-    public static final int VERSION_FROM = 74;
-    public static final int VERSION_TO = 75;
+    public static final int VERSION_FROM = 78;
+    public static final int VERSION_TO = 79;
 
-    public static final String TAG_OUTPUT_REFS = "OutputRefs";
+    public static final String TAG_COMMENTS = "Comments";
+    public static final String TAG_IMPLICATIONS = "Implications";
 }

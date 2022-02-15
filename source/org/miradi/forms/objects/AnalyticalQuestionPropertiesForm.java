@@ -33,6 +33,9 @@ public class AnalyticalQuestionPropertiesForm extends FieldPanelSpec
         addLabelAndField(type, AnalyticalQuestion.TAG_TEXT);
         addLabelAndField(type, AnalyticalQuestion.PSEUDO_TAG_RELEVANT_INDICATOR_REFS);
         addLabelAndField(type, AnalyticalQuestion.TAG_COMMENTS);
+		addLabelAndField(type, AnalyticalQuestion.TAG_EVIDENCE_CONFIDENCE);
+		addLabelAndField(type, AnalyticalQuestion.TAG_EVIDENCE_NOTES);
+        addLabelAndField(type, AnalyticalQuestion.TAG_IMPLICATIONS);
         addLabelAndField(type, AnalyticalQuestion.TAG_FUTURE_INFORMATION_NEEDS);
         addMultipleTaxonomyWithEditButtonFields(AnalyticalQuestionSchema.getObjectType(), AnalyticalQuestion.TAG_TAXONOMY_CLASSIFICATION_CONTAINER);
     }
