@@ -689,11 +689,6 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new DropDownChoiceField(project, getRefForType(objectType), tagToUse, question);
 	}
 	
-	public ObjectDataInputField createPlannedLeaderDropDownField(int objectType, String tagToUse)
-	{
-		return new ResourceLeaderDropDownField(getProject(), getRefForType(objectType), tagToUse, new ResourceLeaderPlannedQuestionWithUnspecifiedChoice(getProject()));
-	}
-
 	public ObjectDataInputField createAssignedLeaderDropDownField(int objectType, String tagToUse)
 	{
 		return new ResourceLeaderDropDownField(getProject(), getRefForType(objectType), tagToUse, new ResourceLeaderAssignedQuestionWithUnspecifiedChoice(getProject()));
