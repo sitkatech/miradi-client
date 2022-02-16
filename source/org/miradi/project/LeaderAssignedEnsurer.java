@@ -105,7 +105,7 @@ public class LeaderAssignedEnsurer implements CommandExecutedListener
 		{
 			BaseObject objectContainingLeader = BaseObject.find(getProject(), objectContainingLeaderRef);
 			ORef currentLeaderRef = objectContainingLeader.getAssignedLeaderResourceRef();
-			ORefSet resourceRefs = objectContainingLeader.getTotalTimePeriodCostsMapForAssignments().getAllProjectResourceRefs();
+			ORefSet resourceRefs = objectContainingLeader.getAssignedWhoResources();
 			if (!resourceRefs.contains(currentLeaderRef))
 				clearLeaderResourceRef(objectContainingLeader);
 		}

@@ -31,10 +31,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.CodeToCodeListMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.ProjectResource;
-import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.TableSettings;
+import org.miradi.objects.*;
 import org.miradi.project.Project;
 import org.miradi.utils.CommandVector;
 import org.miradi.views.ObjectsDoer;
@@ -117,6 +114,12 @@ public class DeleteResourceDoer extends ObjectsDoer
 		CommandVector commands = new CommandVector();
 		if (ResourceAssignment.is(ref))
 			commands.add(new CommandSetObjectData(ref, ResourceAssignment.TAG_RESOURCE_ID, BaseId.INVALID.toString()));
+
+		if (Strategy.is(ref))
+			commands.add(new CommandSetObjectData(ref, Strategy.TAG_ASSIGNED_LEADER_RESOURCE, ""));
+
+		if (Task.is(ref))
+			commands.add(new CommandSetObjectData(ref, Task.TAG_ASSIGNED_LEADER_RESOURCE, ""));
 
 		return commands;
 	}
