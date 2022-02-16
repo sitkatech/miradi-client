@@ -23,13 +23,12 @@ package org.miradi.questions;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefSet;
-import org.miradi.objecthelpers.TimePeriodCostsMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 
 import java.util.Vector;
 
-abstract public class ResourceLeaderQuestionWithUnspecifiedChoice extends ObjectQuestion
+public class ResourceLeaderQuestionWithUnspecifiedChoice extends ObjectQuestion
 {
 	public ResourceLeaderQuestionWithUnspecifiedChoice(Project projectToUse)
 	{
@@ -58,8 +57,7 @@ abstract public class ResourceLeaderQuestionWithUnspecifiedChoice extends Object
 			if (leaderReferrerRef.isValid())
 			{
 				BaseObject baseObject = BaseObject.find(getProject(), leaderReferrerRef);
-				TimePeriodCostsMap timePeriodCostsMap = getTimePeriodCostsMap(baseObject);
-				ORefSet projectResourceRefs = timePeriodCostsMap.getAllProjectResourceRefs();
+				ORefSet projectResourceRefs = baseObject.getAssignedWhoResources();
 				setObjects(getBaseObjects(projectResourceRefs));
 			}
 			else
@@ -84,8 +82,6 @@ abstract public class ResourceLeaderQuestionWithUnspecifiedChoice extends Object
 
 		return baseObjects.toArray(new BaseObject[0]);
 	}
-
-	abstract protected TimePeriodCostsMap getTimePeriodCostsMap(BaseObject baseObject) throws Exception;
 
 	protected Project getProject()
 	{

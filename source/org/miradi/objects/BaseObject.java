@@ -829,6 +829,20 @@ abstract public class BaseObject
 	{
 		try
 		{
+			ORefSet resourceRefs = this.getAssignedWhoResources();
+			return buildResourceCodeList(resourceRefs);
+		}
+		catch (Exception e)
+		{
+			EAM.logException(e);
+			return new CodeList();
+		}
+	}
+
+	public ORefSet getAssignedWhoResources()
+	{
+		try
+		{
 			ORefList resourceAssignmentRefs = getResourceAssignmentRefs();
 
 			ORefSet resourceRefs = new ORefSet();
@@ -840,12 +854,12 @@ abstract public class BaseObject
 					resourceRefs.add(resourceRef);
 			}
 
-			return buildResourceCodeList(resourceRefs);
+			return resourceRefs;
 		}
 		catch (Exception e)
 		{
 			EAM.logException(e);
-			return new CodeList();
+			return new ORefSet();
 		}
 	}
 
