@@ -221,7 +221,6 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	private HashMap<String, String> createAbstractAnalyticalQuestionMap()
 	{
 		HashMap<String, String> map = createFactorMap();
-		map.put(AbstractAnalyticalQuestion.TAG_DIAGRAM_FACTOR_IDS, RELEVANT_DIAGRAM_FACTOR_IDS);
 		map.put(AbstractAnalyticalQuestion.TAG_INDICATOR_IDS, RELEVANT_INDICATOR_IDS);
 		return map;
 	}

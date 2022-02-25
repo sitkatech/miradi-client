@@ -1,5 +1,5 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Thu Feb 10 15:23:56 GMT 2022 $
+# $LastChangedDate: Fri Feb 25 10:36:20 GMT 2022 $
 # $LastChangedRevision: 241 $
 namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/241'
 start = ConservationProject.element
@@ -961,7 +961,6 @@ Assumption.element = element miradi:Assumption
   element miradi:AssumptionIdentifier { text }? &
   element miradi:AssumptionImplications { formatted_text }? &
   element miradi:AssumptionName { formatted_text }? &
-  element miradi:AssumptionRelevantDiagramFactorIds { DiagramFactorId.element* }? &
   element miradi:AssumptionRelevantIndicatorIds { IndicatorId.element* }? &
   element miradi:AssumptionUUID { uuid } &
   TaxonomyClassificationContainer.element?
@@ -980,7 +979,6 @@ AnalyticalQuestion.element = element miradi:AnalyticalQuestion
   element miradi:AnalyticalQuestionImplications { formatted_text }? &
   element miradi:AnalyticalQuestionName { formatted_text }? &
   element miradi:AnalyticalQuestionOrderedAssumptionIds { AssumptionId.element* }? &
-  element miradi:AnalyticalQuestionRelevantDiagramFactorIds { DiagramFactorId.element* }? &
   element miradi:AnalyticalQuestionRelevantIndicatorIds { IndicatorId.element* }? &
   element miradi:AnalyticalQuestionUUID { uuid } &
   TaxonomyClassificationContainer.element?

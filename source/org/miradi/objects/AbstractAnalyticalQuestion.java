@@ -24,7 +24,6 @@ import org.miradi.ids.FactorId;
 import org.miradi.ids.IdList;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.project.ObjectManager;
 import org.miradi.schemas.BaseObjectSchema;
@@ -61,41 +60,11 @@ abstract public class AbstractAnalyticalQuestion extends Factor
 		return getRawRelevancyOverrideData(TAG_INDICATOR_IDS);
 	}
 
-	protected RelevancyOverrideSet getDiagramFactorRelevancyOverrideSet()
-	{
-		return getRawRelevancyOverrideData(TAG_DIAGRAM_FACTOR_IDS);
-	}
-
-	public RelevancyOverrideSet getCalculatedRelevantDiagramFactorOverrides(ORefList all) throws Exception
-	{
-		RelevancyOverrideSet relevantOverrides = new RelevancyOverrideSet();
-		ORefList defaultRelevantRefList = new ORefList();
-		relevantOverrides.addAll(computeRelevancyOverrides(all, defaultRelevantRefList, true));
-		relevantOverrides.addAll(computeRelevancyOverrides(defaultRelevantRefList, all , false));
-
-		return relevantOverrides;
-	}
-
-	public ORefList getRelevantDiagramFactorRefList() throws Exception
-	{
-		ORefSet relevantRefList = getDefaultRelevantDiagramFactorRefs();
-		RelevancyOverrideSet relevantOverrides = getDiagramFactorRelevancyOverrideSet();
-
-		return calculateRelevantRefList(relevantRefList, relevantOverrides);
-	}
-
-	protected ORefSet getDefaultRelevantDiagramFactorRefs()
-	{
-		return new ORefSet();
-	}
 
 	@Override
 	public boolean isRelevancyOverrideSet(String tag)
 	{
 		if (tag.equals(AbstractAnalyticalQuestion.TAG_INDICATOR_IDS))
-			return true;
-
-		if (tag.equals(AbstractAnalyticalQuestion.TAG_DIAGRAM_FACTOR_IDS))
 			return true;
 
 		return false;
@@ -135,7 +104,6 @@ abstract public class AbstractAnalyticalQuestion extends Factor
     public static final String TAG_IMPLICATIONS = "Implications";
     public static final String TAG_FUTURE_INFORMATION_NEEDS = "FutureInformationNeeds";
 
-    public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
     public static final String TAG_INDICATOR_IDS = "IndicatorIds";
 
 	public static final String PSEUDO_TAG_RELEVANT_INDICATOR_REFS = "PseudoRelevantIndicatorRefs";

@@ -24,7 +24,6 @@ import org.miradi.objects.AbstractAnalyticalQuestion;
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.xmpz2.BaseObjectExporter;
-import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 abstract public class AbstractAnalyticalQuestionExporter extends BaseObjectExporter
@@ -43,7 +42,6 @@ abstract public class AbstractAnalyticalQuestionExporter extends BaseObjectExpor
 		final String objectName = baseObjectSchema.getObjectName();
 
 		writeRelevantIndicatorIds(objectName, analyticalQuestionOrAssumption);
-		writeRelevantDiagramFactorIds(objectName, analyticalQuestionOrAssumption);
 	}
 
 	@Override
@@ -52,19 +50,11 @@ abstract public class AbstractAnalyticalQuestionExporter extends BaseObjectExpor
 		if (tag.equals(AbstractAnalyticalQuestion.TAG_INDICATOR_IDS))
 			return true;
 
-		if (tag.equals(AbstractAnalyticalQuestion.TAG_DIAGRAM_FACTOR_IDS))
-			return true;
-
 		return super.doesFieldRequireSpecialHandling(tag);
 	}
 
 	private void writeRelevantIndicatorIds(final String objectName, AbstractAnalyticalQuestion analyticalQuestionOrAssumption) throws Exception
 	{
 		getWriter().writeReflist(objectName, RELEVANT_INDICATOR_IDS, INDICATOR, analyticalQuestionOrAssumption.getRelevantIndicatorRefList());
-	}
-
-	private void writeRelevantDiagramFactorIds(final String objectName, AbstractAnalyticalQuestion analyticalQuestionOrAssumption) throws Exception
-	{
-		getWriter().writeReflist(objectName, RELEVANT_DIAGRAM_FACTOR_IDS, DIAGRAM_FACTOR, analyticalQuestionOrAssumption.getRelevantDiagramFactorRefList());
 	}
 }
