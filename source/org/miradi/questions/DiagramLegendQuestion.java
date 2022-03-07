@@ -49,6 +49,7 @@ public class DiagramLegendQuestion extends MultipleSelectStaticChoiceQuestion
 				new ChoiceItem(ScopeBoxSchema.OBJECT_NAME, ScopeBoxSchema.OBJECT_NAME),
 				new ChoiceItem(STRESS_HIDDEN_TYPE_CODE, StressSchema.OBJECT_NAME),
 				new ChoiceItem(TaskSchema.ACTIVITY_NAME, TaskSchema.ACTIVITY_NAME),
+				new ChoiceItem(OutputSchema.OBJECT_NAME, OutputSchema.OBJECT_NAME),
 				new ChoiceItem(IntermediateResultSchema.OBJECT_NAME, IntermediateResultSchema.OBJECT_NAME),
 				new ChoiceItem(ThreatReductionResultSchema.OBJECT_NAME, ThreatReductionResultSchema.OBJECT_NAME),
 				new ChoiceItem(GroupBoxSchema.OBJECT_NAME, GroupBoxSchema.OBJECT_NAME),
