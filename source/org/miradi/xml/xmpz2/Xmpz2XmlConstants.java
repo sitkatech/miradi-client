@@ -34,8 +34,9 @@ public interface Xmpz2XmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String DOT_ELEMENT = ".element";
 	
-	public static final String NAME_SPACE_VERSION = "241";
+	public static final String NAME_SPACE_VERSION = "242";
 
+	public static final String NAME_SPACE_VERSION_242 = "242";
 	public static final String NAME_SPACE_VERSION_241 = "241";
 	public static final String NAME_SPACE_VERSION_240 = "240";
 	public static final String NAME_SPACE_VERSION_239 = "239";
@@ -194,7 +195,6 @@ public interface Xmpz2XmlConstants
 	public static final String RELEVANT_GOAL_IDS = "RelevantGoalIds";
 	public static final String RELEVANT_OBJECTIVE_IDS = "RelevantObjectiveIds";
 	public static final String RELEVANT_INDICATOR_IDS = "RelevantIndicatorIds";
-	public static final String RELEVANT_DIAGRAM_FACTOR_IDS = "RelevantDiagramFactorIds";
 	public static final String DATE_UNIT = "DateUnit";
 	public static final String DATE_UNITS_EXPENSE = "DateUnitExpense";
 	public static final String EXPENSE = "Expense";

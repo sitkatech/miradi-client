@@ -285,9 +285,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (fieldSchema.getTag().equals(AbstractAnalyticalQuestion.TAG_INDICATOR_IDS))
 			return INDICATOR;
 
-		if (fieldSchema.getTag().equals(AbstractAnalyticalQuestion.TAG_DIAGRAM_FACTOR_IDS))
-			return DIAGRAM_FACTOR;
-
 		if (fieldSchema.getTag().equals(RELEVANT_STRATEGY_IDS))
 			return StrategySchema.OBJECT_NAME;
 		
@@ -596,9 +593,6 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		Vector<Integer> analyticalQuestionSchemas = new Vector<Integer>();
 		analyticalQuestionSchemas.add(AnalyticalQuestionSchema.getObjectType());
 		analyticalQuestionSchemas.add(AssumptionSchema.getObjectType());
-
-		if (isFieldForType(baseObjectSchema, fieldSchema, analyticalQuestionSchemas, AbstractAnalyticalQuestion.TAG_DIAGRAM_FACTOR_IDS))
-			return createIdName(DIAGRAM_FACTOR);
 
 		if (isFieldForType(baseObjectSchema, fieldSchema, analyticalQuestionSchemas, AbstractAnalyticalQuestion.TAG_INDICATOR_IDS))
 			return createIdName(INDICATOR);

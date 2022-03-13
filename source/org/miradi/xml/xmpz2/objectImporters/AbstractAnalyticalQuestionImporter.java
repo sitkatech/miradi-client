@@ -26,7 +26,6 @@ import org.miradi.objecthelpers.RelevancyOverrideSet;
 import org.miradi.objects.AbstractAnalyticalQuestion;
 import org.miradi.project.Project;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
@@ -42,16 +41,12 @@ abstract public class AbstractAnalyticalQuestionImporter extends BaseObjectImpor
 	{
 		super.importFields(baseObjectNode, destinationRef);
 		importRelevantIndicatorIds(baseObjectNode, destinationRef);
-		importRelevantDiagramFactorIds(baseObjectNode, destinationRef);
 	}
 
 	@Override
 	protected boolean isCustomImportField(String tag)
 	{
 		if (tag.equals(AbstractAnalyticalQuestion.TAG_INDICATOR_IDS))
-			return true;
-
-		if (tag.equals(AbstractAnalyticalQuestion.TAG_DIAGRAM_FACTOR_IDS))
 			return true;
 
 		return super.isCustomImportField(tag);
@@ -63,14 +58,6 @@ abstract public class AbstractAnalyticalQuestionImporter extends BaseObjectImpor
 		AbstractAnalyticalQuestion analyticalQuestionOrAssumption = findAnalyticalQuestionOrAssumption(getProject(), destinationRef);
 		RelevancyOverrideSet set = analyticalQuestionOrAssumption.getCalculatedRelevantIndicatorOverrides(importedRelevantRefs);
 		getImporter().setData(destinationRef, AbstractAnalyticalQuestion.TAG_INDICATOR_IDS, set.toString());
-	}
-
-	private void importRelevantDiagramFactorIds(Node node, ORef destinationRef) throws Exception
-	{
-		ORefList importedRelevantRefs = getImporter().extractRefs(node, getXmpz2ElementName(), RELEVANT_DIAGRAM_FACTOR_IDS, DIAGRAM_FACTOR);
-		AbstractAnalyticalQuestion analyticalQuestionOrAssumption = findAnalyticalQuestionOrAssumption(getProject(), destinationRef);
-		RelevancyOverrideSet set = analyticalQuestionOrAssumption.getCalculatedRelevantDiagramFactorOverrides(importedRelevantRefs);
-		getImporter().setData(destinationRef, AbstractAnalyticalQuestion.TAG_DIAGRAM_FACTOR_IDS, set.toString());
 	}
 
 	abstract AbstractAnalyticalQuestion findAnalyticalQuestionOrAssumption(Project project, ORef destinationRef);
