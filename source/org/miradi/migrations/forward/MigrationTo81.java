@@ -21,9 +21,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.migrations.forward;
 
 import org.miradi.main.EAM;
-import org.miradi.migrations.AbstractMigration;
-import org.miradi.migrations.MigrationResult;
-import org.miradi.migrations.RawProject;
+import org.miradi.migrations.*;
+import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ObjectType;
+
+import java.util.Vector;
 
 public class MigrationTo81 extends AbstractMigration
 {
@@ -46,7 +48,73 @@ public class MigrationTo81 extends AbstractMigration
 
     private MigrationResult migrate(boolean reverseMigration) throws Exception
     {
-        return MigrationResult.createSuccess();
+        MigrationResult migrationResult = MigrationResult.createUninitializedResult();
+
+        Vector<Integer> typesToVisit = getTypesToMigrate();
+
+        for(Integer typeToVisit : typesToVisit)
+        {
+            final AnalyticalQuestionVisitor visitor = new AnalyticalQuestionVisitor(typeToVisit, reverseMigration);
+            visitAllORefsInPool(visitor);
+            final MigrationResult thisMigrationResult = visitor.getMigrationResult();
+            if (migrationResult == null)
+                migrationResult = thisMigrationResult;
+            else
+                migrationResult.merge(thisMigrationResult);
+        }
+
+        return migrationResult;
+    }
+
+    private Vector<Integer> getTypesToMigrate()
+    {
+        Vector<Integer> typesToMigrate = new Vector<Integer>();
+
+        typesToMigrate.add(ObjectType.ANALYTICAL_QUESTION);
+        typesToMigrate.add(ObjectType.ASSUMPTION);
+
+        return typesToMigrate;
+    }
+
+    private class AnalyticalQuestionVisitor extends AbstractMigrationORefVisitor
+    {
+        public AnalyticalQuestionVisitor(int typeToVisit, boolean reverseMigration)
+        {
+            type = typeToVisit;
+            isReverseMigration = reverseMigration;
+        }
+
+        public int getTypeToVisit()
+        {
+            return type;
+        }
+
+        @Override
+        public MigrationResult internalVisit(ORef rawObjectRef) throws Exception
+        {
+            MigrationResult migrationResult = MigrationResult.createUninitializedResult();
+
+            RawObject rawObject = getRawProject().findObject(rawObjectRef);
+            if (rawObject != null)
+            {
+                migrationResult = removeFields(rawObject);
+            }
+
+            return migrationResult;
+        }
+
+        private MigrationResult removeFields(RawObject rawObject) throws Exception
+        {
+            MigrationResult migrationResult = MigrationResult.createSuccess();
+
+            if (rawObject.hasValue(TAG_DIAGRAM_FACTOR_IDS))
+                rawObject.remove(TAG_DIAGRAM_FACTOR_IDS);
+
+            return migrationResult;
+        }
+
+        private int type;
+        private boolean isReverseMigration;
     }
 
     @Override
@@ -69,4 +137,6 @@ public class MigrationTo81 extends AbstractMigration
 
     public static final int VERSION_FROM = 80;
     public static final int VERSION_TO = 81;
+
+    public static final String TAG_DIAGRAM_FACTOR_IDS = "DiagramFactorIds";
 }
