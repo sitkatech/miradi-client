@@ -75,6 +75,8 @@ public class Xmpz2ForwardMigration
 		addUUIDFields(document);
 		moveIndicatorRatingSourceToExtraData(document);
 		moveMeasurementSourceToExtraData(document);
+		removeRelevantDiagramFactorIdsElement(rootElement, Xmpz2XmlConstants.ANALYTICAL_QUESTION);
+		removeRelevantDiagramFactorIdsElement(rootElement, Xmpz2XmlConstants.ASSUMPTION);
 
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
@@ -406,6 +408,23 @@ public class Xmpz2ForwardMigration
 			moveDataToExtraData(document, extraDataItemName, extraDataItemValue);
 
 			measurementNode.removeChild(nodeToMove);
+		}
+	}
+
+	private void removeRelevantDiagramFactorIdsElement(Element rootElement, String XmlElementName)
+	{
+		Node objectPoolToUpdate = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(XmlElementName));
+		if (objectPoolToUpdate == null)
+			return;
+
+		NodeList children = objectPoolToUpdate.getChildNodes();
+		for (int index = 0; index < children.getLength(); ++index)
+		{
+			Node objectToUpdate = children.item(index);
+			if (objectToUpdate == null)
+				continue;
+
+			removeChildren(objectToUpdate, new String[]{XmlElementName + Xmpz2XmlConstants.RELEVANT_DIAGRAM_FACTOR_IDS,});
 		}
 	}
 
