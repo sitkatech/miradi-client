@@ -174,22 +174,6 @@ public class MigrationManager extends AbstractMigrationManager
 		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_242))
 			return MigrationTo81.VERSION_TO;
 
-		// 4.6d -> 241
-		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_241))
-			return MigrationTo80.VERSION_TO;
-
-		// 4.6c -> 240
-		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_240))
-			return MigrationTo78.VERSION_TO;
-
-		// 4.6b -> 239
-		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_239))
-			return MigrationTo77.VERSION_TO;
-
-		// 4.6a -> 238
-		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_238))
-			return MigrationTo75.VERSION_TO;
-
 		// 4.5 -> 237
 		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_237))
 			return MigrationTo72.VERSION_TO;

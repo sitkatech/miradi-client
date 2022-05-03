@@ -37,10 +37,6 @@ public interface Xmpz2XmlConstants
 	public static final String NAME_SPACE_VERSION = "242";
 
 	public static final String NAME_SPACE_VERSION_242 = "242";
-	public static final String NAME_SPACE_VERSION_241 = "241";
-	public static final String NAME_SPACE_VERSION_240 = "240";
-	public static final String NAME_SPACE_VERSION_239 = "239";
-	public static final String NAME_SPACE_VERSION_238 = "238";
 	public static final String NAME_SPACE_VERSION_237 = "237";
 	public static final String NAME_SPACE_VERSION_236 = "236";
 	public static final String NAME_SPACE_VERSION_235 = "235";
