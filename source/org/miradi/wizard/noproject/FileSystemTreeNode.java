@@ -102,8 +102,7 @@ abstract public class FileSystemTreeNode extends TreeTableNode
 		
 		if(isProject())
 		{
-			String contents = UnicodeReader.getFileContents(thisFile);
-			final long loadLastModifiedTime = ProjectLoader.loadLastModifiedTime(new UnicodeStringReader(contents));
+			final long loadLastModifiedTime = thisFile.lastModified();
 			if (loadLastModifiedTime == 0)
 				return EAM.text("Unknown");
 			return LegacyProjectUtilities.timestampToString(loadLastModifiedTime);
