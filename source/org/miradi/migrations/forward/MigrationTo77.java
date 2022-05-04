@@ -24,6 +24,7 @@ import org.miradi.main.EAM;
 import org.miradi.migrations.AbstractMigration;
 import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawProject;
+import org.miradi.migrations.RemoveDiagramFactorVisitor;
 import org.miradi.objecthelpers.ObjectType;
 
 public class MigrationTo77 extends AbstractMigration
@@ -42,10 +43,8 @@ public class MigrationTo77 extends AbstractMigration
     @Override
     protected MigrationResult reverseMigrate() throws Exception
     {
-        MigrationResult migrationResult = MigrationResult.createUninitializedResult();
-        getRawProject().deletePoolWithData(ObjectType.ANALYTICAL_QUESTION);
-
-        return migrationResult;
+        RemoveDiagramFactorVisitor visitor = new RemoveDiagramFactorVisitor(getRawProject(), ObjectType.ANALYTICAL_QUESTION);
+        return visitor.visit();
     }
 
     @Override

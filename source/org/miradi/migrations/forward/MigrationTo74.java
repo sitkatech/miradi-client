@@ -24,7 +24,10 @@ import org.miradi.main.EAM;
 import org.miradi.migrations.AbstractMigration;
 import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawProject;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
+
+import java.util.HashMap;
 
 public class MigrationTo74 extends AbstractMigration
 {
@@ -43,7 +46,21 @@ public class MigrationTo74 extends AbstractMigration
     protected MigrationResult reverseMigrate() throws Exception
     {
         MigrationResult migrationResult = MigrationResult.createUninitializedResult();
-        getRawProject().deletePoolWithData(ObjectType.OUTPUT);
+
+        if (getRawProject().containsAnyObjectsOfType(ObjectType.OUTPUT))
+        {
+            ORefList outputRefs = getRawProject().getAllRefsForType(ObjectType.OUTPUT);
+
+            if (!outputRefs.isEmpty())
+            {
+                HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
+                tokenReplacementMap.put("%outputCount", Integer.toString(outputRefs.size()));
+                final String dataLossMessage = EAM.substitute(EAM.text("%outputCount Output(s) will be removed."), tokenReplacementMap);
+                migrationResult.addDataLoss(dataLossMessage);
+            }
+
+            getRawProject().deletePoolWithData(ObjectType.OUTPUT);
+        }
 
         return migrationResult;
     }
