@@ -1,5 +1,5 @@
 /*
-Copyright 2005-2021, Foundations of Success, Bethesda, Maryland
+Copyright 2005-2022, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
 
@@ -24,6 +24,7 @@ import org.miradi.main.EAM;
 import org.miradi.migrations.AbstractMigration;
 import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawProject;
+import org.miradi.migrations.RemoveDiagramFactorVisitor;
 import org.miradi.objecthelpers.ObjectType;
 
 public class MigrationTo76 extends AbstractMigration
@@ -42,10 +43,8 @@ public class MigrationTo76 extends AbstractMigration
     @Override
     protected MigrationResult reverseMigrate() throws Exception
     {
-        MigrationResult migrationResult = MigrationResult.createUninitializedResult();
-        getRawProject().deletePoolWithData(ObjectType.ASSUMPTION);
-
-        return migrationResult;
+        RemoveDiagramFactorVisitor visitor = new RemoveDiagramFactorVisitor(getRawProject(), ObjectType.ASSUMPTION);
+        return visitor.visit();
     }
 
     @Override

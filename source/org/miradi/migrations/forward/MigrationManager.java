@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2021, Foundations of Success, Bethesda, Maryland
+Copyright 2005-2022, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
 
@@ -173,22 +173,6 @@ public class MigrationManager extends AbstractMigrationManager
 		// 4.6e -> 242
 		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_242))
 			return MigrationTo81.VERSION_TO;
-
-		// 4.6d -> 241
-		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_241))
-			return MigrationTo80.VERSION_TO;
-
-		// 4.6c -> 240
-		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_240))
-			return MigrationTo78.VERSION_TO;
-
-		// 4.6b -> 239
-		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_239))
-			return MigrationTo77.VERSION_TO;
-
-		// 4.6a -> 238
-		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_238))
-			return MigrationTo75.VERSION_TO;
 
 		// 4.5 -> 237
 		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_237))

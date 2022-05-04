@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2021, Foundations of Success, Bethesda, Maryland
+Copyright 2005-2022, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
 
@@ -213,7 +213,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionExportXmpz2.class, new Xmpz2ProjectExportDoer());
 		addDoerToMap(ActionImportMiradiShareFile.class, new ImportXmpz2Doer());
 		addDoerToMap(ActionExportMiradiShareFile.class, new Xmpz2ProjectExportDoer());
-		addDoerToMap(ActionExportMpf44Version.class, new ExportMpf44VersionDoer());
+		addDoerToMap(ActionExportMpf45Version.class, new ExportMpf45VersionDoer());
 		addDoerToMap(ActionImportXmpz2.class, new ImportXmpz2Doer());
 		addDoerToMap(ActionExportRtf.class, new ExportRtfDoer());
 		addDoerToMap(ActionExportTable.class, new TabDelimitedTableExportDoer());

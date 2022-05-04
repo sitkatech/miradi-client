@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2021, Foundations of Success, Bethesda, Maryland
+Copyright 2005-2022, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
 
@@ -23,16 +23,16 @@ package org.miradi.actions;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-public class ActionExportMpf44Version extends MainWindowAction
+public class ActionExportMpf45Version extends MainWindowAction
 {
-	public ActionExportMpf44Version(MainWindow mainWindowToUse)
+	public ActionExportMpf45Version(MainWindow mainWindowToUse)
 	{
 		super(mainWindowToUse, getLabel());
 	}
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Miradi 4.4 Project File (.Miradi)");
+		return EAM.text("Action|Miradi 4.5 Project File (.Miradi)");
 	}
 
 	@Override

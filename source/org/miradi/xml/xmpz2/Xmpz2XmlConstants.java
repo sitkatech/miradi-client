@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2021, Foundations of Success, Bethesda, Maryland
+Copyright 2005-2022, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
 
@@ -37,10 +37,6 @@ public interface Xmpz2XmlConstants
 	public static final String NAME_SPACE_VERSION = "242";
 
 	public static final String NAME_SPACE_VERSION_242 = "242";
-	public static final String NAME_SPACE_VERSION_241 = "241";
-	public static final String NAME_SPACE_VERSION_240 = "240";
-	public static final String NAME_SPACE_VERSION_239 = "239";
-	public static final String NAME_SPACE_VERSION_238 = "238";
 	public static final String NAME_SPACE_VERSION_237 = "237";
 	public static final String NAME_SPACE_VERSION_236 = "236";
 	public static final String NAME_SPACE_VERSION_235 = "235";

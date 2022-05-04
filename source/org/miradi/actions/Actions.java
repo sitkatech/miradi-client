@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2021, Foundations of Success, Bethesda, Maryland
+Copyright 2005-2022, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
 
@@ -78,7 +78,7 @@ public class Actions
 		registerAction(new ActionImportMiradiShareFile(mainWindow));
 		registerAction(new ActionExportMiradiShareFile(mainWindow));
 		registerAction(new ActionImportXmpz2(mainWindow));
-		registerAction(new ActionExportMpf44Version(mainWindow));
+		registerAction(new ActionExportMpf45Version(mainWindow));
 
 		registerAction(new ActionProperties(mainWindow));
 		registerAction(new ActionSaveImageJPEG(mainWindow));

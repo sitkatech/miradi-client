@@ -1,5 +1,5 @@
 /* 
-Copyright 2005-2021, Foundations of Success, Bethesda, Maryland
+Copyright 2005-2022, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
 
@@ -109,7 +109,7 @@ public class MainMenuBar extends JMenuBar
 		addMenuItem(actions, menu, ActionExportXmpz2.class);
 
 		menu.addSeparator();
-		addMenuItem(actions, menu, ActionExportMpf44Version.class);
+		addMenuItem(actions, menu, ActionExportMpf45Version.class);
 
 		if(Miradi.isDemoMode())
 		{
