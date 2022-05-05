@@ -111,17 +111,73 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 
 	private void addDataDateRangeTextField() throws Exception
 	{
-		String startDate = getFirstDateWithData();
-		String endDate = getLastDateWithData();
 		add(new FillerPanel());
-		
-		String text = EAM.text("Work plan data currently exists for %startDate - %endDate");
-		text = EAM.substitute(text, "%startDate", startDate);
-		text = EAM.substitute(text, "%endDate", endDate);
-		PanelTitleLabel textArea = new PanelTitleLabel(text);
-		
-		textArea.setBackground(AppPreferences.getDataPanelBackgroundColor());
-		add(textArea);
+		dateRangeInfoMessage = new DateRangeInfoMessageLabel();
+		add(dateRangeInfoMessage);
+	}
+
+	class DateRangeInfoMessageLabel extends PanelTitleLabel
+	{
+		public DateRangeInfoMessageLabel()
+		{
+			this.setBackground(AppPreferences.getDataPanelBackgroundColor());
+		}
+
+		public void rebuild()
+		{
+			String startDate = getFirstDateWithData();
+			String endDate = getLastDateWithData();
+
+			String text = EAM.text("Work plan data currently exists for %startDate - %endDate");
+
+			if (!startDate.isEmpty() && !endDate.isEmpty())
+			{
+				text = EAM.substitute(text, "%startDate", startDate);
+				text = EAM.substitute(text, "%endDate", endDate);
+			}
+			else
+			{
+				text = "";
+			}
+
+			this.setText(text);
+		}
+
+		private String getLastDateWithData()
+		{
+			DateRange dateRange = safeGetProjectAssignedDataDateRange();
+
+			if (dateRange == null)
+				return "";
+
+			return dateRange.getEndDate().toIsoDateString();
+		}
+
+		private String getFirstDateWithData()
+		{
+			DateRange dateRange = safeGetProjectAssignedDataDateRange();
+
+			if (dateRange == null)
+				return "";
+
+			return dateRange.getStartDate().toIsoDateString();
+		}
+
+		private DateRange safeGetProjectAssignedDataDateRange()
+		{
+			DateRange dateRange = null;
+
+			try
+			{
+				dateRange = getProjectAssignedDataDateRange(getProject());
+			}
+			catch (Exception e)
+			{
+				EAM.logException(e);
+			}
+
+			return dateRange;
+		}
 	}
 
 	private void addHiddenWorkPlanDataWarningLabel() throws Exception
@@ -137,7 +193,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 		workPlanDataWarningPanel = createAndAddWarningPanel(warningMessage);
 		updateWorkPlanDataOutOfRangeWarningField();
 	}
-	
+
 	private void addHiddenProjectPlanningDateWarningLabel() throws Exception
 	{
 		projectPlanningDateWarningLabelFillerReplacement = createAndAddFillerPanel();
@@ -258,6 +314,7 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 	public void becomeActive()
 	{
 		super.becomeActive();
+		dateRangeInfoMessage.rebuild();
 		updateQuarterColumnVisibilityEnableStatus();
 		updateDayColumnVisibilityEnableStatus();
 	}
@@ -301,24 +358,6 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 
 		DateRange projectPlanningDateRange = projectToUse.getProjectCalendar().getProjectPlanningDateRange();
 		return !projectPlanningDateRange.contains(allDataDateRange);
-	}
-
-	private String getLastDateWithData() throws Exception
-	{
-		DateRange dateRange = getProjectAssignedDataDateRange(getProject());
-		if (dateRange == null)
-			return "";
-		
-		return dateRange.getEndDate().toIsoDateString();
-	}
-	
-	private String getFirstDateWithData() throws Exception
-	{
-		DateRange dateRange = getProjectAssignedDataDateRange(getProject());
-		if (dateRange == null)
-			return "";
-		
-		return dateRange.getStartDate().toIsoDateString();
 	}
 
 	private static DateRange getProjectAssignedDataDateRange(Project projectToUse) throws Exception
@@ -396,7 +435,9 @@ public class SummaryPlanningWorkPlanSubPanel extends ObjectDataInputPanel
 	{
 		return EAM.text("Work Plan Settings");
 	}
-	
+
+	private DateRangeInfoMessageLabel dateRangeInfoMessage;
+
 	private FillerPanel workPlanDataWarningLabelFillerReplacement;
 	private FillerPanel projectPlanningDateWarningLabelFillerReplacement;
 	private FillerPanel quarterVisibilityExplanationFillerReplacement;
