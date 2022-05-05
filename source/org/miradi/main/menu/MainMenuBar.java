@@ -494,9 +494,6 @@ public class MainMenuBar extends JMenuBar
 			addMenuItem(actions, menu, ActionHideCellRatings.class);
 		}
 
-		menu.addSeparator();
-		addMenuItem(actions, menu, ActionInvokeDashboard.class);
-
 		return menu;
 	}
 
