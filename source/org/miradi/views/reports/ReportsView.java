@@ -30,13 +30,10 @@ import org.miradi.actions.ActionRunReportTemplate;
 import org.miradi.actions.ActionRunXslTemplate;
 import org.miradi.dialogs.base.ObjectPoolManagementPanel;
 import org.miradi.dialogs.reportTemplate.ReportTemplateManagementPanel;
-import org.miradi.dialogs.reportTemplate.StandardReportPanel;
 import org.miradi.dialogs.xslTemplate.XslTemplateManagementPanel;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.main.MiradiToolBar;
 import org.miradi.project.Project;
-import org.miradi.utils.MiradiScrollPane;
 import org.miradi.views.TabbedView;
 import org.miradi.views.reports.doers.CreateReportTemplateDoer;
 import org.miradi.views.reports.doers.DeleteReportTemplateDoer;
@@ -85,12 +82,10 @@ public class ReportsView extends TabbedView
 	public void createTabs() throws Exception
 	{
 		reportTemplateManagementPanel = new ReportTemplateManagementPanel(getMainWindow());
-		standardReportPanel = new StandardReportPanel(getMainWindow());
-		xslTemplateManagmentPanel = new XslTemplateManagementPanel(getMainWindow());
+		xslTemplateManagementPanel = new XslTemplateManagementPanel(getMainWindow());
 
-		addTab(EAM.text("Standard Reports"), new MiradiScrollPane(standardReportPanel));
 		addNonScrollingTab(reportTemplateManagementPanel);
-		addNonScrollingTab(xslTemplateManagmentPanel); 
+		addNonScrollingTab(xslTemplateManagementPanel);
 	}
 	
 	@Override
@@ -99,16 +94,12 @@ public class ReportsView extends TabbedView
 		reportTemplateManagementPanel.dispose();
 		reportTemplateManagementPanel = null;
 		
-		standardReportPanel.dispose();
-		standardReportPanel = null;
-		
-		xslTemplateManagmentPanel.dispose();
-		xslTemplateManagmentPanel= null;
+		xslTemplateManagementPanel.dispose();
+		xslTemplateManagementPanel = null;
 		
 		super.deleteTabs();
 	}
 
 	private ReportTemplateManagementPanel reportTemplateManagementPanel;
-	private StandardReportPanel standardReportPanel;
-	private ObjectPoolManagementPanel xslTemplateManagmentPanel;
+	private ObjectPoolManagementPanel xslTemplateManagementPanel;
 }

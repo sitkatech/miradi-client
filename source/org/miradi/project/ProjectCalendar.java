@@ -524,6 +524,16 @@ public class ProjectCalendar implements CommandExecutedListener
 		return thisStartDate.after(thisEndDate);
 	}
 
+	public boolean isWorkPlanStartDateBeforeProjectStartDate()
+	{
+		MultiCalendar workPlanStartDate = getProject().getMetadata().getWorkPlanStartDate();
+		MultiCalendar projectStartDate = getProject().getMetadata().getProjectStartDate();
+		if (workPlanStartDate == null || projectStartDate == null)
+			return false;
+
+		return workPlanStartDate.before(projectStartDate);
+	}
+
 	public boolean isStartDateAfterEndDate(MultiCalendar thisStartDate, MultiCalendar thisEndDate)
 	{
 		return thisStartDate.after(thisEndDate);
