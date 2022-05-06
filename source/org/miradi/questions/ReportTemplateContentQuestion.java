@@ -64,15 +64,9 @@ public class ReportTemplateContentQuestion extends ProjectBasedDynamicQuestion
 		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
 		choices.add(new ChoiceItem(SUMMARY_VIEW_PROJECT_TAB_CODE, EAM.text("Project Summary")));
 		choices.add(new ChoiceItem(SUMMARY_VIEW_TEAM_TAB_CODE, getTeamLabel()));
-		choices.add(new ChoiceItem(SUMMARY_VIEW_ORGANIZATION_TAB_CODE, getOraganizationLabel()));
+		choices.add(new ChoiceItem(SUMMARY_VIEW_ORGANIZATION_TAB_CODE, getOrganizationLabel()));
 		choices.add(new ChoiceItem(SUMMARY_VIEW_SCOPE_TAB_CODE, EAM.text("Project|Scope")));
 		choices.add(new ChoiceItem(SUMMARY_VIEW_LOCATION_TAB_CODE, EAM.text("Location")));
-		choices.add(new ChoiceItem(SUMMARY_VIEW_PLANNING_TAB_CODE, EAM.text("Planning Parameters")));
-		choices.add(new ChoiceItem(SUMMARY_VIEW_TNC_TAB_CODE, EAM.text("TNC")));
-		choices.add(new ChoiceItem(SUMMARY_VIEW_WWF_TAB_CODE, EAM.text("WWF")));
-		choices.add(new ChoiceItem(SUMMARY_VIEW_WCS_TAB_CODE, EAM.text("WCS")));
-		choices.add(new ChoiceItem(SUMMARY_VIEW_RARE_TAB_CODE, EAM.text("RARE")));
-		choices.add(new ChoiceItem(SUMMARY_VIEW_FOS_TAB_CODE, EAM.text("FOS")));
 		choices.add(new ChoiceItem(SUMMARY_VIEW_MIRADI_SHARE_TAB_CODE, EAM.text("Miradi Share")));
 		
 		return choices;
@@ -231,7 +225,7 @@ public class ReportTemplateContentQuestion extends ProjectBasedDynamicQuestion
 		return EAM.text("Team");
 	}
 	
-	public static String getOraganizationLabel()
+	public static String getOrganizationLabel()
 	{
 		return EAM.text("Organization");
 	}
@@ -241,12 +235,6 @@ public class ReportTemplateContentQuestion extends ProjectBasedDynamicQuestion
 	public static final String SUMMARY_VIEW_ORGANIZATION_TAB_CODE = "SummaryViewOrganizationTab";
 	public static final String SUMMARY_VIEW_SCOPE_TAB_CODE = "SummaryViewScopeTab";
 	public static final String SUMMARY_VIEW_LOCATION_TAB_CODE = "SummaryViewLocationTab";
-	public static final String SUMMARY_VIEW_PLANNING_TAB_CODE = "SummaryViewPlanningTab";
-	public static final String SUMMARY_VIEW_TNC_TAB_CODE = "SummaryViewTncTab";
-	public static final String SUMMARY_VIEW_WWF_TAB_CODE = "SummaryViewWwfTab";
-	public static final String SUMMARY_VIEW_WCS_TAB_CODE = "SummaryViewWcsTab";
-	public static final String SUMMARY_VIEW_RARE_TAB_CODE = "SummaryViewRareTab";
-	public static final String SUMMARY_VIEW_FOS_TAB_CODE = "SummaryViewFosTab";
 	public static final String SUMMARY_VIEW_MIRADI_SHARE_TAB_CODE = "SummaryViewMiradiShareTab";
 	public static final String DIAGRAM_VIEW_CONCEPTUAL_MODEL_TAB_CODE = "DiagramViewConceptualModelTab";
 	public static final String DIAGRAM_VIEW_RESULTS_CHAINS_TAB_CODE = "DiagramViewResultsChainTab";

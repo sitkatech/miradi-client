@@ -1206,11 +1206,5 @@ public class Dashboard extends BaseObject
 	public static final String TAG_FLAGS_MAP = "FlagsMap";
 	public static final String TAG_CURRENT_DASHBOARD_TAB = "CurrentDashboardTab";
 	
-	public static final String DASHBOARD_CONCEPTUALIZE_TAB_CODE = "Conceptualize";
-	public static final String DASHBOARD_PLAN_TAB_CODE = "Plan";
-	public static final String DASHBOARD_IMPLEMENT_TAB_CODE = "Implement";
-	public static final String DASHBOARD_ANALYZE_TAB_CODE = "Analyze";
-	public static final String DASHBOARD_LEARN_TAB_CODE = "Learn";
-
 	private DashboardRowDefinitionManager rowDefinitionManager;
 }

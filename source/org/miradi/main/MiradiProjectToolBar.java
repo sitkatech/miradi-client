@@ -64,7 +64,6 @@ public class MiradiProjectToolBar extends MiradiToolBar
 
 		addSeparator();
 
-		add(new DashboardButton(actions.get(ActionInvokeDashboard.class)));
 		add(new MoreInfoButton(actions.get(ActionHelpButtonMoreInfo.class)));
 		add(new ExamplesButton(actions.get(ActionHelpButtonExamples.class)));
 		add(new WorkshopButton(actions.get(ActionHelpButtonWorkshop.class)));
@@ -112,14 +111,6 @@ abstract class HelpButton extends PanelButton
 class MiradiShareButton extends HelpButton
 {
 	public MiradiShareButton(Action action)
-	{
-		super(action, AppPreferences.getWizardBackgroundColor());
-	}
-}
-
-class DashboardButton extends HelpButton
-{
-	public DashboardButton(Action action)
 	{
 		super(action, AppPreferences.getWizardBackgroundColor());
 	}

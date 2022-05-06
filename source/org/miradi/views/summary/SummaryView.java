@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.views.summary;
 
 
-import org.martus.util.MultiCalendar;
 import org.miradi.actions.ActionCreateOrganization;
 import org.miradi.actions.ActionDeleteOrganization;
 import org.miradi.actions.ActionDeleteTeamMember;
@@ -29,14 +28,11 @@ import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.DisposablePanel;
 import org.miradi.dialogs.organization.OrganizationManagementPanel;
 import org.miradi.dialogs.summary.TeamManagementPanel;
-import org.miradi.main.CommandExecutedEvent;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.main.MiradiToolBar;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
-import org.miradi.schemas.*;
 import org.miradi.views.TabbedView;
 import org.miradi.views.summary.doers.CreateOranizationDoer;
 import org.miradi.views.summary.doers.DeleteOrganizationDoer;
@@ -81,12 +77,6 @@ public class SummaryView extends TabbedView
 
 		ORef[] allRelatedRefs = new ORef[] {
 			metadata.getRef(),
-			getProject().getSingletonObjectRef(TncProjectDataSchema.getObjectType()),
-			getProject().getSingletonObjectRef(WwfProjectDataSchema.getObjectType()),
-			getProject().getSingletonObjectRef(WcsProjectDataSchema.getObjectType()),
-			getProject().getSingletonObjectRef(RareProjectDataSchema.getObjectType()),
-			getProject().getSingletonObjectRef(FosProjectDataSchema.getObjectType()),
-			getProject().getSingletonObjectRef(WcpaProjectDataSchema.getObjectType()),
 		};
 		
 		addSummaryTab(new SummaryProjectTabPanel(getMainWindow(), metadata.getRef()));
@@ -100,23 +90,10 @@ public class SummaryView extends TabbedView
 		addNonScrollingTab(new OrganizationalTabPanel(getMainWindow(), organizationManagementPanel));
 		addSummaryTab(new SummaryScopeTabPanel(getProject(), allRelatedRefs));
 		addSummaryTab(new SummaryLocationPanel(getProject(), metadata.getRef()));
-		addSummaryTab(new SummaryPlanningPanel(getMainWindow(), metadata.getRef()));
-		addMemberOrgTab("TNCPanel.html", new TNCSummaryPanel(getProject(), metadata));
-		addMemberOrgTab("WWFPanel.html", new WWFSummaryPanel(getProject(), metadata));
-		addMemberOrgTab("WCSPanel.html", new WCSSummaryPanel(getProject()));
-		addMemberOrgTab("RAREPanel.html", new RARESummaryPanel(getProject()));
-		addMemberOrgTab("FOSPanel.html", new FOSSummaryPanel(getProject()));
 	}
 	
 	private void addSummaryTab(AbstractObjectDataInputPanel tabPanel)
 	{
-		tabPanels.add(tabPanel);
-		addScrollingTab(tabPanel);
-	}
-	
-	private void addMemberOrgTab(String htmlResourceName, AbstractObjectDataInputPanel dataPanel) throws Exception
-	{
-		MemberOrgTabPanel tabPanel = new MemberOrgTabPanel(getMainWindow(), htmlResourceName, dataPanel);
 		tabPanels.add(tabPanel);
 		addScrollingTab(tabPanel);
 	}
@@ -147,26 +124,6 @@ public class SummaryView extends TabbedView
 		
 		addDoerToMap(ActionCreateOrganization.class, new CreateOranizationDoer());
 		addDoerToMap(ActionDeleteOrganization.class, new DeleteOrganizationDoer());
-	}
-	
-	@Override
-	public void commandExecuted(CommandExecutedEvent event)
-	{
-		super.commandExecuted(event);
-		if (event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_WORKPLAN_START_DATE) ||
-			event.isSetDataCommandWithThisTypeAndTag(ProjectMetadataSchema.getObjectType(), ProjectMetadata.TAG_START_DATE))
-			handleWorkPlanStartDate();
-	}
-	
-	private void handleWorkPlanStartDate()
-	{
-		MultiCalendar workPlanStartDate = getProject().getMetadata().getWorkPlanStartDate();
-		MultiCalendar projectStartDate = getProject().getMetadata().getProjectStartDate();
-		if (workPlanStartDate == null || projectStartDate == null)
-			return;
-		
-		if (workPlanStartDate.before(projectStartDate))
-			EAM.errorDialog(EAM.text("Work plan start date is before project start date"));	
 	}
 	
 	private HashSet<DisposablePanel> tabPanels;

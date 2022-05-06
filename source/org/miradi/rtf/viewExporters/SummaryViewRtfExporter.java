@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.rtf.viewExporters;
 
-import org.miradi.dialogs.audience.AudienceEditablePoolTableModel;
 import org.miradi.dialogs.base.EditableObjectPoolRefsTableModel;
 import org.miradi.dialogs.iucnRedlistSpecies.IucnRedlistSpeciesEditablePoolTableModel;
 import org.miradi.dialogs.organization.OrganizationPoolTableModel;
@@ -27,15 +26,9 @@ import org.miradi.dialogs.otherNotableSpecies.OtherNotableSpeciesEditablePoolTab
 import org.miradi.dialogs.summary.TeamPoolTableModel;
 import org.miradi.forms.PropertiesPanelSpec;
 import org.miradi.forms.objects.MiradiShareTabForm;
-import org.miradi.forms.summary.FosTabForm;
 import org.miradi.forms.summary.LocationTabForm;
-import org.miradi.forms.summary.PlanningTabForm;
 import org.miradi.forms.summary.ProjectTabForm;
-import org.miradi.forms.summary.RareTabForm;
 import org.miradi.forms.summary.ScopeTabForm;
-import org.miradi.forms.summary.TncTabForm;
-import org.miradi.forms.summary.WcsTabForm;
-import org.miradi.forms.summary.WwfTabForm;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
@@ -44,13 +37,8 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.questions.ReportTemplateContentQuestion;
 import org.miradi.rtf.RtfFormExporter;
 import org.miradi.rtf.RtfWriter;
-import org.miradi.schemas.FosProjectDataSchema;
 import org.miradi.schemas.MiradiShareProjectDataSchema;
-import org.miradi.schemas.RareProjectDataSchema;
-import org.miradi.schemas.TncProjectDataSchema;
 import org.miradi.schemas.WcpaProjectDataSchema;
-import org.miradi.schemas.WcsProjectDataSchema;
-import org.miradi.schemas.WwfProjectDataSchema;
 import org.miradi.schemas.XenodataSchema;
 import org.miradi.utils.CodeList;
 
@@ -79,24 +67,6 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_LOCATION_TAB_CODE))
 			exportLocationTab(writer);
 		
-		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_PLANNING_TAB_CODE))
-			exportPlanningTab(writer);
-		
-		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_TNC_TAB_CODE))
-			exportTncTab(writer);
-		
-		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_WWF_TAB_CODE))
-			exportWwfTab(writer);
-		
-		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_WCS_TAB_CODE))
-			exportWcsTab(writer);
-		
-		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_RARE_TAB_CODE))
-			exportRareTab(writer);
-		
-		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_FOS_TAB_CODE))
-			exportFosTab(writer);
-		
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_MIRADI_SHARE_TAB_CODE))
 			exportMiradiShareTab(writer);
 	}
@@ -114,7 +84,7 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 	
 	private void exportOrganizationTab(RtfWriter writer) throws Exception
 	{
-		exportObjectTableModel(writer, new OrganizationPoolTableModel(getProject()), ReportTemplateContentQuestion.getOraganizationLabel());
+		exportObjectTableModel(writer, new OrganizationPoolTableModel(getProject()), ReportTemplateContentQuestion.getOrganizationLabel());
 	}	
 
 	private void exportScopeTab(RtfWriter writer) throws Exception
@@ -130,32 +100,6 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 		writer.newParagraph();
 	}
 	
-	private void exportPlanningTab(RtfWriter writer) throws Exception
-	{
-		exportForm(writer, new PlanningTabForm(), new ORefList(getProjectMetadataRef()));
-	}
-	
-	private void exportTncTab(RtfWriter writer) throws Exception
-	{
-		exportForm(writer, new TncTabForm(), TncProjectDataSchema.getObjectType());
-	}
-
-	private void exportWwfTab(RtfWriter writer) throws Exception
-	{
-		exportForm(writer, new WwfTabForm(), WwfProjectDataSchema.getObjectType());
-	}
-
-	private void exportWcsTab(RtfWriter writer) throws Exception
-	{
-		exportForm(writer, new WcsTabForm(), WcsProjectDataSchema.getObjectType());
-	}
-	
-	private void exportRareTab(RtfWriter writer) throws Exception
-	{
-		exportForm(writer, new RareTabForm(), RareProjectDataSchema.getObjectType());
-		exportModel(writer, new AudienceEditablePoolTableModel(getProject()), EAM.text("Audience"));
-	}
-
 	private void exportModel(RtfWriter writer, EditableObjectPoolRefsTableModel model, String reportLabel) throws Exception
 	{
 		//TODO  this call to setObjectRefs(empty List) causes extractOutEditableRefs to be called which loads the refs from the pool.  
@@ -164,11 +108,6 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 		exportObjectTableModel(writer, model, reportLabel);
 	}
 
-	private void exportFosTab(RtfWriter writer) throws Exception
-	{
-		exportForm(writer, new FosTabForm(), FosProjectDataSchema.getObjectType());
-	}
-	
 	private void exportMiradiShareTab(RtfWriter writer) throws Exception
 	{
 		exportForm(writer, new MiradiShareTabForm(), MiradiShareProjectDataSchema.getObjectType());
