@@ -113,13 +113,16 @@ public class RemoveDiagramFactorVisitor
 
     private void removeDiagramFactorRefs(int diagramObjectType, ORefSet diagramFactorRefs) throws Exception
     {
-        ORefList diagramRefsToCheck = getRawProject().getAllRefsForType(diagramObjectType);
-        for (ORef diagramRefToCheck : diagramRefsToCheck)
+        if (getRawProject().containsAnyObjectsOfType(diagramObjectType))
         {
-            RawObject rawDiagram = getRawProject().findObject(diagramRefToCheck);
-            if (rawDiagram != null)
+            ORefList diagramRefsToCheck = getRawProject().getAllRefsForType(diagramObjectType);
+            for (ORef diagramRefToCheck : diagramRefsToCheck)
             {
-                removeDiagramFactorRefs(rawDiagram, diagramFactorRefs);
+                RawObject rawDiagram = getRawProject().findObject(diagramRefToCheck);
+                if (rawDiagram != null)
+                {
+                    removeDiagramFactorRefs(rawDiagram, diagramFactorRefs);
+                }
             }
         }
     }
