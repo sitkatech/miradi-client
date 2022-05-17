@@ -27,6 +27,7 @@ import org.miradi.commands.Command;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramModel;
+import org.miradi.diagram.cells.DiagramGroupBoxCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.exceptions.CommandFailedException;
@@ -57,6 +58,8 @@ public class FactorMoveHandler
 	{
 		try 
 		{
+			model.setDeferUpdateGroupBoxCells(true);
+
 			model.factorsWereMoved(diagramFactorRefs);
 			
 			CommandVector commandsToExecute = new CommandVector();
@@ -82,7 +85,12 @@ public class FactorMoveHandler
 					getProject().executeCommand(commandsToExecute.get(i));
 				}
 			}
-			
+
+			getProject().beginCommandSideEffectMode();
+			model.setDeferUpdateGroupBoxCells(false);
+			model.updateGroupBoxCells();
+			getProject().endCommandSideEffectMode();
+
 			//TODO remove cluster related code below
 			/*
 			 * NOTE: The following chunk of code works around a weird bug deep in jgraph
@@ -106,10 +114,13 @@ public class FactorMoveHandler
 			EAM.logException(e);
 			throw new CommandFailedException(e);
 		}
-
+		finally
+		{
+			model.setDeferUpdateGroupBoxCells(false);
+		}
 	}
 
-	public void ensureLevelSegementToFirstBendPoint(ORefList diagramFactorRefs) throws Exception
+	public void ensureLevelSegmentToFirstBendPoint(ORefList diagramFactorRefs) throws Exception
 	{
 		ORefSet idsBeingMovedAsSet = new ORefSet(diagramFactorRefs);
 		for(int i = 0 ; i < diagramFactorRefs.size(); ++i)
@@ -117,12 +128,12 @@ public class FactorMoveHandler
 			FactorCell factorCell = model.getFactorCellByRef(diagramFactorRefs.get(i));
 			if(factorCell.hasMoved() || factorCell.sizeHasChanged())
 			{
-				ensureLevelSegementToFirstBendPoint(idsBeingMovedAsSet, factorCell);
+				ensureLevelSegmentToFirstBendPoint(idsBeingMovedAsSet, factorCell);
 			}
 		}
 	}
 
-	private void ensureLevelSegementToFirstBendPoint(ORefSet idsBeingMovedAsSet, FactorCell factorCell) throws Exception
+	private void ensureLevelSegmentToFirstBendPoint(ORefSet idsBeingMovedAsSet, FactorCell factorCell) throws Exception
 	{
 		HashSet<LinkCell> factorRelatedLinks = model.getFactorRelatedLinks(factorCell);
 		for(LinkCell linkCell : factorRelatedLinks)
@@ -226,10 +237,19 @@ public class FactorMoveHandler
 	{
 		int deltaX = factorCell.getLocation().x - factorCell.getDiagramFactor().getLocation().x;
 		int deltaY = factorCell.getLocation().y - factorCell.getDiagramFactor().getLocation().y;
+
 		CommandVector commandsToMove = new CommandVector();
+
 		if (factorCell.getWrappedType() != GroupBoxSchema.getObjectType())
 			return new CommandVector();
-		
+
+		if (factorCell instanceof DiagramGroupBoxCell)
+		{
+			DiagramGroupBoxCell diagramGroupBoxCell = (DiagramGroupBoxCell) factorCell;
+			if (diagramGroupBoxCell.childrenWithinBounds())
+				return new CommandVector();
+		}
+
 		ORefList groupChildRefs = factorCell.getDiagramFactor().getGroupBoxChildrenRefs();
 		for (int i = 0; i < groupChildRefs.size(); ++i)
 		{
