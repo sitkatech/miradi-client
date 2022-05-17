@@ -160,7 +160,7 @@ public class MouseEventHandler extends MouseAdapter implements GraphSelectionLis
 			FactorMoveHandler factorMoveHandler = new FactorMoveHandler(getProject(), getDiagram().getDiagramModel());
 			factorMoveHandler.factorsWereMovedOrResized(diagramFactorRefs);
 			moveBendPoints();
-			factorMoveHandler.ensureLevelSegementToFirstBendPoint(diagramFactorRefs);
+			factorMoveHandler.ensureLevelSegmentToFirstBendPoint(diagramFactorRefs);
 			
 			synchronizeFactorAndLinkCellsWithStoredObjects();
 		}

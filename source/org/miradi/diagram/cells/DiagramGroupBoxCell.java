@@ -43,7 +43,6 @@ import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.EnhancedJsonObject;
-import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.PointList;
 
 public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListener
@@ -93,36 +92,62 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	{
 		return GraphConstants.getBounds(getAttributes());
 	}
-	
+
 	public void autoSurroundChildren() throws Exception
 	{
 		if (getDiagramFactor().getGroupBoxChildrenRefs().size() == 0)
 			return;
-		
+
+		Rectangle2D currentBounds = getBounds();
+		Rectangle minBounds = calculateMinBoundsForChildren();
+
+		if(currentBounds.contains(minBounds))
+			return;
+
+		if (model.shouldSaveChangesToDisk())
+		{
+			Rectangle2D newBounds = currentBounds.createUnion(minBounds);
+
+			Point newLocation = new Point((int) newBounds.getX(), (int) newBounds.getY());
+			Dimension newSize = new Dimension((int) newBounds.getWidth(), (int) newBounds.getHeight());
+
+			saveLocationAndSize(newLocation, newSize);
+		}
+
+		updateFromDiagramFactor();
+		model.sortLayers();
+	}
+
+	public boolean childrenWithinBounds()
+	{
+		if (getDiagramFactor().getGroupBoxChildrenRefs().size() == 0)
+			return true;
+
+		Rectangle2D currentBounds = getBounds();
+		Rectangle minBounds = calculateMinBoundsForChildren();
+
+		return currentBounds.contains(minBounds);
+	}
+
+	private Rectangle calculateMinBoundsForChildren()
+	{
 		int gridSize = getProject().getGridSize();
 
         int headerHeight = Math.max(diagramFactor.getHeaderHeight(), DiagramFactor.DEFAULT_HEADER_HEIGHT);
-        heightOfTextArea = headerHeight * gridSize;
+        int heightOfTextArea = headerHeight * gridSize;
 
-		Rectangle2D groupBoxBounds = computeCurrentChildrenBounds();
-		Point location = new Point((int)groupBoxBounds.getX() - gridSize, (int)groupBoxBounds.getY()  - heightOfTextArea);
-		location = getProject().getSnapped(location);
-		int widthWithCushion = (int)groupBoxBounds.getWidth() + 2*gridSize;
-		int heightWithCushion = (int)groupBoxBounds.getHeight() + heightOfTextArea  + gridSize;
-		
-		Dimension size = new Dimension(widthWithCushion, heightWithCushion);
-		int forcedEvenSnappedWidth = getProject().forceNonZeroEvenSnap(size.width);
-		int forcedEvenSnappedHeight = getProject().forceNonZeroEvenSnap(size.height);
-		Dimension newSize = new Dimension(forcedEvenSnappedWidth, forcedEvenSnappedHeight);
-		Rectangle newBounds = new Rectangle(location, newSize);
-		if(newBounds.equals(getBounds()))
-			return;
-		
-		if (model.shouldSaveChangesToDisk())
-			saveLocationAndSize(location, newSize);
-		
-		updateFromDiagramFactor();
-		model.sortLayers();
+		Rectangle2D currentChildrenBounds = computeCurrentChildrenBounds();
+		Point locationBasedOnChildrenBounds = new Point((int)currentChildrenBounds.getX() - gridSize, (int)currentChildrenBounds.getY() - heightOfTextArea);
+		Point locationAdjusted = getProject().getSnapped(locationBasedOnChildrenBounds);
+		int minWidthWithCushion = (int)currentChildrenBounds.getWidth() + gridSize;
+		int midHeightWithCushion = (int)currentChildrenBounds.getHeight() + heightOfTextArea;
+
+		Dimension minSize = new Dimension(minWidthWithCushion, midHeightWithCushion);
+		int minSizeForcedEvenSnappedWidth = getProject().forceNonZeroEvenSnap(minSize.width);
+		int minSizeForcedEvenSnappedHeight = getProject().forceNonZeroEvenSnap(minSize.height);
+		Dimension minSizeAdjusted = new Dimension(minSizeForcedEvenSnappedWidth, minSizeForcedEvenSnappedHeight);
+
+		return new Rectangle(locationAdjusted, minSizeAdjusted);
 	}
 
 	private void saveLocationAndSize(Point location, Dimension size) throws Exception
@@ -134,7 +159,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		model.getProject().executeAsSideEffect(setSize);
 	}
 	
-	public Rectangle2D computeCurrentChildrenBounds()
+	private Rectangle2D computeCurrentChildrenBounds()
 	{
 		boolean shouldIgnoreDrafts = getProject().isNonChainMode();
 		Rectangle bounds = null;
@@ -221,6 +246,5 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	
 	private DiagramFactor diagramFactor;
 	private DiagramModel model;
-	private int heightOfTextArea;
 	private ChoiceQuestion diagramFactorBackgroundQuestion;
 }

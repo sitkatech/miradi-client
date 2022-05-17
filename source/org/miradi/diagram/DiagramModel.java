@@ -860,9 +860,22 @@ abstract public class DiagramModel extends DefaultGraphModel
 		
 		return allFactorCells;
 	}
-	
+
+	public boolean getDeferUpdateGroupBoxCells()
+	{
+		return deferUpdateGroupBoxCells;
+	}
+
+	public void setDeferUpdateGroupBoxCells(boolean value)
+	{
+		deferUpdateGroupBoxCells = value;
+	}
+
 	public void updateGroupBoxCells() throws Exception
 	{
+		if (deferUpdateGroupBoxCells)
+			return;
+
 		Vector<FactorCell> allGroupBoxes = getAllGroupBoxCells();
 		for (int i = 0; i < allGroupBoxes.size(); ++i)
 		{
@@ -921,5 +934,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 	private GraphLayoutCache graphLayoutCache;
 	private boolean isDamaged;
 	private LayerManager layerManager;
+
+	private boolean deferUpdateGroupBoxCells = false;
 }
 
