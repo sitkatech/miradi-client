@@ -21,6 +21,7 @@ package org.miradi.dialogs.assumption;
 
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.schemas.AssumptionSchema;
 
@@ -30,9 +31,11 @@ public abstract class AbstractAssumptionPropertiesPanel extends ObjectDataInputP
     {
         super(mainWindow.getProject(), AssumptionSchema.getObjectType());
 
-        AssumptionFactorVisibilityControlPanel assumptionVisibilityButtonPanel = new AssumptionFactorVisibilityControlPanel(mainWindow);
-        addSubPanelWithTitledBorder(createDetailsPanel(mainWindow, assumptionVisibilityButtonPanel));
+        AssumptionFactorVisibilityControlPanel assumptionVisibilityButtonPanel = null;
+        if (addFactorVisibilityControlPanel())
+            assumptionVisibilityButtonPanel = new AssumptionFactorVisibilityControlPanel(mainWindow);
 
+        addSubPanelWithTitledBorder(createDetailsPanel(mainWindow, assumptionVisibilityButtonPanel));
         updateFieldsFromProject();
     }
 
@@ -40,4 +43,15 @@ public abstract class AbstractAssumptionPropertiesPanel extends ObjectDataInputP
     {
         return new AssumptionDetailsPanel(getProject(), mainWindow, assumptionVisibilityButtonPanel);
     }
+
+    protected boolean addFactorVisibilityControlPanel()
+    {
+        return true;
+    }
+
+	@Override
+	public String getPanelDescription()
+	{
+		return EAM.text("Title|Assumption Properties");
+	}
 }
