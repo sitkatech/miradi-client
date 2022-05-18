@@ -31,18 +31,7 @@ import org.miradi.dialogs.tablerenderers.PlanningViewFontProvider;
 import org.miradi.icons.*;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.AccountingCode;
-import org.miradi.objects.BudgetCategoryOne;
-import org.miradi.objects.BudgetCategoryTwo;
-import org.miradi.objects.Cause;
-import org.miradi.objects.ExpenseAssignment;
-import org.miradi.objects.FundingSource;
-import org.miradi.objects.FutureStatus;
-import org.miradi.objects.ProjectResource;
-import org.miradi.objects.ResourceAssignment;
-import org.miradi.objects.ScopeBox;
-import org.miradi.objects.SubTarget;
-import org.miradi.objects.Task;
+import org.miradi.objects.*;
 import org.miradi.schemas.ConceptualModelDiagramSchema;
 import org.miradi.schemas.GroupBoxSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
@@ -115,6 +104,9 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		taskRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(taskRenderer, new TaskIcon(), getPlainFont());
 		
+		outputRenderer = createRenderer(treeTableToUse);
+		setRendererDefaults(outputRenderer, new OutputIcon(), getPlainFont());
+
 		conceptualModelRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(conceptualModelRenderer, new ConceptualModelIcon(), getBoldFont());
 
@@ -162,6 +154,12 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		
 		scopeBoxRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(scopeBoxRenderer, new ScopeBoxIcon(), getPlainFont());
+
+		analyticalQuestionRenderer = createRenderer(treeTableToUse);
+		setRendererDefaults(analyticalQuestionRenderer, new AnalyticalQuestionIcon(), getPlainFont());
+
+		assumptionRenderer = createRenderer(treeTableToUse);
+		setRendererDefaults(assumptionRenderer, new AssumptionIcon(), getPlainFont());
 	}
 	
 	private VariableHeightTreeCellRenderer createRenderer(ObjectTreeTable treeTableToUse)
@@ -215,6 +213,8 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer = goalRenderer;
 		else if(node.getType() == ObjectType.TASK)
 			renderer = getTaskRenderer((Task)node.getObject());
+		else if(node.getType() == ObjectType.OUTPUT)
+			renderer = outputRenderer;
 		else if(node.getType() == ObjectType.KEY_ECOLOGICAL_ATTRIBUTE)
 			renderer = keyEcologicalAttributeRenderer;
 		else if(node.getType() == ObjectType.STRESS)
@@ -247,7 +247,11 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer = scopeBoxRenderer;
 		else if (FutureStatus.is(node.getType()))
 			renderer = futureStatusRenderer;
-		
+		else if (AnalyticalQuestion.is(node.getType()))
+			renderer = analyticalQuestionRenderer;
+		else if (Assumption.is(node.getType()))
+			renderer = assumptionRenderer;
+
 		Component rendererComponent = renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocusToUse);
 		return rendererComponent;
 	}
@@ -311,6 +315,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	private VariableHeightTreeCellRenderer subTargetRenderer;
 	private VariableHeightTreeCellRenderer methodRenderer;
 	private VariableHeightTreeCellRenderer taskRenderer;
+	private VariableHeightTreeCellRenderer outputRenderer;
 	private VariableHeightTreeCellRenderer conceptualModelRenderer;
 	private VariableHeightTreeCellRenderer resultsChainRenderer;
 	private VariableHeightTreeCellRenderer defaultRenderer;
@@ -334,5 +339,7 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	private VariableHeightTreeCellRenderer categoryTwoRenderer;
 	private	VariableHeightTreeCellRenderer scopeBoxRenderer;
 	private VariableHeightTreeCellRenderer futureStatusRenderer;
-	
+	private VariableHeightTreeCellRenderer analyticalQuestionRenderer;
+	private VariableHeightTreeCellRenderer assumptionRenderer;
+
 }
