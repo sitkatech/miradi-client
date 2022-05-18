@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.dialogs.accountingcode.AccountingCodePropertiesPanel;
+import org.miradi.dialogs.assumption.AssumptionPropertiesPanel;
 import org.miradi.dialogs.base.AbstractMultiPropertiesPanel;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.categoryOne.BudgetCategoryOnePropertiesPanel;
@@ -95,6 +96,11 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 	private ExpenseAssignmentPropertiesPanel createExpenseAssignmentPropertiesPanel() throws Exception
 	{
 		return new ExpenseAssignmentPropertiesPanel(getMainWindow());
+	}
+
+	private AssumptionPropertiesPanel createAssumptionPropertiesPanel() throws Exception
+	{
+		return new AssumptionPropertiesPanel(getMainWindow());
 	}
 
 	@Override
@@ -193,6 +199,12 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 
 			if (ExpenseAssignment.is(objectType))
 				return getExpenseAssignmentPropertiesPanel();
+
+			if (AnalyticalQuestionSchema.getObjectType() == objectType)
+				return getAnalyticalQuestionPropertiesPanel();
+
+			if (AssumptionSchema.getObjectType() == objectType)
+				return getAssumptionPropertiesPanel();
 		}
 		catch(Exception e)
 		{
@@ -484,6 +496,26 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 		return expenseAssignmentPropertiesPanel;
 	}
 
+	private MinimalFactorPropertiesPanel getAnalyticalQuestionPropertiesPanel() throws Exception
+	{
+        if(analyticalQuestionPropertiesPanel == null)
+        {
+			analyticalQuestionPropertiesPanel = new PlanningViewAnalyticalQuestionPropertiesPanel(getProject(), getMainWindow());
+            addPanel(analyticalQuestionPropertiesPanel);
+        }
+        return analyticalQuestionPropertiesPanel;
+	}
+
+	private AbstractObjectDataInputPanel getAssumptionPropertiesPanel() throws Exception
+	{
+		if(assumptionPropertiesPanel == null)
+		{
+			assumptionPropertiesPanel = createAssumptionPropertiesPanel();
+			addPanel(assumptionPropertiesPanel);
+		}
+		return assumptionPropertiesPanel;
+	}
+
 	@Override
 	public void commandExecuted(CommandExecutedEvent event)
 	{
@@ -524,5 +556,7 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 	private SubTargetPropertiesPanel subTargetPropertiesPanel;
 	private ResourceAssignmentPropertiesPanel resourceAssignmentPropertiesPanel;
 	private ExpenseAssignmentPropertiesPanel expenseAssignmentPropertiesPanel;
+	private PlanningViewAnalyticalQuestionPropertiesPanel analyticalQuestionPropertiesPanel;
+	private AssumptionPropertiesPanel assumptionPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 }

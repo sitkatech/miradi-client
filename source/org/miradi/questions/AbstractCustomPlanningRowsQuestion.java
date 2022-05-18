@@ -69,7 +69,9 @@ abstract public class AbstractCustomPlanningRowsQuestion extends ProjectBasedDyn
 		choiceItems.add(createChoiceItem(OutputSchema.getObjectType(), OutputSchema.OBJECT_NAME, IconManager.getOutputIcon()));
 		choiceItems.add(createChoiceItem(MeasurementSchema.getObjectType(), MeasurementSchema.OBJECT_NAME, new MeasurementIcon()));
 		choiceItems.add(createChoiceItem(FutureStatusSchema.getObjectType(), FutureStatusSchema.OBJECT_NAME, new FutureStatusIcon()));
-		
+		choiceItems.add(createChoiceItem(AnalyticalQuestionSchema.getObjectType(), AnalyticalQuestionSchema.OBJECT_NAME, new AnalyticalQuestionIcon()));
+		choiceItems.add(createChoiceItem(AssumptionSchema.getObjectType(), AssumptionSchema.OBJECT_NAME, new AssumptionIcon()));
+
 		return choiceItems;
 	}
 
