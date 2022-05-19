@@ -57,12 +57,12 @@ import com.jhlabs.awt.BasicGridLayout;
 
 public class PreferencesPanel extends DataInputPanel implements ActionListener
 {
-	public PreferencesPanel(MainWindow mainWindowToUse) throws Exception
+	public PreferencesPanel(MainWindow mainWindowToUse, boolean showThemeOptions) throws Exception
 	{
 		super(mainWindowToUse.getProject());
 		
 		mainWindow = mainWindowToUse;
-		add(createTabs(), BorderLayout.CENTER);
+		add(createTabs(showThemeOptions), BorderLayout.CENTER);
 		
 		setBackground(AppPreferences.getDarkPanelBackgroundColor());
 		setBorder(BorderFactory.createEmptyBorder(0,3,3,3));
@@ -92,13 +92,13 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		super.dispose();
 	}
 	
-	private JTabbedPane createTabs() throws Exception
+	private JTabbedPane createTabs(boolean showThemeOptions) throws Exception
 	{
 		JTabbedPane tabPane = new PanelTabbedPane();
 		
 		if(getProject().isOpen())
 		{
-			tabPane.addTab(EAM.text("Systemwide"), createSystemWideTab());
+			tabPane.addTab(EAM.text("Systemwide"), createSystemWideTab(showThemeOptions));
 			tabPane.addTab(EAM.text("Diagram"), createDiagramTab());
 
 			planningPanel = new PlanningPanel(getMainWindow(), getProject().getMetadata().getRef());
@@ -135,17 +135,20 @@ public class PreferencesPanel extends DataInputPanel implements ActionListener
 		return new LanguagesPanel(getMainWindow());
 	}
 
-	private JPanel createSystemWideTab()
+	private JPanel createSystemWideTab(boolean showThemeOptions)
 	{
 		JPanel htmlTab = new JPanel(new BasicGridLayout(0,2, 2, 2, 2, 5));
 		htmlTab.setBackground(AppPreferences.getDataPanelBackgroundColor());
 
-		String lookAndFeelTheme = getMainWindow().getLookAndFeelThemeName();
-		lookAndFeelThemeCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("System Theme"), StaticQuestionManager.getQuestion(LookAndFeelThemeQuestion.class), lookAndFeelTheme);
-		htmlTab.add(new FillerLabel());
-		htmlTab.add(new PanelTitleLabel("<html><i>" + EAM.text("" +
-				"NOTE: Changes will be applied on restarting Miradi. <br>")));
-		createAndAddBlankRow(htmlTab);
+		if (showThemeOptions)
+		{
+			String lookAndFeelTheme = getMainWindow().getLookAndFeelThemeName();
+			lookAndFeelThemeCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("System Theme"), StaticQuestionManager.getQuestion(LookAndFeelThemeQuestion.class), lookAndFeelTheme);
+			htmlTab.add(new FillerLabel());
+			htmlTab.add(new PanelTitleLabel("<html><i>" + EAM.text("" +
+					"NOTE: Changes will be applied on restarting Miradi. <br>")));
+			createAndAddBlankRow(htmlTab);
+		}
 
 		String panelSizeAsString = getDataPanelFontSizeCode();
 		panelFontSizeCombo = createAndAddLabelAndCombo(htmlTab, EAM.text("Font Size"), StaticQuestionManager.getQuestion(FontSizeQuestion.class), panelSizeAsString);

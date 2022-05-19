@@ -24,7 +24,6 @@ import org.miradi.actions.ActionManageFactorTags;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.dialogs.diagram.FactorSummaryCorePanel;
-import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.schemas.DiagramFactorSchema;
@@ -48,10 +47,4 @@ public class AssumptionPropertiesPanelWithTagPanel extends AbstractAssumptionPro
     {
         return new AssumptionDetailsPanelWithFormatFields(getProject(), mainWindow, assumptionVisibilityButtonPanel);
     }
-
-	@Override
-	public String getPanelDescription()
-	{
-		return EAM.text("Title|Assumption Properties");
-	}
 }

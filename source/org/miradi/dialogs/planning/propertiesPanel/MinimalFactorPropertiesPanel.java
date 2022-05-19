@@ -45,18 +45,31 @@ public class MinimalFactorPropertiesPanel extends ObjectDataInputPanelWithSectio
 		ObjectDataInputField labelField = createExpandableField(Factor.TAG_LABEL);
 		addFieldsOnOneLine(translatedNameLabel, icon, new ObjectDataInputField[]{shortLabelField, labelField,});
 		
-		addCustomInBetweenFields();
+		addCustomFieldsStart();
 		
 		addField(createMultilineField(Factor.TAG_TEXT));
+
+		addCustomFieldsMiddle();
+
 		addField(createMultilineField(Factor.TAG_COMMENTS));
 
 		if (canHaveEvidenceConfidence(factorSchema))
 			addField(createRadioButtonEditorField(factorSchema.getType(), BaseObject.TAG_EVIDENCE_CONFIDENCE, EvidenceConfidenceTypeQuestion.getQuestion(factorSchema)));
 
 		addField(createMultilineField(Factor.TAG_EVIDENCE_NOTES));
+
+		addCustomFieldsEnd();
 	}
 
-	protected void addCustomInBetweenFields()
+	protected void addCustomFieldsStart()
+	{
+	}
+
+	protected void addCustomFieldsMiddle()
+	{
+	}
+
+	protected void addCustomFieldsEnd() throws Exception
 	{
 	}
 

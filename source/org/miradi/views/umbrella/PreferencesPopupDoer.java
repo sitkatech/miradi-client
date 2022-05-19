@@ -26,12 +26,27 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
 import org.miradi.views.ViewDoer;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.InputEvent;
+import java.util.EventObject;
+
 public class PreferencesPopupDoer extends ViewDoer
 {
 	@Override
 	public boolean isAvailable()
 	{
 		return true;
+	}
+
+	@Override
+	public void doIt(EventObject event) throws Exception
+	{
+		if (event instanceof ActionEvent)
+		{
+			ActionEvent actionEvent = (ActionEvent) event;
+			menuAltKeyModifier = ((actionEvent.getModifiers() & InputEvent.ALT_MASK) != 0);
+		}
+		super.doIt(event);
 	}
 
 	@Override
@@ -49,10 +64,12 @@ public class PreferencesPopupDoer extends ViewDoer
 	
 	private void showPreferencesDialog() throws Exception
 	{
-		PreferencesPanel preferencesPanel = new PreferencesPanel(getMainWindow());
+		PreferencesPanel preferencesPanel = new PreferencesPanel(getMainWindow(), menuAltKeyModifier);
 		PreferencesDialog dlg = new PreferencesDialog(getMainWindow(), preferencesPanel, EAM.text("Miradi Preferences"));
 		dlg.pack();
 		Utilities.centerDlg(dlg);
 		dlg.setVisible(true);
 	}
+
+	private boolean menuAltKeyModifier = false;
 }

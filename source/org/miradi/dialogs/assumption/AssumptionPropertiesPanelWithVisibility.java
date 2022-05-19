@@ -22,16 +22,10 @@ package org.miradi.dialogs.assumption;
 
 import org.miradi.main.MainWindow;
 
-public class AssumptionPropertiesPanel extends AbstractAssumptionPropertiesPanel
+public class AssumptionPropertiesPanelWithVisibility extends AbstractAssumptionPropertiesPanel
 {
-    public AssumptionPropertiesPanel(MainWindow mainWindow) throws Exception
+    public AssumptionPropertiesPanelWithVisibility(MainWindow mainWindow) throws Exception
     {
         super(mainWindow);
-    }
-
-    @Override
-    protected boolean addFactorVisibilityControlPanel()
-    {
-        return false;
     }
 }

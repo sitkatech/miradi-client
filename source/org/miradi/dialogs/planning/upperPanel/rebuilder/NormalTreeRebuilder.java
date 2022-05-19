@@ -81,6 +81,9 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		if(Task.is(parentRef))
 			return getChildrenOfTask(parentRef);
 
+		if(Output.is(parentRef))
+			return noChildren;
+
 		if(Measurement.is(parentRef))
 			return noChildren;
 
@@ -94,6 +97,12 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 			return noChildren;
 
 		if (FutureStatus.is(parentRef))
+			return noChildren;
+
+		if (AnalyticalQuestion.is(parentRef))
+			return getChildrenOfAnalyticalQuestion(parentRef);
+
+		if (Assumption.is(parentRef))
 			return noChildren;
 
 		if(parentRef.isInvalid())
@@ -351,6 +360,15 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		return childRefs;
 	}
 
+	private ORefList getChildrenOfAnalyticalQuestion(ORef analyticalQuestionRef) throws Exception
+	{
+		ORefList childRefs = new ORefList();
+		AnalyticalQuestion analyticalQuestion = AnalyticalQuestion.find(getProject(), analyticalQuestionRef);
+		childRefs.addAll(analyticalQuestion.getAssumptionRefs());
+
+		return childRefs;
+	}
+
 	@Override
 	protected boolean isVisible(CodeList objectTypesToShow, AbstractPlanningTreeNode child) throws Exception
 	{
@@ -419,6 +437,12 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		if (factor.isIntermediateResult())
 			return true;
 		
+		if (factor.isAnalyticalQuestion())
+			return true;
+
+		if (factor.isAssumption())
+			return true;
+
 		return false;
 	}
 }

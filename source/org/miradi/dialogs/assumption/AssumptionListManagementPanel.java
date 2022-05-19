@@ -32,11 +32,11 @@ public class AssumptionListManagementPanel extends ObjectListManagementPanel
     public static AssumptionListManagementPanel create(MainWindow mainWindow, ORefList selectedAnalyticalQuestionHierarchy) throws Exception
     {
         AssumptionListTablePanel tablePanel = new AssumptionListTablePanel(mainWindow, selectedAnalyticalQuestionHierarchy);
-        AssumptionPropertiesPanel properties = new AssumptionPropertiesPanel(mainWindow);
+        AssumptionPropertiesPanelWithVisibility properties = new AssumptionPropertiesPanelWithVisibility(mainWindow);
         return new AssumptionListManagementPanel(mainWindow, tablePanel, properties);
     }
 
-    private AssumptionListManagementPanel(MainWindow mainWindow, AssumptionListTablePanel tablePanel, AssumptionPropertiesPanel properties) throws Exception
+    private AssumptionListManagementPanel(MainWindow mainWindow, AssumptionListTablePanel tablePanel, AssumptionPropertiesPanelWithVisibility properties) throws Exception
     {
         super(mainWindow, tablePanel, properties);
     }

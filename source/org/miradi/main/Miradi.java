@@ -294,7 +294,7 @@ public class Miradi
 
 			if (StringUtilities.isNullOrEmpty(lookAndFeelThemeClassName))
 			{
-				UIManager.setLookAndFeel(LookAndFeelThemeQuestion.DEFAULT_LOOK_AND_FEEL_THEME_CLASS_NAME);
+				UIManager.setLookAndFeel(LookAndFeelThemeQuestion.DEFAULT_SYSTEM_LOOK_AND_FEEL_THEME_CLASS_NAME);
 			}
 			else
 			{
