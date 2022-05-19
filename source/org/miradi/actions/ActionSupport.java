@@ -17,15 +17,20 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
-package org.miradi.views.umbrella;
+package org.miradi.actions;
 
-import org.miradi.views.map.MapView;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-public class SwitchToMapViewDoer extends ViewSwitchDoer 
+public class ActionSupport extends MainWindowAction
 {
-	@Override
-	protected String getViewName()
+	public ActionSupport(MainWindow mainWindow)
 	{
-		return MapView.getViewName();
+		super(mainWindow, getLabel(), "icons/lifebuoy16.png");
+	}
+
+	private static String getLabel()
+	{
+		return EAM.text("Action|Support");
 	}
 }

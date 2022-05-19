@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.wizard;
 
-import org.miradi.actions.openstandards.*;
 import org.miradi.commands.CommandSetObjectData;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.EAM;
@@ -32,14 +31,11 @@ import org.miradi.project.Project;
 import org.miradi.views.noproject.NoProjectView;
 import org.miradi.views.summary.SummaryView;
 import org.miradi.wizard.diagram.*;
-import org.miradi.wizard.library.LibraryOverviewStep;
-import org.miradi.wizard.map.MapOverviewStep;
 import org.miradi.wizard.noproject.NoProjectOverviewStep;
 import org.miradi.wizard.noproject.WelcomeCreateStep;
 import org.miradi.wizard.noproject.WelcomeImportStep;
 import org.miradi.wizard.planning.*;
 import org.miradi.wizard.reports.ReportsOverviewStep;
-import org.miradi.wizard.schedule.ScheduleOverviewStep;
 import org.miradi.wizard.summary.*;
 import org.miradi.wizard.targetviability.*;
 import org.miradi.wizard.threatmatrix.*;
@@ -68,11 +64,6 @@ public class WizardManager
 		createPlanningViewStepEntries(panel);
 		createWorkPlanViewStepEntries(panel);
 		createReportViewStepEntries(panel);
-		createScheduleStepEntries(panel);
-		createMapViewStepEntries(panel);
-		createImagesViewStepEntries(panel);
-		
-		createDashboardStepEntries(panel);
 	}
 	
 	public String getCurrentStepName()
@@ -160,11 +151,6 @@ public class WizardManager
 			.createBackControl(NoProjectOverviewStep.class);
 	}
 	
-	public void createScheduleStepEntries(WizardPanel panel)
-	{
-		createStepEntry(new ScheduleOverviewStep(panel));
-	}
-	
 	public void createTargetViabilityStepEntries(WizardPanel panel)
 	{
 		createStepEntry(new TargetViabilityOverviewStep(panel));
@@ -226,7 +212,6 @@ public class WizardManager
 		createStepEntry(new DiagramWizardGoodResultsChainCriteriaReview(panel));
 	}
 
-
 	public void createThreatMatrixViewStepEntries(WizardPanel panel) throws Exception
 	{
 		//TODO: View:Diagram...should be Step:StepName or support both
@@ -285,45 +270,6 @@ public class WizardManager
 		createStepEntry(new ReportsOverviewStep(panel));
 	}
 	
-	public void createMapViewStepEntries(WizardPanel panel)
-	{		
-		createStepEntry(new MapOverviewStep(panel));
-	}
-	
-	public void createImagesViewStepEntries(WizardPanel panel)
-	{
-		createStepEntry(new LibraryOverviewStep(panel));
-	}
-	
-	public void createDashboardStepEntries(WizardPanel panel) throws Exception
-	{
-		/* 1  */ createStepEntry(new SummaryWizardDefineTeamMembers(panel), ActionOpenStandardsConceptualizeParentMenu.class);
-		/* 1a */ createStepEntry(new SummaryWizardDefineTeamMembers(panel), ActionOpenStandardsConceptualizeProcessStep1a.class);
-		/* 1b */ createStepEntry(new SummaryWizardDefineProjecScope(panel), ActionOpenStandardsConceptualizeProcessStep1b.class);
-		/* 1c */ createStepEntry(new DiagramWizardIdentifyDirectThreatStep(panel), ActionOpenStandardsConceptualizeProcessStep1c.class);
-		/* 1d */ createStepEntry(new DiagramWizardIdentifyIndirectThreatStep(panel), ActionOpenStandardsConceptualizeProcessStep1d.class);
-
-		/* 2  */ createStepEntry(new StrategicPlanDevelopGoalStep(panel), ActionOpenStandardsPlanActionsAndMonitoringParentMenu.class);
-		/* 2a */ createStepEntry(new StrategicPlanDevelopGoalStep(panel), ActionOpenStandardsPlanActionsAndMonitoringProcessStep2a.class);
-		/* 2b */ createStepEntry(new DiagramWizardDefineAudienceStep(panel), ActionOpenStandardsPlanActionsAndMonitoringProcessStep2b.class);
-		/* 2c */ createStepEntry(new DevelopOperationalPlan(panel), ActionOpenStandardsPlanActionsAndMonitoringProcessStep2c.class);
-
-		/* 3  */ createStepEntry(new WorkPlanOverviewStep(panel), ActionOpenStandardsImplementActionsAndMonitoringParentMenu.class);
-		/* 3a */ createStepEntry(new WorkPlanOverviewStep(panel), ActionOpenStandardsImplementActionsAndMonitoringProcessStep3a.class);
-		/* 3b */ createStepEntry(new BudgetWizardAccountingAndFunding(panel), ActionOpenStandardsImplementActionsAndMonitoringProcessStep3b.class);
-		/* 3c */ createStepEntry(new ImplementPlans(panel), ActionOpenStandardsImplementActionsAndMonitoringProcessStep3c.class);
-		
-		/* 4  */ createStepEntry(new ImplementPlans(panel), ActionOpenStandardsAnalyzeUseAndAdaptParentMenu.class);
-		/* 4a */ createStepEntry(new ImplementPlans(panel), ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4a.class);
-		/* 4b */ createStepEntry(new ImplementPlans(panel), ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4b.class);
-		/* 4c */ createStepEntry(new ImplementPlans(panel), ActionOpenStandardsAnalyzeUseAndAdaptProcessStep4c.class);
-		
-		/* 5 */ createStepEntry(new ReportsOverviewStep(panel), ActionOpenStandardsCaptureAndShareLearningParentMenu.class);
-		/* 5a */ createStepEntry(new ReportsOverviewStep(panel), ActionOpenStandardsCaptureAndShareLearningProcessStep5a.class);
-		/* 5b */ createStepEntry(new ReportsOverviewStep(panel), ActionOpenStandardsCaptureAndShareLearningProcessStep5b.class);
-		/* 5c */ createStepEntry(new ReportsOverviewStep(panel), ActionOpenStandardsCaptureAndShareLearningProcessStep5c.class);
-	}
-
 	static Class[] getSequence()
 	{
 		Class[] entries = 
@@ -336,9 +282,6 @@ public class WizardManager
 				
 				// STEP 1B
 				SummaryWizardDefineProjecScope.class,
-
-				// (later this will go here)
-				//MapOverviewStep.class,
 
 				SummaryWizardDefineProjectVision.class,
 				DiagramOverviewStep.class,
@@ -423,9 +366,6 @@ public class WizardManager
 				WorkPlanDevelopMethodsAndTasksStep.class,
 				WorkPlanCreateResourcesStep.class,
 
-				// (later this will go here)
-				//ScheduleOverviewStep.class,
-				
 				// STEP 3B
 				BudgetWizardAccountingAndFunding.class,
 				BudgetWizardBudgetDetail.class,
@@ -439,9 +379,6 @@ public class WizardManager
 				
 				// NOT STEPS
 				ReportsOverviewStep.class,
-				MapOverviewStep.class,
-				ScheduleOverviewStep.class,
-				LibraryOverviewStep.class,
 		};
 		
 		return entries;
@@ -459,7 +396,6 @@ public class WizardManager
 		stepEntries.put(classToUse.getSimpleName(), step);
 	}
 
-	
 	public String stripJumpPrefix(Class stepMarker)
 	{
 		String name = stepMarker.getSimpleName();
@@ -468,8 +404,7 @@ public class WizardManager
 			name = name.substring(prefix.length());
 		return name;
 	}
-	
-	
+
 	public boolean isValidStep(Class stepMarker)
 	{
 		String name = stripJumpPrefix(stepMarker);
@@ -489,12 +424,12 @@ public class WizardManager
 		Class targetStep = step.getControl(controlName);
 		
 		if (targetStep==null)
-			return doDeferedSequenceLookup(controlName,step);
+			return doDeferredSequenceLookup(controlName,step);
 
 		return targetStep;
 	}
 	
-	Class doDeferedSequenceLookup(String controlName, SkeletonWizardStep step)
+	Class doDeferredSequenceLookup(String controlName, SkeletonWizardStep step)
 	{
 		Class name = getDestinationStep(controlName, step);
 		return name;
@@ -519,7 +454,6 @@ public class WizardManager
 		
 		return sequences[position];
 	}
-
 
 	private int findPositionInSequence(Class[] sequences, SkeletonWizardStep step)
 	{

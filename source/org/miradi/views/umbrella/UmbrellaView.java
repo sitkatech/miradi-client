@@ -187,16 +187,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 	private void addUmbrellaDoersToMap()
 	{
 		addDoerToMap(ActionAbout.class, new AboutDoer());
-		addDoerToMap(ActionAboutCMP.class, new HelpButtonDoer());
-		addDoerToMap(ActionHelpComingAttractions.class, new HelpButtonDoer());
-		addDoerToMap(ActionHelpAdaptiveManagement.class, new HelpButtonDoer());
-		addDoerToMap(ActionHelpAgileSoftware.class, new HelpButtonDoer());
-		addDoerToMap(ActionHelpCMPStandards.class, new HelpButtonDoer());
-		addDoerToMap(ActionHelpCredits.class, new HelpButtonDoer());
-		addDoerToMap(ActionHelpButtonExamples.class, new HelpButtonDoer());
-		addDoerToMap(ActionHelpButtonMoreInfo.class, new HelpButtonDoer());
-		addDoerToMap(ActionHelpButtonWorkshop.class, new HelpButtonDoer());
-		addDoerToMap(ActionHelpButtonSupport.class, new HelpButtonDoer());
+		addDoerToMap(ActionSupport.class, new SupportDoer());
 		
 		addDoerToMap(ActionSaveProjectAs.class, new SaveProjectAsDoer());
 		addDoerToMap(ActionHowToSave.class, new HowToSaveDoer());
@@ -250,9 +241,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionViewDiagram.class, new SwitchToDiagramViewDoer());
 		addDoerToMap(ActionViewThreatMatrix.class, new SwitchToThreatRatingViewDoer());
 		addDoerToMap(ActionViewPlanning.class, new SwitchToPlanningViewDoer());
-		addDoerToMap(ActionViewMap.class, new SwitchToMapViewDoer());
-		addDoerToMap(ActionViewImages.class, new SwitchToLibraryViewDoer());
-		addDoerToMap(ActionViewSchedule.class, new SwitchToScheduleViewDoer());
 		addDoerToMap(ActionViewTargetViability.class, new SwitchToTargetViabilityViewDoer());
 		addDoerToMap(ActionViewReports.class, new SwitchToReportViewDoer());
 		addDoerToMap(ActionViewWorkPlan.class, new SwitchToWorkPlanViewDoer());

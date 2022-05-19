@@ -31,7 +31,6 @@ import org.miradi.views.planning.PlanningView;
 import org.miradi.views.targetviability.TargetViabilityView;
 import org.miradi.views.threatmatrix.ThreatMatrixView;
 import org.miradi.views.umbrella.HelpButtonData;
-import org.miradi.views.umbrella.ViewSpecificHelpButtonData;
 import org.miradi.views.workplan.WorkPlanView;
 
 import javax.swing.*;
@@ -438,10 +437,6 @@ public class MainMenuBar extends JMenuBar
 		for(int i = 0; i < viewSwitchActions.length; ++i)
 			menu.add(viewSwitchActions[i]);
 		menu.addSeparator();
-// NOTE: Slide show disabled for 1.0.6 release because it is not ready yet
-//		addMenuItem(actions, menu, ActionToggleSlideShowPanel.class, KeyEvent.VK_E);
-//		addMenuItem(actions, menu, ActionSlideShowViewer.class, KeyEvent.VK_S);
-//		menu.addSeparator();
 
 		if(isDiagramView())
 		{
@@ -573,57 +568,8 @@ public class MainMenuBar extends JMenuBar
 		MiradiMenu menu = new MiradiMenu(EAM.text("MenuBar|Help"));
 		menu.setMnemonic(KeyEvent.VK_H);
 
-		JMenuItem item  = addMenuItem(actions, menu, ActionHelpButtonMoreInfo.class, KeyEvent.VK_I);
-		item.putClientProperty(HelpButtonData.class,
-				new ViewSpecificHelpButtonData(getMainWindow(), HelpButtonData.MORE_INFO, HelpButtonData.MORE_INFO_HTML));
-
-		item = addMenuItem(actions, menu, ActionHelpButtonExamples.class, KeyEvent.VK_E);
-		item.putClientProperty(HelpButtonData.class,
-				new ViewSpecificHelpButtonData(getMainWindow(), HelpButtonData.EXAMPLES, HelpButtonData.EXAMPLES_HTML));
-
-		item  = addMenuItem(actions, menu, ActionHelpButtonWorkshop.class, KeyEvent.VK_W);
-		item.putClientProperty(HelpButtonData.class,
-				new ViewSpecificHelpButtonData(getMainWindow(), HelpButtonData.WORKSHOP, HelpButtonData.WORKSHOP_HTML));
-
-		menu.addSeparator();
-
-		item  = addMenuItem(actions, menu, ActionHelpCMPStandards.class, KeyEvent.VK_O);
-		item.putClientProperty(HelpButtonData.class,
-				new HelpButtonData(HelpButtonData.CMP_STANDARDS,HelpButtonData.CMP_STANDARDS_HTML));
-
-
-		item  = addMenuItem(actions, menu, ActionHelpAdaptiveManagement.class, KeyEvent.VK_M);
-		item.putClientProperty(HelpButtonData.class,
-				new HelpButtonData(HelpButtonData.ADAPTIVE_MANAGEMENT,HelpButtonData.ADAPTIVE_MANAGEMENT_HTML));
-
-
-		item  = addMenuItem(actions, menu, ActionHelpAgileSoftware.class, KeyEvent.VK_S);
-		item.putClientProperty(HelpButtonData.class,
-				new HelpButtonData(HelpButtonData.AGILE_SOFTWARE,HelpButtonData.AGILE_SOFTWARE_HTML));
-
-		menu.addSeparator();
-
-		item  = addMenuItem(actions, menu, ActionHelpComingAttractions.class, KeyEvent.VK_T);
-		item.putClientProperty(HelpButtonData.class,
-				new HelpButtonData(HelpButtonData.COMING_ATTACTIONS, HelpButtonData.COMING_ATTRACTIONS_HTML));
-
-
-		item  = addMenuItem(actions, menu, ActionHelpCredits.class, KeyEvent.VK_R);
-		item.putClientProperty(HelpButtonData.class,
-				new HelpButtonData(HelpButtonData.CREDITS,HelpButtonData.CREDITS_HTML));
-
-		item  = addMenuItem(actions, menu, ActionAboutCMP.class, KeyEvent.VK_C);
-		item.putClientProperty(HelpButtonData.class,
-				new HelpButtonData(HelpButtonData.ABOUT_CMP,HelpButtonData.ABOUT_CMP_HTML));
-
-		menu.addSeparator();
-
-		item  = addMenuItem(actions, menu, ActionHelpButtonSupport.class, KeyEvent.VK_P);
-		item.putClientProperty(HelpButtonData.class,
-				new HelpButtonData(HelpButtonData.SUPPORT, HelpButtonData.SUPPORT_HTML));
-
+		addMenuItem(actions, menu, ActionSupport.class, KeyEvent.VK_P);
 		addMenuItem(actions, menu, ActionAbout.class, KeyEvent.VK_A);
-
 
 		return menu;
 	}

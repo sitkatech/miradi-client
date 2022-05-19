@@ -23,8 +23,6 @@ import org.miradi.actions.*;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.dialogs.fieldComponents.RemovedFeatureLabel;
 import org.miradi.utils.ToolBarButton;
-import org.miradi.views.umbrella.HelpButtonData;
-import org.miradi.views.umbrella.ViewSpecificHelpButtonData;
 
 import javax.swing.*;
 import java.awt.*;
@@ -62,12 +60,6 @@ public class MiradiProjectToolBar extends MiradiToolBar
 
 		add(new MiradiShareButton(actions.get(ActionLinkToMiradiShare.class)));
 
-		addSeparator();
-
-		add(new MoreInfoButton(actions.get(ActionHelpButtonMoreInfo.class)));
-		add(new ExamplesButton(actions.get(ActionHelpButtonExamples.class)));
-		add(new WorkshopButton(actions.get(ActionHelpButtonWorkshop.class)));
-		
 		updateButtonStates();
 	}
 
@@ -113,36 +105,6 @@ class MiradiShareButton extends HelpButton
 	public MiradiShareButton(Action action)
 	{
 		super(action, AppPreferences.getWizardBackgroundColor());
-	}
-}
-
-class MoreInfoButton extends HelpButton
-{
-	public MoreInfoButton(Action action)
-	{
-		super(action, Color.decode("#99CCFF"));
-		
-		putClientProperty(HelpButtonData.class, new ViewSpecificHelpButtonData(getMainWindow(), HelpButtonData.MORE_INFO, HelpButtonData.MORE_INFO_HTML));
-	}
-}
-
-class ExamplesButton extends HelpButton
-{
-	public ExamplesButton(Action action)
-	{
-		super(action, Color.decode("#FFFF77"));
-
-		putClientProperty(HelpButtonData.class, new ViewSpecificHelpButtonData(getMainWindow(), HelpButtonData.EXAMPLES, HelpButtonData.EXAMPLES_HTML));
-	}
-}
-
-class WorkshopButton extends HelpButton
-{
-	public WorkshopButton(Action action)
-	{
-		super(action, Color.decode("#77FF77"));
-		
-		putClientProperty(HelpButtonData.class, new ViewSpecificHelpButtonData(getMainWindow(), HelpButtonData.WORKSHOP, HelpButtonData.WORKSHOP_HTML));
 	}
 }
 

@@ -83,4 +83,10 @@ public class SummaryLocationPanel extends ObjectDataInputPanel
 		RtfFormExporter rtfFormExporter = new RtfFormExporter(getProject(), writer, getSelectedRefs());
 		rtfFormExporter.exportForm(new LocationTabForm());
 	}
+
+	@Override
+    public boolean isFeatureToBeRemoved()
+    {
+        return true;
+    }
 }
