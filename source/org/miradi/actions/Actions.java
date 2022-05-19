@@ -39,15 +39,6 @@ public class Actions
 		codeToJumpMenuActionMap = new HashMap<String, AbstractJumpMenuAction>();
 		
 		registerAction(new ActionAbout(mainWindow));
-		registerAction(new ActionAboutCMP(mainWindow));
-		registerAction(new ActionHelpComingAttractions(mainWindow));
-		registerAction(new ActionHelpAdaptiveManagement(mainWindow));
-		registerAction(new ActionHelpAgileSoftware(mainWindow));
-		registerAction(new ActionHelpCMPStandards(mainWindow));
-		registerAction(new ActionHelpCredits(mainWindow));
-		registerAction(new ActionHelpButtonExamples(mainWindow));
-		registerAction(new ActionHelpButtonMoreInfo(mainWindow));
-		registerAction(new ActionHelpButtonWorkshop(mainWindow));
 		registerAction(new ActionHelpButtonSupport(mainWindow));
 		registerAction(new ActionClose(mainWindow));
 		registerAction(new ActionContextualHelp(mainWindow));
