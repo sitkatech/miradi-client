@@ -19,9 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import org.miradi.main.EAM;
-import org.miradi.main.VersionConstants;
-import org.miradi.utils.Translation;
 import org.miradi.views.MainWindowDoer;
 
 public class AboutDoer extends MainWindowDoer 
@@ -39,60 +36,12 @@ public class AboutDoer extends MainWindowDoer
 	@Override
 	protected void doIt() throws Exception
 	{
-		String text =  buildMainSection();
-		text += loadHtmlFile("AboutExtra.html");
-		text += buildEndSection();
-		
-		HelpAboutPanel dialog = new HelpAboutPanel(getMainWindow(), text);
-		dialog.showAsOkDialog();
+        if (!isAvailable())
+            return;
+
+        if (getMainWindow().mainLinkFunction(MIRADI_SHARE_ABOUT_URL))
+            return;
 	}
 
-	public static String buildEndSection()
-	{
-		return loadHtmlFile("AboutEnd.html");
-	}
-	
-	public static String buildMainSection()
-	{
-		String text = loadHtmlFile("AboutPart1.html");
-		text += "<p>";
-		{
-			String template = EAM.text("<strong>Version: %s</strong>");
-			try
-			{
-				String translationVersion = VersionConstants.getVersionAndTimestamp();
-				text += " " + EAM.substituteSingleString(template, translationVersion);
-			}
-			catch(Exception e)
-			{
-				EAM.logError("Unable to determine Miradi version number");
-			}
-		}
-		if(!Translation.isDefaultLocalization())
-		{
-			String textToDisplay = EAM.text("(Translation: %code %date)");
-			textToDisplay = EAM.substitute(textToDisplay, "%code", Translation.getCurrentLanguageCode());
-			textToDisplay = EAM.substitute(textToDisplay, "%date", EAM.text(Translation.TRANSLATION_VERSION_KEY));
-			text += " " + textToDisplay;
-		}
-		text += "</p>";
-		text += loadHtmlFile("AboutPart2.html");
-		return text;
-	}
-	
-	
-	private static String loadHtmlFile(String htmlFile)
-	{
-		try
-		{
-			htmlFile = "help/" + htmlFile;
-			return Translation.getHtmlContent(htmlFile);
-		}
-		catch(Exception e)
-		{
-			EAM.logException(e);
-			return "";
-		}
-	}
-
+	public static final String MIRADI_SHARE_ABOUT_URL = "https://www.miradishare.org/ux/about";
 }

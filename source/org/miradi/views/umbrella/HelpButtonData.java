@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
-import org.miradi.main.EAM;
 import org.miradi.utils.Translation;
 
 public class HelpButtonData
@@ -42,9 +41,6 @@ public class HelpButtonData
 		return "Title:" + title + " File:" + htmlFile ;
 	}
 
-	public static final String SUPPORT = EAM.text("Action|Support");
-	public static final String SUPPORT_HTML = "help/Support.html";
-	
 	public static final String IMPORT_AND_EXPORT_HTML = "demo/DemoExportAndImport.html";
 	public static final String DEMO = "Demo";
 

@@ -1,4 +1,4 @@
-/* 
+/*
 Copyright 2005-2022, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
@@ -6,7 +6,7 @@ Material developed between 2005-2013 is jointly copyright by Beneficent Technolo
 This file is part of Miradi
 
 Miradi is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License version 3, 
+it under the terms of the GNU General Public License version 3,
 as published by the Free Software Foundation.
 
 Miradi is distributed in the hope that it will be useful,
@@ -15,22 +15,33 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/ 
-package org.miradi.actions;
+along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
+*/
+package org.miradi.views.umbrella;
 
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import org.miradi.views.MainWindowDoer;
 
-public class ActionHelpButtonSupport extends MainWindowAction
+public class SupportDoer extends MainWindowDoer
 {
-	public ActionHelpButtonSupport(MainWindow mainWindow)
-	{
-		super(mainWindow, getLabel(), "icons/lifebuoy16.png");
-	}
+    public SupportDoer()
+    {
+    }
 
-	private static String getLabel()
-	{
-		return EAM.text("Action|Support");
-	}
+    @Override
+    public boolean isAvailable()
+    {
+        return true;
+    }
+
+    @Override
+    protected void doIt() throws Exception
+    {
+        if (!isAvailable())
+            return;
+
+        if (getMainWindow().mainLinkFunction(MIRADI_SHARE_SUPPORT_URL))
+            return;
+    }
+
+    public static final String MIRADI_SHARE_SUPPORT_URL = "https://www.miradishare.org/ux/resources/faq";
 }

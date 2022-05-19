@@ -1,4 +1,4 @@
-<!-- 
+/* 
 Copyright 2005-2022, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
@@ -6,7 +6,7 @@ Material developed between 2005-2013 is jointly copyright by Beneficent Technolo
 This file is part of Miradi
 
 Miradi is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License version 3,
+it under the terms of the GNU General Public License version 3, 
 as published by the Free Software Foundation.
 
 Miradi is distributed in the hope that it will be useful,
@@ -15,19 +15,22 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
--->
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
-<HTML><HEAD><TITLE></TITLE>
-<STYLE type=text/css></STYLE>
-</HEAD>
+along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
+*/ 
+package org.miradi.actions;
 
-<body class='sidebar'>
-<div class='indented'>
-<FONT size=4><P>Copyright 2005-2022, Foundations of Success, Bethesda, Maryland
-on behalf of the Conservation Measures Partnership, ("CMP"). Material developed
-between 2005-2013 is jointly copyright by Beneficent Technology, Inc.
-("The Benetech Initiative"), Palo Alto, California.
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-Miradi is currently developed and maintained by Sitka Technology Group.
-</P>
+public class ActionSupport extends MainWindowAction
+{
+	public ActionSupport(MainWindow mainWindow)
+	{
+		super(mainWindow, getLabel(), "icons/lifebuoy16.png");
+	}
+
+	private static String getLabel()
+	{
+		return EAM.text("Action|Support");
+	}
+}

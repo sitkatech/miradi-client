@@ -568,10 +568,7 @@ public class MainMenuBar extends JMenuBar
 		MiradiMenu menu = new MiradiMenu(EAM.text("MenuBar|Help"));
 		menu.setMnemonic(KeyEvent.VK_H);
 
-		JMenuItem item  = addMenuItem(actions, menu, ActionHelpButtonSupport.class, KeyEvent.VK_P);
-		item.putClientProperty(HelpButtonData.class,
-				new HelpButtonData(HelpButtonData.SUPPORT, HelpButtonData.SUPPORT_HTML));
-
+		addMenuItem(actions, menu, ActionSupport.class, KeyEvent.VK_P);
 		addMenuItem(actions, menu, ActionAbout.class, KeyEvent.VK_A);
 
 		return menu;
