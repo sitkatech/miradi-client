@@ -35,7 +35,7 @@ public class RemovedFeatureLabel extends ClickablePanelTitleLabel
 {
     public RemovedFeatureLabel()
     {
-        super(EAM.text("This feature is scheduled to be removed in the next release (click for details)."), new WarningIcon(), "FeaturesToBeRemovedInNextRelease.html");
+        super(EAM.text("This feature is scheduled to be removed or revised in the next release (click for details)."), new WarningIcon(), "FeaturesToBeRemovedInNextRelease.html");
     }
 
     public void updateVisibility()

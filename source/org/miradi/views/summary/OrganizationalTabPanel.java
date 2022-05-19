@@ -117,7 +117,7 @@ class OrganizationalTabPanel extends DisposablePanelWithDescription implements M
 
 	public boolean isFeatureToBeRemoved()
 	{
-		return false;
+		return true;
 	}
 
 	public boolean isPrintable()
@@ -137,5 +137,4 @@ class OrganizationalTabPanel extends DisposablePanelWithDescription implements M
 	}
 
 	private ObjectManagementPanel wrappedPanel;
-
 }

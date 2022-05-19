@@ -121,4 +121,9 @@ public class TeamManagementPanel extends ObjectManagementPanel
 	{
 		new RtfManagementExporter(getProject()).writeManagement(getTableExporter(), writer);
 	}
+
+	public boolean isFeatureToBeRemoved()
+	{
+		return true;
+	}
 }

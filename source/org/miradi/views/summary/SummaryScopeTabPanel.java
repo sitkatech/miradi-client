@@ -99,4 +99,10 @@ public class SummaryScopeTabPanel extends ObjectDataInputPanelWithSections
 		summaryCodes.add(ReportTemplateContentQuestion.SUMMARY_VIEW_SCOPE_TAB_CODE);
 		viewExporter.exportView(writer, summaryCodes);
 	}
+
+	@Override
+    public boolean isFeatureToBeRemoved()
+    {
+        return true;
+    }
 }
