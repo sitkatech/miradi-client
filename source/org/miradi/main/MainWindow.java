@@ -57,12 +57,9 @@ import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
 import org.miradi.utils.*;
 import org.miradi.views.diagram.DiagramView;
-import org.miradi.views.library.LibraryView;
-import org.miradi.views.map.MapView;
 import org.miradi.views.noproject.NoProjectView;
 import org.miradi.views.planning.PlanningView;
 import org.miradi.views.reports.ReportsView;
-import org.miradi.views.schedule.ScheduleView;
 import org.miradi.views.summary.SummaryPlanningWorkPlanSubPanel;
 import org.miradi.views.summary.SummaryView;
 import org.miradi.views.targetviability.TargetViabilityView;
@@ -184,9 +181,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		summaryView = new SummaryView(this);
 		diagramView = new DiagramView(this);
 		threatMatrixView = new ThreatMatrixView(this);
-		mapView = new MapView(this);
-		calendarView = new ScheduleView(this);
-		libraryView = new LibraryView(this);
 		targetViabilityView = new TargetViabilityView(this);
 		planningView = new PlanningView(this);
 		workPlanView = new WorkPlanView(this);
@@ -198,9 +192,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		viewHolder.add(summaryView, summaryView.cardName());
 		viewHolder.add(diagramView, diagramView.cardName());
 		viewHolder.add(threatMatrixView, threatMatrixView.cardName());
-		viewHolder.add(mapView, mapView.cardName());
-		viewHolder.add(calendarView, calendarView.cardName());
-		viewHolder.add(libraryView, libraryView.cardName());
 		viewHolder.add(targetViabilityView, targetViabilityView.cardName());
 		viewHolder.add(planningView, planningView.cardName());
 		viewHolder.add(workPlanView, workPlanView.cardName());
@@ -1151,15 +1142,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		else if(viewName.equals(threatMatrixView.cardName()))
 			return threatMatrixView;
 		
-		else if(viewName.equals(mapView.cardName()))
-			return mapView;
-		
-		else if(viewName.equals(calendarView.cardName()))
-			return calendarView;
-		
-		else if(viewName.equals(libraryView.cardName()))
-			return libraryView;
-		
 		else if (viewName.equals(targetViabilityView.cardName()))
 			return targetViabilityView;
 		
@@ -1520,9 +1502,6 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	private SummaryView summaryView;
 	private DiagramView diagramView;
 	private ThreatMatrixView threatMatrixView;
-	private MapView mapView;
-	private ScheduleView calendarView;
-	private LibraryView libraryView;
 	private TargetViabilityView targetViabilityView;
 	private PlanningView planningView;
 	private WorkPlanView workPlanView;

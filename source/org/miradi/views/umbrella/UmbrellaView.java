@@ -250,9 +250,6 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionViewDiagram.class, new SwitchToDiagramViewDoer());
 		addDoerToMap(ActionViewThreatMatrix.class, new SwitchToThreatRatingViewDoer());
 		addDoerToMap(ActionViewPlanning.class, new SwitchToPlanningViewDoer());
-		addDoerToMap(ActionViewMap.class, new SwitchToMapViewDoer());
-		addDoerToMap(ActionViewImages.class, new SwitchToLibraryViewDoer());
-		addDoerToMap(ActionViewSchedule.class, new SwitchToScheduleViewDoer());
 		addDoerToMap(ActionViewTargetViability.class, new SwitchToTargetViabilityViewDoer());
 		addDoerToMap(ActionViewReports.class, new SwitchToReportViewDoer());
 		addDoerToMap(ActionViewWorkPlan.class, new SwitchToWorkPlanViewDoer());

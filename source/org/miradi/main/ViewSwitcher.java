@@ -30,11 +30,8 @@ import javax.swing.JComboBox;
 
 import org.miradi.actions.Actions;
 import org.miradi.actions.views.ActionViewDiagram;
-import org.miradi.actions.views.ActionViewImages;
-import org.miradi.actions.views.ActionViewMap;
 import org.miradi.actions.views.ActionViewPlanning;
 import org.miradi.actions.views.ActionViewReports;
-import org.miradi.actions.views.ActionViewSchedule;
 import org.miradi.actions.views.ActionViewSummary;
 import org.miradi.actions.views.ActionViewTargetViability;
 import org.miradi.actions.views.ActionViewThreatMatrix;
@@ -65,12 +62,6 @@ public class ViewSwitcher extends PanelComboBox<Object>
 		};
 		Vector<Action> viewVector = new Vector<>(Arrays.asList(views));
 		
-		if(Miradi.isDemoMode())
-		{
-			viewVector.add(actions.get(ActionViewMap.class));
-			viewVector.add(actions.get(ActionViewSchedule.class));
-			viewVector.add(actions.get(ActionViewImages.class));
-		}
 		return viewVector.toArray(new Action[0]);
 	}
 	

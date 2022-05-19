@@ -98,10 +98,7 @@ public class Actions
 		registerAction(new ActionViewPlanning(mainWindow));
 		registerAction(new ActionViewBudget(mainWindow));
 		registerAction(new ActionViewWorkPlan(mainWindow));
-		registerAction(new ActionViewMap(mainWindow));
 		registerAction(new ActionViewStrategicPlan(mainWindow));
-		registerAction(new ActionViewImages(mainWindow));
-		registerAction(new ActionViewSchedule(mainWindow));
 		registerAction(new ActionViewMonitoring(mainWindow));
 		registerAction(new ActionViewTargetViability(mainWindow));
 		registerAction(new ActionViewOperationalPlan(mainWindow));
