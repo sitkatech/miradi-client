@@ -26,7 +26,7 @@ public class ActionAbout extends MainWindowAction
 {
 	public ActionAbout(MainWindow mainWindow)
 	{
-		super(mainWindow, getLabel(), "images/miradi16.png");
+		super(mainWindow, getLabel(), "icons/miradi16.png");
 	}
 
 	private static String getLabel()
