@@ -82,7 +82,7 @@ public class XmlSchemaCreator implements XmlConstants
 		defineVocabulary(writer, VOCABULARY_SCOPE_BOX_TYPE, new LegacyScopeBoxTypeQuestion(null));
 		defineVocabulary(writer, VOCABULARY_STRESS_SEVERITY, new StressSeverityChoiceQuestion());
 		defineVocabulary(writer, VOCABULARY_STRESS_SCOPE, new StressScopeChoiceQuestion());
-		defineVocabulary(writer, VOCABULARY_STRATEGY_TAXONOMY_CODE, new StrategyTaxonomyQuestion());
+		defineVocabulary(writer, VOCABULARY_STRATEGY_TAXONOMY_CODE, new StrategyClassificationQuestion());
 		defineVocabulary(writer, VOCABULARY_STRATEGY_IMAPACT_RATING_CODE, new StrategyImpactQuestion());
 		defineVocabulary(writer, VOCABULARY_STRATEGY_FEASIBILITY_RATING_CODE, new StrategyFeasibilityQuestion());
 		defineVocabulary(writer, VOCABULARY_PRIORITY_RATING_CODE, new PriorityRatingQuestion());
