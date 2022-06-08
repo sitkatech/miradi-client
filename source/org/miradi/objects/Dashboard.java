@@ -918,7 +918,7 @@ public class Dashboard extends BaseObject
 		HashSet<Strategy> strategiesWithTaxonomyCode = new HashSet<Strategy>();
 		for(Strategy strategy : strategies)
 		{
-			if (strategy.getTaxonomyCode().length() > 0)
+			if (strategy.hasTaxonomyCode())
 				strategiesWithTaxonomyCode.add(strategy);
 		}
 		

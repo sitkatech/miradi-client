@@ -44,7 +44,7 @@ public class StrategyExporter extends BaseObjectWithLeaderResourceFieldExporter
 		writeOptionalCalculatedTimePeriodCosts(strategy, baseObjectSchema);
 		writeOptionalCalculatedTimeframe(strategy, baseObjectSchema);
 
-		getWriter().writeNonOptionalCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_TAXONOMY_CODE, new StrategyClassificationQuestion(), strategy.getTaxonomyCode());
+		getWriter().writeNonOptionalCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_STANDARD_CLASSIFICATION_V11_CODE, new StrategyClassificationQuestionV11(), strategy.getTaxonomyCode());
 		getWriter().writeNonOptionalCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_IMPACT_RATING, new StrategyImpactQuestion(), strategy.getChoiceItemData(Strategy.TAG_IMPACT_RATING).getCode());
 		getWriter().writeNonOptionalCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_FEASIBILITY_RATING, new StrategyFeasibilityQuestion(), strategy.getChoiceItemData(Strategy.TAG_FEASIBILITY_RATING).getCode());
 		getWriter().writeNonOptionalCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_EVIDENCE_CONFIDENCE, new StrategyEvidenceConfidenceQuestion(), strategy.getChoiceItemData(Strategy.TAG_EVIDENCE_CONFIDENCE).getCode());
@@ -56,9 +56,12 @@ public class StrategyExporter extends BaseObjectWithLeaderResourceFieldExporter
 		if (tag.equals(Strategy.TAG_ACTIVITY_IDS))
 			return true;
 		
-		if (tag.equals(Strategy.TAG_TAXONOMY_CODE))
+		if (tag.equals(Strategy.TAG_STANDARD_CLASSIFICATION_V11_CODE))
 			return true;
 		
+		if (tag.equals(Strategy.TAG_STANDARD_CLASSIFICATION_V20_CODE))
+			return true;
+
 		if (tag.equals(Strategy.TAG_IMPACT_RATING))
 			return true;
 		

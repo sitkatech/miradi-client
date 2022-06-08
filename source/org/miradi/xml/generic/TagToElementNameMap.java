@@ -227,7 +227,7 @@ public class TagToElementNameMap implements XmlConstants
 		HashMap<String, String> map = new HashMap<String, String>();
 		map.put(Strategy.TAG_LABEL, "Name");
 		map.put(Strategy.TAG_SHORT_LABEL, "Id");
-		map.put(Strategy.TAG_TAXONOMY_CODE, "StandardClassification");
+		map.put(Strategy.TAG_STANDARD_CLASSIFICATION_V11_CODE, "StandardClassification");
 		map.put(Strategy.TAG_TEXT, DETAILS);
 		map.put(Strategy.TAG_ACTIVITY_IDS, SORTED_ACTIVITY_IDS);
 		

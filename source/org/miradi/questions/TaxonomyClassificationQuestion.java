@@ -20,14 +20,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.questions;
 
 import org.miradi.dialogs.dashboard.StaticLongDescriptionProvider;
-import org.miradi.objecthelpers.TaxonomyFileLoader;
+import org.miradi.objecthelpers.TwoLevelFileLoader;
 
 
 public abstract class TaxonomyClassificationQuestion extends SingleSelectTwoLevelQuestion
 {
-	public TaxonomyClassificationQuestion(String fileName)
+	public TaxonomyClassificationQuestion(TwoLevelFileLoader twoLevelFileLoaderToUse)
 	{
-		super(new TaxonomyFileLoader(fileName));
+		super(twoLevelFileLoaderToUse);
 	}
 	
 	@Override

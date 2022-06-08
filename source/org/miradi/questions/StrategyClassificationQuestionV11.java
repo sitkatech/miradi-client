@@ -17,25 +17,19 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
 */ 
+package org.miradi.questions;
 
-package org.miradi.xml.xmpz2.xmpz2schema;
+import org.miradi.objecthelpers.TaxonomyTwoLevelFileLoader;
+import org.miradi.objecthelpers.TwoLevelFileLoader;
 
-import org.miradi.objects.Strategy;
-import org.miradi.schemas.BaseObjectSchema;
-
-public class StrategySchemaWriter extends BaseObjectSchemaWriterWithCalculatedCostsElement
+public class StrategyClassificationQuestionV11 extends TaxonomyClassificationQuestion
 {
-	public StrategySchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
+	public StrategyClassificationQuestionV11()
 	{
-		super(creatorToUse, baseObjectSchemaToUse);
+		super(new TaxonomyTwoLevelFileLoader(taxonomyFile));
 	}
+	
+	private static String taxonomyFile = TwoLevelFileLoader.STRATEGY_TAXONOMIES_v11_FILE;
 
-	@Override
-	protected boolean shouldOmitField(String tag)
-	{
-		if (tag.equals(Strategy.TAG_STANDARD_CLASSIFICATION_V20_CODE))
-			return true;
-
-		return super.shouldOmitField(tag);
-	}
+	public static final String STANDARD_CLASSIFICATION_CODELIST_KEY = "iucn-conservation-actions-ftv-1.1";
 }

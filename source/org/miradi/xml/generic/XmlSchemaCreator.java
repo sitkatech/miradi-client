@@ -82,7 +82,7 @@ public class XmlSchemaCreator implements XmlConstants
 		defineVocabulary(writer, VOCABULARY_SCOPE_BOX_TYPE, new LegacyScopeBoxTypeQuestion(null));
 		defineVocabulary(writer, VOCABULARY_STRESS_SEVERITY, new StressSeverityChoiceQuestion());
 		defineVocabulary(writer, VOCABULARY_STRESS_SCOPE, new StressScopeChoiceQuestion());
-		defineVocabulary(writer, VOCABULARY_STRATEGY_TAXONOMY_CODE, new StrategyClassificationQuestion());
+		defineVocabulary(writer, VOCABULARY_STRATEGY_TAXONOMY_CODE, new StrategyClassificationQuestionV11());
 		defineVocabulary(writer, VOCABULARY_STRATEGY_IMAPACT_RATING_CODE, new StrategyImpactQuestion());
 		defineVocabulary(writer, VOCABULARY_STRATEGY_FEASIBILITY_RATING_CODE, new StrategyFeasibilityQuestion());
 		defineVocabulary(writer, VOCABULARY_PRIORITY_RATING_CODE, new PriorityRatingQuestion());
@@ -710,7 +710,7 @@ public class XmlSchemaCreator implements XmlConstants
 	public static final String BIODIVERSITY_TARGET_HABITAT_ASSOCIATION_ELEMENT_NAME = Target.TAG_HABITAT_ASSOCIATION;
 	public static final String TARGET_STATUS_ELEMENT_NAME = "ViabilityStatus";
 	public static final String TARGET_VIABILITY_MODE_ELEMENT_NAME = AbstractTarget.TAG_VIABILITY_MODE;
-	public static final String STRATEGY_TAXONOMY_ELEMENT_NAME = Strategy.TAG_TAXONOMY_CODE;
+	public static final String STRATEGY_TAXONOMY_ELEMENT_NAME = Strategy.TAG_STANDARD_CLASSIFICATION_V11_CODE;
 	public static final String STRATEGY_IMPACT_RATING_ELEMENT_NAME = Strategy.TAG_IMPACT_RATING;
 	public static final String STRATEGY_FEASIBILITY_RATING_ELEMENT_NAME = Strategy.TAG_FEASIBILITY_RATING;
 	public static final String SCOPE_BOX_COLOR_ELEMENT_NAME = "ScopeBoxTypeCode";

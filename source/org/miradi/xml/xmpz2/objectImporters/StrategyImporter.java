@@ -47,6 +47,9 @@ public class StrategyImporter extends BaseObjectWithLeaderResourceFieldImporter
 		if (tag.equals(Strategy.TAG_ACTIVITY_IDS))
 			return true;
 
+		if (tag.equals(Strategy.TAG_STANDARD_CLASSIFICATION_V20_CODE))
+			return true;
+
 		return super.isCustomImportField(tag);
 	}
 }

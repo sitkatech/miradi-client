@@ -23,13 +23,13 @@ import java.io.BufferedReader;
 import java.io.StringReader;
 
 import org.miradi.main.MiradiTestCase;
-import org.miradi.objecthelpers.TaxonomyFileLoader;
+import org.miradi.objecthelpers.TaxonomyTwoLevelFileLoader;
 import org.miradi.objecthelpers.TwoLevelEntry;
 
-public class TestTaxonomyFileLoader extends MiradiTestCase
+public class TestTaxonomyTwoLevelFileLoader extends MiradiTestCase
 {
 
-	public TestTaxonomyFileLoader(String name)
+	public TestTaxonomyTwoLevelFileLoader(String name)
 	{
 		super(name);
 	}
@@ -55,7 +55,7 @@ public class TestTaxonomyFileLoader extends MiradiTestCase
 	private TwoLevelEntry[] loadDelimitedData(StringReader stringReader) throws Exception
 	{
 		BufferedReader reader = new BufferedReader( stringReader );
-		TwoLevelEntry[] twoLevelItem = new TaxonomyFileLoader("").load(reader);
+		TwoLevelEntry[] twoLevelItem = new TaxonomyTwoLevelFileLoader("").load(reader);
 		return twoLevelItem;
 	}
 

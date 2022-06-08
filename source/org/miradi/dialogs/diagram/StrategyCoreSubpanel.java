@@ -45,7 +45,8 @@ public class StrategyCoreSubpanel extends ObjectDataInputPanel
 		addFieldsOnOneLine(EAM.text("Strategy"), IconManager.getStrategyIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 		addField(createMultilineField(StrategySchema.getObjectType(), Factor.TAG_TEXT));
 
-		addField(createRadioButtonEditorField(StrategySchema.getObjectType(), Strategy.TAG_TAXONOMY_CODE, new StrategyClassificationQuestion()));
+		addField(createRadioButtonEditorField(StrategySchema.getObjectType(), Strategy.TAG_STANDARD_CLASSIFICATION_V11_CODE, new StrategyClassificationQuestionV11()));
+		addField(createRadioButtonEditorField(StrategySchema.getObjectType(), Strategy.TAG_STANDARD_CLASSIFICATION_V20_CODE, new StrategyClassificationQuestionV20()));
 		addTaxonomyFields(StrategySchema.getObjectType());
 		
 		ObjectDataInputField impactField = createRadioButtonEditorField(StrategySchema.getObjectType(), Strategy.TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));

@@ -52,7 +52,7 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(ThreatClassificationQuestion.class, VOCABULARY_THREAT_TAXONOMY_CODE);
 		addItem(StressSeverityChoiceQuestion.class, VOCABULARY_SEVERITY_RATING);
 		addItem(StressScopeChoiceQuestion.class, VOCABULARY_SCOPE_RATING);
-		addItem(StrategyClassificationQuestion.class, VOCABULARY_STRATEGY_TAXONOMY_CODE);
+		addItem(StrategyClassificationQuestionV11.class, VOCABULARY_STRATEGY_TAXONOMY_CODE);
 		addItem(StrategyImpactQuestion.class, VOCABULARY_STRATEGY_IMAPACT_RATING_CODE);
 		addItem(StrategyFeasibilityQuestion.class, VOCABULARY_STRATEGY_FEASIBILITY_RATING_CODE);
 		addItem(PriorityRatingQuestion.class, VOCABULARY_PRIORITY_RATING_CODE);

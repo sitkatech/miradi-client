@@ -19,13 +19,14 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
+import org.miradi.objecthelpers.TaxonomyTwoLevelFileLoader;
 import org.miradi.objecthelpers.TwoLevelFileLoader;
 
 public class ThreatClassificationQuestion  extends TaxonomyClassificationQuestion
 {
 	public ThreatClassificationQuestion()
 	{
-		super(taxonomyFile);
+		super(new TaxonomyTwoLevelFileLoader(taxonomyFile));
 	}
 
 	private static String taxonomyFile = TwoLevelFileLoader.THREAT_TAXONOMIES_FILE;
