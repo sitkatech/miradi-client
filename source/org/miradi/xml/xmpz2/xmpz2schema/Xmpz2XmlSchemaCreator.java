@@ -100,6 +100,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creators.add(defineTaxonomyElement());
 		creators.add(defineAccountingClassificationAssociationsElement());
 		creators.add(defineAccountingClassificationContainerElement());
+		creators.add(defineStrategyStandardClassificationContainerElement());
+		creators.add(defineStrategyStandardClassificationElement());
 
 		for(Xmpz2CustomSchemaDefinitionCreator creator : creators)
 		{
@@ -877,7 +879,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	private void defineFullProjectTimeSpanElement(String fullProjectTimeSpanElementName)
 	{
 		final String[] subElements = new String[]{
-				getSchemaWriter().createAttributeElement(FULL_PROJECT_TIMESPAN, VOCABULART_FULL_PROJECT_TIMESPAN),
+				getSchemaWriter().createAttributeElement(FULL_PROJECT_TIMESPAN, VOCABULARY_FULL_PROJECT_TIMESPAN),
 		};
 		defineElement(fullProjectTimeSpanElementName, subElements);
 	}
@@ -1014,8 +1016,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 
 		return creator;
 	}
-	
-	
+
 	private Xmpz2CustomSchemaDefinitionCreator createExtraDataElement()
 	{
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), EXTRA_DATA);
@@ -1032,7 +1033,24 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		
 		return creator;
 	}
-	
+
+	private Xmpz2CustomSchemaDefinitionCreator defineStrategyStandardClassificationContainerElement()
+	{
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), STRATEGY_STANDARD_CLASSIFICATION_CONTAINER);
+		creator.addZeroOrMoreDotElement(STRATEGY_STANDARD_CLASSIFICATION);
+
+		return creator;
+	}
+
+	private Xmpz2CustomSchemaDefinitionCreator defineStrategyStandardClassificationElement()
+	{
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), STRATEGY_STANDARD_CLASSIFICATION);
+		creator.addUriRestrictedAttributeElement(STRATEGY_STANDARD_CLASSIFICATION_CODE);
+		creator.addOptionalChildElement("code", VOCABULARY_STRATEGY_STANDARD_CLASSIFICATION_V11_CODE + " | " + VOCABULARY_STRATEGY_STANDARD_CLASSIFICATION_V20_CODE);
+
+		return creator;
+	}
+
 	private Xmpz2CustomSchemaDefinitionCreator defineAccountingClassificationAssociationsElement()
 	{
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), ACCOUNTING_CLASSIFICATION_ASSOCIATION);

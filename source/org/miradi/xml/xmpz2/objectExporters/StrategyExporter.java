@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectExporters;
 
+import org.miradi.objecthelpers.CodeToCodeMap;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Strategy;
 import org.miradi.questions.*;
@@ -44,10 +45,13 @@ public class StrategyExporter extends BaseObjectWithLeaderResourceFieldExporter
 		writeOptionalCalculatedTimePeriodCosts(strategy, baseObjectSchema);
 		writeOptionalCalculatedTimeframe(strategy, baseObjectSchema);
 
-		getWriter().writeNonOptionalCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_STANDARD_CLASSIFICATION_V11_CODE, new StrategyClassificationQuestionV11(), strategy.getTaxonomyCode());
 		getWriter().writeNonOptionalCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_IMPACT_RATING, new StrategyImpactQuestion(), strategy.getChoiceItemData(Strategy.TAG_IMPACT_RATING).getCode());
 		getWriter().writeNonOptionalCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_FEASIBILITY_RATING, new StrategyFeasibilityQuestion(), strategy.getChoiceItemData(Strategy.TAG_FEASIBILITY_RATING).getCode());
 		getWriter().writeNonOptionalCodeElement(baseObjectSchema.getObjectName(), Strategy.TAG_EVIDENCE_CONFIDENCE, new StrategyEvidenceConfidenceQuestion(), strategy.getChoiceItemData(Strategy.TAG_EVIDENCE_CONFIDENCE).getCode());
+
+		CodeToCodeMap strategyStandardClassificationCodes = getStandardClassifications(strategy);
+		if (strategyStandardClassificationCodes.size() > 0)
+			getWriter().writeStrategyStandardClassifications(strategyStandardClassificationCodes);
 	}
 	
 	@Override
@@ -77,5 +81,20 @@ public class StrategyExporter extends BaseObjectWithLeaderResourceFieldExporter
 	private void writeActivityRefs(BaseObjectSchema baseObjectSchema, final Strategy strategy) throws Exception
 	{
 		getWriter().writeReflist(baseObjectSchema.getObjectName() + ORDERED_ACTIVITY_IDS, ACTIVITY, strategy.getActivityRefs());
+	}
+
+	private CodeToCodeMap getStandardClassifications(Strategy strategy)
+	{
+		CodeToCodeMap strategyStandardClassificationCodes = new CodeToCodeMap();
+
+		String standardClassificationCodeV11 = strategy.getTaxonomyCode(StrategyClassificationQuestionV11.STANDARD_CLASSIFICATION_CODELIST_KEY);
+		if (!standardClassificationCodeV11.isEmpty())
+			strategyStandardClassificationCodes.putCode(StrategyClassificationQuestionV11.STANDARD_CLASSIFICATION_CODELIST_KEY, standardClassificationCodeV11);
+
+		String standardClassificationCodeV20 = strategy.getTaxonomyCode(StrategyClassificationQuestionV20.STANDARD_CLASSIFICATION_CODELIST_KEY);
+		if (!standardClassificationCodeV20.isEmpty())
+			strategyStandardClassificationCodes.putCode(StrategyClassificationQuestionV20.STANDARD_CLASSIFICATION_CODELIST_KEY, standardClassificationCodeV20);
+
+		return strategyStandardClassificationCodes;
 	}
 }

@@ -245,9 +245,15 @@ public class Strategy extends Factor
 		return calculateRelevantRefList(relevantIndicators, relevantOverrides);
 	}
 
-	public String getTaxonomyCode()
+	public String getTaxonomyCode(String strategyStandardClassificationCode)
 	{
-		return getData(TAG_STANDARD_CLASSIFICATION_V11_CODE);
+		if (strategyStandardClassificationCode.equals(StrategyClassificationQuestionV11.STANDARD_CLASSIFICATION_CODELIST_KEY))
+			return getData(TAG_STANDARD_CLASSIFICATION_V11_CODE);
+
+		if (strategyStandardClassificationCode.equals(StrategyClassificationQuestionV20.STANDARD_CLASSIFICATION_CODELIST_KEY))
+			return getData(TAG_STANDARD_CLASSIFICATION_V20_CODE);
+
+		throw new RuntimeException("Attempted to get taxonomy code for Strategy with invalid classification code: " + strategyStandardClassificationCode);
 	}
 
 	public String getTaxonomySummary()

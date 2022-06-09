@@ -173,9 +173,13 @@ public class MigrationManager extends AbstractMigrationManager
 	{
 		String documentSchemaVersionAsString = String.valueOf(documentSchemaVersion);
 
+		// 4.6f -> 243
+		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_243))
+			return MigrationTo83.VERSION_TO;
+
 		// 4.6e -> 242
 		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_242))
-			return MigrationTo83.VERSION_TO;
+			return MigrationTo81.VERSION_TO;
 
 		// 4.5 -> 237
 		if (documentSchemaVersionAsString.equals(Xmpz2XmlConstants.NAME_SPACE_VERSION_237))
