@@ -39,6 +39,7 @@ public class TaxonomyThreeLevelFileLoader extends TwoLevelFileLoader
 
         String prevLevel1Code = "";
         String prevLevel2Code = "";
+
         int level1Index = 0;
         int level2Index = 0;
         int level3Index = 0;
@@ -59,25 +60,27 @@ public class TaxonomyThreeLevelFileLoader extends TwoLevelFileLoader
             {
                 level2Index = 0;
                 level3Index = 0;
+                prevLevel1Code = getLevel1Code(code);
+
                 String taxonomyLevelText = ++level1Index + " " + level1Descriptor;
-                taxonomyItems.add(new TwoLevelEntry(getLevel1Code(code), taxonomyLevelText, "", longDescription));
+                taxonomyItems.add(new TwoLevelEntry(getLevel1Code(code), taxonomyLevelText, "", longDescription, 1));
             }
 
             if(!getLevel2Code(code).equals(prevLevel2Code))
             {
                 level3Index = 0;
+                prevLevel2Code = getLevel2Code(code);
+
                 String taxonomyLevel2Text = " " + level1Index + "." + ++level2Index + " " + level2Descriptor;
-                taxonomyItems.add(new TwoLevelEntry(getLevel2Code(code), taxonomyLevel2Text, "", longDescription));
+                taxonomyItems.add(new TwoLevelEntry(getLevel2Code(code), taxonomyLevel2Text, "", longDescription, 2, prevLevel1Code));
             }
 
             ++level3Index;
             String taxonomyLevel3Text = " " + level1Index + "." + level2Index + "." + level3Index + " " + level3Descriptor;
-            TwoLevelEntry entry = new TwoLevelEntry(code, taxonomyLevel3Text, "", longDescription);
+            TwoLevelEntry entry = new TwoLevelEntry(code, taxonomyLevel3Text, "", longDescription, 3, prevLevel2Code);
             taxonomyItems.add(entry);
-
-            prevLevel1Code = getLevel1Code(code);
-            prevLevel2Code = getLevel2Code(code);
         }
+
         return taxonomyItems;
     }
 
@@ -88,7 +91,7 @@ public class TaxonomyThreeLevelFileLoader extends TwoLevelFileLoader
 
     private String getLevel2Code(String code)
     {
-        return getCodeParts(code)[1];
+        return getLevel1Code(code) + "." + getCodeParts(code)[1];
     }
 
     private String[] getCodeParts(String code)

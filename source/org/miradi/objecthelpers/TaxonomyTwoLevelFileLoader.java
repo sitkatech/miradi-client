@@ -56,12 +56,12 @@ public class TaxonomyTwoLevelFileLoader extends TwoLevelFileLoader
 			{
 				level2Index = 0;
 				String taxonomyLevelText = ++level1Index + " " + level1Descriptor;
-				taxonomyItems.add(new TwoLevelEntry(getLevel1Code(code), taxonomyLevelText, "", longDescription));
+				taxonomyItems.add(new TwoLevelEntry(getLevel1Code(code), taxonomyLevelText, "", longDescription, 1));
 			}
 			
 			++level2Index;
 			String taxonomyLevel2Text = " " + level1Index + "." + level2Index + " " + level2Descriptor;
-			TwoLevelEntry entry = new TwoLevelEntry(code, taxonomyLevel2Text, "", longDescription);
+			TwoLevelEntry entry = new TwoLevelEntry(code, taxonomyLevel2Text, "", longDescription, 2);
 			taxonomyItems.add(entry);
 
 			prevLevel1Code = getLevel1Code(code);

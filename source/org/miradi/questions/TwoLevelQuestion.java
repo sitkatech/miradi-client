@@ -39,11 +39,11 @@ abstract public class TwoLevelQuestion extends DynamicChoiceQuestion
 		twoLevelFileLoader = null;
 	}
 	
-	private ChoiceItem[] loadChoices()
+	protected ChoiceItem[] loadChoices()
 	{
 		try 
 		{
-			Vector<ChoiceItem> chocies = new Vector<ChoiceItem>();
+			Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
 			TwoLevelEntry[] twoLevelEntries = twoLevelFileLoader.load();
 
 			for (int i = 0; i < twoLevelEntries.length; ++i)
@@ -55,10 +55,10 @@ abstract public class TwoLevelQuestion extends DynamicChoiceQuestion
 				String longDescription = getSafeXmlEncodedValue(twoLevelEntry.getLongDescription());
 				ChoiceItem choice = createChoiceItem(code, label, description, longDescription);
 				choice.setSelectable(twoLevelEntry.isSelectable());
-				chocies.add(choice);
+				choices.add(choice);
 			}
 			
-			return chocies.toArray(new ChoiceItem[0]);
+			return choices.toArray(new ChoiceItem[0]);
 		}
 		catch (Exception e)
 		{

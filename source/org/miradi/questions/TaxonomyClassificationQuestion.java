@@ -29,7 +29,13 @@ public abstract class TaxonomyClassificationQuestion extends SingleSelectTwoLeve
 	{
 		super(twoLevelFileLoaderToUse);
 	}
-	
+
+	@Override
+	protected ChoiceItem[] loadChoices()
+	{
+		return super.loadChoices();
+	}
+
 	@Override
 	protected ChoiceItem createChoiceItem(String code, String label, String description, String longDescription) throws Exception
 	{
