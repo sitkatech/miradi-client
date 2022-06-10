@@ -35,7 +35,7 @@ public class TaxonomyThreeLevelFileLoader extends TwoLevelFileLoader
     protected Vector<TwoLevelEntry> processVector(Vector<Vector<String>> fileVector)
     {
         Vector<TwoLevelEntry> taxonomyItems = new Vector<TwoLevelEntry>();
-        taxonomyItems.add(new TwoLevelEntry("", EAM.text("Not Specified")));
+        taxonomyItems.add(new ThreeLevelEntry("", EAM.text("Not Specified")));
 
         String prevLevel1Code = "";
         String prevLevel2Code = "";
@@ -63,7 +63,7 @@ public class TaxonomyThreeLevelFileLoader extends TwoLevelFileLoader
                 prevLevel1Code = getLevel1Code(code);
 
                 String taxonomyLevelText = ++level1Index + " " + level1Descriptor;
-                taxonomyItems.add(new TwoLevelEntry(getLevel1Code(code), taxonomyLevelText, "", longDescription, 1));
+                taxonomyItems.add(new ThreeLevelEntry(getLevel1Code(code), taxonomyLevelText, "", longDescription, 1));
             }
 
             if(!getLevel2Code(code).equals(prevLevel2Code))
@@ -72,12 +72,12 @@ public class TaxonomyThreeLevelFileLoader extends TwoLevelFileLoader
                 prevLevel2Code = getLevel2Code(code);
 
                 String taxonomyLevel2Text = " " + level1Index + "." + ++level2Index + " " + level2Descriptor;
-                taxonomyItems.add(new TwoLevelEntry(getLevel2Code(code), taxonomyLevel2Text, "", longDescription, 2, prevLevel1Code));
+                taxonomyItems.add(new ThreeLevelEntry(getLevel2Code(code), taxonomyLevel2Text, "", longDescription, 2, prevLevel1Code));
             }
 
             ++level3Index;
             String taxonomyLevel3Text = " " + level1Index + "." + level2Index + "." + level3Index + " " + level3Descriptor;
-            TwoLevelEntry entry = new TwoLevelEntry(code, taxonomyLevel3Text, "", longDescription, 3, prevLevel2Code);
+            TwoLevelEntry entry = new ThreeLevelEntry(code, taxonomyLevel3Text, "", longDescription, 3, prevLevel2Code);
             taxonomyItems.add(entry);
         }
 

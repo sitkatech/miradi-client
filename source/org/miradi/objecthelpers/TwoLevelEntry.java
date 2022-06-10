@@ -98,7 +98,7 @@ public class TwoLevelEntry
 		return false;
 	}
 
-	private boolean isEmptyItem()
+	protected boolean isEmptyItem()
 	{
 		return entryCode.length()==0;
 	}

@@ -67,7 +67,7 @@ abstract public class TwoLevelQuestion extends DynamicChoiceQuestion
 		}
 	}
 
-	private String getSafeXmlEncodedValue(final String value)
+	protected String getSafeXmlEncodedValue(final String value)
 	{
 		return XmlUtilities2.getXmlEncoded(value);
 	}
@@ -92,7 +92,9 @@ abstract public class TwoLevelQuestion extends DynamicChoiceQuestion
 	{
 		return choices;
 	}
-	
+
+	protected TwoLevelFileLoader getTwoLevelFileLoader() { return twoLevelFileLoader; }
+
 	private Vector<ChoiceItem> choices;
 	private TwoLevelFileLoader twoLevelFileLoader;
 }
