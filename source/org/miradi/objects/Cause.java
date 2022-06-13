@@ -95,9 +95,15 @@ public class Cause extends Factor
 		if (fieldTag.equals(PSEUDO_TAG_TAXONOMY_CODE_VALUE))
 		{
 			String code = getData(TAG_TAXONOMY_CODE);
-			ThreatClassificationQuestion question = new ThreatClassificationQuestion();
-			ChoiceItem choice = question.findChoiceByCode(code);
-			return choice.getLabel();
+			if (!code.isEmpty())
+			{
+				ThreatClassificationQuestion question = new ThreatClassificationQuestion();
+				ChoiceItem choice = question.findChoiceItem(code);
+				if (choice != null)
+					return choice.getLabel();
+			}
+
+			return "";
 		}
 		
 		return super.getPseudoData(fieldTag);

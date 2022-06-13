@@ -261,12 +261,23 @@ public class Strategy extends Factor
 		Vector<String> taxonomyLabels = new Vector<>();
 
 		String v11TaxonomyCode = getData(TAG_STANDARD_CLASSIFICATION_V11_CODE);
-		taxonomyLabels.add(new StrategyClassificationQuestionV11().findChoiceByCode(v11TaxonomyCode).getLabel());
+		if (!v11TaxonomyCode.isEmpty())
+			taxonomyLabels.add(getTaxonomyLabel(new StrategyClassificationQuestionV11(), v11TaxonomyCode));
 
 		String v20TaxonomyCode = getData(TAG_STANDARD_CLASSIFICATION_V20_CODE);
-		taxonomyLabels.add(new StrategyClassificationQuestionV20().findChoiceByCode(v20TaxonomyCode).getLabel());
+		if (!v20TaxonomyCode.isEmpty())
+			taxonomyLabels.add(getTaxonomyLabel(new StrategyClassificationQuestionV20(), v20TaxonomyCode));
 
 		return StringUtilities.joinList(taxonomyLabels, ", ");
+	}
+
+	private String getTaxonomyLabel(TaxonomyClassificationQuestion question, String code)
+	{
+		ChoiceItem choice = question.findChoiceItem(code);
+		if (choice != null)
+			return choice.getLabel();
+
+		return "";
 	}
 
 	public boolean hasTaxonomyCode()

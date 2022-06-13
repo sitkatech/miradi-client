@@ -28,7 +28,7 @@ public class TwoLevelEntry
 	
 	public TwoLevelEntry(String code, String labelToUse, String descriptionToUse)
 	{
-		this(code, labelToUse, descriptionToUse, "", 1);
+		this(code, labelToUse, descriptionToUse, "", 0);
 	}
 	
 	public TwoLevelEntry(String code, String labelToUse, String descriptionToUse, String longDescriptionToUse, int entryLevelToUse)

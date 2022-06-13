@@ -63,7 +63,7 @@ public class TaxonomyThreeLevelFileLoader extends TwoLevelFileLoader
                 prevLevel1Code = getLevel1Code(code);
 
                 String taxonomyLevelText = ++level1Index + " " + level1Descriptor;
-                taxonomyItems.add(new ThreeLevelEntry(getLevel1Code(code), taxonomyLevelText, "", longDescription, 1));
+                taxonomyItems.add(new ThreeLevelEntry(getLevel1Code(code), taxonomyLevelText, "", longDescription, 1, ""));
             }
 
             if(!getLevel2Code(code).equals(prevLevel2Code))

@@ -39,7 +39,7 @@ public class TestMigrationTo82 extends AbstractTestMigration
         Strategy strategy = getProject().createAndPopulateStrategy();
 
         ChoiceQuestion classificationQuestionV11 = StaticQuestionManager.getQuestion(StrategyClassificationQuestionV11.class);
-        String expectedValue = classificationQuestionV11.getCode(1);
+        String expectedValue = classificationQuestionV11.getAllCodes().lastElement();
 
         getProject().fillObjectUsingCommand(strategy.getRef(), MigrationTo82.TAG_TAXONOMY_CODE, expectedValue);
 

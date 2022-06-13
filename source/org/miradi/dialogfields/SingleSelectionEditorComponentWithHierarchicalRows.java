@@ -17,19 +17,37 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
-package org.miradi.questions;
 
-import org.miradi.objecthelpers.TaxonomyThreeLevelFileLoader;
-import org.miradi.objecthelpers.TwoLevelFileLoader;
+package org.miradi.dialogfields;
 
-public class StrategyClassificationQuestionV20 extends TaxonomyClassificationQuestion
+import org.miradi.questions.ChoiceQuestion;
+import org.miradi.utils.CodeList;
+
+public class SingleSelectionEditorComponentWithHierarchicalRows extends SingleSelectionEditorComponentWithHierarchies
 {
-    public StrategyClassificationQuestionV20()
+    public SingleSelectionEditorComponentWithHierarchicalRows(ChoiceQuestion questionToUse)
     {
-        super(new TaxonomyThreeLevelFileLoader(taxonomyFile));
+        super(questionToUse);
+
+        initializeWithDefaultChoice(questionToUse);
     }
 
-    private static String taxonomyFile = TwoLevelFileLoader.STRATEGY_TAXONOMIES_v20_FILE;
+    private void initializeWithDefaultChoice(ChoiceQuestion questionToUse)
+    {
+        setText("");
+    }
 
-    public static final String STANDARD_CLASSIFICATION_CODELIST_KEY = "iucn-conservation-actions-ftv-2.0";
+    @Override
+    public void setText(String codeToUse)
+    {
+        CodeList codeList = new CodeList(new String[]{codeToUse, });
+        updateToggleButtonSelections(codeList);
+    }
+
+    @Override
+    public String getText()
+    {
+        CodeList selectedCode = getSelectedCodes();
+        return selectedCode.firstElement();
+    }
 }
