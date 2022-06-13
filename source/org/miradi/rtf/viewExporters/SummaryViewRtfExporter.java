@@ -68,9 +68,6 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_LOCATION_TAB_CODE))
 			exportLocationTab(writer);
 
-		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_PLANNING_TAB_CODE))
- 			exportPlanningTab(writer);
-
 		if (reportTemplateContent.contains(ReportTemplateContentQuestion.SUMMARY_VIEW_MIRADI_SHARE_TAB_CODE))
 			exportMiradiShareTab(writer);
 	}
@@ -96,11 +93,6 @@ public class SummaryViewRtfExporter extends RtfViewExporter
 		exportForm(writer, new ScopeTabForm(), WcpaProjectDataSchema.getObjectType());
 		exportModel(writer, new IucnRedlistSpeciesEditablePoolTableModel(getProject()), EAM.text("IUCN Redlist Species"));
 		exportModel(writer, new OtherNotableSpeciesEditablePoolTableModel(getProject()), EAM.text("Other Notable Species"));
-	}
-
-	private void exportPlanningTab(RtfWriter writer) throws Exception
-	{
-		exportForm(writer, new PlanningTabForm(), new ORefList(getProjectMetadataRef()));
 	}
 
 	private void exportLocationTab(RtfWriter writer) throws Exception
