@@ -28,15 +28,27 @@ public class TwoLevelEntry
 	
 	public TwoLevelEntry(String code, String labelToUse, String descriptionToUse)
 	{
-		this(code, labelToUse, descriptionToUse, "");
+		this(code, labelToUse, descriptionToUse, "", 0);
 	}
 	
-	public TwoLevelEntry(String code, String labelToUse, String descriptionToUse, String longDescriptionToUse)
+	public TwoLevelEntry(String code, String labelToUse, String descriptionToUse, String longDescriptionToUse, int entryLevelToUse)
 	{
 		entryCode = code;
 		entryLabel = labelToUse;
 		description = descriptionToUse;
 		longDescription = longDescriptionToUse;
+		entryLevel = entryLevelToUse;
+		parentEntryCode = "";
+	}
+
+	public TwoLevelEntry(String code, String labelToUse, String descriptionToUse, String longDescriptionToUse, int entryLevelToUse, String parentEntryCodeToUse)
+	{
+		entryCode = code;
+		entryLabel = labelToUse;
+		description = descriptionToUse;
+		longDescription = longDescriptionToUse;
+		entryLevel = entryLevelToUse;
+		parentEntryCode = parentEntryCodeToUse;
 	}
 
 	public String getEntryCode()
@@ -59,6 +71,16 @@ public class TwoLevelEntry
 		return longDescription;
 	}
 
+	public int getEntryLevel()
+	{
+		return entryLevel;
+	}
+
+	public String getParentEntryCode()
+	{
+		return parentEntryCode;
+	}
+
 	@Override
 	public String toString()
 	{
@@ -76,7 +98,7 @@ public class TwoLevelEntry
 		return false;
 	}
 
-	private boolean isEmptyItem()
+	protected boolean isEmptyItem()
 	{
 		return entryCode.length()==0;
 	}
@@ -85,4 +107,6 @@ public class TwoLevelEntry
 	private String entryLabel;
 	private String description;
 	private String longDescription;
+	private int entryLevel;
+	private String parentEntryCode;
 }

@@ -46,14 +46,15 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(DiagramFactorBackgroundQuestion.class, VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR);
 		addItem(DiagramFactorFontColorQuestion.class, VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR);
 		addItem(DiagramLinkColorQuestion.class, VOCABULARY_DIAGRAM_LINK_COLOR);
-		addItem(HabitatAssociationQuestion.class, VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION);
+		addItem(HabitatAssociationQuestion.class, VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSOCIATION);
 		addItem(TargetStatusQuestion.class, VOCABULARY_TARGET_STATUS);
 		addItem(ViabilityModeQuestion.class, VOCABULARY_TARGET_VIABILITY_MODE);
 		addItem(ThreatClassificationQuestion.class, VOCABULARY_THREAT_TAXONOMY_CODE);
 		addItem(StressSeverityChoiceQuestion.class, VOCABULARY_SEVERITY_RATING);
 		addItem(StressScopeChoiceQuestion.class, VOCABULARY_SCOPE_RATING);
-		addItem(StrategyTaxonomyQuestion.class, VOCABULARY_STRATEGY_TAXONOMY_CODE);
-		addItem(StrategyImpactQuestion.class, VOCABULARY_STRATEGY_IMAPACT_RATING_CODE);
+		addItem(StrategyClassificationQuestionV11.class, VOCABULARY_STRATEGY_STANDARD_CLASSIFICATION_V11_CODE);
+		addItem(StrategyClassificationQuestionV20.class, VOCABULARY_STRATEGY_STANDARD_CLASSIFICATION_V20_CODE);
+		addItem(StrategyImpactQuestion.class, VOCABULARY_STRATEGY_IMPACT_RATING_CODE);
 		addItem(StrategyFeasibilityQuestion.class, VOCABULARY_STRATEGY_FEASIBILITY_RATING_CODE);
 		addItem(PriorityRatingQuestion.class, VOCABULARY_PRIORITY_RATING_CODE);
 		addItem(KeyEcologicalAttributeTypeQuestion.class, VOCABULARY_KEA_TYPE);

@@ -311,7 +311,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	private HashMap<String, String> createStrategyMap()
 	{
 		HashMap<String, String> map = createFactorMap();
-		map.put(Strategy.TAG_TAXONOMY_CODE, STANDARD_CLASSIFICATION);
+		map.put(Strategy.TAG_STANDARD_CLASSIFICATION_V11_CODE, STANDARD_CLASSIFICATION);
 		map.put(Strategy.TAG_ACTIVITY_IDS, ORDERED_ACTIVITY_IDS);
 
 		return map;

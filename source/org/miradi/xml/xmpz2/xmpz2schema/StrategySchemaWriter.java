@@ -20,12 +20,37 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.xmpz2schema;
 
+import org.miradi.objects.Strategy;
 import org.miradi.schemas.BaseObjectSchema;
+
+import java.util.Vector;
 
 public class StrategySchemaWriter extends BaseObjectSchemaWriterWithCalculatedCostsElement
 {
 	public StrategySchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{
 		super(creatorToUse, baseObjectSchemaToUse);
+	}
+
+	@Override
+	protected boolean doesFieldRequireSpecialHandling(String tag)
+	{
+		if (tag.equals(Strategy.TAG_STANDARD_CLASSIFICATION_V11_CODE))
+			return true;
+
+		if (tag.equals(Strategy.TAG_STANDARD_CLASSIFICATION_V20_CODE))
+			return true;
+
+		return super.doesFieldRequireSpecialHandling(tag);
+	}
+
+	@Override
+	protected Vector<String> createCustomSchemaFields()
+	{
+		Vector<String> schemaElements = super.createCustomSchemaFields();
+
+		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalDotElement(STRATEGY_STANDARD_CLASSIFICATION_CONTAINER));
+
+		return schemaElements;
 	}
 }

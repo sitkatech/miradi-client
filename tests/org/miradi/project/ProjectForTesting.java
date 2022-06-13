@@ -1652,8 +1652,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(strategy, Strategy.TAG_EVIDENCE_CONFIDENCE, StrategyEvidenceConfidenceQuestion.ROUGH_GUESS_CODE);
 
 		final int FIRST_CODE = 0;
-		ChoiceQuestion question = StaticQuestionManager.getQuestion(StrategyTaxonomyQuestion.class);
-		fillObjectUsingCommand(strategy, Strategy.TAG_TAXONOMY_CODE, question.getCode(FIRST_CODE));
+		ChoiceQuestion classificationQuestionV11 = StaticQuestionManager.getQuestion(StrategyClassificationQuestionV11.class);
+		fillObjectUsingCommand(strategy, Strategy.TAG_STANDARD_CLASSIFICATION_V11_CODE, classificationQuestionV11.getCode(FIRST_CODE));
+		ChoiceQuestion classificationQuestionV20 = StaticQuestionManager.getQuestion(StrategyClassificationQuestionV20.class);
+		fillObjectUsingCommand(strategy, Strategy.TAG_STANDARD_CLASSIFICATION_V20_CODE, classificationQuestionV20.getCode(FIRST_CODE));
 		fillObjectUsingCommand(strategy, Strategy.TAG_IMPACT_RATING, StrategyImpactQuestion.HIGH_CODE);
 		fillObjectUsingCommand(strategy, Strategy.TAG_FEASIBILITY_RATING, StrategyFeasibilityQuestion.LOW_CODE);
 		

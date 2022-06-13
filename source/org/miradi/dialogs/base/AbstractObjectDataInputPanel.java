@@ -704,6 +704,11 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new SingleCodeEditableField(getMainWindow(), getRefForType(objectType), tagToUse, question);
 	}
 
+	public ObjectDataInputField createRadioButtonEditorFieldWithHierarchies(int objectType, String tagToUse, ChoiceQuestion question)
+	{
+		return new SingleCodeSingleSelectionEditableField(getMainWindow(), getRefForType(objectType), tagToUse, question);
+	}
+
 	private String getCustomLabelForTaxonomyFields(int objectType, String tagToUse)
 	{
 		String fieldLabel = Translation.fieldLabel(objectType, tagToUse);

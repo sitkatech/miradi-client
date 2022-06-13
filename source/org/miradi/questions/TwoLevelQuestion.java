@@ -39,11 +39,11 @@ abstract public class TwoLevelQuestion extends DynamicChoiceQuestion
 		twoLevelFileLoader = null;
 	}
 	
-	private ChoiceItem[] loadChoices()
+	protected ChoiceItem[] loadChoices()
 	{
 		try 
 		{
-			Vector<ChoiceItem> chocies = new Vector<ChoiceItem>();
+			Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
 			TwoLevelEntry[] twoLevelEntries = twoLevelFileLoader.load();
 
 			for (int i = 0; i < twoLevelEntries.length; ++i)
@@ -55,10 +55,10 @@ abstract public class TwoLevelQuestion extends DynamicChoiceQuestion
 				String longDescription = getSafeXmlEncodedValue(twoLevelEntry.getLongDescription());
 				ChoiceItem choice = createChoiceItem(code, label, description, longDescription);
 				choice.setSelectable(twoLevelEntry.isSelectable());
-				chocies.add(choice);
+				choices.add(choice);
 			}
 			
-			return chocies.toArray(new ChoiceItem[0]);
+			return choices.toArray(new ChoiceItem[0]);
 		}
 		catch (Exception e)
 		{
@@ -67,7 +67,7 @@ abstract public class TwoLevelQuestion extends DynamicChoiceQuestion
 		}
 	}
 
-	private String getSafeXmlEncodedValue(final String value)
+	protected String getSafeXmlEncodedValue(final String value)
 	{
 		return XmlUtilities2.getXmlEncoded(value);
 	}
@@ -92,7 +92,9 @@ abstract public class TwoLevelQuestion extends DynamicChoiceQuestion
 	{
 		return choices;
 	}
-	
+
+	protected TwoLevelFileLoader getTwoLevelFileLoader() { return twoLevelFileLoader; }
+
 	private Vector<ChoiceItem> choices;
 	private TwoLevelFileLoader twoLevelFileLoader;
 }

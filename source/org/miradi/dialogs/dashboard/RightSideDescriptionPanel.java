@@ -20,8 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.dashboard;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
+import java.awt.*;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
@@ -95,22 +94,29 @@ public class RightSideDescriptionPanel extends JPanel implements ListSelectionLi
 	
 	public class RightSideDescriptionHtmlViewer extends FlexibleWidthHtmlViewer
 	{
-		private RightSideDescriptionHtmlViewer(MainWindow mainWindow)
-		{
+		private RightSideDescriptionHtmlViewer(MainWindow mainWindow) {
 			super(mainWindow);
 			setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
 		}
-		
+
 		@Override
-		public void customizeStyleSheet(StyleSheet style)
-		{
+		public void customizeStyleSheet(StyleSheet style) {
 			super.customizeStyleSheet(style);
-			
+
 			style.addRule("body {background-color: " + AppPreferences.convertToHexString(bg) + ";}");
 		}
-		
+
+		@Override
+		public Dimension getPreferredSize()
+		{
+			Dimension preferredSize = super.getPreferredSize();
+			if (preferredSize.width == 0)
+				return new Dimension(700, preferredSize.height);
+
+			return preferredSize;
+		}
 	}
-	
+
 	private MainWindow mainWindow;
 	private RightSideDescriptionHtmlViewer viewer;
 	private DisposablePanel activeParentPanel;

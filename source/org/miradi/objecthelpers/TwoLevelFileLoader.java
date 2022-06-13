@@ -92,7 +92,8 @@ abstract public class TwoLevelFileLoader extends DelimitedFileLoader
 	private String fileName;
 	public final static String COUNTRIES_FILE = "Countries.tsv";
 	public final static String WWF_ECO_REGIONS_FILE = "EcoRegions.tsv";
-	public final static String STRATEGY_TAXONOMIES_FILE = "StrategyTaxonomies.tsv";
+	public final static String STRATEGY_TAXONOMIES_v11_FILE = "StrategyTaxonomies_v11.tsv";
+	public final static String STRATEGY_TAXONOMIES_v20_FILE = "StrategyTaxonomies_v20.tsv";
 	public final static String THREAT_TAXONOMIES_FILE = "ThreatTaxonomies.tsv";
 	
 	public final static String TNC_FRESHWATER_ECO_REGION_FILE = "TncFreshwaterEcoRegions.tsv";

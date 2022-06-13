@@ -140,7 +140,7 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestLogging.class));
 		addTest(new TestSuite(TestTranslations.class));
 		addTest(new TestSuite(TestDelimitedFileLoader.class));
-		addTest(new TestSuite(TestTaxonomyFileLoader.class));
+		addTest(new TestSuite(TestTaxonomyTwoLevelFileLoader.class));
 		addTest(new TestSuite(TestDateRange.class));
 		addTest(new TestSuite(TestBaseObjectDateAndIdComparator.class));
 		addTest(new TestSuite(TestDiagramCorruptionDetector.class));
@@ -434,6 +434,9 @@ public class MainTestSuite extends TestSuite
 		addTest(new TestSuite(TestMigrationTo78.class));
 		addTest(new TestSuite(TestMigrationTo79.class));
 		addTest(new TestSuite(TestMigrationTo80.class));
+		addTest(new TestSuite(TestMigrationTo81.class));
+		addTest(new TestSuite(TestMigrationTo82.class));
+		addTest(new TestSuite(TestMigrationTo83.class));
 
 		addTest(new TestSuite(TestReverseMigration.class));
 		addTest(new TestSuite(TestVersionRange.class));

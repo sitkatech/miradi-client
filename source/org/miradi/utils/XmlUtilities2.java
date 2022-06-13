@@ -102,6 +102,13 @@ public class XmlUtilities2
 			throw e;
 		}
 
+		return decode(value);
+	}
+
+	private static String decode(String value)
+	{
+		value = value.replaceAll(StringUtilities.NEW_LINE, HtmlUtilities.BR_TAG);
+
 		return decodeApostrophes(value);
 	}
 

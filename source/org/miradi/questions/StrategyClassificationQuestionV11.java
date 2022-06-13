@@ -19,14 +19,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.questions;
 
+import org.miradi.objecthelpers.TaxonomyTwoLevelFileLoader;
 import org.miradi.objecthelpers.TwoLevelFileLoader;
 
-public class StrategyClassificationQuestion extends TaxonomyClassificationQuestion
+public class StrategyClassificationQuestionV11 extends TaxonomyClassificationQuestion
 {
-	public StrategyClassificationQuestion()
+	public StrategyClassificationQuestionV11()
 	{
-		super(taxonomyFile);
+		super(new TaxonomyTwoLevelFileLoader(taxonomyFile));
 	}
 	
-	private static String taxonomyFile = TwoLevelFileLoader.STRATEGY_TAXONOMIES_FILE;
+	private static String taxonomyFile = TwoLevelFileLoader.STRATEGY_TAXONOMIES_v11_FILE;
+
+	public static final String STANDARD_CLASSIFICATION_CODELIST_KEY = "iucn-conservation-actions-ftv-1.1";
 }

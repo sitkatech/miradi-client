@@ -34,8 +34,9 @@ public interface Xmpz2XmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String DOT_ELEMENT = ".element";
 	
-	public static final String NAME_SPACE_VERSION = "242";
+	public static final String NAME_SPACE_VERSION = "243";
 
+	public static final String NAME_SPACE_VERSION_243 = "243";
 	public static final String NAME_SPACE_VERSION_242 = "242";
 	public static final String NAME_SPACE_VERSION_237 = "237";
 	public static final String NAME_SPACE_VERSION_236 = "236";
@@ -199,7 +200,7 @@ public interface Xmpz2XmlConstants
 	public static final String EXPENSES_FULL_PROJECT_TIMESPAN = "ExpensesFullProjectTimespan";
 	public static final String WORK_UNITS_FULL_PROJECT_TIMESPAN = "WorkUnitsFullProjectTimespan";
 	public static final String FULL_PROJECT_TIMESPAN = "FullProjectTimespan";
-	public static final String VOCABULART_FULL_PROJECT_TIMESPAN = "vocabulary_full_project_timespan";
+	public static final String VOCABULARY_FULL_PROJECT_TIMESPAN = "vocabulary_full_project_timespan";
 	public static final String TOTAL = "Total";
 	public static final String EXPENSES_YEAR = "ExpensesYear";
 	public static final String EXPENSES_QUARTER = "ExpensesQuarter";
@@ -373,6 +374,10 @@ public interface Xmpz2XmlConstants
 	public static final String TAXONOMY_CLASSIFICATION_TAXONOMY_CODE = TAXONOMY_CLASSIFICATION + TAXONOMY + CODE;
 	public static final String TAXONOMY_TOP_LEVEL_ELEMENT_CODE = "TopLevelElementCode";
 
+	public static final String STRATEGY_STANDARD_CLASSIFICATION = STRATEGY + STANDARD_CLASSIFICATION;
+	public static final String STRATEGY_STANDARD_CLASSIFICATION_CONTAINER = STRATEGY_STANDARD_CLASSIFICATION + "Container";
+	public static final String STRATEGY_STANDARD_CLASSIFICATION_CODE = STRATEGY_STANDARD_CLASSIFICATION + CODE;
+
 	public static final String RESOURCE_ASSIGNMENT_ACCOUNTING_CLASSIFICATION_ASSOCIATION_POOL = "ResourceAssignmentAccountingClassificationAssociationPool";
 	public static final String EXPENSE_ASSIGNMENT_ACCOUNTING_CLASSIFICATION_ASSOCIATION_POOL = "ExpenseAssignmentAccountingClassificationAssociationPool";
 	public static final String ACCOUNTING_CLASSIFICATION_ASSOCIATION = "AccountingClassificationAssociation";
@@ -413,15 +418,16 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR = "vocabulary_diagram_factor_background_color";
 	public static final String VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR = "vocabulary_diagram_factor_foreground_color";
 	public static final String VOCABULARY_DIAGRAM_LINK_COLOR = "vocabulary_diagram_link_color";
-	public static final String VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION = "vocabulary_biodiversity_target_habitat_association";
+	public static final String VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSOCIATION = "vocabulary_biodiversity_target_habitat_association";
 	public static final String VOCABULARY_TARGET_STATUS = "vocabulary_target_status";
 	public static final String VOCABULARY_TARGET_VIABILITY_MODE = "vocabulary_target_viability_mode";
 	public static final String VOCABULARY_THREAT_TAXONOMY_CODE = "vocabulary_cause_taxonomy_code";
-	public static final String VOCABULARY_STRATEGY_TAXONOMY_CODE = "vocabulary_strategy_taxonomy_code";
+	public static final String VOCABULARY_STRATEGY_STANDARD_CLASSIFICATION_V11_CODE = "vocabulary_strategy_standard_classification_v11_code";
+	public static final String VOCABULARY_STRATEGY_STANDARD_CLASSIFICATION_V20_CODE = "vocabulary_strategy_standard_classification_v20_code";
 	public static final String VOCABULARY_SCOPE_BOX_TYPE = "vocabulary_scope_box_type";
 	public static final String VOCABULARY_SEVERITY_RATING = "vocabulary_severity_rating";
 	public static final String VOCABULARY_SCOPE_RATING = "vocabulary_scope_rating";
-	public static final String VOCABULARY_STRATEGY_IMAPACT_RATING_CODE = "vocabulary_strategy_impact_rating_code";
+	public static final String VOCABULARY_STRATEGY_IMPACT_RATING_CODE = "vocabulary_strategy_impact_rating_code";
 	public static final String VOCABULARY_STRATEGY_FEASIBILITY_RATING_CODE = "vocabulary_strategy_feasibility_rating_code";
 	public static final String VOCABULARY_PRIORITY_RATING_CODE = "vocabulary_priority_rating_code";
 	public static final String VOCABULARY_KEA_TYPE = "vocabulary_key_ecological_attribute_type";

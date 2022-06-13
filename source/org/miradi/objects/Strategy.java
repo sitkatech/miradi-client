@@ -28,15 +28,13 @@ import org.miradi.main.EAM;
 import org.miradi.objecthelpers.*;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.StrategyClassificationQuestion;
-import org.miradi.questions.StrategyRatingSummaryQuestion;
-import org.miradi.questions.StrategyStatusQuestion;
+import org.miradi.questions.*;
 import org.miradi.schemas.ObjectiveSchema;
 import org.miradi.schemas.ResultsChainDiagramSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.utils.CommandVector;
+import org.miradi.utils.StringUtilities;
 
 
 public class Strategy extends Factor
@@ -156,7 +154,7 @@ public class Strategy extends Factor
 			return getStrategyRatingSummary();
 		
 		if (fieldTag.equals(PSEUDO_TAG_TAXONOMY_CODE_VALUE))
-			return new StrategyClassificationQuestion().findChoiceByCode(getTaxonomyCode()).getLabel();
+			return getTaxonomySummary();
 		
 		if (fieldTag.equals(PSEUDO_TAG_ACTIVITIES))
 			return getLabelsAsMultiline(getActivityRefs());
@@ -247,11 +245,49 @@ public class Strategy extends Factor
 		return calculateRelevantRefList(relevantIndicators, relevantOverrides);
 	}
 
-	public String getTaxonomyCode()
+	public String getTaxonomyCode(String strategyStandardClassificationCode)
 	{
-		return getData(TAG_TAXONOMY_CODE);
+		if (strategyStandardClassificationCode.equals(StrategyClassificationQuestionV11.STANDARD_CLASSIFICATION_CODELIST_KEY))
+			return getData(TAG_STANDARD_CLASSIFICATION_V11_CODE);
+
+		if (strategyStandardClassificationCode.equals(StrategyClassificationQuestionV20.STANDARD_CLASSIFICATION_CODELIST_KEY))
+			return getData(TAG_STANDARD_CLASSIFICATION_V20_CODE);
+
+		throw new RuntimeException("Attempted to get taxonomy code for Strategy with invalid classification code: " + strategyStandardClassificationCode);
 	}
-	
+
+	public String getTaxonomySummary()
+	{
+		Vector<String> taxonomyLabels = new Vector<>();
+
+		String v11TaxonomyCode = getData(TAG_STANDARD_CLASSIFICATION_V11_CODE);
+		if (!v11TaxonomyCode.isEmpty())
+			taxonomyLabels.add(getTaxonomyLabel(new StrategyClassificationQuestionV11(), v11TaxonomyCode));
+
+		String v20TaxonomyCode = getData(TAG_STANDARD_CLASSIFICATION_V20_CODE);
+		if (!v20TaxonomyCode.isEmpty())
+			taxonomyLabels.add(getTaxonomyLabel(new StrategyClassificationQuestionV20(), v20TaxonomyCode));
+
+		return StringUtilities.joinList(taxonomyLabels, ", ");
+	}
+
+	private String getTaxonomyLabel(TaxonomyClassificationQuestion question, String code)
+	{
+		ChoiceItem choice = question.findChoiceItem(code);
+		if (choice != null)
+			return choice.getLabel();
+
+		return "";
+	}
+
+	public boolean hasTaxonomyCode()
+	{
+		String v11TaxonomyCode = getData(TAG_STANDARD_CLASSIFICATION_V11_CODE);
+		String v20TaxonomyCode = getData(TAG_STANDARD_CLASSIFICATION_V20_CODE);
+
+		return v11TaxonomyCode.length() > 0 || v20TaxonomyCode.length() > 0;
+	}
+
 	public String getStrategyRatingSummary()
 	{
 		ChoiceItem rating = getStrategyRating();
@@ -324,7 +360,7 @@ public class Strategy extends Factor
 	{
 		return getActivityRefs();
 	}
-	
+
 	public static Strategy find(ObjectManager objectManager, ORef strategyRef)
 	{
 		return (Strategy) objectManager.findObject(strategyRef);
@@ -353,7 +389,8 @@ public class Strategy extends Factor
 	public static final String TAG_ACTIVITY_IDS = "ActivityIds";
 	public static final String TAG_STATUS = "Status";
 
-	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
+	public static final String TAG_STANDARD_CLASSIFICATION_V11_CODE = "StandardClassificationV11Code";
+	public static final String TAG_STANDARD_CLASSIFICATION_V20_CODE = "StandardClassificationV20Code";
 	public static final String TAG_IMPACT_RATING = "ImpactRating";
 	public static final String TAG_FEASIBILITY_RATING = "FeasibilityRating";
 	public static final String TAG_LEGACY_TNC_STRATEGY_RANKING = "LegacyTncStrategyRanking";

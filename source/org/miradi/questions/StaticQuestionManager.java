@@ -55,11 +55,11 @@ public class StaticQuestionManager
 		addQuestion(new StatusQuestion());
 		addQuestion(new TargetStatusQuestion());
 		addQuestion(new MeasurementStatusQuestion());
-		addQuestion(new StrategyClassificationQuestion());
+		addQuestion(new StrategyClassificationQuestionV11());
+		addQuestion(new StrategyClassificationQuestionV20());
 		addQuestion(new StrategyFeasibilityQuestion());
 		addQuestion(new StrategyImpactQuestion());
 		addQuestion(new StrategyRatingSummaryQuestion());
-		addQuestion(new StrategyTaxonomyQuestion());
 		addQuestion(new StressContributionQuestion());
 		addQuestion(new StressIrreversibilityQuestion());
 		addQuestion(new StressRatingChoiceQuestion());

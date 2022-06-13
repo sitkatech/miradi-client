@@ -31,10 +31,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.*;
 import org.miradi.questions.DayColumnsVisibilityQuestion;
-import org.miradi.schemas.IndicatorSchema;
-import org.miradi.schemas.MeasurementSchema;
-import org.miradi.schemas.ProjectMetadataSchema;
-import org.miradi.schemas.TaggedObjectSetSchema;
+import org.miradi.schemas.*;
 import org.miradi.utils.BiDirectionalHashMap;
 import org.miradi.utils.HtmlUtilities;
 import org.miradi.utils.StringUtilities;
@@ -77,6 +74,7 @@ public class Xmpz2ForwardMigration
 		moveMeasurementSourceToExtraData(document);
 		removeRelevantDiagramFactorIdsElement(rootElement, Xmpz2XmlConstants.ANALYTICAL_QUESTION);
 		removeRelevantDiagramFactorIdsElement(rootElement, Xmpz2XmlConstants.ASSUMPTION);
+		moveStrategyStandardClassificationToExtraData(document);
 
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
@@ -408,6 +406,43 @@ public class Xmpz2ForwardMigration
 			moveDataToExtraData(document, extraDataItemName, extraDataItemValue);
 
 			measurementNode.removeChild(nodeToMove);
+		}
+	}
+
+	private void moveStrategyStandardClassificationToExtraData(Document document) throws Exception
+	{
+		Element rootElement = document.getDocumentElement();
+
+		Node strategyPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.STRATEGY));
+		if (strategyPool != null)
+		{
+			NodeList strategyNodes = strategyPool.getChildNodes();
+			for (int index = 0; index < strategyNodes.getLength(); ++index)
+			{
+				Node strategyNode = strategyNodes.item(index);
+				if (strategyNode != null && strategyNode.getNodeType() == Node.ELEMENT_NODE)
+				{
+					moveStrategyStandardClassificationElementToExtraData(document, strategyNode);
+				}
+			}
+		}
+	}
+
+	private void moveStrategyStandardClassificationElementToExtraData(Document document, Node strategyNode) throws Exception
+	{
+		String idAsString = getAttributeValue(strategyNode, Xmpz2XmlConstants.ID);
+
+		String elementNameWithoutAlias = Xmpz2XmlConstants.STRATEGY_STANDARD_CLASSIFICATION;
+		String tagName = Strategy.TAG_STANDARD_CLASSIFICATION_V11_CODE;
+
+		Node nodeToMove = findNode(strategyNode, elementNameWithoutAlias);
+		if (nodeToMove != null && nodeToMove.getNodeType() == Node.ELEMENT_NODE)
+		{
+			String extraDataItemName = ExtraDataExporter.getExtraDataItemName(StrategySchema.OBJECT_NAME, new BaseId(idAsString), tagName);
+			String extraDataItemValue = nodeToMove.getTextContent();
+			moveDataToExtraData(document, extraDataItemName, extraDataItemValue);
+
+			strategyNode.removeChild(nodeToMove);
 		}
 	}
 

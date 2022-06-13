@@ -20,12 +20,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectImporters;
 
+import org.miradi.objecthelpers.CodeToCodeMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Strategy;
+import org.miradi.questions.StrategyClassificationQuestionV11;
+import org.miradi.questions.StrategyClassificationQuestionV20;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
+
+import java.util.HashMap;
 
 public class StrategyImporter extends BaseObjectWithLeaderResourceFieldImporter
 {
@@ -39,6 +45,8 @@ public class StrategyImporter extends BaseObjectWithLeaderResourceFieldImporter
 	{
 		super.importFields(baseObjectNode, refToUse);
 		getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), Strategy.TAG_ACTIVITY_IDS, ACTIVITY, TaskSchema.getObjectType());
+
+		importStrategyStandardClassifications(baseObjectNode, refToUse);
 	}
 	
 	@Override
@@ -47,6 +55,54 @@ public class StrategyImporter extends BaseObjectWithLeaderResourceFieldImporter
 		if (tag.equals(Strategy.TAG_ACTIVITY_IDS))
 			return true;
 
+		if (tag.equals(Strategy.TAG_STANDARD_CLASSIFICATION_V11_CODE))
+			return true;
+
+		if (tag.equals(Strategy.TAG_STANDARD_CLASSIFICATION_V20_CODE))
+			return true;
+
 		return super.isCustomImportField(tag);
+	}
+
+	private void importStrategyStandardClassifications(Node baseObjectNode, ORef refToUse) throws Exception
+	{
+		CodeToCodeMap strategyStandardClassificationCodes = new CodeToCodeMap();
+
+		Node strategyStandardClassificationContainerNode = getImporter().getNamedChildNode(baseObjectNode,  STRATEGY_STANDARD_CLASSIFICATION_CONTAINER);
+		if (strategyStandardClassificationContainerNode != null)
+		{
+			NodeList strategyStandardClassificationNodes = getImporter().getNodes(strategyStandardClassificationContainerNode, new String[]{STRATEGY_STANDARD_CLASSIFICATION});
+
+			for (int index = 0; index < strategyStandardClassificationNodes.getLength(); ++index)
+			{
+				Node strategyStandardClassificationNode = strategyStandardClassificationNodes.item(index);
+				String strategyStandardClassificationCode = getImporter().getAttributeValue(strategyStandardClassificationNode, STRATEGY_STANDARD_CLASSIFICATION_CODE);
+				Node codeNode = getImporter().getNamedChildNode(strategyStandardClassificationNode, CODE_ELEMENT_NAME);
+				if (codeNode != null)
+				{
+					String codeValue = codeNode.getTextContent();
+					strategyStandardClassificationCodes.putCode(strategyStandardClassificationCode, codeValue);
+				}
+			}
+		}
+
+		setStandardClassifications(refToUse, strategyStandardClassificationCodes);
+	}
+
+	private void setStandardClassifications(ORef refToUse, CodeToCodeMap strategyStandardClassificationCodes) throws Exception
+	{
+		HashMap<String, String> codeListHashMap = strategyStandardClassificationCodes.toHashMap();
+		for (String strategyStandardClassificationCode : codeListHashMap.keySet())
+		{
+			String code = codeListHashMap.get(strategyStandardClassificationCode);
+			if (!code.isEmpty())
+			{
+				if (strategyStandardClassificationCode.equals(StrategyClassificationQuestionV11.STANDARD_CLASSIFICATION_CODELIST_KEY))
+					getImporter().setData(refToUse, Strategy.TAG_STANDARD_CLASSIFICATION_V11_CODE, code);
+
+				if (strategyStandardClassificationCode.equals(StrategyClassificationQuestionV20.STANDARD_CLASSIFICATION_CODELIST_KEY))
+					getImporter().setData(refToUse, Strategy.TAG_STANDARD_CLASSIFICATION_V20_CODE, code);
+			}
+		}
 	}
 }

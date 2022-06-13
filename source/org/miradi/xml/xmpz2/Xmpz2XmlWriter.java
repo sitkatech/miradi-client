@@ -23,6 +23,7 @@ package org.miradi.xml.xmpz2;
 import java.awt.Dimension;
 import java.awt.Point;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -37,10 +38,7 @@ import org.miradi.objecthelpers.*;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.Xenodata;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ChoiceQuestion;
-import org.miradi.questions.InternalQuestionWithoutValues;
-import org.miradi.questions.QuestionWithJustSpecificCodes;
+import org.miradi.questions.*;
 import org.miradi.schemas.AbstractFieldSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.FieldSchemaIdList;
@@ -469,6 +467,28 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		writeElement(ACCOUNTING_CLASSIFICATION_TAXONOMY_CODE, taxonomyCode);
 		writeCodeList(ACCOUNTING_CLASSIFICATION_TAXONOMY_ELEMENT_CODE, taxonomyElementCodes);
 		writeEndElement(ACCOUNTING_CLASSIFICATION);
+	}
+
+	public void writeStrategyStandardClassifications(CodeToCodeMap strategyStandardClassificationCodes) throws Exception
+	{
+		writeStartElement(STRATEGY_STANDARD_CLASSIFICATION_CONTAINER);
+
+		HashMap<String, String> codeListHashMap = strategyStandardClassificationCodes.toHashMap();
+		for (String strategyStandardClassificationCode : codeListHashMap.keySet())
+		{
+			String code = codeListHashMap.get(strategyStandardClassificationCode);
+			if (!code.isEmpty())
+				writeStrategyStandardClassification(strategyStandardClassificationCode, code);
+		}
+
+		writeEndElement(STRATEGY_STANDARD_CLASSIFICATION_CONTAINER);
+	}
+
+	private void writeStrategyStandardClassification(String strategyStandardClassificationCode, String code) throws Exception
+	{
+		writeStartElementWithAttribute(STRATEGY_STANDARD_CLASSIFICATION, STRATEGY_STANDARD_CLASSIFICATION_CODE, strategyStandardClassificationCode);
+		writeElement(CODE_ELEMENT_NAME, code);
+		writeEndElement(STRATEGY_STANDARD_CLASSIFICATION);
 	}
 
 	private void writeField(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String data) throws Exception
