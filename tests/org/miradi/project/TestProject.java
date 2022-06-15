@@ -188,12 +188,16 @@ public class TestProject extends MiradiTestCase
 		assertEquals("didn't snap minus one third?", zeroZero, project.getSnapped(oneThirdMinus));
 		
 		Point twoThirdsPlus = new Point(2*Project.DEFAULT_GRID_SIZE/3, 2*Project.DEFAULT_GRID_SIZE/3);
-		assertEquals("didn't snap two thirds?", defaultPlus, project.getSnapped(twoThirdsPlus));
+		assertEquals("didn't snap two thirds?", zeroZero, project.getSnapped(twoThirdsPlus));
 		
 		Point twoThirdsMinus = new Point(-2*Project.DEFAULT_GRID_SIZE/3, -2*Project.DEFAULT_GRID_SIZE/3);
-		assertEquals("didn't snap minus two thirds?", defaultMinus, project.getSnapped(twoThirdsMinus));
-		
-		
+		assertEquals("didn't snap minus two thirds?", zeroZero, project.getSnapped(twoThirdsMinus));
+
+		Point fourThirdsPlus = new Point(4*Project.DEFAULT_GRID_SIZE/3, 4*Project.DEFAULT_GRID_SIZE/3);
+		assertEquals("didn't snap two thirds?", defaultPlus, project.getSnapped(fourThirdsPlus));
+
+		Point fourThirdsMinus = new Point(-4*Project.DEFAULT_GRID_SIZE/3, -4*Project.DEFAULT_GRID_SIZE/3);
+		assertEquals("didn't snap minus two thirds?", defaultMinus, project.getSnapped(fourThirdsMinus));
 	}
 	
 	public void testUndoRedoNestedTransactions() throws Exception
@@ -216,42 +220,48 @@ public class TestProject extends MiradiTestCase
 		assertNotNull("Didn't redo end of outer transaction?", DiagramFactor.find(project, diagramFactorRef3));
 	}
 
-	public void testGetSnappedSize() throws Exception
+	public void testGetSnappedLocation() throws Exception
 	{		
-		Dimension zeroByZero = new Dimension(0, 0);
+		Point zeroByZero = new Point(0, 0);
 		assertEquals("moved zero zero?", zeroByZero, project.getSnapped(zeroByZero));
-		
-		Dimension defaultPlus = new Dimension(Project.DEFAULT_GRID_SIZE, Project.DEFAULT_GRID_SIZE);
+
+		Point defaultPlus = new Point(Project.DEFAULT_GRID_SIZE, Project.DEFAULT_GRID_SIZE);
 		assertEquals("moved default plus?", defaultPlus, project.getSnapped(defaultPlus));
-		
-		Dimension defaultMinus = new Dimension(-Project.DEFAULT_GRID_SIZE, -Project.DEFAULT_GRID_SIZE);
+
+		Point defaultMinus = new Point(-Project.DEFAULT_GRID_SIZE, -Project.DEFAULT_GRID_SIZE);
 		assertEquals("moved default minus?", defaultMinus, project.getSnapped(defaultMinus));
 
-		Dimension oneThirdPlus = new Dimension(Project.DEFAULT_GRID_SIZE/3, Project.DEFAULT_GRID_SIZE/3);
+		Point oneThirdPlus = new Point(Project.DEFAULT_GRID_SIZE/3, Project.DEFAULT_GRID_SIZE/3);
 		assertEquals("didn't snap one third?", zeroByZero, project.getSnapped(oneThirdPlus));
-		
-		Dimension oneThirdMinus = new Dimension(-Project.DEFAULT_GRID_SIZE/3, -Project.DEFAULT_GRID_SIZE/3);
+
+		Point oneThirdMinus = new Point(-Project.DEFAULT_GRID_SIZE/3, -Project.DEFAULT_GRID_SIZE/3);
 		assertEquals("didn't snap minus one third?", zeroByZero, project.getSnapped(oneThirdMinus));
-		
-		Dimension twoThirdsPlus = new Dimension(2*Project.DEFAULT_GRID_SIZE/3, 2*Project.DEFAULT_GRID_SIZE/3);
-		assertEquals("didn't snap two thirds?", defaultPlus, project.getSnapped(twoThirdsPlus));
-		
-		Dimension twoThirdsMinus = new Dimension(-2*Project.DEFAULT_GRID_SIZE/3, -2*Project.DEFAULT_GRID_SIZE/3);
-		assertEquals("didn't snap minus two thirds?", defaultMinus, project.getSnapped(twoThirdsMinus));		
+
+		Point twoThirdsPlus = new Point(2*Project.DEFAULT_GRID_SIZE/3, 2*Project.DEFAULT_GRID_SIZE/3);
+		assertEquals("didn't snap two thirds?", zeroByZero, project.getSnapped(twoThirdsPlus));
+
+		Point twoThirdsMinus = new Point(-2*Project.DEFAULT_GRID_SIZE/3, -2*Project.DEFAULT_GRID_SIZE/3);
+		assertEquals("didn't snap minus two thirds?", zeroByZero, project.getSnapped(twoThirdsMinus));
+
+		Point fourThirdsPlus = new Point(4*Project.DEFAULT_GRID_SIZE/3, 4*Project.DEFAULT_GRID_SIZE/3);
+		assertEquals("didn't snap two thirds?", defaultPlus, project.getSnapped(fourThirdsPlus));
+
+		Point fourThirdsMinus = new Point(-4*Project.DEFAULT_GRID_SIZE/3, -4*Project.DEFAULT_GRID_SIZE/3);
+		assertEquals("didn't snap minus two thirds?", defaultMinus, project.getSnapped(fourThirdsMinus));
+	}
+
+	public void testCalculateSnappedSize()
+	{
+		verifySnappedSize(30, 0);
+		verifySnappedSize(30, 15);
+		verifySnappedSize(30, 29);
+		verifySnappedSize(30, 40);
+		verifySnappedSize(60, 45);
 	}
 	
-	public void testForceNonZeroEvenSnap()
+	private void verifySnappedSize(int expectedValue, int valueToEvenSnap)
 	{
-		verifyEvenSnap(30, 0);
-		verifyEvenSnap(30, 15);
-		verifyEvenSnap(30, 29);
-		verifyEvenSnap(30, 40);
-		verifyEvenSnap(60, 45);
-	}
-	
-	private void verifyEvenSnap(int expectedValue, int valueToEvenSnap)
-	{
-		assertEquals("value was not snapped to even size?", expectedValue, getProject().forceNonZeroEvenSnap(valueToEvenSnap));
+		assertEquals("value was not snapped to even size?", expectedValue, getProject().calculateSnappedSize(valueToEvenSnap));
 	}
 
 	public void testIsValidMpfProjectFilename() throws Exception
@@ -714,7 +724,6 @@ public class TestProject extends MiradiTestCase
 		
 		return relatedFactors;
 	}
-	
 
 	public void testDirectThreatSet() throws Exception
 	{

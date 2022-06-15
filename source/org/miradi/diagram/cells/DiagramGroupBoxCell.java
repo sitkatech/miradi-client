@@ -143,8 +143,8 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		int midHeightWithCushion = (int)currentChildrenBounds.getHeight() + heightOfTextArea;
 
 		Dimension minSize = new Dimension(minWidthWithCushion, midHeightWithCushion);
-		int minSizeForcedEvenSnappedWidth = getProject().forceNonZeroEvenSnap(minSize.width);
-		int minSizeForcedEvenSnappedHeight = getProject().forceNonZeroEvenSnap(minSize.height);
+		int minSizeForcedEvenSnappedWidth = getProject().calculateSnappedSize(minSize.width);
+		int minSizeForcedEvenSnappedHeight = getProject().calculateSnappedSize(minSize.height);
 		Dimension minSizeAdjusted = new Dimension(minSizeForcedEvenSnappedWidth, minSizeForcedEvenSnappedHeight);
 
 		return new Rectangle(locationAdjusted, minSizeAdjusted);

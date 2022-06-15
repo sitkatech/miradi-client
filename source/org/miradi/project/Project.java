@@ -52,6 +52,8 @@ import java.io.PrintStream;
 import java.util.Collection;
 import java.util.Vector;
 
+import static org.miradi.objects.DiagramFactor.DEFAULT_FACTOR_HEIGHT;
+
 
 public class Project implements ProjectInterface
 {
@@ -1305,32 +1307,21 @@ public class Project implements ProjectInterface
 	{
 		return getFactorLinkPool().areLinked(factor1, factor2);
 	}
-	
-	public int forceNonZeroEvenSnap(int value)
+
+	public int calculateSnappedSize(int value)
 	{
-		int gridSize = getGridSize();
-		int newValue = (value + gridSize) - (value + gridSize) % (gridSize * 2);
-		
+		int halfHeight = DEFAULT_FACTOR_HEIGHT / 2;
+		int newValue = (value + halfHeight) - (value + halfHeight) % (DEFAULT_FACTOR_HEIGHT);
+
 		if (newValue != 0)
 			return newValue;
-		
-		return gridSize * 2;
+
+		return DEFAULT_FACTOR_HEIGHT;
 	}
-		
+
 	public int getGridSize()
 	{
 		return DEFAULT_GRID_SIZE;
-	}
-	
-	public Point getSnapped(int x, int y)
-	{
-		return getSnapped(new Point(x, y));
-	}
-	
-	public Dimension getSnapped(Dimension dimension)
-	{
-		int gridSize = getGridSize();
-		return new Dimension(roundTo(dimension.width, gridSize), roundTo(dimension.height, gridSize));
 	}
 	
 	public Point getSnapped(Point point)
@@ -1438,7 +1429,7 @@ public class Project implements ProjectInterface
 	
 	public static final String DEFAULT_VIEW_NAME = SUMMARY_VIEW_NAME;
 	
-	public static final int DEFAULT_GRID_SIZE = 15;
+	public static final int DEFAULT_GRID_SIZE = 1;
 	public static final int DEFAULT_DIAGRAM_FONT_SIZE = 11;
 	
 

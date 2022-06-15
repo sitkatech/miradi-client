@@ -110,8 +110,7 @@ public class TestDiagramFactor extends MiradiTestCase
 	
 	public void testSize()
 	{
-		//Note: the expceted sizes are expected to be in even incr of the DefaultGridSize.
-		//TODO: test code shuold be converted to use the DefaultGridSize
+		//Note: the expected sizes are expected to be in even incr of the DefaultGridSize.
 		target.setLocation(new Point(3, 4));
 		target.setSize(new Dimension(300, 200));
 		Rectangle2D bounds = GraphConstants.getBounds(targetAttributeMap);

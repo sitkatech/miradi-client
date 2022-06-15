@@ -62,6 +62,8 @@ import org.miradi.views.diagram.GroupOfDiagrams;
 import org.miradi.views.diagram.LayerManager;
 import org.miradi.views.diagram.LayerSorter;
 
+import static org.miradi.objects.DiagramFactor.DEFAULT_FACTOR_HEIGHT;
+
 abstract public class DiagramModel extends DefaultGraphModel
 {
 	public DiagramModel(Project projectToUse)
@@ -372,6 +374,8 @@ abstract public class DiagramModel extends DefaultGraphModel
 	
 	public Point recursivelyGetNonOverlappingFactorPoint(Point pointToUse)
 	{
+		int halfHeight = DEFAULT_FACTOR_HEIGHT / 2;
+
 		Point point = (Point) pointToUse.clone();
 		DiagramFactor[] allDiagramFactors = getAllDiagramFactorsAsArray();
 		for (int i = 0; i < allDiagramFactors.length; ++i)
@@ -379,7 +383,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 			Point thisLocation = allDiagramFactors[i].getLocation();
 			if (thisLocation.equals(point))
 			{
-				point.translate(getProject().getGridSize(), getProject().getGridSize());
+				point.translate(halfHeight, halfHeight);
 				return recursivelyGetNonOverlappingFactorPoint(point);
 			}
 		}

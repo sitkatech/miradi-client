@@ -64,15 +64,16 @@ public class CreateMarginDoer extends ObjectsDoer
 
 	private Dimension getDeltasToEnsureMargins()
 	{
+		Project project = getProject();
 		Rectangle diagramFactorBounds = getDiagramView().getCurrentDiagramObject().getBoundsOfFactorsAndBendPoints();
 		
 		int deltaX = 0;
 		int deltaY = 0;
-		if (diagramFactorBounds.x < getLeftMargin())
-			 deltaX = getLeftMargin() - diagramFactorBounds.x;
+		if (diagramFactorBounds.x < getLeftMargin(project))
+			 deltaX = getLeftMargin(project) - diagramFactorBounds.x;
 		
-		if (diagramFactorBounds.y < getTopMargin())
-			 deltaY = getTopMargin() - diagramFactorBounds.y;
+		if (diagramFactorBounds.y < getTopMargin(project))
+			 deltaY = getTopMargin(project) - diagramFactorBounds.y;
 
 		return new Dimension(deltaX, deltaY);
 	}
@@ -133,14 +134,13 @@ public class CreateMarginDoer extends ObjectsDoer
 		return getDiagramView().getDiagramModel().getAllFactorCells();
 	}
 
-	//TODO these two methods (getTop/LeftMargin()) should be using project.getGridSize(), not Project.DEFAULT_GRID_SIZE.
-	public static int getTopMargin()
+	public static int getTopMargin(Project project)
 	{
-		return 2 * (DiagramFactor.getDefaultSize().height + Project.DEFAULT_GRID_SIZE);
+		return 2 * (DiagramFactor.getDefaultSize().height + project.getGridSize());
 	}
 	
-	public static int getLeftMargin()
+	public static int getLeftMargin(Project project)
 	{
-		return 2 * (DiagramFactor.getDefaultSize().width  + Project.DEFAULT_GRID_SIZE);
+		return 2 * (DiagramFactor.getDefaultSize().width  + project.getGridSize());
 	} 
 }
