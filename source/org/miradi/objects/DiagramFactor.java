@@ -79,7 +79,12 @@ public class DiagramFactor extends BaseObject
 	{
 		return new Dimension(2 * DEFAULT_FACTOR_WIDTH, 2 * DEFAULT_FACTOR_HEIGHT);
 	}
-	
+
+	public static int getDefaultHeight()
+	{
+		return DEFAULT_FACTOR_HEIGHT;
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{

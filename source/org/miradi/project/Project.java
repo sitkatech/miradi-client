@@ -52,8 +52,6 @@ import java.io.PrintStream;
 import java.util.Collection;
 import java.util.Vector;
 
-import static org.miradi.objects.DiagramFactor.DEFAULT_FACTOR_HEIGHT;
-
 
 public class Project implements ProjectInterface
 {
@@ -1310,13 +1308,17 @@ public class Project implements ProjectInterface
 
 	public int calculateSnappedSize(int value)
 	{
-		int halfHeight = DEFAULT_FACTOR_HEIGHT / 2;
-		int newValue = (value + halfHeight) - (value + halfHeight) % (DEFAULT_FACTOR_HEIGHT);
+		int gridSize = getGridSize();
 
-		if (newValue != 0)
-			return newValue;
+		if (value > 0 && value % gridSize == 0)
+			return value;
 
-		return DEFAULT_FACTOR_HEIGHT;
+		int snappedValue = (value + gridSize) - (value + gridSize) % (gridSize);
+
+		if (snappedValue != 0)
+			return snappedValue;
+
+		return gridSize;
 	}
 
 	public int getGridSize()
@@ -1415,8 +1417,6 @@ public class Project implements ProjectInterface
 		return new VersionRange(VERSION_LOW, VERSION_HIGH);
 	}
 
-	public static final String LIBRARY_VIEW_NAME = "Library";
-	public static final String SCHEDULE_VIEW_NAME = "Schedule";
 	public static final String MAP_VIEW_NAME = "Map";
 	public static final String THREAT_MATRIX_VIEW_NAME = "ThreatMatrix";
 	public static final String NO_PROJECT_VIEW_NAME = "NoProject";
@@ -1426,12 +1426,9 @@ public class Project implements ProjectInterface
 	public static final String PLANNING_VIEW_NAME = "Planning";
 	public static final String WORK_PLAN_VIEW = "WorkPlan";
 	public static final String REPORT_VIEW_NAME = "Reports";
-	
-	public static final String DEFAULT_VIEW_NAME = SUMMARY_VIEW_NAME;
-	
+
 	public static final int DEFAULT_GRID_SIZE = 1;
 	public static final int DEFAULT_DIAGRAM_FONT_SIZE = 11;
-	
 
 	public static final int MAX_PROJECT_FILENAME_LENGTH = 255;
 	
@@ -1460,7 +1457,6 @@ public class Project implements ProjectInterface
 	private RelevantIndicatorsCache relevantIndicatorsCache;
 	private MiradiShareTaxonomyQuestionCache miradiShareTaxonomyQuestionCache;
 
-	// FIXME low: This should go away, but it's difficult
 	private String currentViewName;
 	
 	public CommandExecutor commandExecutor;

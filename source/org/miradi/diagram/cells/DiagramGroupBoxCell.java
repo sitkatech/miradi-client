@@ -137,9 +137,9 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
         int heightOfTextArea = headerHeight * gridSize;
 
 		Rectangle2D currentChildrenBounds = computeCurrentChildrenBounds();
-		Point locationBasedOnChildrenBounds = new Point((int)currentChildrenBounds.getX() - gridSize, (int)currentChildrenBounds.getY() - heightOfTextArea);
+		Point locationBasedOnChildrenBounds = new Point((int)currentChildrenBounds.getX(), (int)currentChildrenBounds.getY() - heightOfTextArea);
 		Point locationAdjusted = getProject().getSnapped(locationBasedOnChildrenBounds);
-		int minWidthWithCushion = (int)currentChildrenBounds.getWidth() + gridSize;
+		int minWidthWithCushion = (int)currentChildrenBounds.getWidth();
 		int midHeightWithCushion = (int)currentChildrenBounds.getHeight() + heightOfTextArea;
 
 		Dimension minSize = new Dimension(minWidthWithCushion, midHeightWithCushion);

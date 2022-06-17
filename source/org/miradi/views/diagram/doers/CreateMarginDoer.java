@@ -83,14 +83,22 @@ public class CreateMarginDoer extends ObjectsDoer
 	{
 		if (!isAvailable())
 			return;
-		
+
+		DiagramModel model = getDiagramView().getDiagramModel();
+
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
-			DiagramModel model = getDiagramView().getDiagramModel();
+			model.setDeferUpdateGroupBoxCells(true);
+
 			Dimension deltaMargin = getDeltasToEnsureMargins();
 			moveDiagramFactors(model.getAllDiagramFactors(), deltaMargin);
 			moveBendPoints(model.getAllDiagramFactorLinks(), deltaMargin);
+
+			getProject().beginCommandSideEffectMode();
+			model.setDeferUpdateGroupBoxCells(false);
+			model.updateGroupBoxCells();
+			getProject().endCommandSideEffectMode();
 		}
 		catch (Exception e)
 		{
@@ -99,6 +107,7 @@ public class CreateMarginDoer extends ObjectsDoer
 		finally
 		{
 			getProject().executeCommand(new CommandEndTransaction());
+			model.setDeferUpdateGroupBoxCells(true);
 		}
 	}
 	
@@ -136,11 +145,11 @@ public class CreateMarginDoer extends ObjectsDoer
 
 	public static int getTopMargin(Project project)
 	{
-		return 2 * (DiagramFactor.getDefaultSize().height + project.getGridSize());
+		return 2 * DiagramFactor.getDefaultSize().height;
 	}
 	
 	public static int getLeftMargin(Project project)
 	{
-		return 2 * (DiagramFactor.getDefaultSize().width  + project.getGridSize());
-	} 
+		return 2 * DiagramFactor.getDefaultSize().width;
+	}
 }

@@ -252,13 +252,11 @@ public class TestProject extends MiradiTestCase
 
 	public void testCalculateSnappedSize()
 	{
-		verifySnappedSize(30, 0);
-		verifySnappedSize(30, 15);
-		verifySnappedSize(30, 29);
-		verifySnappedSize(30, 40);
-		verifySnappedSize(60, 45);
+		verifySnappedSize(Project.DEFAULT_GRID_SIZE, 0);
+		verifySnappedSize(Project.DEFAULT_GRID_SIZE, 1);
+		verifySnappedSize(30, 30);
 	}
-	
+
 	private void verifySnappedSize(int expectedValue, int valueToEvenSnap)
 	{
 		assertEquals("value was not snapped to even size?", expectedValue, getProject().calculateSnappedSize(valueToEvenSnap));
