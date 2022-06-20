@@ -106,7 +106,9 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 
 		if (model.shouldSaveChangesToDisk())
 		{
-			Rectangle2D newBounds = currentBounds.createUnion(minBounds);
+			Rectangle2D newBounds = minBounds;
+			if (currentBounds.intersects(minBounds))
+				newBounds = currentBounds.createUnion(minBounds);
 
 			Point newLocation = new Point((int) newBounds.getX(), (int) newBounds.getY());
 			Dimension newSize = new Dimension((int) newBounds.getWidth(), (int) newBounds.getHeight());
