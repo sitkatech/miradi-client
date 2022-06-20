@@ -65,11 +65,19 @@ public class GroupBoxRemoveDiagramFactorDoer extends AbstractGroupBoxDoer
 	}
 
 	@Override
+	protected DiagramFactor getGroupBoxToUpdate()
+	{
+		ORef groupBoxDiagramFactorRef = getGroupBoxRefsContainingSelectedDiagramFactors().getRefForType(DiagramFactorSchema.getObjectType());
+		DiagramFactor groupBoxDiagramFactor = DiagramFactor.find(getProject(), groupBoxDiagramFactorRef);
+
+		return groupBoxDiagramFactor;
+	}
+
+	@Override
 	protected void updateGroupBoxChildrenUsingCommands() throws Exception
 	{ 
 		ORefList groupBoxChildrenToRemove = getSelectedNonGroupBoxDiagramFactors();
-		ORef groupBoxDiagramFactorRef = getGroupBoxRefsContainingSelectedDiagramFactors().getRefForType(DiagramFactorSchema.getObjectType());
-		DiagramFactor groupBoxDiagramFactor = DiagramFactor.find(getProject(), groupBoxDiagramFactorRef);
+		DiagramFactor groupBoxDiagramFactor = getGroupBoxToUpdate();
 		ORefList groupBoxChildren = groupBoxDiagramFactor.getGroupBoxChildrenRefs();
 		
 		ORefList newSubtractChildrenRefs = ORefList.subtract(groupBoxChildren, groupBoxChildrenToRemove);

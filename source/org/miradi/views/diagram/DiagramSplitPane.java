@@ -408,7 +408,6 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 		if (commandSetObjectData.getObjectType() == DiagramLinkSchema.getObjectType())
 			handleDiagramLinkContentsChange(commandSetObjectData);
 
-		handleGroupBoxTypes(commandSetObjectData);
 		handleDiagramZooming(commandSetObjectData);
 		handleTaggingEnabled(commandSetObjectData);
 		handleSelectedTaggedObjectSets(commandSetObjectData);
@@ -476,24 +475,6 @@ abstract public class DiagramSplitPane extends PersistentNonPercentageHorizontal
 			return;
 		
 		diagramModel.updateVisibilityOfFactorsAndLinks();
-	}
-
-	private void handleGroupBoxTypes(CommandSetObjectData commandSetObjectData) throws Exception
-	{
-		if (commandSetObjectData.getObjectType() != DiagramFactorSchema.getObjectType())
-			return;
-		
-		if (getDiagramModel() == null)
-			return;
-		
-		if (commandSetObjectData.getFieldTag().equals(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS))
-			getDiagramModel().updateGroupBoxCells();
-		
-		if (commandSetObjectData.getFieldTag().equals(DiagramFactor.TAG_LOCATION))
-			getDiagramModel().updateGroupBoxCells();
-	
-		if (commandSetObjectData.getFieldTag().equals(DiagramFactor.TAG_SIZE))
-			getDiagramModel().updateGroupBoxCells();
 	}
 
 	private void handleViewDataContentsChange(CommandSetObjectData commandSetObjectData)

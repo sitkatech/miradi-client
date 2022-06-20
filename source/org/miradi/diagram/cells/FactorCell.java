@@ -472,7 +472,7 @@ abstract public class FactorCell extends EAMGraphCell
 	{
 		Point location = getLocation();
 
-		Dimension newSize = new Dimension(getProject().forceNonZeroEvenSnap(size.width), getProject().forceNonZeroEvenSnap(size.height));
+		Dimension newSize = new Dimension(getProject().calculateSnappedSize(size.width), getProject().calculateSnappedSize(size.height));
 		Rectangle bounds = new Rectangle(location, newSize);
 		GraphConstants.setBounds(getAttributes(), bounds);
 		

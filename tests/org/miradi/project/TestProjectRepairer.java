@@ -435,31 +435,24 @@ public class TestProjectRepairer extends TestCaseWithProject
 	public void testRepairUnsnappedFactorSizes() throws Exception
 	{
 		DiagramFactor cause1 = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
-		cause1.setData(DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(new Dimension(15, 15)));
+		int cause1Width = 15;
+		int cause1Height = 15;
+		cause1.setData(DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(new Dimension(cause1Width, cause1Height)));
 		
 		DiagramFactor cause2 = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
-		cause2.setData(DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(new Dimension(30, 30)));
-		
-		DiagramFactor cause3 = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
-		cause3.setData(DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(new Dimension(31, 31)));
-		
-		DiagramFactor cause4 = getProject().createDiagramFactorAndAddToDiagram(CauseSchema.getObjectType());
-		cause4.setData(DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(new Dimension(45, 45)));
-		
+		int cause2Width = 31;
+		int cause2Height = 31;
+		cause2.setData(DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(new Dimension(cause2Width, cause2Height)));
+
 		repairer.repairProblemsWherePossible();
 		
 		DiagramFactor repairedCause1 = DiagramFactor.find(getProject(), cause1.getRef());
-		Dimension expectedSnappedSize = new Dimension(30, 30);
-		assertEquals("wrong cause1 size?", expectedSnappedSize, repairedCause1.getSize());
+		Dimension expectedCause1SnappedSize = new Dimension(cause1Width, cause1Height);
+		assertEquals("wrong cause1 size?", expectedCause1SnappedSize, repairedCause1.getSize());
 		
 		DiagramFactor repairedCause2 = DiagramFactor.find(getProject(), cause2.getRef());
-		assertEquals("wrong cause2 size?", expectedSnappedSize, repairedCause2.getSize());
-		
-		DiagramFactor repairedCause3 = DiagramFactor.find(getProject(), cause3.getRef());
-		assertEquals("wrong cause3 size?", expectedSnappedSize, repairedCause3.getSize());
-		
-		DiagramFactor repairedCause4 = DiagramFactor.find(getProject(), cause4.getRef());
-		assertEquals("wrong cause4 size?", new Dimension(60, 60), repairedCause4.getSize());
+		Dimension expectedCause2SnappedSize = new Dimension(cause2Width, cause2Height);
+		assertEquals("wrong cause2 size?", expectedCause2SnappedSize, repairedCause2.getSize());
 	}
 
 	private ProjectRepairer repairer;

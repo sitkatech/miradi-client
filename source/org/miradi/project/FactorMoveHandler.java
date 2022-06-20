@@ -86,10 +86,8 @@ public class FactorMoveHandler
 				}
 			}
 
-			getProject().beginCommandSideEffectMode();
 			model.setDeferUpdateGroupBoxCells(false);
 			model.updateGroupBoxCells();
-			getProject().endCommandSideEffectMode();
 
 			//TODO remove cluster related code below
 			/*
@@ -280,8 +278,8 @@ public class FactorMoveHandler
 	private Command buildResizeCommand(FactorCell node)
 	{
 		Dimension size = node.getSize();
-		int snappedEvenWidth = getProject().forceNonZeroEvenSnap(size.width);
-		int snappedEvenHeight = getProject().forceNonZeroEvenSnap(size.height);
+		int snappedEvenWidth = getProject().calculateSnappedSize(size.width);
+		int snappedEvenHeight = getProject().calculateSnappedSize(size.height);
 		Dimension snappedEvenSize = new Dimension(snappedEvenWidth, snappedEvenHeight);
 		String currentSize = EnhancedJsonObject.convertFromDimension(snappedEvenSize);
 		return new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, node.getDiagramFactorId(), DiagramFactor.TAG_SIZE, currentSize);

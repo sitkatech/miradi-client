@@ -20,16 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.diagram;
 
 import java.awt.Point;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Hashtable;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.Vector;
+import java.util.*;
 
 import org.jgraph.graph.AttributeMap;
 import org.jgraph.graph.ConnectionSet;
@@ -372,6 +363,8 @@ abstract public class DiagramModel extends DefaultGraphModel
 	
 	public Point recursivelyGetNonOverlappingFactorPoint(Point pointToUse)
 	{
+		int halfHeight = DiagramFactor.getDefaultHeight() / 2;
+
 		Point point = (Point) pointToUse.clone();
 		DiagramFactor[] allDiagramFactors = getAllDiagramFactorsAsArray();
 		for (int i = 0; i < allDiagramFactors.length; ++i)
@@ -379,7 +372,7 @@ abstract public class DiagramModel extends DefaultGraphModel
 			Point thisLocation = allDiagramFactors[i].getLocation();
 			if (thisLocation.equals(point))
 			{
-				point.translate(getProject().getGridSize(), getProject().getGridSize());
+				point.translate(halfHeight, halfHeight);
 				return recursivelyGetNonOverlappingFactorPoint(point);
 			}
 		}
@@ -880,10 +873,29 @@ abstract public class DiagramModel extends DefaultGraphModel
 		for (int i = 0; i < allGroupBoxes.size(); ++i)
 		{
 			DiagramGroupBoxCell cell = (DiagramGroupBoxCell) allGroupBoxes.get(i);
-			cell.autoSurroundChildren();
+			updateGroupBoxCell(cell, false);
 		}
-		
+
 		sortLayers();
+	}
+
+	public void updateGroupBoxCell(DiagramFactor groupBox, boolean forceResize) throws Exception
+	{
+		if (deferUpdateGroupBoxCells)
+			return;
+
+		Vector<FactorCell> allGroupBoxes = getAllGroupBoxCells();
+		Optional<FactorCell> groupBoxCell = allGroupBoxes.stream().filter(i -> i.getDiagramFactor().equals(groupBox)).findFirst();
+
+		if (groupBoxCell.isPresent())
+			updateGroupBoxCell((DiagramGroupBoxCell) groupBoxCell.get(), forceResize);
+
+		sortLayers();
+	}
+
+	private void updateGroupBoxCell(DiagramGroupBoxCell cell, boolean forceResize) throws Exception
+	{
+		cell.autoSurroundChildren(forceResize);
 	}
 
 	public Vector<FactorCell> getAllGroupBoxCells()

@@ -377,8 +377,8 @@ public class ProjectRepairer
 	private void fixSize(DiagramFactor diagramFactor)
 	{
 		Dimension currentSize = diagramFactor.getSize();
-		int snappedEvenWidth = project.forceNonZeroEvenSnap(currentSize.width);
-		int snappedEvenHeight = project.forceNonZeroEvenSnap(currentSize.height);
+		int snappedEvenWidth = project.calculateSnappedSize(currentSize.width);
+		int snappedEvenHeight = project.calculateSnappedSize(currentSize.height);
 		Dimension snappedEvenSize = new Dimension(snappedEvenWidth, snappedEvenHeight);
 		
 		if (currentSize.equals(snappedEvenSize))

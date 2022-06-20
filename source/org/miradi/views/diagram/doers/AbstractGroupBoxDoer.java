@@ -23,6 +23,7 @@ import java.util.Vector;
 
 import org.miradi.commands.CommandBeginTransaction;
 import org.miradi.commands.CommandEndTransaction;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.objecthelpers.ORefList;
@@ -58,7 +59,9 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 		getProject().executeCommand(new CommandBeginTransaction());
 		try
 		{
+			DiagramFactor groupBox = getGroupBoxToUpdate();
 			updateGroupBoxChildrenUsingCommands();
+			updateGroupBoxSizeAndLocation(groupBox);
 		}
 		catch (Exception e)
 		{
@@ -81,7 +84,12 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 		final int FIRST_INDEX = 0;
 		return getSelectedGroupBoxDiagramFactors().get(FIRST_INDEX);
 	}
-	
+
+	protected DiagramFactor getGroupBoxToUpdate()
+	{
+		return getSingleSelectedGroupBox();
+	}
+
 	protected Vector<DiagramFactor> getSelectedGroupBoxDiagramFactors()
 	{
 		FactorCell[] selected = getSelectedCells();
@@ -132,4 +140,10 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 	}
 	
 	abstract protected void updateGroupBoxChildrenUsingCommands() throws Exception;
+
+	protected void updateGroupBoxSizeAndLocation(DiagramFactor groupBox) throws Exception
+	{
+		DiagramModel model = getDiagramView().getDiagramModel();
+		model.updateGroupBoxCell(groupBox, true);
+	}
 }

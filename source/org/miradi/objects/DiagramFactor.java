@@ -70,16 +70,21 @@ public class DiagramFactor extends BaseObject
 	public static Dimension getDefaultSize(int type)
 	{
 		if (type == ObjectType.TEXT_BOX)
-			return new Dimension(180, 30);
+			return new Dimension(3 * DEFAULT_FACTOR_WIDTH, DEFAULT_FACTOR_HEIGHT);
 		
 		return getDefaultSize();
 	}
 	
 	public static Dimension getDefaultSize()
 	{
-		return new Dimension(120, 60);
+		return new Dimension(2 * DEFAULT_FACTOR_WIDTH, 2 * DEFAULT_FACTOR_HEIGHT);
 	}
-	
+
+	public static int getDefaultHeight()
+	{
+		return DEFAULT_FACTOR_HEIGHT;
+	}
+
 	@Override
 	public int[] getTypesThatCanOwnUs()
 	{
@@ -336,8 +341,10 @@ public class DiagramFactor extends BaseObject
 	public static final String TAG_TAGGED_OBJECT_SET_REFS = "TaggedObjectSetRefs";
 
     public static final int DEFAULT_HEADER_HEIGHT = 2;
+    public static final int DEFAULT_FACTOR_HEIGHT = 30;
+    public static final int DEFAULT_FACTOR_WIDTH = 2 * DEFAULT_FACTOR_HEIGHT;
 
-	public static final Dimension DEFAULT_STRESS_SIZE = new Dimension(60, 30);
-	public static final Dimension DEFAULT_ACTIVITY_SIZE = new Dimension(60, 30);
-	public static final Dimension DEFAULT_ASSUMPTION_SIZE = new Dimension(60, 30);
+	public static final Dimension DEFAULT_STRESS_SIZE = new Dimension(DEFAULT_FACTOR_WIDTH, DEFAULT_FACTOR_HEIGHT);
+	public static final Dimension DEFAULT_ACTIVITY_SIZE = new Dimension(DEFAULT_FACTOR_WIDTH, DEFAULT_FACTOR_HEIGHT);
+	public static final Dimension DEFAULT_ASSUMPTION_SIZE = new Dimension(DEFAULT_FACTOR_WIDTH, DEFAULT_FACTOR_HEIGHT);
 }

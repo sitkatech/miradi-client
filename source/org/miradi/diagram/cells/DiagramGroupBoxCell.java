@@ -93,7 +93,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		return GraphConstants.getBounds(getAttributes());
 	}
 
-	public void autoSurroundChildren() throws Exception
+	public void autoSurroundChildren(boolean forceResize) throws Exception
 	{
 		if (getDiagramFactor().getGroupBoxChildrenRefs().size() == 0)
 			return;
@@ -101,12 +101,14 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		Rectangle2D currentBounds = getBounds();
 		Rectangle minBounds = calculateMinBoundsForChildren();
 
-		if(currentBounds.contains(minBounds))
+		if(currentBounds.contains(minBounds) && !forceResize)
 			return;
 
 		if (model.shouldSaveChangesToDisk())
 		{
-			Rectangle2D newBounds = currentBounds.createUnion(minBounds);
+			Rectangle2D newBounds = minBounds;
+			if (currentBounds.intersects(minBounds))
+				newBounds = currentBounds.createUnion(minBounds);
 
 			Point newLocation = new Point((int) newBounds.getX(), (int) newBounds.getY());
 			Dimension newSize = new Dimension((int) newBounds.getWidth(), (int) newBounds.getHeight());
@@ -137,14 +139,14 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
         int heightOfTextArea = headerHeight * gridSize;
 
 		Rectangle2D currentChildrenBounds = computeCurrentChildrenBounds();
-		Point locationBasedOnChildrenBounds = new Point((int)currentChildrenBounds.getX() - gridSize, (int)currentChildrenBounds.getY() - heightOfTextArea);
+		Point locationBasedOnChildrenBounds = new Point((int)currentChildrenBounds.getX(), (int)currentChildrenBounds.getY() - heightOfTextArea);
 		Point locationAdjusted = getProject().getSnapped(locationBasedOnChildrenBounds);
-		int minWidthWithCushion = (int)currentChildrenBounds.getWidth() + gridSize;
+		int minWidthWithCushion = (int)currentChildrenBounds.getWidth();
 		int midHeightWithCushion = (int)currentChildrenBounds.getHeight() + heightOfTextArea;
 
 		Dimension minSize = new Dimension(minWidthWithCushion, midHeightWithCushion);
-		int minSizeForcedEvenSnappedWidth = getProject().forceNonZeroEvenSnap(minSize.width);
-		int minSizeForcedEvenSnappedHeight = getProject().forceNonZeroEvenSnap(minSize.height);
+		int minSizeForcedEvenSnappedWidth = getProject().calculateSnappedSize(minSize.width);
+		int minSizeForcedEvenSnappedHeight = getProject().calculateSnappedSize(minSize.height);
 		Dimension minSizeAdjusted = new Dimension(minSizeForcedEvenSnappedWidth, minSizeForcedEvenSnappedHeight);
 
 		return new Rectangle(locationAdjusted, minSizeAdjusted);
@@ -153,10 +155,24 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	private void saveLocationAndSize(Point location, Dimension size) throws Exception
 	{
 		CommandSetObjectData setLocation = new CommandSetObjectData(diagramFactor.getRef(), DiagramFactor.TAG_LOCATION, EnhancedJsonObject.convertFromPoint(location));
-		model.getProject().executeAsSideEffect(setLocation);
+		if (getProject().isInCommandSideEffectMode())
+		{
+			model.getProject().executeAsSideEffect(setLocation);
+		}
+		else
+		{
+			model.getProject().executeCommand(setLocation);
+		}
 
 		CommandSetObjectData setSize = new CommandSetObjectData(diagramFactor.getRef(), DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(size));
-		model.getProject().executeAsSideEffect(setSize);
+		if (getProject().isInCommandSideEffectMode())
+		{
+			model.getProject().executeAsSideEffect(setSize);
+		}
+		else
+		{
+			model.getProject().executeCommand(setSize);
+		}
 	}
 	
 	private Rectangle2D computeCurrentChildrenBounds()
