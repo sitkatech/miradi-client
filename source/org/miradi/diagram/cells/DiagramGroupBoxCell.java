@@ -93,7 +93,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		return GraphConstants.getBounds(getAttributes());
 	}
 
-	public void autoSurroundChildren() throws Exception
+	public void autoSurroundChildren(boolean forceResize) throws Exception
 	{
 		if (getDiagramFactor().getGroupBoxChildrenRefs().size() == 0)
 			return;
@@ -101,7 +101,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 		Rectangle2D currentBounds = getBounds();
 		Rectangle minBounds = calculateMinBoundsForChildren();
 
-		if(currentBounds.contains(minBounds))
+		if(currentBounds.contains(minBounds) && !forceResize)
 			return;
 
 		if (model.shouldSaveChangesToDisk())
@@ -155,10 +155,24 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	private void saveLocationAndSize(Point location, Dimension size) throws Exception
 	{
 		CommandSetObjectData setLocation = new CommandSetObjectData(diagramFactor.getRef(), DiagramFactor.TAG_LOCATION, EnhancedJsonObject.convertFromPoint(location));
-		model.getProject().executeAsSideEffect(setLocation);
+		if (getProject().isInCommandSideEffectMode())
+		{
+			model.getProject().executeAsSideEffect(setLocation);
+		}
+		else
+		{
+			model.getProject().executeCommand(setLocation);
+		}
 
 		CommandSetObjectData setSize = new CommandSetObjectData(diagramFactor.getRef(), DiagramFactor.TAG_SIZE, EnhancedJsonObject.convertFromDimension(size));
-		model.getProject().executeAsSideEffect(setSize);
+		if (getProject().isInCommandSideEffectMode())
+		{
+			model.getProject().executeAsSideEffect(setSize);
+		}
+		else
+		{
+			model.getProject().executeCommand(setSize);
+		}
 	}
 	
 	private Rectangle2D computeCurrentChildrenBounds()

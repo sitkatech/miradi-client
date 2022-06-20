@@ -95,10 +95,8 @@ public class CreateMarginDoer extends ObjectsDoer
 			moveDiagramFactors(model.getAllDiagramFactors(), deltaMargin);
 			moveBendPoints(model.getAllDiagramFactorLinks(), deltaMargin);
 
-			getProject().beginCommandSideEffectMode();
 			model.setDeferUpdateGroupBoxCells(false);
 			model.updateGroupBoxCells();
-			getProject().endCommandSideEffectMode();
 		}
 		catch (Exception e)
 		{

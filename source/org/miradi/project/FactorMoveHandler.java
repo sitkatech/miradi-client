@@ -86,10 +86,8 @@ public class FactorMoveHandler
 				}
 			}
 
-			getProject().beginCommandSideEffectMode();
 			model.setDeferUpdateGroupBoxCells(false);
 			model.updateGroupBoxCells();
-			getProject().endCommandSideEffectMode();
 
 			//TODO remove cluster related code below
 			/*
