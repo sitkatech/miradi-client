@@ -38,9 +38,6 @@ public class DiagramFactorSchemaWriter extends BaseObjectSchemaWriter
 		if (tag.equals(DiagramFactor.TAG_FONT_STYLE))
 			return true;
 
-        if (tag.equals(DiagramFactor.TAG_HEADER_HEIGHT))
-            return true;
-
         if (tag.equals(DiagramFactor.TAG_BACKGROUND_COLOR))
 			return true;
 		

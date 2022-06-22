@@ -75,6 +75,7 @@ public class Xmpz2ForwardMigration
 		removeRelevantDiagramFactorIdsElement(rootElement, Xmpz2XmlConstants.ANALYTICAL_QUESTION);
 		removeRelevantDiagramFactorIdsElement(rootElement, Xmpz2XmlConstants.ASSUMPTION);
 		moveStrategyStandardClassificationToExtraData(document);
+		removeDiagramFactorStyleHeaderHeightElement(rootElement);
 
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
@@ -460,6 +461,33 @@ public class Xmpz2ForwardMigration
 				continue;
 
 			removeChildren(objectToUpdate, new String[]{XmlElementName + Xmpz2XmlConstants.RELEVANT_DIAGRAM_FACTOR_IDS,});
+		}
+	}
+
+	private void removeDiagramFactorStyleHeaderHeightElement(Element rootElement)
+	{
+		Node diagramFactorPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.DIAGRAM_FACTOR));
+		if (diagramFactorPool == null)
+			return;
+
+		NodeList diagramFactorNodes = diagramFactorPool.getChildNodes();
+		for (int index = 0; index < diagramFactorNodes.getLength(); ++index)
+		{
+			Node diagramFactorNode = diagramFactorNodes.item(index);
+			if (diagramFactorNode != null && diagramFactorNode.getNodeType() == Node.ELEMENT_NODE)
+			{
+				String diagramFactorStyleElementNameWithoutAlias = Xmpz2XmlConstants.DIAGRAM_FACTOR + Xmpz2XmlConstants.STYLE;
+				Node diagramFactorStyleElementNode = findNode(diagramFactorNode, diagramFactorStyleElementNameWithoutAlias);
+				if (diagramFactorStyleElementNode != null && diagramFactorStyleElementNode.getNodeType() == Node.ELEMENT_NODE)
+				{
+					String styleElementNameWithoutAlias = Xmpz2XmlConstants.STYLE;
+					Node styleElementNode = findNode(diagramFactorStyleElementNode, styleElementNameWithoutAlias);
+					if (styleElementNode != null && styleElementNode.getNodeType() == Node.ELEMENT_NODE)
+					{
+						removeChildren(styleElementNode, new String[]{Xmpz2XmlConstants.DIAGRAM_FACTOR + MigrationTo84.TAG_HEADER_HEIGHT,});
+					}
+				}
+			}
 		}
 	}
 
