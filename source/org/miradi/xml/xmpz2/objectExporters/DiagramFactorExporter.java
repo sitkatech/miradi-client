@@ -84,9 +84,6 @@ public class DiagramFactorExporter extends BaseObjectExporter
 		if (tag.equals(DiagramFactor.TAG_FOREGROUND_COLOR))
 			return true;
 
-        if (tag.equals(DiagramFactor.TAG_HEADER_HEIGHT))
-            return true;
-
         return false;
 	}
 
@@ -115,8 +112,6 @@ public class DiagramFactorExporter extends BaseObjectExporter
 		getWriter().writeStartElement(STYLE);
 		getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion(), diagramFactor.getFontSize());
 		getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion(), XmlUtilities2.convertXmlTextToHtmlWithoutSurroundingHtmlTags(diagramFactor.getFontStyle()));
-        if (diagramFactor.getHeaderHeight() != 0)
-            getWriter().writeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_HEADER_HEIGHT, diagramFactor.getHeaderHeight());
 		getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion(), diagramFactor.getFontColor());
 		
 		Factor wrappedFactor = diagramFactor.getWrappedFactor();

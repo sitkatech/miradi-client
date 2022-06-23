@@ -2020,7 +2020,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_FOREGROUND_COLOR, DiagramFactorFontColorQuestion.BROWN_HEX);
 		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_FONT_SIZE, "2.5");
 		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_FONT_STYLE, DiagramFactorFontStyleQuestion.BOLD_CODE);
-		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_HEADER_HEIGHT, DiagramFactor.DEFAULT_HEADER_HEIGHT);
 		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, TextBoxZOrderQuestion.FRONT_CODE);
 	}
 	

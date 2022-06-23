@@ -74,7 +74,6 @@ public class DiagramFactorImporter extends BaseObjectImporter
 		Node styleNode = getImporter().getNamedChildNode(diagramFactorStyleNode, STYLE);
 		getImporter().importCodeField(styleNode, getBaseObjectSchema().getXmpz2ElementName(), destinationRef, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion());
 		getImporter().importCodeField(styleNode, getBaseObjectSchema().getXmpz2ElementName(), destinationRef, DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion());
-        getImporter().importFieldQualifiedByContainerName(styleNode, getBaseObjectSchema().getXmpz2ElementName(), destinationRef, DiagramFactor.TAG_HEADER_HEIGHT);
 		getImporter().importCodeField(styleNode, getBaseObjectSchema().getXmpz2ElementName(), destinationRef, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
 		getImporter().importCodeField(styleNode, getBaseObjectSchema().getXmpz2ElementName(), destinationRef, DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion());
 	}

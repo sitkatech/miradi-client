@@ -34,8 +34,9 @@ public interface Xmpz2XmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String DOT_ELEMENT = ".element";
 	
-	public static final String NAME_SPACE_VERSION = "243";
+	public static final String NAME_SPACE_VERSION = "244";
 
+	public static final String NAME_SPACE_VERSION_244 = "244";
 	public static final String NAME_SPACE_VERSION_243 = "243";
 	public static final String NAME_SPACE_VERSION_242 = "242";
 	public static final String NAME_SPACE_VERSION_237 = "237";
@@ -327,7 +328,6 @@ public interface Xmpz2XmlConstants
 	public static final String DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME = DiagramFactor.TAG_BACKGROUND_COLOR;
 	public static final String DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME = DiagramFactor.TAG_FOREGROUND_COLOR;
 	public static final String DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME = DiagramFactor.TAG_FONT_STYLE;
-	public static final String DIAGRAM_FACTOR_HEADER_SIZE_ELEMENT_NAME = DiagramFactor.TAG_HEADER_HEIGHT;
 	public static final String DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME = DiagramFactor.TAG_FONT_SIZE;
 	public static final String THREAT_REDUCTION_RESULT_THREAT = THREAT_REDUCTION_RESULT + THREAT;
 	public static final String MIRADI_SHARE_PROJECT_DATA_TAXONOMY_ASSOCIATION_POOL = "MiradiShareProjectDataTaxonomyAssociationPool";
@@ -414,7 +414,6 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_HIDDEN_TYPES = "vocabulary_hidden_types";
 	public static final String VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE = "vocabulary_diagram_factor_font_size";
 	public static final String VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE = "vocabulary_diagram_factor_font_style";
-	public static final String VOCABULARY_DIAGRAM_FACTOR_HEADER_HEIGHT = "vocabulary_diagram_factor_header_height";
 	public static final String VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR = "vocabulary_diagram_factor_background_color";
 	public static final String VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR = "vocabulary_diagram_factor_foreground_color";
 	public static final String VOCABULARY_DIAGRAM_LINK_COLOR = "vocabulary_diagram_link_color";

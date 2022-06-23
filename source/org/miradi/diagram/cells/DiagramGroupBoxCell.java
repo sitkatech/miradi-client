@@ -106,9 +106,7 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 
 		if (model.shouldSaveChangesToDisk())
 		{
-			Rectangle2D newBounds = minBounds;
-			if (currentBounds.intersects(minBounds))
-				newBounds = currentBounds.createUnion(minBounds);
+			Rectangle2D newBounds = currentBounds.createUnion(minBounds);
 
 			Point newLocation = new Point((int) newBounds.getX(), (int) newBounds.getY());
 			Dimension newSize = new Dimension((int) newBounds.getWidth(), (int) newBounds.getHeight());
@@ -133,16 +131,11 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 
 	private Rectangle calculateMinBoundsForChildren()
 	{
-		int gridSize = getProject().getGridSize();
-
-        int headerHeight = Math.max(diagramFactor.getHeaderHeight(), DiagramFactor.DEFAULT_HEADER_HEIGHT);
-        int heightOfTextArea = headerHeight * gridSize;
-
 		Rectangle2D currentChildrenBounds = computeCurrentChildrenBounds();
-		Point locationBasedOnChildrenBounds = new Point((int)currentChildrenBounds.getX(), (int)currentChildrenBounds.getY() - heightOfTextArea);
+		Point locationBasedOnChildrenBounds = new Point((int)currentChildrenBounds.getX(), (int)currentChildrenBounds.getY());
 		Point locationAdjusted = getProject().getSnapped(locationBasedOnChildrenBounds);
 		int minWidthWithCushion = (int)currentChildrenBounds.getWidth();
-		int midHeightWithCushion = (int)currentChildrenBounds.getHeight() + heightOfTextArea;
+		int midHeightWithCushion = (int)currentChildrenBounds.getHeight();
 
 		Dimension minSize = new Dimension(minWidthWithCushion, midHeightWithCushion);
 		int minSizeForcedEvenSnappedWidth = getProject().calculateSnappedSize(minSize.width);

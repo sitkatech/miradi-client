@@ -1,4 +1,4 @@
-﻿MiradiProjectFile 80 80
+﻿MiradiProjectFile 84 84
 UV	Version=61
 UP	HighestUsedNodeId=2649
 UP	ProjectMetadataId=0
@@ -1615,7 +1615,6 @@ CO	18:110
 UO	18:110	BackgroundColor=ContributingFactorLightOrange
 UO	18:110	FontStyle=<B>
 UO	18:110	GroupBoxChildrenRefs={"References":[{"ObjectType":18,"ObjectId":102},{"ObjectType":18,"ObjectId":106}]}
-UO	18:110	HeaderHeight=3
 UO	18:110	Location={"X":45,"Y":165}
 UO	18:110	Size={"Height":210,"Width":150}
 UO	18:110	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":497},{"ObjectType":47,"ObjectId":1668}]}
@@ -2492,7 +2491,7 @@ UO	21:131	FeasibilityRating=2
 UO	21:131	ImpactRating=3
 UO	21:131	Label=Develop Sustainable Ocean Fishery
 UO	21:131	ProgressReportRefs={"References":[{"ObjectType":37,"ObjectId":472}]}
-UO	21:131	TaxonomyCode=A60.20
+UO	21:131	StandardClassificationV11Code=A60.20
 UO	21:131	Text=We have not yet completed the workplan for this strategy - high level estimates only.
 UO	21:131	TimeframeIds={"Ids":[1899]}
 UO	21:131	UUID=2c417352-8ba0-4483-a022-4d85b720856b
@@ -2502,7 +2501,7 @@ UO	21:135	FeasibilityRating=3
 UO	21:135	ImpactRating=3
 UO	21:135	Label=Policy to Mandate Rat Barriers on Visiting Boats
 UO	21:135	ProgressReportRefs={"References":[{"ObjectType":37,"ObjectId":503},{"ObjectType":37,"ObjectId":1771}]}
-UO	21:135	TaxonomyCode=A50.20
+UO	21:135	StandardClassificationV11Code=A50.20
 UO	21:135	UUID=a6f8300a-e33d-4ec9-bb09-a8f4a0730a32
 CO	21:139
 UO	21:139	ActivityIds={"Ids":[440,442,450,1872]}
@@ -2510,13 +2509,13 @@ UO	21:139	FeasibilityRating=3
 UO	21:139	ImpactRating=4
 UO	21:139	Label=Trap Rats on Key Islands
 UO	21:139	ProgressReportRefs={"References":[{"ObjectType":37,"ObjectId":504},{"ObjectType":37,"ObjectId":1773}]}
-UO	21:139	TaxonomyCode=A20.20
+UO	21:139	StandardClassificationV11Code=A20.20
 UO	21:139	UUID=e6883bc8-1563-42b3-9122-feb2a07daaa4
 CO	21:143
 UO	21:143	ActivityIds={"Ids":[163,464,1887,1891,1884]}
 UO	21:143	Label=Campaign to Stop Shark Fin Soup
 UO	21:143	ProgressReportRefs={"References":[{"ObjectType":37,"ObjectId":1117},{"ObjectType":37,"ObjectId":2644}]}
-UO	21:143	TaxonomyCode=A40.30
+UO	21:143	StandardClassificationV11Code=A40.30
 UO	21:143	Text=Work with Conservation Advocacy International. This strategy is a long-shot and will take a long time, but it seems we have no alternative on the &quot;supply&quot; side.
 UO	21:143	UUID=5a24a349-49c7-4f32-a32b-f6c1be6658c2
 CO	21:1452
@@ -2543,23 +2542,23 @@ CO	21:289
 UO	21:289	FeasibilityRating=2
 UO	21:289	ImpactRating=2
 UO	21:289	Label=Ban Boats from Landing on Islands
+UO	21:289	StandardClassificationV11Code=A50.20
 UO	21:289	Status=Draft
-UO	21:289	TaxonomyCode=A50.20
 UO	21:289	UUID=14e5114c-01bb-4e79-afe9-761a0fd526aa
 CO	21:293
 UO	21:293	FeasibilityRating=1
 UO	21:293	ImpactRating=3
 UO	21:293	Label=Poison Rats on Key Islands
+UO	21:293	StandardClassificationV11Code=A20.20
 UO	21:293	Status=Draft
-UO	21:293	TaxonomyCode=A20.20
 UO	21:293	Text=Problem if other species ingest the poison
 UO	21:293	UUID=2cae9531-7d29-42a5-a35a-cb348bd80e9d
 CO	21:321
 UO	21:321	FeasibilityRating=1
 UO	21:321	ImpactRating=4
 UO	21:321	Label=Get Police to Arrest Boats Entering E Bay Waters
+UO	21:321	StandardClassificationV11Code=A50.40
 UO	21:321	Status=Draft
-UO	21:321	TaxonomyCode=A50.40
 UO	21:321	Text=Tip off police that the boats are present and get them to arrest them. Doesn&apos;t seem very feasible given the corruption issues.
 UO	21:321	UUID=56f9b5ba-9676-4550-a418-cc67b38949d1
 CO	21:327
@@ -2580,23 +2579,23 @@ CO	21:335
 UO	21:335	FeasibilityRating=2
 UO	21:335	ImpactRating=3
 UO	21:335	Label=Ban Fishing in Key Sites
+UO	21:335	StandardClassificationV11Code=A10.10
 UO	21:335	Status=Draft
-UO	21:335	TaxonomyCode=A10.10
 UO	21:335	UUID=a92793a8-ddb2-43f8-a41d-b807d8f833bd
 CO	21:339
 UO	21:339	FeasibilityRating=1
 UO	21:339	ImpactRating=4
 UO	21:339	Label=Direct Payments to Community Members
+UO	21:339	StandardClassificationV11Code=A60.40
 UO	21:339	Status=Draft
-UO	21:339	TaxonomyCode=A60.40
 UO	21:339	Text=Provide payments to the community if they stop fishing in key areas. Seems unlikely to be a sustainable option over the long-term.
 UO	21:339	UUID=8b61e9bb-7f38-48e2-93bd-0b59c8d48bb6
 CO	21:343
 UO	21:343	FeasibilityRating=1
 UO	21:343	ImpactRating=2
 UO	21:343	Label=Legislation to Ban Migration
+UO	21:343	StandardClassificationV11Code=A50.10
 UO	21:343	Status=Draft
-UO	21:343	TaxonomyCode=A50.10
 UO	21:343	Text=Seems impossible to implement.
 UO	21:343	UUID=02eb0bca-1989-4231-b054-30f48cb1ef50
 CO	22:30

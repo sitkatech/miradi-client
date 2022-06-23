@@ -45,7 +45,6 @@ public class DiagramFactorSchema extends BaseObjectSchema
 		createFieldSchemaChoice(DiagramFactor.TAG_FONT_SIZE, DiagramFactorFontSizeQuestion.class);
 		createFieldSchemaChoice(DiagramFactor.TAG_FOREGROUND_COLOR, DiagramFactorFontColorQuestion.class);
 		createFieldSchemaChoice(DiagramFactor.TAG_FONT_STYLE, DiagramFactorFontStyleQuestion.class);
-        createFieldSchemaInteger(DiagramFactor.TAG_HEADER_HEIGHT);
 		createFieldSchemaReflist(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, DIAGRAM_FACTOR);
 		createFieldSchemaChoice(DiagramFactor.TAG_BACKGROUND_COLOR, DiagramFactorBackgroundQuestion.class);
 		createFieldSchemaRequiredChoice(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, TextBoxZOrderQuestion.class);

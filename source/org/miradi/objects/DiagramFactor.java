@@ -48,6 +48,11 @@ public class DiagramFactor extends BaseObject
 		setDimensionData(TAG_SIZE, getDefaultSize());
 	}
 
+	public DiagramFactor(ObjectManager objectManager, DiagramFactorId diagramFactorId, DiagramFactorSchema schema)
+	{
+		super(objectManager, diagramFactorId, schema);
+	}
+
 	public static DiagramFactorSchema createSchema(Project projectToUse)
 	{
 		return createSchema(projectToUse.getObjectManager());
@@ -168,11 +173,6 @@ public class DiagramFactor extends BaseObject
 		return getStringData(TAG_BACKGROUND_COLOR);
 	}
 
-    public int getHeaderHeight()
-    {
-        return getIntegerData(TAG_HEADER_HEIGHT);
-    }
-
     public void setLocation(Point pointToUse)
 	{
 		setPointData(TAG_LOCATION, pointToUse);
@@ -265,9 +265,6 @@ public class DiagramFactor extends BaseObject
 
 		commands.addAll(createCommandsToCopyFormat(newlyCreatedId));
 
-        CommandSetObjectData setHeaderHeightCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_HEADER_HEIGHT, Integer.toString(getHeaderHeight()));
-        commands.add(setHeaderHeightCommand);
-
         CommandSetObjectData setBackgroundColorCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_BACKGROUND_COLOR, getStringData(TAG_BACKGROUND_COLOR));
 		commands.add(setBackgroundColorCommand);
 
@@ -337,10 +334,8 @@ public class DiagramFactor extends BaseObject
 	public static final String TAG_GROUP_BOX_CHILDREN_REFS = "GroupBoxChildrenRefs";
 	public static final String TAG_BACKGROUND_COLOR = "BackgroundColor";
 	public static final String TAG_TEXT_BOX_Z_ORDER_CODE = "TextBoxZOrderCode";
-    public static final String TAG_HEADER_HEIGHT = "HeaderHeight";
 	public static final String TAG_TAGGED_OBJECT_SET_REFS = "TaggedObjectSetRefs";
 
-    public static final int DEFAULT_HEADER_HEIGHT = 2;
     public static final int DEFAULT_FACTOR_HEIGHT = 30;
     public static final int DEFAULT_FACTOR_WIDTH = 2 * DEFAULT_FACTOR_HEIGHT;
 
