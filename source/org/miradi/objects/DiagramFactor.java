@@ -35,11 +35,10 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.schemas.*;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class DiagramFactor extends BaseObject
+public class DiagramFactor extends AbstractDiagramObject
 {
 	public DiagramFactor(ObjectManager objectManager, DiagramFactorId diagramFactorIdToUse) throws Exception
 	{
@@ -48,7 +47,7 @@ public class DiagramFactor extends BaseObject
 		setDimensionData(TAG_SIZE, getDefaultSize());
 	}
 
-	public DiagramFactor(ObjectManager objectManager, DiagramFactorId diagramFactorId, DiagramFactorSchema schema)
+	public DiagramFactor(ObjectManager objectManager, DiagramFactorId diagramFactorId, DiagramFactorSchema schema) throws Exception
 	{
 		super(objectManager, diagramFactorId, schema);
 	}
@@ -299,12 +298,6 @@ public class DiagramFactor extends BaseObject
 			throw new RuntimeException(diagramFactorRef + " is not of type DiagramFactor");
 	}
 	
-	public boolean isDefaultZOrder()
-	{
-		String zOrderCode = getStringData(TAG_TEXT_BOX_Z_ORDER_CODE);
-		return zOrderCode.equals(TextBoxZOrderQuestion.DEFAULT_Z_ORDER);
-	}
-		
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());

@@ -25,13 +25,10 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.TextBox;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
-import org.miradi.questions.StaticQuestionManager;
-import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.schemas.DiagramFactorSchema;
 
 public class TextBoxPropertiesPanel extends ObjectDataInputPanel
@@ -48,9 +45,6 @@ public class TextBoxPropertiesPanel extends ObjectDataInputPanel
 		addField(createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion()));
 		addField(createChoiceField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion()));
 		
-		ChoiceQuestion zPositionQuestion = StaticQuestionManager.getQuestion(TextBoxZOrderQuestion.class);
-		addRadioButtonField(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, zPositionQuestion);
-
 		updateFieldsFromProject();
 	}
 

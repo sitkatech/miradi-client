@@ -20,6 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.diagram;
 
 import java.awt.*;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseEvent;
 import java.awt.geom.Point2D;
@@ -165,18 +166,20 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 	@Override
 	public String getToolTipText(MouseEvent event)
 	{
+		boolean tooltipAltKeyModifier = ((event.getModifiers() & InputEvent.ALT_MASK) != 0);
+
 		Object cell = getFirstCellForLocation(event.getX(), event.getY());
 		if (cell instanceof FactorCell) 
 		{
 			FactorCell factorCell = (FactorCell)cell;
 			Point screenPoint = event.getPoint();
 			Point pointRelativeToCellOrigin = convertScreenPointToCellRelativePoint(screenPoint, factorCell);
-			return factorCell.getToolTipString(pointRelativeToCellOrigin);
+			return factorCell.getToolTipString(pointRelativeToCellOrigin, tooltipAltKeyModifier);
 		}
 		if (cell instanceof LinkCell)
 		{
 			LinkCell linkCell = (LinkCell) cell;
-			return linkCell.getToolTipString();
+			return linkCell.getToolTipString(tooltipAltKeyModifier);
 		}
 		return null;
 	}

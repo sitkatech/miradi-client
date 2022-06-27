@@ -62,9 +62,7 @@ public class IndicatorSchemaWriter extends BaseObjectSchemaWriterWithTaxonomyCla
 	@Override
 	protected boolean shouldOmitField(String tag)
 	{
-		// TODO: fields to be deprecated in post 4.4 release...only here to support migrations
-		// listed here so they can be excluded from the schema
-
+		// TODO: fields deprecated and will be removed in later release......only here to support migrations
 		if (tag.equals(Indicator.TAG_ASSIGNED_LEADER_RESOURCE))
 			return true;
 
@@ -74,7 +72,7 @@ public class IndicatorSchemaWriter extends BaseObjectSchemaWriterWithTaxonomyCla
 		if (tag.equals(Indicator.TAG_EXPENSE_ASSIGNMENT_REFS))
 			return true;
 
-		// TODO: fields to be deprecated in post 4.4 release...only here to support migrations
+		// TODO: fields deprecated and will be removed in later release......only here to support migrations
 		// listed here so they can be excluded from the schema
 
 		if (tag.equals(Indicator.TAG_RATING_SOURCE))

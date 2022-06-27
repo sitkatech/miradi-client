@@ -24,7 +24,9 @@ import java.util.Comparator;
 import org.jgraph.graph.DefaultGraphCell;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
+import org.miradi.diagram.cells.LinkCell;
 import org.miradi.objects.DiagramFactor;
+import org.miradi.objects.DiagramLink;
 
 public class LayerSorter implements Comparator<DefaultGraphCell>
 {
@@ -44,46 +46,23 @@ public class LayerSorter implements Comparator<DefaultGraphCell>
 		
 		EAMGraphCell cell1 = (EAMGraphCell) c1;
 		EAMGraphCell cell2 = (EAMGraphCell) c2;
-		String layer1 = getLayer(cell1);
-		String layer2 = getLayer(cell2);
-		
-		return layer1.compareTo(layer2);
+		int zIndex1 = getZIndex(cell1);
+		int zIndex2 = getZIndex(cell2);
+
+		return Integer.compare(zIndex1, zIndex2);
 	}
 
-	private String getLayer(EAMGraphCell cell)
+	private int getZIndex(EAMGraphCell cell)
 	{
 		if (cell.isFactorLink())
-			return LINK_LAYER;
-		
-		if (cell.isScopeBox() )
-			return SCOPE_BOX_LAYER;
-		
-		FactorCell factorCell = (FactorCell) cell;
-		if (factorCell.isTextBox())
-			return getTextBoxLayer(factorCell.getDiagramFactor());
-		
-		if (factorCell.isGroupBox())
-			return GROUP_BOX_LAYER;
-			
-		if (factorCell.isActivity() || factorCell.isStress())
-			return ACTIVITY_STRESS_LAYER;
-		
-		return DEFAULT_LAYER; 
-	}
-	
-	private String getTextBoxLayer(DiagramFactor diagramFactor)
-	{
-		if (diagramFactor.isDefaultZOrder())
-			return FRONT_TEXT_BOX_LAYER;
-		
-		return BACK_TEXT_BOX_LAYER;
-	}
+		{
+			LinkCell linkCell = (LinkCell) cell;
+			DiagramLink diagramLink = linkCell.getDiagramLink();
+			return diagramLink.getZIndex();
+		}
 
-	private static final String FRONT_TEXT_BOX_LAYER = "Layer0";
-	private static final String SCOPE_BOX_LAYER = "Layer1";
-	private static final String GROUP_BOX_LAYER = "Layer2";
-	private static final String DEFAULT_LAYER = "Layer3";
-	private static final String LINK_LAYER = "Layer4";
-	private static final String ACTIVITY_STRESS_LAYER = "Layer5";
-	private static final String BACK_TEXT_BOX_LAYER = "Layer6";
+		FactorCell factorCell = (FactorCell) cell;
+		DiagramFactor diagramFactor =  factorCell.getDiagramFactor();
+		return diagramFactor.getZIndex();
+	}
 }

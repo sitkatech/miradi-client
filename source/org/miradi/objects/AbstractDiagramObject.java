@@ -17,26 +17,35 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
+package org.miradi.objects;
 
-package org.miradi.xml.xmpz2.xmpz2schema;
-
-import org.miradi.objects.TaggedObjectSet;
+import org.miradi.ids.BaseId;
+import org.miradi.project.ObjectManager;
 import org.miradi.schemas.BaseObjectSchema;
 
-public class TaggedObjectSetSchemaWriter extends BaseObjectSchemaWriter
+abstract public class AbstractDiagramObject extends BaseObject
 {
-    public TaggedObjectSetSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
+    public AbstractDiagramObject(ObjectManager objectManager, BaseId idToUse, final BaseObjectSchema schemaToUse) throws Exception
     {
-        super(creatorToUse, baseObjectSchemaToUse);
+        super(objectManager, idToUse, schemaToUse);
+
+		setZIndex(getDefaultZIndex());
     }
 
-    @Override
-    protected boolean shouldOmitField(String tag)
+    public int getZIndex()
     {
-        // TODO: field deprecated and will be removed in later release......only here to support migrations
-        if (tag.equals(TaggedObjectSet.TAG_TAGGED_OBJECT_REFS))
-            return true;
-
-        return super.shouldOmitField(tag);
+        return getIntegerData(TAG_Z_INDEX);
     }
+
+    public void setZIndex(int zIndex) throws Exception
+    {
+        setData(TAG_Z_INDEX, String.valueOf(zIndex));
+    }
+
+    private static int getDefaultZIndex()
+    {
+        return 0;
+    }
+
+    public static final String TAG_Z_INDEX = "ZIndex";
 }

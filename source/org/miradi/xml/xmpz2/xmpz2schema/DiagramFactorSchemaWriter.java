@@ -47,15 +47,30 @@ public class DiagramFactorSchemaWriter extends BaseObjectSchemaWriter
 		if (tag.equals(DiagramFactor.TAG_FOREGROUND_COLOR))
 			return true;
 
+		if (tag.equals(DiagramFactor.TAG_Z_INDEX))
+			return true;
+
         return super.doesFieldRequireSpecialHandling(tag);
 	}
-	
+
+    @Override
+    protected boolean shouldOmitField(String tag)
+    {
+        // TODO: field deprecated and will be removed in later release...only here to support migrations
+        if (tag.equals(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE))
+            return true;
+
+        return super.shouldOmitField(tag);
+    }
+
 	@Override
 	protected Vector<String> createCustomSchemaFields()
 	{
 		Vector<String> schemaElements = super.createCustomSchemaFields();
-		
-		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(getXmpz2ElementName() + STYLE, (STYLE + ".element")));
+
+		Xmpz2SchemaWriter schemaWriter = getXmpz2XmlSchemaCreator().getSchemaWriter();
+		schemaElements.add(schemaWriter.createOptionalSchemaElement(getXmpz2ElementName() + STYLE, (STYLE + ".element")));
+		schemaElements.add(schemaWriter.createSchemaElement(getXmpz2ElementName() + Z_INDEX, schemaWriter.createIntegerType()));
 		
 		return schemaElements;
 	}

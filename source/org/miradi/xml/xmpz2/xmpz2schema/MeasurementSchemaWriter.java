@@ -33,9 +33,7 @@ public class MeasurementSchemaWriter extends BaseObjectSchemaWriter
     @Override
     protected boolean shouldOmitField(String tag)
     {
-        // TODO: fields to be deprecated in post 4.5 release...only here to support migrations
-        // listed here so they can be excluded from the schema
-
+        // TODO: fields deprecated and will be removed in later release......only here to support migrations
         if (tag.equals(Measurement.TAG_STATUS_CONFIDENCE))
             return true;
 

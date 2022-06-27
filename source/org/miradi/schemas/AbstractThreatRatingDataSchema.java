@@ -42,7 +42,7 @@ public abstract class AbstractThreatRatingDataSchema extends BaseObjectSchema
         createFieldSchemaChoice(AbstractThreatRatingData.TAG_EVIDENCE_CONFIDENCE, ThreatRatingEvidenceConfidenceQuestion.class);
         createFieldSchemaMultiLineUserText(AbstractThreatRatingData.TAG_EVIDENCE_NOTES);
 
-        // TODO: fields to be deprecated in post 4.5 release...only here to support migrations
+        // TODO: fields deprecated and will be removed in later release......only here to support migrations
         createFieldSchemaCodeToUserStringMap(AbstractThreatRatingData.TAG_SIMPLE_THREAT_RATING_COMMENTS_MAP);
         createFieldSchemaCodeToUserStringMap(AbstractThreatRatingData.TAG_STRESS_BASED_THREAT_RATING_COMMENTS_MAP);
     }

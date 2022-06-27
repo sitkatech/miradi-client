@@ -34,8 +34,9 @@ public interface Xmpz2XmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String DOT_ELEMENT = ".element";
 	
-	public static final String NAME_SPACE_VERSION = "244";
+	public static final String NAME_SPACE_VERSION = "245";
 
+	public static final String NAME_SPACE_VERSION_245 = "245";
 	public static final String NAME_SPACE_VERSION_244 = "244";
 	public static final String NAME_SPACE_VERSION_243 = "243";
 	public static final String NAME_SPACE_VERSION_242 = "242";
@@ -329,6 +330,7 @@ public interface Xmpz2XmlConstants
 	public static final String DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME = DiagramFactor.TAG_FOREGROUND_COLOR;
 	public static final String DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME = DiagramFactor.TAG_FONT_STYLE;
 	public static final String DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME = DiagramFactor.TAG_FONT_SIZE;
+	public static final String Z_INDEX = DiagramFactor.TAG_Z_INDEX;
 	public static final String THREAT_REDUCTION_RESULT_THREAT = THREAT_REDUCTION_RESULT + THREAT;
 	public static final String MIRADI_SHARE_PROJECT_DATA_TAXONOMY_ASSOCIATION_POOL = "MiradiShareProjectDataTaxonomyAssociationPool";
 	public static final String BIODIVERSITY_TARGET_TAXONOMY_ASSOCIATION_POOL = "BiodiversityTargetTaxonomyAssociationPool";
@@ -451,7 +453,6 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_EVIDENCE_CONFIDENCE_PROJECT = "vocabulary_evidence_confidence_project";
 	public static final String VOCABULARY_EVIDENCE_CONFIDENCE_ANALYTICAL_QUESTION = "vocabulary_evidence_confidence_analytical_question";
 	public static final String VOCABULARY_COUNTRIES = "vocabulary_countries";
-	public static final String VOCABULARY_TEXT_BOX_Z_ORDER = "vocabulary_text_box_z_order";
 	public static final String VOCABULARY_THREAT_RATING = "vocabulary_threat_rating";
 	public static final String VOCABULARY_DIAGRAM_OBJECT_DATA_INCLUSION = "vocabulary_included_diagram_types";
 	public static final String VOCABULARY_PLANNING_TREE_TARGET_NODE_POSITION = "vocabulary_planning_tree_target_node_position";

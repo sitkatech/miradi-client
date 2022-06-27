@@ -636,9 +636,13 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		
 			updateAllTabs(setCommand);
 			setToDefaultMode(setCommand);
-			if (event.isSetDataCommandWithThisTypeAndTag(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE))
-				handleTextBoxZOrderChanged(setCommand.getObjectORef());
+
+			if (event.isSetDataCommandWithThisTypeAndTag(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_Z_INDEX))
+				handleDiagramFactorZIndexChanged(setCommand.getObjectORef());
 			
+			if (event.isSetDataCommandWithThisTypeAndTag(DiagramLinkSchema.getObjectType(), DiagramLink.TAG_Z_INDEX))
+				handleDiagramLinkZIndexChanged(setCommand.getObjectORef());
+
 			if (setCommand.isTypeAndTag(DiagramFactorSchema.getObjectType(), DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS))
 				updateVisibilityOfFactorsAndClearSelectionModel();
 
@@ -650,13 +654,23 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		}
 	}
 
-	private void handleTextBoxZOrderChanged(ORef diagramFactorRef) throws Exception
+	private void handleDiagramFactorZIndexChanged(ORef diagramFactorRef) throws Exception
 	{
 		if (getDiagramModel().containsDiagramFactor(diagramFactorRef))
 		{
 			getDiagramModel().sortLayers();
 			FactorCell factorCell = getDiagramModel().getFactorCellByRef(diagramFactorRef);
 			getDiagramModel().updateCell(factorCell);
+		}
+	}
+
+	private void handleDiagramLinkZIndexChanged(ORef diagramLinkRef) throws Exception
+	{
+		if (getDiagramModel().containsDiagramLink(diagramLinkRef))
+		{
+			getDiagramModel().sortLayers();
+			LinkCell linkCell = getDiagramModel().getLinkCellByRef(diagramLinkRef);
+			getDiagramModel().updateCell(linkCell);
 		}
 	}
 

@@ -21,6 +21,7 @@ package org.miradi.questions;
 
 import org.miradi.main.EAM;
 
+//  TODO: question deprecated and will be removed in later release......only here to support migrations
 public class TextBoxZOrderQuestion extends StaticChoiceQuestion
 {
 	public TextBoxZOrderQuestion()

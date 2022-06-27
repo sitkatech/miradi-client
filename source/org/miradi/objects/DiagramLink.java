@@ -40,7 +40,7 @@ import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
 import org.miradi.utils.XmlUtilities2;
 
-public class DiagramLink extends BaseObject
+public class DiagramLink extends AbstractDiagramObject
 {
 	public DiagramLink(ObjectManager objectManager, BaseId idToUse) throws Exception
 	{
@@ -105,7 +105,7 @@ public class DiagramLink extends BaseObject
 		
 		return ORef.INVALID;
 	}
-	
+
 	public ORef getOppositeDiagramFactorRef(int direction)
 	{
 		if(direction == DiagramLink.FROM)
@@ -286,7 +286,7 @@ public class DiagramLink extends BaseObject
 		return false;
 	}
 	
-	public String getToolTipString() 
+	public String getToolTipString(boolean showZIndex)
 	{
 		DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), getFromDiagramFactorRef());
 		DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), getToDiagramFactorRef());
@@ -298,6 +298,12 @@ public class DiagramLink extends BaseObject
 		String annotation = getAnnotation();
 		if (!annotation.isEmpty())
 			toolTipText += "<BR><BR>" + annotation;
+
+		String zIndexInfo = "";
+		if (showZIndex)
+			zIndexInfo = "<BR><BR>Z-Index: " + this.getZIndex();
+
+		toolTipText += zIndexInfo;
 
 		toolTipText += "</html>";
 
@@ -323,7 +329,7 @@ public class DiagramLink extends BaseObject
 	{
 		return getChoiceItemData(TAG_COLOR);
 	}
-	
+
 	public boolean isCoveredByGroupBoxLink()
 	{
 		ORefList groupBoxLinks = findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());

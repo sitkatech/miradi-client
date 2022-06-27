@@ -73,7 +73,7 @@ abstract public class FactorCell extends EAMGraphCell
 		setPreviousSize(size);
 	}
 	
-	public String getToolTipString(Point pointRelativeToCellOrigin) 
+	public String getToolTipString(Point pointRelativeToCellOrigin, boolean showZIndex)
 	{
 		Factor factor = getWrappedFactor();
 		boolean isFactorWithProgressStatus = factor.isStrategy() || factor.isActivity() || factor.isMonitoringActivity();
@@ -140,7 +140,13 @@ abstract public class FactorCell extends EAMGraphCell
 			tip += "<BR>" + EAM.text("Details:");
 			tip += "<BR>" + factor.getDetails();
 		}
-		
+
+		String zIndexInfo = "";
+		if (showZIndex)
+			zIndexInfo = "<BR>Z-Index: " + this.getDiagramFactor().getZIndex();
+
+		tip += zIndexInfo;
+
 		if(noContentToDisplay)
 			return XmlUtilities2.convertXmlTextToHtmlWithoutSurroundingHtmlTags(tip);
 		

@@ -23,11 +23,22 @@ package org.miradi.xml.xmpz2.xmpz2schema;
 import org.miradi.objects.DiagramLink;
 import org.miradi.schemas.BaseObjectSchema;
 
+import java.util.Vector;
+
 public class DiagramLinkSchemaWriter extends BaseObjectSchemaWriter
 {
 	public DiagramLinkSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
 	{
 		super(creatorToUse, baseObjectSchemaToUse);
+	}
+
+	@Override
+	protected boolean doesFieldRequireSpecialHandling(String tag)
+	{
+		if (tag.equals(DiagramLink.TAG_Z_INDEX))
+			return true;
+
+        return super.doesFieldRequireSpecialHandling(tag);
 	}
 
 	@Override
@@ -38,5 +49,16 @@ public class DiagramLinkSchemaWriter extends BaseObjectSchemaWriter
 			return true;
 		
 		return super.shouldOmitField(tag);
+	}
+
+	@Override
+	protected Vector<String> createCustomSchemaFields()
+	{
+		Vector<String> schemaElements = super.createCustomSchemaFields();
+
+		Xmpz2SchemaWriter schemaWriter = getXmpz2XmlSchemaCreator().getSchemaWriter();
+		schemaElements.add(schemaWriter.createSchemaElement(getXmpz2ElementName() + Z_INDEX, schemaWriter.createIntegerType()));
+
+		return schemaElements;
 	}
 }

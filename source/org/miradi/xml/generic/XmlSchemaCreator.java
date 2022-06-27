@@ -63,7 +63,6 @@ public class XmlSchemaCreator implements XmlConstants
 		writer.println("vocabulary_year = xsd:NMTOKEN { pattern = '[0-9]{4}' }");
 		writer.println("vocabulary_month = xsd:integer { minInclusive='1' maxInclusive='12' }");
 		writer.println("vocabulary_date = xsd:NMTOKEN { pattern = '[0-9]{4}-[0-9]{2}-[0-9]{2}' }");
-		writer.println(VOCABULARY_TEXT_BOX_Z_ORDER + " = '" + Z_ORDER_BACK_CODE + "' | '" + TextBoxZOrderQuestion.FRONT_CODE + "'");
 		defineLanguagesVocabulary(writer);
 		defineVocabulary(writer, VOCABULARY_FISCAL_YEAR_START, new FiscalYearStartQuestion());
 		defineVocabulary(writer, VOCABULARY_PROTECTED_AREA_CATEGORIES, new ProtectedAreaCategoryQuestion());
@@ -666,7 +665,6 @@ public class XmlSchemaCreator implements XmlConstants
 	public static final String VOCABULARY_MEASUREMENT_STATUS = "vocabulary_measurement_status";
 	public static final String VOCABULARY_MEASUREMENT_STATUS_CONFIDENCE = "vocabulary_measurement_status_confidence";
 	public static final String VOCABULARY_COUNTRIES = "vocabulary_countries";
-	public static final String VOCABULARY_TEXT_BOX_Z_ORDER = "vocabulary_text_box_z_order";
 	public static final String VOCABULARY_THREAT_RATING = "vocabulary_threat_rating";
 	public static final String VOCABULARY_DIAGRAM_OBJECT_DATA_INCLUSION = "vocabulary_included_diagram_types";
 	public static final String VOCABULARY_PLANNING_TREE_TARGET_NODE_POSITION = "vocabulary_planning_tree_target_node_position";
