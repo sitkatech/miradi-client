@@ -23,6 +23,7 @@ import org.miradi.ids.BaseId;
 import org.miradi.project.ObjectManager;
 import org.miradi.schemas.BaseObjectSchema;
 
+
 abstract public class AbstractDiagramObject extends BaseObject
 {
     public AbstractDiagramObject(ObjectManager objectManager, BaseId idToUse, final BaseObjectSchema schemaToUse) throws Exception
@@ -42,7 +43,7 @@ abstract public class AbstractDiagramObject extends BaseObject
         setData(TAG_Z_INDEX, String.valueOf(zIndex));
     }
 
-    private static int getDefaultZIndex()
+    public static int getDefaultZIndex()
     {
         return 0;
     }

@@ -42,8 +42,6 @@ import org.miradi.project.Project;
 import org.miradi.schemas.*;
 
 
-//FIXME low: Examine all the methods and try to make it more uniform, simpler, etc....
-//seems like a ton of very similar methods, among other things
 public class LinkCreator
 {
 	public LinkCreator(Project projectToUse)
@@ -198,8 +196,7 @@ public class LinkCreator
 		return areGroupBoxOwnedFactorsLinked(diagramObject, from, to);
 	}
 
-	private boolean areGroupBoxOwnedFactorsLinked(DiagramObject diagramObject,
-			DiagramFactor from, DiagramFactor to)
+	private boolean areGroupBoxOwnedFactorsLinked(DiagramObject diagramObject, DiagramFactor from, DiagramFactor to)
 	{
 		ORefList fromOwningGroupBoxAndChildren = getOwningGroupBoxAndChildren(from);
 		ORefList toOwningGroupBoxAndChildren = getOwningGroupBoxAndChildren(to);		
@@ -311,12 +308,16 @@ public class LinkCreator
     	
     	CommandSetObjectData setToDiagramFactorId = new CommandSetObjectData(createDiagramLinkCommand.getObjectRef(), DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, toDiagramFactorRef.getObjectId().toString());
     	getProject().executeCommand(setToDiagramFactorId);
-    	
+
 		DiagramLinkId createdDiagramLinkId = new DiagramLinkId(rawId.asInt());
 		
 		CommandSetObjectData addDiagramLink = CommandSetObjectData.createAppendIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS, createdDiagramLinkId);
 		project.executeCommand(addDiagramLink);
-		
+
+		int zIndex = diagramObject.getTopZIndex();
+		CommandSetObjectData setZIndex = new CommandSetObjectData(createDiagramLinkCommand.getObjectRef(), DiagramLink.TAG_Z_INDEX, zIndex);
+		getProject().executeCommand(setZIndex);
+
 		return createDiagramLinkCommand.getObjectRef();
 	}
 
@@ -515,8 +516,7 @@ public class LinkCreator
 		}
 	}
 
-	private boolean areFactorsOrTheirGroupsAlreadyLinked(DiagramObject diagramObject, DiagramFactor from, DiagramFactor to)
-			throws Exception
+	private boolean areFactorsOrTheirGroupsAlreadyLinked(DiagramObject diagramObject, DiagramFactor from, DiagramFactor to) throws Exception
 	{
 		ORef fromFactorRef = from.getWrappedORef();
 		ORef toFactorRef = to.getWrappedORef();
@@ -538,9 +538,9 @@ public class LinkCreator
 		return false;
 	}
 
-	public ORefSet getRefsOfDiagramFactorsThatLinkToAllChildren(ORef groupBoxDiagramfactorRef, int direction)
+	public ORefSet getRefsOfDiagramFactorsThatLinkToAllChildren(ORef groupBoxDiagramFactorRef, int direction)
 	{
-		DiagramFactor groupBoxDiagramFactor = DiagramFactor.find(getProject(), groupBoxDiagramfactorRef);
+		DiagramFactor groupBoxDiagramFactor = DiagramFactor.find(getProject(), groupBoxDiagramFactorRef);
 		ORefSet childRefs = groupBoxDiagramFactor.getGroupBoxChildrenSet();
 
 		Vector<ORefSet> linkedFactorsForEachGroupedFactor = new Vector<ORefSet>();

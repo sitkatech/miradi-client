@@ -58,6 +58,9 @@ abstract public class DiagramPaster
 		oldToNewPastedObjectMap = new HashMap<ORef, ORef>();
         doesPasteDiscardInvalidTaxonomyClassificationList = false;
 
+		DiagramObject diagramObject = currentModel.getDiagramObject();
+		topZIndexBeforePaste = diagramObject.getTopZIndex();
+
 		factorDeepCopies = transferableList.getFactorDeepCopies();
 		diagramFactorDeepCopies = transferableList.getDiagramFactorDeepCopies();
 		threatStressRatings = transferableListToUse.getThreatStressRatingDeepCopies();
@@ -510,7 +513,7 @@ abstract public class DiagramPaster
 			createNewDiagramFactor(json);
 		}
 	}
-	
+
 	private void createNewDiagramFactor(EnhancedJsonObject json) throws Exception
 	{
 		ORef oldWrappedRef = json.getRef(DiagramFactor.TAG_WRAPPED_REF);
@@ -548,6 +551,7 @@ abstract public class DiagramPaster
 		getOldToNewObjectRefMap().put(new ORef(type, oldDiagramFactorId), newDiagramFactorRef);
 		fixupRefs(getOldToNewObjectRefMap(), newDiagramFactor);
 		addToCurrentDiagram(newDiagramFactorRef, DiagramObject.TAG_DIAGRAM_FACTOR_IDS);
+		adjustPastedDiagramObjectZIndex(newDiagramFactor);
 		addDiagramFactorToSelection(newDiagramFactorRef);
 
 		if (!isPastingInSameDiagramAsCopiedFrom())
@@ -555,6 +559,13 @@ abstract public class DiagramPaster
 			CommandSetObjectData clearTaggedObjectSetCommand = new CommandSetObjectData(newDiagramFactor, DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS, new ORefList());
 			getProject().executeCommand(clearTaggedObjectSetCommand);
 		}
+	}
+
+	private void adjustPastedDiagramObjectZIndex(AbstractDiagramObject diagramObject) throws Exception
+	{
+		int adjustedZIndex = diagramObject.getZIndex() + topZIndexBeforePaste;
+		final CommandSetObjectData setZIndexCommand = new CommandSetObjectData(diagramObject.getRef(), DiagramFactor.TAG_Z_INDEX, adjustedZIndex);
+		getProject().executeCommand(setZIndexCommand);
 	}
 
 	protected void createNewFactorLinks() throws Exception
@@ -633,6 +644,7 @@ abstract public class DiagramPaster
 			getOldToNewObjectRefMap().put(diagramLinkRef, newDiagramLinkRef);
 			fixupRefs(getOldToNewObjectRefMap(), newDiagramLink);
 			addToCurrentDiagram(newDiagramLinkRef, DiagramObject.TAG_DIAGRAM_FACTOR_LINK_IDS);
+			adjustPastedDiagramObjectZIndex(newDiagramLink);
 			addDiagramLinkToSelection(newDiagramLinkRef);
 		}
 	}
@@ -1021,6 +1033,8 @@ abstract public class DiagramPaster
 	private Project project;
 	private DiagramModel currentModel;
 	private DiagramPanel diagramPanel;
+
+	private int topZIndexBeforePaste;
 
 	private Vector<String> factorDeepCopies;
 	private Vector<String> diagramFactorDeepCopies;

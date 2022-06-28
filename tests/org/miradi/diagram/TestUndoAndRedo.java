@@ -87,7 +87,7 @@ public class TestUndoAndRedo extends MiradiTestCase
 	{
 		DiagramModel model = project.getTestingDiagramModel();
 		
-		//undo create diagram lingate
+		//undo create diagram linkage
 		project.undo();
 		
 		// undo add linkage to diagram
@@ -134,6 +134,9 @@ public class TestUndoAndRedo extends MiradiTestCase
 		//undo setting to for link
 		project.undo();
 
+		//undo setting z-index for link
+		project.undo();
+
 		try
 		{
 			EAM.setLogToString();
@@ -169,9 +172,10 @@ public class TestUndoAndRedo extends MiradiTestCase
 		
 		verifyFactorCellNotPresent(diagramFactorRef);
 		project.undo();
-		
+
+		project.undo();
+
 		verifyLinkageNotPresent(getDiagramLinkRef());
-	
 	}
 	
 	public void testGetIndexToUndoAndRedo() throws Exception

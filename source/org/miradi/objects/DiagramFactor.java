@@ -194,8 +194,8 @@ public class DiagramFactor extends AbstractDiagramObject
 	
 	public ORef getOwningGroupBoxRef()
 	{
-		ORefList diagramFactorReferers = findAllObjectsThatReferToUs();
-		ORef groupBoxDiagramFactorRef = diagramFactorReferers.getRefForType(DiagramFactorSchema.getObjectType());
+		ORefList diagramFactorReferrers = findAllObjectsThatReferToUs();
+		ORef groupBoxDiagramFactorRef = diagramFactorReferrers.getRefForType(DiagramFactorSchema.getObjectType());
 
 		return groupBoxDiagramFactorRef;
 	}
@@ -250,7 +250,7 @@ public class DiagramFactor extends AbstractDiagramObject
 		
 		return super.getAnnotationType(tag);
 	}
-	
+
 	public Command[] createCommandsToMirror(DiagramFactorId newlyCreatedId)
 	{
 		Vector<CommandSetObjectData> commands = new Vector<CommandSetObjectData>();
@@ -266,6 +266,10 @@ public class DiagramFactor extends AbstractDiagramObject
 
         CommandSetObjectData setBackgroundColorCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_BACKGROUND_COLOR, getStringData(TAG_BACKGROUND_COLOR));
 		commands.add(setBackgroundColorCommand);
+
+		int zIndex = getIntegerData(TAG_Z_INDEX);
+        CommandSetObjectData setZIndexCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_Z_INDEX, zIndex);
+		commands.add(setZIndexCommand);
 
         return commands.toArray(new Command[0]);
 	}

@@ -152,7 +152,25 @@ public class CommandSetObjectData extends Command
 		tag = fieldTag;
 		newValue = dataValue;
 	}
-	
+
+	public CommandSetObjectData(BaseObject baseObject, String fieldTag, int dataValue)
+	{
+		this(baseObject.getRef(), fieldTag, dataValue);
+	}
+
+	public CommandSetObjectData(ORef objectRef, String fieldTag, int dataValue)
+	{
+		this(objectRef.getObjectType(), objectRef.getObjectId(), fieldTag, dataValue);
+	}
+
+	public CommandSetObjectData(int objectType, BaseId objectId, String fieldTag, int dataValue)
+	{
+		type = objectType;
+		id = objectId;
+		tag = fieldTag;
+		newValue = String.valueOf(dataValue);
+	}
+
 	public ORef getObjectORef()
 	{
 		return new ORef(getObjectType(), getObjectId());

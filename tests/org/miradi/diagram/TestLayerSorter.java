@@ -60,13 +60,13 @@ public class TestLayerSorter extends TestCaseWithProject
 		List<EAMGraphCell> orderedCells = getProject().getTestingDiagramModel().getAllRootCells();	
 		Collections.sort(orderedCells, new LayerSorter());
 		assertEquals("wrong cell count?", 8, orderedCells.size());
-		
-		assertTrue("element 0 is not scopebox", orderedCells.get(0).isScopeBox());
-		assertTrue("element 1 is not factor", orderedCells.get(1).isFactor());
-		assertTrue("element 2 is not groupbox", isGroupBox(orderedCells.get(2).getWrappedFactorRef()));
+
+		assertTrue("element 0 is not groupbox", isGroupBox(orderedCells.get(0).getWrappedFactorRef()));
+		assertTrue("element 1 is not groupbox", isGroupBox(orderedCells.get(1).getWrappedFactorRef()));
+		assertTrue("element 2 is not scopebox", orderedCells.get(2).isScopeBox());
 		assertTrue("element 3 is not factor", orderedCells.get(3).isFactor());
 		assertTrue("element 4 is not factor", orderedCells.get(4).isFactor());
-		assertTrue("element 5 is not groupbox", isGroupBox(orderedCells.get(5).getWrappedFactorRef()));
+		assertTrue("element 5 is not factor", orderedCells.get(5).isFactor());
 		assertTrue("element 6 is not factor link", orderedCells.get(6).isFactorLink());
 		assertTrue("element 7 is not factor", orderedCells.get(7).isFactor());
 	}
