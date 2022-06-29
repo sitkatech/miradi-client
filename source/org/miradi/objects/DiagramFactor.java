@@ -295,7 +295,20 @@ public class DiagramFactor extends AbstractDiagramObject
 		ORefList groupBoxFactors = findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());
 		return (groupBoxFactors.size() > 0);
 	}
-	
+
+	protected int getMinZIndex() throws Exception
+	{
+		if (isCoveredByGroupBox())
+		{
+			DiagramFactor owningGroupBox = DiagramFactor.find(getProject(), getOwningGroupBoxRef());
+			return owningGroupBox.getZIndex();
+		}
+		else
+		{
+			return Integer.MIN_VALUE;
+		}
+	}
+
 	public static void ensureType(ORef diagramFactorRef)
 	{
 		if (!is(diagramFactorRef))

@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.objects;
 
+import org.miradi.commands.CommandSetObjectData;
 import org.miradi.ids.BaseId;
 import org.miradi.project.ObjectManager;
 import org.miradi.schemas.BaseObjectSchema;
@@ -38,9 +39,45 @@ abstract public class AbstractDiagramObject extends BaseObject
         return getIntegerData(TAG_Z_INDEX);
     }
 
-    public void setZIndex(int zIndex) throws Exception
+    protected void setZIndex(int zIndex) throws Exception
     {
         setData(TAG_Z_INDEX, String.valueOf(zIndex));
+    }
+
+    protected abstract int getMinZIndex() throws Exception;
+
+    public CommandSetObjectData createCommandToIncrementZIndex() throws Exception
+    {
+        int zIndex = getZIndex();
+        int updatedZIndex = zIndex + 1;
+
+        return new CommandSetObjectData(getSchema().getType(), getId(), AbstractDiagramObject.TAG_Z_INDEX, updatedZIndex);
+    }
+
+    public CommandSetObjectData createCommandToMaximizeZIndex(DiagramObject diagramObject) throws Exception
+    {
+        int zIndex = diagramObject.getTopZIndex();
+        int updatedZIndex = zIndex + 1;
+
+        return new CommandSetObjectData(getSchema().getType(), getId(), AbstractDiagramObject.TAG_Z_INDEX, updatedZIndex);
+    }
+
+    public CommandSetObjectData createCommandToDecrementZIndex() throws Exception
+    {
+		int zIndex = getZIndex();
+        int minZIndex = getMinZIndex();
+        int updatedZIndex = Math.max(minZIndex, zIndex - 1);
+
+        return new CommandSetObjectData(getSchema().getType(), getId(), AbstractDiagramObject.TAG_Z_INDEX, updatedZIndex);
+    }
+
+        public CommandSetObjectData createCommandToMinimizeZIndex(DiagramObject diagramObject) throws Exception
+    {
+        int zIndex = diagramObject.getBottomZIndex();
+        int minZIndex = getMinZIndex();
+        int updatedZIndex = Math.max(minZIndex, zIndex - 1);
+
+        return new CommandSetObjectData(getSchema().getType(), getId(), AbstractDiagramObject.TAG_Z_INDEX, updatedZIndex);
     }
 
     public static int getDefaultZIndex()

@@ -79,6 +79,10 @@ public class DiagramContextMenuHandler
 		menu.add(createMenuItem(ActionCreateIncomingJunction.class, menuInvokedAt));
 		menu.add(createMenuItem(ActionCreateOutgoingJunction.class, menuInvokedAt));
 
+		menu.addSeparator();
+		menu.add(getArrangeMenu());
+		menu.addSeparator();
+
         int selectedFactorCount = diagramComponent.getOnlySelectedFactors().length;
 		if(selectedFactorCount == 1)
 			menu.add(createMenuItem(ActionManageFactorTagsFromMenu.class, menuInvokedAt));
@@ -392,7 +396,18 @@ public class DiagramContextMenuHandler
 		
 		return groupBoxMenu;
 	}	
-	
+
+	private MiradiUIMenu getArrangeMenu()
+	{
+		MiradiUIMenu arrangeMenu = new MiradiUIMenu(EAM.text("Menu|Arrange"));
+		arrangeMenu.add(new MenuItemWithoutLocation(actions.get(ActionBringToFront.class)));
+		arrangeMenu.add(new MenuItemWithoutLocation(actions.get(ActionBringForward.class)));
+		arrangeMenu.add(new MenuItemWithoutLocation(actions.get(ActionSendBackward.class)));
+		arrangeMenu.add(new MenuItemWithoutLocation(actions.get(ActionSendToBack.class)));
+
+		return arrangeMenu;
+	}
+
 	private MiradiUIMenu getInsertMenu(Point menuInvokedAt)
 	{
 		MiradiUIMenu insertMenu = new MiradiUIMenu(EAM.text("Menu|Insert"));

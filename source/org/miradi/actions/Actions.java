@@ -373,6 +373,11 @@ public class Actions
 		registerAction(new ActionCreateMethod(mainWindow));
 		registerAction(new ActionDeleteMethod(mainWindow));
 
+		registerAction(new ActionBringForward(mainWindow));
+		registerAction(new ActionBringToFront(mainWindow));
+		registerAction(new ActionSendBackward(mainWindow));
+		registerAction(new ActionSendToBack(mainWindow));
+
 		registerAction(new ActionEditObjectiveIndicatorRelevancyList(mainWindow));
 		registerAction(new ActionEditGoalIndicatorRelevancyList(mainWindow));
 		registerAction(new ActionEditObjectiveStrategyActivityRelevancyList(mainWindow));

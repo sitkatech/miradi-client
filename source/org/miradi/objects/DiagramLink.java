@@ -349,6 +349,14 @@ public class DiagramLink extends AbstractDiagramObject
 		return commands;
 	}
 
+	protected int getMinZIndex() throws Exception
+	{
+		int minFromDiagramFactorZIndex = getFromDiagramFactor().getMinZIndex();
+		int minToDiagramFactorZIndex = getToDiagramFactor().getMinZIndex();
+
+		return Math.max(minFromDiagramFactorZIndex, minToDiagramFactorZIndex);
+	}
+
 	public static boolean isTo(int direction)
 	{
 		return direction == TO;

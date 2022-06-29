@@ -234,8 +234,13 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionGroupBoxRemoveFactor.class, new GroupBoxRemoveDiagramFactorDoer());
 		addDoerToMap(ActionDeleteGroupBox.class, new DeleteGroupBoxDoer());
 		
+		addDoerToMap(ActionBringForward.class, new BringForwardDoer());
+		addDoerToMap(ActionBringToFront.class, new BringToFrontDoer());
+		addDoerToMap(ActionSendBackward.class, new SendBackwardDoer());
+		addDoerToMap(ActionSendToBack.class, new SendToBackDoer());
+
 		addDoerToMap(ActionManageStresses.class, new ManageStressesDoer());
-		
+
 		addDoerToMap(ActionCreateSubTarget.class, new CreateSubTargetDoer());
 		addDoerToMap(ActionDeleteSubTarget.class, new DeleteSubTargetDoer());
 		addDoerToMap(ActionDiagramProperties.class, new DiagramPropertiesShowDoer());
