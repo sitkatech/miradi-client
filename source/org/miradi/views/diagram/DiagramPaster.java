@@ -283,7 +283,7 @@ abstract public class DiagramPaster
 			if (wrappingDiagramFactorOnThisDiagram == null)
 				continue;
 			
-			if (wrappingDiagramFactorOnThisDiagram.isCoveredByGroupBox())
+			if (wrappingDiagramFactorOnThisDiagram.isGroupBoxChildDiagramFactor())
 				groupBoxChildrenRefsToOmit.add(groupBoxChildFactorRef);
 		}
 		return groupBoxChildrenRefsToOmit;

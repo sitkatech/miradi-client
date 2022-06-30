@@ -151,7 +151,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			}
 
 			isAliased = shouldMarkAsShared(model);
-			isOwnedByGroup = getFactorCell().getDiagramFactor().isCoveredByGroupBox();
+			isOwnedByGroup = getFactorCell().getDiagramFactor().isGroupBoxChildDiagramFactor();
 			
 			EAMGraphCell cell = (EAMGraphCell)view.getCell();
 			String cellValue = cell.toString();

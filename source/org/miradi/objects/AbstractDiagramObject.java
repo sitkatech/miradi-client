@@ -46,10 +46,14 @@ abstract public class AbstractDiagramObject extends BaseObject
 
     protected abstract int getMinZIndex() throws Exception;
 
+    protected abstract int getMaxZIndex() throws Exception;
+
     public CommandSetObjectData createCommandToIncrementZIndex() throws Exception
     {
         int zIndex = getZIndex();
-        int updatedZIndex = zIndex + 1;
+        int maxZIndex = getMaxZIndex();
+
+        int updatedZIndex = Math.min(maxZIndex, zIndex + 1);
 
         return new CommandSetObjectData(getSchema().getType(), getId(), AbstractDiagramObject.TAG_Z_INDEX, updatedZIndex);
     }
@@ -57,7 +61,8 @@ abstract public class AbstractDiagramObject extends BaseObject
     public CommandSetObjectData createCommandToMaximizeZIndex(DiagramObject diagramObject) throws Exception
     {
         int zIndex = diagramObject.getTopZIndex();
-        int updatedZIndex = zIndex + 1;
+        int maxZIndex = getMaxZIndex();
+        int updatedZIndex = Math.min(maxZIndex, zIndex + 1);;
 
         return new CommandSetObjectData(getSchema().getType(), getId(), AbstractDiagramObject.TAG_Z_INDEX, updatedZIndex);
     }

@@ -192,7 +192,7 @@ public class MeglerArranger
 		HashSet<DiagramFactor> toRemove = new HashSet<DiagramFactor>();
 		for(DiagramFactor diagramFactor : groupCandidates)
 		{
-			if(diagramFactor.isCoveredByGroupBox())
+			if(diagramFactor.isGroupBoxChildDiagramFactor())
 				toRemove.add(diagramFactor);
 		}
 		return toRemove;

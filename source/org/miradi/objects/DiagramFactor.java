@@ -290,23 +290,101 @@ public class DiagramFactor extends AbstractDiagramObject
         return commands;
 	}
 
-	public boolean isCoveredByGroupBox()
+	public boolean isGroupBoxChildDiagramFactor()
 	{
 		ORefList groupBoxFactors = findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());
 		return (groupBoxFactors.size() > 0);
 	}
 
+	private Vector<DiagramFactor> getChildDiagramFactors()
+	{
+		Vector<DiagramFactor> childDiagramFactors = new Vector<DiagramFactor>();
+
+		if (isGroupBoxFactor())
+		{
+			ORefList childRefs = getGroupBoxChildrenRefs();
+			for(int i = 0; i < childRefs.size(); ++i)
+			{
+				DiagramFactor child = DiagramFactor.find(getProject(), childRefs.get(i));
+				childDiagramFactors.add(child);
+			}
+		}
+
+		return childDiagramFactors;
+	}
+
 	protected int getMinZIndex() throws Exception
 	{
-		if (isCoveredByGroupBox())
+		int minZIndex = Integer.MIN_VALUE;
+
+		if (isGroupBoxChildDiagramFactor())
 		{
-			DiagramFactor owningGroupBox = DiagramFactor.find(getProject(), getOwningGroupBoxRef());
+			minZIndex = getZIndex(this);
+		}
+		else
+		{
+			DiagramLink[] diagramLinks = getProject().getToAndFromLinks(getDiagramFactorId());
+			for (DiagramLink diagramLink : diagramLinks)
+			{
+				DiagramFactor fromDiagramFactor = diagramLink.getFromDiagramFactor();
+				DiagramFactor toDiagramFactor = diagramLink.getToDiagramFactor();
+				if (fromDiagramFactor.isGroupBoxChildDiagramFactor() || toDiagramFactor.isGroupBoxChildDiagramFactor())
+				{
+					if (fromDiagramFactor.isGroupBoxChildDiagramFactor() && toDiagramFactor.isGroupBoxChildDiagramFactor())
+						minZIndex = Math.max(minZIndex, Math.max(getZIndex(fromDiagramFactor), getZIndex(toDiagramFactor)));
+					else if (fromDiagramFactor.isGroupBoxChildDiagramFactor())
+						minZIndex = Math.max(minZIndex, getZIndex(fromDiagramFactor));
+					else
+						minZIndex = Math.max(minZIndex, getZIndex(toDiagramFactor));
+				}
+			}
+		}
+
+		return minZIndex;
+	}
+
+	private static int getZIndex(DiagramFactor diagramFactor)
+	{
+		if (diagramFactor.isGroupBoxChildDiagramFactor())
+		{
+			DiagramFactor owningGroupBox = DiagramFactor.find(diagramFactor.getProject(), diagramFactor.getOwningGroupBoxRef());
 			return owningGroupBox.getZIndex();
 		}
 		else
 		{
-			return Integer.MIN_VALUE;
+			return diagramFactor.getZIndex();
 		}
+	}
+
+	protected int getMaxZIndex() throws Exception
+	{
+		int maxZIndex = Integer.MAX_VALUE;
+
+		if (isGroupBoxFactor())
+		{
+			for (DiagramFactor childDiagramFactor : getChildDiagramFactors())
+			{
+				maxZIndex = Math.min(maxZIndex, childDiagramFactor.getZIndex());
+
+				DiagramLink[] childDiagramFactorLinks = getProject().getToAndFromLinks(childDiagramFactor.getDiagramFactorId());
+				for (DiagramLink diagramLink : childDiagramFactorLinks)
+				{
+					DiagramFactor fromDiagramFactor = diagramLink.getFromDiagramFactor();
+					DiagramFactor toDiagramFactor = diagramLink.getToDiagramFactor();
+					if (fromDiagramFactor.isGroupBoxChildDiagramFactor() || toDiagramFactor.isGroupBoxChildDiagramFactor())
+					{
+						if (fromDiagramFactor.isGroupBoxChildDiagramFactor() && toDiagramFactor.isGroupBoxChildDiagramFactor())
+							maxZIndex = Math.min(maxZIndex, Math.min(fromDiagramFactor.getZIndex(), toDiagramFactor.getZIndex()));
+						else if (fromDiagramFactor.isGroupBoxChildDiagramFactor())
+							maxZIndex = Math.min(maxZIndex, fromDiagramFactor.getZIndex());
+						else
+							maxZIndex = Math.min(maxZIndex, toDiagramFactor.getZIndex());
+					}
+				}
+			}
+		}
+
+		return maxZIndex;
 	}
 
 	public static void ensureType(ORef diagramFactorRef)

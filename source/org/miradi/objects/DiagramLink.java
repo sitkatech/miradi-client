@@ -357,6 +357,14 @@ public class DiagramLink extends AbstractDiagramObject
 		return Math.max(minFromDiagramFactorZIndex, minToDiagramFactorZIndex);
 	}
 
+	protected int getMaxZIndex() throws Exception
+	{
+		int maxFromDiagramFactorZIndex = getFromDiagramFactor().getMaxZIndex();
+		int maxToDiagramFactorZIndex = getToDiagramFactor().getMaxZIndex();
+
+		return Math.min(maxFromDiagramFactorZIndex, maxToDiagramFactorZIndex);
+	}
+
 	public static boolean isTo(int direction)
 	{
 		return direction == TO;
@@ -386,7 +394,7 @@ public class DiagramLink extends AbstractDiagramObject
 	{
 		return find(project.getObjectManager(), diagramLinkRef);
 	}
-		
+
 	public static final String TAG_WRAPPED_ID = "WrappedLinkId";
 	public static final String TAG_FROM_DIAGRAM_FACTOR_ID = "FromDiagramFactorId";
 	public static final String TAG_TO_DIAGRAM_FACTOR_ID = "ToDiagramFactorId";
