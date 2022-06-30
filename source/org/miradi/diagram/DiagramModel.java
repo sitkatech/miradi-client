@@ -555,9 +555,25 @@ abstract public class DiagramModel extends DefaultGraphModel
 		return cellInventory.getFactorByRef(factorRef);
 	}
 
-	public LinkCell getLinkCell(DiagramLink diagramFactorLink)
+	public boolean containsDiagramLink(ORef diagramLinkRef)
 	{
-		return cellInventory.getLinkCell(diagramFactorLink);
+		diagramLinkRef.ensureExactType(DiagramLinkSchema.getObjectType());
+		DiagramLink diagramLink = cellInventory.getDiagramLink(diagramLinkRef);
+
+		return diagramLink != null;
+	}
+
+	public LinkCell getLinkCellByRef(ORef diagramLinkRef) throws Exception
+	{
+		DiagramLink diagramLink = getDiagramLinkByRef(diagramLinkRef);
+		LinkCell linkCell = getLinkCell(diagramLink);
+
+		return linkCell;
+	}
+
+	public LinkCell getLinkCell(DiagramLink diagramLink)
+	{
+		return cellInventory.getLinkCell(diagramLink);
 	}
 	
 	public DiagramLink getDiagramLinkByRef(ORef diagramLinkRef) throws Exception

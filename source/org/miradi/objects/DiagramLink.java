@@ -40,7 +40,7 @@ import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
 import org.miradi.utils.XmlUtilities2;
 
-public class DiagramLink extends BaseObject
+public class DiagramLink extends AbstractDiagramObject
 {
 	public DiagramLink(ObjectManager objectManager, BaseId idToUse) throws Exception
 	{
@@ -105,7 +105,7 @@ public class DiagramLink extends BaseObject
 		
 		return ORef.INVALID;
 	}
-	
+
 	public ORef getOppositeDiagramFactorRef(int direction)
 	{
 		if(direction == DiagramLink.FROM)
@@ -286,7 +286,7 @@ public class DiagramLink extends BaseObject
 		return false;
 	}
 	
-	public String getToolTipString() 
+	public String getToolTipString(boolean showZIndex)
 	{
 		DiagramFactor fromDiagramFactor = DiagramFactor.find(getProject(), getFromDiagramFactorRef());
 		DiagramFactor toDiagramFactor = DiagramFactor.find(getProject(), getToDiagramFactorRef());
@@ -298,6 +298,12 @@ public class DiagramLink extends BaseObject
 		String annotation = getAnnotation();
 		if (!annotation.isEmpty())
 			toolTipText += "<BR><BR>" + annotation;
+
+		String zIndexInfo = "";
+		if (showZIndex)
+			zIndexInfo = "<BR><BR>Z-Index: " + this.getZIndex();
+
+		toolTipText += zIndexInfo;
 
 		toolTipText += "</html>";
 
@@ -323,7 +329,7 @@ public class DiagramLink extends BaseObject
 	{
 		return getChoiceItemData(TAG_COLOR);
 	}
-	
+
 	public boolean isCoveredByGroupBoxLink()
 	{
 		ORefList groupBoxLinks = findObjectsThatReferToUs(DiagramLinkSchema.getObjectType());
@@ -341,6 +347,22 @@ public class DiagramLink extends BaseObject
 		String newBidirectionalValue = BooleanData.toString(shouldBeBidirectional);
 		commands.add(new CommandSetObjectData(getRef(), DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, newBidirectionalValue));
 		return commands;
+	}
+
+	protected int getMinZIndex() throws Exception
+	{
+		int minFromDiagramFactorZIndex = getFromDiagramFactor().getMinZIndex();
+		int minToDiagramFactorZIndex = getToDiagramFactor().getMinZIndex();
+
+		return Math.max(minFromDiagramFactorZIndex, minToDiagramFactorZIndex);
+	}
+
+	protected int getMaxZIndex() throws Exception
+	{
+		int maxFromDiagramFactorZIndex = getFromDiagramFactor().getMaxZIndex();
+		int maxToDiagramFactorZIndex = getToDiagramFactor().getMaxZIndex();
+
+		return Math.min(maxFromDiagramFactorZIndex, maxToDiagramFactorZIndex);
 	}
 
 	public static boolean isTo(int direction)
@@ -372,7 +394,7 @@ public class DiagramLink extends BaseObject
 	{
 		return find(project.getObjectManager(), diagramLinkRef);
 	}
-		
+
 	public static final String TAG_WRAPPED_ID = "WrappedLinkId";
 	public static final String TAG_FROM_DIAGRAM_FACTOR_ID = "FromDiagramFactorId";
 	public static final String TAG_TO_DIAGRAM_FACTOR_ID = "ToDiagramFactorId";

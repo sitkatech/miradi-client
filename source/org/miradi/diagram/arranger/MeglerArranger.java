@@ -128,7 +128,7 @@ public class MeglerArranger
 			createThreatGroupsBasedOnStrategies();
 		}
 		
-		ceateStrategyGroups();
+		createStrategyGroups();
 	}
 
 	private void createThreatGroupsBasedOnStrategies() throws Exception
@@ -141,7 +141,7 @@ public class MeglerArranger
 		createGroupBoxes(threats, DiagramLink.TO, TargetSchema.getObjectType());
 	}
 
-	private void ceateStrategyGroups() throws Exception
+	private void createStrategyGroups() throws Exception
 	{
 		createGroupBoxes(strategies, DiagramLink.TO, CauseSchema.getObjectType());
 	}
@@ -192,7 +192,7 @@ public class MeglerArranger
 		HashSet<DiagramFactor> toRemove = new HashSet<DiagramFactor>();
 		for(DiagramFactor diagramFactor : groupCandidates)
 		{
-			if(diagramFactor.isCoveredByGroupBox())
+			if(diagramFactor.isGroupBoxChildDiagramFactor())
 				toRemove.add(diagramFactor);
 		}
 		return toRemove;

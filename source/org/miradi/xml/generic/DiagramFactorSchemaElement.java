@@ -33,7 +33,6 @@ public class DiagramFactorSchemaElement extends BaseObjectSchemaElementWithLabel
 		createDiagramSizeField(DiagramFactor.TAG_SIZE);
 		createIdListField(XmlConstants.GROUP_BOX_CHILDREN_IDS, XmlConstants.DIAGRAM_FACTOR);
 		
-		createOptionalCodeField(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, XmlSchemaCreator.VOCABULARY_TEXT_BOX_Z_ORDER);
 		createStylingField(XmlConstants.STYLING);
 	}
 }

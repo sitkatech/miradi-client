@@ -69,9 +69,9 @@ public class LinkCell extends EAMGraphCell implements Edge
 		return bendSelectionHelper;
 	}
 	
-	public String getToolTipString() 
+	public String getToolTipString(boolean showZIndex)
 	{
-		return getDiagramLink().getToolTipString();
+		return getDiagramLink().getToolTipString(showZIndex);
 	}
 	
 	@Override

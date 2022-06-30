@@ -91,10 +91,10 @@ public class SelectChainDoer extends ViewDoer
 	
 	private static void selectChainsBasedOnFactorsAndLinks(DiagramComponent diagramComponent, DiagramModel model, FactorCell[] factorCells, ORefList diagramLinkRefs) throws Exception
 	{
-		Factor[] factorReleatedFactors = getChainsBasedOnFactors(model, factorCells);
+		Factor[] factorRelatedFactors = getChainsBasedOnFactors(model, factorCells);
 		Factor[] linkRelatedFactors = getChainsBasedOnLinks(model, diagramLinkRefs);
 		Vector<Factor> nodes = new Vector<Factor>();
-		nodes.addAll(Arrays.asList(factorReleatedFactors));
+		nodes.addAll(Arrays.asList(factorRelatedFactors));
 		nodes.addAll(Arrays.asList(linkRelatedFactors));
 		selectFactors(diagramComponent, model, nodes.toArray(new Factor[0]));
 	}

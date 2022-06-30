@@ -22,11 +22,7 @@ package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.DiagramFactor;
-import org.miradi.questions.DiagramFactorBackgroundQuestion;
-import org.miradi.questions.DiagramFactorFontColorQuestion;
-import org.miradi.questions.DiagramFactorFontSizeQuestion;
-import org.miradi.questions.DiagramFactorFontStyleQuestion;
-import org.miradi.questions.TextBoxZOrderQuestion;
+import org.miradi.questions.*;
 
 public class DiagramFactorSchema extends BaseObjectSchema
 {
@@ -47,8 +43,10 @@ public class DiagramFactorSchema extends BaseObjectSchema
 		createFieldSchemaChoice(DiagramFactor.TAG_FONT_STYLE, DiagramFactorFontStyleQuestion.class);
 		createFieldSchemaReflist(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, DIAGRAM_FACTOR);
 		createFieldSchemaChoice(DiagramFactor.TAG_BACKGROUND_COLOR, DiagramFactorBackgroundQuestion.class);
+		// TODO: field deprecated and will be removed in later release......only here to support migrations
 		createFieldSchemaRequiredChoice(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, TextBoxZOrderQuestion.class);
 		createFieldSchemaReflist(DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS, TAGGED_OBJECT_SET_ELEMENT_NAME);
+		createFieldSchemaInteger(DiagramFactor.TAG_Z_INDEX);
 	}
 
 	public static int getObjectType()

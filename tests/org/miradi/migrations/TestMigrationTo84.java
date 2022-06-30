@@ -65,7 +65,7 @@ public class TestMigrationTo84 extends AbstractTestMigration
 
     private class LegacyDiagramFactor extends DiagramFactor
     {
-        public LegacyDiagramFactor(ObjectManager objectManager, DiagramFactorId id)
+        public LegacyDiagramFactor(ObjectManager objectManager, DiagramFactorId id) throws Exception
         {
             super(objectManager, id, new LegacyDiagramFactorSchema());
         }

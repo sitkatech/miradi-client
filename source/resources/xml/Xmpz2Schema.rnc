@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Wed Jun 22 11:01:13 BST 2022 $
-# $LastChangedRevision: 244 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/244'
+# $LastChangedDate: Mon Jun 27 09:43:50 BST 2022 $
+# $LastChangedRevision: 245 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/245'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -383,7 +383,8 @@ DiagramLink.element = element miradi:DiagramLink
   element miradi:DiagramLinkIsUncertainLink { xsd:boolean }? &
   element miradi:DiagramLinkName { formatted_text }? &
   element miradi:DiagramLinkToDiagramFactorId { LinkableFactorId.element } &
-  element miradi:DiagramLinkUUID { uuid }
+  element miradi:DiagramLinkUUID { uuid } &
+  element miradi:DiagramLinkZIndex { xsd:integer }
 }
 
 ResourceAssignmentPool.element = element miradi:ResourceAssignmentPool { ResourceAssignment.element* }
@@ -446,9 +447,9 @@ DiagramFactor.element = element miradi:DiagramFactor
   element miradi:DiagramFactorSize { DiagramSize.element* }? &
   element miradi:DiagramFactorStyle { Style.element }? &
   element miradi:DiagramFactorTaggedObjectSetIds { TaggedObjectSetId.element* }? &
-  element miradi:DiagramFactorTextBoxZOrderCode { vocabulary_text_box_z_order } &
   element miradi:DiagramFactorUUID { uuid } &
-  element miradi:DiagramFactorWrappedFactorId { WrappedByDiagramFactorId.element }
+  element miradi:DiagramFactorWrappedFactorId { WrappedByDiagramFactorId.element } &
+  element miradi:DiagramFactorZIndex { xsd:integer }
 }
 
 ConceptualModelPool.element = element miradi:ConceptualModelPool { ConceptualModel.element* }
@@ -1144,7 +1145,6 @@ vocabulary_target_mode = 'BiologicalTargetsOnly'|'BiologicalAndHumanWellbeingTar
 vocabulary_target_status = ''|'1'|'2'|'3'|'4'
 vocabulary_taxonomy_classification_selection_mode = 'LeafOnly'|'AnyNode'
 vocabulary_taxonomy_classification_multiselect_mode = 'SingleSelect'|'MultiSelect'
-vocabulary_text_box_z_order = 'Back'|'Front'
 vocabulary_cause_taxonomy_code = ''|'T10'|'T10.10'|'T10.20'|'T10.30'|'T20'|'T20.10'|'T20.30'|'T20.40'|'T20.50'|'T30'|'T30.10'|'T30.20'|'T30.30'|'T40'|'T40.10'|'T40.20'|'T40.30'|'T40.40'|'T50'|'T50.10'|'T50.20'|'T50.30'|'T50.40'|'T60'|'T60.10'|'T60.20'|'T60.30'|'T70'|'T70.10'|'T70.20'|'T70.30'|'T80'|'T80.10'|'T80.20'|'T80.30'|'T91'|'T91.10'|'T91.20'|'T91.30'|'T91.40'|'T91.50'|'T91.60'|'T100'|'T100.10'|'T100.20'|'T100.30'|'T110'|'T110.10'|'T110.20'|'T110.30'|'T110.40'
 vocabulary_threat_rating_mode = 'Simple'|'StressBased'
 vocabulary_threat_rating = ''|'1'|'2'|'3'|'4'

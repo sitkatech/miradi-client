@@ -35,6 +35,7 @@ import org.miradi.views.workplan.WorkPlanView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.Vector;
 
@@ -450,6 +451,17 @@ public class MainMenuBar extends JMenuBar
 			setControlKeyAccelerator(createMargin, KeyEvent.VK_M);
 
 			menu.addSeparator();
+
+			JMenuItem bringToFront = addMenuItem(actions, menu, ActionBringToFront.class);
+			setControlPlusShiftKeyAccelerator(bringToFront, KeyEvent.VK_UP);
+			JMenuItem bringForward = addMenuItem(actions, menu, ActionBringForward.class);
+			setControlKeyAccelerator(bringForward, KeyEvent.VK_UP);
+			JMenuItem sendBackward = addMenuItem(actions, menu, ActionSendBackward.class);
+			setControlKeyAccelerator(sendBackward, KeyEvent.VK_DOWN);
+			JMenuItem sendToBack = addMenuItem(actions, menu, ActionSendToBack.class);
+			setControlPlusShiftKeyAccelerator(sendToBack, KeyEvent.VK_DOWN);
+
+			menu.addSeparator();
 		}
 
 		if(isDiagramView())
@@ -598,6 +610,11 @@ public class MainMenuBar extends JMenuBar
 	private void setControlKeyAccelerator(JMenuItem menuItem, int keyCode)
 	{
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(keyCode, KeyBinder.KEY_MODIFIER_CTRL));
+	}
+
+	private void setControlPlusShiftKeyAccelerator(JMenuItem menuItem, int keyCode)
+	{
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(keyCode, KeyBinder.KEY_MODIFIER_CTRL | InputEvent.SHIFT_MASK));
 	}
 
 	private MainWindow getMainWindow()

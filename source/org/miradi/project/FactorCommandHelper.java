@@ -72,12 +72,21 @@ public class FactorCommandHelper
 		
 		final CommandSetObjectData setWrappedRefCommand = new CommandSetObjectData(createDiagramFactor.getObjectRef(), DiagramFactor.TAG_WRAPPED_REF, factorRef.toString());
 		executeCommand(setWrappedRefCommand);
-		
+
 		DiagramFactorId diagramFactorId = (DiagramFactorId) createDiagramFactor.getCreatedId();
 		CommandSetObjectData addDiagramFactor = CommandSetObjectData.createAppendIdCommand(diagramObjectToUse, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, diagramFactorId);
 		executeCommand(addDiagramFactor);
-		
+
+		int zIndex;
 		Factor factor = Factor.findFactor(getProject(), factorRef);
+		if (factor.isGroupBox() || factor.isScopeBox())
+			zIndex = diagramObject.getBottomZIndex() - 1;
+		else
+			zIndex = diagramObject.getTopZIndex();
+
+		final CommandSetObjectData setZIndexCommand = new CommandSetObjectData(createDiagramFactor.getObjectRef(), DiagramFactor.TAG_Z_INDEX, zIndex);
+		executeCommand(setZIndexCommand);
+
 		Command[] commandsToAddToView = getProject().getCurrentViewData().buildCommandsToAddNode(factor.getRef());
 		for(int i = 0; i < commandsToAddToView.length; ++i)
 			executeCommand(commandsToAddToView[i]);

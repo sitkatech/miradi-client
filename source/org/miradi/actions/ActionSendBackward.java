@@ -17,26 +17,27 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
+package org.miradi.actions;
 
-package org.miradi.xml.xmpz2.xmpz2schema;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-import org.miradi.objects.TaggedObjectSet;
-import org.miradi.schemas.BaseObjectSchema;
-
-public class TaggedObjectSetSchemaWriter extends BaseObjectSchemaWriter
+public class ActionSendBackward extends ViewAction
 {
-    public TaggedObjectSetSchemaWriter(Xmpz2XmlSchemaCreator creatorToUse, BaseObjectSchema baseObjectSchemaToUse)
+    public ActionSendBackward(MainWindow mainWindow)
     {
-        super(creatorToUse, baseObjectSchemaToUse);
+        super(mainWindow, getLabel());
+    }
+
+    private static String getLabel()
+    {
+        return EAM.text("Action|Send Backward");
     }
 
     @Override
-    protected boolean shouldOmitField(String tag)
+    public String getToolTipText()
     {
-        // TODO: field deprecated and will be removed in later release......only here to support migrations
-        if (tag.equals(TaggedObjectSet.TAG_TAGGED_OBJECT_REFS))
-            return true;
-
-        return super.shouldOmitField(tag);
+        return EAM.text("TT|Move Diagram Factor(s) Backward");
     }
+
 }

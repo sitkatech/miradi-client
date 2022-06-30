@@ -36,9 +36,7 @@ import org.miradi.utils.CodeList;
 import org.miradi.utils.CommandVector;
 
 import java.awt.*;
-import java.util.HashSet;
-import java.util.Set;
-import java.util.Vector;
+import java.util.*;
 
 abstract public class DiagramObject extends BaseObject
 {
@@ -293,11 +291,50 @@ abstract public class DiagramObject extends BaseObject
 		for(int i = 0; i < diagramFactorRefs.size(); ++i)
 		{
 			DiagramFactor diagramFactor = (DiagramFactor) getProject().findObject(diagramFactorRefs.get(i));
-			diagramFactors.add(diagramFactor);
+			if (diagramFactor != null)
+				diagramFactors.add(diagramFactor);
 		}
 
 		return diagramFactors.toArray(new DiagramFactor[0]);
 	}
+
+    public int getBottomZIndex()
+    {
+        int minDiagramFactorZIndex = Arrays.stream(
+			getAllDiagramFactors())
+			.mapToInt(AbstractDiagramObject::getZIndex)
+			.min()
+			.orElse(AbstractDiagramObject.getDefaultZIndex()
+		);
+
+        int minDiagramLinkZIndex = Arrays.stream(
+			getAllDiagramLinks())
+			.mapToInt(AbstractDiagramObject::getZIndex)
+			.min()
+			.orElse(AbstractDiagramObject.getDefaultZIndex()
+		);
+
+		return Math.min(minDiagramFactorZIndex, minDiagramLinkZIndex);
+    }
+
+    public int getTopZIndex()
+    {
+        int maxDiagramFactorZIndex =  Arrays.stream(
+			getAllDiagramFactors())
+			.mapToInt(AbstractDiagramObject::getZIndex)
+			.max()
+			.orElse(AbstractDiagramObject.getDefaultZIndex()
+		);
+
+        int maxDiagramLinkZIndex =  Arrays.stream(
+			getAllDiagramLinks())
+			.mapToInt(AbstractDiagramObject::getZIndex)
+			.max()
+			.orElse(AbstractDiagramObject.getDefaultZIndex()
+		);
+
+		return Math.max(maxDiagramFactorZIndex, maxDiagramLinkZIndex);
+    }
 
 	public ORefList getAllTaggedDiagramFactorRefs(ORef taggedObjectSetRef)
 	{
@@ -336,7 +373,21 @@ abstract public class DiagramObject extends BaseObject
 	{
 		return getSafeIdListData(TAG_DIAGRAM_FACTOR_LINK_IDS);
 	}
-	
+
+	public DiagramLink[] getAllDiagramLinks()
+	{
+		ORefList diagramLinkRefs = getAllDiagramLinkRefs();
+		Vector<DiagramLink> diagramLinks = new Vector<DiagramLink>();
+		for(int i = 0; i < diagramLinkRefs.size(); ++i)
+		{
+			DiagramLink diagramLink = (DiagramLink) getProject().findObject(diagramLinkRefs.get(i));
+			if (diagramLink != null)
+				diagramLinks.add(diagramLink);
+		}
+
+		return diagramLinks.toArray(new DiagramLink[0]);
+	}
+
 	public CodeList getHiddenTypes() throws Exception
 	{
 		return getCodeList(TAG_HIDDEN_TYPES);

@@ -35,11 +35,10 @@ import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.TextBoxZOrderQuestion;
 import org.miradi.schemas.*;
 import org.miradi.utils.EnhancedJsonObject;
 
-public class DiagramFactor extends BaseObject
+public class DiagramFactor extends AbstractDiagramObject
 {
 	public DiagramFactor(ObjectManager objectManager, DiagramFactorId diagramFactorIdToUse) throws Exception
 	{
@@ -48,7 +47,7 @@ public class DiagramFactor extends BaseObject
 		setDimensionData(TAG_SIZE, getDefaultSize());
 	}
 
-	public DiagramFactor(ObjectManager objectManager, DiagramFactorId diagramFactorId, DiagramFactorSchema schema)
+	public DiagramFactor(ObjectManager objectManager, DiagramFactorId diagramFactorId, DiagramFactorSchema schema) throws Exception
 	{
 		super(objectManager, diagramFactorId, schema);
 	}
@@ -195,8 +194,8 @@ public class DiagramFactor extends BaseObject
 	
 	public ORef getOwningGroupBoxRef()
 	{
-		ORefList diagramFactorReferers = findAllObjectsThatReferToUs();
-		ORef groupBoxDiagramFactorRef = diagramFactorReferers.getRefForType(DiagramFactorSchema.getObjectType());
+		ORefList diagramFactorReferrers = findAllObjectsThatReferToUs();
+		ORef groupBoxDiagramFactorRef = diagramFactorReferrers.getRefForType(DiagramFactorSchema.getObjectType());
 
 		return groupBoxDiagramFactorRef;
 	}
@@ -251,7 +250,7 @@ public class DiagramFactor extends BaseObject
 		
 		return super.getAnnotationType(tag);
 	}
-	
+
 	public Command[] createCommandsToMirror(DiagramFactorId newlyCreatedId)
 	{
 		Vector<CommandSetObjectData> commands = new Vector<CommandSetObjectData>();
@@ -267,6 +266,10 @@ public class DiagramFactor extends BaseObject
 
         CommandSetObjectData setBackgroundColorCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_BACKGROUND_COLOR, getStringData(TAG_BACKGROUND_COLOR));
 		commands.add(setBackgroundColorCommand);
+
+		int zIndex = getIntegerData(TAG_Z_INDEX);
+        CommandSetObjectData setZIndexCommand = new CommandSetObjectData(ObjectType.DIAGRAM_FACTOR, newlyCreatedId, DiagramFactor.TAG_Z_INDEX, zIndex);
+		commands.add(setZIndexCommand);
 
         return commands.toArray(new Command[0]);
 	}
@@ -287,24 +290,109 @@ public class DiagramFactor extends BaseObject
         return commands;
 	}
 
-	public boolean isCoveredByGroupBox()
+	public boolean isGroupBoxChildDiagramFactor()
 	{
 		ORefList groupBoxFactors = findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());
 		return (groupBoxFactors.size() > 0);
 	}
-	
+
+	private Vector<DiagramFactor> getChildDiagramFactors()
+	{
+		Vector<DiagramFactor> childDiagramFactors = new Vector<DiagramFactor>();
+
+		if (isGroupBoxFactor())
+		{
+			ORefList childRefs = getGroupBoxChildrenRefs();
+			for(int i = 0; i < childRefs.size(); ++i)
+			{
+				DiagramFactor child = DiagramFactor.find(getProject(), childRefs.get(i));
+				childDiagramFactors.add(child);
+			}
+		}
+
+		return childDiagramFactors;
+	}
+
+	protected int getMinZIndex() throws Exception
+	{
+		int minZIndex = Integer.MIN_VALUE;
+
+		if (isGroupBoxChildDiagramFactor())
+		{
+			minZIndex = getZIndex(this);
+		}
+		else
+		{
+			DiagramLink[] diagramLinks = getProject().getToAndFromLinks(getDiagramFactorId());
+			for (DiagramLink diagramLink : diagramLinks)
+			{
+				DiagramFactor fromDiagramFactor = diagramLink.getFromDiagramFactor();
+				DiagramFactor toDiagramFactor = diagramLink.getToDiagramFactor();
+				if (fromDiagramFactor.isGroupBoxChildDiagramFactor() || toDiagramFactor.isGroupBoxChildDiagramFactor())
+				{
+					if (fromDiagramFactor.isGroupBoxChildDiagramFactor() && toDiagramFactor.isGroupBoxChildDiagramFactor())
+						minZIndex = Math.max(minZIndex, Math.max(getZIndex(fromDiagramFactor), getZIndex(toDiagramFactor)));
+					else if (fromDiagramFactor.isGroupBoxChildDiagramFactor())
+						minZIndex = Math.max(minZIndex, getZIndex(fromDiagramFactor));
+					else
+						minZIndex = Math.max(minZIndex, getZIndex(toDiagramFactor));
+				}
+			}
+		}
+
+		return minZIndex;
+	}
+
+	private static int getZIndex(DiagramFactor diagramFactor)
+	{
+		if (diagramFactor.isGroupBoxChildDiagramFactor())
+		{
+			DiagramFactor owningGroupBox = DiagramFactor.find(diagramFactor.getProject(), diagramFactor.getOwningGroupBoxRef());
+			return owningGroupBox.getZIndex();
+		}
+		else
+		{
+			return diagramFactor.getZIndex();
+		}
+	}
+
+	protected int getMaxZIndex() throws Exception
+	{
+		int maxZIndex = Integer.MAX_VALUE;
+
+		if (isGroupBoxFactor())
+		{
+			for (DiagramFactor childDiagramFactor : getChildDiagramFactors())
+			{
+				maxZIndex = Math.min(maxZIndex, childDiagramFactor.getZIndex());
+
+				DiagramLink[] childDiagramFactorLinks = getProject().getToAndFromLinks(childDiagramFactor.getDiagramFactorId());
+				for (DiagramLink diagramLink : childDiagramFactorLinks)
+				{
+					DiagramFactor fromDiagramFactor = diagramLink.getFromDiagramFactor();
+					DiagramFactor toDiagramFactor = diagramLink.getToDiagramFactor();
+					if (fromDiagramFactor.isGroupBoxChildDiagramFactor() || toDiagramFactor.isGroupBoxChildDiagramFactor())
+					{
+						if (fromDiagramFactor.isGroupBoxChildDiagramFactor() && toDiagramFactor.isGroupBoxChildDiagramFactor())
+							maxZIndex = Math.min(maxZIndex, Math.min(fromDiagramFactor.getZIndex(), toDiagramFactor.getZIndex()));
+						else if (fromDiagramFactor.isGroupBoxChildDiagramFactor())
+							maxZIndex = Math.min(maxZIndex, fromDiagramFactor.getZIndex());
+						else
+							maxZIndex = Math.min(maxZIndex, toDiagramFactor.getZIndex());
+					}
+				}
+			}
+		}
+
+		return maxZIndex;
+	}
+
 	public static void ensureType(ORef diagramFactorRef)
 	{
 		if (!is(diagramFactorRef))
 			throw new RuntimeException(diagramFactorRef + " is not of type DiagramFactor");
 	}
 	
-	public boolean isDefaultZOrder()
-	{
-		String zOrderCode = getStringData(TAG_TEXT_BOX_Z_ORDER_CODE);
-		return zOrderCode.equals(TextBoxZOrderQuestion.DEFAULT_Z_ORDER);
-	}
-		
 	public static boolean is(ORef ref)
 	{
 		return is(ref.getObjectType());

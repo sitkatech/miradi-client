@@ -90,7 +90,6 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(DayColumnsVisibilityQuestion.class, VOCABULARY_DAY_COLUMNS_VISIBILITY);
 		addItem(BudgetTimePeriodQuestion.class, VOCABULARY_WORK_PLAN_TIME_UNIT);
 		addItem(CurrencyTypeQuestion.class, VOCABULARY_CURRENCY_TYPE);
-		addItem(TextBoxZOrderQuestion.class, VOCABULARY_TEXT_BOX_Z_ORDER);
 		addItem(StrategyStatusQuestion.class, VOCABULARY_STRATEGY_STATUS);
 		addItem(StatusQuestion.class, VOCABULARY_STATUS);
 		addItem(OpenStandardsProgressStatusQuestion.class, VOCABULARY_DASHBOARD_ROW_PROGRESS);

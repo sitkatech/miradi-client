@@ -76,6 +76,9 @@ public class Xmpz2ForwardMigration
 		removeRelevantDiagramFactorIdsElement(rootElement, Xmpz2XmlConstants.ASSUMPTION);
 		moveStrategyStandardClassificationToExtraData(document);
 		removeDiagramFactorStyleHeaderHeightElement(rootElement);
+		moveDiagramFactorTextBoxZOrderCodeToExtraData(document);
+		addDiagramFactorZIndexField(document);
+		addDiagramLinkZIndexField(document);
 
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
@@ -488,6 +491,93 @@ public class Xmpz2ForwardMigration
 					}
 				}
 			}
+		}
+	}
+
+	private void moveDiagramFactorTextBoxZOrderCodeToExtraData(Document document) throws Exception
+	{
+		Element rootElement = document.getDocumentElement();
+
+		Node diagramFactorPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.DIAGRAM_FACTOR));
+		if (diagramFactorPool != null)
+		{
+			NodeList diagramFactorNodes = diagramFactorPool.getChildNodes();
+			for (int index = 0; index < diagramFactorNodes.getLength(); ++index)
+			{
+				Node diagramFactorNode = diagramFactorNodes.item(index);
+				if (diagramFactorNode != null && diagramFactorNode.getNodeType() == Node.ELEMENT_NODE)
+				{
+					moveDiagramFactorTextBoxZOrderCodeElementToExtraData(document, diagramFactorNode);
+				}
+			}
+		}
+	}
+
+	private void moveDiagramFactorTextBoxZOrderCodeElementToExtraData(Document document, Node diagramFactorNode) throws Exception
+	{
+		String idAsString = getAttributeValue(diagramFactorNode, Xmpz2XmlConstants.ID);
+
+		String elementNameWithoutAlias = Xmpz2XmlConstants.DIAGRAM_FACTOR + Xmpz2XmlConstants.TEXT_BOX + Xmpz2XmlConstants.Z_INDEX + Xmpz2XmlConstants.CODE;
+		String tagName = MigrationTo85.TAG_TEXT_BOX_Z_ORDER_CODE;
+
+		Node nodeToMove = findNode(diagramFactorNode, elementNameWithoutAlias);
+		if (nodeToMove != null && nodeToMove.getNodeType() == Node.ELEMENT_NODE)
+		{
+			String extraDataItemName = ExtraDataExporter.getExtraDataItemName(DiagramFactorSchema.OBJECT_NAME, new BaseId(idAsString), tagName);
+			String extraDataItemValue = nodeToMove.getTextContent();
+			moveDataToExtraData(document, extraDataItemName, extraDataItemValue);
+
+			diagramFactorNode.removeChild(nodeToMove);
+		}
+	}
+
+	private void addDiagramFactorZIndexField(Document document) throws Exception
+	{
+		Element rootElement = document.getDocumentElement();
+
+		Node diagramFactorPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.DIAGRAM_FACTOR));
+		if (diagramFactorPool != null)
+		{
+			NodeList diagramFactorNodes = diagramFactorPool.getChildNodes();
+			for (int index = 0; index < diagramFactorNodes.getLength(); ++index)
+			{
+				Node diagramFactorNode = diagramFactorNodes.item(index);
+				if (diagramFactorNode != null && diagramFactorNode.getNodeType() == Node.ELEMENT_NODE)
+				{
+					addZIndexField(document, diagramFactorNode, Xmpz2XmlConstants.DIAGRAM_FACTOR);
+				}
+			}
+		}
+	}
+
+	private void addDiagramLinkZIndexField(Document document) throws Exception
+	{
+		Element rootElement = document.getDocumentElement();
+
+		Node diagramLinkPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.DIAGRAM_LINK));
+		if (diagramLinkPool != null)
+		{
+			NodeList diagramLinkNodes = diagramLinkPool.getChildNodes();
+			for (int index = 0; index < diagramLinkNodes.getLength(); ++index)
+			{
+				Node diagramLinkNode = diagramLinkNodes.item(index);
+				if (diagramLinkNode != null && diagramLinkNode.getNodeType() == Node.ELEMENT_NODE)
+				{
+					addZIndexField(document, diagramLinkNode, Xmpz2XmlConstants.DIAGRAM_LINK);
+				}
+			}
+		}
+	}
+
+	private void addZIndexField(Document document, Node diagramFactorOrLinkElement, String elementName) throws Exception
+	{
+		Node zIndexElement = findNode(diagramFactorOrLinkElement.getChildNodes(), elementName + Xmpz2XmlConstants.Z_INDEX);
+		if (zIndexElement == null)
+		{
+			final String alias = getNameSpaceAliasName(document.getDocumentElement());
+			Node newNode = document.createElement(alias + COLON + elementName + Xmpz2XmlConstants.Z_INDEX);
+			newNode.setTextContent("0");
+			diagramFactorOrLinkElement.appendChild(newNode);
 		}
 	}
 

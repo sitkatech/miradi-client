@@ -26,6 +26,7 @@ import org.miradi.objects.Factor;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.DiagramLinkSchema;
 import org.miradi.xml.xmpz2.BaseObjectExporter;
+import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 public class DiagramLinkExporter extends BaseObjectExporter
@@ -41,6 +42,9 @@ public class DiagramLinkExporter extends BaseObjectExporter
 		super.writeFields(baseObject, baseObjectSchema);
 		
 		DiagramLink diagramLink = (DiagramLink) baseObject;
+
+		getWriter().writeElement(Xmpz2XmlConstants.DIAGRAM_LINK, DiagramLink.TAG_Z_INDEX, diagramLink.getZIndex());
+
 		writeFromDiagramFactorId(diagramLink);
 		writeToDiagramFactorId(diagramLink);
 		
@@ -105,6 +109,9 @@ public class DiagramLinkExporter extends BaseObjectExporter
 			return true;
 		
 		if (tag.equals(DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS))
+			return true;
+
+		if (tag.equals(DiagramLink.TAG_Z_INDEX))
 			return true;
 
 		return super.doesFieldRequireSpecialHandling(tag);

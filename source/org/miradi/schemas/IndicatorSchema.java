@@ -56,12 +56,12 @@ public class IndicatorSchema extends BaseObjectSchema
 		createFieldSchemaRelevancyOverrideSet(Indicator.TAG_RELEVANT_STRATEGY_ACTIVITY_SET);
 		createProgressReportSchema();
 
-		// TODO: fields to be deprecated in post 4.4 release...only here to support migrations
+		// TODO: fields deprecated and will be removed in later release......only here to support migrations
 		createFieldSchemaOptionalRef(BaseObject.TAG_ASSIGNED_LEADER_RESOURCE);
 		createOwnedFieldSchemaIdList(BaseObject.TAG_RESOURCE_ASSIGNMENT_IDS, ResourceAssignmentSchema.getObjectType());
 		createOwnedFieldSchemaReflist(BaseObject.TAG_EXPENSE_ASSIGNMENT_REFS, EXPENSE_ASSIGNMENT);
 
-		// TODO: fields to be deprecated in post 4.5 release...only here to support migrations
+		// TODO: fields deprecated and will be removed in later release......only here to support migrations
 		createFieldSchemaChoice(Indicator.TAG_RATING_SOURCE, RatingSourceQuestion.class);
 
 		createTaxonomyClassificationSchemaField();

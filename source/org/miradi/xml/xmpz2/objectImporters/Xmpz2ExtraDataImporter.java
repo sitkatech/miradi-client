@@ -135,6 +135,9 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 		if (typeName.equals(TaggedObjectSetSchema.OBJECT_NAME))
 			return TaggedObjectSetSchema.getObjectType();
 
+		if (typeName.equals(DiagramFactorSchema.OBJECT_NAME))
+			return DiagramFactorSchema.getObjectType();
+
 		throw new RuntimeException("Object type name is not recognized as type, " + typeName);
 	}
 

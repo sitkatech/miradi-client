@@ -570,7 +570,9 @@ public class ResultsChainCreatorHelper
 		PointList bendPoints = diagramLink.getBendPoints();
 		CommandSetObjectData setBendPoints = CommandSetObjectData.createNewPointList(newlyCreated, DiagramLink.TAG_BEND_POINTS, bendPoints);
 		getProject().executeCommand(setBendPoints);
-		
+
+		getProject().executeCommand(new CommandSetObjectData(newlyCreated, DiagramLink.TAG_Z_INDEX, diagramLink.getZIndex()));
+
 		return newlyCreated;
 	}
 	

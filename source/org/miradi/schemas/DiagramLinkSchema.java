@@ -45,7 +45,7 @@ public class DiagramLinkSchema extends BaseObjectSchema
 		createFieldSchemaBoolean(DiagramLink.TAG_IS_BIDIRECTIONAL_LINK);
 		createFieldSchemaBoolean(DiagramLink.TAG_IS_UNCERTAIN_LINK);
 		createFieldSchemaMultiLineUserText(DiagramLink.TAG_ANNOTATION);
-
+		createFieldSchemaInteger(DiagramLink.TAG_Z_INDEX);
 	}
 
 	public static int getObjectType()

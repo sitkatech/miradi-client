@@ -52,7 +52,7 @@ public class MeasurementSchema extends BaseObjectSchema
 		createFieldSchemaNumber(Measurement.TAG_SAMPLE_PRECISION);
 		createFieldSchemaChoice(Measurement.TAG_SAMPLE_PRECISION_TYPE, PrecisionTypeQuestion.class);
 
-		// TODO: field to be deprecated in post 4.5 release...only here to support migrations
+		// TODO: field deprecated and will be removed in later release......only here to support migrations
 		createFieldSchemaChoice(Measurement.TAG_STATUS_CONFIDENCE, StatusConfidenceQuestion.class);
 	}
 

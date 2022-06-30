@@ -2020,7 +2020,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_FOREGROUND_COLOR, DiagramFactorFontColorQuestion.BROWN_HEX);
 		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_FONT_SIZE, "2.5");
 		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_FONT_STYLE, DiagramFactorFontStyleQuestion.BOLD_CODE);
-		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, TextBoxZOrderQuestion.FRONT_CODE);
 	}
 	
 	private void populateDiagramLink(DiagramLink diagramLink) throws Exception
@@ -2524,7 +2523,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public DiagramFactor createAndAddFactorToDiagram(DiagramObject diagramObject, ORef factorRef) throws Exception
 	{
-		FactorCommandHelper factorHelper = new FactorCommandHelper(this, getTestingDiagramModel());
+		FactorCommandHelper factorHelper = new FactorCommandHelper(this, diagramObject);
 		CommandCreateObject createDiagramFactor = factorHelper.createDiagramFactor(diagramObject, factorRef);
 		
 		return DiagramFactor.find(this, createDiagramFactor.getObjectRef());
@@ -2645,7 +2644,6 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return createDiagramLinkAndAddToDiagramModel(from, to).getRef();
 	}
 	
-	//TODO - find a better name,  or inline above method
 	public DiagramLink createDiagramLinkAndAddToDiagramModel(DiagramFactor from, DiagramFactor to) throws Exception
 	{
 		ORef diagramLinkRef = createDiagramLink(from, to);
@@ -2662,6 +2660,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public ORef createDiagramLink(DiagramFactor from, DiagramFactor to) throws Exception
 	{
+		DiagramObject diagramObject = getTestingDiagramObject();
+
 		final ORef diagramLinkRef = createObject(ObjectType.DIAGRAM_LINK);
 
 		BaseId baseId = BaseId.INVALID;
@@ -2671,7 +2671,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 		setObjectData(diagramLinkRef, DiagramLink.TAG_WRAPPED_ID, baseId.toString());
 		setObjectData(diagramLinkRef, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, from.getId().toString());
 		setObjectData(diagramLinkRef, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, to.getId().toString());
-		
+
+		int zIndex = diagramObject.getTopZIndex();
+		setObjectData(diagramLinkRef, DiagramLink.TAG_Z_INDEX, String.valueOf(zIndex));
+
 		return diagramLinkRef;
 	}
 
@@ -2686,6 +2689,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 	
 	public ORef createDiagramLinkWithCommand(DiagramFactor from, DiagramFactor to) throws Exception
 	{
+		DiagramObject diagramObject = getTestingDiagramObject();
+
 		BaseId baseId = BaseId.INVALID;
 		if(!shouldCreateGroupBoxLink(from, to))
 			baseId = createFactorLinkWithCommand(from.getWrappedORef(), to.getWrappedORef()).getObjectId();
@@ -2697,7 +2702,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(diagramLinkRef, DiagramLink.TAG_WRAPPED_ID, baseId.toString());
 		fillObjectUsingCommand(diagramLinkRef, DiagramLink.TAG_FROM_DIAGRAM_FACTOR_ID, from.getId().toString());
 		fillObjectUsingCommand(diagramLinkRef, DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, to.getId().toString());
-		
+
+		int zIndex = diagramObject.getTopZIndex();
+		fillObjectUsingCommand(diagramLinkRef, DiagramLink.TAG_Z_INDEX, String.valueOf(zIndex));
+
 		return diagramLinkRef;
 	}
 	

@@ -31,6 +31,7 @@ import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.utils.XmlUtilities2;
 import org.miradi.xml.xmpz2.BaseObjectExporter;
+import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
 public class DiagramFactorExporter extends BaseObjectExporter
@@ -46,6 +47,9 @@ public class DiagramFactorExporter extends BaseObjectExporter
 		super.writeFields(baseObject, baseObjectSchema);
 		
 		DiagramFactor diagramFactor = (DiagramFactor) baseObject;
+
+		getWriter().writeElement(Xmpz2XmlConstants.DIAGRAM_FACTOR, DiagramFactor.TAG_Z_INDEX, diagramFactor.getZIndex());
+
 		writeWrappedFactorId(diagramFactor.getWrappedFactor());
 		exportFontStylingElements(diagramFactor);
 		getWriter().writeReflist(DIAGRAM_FACTOR + GROUP_BOX_CHILDREN_IDS, DIAGRAM_FACTOR, diagramFactor.getGroupBoxChildrenRefs());
@@ -66,10 +70,23 @@ public class DiagramFactorExporter extends BaseObjectExporter
 
 		if (isFontStyleField(tag))
 			return true;
-		
+
+		if (tag.equals(DiagramFactor.TAG_Z_INDEX))
+			return true;
+
 		return super.doesFieldRequireSpecialHandling(tag);
 	}
-	
+
+	@Override
+	protected boolean shouldOmitField(String tag)
+	{
+		// TODO: field deprecated and will be removed in later release...
+		if (tag.equals(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE))
+			return true;
+
+		return super.shouldOmitField(tag);
+	}
+
 	private boolean isFontStyleField(String tag)
 	{
 		if (tag.equals(DiagramFactor.TAG_FONT_SIZE))
