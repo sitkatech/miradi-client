@@ -517,8 +517,8 @@ public class Xmpz2ForwardMigration
 	{
 		String idAsString = getAttributeValue(diagramFactorNode, Xmpz2XmlConstants.ID);
 
-		String elementNameWithoutAlias = Xmpz2XmlConstants.DIAGRAM_FACTOR + Xmpz2XmlConstants.TEXT_BOX + Xmpz2XmlConstants.Z_INDEX + Xmpz2XmlConstants.CODE;
 		String tagName = MigrationTo85.TAG_TEXT_BOX_Z_ORDER_CODE;
+		String elementNameWithoutAlias = Xmpz2XmlConstants.DIAGRAM_FACTOR + MigrationTo85.TAG_TEXT_BOX_Z_ORDER_CODE;
 
 		Node nodeToMove = findNode(diagramFactorNode, elementNameWithoutAlias);
 		if (nodeToMove != null && nodeToMove.getNodeType() == Node.ELEMENT_NODE)
