@@ -26,7 +26,7 @@ public class ActionBringToFront extends ViewAction
 {
     public ActionBringToFront(MainWindow mainWindow)
     {
-        super(mainWindow, getLabel());
+        super(mainWindow, getLabel(), "icons/arrangeBringToFront.png");
     }
 
     private static String getLabel()

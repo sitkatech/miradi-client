@@ -26,7 +26,7 @@ public class ActionSendBackward extends ViewAction
 {
     public ActionSendBackward(MainWindow mainWindow)
     {
-        super(mainWindow, getLabel());
+        super(mainWindow, getLabel(), "icons/arrangeSendBackward.png");
     }
 
     private static String getLabel()
