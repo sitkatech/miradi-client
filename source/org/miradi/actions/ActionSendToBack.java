@@ -26,7 +26,7 @@ public class ActionSendToBack extends ViewAction
 {
     public ActionSendToBack(MainWindow mainWindow)
     {
-        super(mainWindow, getLabel());
+        super(mainWindow, getLabel(), "icons/arrangeSendToBack.png");
     }
 
     private static String getLabel()

@@ -26,7 +26,7 @@ public class ActionBringForward extends ViewAction
 {
     public ActionBringForward(MainWindow mainWindow)
     {
-        super(mainWindow, getLabel());
+        super(mainWindow, getLabel(), "icons/arrangeBringForward.png");
     }
 
     private static String getLabel()
