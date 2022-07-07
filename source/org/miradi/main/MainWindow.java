@@ -80,6 +80,7 @@ import java.awt.*;
 import java.awt.datatransfer.Clipboard;
 import java.awt.datatransfer.ClipboardOwner;
 import java.awt.datatransfer.Transferable;
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
@@ -110,6 +111,15 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		setLanguage(null);
 
 		projectSaver = new AutomaticProjectSaver(project);
+
+		KeyboardFocusManager.getCurrentKeyboardFocusManager()
+		  .addKeyEventDispatcher(new KeyEventDispatcher() {
+			  @Override
+			  public boolean dispatchKeyEvent(KeyEvent e) {
+				EAM.logVerbose("KeyEvent: " + e.toString());
+				return false;
+			  }
+		});
 	}
 	
 	public void start(String[] args) throws Exception
