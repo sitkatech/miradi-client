@@ -39,6 +39,8 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.Vector;
 
+import static org.miradi.main.Miradi.isWindows;
+
 public class MainMenuBar extends JMenuBar
 {
 
@@ -452,14 +454,22 @@ public class MainMenuBar extends JMenuBar
 
 			menu.addSeparator();
 
+			int upKeyCode = KeyEvent.VK_UP;
+			int downKeyCode = KeyEvent.VK_DOWN;
+			if (isWindows())
+			{
+				upKeyCode = KeyEvent.VK_U;
+				downKeyCode = KeyEvent.VK_D;
+			}
+
 			JMenuItem bringToFront = addMenuItem(actions, menu, ActionBringToFront.class);
-			setControlPlusShiftKeyAccelerator(bringToFront, KeyEvent.VK_UP);
+			setControlPlusShiftKeyAccelerator(bringToFront, upKeyCode);
 			JMenuItem bringForward = addMenuItem(actions, menu, ActionBringForward.class);
-			setControlKeyAccelerator(bringForward, KeyEvent.VK_UP);
+			setControlKeyAccelerator(bringForward, upKeyCode);
 			JMenuItem sendBackward = addMenuItem(actions, menu, ActionSendBackward.class);
-			setControlKeyAccelerator(sendBackward, KeyEvent.VK_DOWN);
+			setControlKeyAccelerator(sendBackward, downKeyCode);
 			JMenuItem sendToBack = addMenuItem(actions, menu, ActionSendToBack.class);
-			setControlPlusShiftKeyAccelerator(sendToBack, KeyEvent.VK_DOWN);
+			setControlPlusShiftKeyAccelerator(sendToBack, downKeyCode);
 
 			menu.addSeparator();
 		}
