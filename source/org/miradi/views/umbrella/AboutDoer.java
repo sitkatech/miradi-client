@@ -19,6 +19,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.views.umbrella;
 
+import org.miradi.main.EAM;
+import org.miradi.main.VersionConstants;
+import org.miradi.utils.Translation;
 import org.miradi.views.MainWindowDoer;
 
 public class AboutDoer extends MainWindowDoer 
@@ -39,9 +42,40 @@ public class AboutDoer extends MainWindowDoer
         if (!isAvailable())
             return;
 
-        if (getMainWindow().mainLinkFunction(MIRADI_SHARE_ABOUT_URL))
-            return;
+ 		String text = loadHtmlFile("AboutMiradi.html");
+		text = replaceMiradiVersion(text);
+ 		HelpAboutPanel dialog = new HelpAboutPanel(getMainWindow(), text);
+ 		dialog.showAsOkDialog();
 	}
 
-	public static final String MIRADI_SHARE_ABOUT_URL = "https://www.miradishare.org/ux/about";
+	private static String loadHtmlFile(String htmlFile)
+	{
+		try
+		{
+			return Translation.getHtmlContent(htmlFile);
+		}
+		catch(Exception e)
+		{
+			EAM.logException(e);
+			return "";
+		}
+	}
+
+	private static String replaceMiradiVersion(String text)
+	{
+		String textToReturn = text;
+		String template = EAM.text("%s");
+
+		try
+		{
+			String translationVersion = VersionConstants.getVersionAndTimestamp();
+			textToReturn = EAM.substitute(text, template, translationVersion);
+		}
+		catch (Exception e)
+		{
+			EAM.logError("Unable to determine Miradi version number");
+		}
+
+		return textToReturn;
+	}
 }

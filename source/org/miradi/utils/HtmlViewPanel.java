@@ -140,7 +140,7 @@ public class HtmlViewPanel implements HtmlFormEventHandler
 	private void calculateHeight(DialogWithEscapeToClose dlg, Container contents, HtmlFormViewer bodyComponent, JComponent buttonBar)
 	{
 		// Compute dialog size based on that fixed content width
-		bodyComponent.setFixedWidth(bodyComponent, forcedWidth);
+		HtmlFormViewer.setFixedWidth(bodyComponent, forcedWidth);
 		Dimension preferredContentSize = contents.getPreferredSize();
 		preferredContentSize.height += buttonBar.getPreferredSize().height;
 		dlg.getContentPane().setPreferredSize(preferredContentSize);
