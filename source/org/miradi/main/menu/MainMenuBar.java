@@ -619,7 +619,7 @@ public class MainMenuBar extends JMenuBar
 
 	private void setControlPlusShiftKeyAccelerator(JMenuItem menuItem, int keyCode)
 	{
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(keyCode, KeyBinder.KEY_MODIFIER_CTRL | InputEvent.SHIFT_MASK));
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(keyCode, KeyBinder.KEY_MODIFIER_CTRL | InputEvent.SHIFT_DOWN_MASK));
 	}
 
 	private MainWindow getMainWindow()
