@@ -28,15 +28,25 @@ import org.miradi.utils.MiradiResourceImageIcon;
 
 public class MiradiLogoPanel extends OneRowPanel
 {
-	public MiradiLogoPanel()
+	public MiradiLogoPanel(boolean includeTagline)
 	{
+		String tagline = "";
+
 		setBackground(AppPreferences.getWizardTitleBackground());
-		String tagline = EAM.text("Adaptive Management Software for Conservation Projects");
+		if (includeTagline)
+		{
+			tagline = EAM.text("Adaptive Management Software for Conservation Projects");
+		}
+
 		MiradiResourceImageIcon logoIcon = new MiradiResourceImageIcon("images/MiradiLogoName.png");
 		JLabel headerComponent = new JLabel(tagline, logoIcon, JLabel.TRAILING);
 		Font font = new Font("sansserif", Font.BOLD, 16);
 		headerComponent.setFont(font);
 		add(headerComponent);
+	}
 
+	public MiradiLogoPanel()
+	{
+		this(true);
 	}
 }
