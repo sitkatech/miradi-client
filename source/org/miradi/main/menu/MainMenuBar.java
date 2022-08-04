@@ -456,11 +456,6 @@ public class MainMenuBar extends JMenuBar
 
 			int upKeyCode = KeyEvent.VK_UP;
 			int downKeyCode = KeyEvent.VK_DOWN;
-			if (isWindows())
-			{
-				upKeyCode = KeyEvent.VK_U;
-				downKeyCode = KeyEvent.VK_D;
-			}
 
 			JMenuItem bringToFront = addMenuItem(actions, menu, ActionBringToFront.class);
 			setControlPlusShiftKeyAccelerator(bringToFront, upKeyCode);

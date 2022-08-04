@@ -116,7 +116,10 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		  .addKeyEventDispatcher(new KeyEventDispatcher() {
 			  @Override
 			  public boolean dispatchKeyEvent(KeyEvent e) {
-				EAM.logVerbose("KeyEvent: " + e.toString());
+				if (e.isShiftDown())
+				{
+					EAM.logVerbose("KeyEvent: " + e.toString());
+				}
 				return false;
 			  }
 		});
