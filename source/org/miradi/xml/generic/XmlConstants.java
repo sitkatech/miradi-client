@@ -37,6 +37,7 @@ public interface XmlConstants
 	public static final String POOL_ELEMENT_TAG = "Pool";
 	
 	public static final String ID = "Id";
+	public static final String HEX_COLOR_CODE = "color";
 	public static final String CONSERVATION_PROJECT = "ConservationProject";
 	public static final String PROJECT_SUMMARY = "ProjectSummary";
 	public static final String PROJECT_RESOURCE = "ProjectResource";

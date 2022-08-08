@@ -170,7 +170,13 @@ class ObjectSchemaElement extends SchemaElement
 		FieldSchemaElement field = new DiagramSizeFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
 		fields.add(field);
 	}
-	
+
+	public void createOptionalColorField(String tagToUse)
+	{
+		FieldSchemaElement field = new OptionalColorFieldSchemaElement(getObjectTypeName(), tagToUse);
+		fields.add(field);
+	}
+
 	protected void createStylingField(String fieldNameToUse)
 	{
 		FieldSchemaElement field = new StylingFieldSchemaElement(getObjectTypeName(), fieldNameToUse);
