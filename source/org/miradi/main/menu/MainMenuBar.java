@@ -39,8 +39,6 @@ import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.util.Vector;
 
-import static org.miradi.main.Miradi.isWindows;
-
 public class MainMenuBar extends JMenuBar
 {
 
@@ -454,17 +452,14 @@ public class MainMenuBar extends JMenuBar
 
 			menu.addSeparator();
 
-			int upKeyCode = KeyEvent.VK_UP;
-			int downKeyCode = KeyEvent.VK_DOWN;
-
 			JMenuItem bringToFront = addMenuItem(actions, menu, ActionBringToFront.class);
-			setControlPlusShiftKeyAccelerator(bringToFront, upKeyCode);
+			setControlPlusAltShiftKeyAccelerator(bringToFront, KeyEvent.VK_UP);
 			JMenuItem bringForward = addMenuItem(actions, menu, ActionBringForward.class);
-			setControlKeyAccelerator(bringForward, upKeyCode);
+			setControlPlusAltKeyAccelerator(bringForward, KeyEvent.VK_UP);
 			JMenuItem sendBackward = addMenuItem(actions, menu, ActionSendBackward.class);
-			setControlKeyAccelerator(sendBackward, downKeyCode);
+			setControlPlusAltKeyAccelerator(sendBackward, KeyEvent.VK_DOWN);
 			JMenuItem sendToBack = addMenuItem(actions, menu, ActionSendToBack.class);
-			setControlPlusShiftKeyAccelerator(sendToBack, downKeyCode);
+			setControlPlusAltShiftKeyAccelerator(sendToBack, KeyEvent.VK_DOWN);
 
 			menu.addSeparator();
 		}
@@ -617,9 +612,14 @@ public class MainMenuBar extends JMenuBar
 		menuItem.setAccelerator(KeyStroke.getKeyStroke(keyCode, KeyBinder.KEY_MODIFIER_CTRL));
 	}
 
-	private void setControlPlusShiftKeyAccelerator(JMenuItem menuItem, int keyCode)
+	private void setControlPlusAltKeyAccelerator(JMenuItem menuItem, int keyCode)
 	{
-		menuItem.setAccelerator(KeyStroke.getKeyStroke(keyCode, KeyBinder.KEY_MODIFIER_CTRL | InputEvent.SHIFT_DOWN_MASK));
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(keyCode, KeyBinder.KEY_MODIFIER_CTRL | InputEvent.ALT_DOWN_MASK));
+	}
+
+	private void setControlPlusAltShiftKeyAccelerator(JMenuItem menuItem, int keyCode)
+	{
+		menuItem.setAccelerator(KeyStroke.getKeyStroke(keyCode, KeyBinder.KEY_MODIFIER_CTRL | InputEvent.ALT_DOWN_MASK | InputEvent.SHIFT_DOWN_MASK));
 	}
 
 	private MainWindow getMainWindow()
