@@ -24,10 +24,10 @@ import java.awt.Color;
 import org.miradi.diagram.DiagramConstants;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.TextBox;
-import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.StaticQuestionManager;
+import org.miradi.utils.StringUtilities;
 
 public class DiagramTextBoxCell extends FactorCell
 {
@@ -41,11 +41,11 @@ public class DiagramTextBoxCell extends FactorCell
 	@Override
 	public Color getColor()
 	{
-		ChoiceItem choiceItem = diagramFactorBackgroundQuestion.findChoiceByCode(getDiagramFactor().getBackgroundColor());
-		if (choiceItem == null)
+		String color = getDiagramFactor().getBackgroundColor();
+		if (StringUtilities.isNullOrEmpty(color))
 			return DiagramConstants.TEXT_BOX_COLOR;
-		
-		return choiceItem.getColor();
+		else
+			return Color.decode(color);
 	}
 	
 	private ChoiceQuestion diagramFactorBackgroundQuestion;

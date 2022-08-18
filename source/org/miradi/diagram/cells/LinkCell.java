@@ -33,6 +33,7 @@ import org.jgraph.graph.GraphLayoutCache;
 import org.jgraph.graph.PortView;
 import org.miradi.diagram.BendPointSelectionHelper;
 import org.miradi.diagram.DiagramComponent;
+import org.miradi.diagram.DiagramConstants;
 import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.renderers.ArrowLineRenderer;
 import org.miradi.ids.DiagramLinkId;
@@ -43,6 +44,7 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.FactorLinkSchema;
 import org.miradi.utils.PointList;
+import org.miradi.utils.StringUtilities;
 import org.miradi.utils.Utility;
 import org.miradi.views.diagram.LayerManager;
 
@@ -77,7 +79,11 @@ public class LinkCell extends EAMGraphCell implements Edge
 	@Override
 	public Color getColor()
 	{
-		return getDiagramLink().getColor();
+		String color = getDiagramLink().getColor();
+		if (StringUtilities.isNullOrEmpty(color))
+			return DiagramConstants.DEFAULT_LINK_COLOR;
+		else
+			return Color.decode(color);
 	}
 
 	public int[] getSelectedBendPointIndexes()

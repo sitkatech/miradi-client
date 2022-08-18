@@ -24,8 +24,12 @@ import org.miradi.main.EAM;
 import org.miradi.migrations.*;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.utils.BiDirectionalHashMap;
 import org.miradi.utils.StringUtilities;
 
+import java.util.Arrays;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Vector;
 
 public class MigrationTo86 extends AbstractMigration
@@ -33,6 +37,9 @@ public class MigrationTo86 extends AbstractMigration
     public MigrationTo86(RawProject rawProjectToUse)
     {
         super(rawProjectToUse);
+
+        linkColorMap = createLinkColorMap();
+        backgroundColorMap = createBackgroundColorMap();
     }
 
     @Override
@@ -93,6 +100,67 @@ public class MigrationTo86 extends AbstractMigration
         typesToMigrate.add(ObjectType.DIAGRAM_LINK);
 
         return typesToMigrate;
+    }
+
+    private BiDirectionalHashMap createLinkColorMap()
+    {
+        BiDirectionalHashMap map = new BiDirectionalHashMap();
+        map.put("black", "#000000");
+        map.put("darkGray", "#4E4848");
+        map.put("red", "#D31913");
+        map.put("DarkOrange", "#FF6600");
+        map.put("DarkYellow", "#FFCC00");
+        map.put("darkGreen", "#007F00");
+        map.put("darkBlue", "#0000CC");
+        map.put("DarkPurple", "#9900FF");
+        map.put("brown", "#C85A17");
+        map.put("lightGray", "#6D7B8D");
+        map.put("White", "#FFFFFF");
+        map.put("pink", "#FF00FF");
+        map.put("orange", "#FF8040");
+        map.put("yellow", "#FFFFCC");
+        map.put("lightGreen", "#5FFB17");
+        map.put("lightBlue", "#00CCFF");
+        map.put("LightPurple", "#CC99FF");
+        map.put("tan", "#EDE275");
+
+        return map;
+    }
+
+    private BiDirectionalHashMap createBackgroundColorMap()
+    {
+        BiDirectionalHashMap map = new BiDirectionalHashMap();
+        map.put("LightGray", "#E6E6E6");
+        map.put("TargetLightGreen", "#DAEDDA");
+        map.put("HWBTargetLightTan", "#D8CBC0");
+        map.put("BiophysicalFactorLightOlive", "#CECCB6");
+        map.put("ThreatLightPink", "#D8B2B2");
+        map.put("ContributingFactorLightOrange", "#EFD18E");
+        map.put("StrategyActivityLightYellow", "#FDF9CE");
+        map.put("BiophysicalResultLightLavender", "#BFBFE8");
+        map.put("ThreatReductionResultLightPurple", "#D0B4DB");
+        map.put("IntermediateResultLightBlue", "#B3DDE0");
+        map.put("ObjectiveGoalBlue", "#CAE8EA");
+        map.put("IndicatorPurple", "#AA6EAE");
+        map.put("White", "#FFFFFF");
+        map.put("Pink", "#FF00FF");
+        map.put("Orange", "#FF8040");
+        map.put("LightYellow", "#FFFFCD");
+        map.put("LightGreen", "#5FFB17");
+        map.put("LightBlue", "#00CCFF");
+        map.put("LightPurple", "#CC99FF");
+        map.put("Tan", "#EDE275");
+        map.put("Black", "#000000");
+        map.put("DarkGray", "#4E4848");
+        map.put("Red", "#FF0000");
+        map.put("DarkOrange", "#FF6600");
+        map.put("DarkYellow", "#FFCC00");
+        map.put("DarkGreen", "#008000");
+        map.put("DarkBlue", "#0000CC");
+        map.put("DarkPurple", "#9900FF");
+        map.put("Brown", "#C85A17");
+
+        return map;
     }
 
     private class DiagramColorVisitor extends AbstractMigrationORefVisitor
@@ -158,15 +226,21 @@ public class MigrationTo86 extends AbstractMigration
         private String changeLinkColor(String color, boolean reverseMigration)
         {
             if (reverseMigration)
-                return defaultLinkColor;
+            {
+                if (linkColorMap.containsValue(color))
+                    return linkColorMap.getKey(color);
 
-            return color;
+                return defaultLinkColor;
+            }
+
+            return linkColorMap.getValue(color);
         }
 
         private String changeForegroundColor(String color, boolean reverseMigration)
         {
             if (reverseMigration)
-                return defaultForegroundColor;
+                if (!foregroundColorSet.contains(color))
+                    return defaultForegroundColor;
 
             return color;
         }
@@ -174,22 +248,26 @@ public class MigrationTo86 extends AbstractMigration
         private String changeBackgroundColor(String color, boolean reverseMigration)
         {
             if (reverseMigration)
-                return defaultBackgroundColor;
+            {
+                if (backgroundColorMap.containsValue(color))
+                    return backgroundColorMap.getKey(color);
 
-            return color;
+                return defaultBackgroundColor;
+            }
+
+            return backgroundColorMap.getValue(color);
         }
 
         private int type;
         private boolean isReverseMigration;
     }
 
-    // TODO: MS-2448 - need forward / backward maps for the following...
-    // vocabulary_diagram_link_color = 'black'|'darkGray'|'red'|'DarkOrange'|'DarkYellow'|'darkGreen'|'darkBlue'|'DarkPurple'|'brown'|'lightGray'|'White'|'pink'|'orange'|'yellow'|'lightGreen'|'lightBlue'|'LightPurple'|'tan'
-    // vocabulary_diagram_factor_background_color = 'LightGray'|'TargetLightGreen'|'HWBTargetLightTan'|'BiophysicalFactorLightOlive'|'ThreatLightPink'|'ContributingFactorLightOrange'|'StrategyActivityLightYellow'|'BiophysicalResultLightLavender'|'ThreatReductionResultLightPurple'|'IntermediateResultLightBlue'|'ObjectiveGoalBlue'|'IndicatorPurple'|'White'|'Pink'|'Orange'|'LightYellow'|'LightGreen'|'LightBlue'|'LightPurple'|'Tan'|'Black'|'DarkGray'|'Red'|'DarkOrange'|'DarkYellow'|'DarkGreen'|'DarkBlue'|'DarkPurple'|'Brown'
-    // vocabulary_diagram_factor_foreground_color = '#000000'|'#4E4848'|'#D31913'|'#FF6600'|'#FFCC00'|'#007F00'|'#0000CC'|'#9900FF'|'#C85A17'|'#6D7B8D'|'#FFFFFF'|'#FF00FF'|'#FF8040'|'#FFFFCC'|'#5FFB17'|'#00CCFF'|'#CC99FF'|'#EDE275'
-
     public static final int VERSION_FROM = 85;
     public static final int VERSION_TO = 86;
+
+    private static BiDirectionalHashMap linkColorMap;
+    private static BiDirectionalHashMap backgroundColorMap;
+    private static final Set<String> foregroundColorSet = new HashSet<String>(Arrays.asList("#000000", "#4E4848", "#D31913", "#FF6600", "#FFCC00", "#007F00", "#0000CC", "#9900FF", "#C85A17", "#6D7B8D", "#FFFFFF", "#FF00FF", "#FF8040", "#FFFFCC", "#5FFB17", "#00CCFF", "#CC99FF", "#EDE275"));
 
     private static final String defaultLinkColor = "black";
     private static final String defaultForegroundColor = "#000000";
