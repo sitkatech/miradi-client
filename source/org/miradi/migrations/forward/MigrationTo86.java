@@ -183,12 +183,7 @@ public class MigrationTo86 extends AbstractMigration
 
             RawObject rawObject = getRawProject().findObject(rawObjectRef);
             if (rawObject != null)
-            {
-                if (isReverseMigration)
-                    migrationResult = changeColorFields(rawObject, false);
-                else
-                    migrationResult = changeColorFields(rawObject, true);
-            }
+                migrationResult = changeColorFields(rawObject, isReverseMigration);
 
             return migrationResult;
         }
