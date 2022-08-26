@@ -20,30 +20,37 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.diagram;
 
+import org.martus.swing.Utilities;
 import org.miradi.diagram.renderers.FactorHtmlViewer;
 import org.miradi.dialogfields.DataField;
+import org.miradi.dialogs.base.DataInputPanel;
 import org.miradi.dialogs.base.MiradiPanel;
+import org.miradi.dialogs.base.ModalDialogWithClose;
 import org.miradi.dialogs.fieldComponents.PanelButton;
 import org.miradi.layout.OneColumnPanel;
 import org.miradi.main.EAM;
+import org.miradi.project.Project;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.ColorEditorComponent;
 import org.miradi.utils.StringUtilities;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ColorChoicePanel extends MiradiPanel implements ActionListener
+public class ColorChoicePanel extends MiradiPanel implements ActionListener, ChangeListener
 {
-    public ColorChoicePanel(String editorDialogTitleToUse, ChoiceQuestion questionToUse, Color defaultColorToUse, ActionListener colorChoiceChangeHandlerToUse)
+    public ColorChoicePanel(Project projectToUse, String editorDialogTitleToUse, ChoiceQuestion questionToUse, Color initialColorToUse, ActionListener colorChoiceChangeHandlerToUse)
     {
         super(new BorderLayout());
 
+        project = projectToUse;
         editorDialogTitle = editorDialogTitleToUse;
         colorChoiceQuestion = questionToUse;
-        defaultColor = defaultColorToUse;
+        initialColor = initialColorToUse;
         colorChoiceChangeHandler = colorChoiceChangeHandlerToUse;
 
         setBackground(EAM.READONLY_BACKGROUND_COLOR);
@@ -105,31 +112,56 @@ public class ColorChoicePanel extends MiradiPanel implements ActionListener
 	}
 
     @Override
-    public void actionPerformed(ActionEvent e)
+    public void actionPerformed(ActionEvent actionEvent)
     {
-        Color initialColor = defaultColor;
-        if (!StringUtilities.isNullOrEmpty(selectedColor))
+        try
         {
-            initialColor = Color.decode(selectedColor);
-        }
+            Color initialColorToUse = initialColor;
+            if (!StringUtilities.isNullOrEmpty(selectedColor))
+                initialColorToUse = Color.decode(selectedColor);
 
-        Color newColor = ColorEditorComponent.showDialog(this, editorDialogTitle, initialColor);
+            DataInputPanel editorPanel = new DataInputPanel(project);
+            editorPanel.setLayout(new BorderLayout());
+
+            colorEditor = new ColorEditorComponent(initialColorToUse, this);
+            editorPanel.add(colorEditor);
+
+            ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), editorDialogTitle);
+            dialog.setMainPanel(editorPanel);
+            dialog.becomeActive();
+            Utilities.centerDlg(dialog);
+            dialog.setVisible(true);
+        }
+        catch (Exception e)
+        {
+            EAM.alertUserOfNonFatalException(e);
+        }
+    }
+
+    @Override
+    public void stateChanged(ChangeEvent changeEvent)
+    {
+        Color newColor = colorEditor.getColor();
+        saveColor(newColor, changeEvent.getSource());
+    }
+
+    private void saveColor(Color newColor, Object actionSource)
+    {
         if (newColor != null)
         {
             selectedColor = FactorHtmlViewer.convertColorToHTMLColor(newColor);
             setNeedsSave();
             if (colorChoiceChangeHandler != null)
-            {
-                colorChoiceChangeHandler.actionPerformed(new ActionEvent(e.getSource(), e.getID(), "ColorChoicePanel"));
-            }
+                colorChoiceChangeHandler.actionPerformed(new ActionEvent(actionSource, ActionEvent.ACTION_PERFORMED, "ColorChoicePanel"));
         }
     }
 
+    private Project project;
     private String editorDialogTitle;
     private ChoiceQuestion colorChoiceQuestion;
     private PanelButton selectButton;
     private ColorEditorComponent colorEditor;
-    private Color defaultColor;
+    private Color initialColor;
     ActionListener colorChoiceChangeHandler;
     private String selectedColor;
     private boolean needsSave;

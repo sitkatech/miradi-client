@@ -20,18 +20,83 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.utils;
 
-import javax.swing.JColorChooser;
+import org.miradi.main.EAM;
 
-import org.miradi.questions.ChoiceQuestion;
+import javax.swing.*;
+import javax.swing.colorchooser.AbstractColorChooserPanel;
+import javax.swing.event.ChangeListener;
+import java.awt.*;
+import java.lang.reflect.Array;
+import java.lang.reflect.Field;
 
 public class ColorEditorComponent extends JColorChooser
 {
-    public ColorEditorComponent(ChoiceQuestion questionToUse)
+    public ColorEditorComponent(Color initialColorToUse, ChangeListener changeListenerToUse)
     {
-        super();
+        super(initialColorToUse);
+        changeListener = changeListenerToUse;
+
+        initializeColorChooser();
     }
 
-	public void dispose()
+    private void initializeColorChooser()
+    {
+        try
+        {
+            getSelectionModel().addChangeListener(changeListener);
+            setPreviewPanel(new JPanel());
+
+            AbstractColorChooserPanel[] panels = getChooserPanels();
+            for (AbstractColorChooserPanel panel : panels)
+            {
+               if(!panel.getDisplayName().equals("RGB"))
+               {
+                   removeChooserPanel(panel);
+                   continue;
+               }
+
+                removeAlphaSlider(panel);
+            }
+        }
+        catch (Exception e)
+        {
+            EAM.alertUserOfNonFatalException(e);
+        }
+    }
+
+    private static void removeAlphaSlider(AbstractColorChooserPanel panel) throws NoSuchFieldException, IllegalAccessException
+    {
+        Field f = panel.getClass().getDeclaredField("panel");
+        f.setAccessible(true);
+
+        Object colorPanel = f.get(panel);
+        Field f2 = colorPanel.getClass().getDeclaredField("spinners");
+        f2.setAccessible(true);
+        Object spinners = f2.get(colorPanel);
+
+        Object alphaSlider = Array.get(spinners, 3);
+        Field f3 = alphaSlider.getClass().getDeclaredField("slider");
+        f3.setAccessible(true);
+        JSlider slider = (JSlider) f3.get(alphaSlider);
+        slider.setEnabled(false);
+        slider.setVisible(false);
+        Field f4 = alphaSlider.getClass().getDeclaredField("spinner");
+        f4.setAccessible(true);
+        JSpinner spinner = (JSpinner) f4.get(alphaSlider);
+        spinner.setEnabled(false);
+        spinner.setVisible(false);
+
+        Field f5 = alphaSlider.getClass().getDeclaredField("label");
+        f5.setAccessible(true);
+        JLabel label = (JLabel) f5.get(alphaSlider);
+        label.setVisible(false);
+    }
+
+    public void dispose()
 	{
+        if (changeListener != null)
+            getSelectionModel().removeChangeListener(changeListener);
 	}
+
+    private ChangeListener changeListener;
 }
