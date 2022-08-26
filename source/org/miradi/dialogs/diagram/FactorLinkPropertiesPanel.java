@@ -21,6 +21,7 @@ package org.miradi.dialogs.diagram;
 
 import org.miradi.actions.jump.ActionJumpDiagramWizardLinkDirectThreatsToTargetsStep;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.diagram.DiagramConstants;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.main.CommandExecutedEvent;
@@ -48,7 +49,7 @@ public class FactorLinkPropertiesPanel extends ObjectDataInputPanel
 		addField(createCheckBoxField(DiagramLinkSchema.getObjectType(), DiagramLink.TAG_IS_BIDIRECTIONAL_LINK, DiagramLink.BIDIRECTIONAL_LINK, BooleanData.BOOLEAN_FALSE));
 		addField(createCheckBoxField(DiagramLinkSchema.getObjectType(), DiagramLink.TAG_IS_UNCERTAIN_LINK, DiagramLink.UNCERTAIN_LINK, BooleanData.BOOLEAN_FALSE));
 		addField(createMultilineField(DiagramLinkSchema.getObjectType(), DiagramLink.TAG_ANNOTATION));
-		addField(createChoiceField(DiagramLinkSchema.getObjectType(), DiagramLink.TAG_COLOR, new DiagramLinkColorQuestion()));
+		addField(createColorChoiceField(DiagramLinkSchema.getObjectType(), DiagramLink.TAG_COLOR, new DiagramLinkColorQuestion(), DiagramConstants.DEFAULT_LINK_COLOR));
 		
 		setObjectRefs(new ORefList(link));
 		updateFieldsFromProject();

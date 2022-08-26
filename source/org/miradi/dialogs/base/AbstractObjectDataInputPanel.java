@@ -674,6 +674,16 @@ abstract public class AbstractObjectDataInputPanel extends ModelessDialogPanel i
 		return new ObjectChoiceField(project, getRefForType(objectType), tagToUse, question);
 	}
 	
+	public ObjectDataInputField createColorChoiceField(int objectType, String tagToUse, ChoiceQuestion question)
+	{
+		return new ColorChoiceField(project, getRefForType(objectType), tagToUse, question, Color.BLACK);
+	}
+
+	public ObjectDataInputField createColorChoiceField(int objectType, String tagToUse, ChoiceQuestion question, Color defaultColor)
+	{
+		return new ColorChoiceField(project, getRefForType(objectType), tagToUse, question, defaultColor);
+	}
+
 	public ObjectDataInputField createQuestionFieldWithDescriptionPanel(int objectType, String tagToUse, ChoiceQuestion question) throws Exception
 	{
 		return new CodeListPopupWithDescriptionPanelField(getMainWindow(), getRefForType(objectType), tagToUse, question);
