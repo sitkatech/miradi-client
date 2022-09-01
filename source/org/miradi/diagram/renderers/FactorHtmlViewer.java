@@ -30,6 +30,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.objects.ProjectMetadata;
 import org.miradi.project.Project;
 import org.miradi.utils.HtmlUtilities;
+import org.miradi.utils.StringUtilities;
 
 public class FactorHtmlViewer extends HtmlFormViewer
 {
@@ -112,6 +113,14 @@ public class FactorHtmlViewer extends HtmlFormViewer
 
 	public static String convertColorToHTMLColor(Color c) {
 		return "#" + calcHex(c.getRed()) + calcHex(c.getGreen()) + calcHex(c.getBlue());
+	}
+
+	public static Color convertHTMLColorToColor(String color, Color defaultColor)
+	{
+		if (!StringUtilities.isNullOrEmpty(color))
+			return Color.decode(color);
+
+		return defaultColor;
 	}
 
 	private static String calcHex(int red2)

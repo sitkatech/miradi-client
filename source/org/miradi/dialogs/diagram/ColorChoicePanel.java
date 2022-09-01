@@ -43,21 +43,26 @@ import java.awt.event.ActionListener;
 
 public class ColorChoicePanel extends MiradiPanel implements ActionListener, ChangeListener
 {
-    public ColorChoicePanel(Project projectToUse, String editorDialogTitleToUse, ChoiceQuestion questionToUse, Color initialColorToUse, ActionListener colorChoiceChangeHandlerToUse)
+    public ColorChoicePanel(Project projectToUse, String editorDialogTitleToUse, ChoiceQuestion questionToUse, Color defaultColorToUse, ActionListener colorChoiceChangeHandlerToUse)
     {
         super(new BorderLayout());
 
         project = projectToUse;
         editorDialogTitle = editorDialogTitleToUse;
         colorChoiceQuestion = questionToUse;
-        initialColor = initialColorToUse;
+        defaultColor = defaultColorToUse;
+        selectedColor = FactorHtmlViewer.convertColorToHTMLColor(defaultColorToUse);
         colorChoiceChangeHandler = colorChoiceChangeHandlerToUse;
 
         setBackground(EAM.READONLY_BACKGROUND_COLOR);
-        selectButton = new PanelButton("Show Color Chooser...");
+        selectButton = new PanelButton("Select...");
+        selectButton.setOpaque(true);
+        selectButton.setBackground(defaultColor);
+        selectButton.setForeground(defaultColor);
+        selectButton.setBorder(null);
         selectButton.addActionListener(this);
 		OneColumnPanel buttonPanel = new OneColumnPanel();
-		buttonPanel.setBorder(BorderFactory.createEmptyBorder(5, 5, 5, 5));
+		buttonPanel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
 		buttonPanel.setBackground(EAM.READONLY_BACKGROUND_COLOR);
 		buttonPanel.setForeground(EAM.READONLY_FOREGROUND_COLOR);
 		buttonPanel.add(selectButton);
@@ -81,6 +86,11 @@ public class ColorChoicePanel extends MiradiPanel implements ActionListener, Cha
     public void setText(String text)
 	{
         selectedColor = text;
+
+        Color color = FactorHtmlViewer.convertHTMLColorToColor(selectedColor, defaultColor);
+        selectButton.setBackground(color);
+        selectButton.setForeground(color);
+
         clearNeedsSaving();
 	}
 
@@ -116,14 +126,14 @@ public class ColorChoicePanel extends MiradiPanel implements ActionListener, Cha
     {
         try
         {
-            Color initialColorToUse = initialColor;
+            Color color = defaultColor;
             if (!StringUtilities.isNullOrEmpty(selectedColor))
-                initialColorToUse = Color.decode(selectedColor);
+                color = Color.decode(selectedColor);
 
             DataInputPanel editorPanel = new DataInputPanel(project);
             editorPanel.setLayout(new BorderLayout());
 
-            colorEditor = new ColorEditorComponent(initialColorToUse, this);
+            colorEditor = new ColorEditorComponent(color, this);
             editorPanel.add(colorEditor);
 
             ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), editorDialogTitle);
@@ -149,8 +159,10 @@ public class ColorChoicePanel extends MiradiPanel implements ActionListener, Cha
     {
         if (newColor != null)
         {
-            selectedColor = FactorHtmlViewer.convertColorToHTMLColor(newColor);
+            String color = FactorHtmlViewer.convertColorToHTMLColor(newColor);
+            setText(color);
             setNeedsSave();
+
             if (colorChoiceChangeHandler != null)
                 colorChoiceChangeHandler.actionPerformed(new ActionEvent(actionSource, ActionEvent.ACTION_PERFORMED, "ColorChoicePanel"));
         }
@@ -161,7 +173,7 @@ public class ColorChoicePanel extends MiradiPanel implements ActionListener, Cha
     private ChoiceQuestion colorChoiceQuestion;
     private PanelButton selectButton;
     private ColorEditorComponent colorEditor;
-    private Color initialColor;
+    private Color defaultColor;
     ActionListener colorChoiceChangeHandler;
     private String selectedColor;
     private boolean needsSave;

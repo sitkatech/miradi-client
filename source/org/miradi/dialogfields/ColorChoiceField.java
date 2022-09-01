@@ -31,17 +31,20 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ColorChoiceField extends ObjectDataInputField implements ActionListener {
-    public ColorChoiceField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, Color initialColorToUse)
+public class ColorChoiceField extends ObjectDataInputField implements ActionListener
+{
+    public ColorChoiceField(Project projectToUse, ORef refToUse, String tagToUse, ChoiceQuestion questionToUse, Color defaultColorToUse)
     {
         super(projectToUse, refToUse, tagToUse);
 
         colorChoiceQuestion = questionToUse;
-        initialColor = initialColorToUse;
+        defaultColor = defaultColorToUse;
 
         final String dialogTitle = Translation.fieldLabel(getObjectType(), getTag());
-        colorChoicePanel = new ColorChoicePanel(projectToUse, dialogTitle, colorChoiceQuestion, initialColor, this);
+        colorChoicePanel = new ColorChoicePanel(projectToUse, dialogTitle, colorChoiceQuestion, defaultColor, this);
         colorChoicePanel.addFocusListener(this);
+
+        updateFromObject();
     }
 
 	@Override
@@ -106,6 +109,6 @@ public class ColorChoiceField extends ObjectDataInputField implements ActionList
     }
 
     private ChoiceQuestion colorChoiceQuestion;
-    private Color initialColor;
+    private Color defaultColor;
     private ColorChoicePanel colorChoicePanel;
 }

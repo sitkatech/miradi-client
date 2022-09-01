@@ -66,29 +66,29 @@ public class ColorEditorComponent extends JColorChooser
 
     private static void removeAlphaSlider(AbstractColorChooserPanel panel) throws NoSuchFieldException, IllegalAccessException
     {
-        Field f = panel.getClass().getDeclaredField("panel");
-        f.setAccessible(true);
+        Field panelField = panel.getClass().getDeclaredField("panel");
+        panelField.setAccessible(true);
 
-        Object colorPanel = f.get(panel);
+        Object colorPanel = panelField.get(panel);
         Field f2 = colorPanel.getClass().getDeclaredField("spinners");
         f2.setAccessible(true);
         Object spinners = f2.get(colorPanel);
 
-        Object alphaSlider = Array.get(spinners, 3);
-        Field f3 = alphaSlider.getClass().getDeclaredField("slider");
-        f3.setAccessible(true);
-        JSlider slider = (JSlider) f3.get(alphaSlider);
-        slider.setEnabled(false);
-        slider.setVisible(false);
-        Field f4 = alphaSlider.getClass().getDeclaredField("spinner");
-        f4.setAccessible(true);
-        JSpinner spinner = (JSpinner) f4.get(alphaSlider);
-        spinner.setEnabled(false);
-        spinner.setVisible(false);
+        Object alphaSliderPanel = Array.get(spinners, 3);
+        Field alphaSliderField = alphaSliderPanel.getClass().getDeclaredField("slider");
+        alphaSliderField.setAccessible(true);
+        JSlider alphaSlider = (JSlider) alphaSliderField.get(alphaSliderPanel);
+        alphaSlider.setEnabled(false);
+        alphaSlider.setVisible(false);
+        Field alphaSpinnerField = alphaSliderPanel.getClass().getDeclaredField("spinner");
+        alphaSpinnerField.setAccessible(true);
+        JSpinner alphaSpinner = (JSpinner) alphaSpinnerField.get(alphaSliderPanel);
+        alphaSpinner.setEnabled(false);
+        alphaSpinner.setVisible(false);
 
-        Field f5 = alphaSlider.getClass().getDeclaredField("label");
-        f5.setAccessible(true);
-        JLabel label = (JLabel) f5.get(alphaSlider);
+        Field alphaField = alphaSliderPanel.getClass().getDeclaredField("label");
+        alphaField.setAccessible(true);
+        JLabel label = (JLabel) alphaField.get(alphaSliderPanel);
         label.setVisible(false);
     }
 
