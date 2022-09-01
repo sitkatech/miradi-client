@@ -46,8 +46,7 @@ public class ColorEditorComponent extends JColorChooser
             getSelectionModel().addChangeListener(changeListener);
             setPreviewPanel(new JPanel());
 
-            AbstractColorChooserPanel[] panels = getChooserPanels();
-            for (AbstractColorChooserPanel panel : panels)
+            for (AbstractColorChooserPanel panel : getChooserPanels())
             {
                if(!panel.getDisplayName().equals("RGB"))
                {
@@ -55,7 +54,7 @@ public class ColorEditorComponent extends JColorChooser
                    continue;
                }
 
-                removeAlphaSlider(panel);
+                adjustRGBPanel(panel);
             }
         }
         catch (Exception e)
@@ -64,7 +63,7 @@ public class ColorEditorComponent extends JColorChooser
         }
     }
 
-    private static void removeAlphaSlider(AbstractColorChooserPanel panel) throws NoSuchFieldException, IllegalAccessException
+    private static void adjustRGBPanel(AbstractColorChooserPanel panel) throws NoSuchFieldException, IllegalAccessException
     {
         Field panelField = panel.getClass().getDeclaredField("panel");
         panelField.setAccessible(true);

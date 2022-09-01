@@ -26,10 +26,12 @@ import org.miradi.dialogfields.DataField;
 import org.miradi.dialogs.base.DataInputPanel;
 import org.miradi.dialogs.base.MiradiPanel;
 import org.miradi.dialogs.base.ModalDialogWithClose;
+import org.miradi.dialogs.fieldComponents.ColorChoiceItemComboBox;
 import org.miradi.dialogs.fieldComponents.PanelButton;
-import org.miradi.layout.OneColumnPanel;
+import org.miradi.layout.TwoColumnPanel;
 import org.miradi.main.EAM;
 import org.miradi.project.Project;
+import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.ColorEditorComponent;
 import org.miradi.utils.StringUtilities;
@@ -41,7 +43,7 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class ColorChoicePanel extends MiradiPanel implements ActionListener, ChangeListener
+public class ColorChoicePanel extends MiradiPanel
 {
     public ColorChoicePanel(Project projectToUse, String editorDialogTitleToUse, ChoiceQuestion questionToUse, Color defaultColorToUse, ActionListener colorChoiceChangeHandlerToUse)
     {
@@ -55,19 +57,26 @@ public class ColorChoicePanel extends MiradiPanel implements ActionListener, Cha
         colorChoiceChangeHandler = colorChoiceChangeHandlerToUse;
 
         setBackground(EAM.READONLY_BACKGROUND_COLOR);
-        selectButton = new PanelButton("Select...");
-        selectButton.setOpaque(true);
-        selectButton.setBackground(defaultColor);
-        selectButton.setForeground(defaultColor);
-        selectButton.setBorder(null);
-        selectButton.addActionListener(this);
-		OneColumnPanel buttonPanel = new OneColumnPanel();
-		buttonPanel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
-		buttonPanel.setBackground(EAM.READONLY_BACKGROUND_COLOR);
-		buttonPanel.setForeground(EAM.READONLY_FOREGROUND_COLOR);
-		buttonPanel.add(selectButton);
-		setBorder(DataField.createLineBorderWithMargin());
-		add(buttonPanel, BorderLayout.AFTER_LINE_ENDS);
+        setBorder(DataField.createLineBorderWithMargin());
+
+        TwoColumnPanel panel = new TwoColumnPanel();
+        panel.setBorder(BorderFactory.createEmptyBorder(1, 1, 1, 1));
+        panel.setBackground(EAM.READONLY_BACKGROUND_COLOR);
+        panel.setForeground(EAM.READONLY_FOREGROUND_COLOR);
+
+        standardColorComboBox = new ColorChoiceItemComboBox(colorChoiceQuestion);
+        standardColorComboBox.addActionListener(new StandardColorChangeHandler());
+        panel.add(standardColorComboBox);
+
+        customColorButton = new PanelButton("Select...");
+        customColorButton.setOpaque(true);
+        customColorButton.setBackground(defaultColor);
+        customColorButton.setForeground(defaultColor);
+        customColorButton.setBorder(null);
+        customColorButton.addActionListener(new CustomColorChangeHandler());
+		panel.add(customColorButton);
+
+		add(panel, BorderLayout.AFTER_LINE_ENDS);
 
         clearNeedsSaving();
     }
@@ -88,11 +97,27 @@ public class ColorChoicePanel extends MiradiPanel implements ActionListener, Cha
         selectedColor = text;
 
         Color color = FactorHtmlViewer.convertHTMLColorToColor(selectedColor, defaultColor);
-        selectButton.setBackground(color);
-        selectButton.setForeground(color);
+        customColorButton.setBackground(color);
+        customColorButton.setForeground(color);
+
+        setStandardColor(color);
 
         clearNeedsSaving();
 	}
+
+    private void setStandardColor(Color color)
+    {
+		for(int i = 0; i < standardColorComboBox.getItemCount(); ++i)
+		{
+			ChoiceItem choice = (ChoiceItem)standardColorComboBox.getItemAt(i);
+			if(choice.getColor().equals(color))
+			{
+                standardColorComboBox.setSelectedIndex(i);
+				return;
+			}
+		}
+        standardColorComboBox.setSelectedIndex(-1);
+    }
 
 	public String getText()
 	{
@@ -103,7 +128,8 @@ public class ColorChoicePanel extends MiradiPanel implements ActionListener, Cha
 	public void setEnabled(boolean enabled)
 	{
 		super.setEnabled(enabled);
-		selectButton.setEnabled(enabled);
+        standardColorComboBox.setEnabled(enabled);
+		customColorButton.setEnabled(enabled);
 	}
 
 	private void setNeedsSave()
@@ -121,38 +147,53 @@ public class ColorChoicePanel extends MiradiPanel implements ActionListener, Cha
 		return needsSave;
 	}
 
-    @Override
-    public void actionPerformed(ActionEvent actionEvent)
-    {
-        try
+	class CustomColorChangeHandler implements ActionListener, ChangeListener
+	{
+		public void actionPerformed(ActionEvent event)
+		{
+            try
+            {
+                Color color = defaultColor;
+                if (!StringUtilities.isNullOrEmpty(selectedColor))
+                    color = Color.decode(selectedColor);
+
+                DataInputPanel editorPanel = new DataInputPanel(project);
+                editorPanel.setLayout(new BorderLayout());
+
+                colorEditor = new ColorEditorComponent(color, this);
+                editorPanel.add(colorEditor);
+
+                ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), editorDialogTitle);
+                dialog.setMainPanel(editorPanel);
+                dialog.becomeActive();
+                Utilities.centerDlg(dialog);
+                dialog.setVisible(true);
+            }
+            catch (Exception e)
+            {
+                EAM.alertUserOfNonFatalException(e);
+            }
+		}
+
+        @Override
+        public void stateChanged(ChangeEvent changeEvent)
         {
-            Color color = defaultColor;
-            if (!StringUtilities.isNullOrEmpty(selectedColor))
-                color = Color.decode(selectedColor);
-
-            DataInputPanel editorPanel = new DataInputPanel(project);
-            editorPanel.setLayout(new BorderLayout());
-
-            colorEditor = new ColorEditorComponent(color, this);
-            editorPanel.add(colorEditor);
-
-            ModalDialogWithClose dialog = new ModalDialogWithClose(EAM.getMainWindow(), editorDialogTitle);
-            dialog.setMainPanel(editorPanel);
-            dialog.becomeActive();
-            Utilities.centerDlg(dialog);
-            dialog.setVisible(true);
+            Color newColor = colorEditor.getColor();
+            saveColor(newColor, changeEvent.getSource());
         }
-        catch (Exception e)
-        {
-            EAM.alertUserOfNonFatalException(e);
-        }
-    }
+	}
 
-    @Override
-    public void stateChanged(ChangeEvent changeEvent)
+    class StandardColorChangeHandler implements ActionListener
     {
-        Color newColor = colorEditor.getColor();
-        saveColor(newColor, changeEvent.getSource());
+        public void actionPerformed(ActionEvent event)
+        {
+            ChoiceItem selected = (ChoiceItem)standardColorComboBox.getSelectedItem();
+            if(selected != null)
+            {
+                Color newColor = selected.getColor();
+                saveColor(newColor, event.getSource());
+            }
+        }
     }
 
     private void saveColor(Color newColor, Object actionSource)
@@ -171,7 +212,8 @@ public class ColorChoicePanel extends MiradiPanel implements ActionListener, Cha
     private Project project;
     private String editorDialogTitle;
     private ChoiceQuestion colorChoiceQuestion;
-    private PanelButton selectButton;
+    private ColorChoiceItemComboBox standardColorComboBox;
+    private PanelButton customColorButton;
     private ColorEditorComponent colorEditor;
     private Color defaultColor;
     ActionListener colorChoiceChangeHandler;
