@@ -43,9 +43,6 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(DiagramLegendQuestion.class, VOCABULARY_HIDDEN_TYPES);
 		addItem(DiagramFactorFontSizeQuestion.class, VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE);
 		addItem(DiagramFactorFontStyleQuestion.class, VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE);
-		addItem(DiagramFactorBackgroundQuestion.class, VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR);
-		addItem(DiagramFactorFontColorQuestion.class, VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR);
-		addItem(DiagramLinkColorQuestion.class, VOCABULARY_DIAGRAM_LINK_COLOR);
 		addItem(HabitatAssociationQuestion.class, VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSOCIATION);
 		addItem(TargetStatusQuestion.class, VOCABULARY_TARGET_STATUS);
 		addItem(ViabilityModeQuestion.class, VOCABULARY_TARGET_VIABILITY_MODE);

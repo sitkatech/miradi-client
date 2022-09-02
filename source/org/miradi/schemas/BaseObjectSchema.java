@@ -78,6 +78,11 @@ abstract public class BaseObjectSchema implements Iterable<AbstractFieldSchema>,
 		return addFieldSchema(new FieldSchemaSingleLineUserText(fieldTag));
 	}
 	
+	public AbstractFieldSchema createFieldSchemaColor(String fieldTag)
+	{
+		return addFieldSchema(new FieldSchemaColor(fieldTag));
+	}
+
 	public AbstractFieldSchema createFieldSchemaChoice(final String fieldTag, final ChoiceQuestion question)
 	{
 		return addFieldSchema(new FieldSchemaChoice(fieldTag, question));

@@ -32,7 +32,7 @@ public class DiagramLinkSchemaElement extends BaseObjectSchemaElementWithLabel
 		createLinkableFactorIdField(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID);
 		createDiagramPointListField(DiagramLink.TAG_BEND_POINTS);
 		createIdListField(XmlConstants.GROUP_BOX_DIAGRAM_LINK_CHILDREN_ID, XmlConstants.DIAGRAM_LINK);
-		createCodeField(XmlSchemaCreator.DIAGRAM_LINK_COLOR_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_DIAGRAM_LINK_COLOR);
+		createOptionalColorField(XmlSchemaCreator.DIAGRAM_LINK_COLOR_ELEMENT_NAME);
 		createOptionalBooleanField(DiagramLink.TAG_IS_BIDIRECTIONAL_LINK);
 	}
 }

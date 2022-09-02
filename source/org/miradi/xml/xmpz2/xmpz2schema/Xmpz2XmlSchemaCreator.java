@@ -69,6 +69,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeVocabularyDefinitions();
 		writeUriRestrictedSchemaElement();
 		writeNonEmptyStringSchemaElement();
+		writeHexColorSchemaElement();
 		writeUUIDSchemaElement();
 		writeObjectTypeIdElements();
 		writeWrappedByDiagramFactorSchemaElement();
@@ -348,6 +349,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	public String createStringSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
 	{
 		return createElementSchema(baseObjectSchema, fieldSchema, TEXT_ELEMENT_TYPE);
+	}
+
+	public String createColorSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
+	{
+		return createElementSchema(baseObjectSchema, fieldSchema, HEX_COLOR_CODE);
 	}
 
 	public String createUUIDSchemaElement(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema)
@@ -767,6 +773,11 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		writeRegexRestrictedElement(NON_EMPTY_STRING, "'\\S+'");
 	}
 
+	private void writeHexColorSchemaElement()
+	{
+		writeRegexRestrictedElement(HEX_COLOR_CODE, "'#[0-9a-fA-F]{6}'");
+	}
+
 	private void writeUUIDSchemaElement()
 	{
 		writeRegexRestrictedElement(UUID, "'[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}'");
@@ -1009,8 +1020,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), STYLE);
 		creator.addOptionalChildElement(DIAGRAM_FACTOR + DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME, VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE);
 		creator.addOptionalChildElement(DIAGRAM_FACTOR + DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME, VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE);
-		creator.addOptionalChildElement(DIAGRAM_FACTOR + DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME, VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR);
-		creator.addOptionalChildElement(DIAGRAM_FACTOR + DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME, VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR);
+		creator.addOptionalChildElement(DIAGRAM_FACTOR + DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME, HEX_COLOR_CODE);
+		creator.addOptionalChildElement(DIAGRAM_FACTOR + DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME, HEX_COLOR_CODE);
 
 		return creator;
 	}

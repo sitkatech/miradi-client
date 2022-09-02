@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.objects;
 
-import java.awt.Point;
+import java.awt.*;
 import java.util.UUID;
 import java.util.Vector;
 
@@ -27,6 +27,7 @@ import org.martus.util.MultiCalendar;
 import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeStringWriter;
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.diagram.renderers.FactorHtmlViewer;
 import org.miradi.ids.BaseId;
 import org.miradi.ids.IdList;
 import org.miradi.ids.TaskId;
@@ -276,6 +277,10 @@ public class ObjectTestCase extends TestCaseWithProject
 		else if(field instanceof CodeData)
 		{
 			return tag + tag;
+		}
+		else if(field instanceof ColorData)
+		{
+			return FactorHtmlViewer.convertColorToHTMLColor(Color.BLACK);
 		}
 		else if(field instanceof SingleLineUserTextData)
 		{

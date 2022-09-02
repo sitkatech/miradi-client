@@ -78,7 +78,9 @@ public class Xmpz2ForwardMigration
 		removeDiagramFactorStyleHeaderHeightElement(rootElement);
 		moveDiagramFactorTextBoxZOrderCodeToExtraData(document);
 		addDiagramFactorZIndexField(document);
+		moveDiagramFactorStyleToExtraData(document);
 		addDiagramLinkZIndexField(document);
+		moveDiagramLinkColorToExtraData(document);
 
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
@@ -550,6 +552,65 @@ public class Xmpz2ForwardMigration
 		}
 	}
 
+	private void moveDiagramFactorStyleToExtraData(Document document) throws Exception
+	{
+		Element rootElement = document.getDocumentElement();
+
+		Node diagramFactorPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.DIAGRAM_FACTOR));
+		if (diagramFactorPool != null)
+		{
+			NodeList diagramFactorNodes = diagramFactorPool.getChildNodes();
+			for (int index = 0; index < diagramFactorNodes.getLength(); ++index)
+			{
+				Node diagramFactorNode = diagramFactorNodes.item(index);
+				if (diagramFactorNode != null && diagramFactorNode.getNodeType() == Node.ELEMENT_NODE)
+				{
+					moveDiagramFactorStyleElementToExtraData(document, diagramFactorNode);
+				}
+			}
+		}
+	}
+
+	private void moveDiagramFactorStyleElementToExtraData(Document document, Node diagramFactorNode) throws Exception
+	{
+		String idAsString = getAttributeValue(diagramFactorNode, Xmpz2XmlConstants.ID);
+
+		String elementNameWithoutAlias = Xmpz2XmlConstants.DIAGRAM_FACTOR + Xmpz2XmlConstants.STYLE;
+		Node diagramFactorStyleElementNode = findNode(diagramFactorNode, elementNameWithoutAlias);
+		if (diagramFactorStyleElementNode != null && diagramFactorStyleElementNode.getNodeType() == Node.ELEMENT_NODE)
+		{
+			String styleElementNameWithoutAlias = Xmpz2XmlConstants.STYLE;
+			Node styleElementNode = findNode(diagramFactorStyleElementNode, styleElementNameWithoutAlias);
+			if (styleElementNode != null && styleElementNode.getNodeType() == Node.ELEMENT_NODE)
+			{
+				String fontColorTagName = DiagramFactor.TAG_FOREGROUND_COLOR;
+				String fontColorElementNameWithoutAlias = Xmpz2XmlConstants.DIAGRAM_FACTOR + DiagramFactor.TAG_FOREGROUND_COLOR;
+
+				moveDiagramFactorStyleElementFieldToExtraData(document, diagramFactorNode, styleElementNode, fontColorElementNameWithoutAlias, fontColorTagName);
+
+				String backgroundColorTagName = DiagramFactor.TAG_BACKGROUND_COLOR;
+				String backgroundColorElementNameWithoutAlias = Xmpz2XmlConstants.DIAGRAM_FACTOR + DiagramFactor.TAG_BACKGROUND_COLOR;
+
+				moveDiagramFactorStyleElementFieldToExtraData(document, diagramFactorNode, styleElementNode, backgroundColorElementNameWithoutAlias, backgroundColorTagName);
+			}
+		}
+	}
+
+	private void moveDiagramFactorStyleElementFieldToExtraData(Document document, Node diagramFactorNode, Node styleElementNode, String elementNameWithoutAlias, String tagName) throws Exception
+	{
+		String idAsString = getAttributeValue(diagramFactorNode, Xmpz2XmlConstants.ID);
+
+		Node nodeToMove = findNode(styleElementNode, elementNameWithoutAlias);
+		if (nodeToMove != null && nodeToMove.getNodeType() == Node.ELEMENT_NODE)
+		{
+			String extraDataItemName = ExtraDataExporter.getExtraDataItemName(DiagramFactorSchema.OBJECT_NAME, new BaseId(idAsString), tagName);
+			String extraDataItemValue = nodeToMove.getTextContent();
+			moveDataToExtraData(document, extraDataItemName, extraDataItemValue);
+
+			styleElementNode.removeChild(nodeToMove);
+		}
+	}
+
 	private void addDiagramLinkZIndexField(Document document) throws Exception
 	{
 		Element rootElement = document.getDocumentElement();
@@ -566,6 +627,43 @@ public class Xmpz2ForwardMigration
 					addZIndexField(document, diagramLinkNode, Xmpz2XmlConstants.DIAGRAM_LINK);
 				}
 			}
+		}
+	}
+
+	private void moveDiagramLinkColorToExtraData(Document document) throws Exception
+	{
+		Element rootElement = document.getDocumentElement();
+
+		Node diagramLinkPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.DIAGRAM_LINK));
+		if (diagramLinkPool != null)
+		{
+			NodeList diagramLinkNodes = diagramLinkPool.getChildNodes();
+			for (int index = 0; index < diagramLinkNodes.getLength(); ++index)
+			{
+				Node diagramLinkNode = diagramLinkNodes.item(index);
+				if (diagramLinkNode != null && diagramLinkNode.getNodeType() == Node.ELEMENT_NODE)
+				{
+					moveDiagramLinkColorElementToExtraData(document, diagramLinkNode);
+				}
+			}
+		}
+	}
+
+	private void moveDiagramLinkColorElementToExtraData(Document document, Node diagramLinkNode) throws Exception
+	{
+		String idAsString = getAttributeValue(diagramLinkNode, Xmpz2XmlConstants.ID);
+
+		String tagName = MigrationTo86.TAG_COLOR;
+		String elementNameWithoutAlias = Xmpz2XmlConstants.DIAGRAM_LINK + MigrationTo86.TAG_COLOR;
+
+		Node nodeToMove = findNode(diagramLinkNode, elementNameWithoutAlias);
+		if (nodeToMove != null && nodeToMove.getNodeType() == Node.ELEMENT_NODE)
+		{
+			String extraDataItemName = ExtraDataExporter.getExtraDataItemName(DiagramLinkSchema.OBJECT_NAME, new BaseId(idAsString), tagName);
+			String extraDataItemValue = nodeToMove.getTextContent();
+			moveDataToExtraData(document, extraDataItemName, extraDataItemValue);
+
+			diagramLinkNode.removeChild(nodeToMove);
 		}
 	}
 

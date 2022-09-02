@@ -19,7 +19,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */ 
 package org.miradi.objects;
 
-import java.awt.Color;
 import java.awt.Point;
 import java.awt.Rectangle;
 
@@ -33,7 +32,6 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
 import org.miradi.schemas.*;
 import org.miradi.utils.CommandVector;
 import org.miradi.utils.EnhancedJsonObject;
@@ -320,14 +318,9 @@ public class DiagramLink extends AbstractDiagramObject
 		return getBendPoints().getBounds();
 	}
 	
-	public Color getColor()
+	public String getColor()
 	{
-		return getColorChoiceItem().getColor();
-	}
-
-	public ChoiceItem getColorChoiceItem()
-	{
-		return getChoiceItemData(TAG_COLOR);
+		return getStringData(TAG_COLOR);
 	}
 
 	public boolean isCoveredByGroupBoxLink()

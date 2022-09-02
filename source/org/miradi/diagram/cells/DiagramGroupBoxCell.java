@@ -38,12 +38,12 @@ import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramLink;
 import org.miradi.objects.GroupBox;
 import org.miradi.project.Project;
-import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.questions.DiagramFactorBackgroundQuestion;
 import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.EnhancedJsonObject;
 import org.miradi.utils.PointList;
+import org.miradi.utils.StringUtilities;
 
 public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListener
 {
@@ -75,11 +75,11 @@ public class DiagramGroupBoxCell extends FactorCell implements DiagramModelListe
 	@Override
 	public Color getColor()
 	{
-		ChoiceItem choiceItem = diagramFactorBackgroundQuestion.findChoiceByCode(getDiagramFactor().getBackgroundColor());
-		if (choiceItem == null)
+		String color = getDiagramFactor().getBackgroundColor();
+		if (StringUtilities.isNullOrEmpty(color))
 			return DiagramConstants.GROUP_BOX_COLOR;
-		
-		return choiceItem.getColor();
+		else
+			return Color.decode(color);
 	}
 
 	private Project getProject()

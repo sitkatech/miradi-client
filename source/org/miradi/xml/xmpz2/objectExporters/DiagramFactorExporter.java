@@ -23,8 +23,6 @@ package org.miradi.xml.xmpz2.objectExporters;
 import org.miradi.objects.BaseObject;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.Factor;
-import org.miradi.questions.DiagramFactorBackgroundQuestion;
-import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.questions.DiagramFactorFontSizeQuestion;
 import org.miradi.questions.DiagramFactorFontStyleQuestion;
 import org.miradi.schemas.BaseObjectSchema;
@@ -97,7 +95,7 @@ public class DiagramFactorExporter extends BaseObjectExporter
 		
 		if (tag.equals(DiagramFactor.TAG_BACKGROUND_COLOR))
 			return true;
-		
+
 		if (tag.equals(DiagramFactor.TAG_FOREGROUND_COLOR))
 			return true;
 
@@ -129,11 +127,13 @@ public class DiagramFactorExporter extends BaseObjectExporter
 		getWriter().writeStartElement(STYLE);
 		getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FONT_SIZE, new DiagramFactorFontSizeQuestion(), diagramFactor.getFontSize());
 		getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FONT_STYLE, new DiagramFactorFontStyleQuestion(), XmlUtilities2.convertXmlTextToHtmlWithoutSurroundingHtmlTags(diagramFactor.getFontStyle()));
-		getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion(), diagramFactor.getFontColor());
+		getWriter().writeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_FOREGROUND_COLOR, diagramFactor.getFontColor());
 		
 		Factor wrappedFactor = diagramFactor.getWrappedFactor();
 		if (wrappedFactor.isGroupBox() || wrappedFactor.isTextBox())
-			getWriter().writeNonOptionalCodeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion(), diagramFactor.getBackgroundColor());
+		{
+			getWriter().writeElement(DIAGRAM_FACTOR, DiagramFactor.TAG_BACKGROUND_COLOR, diagramFactor.getBackgroundColor());
+		}
 
 		getWriter().writeEndElement(STYLE);
 		

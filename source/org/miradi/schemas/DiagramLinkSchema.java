@@ -41,7 +41,7 @@ public class DiagramLinkSchema extends BaseObjectSchema
 		createFieldSchemaRequiredBaseId(DiagramLink.TAG_TO_DIAGRAM_FACTOR_ID, DiagramFactorSchema.getObjectType());
 		createFieldSchemaPointList(DiagramLink.TAG_BEND_POINTS);
 		createFieldSchemaReflist(DiagramLink.TAG_GROUPED_DIAGRAM_LINK_REFS, DIAGRAM_LINK);
-		createFieldSchemaChoice(DiagramLink.TAG_COLOR, DiagramLinkColorQuestion.class);
+		createFieldSchemaColor(DiagramLink.TAG_COLOR);
 		createFieldSchemaBoolean(DiagramLink.TAG_IS_BIDIRECTIONAL_LINK);
 		createFieldSchemaBoolean(DiagramLink.TAG_IS_UNCERTAIN_LINK);
 		createFieldSchemaMultiLineUserText(DiagramLink.TAG_ANNOTATION);

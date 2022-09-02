@@ -34,8 +34,9 @@ public interface Xmpz2XmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String DOT_ELEMENT = ".element";
 	
-	public static final String NAME_SPACE_VERSION = "245";
+	public static final String NAME_SPACE_VERSION = "246";
 
+	public static final String NAME_SPACE_VERSION_246 = "246";
 	public static final String NAME_SPACE_VERSION_245 = "245";
 	public static final String NAME_SPACE_VERSION_244 = "244";
 	public static final String NAME_SPACE_VERSION_243 = "243";
@@ -62,7 +63,8 @@ public interface Xmpz2XmlConstants
 	public static final String FORMATTED_TEXT_TYPE = "formatted_text";
 	public static final String URI_RESTRICTED_TEXT = "uri_restricted_text";
 	public static final String NON_EMPTY_STRING = "non_empty_string";
-	
+	public static final String HEX_COLOR_CODE = "color";
+
 	public static final String UUID = "uuid";
 	public static final String ID = "Id";
 	public static final String IDS = ID + "s";
@@ -416,9 +418,6 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_HIDDEN_TYPES = "vocabulary_hidden_types";
 	public static final String VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE = "vocabulary_diagram_factor_font_size";
 	public static final String VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE = "vocabulary_diagram_factor_font_style";
-	public static final String VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR = "vocabulary_diagram_factor_background_color";
-	public static final String VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR = "vocabulary_diagram_factor_foreground_color";
-	public static final String VOCABULARY_DIAGRAM_LINK_COLOR = "vocabulary_diagram_link_color";
 	public static final String VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSOCIATION = "vocabulary_biodiversity_target_habitat_association";
 	public static final String VOCABULARY_TARGET_STATUS = "vocabulary_target_status";
 	public static final String VOCABULARY_TARGET_VIABILITY_MODE = "vocabulary_target_viability_mode";

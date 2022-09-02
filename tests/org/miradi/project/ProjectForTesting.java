@@ -2020,6 +2020,7 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_FOREGROUND_COLOR, DiagramFactorFontColorQuestion.BROWN_HEX);
 		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_FONT_SIZE, "2.5");
 		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_FONT_STYLE, DiagramFactorFontStyleQuestion.BOLD_CODE);
+		fillObjectUsingCommand(diagramFactor, DiagramFactor.TAG_Z_INDEX, 0);
 	}
 	
 	private void populateDiagramLink(DiagramLink diagramLink) throws Exception

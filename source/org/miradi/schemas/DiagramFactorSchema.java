@@ -39,10 +39,10 @@ public class DiagramFactorSchema extends BaseObjectSchema
 		createFieldSchemaPoint(DiagramFactor.TAG_LOCATION);
 		createFieldSchemaRequiredRef(DiagramFactor.TAG_WRAPPED_REF);
 		createFieldSchemaChoice(DiagramFactor.TAG_FONT_SIZE, DiagramFactorFontSizeQuestion.class);
-		createFieldSchemaChoice(DiagramFactor.TAG_FOREGROUND_COLOR, DiagramFactorFontColorQuestion.class);
+		createFieldSchemaColor(DiagramFactor.TAG_FOREGROUND_COLOR);
 		createFieldSchemaChoice(DiagramFactor.TAG_FONT_STYLE, DiagramFactorFontStyleQuestion.class);
 		createFieldSchemaReflist(DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, DIAGRAM_FACTOR);
-		createFieldSchemaChoice(DiagramFactor.TAG_BACKGROUND_COLOR, DiagramFactorBackgroundQuestion.class);
+		createFieldSchemaColor(DiagramFactor.TAG_BACKGROUND_COLOR);
 		// TODO: field deprecated and will be removed in later release......only here to support migrations
 		createFieldSchemaRequiredChoice(DiagramFactor.TAG_TEXT_BOX_Z_ORDER_CODE, TextBoxZOrderQuestion.class);
 		createFieldSchemaReflist(DiagramFactor.TAG_TAGGED_OBJECT_SET_REFS, TAGGED_OBJECT_SET_ELEMENT_NAME);

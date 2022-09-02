@@ -71,9 +71,6 @@ public class XmlSchemaCreator implements XmlConstants
 		defineVocabulary(writer, VOCABULARY_HIDDEN_TYPES, new LegacyDiagramLegendQuestion());
 		defineVocabulary(writer, VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE, new DiagramFactorFontSizeQuestion());
 		defineVocabulary(writer, VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE, new LegacyDiagramFactorFontStyleQuestion());
-		defineVocabulary(writer, VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR, new DiagramFactorBackgroundQuestion());
-		defineVocabulary(writer, VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR, new DiagramFactorFontColorQuestion());
-		defineVocabulary(writer, VOCABULARY_DIAGRAM_LINK_COLOR, new DiagramLinkColorQuestion());
 		defineVocabulary(writer, VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION, new HabitatAssociationQuestion());
 		defineVocabulary(writer, VOCABULARY_TARGET_STATUS, new StatusQuestion());
 		defineVocabulary(writer, VOCABULARY_TARGET_VIABILITY_MODE, new LegacyViabilityModeQuestion());
@@ -323,8 +320,8 @@ public class XmlSchemaCreator implements XmlConstants
 		writer.startBlock();
 		writer.printlnIndented(ELEMENT_NAME + PREFIX + DIAGRAM_FACTOR + XmlSchemaCreator.DIAGRAM_FACTOR_FONT_SIZE_ELEMENT_NAME + " { " + XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE + " }? &");
 		writer.printlnIndented(ELEMENT_NAME + PREFIX + DIAGRAM_FACTOR + XmlSchemaCreator.DIAGRAM_FACTOR_FONT_STYLE_ELEMENT_NAME + " { " + XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE + " }? &");
-		writer.printlnIndented(ELEMENT_NAME + PREFIX + DIAGRAM_FACTOR + XmlSchemaCreator.DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME + " { " + XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR + " }? &");
-		writer.printlnIndented(ELEMENT_NAME + PREFIX + DIAGRAM_FACTOR + XmlSchemaCreator.DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME + " { " + XmlSchemaCreator.VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR + " }?");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + DIAGRAM_FACTOR + XmlSchemaCreator.DIAGRAM_FACTOR_FOREGROUND_COLOR_ELEMENT_NAME + " { " + XmlConstants.HEX_COLOR_CODE + " }? &");
+		writer.printlnIndented(ELEMENT_NAME + PREFIX + DIAGRAM_FACTOR + XmlSchemaCreator.DIAGRAM_FACTOR_BACKGROUND_COLOR_ELEMENT_NAME + " { " + XmlConstants.HEX_COLOR_CODE + " }?");
 		writer.endBlock();		
 	}
 		
@@ -625,9 +622,6 @@ public class XmlSchemaCreator implements XmlConstants
 	private static final String VOCABULARY_HIDDEN_TYPES = "vocabulary_hidden_types";
 	static final String VOCABULARY_DIAGRAM_FACTOR_FONT_SIZE = "vocabulary_diagram_factor_font_size";
 	public static final String VOCABULARY_DIAGRAM_FACTOR_FONT_STYLE = "vocabulary_diagram_factor_font_style";
-	public static final String VOCABULARY_DIAGRAM_FACTOR_BACKGROUND_COLOR = "vocabulary_diagram_factor_background_color";
-	public static final String VOCABULARY_DIAGRAM_FACTOR_FOREGROUND_COLOR = "vocabulary_diagram_factor_foreground_color";
-	public static final String VOCABULARY_DIAGRAM_LINK_COLOR = "vocabulary_diagram_link_color";
 	private static final String VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION = "vocabulary_biodiversity_target_habitat_association";
 	public static final String VOCABULARY_TARGET_STATUS = "vocabulary_target_status";
 	static final String VOCABULARY_TARGET_VIABILITY_MODE = "vocabulary_target_viability_mode";
