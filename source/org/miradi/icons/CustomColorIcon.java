@@ -17,39 +17,31 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
+package org.miradi.icons;
 
-package org.miradi.diagram.renderers;
+import java.awt.Color;
 
-import org.miradi.icons.CustomColorIcon;
-import org.miradi.main.EAM;
-import org.miradi.questions.ChoiceItem;
+import org.miradi.diagram.renderers.FactorRenderer;
+import org.miradi.diagram.renderers.RectangleRenderer;
 
-import java.awt.*;
-
-public class ColorChoiceItemListCellRenderer extends ChoiceItemHtmlEncodedListCellRenderer
+public class CustomColorIcon extends AbstractShapeIcon
 {
-    public ColorChoiceItemListCellRenderer()
+    public CustomColorIcon(Color colorToUse)
     {
-        super();
-        customColor = null;
+        color = colorToUse;
     }
 
     @Override
-    protected String getText(ChoiceItem choiceItem)
+    FactorRenderer getRenderer()
     {
-        if (choiceItem != null)
-            return choiceItem.getTextAsHtmlWrappedLabel();
-
-        if (customColor != null)
-            setIcon(new CustomColorIcon(customColor));
-
-        return EAM.text("Custom Color");
+        return new RectangleRenderer();
     }
 
-    public void setCustomColor(Color color)
+    @Override
+    Color getIconColor()
     {
-        customColor = color;
+        return color;
     }
 
-    Color customColor;
+    private Color color;
 }

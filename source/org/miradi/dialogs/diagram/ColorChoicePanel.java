@@ -34,6 +34,7 @@ import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.ChoiceQuestion;
 import org.miradi.utils.ColorEditorComponent;
+import org.miradi.utils.MiradiResourceImageIcon;
 import org.miradi.utils.StringUtilities;
 
 import javax.swing.*;
@@ -68,11 +69,9 @@ public class ColorChoicePanel extends MiradiPanel
         standardColorComboBox.addActionListener(new StandardColorChangeHandler());
         panel.add(standardColorComboBox);
 
-        customColorButton = new PanelButton("Select...");
-        customColorButton.setOpaque(true);
-        customColorButton.setBackground(defaultColor);
-        customColorButton.setForeground(defaultColor);
-        customColorButton.setBorder(null);
+        customColorButton = new PanelButton("Custom...", new MiradiResourceImageIcon("icons/paintbrush.png"));
+        customColorButton.setBackground(EAM.READONLY_BACKGROUND_COLOR);
+        customColorButton.setForeground(EAM.READONLY_FOREGROUND_COLOR);
         customColorButton.addActionListener(new CustomColorChangeHandler());
 		panel.add(customColorButton);
 
@@ -95,13 +94,8 @@ public class ColorChoicePanel extends MiradiPanel
     public void setText(String text)
 	{
         selectedColor = text;
-
         Color color = FactorHtmlViewer.convertHTMLColorToColor(selectedColor, defaultColor);
-        customColorButton.setBackground(color);
-        customColorButton.setForeground(color);
-
         setStandardColor(color);
-
         clearNeedsSaving();
 	}
 
@@ -113,10 +107,12 @@ public class ColorChoicePanel extends MiradiPanel
 			if(choice.getColor().equals(color))
 			{
                 standardColorComboBox.setSelectedIndex(i);
+                standardColorComboBox.setCustomColor(null);
 				return;
 			}
 		}
         standardColorComboBox.setSelectedIndex(-1);
+        standardColorComboBox.setCustomColor(color);
     }
 
 	public String getText()

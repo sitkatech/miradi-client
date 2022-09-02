@@ -24,6 +24,8 @@ import org.miradi.diagram.renderers.ChoiceItemHtmlEncodedListCellRenderer;
 import org.miradi.diagram.renderers.ColorChoiceItemListCellRenderer;
 import org.miradi.questions.ChoiceQuestion;
 
+import java.awt.*;
+
 public class ColorChoiceItemComboBox extends ChoiceItemComboBox
 {
     public ColorChoiceItemComboBox(ChoiceQuestion colorChoiceQuestion)
@@ -35,5 +37,11 @@ public class ColorChoiceItemComboBox extends ChoiceItemComboBox
     protected ChoiceItemHtmlEncodedListCellRenderer createListCellRenderer()
     {
         return new ColorChoiceItemListCellRenderer();
+    }
+
+    public void setCustomColor(Color color)
+    {
+        ColorChoiceItemListCellRenderer renderer = (ColorChoiceItemListCellRenderer) getRenderer();
+        renderer.setCustomColor(color);
     }
 }
