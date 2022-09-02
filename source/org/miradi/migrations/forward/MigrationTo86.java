@@ -105,7 +105,7 @@ public class MigrationTo86 extends AbstractMigration
     private BiDirectionalHashMap createLinkColorMap()
     {
         BiDirectionalHashMap map = new BiDirectionalHashMap();
-        map.put("black", "#000000");
+        map.put("", "#000000");
         map.put("darkGray", "#4E4848");
         map.put("red", "#D31913");
         map.put("DarkOrange", "#FF6600");
@@ -130,7 +130,7 @@ public class MigrationTo86 extends AbstractMigration
     private BiDirectionalHashMap createBackgroundColorMap()
     {
         BiDirectionalHashMap map = new BiDirectionalHashMap();
-        map.put("LightGray", "#E6E6E6");
+        map.put("", "#E6E6E6");
         map.put("TargetLightGreen", "#DAEDDA");
         map.put("HWBTargetLightTan", "#D8CBC0");
         map.put("BiophysicalFactorLightOlive", "#CECCB6");
@@ -222,10 +222,13 @@ public class MigrationTo86 extends AbstractMigration
         {
             if (reverseMigration)
             {
-                if (linkColorMap.containsValue(color))
-                    return linkColorMap.getKey(color);
+                if (linkColorMap.containsValue(color.toUpperCase()))
+                    return linkColorMap.getKey(color.toUpperCase());
 
-                return defaultLinkColor;
+                if (linkColorMap.containsKey(color))
+                    return color;
+
+                return DefaultLinkColor;
             }
 
             return linkColorMap.getValue(color);
@@ -234,8 +237,8 @@ public class MigrationTo86 extends AbstractMigration
         private String changeForegroundColor(String color, boolean reverseMigration)
         {
             if (reverseMigration)
-                if (!foregroundColorSet.contains(color))
-                    return defaultForegroundColor;
+                if (!foregroundColorSet.contains(color.toUpperCase()))
+                    return DefaultForegroundColor;
 
             return color;
         }
@@ -244,10 +247,13 @@ public class MigrationTo86 extends AbstractMigration
         {
             if (reverseMigration)
             {
-                if (backgroundColorMap.containsValue(color))
-                    return backgroundColorMap.getKey(color);
+                if (backgroundColorMap.containsValue(color.toUpperCase()))
+                    return backgroundColorMap.getKey(color.toUpperCase());
 
-                return defaultBackgroundColor;
+                if (backgroundColorMap.containsKey(color))
+                    return color;
+
+                return DefaultBackgroundColor;
             }
 
             return backgroundColorMap.getValue(color);
@@ -262,11 +268,11 @@ public class MigrationTo86 extends AbstractMigration
 
     private static BiDirectionalHashMap linkColorMap;
     private static BiDirectionalHashMap backgroundColorMap;
-    private static final Set<String> foregroundColorSet = new HashSet<String>(Arrays.asList("#000000", "#4E4848", "#D31913", "#FF6600", "#FFCC00", "#007F00", "#0000CC", "#9900FF", "#C85A17", "#6D7B8D", "#FFFFFF", "#FF00FF", "#FF8040", "#FFFFCC", "#5FFB17", "#00CCFF", "#CC99FF", "#EDE275"));
+    private static final Set<String> foregroundColorSet = new HashSet<String>(Arrays.asList("#4E4848", "#D31913", "#FF6600", "#FFCC00", "#007F00", "#0000CC", "#9900FF", "#C85A17", "#6D7B8D", "#FFFFFF", "#FF00FF", "#FF8040", "#FFFFCC", "#5FFB17", "#00CCFF", "#CC99FF", "#EDE275"));
 
-    private static final String defaultLinkColor = "black";
-    private static final String defaultForegroundColor = "#000000";
-    private static final String defaultBackgroundColor = "LightGray";
+    public static final String DefaultLinkColor = "";
+    public static final String DefaultForegroundColor = "";
+    public static final String DefaultBackgroundColor = "";
 
     public static final String TAG_COLOR = "Color";
     public static final String TAG_FOREGROUND_COLOR = "FontColor";

@@ -21,7 +21,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.migrations;
 
 import org.miradi.diagram.renderers.FactorHtmlViewer;
-import org.miradi.migrations.forward.MigrationTo75;
 import org.miradi.migrations.forward.MigrationTo85;
 import org.miradi.migrations.forward.MigrationTo86;
 import org.miradi.objecthelpers.ORef;
@@ -76,17 +75,17 @@ public class TestMigrationTo86 extends AbstractTestMigration
 
         RawObject rawDiagramFactorFromAfter = rawProject.findObject(diagramFactorFrom.getRef());
         assertNotNull(rawDiagramFactorFromAfter);
-        assertEquals(rawDiagramFactorFromAfter.getData(DiagramFactor.TAG_FOREGROUND_COLOR), new DiagramFactorFontColorQuestion().getReadableAlternativeDefaultCode());
+        assertEquals(rawDiagramFactorFromAfter.getData(DiagramFactor.TAG_FOREGROUND_COLOR), MigrationTo86.DefaultForegroundColor);
         assertEquals(rawDiagramFactorFromAfter.getData(DiagramFactor.TAG_BACKGROUND_COLOR), legacyBackgroundColorString);
 
         RawObject rawDiagramFactorToAfter = rawProject.findObject(diagramFactorTo.getRef());
         assertNotNull(rawDiagramFactorToAfter);
         assertEquals(rawDiagramFactorToAfter.getData(DiagramFactor.TAG_FOREGROUND_COLOR), legacyForegroundColorString);
-        assertEquals(rawDiagramFactorToAfter.getData(DiagramFactor.TAG_BACKGROUND_COLOR), new DiagramFactorBackgroundQuestion().getReadableAlternativeDefaultCode());
+        assertEquals(rawDiagramFactorToAfter.getData(DiagramFactor.TAG_BACKGROUND_COLOR), MigrationTo86.DefaultBackgroundColor);
 
         RawObject rawDiagramLinkAfter = rawProject.findObject(diagramLink.getRef());
         assertNotNull(rawDiagramLinkAfter);
-        assertEquals(rawDiagramLinkAfter.getData(DiagramLink.TAG_COLOR).toLowerCase(), new DiagramLinkColorQuestion().getReadableAlternativeDefaultCode());
+        assertEquals(rawDiagramLinkAfter.getData(DiagramLink.TAG_COLOR).toLowerCase(), MigrationTo86.DefaultLinkColor);
     }
 
     private DiagramFactor createDiagramFactor(String foregroundColor, String backgroundColor) throws Exception
