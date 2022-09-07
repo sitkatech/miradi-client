@@ -19,12 +19,8 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.views.diagram;
 
-import org.miradi.commands.CommandSetObjectData;
-import org.miradi.diagram.cells.FactorCell;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.questions.DiagramFactorFontColorQuestion;
 import org.miradi.schemas.AnalyticalQuestionSchema;
 
 public class InsertAnalyticalQuestionDoer extends InsertFactorDoer
@@ -55,11 +51,4 @@ public class InsertAnalyticalQuestionDoer extends InsertFactorDoer
     {
         getCurrentLayerManager().setVisibility(AnalyticalQuestionSchema.OBJECT_NAME, true);
     }
-
-    @Override
-	protected void doExtraSetup(DiagramFactor diagramFactor, FactorCell[] selectedFactorCells) throws Exception
-	{
-		CommandSetObjectData setStatusCommand = new CommandSetObjectData(diagramFactor.getRef(), DiagramFactor.TAG_FOREGROUND_COLOR, DiagramFactorFontColorQuestion.WHITE_HEX);
-		getProject().executeCommand(setStatusCommand);
-	}
 }
