@@ -21,7 +21,7 @@ package org.miradi.icons;
 
 import org.miradi.diagram.DiagramConstants;
 import org.miradi.diagram.renderers.FactorRenderer;
-import org.miradi.diagram.renderers.RectangleRenderer;
+import org.miradi.diagram.renderers.RoundRectangleRenderer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,7 +31,7 @@ public class OutputIcon extends AbstractShapeIcon
     @Override
     FactorRenderer getRenderer()
     {
-        return new RectangleRenderer();
+        return new RoundRectangleRenderer();
     }
 
     @Override
