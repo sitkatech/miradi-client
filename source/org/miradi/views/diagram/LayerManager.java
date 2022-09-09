@@ -29,6 +29,7 @@ import org.miradi.questions.DiagramModeQuestion;
 import org.miradi.schemas.GoalSchema;
 import org.miradi.schemas.IndicatorSchema;
 import org.miradi.schemas.ObjectiveSchema;
+import org.miradi.schemas.OutputSchema;
 import org.miradi.utils.CodeList;
 
 public class LayerManager
@@ -152,6 +153,11 @@ public class LayerManager
 	public boolean areIndicatorsVisible() throws Exception
 	{
 		return isTypeVisible(IndicatorSchema.OBJECT_NAME);
+	}
+	
+	public boolean areOutputsVisible() throws Exception
+	{
+		return isTypeVisible(OutputSchema.OBJECT_NAME);
 	}
 	
 	public void setIndicatorsVisible(boolean newSetting) throws Exception

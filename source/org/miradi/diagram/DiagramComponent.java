@@ -295,6 +295,11 @@ public class DiagramComponent extends JGraph implements ComponentWithContextMenu
 		return getLayerManager().areIndicatorsVisible();
 	}
 	
+	public boolean areOutputsVisible() throws Exception
+	{
+		return getLayerManager().areOutputsVisible();
+	}
+	
 	public EAMGraphCell[] getSelectedAndRelatedCells()
 	{
 		try

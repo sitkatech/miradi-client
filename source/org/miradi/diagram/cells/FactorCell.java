@@ -105,6 +105,14 @@ abstract public class FactorCell extends EAMGraphCell
 			listContents = buildListContentsFromBullets(bullets, detailsTag);
 			noContentToDisplay = bullets.size() == 0;
 		}
+		else if(isPointInOutput(pointRelativeToCellOrigin))
+		{
+			header = EAM.text("Outputs:");
+			detailsTag = Factor.TAG_TEXT;
+			bullets = factor.getOutputRefs();
+			listContents = buildListContentsFromBullets(bullets, detailsTag);
+			noContentToDisplay = bullets.size() == 0;
+		}
 		else if(isPointInGoal(pointRelativeToCellOrigin))
 		{
 			header = EAM.text("Goals:");
@@ -574,6 +582,11 @@ abstract public class FactorCell extends EAMGraphCell
 		return getStatusRectWithinNode().contains(pointRelativeToOrigin);
 	}
 
+	public boolean isPointInOutput(Point pointRelativeToOrigin)
+	{
+		return getOutputRectWithinNode().contains(pointRelativeToOrigin);
+	}
+
 	public Dimension getInsetDimension()
 	{
 		return new Dimension(0, 0);
@@ -619,6 +632,17 @@ abstract public class FactorCell extends EAMGraphCell
 	}
 
 	public Rectangle getStatusRectWithinNode()
+	{
+		Rectangle rect = new Rectangle();
+		int avoidGoingPastClippingEdge = 1;
+		rect.x = getSize().width - MultilineCellRenderer.ANNOTATIONS_WIDTH - avoidGoingPastClippingEdge;
+		rect.y = 0;
+		rect.width = MultilineCellRenderer.ANNOTATIONS_WIDTH;
+		rect.height = MultilineCellRenderer.ANNOTATIONS_HEIGHT;
+		return rect;
+	}
+
+	public Rectangle getOutputRectWithinNode()
 	{
 		Rectangle rect = new Rectangle();
 		int avoidGoingPastClippingEdge = 1;

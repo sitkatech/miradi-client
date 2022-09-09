@@ -291,8 +291,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 				tabs.setSelectedComponent(subTargetTab);
 			case TAB_SIMPLE_VIABILITY:
 				tabs.setSelectedComponent(simpleViabilityTab);
-			case TAB_ASSUMPTIONS:
-				tabs.setSelectedComponent(assumptionsTab);
 			default:
 				tabs.setSelectedComponent(detailsTab);
 				break;
@@ -560,8 +558,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	public static final int TAB_STRESS = 5;
 	public static final int TAB_SUB_TARGET = 6;
 	public static final int TAB_SIMPLE_VIABILITY = 7;
-	public static final int TAB_OUTPUTS = 8;
-	public static final int TAB_ASSUMPTIONS = 9;
 
 	protected JTabbedPane tabs;
 	private int currentTabIndex;
@@ -575,7 +571,6 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	private StressListManagementPanel stressTab;
 	private ActivityListManagementPanel activitiesTab;
 	private SubTargetManagementPanel subTargetTab;
-	private OutputListManagementPanel outputsTab;
 	private AssumptionListManagementPanel assumptionsTab;
 	private MainWindow mainWindow;
 	private DiagramComponent diagram;

@@ -151,7 +151,8 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		createCheckBox(FactorLinkSchema.OBJECT_NAME);
 		createCheckBox(StressSchema.OBJECT_NAME);
 		createCheckBox(TaskSchema.ACTIVITY_NAME);
-		
+		createCheckBox(OutputSchema.OBJECT_NAME);
+
 		createCheckBox(GoalSchema.OBJECT_NAME);
 		createCheckBox(ObjectiveSchema.OBJECT_NAME);
 		createCheckBox(IndicatorSchema.OBJECT_NAME);
@@ -183,7 +184,9 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		
 		addStressLine(jpanel);
 		addActivityLine(jpanel);
-		
+
+		addIconLineWithCheckBox(jpanel, OutputSchema.getObjectType(), OutputSchema.OBJECT_NAME, IconManager.getOutputIcon());
+
 		addButtonLineWithCheckBox(jpanel, TextBoxSchema.getObjectType(), TextBoxSchema.OBJECT_NAME, actions.get(ActionInsertTextBox.class));
 		addButtonLineWithCheckBox(jpanel, GroupBoxSchema.getObjectType(), GroupBoxSchema.OBJECT_NAME, actions.get(ActionInsertGroupBox.class));
 

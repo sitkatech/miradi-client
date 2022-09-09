@@ -19,13 +19,38 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.icons;
 
-import org.miradi.utils.MiradiResourceImageIcon;
+import org.miradi.diagram.DiagramConstants;
+import org.miradi.diagram.renderers.FactorRenderer;
+import org.miradi.diagram.renderers.RectangleRenderer;
 
-public class OutputIcon extends MiradiResourceImageIcon
+import javax.swing.*;
+import java.awt.*;
+
+public class OutputIcon extends AbstractShapeIcon
 {
-    public OutputIcon()
+    @Override
+    FactorRenderer getRenderer()
     {
-        super("icons/document16.png");
+        return new RectangleRenderer();
+    }
+
+    @Override
+    Color getIconColor()
+    {
+        return DiagramConstants.DEFAULT_OUTPUT_COLOR;
+    }
+
+    static public Icon createDisabledIcon()
+    {
+        return new OutputDisabledIcon();
+    }
+
+    private static final class OutputDisabledIcon extends OutputIcon
+    {
+        @Override
+        Color getIconColor()
+        {
+            return Color.LIGHT_GRAY;
+        }
     }
 }
-

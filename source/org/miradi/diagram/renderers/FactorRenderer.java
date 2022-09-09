@@ -172,7 +172,17 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			setObjectiveText(diagram);
 			
 			setGoalText(diagram);
-			
+
+			outputText = null;
+			if(diagram.areOutputsVisible())
+			{
+				ORefList outputRefs = getFactorCell().getWrappedFactor().getOutputRefs();
+				if(outputRefs.size() == 1)
+					outputText = "";
+				else if(outputRefs.size() > 1)
+					outputText = "+";
+			}
+
 			isRelatedToSelectedFactor = checkIfRelatedToSelectedFactor(diagram, getFactorCell());
 		}
 		catch (Exception e)
@@ -412,7 +422,10 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		
 		if(indicatorText != null)
 			drawIndicator(rect, g2);
-		
+
+		if(outputText != null)
+			drawOutput(rect, g2);
+
 		if(strategyInResultsChain)
 			drawChainIcon(rect, g2);
 
@@ -446,7 +459,16 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		
 		drawLabel(g2, smallTriangle, indicatorText, smallTriangle.getSize());
 	}
-	
+
+	private void drawOutput(Rectangle rect, Graphics2D g2)
+	{
+		if (outputText == null)
+			return;
+
+		Rectangle rectangle = getOutputRectWithinNode();
+		drawAnnotationCellRect(g2, rectangle, new RoundRectangleRenderer(), outputText, DiagramConstants.DEFAULT_OUTPUT_COLOR);
+	}
+
 	private void drawChainIcon(Rectangle rect, Graphics2D g2) 
 	{
 		AbstractMiradiIcon icon = new ResultsChainIcon();
@@ -480,6 +502,11 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	private Rectangle getIndicatorRectWithinNode()
 	{
 		return getFactorCell().getIndicatorRectWithinNode();
+	}
+
+	private Rectangle getOutputRectWithinNode()
+	{
+		return getFactorCell().getOutputRectWithinNode();
 	}
 
 	private Rectangle getStatusRectWithinNode()
@@ -626,6 +653,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 	private String indicatorText;
 	private String objectivesText;
 	private String goalsText;
+	private String outputText;
 	private boolean strategyInResultsChain;
 	private boolean isAliased;
 	private boolean isOwnedByGroup;
