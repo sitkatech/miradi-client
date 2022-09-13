@@ -425,7 +425,7 @@ public class DiagramFactor extends AbstractDiagramObject
     public static final int DEFAULT_FACTOR_HEIGHT = 30;
     public static final int DEFAULT_FACTOR_WIDTH = 2 * DEFAULT_FACTOR_HEIGHT;
 
-	public static final Dimension DEFAULT_STRESS_SIZE = new Dimension(DEFAULT_FACTOR_WIDTH, DEFAULT_FACTOR_HEIGHT);
-	public static final Dimension DEFAULT_ACTIVITY_SIZE = new Dimension(DEFAULT_FACTOR_WIDTH, DEFAULT_FACTOR_HEIGHT);
-	public static final Dimension DEFAULT_ASSUMPTION_SIZE = new Dimension(DEFAULT_FACTOR_WIDTH, DEFAULT_FACTOR_HEIGHT);
+	public static final Dimension DEFAULT_STRESS_SIZE = new Dimension(2 * DEFAULT_FACTOR_WIDTH, DEFAULT_FACTOR_HEIGHT);
+	public static final Dimension DEFAULT_ACTIVITY_SIZE = new Dimension((2 * DEFAULT_FACTOR_WIDTH) + (DEFAULT_FACTOR_WIDTH / 2), DEFAULT_FACTOR_HEIGHT + (DEFAULT_FACTOR_HEIGHT / 3));
+	public static final Dimension DEFAULT_ASSUMPTION_SIZE = new Dimension(2 * DEFAULT_FACTOR_WIDTH, DEFAULT_FACTOR_HEIGHT);
 }
