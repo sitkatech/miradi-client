@@ -21,6 +21,7 @@ package org.miradi.objects;
 
 import org.miradi.ids.FactorId;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
@@ -51,6 +52,17 @@ public class Assumption extends AbstractAnalyticalQuestion
                 AnalyticalQuestionSchema.getObjectType(),
         };
     }
+
+	public boolean hasReferrers()
+	{
+		boolean isSuperShared = super.hasReferrers();
+		if (isSuperShared)
+			return true;
+
+		ORefList referrers = findObjectsThatReferToUs(AnalyticalQuestionSchema.getObjectType());
+
+		return referrers.size() > 0;
+	}
 
     @Override
 	public boolean isAssumption()

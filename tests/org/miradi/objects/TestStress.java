@@ -53,15 +53,15 @@ public class TestStress extends ObjectTestCase
 	public void testIsShared() throws Exception
 	{
 		Stress stress = getProject().createStress();
-		assertFalse("Stress is shared?", stress.mustBeDeletedBecauseParentIsGone());
+		assertFalse("Stress is shared?", stress.hasReferrers());
 		
 		Target target = getProject().createTarget();
 		ORefList stressRefs = new ORefList(stress.getRef());
 		target.setData(Target.TAG_STRESS_REFS, stressRefs.toString());
 		
-		assertTrue("Stress is not shared?", stress.mustBeDeletedBecauseParentIsGone());
+		assertTrue("Stress is not shared?", stress.hasReferrers());
 		
 		DiagramFactor diagramFactor = getProject().createDiagramFactorAndAddToDiagram(StressSchema.getObjectType());
-		assertTrue("Stress is not shared?", diagramFactor.getWrappedFactor().mustBeDeletedBecauseParentIsGone());
+		assertTrue("Stress is not shared?", diagramFactor.getWrappedFactor().hasReferrers());
 	}
 }

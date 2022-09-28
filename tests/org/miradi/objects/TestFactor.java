@@ -76,10 +76,10 @@ public class TestFactor extends TestCaseWithProject
 	public void testIsShared() throws Exception
 	{
 		Target target = getProject().createTarget();
-		assertFalse("Target is shared?", target.mustBeDeletedBecauseParentIsGone());
+		assertFalse("Target is shared?", target.hasReferrers());
 		
 		DiagramFactor diagramFactor = getProject().createDiagramFactorAndAddToDiagram(TargetSchema.getObjectType());
-		assertTrue("Target is not shared?", diagramFactor.getWrappedFactor().mustBeDeletedBecauseParentIsGone());
+		assertTrue("Target is not shared?", diagramFactor.getWrappedFactor().hasReferrers());
 		
 		
 	}

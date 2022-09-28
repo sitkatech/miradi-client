@@ -88,9 +88,9 @@ public class Stress extends Factor
 	}
 	
 	@Override
-	public boolean mustBeDeletedBecauseParentIsGone()
+	public boolean hasReferrers()
 	{
-		boolean isSuperShared = super.mustBeDeletedBecauseParentIsGone();
+		boolean isSuperShared = super.hasReferrers();
 		if (isSuperShared)
 			return true;
 		
