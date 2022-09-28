@@ -75,6 +75,9 @@ public class FactorDeleteHelper
 		if (Strategy.is(diagramFactorToDelete.getWrappedType()))
 			deleteAnyRelatedActivityBubbles((Strategy) diagramFactorToDelete.getWrappedFactor());
 		
+		if (AnalyticalQuestion.is(diagramFactorToDelete.getWrappedType()))
+			deleteAnyRelatedAssumptionBubbles((AnalyticalQuestion) diagramFactorToDelete.getWrappedFactor());
+
 		deleteDiagramFactorAndUnderlyingFactor(diagramFactorToDelete);
 	}
 
@@ -86,6 +89,11 @@ public class FactorDeleteHelper
 	private void deleteAnyRelatedStressBubbles(Target target) throws Exception
 	{
 		deleteRelatedFactorDiagramFactors(target.getStressRefs());
+	}
+
+	private void deleteAnyRelatedAssumptionBubbles(AnalyticalQuestion analyticalQuestion) throws Exception
+	{
+		deleteRelatedFactorDiagramFactors(analyticalQuestion.getAssumptionRefs());
 	}
 
 	public CommandVector buildCommandsToDeleteDiagramFactor(DiagramFactor diagramFactor) throws Exception
@@ -151,7 +159,7 @@ public class FactorDeleteHelper
 		removeFromView(diagramFactorToDelete.getWrappedORef());
 		removeFromDiagramAndDelete(diagramFactorToDelete);
 				
-		if (underlyingFactor.mustBeDeletedBecauseParentIsGone())
+		if (underlyingFactor.hasReferrers())
 			return;
 
 		deleteAnnotations(underlyingFactor);
