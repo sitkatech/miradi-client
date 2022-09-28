@@ -127,14 +127,14 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 		return diagramFactorReferrers;
 	}
 	
-	protected void setLocation(FactorCommandHelper helper, DiagramFactorId ownedDiagramFactorId)	throws Exception
+	protected void setLocation(FactorCommandHelper helper, DiagramFactorId ownedDiagramFactorId, Dimension annotationSize)	throws Exception
 	{
 		DiagramFactor parentDiagramFactor = getDiagramModel().getDiagramFactor(getParent().getRef());
 		ORef annotationRef = getSelectedAnnotationRef();
 		int offset = getAnnotationList().find(annotationRef);
 		Point location = new Point(parentDiagramFactor.getLocation());
-		location.x += (offset * getProject().getGridSize()); 
-		location.y += parentDiagramFactor.getSize().height;
+		location.x += (offset * getProject().getGridSize());
+		location.y += parentDiagramFactor.getSize().height + (offset * annotationSize.height);
 		helper.setDiagramFactorLocation(ownedDiagramFactorId, location);
 	}
 		
@@ -166,7 +166,7 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 
 		applyParentTaggedObjectSets(annotationDiagramFactorId);
 
-		setLocation(helper, annotationDiagramFactorId);
+		setLocation(helper, annotationDiagramFactorId, defaultSize);
 		setSize(helper, annotationDiagramFactorId, defaultSize);
 
 		String defaultFontColor = getDiagramFactorDefaultFontColor();
@@ -223,4 +223,5 @@ abstract public class AbstractVisibilityDoer extends ObjectsDoer
 	abstract protected ORef getParentRef();
 	
 	abstract protected ORefList getAnnotationList();
+
 }
