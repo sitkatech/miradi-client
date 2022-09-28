@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<install4j version="9.0.4" transformSequenceNumber="9">
+<install4j version="10.0.2" transformSequenceNumber="10">
   <directoryPresets config="./installer/BuildFiles" />
   <application name="Miradi" applicationId="9257-7778-0919-8416" mediaDir="${compiler:dist.dir}" mediaFilePattern="${compiler:windows.setup.name}" compression="9" lzmaCompression="true" pack200Compression="true" shortName="Miradi" publisher="Miradi" publisherWeb="http://miradi.org" version="${compiler:version.full}" allPathsRelative="true" macVolumeId="829ea082d712de9f" javaMinVersion="1.8" javaMaxVersion="1.8" jdkMode="runtimeJre">
     <languages>
@@ -11,7 +11,7 @@
     </languages>
     <jreBundles jdkProviderId="Zulu" release="8/8u312" />
   </application>
-  <files preserveSymlinks="false">
+  <files>
     <roots>
       <root id="104" location="${installer:myRootDir}" />
     </roots>
@@ -74,7 +74,6 @@
           <archive location="miradi.jar" failOnError="false" />
         </classPath>
       </java>
-      <macStaticAssociationActions mode="selected" />
       <vmOptionsFile mode="none" />
       <iconImageFiles>
         <file path="../source/resources/icons/miradi16.png" />
@@ -715,7 +714,7 @@ return console.askYesNo(message, true);
     </styles>
   </installerGui>
   <mediaSets>
-    <windows name="Windows" id="22" installDir="Miradi" jreBitType="32">
+    <windows name="Windows" id="22" installDir="Miradi" architecture="32">
       <jreBundle includedJre="windows-x86-1.8.0_312" bundleUrl="${compiler:jres.path}/windows-x86-1.8.0_312.tar.gz" directDownload="true" installOnlyIfNecessary="true" />
     </windows>
   </mediaSets>
