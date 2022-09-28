@@ -1,4 +1,4 @@
-﻿MiradiProjectFile 85 85
+﻿MiradiProjectFile 86 86
 UV	Version=61
 UP	HighestUsedNodeId=2649
 UP	ProjectMetadataId=0
@@ -1698,7 +1698,7 @@ UO	18:106	UUID=863f1726-c15c-4e2a-b00e-739a21345fda
 UO	18:106	WrappedFactorRef={"ObjectType":20,"ObjectId":105}
 UO	18:106	ZIndex=3
 CO	18:110
-UO	18:110	BackgroundColor=ContributingFactorLightOrange
+UO	18:110	BackgroundColor=#EFD18E
 UO	18:110	FontStyle=<B>
 UO	18:110	GroupBoxChildrenRefs={"References":[{"ObjectType":18,"ObjectId":102},{"ObjectType":18,"ObjectId":106}]}
 UO	18:110	Location={"X":45,"Y":165}
@@ -1854,7 +1854,7 @@ UO	18:1459	UUID=22c23bba-1d88-432b-b780-ab115c0bad72
 UO	18:1459	WrappedFactorRef={"ObjectType":23,"ObjectId":1458}
 UO	18:1459	ZIndex=3
 CO	18:148
-UO	18:148	BackgroundColor=White
+UO	18:148	BackgroundColor=#FFFFFF
 UO	18:148	FontSize=1.75
 UO	18:148	FontStyle=<B>
 UO	18:148	Location={"X":45,"Y":15}
@@ -1948,7 +1948,7 @@ UO	18:1639	UUID=61ae6164-7c92-4e26-b22c-584eae6f9bb0
 UO	18:1639	WrappedFactorRef={"ObjectType":23,"ObjectId":1629}
 UO	18:1639	ZIndex=3
 CO	18:1658
-UO	18:1658	BackgroundColor=LightYellow
+UO	18:1658	BackgroundColor=#FFFFCD
 UO	18:1658	FontColor=#0000CC
 UO	18:1658	FontStyle=<B>
 UO	18:1658	Location={"X":330,"Y":420}
@@ -2042,7 +2042,7 @@ UO	18:1999	UUID=fdc44563-e6a1-4147-8c12-b151a012d6c1
 UO	18:1999	WrappedFactorRef={"ObjectType":3,"ObjectId":1866}
 UO	18:1999	ZIndex=5
 CO	18:2001
-UO	18:2001	BackgroundColor=LightYellow
+UO	18:2001	BackgroundColor=#FFFFCD
 UO	18:2001	FontSize=1.75
 UO	18:2001	FontStyle=<B>
 UO	18:2001	Location={"X":15,"Y":15}
@@ -2303,7 +2303,7 @@ UO	18:38	UUID=80b8b894-5205-4d96-a022-34a4c2cd1ad7
 UO	18:38	WrappedFactorRef={"ObjectType":22,"ObjectId":37}
 UO	18:38	ZIndex=3
 CO	18:404
-UO	18:404	BackgroundColor=LightYellow
+UO	18:404	BackgroundColor=#FFFFCD
 UO	18:404	FontSize=1.75
 UO	18:404	FontStyle=<B>
 UO	18:404	Location={"X":15,"Y":15}
@@ -2312,7 +2312,7 @@ UO	18:404	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1664},{
 UO	18:404	UUID=a98738ed-3736-4fa1-890a-ce9a3365a579
 UO	18:404	WrappedFactorRef={"ObjectType":26,"ObjectId":403}
 CO	18:406
-UO	18:406	BackgroundColor=LightYellow
+UO	18:406	BackgroundColor=#FFFFCD
 UO	18:406	FontSize=1.75
 UO	18:406	FontStyle=<B>
 UO	18:406	Location={"X":15,"Y":15}
@@ -2321,7 +2321,7 @@ UO	18:406	TaggedObjectSetRefs={"References":[{"ObjectType":47,"ObjectId":1664},{
 UO	18:406	UUID=ef89e318-c464-4ad4-87a4-0dc3b325f2e0
 UO	18:406	WrappedFactorRef={"ObjectType":26,"ObjectId":405}
 CO	18:408
-UO	18:408	BackgroundColor=LightYellow
+UO	18:408	BackgroundColor=#FFFFCD
 UO	18:408	FontSize=1.75
 UO	18:408	FontStyle=<B>
 UO	18:408	Location={"X":15,"Y":15}
