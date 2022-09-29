@@ -29,6 +29,9 @@
     <property name="mac.build.server" value="${env.SITKA.MAC.BUILDSERVER}" />
     <property name="mac.build.password" value="${env.SITKA.MAC.BUILDPASSWORD}" />
     <property name="mac.build.certname" value="${env.SITKA.MAC.BUILDCERT}" />
+	<property name="macos.build.certname.p12" value="${env.SITKA.MAC.BUILDCERT.P12}" />
+	<property name="macos.build.certname.password" value="${env.SITKA.MAC.BUILDCERT.PASSWORD}" />
+
 
     <property name="windows.build.user" value="${env.SITKA.WINDOWS.BUILDUSER}" />
     <property name="windows.build.server" value="${env.SITKA.WINDOWS.BUILDSERVER}" />
@@ -1125,13 +1128,15 @@
 </target>
 
 <!-- ================================================================== -->
-<!-- win32installer                                                    -->
+<!-- I N S T A L L E R                                                   -->
 <!-- ================================================================== -->
-<target name="win32installer" depends="jar, copy-installer-resource-files" description="Windows install4j installer build">
-    <install4j projectfile="${build.dir}/miradi.install4j" winKeystorePassword="${windows.build.certname.password}">
+<target name="installer" depends="jar, copy-installer-resource-files" description="Windows / macos install4j installer build">
+    <install4j projectfile="${build.dir}/miradi.install4j" winKeystorePassword="${windows.build.certname.password}" macKeystorePassword="${macos.build.certname.password}">
         <variable name="version.full" value="${version.full}"/>
         <variable name="windows.setup.name" value="${windows.setup.name}"/>
 		<variable name="windows.build.certname.pfx" value="${windows.build.certname.pfx}"/>
+		<variable name="mac.build.dmg.name" value="Miradi ${version.full} Mac Install" />
+		<variable name="macos.build.certname.p12" value="${macos.build.certname.p12}"/>
         <variable name="dist.dir" value="${dist.dir}"/>
 		<variable name="samples.marine.miradi.version" value="${samples.marine.miradi.version}"/>
         <variable name="dist.temp.jars" value="${dist.temp.jars}"/>
@@ -1143,7 +1148,7 @@
 <!-- ================================================================== -->
 <!-- R E L E A S E                                                      -->
 <!-- ================================================================== -->
-<target name="release" depends="source, zips, macdmgfile, win32installer">
+<target name="release" depends="source, zips, installer">
     <echo message="Release Built"/>
     <echo message="REMEMBER TO TAG THIS RELEASE WITH ${version.timestamp} !"/>
 </target>

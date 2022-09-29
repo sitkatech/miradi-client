@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="10.0.2" transformSequenceNumber="10">
-  <directoryPresets config="./installer/BuildFiles" />
+  <directoryPresets config="${compiler:dist.dir}/${compiler:samples.marine.miradi.version}" />
   <application name="Miradi" applicationId="9257-7778-0919-8416" mediaDir="${compiler:dist.dir}" mediaFilePattern="${compiler:windows.setup.name}" compression="9" lzmaCompression="true" pack200Compression="true" shortName="Miradi" publisher="Miradi" publisherWeb="http://miradi.org" version="${compiler:version.full}" allPathsRelative="true" macVolumeId="829ea082d712de9f" javaMinVersion="1.8" javaMaxVersion="1.8" jdkMode="runtimeJre">
     <languages>
       <principalLanguage id="en" customLocalizationFile="./installer/BuildFiles/install4j_messages_en.utf8" />
@@ -9,7 +9,7 @@
         <language id="es" />
       </additionalLanguages>
     </languages>
-    <codeSigning windowsEnabled="true" windowsPkcs12File="${compiler:windows.build.certname.pfx}" />
+    <codeSigning macEnabled="true" macPkcs12File="${compiler:macos.build.certname.p12}" windowsEnabled="true" windowsPkcs12File="${compiler:windows.build.certname.pfx}" />
     <jreBundles jdkProviderId="Zulu" release="8/8u312" />
   </application>
   <files>
@@ -718,6 +718,13 @@ return console.askYesNo(message, true);
     <windows name="Windows" id="22" installDir="Miradi" architecture="32">
       <jreBundle includedJre="windows-x86-1.8.0_312" bundleUrl="${compiler:jres.path}/windows-x86-1.8.0_312.tar.gz" directDownload="true" installOnlyIfNecessary="true" />
     </windows>
+    <macosArchive name="macOS Single Bundle Archive" id="339" volumeName="${compiler:mac.build.dmg.name}" architecture="universal" launcherId="18">
+      <topLevelFiles>
+        <file name="LICENSE.txt" file="./installer/BuildFiles/LICENSE.txt" />
+        <file name="README.txt" file="./installer/BuildFiles/README.txt" />
+        <file name="${compiler:samples.marine.miradi.version}" file="${compiler:dist.dir}/${compiler:samples.marine.miradi.version}" />
+      </topLevelFiles>
+    </macosArchive>
   </mediaSets>
   <buildIds buildAll="false">
     <mediaSet refId="20" />
