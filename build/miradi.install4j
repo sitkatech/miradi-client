@@ -9,6 +9,7 @@
         <language id="es" />
       </additionalLanguages>
     </languages>
+    <codeSigning windowsEnabled="true" windowsPkcs12File="${compiler:windows.build.certname.pfx}" />
     <jreBundles jdkProviderId="Zulu" release="8/8u312" />
   </application>
   <files>

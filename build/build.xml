@@ -575,13 +575,20 @@
          classpath="${env.INSTALL4J.INSTALL.PATH}\ant.jar"/>
 
 <!-- ================================================================== -->
-<!-- Z I P S                                                            -->
+<!-- C O P Y  I N S T A L L E R  R E S O U R C E  F I L E S                                                            -->
 <!-- ================================================================== -->
-<target name='zips' depends='ThirdParty, jar' description='Create Linux/Mac Zip Files'>
-	<property name='JarFolder' value='ThirdParty'/>
+<target name='copy-installer-resource-files' depends='jar' description='Copy Installer Resource Files'>
 
 	<copy file="${installer.buildfiles.dir}/${samples.marine.miradi}" tofile="${dist.dir}/${samples.marine.miradi.version}" />
 	<copy file="${installer.buildfiles.dir}/README.txt" todir="${dist.dir}" />
+
+</target>
+	
+<!-- ================================================================== -->
+<!-- Z I P S                                                            -->
+<!-- ================================================================== -->
+<target name='zips' depends='ThirdParty, jar, copy-installer-resource-files' description='Create Linux/Mac Zip Files'>
+	<property name='JarFolder' value='ThirdParty'/>
 
     <zip destfile="${dist.dir}/Miradi-Linux.zip">
 		<zipfileset dir="${installer.buildfiles.dir}" includes="README.txt"/>
@@ -589,7 +596,7 @@
 		<zipfileset dir="${installer.buildfiles.dir}" includes="LicenseOverview.txt"/>
     	<zipfileset dir="${dist.dir}" includes="miradi.jar"/>
 		<zipfileset dir="${dist.dir}" includes="${samples.marine.miradi.version}" />
-    	
+
     	<!-- ThirdParty jars -->
     	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='${JarFolder}' includes="BrowserLauncher*.jar" />
     	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='${JarFolder}' includes="BrowserLauncher2-license.txt" />
@@ -636,9 +643,9 @@
     	<zipfileset dir="${dist.temp.jars}/shef/0.5/" prefix="source" includes="sam-src.jar" />
     	<zipfileset dir="${dist.temp.jars}/shef/0.5/" prefix="source" includes="jtidy-src.zip" />
 	</zip>
-	
+
 </target>
-	
+
 <!-- ================================================================== -->
 <!-- P O T                                            -->
 <!-- ================================================================== -->
@@ -1120,50 +1127,17 @@
 <!-- ================================================================== -->
 <!-- win32installer                                                    -->
 <!-- ================================================================== -->
-<target name="win32installer" depends="jar" description="Windows install4j installer build">
-    <install4j projectfile="${build.dir}/miradi.install4j">
+<target name="win32installer" depends="jar, copy-installer-resource-files" description="Windows install4j installer build">
+    <install4j projectfile="${build.dir}/miradi.install4j" winKeystorePassword="${windows.build.certname.password}">
         <variable name="version.full" value="${version.full}"/>
         <variable name="windows.setup.name" value="${windows.setup.name}"/>
+		<variable name="windows.build.certname.pfx" value="${windows.build.certname.pfx}"/>
         <variable name="dist.dir" value="${dist.dir}"/>
 		<variable name="samples.marine.miradi.version" value="${samples.marine.miradi.version}"/>
         <variable name="dist.temp.jars" value="${dist.temp.jars}"/>
         <variable name="jres.path" value="${env.INSTALL4J.JRES.PATH}"/>
         <variable name="license" value="${env.INSTALL4J.LICENSE}"/>
     </install4j>
-
-	<!-- sign built exe -->
-	<echo message="Signing ${windows.setup.name}.exe" />
-
-	<exec executable="signtool" failonerror="true" osfamily="windows">
-		<arg line="sign /t http://timestamp.digicert.com /f ${windows.build.certname.pfx} /p ${windows.build.certname.password} ${dist.dir}/${windows.setup.name}.exe"/>
-	</exec>
-
-	<!--
-	<exec executable="osslsigncode" failonerror="true" osfamily="unix">
-		<arg value="-certs"/>
-		<arg value="${windows.build.certname.spc}"/>
-		<arg value="-key"/>
-		<arg value="${windows.build.certname.pvk}"/>
-		<arg value="-pass"/>
-		<arg value="${windows.build.certname.password}"/>
-		<arg value="-n"/>
-		<arg value="'Miradi'"/>
-		<arg value="-i"/>
-		<arg value="http://${miradi.web.domain}"/>
-		<arg value="-t"/>
-		<arg value="http://timestamp.verisign.com/scripts/timstamp.dll"/>
-		<arg value="-in"/>
-		<arg value="${dist.dir}/${windows.setup.name}.exe"/>
-		<arg value="-out"/>
-		<arg value="${dist.dir}/${windows.setup.name}_signed.exe"/>
-	</exec>
-	-->
-
-	<!-- clean up -->
-	<!--
-	<delete file="${dist.dir}/${windows.setup.name}.exe"/>
-	<move file="${dist.dir}/${windows.setup.name}_signed.exe" tofile="${dist.dir}/${windows.setup.name}.exe"/>
-	-->
 </target>
 
 <!-- ================================================================== -->
