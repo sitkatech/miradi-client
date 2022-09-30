@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="10.0.2" transformSequenceNumber="10">
-  <directoryPresets config="${compiler:dist.dir}/${compiler:samples.marine.miradi.version}" />
+  <directoryPresets config="../source/resources/icons" />
   <application name="Miradi" applicationId="9257-7778-0919-8416" mediaDir="${compiler:dist.dir}" mediaFilePattern="${compiler:windows.setup.name}" compression="9" lzmaCompression="true" pack200Compression="true" shortName="Miradi" publisher="Miradi" publisherWeb="http://miradi.org" version="${compiler:version.full}" allPathsRelative="true" macVolumeId="829ea082d712de9f" javaMinVersion="1.8" javaMaxVersion="1.8" jdkMode="runtimeJre">
     <languages>
       <principalLanguage id="en" customLocalizationFile="./installer/BuildFiles/install4j_messages_en.utf8" />
@@ -60,7 +60,7 @@
     </entries>
   </files>
   <launchers>
-    <launcher name="Miradi" id="18" useCustomMacosExecutableName="true" customMacosExecutableName="${compiler:mac.app.name}">
+    <launcher name="Miradi" id="18" icnsFile="../source/resources/icons/miradi.icns" useCustomMacosExecutableName="true" customMacosExecutableName="${compiler:mac.app.name}">
       <executable name="Miradi" iconSet="true" iconFile="installer/BuildFiles/miradi.ico" executableMode="gui">
         <versionInfo include="true" fileVersion="${compiler:sys.version}.0" fileDescription="Miradi (www.miradi.org)" legalCopyright="Copyright 2005-2022, Foundations of Success, Bethesda, Maryland  (on behalf of the Conservation Measures Partnership, &quot;CMP&quot;) and  Beneficent Technology, Inc. (&quot;Benetech&quot;), Palo Alto, California.  " internalName="${compiler:sys.fullName}" />
       </executable>
@@ -79,6 +79,7 @@
       <iconImageFiles>
         <file path="../source/resources/icons/miradi16.png" />
         <file path="../source/resources/icons/miradi32.png" />
+        <file path="../source/resources/icons/miradi64.png" />
       </iconImageFiles>
     </launcher>
   </launchers>
@@ -726,7 +727,7 @@ return console.askYesNo(message, true);
       </topLevelFiles>
     </macosArchive>
   </mediaSets>
-  <buildIds buildAll="false">
+  <buildIds>
     <mediaSet refId="20" />
     <mediaSet refId="22" />
   </buildIds>
