@@ -1136,6 +1136,7 @@
         <variable name="windows.setup.name" value="${windows.setup.name}"/>
 		<variable name="windows.build.certname.pfx" value="${windows.build.certname.pfx}"/>
 		<variable name="mac.build.dmg.name" value="Miradi ${version.full} Mac Install" />
+		<variable name="mac.app.name" value="${mac.app.name}" />
 		<variable name="macos.build.certname.p12" value="${macos.build.certname.p12}"/>
         <variable name="dist.dir" value="${dist.dir}"/>
 		<variable name="samples.marine.miradi.version" value="${samples.marine.miradi.version}"/>
