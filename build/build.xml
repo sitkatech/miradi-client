@@ -562,9 +562,6 @@
 <!-- ================================================================== -->
 <!-- C U S T O M  T A S K   D E S                                       -->
 <!-- ================================================================== -->
-<taskdef name="appbundler"
-         classname="com.oracle.appbundler.AppBundlerTask"
-         classpath="${installer.mac.dir}/appbundler-1.0ea/appbundler-1.0ea.jar" />
 <taskdef name="install4j"
          classname="com.install4j.Install4JTask"
          classpath="${env.INSTALL4J.INSTALL.PATH}\ant.jar"/>
