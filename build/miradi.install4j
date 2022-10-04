@@ -724,6 +724,9 @@ return console.askYesNo(message, true);
     </windows>
     <macosArchive name="macOS Single Bundle Archive" id="339" mediaFileName="${compiler:mac.app.name}" volumeName="${compiler:mac.build.dmg.name}" architecture="universal" launcherId="18">
       <topLevelFiles>
+        <file name=".DS_Store" file="./installer/Mac/dmgbuild/DS_Store" />
+        <file name=".background/background.png" file="./installer/Mac/dmgbuild/background.png" />
+        <symlink name="Applications" target="/Applications" />
         <file name="LICENSE.txt" file="./installer/BuildFiles/LICENSE.txt" />
         <file name="README.txt" file="./installer/BuildFiles/README.txt" />
         <file name="${compiler:samples.marine.miradi.version}" file="${compiler:dist.dir}/${compiler:samples.marine.miradi.version}" />
