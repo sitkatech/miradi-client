@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <install4j version="10.0.2" transformSequenceNumber="10">
   <directoryPresets config="../source/resources/icons" />
-  <application name="Miradi" applicationId="9257-7778-0919-8416" mediaDir="${compiler:dist.dir}" mediaFilePattern="${compiler:windows.setup.name}_${compiler:sys.platform}" compression="9" lzmaCompression="true" pack200Compression="true" shortName="Miradi" publisher="Miradi" publisherWeb="http://miradi.org" version="${compiler:version.full}" allPathsRelative="true" macVolumeId="829ea082d712de9f" javaMinVersion="1.8" javaMaxVersion="1.8" jdkMode="runtimeJre">
+  <application name="Miradi" applicationId="9257-7778-0919-8416" mediaDir="${compiler:dist.dir}" mediaFilePattern="${compiler:windows.setup.name}" compression="9" lzmaCompression="true" pack200Compression="true" shortName="Miradi" publisher="Miradi" publisherWeb="http://miradi.org" version="${compiler:version.full}" allPathsRelative="true" macVolumeId="829ea082d712de9f" javaMinVersion="1.8" javaMaxVersion="1.8" jdkMode="runtimeJre">
     <languages>
       <principalLanguage id="en" customLocalizationFile="./installer/BuildFiles/install4j_messages_en.utf8" />
       <additionalLanguages>
@@ -716,13 +716,13 @@ return console.askYesNo(message, true);
     </styles>
   </installerGui>
   <mediaSets>
-    <windows name="Windows 32-bit" id="22" installDir="Miradi" architecture="32">
+    <windows name="Windows 32-bit" id="22" mediaFileName="${compiler:windows.setup.name}_x32" installDir="Miradi" architecture="32">
       <jreBundle directDownload="true" installOnlyIfNecessary="true" />
     </windows>
-    <windows name="Windows 64-bit" id="353" installDir="Miradi" architecture="64">
+    <windows name="Windows 64-bit" id="353" mediaFileName="${compiler:windows.setup.name}_x64" installDir="Miradi" architecture="64">
       <jreBundle directDownload="true" installOnlyIfNecessary="true" />
     </windows>
-    <macosArchive name="macOS Single Bundle Archive" id="339" volumeName="${compiler:mac.build.dmg.name}" architecture="universal" launcherId="18">
+    <macosArchive name="macOS Single Bundle Archive" id="339" mediaFileName="${compiler:mac.app.name}" volumeName="${compiler:mac.build.dmg.name}" architecture="universal" launcherId="18">
       <topLevelFiles>
         <file name="LICENSE.txt" file="./installer/BuildFiles/LICENSE.txt" />
         <file name="README.txt" file="./installer/BuildFiles/README.txt" />
