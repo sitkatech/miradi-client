@@ -119,7 +119,6 @@
 	<property name="samples.marine.miradi" value="MarineExample.Miradi"/>
 	<property name="samples.marine.miradi.version" value="MarineExample_${version.full.installer}.Miradi"/>
 
-	<property name="dist.mactree" value="${dist.dir}/MiradiMacInstall" />
 	<property name="mac.app.name" value="Miradi-${version.full}" />
 	<property name="windows.setup.name" value="MiradiSetup_${version.full.installer}" />
 
@@ -984,7 +983,7 @@
 	<echo message="Copying files to ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}" />
     <exec executable="scp" failonerror="true">
         <arg value="-r"/>
-        <arg value="${dist.mactree}/${mac.build.dmg}"/>
+        <arg value="${dist.dir}/${mac.build.dmg}"/>
         <arg value="${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}"/>
     </exec>
 
@@ -1015,7 +1014,6 @@
                     exit;"/>
     </exec>
 
-	<delete dir="${dist.mactree}" />
 </target>
 
 <!-- ================================================================== -->
