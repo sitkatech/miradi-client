@@ -167,11 +167,18 @@ Notable changes in 4.6.0:
 
 - New Analytical Question / Assumption diagram factors
 - New Output child collection for Strategies / Activities
+- Custom color support for diagram factor fonts, background colors (Group / Text Boxes only) and diagram links
+- Support z-index customization for diagram factors
+- Remove restrictions on Group Box sizing / positioning
+- Better diagram round-trip fidelity with Miradi Share
+- Support for IUCN Actions Standard Classifications v2.0
 - Removal of deprecated 4.5.0 features
     - Organization-specific Summary Panels
     - Summary Planning Panel (still available under Preferences and Work Plan Settings)
     - Standard Reports
     - Dashboard
+- Remove support for export to 4.4 format
+- Updated installer for latest platform code-signing requirements (also JRE now bundled)
 - Various bug fixes
 
 

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<install4j version="9.0.4" transformSequenceNumber="9">
-  <directoryPresets config="./installer/BuildFiles" />
+<install4j version="10.0.2" transformSequenceNumber="10">
+  <directoryPresets config="../source/resources/icons" />
   <application name="Miradi" applicationId="9257-7778-0919-8416" mediaDir="${compiler:dist.dir}" mediaFilePattern="${compiler:windows.setup.name}" compression="9" lzmaCompression="true" pack200Compression="true" shortName="Miradi" publisher="Miradi" publisherWeb="http://miradi.org" version="${compiler:version.full}" allPathsRelative="true" macVolumeId="829ea082d712de9f" javaMinVersion="1.8" javaMaxVersion="1.8" jdkMode="runtimeJre">
     <languages>
       <principalLanguage id="en" customLocalizationFile="./installer/BuildFiles/install4j_messages_en.utf8" />
@@ -9,9 +9,10 @@
         <language id="es" />
       </additionalLanguages>
     </languages>
+    <codeSigning macEnabled="true" macPkcs12File="${compiler:macos.build.certname.p12}" windowsEnabled="true" windowsPkcs12File="${compiler:windows.build.certname.pfx}" />
     <jreBundles jdkProviderId="Zulu" release="8/8u312" />
   </application>
-  <files preserveSymlinks="false">
+  <files>
     <roots>
       <root id="104" location="${installer:myRootDir}" />
     </roots>
@@ -59,7 +60,7 @@
     </entries>
   </files>
   <launchers>
-    <launcher name="Miradi" id="18">
+    <launcher name="Miradi" id="18" icnsFile="../source/resources/icons/miradi.icns" useCustomMacosExecutableName="true" customMacosExecutableName="${compiler:mac.app.name}">
       <executable name="Miradi" iconSet="true" iconFile="installer/BuildFiles/miradi.ico" executableMode="gui">
         <versionInfo include="true" fileVersion="${compiler:sys.version}.0" fileDescription="Miradi (www.miradi.org)" legalCopyright="Copyright 2005-2022, Foundations of Success, Bethesda, Maryland  (on behalf of the Conservation Measures Partnership, &quot;CMP&quot;) and  Beneficent Technology, Inc. (&quot;Benetech&quot;), Palo Alto, California.  " internalName="${compiler:sys.fullName}" />
       </executable>
@@ -74,11 +75,11 @@
           <archive location="miradi.jar" failOnError="false" />
         </classPath>
       </java>
-      <macStaticAssociationActions mode="selected" />
       <vmOptionsFile mode="none" />
       <iconImageFiles>
         <file path="../source/resources/icons/miradi16.png" />
         <file path="../source/resources/icons/miradi32.png" />
+        <file path="../source/resources/icons/miradi64.png" />
       </iconImageFiles>
     </launcher>
   </launchers>
@@ -715,11 +716,24 @@ return console.askYesNo(message, true);
     </styles>
   </installerGui>
   <mediaSets>
-    <windows name="Windows" id="22" installDir="Miradi" jreBitType="32">
-      <jreBundle includedJre="windows-x86-1.8.0_312" bundleUrl="${compiler:jres.path}/windows-x86-1.8.0_312.tar.gz" directDownload="true" installOnlyIfNecessary="true" />
+    <windows name="Windows 32-bit" id="22" mediaFileName="${compiler:windows.setup.name}_x32" installDir="Miradi" architecture="32">
+      <jreBundle directDownload="true" installOnlyIfNecessary="true" />
     </windows>
+    <windows name="Windows 64-bit" id="353" mediaFileName="${compiler:windows.setup.name}_x64" installDir="Miradi" architecture="64">
+      <jreBundle directDownload="true" installOnlyIfNecessary="true" />
+    </windows>
+    <macosArchive name="macOS Single Bundle Archive" id="339" mediaFileName="${compiler:mac.app.name}" volumeName="${compiler:mac.build.dmg.name}" architecture="universal" launcherId="18">
+      <topLevelFiles>
+        <file name=".DS_Store" file="./installer/Mac/dmgbuild/DS_Store" />
+        <file name=".background/background.png" file="./installer/Mac/dmgbuild/background.png" />
+        <symlink name="Applications" target="/Applications" />
+        <file name="LICENSE.txt" file="./installer/BuildFiles/LICENSE.txt" />
+        <file name="README.txt" file="./installer/BuildFiles/README.txt" />
+        <file name="${compiler:samples.marine.miradi.version}" file="${compiler:dist.dir}/${compiler:samples.marine.miradi.version}" />
+      </topLevelFiles>
+    </macosArchive>
   </mediaSets>
-  <buildIds buildAll="false">
+  <buildIds>
     <mediaSet refId="20" />
     <mediaSet refId="22" />
   </buildIds>

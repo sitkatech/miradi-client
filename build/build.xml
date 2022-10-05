@@ -29,19 +29,14 @@
     <property name="mac.build.server" value="${env.SITKA.MAC.BUILDSERVER}" />
     <property name="mac.build.password" value="${env.SITKA.MAC.BUILDPASSWORD}" />
     <property name="mac.build.certname" value="${env.SITKA.MAC.BUILDCERT}" />
+	<property name="macos.build.certname.p12" value="${env.SITKA.MAC.BUILDCERT.P12}" />
+	<property name="macos.build.certname.password" value="${env.SITKA.MAC.BUILDCERT.PASSWORD}" />
+	<property name="macos.build.profile" value="${env.SITKA.MAC.BUILD.PROFILE}" />
 
     <property name="windows.build.user" value="${env.SITKA.WINDOWS.BUILDUSER}" />
     <property name="windows.build.server" value="${env.SITKA.WINDOWS.BUILDSERVER}" />
     <property name="windows.build.password" value="${env.SITKA.WINDOWS.BUILDPASSWORD}" />
-	<!--
-    <property name="windows.build.ev.certname" value="${env.SITKA.WINDOWS.EV.BUILDCERT}" />
-	<property name="windows.build.ev.certname.password" value="${env.SITKA.WINDOWS.EV.BUILDCERT.PASSWORD}" />
-    -->
     <property name="windows.build.certname.pfx" value="${env.SITKA.WINDOWS.BUILDCERT.PFX}" />
-	<!--
-    <property name="windows.build.certname.spc" value="${env.SITKA.WINDOWS.BUILDCERT.SPC}" />
-    <property name="windows.build.certname.pvk" value="${env.SITKA.WINDOWS.BUILDCERT.PVK}" />
-    -->
     <property name="windows.build.certname.password" value="${env.SITKA.WINDOWS.BUILDCERT.PASSWORD}" />
     <property name="miradi.web.domain" value="${env.SITKA.MIRADI.WEB.DOMAIN}" />
     <property name="jenkins.workspace" value="${env.WORKSPACE}"/>
@@ -195,7 +190,7 @@
 </target>
 
 <!-- ================================================================== -->
-<!-- CLEANUP                                                          -->
+<!-- CLEANUP                                                          	-->
 <!-- ================================================================== -->
 <target name="cleanup" description="Delete temp files">
 	<delete dir="${dist.dir}"/>
@@ -265,7 +260,7 @@
 </target>
 
 <!-- ================================================================== -->
-<!-- J A R                                                          -->
+<!-- J A R                                                          	-->
 <!-- ================================================================== -->
 <target name="jar" depends="test" description="Create jar">
 	<mkdir dir="${dist.dir}"/>
@@ -567,21 +562,25 @@
 <!-- ================================================================== -->
 <!-- C U S T O M  T A S K   D E S                                       -->
 <!-- ================================================================== -->
-<taskdef name="appbundler"
-         classname="com.oracle.appbundler.AppBundlerTask"
-         classpath="${installer.mac.dir}/appbundler-1.0ea/appbundler-1.0ea.jar" />
 <taskdef name="install4j"
          classname="com.install4j.Install4JTask"
          classpath="${env.INSTALL4J.INSTALL.PATH}\ant.jar"/>
 
 <!-- ================================================================== -->
-<!-- Z I P S                                                            -->
+<!-- C O P Y  I N S T A L L E R  R E S O U R C E  F I L E S             -->
 <!-- ================================================================== -->
-<target name='zips' depends='ThirdParty, jar' description='Create Linux/Mac Zip Files'>
-	<property name='JarFolder' value='ThirdParty'/>
+<target name='copy-installer-resource-files' depends='jar' description='Copy Installer Resource Files'>
 
 	<copy file="${installer.buildfiles.dir}/${samples.marine.miradi}" tofile="${dist.dir}/${samples.marine.miradi.version}" />
 	<copy file="${installer.buildfiles.dir}/README.txt" todir="${dist.dir}" />
+
+</target>
+	
+<!-- ================================================================== -->
+<!-- Z I P S                                                            -->
+<!-- ================================================================== -->
+<target name='zips' depends='ThirdParty, jar, copy-installer-resource-files' description='Create Linux/Mac Zip Files'>
+	<property name='JarFolder' value='ThirdParty'/>
 
     <zip destfile="${dist.dir}/Miradi-Linux.zip">
 		<zipfileset dir="${installer.buildfiles.dir}" includes="README.txt"/>
@@ -589,7 +588,7 @@
 		<zipfileset dir="${installer.buildfiles.dir}" includes="LicenseOverview.txt"/>
     	<zipfileset dir="${dist.dir}" includes="miradi.jar"/>
 		<zipfileset dir="${dist.dir}" includes="${samples.marine.miradi.version}" />
-    	
+
     	<!-- ThirdParty jars -->
     	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='${JarFolder}' includes="BrowserLauncher*.jar" />
     	<zipfileset dir="${dist.temp.jars}/BrowserLauncher2/" prefix='${JarFolder}' includes="BrowserLauncher2-license.txt" />
@@ -636,11 +635,11 @@
     	<zipfileset dir="${dist.temp.jars}/shef/0.5/" prefix="source" includes="sam-src.jar" />
     	<zipfileset dir="${dist.temp.jars}/shef/0.5/" prefix="source" includes="jtidy-src.zip" />
 	</zip>
-	
+
 </target>
-	
+
 <!-- ================================================================== -->
-<!-- P O T                                            -->
+<!-- P O T                                            					-->
 <!-- ================================================================== -->
 <target name="pot" depends="init" description="Create Translatable POT file">
 	<property name="java_files" value="${dist.dir}/java_files.txt"/>
@@ -691,7 +690,7 @@
 </target>
 
 <!-- ================================================================== -->
-<!-- CREATE NEW PO                                            -->
+<!-- CREATE NEW PO                                            			-->
 <!--   
 	NOTE: You can only create ONE po file at a time
 	1. Create the new po property at the top of this file
@@ -965,106 +964,12 @@
 </target>
 
 <!-- ================================================================== -->
-<!-- M A C   A P P   B U N D L E                                        -->
+<!-- N O T A R I Z E  M A C   D M G   F I L E                           -->
 <!-- ================================================================== -->
-<target name="macappbundle" depends="" description="create a jar app bundle for the mac">
+<target name="notarize-macdmgfile" depends="installer" description="notarize mac dmg file">
 
-	<mkdir dir="${dist.mactree}" />
-	<delete>
-		<fileset dir="${dist.mactree}" includes="*" />
-	</delete>
-
-	<appbundler
-		debug="true"
-		jvmrequired="1.8"
-		outputdirectory="${dist.mactree}"
-		name="${mac.app.name}"
-		displayname="${mac.app.name}"
-		executableName="${mac.app.name}"
-		identifier="org.miradi.main.Miradi"
-		shortversion="${version.full}"
-		version="${version.timestamp}"
-		icon="${eam.icons}/miradi.icns"
-		mainclassname="org.miradi.main.Miradi"
-		plistClassPaths="$APP_ROOT/Contents/Java/miradi.jar,
-						 $APP_ROOT/Contents/Java/BrowserLauncher2-all-10rc4.jar,
-						 $APP_ROOT/Contents/Java/junit.jar,
-						 $APP_ROOT/Contents/Java/commons-lang3-3.1.jar,
-						 $APP_ROOT/Contents/Java/jcalendar-1.3.2.jar,
-						 $APP_ROOT/Contents/Java/miradi-jgraph-5.12.2.2b.jar,
-						 $APP_ROOT/Contents/Java/isorelax.jar,
-						 $APP_ROOT/Contents/Java/jing.jar,
-						 $APP_ROOT/Contents/Java/saxon.jar,
-						 $APP_ROOT/Contents/Java/xercesImpl.jar,
-						 $APP_ROOT/Contents/Java/xml-apis.jar,
-						 $APP_ROOT/Contents/Java/jortho.jar,
-						 $APP_ROOT/Contents/Java/martus-swing.jar,
-						 $APP_ROOT/Contents/Java/martus-utils.jar,
-						 $APP_ROOT/Contents/Java/jtidy-8.0.jar,
-						 $APP_ROOT/Contents/Java/sam.jar,
-						 $APP_ROOT/Contents/Java/shef.jar,
-						 $APP_ROOT/Contents/Java/swingx-0.9.7.jar,
-						 $APP_ROOT/Contents/Java/flatlaf-1.6.1.jar,
-						 $APP_ROOT/Contents/Java/flatlaf-intellij-themes-1.6.1.jar">
-
-		<arch name="x86_64"/>
-		<arch name="i386"/>
-
-		<classpath file="${dist.dir}/miradi.jar" />
-		<classpath file="${dist.temp.jars}/BrowserLauncher2/BrowserLauncher2-all-10rc4.jar" />
-		<classpath file="${dist.temp.jars}/JUnit/bin/junit.jar" />
-		<classpath file="${dist.temp.jars}/commons-lang3/3.1/commons-lang3-3.1.jar" />
-		<classpath file="${dist.temp.jars}/jcalendar-1.3.2/jcalendar-1.3.2.jar" />
-		<classpath file="${dist.temp.jars}/jgraph/miradi-jgraph-5.12.2.2b.jar" />
-		<classpath file="${dist.temp.jars}/jing/bin/isorelax.jar" />
-		<classpath file="${dist.temp.jars}/jing/bin/jing.jar" />
-		<classpath file="${dist.temp.jars}/jing/bin/saxon.jar" />
-		<classpath file="${dist.temp.jars}/jing/bin/xercesImpl.jar" />
-		<classpath file="${dist.temp.jars}/jing/bin/xml-apis.jar" />
-		<classpath file="${dist.temp.jars}/jortho/bin/jortho.jar" />
-		<classpath file="${dist.temp.jars}/martus-swing/bin/martus-swing.jar" />
-		<classpath file="${dist.temp.jars}/martus-utils/bin/martus-utils.jar" />
-		<classpath file="${dist.temp.jars}/shef/0.5/jtidy-8.0.jar" />
-		<classpath file="${dist.temp.jars}/shef/0.5/sam.jar" />
-		<classpath file="${dist.temp.jars}/shef/0.5/shef.jar" />
-		<classpath file="${dist.temp.jars}/swingx/0.9.7/swingx-0.9.7.jar" />
-		<classpath file="${dist.temp.jars}/flatlaf/flatlaf-1.6.1.jar" />
-		<classpath file="${dist.temp.jars}/flatlaf/flatlaf-intellij-themes-1.6.1.jar" />
-
-		<!-- Workaround as com.apple.mrj.application.apple.menu.about.name property may no longer work -->
-		<option value="-Xdock:name=${mac.app.name}"/>
-
-		<option value="-Dapple.laf.useScreenMenuBar=true"/>
-		<option value="-Dapple.awt.brushMetal=true"/>
-		<option value="-Dapple.awt.showGrowBox=true"/>
-		<option value="-Dapple.awt.antialiasing=true"/>
-		<option value="-Dapple.awt.textantialiasing"/>
-		<option value="-Dcom.apple.macos.use-file-dialog-packages=true"/>
-		<option value="-Dcom.apple.macos.useScreenMenuBar=true"/>
-		<option value="-Dcom.apple.mrj.application.apple.menu.about.name=${mac.app.name}"/>
-		<option value="-Dcom.apple.smallTabs=true"/>
-		<option value="-Dfile.encoding=UTF-8"/>
-
-		<option value="-Xmx521M" name="Xmx"/>
-	</appbundler>
-
-    <copy todir="${dist.mactree}">
-        <fileset dir="${installer.mac.dmgbuild.dir}">
-            <include name="**/*.*" />
-        </fileset>
-    </copy>
-
-</target>
-
-<!-- ================================================================== -->
-<!-- M A C   D M G   F I L E                                            -->
-<!-- ================================================================== -->
-<target name="macdmgfile" depends="macappbundle" description="create a mac dmg file">
     <property name="mac.build.temp.dir" value="/Users/${mac.build.user}/miradi-build-temp" />
-    <property name="mac.dmgbuild.settings" value="settings.py" />
-    <property name="mac.dmgbuild.background" value="background.png" />
     <property name="mac.build.dmg" value="Miradi-${version.full}.dmg" />
-    <property name="mac.build.dmg.name" value="Miradi ${version.full} Mac Install" />
 
     <!-- delete / create temp folder on mac build machine -->
     <echo message="Creating ${mac.build.temp.dir} folder on ${mac.build.user}@${mac.build.server}" />
@@ -1076,30 +981,26 @@
     </exec>
 
     <!-- copy over necessary files -->
-    <echo message="Copying files to ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}" />
+	<echo message="Copying files to ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}" />
     <exec executable="scp" failonerror="true">
         <arg value="-r"/>
-        <arg value="${dist.mactree}/${mac.app.name}.app"/>
-        <arg value="${dist.mactree}/${mac.dmgbuild.settings}"/>
-        <arg value="${dist.mactree}/${mac.dmgbuild.background}"/>
-        <arg value="${installer.buildfiles.dir}/README.txt"/>
-        <arg value="${installer.buildfiles.dir}/LICENSE.txt"/>
-        <arg value="${dist.dir}/${samples.marine.miradi.version}" />
+        <arg value="${dist.mactree}/${mac.build.dmg}"/>
         <arg value="${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}"/>
     </exec>
 
-    <!-- ssh to mac build machine and sign app, exec dmgbuild to create dmg -->
-    <echo message="Signing ${mac.app.name}.app and building ${mac.build.dmg}" />
+    <!-- ssh to mac build machine and notarize dmg -->
+    <echo message="Notarizing ${mac.build.dmg}" />
     <exec executable="ssh" failonerror="true">
         <arg value="${mac.build.user}@${mac.build.server}"/>
         <arg value="cd ${mac.build.temp.dir};
                     security unlock-keychain -p ${mac.build.password};
-                    codesign -s ${mac.build.certname} -f ${mac.build.temp.dir}/${mac.app.name}.app;
-                    /Users/${mac.build.user}/Library/Python/3.8/bin/dmgbuild -s ${mac.dmgbuild.settings} -D app=${mac.app.name}.app -D sample_project=${samples.marine.miradi.version} '${mac.build.dmg.name}' ${mac.build.dmg};
+                    xcrun notarytool submit ${mac.build.dmg} --keychain-profile ${macos.build.profile} --wait;
+                    xcrun stapler staple ${mac.build.dmg};
+                    xcrun stapler validate ${mac.build.dmg};
                     exit;"/>
     </exec>
 
-    <!-- copy back over built dmg -->
+    <!-- copy back over notarized dmg -->
     <echo message="Copying ${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}/${mac.build.dmg} to ${dist.dir}/${mac.build.dmg}" />
     <exec executable="scp" failonerror="true">
         <arg value="${mac.build.user}@${mac.build.server}:${mac.build.temp.dir}/${mac.build.dmg}"/>
@@ -1118,58 +1019,28 @@
 </target>
 
 <!-- ================================================================== -->
-<!-- win32installer                                                    -->
+<!-- I N S T A L L E R                                                  -->
 <!-- ================================================================== -->
-<target name="win32installer" depends="jar" description="Windows install4j installer build">
-    <install4j projectfile="${build.dir}/miradi.install4j">
+<target name="installer" depends="jar, copy-installer-resource-files" description="Windows / macos install4j installer build">
+    <install4j projectfile="${build.dir}/miradi.install4j" winKeystorePassword="${windows.build.certname.password}" macKeystorePassword="${macos.build.certname.password}">
         <variable name="version.full" value="${version.full}"/>
         <variable name="windows.setup.name" value="${windows.setup.name}"/>
+		<variable name="windows.build.certname.pfx" value="${windows.build.certname.pfx}"/>
+		<variable name="mac.build.dmg.name" value="Miradi ${version.full} Mac Install" />
+		<variable name="mac.app.name" value="${mac.app.name}" />
+		<variable name="macos.build.certname.p12" value="${macos.build.certname.p12}"/>
         <variable name="dist.dir" value="${dist.dir}"/>
 		<variable name="samples.marine.miradi.version" value="${samples.marine.miradi.version}"/>
         <variable name="dist.temp.jars" value="${dist.temp.jars}"/>
         <variable name="jres.path" value="${env.INSTALL4J.JRES.PATH}"/>
         <variable name="license" value="${env.INSTALL4J.LICENSE}"/>
     </install4j>
-
-	<!-- sign built exe -->
-	<echo message="Signing ${windows.setup.name}.exe" />
-
-	<exec executable="signtool" failonerror="true" osfamily="windows">
-		<arg line="sign /t http://timestamp.digicert.com /f ${windows.build.certname.pfx} /p ${windows.build.certname.password} ${dist.dir}/${windows.setup.name}.exe"/>
-	</exec>
-
-	<!--
-	<exec executable="osslsigncode" failonerror="true" osfamily="unix">
-		<arg value="-certs"/>
-		<arg value="${windows.build.certname.spc}"/>
-		<arg value="-key"/>
-		<arg value="${windows.build.certname.pvk}"/>
-		<arg value="-pass"/>
-		<arg value="${windows.build.certname.password}"/>
-		<arg value="-n"/>
-		<arg value="'Miradi'"/>
-		<arg value="-i"/>
-		<arg value="http://${miradi.web.domain}"/>
-		<arg value="-t"/>
-		<arg value="http://timestamp.verisign.com/scripts/timstamp.dll"/>
-		<arg value="-in"/>
-		<arg value="${dist.dir}/${windows.setup.name}.exe"/>
-		<arg value="-out"/>
-		<arg value="${dist.dir}/${windows.setup.name}_signed.exe"/>
-	</exec>
-	-->
-
-	<!-- clean up -->
-	<!--
-	<delete file="${dist.dir}/${windows.setup.name}.exe"/>
-	<move file="${dist.dir}/${windows.setup.name}_signed.exe" tofile="${dist.dir}/${windows.setup.name}.exe"/>
-	-->
 </target>
 
 <!-- ================================================================== -->
 <!-- R E L E A S E                                                      -->
 <!-- ================================================================== -->
-<target name="release" depends="source, zips, macdmgfile, win32installer">
+<target name="release" depends="source, zips, installer, notarize-macdmgfile">
     <echo message="Release Built"/>
     <echo message="REMEMBER TO TAG THIS RELEASE WITH ${version.timestamp} !"/>
 </target>
