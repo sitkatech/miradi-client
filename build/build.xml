@@ -968,7 +968,7 @@
 <target name="notarize-macdmgfile" depends="installer" description="notarize mac dmg file">
 
     <property name="mac.build.temp.dir" value="/Users/${mac.build.user}/miradi-build-temp" />
-    <property name="mac.build.dmg" value="Miradi-${version.full}.dmg" />
+    <property name="mac.build.dmg" value="Miradi-${version.full.installer}.dmg" />
 
     <!-- delete / create temp folder on mac build machine -->
     <echo message="Creating ${mac.build.temp.dir} folder on ${mac.build.user}@${mac.build.server}" />
