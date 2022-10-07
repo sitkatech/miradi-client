@@ -69,7 +69,9 @@ public class AboutDoer extends MainWindowDoer
 		try
 		{
 			String translationVersion = VersionConstants.getVersionAndTimestamp();
-			textToReturn = EAM.substitute(text, template, translationVersion);
+			String platform = System.getProperty("sun.arch.data.model");
+			String version = translationVersion + " (" + platform + "-bit)";
+			textToReturn = EAM.substitute(text, template, version);
 		}
 		catch (Exception e)
 		{
