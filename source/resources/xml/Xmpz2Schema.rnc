@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Mon Aug 08 11:31:52 BST 2022 $
-# $LastChangedRevision: 246 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/246'
+# $LastChangedDate: Thu Aug 25 07:20:59 BST 2022 $
+# $LastChangedRevision: 243 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/243'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -1129,7 +1129,7 @@ vocabulary_result_report_status = ''|'NotKnown'|'NotYet'|'NotAchieved'|'MinorIss
 vocabulary_scope_box_type = 'Biodiversity'|'HumanWellbeing'
 vocabulary_status = ''|'1'|'2'|'3'|'4'
 vocabulary_strategy_standard_classification_v11_code = ''|'A10'|'A10.10'|'A10.30'|'A20'|'A20.10'|'A20.20'|'A20.30'|'A30'|'A30.10'|'A30.20'|'A30.30'|'A30.40'|'A40'|'A40.10'|'A40.20'|'A40.30'|'A50'|'A50.10'|'A50.20'|'A50.30'|'A50.40'|'A60'|'A60.10'|'A60.20'|'A60.30'|'A60.40'|'A60.50'|'A70'|'A70.10'|'A70.20'|'A70.30'
-vocabulary_strategy_standard_classification_v20_code = ''|'S10'|'S10.10'|'S10.10.10'|'S10.10.20'|'S10.20'|'S10.20.10'|'S10.20.20'|'S10.20.30'|'S20'|'S20.10'|'S20.10.10'|'S20.10.20'|'S20.20'|'S20.20.10'|'S20.20.20'|'S20.20.30'|'S20.30'|'S20.30.10'|'S20.30.20'|'S20.30.30'|'S20.30.40'|'S20.30.50'|'S30'|'S30.10'|'S30.10.10'|'S30.10.20'|'S30.10.30'|'S30.10.40'|'S30.10.50'|'S30.20'|'S30.20.10'|'S30.20.20'|'S30.30'|'S30.30.10'|'S30.30.20'|'S30.40'|'S30.40.10'|'S30.40.20'|'S30.50'|'S30.50.10'|'S30.50.20'|'S30.50.30'|'S30.50.40'
+vocabulary_strategy_standard_classification_v20_code = ''|'A'|'A.1'|'A.1.1'|'A.1.2'|'A.2'|'A.2.1'|'A.2.2'|'A.2.3'|'B'|'B.3'|'B.3.1'|'B.3.2'|'B.4'|'B.4.1'|'B.4.2'|'B.4.3'|'B.5'|'B.5.1'|'B.5.2'|'B.5.3'|'B.5.4'|'B.5.5'|'C'|'C.6'|'C.6.1'|'C.6.2'|'C.6.3'|'C.6.4'|'C.6.5'|'C.7'|'C.7.1'|'C.7.2'|'C.8'|'C.8.1'|'C.8.2'|'C.9'|'C.9.1'|'C.9.2'|'C.10'|'C.10.1'|'C.10.2'|'C.10.3'|'C.10.4'
 vocabulary_strategy_feasibility_rating_code = ''|'1'|'2'|'3'|'4'
 vocabulary_strategy_impact_rating_code = ''|'1'|'2'|'3'|'4'
 vocabulary_planning_tree_objective_strategy_node_order = 'ObjectiveContainsStrategy'|'StrategyContainsObjective'

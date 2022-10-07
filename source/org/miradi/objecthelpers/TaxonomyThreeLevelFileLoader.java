@@ -62,8 +62,10 @@ public class TaxonomyThreeLevelFileLoader extends TwoLevelFileLoader
                 level3Index = 0;
                 prevLevel1Code = getLevel1Code(code);
 
-                String taxonomyLevelText = ++level1Index + " " + level1Descriptor;
-                taxonomyItems.add(new ThreeLevelEntry(getLevel1Code(code), taxonomyLevelText, "", longDescription, 1, ""));
+                ++level1Index;
+                String level1Code = getLevel1Code(code);
+                String taxonomyLevelText = level1Code + " " + level1Descriptor;
+                taxonomyItems.add(new ThreeLevelEntry(level1Code, taxonomyLevelText, "", longDescription, 1, ""));
             }
 
             if(!getLevel2Code(code).equals(prevLevel2Code))
@@ -71,12 +73,13 @@ public class TaxonomyThreeLevelFileLoader extends TwoLevelFileLoader
                 level3Index = 0;
                 prevLevel2Code = getLevel2Code(code);
 
-                String taxonomyLevel2Text = " " + level1Index + "." + ++level2Index + " " + level2Descriptor;
+                ++level2Index;
+                String taxonomyLevel2Text = " " + getLevel2CodeLabel(code) + " " + level2Descriptor;
                 taxonomyItems.add(new ThreeLevelEntry(getLevel2Code(code), taxonomyLevel2Text, "", longDescription, 2, prevLevel1Code));
             }
 
             ++level3Index;
-            String taxonomyLevel3Text = " " + level1Index + "." + level2Index + "." + level3Index + " " + level3Descriptor;
+            String taxonomyLevel3Text = " " + getLevel3CodeLabel(code) + " " + level3Descriptor;
             TwoLevelEntry entry = new ThreeLevelEntry(code, taxonomyLevel3Text, "", longDescription, 3, prevLevel2Code);
             taxonomyItems.add(entry);
         }
@@ -92,6 +95,16 @@ public class TaxonomyThreeLevelFileLoader extends TwoLevelFileLoader
     private String getLevel2Code(String code)
     {
         return getLevel1Code(code) + "." + getCodeParts(code)[1];
+    }
+
+    private String getLevel2CodeLabel(String code)
+    {
+        return getCodeParts(code)[1];
+    }
+
+    private String getLevel3CodeLabel(String code)
+    {
+        return getLevel2CodeLabel(code) + "." + getCodeParts(code)[2];
     }
 
     private String[] getCodeParts(String code)
