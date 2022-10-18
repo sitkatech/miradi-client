@@ -21,11 +21,18 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2;
 
 
+import org.martus.util.UnicodeWriter;
 import org.miradi.exceptions.*;
 import org.miradi.files.AbstractMpfFileFilter;
 import org.miradi.main.ProjectFileImporterHelper;
 import org.miradi.main.EAM;
 import org.miradi.main.Miradi;
+import org.miradi.migrations.MigrationResult;
+import org.miradi.migrations.RawProject;
+import org.miradi.migrations.RawProjectLoader;
+import org.miradi.migrations.forward.MigrationManager;
+import org.miradi.project.Project;
+import org.miradi.project.RawProjectSaver;
 import org.miradi.utils.FileUtilities;
 import org.miradi.utils.Translation;
 import org.miradi.views.umbrella.Xmpz2ProjectImporter;
@@ -119,27 +126,31 @@ public class Xmpz2CommandLineMigrator
 
     private static void migrateProject(File projectFile) throws Exception
     {
-//        MigrationManager migrationManager = new MigrationManager();
-//        migrationManager.validateProjectVersion(projectFile);
-//
-//        if (migrationManager.needsMigration(projectFile))
-//        {
-//            RawProject rawProjectToMigrate = RawProjectLoader.loadProject(projectFile);
-//            MigrationResult migrationResult = migrationManager.migrate(rawProjectToMigrate, Project.getMiradiVersionRange());
-//            if (migrationResult.didLoseData())
-//            {
-//
-//            }
-//
-//            if (migrationResult.didSucceed())
-//            {
-//                MigrationManager.createBackup(projectFile);
-//                String migratedProjectAsString = RawProjectSaver.saveProject(rawProjectToMigrate);
-//                UnicodeWriter fileWriter = new UnicodeWriter(projectFile);
-//                fileWriter.write(migratedProjectAsString);
-//                fileWriter.close();
-//            }
-//        }
+        MigrationManager migrationManager = new MigrationManager();
+        migrationManager.validateProjectVersion(projectFile);
+
+        if (migrationManager.needsMigration(projectFile))
+        {
+            RawProject rawProjectToMigrate = RawProjectLoader.loadProject(projectFile);
+            MigrationResult migrationResult = migrationManager.migrate(rawProjectToMigrate, Project.getMiradiVersionRange());
+            if (!migrationResult.didSucceed())
+            {
+                String message = EAM.text("Could not migrate");
+
+                if (migrationResult.cannotMigrate())
+                    message = migrationResult.getUserFriendlyGroupedCannotMigrateMessagesAsString();
+
+                if (migrationResult.didLoseData())
+                    message = migrationResult.getUserFriendlyGroupedDataLossMessagesAsString();
+
+                throw new Exception(EAM.text("Migration failed: " + message));
+            }
+
+            String migratedProjectAsString = RawProjectSaver.saveProject(rawProjectToMigrate);
+            UnicodeWriter fileWriter = new UnicodeWriter(projectFile);
+            fileWriter.write(migratedProjectAsString);
+            fileWriter.close();
+        }
     }
 
     private static void exportProject(File projectFile) throws Exception
