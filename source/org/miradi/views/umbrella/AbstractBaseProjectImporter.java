@@ -48,14 +48,20 @@ import org.miradi.utils.MiradiZipFile;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.noproject.NoProjectView;
 
-public abstract class AbstractProjectImporter
+public abstract class AbstractBaseProjectImporter
 {	
-	public AbstractProjectImporter(MainWindow mainWindowToUse)
+	public AbstractBaseProjectImporter(MainWindow mainWindowToUse)
 	{
-		mainWindow = mainWindowToUse;
+		this(mainWindowToUse, false);
 	}
 	
-	public void importProject() throws Exception 
+	public AbstractBaseProjectImporter(MainWindow mainWindowToUse, boolean commandLineModeToUse)
+	{
+		mainWindow = mainWindowToUse;
+		commandLineMode = commandLineModeToUse;
+	}
+
+	public void importProject() throws Exception
 	{
 		try
 		{
@@ -153,7 +159,7 @@ public abstract class AbstractProjectImporter
 		
 		possiblyNotifyUserOfAutomaticMigration(fileToImport);
 		ProgressDialog progressDialog = new ProgressDialog(getMainWindow(), EAM.text("Importing..."));
-		Worker worker = new Worker(progressDialog, projectDirectory, fileToImport, proposedProjectFileName);
+		ImportProjectBackgroundWorker worker = new ImportProjectBackgroundWorker(progressDialog, projectDirectory, fileToImport, proposedProjectFileName);
 		progressDialog.doWorkInBackgroundWhileShowingProgress(worker);
 		
 		refreshNoProjectPanel();
@@ -162,9 +168,9 @@ public abstract class AbstractProjectImporter
 		return worker.getImportedFile();
 	}
 	
-	private class Worker extends MiradiBackgroundWorkerThread
+	private class ImportProjectBackgroundWorker extends MiradiBackgroundWorkerThread
 	{
-		public Worker(ProgressInterface progressInterfaceToUse, File projectDirectory, File fileToImportToUse, String projectFileNameToUse) throws Exception
+		public ImportProjectBackgroundWorker(ProgressInterface progressInterfaceToUse, File projectDirectory, File fileToImportToUse, String projectFileNameToUse) throws Exception
 		{
 			super(progressInterfaceToUse);
 			
@@ -237,11 +243,19 @@ public abstract class AbstractProjectImporter
 		EAM.showHtmlInfoMessageOkDialog(AUTO_MIGRATION_MESSAGE_FILE_NAME);
 	}
 
-	protected MainWindow getMainWindow()
+	protected MainWindow getMainWindow() throws Exception
 	{
+		if (commandLineMode)
+			throw new Exception(EAM.text("Cannot get main window in command-line mode."));
+
 		return mainWindow;
 	}
-	
+
+	protected boolean getCommandLineMode()
+	{
+		return commandLineMode;
+	}
+
 	private static final String AUTO_MIGRATION_MESSAGE_FILE_NAME = "AutoMigrationMessage.html";
 
 	private static String currentDirectory = UiFileChooser.getHomeDirectoryFile().getPath();
@@ -249,11 +263,12 @@ public abstract class AbstractProjectImporter
 			  "Please make sure you are running the latest version of Miradi. <br>" +
 			  "To download the latest version of Miradi, go to www.miradi.org.");
 	
-	protected abstract void createProject(File importFile, File newProjectFile, ProgressInterface progressIndicator)  throws Exception;
+	public abstract void createProject(File importFile, File newProjectFile, ProgressInterface progressIndicator)  throws Exception;
 	
 	protected abstract GenericMiradiFileFilter[] getFileFilters();
 	
 	abstract protected void possiblyNotifyUserOfAutomaticMigration(File file) throws Exception;
 	
 	private MainWindow mainWindow;
+	private boolean commandLineMode;
 }

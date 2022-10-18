@@ -36,6 +36,6 @@ public class ImportXmpz2Doer extends ViewDoer
 		if (!isAvailable())
 			return;
 		
-		new Xmpz2ProjectImporter(getMainWindow()).importProject();
+		new Xmpz2ProjectImporter(getMainWindow(), false).importProject();
 	}
 }

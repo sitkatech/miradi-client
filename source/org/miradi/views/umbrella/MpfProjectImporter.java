@@ -28,7 +28,7 @@ import org.miradi.utils.GenericMiradiFileFilter;
 import org.miradi.utils.MpfFileFilterWithDirectories;
 import org.miradi.utils.ProgressInterface;
 
-public class MpfProjectImporter extends AbstractProjectImporter
+public class MpfProjectImporter extends AbstractBaseProjectImporter
 {
 	public MpfProjectImporter(MainWindow mainWindowToUse)
 	{
@@ -36,7 +36,7 @@ public class MpfProjectImporter extends AbstractProjectImporter
 	}
 
 	@Override
-	protected void createProject(File importFile, File newProjectFile, ProgressInterface progressIndicator) throws Exception
+	public void createProject(File importFile, File newProjectFile, ProgressInterface progressIndicator) throws Exception
 	{
 		FileUtilities.copyFile(importFile, newProjectFile);
 	}

@@ -30,7 +30,7 @@ import org.miradi.main.MainWindow;
 import org.miradi.project.MpzToMpfConverter;
 import org.miradi.utils.*;
 
-public class MpzProjectImporter extends AbstractProjectImporter
+public class MpzProjectImporter extends AbstractBaseProjectImporter
 {
 	public MpzProjectImporter(MainWindow mainWindowToUse)
 	{
@@ -38,7 +38,7 @@ public class MpzProjectImporter extends AbstractProjectImporter
 	}
 
 	@Override
-	protected void createProject(File importFile, File newProjectFile, ProgressInterface progressIndicator) throws Exception
+	public void createProject(File importFile, File newProjectFile, ProgressInterface progressIndicator) throws Exception
 	{
 		ProgressDialog dialog = new ProgressDialog(getMainWindow(), EAM.text("Importing MPZ"));
 		MiradiBackgroundWorkerThread worker = new ImportMpzWorker(importFile, newProjectFile, dialog);

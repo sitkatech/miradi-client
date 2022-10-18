@@ -20,7 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.main;
 
 import com.formdev.flatlaf.FlatLightLaf;
-import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatGitHubIJTheme;
 import org.miradi.exceptions.UnsupportedNewVersionSchemaException;
 import org.miradi.questions.AllLanguagesQuestion;
 import org.miradi.questions.ChoiceItem;
@@ -29,7 +28,7 @@ import org.miradi.questions.StaticQuestionManager;
 import org.miradi.utils.LanguagePackFileFilter;
 import org.miradi.utils.StringUtilities;
 import org.miradi.utils.Translation;
-import org.miradi.views.umbrella.AbstractProjectImporter;
+import org.miradi.views.umbrella.AbstractBaseProjectImporter;
 
 import javax.swing.*;
 import java.io.File;
@@ -331,11 +330,11 @@ public class Miradi
 				EAM.setMainWindow(MainWindow.create());
 				getMainWindow().start(commandLineArgs);
 				
-				CommandLineProjectFileImporterHelper.importIfRequested(getMainWindow(), commandLineArgs);
+				ProjectFileImporterHelper.importIfRequested(getMainWindow(), commandLineArgs);
 			}
 			catch (UnsupportedNewVersionSchemaException e)
 			{
-				AbstractProjectImporter.logTooNewVersionException(e);
+				AbstractBaseProjectImporter.logTooNewVersionException(e);
 				System.exit(1);
 			}
 			catch(Exception e)

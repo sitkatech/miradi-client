@@ -20,8 +20,6 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.views.umbrella;
 
-import java.io.File;
-
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
@@ -31,11 +29,13 @@ import org.miradi.utils.MiradiZipFile;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 
-abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
+import java.io.File;
+
+abstract public class AbstractZippedXmlImporter extends AbstractBaseProjectImporter
 {
-	public AbstractZippedXmlImporter(MainWindow mainWindowToUse)
+	public AbstractZippedXmlImporter(MainWindow mainWindowToUse, boolean commandLineModeToUse)
 	{
-		super(mainWindowToUse);
+		super(mainWindowToUse, commandLineModeToUse);
 	}
 	
 	protected ImportXmlProjectResult importProjectFromXmlEntry(MiradiZipFile zipFile, ProgressInterface progressIndicator) throws Exception
@@ -74,9 +74,12 @@ abstract public class AbstractZippedXmlImporter extends AbstractProjectImporter
 		return new GenericMiradiFileFilter[] {createFileFilter()};
 	}
 
+	@Override
+	protected void possiblyNotifyUserOfAutomaticMigration(File file) throws Exception
+	{
+	}
+
 	abstract protected GenericMiradiFileFilter createFileFilter();
-	
-	abstract protected void createOrOpenProject(Project projectToFill, File projectFile) throws Exception;
 
 	abstract protected ImportXmlProjectResult importProjectXml(Project projectToFill, MiradiZipFile zipFile, InputStreamWithSeek projectAsInputStream, ProgressInterface progressIndicator) throws Exception;
 

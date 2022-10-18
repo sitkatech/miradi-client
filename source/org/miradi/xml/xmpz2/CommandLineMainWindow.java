@@ -1,4 +1,4 @@
-/* 
+/*
 Copyright 2005-2022, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
@@ -6,7 +6,7 @@ Material developed between 2005-2013 is jointly copyright by Beneficent Technolo
 This file is part of Miradi
 
 Miradi is free software: you can redistribute it and/or modify
-it under the terms of the GNU General Public License version 3, 
+it under the terms of the GNU General Public License version 3,
 as published by the Free Software Foundation.
 
 Miradi is distributed in the hope that it will be useful,
@@ -15,34 +15,16 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with Miradi.  If not, see <http://www.gnu.org/licenses/>. 
-*/ 
+along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
-package org.miradi.utils;
-
-import javax.swing.filechooser.FileFilter;
+package org.miradi.xml.xmpz2;
 
 import org.miradi.main.MainWindow;
 
-public class Xmpz2ZipFileChooser extends MiradiFileSaveChooser
+public class CommandLineMainWindow extends MainWindow
 {
-    public Xmpz2ZipFileChooser(MainWindow mainWindow)
+    public CommandLineMainWindow() throws Exception
     {
-        super(mainWindow);
-        setOptionalSelectedFile(getDefaultProjectExportSelectedFile());
     }
-
-	@Override
-	public FileFilter[] getFileFilter()
-	{
-		return new FileFilter[] {new Xmpz2FileFilter()};
-	}
-	
-	@Override
-	protected String getFileExtensionLabel()
-	{
-		return XMPZ_UI_EXTENSION_TAG;
-	}
-
-	public static final String XMPZ_UI_EXTENSION_TAG = "XMPZ2";
 }
