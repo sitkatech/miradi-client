@@ -21,21 +21,29 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2;
 
 
+import org.martus.util.UnicodeReader;
+import org.martus.util.UnicodeStringReader;
 import org.martus.util.UnicodeWriter;
-import org.miradi.exceptions.*;
+import org.miradi.exceptions.FutureSchemaVersionException;
+import org.miradi.exceptions.OldSchemaVersionException;
+import org.miradi.exceptions.ProjectFileTooNewException;
+import org.miradi.exceptions.ProjectFileTooOldException;
 import org.miradi.files.AbstractMpfFileFilter;
-import org.miradi.main.ProjectFileImporterHelper;
 import org.miradi.main.EAM;
 import org.miradi.main.Miradi;
+import org.miradi.main.ProjectFileImporterHelper;
 import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.RawProjectLoader;
 import org.miradi.migrations.forward.MigrationManager;
 import org.miradi.project.Project;
+import org.miradi.project.ProjectLoader;
 import org.miradi.project.RawProjectSaver;
 import org.miradi.utils.FileUtilities;
 import org.miradi.utils.Translation;
+import org.miradi.utils.Xmpz2ZipFileChooser;
 import org.miradi.views.umbrella.Xmpz2ProjectImporter;
+import org.miradi.views.umbrella.doers.Xmpz2ProjectExportDoer;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -44,8 +52,10 @@ import java.nio.file.Paths;
 
 public class Xmpz2CommandLineMigrator
 {
-    public static void main(String[] args)
+    public static void main(String[] args) throws Exception
     {
+        int statusCode = 1;
+
         try
         {
             Miradi.addThirdPartyJarsToClasspath();
@@ -78,34 +88,36 @@ public class Xmpz2CommandLineMigrator
 
             migrateProject(newProjectFile);
 
-            // TODO: re-export project...
+            exportProject(newProjectFile);
 
 			System.out.println("Project successfully migrated");
+
+            statusCode = 0;
         }
         catch (FileNotFoundException e)
         {
             System.out.println("Project not found");
-            System.exit(1);
+            throw new Exception(e.getMessage(), e);
         }
         catch (ProjectFileTooOldException | OldSchemaVersionException e)
         {
             System.out.println("Project too old for migration");
-            System.exit(1);
+            throw new Exception(e.getMessage(), e);
         }
         catch (ProjectFileTooNewException | FutureSchemaVersionException e)
         {
             System.out.println("Project too new for migration");
-            System.exit(1);
+            throw new Exception(e.getMessage(), e);
         }
         catch(Exception e)
         {
             e.printStackTrace();
-            System.exit(1);
+            throw new Exception(e.getMessage(), e);
         }
         finally
         {
             EAM.setDefaultHomeDirectoryPreference();
-            System.exit(0);
+            System.exit(statusCode);
         }
     }
 
@@ -155,5 +167,19 @@ public class Xmpz2CommandLineMigrator
 
     private static void exportProject(File projectFile) throws Exception
     {
+        String projectFileNameWithoutExt = FileUtilities.fileNameWithoutExtension(projectFile.getName());
+        String exportedProjectFileName = projectFileNameWithoutExt + "-migrated." + Xmpz2ZipFileChooser.XMPZ_UI_EXTENSION_TAG;
+
+        File projectDirectory = projectFile.getParentFile();
+        Files.deleteIfExists(Paths.get(projectDirectory.getAbsolutePath(), exportedProjectFileName));
+        File exportedProjectFile = new File(projectDirectory, exportedProjectFileName);
+
+        String contents = UnicodeReader.getFileContents(projectFile);
+        Project project = new Project();
+        ProjectLoader.loadProject(new UnicodeStringReader(contents), project);
+        project.finishOpeningAfterLoad(projectFile);
+
+        Xmpz2ProjectExportDoer exporter = new Xmpz2ProjectExportDoer();
+        exporter.export(project, exportedProjectFile, new CommandLineProgressIndicator());
     }
 }

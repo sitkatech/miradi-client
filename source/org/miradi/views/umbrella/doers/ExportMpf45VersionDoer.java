@@ -28,6 +28,7 @@ import org.miradi.migrations.RawProjectLoader;
 import org.miradi.migrations.VersionRange;
 import org.miradi.migrations.forward.MigrationManager;
 import org.miradi.migrations.forward.MigrationTo72;
+import org.miradi.project.Project;
 import org.miradi.project.ProjectSaver;
 import org.miradi.project.RawProjectSaver;
 import org.miradi.utils.MiradiFileSaveChooser;
@@ -47,10 +48,10 @@ public class ExportMpf45VersionDoer extends AbstractFileSaverDoer
 	}
 
 	@Override
-	protected boolean doWork(File destinationFile, ProgressInterface progressInterface) throws Exception
+	protected boolean doWork(Project project, File destinationFile, ProgressInterface progressInterface) throws Exception
 	{
 		initializeSingleStepSaveProgressInterface(progressInterface);
-		String mpfSnapShot = ProjectSaver.createSnapShot(getProject());
+		String mpfSnapShot = ProjectSaver.createSnapShot(project);
 		MigrationManager migrationManager = new MigrationManager();
 		RawProject rawProjectToMigrate = RawProjectLoader.loadProject(mpfSnapShot);
 		MigrationResult migrationResult = migrationManager.migrate(rawProjectToMigrate, new VersionRange(MigrationTo72.VERSION_TO));

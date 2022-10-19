@@ -719,13 +719,13 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 		if(projectFile.exists())
 			title = EAM.text("Open Project");
 		ProgressDialog progressDialog = new ProgressDialog(this, title);
-		ProjectOpenWorker worker = new ProjectOpenWorker(progressDialog, project, projectFile);
+		OpenProjectBackgroundWorker worker = new OpenProjectBackgroundWorker(progressDialog, project, projectFile);
 		progressDialog.doWorkInBackgroundWhileShowingProgress(worker);
 	}
 	
-	private static class ProjectOpenWorker extends MiradiBackgroundWorkerThread
+	private static class OpenProjectBackgroundWorker extends MiradiBackgroundWorkerThread
 	{
-		public ProjectOpenWorker(ProgressInterface progressInterfaceToUse, Project projectToUse, File projectFileToUse)
+		public OpenProjectBackgroundWorker(ProgressInterface progressInterfaceToUse, Project projectToUse, File projectFileToUse)
 		{
 			super(progressInterfaceToUse);
 			
