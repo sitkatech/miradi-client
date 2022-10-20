@@ -62,7 +62,6 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 			addSchemaToZip(zipOut);
 			progressInterface.incrementProgress();
 
-			// TODO: MS-2446 - temp omit diagrams (due to issues with mainWindow refs, etc.)
 			if (!(progressInterface instanceof CommandLineProgressIndicator))
 			{
 				addDiagramImagesToZip(project, zipOut);

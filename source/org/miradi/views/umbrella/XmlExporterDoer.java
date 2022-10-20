@@ -123,7 +123,6 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 		ByteArrayOutputStream byteOut = new ByteArrayOutputStream();
 		try
 		{
-			// TODO: MS-2446 - need variant that takes current project...
 			final BufferedImage diagramImage = BufferedImageFactory.createImageFromDiagram(getMainWindow(), diagramObject);
 			new SaveImagePngDoer().saveImage(byteOut, diagramImage);
 			createZipEntry(zipOut, IMAGES_DIR_NAME_IN_ZIP + imageName, byteOut.toByteArray());

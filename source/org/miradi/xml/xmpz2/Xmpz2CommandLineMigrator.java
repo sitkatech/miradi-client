@@ -40,15 +40,22 @@ import org.miradi.project.Project;
 import org.miradi.project.ProjectLoader;
 import org.miradi.project.RawProjectSaver;
 import org.miradi.utils.FileUtilities;
+import org.miradi.utils.MiradiZipFile;
 import org.miradi.utils.Translation;
 import org.miradi.utils.Xmpz2ZipFileChooser;
+import org.miradi.views.umbrella.XmlExporterDoer;
 import org.miradi.views.umbrella.Xmpz2ProjectImporter;
 import org.miradi.views.umbrella.doers.Xmpz2ProjectExportDoer;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.Enumeration;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipOutputStream;
 
 public class Xmpz2CommandLineMigrator
 {
@@ -88,7 +95,9 @@ public class Xmpz2CommandLineMigrator
 
             migrateProject(newProjectFile);
 
-            exportProject(newProjectFile);
+            File exportedProjectFile = exportProject(newProjectFile);
+
+            copyExistingDiagramImages(projectFile, exportedProjectFile);
 
 			System.out.println("Project successfully migrated");
 
@@ -165,10 +174,10 @@ public class Xmpz2CommandLineMigrator
         }
     }
 
-    private static void exportProject(File projectFile) throws Exception
+    private static File exportProject(File projectFile) throws Exception
     {
         String projectFileNameWithoutExt = FileUtilities.fileNameWithoutExtension(projectFile.getName());
-        String exportedProjectFileName = projectFileNameWithoutExt + "-migrated." + Xmpz2ZipFileChooser.XMPZ_UI_EXTENSION_TAG;
+        String exportedProjectFileName = projectFileNameWithoutExt + "-exported." + Xmpz2ZipFileChooser.XMPZ_UI_EXTENSION_TAG;
 
         File projectDirectory = projectFile.getParentFile();
         Files.deleteIfExists(Paths.get(projectDirectory.getAbsolutePath(), exportedProjectFileName));
@@ -181,5 +190,59 @@ public class Xmpz2CommandLineMigrator
 
         Xmpz2ProjectExportDoer exporter = new Xmpz2ProjectExportDoer();
         exporter.export(project, exportedProjectFile, new CommandLineProgressIndicator());
+
+        return exportedProjectFile;
+    }
+
+    private static void copyExistingDiagramImages(File originalProjectFile, File migratedProjectFile) throws Exception
+    {
+        String originalProjectFileNameWithoutExt = FileUtilities.fileNameWithoutExtension(originalProjectFile.getName());
+        String updatedProjectFileName = originalProjectFileNameWithoutExt + "-migrated." + Xmpz2ZipFileChooser.XMPZ_UI_EXTENSION_TAG;
+
+        File projectDirectory = originalProjectFile.getParentFile();
+        Files.deleteIfExists(Paths.get(projectDirectory.getAbsolutePath(), updatedProjectFileName));
+        File updatedProjectFile = new File(projectDirectory, updatedProjectFileName);
+
+        ZipOutputStream updatedProjectFileZipOutputStream = new ZipOutputStream(new FileOutputStream(updatedProjectFile));
+
+        MiradiZipFile originalProjectZipFile = new MiradiZipFile(originalProjectFile);
+        Enumeration<? extends ZipEntry> originalProjectZipFileEntries = originalProjectZipFile.entries();
+        while (originalProjectZipFileEntries.hasMoreElements())
+        {
+            ZipEntry zipEntry = originalProjectZipFileEntries.nextElement();
+            if (zipEntry.getName().startsWith(XmlExporterDoer.IMAGES_DIR_NAME_IN_ZIP))
+            {
+                copyZipEntry(originalProjectZipFile, zipEntry, updatedProjectFileZipOutputStream);
+                updatedProjectFileZipOutputStream.closeEntry();
+            }
+        }
+
+        MiradiZipFile migratedProjectZipFile = new MiradiZipFile(migratedProjectFile);
+        Enumeration<? extends ZipEntry> migratedProjectZipFileEntries = migratedProjectZipFile.entries();
+        while (migratedProjectZipFileEntries.hasMoreElements())
+        {
+            ZipEntry zipEntry = migratedProjectZipFileEntries.nextElement();
+            copyZipEntry(migratedProjectZipFile, zipEntry, updatedProjectFileZipOutputStream);
+            updatedProjectFileZipOutputStream.closeEntry();
+        }
+
+        updatedProjectFileZipOutputStream.close();
+    }
+
+    private static void copyZipEntry(MiradiZipFile originalZipFile, ZipEntry zipEntry, ZipOutputStream zipOutputStream) throws Exception
+    {
+        byte[] buffer = new byte[512];
+
+        ZipEntry copiedZipEntry = new ZipEntry(zipEntry);
+        copiedZipEntry.setCompressedSize(-1);
+        zipOutputStream.putNextEntry(copiedZipEntry);
+        InputStream inputStream = originalZipFile.getInputStream(zipEntry);
+        while (0 < inputStream.available())
+        {
+            int inputStreamBytes = inputStream.read(buffer);
+            if (inputStreamBytes > 0)
+                zipOutputStream.write(buffer,0, inputStreamBytes);
+        }
+        inputStream.close();
     }
 }
