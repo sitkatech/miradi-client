@@ -97,6 +97,9 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 		ORefList allDiagramObjectRefs = getProject().getAllDiagramObjectRefs();
 		for (int refIndex = 0; refIndex < allDiagramObjectRefs.size(); ++refIndex)
 		{
+			if (refIndex == 0)
+				createZipDirectory(zipOut, IMAGES_DIR_NAME_IN_ZIP);
+
 			DiagramObject diagramObject = (DiagramObject) getProject().findObject(allDiagramObjectRefs.get(refIndex));
 			ORef diagramRef = diagramObject.getRef();
 			String imageName = createImageFileName(refIndex, diagramRef);
@@ -137,7 +140,14 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 		createZipEntry(out, entryName, contents.getBytes("UTF-8"));
 
 	}
-	
+
+	protected void createZipDirectory(ZipOutputStream zipOut, String directoryName) throws IOException
+	{
+		ZipEntry entry = new ZipEntry(directoryName);
+		zipOut.putNextEntry(entry);
+		zipOut.closeEntry();
+	}
+
 	protected void createZipEntry(ZipOutputStream zipOut, String entryName, byte[] bytes) throws FileNotFoundException, IOException
 	{
 		ZipEntry entry = new ZipEntry(entryName);
