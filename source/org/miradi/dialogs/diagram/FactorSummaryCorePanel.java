@@ -69,7 +69,7 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		}
 		if (factorToEdit.isDirectThreat())
 		{
-			addField(createRadioButtonEditorFieldWithHierarchies(CauseSchema.getObjectType(), Cause.TAG_TAXONOMY_CODE, new ThreatClassificationQuestion()));
+			addField(createRadioButtonEditorFieldWithHierarchies(CauseSchema.getObjectType(), Cause.TAG_STANDARD_CLASSIFICATION_V11_CODE, new ThreatClassificationQuestionV11()));
 		}
 		if (factorToEdit.isIntermediateResult())
 		{

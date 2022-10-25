@@ -151,8 +151,8 @@ public class TestBaseObject extends TestCaseWithProject
 	public void testIsNavigationField() throws Exception
 	{
 		Cause cause = getProject().createCause();
-		cause.setIsNavigationField(Cause.TAG_TAXONOMY_CODE);
-		assertTrue("is user tag?" , cause.isNavigationField(Cause.TAG_TAXONOMY_CODE));
+		cause.setIsNavigationField(Cause.TAG_STANDARD_CLASSIFICATION_V11_CODE);
+		assertTrue("is user tag?" , cause.isNavigationField(Cause.TAG_STANDARD_CLASSIFICATION_V11_CODE));
 		assertFalse("is non user tag?", cause.isNavigationField(Cause.TAG_LABEL));
 	}
 	

@@ -30,7 +30,7 @@ public class CauseObjectSchemaElement extends FactorObjectSchemaElement
 		super(XmlConstants.CAUSE);
 
 		createOptionalBooleanField(Cause.TAG_IS_DIRECT_THREAT);
-		createOptionalCodeField(Cause.TAG_TAXONOMY_CODE, XmlSchemaCreator.VOCABULARY_THREAT_TAXONOMY_CODE);
+		createOptionalCodeField(XmlSchemaCreator.CAUSE_TAXONOMY_ELEMENT_NAME, XmlSchemaCreator.VOCABULARY_THREAT_TAXONOMY_CODE);
 		createOptionalIdListField(Factor.TAG_OBJECTIVE_IDS, OBJECTIVE_TYPE_NAME);
 		createOptionalIdListField(Factor.TAG_INDICATOR_IDS, INDICATOR_TYPE_NAME);
 		createOptionalCodeField(THREAT_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING);

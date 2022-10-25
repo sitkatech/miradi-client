@@ -22,7 +22,7 @@ package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Cause;
-import org.miradi.questions.ThreatClassificationQuestion;
+import org.miradi.questions.ThreatClassificationQuestionV11;
 
 public class CauseSchema extends EvidenceFactorSchema
 {
@@ -36,7 +36,7 @@ public class CauseSchema extends EvidenceFactorSchema
 	{
 		super.fillFieldSchemas();
 		
-		createFieldSchemaChoice(Cause.TAG_TAXONOMY_CODE, new ThreatClassificationQuestion());
+		createFieldSchemaChoice(Cause.TAG_STANDARD_CLASSIFICATION_V11_CODE, new ThreatClassificationQuestionV11());
 		createFieldSchemaBoolean(Cause.TAG_IS_DIRECT_THREAT);
 	    writeIndicatorIds();
 		writeObjectiveIds();

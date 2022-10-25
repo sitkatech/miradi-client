@@ -29,7 +29,7 @@ import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ThreatClassificationQuestion;
+import org.miradi.questions.ThreatClassificationQuestionV11;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.utils.CommandVector;
 
@@ -94,10 +94,10 @@ public class Cause extends Factor
 	{
 		if (fieldTag.equals(PSEUDO_TAG_TAXONOMY_CODE_VALUE))
 		{
-			String code = getData(TAG_TAXONOMY_CODE);
+			String code = getData(TAG_STANDARD_CLASSIFICATION_V11_CODE);
 			if (!code.isEmpty())
 			{
-				ThreatClassificationQuestion question = new ThreatClassificationQuestion();
+				ThreatClassificationQuestionV11 question = new ThreatClassificationQuestionV11();
 				ChoiceItem choice = question.findChoiceItem(code);
 				if (choice != null)
 					return choice.getLabel();
@@ -107,6 +107,14 @@ public class Cause extends Factor
 		}
 		
 		return super.getPseudoData(fieldTag);
+	}
+
+	public String getTaxonomyCode(String threatStandardClassificationCode)
+	{
+		if (threatStandardClassificationCode.equals(ThreatClassificationQuestionV11.STANDARD_CLASSIFICATION_CODELIST_KEY))
+			return getData(TAG_STANDARD_CLASSIFICATION_V11_CODE);
+
+		throw new RuntimeException("Attempted to get taxonomy code for Cause with invalid classification code: " + threatStandardClassificationCode);
 	}
 
 	@Override
@@ -184,8 +192,8 @@ public class Cause extends Factor
 	{
 		return find(project.getObjectManager(), causeRef);
 	}
-	
-	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
+
+	public static final String TAG_STANDARD_CLASSIFICATION_V11_CODE = "StandardClassificationV11Code";
 	public static final String TAG_IS_DIRECT_THREAT = "IsDirectThreat";
 	
 	public static final String OBJECT_NAME_THREAT = "DirectThreat";

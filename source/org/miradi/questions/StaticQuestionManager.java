@@ -65,7 +65,7 @@ public class StaticQuestionManager
 		addQuestion(new StressRatingChoiceQuestion());
 		addQuestion(new StressScopeChoiceQuestion());
 		addQuestion(new StressSeverityChoiceQuestion());
-		addQuestion(new ThreatClassificationQuestion());
+		addQuestion(new ThreatClassificationQuestionV11());
 		addQuestion(new ThreatRatingModeChoiceQuestion());
 		addQuestion(new ThreatRatingQuestion());
 		addQuestion(new ScopeThreatRatingQuestion());

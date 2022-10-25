@@ -92,7 +92,7 @@ public class ProjectMetadata extends BaseObject
 		CodeList threatClassificationCodes = new CodeList();
 		for(Cause threat : allThreats)
 		{
-			String code = threat.getData(Cause.TAG_TAXONOMY_CODE);
+			String code = threat.getData(Cause.TAG_STANDARD_CLASSIFICATION_V11_CODE);
 			if (code.length() > 0)
 				threatClassificationCodes.add(code);
 		}

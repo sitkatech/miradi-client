@@ -22,12 +22,14 @@ package org.miradi.questions;
 import org.miradi.objecthelpers.TaxonomyTwoLevelFileLoader;
 import org.miradi.objecthelpers.TwoLevelFileLoader;
 
-public class ThreatClassificationQuestion  extends TaxonomyClassificationQuestion
+public class ThreatClassificationQuestionV11 extends TaxonomyClassificationQuestion
 {
-	public ThreatClassificationQuestion()
+	public ThreatClassificationQuestionV11()
 	{
 		super(new TaxonomyTwoLevelFileLoader(taxonomyFile));
 	}
 
-	private static String taxonomyFile = TwoLevelFileLoader.THREAT_TAXONOMIES_FILE;
+	private static String taxonomyFile = TwoLevelFileLoader.THREAT_TAXONOMIES_v11_FILE;
+
+	public static final String STANDARD_CLASSIFICATION_CODELIST_KEY = "iucn-threats-ftv-3.2";
 }
