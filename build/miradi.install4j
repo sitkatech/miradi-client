@@ -390,18 +390,6 @@ return true;
                   </property>
                 </serializedBean>
               </action>
-              <action id="223" beanClass="com.install4j.runtime.beans.actions.desktop.CreateFileAssociationAction" actionElevationType="elevated">
-                <serializedBean>
-                  <property name="description" type="string">ConPro/Miradi Zip</property>
-                  <property name="extension" type="string">cpmz</property>
-                  <property name="launcherId" type="string">18</property>
-                  <property name="windowsIconFile">
-                    <object class="com.install4j.api.beans.ExternalFile">
-                      <string>./installer/BuildFiles/cpmz.ico</string>
-                    </object>
-                  </property>
-                </serializedBean>
-              </action>
             </actions>
             <formComponents>
               <formComponent id="259" beanClass="com.install4j.runtime.beans.formcomponents.ProgressComponent">
