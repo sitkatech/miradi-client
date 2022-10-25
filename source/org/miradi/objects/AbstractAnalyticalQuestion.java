@@ -60,7 +60,6 @@ abstract public class AbstractAnalyticalQuestion extends Factor
 		return getRawRelevancyOverrideData(TAG_INDICATOR_IDS);
 	}
 
-
 	@Override
 	public boolean isRelevancyOverrideSet(String tag)
 	{
