@@ -385,6 +385,15 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (Task.is(baseObject.getRef()) && columnTag.equals(Task.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
 				return createAppendedRelevantIndicatorLabels(baseObject);
 
+			if (Output.is(baseObject.getRef()) && columnTag.equals(Output.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
+				return createAppendedRelevantIndicatorLabels(baseObject);
+
+			if (AnalyticalQuestion.is(baseObject.getRef()) && columnTag.equals(AnalyticalQuestion.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
+				return createAppendedRelevantIndicatorLabels(baseObject);
+
+			if (Assumption.is(baseObject.getRef()) && columnTag.equals(Assumption.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
+				return createAppendedRelevantIndicatorLabels(baseObject);
+
 			if(isTimeframeColumn(columnTag))
 				return getFilteredWhenForPlans(baseObject);
 
@@ -604,6 +613,19 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		{
 			if(isDetailsColumn(column))
 				return Factor.TAG_TEXT;
+
+			if (columnTag.equals(Factor.PSEUDO_TAG_INDICATORS))
+				return Output.PSEUDO_TAG_RELEVANT_INDICATOR_REFS;
+		}
+		if(AnalyticalQuestion.is(nodeType))
+		{
+			if (columnTag.equals(Factor.PSEUDO_TAG_INDICATORS))
+				return AnalyticalQuestion.PSEUDO_TAG_RELEVANT_INDICATOR_REFS;
+		}
+		if(Assumption.is(nodeType))
+		{
+			if (columnTag.equals(Factor.PSEUDO_TAG_INDICATORS))
+				return Assumption.PSEUDO_TAG_RELEVANT_INDICATOR_REFS;
 		}
 		if(Indicator.is(nodeType))
 		{
