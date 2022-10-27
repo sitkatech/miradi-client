@@ -24,6 +24,7 @@ import org.miradi.objecthelpers.CodeToCodeMap;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Cause;
 import org.miradi.questions.ThreatClassificationQuestionV11;
+import org.miradi.questions.ThreatClassificationQuestionV20;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
@@ -50,6 +51,9 @@ public class CauseImporter extends BaseObjectImporter
     protected boolean isCustomImportField(String tag)
     {
         if (tag.equals(Cause.TAG_STANDARD_CLASSIFICATION_V11_CODE))
+            return true;
+
+        if (tag.equals(Cause.TAG_STANDARD_CLASSIFICATION_V20_CODE))
             return true;
 
         return super.isCustomImportField(tag);
@@ -90,6 +94,9 @@ public class CauseImporter extends BaseObjectImporter
             {
                 if (causeStandardClassificationCode.equals(ThreatClassificationQuestionV11.STANDARD_CLASSIFICATION_CODELIST_KEY))
                     getImporter().setData(refToUse, Cause.TAG_STANDARD_CLASSIFICATION_V11_CODE, code);
+
+                if (causeStandardClassificationCode.equals(ThreatClassificationQuestionV20.STANDARD_CLASSIFICATION_CODELIST_KEY))
+                    getImporter().setData(refToUse, Cause.TAG_STANDARD_CLASSIFICATION_V20_CODE, code);
             }
         }
     }

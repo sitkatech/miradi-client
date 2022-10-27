@@ -39,6 +39,9 @@ public class CauseSchemaWriter extends BaseObjectSchemaWriterWithTaxonomyClassif
 		if (tag.equals(Cause.TAG_STANDARD_CLASSIFICATION_V11_CODE))
 			return true;
 
+		if (tag.equals(Cause.TAG_STANDARD_CLASSIFICATION_V20_CODE))
+			return true;
+
 		return super.doesFieldRequireSpecialHandling(tag);
 	}
 

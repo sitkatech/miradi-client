@@ -437,6 +437,7 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_KEA_TYPE = "vocabulary_key_ecological_attribute_type";
 	public static final String VOCABULARY_IRREVERSIBILITY_CODE = "vocabulary_irreversibility_rating";
 	public static final String VOCABULARY_CAUSE_STANDARD_CLASSIFICATION_V11_CODE = "vocabulary_cause_standard_classification_v11_code";
+	public static final String VOCABULARY_CAUSE_STANDARD_CLASSIFICATION_V20_CODE = "vocabulary_cause_standard_classification_v20_code";
 	public static final String VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE = "vocabulary_contribution_rating";
 	public static final String VOCABULARY_TNC_OPERATING_UNTIS = "vocabulary_tnc_operating_units";
 	public static final String VOCABULARY_TNC_TERRESTRIAL_ECO_REGION = "vocabulary_tnc_terrestrial_eco_region";

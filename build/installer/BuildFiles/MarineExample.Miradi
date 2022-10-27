@@ -1,4 +1,4 @@
-﻿MiradiProjectFile 86 86
+﻿MiradiProjectFile 88 88
 UV	Version=61
 UP	HighestUsedNodeId=2649
 UP	ProjectMetadataId=0
@@ -2611,12 +2611,12 @@ UO	20:116	UUID=c7630329-0b87-4059-9269-4d2722f25ea4
 CO	20:1227
 UO	20:1227	IsDirectThreat=1
 UO	20:1227	Label=Increased Seawater Temperature
-UO	20:1227	TaxonomyCode=T110.30
+UO	20:1227	StandardClassificationV11Code=T110.30
 UO	20:1227	UUID=149a2334-d6fd-4aa6-ad5b-e1d3912cb86b
 CO	20:1236
 UO	20:1236	IsDirectThreat=1
 UO	20:1236	Label=Increased Storm Intensity
-UO	20:1236	TaxonomyCode=T110.40
+UO	20:1236	StandardClassificationV11Code=T110.40
 UO	20:1236	UUID=a4689fda-dc28-4c90-b453-b748450156cb
 CO	20:127
 UO	20:127	Label=Lack of Tourist Guide Training
@@ -2629,31 +2629,31 @@ CO	20:41
 UO	20:41	EvidenceNotes=Direct observation of rats predating seabird nests on the island.
 UO	20:41	IsDirectThreat=1
 UO	20:41	Label=Introduced Predators (Rats)
-UO	20:41	TaxonomyCode=T80.10
+UO	20:41	StandardClassificationV11Code=T80.10
 UO	20:41	Text=Rats seem to be coming to the small islands via landing parties from international ships
 UO	20:41	UUID=202c5260-9b09-4e3b-87f9-8bf17010e1a5
 CO	20:55
 UO	20:55	Comments=Not clear whether there is also poaching from neighboring communities.
 UO	20:55	IsDirectThreat=1
 UO	20:55	Label=Unsustainable Fishing By Locals
-UO	20:55	TaxonomyCode=T50.40
+UO	20:55	StandardClassificationV11Code=T50.40
 UO	20:55	Text=Local fishers now have access to better technology and are not always respecting the traditional management practices
 UO	20:55	UUID=f42947d1-c484-4d2b-8341-f60fa860f243
 CO	20:59
 UO	20:59	IsDirectThreat=1
 UO	20:59	Label=Illegal Shark Finning by Mainland Boats
-UO	20:59	TaxonomyCode=T50.40
+UO	20:59	StandardClassificationV11Code=T50.40
 UO	20:59	Text=Boats from the mainland are coming and catching sharks for the international shark fin trade.
 UO	20:59	UUID=e3912c03-5b32-466f-84d2-441c96395782
 CO	20:63
 UO	20:63	IsDirectThreat=1
 UO	20:63	Label=Diver &amp; Anchor Damage
-UO	20:63	TaxonomyCode=T60.10
+UO	20:63	StandardClassificationV11Code=T60.10
 UO	20:63	Text=Tour boats from mainland coming to the reef cause some damage to the reefs.
 UO	20:63	UUID=1b0d6ec2-7a05-4541-97b8-cbefc6425153
 CO	20:67
 UO	20:67	Label=Climate Change
-UO	20:67	TaxonomyCode=T110.30
+UO	20:67	StandardClassificationV11Code=T110.30
 UO	20:67	UUID=9d614d08-5a33-4744-9724-46bb34a78458
 CO	20:729
 UO	20:729	Label=Loss of Fish Protein Sources

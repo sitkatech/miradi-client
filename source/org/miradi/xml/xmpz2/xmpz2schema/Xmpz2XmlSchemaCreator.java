@@ -1074,7 +1074,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 	{
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), CAUSE_STANDARD_CLASSIFICATION);
 		creator.addUriRestrictedAttributeElement(CAUSE_STANDARD_CLASSIFICATION_CODE);
-		creator.addOptionalChildElement("code", VOCABULARY_CAUSE_STANDARD_CLASSIFICATION_V11_CODE);
+		creator.addOptionalChildElement("code", VOCABULARY_CAUSE_STANDARD_CLASSIFICATION_V11_CODE + " | " + VOCABULARY_CAUSE_STANDARD_CLASSIFICATION_V20_CODE);
 
 		return creator;
 	}

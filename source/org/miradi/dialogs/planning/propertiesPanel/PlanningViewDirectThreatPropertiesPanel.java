@@ -25,6 +25,7 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.Cause;
 import org.miradi.project.Project;
 import org.miradi.questions.ThreatClassificationQuestionV11;
+import org.miradi.questions.ThreatClassificationQuestionV20;
 import org.miradi.schemas.CauseSchema;
 
 public class PlanningViewDirectThreatPropertiesPanel extends MinimalFactorPropertiesPanel
@@ -42,6 +43,7 @@ public class PlanningViewDirectThreatPropertiesPanel extends MinimalFactorProper
 		super.addCustomFieldsStart();
 		
 		addField(createRadioButtonEditorFieldWithHierarchies(CauseSchema.getObjectType(), Cause.TAG_STANDARD_CLASSIFICATION_V11_CODE, new ThreatClassificationQuestionV11()));
+		addField(createRadioButtonEditorFieldWithHierarchies(CauseSchema.getObjectType(), Cause.TAG_STANDARD_CLASSIFICATION_V20_CODE, new ThreatClassificationQuestionV20()));
 	}
 
 	@Override

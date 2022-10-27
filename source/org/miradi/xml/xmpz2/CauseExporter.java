@@ -47,11 +47,13 @@ public class CauseExporter extends BaseObjectWithThreatRatingExporter
 			getWriter().writeCauseStandardClassifications(causeStandardClassificationCodes);
 	}
 
-
 	@Override
 	protected boolean doesFieldRequireSpecialHandling(String tag)
 	{
 		if (tag.equals(Cause.TAG_STANDARD_CLASSIFICATION_V11_CODE))
+			return true;
+
+		if (tag.equals(Cause.TAG_STANDARD_CLASSIFICATION_V20_CODE))
 			return true;
 
 		return super.doesFieldRequireSpecialHandling(tag);
@@ -77,7 +79,10 @@ public class CauseExporter extends BaseObjectWithThreatRatingExporter
 		if (!standardClassificationCodeV11.isEmpty())
 			causeStandardClassificationCodes.putCode(ThreatClassificationQuestionV11.STANDARD_CLASSIFICATION_CODELIST_KEY, standardClassificationCodeV11);
 
+		String standardClassificationCodeV20 = cause.getTaxonomyCode(ThreatClassificationQuestionV20.STANDARD_CLASSIFICATION_CODELIST_KEY);
+		if (!standardClassificationCodeV20.isEmpty())
+			causeStandardClassificationCodes.putCode(ThreatClassificationQuestionV20.STANDARD_CLASSIFICATION_CODELIST_KEY, standardClassificationCodeV20);
+
 		return causeStandardClassificationCodes;
 	}
-
 }

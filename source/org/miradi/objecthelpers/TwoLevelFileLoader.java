@@ -95,7 +95,8 @@ abstract public class TwoLevelFileLoader extends DelimitedFileLoader
 	public final static String STRATEGY_TAXONOMIES_v11_FILE = "StrategyTaxonomies_v11.tsv";
 	public final static String STRATEGY_TAXONOMIES_v20_FILE = "StrategyTaxonomies_v20.tsv";
 	public final static String THREAT_TAXONOMIES_v11_FILE = "ThreatTaxonomies_v11.tsv";
-	
+	public final static String THREAT_TAXONOMIES_v20_FILE = "ThreatTaxonomies_v20.tsv";
+
 	public final static String TNC_FRESHWATER_ECO_REGION_FILE = "TncFreshwaterEcoRegions.tsv";
 	public final static String TNC_MARINE_ECO_REGION_FILE = "TncMarineEcoRegions.tsv";
 	public final static String TNC_OPERATING_UNITS_FILE = "TncOperatingUnits.tsv";

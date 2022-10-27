@@ -1368,10 +1368,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(cause.getRef(), Cause.TAG_LABEL, "SomeCauseLabel");
 		fillObjectUsingCommand(cause.getRef(), Cause.TAG_EVIDENCE_NOTES, "Some evidence text");
 
-		ChoiceQuestion question = StaticQuestionManager.getQuestion(ThreatClassificationQuestionV11.class);
 		final int FIRST_CODE = 0;
-		fillObjectUsingCommand(cause.getRef(), Cause.TAG_STANDARD_CLASSIFICATION_V11_CODE, question.getCode(FIRST_CODE));
-		
+		ChoiceQuestion classificationQuestionV11 = StaticQuestionManager.getQuestion(ThreatClassificationQuestionV11.class);
+		fillObjectUsingCommand(cause.getRef(), Cause.TAG_STANDARD_CLASSIFICATION_V11_CODE, classificationQuestionV11.getCode(FIRST_CODE));
+		ChoiceQuestion classificationQuestionV20 = StaticQuestionManager.getQuestion(ThreatClassificationQuestionV20.class);
+		fillObjectUsingCommand(cause.getRef(), Cause.TAG_STANDARD_CLASSIFICATION_V20_CODE, classificationQuestionV20.getCode(FIRST_CODE));
+
 		IdList indicatorIds = new IdList(IndicatorSchema.getObjectType());
 		indicatorIds.addRef(createAndPopulateIndicator(cause).getRef());	
 		fillObjectUsingCommand(cause, Cause.TAG_INDICATOR_IDS, indicatorIds.toString());

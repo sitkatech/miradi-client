@@ -47,6 +47,7 @@ public class ChoiceQuestionToSchemaElementNameMap extends HashMap<ChoiceQuestion
 		addItem(TargetStatusQuestion.class, VOCABULARY_TARGET_STATUS);
 		addItem(ViabilityModeQuestion.class, VOCABULARY_TARGET_VIABILITY_MODE);
 		addItem(ThreatClassificationQuestionV11.class, VOCABULARY_CAUSE_STANDARD_CLASSIFICATION_V11_CODE);
+		addItem(ThreatClassificationQuestionV20.class, VOCABULARY_CAUSE_STANDARD_CLASSIFICATION_V20_CODE);
 		addItem(StressSeverityChoiceQuestion.class, VOCABULARY_SEVERITY_RATING);
 		addItem(StressScopeChoiceQuestion.class, VOCABULARY_SCOPE_RATING);
 		addItem(StrategyClassificationQuestionV11.class, VOCABULARY_STRATEGY_STANDARD_CLASSIFICATION_V11_CODE);
