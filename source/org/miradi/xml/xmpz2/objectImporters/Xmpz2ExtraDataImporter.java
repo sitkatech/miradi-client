@@ -132,6 +132,9 @@ public class Xmpz2ExtraDataImporter extends AbstractXmpz2ObjectImporter
 		if (typeName.equals(StrategySchema.OBJECT_NAME))
 			return StrategySchema.getObjectType();
 
+		if (typeName.equals(CauseSchema.OBJECT_NAME))
+			return CauseSchema.getObjectType();
+
 		if (typeName.equals(TaggedObjectSetSchema.OBJECT_NAME))
 			return TaggedObjectSetSchema.getObjectType();
 

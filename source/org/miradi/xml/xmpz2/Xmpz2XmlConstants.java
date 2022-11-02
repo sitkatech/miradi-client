@@ -34,8 +34,9 @@ public interface Xmpz2XmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String DOT_ELEMENT = ".element";
 	
-	public static final String NAME_SPACE_VERSION = "246";
+	public static final String NAME_SPACE_VERSION = "247";
 
+	public static final String NAME_SPACE_VERSION_247 = "247";
 	public static final String NAME_SPACE_VERSION_246 = "246";
 	public static final String NAME_SPACE_VERSION_245 = "245";
 	public static final String NAME_SPACE_VERSION_244 = "244";
@@ -382,6 +383,10 @@ public interface Xmpz2XmlConstants
 	public static final String STRATEGY_STANDARD_CLASSIFICATION_CONTAINER = STRATEGY_STANDARD_CLASSIFICATION + "Container";
 	public static final String STRATEGY_STANDARD_CLASSIFICATION_CODE = STRATEGY_STANDARD_CLASSIFICATION + CODE;
 
+	public static final String CAUSE_STANDARD_CLASSIFICATION = CAUSE + STANDARD_CLASSIFICATION;
+	public static final String CAUSE_STANDARD_CLASSIFICATION_CONTAINER = CAUSE_STANDARD_CLASSIFICATION + "Container";
+	public static final String CAUSE_STANDARD_CLASSIFICATION_CODE = CAUSE_STANDARD_CLASSIFICATION + CODE;
+
 	public static final String RESOURCE_ASSIGNMENT_ACCOUNTING_CLASSIFICATION_ASSOCIATION_POOL = "ResourceAssignmentAccountingClassificationAssociationPool";
 	public static final String EXPENSE_ASSIGNMENT_ACCOUNTING_CLASSIFICATION_ASSOCIATION_POOL = "ExpenseAssignmentAccountingClassificationAssociationPool";
 	public static final String ACCOUNTING_CLASSIFICATION_ASSOCIATION = "AccountingClassificationAssociation";
@@ -421,7 +426,6 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSOCIATION = "vocabulary_biodiversity_target_habitat_association";
 	public static final String VOCABULARY_TARGET_STATUS = "vocabulary_target_status";
 	public static final String VOCABULARY_TARGET_VIABILITY_MODE = "vocabulary_target_viability_mode";
-	public static final String VOCABULARY_THREAT_TAXONOMY_CODE = "vocabulary_cause_taxonomy_code";
 	public static final String VOCABULARY_STRATEGY_STANDARD_CLASSIFICATION_V11_CODE = "vocabulary_strategy_standard_classification_v11_code";
 	public static final String VOCABULARY_STRATEGY_STANDARD_CLASSIFICATION_V20_CODE = "vocabulary_strategy_standard_classification_v20_code";
 	public static final String VOCABULARY_SCOPE_BOX_TYPE = "vocabulary_scope_box_type";
@@ -432,6 +436,8 @@ public interface Xmpz2XmlConstants
 	public static final String VOCABULARY_PRIORITY_RATING_CODE = "vocabulary_priority_rating_code";
 	public static final String VOCABULARY_KEA_TYPE = "vocabulary_key_ecological_attribute_type";
 	public static final String VOCABULARY_IRREVERSIBILITY_CODE = "vocabulary_irreversibility_rating";
+	public static final String VOCABULARY_CAUSE_STANDARD_CLASSIFICATION_V11_CODE = "vocabulary_cause_standard_classification_v11_code";
+	public static final String VOCABULARY_CAUSE_STANDARD_CLASSIFICATION_V20_CODE = "vocabulary_cause_standard_classification_v20_code";
 	public static final String VOCABULARY_THREAT_STRESS_RATING_CONTRIBUTION_CODE = "vocabulary_contribution_rating";
 	public static final String VOCABULARY_TNC_OPERATING_UNTIS = "vocabulary_tnc_operating_units";
 	public static final String VOCABULARY_TNC_TERRESTRIAL_ECO_REGION = "vocabulary_tnc_terrestrial_eco_region";

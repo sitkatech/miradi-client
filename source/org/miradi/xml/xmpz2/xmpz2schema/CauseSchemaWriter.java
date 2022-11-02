@@ -22,6 +22,7 @@ package org.miradi.xml.xmpz2.xmpz2schema;
 
 import java.util.Vector;
 
+import org.miradi.objects.Cause;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.generic.XmlSchemaCreator;
 
@@ -31,7 +32,19 @@ public class CauseSchemaWriter extends BaseObjectSchemaWriterWithTaxonomyClassif
 	{
 		super(creatorToUse, baseObjectSchemaToUse);
 	}
-	
+
+	@Override
+	protected boolean doesFieldRequireSpecialHandling(String tag)
+	{
+		if (tag.equals(Cause.TAG_STANDARD_CLASSIFICATION_V11_CODE))
+			return true;
+
+		if (tag.equals(Cause.TAG_STANDARD_CLASSIFICATION_V20_CODE))
+			return true;
+
+		return super.doesFieldRequireSpecialHandling(tag);
+	}
+
 	@Override
 	public Vector<String> createFieldSchemas() throws Exception
 	{
@@ -40,5 +53,15 @@ public class CauseSchemaWriter extends BaseObjectSchemaWriterWithTaxonomyClassif
 		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalSchemaElement(getXmpz2ElementName() + CALCULATED_THREAT_RATING, XmlSchemaCreator.VOCABULARY_THREAT_RATING));
 		
 		return schemaElements;
-	}	
+	}
+
+	@Override
+	protected Vector<String> createCustomSchemaFields()
+	{
+		Vector<String> schemaElements = super.createCustomSchemaFields();
+
+		schemaElements.add(getXmpz2XmlSchemaCreator().getSchemaWriter().createOptionalDotElement(CAUSE_STANDARD_CLASSIFICATION_CONTAINER));
+
+		return schemaElements;
+	}
 }

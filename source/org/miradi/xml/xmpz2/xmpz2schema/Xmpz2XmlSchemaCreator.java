@@ -103,6 +103,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		creators.add(defineAccountingClassificationContainerElement());
 		creators.add(defineStrategyStandardClassificationContainerElement());
 		creators.add(defineStrategyStandardClassificationElement());
+		creators.add(defineCauseStandardClassificationContainerElement());
+		creators.add(defineCauseStandardClassificationElement());
 
 		for(Xmpz2CustomSchemaDefinitionCreator creator : creators)
 		{
@@ -1056,6 +1058,23 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), STRATEGY_STANDARD_CLASSIFICATION);
 		creator.addUriRestrictedAttributeElement(STRATEGY_STANDARD_CLASSIFICATION_CODE);
 		creator.addOptionalChildElement("code", VOCABULARY_STRATEGY_STANDARD_CLASSIFICATION_V11_CODE + " | " + VOCABULARY_STRATEGY_STANDARD_CLASSIFICATION_V20_CODE);
+
+		return creator;
+	}
+
+	private Xmpz2CustomSchemaDefinitionCreator defineCauseStandardClassificationContainerElement()
+	{
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), CAUSE_STANDARD_CLASSIFICATION_CONTAINER);
+		creator.addZeroOrMoreDotElement(CAUSE_STANDARD_CLASSIFICATION);
+
+		return creator;
+	}
+
+	private Xmpz2CustomSchemaDefinitionCreator defineCauseStandardClassificationElement()
+	{
+		Xmpz2CustomSchemaDefinitionCreator creator = new Xmpz2CustomSchemaDefinitionCreator(getSchemaWriter(), CAUSE_STANDARD_CLASSIFICATION);
+		creator.addUriRestrictedAttributeElement(CAUSE_STANDARD_CLASSIFICATION_CODE);
+		creator.addOptionalChildElement("code", VOCABULARY_CAUSE_STANDARD_CLASSIFICATION_V11_CODE + " | " + VOCABULARY_CAUSE_STANDARD_CLASSIFICATION_V20_CODE);
 
 		return creator;
 	}

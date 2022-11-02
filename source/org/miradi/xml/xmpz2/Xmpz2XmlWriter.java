@@ -491,6 +491,28 @@ public class Xmpz2XmlWriter implements Xmpz2XmlConstants
 		writeEndElement(STRATEGY_STANDARD_CLASSIFICATION);
 	}
 
+	public void writeCauseStandardClassifications(CodeToCodeMap causeStandardClassificationCodes) throws Exception
+	{
+		writeStartElement(CAUSE_STANDARD_CLASSIFICATION_CONTAINER);
+
+		HashMap<String, String> codeListHashMap = causeStandardClassificationCodes.toHashMap();
+		for (String causeStandardClassificationCode : codeListHashMap.keySet())
+		{
+			String code = codeListHashMap.get(causeStandardClassificationCode);
+			if (!code.isEmpty())
+				writeCauseStandardClassification(causeStandardClassificationCode, code);
+		}
+
+		writeEndElement(CAUSE_STANDARD_CLASSIFICATION_CONTAINER);
+	}
+
+	private void writeCauseStandardClassification(String causeStandardClassificationCode, String code) throws Exception
+	{
+		writeStartElementWithAttribute(CAUSE_STANDARD_CLASSIFICATION, CAUSE_STANDARD_CLASSIFICATION_CODE, causeStandardClassificationCode);
+		writeElement(CODE_ELEMENT_NAME, code);
+		writeEndElement(CAUSE_STANDARD_CLASSIFICATION);
+	}
+
 	private void writeField(BaseObjectSchema baseObjectSchema, AbstractFieldSchema fieldSchema, String data) throws Exception
 	{
 		final String elementName = appendChildNameToParentName(baseObjectSchema, fieldSchema);
