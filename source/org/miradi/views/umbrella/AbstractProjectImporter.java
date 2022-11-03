@@ -21,6 +21,8 @@ package org.miradi.views.umbrella;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.zip.ZipEntry;
 
 import javax.swing.JFileChooser;
@@ -184,7 +186,8 @@ public abstract class AbstractProjectImporter
 		@Override
 		protected void doRealWork() throws Exception
 		{
-			createProject(fileToImport, newProjectFile, getProgressIndicator());
+			if (!Files.isSameFile(Paths.get(fileToImport.getAbsolutePath()), Paths.get(newProjectFile.getAbsolutePath())))
+				createProject(fileToImport, newProjectFile, getProgressIndicator());
 		}
 		
 		private File fileToImport;
