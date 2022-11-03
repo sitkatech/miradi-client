@@ -29,9 +29,14 @@ import org.miradi.objectpools.EAMObjectPool;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.questions.ChoiceItem;
-import org.miradi.questions.ThreatClassificationQuestion;
+import org.miradi.questions.TaxonomyClassificationQuestion;
+import org.miradi.questions.ThreatClassificationQuestionV11;
+import org.miradi.questions.ThreatClassificationQuestionV20;
 import org.miradi.schemas.CauseSchema;
 import org.miradi.utils.CommandVector;
+import org.miradi.utils.StringUtilities;
+
+import java.util.Vector;
 
 public class Cause extends Factor
 {
@@ -93,20 +98,44 @@ public class Cause extends Factor
 	public String getPseudoData(String fieldTag)
 	{
 		if (fieldTag.equals(PSEUDO_TAG_TAXONOMY_CODE_VALUE))
-		{
-			String code = getData(TAG_TAXONOMY_CODE);
-			if (!code.isEmpty())
-			{
-				ThreatClassificationQuestion question = new ThreatClassificationQuestion();
-				ChoiceItem choice = question.findChoiceItem(code);
-				if (choice != null)
-					return choice.getLabel();
-			}
+			return getTaxonomySummary();
 
-			return "";
-		}
-		
 		return super.getPseudoData(fieldTag);
+	}
+
+	public String getTaxonomySummary()
+	{
+		Vector<String> taxonomyLabels = new Vector<>();
+
+		String v11TaxonomyCode = getData(TAG_STANDARD_CLASSIFICATION_V11_CODE);
+		if (!v11TaxonomyCode.isEmpty())
+			taxonomyLabels.add(getTaxonomyLabel(new ThreatClassificationQuestionV11(), v11TaxonomyCode));
+
+		String v20TaxonomyCode = getData(TAG_STANDARD_CLASSIFICATION_V20_CODE);
+		if (!v20TaxonomyCode.isEmpty())
+			taxonomyLabels.add(getTaxonomyLabel(new ThreatClassificationQuestionV20(), v20TaxonomyCode));
+
+		return StringUtilities.joinList(taxonomyLabels, ", ");
+	}
+
+	private String getTaxonomyLabel(TaxonomyClassificationQuestion question, String code)
+	{
+		ChoiceItem choice = question.findChoiceItem(code);
+		if (choice != null)
+			return choice.getLabel();
+
+		return "";
+	}
+
+	public String getTaxonomyCode(String threatStandardClassificationCode)
+	{
+		if (threatStandardClassificationCode.equals(ThreatClassificationQuestionV11.STANDARD_CLASSIFICATION_CODELIST_KEY))
+			return getData(TAG_STANDARD_CLASSIFICATION_V11_CODE);
+
+		if (threatStandardClassificationCode.equals(ThreatClassificationQuestionV20.STANDARD_CLASSIFICATION_CODELIST_KEY))
+			return getData(TAG_STANDARD_CLASSIFICATION_V20_CODE);
+
+		throw new RuntimeException("Attempted to get taxonomy code for Cause with invalid classification code: " + threatStandardClassificationCode);
 	}
 
 	@Override
@@ -184,8 +213,9 @@ public class Cause extends Factor
 	{
 		return find(project.getObjectManager(), causeRef);
 	}
-	
-	public static final String TAG_TAXONOMY_CODE = "TaxonomyCode";
+
+	public static final String TAG_STANDARD_CLASSIFICATION_V11_CODE = "StandardClassificationV11Code";
+	public static final String TAG_STANDARD_CLASSIFICATION_V20_CODE = "StandardClassificationV20Code";
 	public static final String TAG_IS_DIRECT_THREAT = "IsDirectThreat";
 	
 	public static final String OBJECT_NAME_THREAT = "DirectThreat";

@@ -124,9 +124,9 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 		addImporterToMap(typeToImporterMap, new DiagramFactorImporter(this));
 		addImporterToMap(typeToImporterMap, new DiagramLinkImporter(this));
 		addImporterToMap(typeToImporterMap, new StrategyImporter(this));
+		addImporterToMap(typeToImporterMap, new CauseImporter(this));
 
 		// NOTE: Must import all factor types before importing objectives, for relevancy
-		addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, new CauseSchema()));
 		addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, new IntermediateResultSchema()));
 		addImporterToMap(typeToImporterMap, new ThreatReductionResultsImporter(this));
 		addImporterToMap(typeToImporterMap, new BaseObjectImporter(this, new TargetSchema()));

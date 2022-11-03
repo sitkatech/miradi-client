@@ -303,7 +303,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	private HashMap<String, String> createCauseMap()
 	{
 		HashMap<String, String> map = createFactorMap();
-		map.put(Cause.TAG_TAXONOMY_CODE, STANDARD_CLASSIFICATION);
+		map.put(Cause.TAG_STANDARD_CLASSIFICATION_V11_CODE, STANDARD_CLASSIFICATION);
 		
 		return map;
 	}

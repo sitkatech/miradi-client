@@ -75,6 +75,7 @@ public class Xmpz2ForwardMigration
 		removeRelevantDiagramFactorIdsElement(rootElement, Xmpz2XmlConstants.ANALYTICAL_QUESTION);
 		removeRelevantDiagramFactorIdsElement(rootElement, Xmpz2XmlConstants.ASSUMPTION);
 		moveStrategyStandardClassificationToExtraData(document);
+		moveCauseStandardClassificationToExtraData(document);
 		removeDiagramFactorStyleHeaderHeightElement(rootElement);
 		moveDiagramFactorTextBoxZOrderCodeToExtraData(document);
 		addDiagramFactorZIndexField(document);
@@ -449,6 +450,43 @@ public class Xmpz2ForwardMigration
 			moveDataToExtraData(document, extraDataItemName, extraDataItemValue);
 
 			strategyNode.removeChild(nodeToMove);
+		}
+	}
+
+	private void moveCauseStandardClassificationToExtraData(Document document) throws Exception
+	{
+		Element rootElement = document.getDocumentElement();
+
+		Node causePool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.CAUSE));
+		if (causePool != null)
+		{
+			NodeList causeNodes = causePool.getChildNodes();
+			for (int index = 0; index < causeNodes.getLength(); ++index)
+			{
+				Node causeNode = causeNodes.item(index);
+				if (causeNode != null && causeNode.getNodeType() == Node.ELEMENT_NODE)
+				{
+					moveCauseStandardClassificationElementToExtraData(document, causeNode);
+				}
+			}
+		}
+	}
+
+	private void moveCauseStandardClassificationElementToExtraData(Document document, Node causeNode) throws Exception
+	{
+		String idAsString = getAttributeValue(causeNode, Xmpz2XmlConstants.ID);
+
+		String elementNameWithoutAlias = Xmpz2XmlConstants.CAUSE_STANDARD_CLASSIFICATION;
+		String tagName = Cause.TAG_STANDARD_CLASSIFICATION_V11_CODE;
+
+		Node nodeToMove = findNode(causeNode, elementNameWithoutAlias);
+		if (nodeToMove != null && nodeToMove.getNodeType() == Node.ELEMENT_NODE)
+		{
+			String extraDataItemName = ExtraDataExporter.getExtraDataItemName(CauseSchema.OBJECT_NAME, new BaseId(idAsString), tagName);
+			String extraDataItemValue = nodeToMove.getTextContent();
+			moveDataToExtraData(document, extraDataItemName, extraDataItemValue);
+
+			causeNode.removeChild(nodeToMove);
 		}
 	}
 

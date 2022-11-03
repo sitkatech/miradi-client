@@ -22,19 +22,7 @@ package org.miradi.xml.generic;
 
 import org.miradi.main.EAM;
 import org.miradi.main.Miradi;
-import org.miradi.objects.AbstractTarget;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Measurement;
-import org.miradi.objects.ProgressReport;
-import org.miradi.objects.ProjectMetadata;
-import org.miradi.objects.ProjectResource;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Stress;
-import org.miradi.objects.Target;
-import org.miradi.objects.ThreatStressRating;
-import org.miradi.objects.WwfProjectData;
+import org.miradi.objects.*;
 import org.miradi.questions.*;
 import org.miradi.utils.CodeList;
 import org.miradi.utils.Translation;
@@ -74,7 +62,7 @@ public class XmlSchemaCreator implements XmlConstants
 		defineVocabulary(writer, VOCABULARY_BIODIVERSITY_TARGET_HABITAT_ASSICIATION, new HabitatAssociationQuestion());
 		defineVocabulary(writer, VOCABULARY_TARGET_STATUS, new StatusQuestion());
 		defineVocabulary(writer, VOCABULARY_TARGET_VIABILITY_MODE, new LegacyViabilityModeQuestion());
-		defineVocabulary(writer, VOCABULARY_THREAT_TAXONOMY_CODE, new ThreatClassificationQuestion());
+		defineVocabulary(writer, VOCABULARY_THREAT_TAXONOMY_CODE, new ThreatClassificationQuestionV11());
 		defineVocabulary(writer, VOCABULARY_SCOPE_BOX_TYPE, new LegacyScopeBoxTypeQuestion(null));
 		defineVocabulary(writer, VOCABULARY_STRESS_SEVERITY, new StressSeverityChoiceQuestion());
 		defineVocabulary(writer, VOCABULARY_STRESS_SCOPE, new StressScopeChoiceQuestion());
@@ -712,6 +700,7 @@ public class XmlSchemaCreator implements XmlConstants
 	private static final String CAUSE_ID_ELEMENT_NAME = "Cause";
 	public static final String THREAT_STRESS_RATING_IRREVERSIBILITY_CODE = ThreatStressRating.TAG_IRREVERSIBILITY;
 	public static final String THREAT_STRESS_RATING_CONTRIBUTION_CODE = ThreatStressRating.TAG_CONTRIBUTION;
+	public static final String CAUSE_TAXONOMY_ELEMENT_NAME = Cause.TAG_STANDARD_CLASSIFICATION_V11_CODE;
 	public static final String TNC_DATABASE_DOWNLOAD_DATE = "DatabaseDownloadDate";
 	public static final String TNC_PLANNING_TEAM_COMMENTS = "PlanningTeamComments";
 	public static final String TNC_LESSONS_LEARNED = "LessonsLearned";

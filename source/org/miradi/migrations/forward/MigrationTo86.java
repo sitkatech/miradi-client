@@ -227,11 +227,18 @@ public class MigrationTo86 extends AbstractMigration
 
                 if (linkColorMap.containsKey(color))
                     return color;
+            }
+            else
+            {
+                String colorValue = linkColorMap.getValue(color);
+                if (colorValue != null)
+                    return colorValue;
 
-                return DefaultLinkColor;
+                if (linkColorMap.containsValue(color))
+                    return color;
             }
 
-            return linkColorMap.getValue(color);
+            return DefaultLinkColor;
         }
 
         private String changeForegroundColor(String color, boolean reverseMigration)
@@ -252,11 +259,18 @@ public class MigrationTo86 extends AbstractMigration
 
                 if (backgroundColorMap.containsKey(color))
                     return color;
+            }
+            else
+            {
+                String colorValue = backgroundColorMap.getValue(color);
+                if (colorValue != null)
+                    return colorValue;
 
-                return DefaultBackgroundColor;
+                if (backgroundColorMap.containsValue(color))
+                    return color;
             }
 
-            return backgroundColorMap.getValue(color);
+            return DefaultBackgroundColor;
         }
 
         private int type;

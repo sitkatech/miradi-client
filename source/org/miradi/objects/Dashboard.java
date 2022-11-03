@@ -1016,7 +1016,7 @@ public class Dashboard extends BaseObject
 		int count = 0;
 		for(Cause threat : threats)
 		{
-			if (threat.getData(Cause.TAG_TAXONOMY_CODE).length() > 1)
+			if (threat.getData(Cause.TAG_STANDARD_CLASSIFICATION_V11_CODE).length() > 1)
 				++count;
 		}
 		
