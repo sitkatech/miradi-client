@@ -186,7 +186,7 @@ public abstract class AbstractProjectImporter
 		@Override
 		protected void doRealWork() throws Exception
 		{
-			if (!Files.isSameFile(Paths.get(fileToImport.getAbsolutePath()), Paths.get(newProjectFile.getAbsolutePath())))
+			if (!newProjectFile.exists() || !Files.isSameFile(Paths.get(fileToImport.getAbsolutePath()), Paths.get(newProjectFile.getAbsolutePath())))
 				createProject(fileToImport, newProjectFile, getProgressIndicator());
 		}
 		
