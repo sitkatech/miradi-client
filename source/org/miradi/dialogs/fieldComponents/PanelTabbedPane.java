@@ -22,6 +22,11 @@ package org.miradi.dialogs.fieldComponents;
 import org.martus.swing.UiTabbedPane;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.main.Miradi;
+
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import java.awt.*;
 
 public class PanelTabbedPane extends UiTabbedPane
 {
@@ -29,9 +34,28 @@ public class PanelTabbedPane extends UiTabbedPane
 	{
 		super();
 		setFont(getMainWindow().getUserDataPanelFont());
+
+		// work-around to address JDK-8251377 & JDK-8269984
+		if (Miradi.isMacos() && getMainWindow().isDefaultSystemLookAndFeel())
+			this.addChangeListener(new TabChangeListener());
 	}
-	
-	//TODO should not use static ref here
+
+	class TabChangeListener implements ChangeListener
+	{
+		public void stateChanged(ChangeEvent event)
+		{
+			PanelTabbedPane tabbedPane = (PanelTabbedPane) event.getSource();
+
+			int selectedTabIndex = tabbedPane.getSelectedIndex();
+
+			for(int t = 0; t < tabbedPane.getTabCount(); ++t)
+				tabbedPane.setForegroundAt(t, Color.BLACK);
+
+			if (selectedTabIndex != -1)
+				tabbedPane.setForegroundAt(selectedTabIndex, Color.DARK_GRAY);
+		}
+	}
+
 	public MainWindow getMainWindow()
 	{
 		return EAM.getMainWindow();

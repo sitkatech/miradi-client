@@ -31,7 +31,7 @@ public class MigrationTo84 extends RemoveMultipleFieldsMigration
 {
     public MigrationTo84(RawProject rawProjectToUse)
     {
-        super(rawProjectToUse, DiagramFactorSchema.getObjectType());
+        super(rawProjectToUse, DiagramFactorSchema.getObjectType(), DataLossMessageSuffix);
     }
 
     @Override
@@ -65,4 +65,5 @@ public class MigrationTo84 extends RemoveMultipleFieldsMigration
     public static final int VERSION_TO = 84;
 
     public static final String TAG_HEADER_HEIGHT = "HeaderHeight";
+    public static final String DataLossMessageSuffix = EAM.text("Group box header heights were eliminated to make displays of group boxes and their factors more flexible.");
 }
