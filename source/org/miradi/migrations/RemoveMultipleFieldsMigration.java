@@ -25,13 +25,19 @@ abstract public class RemoveMultipleFieldsMigration extends AbstractModifyMultip
 {
 	public RemoveMultipleFieldsMigration(RawProject rawProject, int typeToRemoveFieldsFrom)
 	{
-		super(rawProject, typeToRemoveFieldsFrom);
+		this(rawProject, typeToRemoveFieldsFrom, "");
 	}
 	
+	public RemoveMultipleFieldsMigration(RawProject rawProject, int typeToRemoveFieldsFrom, String dataLossMessageSuffixToUse)
+	{
+		super(rawProject, typeToRemoveFieldsFrom);
+		dataLossMessageSuffix = dataLossMessageSuffixToUse;
+	}
+
 	@Override
 	public AbstractMigrationVisitor createMigrateForwardVisitor() throws Exception
 	{
-		return new RemoveVisitor();
+		return new RemoveVisitor(dataLossMessageSuffix);
 	}
 
 	@Override
@@ -39,4 +45,6 @@ abstract public class RemoveMultipleFieldsMigration extends AbstractModifyMultip
 	{
 		return new DoNothingMigrationVisitor(type);
 	}
+
+	private final String dataLossMessageSuffix;
 }
