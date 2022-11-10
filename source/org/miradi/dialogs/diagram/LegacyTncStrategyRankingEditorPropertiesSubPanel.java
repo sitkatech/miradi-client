@@ -67,13 +67,13 @@ public class LegacyTncStrategyRankingEditorPropertiesSubPanel extends ObjectData
 	private void rebuildThisPropertiesPanel(ORef strategyRef)
 	{
 		removeAll();
-		if (hasLegacyTncRankings(strategyRef))
+		if (hasLegacyTncRankings(getProject(), strategyRef))
 		{
 			add(buttonsPanel);
 		}			
 	}
 
-	private boolean hasLegacyTncRankings(ORef strategyRef)
+	public static boolean hasLegacyTncRankings(Project project, ORef strategyRef)
 	{
 		if (strategyRef.isInvalid())
 			return false;
@@ -81,7 +81,7 @@ public class LegacyTncStrategyRankingEditorPropertiesSubPanel extends ObjectData
 		if (!Strategy.is(strategyRef))
 			return false;
 		
-		Strategy strategy = Strategy.find(getProject(), strategyRef);
+		Strategy strategy = Strategy.find(project, strategyRef);
 		String legacyTncRanking = strategy.getData(Strategy.TAG_LEGACY_TNC_STRATEGY_RANKING);
 		
 		return legacyTncRanking.length() > 0;

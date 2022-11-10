@@ -39,7 +39,7 @@ public class StrategyPropertiesPanel extends ObjectDataInputPanelWithSections
 
 		setLayout(new OneColumnGridLayout());
 
-		addSubPanelWithTitledBorder(new StrategyCoreSubpanel(getProject(), getMainWindow().getActions(), StrategySchema.getObjectType()));
+		addSubPanelWithTitledBorder(new StrategyCoreSubPanel(getProject(), getMainWindow().getActions(), StrategySchema.getObjectType()));
 		addSubPanelWithTitledBorder(new RelatedItemsSubpanel(getProject(), StrategySchema.getObjectType()));
 		addSubPanelWithTitledBorder(new FactorSummaryCommentsPanel(getProject(), getProject().getObjectManager().getSchemas().get(ObjectType.STRATEGY)));
 		addSubPanelWithTitledBorder(new ProgressReportSubPanel(getMainWindow()));

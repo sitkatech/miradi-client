@@ -27,6 +27,7 @@ import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
 import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.Factor;
 import org.miradi.objects.Strategy;
 import org.miradi.project.Project;
@@ -34,9 +35,9 @@ import org.miradi.questions.*;
 import org.miradi.schemas.StrategySchema;
 
 
-public class StrategyCoreSubpanel extends ObjectDataInputPanel
+public class StrategyCoreSubPanel extends ObjectDataInputPanel
 {
-	public StrategyCoreSubpanel(Project projectToUse, Actions actions, int objectType) throws Exception
+	public StrategyCoreSubPanel(Project projectToUse, Actions actions, int objectType) throws Exception
 	{
 		super(projectToUse, objectType);
 
@@ -45,16 +46,17 @@ public class StrategyCoreSubpanel extends ObjectDataInputPanel
 		addFieldsOnOneLine(EAM.text("Strategy"), IconManager.getStrategyIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 		addField(createMultilineField(StrategySchema.getObjectType(), Factor.TAG_TEXT));
 
+		addTaxonomyFields(StrategySchema.getObjectType());
 		addField(createRadioButtonEditorFieldWithHierarchies(StrategySchema.getObjectType(), Strategy.TAG_STANDARD_CLASSIFICATION_V11_CODE, new StrategyClassificationQuestionV11()));
 		addField(createRadioButtonEditorFieldWithHierarchies(StrategySchema.getObjectType(), Strategy.TAG_STANDARD_CLASSIFICATION_V20_CODE, new StrategyClassificationQuestionV20()));
-		addTaxonomyFields(StrategySchema.getObjectType());
-		
+
 		ObjectDataInputField impactField = createRadioButtonEditorField(StrategySchema.getObjectType(), Strategy.TAG_IMPACT_RATING, getQuestion(StrategyImpactQuestion.class));
 		ObjectDataInputField feasibilityField = createRadioButtonEditorField(StrategySchema.getObjectType(), Strategy.TAG_FEASIBILITY_RATING, getQuestion(StrategyFeasibilityQuestion.class));
 		ObjectDataInputField prioritySummaryField = createReadOnlyChoiceField(Strategy.PSEUDO_TAG_RATING_SUMMARY, getQuestion(StrategyRatingSummaryQuestion.class));
 		addFieldsOnOneLine(EAM.text("Rating"), new ObjectDataInputField[] {impactField, feasibilityField, prioritySummaryField});
-		
-		addLabeledSubPanelWithoutBorder(new LegacyTncStrategyRankingEditorPropertiesSubPanel(getProject(), getRefForType(StrategySchema.getObjectType()), actions), EAM.text("Legacy TNC Ratings"));
+
+		if (LegacyTncStrategyRankingEditorPropertiesSubPanel.hasLegacyTncRankings(getProject(), getStrategyRef()))
+			addLabeledSubPanelWithoutBorder(new LegacyTncStrategyRankingEditorPropertiesSubPanel(getProject(), getRefForType(StrategySchema.getObjectType()), actions), EAM.text("Legacy TNC Ratings"));
 		
 		addFieldWithEditButton(EAM.text("Objectives"), createReadOnlyObjectList(StrategySchema.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyObjectiveRelevancyList.class), getPicker()));
 		addFieldWithEditButton(EAM.text("Goals"), createReadOnlyObjectList(StrategySchema.getObjectType(), Strategy.PSEUDO_TAG_RELEVANT_GOAL_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditStrategyGoalRelevancyList.class), getPicker()));
@@ -79,4 +81,8 @@ public class StrategyCoreSubpanel extends ObjectDataInputPanel
 		return EAM.text("Summary");
 	}
 
+	private ORef getStrategyRef()
+	{
+		return getSelectedRefs().getRefForType(StrategySchema.getObjectType());
+	}
 }
