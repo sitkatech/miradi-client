@@ -157,6 +157,9 @@ public class TaxonomyHelper implements Xmpz2XmlConstants
 		if (ExpenseAssignment.is(objectType))
 			return EXPENSE_ASSIGNMENT_TAXONOMY_ASSOCIATION_POOL;
 
+		if (Output.is(objectType))
+			return OUTPUT_TAXONOMY_ASSOCIATION_POOL;
+
 		if (AnalyticalQuestion.is(objectType))
 			return ANALYTICAL_QUESTION_TAXONOMY_ASSOCIATION_POOL;
 
