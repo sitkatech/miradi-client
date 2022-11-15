@@ -24,9 +24,9 @@ import java.util.HashSet;
 import java.util.Vector;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.exceptions.UnexpectedNonSideEffectException;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
@@ -68,6 +68,7 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 		
 		addChildrenToGroup(groupBoxDiagramFactor, selectedDiagramFactorRefs);
 		adjustDiagramFactorsZOrder(selectedDiagramFactorRefs);
+		updateGroupBoxSizeAndLocation(groupBoxDiagramFactor);
 	}
 	
 	@Override
@@ -112,6 +113,12 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 
 		CommandVector commandsToAdjustZOrder = new CommandVector(commands);
 		getProject().executeCommands(commandsToAdjustZOrder);
+	}
+
+	protected void updateGroupBoxSizeAndLocation(DiagramFactor groupBox) throws Exception
+	{
+		DiagramModel model = getDiagramView().getDiagramModel();
+		model.updateGroupBoxCell(groupBox, true);
 	}
 
 	private ORefList extractDiagramFactorRefs(FactorCell[] factorCells)
