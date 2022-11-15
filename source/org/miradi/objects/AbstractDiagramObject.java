@@ -87,7 +87,7 @@ abstract public class AbstractDiagramObject extends BaseObject
 
     public CommandSetObjectData createCommandToConstrainZIndex() throws Exception
     {
-		int zIndex = getZIndex();
+        int zIndex = getZIndex();
         int minZIndex = getMinZIndex();
         int updatedZIndex = Math.max(minZIndex, zIndex);
 
