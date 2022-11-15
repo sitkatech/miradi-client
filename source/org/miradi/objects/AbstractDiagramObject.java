@@ -89,7 +89,7 @@ abstract public class AbstractDiagramObject extends BaseObject
     {
 		int zIndex = getZIndex();
         int minZIndex = getMinZIndex();
-        int updatedZIndex = Math.max(minZIndex + 1, zIndex);
+        int updatedZIndex = Math.max(minZIndex, zIndex);
 
         return new CommandSetObjectData(getSchema().getType(), getId(), AbstractDiagramObject.TAG_Z_INDEX, updatedZIndex);
     }

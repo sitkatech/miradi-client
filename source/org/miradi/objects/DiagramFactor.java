@@ -317,7 +317,7 @@ public class DiagramFactor extends AbstractDiagramObject
 
 		if (isGroupBoxChildDiagramFactor())
 		{
-			minZIndex = getZIndex(this);
+			minZIndex = getZIndex(this) + 1;
 		}
 		else
 		{
