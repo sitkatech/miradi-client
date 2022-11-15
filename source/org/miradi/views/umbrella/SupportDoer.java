@@ -43,5 +43,5 @@ public class SupportDoer extends MainWindowDoer
             return;
     }
 
-    public static final String MIRADI_SHARE_SUPPORT_URL = "https://www.miradishare.org/ux/resources/faq";
+    public static final String MIRADI_SHARE_SUPPORT_URL = "https://help.miradishare.org/hc/en-us";
 }
