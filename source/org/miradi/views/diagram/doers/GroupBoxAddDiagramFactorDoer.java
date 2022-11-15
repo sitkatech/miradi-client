@@ -30,6 +30,7 @@ import org.miradi.objects.DiagramLink;
 import org.miradi.project.Project;
 import org.miradi.schemas.DiagramFactorSchema;
 import org.miradi.schemas.DiagramLinkSchema;
+import org.miradi.utils.CommandVector;
 import org.miradi.views.diagram.LinkCreator;
 import org.miradi.views.diagram.LinkDeletor;
 
@@ -99,7 +100,8 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 		ORefList diagramFactorRefsToAdd = ORefList.subtract(nonGroupBoxDiagramFactorRefs, groupBoxChildrenRefs);
 		CommandSetObjectData appendCommand = CommandSetObjectData.createAppendORefListCommand(groupBoxDiagramFactor, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, diagramFactorRefsToAdd);
 		getProject().executeCommand(appendCommand);
-		
+
+		adjustDiagramFactorsZOrder(diagramFactorRefsToAdd);
 		ensureNewlyAddedDiagramFactorIsLinked(groupBoxDiagramFactor);
 	}
 
@@ -136,6 +138,20 @@ public class GroupBoxAddDiagramFactorDoer extends AbstractGroupBoxDoer
 			}
 			
 		}
+	}
+
+	private void adjustDiagramFactorsZOrder(ORefList diagramFactorRefsToAdd) throws Exception
+	{
+		Vector<CommandSetObjectData> commands = new Vector<CommandSetObjectData>();
+
+		for (ORef diagramFactorRef : diagramFactorRefsToAdd)
+		{
+			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), diagramFactorRef);
+			commands.add(diagramFactor.createCommandToConstrainZIndex());
+		}
+
+		CommandVector commandsToAdjustZOrder = new CommandVector(commands);
+		getProject().executeCommands(commandsToAdjustZOrder);
 	}
 
 	private void ensureNewlyAddedDiagramFactorIsLinked(DiagramFactor groupBoxDiagramFactor) throws Exception
