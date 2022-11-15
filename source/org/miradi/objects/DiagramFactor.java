@@ -317,7 +317,7 @@ public class DiagramFactor extends AbstractDiagramObject
 
 		if (isGroupBoxChildDiagramFactor())
 		{
-			minZIndex = getZIndex(this);
+			minZIndex = getZIndex(this) + 1;
 		}
 		else
 		{
@@ -362,7 +362,7 @@ public class DiagramFactor extends AbstractDiagramObject
 		{
 			for (DiagramFactor childDiagramFactor : getChildDiagramFactors())
 			{
-				maxZIndex = Math.min(maxZIndex, childDiagramFactor.getZIndex());
+				maxZIndex = Math.min(maxZIndex, childDiagramFactor.getZIndex() - 1);
 
 				DiagramLink[] childDiagramFactorLinks = getProject().getToAndFromLinks(childDiagramFactor.getDiagramFactorId());
 				for (DiagramLink diagramLink : childDiagramFactorLinks)

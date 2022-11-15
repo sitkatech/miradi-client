@@ -37,7 +37,7 @@ abstract public class AbstractGroupBoxDoer extends LocationDoer
 	public boolean isAvailable()
 	{
 		if (!isInDiagram())
-		return false;
+			return false;
 	
 		if (!isAtLeastOneFactorSelected())
 			return false;
