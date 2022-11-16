@@ -81,15 +81,15 @@ public class WelcomeImportStep extends NoProjectWizardStep
 			String buttonsText = EAM.text("<div class='WizardText'>" +	
 					"<p><table>" +
 					"<tr>" +
-					"<td><input type='submit' name='Back' value='&lt; Previous'></input></td>" + 
-					"<td><input type='submit' name='" + CONTROL_IMPORT_MIRADI + "' value='Miradi File (.Miradi)'></input></td>" +
-					"</tr>" +
-					
-					"<tr>" +
-					"<td></td>" + 
+					"<td></td>" +
 					"<td><input type='submit' name='" + CONTROL_IMPORT_XMPZ2 + "' value='Miradi Share Project File (.xmpz2)'></input></td>" +
 					"</tr>" +
 
+					"<tr>" +
+					"<td><input type='submit' name='Back' value='&lt; Previous'></input></td>" + 
+					"<td><input type='submit' name='" + CONTROL_IMPORT_MIRADI + "' value='Miradi Desktop Project File (.Miradi)'></input></td>" +
+					"</tr>" +
+					
 					"<tr>" +
 					"<td></td>" + 
 					"<td><input type='submit' name='" + CONTROL_IMPORT_MPZ + "' value='Old Miradi Project (.mpz)'></input></td>" +
