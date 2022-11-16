@@ -45,7 +45,7 @@ abstract public class AbstractOutputSubPanel extends EditableObjectListTableSubP
     @Override
     public String getPanelDescription()
     {
-        return EAM.text("Title|Output");
+        return EAM.text("Title|Outputs");
     }
 
     private EditableObjectRefsTableModel createTableModel(Project project)
