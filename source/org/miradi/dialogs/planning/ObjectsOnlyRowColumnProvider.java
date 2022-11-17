@@ -182,6 +182,7 @@ public class ObjectsOnlyRowColumnProvider extends AbstractPlanningTreeRowColumnP
             Factor.TAG_SHORT_LABEL,
             Factor.TAG_LABEL,
             Factor.TAG_TEXT,
+			Output.PSEUDO_TAG_FACTOR,
 				};
 
 		return new CodeList(list);

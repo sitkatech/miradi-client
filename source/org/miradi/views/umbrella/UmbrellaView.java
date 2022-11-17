@@ -230,6 +230,7 @@ abstract public class UmbrellaView extends JPanel implements CommandExecutedList
 		addDoerToMap(ActionEditTaskOutputs.class, new EditTaskOutputsDoer());
 		addDoerToMap(ActionCreateOutput.class, new CreateOutputDoer());
 		addDoerToMap(ActionDeleteOutput.class, new DeleteOutputDoer());
+		addDoerToMap(ActionCloneOutput.class, new CloneOutputDoer());
 
 		addDoerToMap(ActionCreateProgressPercent.class, new CreateProgressPercentDoer());
 		addDoerToMap(ActionDeleteProgressPercent.class, new DeleteProgressPercentDoer());

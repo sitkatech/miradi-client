@@ -28,7 +28,6 @@ import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.schemas.OutputSchema;
 import org.miradi.schemas.StrategySchema;
 import org.miradi.schemas.TaskSchema;
-import org.w3c.tidy.Out;
 
 public class Output extends BaseObject
 {
@@ -147,6 +146,9 @@ public class Output extends BaseObject
 	@Override
 	public String getPseudoData(String fieldTag)
 	{
+		if(fieldTag.equals(PSEUDO_TAG_FACTOR))
+			return getOwner().getLabel();
+
 		if (fieldTag.equals(PSEUDO_TAG_RELEVANT_GOAL_REFS))
 			return getRelevantGoalRefsAsString();
 
@@ -240,6 +242,7 @@ public class Output extends BaseObject
     public static final String TAG_OBJECTIVE_IDS = "ObjectiveIds";
     public static final String TAG_INDICATOR_IDS = "IndicatorIds";
 
+	public final static String PSEUDO_TAG_FACTOR = "PseudoTagFactor";
 	public static final String PSEUDO_TAG_RELEVANT_GOAL_REFS = "PseudoRelevantGoalRefs";
 	public static final String PSEUDO_TAG_RELEVANT_OBJECTIVE_REFS = "PseudoRelevantObjectiveRefs";
 	public static final String PSEUDO_TAG_RELEVANT_INDICATOR_REFS = "PseudoRelevantIndicatorRefs";
