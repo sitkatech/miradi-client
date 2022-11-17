@@ -412,6 +412,7 @@ public class Actions
 		registerAction(new ActionEditTaskOutputs(mainWindow));
 		registerAction(new ActionCreateOutput(mainWindow));
 		registerAction(new ActionDeleteOutput(mainWindow));
+		registerAction(new ActionCloneOutput(mainWindow));
 
 		registerAction(new ActionDeleteOrganization(mainWindow));
 		registerAction(new ActionCreateOrganization(mainWindow));

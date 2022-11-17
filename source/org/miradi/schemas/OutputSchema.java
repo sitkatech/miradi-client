@@ -42,6 +42,8 @@ public class OutputSchema extends BaseObjectSchema
 		createFieldSchemaSingleLineUserText(Output.TAG_URL);
 		createFieldSchemaDate(Output.TAG_DUE_DATE);
 
+		createPseudoFieldSchemaString(Output.PSEUDO_TAG_FACTOR);
+
         createFieldSchemaRelevancyOverrideSet(Output.TAG_GOAL_IDS);
         createFieldSchemaRelevancyOverrideSet(Output.TAG_OBJECTIVE_IDS);
         createFieldSchemaRelevancyOverrideSet(Output.TAG_INDICATOR_IDS);

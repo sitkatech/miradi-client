@@ -19,24 +19,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.dialogs.output;
 
-import org.miradi.actions.ActionCloneOutput;
-import org.miradi.actions.ActionCreateOutput;
-import org.miradi.actions.ActionDeleteOutput;
-import org.miradi.dialogs.base.ObjectListTablePanel;
+import org.miradi.dialogs.base.ObjectPoolTablePanel;
 import org.miradi.main.MainWindow;
-import org.miradi.objecthelpers.ORefList;
-import org.miradi.views.umbrella.StaticPicker;
+import org.miradi.schemas.OutputSchema;
 
-public class OutputListTablePanel extends ObjectListTablePanel
+public class OutputPoolTablePanel extends ObjectPoolTablePanel
 {
-    public OutputListTablePanel(MainWindow mainWindowToUse, ORefList selectionHierarchy)
+    public OutputPoolTablePanel(MainWindow mainWindowToUse)
     {
-        super(mainWindowToUse, new OutputListTableModel(mainWindowToUse.getProject(), selectionHierarchy), new StaticPicker(selectionHierarchy), DEFAULT_SORT_COLUMN);
-
-        addObjectActionButton(ActionCreateOutput.class, getParentPicker());
-        addUnknownTypeOfButton(ActionDeleteOutput.class);
-        addObjectActionButton(ActionCloneOutput.class, getParentPicker());
+        super(mainWindowToUse, OutputSchema.getObjectType(),
+                new OutputPoolTableModel(mainWindowToUse.getProject())
+        );
     }
-
-    private static final int DEFAULT_SORT_COLUMN = 0;
 }
