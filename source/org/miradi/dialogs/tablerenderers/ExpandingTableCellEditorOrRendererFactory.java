@@ -20,12 +20,12 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.dialogs.tablerenderers;
 
-import java.awt.Component;
-import java.awt.Dimension;
+import java.awt.*;
 
 import javax.swing.JComponent;
 import javax.swing.JTable;
 
+import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.utils.AbstractPopupEditorComponent;
 import org.miradi.utils.TableWithRowHeightSaver;
@@ -54,15 +54,31 @@ public class ExpandingTableCellEditorOrRendererFactory extends ObjectTableCellEd
 	}
 	
 	@Override
-	public Component getTableCellEditorComponent(JTable table, Object value,
-			boolean isSelected, int row, int tableColumn)
+	public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int tableColumn)
 	{
-		Component editor = super.getTableCellEditorComponent(table, value, isSelected, row,
-				tableColumn);
+		Component editor = super.getTableCellEditorComponent(table, value, isSelected, row, tableColumn);
 		((AbstractPopupEditorComponent)editor).setEditable(true);
 		return editor;
 	}
-	
+
+	@Override
+	protected void updateBorderAndColors(JComponent renderer, JTable table, int row, int tableColumn, boolean isEditor, boolean isSelected)
+	{
+		renderer.setBorder(getCellBorder(row));
+		if (isSelected)
+		{
+			Color fg = isEditor ? table.getSelectionForeground() : Color.WHITE;
+			Color bg = isEditor ? EAM.EDITABLE_BACKGROUND_COLOR : table.getSelectionBackground();
+			setColors(renderer, fg, bg);
+		}
+		else
+		{
+			Color fg = getCellForegroundColor(table, row, tableColumn);
+			Color bg = isEditor ? EAM.EDITABLE_BACKGROUND_COLOR : getCellBackgroundColor();
+			setColors(renderer, fg, bg);
+		}
+	}
+
 	public void editingWasStoppedByComponent()
 	{
 		stopCellEditing();
