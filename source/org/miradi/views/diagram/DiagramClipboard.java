@@ -39,7 +39,7 @@ public class DiagramClipboard extends Clipboard
 	
 	public synchronized int getPasteOffset() 
 	{
-		return pasteCount * project.getGridSize();
+		return pasteCount * project.getOffsetSize();
 	}
 
 	public synchronized void incrementPasteCount() 
