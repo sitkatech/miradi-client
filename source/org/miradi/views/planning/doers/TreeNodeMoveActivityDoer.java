@@ -245,7 +245,7 @@ public class TreeNodeMoveActivityDoer extends AbstractTreeNodeTaskDoer
 		int offset = activityRefs.find(activityRef);
 		Point location = new Point(strategyDiagramFactor.getLocation());
 		location.x += (offset * getProject().getGridSize());
-		location.y += strategyDiagramFactor.getSize().height;
+		location.y += strategyDiagramFactor.getSize().height + (offset * DiagramFactor.DEFAULT_ACTIVITY_SIZE.height);
 		helper.setDiagramFactorLocation(activityDiagramFactorId, location);
 	}
 
