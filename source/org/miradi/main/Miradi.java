@@ -311,6 +311,11 @@ public class Miradi
 		return System.getProperty("os.name").equals("Linux");
 	}
 
+	public static boolean isMacos()
+	{
+		return System.getProperty("os.name").equals("Mac OS X");
+	}
+
 	public static boolean isWindows()
 	{
 		return System.getProperty("os.name").startsWith("Windows");

@@ -1,4 +1,4 @@
-<!--
+/*
 Copyright 2005-2022, Foundations of Success, Bethesda, Maryland
 on behalf of the Conservation Measures Partnership ("CMP").
 Material developed between 2005-2013 is jointly copyright by Beneficent Technology, Inc. ("The Benetech Initiative"), Palo Alto, California.
@@ -16,23 +16,21 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
--->
+*/
+package org.miradi.views.diagram.doers;
 
-<!doctype html>
-<html lang="en">
-<head>
-    <title>About Miradi</title>
-    <style type=text/css>
-    </style>
-</head>
+import org.miradi.dialogs.output.OutputPoolTablePanel;
+import org.miradi.main.EAM;
 
-<body class='sidebar'>
-    <div class='indented'>
-        <p><strong>Version: %s</strong></p>
-        <p>Copyright 2005-2022, Foundations of Success.</p>
-        <p><a href='https://www.miradishare.org/ux/about'><strong>About Miradi</strong></a></p>
-        <p><a href='https://help.miradishare.org/hc/en-us/categories/6271364733851-About'><strong>Miradi Help Center &gt; About</strong></a></p>
-    </div>
-</body>
-</html>
+public class CloneOutputDoer extends CreateOutputDoer
+{
+    @Override
+    protected void doIt() throws Exception
+    {
+        if (!isAvailable())
+            return;
 
+        if (validUserChoiceForObjectToClone(new OutputPoolTablePanel(getMainWindow()), EAM.text("Choose Output to Create from")))
+            super.doIt();
+    }
+}

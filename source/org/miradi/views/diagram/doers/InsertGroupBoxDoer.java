@@ -21,17 +21,20 @@ package org.miradi.views.diagram.doers;
 
 import java.text.ParseException;
 import java.util.HashSet;
+import java.util.Vector;
 
 import org.miradi.commands.CommandSetObjectData;
+import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.exceptions.CommandFailedException;
-import org.miradi.exceptions.UnexpectedNonSideEffectException;
 import org.miradi.main.EAM;
+import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.DiagramFactor;
 import org.miradi.objects.DiagramObject;
 import org.miradi.objects.GroupBox;
 import org.miradi.schemas.GroupBoxSchema;
+import org.miradi.utils.CommandVector;
 import org.miradi.views.diagram.InsertFactorDoer;
 import org.miradi.views.diagram.LinkCreator;
 
@@ -64,6 +67,8 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 			return;
 		
 		addChildrenToGroup(groupBoxDiagramFactor, selectedDiagramFactorRefs);
+		adjustDiagramFactorsZOrder(selectedDiagramFactorRefs);
+		updateGroupBoxSizeAndLocation(groupBoxDiagramFactor);
 	}
 	
 	@Override
@@ -90,14 +95,32 @@ public class InsertGroupBoxDoer extends InsertFactorDoer
 
 	}
 
-	private void addChildrenToGroup(DiagramFactor groupBoxDiagramFactor,
-			ORefList selectedDiagramFactorRefs) throws ParseException,
-			UnexpectedNonSideEffectException, CommandFailedException
+	private void addChildrenToGroup(DiagramFactor groupBoxDiagramFactor, ORefList selectedDiagramFactorRefs) throws ParseException, CommandFailedException
 	{
 		CommandSetObjectData appendCommand = CommandSetObjectData.createAppendORefListCommand(groupBoxDiagramFactor, DiagramFactor.TAG_GROUP_BOX_CHILDREN_REFS, selectedDiagramFactorRefs);
 		getProject().executeCommand(appendCommand);
 	}
-	
+
+	private void adjustDiagramFactorsZOrder(ORefList diagramFactorRefsToAdd) throws Exception
+	{
+		Vector<CommandSetObjectData> commands = new Vector<CommandSetObjectData>();
+
+		for (ORef diagramFactorRef : diagramFactorRefsToAdd)
+		{
+			DiagramFactor diagramFactor = DiagramFactor.find(getProject(), diagramFactorRef);
+			commands.add(diagramFactor.createCommandToConstrainZIndex());
+		}
+
+		CommandVector commandsToAdjustZOrder = new CommandVector(commands);
+		getProject().executeCommands(commandsToAdjustZOrder);
+	}
+
+	protected void updateGroupBoxSizeAndLocation(DiagramFactor groupBox) throws Exception
+	{
+		DiagramModel model = getDiagramView().getDiagramModel();
+		model.updateGroupBoxCell(groupBox, true);
+	}
+
 	private ORefList extractDiagramFactorRefs(FactorCell[] factorCells)
 	{
 		ORefList diagramFactorRefs = new ORefList();

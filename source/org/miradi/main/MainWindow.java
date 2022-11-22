@@ -52,6 +52,7 @@ import org.miradi.objects.TableSettings;
 import org.miradi.project.*;
 import org.miradi.questions.ChoiceItem;
 import org.miradi.questions.FontFamiliyQuestion;
+import org.miradi.questions.LookAndFeelThemeQuestion;
 import org.miradi.questions.TableRowHeightModeQuestion;
 import org.miradi.schemas.ExpenseAssignmentSchema;
 import org.miradi.schemas.ProjectMetadataSchema;
@@ -1322,6 +1323,12 @@ public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositi
 	public String getLookAndFeelThemeName()
 	{
 		return preferences.getLookAndFeelThemeName();
+	}
+
+	public boolean isDefaultSystemLookAndFeel()
+	{
+		String preferredLookAndFeelName = preferences.getLookAndFeelThemeName();
+		return StringUtilities.isNullOrEmpty(preferredLookAndFeelName) || preferredLookAndFeelName.equals(LookAndFeelThemeQuestion.DEFAULT_SYSTEM_LOOK_AND_FEEL_THEME_CLASS_NAME);
 	}
 
 	public boolean isRowHeightModeManual()

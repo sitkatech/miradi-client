@@ -48,6 +48,12 @@ public class EditableHtmlPane extends AbstractHtmlPane
 	}
 
 	@Override
+	public void setForeground(Color fg)
+	{
+		updateStyleSheet(fg);
+	}
+
+	@Override
 	protected void customizeStyleSheet(StyleSheet style)
 	{
 		customizeStyleSheet(style, EAM.EDITABLE_FOREGROUND_COLOR);
@@ -68,7 +74,7 @@ public class EditableHtmlPane extends AbstractHtmlPane
 		updateStyleSheet(fg);
 	}
 
-	private void updateStyleSheet(Color fg)
+	protected void updateStyleSheet(Color fg)
 	{
 		EditorKit editorKit = getEditorKit();
 		if (editorKit instanceof HTMLEditorKit)

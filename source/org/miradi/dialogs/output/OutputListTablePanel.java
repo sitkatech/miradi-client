@@ -19,6 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.dialogs.output;
 
+import org.miradi.actions.ActionCloneOutput;
 import org.miradi.actions.ActionCreateOutput;
 import org.miradi.actions.ActionDeleteOutput;
 import org.miradi.dialogs.base.ObjectListTablePanel;
@@ -34,6 +35,7 @@ public class OutputListTablePanel extends ObjectListTablePanel
 
         addObjectActionButton(ActionCreateOutput.class, getParentPicker());
         addUnknownTypeOfButton(ActionDeleteOutput.class);
+        addObjectActionButton(ActionCloneOutput.class, getParentPicker());
     }
 
     private static final int DEFAULT_SORT_COLUMN = 0;

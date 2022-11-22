@@ -25,13 +25,14 @@ import java.util.Set;
 
 import org.miradi.main.EAM;
 import org.miradi.objects.Indicator;
+import org.miradi.utils.StringUtilities;
 
 abstract public class AbstractModifyMultipleFieldMigration extends AbstractMigration
 {
 	public AbstractModifyMultipleFieldMigration(RawProject rawProject, int typeToRemoveFieldsFromToUse)
 	{
 		super(rawProject);
-		
+
 		type = typeToRemoveFieldsFromToUse;
 		fieldsToRemove = createFieldsToLabelMapToModify();
 	}
@@ -52,7 +53,7 @@ abstract public class AbstractModifyMultipleFieldMigration extends AbstractMigra
 		return visitAllObjectsInPool(visitor);
 	}
 
-	private static MigrationResult removeFields(RawObject rawObject, HashMap<String, String> fieldsToLabelMap)
+	private static MigrationResult removeFields(RawObject rawObject, HashMap<String, String> fieldsToLabelMap, String dataLossMessageSuffix)
 	{
 		MigrationResult migrationResult = MigrationResult.createSuccess();
 		Set<String> fieldsToRemove = fieldsToLabelMap.keySet();
@@ -62,13 +63,16 @@ abstract public class AbstractModifyMultipleFieldMigration extends AbstractMigra
 			{
 				rawObject.remove(tagToRemove);
 				String fieldName = fieldsToLabelMap.get(tagToRemove);
-				String baseObjectlabel = createMessage(EAM.text("Name = %s"), rawObject.get(Indicator.TAG_LABEL));
+				String baseObjectLabel = createMessage(EAM.text("Name = %s"), rawObject.get(Indicator.TAG_LABEL));
 
 				HashMap<String, String> tokenReplacementMap = new HashMap<String, String>();
-				tokenReplacementMap.put("%label", baseObjectlabel);
+				tokenReplacementMap.put("%label", baseObjectLabel);
 				tokenReplacementMap.put("%fieldName", fieldName);
 				String dataLossMessage = EAM.substitute(EAM.text("%fieldName will be removed. %label"), tokenReplacementMap);
-				
+
+				if (!StringUtilities.isNullOrEmpty(dataLossMessageSuffix))
+					dataLossMessage += dataLossMessageSuffix;
+
 				migrationResult.addDataLoss(dataLossMessage);
 			}
 		}
@@ -85,15 +89,26 @@ abstract public class AbstractModifyMultipleFieldMigration extends AbstractMigra
 	
 	protected class RemoveVisitor extends AbstractMigrationVisitor
 	{
+		public  RemoveVisitor()
+		{
+			this("");
+		}
+
+		public  RemoveVisitor(String dataLossMessageSuffixToUse)
+		{
+			dataLossMessageSuffix = dataLossMessageSuffixToUse;
+		}
+
 		public int getTypeToVisit()
 		{
 			return type;
 		}
+		public String dataLossMessageSuffix;
 
 		@Override
 		public MigrationResult internalVisit(RawObject rawObject) throws Exception
 		{
-			return removeFields(rawObject, fieldsToRemove);
+			return removeFields(rawObject, fieldsToRemove, dataLossMessageSuffix);
 		}
 	}
 	

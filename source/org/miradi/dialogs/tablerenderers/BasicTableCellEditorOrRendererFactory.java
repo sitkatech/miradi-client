@@ -85,6 +85,11 @@ abstract public class BasicTableCellEditorOrRendererFactory extends AbstractCell
 
 	protected void updateBorderAndColors(JComponent renderer, JTable table, int row, int tableColumn, boolean isSelected)
 	{
+		updateBorderAndColors(renderer, table, row, tableColumn, false, isSelected);
+	}
+
+	protected void updateBorderAndColors(JComponent renderer, JTable table, int row, int tableColumn, boolean isEditor, boolean isSelected)
+	{
 		renderer.setBorder(getCellBorder(row));
 		if(isSelected)
 		{

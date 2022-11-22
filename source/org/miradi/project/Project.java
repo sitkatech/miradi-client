@@ -1326,6 +1326,11 @@ public class Project implements ProjectInterface
 		return DEFAULT_GRID_SIZE;
 	}
 	
+	public int getOffsetSize()
+	{
+		return DEFAULT_OFFSET_SIZE;
+	}
+
 	public Point getSnapped(Point point)
 	{
 		int gridSize = getGridSize();
@@ -1428,6 +1433,7 @@ public class Project implements ProjectInterface
 	public static final String REPORT_VIEW_NAME = "Reports";
 
 	public static final int DEFAULT_GRID_SIZE = 1;
+	public static final int DEFAULT_OFFSET_SIZE = 15;
 	public static final int DEFAULT_DIAGRAM_FONT_SIZE = 11;
 
 	public static final int MAX_PROJECT_FILENAME_LENGTH = 255;

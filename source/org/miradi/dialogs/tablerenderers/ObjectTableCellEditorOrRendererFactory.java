@@ -57,8 +57,7 @@ abstract public class ObjectTableCellEditorOrRendererFactory extends BasicTableC
 		JComponent editor = (JComponent)super.getTableCellRendererComponent(table, value, isSelected, false, row, tableColumn);
 		Font font = getCellFont(row, tableColumn);
 		editor.setFont(font);
-		final boolean EDITOR_CELL_IS_ALWAYS_SELECTED = true;
-		updateBorderAndColors(editor, table, row, tableColumn, EDITOR_CELL_IS_ALWAYS_SELECTED);
+		updateBorderAndColors(editor, table, row, tableColumn, true, isSelected);
 		return editor;
 	}
 	
