@@ -42,21 +42,8 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ORefSet;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objecthelpers.OldToNewDiagramFactorMap;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.DiagramFactor;
-import org.miradi.objects.DiagramLink;
-import org.miradi.objects.DiagramObject;
-import org.miradi.objects.Factor;
-import org.miradi.objects.HumanWelfareTarget;
-import org.miradi.objects.ResultsChainDiagram;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Stress;
-import org.miradi.objects.Task;
-import org.miradi.objects.ThreatReductionResult;
-import org.miradi.schemas.DiagramFactorSchema;
-import org.miradi.schemas.DiagramLinkSchema;
-import org.miradi.schemas.FactorLinkSchema;
-import org.miradi.schemas.StrategySchema;
+import org.miradi.objects.*;
+import org.miradi.schemas.*;
 import org.miradi.utils.PointList;
 import org.miradi.views.diagram.LinkCreator;
 
@@ -271,6 +258,9 @@ public class ResultsChainCreatorHelper
 		if (Task.is(diagramFactor.getWrappedType()))
 			return !containsRelatedStrategy(selectedDiagramFactors, (Task)diagramFactor.getWrappedFactor());
 		
+		if (Assumption.is(diagramFactor.getWrappedType()))
+			return !containsRelatedAnalyticalQuestion(selectedDiagramFactors, (Assumption)diagramFactor.getWrappedFactor());
+
 		return false;
 	}
 
@@ -285,6 +275,20 @@ public class ResultsChainCreatorHelper
 				return true;
 		}
 		
+		return false;
+	}
+
+	private boolean containsRelatedAnalyticalQuestion(HashSet<DiagramFactor> selectedDiagramFactors, Assumption assumption)
+	{
+		ORefList analyticalQuestionReferrerRefs = assumption.findObjectsThatReferToUs(AnalyticalQuestionSchema.getObjectType());
+		for (int index = 0; index < analyticalQuestionReferrerRefs.size(); ++index)
+		{
+			ORef analyticalQuestionRef = analyticalQuestionReferrerRefs.get(index);
+			DiagramFactor analyticalQuestionDiagramFactor = model.getDiagramFactor(analyticalQuestionRef);
+			if (selectedDiagramFactors.contains(analyticalQuestionDiagramFactor))
+				return true;
+		}
+
 		return false;
 	}
 
@@ -326,6 +330,12 @@ public class ResultsChainCreatorHelper
 		if (diagramFactor.getWrappedType() == ObjectType.GROUP_BOX)
 			return createNewFactorAndSetLabel(diagramFactor);
 		
+		if (diagramFactor.getWrappedType() == ObjectType.ANALYTICAL_QUESTION)
+			return diagramFactor.getWrappedORef();
+
+		if (diagramFactor.getWrappedType() == ObjectType.ASSUMPTION)
+			return diagramFactor.getWrappedORef();
+
 		throw new Exception("wrapped type not found "+diagramFactor.getWrappedType());
 	}
 
@@ -539,6 +549,12 @@ public class ResultsChainCreatorHelper
 		if (diagramFactor.getWrappedType() == ObjectType.GROUP_BOX)
 			return true;
 		
+		if (diagramFactor.getWrappedType() == ObjectType.ANALYTICAL_QUESTION)
+			return true;
+
+		if (diagramFactor.getWrappedType() == ObjectType.ASSUMPTION)
+			return true;
+
 		return false;
 	}
 	
@@ -575,8 +591,7 @@ public class ResultsChainCreatorHelper
 
 		return newlyCreated;
 	}
-	
-	
+
 	private CreateDiagramLinkParameter createDiagramLinkExtraInfo(DiagramLink diagramLink, DiagramFactor from, DiagramFactor fromCloned, DiagramFactor to, DiagramFactor toCloned) throws Exception
 	{
 		if (areSharingTheSameFactor(from, fromCloned, to, toCloned))
