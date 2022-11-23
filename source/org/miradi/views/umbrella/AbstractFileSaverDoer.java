@@ -27,6 +27,7 @@ import org.miradi.dialogs.base.ProgressDialog;
 import org.miradi.exceptions.CommandFailedException;
 import org.miradi.exceptions.UserCanceledException;
 import org.miradi.main.EAM;
+import org.miradi.project.Project;
 import org.miradi.utils.MiradiFileSaveChooser;
 import org.miradi.utils.ImageTooLargeException;
 import org.miradi.utils.MiradiBackgroundWorkerThread;
@@ -59,7 +60,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 				return;
 
 			ProgressDialog progressDialog = new ProgressDialog(getMainWindow(), getProgressTitle());
-			ExportWorker worker = new ExportWorker(progressDialog, chosen);
+			ExportProjectBackgroundWorker worker = new ExportProjectBackgroundWorker(progressDialog, chosen);
 			progressDialog.doWorkInBackgroundWhileShowingProgress(worker);
 			worker.cleanup();
 		}
@@ -91,7 +92,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 
 	private void doWorkWithProgressDialog(ProgressInterface progressInterface, File chosen) throws Exception
 	{
-		boolean workWasCompleted = doWork(chosen, progressInterface);
+		boolean workWasCompleted = doWork(getProject(), chosen, progressInterface);
 		if (workWasCompleted) {
 			progressInterface.finished();
 			EAM.notifyDialog(EAM.text("Export complete"));
@@ -118,9 +119,9 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 		progressInterface.setStatusMessage(EAM.text("save..."), 1);
 	}
 	
-	private class ExportWorker extends MiradiBackgroundWorkerThread
+	private class ExportProjectBackgroundWorker extends MiradiBackgroundWorkerThread
 	{
-		public ExportWorker(ProgressInterface progressToNotify, File destinationFileToUse)
+		public ExportProjectBackgroundWorker(ProgressInterface progressToNotify, File destinationFileToUse)
 		{
 			super(progressToNotify);
 			
@@ -138,7 +139,7 @@ abstract public class AbstractFileSaverDoer extends ViewDoer
 	
 	abstract protected MiradiFileSaveChooser createFileChooser();
 	
-	abstract protected boolean doWork(File destinationFile, ProgressInterface progressInterface) throws Exception;
+	abstract protected boolean doWork(Project project, File destinationFile, ProgressInterface progressInterface) throws Exception;
 	
 	abstract protected String getProgressTitle();
 }

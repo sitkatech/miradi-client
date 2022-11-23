@@ -22,6 +22,7 @@ package org.miradi.views.umbrella.doers;
 
 
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
+import org.miradi.project.Project;
 import org.miradi.utils.MiradiFileSaveChooser;
 import org.miradi.utils.Xmpz2ZipFileChooser;
 import org.miradi.xml.XmlExporter;
@@ -43,9 +44,9 @@ public class Xmpz2ProjectExportDoer extends AbstractExportProjectXmlZipDoer
 	}
 
 	@Override
-	protected XmlExporter createExporter() throws Exception
+	protected XmlExporter createExporter(Project project) throws Exception
 	{
-		return new Xmpz2XmlExporter(getProject());
+		return new Xmpz2XmlExporter(project);
 	}
 
 	@Override

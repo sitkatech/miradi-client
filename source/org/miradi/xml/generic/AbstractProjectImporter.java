@@ -20,12 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.generic;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.zip.ZipException;
-
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
-import org.miradi.exceptions.XmlValidationException;
 import org.miradi.main.MainWindow;
 import org.miradi.project.Project;
 import org.miradi.utils.MiradiZipFile;
@@ -34,11 +29,13 @@ import org.miradi.views.umbrella.AbstractZippedXmlImporter;
 import org.miradi.xml.AbstractXmlImporter;
 import org.miradi.xml.xmpz2.Xmpz2MigrationResult;
 
+import java.io.File;
+
 abstract public class AbstractProjectImporter extends AbstractZippedXmlImporter
 {
-	public AbstractProjectImporter(MainWindow mainWindowToUse)
+	public AbstractProjectImporter(MainWindow mainWindowToUse, boolean commandLineModeToUse)
 	{
-		super(mainWindowToUse);
+		super(mainWindowToUse, commandLineModeToUse);
 	}
 	
 	@Override
@@ -49,13 +46,7 @@ abstract public class AbstractProjectImporter extends AbstractZippedXmlImporter
 		return new ImportXmlProjectResult(projectToFill, migrationResult.getSchemaVersionWasUpdated(), migrationResult.getDocumentSchemaVersion());
 	}
 
-	@Override
-	protected void createOrOpenProject(Project projectToFill, File projectFile) throws Exception
-	{
-		projectToFill.rawCreatorOpen();
-	}
-	
-	protected ImportXmlProjectResult importProject(File zipFileToImport, ProgressInterface progressIndicator) throws ZipException, IOException, Exception, XmlValidationException
+	protected ImportXmlProjectResult importProject(File zipFileToImport, ProgressInterface progressIndicator) throws Exception
 	{
 		MiradiZipFile zipFile = new MiradiZipFile(zipFileToImport);
 		try
@@ -68,10 +59,5 @@ abstract public class AbstractProjectImporter extends AbstractZippedXmlImporter
 		}
 	}
 
-	@Override
-	protected void possiblyNotifyUserOfAutomaticMigration(File file) throws Exception
-	{
-	}
-	
 	abstract protected AbstractXmlImporter createXmpzXmlImporter(Project projectToFill,	ProgressInterface progressIndicator) throws Exception;
 }

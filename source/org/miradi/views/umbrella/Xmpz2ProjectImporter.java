@@ -42,9 +42,9 @@ import java.io.File;
 
 public class Xmpz2ProjectImporter extends AbstractProjectImporter
 {
-	public Xmpz2ProjectImporter(MainWindow mainWindowToUse)
+	public Xmpz2ProjectImporter(MainWindow mainWindowToUse, boolean commandLineModeToUse)
 	{
-		super(mainWindowToUse);
+		super(mainWindowToUse, commandLineModeToUse);
 	}
 
 	@Override
@@ -54,7 +54,7 @@ public class Xmpz2ProjectImporter extends AbstractProjectImporter
 	}
 
 	@Override
-	protected void createProject(File importFile, File newProjectFile, ProgressInterface progressIndicator) throws Exception
+	public void createProject(File importFile, File newProjectFile, ProgressInterface progressIndicator) throws Exception
 	{
 		ImportXmlProjectResult importResult = importProject(importFile, progressIndicator);
 
@@ -74,13 +74,33 @@ public class Xmpz2ProjectImporter extends AbstractProjectImporter
 		int versionToReverseMigrateTo = MigrationManager.getLatestMigrationForDocumentSchemaVersion(documentSchemaVersion);
 		MigrationResult migrationResult = migrationManager.migrate(rawProjectToMigrate, new VersionRange(versionToReverseMigrateTo));
 
+		try
+		{
+			handleMigrationResult(migrationResult);
+
+			String migratedRawProjectAsString = RawProjectSaver.saveProject(rawProjectToMigrate);
+			UnicodeWriter fileWriter = new UnicodeWriter(newProjectFile);
+			fileWriter.write(migratedRawProjectAsString);
+			fileWriter.close();
+		}
+		catch (Exception e)
+		{
+			if (getCommandLineMode())
+				throw new Exception(e.getMessage(), e);
+			else
+				EAM.errorDialog(e.getMessage());
+		}
+	}
+
+	private void handleMigrationResult(MigrationResult migrationResult) throws Exception
+	{
 		if (migrationResult.cannotMigrate())
 		{
 			final String message = EAM.substituteSingleString(EAM.text("Unable to complete this migration.\n\n" +
 					"Issues encountered:\n" +
 					"%s"), migrationResult.getUserFriendlyGroupedCannotMigrateMessagesAsString());
 
-			EAM.errorDialog(message);
+			throw new Exception(message);
 		}
 
 		// possible edge case where the xml forward migration / import added some data that will be lost by the reverse migration
@@ -91,18 +111,16 @@ public class Xmpz2ProjectImporter extends AbstractProjectImporter
 					"Issues encountered:\n" +
 					"%s"), migrationResult.getUserFriendlyGroupedDataLossMessagesAsString());
 
+			if (getCommandLineMode())
+				throw new Exception(message);
+
 			EAM.logWarning(message);
 		}
 
 		if (migrationResult.didFail())
 		{
-			EAM.errorDialog(EAM.text("Could not migrate!"));
+			throw new Exception(EAM.text("Could not migrate!"));
 		}
-
-		String migratedRawProjectAsString = RawProjectSaver.saveProject(rawProjectToMigrate);
-		UnicodeWriter fileWriter = new UnicodeWriter(newProjectFile);
-		fileWriter.write(migratedRawProjectAsString);
-		fileWriter.close();
 	}
 
 	@Override

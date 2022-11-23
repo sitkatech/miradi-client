@@ -25,10 +25,12 @@ import org.miradi.exceptions.XmlValidationException;
 import org.miradi.main.EAM;
 import org.miradi.main.ResourcesHandler;
 import org.miradi.objecthelpers.ORef;
+import org.miradi.project.Project;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.PNGFileFilter;
 import org.miradi.utils.ProgressInterface;
 import org.miradi.views.umbrella.XmlExporterDoer;
+import org.miradi.xml.xmpz2.CommandLineProgressIndicator;
 import org.xml.sax.SAXParseException;
 
 import java.io.File;
@@ -48,22 +50,25 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 	}
 
 	@Override
-	protected boolean export(File chosen, ProgressInterface progressInterface) throws Exception
+	public boolean export(Project project, File chosen, ProgressInterface progressInterface) throws Exception
 	{
 		progressInterface.setStatusMessage(EAM.text("save..."), 4);
 		ZipOutputStream zipOut = new ZipOutputStream(new FileOutputStream(chosen));
 		try
 		{
-			addProjectAsXmlToZip(zipOut);
+			addProjectAsXmlToZip(project, zipOut);
 			progressInterface.incrementProgress();
 			
 			addSchemaToZip(zipOut);
 			progressInterface.incrementProgress();
-			
-			addDiagramImagesToZip(zipOut);
-			progressInterface.incrementProgress();
-			
-			addExceptionLogFile(zipOut);
+
+			if (!(progressInterface instanceof CommandLineProgressIndicator))
+			{
+				addDiagramImagesToZip(project, zipOut);
+				progressInterface.incrementProgress();
+			}
+
+			addExceptionLogFile(project, zipOut);
 			progressInterface.incrementProgress();
 			
 			return true;
@@ -72,7 +77,12 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 		{
 			progressInterface.finished();
 			EAM.logException(e);
-			EAM.errorDialog(extractErrorMessageFromValidationException(e));
+			String validationExceptionMessage = extractErrorMessageFromValidationException(e);
+
+			if (progressInterface instanceof CommandLineProgressIndicator)
+				throw new Exception(validationExceptionMessage, e);
+
+			EAM.errorDialog(validationExceptionMessage);
 		}
 		catch(Exception e)
 		{
@@ -102,9 +112,9 @@ abstract public class AbstractExportProjectXmlZipDoer extends XmlExporterDoer
 		return defaultErrorMsg;
 	}
 
-	private void addExceptionLogFile(ZipOutputStream zipOut) throws Exception
+	private void addExceptionLogFile(Project project, ZipOutputStream zipOut) throws Exception
 	{
-		String contents = getProject().getExceptionLog();
+		String contents = project.getExceptionLog();
 		if(contents.length() > 0)
 		{
 			byte[] byteContents = contents.getBytes("UTF-8");

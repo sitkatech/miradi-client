@@ -71,12 +71,16 @@ public class EAM
             return getDefaultHomeDirectory();
 	}
 
-    public static File setDefaultHomeDirectoryPreference() {
+    public static void setDefaultHomeDirectoryPreference()
+	{
         File defaultHomeDirectory = getDefaultHomeDirectory();
-        Preferences.userNodeForPackage(Miradi.class).put(EAM.MIRADI_DATA_DIRECTORY_KEY, defaultHomeDirectory.getAbsolutePath());
-        defaultHomeDirectory.mkdirs();
+		setHomeDirectoryPreference(defaultHomeDirectory);
+    }
 
-        return defaultHomeDirectory;
+    public static void setHomeDirectoryPreference(File preferredHomeDir)
+	{
+        Preferences.userNodeForPackage(Miradi.class).put(EAM.MIRADI_DATA_DIRECTORY_KEY, preferredHomeDir.getAbsolutePath());
+		preferredHomeDir.mkdirs();
     }
 
     public static boolean isPreferredHomeDirectoryValid(File preferredHomeDir)

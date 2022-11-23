@@ -29,6 +29,7 @@ import javax.imageio.stream.ImageOutputStream;
 import org.miradi.dialogs.ImageExportScaleDialog;
 import org.miradi.main.AppPreferences;
 import org.miradi.main.EAM;
+import org.miradi.project.Project;
 import org.miradi.utils.ProgressInterface;
 
 abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
@@ -44,7 +45,7 @@ abstract public class AbstractImageSaverDoer extends AbstractFileSaverDoer
 	}
 
 	@Override
-	protected boolean doWork(File destinationFile, ProgressInterface progressInterface) throws Exception
+	protected boolean doWork(Project project, File destinationFile, ProgressInterface progressInterface) throws Exception
 	{
 		ImageOutputStream out = createOutputStream(destinationFile);
 		try

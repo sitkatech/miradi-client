@@ -23,6 +23,7 @@ package org.miradi.views.umbrella;
 import java.io.File;
 
 import org.miradi.main.EAM;
+import org.miradi.project.Project;
 import org.miradi.project.ProjectSaver;
 import org.miradi.utils.MiradiFileSaveChooser;
 import org.miradi.utils.MpfFileChooser;
@@ -37,10 +38,10 @@ public class ExportMpfDoer extends AbstractFileSaverDoer
 	}
 
 	@Override
-	protected boolean doWork(File destinationFile, ProgressInterface progressInterface) throws Exception
+	protected boolean doWork(Project project, File destinationFile, ProgressInterface progressInterface) throws Exception
 	{
 		initializeSingleStepSaveProgressInterface(progressInterface);
-		ProjectSaver.saveProject(getProject(), destinationFile);
+		ProjectSaver.saveProject(project, destinationFile);
 		progressInterface.incrementProgress();
 		
 		return true;

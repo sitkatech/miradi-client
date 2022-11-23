@@ -36,6 +36,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objects.ConceptualModelDiagram;
 import org.miradi.objects.DiagramObject;
+import org.miradi.project.Project;
 import org.miradi.utils.BufferedImageFactory;
 import org.miradi.utils.MiradiFileSaveChooser;
 import org.miradi.utils.ProgressInterface;
@@ -45,9 +46,9 @@ import org.miradi.xml.XmlExporter;
 abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 {
 	@Override
-	protected boolean doWork(File destinationFile, ProgressInterface progressInterface) throws Exception
+	protected boolean doWork(Project project, File destinationFile, ProgressInterface progressInterface) throws Exception
 	{
-		return export(destinationFile, progressInterface);
+		return export(project, destinationFile, progressInterface);
 	}
 
 	@Override
@@ -57,9 +58,9 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 				"don't have permission to write to it, or you are using invalid characters in the file name.");
 	}
 	
-	protected void addProjectAsXmlToZip(ZipOutputStream zipOut) throws Exception
+	protected void addProjectAsXmlToZip(Project project, ZipOutputStream zipOut) throws Exception
 	{
-		byte[] projectXmlInBytes = exportProjectXmlToBytes();
+		byte[] projectXmlInBytes = exportProjectXmlToBytes(project);
 		ByteArrayInputStreamWithSeek inputStream = new ByteArrayInputStreamWithSeek(projectXmlInBytes);
 		try
 		{
@@ -77,12 +78,12 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 		}
 	}
 
-	private byte[] exportProjectXmlToBytes() throws IOException, Exception,	UnsupportedEncodingException
+	private byte[] exportProjectXmlToBytes(Project project) throws IOException, Exception,	UnsupportedEncodingException
 	{
 		UnicodeXmlWriter writer = UnicodeXmlWriter.create();
 		try
 		{
-			createExporter().exportProject(writer);
+			createExporter(project).exportProject(writer);
 		}
 		finally
 		{
@@ -92,15 +93,15 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 		return writer.toString().getBytes("UTF-8");
 	}
 	
-	protected void addDiagramImagesToZip(ZipOutputStream zipOut) throws Exception
+	protected void addDiagramImagesToZip(Project project, ZipOutputStream zipOut) throws Exception
 	{		
-		ORefList allDiagramObjectRefs = getProject().getAllDiagramObjectRefs();
+		ORefList allDiagramObjectRefs = project.getAllDiagramObjectRefs();
 		for (int refIndex = 0; refIndex < allDiagramObjectRefs.size(); ++refIndex)
 		{
 			if (refIndex == 0)
 				createZipDirectory(zipOut, IMAGES_DIR_NAME_IN_ZIP);
 
-			DiagramObject diagramObject = (DiagramObject) getProject().findObject(allDiagramObjectRefs.get(refIndex));
+			DiagramObject diagramObject = (DiagramObject) project.findObject(allDiagramObjectRefs.get(refIndex));
 			ORef diagramRef = diagramObject.getRef();
 			String imageName = createImageFileName(refIndex, diagramRef);
 			writeDiagramImage(zipOut, diagramObject, imageName);
@@ -163,14 +164,14 @@ abstract public class XmlExporterDoer extends AbstractFileSaverDoer
 		return EAM.text("Export...");
 	}
 	
-	abstract protected XmlExporter createExporter() throws Exception;
+	abstract protected XmlExporter createExporter(Project project) throws Exception;
 
 	abstract protected void validateXml(InputStreamWithSeek inputStream) throws Exception;
 
 	@Override
 	abstract protected MiradiFileSaveChooser createFileChooser();
 	
-	abstract protected boolean export(File chosen, ProgressInterface progressInterface) throws Exception;
+	abstract public boolean export(Project project, File chosen, ProgressInterface progressInterface) throws Exception;
 	
 	public static final String CM_IMAGE_PREFIX = "CM";
 	public static final String RC_IMAGE_PREFIX = "RC";
