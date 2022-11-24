@@ -33,8 +33,11 @@ public class DiagramClipboard extends Clipboard
 	{
 		super(DiagramClipboard.class.getName());
 		project = projectToUse;
-		
-		clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+
+		if (project.isInCommandLineMode())
+			clipboard = null;
+		else
+			clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
 	}
 	
 	public synchronized int getPasteOffset() 
@@ -60,6 +63,9 @@ public class DiagramClipboard extends Clipboard
 	@Override
 	public synchronized void setContents(Transferable contents, ClipboardOwner owner) 
 	{
+		if (project.isInCommandLineMode())
+			throw new UnsupportedOperationException(EAM.text("Cannot use clipboard in command line mode"));
+
 		resetPasteCount();
 		clipboard.setContents(contents, owner);
 	}
@@ -67,6 +73,9 @@ public class DiagramClipboard extends Clipboard
 	@Override
 	public synchronized Transferable getContents(Object requestor)
 	{
+		if (project.isInCommandLineMode())
+			throw new UnsupportedOperationException(EAM.text("Cannot use clipboard in command line mode"));
+
 		return clipboard.getContents(requestor);
 	}
 	
@@ -79,6 +88,9 @@ public class DiagramClipboard extends Clipboard
 	{
 		try
 		{
+			if (project.isInCommandLineMode())
+				return false;
+
 			getContents();
 			
 			return true;

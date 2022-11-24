@@ -41,6 +41,7 @@ import org.miradi.exceptions.XmlValidationException;
 import org.miradi.exceptions.XmlVersionTooOldException;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
+import org.miradi.main.MainWindowInterface;
 import org.miradi.project.Project;
 import org.miradi.utils.AbstractFileChooser;
 import org.miradi.utils.GenericMiradiFileFilter;
@@ -57,7 +58,7 @@ public abstract class AbstractBaseProjectImporter
 		this(mainWindowToUse, false);
 	}
 	
-	public AbstractBaseProjectImporter(MainWindow mainWindowToUse, boolean commandLineModeToUse)
+	public AbstractBaseProjectImporter(MainWindowInterface mainWindowToUse, boolean commandLineModeToUse)
 	{
 		mainWindow = mainWindowToUse;
 		commandLineMode = commandLineModeToUse;
@@ -251,7 +252,7 @@ public abstract class AbstractBaseProjectImporter
 		if (commandLineMode)
 			throw new Exception(EAM.text("Cannot get main window in command-line mode."));
 
-		return mainWindow;
+		return (MainWindow) mainWindow;
 	}
 
 	protected boolean getCommandLineMode()
@@ -272,6 +273,6 @@ public abstract class AbstractBaseProjectImporter
 	
 	abstract protected void possiblyNotifyUserOfAutomaticMigration(File file) throws Exception;
 	
-	private MainWindow mainWindow;
+	private MainWindowInterface mainWindow;
 	private boolean commandLineMode;
 }

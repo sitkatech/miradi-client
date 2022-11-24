@@ -18,13 +18,8 @@ You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-package org.miradi.xml.xmpz2;
+package org.miradi.main;
 
-import org.miradi.main.MainWindowInterface;
-
-public class CommandLineMainWindow implements MainWindowInterface
+public interface MainWindowInterface
 {
-    public CommandLineMainWindow() throws Exception
-    {
-    }
 }

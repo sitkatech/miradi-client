@@ -22,7 +22,7 @@ package org.miradi.views.umbrella;
 
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
 import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import org.miradi.main.MainWindowInterface;
 import org.miradi.project.Project;
 import org.miradi.utils.GenericMiradiFileFilter;
 import org.miradi.utils.MiradiZipFile;
@@ -33,7 +33,7 @@ import java.io.File;
 
 abstract public class AbstractZippedXmlImporter extends AbstractBaseProjectImporter
 {
-	public AbstractZippedXmlImporter(MainWindow mainWindowToUse, boolean commandLineModeToUse)
+	public AbstractZippedXmlImporter(MainWindowInterface mainWindowToUse, boolean commandLineModeToUse)
 	{
 		super(mainWindowToUse, commandLineModeToUse);
 	}
@@ -63,7 +63,7 @@ abstract public class AbstractZippedXmlImporter extends AbstractBaseProjectImpor
 
 	protected Project createProjectToFill() throws Exception
 	{
-		Project projectToFill = new Project();
+		Project projectToFill = new Project(getCommandLineMode());
 		projectToFill.finishOpeningAfterLoad("[Imported]");
 		return projectToFill;
 	}

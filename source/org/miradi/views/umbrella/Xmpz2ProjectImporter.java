@@ -22,7 +22,7 @@ package org.miradi.views.umbrella;
 
 import org.martus.util.UnicodeWriter;
 import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import org.miradi.main.MainWindowInterface;
 import org.miradi.migrations.MigrationResult;
 import org.miradi.migrations.RawProject;
 import org.miradi.migrations.RawProjectLoader;
@@ -42,7 +42,7 @@ import java.io.File;
 
 public class Xmpz2ProjectImporter extends AbstractProjectImporter
 {
-	public Xmpz2ProjectImporter(MainWindow mainWindowToUse, boolean commandLineModeToUse)
+	public Xmpz2ProjectImporter(MainWindowInterface mainWindowToUse, boolean commandLineModeToUse)
 	{
 		super(mainWindowToUse, commandLineModeToUse);
 	}
