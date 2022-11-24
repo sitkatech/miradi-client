@@ -184,7 +184,7 @@ public class Xmpz2CommandLineMigrator
         File exportedProjectFile = new File(projectDirectory, exportedProjectFileName);
 
         String contents = UnicodeReader.getFileContents(projectFile);
-        Project project = new Project();
+        Project project = new Project(true);
         ProjectLoader.loadProject(new UnicodeStringReader(contents), project);
         project.finishOpeningAfterLoad(projectFile);
 

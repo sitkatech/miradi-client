@@ -57,6 +57,13 @@ public class Project implements ProjectInterface
 {
 	public Project() throws Exception
 	{
+		this(false);
+	}
+
+	public Project(boolean commandLineModeToUse) throws Exception
+	{
+		commandLineMode = commandLineModeToUse;
+
 		commandExecutor = new CommandExecutor(this);
 		projectCalendar = new ProjectCalendar(this);
 		
@@ -103,7 +110,12 @@ public class Project implements ProjectInterface
 		exceptionLog = new StringBuilder();
 		lastModifiedMillis = System.currentTimeMillis();
 	}
-	
+
+	public boolean isInCommandLineMode()
+	{
+		return commandLineMode;
+	}
+
 	/////////////////////////////////////////////////////////////////////////////////
 	// simple getters
 	public long getLastModifiedTime()
@@ -1437,7 +1449,8 @@ public class Project implements ProjectInterface
 	public static final int DEFAULT_DIAGRAM_FONT_SIZE = 11;
 
 	public static final int MAX_PROJECT_FILENAME_LENGTH = 255;
-	
+
+	private boolean commandLineMode;
 	private boolean isOpen;
 	private String projectName;
 	private File projectFile;

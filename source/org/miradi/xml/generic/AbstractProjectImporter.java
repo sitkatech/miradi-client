@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.generic;
 
 import org.martus.util.inputstreamwithseek.InputStreamWithSeek;
-import org.miradi.main.MainWindow;
+import org.miradi.main.MainWindowInterface;
 import org.miradi.project.Project;
 import org.miradi.utils.MiradiZipFile;
 import org.miradi.utils.ProgressInterface;
@@ -33,7 +33,7 @@ import java.io.File;
 
 abstract public class AbstractProjectImporter extends AbstractZippedXmlImporter
 {
-	public AbstractProjectImporter(MainWindow mainWindowToUse, boolean commandLineModeToUse)
+	public AbstractProjectImporter(MainWindowInterface mainWindowToUse, boolean commandLineModeToUse)
 	{
 		super(mainWindowToUse, commandLineModeToUse);
 	}

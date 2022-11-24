@@ -90,7 +90,7 @@ import java.net.URI;
 import java.util.*;
 import java.util.List;
 
-public class MainWindow extends JFrame implements ClipboardOwner, SplitterPositionSaverAndGetter
+public class MainWindow extends JFrame implements MainWindowInterface, ClipboardOwner, SplitterPositionSaverAndGetter
 {
 	public static MainWindow create() throws Exception
 	{
