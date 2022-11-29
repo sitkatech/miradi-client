@@ -234,7 +234,7 @@ public class TestXmpz2XmlImporter extends TestCaseForXmpz2ExportAndImport
 		ProjectForTesting projectForTesting = validateUsingStringWriter();
 		
 		ORefList importedDiagramObjectRefs = projectForTesting.getPool(ConceptualModelDiagramSchema.getObjectType()).getRefList();
-		assertEquals("there should be only one conceptual model diagram?", 1, importedDiagramObjectRefs.size());
+		assertEquals("there should be only one situation model diagram?", 1, importedDiagramObjectRefs.size());
 		ORef conceptualModelDiagramRef = importedDiagramObjectRefs.getFirstElement();
 		ConceptualModelDiagram conceptualModelDiagram = ConceptualModelDiagram.find(projectForTesting, conceptualModelDiagramRef);
 		CodeList importedHiddenTypeCodes = conceptualModelDiagram.getHiddenTypes();

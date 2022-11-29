@@ -182,7 +182,7 @@ public class DataUpgraderDiagramObjectLinkAdder
 		if (possibleResultsChain.exists())
 			return resultsChainDir;
 		
-		throw new RuntimeException("could not find diagram object file " +  diagramObjectFileName + " in either the Conceptual model or Results chain diagram");
+		throw new RuntimeException("could not find diagram object file " +  diagramObjectFileName + " in either the Situation model or Results chain diagram");
 	}
 
 	private boolean areLinked(EnhancedJsonObject[] allDiagramLinkJsons, BaseId from, BaseId to)

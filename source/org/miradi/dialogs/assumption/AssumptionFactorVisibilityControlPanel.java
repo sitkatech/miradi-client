@@ -48,7 +48,7 @@ public class AssumptionFactorVisibilityControlPanel extends AbstractFactorBubble
     @Override
     protected String getExplanationMessage()
     {
-        return EAM.text("Assumptions can be shown on both Conceptual Model and Results Chain pages");
+        return EAM.text("Assumptions can be shown on both Situation Model and Results Chain pages");
     }
 
     @Override

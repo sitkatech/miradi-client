@@ -34,7 +34,7 @@ public class DefinitionCommonTerms
 		
 		
 		def = Definition.createDefinitionFromTextString(EAM.text("Chain"), EAM.text("Chain - A sequence of linked factors in a diagram. " +
-		"A \"Factor Chain\" in a conceptual model shows the state " +
+		"A \"Factor Chain\" in a situation model shows the state " +
 		"of the world before you take action. A \"Results Chain\" " +
 		"shows the expected outcomes from the implementation of a strategy. " +
 		"Chains thus represent the assumptions you are making " +
@@ -109,10 +109,10 @@ public class DefinitionCommonTerms
 		defs.put("Definition:IndirectThreat", def);
 		
 
-		def = Definition.createDefinitionFromTextString(EAM.text("Conceptual Model"), EAM.text("Conceptual model - A diagram of a set of relationships " +
+		def = Definition.createDefinitionFromTextString(EAM.text("Situation Model"), EAM.text("Situation model - A diagram of a set of relationships " +
 		"between certain factors that are believed to impact or " +
 		"lead to a conservation target."));
-		defs.put("Definition:ConceptualModel", def);
+		defs.put("Definition:SituationModel", def);
 		
 		
 		def = Definition.createDefinitionFromTextString(EAM.text("Project|Scope"), EAM.text("Scope - The broad geographic or thematic focus of a project. In Miradi, a project's scope is represented by a green box around the targets."));

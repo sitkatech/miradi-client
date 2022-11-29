@@ -48,10 +48,10 @@ public class ShareSameLabeledScopeBoxesMigration
 			return;
 		
 		if (!getConceptualModelDir().exists())
-			throw new RuntimeException("Project is missing Conceptual Model Diagram Directory.");
+			throw new RuntimeException("Project is missing Situation Model Diagram Directory.");
 		
 		if (!getConceptualModelManifestFile().exists())
-			throw new RuntimeException("Project is missing Conceptual Model Manifest File");
+			throw new RuntimeException("Project is missing Situation Model Manifest File");
 		
 		shareAllMatchingScopeBoxesInAllDiagrams(getConceptualModelDir(), getConceptualModelIds());
 		shareAllMatchingScopeBoxesInAllDiagrams(getResultsChainDir(), getResultsChainIds());

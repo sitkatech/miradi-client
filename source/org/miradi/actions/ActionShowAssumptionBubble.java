@@ -31,7 +31,7 @@ public class ActionShowAssumptionBubble extends ObjectsAction
 
     public static String getLabel()
     {
-        return EAM.text("Action|Show Assumption on this page");
+        return EAM.text("Action|Show Assumption on this diagram");
     }
 
     @Override

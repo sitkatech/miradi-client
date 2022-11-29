@@ -32,12 +32,12 @@ public class ActionShowConceptualModel extends ViewAction
 	
 	private static String getLabel()
 	{
-		return EAM.text("Action|Show Conceptual Model");
+		return EAM.text("Action|Show Situation Model");
 	}
 
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("Action|Show Conceptual Model");
+		return EAM.text("Action|Show Situation Model");
 	}
 }

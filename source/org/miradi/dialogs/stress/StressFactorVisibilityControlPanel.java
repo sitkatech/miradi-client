@@ -42,7 +42,7 @@ public class StressFactorVisibilityControlPanel extends AbstractFactorBubbleVisi
 	@Override
 	protected String getExplanationMessage()
 	{
-		return EAM.text("Stresses can only be shown on Conceptual Model pages, not Results Chains");
+		return EAM.text("Stresses can only be shown on Situation Models, not Results Chains");
 	}
 
 	@Override

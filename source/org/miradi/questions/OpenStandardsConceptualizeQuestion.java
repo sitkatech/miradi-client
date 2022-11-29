@@ -140,7 +140,7 @@ public class OpenStandardsConceptualizeQuestion extends DynamicChoiceWithRootCho
 
 	public static String getCreateInitialConceptualModelLabel()
 	{
-		return EAM.text("Create initial conceptual model");
+		return EAM.text("Create initial Situation Model");
 	}
 	
 	public static String getGroundTruthAndReviseModelLabel()

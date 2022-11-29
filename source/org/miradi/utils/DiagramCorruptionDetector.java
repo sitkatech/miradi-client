@@ -158,7 +158,7 @@ public class DiagramCorruptionDetector
 		
 		Project project = mainWindow.getProject();
 		ConceptualModelDiagramPool cmPool = project.getConceptualModelDiagramPool();
-		String cmErrors = getGroupBoxLinkCorruptedErrorText(project, "Conceptual Model page", cmPool.getSortedRefList());
+		String cmErrors = getGroupBoxLinkCorruptedErrorText(project, "Situation Model", cmPool.getSortedRefList());
 		if(cmErrors.length() > 0)
 			body.append(cmErrors);
 		

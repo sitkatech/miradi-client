@@ -85,7 +85,7 @@ public class CreateScopeBoxesSuroundingTargetsMigration
 		File conceptualModelDir = getObjectsDir(CONCEPTUAL_MODEL_TYPE);
 		File resultsChainDir = getObjectsDir(RESULTS_CHAIN_TYPE);
 		if (!resultsChainDir.exists() && !conceptualModelDir.exists())
-			throw new RuntimeException("There is no results chain and no conceptual model diagram");
+			throw new RuntimeException("There is no results chain and no situation model diagram");
 
 		if (!scopeBoxDir.exists())
 			scopeBoxDir.mkdirs();

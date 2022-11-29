@@ -66,7 +66,7 @@ public class ConceptualModelDiagramPanel extends DiagramPanel implements Command
 
 	public String getTabName()
 	{
-		return EAM.text("Conceptual Model");
+		return EAM.text("Situation Model");
 	}
 
 	BrainstormModePanel brainstormModePanel;

@@ -28,7 +28,7 @@ public class DiagramModeQuestion extends StaticChoiceQuestion
 	protected ChoiceItem[] createChoices()
 	{
 		return new ChoiceItem[]{
-			new ChoiceItem(MODE_DEFAULT, EAM.text("Full Conceptual Model")),
+			new ChoiceItem(MODE_DEFAULT, EAM.text("Full Situation Model")),
 			new ChoiceItem(MODE_STRATEGY_BRAINSTORM, EAM.text("Brain Storm")),
 		};
 	}

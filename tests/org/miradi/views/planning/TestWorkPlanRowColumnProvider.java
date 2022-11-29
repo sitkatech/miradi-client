@@ -57,13 +57,13 @@ public class TestWorkPlanRowColumnProvider extends TestCaseWithProject
 	private void verifyConceptualModelDataInclusion(final String diagramDataInclusionCode, boolean expectedValue) throws Exception
 	{
 		fillMetadataDataInclusionValue(diagramDataInclusionCode);
-		assertEquals("should include conceptual model diagram data?", expectedValue, provider.shouldIncludeConceptualModelPage());
+		assertEquals("should include situation model diagram data?", expectedValue, provider.shouldIncludeConceptualModelPage());
 	}
 	
 	private void verifyResultsChainDataInclusion(final String diagramDataInclusionCode, boolean expectedValue) throws Exception
 	{
 		fillMetadataDataInclusionValue(diagramDataInclusionCode);
-		assertEquals("should include resuls chain diagram data?", expectedValue, provider.shouldIncludeResultsChain());
+		assertEquals("should include results chain diagram data?", expectedValue, provider.shouldIncludeResultsChain());
 	}
 
 	private void fillMetadataDataInclusionValue(final String diagramDataInclusionCode) throws Exception

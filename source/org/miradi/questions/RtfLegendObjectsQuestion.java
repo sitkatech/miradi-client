@@ -35,7 +35,7 @@ public class RtfLegendObjectsQuestion extends MultipleSelectStaticChoiceQuestion
 	{
 		return new ChoiceItem[] {
 				new ChoiceItem(ProjectMetadataSchema.OBJECT_NAME, EAM.text("Project"), new MiradiApplicationIcon()),
-				new ChoiceItem(ConceptualModelDiagramSchema.OBJECT_NAME, EAM.text("Conceptual Model"), new ConceptualModelIcon()),
+				new ChoiceItem(ConceptualModelDiagramSchema.OBJECT_NAME, EAM.text("Situation Model"), new ConceptualModelIcon()),
 				new ChoiceItem(ResultsChainDiagramSchema.OBJECT_NAME, EAM.text("Results Chain"), new ResultsChainIcon()),
 				new ChoiceItem(TargetSchema.OBJECT_NAME, EAM.text("Target"), new TargetIcon()),
 				new ChoiceItem(HumanWelfareTargetSchema.OBJECT_NAME, EAM.text("Human Wellbeing Target"), new HumanWelfareTargetIcon()),

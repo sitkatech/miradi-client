@@ -1164,7 +1164,7 @@ public class TestDataUpgrader extends AbstractMigrationTestCase
 		EnhancedJsonObject conceptualModelJson = DataUpgrader.readFile(conceptualModelFile);
 		String conceptualModelLinksAsString = conceptualModelJson.getString("DiagramFactorLinkIds");
 		IdList conceptualModelLinks = new IdList(19, conceptualModelLinksAsString);
-		assertEquals("wrong conceptual model link size?", 2, conceptualModelLinks.size());
+		assertEquals("wrong situation model link size?", 2, conceptualModelLinks.size());
 	}
 
 	public void testUpgradeTo20AddORefsInFactorLinks() throws Exception

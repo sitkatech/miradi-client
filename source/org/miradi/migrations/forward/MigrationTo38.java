@@ -37,7 +37,7 @@ public class MigrationTo38 extends NewlyAddedFieldsMigration
 	protected HashMap<String, String> createFieldsToLabelMapToModify()
 	{
 		HashMap<String, String> fieldsToAdd = new HashMap<String, String>();
-		fieldsToAdd.put(TAG_EXTENDED_PROGRESS_REPORT_REFS, EAM.text("Conceptual Model Progress Reports"));
+		fieldsToAdd.put(TAG_EXTENDED_PROGRESS_REPORT_REFS, EAM.text("Situation Model Progress Reports"));
 
 		return fieldsToAdd;
 	}
@@ -63,7 +63,7 @@ public class MigrationTo38 extends NewlyAddedFieldsMigration
 	@Override
 	protected String getDescription()
 	{
-		return EAM.text("This migration adds Progress Reports to Conceptual Model Diagrams.");
+		return EAM.text("This migration adds Progress Reports to Situation Model Diagrams.");
 	}
 
 	private class ProgressReportVisitor extends AbstractMigrationVisitor

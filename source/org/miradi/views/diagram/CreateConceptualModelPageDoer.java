@@ -64,7 +64,7 @@ public class CreateConceptualModelPageDoer extends CreateDiagramDoer
 		}
 		catch (Exception e)
 		{
-			EAM.errorDialog("Could not create Conceptual Model Page");
+			EAM.errorDialog("Could not create Situation Model");
 			EAM.logException(e);
 		}
 		finally

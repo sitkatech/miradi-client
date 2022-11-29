@@ -59,7 +59,7 @@ public class MigrationTo60 extends NewlyAddedFieldsMigration
     @Override
     protected String getDescription()
     {
-        return EAM.text("This migration adds new progress / result status display flags to the Conceptual Model Diagram properties.");
+        return EAM.text("This migration adds new progress / result status display flags to the Situation Model Diagram properties.");
     }
 
     public static final int VERSION_FROM = 59;

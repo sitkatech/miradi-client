@@ -2984,7 +2984,7 @@ CO	26:1315
 UO	26:1315	Label=The blue text represents &quot;enabling conditions&quot;
 UO	26:1315	UUID=3b37b755-b4a4-4b52-b3c4-089750984449
 CO	26:147
-UO	26:147	Label=Eastern Bay Project<br/>Conceptual Model v 2.0
+UO	26:147	Label=Eastern Bay Project<br/>Situation Model v 2.0
 UO	26:147	UUID=55e604d9-65b1-4d76-91da-9c7b94eecc39
 CO	26:1584
 UO	26:1584	Label=2019
@@ -3011,7 +3011,7 @@ CO	26:407
 UO	26:407	Label=Campaign to Stop Shark Fin Soup Demand<br/>Results Chain v 2.0
 UO	26:407	UUID=2553746a-5fd5-48aa-bade-2cd88a771730
 CO	26:745
-UO	26:745	Label=This diagram shows part of a conceptual model using the Human Wellbeing Target feature.
+UO	26:745	Label=This diagram shows part of a situation model using the Human Wellbeing Target feature.
 UO	26:745	UUID=5e138afa-d818-4637-b1f5-6a370c66109f
 CO	26:747
 UO	26:747	Label=Note that human factors enter the model both on the left side as a &quot;threat&quot; but also on the right side as a &quot;target&quot; for the project. Human wellbeing targets are directly linked to ecosystem services provided by conservation targets.<br/>Note that teams can also use results chains to show human wellbeing benefits (either as results or human wellbeing targets)
