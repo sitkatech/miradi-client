@@ -111,9 +111,6 @@ public class Xmpz2ProjectImporter extends AbstractProjectImporter
 					"Issues encountered:\n" +
 					"%s"), migrationResult.getUserFriendlyGroupedDataLossMessagesAsString());
 
-			if (getCommandLineMode())
-				throw new Exception(message);
-
 			EAM.logWarning(message);
 		}
 
