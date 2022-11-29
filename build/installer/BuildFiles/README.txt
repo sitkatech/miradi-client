@@ -171,7 +171,8 @@ Notable changes in 4.6.0:
 - Support z-index customization for diagram factors
 - Remove restrictions on Group Box sizing / positioning
 - Better diagram round-trip fidelity with Miradi Share
-- Support for IUCN Actions Standard Classifications v2.0
+- Support for CMP Conservation Actions v2.0 & CMP Threats v2.0
+- Rename of Conceptual Models to Situation Models
 - Removal of deprecated 4.5.0 features
     - Organization-specific Summary Panels
     - Summary Planning Panel (still available under Preferences and Work Plan Settings)

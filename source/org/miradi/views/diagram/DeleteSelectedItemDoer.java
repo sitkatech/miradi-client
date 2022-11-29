@@ -139,6 +139,6 @@ public class DeleteSelectedItemDoer extends ViewDoer
 		return filteredList;
 	}
 	
-	public static final String LINK_DELETE_NOTIFY_TEXT = EAM.text("The link(s) will be deleted from all Conceptual Model pages" +
+	public static final String LINK_DELETE_NOTIFY_TEXT = EAM.text("The link(s) will be deleted from all Situation Models" +
 	  															  " and Results Chains, not just this one. ");
 }

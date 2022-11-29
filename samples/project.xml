@@ -3527,7 +3527,7 @@ on Islands</CauseName>
 </GroupBoxName>
 </GroupBox>
 </GroupBoxPool>
-<TextBoxPool><TextBox Id="147"><TextBoxName>Conceptual Model for Eastern Bay Site</TextBoxName>
+<TextBoxPool><TextBox Id="147"><TextBoxName>Situation Model for Eastern Bay Site</TextBoxName>
 </TextBox>
 <TextBox Id="403"><TextBoxName>Results Chain for Sustainable  Ocean Fishery</TextBoxName>
 </TextBox>
@@ -3545,7 +3545,7 @@ on Islands</CauseName>
 </TextBox>
 <TextBox Id="417"><TextBoxName>2013</TextBoxName>
 </TextBox>
-<TextBox Id="745"><TextBoxName>This diagram shows part of a conceptual model using the new Human Welfare Target  feature.</TextBoxName>
+<TextBox Id="745"><TextBoxName>This diagram shows part of a situation model using the new Human Welfare Target  feature.</TextBoxName>
 </TextBox>
 <TextBox Id="747"><TextBoxName>Note that human factors enter the model both on the left side as a &quot;threat&quot; but also on the right side as a &quot;target&quot; for the project.</TextBoxName>
 </TextBox>

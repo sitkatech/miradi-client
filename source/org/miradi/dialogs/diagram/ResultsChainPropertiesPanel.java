@@ -22,6 +22,7 @@ package org.miradi.dialogs.diagram;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.base.ObjectDataInputPanelWithSections;
 import org.miradi.dialogs.progressReport.ExtendedProgressReportSubPanel;
+import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
@@ -34,11 +35,11 @@ public class ResultsChainPropertiesPanel extends ObjectDataInputPanelWithSection
 	public ResultsChainPropertiesPanel(Project projectToUse, ORef resultsChainRef) throws Exception
 	{
 		super(projectToUse, resultsChainRef);
-		createSingleSection(EAM.text("Results Chain"));
+		createSingleSection(EAM.text("Summary"));
 		
 		ObjectDataInputField shortLabelField = createShortStringField(ResultsChainDiagramSchema.getObjectType(), DiagramObject.TAG_SHORT_LABEL);
 		ObjectDataInputField labelField = createExpandableField(ResultsChainDiagramSchema.getObjectType(), DiagramObject.TAG_LABEL);
-		addFieldsOnOneLine(EAM.text("Page:"), new ObjectDataInputField[]{shortLabelField, labelField});
+		addFieldsOnOneLine(EAM.text("Results Chain"), IconManager.getResultsChainIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 	
 		addField(createMultilineField(ResultsChainDiagramSchema.getObjectType(), DiagramObject.TAG_DETAIL));
 		addField(createMultilineField(ResultsChainDiagramSchema.getObjectType(), DiagramObject.TAG_COMMENTS));
@@ -56,6 +57,6 @@ public class ResultsChainPropertiesPanel extends ObjectDataInputPanelWithSection
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Results Chain Properties");
+		return EAM.text("Title|Diagram Properties");
 	}
 }

@@ -31,7 +31,7 @@ public class ActionHideAssumptionBubble extends ObjectsAction
 
     public static String getLabel()
     {
-        return EAM.text("Action|Hide Assumption on this page");
+        return EAM.text("Action|Hide Assumption on this diagram");
     }
 
     @Override

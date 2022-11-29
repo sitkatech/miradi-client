@@ -75,7 +75,7 @@ public class ReportTemplateContentQuestion extends ProjectBasedDynamicQuestion
 	private Vector<ChoiceItem> createDiagramViewSectionChoices()
 	{
 		Vector<ChoiceItem> choices = new Vector<ChoiceItem>();
-		choices.add(new ChoiceItem(DIAGRAM_VIEW_CONCEPTUAL_MODEL_TAB_CODE, EAM.text("Conceptual Model")));
+		choices.add(new ChoiceItem(DIAGRAM_VIEW_CONCEPTUAL_MODEL_TAB_CODE, EAM.text("Situation Model")));
 		choices.add(new ChoiceItem(DIAGRAM_VIEW_RESULTS_CHAINS_TAB_CODE, EAM.text("Results Chains")));
 		return choices;
 	}

@@ -48,7 +48,7 @@ public class ActivityFactorVisibilityControlPanel extends AbstractFactorBubbleVi
 	@Override
 	protected String getExplanationMessage()
 	{
-		return EAM.text("Activities can only be shown on Results Chains, not Conceptual Model pages");
+		return EAM.text("Activities can only be shown on Results Chains, not Situation Models");
 	}
 	
 	@Override

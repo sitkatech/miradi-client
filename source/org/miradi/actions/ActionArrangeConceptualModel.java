@@ -38,6 +38,6 @@ public class ActionArrangeConceptualModel extends ViewAction
 	@Override
 	public String getToolTipText()
 	{
-		return EAM.text("TT|Automatically arrange the factors in this Conceptual Model page");
+		return EAM.text("TT|Automatically arrange the factors in this Situation Model");
 	}
 }

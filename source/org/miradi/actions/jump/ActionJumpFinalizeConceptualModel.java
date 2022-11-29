@@ -32,6 +32,6 @@ public class ActionJumpFinalizeConceptualModel extends AbstractJumpAction
 
 	static String getLabel()
 	{
-		return EAM.text("Finalize project conceptual model");
+		return EAM.text("Finalize project Situation Model");
 	}
 }

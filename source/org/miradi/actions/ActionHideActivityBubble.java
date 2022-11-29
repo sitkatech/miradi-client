@@ -31,7 +31,7 @@ public class ActionHideActivityBubble extends ObjectsAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Hide Activity on this page");
+		return EAM.text("Action|Hide Activity on this diagram");
 	}
 
 	@Override

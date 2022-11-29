@@ -807,7 +807,7 @@ public class TestProject extends MiradiTestCase
 			assertEquals("didn't read text box pool?", 1, loadedProject.getTextBoxPool().size());
 			
 			assertEquals("didn't add diagram factors to pool?", 3, loadedProject.getDiagramFactorPool().size());
-			assertEquals("too man conceptual models in pool?", 1, loadedProject.getConceptualModelDiagramPool().size());
+			assertEquals("too many situation models in pool?", 1, loadedProject.getConceptualModelDiagramPool().size());
 			
 			assertEquals("didn't read link pool?", 1, loadedProject.getFactorLinkPool().size());
 			assertEquals("didn't populate diagram?", 3, conceptualModel.getAllDiagramFactorRefs().size());
@@ -825,7 +825,7 @@ public class TestProject extends MiradiTestCase
 		assertEquals("didn't clear node cause pool?", 0, diskProject.getCausePool().size());
 		assertEquals("didn't clear node strategy pool?", 0, diskProject.getStrategyPool().size());
 		assertEquals("didn't clear node target pool?", 0, diskProject.getTargetPool().size());
-		assertEquals("didn't clear conceptual model diagram pool?", 0, diskProject.getConceptualModelDiagramPool().size());
+		assertEquals("didn't clear situation model diagram pool?", 0, diskProject.getConceptualModelDiagramPool().size());
 		assertEquals("didn't clear link pool?", 0, diskProject.getFactorLinkPool().size());
 		assertTrue("didn't clear next annotation id?", diskProject.getNormalIdAssigner().getHighestAssignedId() < memorizedHighestId);
 	}

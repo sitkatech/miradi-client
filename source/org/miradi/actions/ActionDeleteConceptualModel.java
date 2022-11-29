@@ -32,6 +32,6 @@ public class ActionDeleteConceptualModel extends MainWindowAction
 	
 	private static String getLabel()
 	{
-		return EAM.text("Action|Delete Conceptual Model Page");
+		return EAM.text("Action|Delete Situation Model");
 	}
 }

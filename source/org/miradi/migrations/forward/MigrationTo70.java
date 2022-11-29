@@ -58,7 +58,7 @@ public class MigrationTo70 extends NewlyAddedFieldsMigration
     @Override
     protected String getDescription()
     {
-        return EAM.text("This migration adds a new field to the Conceptual Model Diagram properties.");
+        return EAM.text("This migration adds a new field to the Situation Model Diagram properties.");
     }
 
     public static final int VERSION_FROM = 69;

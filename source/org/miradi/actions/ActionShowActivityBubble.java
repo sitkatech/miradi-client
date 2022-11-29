@@ -31,7 +31,7 @@ public class ActionShowActivityBubble extends ObjectsAction
 
 	public static String getLabel()
 	{
-		return EAM.text("Action|Show Activity on this page");
+		return EAM.text("Action|Show Activity on this diagram");
 	}
 
 	@Override

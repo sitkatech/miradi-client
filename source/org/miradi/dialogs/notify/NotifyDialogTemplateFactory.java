@@ -35,7 +35,7 @@ public class NotifyDialogTemplateFactory
 				"Pasted Shared Factors " +
 				"<ul> " +
 				"<li>When pasting to the same type of diagram: all factors</li> " +
-				"<li>When pasting from Conceptual Model to Result Chain or vice-versa: targets and strategies only</li> " +
+				"<li>When pasting from Situation Model to Result Chain or vice-versa: targets and strategies only</li> " +
 				"</ul> " +
 				"<br/> " +
 				"The pasted factors are (in the above instances) <b>shared</b>, meaning that any changes made in this diagram will also be reflected in other diagrams that these factors appear. " +
@@ -46,7 +46,7 @@ public class NotifyDialogTemplateFactory
 				"<br/><br/> " +
 				"Pasted Complementary Factors " +
 				"<ul> " +
-				"<li>When pasting from Conceptual Model to Result Chain or vice-versa: Threats and Threat Reduction Results, Contributing Factors and Intermediate Results, Biophysical Factors and Biophysical Results</li> " +
+				"<li>When pasting from Situation Model to Result Chain or vice-versa: Threats and Threat Reduction Results, Contributing Factors and Intermediate Results, Biophysical Factors and Biophysical Results</li> " +
 				"</ul> " +
 				"<br/> " +
 				"The pasted complementary factors are <b>not</b> shared, meaning that any changes made to the pasted factor in this diagram will not affect the original factor, and vice-versa. " +
