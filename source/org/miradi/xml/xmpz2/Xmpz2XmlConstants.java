@@ -34,8 +34,9 @@ public interface Xmpz2XmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String DOT_ELEMENT = ".element";
 	
-	public static final String NAME_SPACE_VERSION = "247";
+	public static final String NAME_SPACE_VERSION = "248";
 
+	public static final String NAME_SPACE_VERSION_248 = "248";
 	public static final String NAME_SPACE_VERSION_247 = "247";
 	public static final String NAME_SPACE_VERSION_246 = "246";
 	public static final String NAME_SPACE_VERSION_245 = "245";
