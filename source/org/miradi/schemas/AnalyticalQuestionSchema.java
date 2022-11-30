@@ -23,7 +23,7 @@ package org.miradi.schemas;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AnalyticalQuestion;
 
-public class AnalyticalQuestionSchema extends AbstractAnalyticalQuestionSchema
+public class AnalyticalQuestionSchema extends AbstractAssumptionSchema
 {
     public AnalyticalQuestionSchema()
     {
@@ -35,7 +35,7 @@ public class AnalyticalQuestionSchema extends AbstractAnalyticalQuestionSchema
     {
         super.fillFieldSchemas();
 
-        createOwnedFieldSchemaIdList(AnalyticalQuestion.TAG_ASSUMPTION_IDS, AssumptionSchema.getObjectType());
+        createOwnedFieldSchemaIdList(AnalyticalQuestion.TAG_ASSUMPTION_IDS, SubAssumptionSchema.getObjectType());
     }
 
     public static int getObjectType()

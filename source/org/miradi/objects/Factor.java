@@ -174,7 +174,7 @@ abstract public class Factor extends BaseObject
 		if (typeToUse == ObjectType.ANALYTICAL_QUESTION)
 			return true;
 
-		if (typeToUse == ObjectType.ASSUMPTION)
+		if (typeToUse == ObjectType.SUB_ASSUMPTION)
 			return true;
 
 		if (typeToUse == ObjectType.STRESS)
@@ -283,7 +283,7 @@ abstract public class Factor extends BaseObject
 		return false;
 	}
 
-	public boolean isAssumption()
+	public boolean isSubAssumption()
 	{
 		return false;
 	}

@@ -258,8 +258,8 @@ public class ResultsChainCreatorHelper
 		if (Task.is(diagramFactor.getWrappedType()))
 			return !containsRelatedStrategy(selectedDiagramFactors, (Task)diagramFactor.getWrappedFactor());
 		
-		if (Assumption.is(diagramFactor.getWrappedType()))
-			return !containsRelatedAnalyticalQuestion(selectedDiagramFactors, (Assumption)diagramFactor.getWrappedFactor());
+		if (SubAssumption.is(diagramFactor.getWrappedType()))
+			return !containsRelatedAnalyticalQuestion(selectedDiagramFactors, (SubAssumption)diagramFactor.getWrappedFactor());
 
 		return false;
 	}
@@ -278,9 +278,9 @@ public class ResultsChainCreatorHelper
 		return false;
 	}
 
-	private boolean containsRelatedAnalyticalQuestion(HashSet<DiagramFactor> selectedDiagramFactors, Assumption assumption)
+	private boolean containsRelatedAnalyticalQuestion(HashSet<DiagramFactor> selectedDiagramFactors, SubAssumption subAssumption)
 	{
-		ORefList analyticalQuestionReferrerRefs = assumption.findObjectsThatReferToUs(AnalyticalQuestionSchema.getObjectType());
+		ORefList analyticalQuestionReferrerRefs = subAssumption.findObjectsThatReferToUs(AnalyticalQuestionSchema.getObjectType());
 		for (int index = 0; index < analyticalQuestionReferrerRefs.size(); ++index)
 		{
 			ORef analyticalQuestionRef = analyticalQuestionReferrerRefs.get(index);
@@ -333,7 +333,7 @@ public class ResultsChainCreatorHelper
 		if (diagramFactor.getWrappedType() == ObjectType.ANALYTICAL_QUESTION)
 			return diagramFactor.getWrappedORef();
 
-		if (diagramFactor.getWrappedType() == ObjectType.ASSUMPTION)
+		if (diagramFactor.getWrappedType() == ObjectType.SUB_ASSUMPTION)
 			return diagramFactor.getWrappedORef();
 
 		throw new Exception("wrapped type not found "+diagramFactor.getWrappedType());
@@ -552,7 +552,7 @@ public class ResultsChainCreatorHelper
 		if (diagramFactor.getWrappedType() == ObjectType.ANALYTICAL_QUESTION)
 			return true;
 
-		if (diagramFactor.getWrappedType() == ObjectType.ASSUMPTION)
+		if (diagramFactor.getWrappedType() == ObjectType.SUB_ASSUMPTION)
 			return true;
 
 		return false;

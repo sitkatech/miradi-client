@@ -24,10 +24,9 @@ import org.miradi.objects.AnalyticalQuestion;
 import org.miradi.objects.BaseObject;
 import org.miradi.schemas.AnalyticalQuestionSchema;
 import org.miradi.schemas.BaseObjectSchema;
-import org.miradi.xml.xmpz2.BaseObjectExporter;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-public class AnalyticalQuestionExporter extends AbstractAnalyticalQuestionExporter
+public class AnalyticalQuestionExporter extends AbstractAssumptionExporter
 {
     public AnalyticalQuestionExporter(Xmpz2XmlWriter writerToUse)
     {
@@ -40,7 +39,7 @@ public class AnalyticalQuestionExporter extends AbstractAnalyticalQuestionExport
 		super.writeFields(baseObject, baseObjectSchema);
 
 		final AnalyticalQuestion analyticalQuestion = (AnalyticalQuestion) baseObject;
-		writeAssumptionRefs(baseObjectSchema, analyticalQuestion);
+		writeSubAssumptionRefs(baseObjectSchema, analyticalQuestion);
 	}
 
 	@Override
@@ -52,8 +51,8 @@ public class AnalyticalQuestionExporter extends AbstractAnalyticalQuestionExport
 		return super.doesFieldRequireSpecialHandling(tag);
 	}
 
-	private void writeAssumptionRefs(BaseObjectSchema baseObjectSchema, final AnalyticalQuestion analyticalQuestion) throws Exception
+	private void writeSubAssumptionRefs(BaseObjectSchema baseObjectSchema, final AnalyticalQuestion analyticalQuestion) throws Exception
 	{
-		getWriter().writeReflist(baseObjectSchema.getObjectName() + ASSUMPTION_IDS, ASSUMPTION, analyticalQuestion.getAssumptionRefs());
+		getWriter().writeReflist(baseObjectSchema.getObjectName() + ASSUMPTION_IDS, SUB_ASSUMPTION, analyticalQuestion.getSubAssumptionRefs());
 	}
 }

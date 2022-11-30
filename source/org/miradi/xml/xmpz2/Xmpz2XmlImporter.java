@@ -150,7 +150,7 @@ public class Xmpz2XmlImporter extends AbstractXmlImporter implements Xmpz2XmlCon
 
 		addImporterToMap(typeToImporterMap, new OutputImporter(this));
 		addImporterToMap(typeToImporterMap, new AnalyticalQuestionImporter(this));
-		addImporterToMap(typeToImporterMap, new AssumptionImporter(this));
+		addImporterToMap(typeToImporterMap, new SubAssumptionImporter(this));
 
 		for(int objectType = ObjectType.FIRST_OBJECT_TYPE; objectType < ObjectType.OBJECT_TYPE_COUNT; ++objectType)
 		{

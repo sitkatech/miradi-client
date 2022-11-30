@@ -454,9 +454,9 @@ abstract public class FactorCell extends EAMGraphCell
 		return getWrappedFactor().isAnalyticalQuestion();
 	}
 
-	public boolean isAssumption()
+	public boolean isSubAssumption()
 	{
-		return getWrappedFactor().isAssumption();
+		return getWrappedFactor().isSubAssumption();
 	}
 
 	public DefaultPort getPort()

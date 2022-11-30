@@ -149,8 +149,8 @@ public class RemoveDiagramFactorVisitor
         {
             case ObjectType.ANALYTICAL_QUESTION:
                 return EAM.text("Analytical Question");
-            case ObjectType.ASSUMPTION:
-                return EAM.text("Assumption");
+            case ObjectType.SUB_ASSUMPTION:
+                return EAM.text("Sub-Assumption");
         }
 
         throw new Exception("getUserFriendlyObjectName called for unexpected object type " + objectType);

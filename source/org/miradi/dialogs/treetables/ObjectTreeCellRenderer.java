@@ -158,8 +158,8 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 		analyticalQuestionRenderer = createRenderer(treeTableToUse);
 		setRendererDefaults(analyticalQuestionRenderer, new AnalyticalQuestionIcon(), getPlainFont());
 
-		assumptionRenderer = createRenderer(treeTableToUse);
-		setRendererDefaults(assumptionRenderer, new AssumptionIcon(), getPlainFont());
+		subAssumptionRenderer = createRenderer(treeTableToUse);
+		setRendererDefaults(subAssumptionRenderer, new SubAssumptionIcon(), getPlainFont());
 	}
 	
 	private VariableHeightTreeCellRenderer createRenderer(ObjectTreeTable treeTableToUse)
@@ -249,8 +249,8 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 			renderer = futureStatusRenderer;
 		else if (AnalyticalQuestion.is(node.getType()))
 			renderer = analyticalQuestionRenderer;
-		else if (Assumption.is(node.getType()))
-			renderer = assumptionRenderer;
+		else if (SubAssumption.is(node.getType()))
+			renderer = subAssumptionRenderer;
 
 		Component rendererComponent = renderer.getTreeCellRendererComponent(tree, value, sel, expanded, leaf, row, hasFocusToUse);
 		return rendererComponent;
@@ -340,6 +340,6 @@ public class ObjectTreeCellRenderer extends VariableHeightTreeCellRenderer
 	private	VariableHeightTreeCellRenderer scopeBoxRenderer;
 	private VariableHeightTreeCellRenderer futureStatusRenderer;
 	private VariableHeightTreeCellRenderer analyticalQuestionRenderer;
-	private VariableHeightTreeCellRenderer assumptionRenderer;
+	private VariableHeightTreeCellRenderer subAssumptionRenderer;
 
 }

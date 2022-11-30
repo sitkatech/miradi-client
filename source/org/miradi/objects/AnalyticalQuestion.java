@@ -27,9 +27,9 @@ import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.AnalyticalQuestionSchema;
-import org.miradi.schemas.AssumptionSchema;
+import org.miradi.schemas.SubAssumptionSchema;
 
-public class AnalyticalQuestion extends AbstractAnalyticalQuestion
+public class AnalyticalQuestion extends AbstractAssumption
 {
     public AnalyticalQuestion(ObjectManager objectManager, FactorId idToUse)
     {
@@ -58,21 +58,21 @@ public class AnalyticalQuestion extends AbstractAnalyticalQuestion
 		return true;
 	}
 
-	public IdList getAssumptionIds()
+	public IdList getSubAssumptionIds()
 	{
 		return getSafeIdListData(TAG_ASSUMPTION_IDS);
 	}
 
-	public ORefList getAssumptionRefs()
+	public ORefList getSubAssumptionRefs()
 	{
-		return new ORefList(AssumptionSchema.getObjectType(), getAssumptionIds());
+		return new ORefList(SubAssumptionSchema.getObjectType(), getSubAssumptionIds());
 	}
 
 	@Override
 	public int getAnnotationType(String tag)
 	{
 		if (tag.equals(TAG_ASSUMPTION_IDS))
-			return AssumptionSchema.getObjectType();
+			return SubAssumptionSchema.getObjectType();
 
 		return super.getAnnotationType(tag);
 	}

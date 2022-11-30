@@ -71,7 +71,7 @@ public class MigrationTo81 extends AbstractMigration
         Vector<Integer> typesToMigrate = new Vector<Integer>();
 
         typesToMigrate.add(ObjectType.ANALYTICAL_QUESTION);
-        typesToMigrate.add(ObjectType.ASSUMPTION);
+        typesToMigrate.add(ObjectType.SUB_ASSUMPTION);
 
         return typesToMigrate;
     }

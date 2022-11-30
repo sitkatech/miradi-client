@@ -67,7 +67,7 @@ abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 				ACTIVITY,
 				STRESS,
 				ANALYTICAL_QUESTION,
-				ASSUMPTION,
+                SUB_ASSUMPTION,
 		};
 	}
 
@@ -129,7 +129,7 @@ abstract public class Xmpz2GroupedConstants implements Xmpz2XmlConstants
 		FUTURE_STATUS,
 		OUTPUT,
 		ANALYTICAL_QUESTION,
-		ASSUMPTION,
+                SUB_ASSUMPTION,
 		};
 		
 		return Utility.convertToVector(objectTypeNames);

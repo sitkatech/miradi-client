@@ -710,12 +710,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return AnalyticalQuestion;
 	}
 
-	public Assumption createAndPopulateAssumption() throws Exception
+	public SubAssumption createAndPopulateSubAssumption() throws Exception
 	{
-		Assumption Assumption = createAssumption();
-		populateAssumption(Assumption);
+		SubAssumption subAssumption = createSubAssumption();
+		populateSubAssumption(subAssumption);
 
-		return Assumption;
+		return subAssumption;
 	}
 
 	public Xenodata createAndPopulateXenodata(String xenoDataProjectId) throws Exception
@@ -1140,10 +1140,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return AnalyticalQuestion.find(this, AnalyticalQuestionRef);
 	}
 
-	public Assumption createAssumption() throws Exception
+	public SubAssumption createSubAssumption() throws Exception
 	{
-		ORef AssumptionRef = createObject(AssumptionSchema.getObjectType());
-		return Assumption.find(this, AssumptionRef);
+		ORef AssumptionRef = createObject(SubAssumptionSchema.getObjectType());
+		return SubAssumption.find(this, AssumptionRef);
 	}
 
 	private Xenodata createXenodata() throws Exception
@@ -1896,14 +1896,14 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return output;
 	}
 
-	public Assumption addAssumption(AnalyticalQuestion analyticalQuestion) throws Exception
+	public SubAssumption addSubAssumption(AnalyticalQuestion analyticalQuestion) throws Exception
 	{
-		Assumption assumption = createAndPopulateAssumption();
+		SubAssumption subAssumption = createAndPopulateSubAssumption();
 
-		ORefList assumptionRefs = new ORefList(assumption.getRef());
-		fillObjectUsingCommand(analyticalQuestion, AnalyticalQuestion.TAG_ASSUMPTION_IDS, assumptionRefs.toString());
+		ORefList subAssumptionRefs = new ORefList(subAssumption.getRef());
+		fillObjectUsingCommand(analyticalQuestion, AnalyticalQuestion.TAG_ASSUMPTION_IDS, subAssumptionRefs.toString());
 
-		return assumption;
+		return subAssumption;
 	}
 
 	public Objective addObjective(Factor factor) throws Exception
@@ -1973,10 +1973,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(analyticalQuestion, AnalyticalQuestion.TAG_COMMENTS, "Some AnalyticalQuestion comments");
 	}
 
-	public void populateAssumption(Assumption assumption) throws Exception
+	public void populateSubAssumption(SubAssumption subAssumption) throws Exception
 	{
-		fillObjectUsingCommand(assumption, Assumption.TAG_LABEL, "Some Assumption label");
-		fillObjectUsingCommand(assumption, Assumption.TAG_COMMENTS, "Some Assumption comments");
+		fillObjectUsingCommand(subAssumption, SubAssumption.TAG_LABEL, "Some Sub-Assumption label");
+		fillObjectUsingCommand(subAssumption, SubAssumption.TAG_COMMENTS, "Some Sub-Assumption comments");
 	}
 
 	public void populateXenodata(Xenodata xenodata, String xenoDataProjectId) throws Exception

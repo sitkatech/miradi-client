@@ -178,7 +178,7 @@ abstract public class AbstractTreeRebuilder
 			FutureStatusSchema.getObjectType(),
 
 			AnalyticalQuestionSchema.getObjectType(),
-			AssumptionSchema.getObjectType(),
+			SubAssumptionSchema.getObjectType(),
 		};
 		
 		try

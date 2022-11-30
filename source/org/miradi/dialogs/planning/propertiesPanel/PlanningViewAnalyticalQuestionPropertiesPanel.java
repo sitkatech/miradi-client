@@ -25,7 +25,7 @@ import org.miradi.icons.AnalyticalQuestionIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.AbstractAnalyticalQuestion;
+import org.miradi.objects.AbstractAssumption;
 import org.miradi.objects.AnalyticalQuestion;
 import org.miradi.project.Project;
 import org.miradi.schemas.AnalyticalQuestionSchema;
@@ -57,8 +57,8 @@ public class PlanningViewAnalyticalQuestionPropertiesPanel extends MinimalFactor
     @Override
 	protected void addCustomFieldsEnd() throws Exception
 	{
-        addField(createMultilineField(AnalyticalQuestionSchema.getObjectType(), AbstractAnalyticalQuestion.TAG_IMPLICATIONS));
-        addField(createMultilineField(AnalyticalQuestionSchema.getObjectType(), AbstractAnalyticalQuestion.TAG_FUTURE_INFORMATION_NEEDS));
+        addField(createMultilineField(AnalyticalQuestionSchema.getObjectType(), AbstractAssumption.TAG_IMPLICATIONS));
+        addField(createMultilineField(AnalyticalQuestionSchema.getObjectType(), AbstractAssumption.TAG_FUTURE_INFORMATION_NEEDS));
 
         addTaxonomyFields(AnalyticalQuestionSchema.getObjectType());
 	}

@@ -21,15 +21,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.AbstractAnalyticalQuestion;
+import org.miradi.objects.AbstractAssumption;
 import org.miradi.objects.AnalyticalQuestion;
 import org.miradi.project.Project;
 import org.miradi.schemas.AnalyticalQuestionSchema;
-import org.miradi.schemas.AssumptionSchema;
+import org.miradi.schemas.SubAssumptionSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
-public class AnalyticalQuestionImporter extends AbstractAnalyticalQuestionImporter
+public class AnalyticalQuestionImporter extends AbstractAssumptionImporter
 {
     public AnalyticalQuestionImporter(Xmpz2XmlImporter importerToUse)
     {
@@ -40,7 +40,7 @@ public class AnalyticalQuestionImporter extends AbstractAnalyticalQuestionImport
     public void importFields(Node baseObjectNode, ORef refToUse) throws Exception
     {
         super.importFields(baseObjectNode, refToUse);
-        getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), AnalyticalQuestion.TAG_ASSUMPTION_IDS, ASSUMPTION, AssumptionSchema.getObjectType());
+        getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), AnalyticalQuestion.TAG_ASSUMPTION_IDS, SUB_ASSUMPTION, SubAssumptionSchema.getObjectType());
     }
 
     @Override
@@ -53,7 +53,7 @@ public class AnalyticalQuestionImporter extends AbstractAnalyticalQuestionImport
     }
 
     @Override
-    AbstractAnalyticalQuestion findAnalyticalQuestionOrAssumption(Project project, ORef destinationRef)
+    AbstractAssumption findAnalyticalQuestionOrSubAssumption(Project project, ORef destinationRef)
     {
         return AnalyticalQuestion.find(project, destinationRef);
     }

@@ -24,10 +24,10 @@ import org.miradi.migrations.forward.MigrationTo80;
 import org.miradi.migrations.forward.MigrationTo81;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AnalyticalQuestion;
-import org.miradi.objects.Assumption;
+import org.miradi.objects.SubAssumption;
 import org.miradi.project.ProjectSaverForTesting;
 import org.miradi.schemas.AnalyticalQuestionSchema;
-import org.miradi.schemas.AssumptionSchema;
+import org.miradi.schemas.SubAssumptionSchema;
 
 public class TestMigrationTo81 extends AbstractTestMigration
 {
@@ -39,14 +39,14 @@ public class TestMigrationTo81 extends AbstractTestMigration
     public void testFieldsRemovedAfterReverseMigration() throws Exception
     {
         AnalyticalQuestion analyticalQuestion = getProject().createAndPopulateAnalyticalQuestion();
-        Assumption assumption = getProject().createAndPopulateAssumption();
+        SubAssumption subAssumption = getProject().createAndPopulateSubAssumption();
 
         String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), new VersionRange(getToVersion()));
         final RawProject projectToMigrate = RawProjectLoader.loadProject(projectAsString);
         migrateProject(projectToMigrate, new VersionRange(MigrationTo80.VERSION_TO));
 
         verifyDiagramFactorFieldsRemoved(projectToMigrate, AnalyticalQuestionSchema.getObjectType());
-        verifyDiagramFactorFieldsRemoved(projectToMigrate, AssumptionSchema.getObjectType());
+        verifyDiagramFactorFieldsRemoved(projectToMigrate, SubAssumptionSchema.getObjectType());
     }
 
     private void verifyDiagramFactorFieldsRemoved(RawProject rawProject, int objectType)

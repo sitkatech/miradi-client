@@ -70,7 +70,7 @@ public class DiagramConstants
 	public static final Color DEFAULT_LINK_COLOR = new Color(0x757575);
 	public static final Color DEFAULT_OUTPUT_COLOR = new Color(0x42aec9);
 	public static final Color DEFAULT_ANALYTICAL_QUESTION_COLOR = new Color(0xe5e1f7);
-	public static final Color DEFAULT_ASSUMPTION_COLOR = new Color(0xf6f5fa);
+	public static final Color DEFAULT_SUB_ASSUMPTION_COLOR = new Color(0xf6f5fa);
 
 	public static final Color[] targetColorChoices = {
 		DEFAULT_TARGET_COLOR,

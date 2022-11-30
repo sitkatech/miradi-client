@@ -68,8 +68,8 @@ public abstract class EvidenceConfidenceTypeQuestion extends StaticChoiceQuestio
         if (objectType == ObjectType.ANALYTICAL_QUESTION)
             return AnalyticalQuestionEvidenceConfidenceTypeQuestion.class;
 
-        if (objectType == ObjectType.ASSUMPTION)
-            return AssumptionEvidenceConfidenceTypeQuestion.class;
+        if (objectType == ObjectType.SUB_ASSUMPTION)
+            return SubAssumptionEvidenceConfidenceTypeQuestion.class;
 
         throw new RuntimeException("Need to implement getQuestionClass for object type: " + objectType);
     }

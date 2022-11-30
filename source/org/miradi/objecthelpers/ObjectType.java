@@ -106,7 +106,7 @@ public class ObjectType
 	public static final int RESULT_REPORT = 71;
 	public static final int THREAT_SIMPLE_RATING_DATA = 72;
 	public static final int OUTPUT = 73;
-	public static final int ASSUMPTION = 74;
+	public static final int SUB_ASSUMPTION = 74;
 	public static final int ANALYTICAL_QUESTION = 75;
 
 	// When you add a new type, be sure to:

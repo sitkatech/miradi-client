@@ -20,7 +20,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.dialogs.planning.propertiesPanel;
 
 import org.miradi.dialogs.accountingcode.AccountingCodePropertiesPanel;
-import org.miradi.dialogs.assumption.AssumptionPropertiesPanel;
+import org.miradi.dialogs.subassumption.SubAssumptionPropertiesPanel;
 import org.miradi.dialogs.base.AbstractMultiPropertiesPanel;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.categoryOne.BudgetCategoryOnePropertiesPanel;
@@ -98,9 +98,9 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 		return new ExpenseAssignmentPropertiesPanel(getMainWindow());
 	}
 
-	private AssumptionPropertiesPanel createAssumptionPropertiesPanel() throws Exception
+	private SubAssumptionPropertiesPanel createSubAssumptionPropertiesPanel() throws Exception
 	{
-		return new AssumptionPropertiesPanel(getMainWindow());
+		return new SubAssumptionPropertiesPanel(getMainWindow());
 	}
 
 	@Override
@@ -203,8 +203,8 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 			if (AnalyticalQuestionSchema.getObjectType() == objectType)
 				return getAnalyticalQuestionPropertiesPanel();
 
-			if (AssumptionSchema.getObjectType() == objectType)
-				return getAssumptionPropertiesPanel();
+			if (SubAssumptionSchema.getObjectType() == objectType)
+				return getSubAssumptionPropertiesPanel();
 		}
 		catch(Exception e)
 		{
@@ -506,14 +506,14 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
         return analyticalQuestionPropertiesPanel;
 	}
 
-	private AbstractObjectDataInputPanel getAssumptionPropertiesPanel() throws Exception
+	private AbstractObjectDataInputPanel getSubAssumptionPropertiesPanel() throws Exception
 	{
-		if(assumptionPropertiesPanel == null)
+		if(subAssumptionPropertiesPanel == null)
 		{
-			assumptionPropertiesPanel = createAssumptionPropertiesPanel();
-			addPanel(assumptionPropertiesPanel);
+			subAssumptionPropertiesPanel = createSubAssumptionPropertiesPanel();
+			addPanel(subAssumptionPropertiesPanel);
 		}
-		return assumptionPropertiesPanel;
+		return subAssumptionPropertiesPanel;
 	}
 
 	@Override
@@ -557,6 +557,6 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 	private ResourceAssignmentPropertiesPanel resourceAssignmentPropertiesPanel;
 	private ExpenseAssignmentPropertiesPanel expenseAssignmentPropertiesPanel;
 	private PlanningViewAnalyticalQuestionPropertiesPanel analyticalQuestionPropertiesPanel;
-	private AssumptionPropertiesPanel assumptionPropertiesPanel;
+	private SubAssumptionPropertiesPanel subAssumptionPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 }

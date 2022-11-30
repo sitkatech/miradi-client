@@ -102,7 +102,7 @@ public class CellViewFactory extends DefaultCellViewFactory
 			return new RoundedRectangleFactorView(diagramFactor);
 		}
 
-		if (diagramFactor.isAssumption())
+		if (diagramFactor.isSubAssumption())
 		{
 			return new RoundedRectangleFactorView(diagramFactor);
 		}

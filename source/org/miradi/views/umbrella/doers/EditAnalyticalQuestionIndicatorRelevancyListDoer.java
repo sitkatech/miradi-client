@@ -19,7 +19,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.views.umbrella.doers;
 
-import org.miradi.objects.AbstractAnalyticalQuestion;
+import org.miradi.objects.AbstractAssumption;
 import org.miradi.schemas.AnalyticalQuestionSchema;
 import org.miradi.views.umbrella.AbstractIndicatorRelevancyEditListDoer;
 
@@ -34,7 +34,7 @@ public class EditAnalyticalQuestionIndicatorRelevancyListDoer extends AbstractIn
     @Override
     protected String getIndicatorSetTag()
     {
-        return AbstractAnalyticalQuestion.TAG_INDICATOR_IDS;
+        return AbstractAssumption.TAG_INDICATOR_IDS;
     }
 
 }

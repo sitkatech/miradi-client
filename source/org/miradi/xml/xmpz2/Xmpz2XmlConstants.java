@@ -120,7 +120,7 @@ public interface Xmpz2XmlConstants
 	public static final String TASK = TaskSchema.OBJECT_NAME;
 	public static final String OUTPUT = OutputSchema.OBJECT_NAME;
 	public static final String ANALYTICAL_QUESTION = AnalyticalQuestionSchema.OBJECT_NAME;
-	public static final String ASSUMPTION = AssumptionSchema.OBJECT_NAME;
+	public static final String SUB_ASSUMPTION = SubAssumptionSchema.OBJECT_NAME;
 	public static final String SUB_TASK = "SubTask";
 	public static final String ASSIGNED_LEADER_RESOURCE_ID = "AssignedLeaderResourceId";
 	public static final String TIMEFRAME = "Timeframe";
@@ -360,7 +360,7 @@ public interface Xmpz2XmlConstants
 	public static final String EXPENSE_ASSIGNMENT_TAXONOMY_ASSOCIATION_POOL = "ExpenseAssignmentTaxonomyAssociationPool";
 	public static final String OUTPUT_TAXONOMY_ASSOCIATION_POOL = "OutputTaxonomyAssociationPool";
 	public static final String ANALYTICAL_QUESTION_TAXONOMY_ASSOCIATION_POOL = "AnalyticalQuestionTaxonomyAssociationPool";
-	public static final String ASSUMPTION_TAXONOMY_ASSOCIATION_POOL = "AssumptionTaxonomyAssociationPool";
+	public static final String SUB_ASSUMPTION_TAXONOMY_ASSOCIATION_POOL = "AssumptionTaxonomyAssociationPool";
 	public static final String TAXONOMY = "Taxonomy";
 	public static final String TAXONOMY_POOL = "TaxonomyPool";
 	public static final String TAXONOMY_ASSOCIATION = "TaxonomyAssociation";

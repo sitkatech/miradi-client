@@ -23,7 +23,7 @@ package org.miradi.migrations;
 import org.miradi.migrations.forward.MigrationTo78;
 import org.miradi.migrations.forward.MigrationTo79;
 import org.miradi.objects.AnalyticalQuestion;
-import org.miradi.objects.Assumption;
+import org.miradi.objects.SubAssumption;
 import org.miradi.objects.Factor;
 import org.miradi.project.ProjectSaverForTesting;
 
@@ -46,16 +46,16 @@ public class TestMigrationTo79 extends AbstractTestMigration
         testFieldsRemovedAfterReverseMigration(analyticalQuestion);
     }
 
-    public void testAssumptionFieldsAddedAfterForwardMigration() throws Exception
+    public void testSubAssumptionFieldsAddedAfterForwardMigration() throws Exception
     {
-        Assumption assumption = getProject().createAndPopulateAssumption();
-        testFieldsAddedAfterForwardMigration(assumption);
+        SubAssumption subAssumption = getProject().createAndPopulateSubAssumption();
+        testFieldsAddedAfterForwardMigration(subAssumption);
     }
 
-    public void testAssumptionFieldsRemovedAfterReverseMigration() throws Exception
+    public void testSubAssumptionFieldsRemovedAfterReverseMigration() throws Exception
     {
-        Assumption assumption = getProject().createAndPopulateAssumption();
-        testFieldsRemovedAfterReverseMigration(assumption);
+        SubAssumption subAssumption = getProject().createAndPopulateSubAssumption();
+        testFieldsRemovedAfterReverseMigration(subAssumption);
     }
 
     private void testFieldsAddedAfterForwardMigration(Factor factor) throws Exception

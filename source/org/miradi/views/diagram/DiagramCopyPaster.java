@@ -25,7 +25,7 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.dialogs.diagram.DiagramPanel;
 import org.miradi.main.AbstractTransferableMiradiList;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.Assumption;
+import org.miradi.objects.SubAssumption;
 import org.miradi.objects.Stress;
 import org.miradi.objects.Task;
 import org.miradi.utils.EnhancedJsonObject;
@@ -61,7 +61,7 @@ public class DiagramCopyPaster extends DiagramPaster
 		ORef foundRef = getOldToNewObjectRefMap().get(oldWrappedRef);
 		if (foundRef == null)
 		{
-			if (Stress.is(oldWrappedRef) || Task.is(oldWrappedRef) || Assumption.is(oldWrappedRef))
+			if (Stress.is(oldWrappedRef) || Task.is(oldWrappedRef) || SubAssumption.is(oldWrappedRef))
 				return oldWrappedRef;
 		}
 		
