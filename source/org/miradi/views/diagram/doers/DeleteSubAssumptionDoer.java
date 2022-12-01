@@ -114,7 +114,7 @@ public class DeleteSubAssumptionDoer extends ObjectsDoer
 
     private static CommandVector buildRemoveCommandsForSubAssumptionIds(Project project, ORefList selectionHierarchy, SubAssumption subAssumption) throws Exception
     {
-        return buildRemoveCommands(project, AnalyticalQuestionSchema.getObjectType(), selectionHierarchy, AnalyticalQuestion.TAG_ASSUMPTION_IDS, subAssumption);
+        return buildRemoveCommands(project, AnalyticalQuestionSchema.getObjectType(), selectionHierarchy, AnalyticalQuestion.TAG_SUB_ASSUMPTION_IDS, subAssumption);
     }
 
     private static CommandVector buildDeleteDiagramFactors(Project project, ORefList selectionHierarchy, SubAssumption subAssumption) throws Exception

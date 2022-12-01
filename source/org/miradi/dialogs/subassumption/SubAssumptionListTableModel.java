@@ -30,7 +30,7 @@ public class SubAssumptionListTableModel extends ObjectListTableModel
 {
     public SubAssumptionListTableModel(Project projectToUse, ORefList selectedHierarchy)
     {
-        super(projectToUse, selectedHierarchy, AnalyticalQuestion.TAG_ASSUMPTION_IDS, ObjectType.SUB_ASSUMPTION, COLUMN_TAGS);
+        super(projectToUse, selectedHierarchy, AnalyticalQuestion.TAG_SUB_ASSUMPTION_IDS, ObjectType.SUB_ASSUMPTION, COLUMN_TAGS);
     }
 
     private static String[] COLUMN_TAGS = {

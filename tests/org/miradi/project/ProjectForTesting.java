@@ -1142,8 +1142,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	public SubAssumption createSubAssumption() throws Exception
 	{
-		ORef AssumptionRef = createObject(SubAssumptionSchema.getObjectType());
-		return SubAssumption.find(this, AssumptionRef);
+		ORef subAssumptionRef = createObject(SubAssumptionSchema.getObjectType());
+		return SubAssumption.find(this, subAssumptionRef);
 	}
 
 	private Xenodata createXenodata() throws Exception
@@ -1900,8 +1900,9 @@ public class ProjectForTesting extends ProjectWithHelpers
 	{
 		SubAssumption subAssumption = createAndPopulateSubAssumption();
 
-		ORefList subAssumptionRefs = new ORefList(subAssumption.getRef());
-		fillObjectUsingCommand(analyticalQuestion, AnalyticalQuestion.TAG_ASSUMPTION_IDS, subAssumptionRefs.toString());
+		IdList subAssumptionIds = new IdList(analyticalQuestion.getSubAssumptionIds());
+		subAssumptionIds.addRef(subAssumption.getRef());
+		fillObjectUsingCommand(analyticalQuestion, AnalyticalQuestion.TAG_SUB_ASSUMPTION_IDS, subAssumptionIds.toString());
 
 		return subAssumption;
 	}

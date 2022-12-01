@@ -228,7 +228,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 	private HashMap<String, String> createAnalyticalQuestionMap()
 	{
 		HashMap<String, String> map = createAbstractAssumptionMap();
-		map.put(AnalyticalQuestion.TAG_ASSUMPTION_IDS, ASSUMPTION_IDS);
+		map.put(AnalyticalQuestion.TAG_SUB_ASSUMPTION_IDS, ASSUMPTION_IDS);
 		return map;
 	}
 

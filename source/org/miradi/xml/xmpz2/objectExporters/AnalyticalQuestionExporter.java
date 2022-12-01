@@ -45,7 +45,7 @@ public class AnalyticalQuestionExporter extends AbstractAssumptionExporter
 	@Override
 	protected boolean doesFieldRequireSpecialHandling(String tag)
 	{
-		if (tag.equals(AnalyticalQuestion.TAG_ASSUMPTION_IDS))
+		if (tag.equals(AnalyticalQuestion.TAG_SUB_ASSUMPTION_IDS))
 			return true;
 
 		return super.doesFieldRequireSpecialHandling(tag);

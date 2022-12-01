@@ -82,7 +82,7 @@ public class CreateSubAssumptionDoer extends ObjectsDoer
             project.executeCommand(create);
             BaseId createdId = create.getCreatedId();
 
-            CommandSetObjectData addChild = CommandSetObjectData.createInsertIdCommand(analyticalQuestion, AnalyticalQuestion.TAG_ASSUMPTION_IDS, createdId, childIndex);
+            CommandSetObjectData addChild = CommandSetObjectData.createInsertIdCommand(analyticalQuestion, AnalyticalQuestion.TAG_SUB_ASSUMPTION_IDS, createdId, childIndex);
             project.executeCommand(addChild);
         }
         finally

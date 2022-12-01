@@ -596,7 +596,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (isFieldForType(baseObjectSchema, fieldSchema, OutputSchema.getObjectType(), Output.TAG_INDICATOR_IDS))
 			return createIdName(INDICATOR);
 
-		if (isFieldForType(baseObjectSchema, fieldSchema, AnalyticalQuestionSchema.getObjectType(), AnalyticalQuestion.TAG_ASSUMPTION_IDS))
+		if (isFieldForType(baseObjectSchema, fieldSchema, AnalyticalQuestionSchema.getObjectType(), AnalyticalQuestion.TAG_SUB_ASSUMPTION_IDS))
 			return createIdName(SUB_ASSUMPTION);
 
 		Vector<Integer> analyticalQuestionSchemas = new Vector<Integer>();

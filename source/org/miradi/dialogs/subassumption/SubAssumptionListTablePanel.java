@@ -45,7 +45,7 @@ public class SubAssumptionListTablePanel extends ObjectListTablePanel
     {
         super.handleCommandEventImmediately(event);
 
-        if (event.isSetDataCommandWithThisTypeAndTag(AnalyticalQuestionSchema.getObjectType(), AnalyticalQuestion.TAG_ASSUMPTION_IDS))
+        if (event.isSetDataCommandWithThisTypeAndTag(AnalyticalQuestionSchema.getObjectType(), AnalyticalQuestion.TAG_SUB_ASSUMPTION_IDS))
         {
             ORef selectedObjectRef = getSelectedObjectRef();
             getTable().getObjectTableModel().resetRows();

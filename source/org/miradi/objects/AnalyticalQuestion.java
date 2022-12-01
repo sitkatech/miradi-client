@@ -60,7 +60,7 @@ public class AnalyticalQuestion extends AbstractAssumption
 
 	public IdList getSubAssumptionIds()
 	{
-		return getSafeIdListData(TAG_ASSUMPTION_IDS);
+		return getSafeIdListData(TAG_SUB_ASSUMPTION_IDS);
 	}
 
 	public ORefList getSubAssumptionRefs()
@@ -71,7 +71,7 @@ public class AnalyticalQuestion extends AbstractAssumption
 	@Override
 	public int getAnnotationType(String tag)
 	{
-		if (tag.equals(TAG_ASSUMPTION_IDS))
+		if (tag.equals(TAG_SUB_ASSUMPTION_IDS))
 			return SubAssumptionSchema.getObjectType();
 
 		return super.getAnnotationType(tag);
@@ -102,5 +102,5 @@ public class AnalyticalQuestion extends AbstractAssumption
         return find(project.getObjectManager(), analyticalQuestionRef);
     }
 
-    public static final String TAG_ASSUMPTION_IDS = "AssumptionIds";
+    public static final String TAG_SUB_ASSUMPTION_IDS = "SubAssumptionIds";
 }

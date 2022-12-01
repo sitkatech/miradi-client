@@ -40,13 +40,13 @@ public class AnalyticalQuestionImporter extends AbstractAssumptionImporter
     public void importFields(Node baseObjectNode, ORef refToUse) throws Exception
     {
         super.importFields(baseObjectNode, refToUse);
-        getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), AnalyticalQuestion.TAG_ASSUMPTION_IDS, SUB_ASSUMPTION, SubAssumptionSchema.getObjectType());
+        getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), AnalyticalQuestion.TAG_SUB_ASSUMPTION_IDS, SUB_ASSUMPTION, SubAssumptionSchema.getObjectType());
     }
 
     @Override
     protected boolean isCustomImportField(String tag)
     {
-        if (tag.equals(AnalyticalQuestion.TAG_ASSUMPTION_IDS))
+        if (tag.equals(AnalyticalQuestion.TAG_SUB_ASSUMPTION_IDS))
             return true;
 
         return super.isCustomImportField(tag);

@@ -35,7 +35,7 @@ public class AnalyticalQuestionSchema extends AbstractAssumptionSchema
     {
         super.fillFieldSchemas();
 
-        createOwnedFieldSchemaIdList(AnalyticalQuestion.TAG_ASSUMPTION_IDS, SubAssumptionSchema.getObjectType());
+        createOwnedFieldSchemaIdList(AnalyticalQuestion.TAG_SUB_ASSUMPTION_IDS, SubAssumptionSchema.getObjectType());
     }
 
     public static int getObjectType()
