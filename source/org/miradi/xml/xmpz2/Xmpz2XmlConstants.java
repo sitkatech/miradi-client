@@ -119,6 +119,8 @@ public interface Xmpz2XmlConstants
 	public static final String METHOD = MethodSchema.OBJECT_NAME;
 	public static final String TASK = TaskSchema.OBJECT_NAME;
 	public static final String OUTPUT = OutputSchema.OBJECT_NAME;
+	public static final String LEGACY_ANALYTICAL_QUESTION = "AnalyticalQuestion";
+	public static final String LEGACY_ASSUMPTION = "Assumption";
 	public static final String ASSUMPTION = AssumptionSchema.OBJECT_NAME;
 	public static final String SUB_ASSUMPTION = SubAssumptionSchema.OBJECT_NAME;
 	public static final String SUB_TASK = "SubTask";
