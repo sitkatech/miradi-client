@@ -28,7 +28,7 @@ import org.miradi.exceptions.CommandFailedException;
 import org.miradi.ids.BaseId;
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.AnalyticalQuestion;
+import org.miradi.objects.Assumption;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.Project;
 import org.miradi.views.ObjectsDoer;
@@ -42,7 +42,7 @@ public class CreateSubAssumptionDoer extends ObjectsDoer
         if (selectedParent == null)
             return false;
 
-        return AnalyticalQuestion.is(selectedParent);
+        return Assumption.is(selectedParent);
     }
 
     @Override
@@ -60,11 +60,11 @@ public class CreateSubAssumptionDoer extends ObjectsDoer
         if(!isAvailable())
             return;
 
-        AnalyticalQuestion analyticalQuestion = (AnalyticalQuestion) getSelectedParentFactor();
+        Assumption assumption = (Assumption) getSelectedParentFactor();
 
         try
         {
-            insertSubAssumption(getProject(), analyticalQuestion, analyticalQuestion.getSubAssumptionIds().size());
+            insertSubAssumption(getProject(), assumption, assumption.getSubAssumptionIds().size());
         }
         catch (Exception e)
         {
@@ -73,7 +73,7 @@ public class CreateSubAssumptionDoer extends ObjectsDoer
         }
     }
 
-    private void insertSubAssumption(Project project, AnalyticalQuestion analyticalQuestion, int childIndex) throws Exception
+    private void insertSubAssumption(Project project, Assumption assumption, int childIndex) throws Exception
     {
         project.executeCommand(new CommandBeginTransaction());
         try
@@ -82,7 +82,7 @@ public class CreateSubAssumptionDoer extends ObjectsDoer
             project.executeCommand(create);
             BaseId createdId = create.getCreatedId();
 
-            CommandSetObjectData addChild = CommandSetObjectData.createInsertIdCommand(analyticalQuestion, AnalyticalQuestion.TAG_SUB_ASSUMPTION_IDS, createdId, childIndex);
+            CommandSetObjectData addChild = CommandSetObjectData.createInsertIdCommand(assumption, Assumption.TAG_SUB_ASSUMPTION_IDS, createdId, childIndex);
             project.executeCommand(addChild);
         }
         finally

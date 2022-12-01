@@ -119,7 +119,7 @@ public interface Xmpz2XmlConstants
 	public static final String METHOD = MethodSchema.OBJECT_NAME;
 	public static final String TASK = TaskSchema.OBJECT_NAME;
 	public static final String OUTPUT = OutputSchema.OBJECT_NAME;
-	public static final String ANALYTICAL_QUESTION = AnalyticalQuestionSchema.OBJECT_NAME;
+	public static final String ASSUMPTION = AssumptionSchema.OBJECT_NAME;
 	public static final String SUB_ASSUMPTION = SubAssumptionSchema.OBJECT_NAME;
 	public static final String SUB_TASK = "SubTask";
 	public static final String ASSIGNED_LEADER_RESOURCE_ID = "AssignedLeaderResourceId";
@@ -359,7 +359,7 @@ public interface Xmpz2XmlConstants
 	public static final String RESOURCE_ASSIGNMENT_TAXONOMY_ASSOCIATION_POOL = "ResourceAssignmentTaxonomyAssociationPool";
 	public static final String EXPENSE_ASSIGNMENT_TAXONOMY_ASSOCIATION_POOL = "ExpenseAssignmentTaxonomyAssociationPool";
 	public static final String OUTPUT_TAXONOMY_ASSOCIATION_POOL = "OutputTaxonomyAssociationPool";
-	public static final String ANALYTICAL_QUESTION_TAXONOMY_ASSOCIATION_POOL = "AnalyticalQuestionTaxonomyAssociationPool";
+	public static final String ASSUMPTION_TAXONOMY_ASSOCIATION_POOL = "AnalyticalQuestionTaxonomyAssociationPool";
 	public static final String SUB_ASSUMPTION_TAXONOMY_ASSOCIATION_POOL = "AssumptionTaxonomyAssociationPool";
 	public static final String TAXONOMY = "Taxonomy";
 	public static final String TAXONOMY_POOL = "TaxonomyPool";
@@ -457,7 +457,7 @@ public interface Xmpz2XmlConstants
 	
 	public static final String VOCABULARY_EVIDENCE_CONFIDENCE_EXTERNAL = "vocabulary_evidence_confidence_external";
 	public static final String VOCABULARY_EVIDENCE_CONFIDENCE_PROJECT = "vocabulary_evidence_confidence_project";
-	public static final String VOCABULARY_EVIDENCE_CONFIDENCE_ANALYTICAL_QUESTION = "vocabulary_evidence_confidence_analytical_question";
+	public static final String VOCABULARY_EVIDENCE_CONFIDENCE_ASSUMPTION = "vocabulary_evidence_confidence_analytical_question";
 	public static final String VOCABULARY_COUNTRIES = "vocabulary_countries";
 	public static final String VOCABULARY_THREAT_RATING = "vocabulary_threat_rating";
 	public static final String VOCABULARY_DIAGRAM_OBJECT_DATA_INCLUSION = "vocabulary_included_diagram_types";

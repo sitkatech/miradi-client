@@ -52,12 +52,12 @@ public class ShowSubAssumptionBubbleDoer extends AbstractSubAssumptionVisibility
     @Override
     protected ORef getParentRef()
     {
-        return getSelectedAnalyticalQuestionRef();
+        return getSelectedAssumptionRef();
     }
 
     @Override
     protected ORefList getAnnotationList()
     {
-        return ((AnalyticalQuestion) getParent()).getSubAssumptionRefs();
+        return ((Assumption) getParent()).getSubAssumptionRefs();
     }
 }

@@ -19,35 +19,24 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.actions;
 
-import org.miradi.icons.AnalyticalQuestionIcon;
-import org.miradi.icons.IconManager;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 
-import javax.swing.*;
-
-public class ActionInsertAnalyticalQuestion extends LocationAction
+public class ActionEditAssumptionIndicatorRelevancyList extends ObjectsAction
 {
-    public ActionInsertAnalyticalQuestion(MainWindow mainWindow)
+    public ActionEditAssumptionIndicatorRelevancyList(MainWindow mainWindow)
     {
-        super(mainWindow, getLabel(), IconManager.getAnalyticalQuestionIcon());
+        super(mainWindow, getLabel());
     }
 
     private static String getLabel()
     {
-        return EAM.text("Action|Insert|Insert Analytical Question");
+        return EAM.text("Action|Choose...");
     }
 
     @Override
     public String getToolTipText()
     {
-        return EAM.text("TT|Insert a Analytical Question");
-    }
-
-    @Override
-    public Icon getDisabledIcon()
-    {
-        return AnalyticalQuestionIcon.createDisabledIcon();
+        return EAM.text("TT|Choose which indicators are relevant to this assumption");
     }
 }
-

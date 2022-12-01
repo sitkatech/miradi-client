@@ -53,7 +53,7 @@ public class HideSubAssumptionBubbleDoer extends AbstractSubAssumptionVisibility
     @Override
     protected ORef getParentRef()
     {
-        return getSelectedAnalyticalQuestionRef();
+        return getSelectedAssumptionRef();
     }
 
     @Override

@@ -63,7 +63,7 @@ abstract public class AbstractCustomPlanningRowsQuestion extends ProjectBasedDyn
 		choiceItems.add(createChoiceItem(ThreatReductionResultSchema.getObjectType(), ThreatReductionResultSchema.OBJECT_NAME, new ThreatReductionResultIcon()));
 		choiceItems.add(createChoiceItem(IntermediateResultSchema.getObjectType(), IntermediateResultSchema.OBJECT_NAME, new IntermediateResultIcon()));
 		choiceItems.add(createChoiceItem(StrategySchema.getObjectType(), StrategySchema.OBJECT_NAME, IconManager.getStrategyIcon()));
-		choiceItems.add(createChoiceItem(AnalyticalQuestionSchema.getObjectType(), AnalyticalQuestionSchema.OBJECT_NAME, new AnalyticalQuestionIcon()));
+		choiceItems.add(createChoiceItem(AssumptionSchema.getObjectType(), AssumptionSchema.OBJECT_NAME, new AssumptionIcon()));
 		choiceItems.add(createChoiceItem(IndicatorSchema.getObjectType(), IndicatorSchema.OBJECT_NAME, IconManager.getIndicatorIcon()));
 		choiceItems.add(createChoiceItem(MethodSchema.getObjectType(), MethodSchema.OBJECT_NAME, IconManager.getMethodIcon()));
 		choiceItems.addAll(createTaskChoiceItems());

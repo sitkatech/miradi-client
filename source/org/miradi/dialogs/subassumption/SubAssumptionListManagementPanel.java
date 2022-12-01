@@ -29,9 +29,9 @@ import javax.swing.*;
 
 public class SubAssumptionListManagementPanel extends ObjectListManagementPanel
 {
-    public static SubAssumptionListManagementPanel create(MainWindow mainWindow, ORefList selectedAnalyticalQuestionHierarchy) throws Exception
+    public static SubAssumptionListManagementPanel create(MainWindow mainWindow, ORefList selectedAssumptionHierarchy) throws Exception
     {
-        SubAssumptionListTablePanel tablePanel = new SubAssumptionListTablePanel(mainWindow, selectedAnalyticalQuestionHierarchy);
+        SubAssumptionListTablePanel tablePanel = new SubAssumptionListTablePanel(mainWindow, selectedAssumptionHierarchy);
         SubAssumptionPropertiesPanelWithVisibility properties = new SubAssumptionPropertiesPanelWithVisibility(mainWindow);
         return new SubAssumptionListManagementPanel(mainWindow, tablePanel, properties);
     }

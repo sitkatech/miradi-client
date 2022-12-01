@@ -52,6 +52,6 @@ public class SubAssumptionSchema extends AbstractAssumptionSchema
         return OBJECT_NAME;
     }
 
-    // TODO: need to rename, convert xml schema, etc.
+    // TODO: MS-2925 - need to rename, convert xml schema, etc.
     public static final String OBJECT_NAME = "Assumption";
 }

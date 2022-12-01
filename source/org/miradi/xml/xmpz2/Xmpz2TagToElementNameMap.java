@@ -100,7 +100,7 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		map.put(STRESS_BASED_THREAT_RATING, createStressBasedThreatRatingMap());
 		map.put(TAXONOMY, createTaxonomyMap());
 		map.put(FUTURE_STATUS, createFutureStatusMap());
-		map.put(ANALYTICAL_QUESTION, createAnalyticalQuestionMap());
+		map.put(ASSUMPTION, createAssumptionMap());
 		map.put(SUB_ASSUMPTION, createSubAssumptionMap());
 
 		return map;
@@ -225,10 +225,10 @@ public class Xmpz2TagToElementNameMap implements Xmpz2XmlConstants
 		return map;
 	}
 
-	private HashMap<String, String> createAnalyticalQuestionMap()
+	private HashMap<String, String> createAssumptionMap()
 	{
 		HashMap<String, String> map = createAbstractAssumptionMap();
-		map.put(AnalyticalQuestion.TAG_SUB_ASSUMPTION_IDS, ASSUMPTION_IDS);
+		map.put(Assumption.TAG_SUB_ASSUMPTION_IDS, ASSUMPTION_IDS);
 		return map;
 	}
 

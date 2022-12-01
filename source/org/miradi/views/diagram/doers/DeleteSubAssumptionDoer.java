@@ -114,14 +114,14 @@ public class DeleteSubAssumptionDoer extends ObjectsDoer
 
     private static CommandVector buildRemoveCommandsForSubAssumptionIds(Project project, ORefList selectionHierarchy, SubAssumption subAssumption) throws Exception
     {
-        return buildRemoveCommands(project, AnalyticalQuestionSchema.getObjectType(), selectionHierarchy, AnalyticalQuestion.TAG_SUB_ASSUMPTION_IDS, subAssumption);
+        return buildRemoveCommands(project, AssumptionSchema.getObjectType(), selectionHierarchy, Assumption.TAG_SUB_ASSUMPTION_IDS, subAssumption);
     }
 
     private static CommandVector buildDeleteDiagramFactors(Project project, ORefList selectionHierarchy, SubAssumption subAssumption) throws Exception
     {
         CommandVector commands = new CommandVector();
 
-        ORef analyticalQuestionRef = selectionHierarchy.getRefForType(AnalyticalQuestionSchema.getObjectType());
+        ORef assumptionRef = selectionHierarchy.getRefForType(AssumptionSchema.getObjectType());
         ORefList subAssumptionDiagramFactorReferrerRefs = subAssumption.findObjectsThatReferToUs(DiagramFactorSchema.getObjectType());
 
         for (int index = 0; index < subAssumptionDiagramFactorReferrerRefs.size(); ++index)
@@ -136,8 +136,8 @@ public class DeleteSubAssumptionDoer extends ObjectsDoer
             for (int diagramObjectIndex = 0; diagramObjectIndex < diagramObjectsWithSubAssumptions.size(); ++diagramObjectIndex)
             {
                 DiagramObject diagramObject = DiagramObject.findDiagramObject(project, diagramObjectsWithSubAssumptions.get(diagramObjectIndex));
-                ORefList analyticalQuestionRefs = getDiagramObjectAnalyticalQuestions(project, diagramObject);
-                if (analyticalQuestionRefs.contains(analyticalQuestionRef))
+                ORefList assumptionRefs = getDiagramObjectAssumptions(project, diagramObject);
+                if (assumptionRefs.contains(assumptionRef))
                 {
                     commands.add(CommandSetObjectData.createRemoveIdCommand(diagramObject, DiagramObject.TAG_DIAGRAM_FACTOR_IDS, subAssumptionDiagramFactorRef.getObjectId()));
                     commands.addAll(subAssumptionDiagramFactor.createCommandsToDeleteChildrenAndObject());
@@ -148,18 +148,18 @@ public class DeleteSubAssumptionDoer extends ObjectsDoer
         return commands;
     }
 
-    private static ORefList getDiagramObjectAnalyticalQuestions(Project project, DiagramObject diagramObject)
+    private static ORefList getDiagramObjectAssumptions(Project project, DiagramObject diagramObject)
     {
-        ORefList analyticalQuestionRefs = new ORefList();
+        ORefList assumptionRefs = new ORefList();
         ORefList diagramFactorRefs =  diagramObject.getAllDiagramFactorRefs();
         for (int index = 0; index < diagramFactorRefs.size(); ++index)
         {
             DiagramFactor diagramFactor = DiagramFactor.find(project, diagramFactorRefs.get(index));
-            if (AnalyticalQuestion.is(diagramFactor.getWrappedType()))
-                analyticalQuestionRefs.add(diagramFactor.getWrappedORef());
+            if (Assumption.is(diagramFactor.getWrappedType()))
+                assumptionRefs.add(diagramFactor.getWrappedORef());
         }
 
-        return analyticalQuestionRefs;
+        return assumptionRefs;
     }
 
     private static CommandVector buildRemoveCommands(Project project, int parentType, ORefList selectionHierarchy, String tag, SubAssumption subAssumption) throws Exception

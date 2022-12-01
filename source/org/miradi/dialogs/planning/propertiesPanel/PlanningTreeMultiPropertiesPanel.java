@@ -200,8 +200,8 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 			if (ExpenseAssignment.is(objectType))
 				return getExpenseAssignmentPropertiesPanel();
 
-			if (AnalyticalQuestionSchema.getObjectType() == objectType)
-				return getAnalyticalQuestionPropertiesPanel();
+			if (AssumptionSchema.getObjectType() == objectType)
+				return getAssumptionPropertiesPanel();
 
 			if (SubAssumptionSchema.getObjectType() == objectType)
 				return getSubAssumptionPropertiesPanel();
@@ -496,14 +496,14 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 		return expenseAssignmentPropertiesPanel;
 	}
 
-	private MinimalFactorPropertiesPanel getAnalyticalQuestionPropertiesPanel() throws Exception
+	private MinimalFactorPropertiesPanel getAssumptionPropertiesPanel() throws Exception
 	{
-        if(analyticalQuestionPropertiesPanel == null)
+        if(assumptionPropertiesPanel == null)
         {
-			analyticalQuestionPropertiesPanel = new PlanningViewAnalyticalQuestionPropertiesPanel(getProject(), getMainWindow());
-            addPanel(analyticalQuestionPropertiesPanel);
+			assumptionPropertiesPanel = new PlanningViewAssumptionPropertiesPanel(getProject(), getMainWindow());
+            addPanel(assumptionPropertiesPanel);
         }
-        return analyticalQuestionPropertiesPanel;
+        return assumptionPropertiesPanel;
 	}
 
 	private AbstractObjectDataInputPanel getSubAssumptionPropertiesPanel() throws Exception
@@ -556,7 +556,7 @@ public class PlanningTreeMultiPropertiesPanel extends AbstractMultiPropertiesPan
 	private SubTargetPropertiesPanel subTargetPropertiesPanel;
 	private ResourceAssignmentPropertiesPanel resourceAssignmentPropertiesPanel;
 	private ExpenseAssignmentPropertiesPanel expenseAssignmentPropertiesPanel;
-	private PlanningViewAnalyticalQuestionPropertiesPanel analyticalQuestionPropertiesPanel;
+	private PlanningViewAssumptionPropertiesPanel assumptionPropertiesPanel;
 	private SubAssumptionPropertiesPanel subAssumptionPropertiesPanel;
 	private BlankPropertiesPanel blankPropertiesPanel;
 }

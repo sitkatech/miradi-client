@@ -329,7 +329,7 @@ abstract public class InsertFactorDoer extends LocationDoer
 		if (type == ScopeBoxSchema.getObjectType())
 			return false;
 		
-		if (type == AnalyticalQuestionSchema.getObjectType())
+		if (type == AssumptionSchema.getObjectType())
 			return false;
 
 		return true;

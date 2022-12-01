@@ -58,7 +58,7 @@ public class Actions
 		registerAction(new ActionInsertBiophysicalResult(mainWindow));
 		registerAction(new ActionInsertDirectThreat(mainWindow));
 		registerAction(new ActionInsertContributingFactor(mainWindow));
-		registerAction(new ActionInsertAnalyticalQuestion(mainWindow));
+		registerAction(new ActionInsertAssumption(mainWindow));
 		registerAction(new ActionSaveProjectAs(mainWindow));
 		registerAction(new ActionHowToSave(mainWindow));
 
@@ -392,7 +392,7 @@ public class Actions
 		registerAction(new ActionEditOutputGoalRelevancyList(mainWindow));
 		registerAction(new ActionEditOutputObjectiveRelevancyList(mainWindow));
 		registerAction(new ActionEditOutputIndicatorRelevancyList(mainWindow));
-		registerAction(new ActionEditAnalyticalQuestionIndicatorRelevancyList(mainWindow));
+		registerAction(new ActionEditAssumptionIndicatorRelevancyList(mainWindow));
 		registerAction(new ActionEditSubAssumptionIndicatorRelevancyList(mainWindow));
 
 		registerAction(new ActionDeleteGroupBox(mainWindow));

@@ -21,9 +21,9 @@ package org.miradi.views.diagram;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.schemas.AnalyticalQuestionSchema;
+import org.miradi.schemas.AssumptionSchema;
 
-public class InsertAnalyticalQuestionDoer extends InsertFactorDoer
+public class InsertAssumptionDoer extends InsertFactorDoer
 {
     @Override
     public boolean isAvailable()
@@ -37,18 +37,18 @@ public class InsertAnalyticalQuestionDoer extends InsertFactorDoer
     @Override
     public int getTypeToInsert()
     {
-        return ObjectType.ANALYTICAL_QUESTION;
+        return ObjectType.ASSUMPTION;
     }
 
     @Override
     public String getInitialText()
     {
-        return EAM.text("Label|New Analytical Question");
+        return EAM.text("Label|New Assumption");
     }
 
     @Override
     public void forceVisibleInLayerManager() throws Exception
     {
-        getCurrentLayerManager().setVisibility(AnalyticalQuestionSchema.OBJECT_NAME, true);
+        getCurrentLayerManager().setVisibility(AssumptionSchema.OBJECT_NAME, true);
     }
 }

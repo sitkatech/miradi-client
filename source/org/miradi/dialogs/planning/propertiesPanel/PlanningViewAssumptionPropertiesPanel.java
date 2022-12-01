@@ -19,26 +19,26 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
 package org.miradi.dialogs.planning.propertiesPanel;
 
-import org.miradi.actions.ActionEditAnalyticalQuestionIndicatorRelevancyList;
+import org.miradi.actions.ActionEditAssumptionIndicatorRelevancyList;
 import org.miradi.actions.Actions;
-import org.miradi.icons.AnalyticalQuestionIcon;
+import org.miradi.icons.AssumptionIcon;
 import org.miradi.main.EAM;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.objects.AbstractAssumption;
-import org.miradi.objects.AnalyticalQuestion;
+import org.miradi.objects.Assumption;
 import org.miradi.project.Project;
-import org.miradi.schemas.AnalyticalQuestionSchema;
+import org.miradi.schemas.AssumptionSchema;
 
-public class PlanningViewAnalyticalQuestionPropertiesPanel extends MinimalFactorPropertiesPanel
+public class PlanningViewAssumptionPropertiesPanel extends MinimalFactorPropertiesPanel
 {
-    public PlanningViewAnalyticalQuestionPropertiesPanel(Project projectToUse, MainWindow mainWindow) throws Exception
+    public PlanningViewAssumptionPropertiesPanel(Project projectToUse, MainWindow mainWindow) throws Exception
     {
-        super(projectToUse, projectToUse.getObjectManager().getSchemas().get(ObjectType.ANALYTICAL_QUESTION));
+        super(projectToUse, projectToUse.getObjectManager().getSchemas().get(ObjectType.ASSUMPTION));
 
         this.mainWindow = mainWindow;
 
-        createAndAddFields(EAM.text("Analytical Question"), new AnalyticalQuestionIcon());
+        createAndAddFields(EAM.text("Assumption"), new AssumptionIcon());
     }
 
     @Override
@@ -51,22 +51,22 @@ public class PlanningViewAnalyticalQuestionPropertiesPanel extends MinimalFactor
     protected void addCustomFieldsMiddle()
 	{
         Actions actionsToUse = this.mainWindow.getActions();
-		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(AnalyticalQuestionSchema.getObjectType(), AnalyticalQuestion.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditAnalyticalQuestionIndicatorRelevancyList.class), getPicker()));
+		addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(AssumptionSchema.getObjectType(), Assumption.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actionsToUse.getObjectsAction(ActionEditAssumptionIndicatorRelevancyList.class), getPicker()));
 	}
 
     @Override
 	protected void addCustomFieldsEnd() throws Exception
 	{
-        addField(createMultilineField(AnalyticalQuestionSchema.getObjectType(), AbstractAssumption.TAG_IMPLICATIONS));
-        addField(createMultilineField(AnalyticalQuestionSchema.getObjectType(), AbstractAssumption.TAG_FUTURE_INFORMATION_NEEDS));
+        addField(createMultilineField(AssumptionSchema.getObjectType(), AbstractAssumption.TAG_IMPLICATIONS));
+        addField(createMultilineField(AssumptionSchema.getObjectType(), AbstractAssumption.TAG_FUTURE_INFORMATION_NEEDS));
 
-        addTaxonomyFields(AnalyticalQuestionSchema.getObjectType());
+        addTaxonomyFields(AssumptionSchema.getObjectType());
 	}
 
     @Override
     public String getPanelDescription()
     {
-        return EAM.text("Title|Analytical Question Properties");
+        return EAM.text("Title|Assumption Properties");
     }
 
     private MainWindow mainWindow;

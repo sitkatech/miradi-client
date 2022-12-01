@@ -20,17 +20,17 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectExporters;
 
-import org.miradi.objects.AnalyticalQuestion;
+import org.miradi.objects.Assumption;
 import org.miradi.objects.BaseObject;
-import org.miradi.schemas.AnalyticalQuestionSchema;
+import org.miradi.schemas.AssumptionSchema;
 import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-public class AnalyticalQuestionExporter extends AbstractAssumptionExporter
+public class AssumptionExporter extends AbstractAssumptionExporter
 {
-    public AnalyticalQuestionExporter(Xmpz2XmlWriter writerToUse)
+    public AssumptionExporter(Xmpz2XmlWriter writerToUse)
     {
-        super(writerToUse, AnalyticalQuestionSchema.getObjectType());
+        super(writerToUse, AssumptionSchema.getObjectType());
     }
 
 	@Override
@@ -38,21 +38,21 @@ public class AnalyticalQuestionExporter extends AbstractAssumptionExporter
 	{
 		super.writeFields(baseObject, baseObjectSchema);
 
-		final AnalyticalQuestion analyticalQuestion = (AnalyticalQuestion) baseObject;
-		writeSubAssumptionRefs(baseObjectSchema, analyticalQuestion);
+		final Assumption assumption = (Assumption) baseObject;
+		writeSubAssumptionRefs(baseObjectSchema, assumption);
 	}
 
 	@Override
 	protected boolean doesFieldRequireSpecialHandling(String tag)
 	{
-		if (tag.equals(AnalyticalQuestion.TAG_SUB_ASSUMPTION_IDS))
+		if (tag.equals(Assumption.TAG_SUB_ASSUMPTION_IDS))
 			return true;
 
 		return super.doesFieldRequireSpecialHandling(tag);
 	}
 
-	private void writeSubAssumptionRefs(BaseObjectSchema baseObjectSchema, final AnalyticalQuestion analyticalQuestion) throws Exception
+	private void writeSubAssumptionRefs(BaseObjectSchema baseObjectSchema, final Assumption assumption) throws Exception
 	{
-		getWriter().writeReflist(baseObjectSchema.getObjectName() + ASSUMPTION_IDS, SUB_ASSUMPTION, analyticalQuestion.getSubAssumptionRefs());
+		getWriter().writeReflist(baseObjectSchema.getObjectName() + ASSUMPTION_IDS, SUB_ASSUMPTION, assumption.getSubAssumptionRefs());
 	}
 }

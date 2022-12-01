@@ -23,38 +23,38 @@ import org.miradi.ids.BaseId;
 import org.miradi.ids.FactorId;
 import org.miradi.ids.IdAssigner;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.AnalyticalQuestion;
+import org.miradi.objects.Assumption;
 import org.miradi.objects.BaseObject;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
 import org.miradi.schemas.BaseObjectSchema;
 
-public class AnalyticalQuestionPool extends FactorPool
+public class AssumptionPool extends FactorPool
 {
-    public AnalyticalQuestionPool(IdAssigner idAssignerToUse)
+    public AssumptionPool(IdAssigner idAssignerToUse)
     {
-        super(idAssignerToUse, ObjectType.ANALYTICAL_QUESTION);
+        super(idAssignerToUse, ObjectType.ASSUMPTION);
     }
 
-    public void put(AnalyticalQuestion analyticalQuestion) throws Exception
+    public void put(Assumption assumption) throws Exception
     {
-        put(analyticalQuestion.getId(), analyticalQuestion);
+        put(assumption.getId(), assumption);
     }
 
-    public AnalyticalQuestion find(BaseId id)
+    public Assumption find(BaseId id)
     {
-        return (AnalyticalQuestion)getRawObject(id);
+        return (Assumption)getRawObject(id);
     }
 
     @Override
     BaseObject createRawObject(ObjectManager objectManager, BaseId actualId) throws Exception
     {
-        return new AnalyticalQuestion(objectManager ,new FactorId(actualId.asInt()));
+        return new Assumption(objectManager ,new FactorId(actualId.asInt()));
     }
 
     @Override
     public BaseObjectSchema createBaseObjectSchema(Project projectToUse)
     {
-        return AnalyticalQuestion.createSchema(projectToUse);
+        return Assumption.createSchema(projectToUse);
     }
 }

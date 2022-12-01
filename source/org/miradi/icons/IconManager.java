@@ -83,7 +83,7 @@ public class IconManager
 		addIcon(new OpenStandardsCompleteIcon());
 		addIcon(new FutureStatusIcon());
 		addIcon(new OutputIcon());
-		addIcon(new AnalyticalQuestionIcon());
+		addIcon(new AssumptionIcon());
 		addIcon(new SubAssumptionIcon());
 		addResourceImageIcon(COLLAPSE_ICON_FILE_NAME);
 		addResourceImageIcon(EXPAND_ICON_FILE_NAME);
@@ -204,8 +204,8 @@ public class IconManager
 		if (Output.is(type))
 			return getOutputIcon();
 
-		if (AnalyticalQuestion.is(type))
-			return getAnalyticalQuestionIcon();
+		if (Assumption.is(type))
+			return getAssumptionIcon();
 
 		if (SubAssumption.is(type))
 			return getSubAssumptionIcon();
@@ -254,8 +254,8 @@ public class IconManager
 		if (factor.isHumanWelfareTarget())
 			return getHumanWelfareTargetIcon();	
 
-		if (factor.isAnalyticalQuestion())
-			return getAnalyticalQuestionIcon();
+		if (factor.isAssumption())
+			return getAssumptionIcon();
 
 		if (factor.isSubAssumption())
 			return getSubAssumptionIcon();
@@ -544,9 +544,9 @@ public class IconManager
 		return getIcon(OutputIcon.class);
 	}
 
-	public static Icon getAnalyticalQuestionIcon()
+	public static Icon getAssumptionIcon()
 	{
-		return getIcon(AnalyticalQuestionIcon.class);
+		return getIcon(AssumptionIcon.class);
 	}
 
 	public static Icon getSubAssumptionIcon()

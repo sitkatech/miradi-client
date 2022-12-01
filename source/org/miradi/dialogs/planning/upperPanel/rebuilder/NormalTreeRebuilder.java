@@ -99,8 +99,8 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		if (FutureStatus.is(parentRef))
 			return noChildren;
 
-		if (AnalyticalQuestion.is(parentRef))
-			return getChildrenOfAnalyticalQuestion(parentRef);
+		if (Assumption.is(parentRef))
+			return getChildrenOfAssumption(parentRef);
 
 		if (SubAssumption.is(parentRef))
 			return noChildren;
@@ -360,11 +360,11 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		return childRefs;
 	}
 
-	private ORefList getChildrenOfAnalyticalQuestion(ORef analyticalQuestionRef) throws Exception
+	private ORefList getChildrenOfAssumption(ORef assumptionRef) throws Exception
 	{
 		ORefList childRefs = new ORefList();
-		AnalyticalQuestion analyticalQuestion = AnalyticalQuestion.find(getProject(), analyticalQuestionRef);
-		childRefs.addAll(analyticalQuestion.getSubAssumptionRefs());
+		Assumption assumption = Assumption.find(getProject(), assumptionRef);
+		childRefs.addAll(assumption.getSubAssumptionRefs());
 
 		return childRefs;
 	}
@@ -437,7 +437,7 @@ public class NormalTreeRebuilder extends AbstractTreeRebuilder
 		if (factor.isIntermediateResult())
 			return true;
 		
-		if (factor.isAnalyticalQuestion())
+		if (factor.isAssumption())
 			return true;
 
 		if (factor.isSubAssumption())

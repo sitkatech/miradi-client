@@ -54,7 +54,7 @@ public class MigrationTo81 extends AbstractMigration
 
         for(Integer typeToVisit : typesToVisit)
         {
-            final AnalyticalQuestionVisitor visitor = new AnalyticalQuestionVisitor(typeToVisit, reverseMigration);
+            final AssumptionVisitor visitor = new AssumptionVisitor(typeToVisit, reverseMigration);
             visitAllORefsInPool(visitor);
             final MigrationResult thisMigrationResult = visitor.getMigrationResult();
             if (migrationResult == null)
@@ -70,15 +70,15 @@ public class MigrationTo81 extends AbstractMigration
     {
         Vector<Integer> typesToMigrate = new Vector<Integer>();
 
-        typesToMigrate.add(ObjectType.ANALYTICAL_QUESTION);
+        typesToMigrate.add(ObjectType.ASSUMPTION);
         typesToMigrate.add(ObjectType.SUB_ASSUMPTION);
 
         return typesToMigrate;
     }
 
-    private class AnalyticalQuestionVisitor extends AbstractMigrationORefVisitor
+    private class AssumptionVisitor extends AbstractMigrationORefVisitor
     {
-        public AnalyticalQuestionVisitor(int typeToVisit, boolean reverseMigration)
+        public AssumptionVisitor(int typeToVisit, boolean reverseMigration)
         {
             type = typeToVisit;
             isReverseMigration = reverseMigration;
@@ -132,7 +132,7 @@ public class MigrationTo81 extends AbstractMigration
     @Override
     protected String getDescription()
     {
-        return EAM.text("This migration removes unused fields from Analytical Questions and Assumptions.");
+        return EAM.text("This migration removes unused fields from Assumptions and Sub-Assumptions.");
     }
 
     public static final int VERSION_FROM = 80;

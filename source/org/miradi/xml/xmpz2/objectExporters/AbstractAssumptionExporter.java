@@ -38,10 +38,10 @@ abstract public class AbstractAssumptionExporter extends BaseObjectExporter
 	{
 		super.writeFields(baseObject, baseObjectSchema);
 
-		final AbstractAssumption analyticalQuestionOrSubAssumption = (AbstractAssumption) baseObject;
+		final AbstractAssumption assumptionOrSubAssumption = (AbstractAssumption) baseObject;
 		final String objectName = baseObjectSchema.getObjectName();
 
-		writeRelevantIndicatorIds(objectName, analyticalQuestionOrSubAssumption);
+		writeRelevantIndicatorIds(objectName, assumptionOrSubAssumption);
 	}
 
 	@Override
@@ -53,8 +53,8 @@ abstract public class AbstractAssumptionExporter extends BaseObjectExporter
 		return super.doesFieldRequireSpecialHandling(tag);
 	}
 
-	private void writeRelevantIndicatorIds(final String objectName, AbstractAssumption analyticalQuestionOrSubAssumption) throws Exception
+	private void writeRelevantIndicatorIds(final String objectName, AbstractAssumption assumptionOrSubAssumption) throws Exception
 	{
-		getWriter().writeReflist(objectName, RELEVANT_INDICATOR_IDS, INDICATOR, analyticalQuestionOrSubAssumption.getRelevantIndicatorRefList());
+		getWriter().writeReflist(objectName, RELEVANT_INDICATOR_IDS, INDICATOR, assumptionOrSubAssumption.getRelevantIndicatorRefList());
 	}
 }

@@ -934,7 +934,7 @@ abstract public class DiagramPaster
 			if (!doesObjectExist(factorRef))
 				return true;
 
-			return !hasReferrersInDiagram(factorRef, AnalyticalQuestionSchema.getObjectType());
+			return !hasReferrersInDiagram(factorRef, AssumptionSchema.getObjectType());
 		}
 
 		return false;

@@ -226,7 +226,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			addTab(subTargetTab);
 		}
 
-		if(factor.isAnalyticalQuestion())
+		if(factor.isAssumption())
 		{
 			subAssumptionsTab = SubAssumptionListManagementPanel.create(mainWindow, selectedHierarchy);
 			addTab(subAssumptionsTab);

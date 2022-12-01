@@ -21,11 +21,11 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.AnalyticalQuestion;
+import org.miradi.objects.Assumption;
 
-public class AnalyticalQuestionSchema extends AbstractAssumptionSchema
+public class AssumptionSchema extends AbstractAssumptionSchema
 {
-    public AnalyticalQuestionSchema()
+    public AssumptionSchema()
     {
         super();
     }
@@ -35,12 +35,12 @@ public class AnalyticalQuestionSchema extends AbstractAssumptionSchema
     {
         super.fillFieldSchemas();
 
-        createOwnedFieldSchemaIdList(AnalyticalQuestion.TAG_SUB_ASSUMPTION_IDS, SubAssumptionSchema.getObjectType());
+        createOwnedFieldSchemaIdList(Assumption.TAG_SUB_ASSUMPTION_IDS, SubAssumptionSchema.getObjectType());
     }
 
     public static int getObjectType()
     {
-        return ObjectType.ANALYTICAL_QUESTION;
+        return ObjectType.ASSUMPTION;
     }
 
     @Override
@@ -55,5 +55,6 @@ public class AnalyticalQuestionSchema extends AbstractAssumptionSchema
         return OBJECT_NAME;
     }
 
+    // TODO: MS-2925 - need to rename, convert xml schema, etc.
     public static final String OBJECT_NAME = "AnalyticalQuestion";
 }

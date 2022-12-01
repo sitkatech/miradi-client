@@ -26,8 +26,8 @@ import org.miradi.main.CommandExecutedEvent;
 import org.miradi.main.MainWindow;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
-import org.miradi.objects.AnalyticalQuestion;
-import org.miradi.schemas.AnalyticalQuestionSchema;
+import org.miradi.objects.Assumption;
+import org.miradi.schemas.AssumptionSchema;
 import org.miradi.views.umbrella.StaticPicker;
 
 public class SubAssumptionListTablePanel extends ObjectListTablePanel
@@ -45,7 +45,7 @@ public class SubAssumptionListTablePanel extends ObjectListTablePanel
     {
         super.handleCommandEventImmediately(event);
 
-        if (event.isSetDataCommandWithThisTypeAndTag(AnalyticalQuestionSchema.getObjectType(), AnalyticalQuestion.TAG_SUB_ASSUMPTION_IDS))
+        if (event.isSetDataCommandWithThisTypeAndTag(AssumptionSchema.getObjectType(), Assumption.TAG_SUB_ASSUMPTION_IDS))
         {
             ORef selectedObjectRef = getSelectedObjectRef();
             getTable().getObjectTableModel().resetRows();

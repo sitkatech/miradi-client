@@ -177,7 +177,7 @@ abstract public class AbstractTreeRebuilder
 			ExpenseAssignmentSchema.getObjectType(),
 			FutureStatusSchema.getObjectType(),
 
-			AnalyticalQuestionSchema.getObjectType(),
+			AssumptionSchema.getObjectType(),
 			SubAssumptionSchema.getObjectType(),
 		};
 		

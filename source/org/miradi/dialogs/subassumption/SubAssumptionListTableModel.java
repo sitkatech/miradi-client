@@ -22,7 +22,7 @@ package org.miradi.dialogs.subassumption;
 import org.miradi.dialogs.base.ObjectListTableModel;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.AnalyticalQuestion;
+import org.miradi.objects.Assumption;
 import org.miradi.objects.Task;
 import org.miradi.project.Project;
 
@@ -30,7 +30,7 @@ public class SubAssumptionListTableModel extends ObjectListTableModel
 {
     public SubAssumptionListTableModel(Project projectToUse, ORefList selectedHierarchy)
     {
-        super(projectToUse, selectedHierarchy, AnalyticalQuestion.TAG_SUB_ASSUMPTION_IDS, ObjectType.SUB_ASSUMPTION, COLUMN_TAGS);
+        super(projectToUse, selectedHierarchy, Assumption.TAG_SUB_ASSUMPTION_IDS, ObjectType.SUB_ASSUMPTION, COLUMN_TAGS);
     }
 
     private static String[] COLUMN_TAGS = {

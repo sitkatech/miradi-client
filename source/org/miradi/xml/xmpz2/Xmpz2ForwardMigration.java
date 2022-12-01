@@ -72,7 +72,7 @@ public class Xmpz2ForwardMigration
 		addUUIDFields(document);
 		moveIndicatorRatingSourceToExtraData(document);
 		moveMeasurementSourceToExtraData(document);
-		removeRelevantDiagramFactorIdsElement(rootElement, Xmpz2XmlConstants.ANALYTICAL_QUESTION);
+		removeRelevantDiagramFactorIdsElement(rootElement, Xmpz2XmlConstants.ASSUMPTION);
 		removeRelevantDiagramFactorIdsElement(rootElement, Xmpz2XmlConstants.SUB_ASSUMPTION);
 		moveStrategyStandardClassificationToExtraData(document);
 		moveCauseStandardClassificationToExtraData(document);

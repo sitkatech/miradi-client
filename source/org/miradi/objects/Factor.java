@@ -171,7 +171,7 @@ abstract public class Factor extends BaseObject
 		if (typeToUse == ObjectType.GROUP_BOX)
 			return true;
 		
-		if (typeToUse == ObjectType.ANALYTICAL_QUESTION)
+		if (typeToUse == ObjectType.ASSUMPTION)
 			return true;
 
 		if (typeToUse == ObjectType.SUB_ASSUMPTION)
@@ -278,7 +278,7 @@ abstract public class Factor extends BaseObject
 		return false;
 	}
 
-	public boolean isAnalyticalQuestion()
+	public boolean isAssumption()
 	{
 		return false;
 	}

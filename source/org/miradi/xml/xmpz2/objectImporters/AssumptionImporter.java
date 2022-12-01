@@ -22,39 +22,39 @@ package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.AbstractAssumption;
-import org.miradi.objects.AnalyticalQuestion;
+import org.miradi.objects.Assumption;
 import org.miradi.project.Project;
-import org.miradi.schemas.AnalyticalQuestionSchema;
+import org.miradi.schemas.AssumptionSchema;
 import org.miradi.schemas.SubAssumptionSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
 import org.w3c.dom.Node;
 
-public class AnalyticalQuestionImporter extends AbstractAssumptionImporter
+public class AssumptionImporter extends AbstractAssumptionImporter
 {
-    public AnalyticalQuestionImporter(Xmpz2XmlImporter importerToUse)
+    public AssumptionImporter(Xmpz2XmlImporter importerToUse)
     {
-        super(importerToUse, new AnalyticalQuestionSchema());
+        super(importerToUse, new AssumptionSchema());
     }
 
     @Override
     public void importFields(Node baseObjectNode, ORef refToUse) throws Exception
     {
         super.importFields(baseObjectNode, refToUse);
-        getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), AnalyticalQuestion.TAG_SUB_ASSUMPTION_IDS, SUB_ASSUMPTION, SubAssumptionSchema.getObjectType());
+        getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), Assumption.TAG_SUB_ASSUMPTION_IDS, SUB_ASSUMPTION, SubAssumptionSchema.getObjectType());
     }
 
     @Override
     protected boolean isCustomImportField(String tag)
     {
-        if (tag.equals(AnalyticalQuestion.TAG_SUB_ASSUMPTION_IDS))
+        if (tag.equals(Assumption.TAG_SUB_ASSUMPTION_IDS))
             return true;
 
         return super.isCustomImportField(tag);
     }
 
     @Override
-    AbstractAssumption findAnalyticalQuestionOrSubAssumption(Project project, ORef destinationRef)
+    AbstractAssumption findAssumptionOrSubAssumption(Project project, ORef destinationRef)
     {
-        return AnalyticalQuestion.find(project, destinationRef);
+        return Assumption.find(project, destinationRef);
     }
 }

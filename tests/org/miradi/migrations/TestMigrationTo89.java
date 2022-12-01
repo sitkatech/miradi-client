@@ -21,7 +21,7 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.migrations;
 
 import org.miradi.migrations.forward.MigrationTo89;
-import org.miradi.objects.AnalyticalQuestion;
+import org.miradi.objects.Assumption;
 import org.miradi.objects.SubAssumption;
 import org.miradi.project.Project;
 import org.miradi.project.ProjectSaverForTesting;
@@ -33,20 +33,20 @@ public class TestMigrationTo89 extends AbstractTestMigration
         super(name);
     }
 
-    public void testAnalyticalQuestionFieldsRenamedAfterMigration() throws Exception
+    public void testAssumptionFieldsRenamedAfterMigration() throws Exception
     {
-        AnalyticalQuestion analyticalQuestion = getProject().createAndPopulateAnalyticalQuestion();
-        SubAssumption subAssumption = getProject().addSubAssumption(analyticalQuestion);
+        Assumption assumption = getProject().createAndPopulateAssumption();
+        SubAssumption subAssumption = getProject().addSubAssumption(assumption);
 
-        String expectedValue = analyticalQuestion.getData(MigrationTo89.TAG_SUB_ASSUMPTION_IDS);
+        String expectedValue = assumption.getData(MigrationTo89.TAG_SUB_ASSUMPTION_IDS);
 
         String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), new VersionRange(getToVersion()));
         final RawProject projectToMigrate = RawProjectLoader.loadProject(projectAsString);
         migrateProject(projectToMigrate, new VersionRange(getFromVersion()));
-        assertEquals("Data should match during field rename on reverse migration?", expectedValue, projectToMigrate.getData(analyticalQuestion.getRef(), MigrationTo89.LEGACY_TAG_ASSUMPTION_IDS));
+        assertEquals("Data should match during field rename on reverse migration?", expectedValue, projectToMigrate.getData(assumption.getRef(), MigrationTo89.LEGACY_TAG_ASSUMPTION_IDS));
 
         migrateProject(projectToMigrate, new VersionRange(Project.VERSION_HIGH));
-        assertEquals("Data should match during field rename on forward migration?", expectedValue, projectToMigrate.getData(analyticalQuestion.getRef(), MigrationTo89.TAG_SUB_ASSUMPTION_IDS));
+        assertEquals("Data should match during field rename on forward migration?", expectedValue, projectToMigrate.getData(assumption.getRef(), MigrationTo89.TAG_SUB_ASSUMPTION_IDS));
 
         verifyFullCircleMigrations(new VersionRange(getFromVersion(), getToVersion()));
     }

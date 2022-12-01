@@ -35,7 +35,7 @@ public class SubAssumptionImporter extends AbstractAssumptionImporter
     }
 
     @Override
-    AbstractAssumption findAnalyticalQuestionOrSubAssumption(Project project, ORef destinationRef)
+    AbstractAssumption findAssumptionOrSubAssumption(Project project, ORef destinationRef)
     {
         return SubAssumption.find(project, destinationRef);
     }

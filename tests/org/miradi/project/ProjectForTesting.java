@@ -702,12 +702,12 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return output;
 	}
 
-	public AnalyticalQuestion createAndPopulateAnalyticalQuestion() throws Exception
+	public Assumption createAndPopulateAssumption() throws Exception
 	{
-		AnalyticalQuestion AnalyticalQuestion = createAnalyticalQuestion();
-		populateAnalyticalQuestion(AnalyticalQuestion);
+		Assumption assumption = createAssumption();
+		populateAssumption(assumption);
 
-		return AnalyticalQuestion;
+		return assumption;
 	}
 
 	public SubAssumption createAndPopulateSubAssumption() throws Exception
@@ -1134,10 +1134,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return Output.find(this, OutputRef);
 	}
 
-	public AnalyticalQuestion createAnalyticalQuestion() throws Exception
+	public Assumption createAssumption() throws Exception
 	{
-		ORef AnalyticalQuestionRef = createObject(AnalyticalQuestionSchema.getObjectType());
-		return AnalyticalQuestion.find(this, AnalyticalQuestionRef);
+		ORef assumptionRef = createObject(AssumptionSchema.getObjectType());
+		return Assumption.find(this, assumptionRef);
 	}
 
 	public SubAssumption createSubAssumption() throws Exception
@@ -1896,13 +1896,13 @@ public class ProjectForTesting extends ProjectWithHelpers
 		return output;
 	}
 
-	public SubAssumption addSubAssumption(AnalyticalQuestion analyticalQuestion) throws Exception
+	public SubAssumption addSubAssumption(Assumption assumption) throws Exception
 	{
 		SubAssumption subAssumption = createAndPopulateSubAssumption();
 
-		IdList subAssumptionIds = new IdList(analyticalQuestion.getSubAssumptionIds());
+		IdList subAssumptionIds = new IdList(assumption.getSubAssumptionIds());
 		subAssumptionIds.addRef(subAssumption.getRef());
-		fillObjectUsingCommand(analyticalQuestion, AnalyticalQuestion.TAG_SUB_ASSUMPTION_IDS, subAssumptionIds.toString());
+		fillObjectUsingCommand(assumption, Assumption.TAG_SUB_ASSUMPTION_IDS, subAssumptionIds.toString());
 
 		return subAssumption;
 	}
@@ -1968,10 +1968,10 @@ public class ProjectForTesting extends ProjectWithHelpers
 		fillObjectUsingCommand(output, Output.TAG_COMMENTS, "Some Output comments");
 	}
 
-	public void populateAnalyticalQuestion(AnalyticalQuestion analyticalQuestion) throws Exception
+	public void populateAssumption(Assumption assumption) throws Exception
 	{
-		fillObjectUsingCommand(analyticalQuestion, AnalyticalQuestion.TAG_LABEL, "Some AnalyticalQuestion label");
-		fillObjectUsingCommand(analyticalQuestion, AnalyticalQuestion.TAG_COMMENTS, "Some AnalyticalQuestion comments");
+		fillObjectUsingCommand(assumption, Assumption.TAG_LABEL, "Some Assumption label");
+		fillObjectUsingCommand(assumption, Assumption.TAG_COMMENTS, "Some Assumption comments");
 	}
 
 	public void populateSubAssumption(SubAssumption subAssumption) throws Exception

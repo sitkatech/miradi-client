@@ -26,24 +26,24 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.schemas.AnalyticalQuestionSchema;
+import org.miradi.schemas.AssumptionSchema;
 import org.miradi.schemas.SubAssumptionSchema;
 
-public class AnalyticalQuestion extends AbstractAssumption
+public class Assumption extends AbstractAssumption
 {
-    public AnalyticalQuestion(ObjectManager objectManager, FactorId idToUse)
+    public Assumption(ObjectManager objectManager, FactorId idToUse)
     {
         super(objectManager, idToUse, createSchema(objectManager));
     }
 
-    public static AnalyticalQuestionSchema createSchema(Project projectToUse)
+    public static AssumptionSchema createSchema(Project projectToUse)
     {
         return createSchema(projectToUse.getObjectManager());
     }
 
-    public static AnalyticalQuestionSchema createSchema(ObjectManager objectManager)
+    public static AssumptionSchema createSchema(ObjectManager objectManager)
     {
-        return (AnalyticalQuestionSchema) objectManager.getSchemas().get(ObjectType.ANALYTICAL_QUESTION);
+        return (AssumptionSchema) objectManager.getSchemas().get(ObjectType.ASSUMPTION);
     }
 
     @Override
@@ -53,7 +53,7 @@ public class AnalyticalQuestion extends AbstractAssumption
     }
 
     @Override
-	public boolean isAnalyticalQuestion()
+	public boolean isAssumption()
 	{
 		return true;
 	}
@@ -84,7 +84,7 @@ public class AnalyticalQuestion extends AbstractAssumption
 
     public static boolean is(int objectType)
     {
-        return objectType == AnalyticalQuestionSchema.getObjectType();
+        return objectType == AssumptionSchema.getObjectType();
     }
 
     public static boolean is(BaseObject object)
@@ -92,14 +92,14 @@ public class AnalyticalQuestion extends AbstractAssumption
         return is(object.getType());
     }
 
-    public static AnalyticalQuestion find(ObjectManager objectManager, ORef analyticalQuestionRef)
+    public static Assumption find(ObjectManager objectManager, ORef assumptionRef)
     {
-        return (AnalyticalQuestion) objectManager.findObject(analyticalQuestionRef);
+        return (Assumption) objectManager.findObject(assumptionRef);
     }
 
-    public static AnalyticalQuestion find(Project project, ORef analyticalQuestionRef)
+    public static Assumption find(Project project, ORef assumptionRef)
     {
-        return find(project.getObjectManager(), analyticalQuestionRef);
+        return find(project.getObjectManager(), assumptionRef);
     }
 
     public static final String TAG_SUB_ASSUMPTION_IDS = "SubAssumptionIds";

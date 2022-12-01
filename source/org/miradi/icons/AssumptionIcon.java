@@ -26,7 +26,7 @@ import org.miradi.diagram.renderers.RectangleRenderer;
 import javax.swing.*;
 import java.awt.*;
 
-public class AnalyticalQuestionIcon extends AbstractShapeIcon
+public class AssumptionIcon extends AbstractShapeIcon
 {
     @Override
     FactorRenderer getRenderer()
@@ -37,15 +37,15 @@ public class AnalyticalQuestionIcon extends AbstractShapeIcon
     @Override
 	Color getIconColor()
 	{
-		return DiagramConstants.DEFAULT_ANALYTICAL_QUESTION_COLOR;
+		return DiagramConstants.DEFAULT_ASSUMPTION_COLOR;
 	}
 
     static public Icon createDisabledIcon()
     {
-        return new AnalyticalQuestionDisabledIcon();
+        return new AssumptionDisabledIcon();
     }
 
-    private static final class AnalyticalQuestionDisabledIcon extends AnalyticalQuestionIcon
+    private static final class AssumptionDisabledIcon extends AssumptionIcon
     {
         @Override
         Color getIconColor()

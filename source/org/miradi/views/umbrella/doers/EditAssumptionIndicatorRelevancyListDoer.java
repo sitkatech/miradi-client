@@ -17,26 +17,24 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
-package org.miradi.actions;
+package org.miradi.views.umbrella.doers;
 
-import org.miradi.main.EAM;
-import org.miradi.main.MainWindow;
+import org.miradi.objects.AbstractAssumption;
+import org.miradi.schemas.AssumptionSchema;
+import org.miradi.views.umbrella.AbstractIndicatorRelevancyEditListDoer;
 
-public class ActionEditAnalyticalQuestionIndicatorRelevancyList extends ObjectsAction
+public class EditAssumptionIndicatorRelevancyListDoer extends AbstractIndicatorRelevancyEditListDoer
 {
-    public ActionEditAnalyticalQuestionIndicatorRelevancyList(MainWindow mainWindow)
+    @Override
+    protected int getObjectType()
     {
-        super(mainWindow, getLabel());
-    }
-
-    private static String getLabel()
-    {
-        return EAM.text("Action|Choose...");
+        return AssumptionSchema.getObjectType();
     }
 
     @Override
-    public String getToolTipText()
+    protected String getIndicatorSetTag()
     {
-        return EAM.text("TT|Choose which indicators are relevant to this analytical question");
+        return AbstractAssumption.TAG_INDICATOR_IDS;
     }
+
 }

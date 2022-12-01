@@ -388,7 +388,7 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (Output.is(baseObject.getRef()) && columnTag.equals(Output.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
 				return createAppendedRelevantIndicatorLabels(baseObject);
 
-			if (AnalyticalQuestion.is(baseObject.getRef()) && columnTag.equals(AnalyticalQuestion.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
+			if (Assumption.is(baseObject.getRef()) && columnTag.equals(Assumption.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
 				return createAppendedRelevantIndicatorLabels(baseObject);
 
 			if (SubAssumption.is(baseObject.getRef()) && columnTag.equals(SubAssumption.PSEUDO_TAG_RELEVANT_INDICATOR_REFS))
@@ -617,10 +617,10 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 			if (columnTag.equals(Factor.PSEUDO_TAG_INDICATORS))
 				return Output.PSEUDO_TAG_RELEVANT_INDICATOR_REFS;
 		}
-		if(AnalyticalQuestion.is(nodeType))
+		if(Assumption.is(nodeType))
 		{
 			if (columnTag.equals(Factor.PSEUDO_TAG_INDICATORS))
-				return AnalyticalQuestion.PSEUDO_TAG_RELEVANT_INDICATOR_REFS;
+				return Assumption.PSEUDO_TAG_RELEVANT_INDICATOR_REFS;
 		}
 		if(SubAssumption.is(nodeType))
 		{

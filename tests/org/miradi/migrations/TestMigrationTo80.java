@@ -23,10 +23,10 @@ package org.miradi.migrations;
 import org.miradi.migrations.forward.MigrationTo79;
 import org.miradi.migrations.forward.MigrationTo80;
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.AnalyticalQuestion;
+import org.miradi.objects.Assumption;
 import org.miradi.objects.SubAssumption;
 import org.miradi.project.ProjectSaverForTesting;
-import org.miradi.schemas.AnalyticalQuestionSchema;
+import org.miradi.schemas.AssumptionSchema;
 import org.miradi.schemas.SubAssumptionSchema;
 
 public class TestMigrationTo80 extends AbstractTestMigration
@@ -38,14 +38,14 @@ public class TestMigrationTo80 extends AbstractTestMigration
 
     public void testFieldsRemovedAfterReverseMigration() throws Exception
     {
-        AnalyticalQuestion analyticalQuestion = getProject().createAndPopulateAnalyticalQuestion();
+        Assumption assumption = getProject().createAndPopulateAssumption();
         SubAssumption subAssumption = getProject().createAndPopulateSubAssumption();
 
         String projectAsString = ProjectSaverForTesting.createSnapShot(getProject(), new VersionRange(getToVersion()));
         final RawProject projectToMigrate = RawProjectLoader.loadProject(projectAsString);
         migrateProject(projectToMigrate, new VersionRange(MigrationTo79.VERSION_TO));
 
-        verifyEvidenceFieldsRemoved(projectToMigrate, AnalyticalQuestionSchema.getObjectType());
+        verifyEvidenceFieldsRemoved(projectToMigrate, AssumptionSchema.getObjectType());
         verifyEvidenceFieldsRemoved(projectToMigrate, SubAssumptionSchema.getObjectType());
     }
 

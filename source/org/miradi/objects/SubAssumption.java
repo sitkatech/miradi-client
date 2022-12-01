@@ -25,7 +25,7 @@ import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.schemas.AnalyticalQuestionSchema;
+import org.miradi.schemas.AssumptionSchema;
 import org.miradi.schemas.SubAssumptionSchema;
 
 public class SubAssumption extends AbstractAssumption
@@ -49,7 +49,7 @@ public class SubAssumption extends AbstractAssumption
     public int[] getTypesThatCanOwnUs()
     {
         return new int[] {
-                AnalyticalQuestionSchema.getObjectType(),
+                AssumptionSchema.getObjectType(),
         };
     }
 
@@ -59,7 +59,7 @@ public class SubAssumption extends AbstractAssumption
 		if (isSuperShared)
 			return true;
 
-		ORefList referrers = findObjectsThatReferToUs(AnalyticalQuestionSchema.getObjectType());
+		ORefList referrers = findObjectsThatReferToUs(AssumptionSchema.getObjectType());
 
 		return referrers.size() > 0;
 	}

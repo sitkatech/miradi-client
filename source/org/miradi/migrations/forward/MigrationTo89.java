@@ -56,7 +56,7 @@ public class MigrationTo89 extends AbstractMigration
 
         for(Integer typeToVisit : typesToVisit)
         {
-            final RenameAnalyticalQuestionFieldVisitor visitor = new RenameAnalyticalQuestionFieldVisitor(typeToVisit, reverseMigration);
+            final RenameAssumptionFieldVisitor visitor = new RenameAssumptionFieldVisitor(typeToVisit, reverseMigration);
             visitAllORefsInPool(visitor);
             final MigrationResult thisMigrationResult = visitor.getMigrationResult();
             if (migrationResult == null)
@@ -82,20 +82,20 @@ public class MigrationTo89 extends AbstractMigration
     @Override
     protected String getDescription()
     {
-        return EAM.text("This migration renames the AssumptionIds field on Analytical Question objects.");
+        return EAM.text("This migration renames the AssumptionIds field on Assumption objects.");
     }
 
     private Vector<Integer> getTypesToMigrate()
     {
         Vector<Integer> typesToMigrate = new Vector<Integer>();
-        typesToMigrate.add(ObjectType.ANALYTICAL_QUESTION);
+        typesToMigrate.add(ObjectType.ASSUMPTION);
 
         return typesToMigrate;
     }
 
-    private class RenameAnalyticalQuestionFieldVisitor extends AbstractMigrationORefVisitor
+    private class RenameAssumptionFieldVisitor extends AbstractMigrationORefVisitor
     {
-        public RenameAnalyticalQuestionFieldVisitor(int typeToVisit, boolean reverseMigration)
+        public RenameAssumptionFieldVisitor(int typeToVisit, boolean reverseMigration)
         {
             type = typeToVisit;
             isReverseMigration = reverseMigration;

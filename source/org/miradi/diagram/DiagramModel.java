@@ -136,8 +136,8 @@ abstract public class DiagramModel extends DefaultGraphModel
 		if (HumanWelfareTarget.is(factorType))
 			return new DiagramHumanWelfareTarget((HumanWelfareTarget) factor, diagramFactor);
 
-		if (factorType == ObjectType.ANALYTICAL_QUESTION)
-			return new DiagramAnalyticalQuestionCell((AnalyticalQuestion)factor, diagramFactor);
+		if (factorType == ObjectType.ASSUMPTION)
+			return new DiagramAssumptionCell((Assumption)factor, diagramFactor);
 
 		if (factorType == ObjectType.SUB_ASSUMPTION)
 			return new DiagramSubAssumptionCell((SubAssumption) factor, diagramFactor);

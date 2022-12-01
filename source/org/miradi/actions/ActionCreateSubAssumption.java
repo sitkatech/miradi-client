@@ -40,6 +40,6 @@ public class ActionCreateSubAssumption extends ObjectsAction
     @Override
     public String getToolTipText()
     {
-        return EAM.text("TT|Create a Sub-Assumption for the selected Analytical Question");
+        return EAM.text("TT|Create a Sub-Assumption for the selected Assumption");
     }
 }

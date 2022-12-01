@@ -83,7 +83,7 @@ public class Indicator extends BaseObject implements StrategyActivityRelevancyIn
 		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), ObjectiveSchema.getObjectType(), Objective.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
 		removeFromRelevancyListCommands.addAll(Desire.buildRemoveObjectFromRelevancyListCommands(getProject(), GoalSchema.getObjectType(), Goal.TAG_RELEVANT_INDICATOR_SET, relevantIndicatorRefToRemove));
 		removeFromRelevancyListCommands.addAll(Output.buildRemoveObjectFromRelevancyListCommands(getProject(), OutputSchema.getObjectType(), Output.TAG_INDICATOR_IDS, relevantIndicatorRefToRemove));
-		removeFromRelevancyListCommands.addAll(AbstractAssumption.buildRemoveObjectFromRelevancyListCommands(getProject(), AnalyticalQuestionSchema.getObjectType(), AbstractAssumption.TAG_INDICATOR_IDS, relevantIndicatorRefToRemove));
+		removeFromRelevancyListCommands.addAll(AbstractAssumption.buildRemoveObjectFromRelevancyListCommands(getProject(), AssumptionSchema.getObjectType(), AbstractAssumption.TAG_INDICATOR_IDS, relevantIndicatorRefToRemove));
 		removeFromRelevancyListCommands.addAll(AbstractAssumption.buildRemoveObjectFromRelevancyListCommands(getProject(), SubAssumptionSchema.getObjectType(), AbstractAssumption.TAG_INDICATOR_IDS, relevantIndicatorRefToRemove));
 
 		return removeFromRelevancyListCommands;

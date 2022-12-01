@@ -113,7 +113,7 @@ public class ObjectManager
 		addNormalPool(new AccountingClassificationAssociationPool(ida), AccountingClassificationAssociationSchema.OBJECT_NAME);
 		addNormalPool(new ResultReportPool(ida), ResultReportSchema.OBJECT_NAME);
 		addNormalPool(new OutputPool(ida), OutputSchema.OBJECT_NAME);
-		addNormalPool(new AnalyticalQuestionPool(ida), AnalyticalQuestionSchema.OBJECT_NAME);
+		addNormalPool(new AssumptionPool(ida), AssumptionSchema.OBJECT_NAME);
 		addNormalPool(new SubAssumptionPool(ida), SubAssumptionSchema.OBJECT_NAME);
 	}
 
@@ -270,9 +270,9 @@ public class ObjectManager
 		return (OutputPool)getPool(ObjectType.OUTPUT);
 	}
 
-	public AnalyticalQuestionPool getAnalyticalQuestionPool()
+	public AssumptionPool getAssumptionPool()
 	{
-		return (AnalyticalQuestionPool)getPool(ObjectType.ANALYTICAL_QUESTION);
+		return (AssumptionPool)getPool(ObjectType.ASSUMPTION);
 	}
 
 	public SubAssumptionPool getSubAssumptionPool()
@@ -399,7 +399,7 @@ public class ObjectManager
 			ObjectType.BUDGET_CATEGORY_TWO,
 			ObjectType.DASHBOARD,
 			ObjectType.OUTPUT,
-			ObjectType.ANALYTICAL_QUESTION,
+			ObjectType.ASSUMPTION,
 			ObjectType.SUB_ASSUMPTION,
 		};
 		return types;

@@ -259,7 +259,7 @@ public class ResultsChainCreatorHelper
 			return !containsRelatedStrategy(selectedDiagramFactors, (Task)diagramFactor.getWrappedFactor());
 		
 		if (SubAssumption.is(diagramFactor.getWrappedType()))
-			return !containsRelatedAnalyticalQuestion(selectedDiagramFactors, (SubAssumption)diagramFactor.getWrappedFactor());
+			return !containsRelatedAssumption(selectedDiagramFactors, (SubAssumption)diagramFactor.getWrappedFactor());
 
 		return false;
 	}
@@ -278,14 +278,14 @@ public class ResultsChainCreatorHelper
 		return false;
 	}
 
-	private boolean containsRelatedAnalyticalQuestion(HashSet<DiagramFactor> selectedDiagramFactors, SubAssumption subAssumption)
+	private boolean containsRelatedAssumption(HashSet<DiagramFactor> selectedDiagramFactors, SubAssumption subAssumption)
 	{
-		ORefList analyticalQuestionReferrerRefs = subAssumption.findObjectsThatReferToUs(AnalyticalQuestionSchema.getObjectType());
-		for (int index = 0; index < analyticalQuestionReferrerRefs.size(); ++index)
+		ORefList assumptionReferrerRefs = subAssumption.findObjectsThatReferToUs(AssumptionSchema.getObjectType());
+		for (int index = 0; index < assumptionReferrerRefs.size(); ++index)
 		{
-			ORef analyticalQuestionRef = analyticalQuestionReferrerRefs.get(index);
-			DiagramFactor analyticalQuestionDiagramFactor = model.getDiagramFactor(analyticalQuestionRef);
-			if (selectedDiagramFactors.contains(analyticalQuestionDiagramFactor))
+			ORef assumptionRef = assumptionReferrerRefs.get(index);
+			DiagramFactor assumptionDiagramFactor = model.getDiagramFactor(assumptionRef);
+			if (selectedDiagramFactors.contains(assumptionDiagramFactor))
 				return true;
 		}
 
@@ -330,7 +330,7 @@ public class ResultsChainCreatorHelper
 		if (diagramFactor.getWrappedType() == ObjectType.GROUP_BOX)
 			return createNewFactorAndSetLabel(diagramFactor);
 		
-		if (diagramFactor.getWrappedType() == ObjectType.ANALYTICAL_QUESTION)
+		if (diagramFactor.getWrappedType() == ObjectType.ASSUMPTION)
 			return diagramFactor.getWrappedORef();
 
 		if (diagramFactor.getWrappedType() == ObjectType.SUB_ASSUMPTION)
@@ -549,7 +549,7 @@ public class ResultsChainCreatorHelper
 		if (diagramFactor.getWrappedType() == ObjectType.GROUP_BOX)
 			return true;
 		
-		if (diagramFactor.getWrappedType() == ObjectType.ANALYTICAL_QUESTION)
+		if (diagramFactor.getWrappedType() == ObjectType.ASSUMPTION)
 			return true;
 
 		if (diagramFactor.getWrappedType() == ObjectType.SUB_ASSUMPTION)

@@ -21,7 +21,7 @@ package org.miradi.views.diagram.doers;
 
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objects.DiagramObject;
-import org.miradi.schemas.AnalyticalQuestionSchema;
+import org.miradi.schemas.AssumptionSchema;
 import org.miradi.schemas.SubAssumptionSchema;
 
 
@@ -48,8 +48,8 @@ abstract public class AbstractSubAssumptionVisibilityDoer extends AbstractVisibi
         return getSelectedRefOfType(SubAssumptionSchema.getObjectType());
     }
 
-    protected ORef getSelectedAnalyticalQuestionRef()
+    protected ORef getSelectedAssumptionRef()
     {
-        return getSelectedRefOfType(AnalyticalQuestionSchema.getObjectType());
+        return getSelectedRefOfType(AssumptionSchema.getObjectType());
     }
 }

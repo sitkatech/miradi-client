@@ -55,10 +55,10 @@ abstract public class AbstractAssumptionImporter extends BaseObjectImporter
 	private void importRelevantIndicatorIds(Node node, ORef destinationRef) throws Exception
 	{
 		ORefList importedRelevantRefs = getImporter().extractRefs(node, getXmpz2ElementName(), RELEVANT_INDICATOR_IDS, INDICATOR);
-		AbstractAssumption analyticalQuestionOrSubAssumption = findAnalyticalQuestionOrSubAssumption(getProject(), destinationRef);
-		RelevancyOverrideSet set = analyticalQuestionOrSubAssumption.getCalculatedRelevantIndicatorOverrides(importedRelevantRefs);
+		AbstractAssumption assumptionOrSubAssumption = findAssumptionOrSubAssumption(getProject(), destinationRef);
+		RelevancyOverrideSet set = assumptionOrSubAssumption.getCalculatedRelevantIndicatorOverrides(importedRelevantRefs);
 		getImporter().setData(destinationRef, AbstractAssumption.TAG_INDICATOR_IDS, set.toString());
 	}
 
-	abstract AbstractAssumption findAnalyticalQuestionOrSubAssumption(Project project, ORef destinationRef);
+	abstract AbstractAssumption findAssumptionOrSubAssumption(Project project, ORef destinationRef);
 }

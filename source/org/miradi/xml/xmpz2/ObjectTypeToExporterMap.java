@@ -57,7 +57,7 @@ public class ObjectTypeToExporterMap extends HashMap<Integer, BaseObjectExporter
 		addExporterToMap(new StressExporter(getWriter()));
 		addExporterToMap(new MiradiShareTaxonomyExporter(getWriter()));
 		addExporterToMap(new OutputExporter(getWriter()));
-		addExporterToMap(new AnalyticalQuestionExporter(getWriter()));
+		addExporterToMap(new AssumptionExporter(getWriter()));
 		addExporterToMap(new SubAssumptionExporter(getWriter()));
 
 		addGenericExporterToMap(AccountingCodeSchema.getObjectType());

@@ -17,24 +17,37 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 */
-package org.miradi.views.umbrella.doers;
+package org.miradi.actions;
 
-import org.miradi.objects.AbstractAssumption;
-import org.miradi.schemas.AnalyticalQuestionSchema;
-import org.miradi.views.umbrella.AbstractIndicatorRelevancyEditListDoer;
+import org.miradi.icons.AssumptionIcon;
+import org.miradi.icons.IconManager;
+import org.miradi.main.EAM;
+import org.miradi.main.MainWindow;
 
-public class EditAnalyticalQuestionIndicatorRelevancyListDoer extends AbstractIndicatorRelevancyEditListDoer
+import javax.swing.*;
+
+public class ActionInsertAssumption extends LocationAction
 {
-    @Override
-    protected int getObjectType()
+    public ActionInsertAssumption(MainWindow mainWindow)
     {
-        return AnalyticalQuestionSchema.getObjectType();
+        super(mainWindow, getLabel(), IconManager.getAssumptionIcon());
+    }
+
+    private static String getLabel()
+    {
+        return EAM.text("Action|Insert|Insert Assumption");
     }
 
     @Override
-    protected String getIndicatorSetTag()
+    public String getToolTipText()
     {
-        return AbstractAssumption.TAG_INDICATOR_IDS;
+        return EAM.text("TT|Insert an Assumption");
     }
 
+    @Override
+    public Icon getDisabledIcon()
+    {
+        return AssumptionIcon.createDisabledIcon();
+    }
 }
+
