@@ -253,6 +253,7 @@ public interface Xmpz2XmlConstants
 	public static final String THRESHOLD_DETAILS = "ThresholdDetails";
 	public static final String STATUS_CODE = "StatusCode";
 	public static final String SUB_TASK_IDS = "OrderedSubTaskIds";
+	public static final String LEGACY_ASSUMPTION_IDS = "OrderedAssumptionIds";
 	public static final String SUB_ASSUMPTION_IDS = "OrderedSubAssumptionIds";
 	public static final String EXTERNAL_APP_ELEMENT_NAME = "ExternalApp";
 	public static final String PROJECT_ID = "ProjectId";
