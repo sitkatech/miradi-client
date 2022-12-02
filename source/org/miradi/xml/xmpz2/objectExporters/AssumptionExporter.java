@@ -53,6 +53,6 @@ public class AssumptionExporter extends AbstractAssumptionExporter
 
 	private void writeSubAssumptionRefs(BaseObjectSchema baseObjectSchema, final Assumption assumption) throws Exception
 	{
-		getWriter().writeReflist(baseObjectSchema.getObjectName() + ASSUMPTION_IDS, SUB_ASSUMPTION, assumption.getSubAssumptionRefs());
+		getWriter().writeReflist(baseObjectSchema.getObjectName() + SUB_ASSUMPTION_IDS, SUB_ASSUMPTION, assumption.getSubAssumptionRefs());
 	}
 }
