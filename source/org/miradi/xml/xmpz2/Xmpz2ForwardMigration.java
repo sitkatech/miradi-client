@@ -896,7 +896,13 @@ public class Xmpz2ForwardMigration
 		{
 			if (!elementToCopy.getFirstChild().getNodeName().startsWith(alias))
 			{
-				newElement.setTextContent(elementToCopy.getTextContent());
+				NodeList childElementsToClone = elementToCopy.getChildNodes();
+				for (int index = 0; index < childElementsToClone.getLength(); ++index)
+				{
+					Node childNodeToClone = childElementsToClone.item(index);
+					Node newChildElement = childNodeToClone.cloneNode(true);
+					newElement.appendChild(newChildElement);
+				}
 			}
 			else
 			{
