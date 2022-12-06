@@ -31,12 +31,12 @@ public class ActionHideSubAssumptionBubble extends ObjectsAction
 
     public static String getLabel()
     {
-        return EAM.text("Action|Hide Sub-Assumption on this diagram");
+        return EAM.text("Action|Hide Subassumption on this diagram");
     }
 
     @Override
     public String getToolTipText()
     {
-        return EAM.text("TT|Hide this Sub-Assumption so it no longer appears on this diagram");
+        return EAM.text("TT|Hide this Subassumption so it no longer appears on this diagram");
     }
 }

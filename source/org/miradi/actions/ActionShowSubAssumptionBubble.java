@@ -31,12 +31,12 @@ public class ActionShowSubAssumptionBubble extends ObjectsAction
 
     public static String getLabel()
     {
-        return EAM.text("Action|Show Sub-Assumption on this diagram");
+        return EAM.text("Action|Show Subassumption on this diagram");
     }
 
     @Override
     public String getToolTipText()
     {
-        return EAM.text("TT|Show this Sub-Assumption so it appears on this diagram");
+        return EAM.text("TT|Show this Subassumption so it appears on this diagram");
     }
 }

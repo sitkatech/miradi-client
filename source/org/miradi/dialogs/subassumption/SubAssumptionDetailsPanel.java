@@ -44,7 +44,7 @@ public class SubAssumptionDetailsPanel extends ObjectDataInputPanel
 
 		ObjectDataInputField shortLabelField = createShortStringField(ObjectType.SUB_ASSUMPTION, SubAssumption.TAG_SHORT_LABEL);
 		ObjectDataInputField labelField = createExpandableField(ObjectType.SUB_ASSUMPTION, SubAssumption.TAG_LABEL);
-		addFieldsOnOneLine(EAM.text("Sub-Assumption"), new SubAssumptionIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
+		addFieldsOnOneLine(EAM.text("Subassumption"), new SubAssumptionIcon(), new ObjectDataInputField[]{shortLabelField, labelField,});
 
         if (subAssumptionVisibilityButtonPanel != null)
         {

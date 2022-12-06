@@ -66,7 +66,7 @@ public class DeleteSubAssumptionDoer extends ObjectsDoer
     public static void deleteSubAssumptionWithUserConfirmation(Project project, ORefList selectionHierarchy, SubAssumption selectedAssumption) throws CommandFailedException
     {
         Vector<String> dialogText = new Vector<String>();
-        dialogText.add(EAM.text("Are you sure you want to delete this Sub-Assumption?"));
+        dialogText.add(EAM.text("Are you sure you want to delete this Subassumption?"));
         boolean containsMoreThanOneParent = selectionHierarchy.getOverlappingRefs(selectedAssumption.findAllObjectsThatReferToUs()).size() > 1;
         if (containsMoreThanOneParent)
             dialogText.add(EAM.text("This item is shared, so will be deleted from multiple places."));

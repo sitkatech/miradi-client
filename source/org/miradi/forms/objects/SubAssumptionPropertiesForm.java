@@ -29,7 +29,7 @@ public class SubAssumptionPropertiesForm extends FieldPanelSpec
     public SubAssumptionPropertiesForm()
     {
         int type = SubAssumptionSchema.getObjectType();
-        addLabelAndFieldsWithLabels(EAM.text("Sub-Assumption"), type, new String[]{SubAssumption.TAG_SHORT_LABEL, SubAssumption.TAG_LABEL});
+        addLabelAndFieldsWithLabels(EAM.text("Subassumption"), type, new String[]{SubAssumption.TAG_SHORT_LABEL, SubAssumption.TAG_LABEL});
         addLabelAndField(type, SubAssumption.TAG_TEXT);
         addLabelAndField(type, SubAssumption.PSEUDO_TAG_RELEVANT_INDICATOR_REFS);
         addLabelAndField(type, SubAssumption.TAG_COMMENTS);

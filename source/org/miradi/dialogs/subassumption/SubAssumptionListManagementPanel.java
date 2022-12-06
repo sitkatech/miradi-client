@@ -59,5 +59,5 @@ public class SubAssumptionListManagementPanel extends ObjectListManagementPanel
         return new SubAssumptionIcon();
     }
 
-    private static final String PANEL_DESCRIPTION = EAM.text("Tab|Sub-Assumptions");
+    private static final String PANEL_DESCRIPTION = EAM.text("Tab|Subassumptions");
 }

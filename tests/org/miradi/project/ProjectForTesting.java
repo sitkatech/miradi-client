@@ -1976,8 +1976,8 @@ public class ProjectForTesting extends ProjectWithHelpers
 
 	public void populateSubAssumption(SubAssumption subAssumption) throws Exception
 	{
-		fillObjectUsingCommand(subAssumption, SubAssumption.TAG_LABEL, "Some Sub-Assumption label");
-		fillObjectUsingCommand(subAssumption, SubAssumption.TAG_COMMENTS, "Some Sub-Assumption comments");
+		fillObjectUsingCommand(subAssumption, SubAssumption.TAG_LABEL, "Some Subassumption label");
+		fillObjectUsingCommand(subAssumption, SubAssumption.TAG_COMMENTS, "Some Subassumption comments");
 	}
 
 	public void populateXenodata(Xenodata xenodata, String xenoDataProjectId) throws Exception

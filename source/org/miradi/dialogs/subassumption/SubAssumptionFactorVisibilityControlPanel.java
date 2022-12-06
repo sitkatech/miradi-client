@@ -48,7 +48,7 @@ public class SubAssumptionFactorVisibilityControlPanel extends AbstractFactorBub
     @Override
     protected String getExplanationMessage()
     {
-        return EAM.text("Sub-Assumptions can be shown on both Situation Model and Results Chain pages");
+        return EAM.text("Subassumptions can be shown on both Situation Model and Results Chain pages");
     }
 
     @Override
@@ -60,6 +60,6 @@ public class SubAssumptionFactorVisibilityControlPanel extends AbstractFactorBub
     @Override
     public String getPanelDescription()
     {
-        return EAM.text("Title|Sub-Assumption Visibility");
+        return EAM.text("Title|Subassumption Visibility");
     }
 }

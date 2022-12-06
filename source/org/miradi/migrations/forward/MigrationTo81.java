@@ -132,7 +132,7 @@ public class MigrationTo81 extends AbstractMigration
     @Override
     protected String getDescription()
     {
-        return EAM.text("This migration removes unused fields from Assumptions and Sub-Assumptions.");
+        return EAM.text("This migration removes unused fields from Assumptions and Subassumptions.");
     }
 
     public static final int VERSION_FROM = 80;

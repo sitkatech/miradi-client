@@ -32,12 +32,12 @@ public class ActionDeleteSubAssumption extends ObjectsAction
 
     private static String getLabel()
     {
-        return EAM.text("Action|Manage|Delete Sub-Assumption");
+        return EAM.text("Action|Manage|Delete Subassumption");
     }
 
     @Override
     public String getToolTipText()
     {
-        return EAM.text("TT|Delete the selected Sub-Assumption");
+        return EAM.text("TT|Delete the selected Subassumption");
     }
 }

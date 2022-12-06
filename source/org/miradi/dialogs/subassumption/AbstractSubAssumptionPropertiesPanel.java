@@ -52,6 +52,6 @@ public abstract class AbstractSubAssumptionPropertiesPanel extends ObjectDataInp
 	@Override
 	public String getPanelDescription()
 	{
-		return EAM.text("Title|Sub-Assumption Properties");
+		return EAM.text("Title|Subassumption Properties");
 	}
 }

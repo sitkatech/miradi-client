@@ -33,13 +33,13 @@ public class ActionCreateSubAssumption extends ObjectsAction
 
     private static String getLabel()
     {
-        return EAM.text("Action|Manage|Create Sub-Assumption");
+        return EAM.text("Action|Manage|Create Subassumption");
     }
 
 
     @Override
     public String getToolTipText()
     {
-        return EAM.text("TT|Create a Sub-Assumption for the selected Assumption");
+        return EAM.text("TT|Create a Subassumption for the selected Assumption");
     }
 }
