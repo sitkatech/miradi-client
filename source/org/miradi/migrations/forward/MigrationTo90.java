@@ -26,6 +26,7 @@ import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.utils.BiDirectionalHashMap;
 import org.miradi.utils.CodeList;
+import org.miradi.xml.xmpz2.Xmpz2XmlConstants;
 
 import java.util.HashSet;
 import java.util.Vector;
@@ -217,6 +218,8 @@ public class MigrationTo90 extends AbstractMigration
 
     public static final int VERSION_FROM = 89;
     public static final int VERSION_TO = 90;
+
+    public static final int SCHEMA_VERSION = Integer.parseInt(Xmpz2XmlConstants.NAME_SPACE_VERSION_248);
 
     public static final String TAG_ROW_CONFIGURATION = "TagRowConfiguration";
 

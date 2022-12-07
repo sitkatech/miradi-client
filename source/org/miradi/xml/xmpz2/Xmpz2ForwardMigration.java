@@ -82,7 +82,7 @@ public class Xmpz2ForwardMigration
 		moveDiagramFactorStyleToExtraData(document);
 		addDiagramLinkZIndexField(document);
 		moveDiagramLinkColorToExtraData(document);
-		renameAnalyticalQuestionAndAssumptionFields(document);
+		renameAnalyticalQuestionAndAssumptionFields(document, xmpz2DocumentSchemaVersion);
 
 		final String migratedXmlAsString = HtmlUtilities.toXmlString(document);
 
@@ -796,12 +796,9 @@ public class Xmpz2ForwardMigration
 		}
 	}
 
-	private void renameAnalyticalQuestionAndAssumptionFields(Document document) throws Exception
+	private void renameAnalyticalQuestionAndAssumptionFields(Document document, int currentXmpz2DocumentSchemaVersion) throws Exception
 	{
-		Element rootElement = document.getDocumentElement();
-
-		Node analyticalQuestionPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(Xmpz2XmlConstants.LEGACY_ANALYTICAL_QUESTION));
-		if (analyticalQuestionPool != null)
+		if (currentXmpz2DocumentSchemaVersion < MigrationTo90.SCHEMA_VERSION)
 		{
 			renameAssumptionFields(document);
 			renameAnalyticalQuestionFields(document);
