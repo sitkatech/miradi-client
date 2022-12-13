@@ -58,7 +58,7 @@ public class Actions
 		registerAction(new ActionInsertBiophysicalResult(mainWindow));
 		registerAction(new ActionInsertDirectThreat(mainWindow));
 		registerAction(new ActionInsertContributingFactor(mainWindow));
-		registerAction(new ActionInsertAnalyticalQuestion(mainWindow));
+		registerAction(new ActionInsertAssumption(mainWindow));
 		registerAction(new ActionSaveProjectAs(mainWindow));
 		registerAction(new ActionHowToSave(mainWindow));
 
@@ -168,8 +168,8 @@ public class Actions
 		registerAction(new ActionCreateKeyEcologicalAttributeMeasurement(mainWindow));
 		registerAction(new ActionCreateIndicatorMeasurement(mainWindow));
 
-		registerAction(new ActionCreateAssumption(mainWindow));
-		registerAction(new ActionDeleteAssumption(mainWindow));
+		registerAction(new ActionCreateSubAssumption(mainWindow));
+		registerAction(new ActionDeleteSubAssumption(mainWindow));
 
 		registerAction(new ActionTeamCreateMember(mainWindow));
 		registerAction(new ActionDeleteTeamMember(mainWindow));
@@ -392,8 +392,8 @@ public class Actions
 		registerAction(new ActionEditOutputGoalRelevancyList(mainWindow));
 		registerAction(new ActionEditOutputObjectiveRelevancyList(mainWindow));
 		registerAction(new ActionEditOutputIndicatorRelevancyList(mainWindow));
-		registerAction(new ActionEditAnalyticalQuestionIndicatorRelevancyList(mainWindow));
 		registerAction(new ActionEditAssumptionIndicatorRelevancyList(mainWindow));
+		registerAction(new ActionEditSubAssumptionIndicatorRelevancyList(mainWindow));
 
 		registerAction(new ActionDeleteGroupBox(mainWindow));
 		registerAction(new ActionCreateSubTarget(mainWindow));
@@ -427,8 +427,8 @@ public class Actions
 		registerAction(new ActionHideStressBubble(mainWindow));
 		registerAction(new ActionShowActivityBubble(mainWindow));
 		registerAction(new ActionHideActivityBubble(mainWindow));
-		registerAction(new ActionShowAssumptionBubble(mainWindow));
-		registerAction(new ActionHideAssumptionBubble(mainWindow));
+		registerAction(new ActionShowSubAssumptionBubble(mainWindow));
+		registerAction(new ActionHideSubAssumptionBubble(mainWindow));
 		registerAction(new ActionShowCurrentWizardFileName(mainWindow));
 		registerAction(new ActionExpandAllRows(mainWindow));
 		registerAction(new ActionCollapseAllRows(mainWindow));

@@ -145,8 +145,8 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		createCheckBox(TextBoxSchema.OBJECT_NAME);
 		createCheckBox(ScopeBoxSchema.OBJECT_NAME);
 		createCheckBox(GroupBoxSchema.OBJECT_NAME);
-		createCheckBox(AnalyticalQuestionSchema.OBJECT_NAME);
 		createCheckBox(AssumptionSchema.OBJECT_NAME);
+		createCheckBox(SubAssumptionSchema.OBJECT_NAME);
 
 		createCheckBox(FactorLinkSchema.OBJECT_NAME);
 		createCheckBox(StressSchema.OBJECT_NAME);
@@ -175,6 +175,7 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		addButtonLineWithCheckBox(jpanel, StrategySchema.getObjectType(),StrategySchema.OBJECT_NAME, actions.get(ActionInsertStrategy.class));
 		if (mainWindow.getDiagramView().isStrategyBrainstormMode())
 			addButtonLineWithCheckBox(jpanel, StrategySchema.getObjectType(), Strategy.OBJECT_NAME_DRAFT, actions.get(ActionInsertDraftStrategy.class));
+		addButtonLineWithCheckBox(jpanel, AssumptionSchema.getObjectType(), AssumptionSchema.OBJECT_NAME, actions.get(ActionInsertAssumption.class));
 
 		addButtonLineWithCheckBox(jpanel, FactorLinkSchema.getObjectType(), FactorLinkSchema.OBJECT_NAME, actions.get(ActionInsertLink.class));
 		
@@ -186,12 +187,9 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		addActivityLine(jpanel);
 
 		addIconLineWithCheckBox(jpanel, OutputSchema.getObjectType(), OutputSchema.OBJECT_NAME, IconManager.getOutputIcon());
-
+		addIconLineWithCheckBox(jpanel, SubAssumptionSchema.getObjectType(), SubAssumptionSchema.OBJECT_NAME, new SubAssumptionIcon());
 		addButtonLineWithCheckBox(jpanel, TextBoxSchema.getObjectType(), TextBoxSchema.OBJECT_NAME, actions.get(ActionInsertTextBox.class));
 		addButtonLineWithCheckBox(jpanel, GroupBoxSchema.getObjectType(), GroupBoxSchema.OBJECT_NAME, actions.get(ActionInsertGroupBox.class));
-
-		addButtonLineWithCheckBox(jpanel, AnalyticalQuestionSchema.getObjectType(), AnalyticalQuestionSchema.OBJECT_NAME, actions.get(ActionInsertAnalyticalQuestion.class));
-		addIconLineWithCheckBox(jpanel, AssumptionSchema.getObjectType(), AssumptionSchema.OBJECT_NAME, new AssumptionIcon());
 
 		DiagramObject diagramObject = getCurrentDiagramObject();
 		if (diagramObject != null && diagramObject.isResultsChain())

@@ -43,7 +43,7 @@ public class AssumptionPool extends FactorPool
 
     public Assumption find(BaseId id)
     {
-        return (Assumption) getRawObject(id);
+        return (Assumption)getRawObject(id);
     }
 
     @Override

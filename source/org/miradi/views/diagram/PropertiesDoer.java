@@ -26,7 +26,7 @@ import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.cells.EAMGraphCell;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.diagram.cells.LinkCell;
-import org.miradi.dialogs.assumption.AssumptionPropertiesPanelWithTagPanel;
+import org.miradi.dialogs.subassumption.SubAssumptionPropertiesPanelWithTagPanel;
 import org.miradi.dialogs.base.AbstractObjectDataInputPanel;
 import org.miradi.dialogs.base.ModelessDialogPanel;
 import org.miradi.dialogs.base.ModelessDialogWithClose;
@@ -188,8 +188,8 @@ public class PropertiesDoer extends LocationDoer
 			doActivityProperties(diagramFactor);
 		else if (ScopeBox.is(wrappedType))
 			doScopeBoxProperties(diagramFactor);
-		else if (Assumption.is(wrappedType))
-			doAssumptionProperties(diagramFactor);
+		else if (SubAssumption.is(wrappedType))
+			doSubAssumptionProperties(diagramFactor);
 		else
 			doNormalFactorProperties(diagramFactor, tabToStartOn);
 	}
@@ -232,14 +232,14 @@ public class PropertiesDoer extends LocationDoer
 		addDiagramWrappedRefToHierarchyAndShowPanel(diagramFactor, panel);
 	}
 
-	private void doAssumptionProperties(DiagramFactor diagramFactor) throws Exception
+	private void doSubAssumptionProperties(DiagramFactor diagramFactor) throws Exception
 	{
 		ORefList selectionHierarchy = new ORefList();
 		selectionHierarchy.add(diagramFactor.getWrappedORef());
 		selectionHierarchy.add(diagramFactor.getRef());
 		StaticPicker picker = new StaticPicker(selectionHierarchy);
 		picker.becomeActive();
-		AssumptionPropertiesPanelWithTagPanel panel = new AssumptionPropertiesPanelWithTagPanel(getMainWindow());
+		SubAssumptionPropertiesPanelWithTagPanel panel = new SubAssumptionPropertiesPanelWithTagPanel(getMainWindow());
 		addDiagramWrappedRefToHierarchyAndShowPanel(diagramFactor, panel);
 	}
 

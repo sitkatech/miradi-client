@@ -929,12 +929,12 @@ abstract public class DiagramPaster
 			return !hasReferrersInDiagram(factorRef, TargetSchema.getObjectType());
 		}
 
-		if (Assumption.is(factorRef))
+		if (SubAssumption.is(factorRef))
 		{
 			if (!doesObjectExist(factorRef))
 				return true;
 
-			return !hasReferrersInDiagram(factorRef, AnalyticalQuestionSchema.getObjectType());
+			return !hasReferrersInDiagram(factorRef, AssumptionSchema.getObjectType());
 		}
 
 		return false;

@@ -647,9 +647,9 @@ abstract public class DiagramObject extends BaseObject
 			return true;
 		if(GroupBox.is(objectType))
 			return true;
-		if(AnalyticalQuestion.is(objectType))
-			return true;
 		if(Assumption.is(objectType))
+			return true;
+		if(SubAssumption.is(objectType))
 			return true;
 
 		return false;

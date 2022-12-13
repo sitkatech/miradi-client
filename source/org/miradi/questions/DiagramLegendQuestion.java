@@ -53,8 +53,8 @@ public class DiagramLegendQuestion extends MultipleSelectStaticChoiceQuestion
 				new ChoiceItem(IntermediateResultSchema.OBJECT_NAME, IntermediateResultSchema.OBJECT_NAME),
 				new ChoiceItem(ThreatReductionResultSchema.OBJECT_NAME, ThreatReductionResultSchema.OBJECT_NAME),
 				new ChoiceItem(GroupBoxSchema.OBJECT_NAME, GroupBoxSchema.OBJECT_NAME),
-				new ChoiceItem(AnalyticalQuestionSchema.OBJECT_NAME, AnalyticalQuestionSchema.OBJECT_NAME),
 				new ChoiceItem(AssumptionSchema.OBJECT_NAME, AssumptionSchema.OBJECT_NAME),
+				new ChoiceItem(SubAssumptionSchema.OBJECT_NAME, SubAssumptionSchema.OBJECT_NAME),
 		};
 	}
 	

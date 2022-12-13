@@ -36,7 +36,7 @@ import org.miradi.diagram.DiagramModel;
 import org.miradi.diagram.cells.FactorCell;
 import org.miradi.dialogfields.ObjectDataInputField;
 import org.miradi.dialogs.activity.ActivityListManagementPanel;
-import org.miradi.dialogs.assumption.AssumptionListManagementPanel;
+import org.miradi.dialogs.subassumption.SubAssumptionListManagementPanel;
 import org.miradi.dialogs.base.DisposablePanelWithDescription;
 import org.miradi.dialogs.base.ModelessDialogPanel;
 import org.miradi.dialogs.base.ObjectDataInputPanel;
@@ -48,8 +48,6 @@ import org.miradi.dialogs.goal.GoalListManagementPanel;
 import org.miradi.dialogs.goal.GoalListTablePanel;
 import org.miradi.dialogs.objective.ObjectiveListManagementPanel;
 import org.miradi.dialogs.objective.ObjectiveListTablePanel;
-import org.miradi.dialogs.output.OutputListManagementPanel;
-import org.miradi.dialogs.output.OutputListTablePanel;
 import org.miradi.dialogs.stress.StressListManagementPanel;
 import org.miradi.dialogs.subTarget.SubTargetManagementPanel;
 import org.miradi.dialogs.viability.AbstractViabilityManagementPanel;
@@ -228,10 +226,10 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 			addTab(subTargetTab);
 		}
 
-		if(factor.isAnalyticalQuestion())
+		if(factor.isAssumption())
 		{
-			assumptionsTab = AssumptionListManagementPanel.create(mainWindow, selectedHierarchy);
-			addTab(assumptionsTab);
+			subAssumptionsTab = SubAssumptionListManagementPanel.create(mainWindow, selectedHierarchy);
+			addTab(subAssumptionsTab);
 		}
 
 		return tabs;
@@ -571,7 +569,7 @@ public class FactorPropertiesPanel extends ModelessDialogPanel implements Comman
 	private StressListManagementPanel stressTab;
 	private ActivityListManagementPanel activitiesTab;
 	private SubTargetManagementPanel subTargetTab;
-	private AssumptionListManagementPanel assumptionsTab;
+	private SubAssumptionListManagementPanel subAssumptionsTab;
 	private MainWindow mainWindow;
 	private DiagramComponent diagram;
 	private DiagramFactor currentDiagramFactor;

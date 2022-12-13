@@ -21,8 +21,9 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.schemas;
 
 import org.miradi.objecthelpers.ObjectType;
+import org.miradi.objects.Assumption;
 
-public class AssumptionSchema extends AbstractAnalyticalQuestionSchema
+public class AssumptionSchema extends AbstractAssumptionSchema
 {
     public AssumptionSchema()
     {
@@ -33,6 +34,8 @@ public class AssumptionSchema extends AbstractAnalyticalQuestionSchema
     protected void fillFieldSchemas()
     {
         super.fillFieldSchemas();
+
+        createOwnedFieldSchemaIdList(Assumption.TAG_SUB_ASSUMPTION_IDS, SubAssumptionSchema.getObjectType());
     }
 
     public static int getObjectType()

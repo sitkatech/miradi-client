@@ -21,13 +21,7 @@ package org.miradi.questions;
 
 import org.miradi.main.EAM;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.BaseObject;
-import org.miradi.objects.Desire;
-import org.miradi.objects.Factor;
-import org.miradi.objects.Indicator;
-import org.miradi.objects.Measurement;
-import org.miradi.objects.Strategy;
-import org.miradi.objects.Target;
+import org.miradi.objects.*;
 import org.miradi.utils.BiDirectionalHashMap;
 
 public class CustomPlanningColumnsQuestion extends MultipleSelectStaticChoiceQuestion
@@ -94,6 +88,8 @@ public class CustomPlanningColumnsQuestion extends MultipleSelectStaticChoiceQue
 				createChoiceItem(Desire.TAG_FULL_TEXT),
 				createChoiceItem(BaseObject.TAG_EVIDENCE_NOTES),
 				createChoiceItem(BaseObject.TAG_EVIDENCE_CONFIDENCE),
+				createChoiceItem(AbstractAssumption.TAG_IMPLICATIONS),
+				createChoiceItem(AbstractAssumption.TAG_FUTURE_INFORMATION_NEEDS),
 		};
 	}
 

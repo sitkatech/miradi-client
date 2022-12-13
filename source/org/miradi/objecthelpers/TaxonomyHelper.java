@@ -160,11 +160,11 @@ public class TaxonomyHelper implements Xmpz2XmlConstants
 		if (Output.is(objectType))
 			return OUTPUT_TAXONOMY_ASSOCIATION_POOL;
 
-		if (AnalyticalQuestion.is(objectType))
-			return ANALYTICAL_QUESTION_TAXONOMY_ASSOCIATION_POOL;
-
 		if (Assumption.is(objectType))
 			return ASSUMPTION_TAXONOMY_ASSOCIATION_POOL;
+
+		if (SubAssumption.is(objectType))
+			return SUB_ASSUMPTION_TAXONOMY_ASSOCIATION_POOL;
 
 		return null;
 	}

@@ -34,8 +34,9 @@ public interface Xmpz2XmlConstants
 	public static final String ELEMENT_NAME = "element" + SINGLE_SPACE;
 	public static final String DOT_ELEMENT = ".element";
 	
-	public static final String NAME_SPACE_VERSION = "247";
+	public static final String NAME_SPACE_VERSION = "248";
 
+	public static final String NAME_SPACE_VERSION_248 = "248";
 	public static final String NAME_SPACE_VERSION_247 = "247";
 	public static final String NAME_SPACE_VERSION_246 = "246";
 	public static final String NAME_SPACE_VERSION_245 = "245";
@@ -118,8 +119,10 @@ public interface Xmpz2XmlConstants
 	public static final String METHOD = MethodSchema.OBJECT_NAME;
 	public static final String TASK = TaskSchema.OBJECT_NAME;
 	public static final String OUTPUT = OutputSchema.OBJECT_NAME;
-	public static final String ANALYTICAL_QUESTION = AnalyticalQuestionSchema.OBJECT_NAME;
+	public static final String LEGACY_ANALYTICAL_QUESTION = "AnalyticalQuestion";
+	public static final String LEGACY_ASSUMPTION = "Assumption";
 	public static final String ASSUMPTION = AssumptionSchema.OBJECT_NAME;
+	public static final String SUB_ASSUMPTION = SubAssumptionSchema.OBJECT_NAME;
 	public static final String SUB_TASK = "SubTask";
 	public static final String ASSIGNED_LEADER_RESOURCE_ID = "AssignedLeaderResourceId";
 	public static final String TIMEFRAME = "Timeframe";
@@ -250,7 +253,8 @@ public interface Xmpz2XmlConstants
 	public static final String THRESHOLD_DETAILS = "ThresholdDetails";
 	public static final String STATUS_CODE = "StatusCode";
 	public static final String SUB_TASK_IDS = "OrderedSubTaskIds";
-	public static final String ASSUMPTION_IDS = "OrderedAssumptionIds";
+	public static final String LEGACY_ASSUMPTION_IDS = "OrderedAssumptionIds";
+	public static final String SUB_ASSUMPTION_IDS = "OrderedSubAssumptionIds";
 	public static final String EXTERNAL_APP_ELEMENT_NAME = "ExternalApp";
 	public static final String PROJECT_ID = "ProjectId";
 	public static final String LOCATION = "Location";
@@ -358,8 +362,8 @@ public interface Xmpz2XmlConstants
 	public static final String RESOURCE_ASSIGNMENT_TAXONOMY_ASSOCIATION_POOL = "ResourceAssignmentTaxonomyAssociationPool";
 	public static final String EXPENSE_ASSIGNMENT_TAXONOMY_ASSOCIATION_POOL = "ExpenseAssignmentTaxonomyAssociationPool";
 	public static final String OUTPUT_TAXONOMY_ASSOCIATION_POOL = "OutputTaxonomyAssociationPool";
-	public static final String ANALYTICAL_QUESTION_TAXONOMY_ASSOCIATION_POOL = "AnalyticalQuestionTaxonomyAssociationPool";
 	public static final String ASSUMPTION_TAXONOMY_ASSOCIATION_POOL = "AssumptionTaxonomyAssociationPool";
+	public static final String SUB_ASSUMPTION_TAXONOMY_ASSOCIATION_POOL = "SubAssumptionTaxonomyAssociationPool";
 	public static final String TAXONOMY = "Taxonomy";
 	public static final String TAXONOMY_POOL = "TaxonomyPool";
 	public static final String TAXONOMY_ASSOCIATION = "TaxonomyAssociation";
@@ -456,7 +460,7 @@ public interface Xmpz2XmlConstants
 	
 	public static final String VOCABULARY_EVIDENCE_CONFIDENCE_EXTERNAL = "vocabulary_evidence_confidence_external";
 	public static final String VOCABULARY_EVIDENCE_CONFIDENCE_PROJECT = "vocabulary_evidence_confidence_project";
-	public static final String VOCABULARY_EVIDENCE_CONFIDENCE_ANALYTICAL_QUESTION = "vocabulary_evidence_confidence_analytical_question";
+	public static final String VOCABULARY_EVIDENCE_CONFIDENCE_ASSUMPTION = "vocabulary_evidence_confidence_assumption";
 	public static final String VOCABULARY_COUNTRIES = "vocabulary_countries";
 	public static final String VOCABULARY_THREAT_RATING = "vocabulary_threat_rating";
 	public static final String VOCABULARY_DIAGRAM_OBJECT_DATA_INCLUSION = "vocabulary_included_diagram_types";

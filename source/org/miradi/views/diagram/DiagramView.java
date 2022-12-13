@@ -151,7 +151,7 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionInsertDirectThreat.class, new InsertDirectThreatDoer());
 		addDoerToMap(ActionInsertStrategy.class, new InsertStrategyDoer());
 		addDoerToMap(ActionInsertDraftStrategy.class, new InsertDraftStrategyDoer());
-		addDoerToMap(ActionInsertAnalyticalQuestion.class, new InsertAnalyticalQuestionDoer());
+		addDoerToMap(ActionInsertAssumption.class, new InsertAssumptionDoer());
 		addDoerToMap(ActionInsertLink.class, new InsertLinkDoer());
 		addDoerToMap(ActionCreateBendPoint.class, new CreateBendPointDoer());
 		addDoerToMap(ActionDeleteBendPoint.class, new DeleteBendPointDoer());
@@ -212,8 +212,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionCreateIndicatorMeasurement.class, new CreateKeyEcologicalAttributeMeasurementDoer());
 		addDoerToMap(ActionCreateFutureStatus.class, new CreateFutureStatusDoer());
 		
-		addDoerToMap(ActionCreateAssumption.class, new CreateAssumptionDoer());
-		addDoerToMap(ActionDeleteAssumption.class, new DeleteAssumptionDoer());
+		addDoerToMap(ActionCreateSubAssumption.class, new CreateSubAssumptionDoer());
+		addDoerToMap(ActionDeleteSubAssumption.class, new DeleteSubAssumptionDoer());
 		
 		addDoerToMap(ActionExpandToMenu.class, new ExpandToMenuDoer());
 		addDoerToMap(ActionExpandToIndicator.class, new ExpandToIndicatorDoer());
@@ -257,8 +257,8 @@ public class DiagramView extends TabbedView implements CommandExecutedListener
 		addDoerToMap(ActionShowActivityBubble.class, new ShowActivityBubbleDoer());
 		addDoerToMap(ActionHideActivityBubble.class, new HideActivityBubbleDoer());
 		
-		addDoerToMap(ActionShowAssumptionBubble.class, new ShowAssumptionBubbleDoer());
-		addDoerToMap(ActionHideAssumptionBubble.class, new HideAssumptionBubbleDoer());
+		addDoerToMap(ActionShowSubAssumptionBubble.class, new ShowSubAssumptionBubbleDoer());
+		addDoerToMap(ActionHideSubAssumptionBubble.class, new HideSubAssumptionBubbleDoer());
 		
 		addDoerToMap(ActionCreateTaggedObjectSet.class, new CreateTaggedObjectSetDoer());
 		addDoerToMap(ActionDeleteTaggedObjectSet.class, new DeleteTaggedObjectSetDoer());

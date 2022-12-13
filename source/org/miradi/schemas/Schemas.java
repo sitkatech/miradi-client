@@ -98,8 +98,8 @@ public class Schemas
 		registerSchema(new AccountingClassificationAssociationSchema());
 		registerSchema(new MethodSchema());
 		registerSchema(new OutputSchema());
-		registerSchema(new AnalyticalQuestionSchema());
 		registerSchema(new AssumptionSchema());
+		registerSchema(new SubAssumptionSchema());
 	}
 	
 	public BaseObjectSchema get(final int objectType)

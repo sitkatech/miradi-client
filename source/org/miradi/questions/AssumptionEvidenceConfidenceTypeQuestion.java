@@ -22,7 +22,7 @@ package org.miradi.questions;
 import org.miradi.main.EAM;
 
 
-public class AssumptionEvidenceConfidenceTypeQuestion extends AbstractAnalyticalQuestionEvidenceConfidenceTypeQuestion
+public class AssumptionEvidenceConfidenceTypeQuestion extends AbstractAssumptionEvidenceConfidenceTypeQuestion
 {
     public AssumptionEvidenceConfidenceTypeQuestion()
     {
@@ -32,24 +32,24 @@ public class AssumptionEvidenceConfidenceTypeQuestion extends AbstractAnalytical
     @Override
     protected String getNotConfidentChoiceItemDescription()
     {
-        return EAM.text("Existing evidence refutes assumption; consider alternatives.");
+        return EAM.text(" Existing evidence refutes underlying assumption(s); consider alternatives .");
     }
 
     @Override
     protected String getNeedMoreInfoChoiceItemDescription()
     {
-        return EAM.text("Existing evidence insufficient and/or mixed support for assumption; find additional evidence, conduct research, and/or cautiously proceed with full monitoring.");
+        return EAM.text("Existing evidence insufficient and/or mixed support for underlying assumption(s); find additional evidence, conduct research, and/or cautiously proceed with full monitoring.");
     }
 
     @Override
     protected String getConfidentChoiceItemDescription()
     {
-        return EAM.text("Existing evidence supports assumption; proceed with monitoring focusing on evidence gaps.");
+        return EAM.text("Existing evidence supports underlying assumption(s); proceed with monitoring focusing on evidence gaps.");
     }
 
     @Override
     protected String getVeryConfidentChoiceItemDescription()
     {
-        return EAM.text("Existing evidence strongly supports assumption; proceed with verification monitoring.");
+        return EAM.text("Existing evidence strongly supports underlying assumption(s); proceed with verification monitoring.");
     }
 }

@@ -142,8 +142,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(RESOURCE_ASSIGNMENT_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(EXPENSE_ASSIGNMENT_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(OUTPUT_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
-		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(ANALYTICAL_QUESTION_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(ASSUMPTION_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
+		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(SUB_ASSUMPTION_TAXONOMY_ASSOCIATION_POOL, TAXONOMY_ASSOCIATION);
 		getSchemaWriter().writeElementWithZeroOrMoreDotElementType(TAXONOMY_CLASSIFICATION_CONTAINER, TAXONOMY_CLASSIFICATION);
 	}
 
@@ -209,8 +209,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		elementNames.add(createOptionalSchemaElement(EXPENSE_ASSIGNMENT_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(EXPENSE_ASSIGNMENT_ACCOUNTING_CLASSIFICATION_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(OUTPUT_TAXONOMY_ASSOCIATION_POOL));
-		elementNames.add(createOptionalSchemaElement(ANALYTICAL_QUESTION_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(createOptionalSchemaElement(ASSUMPTION_TAXONOMY_ASSOCIATION_POOL));
+		elementNames.add(createOptionalSchemaElement(SUB_ASSUMPTION_TAXONOMY_ASSOCIATION_POOL));
 		elementNames.add(ELEMENT_NAME + PREFIX + DELETED_ORPHANS_ELEMENT_NAME +  "{ text }?");
 		getSchemaWriter().defineElements(elementNames);
 		
@@ -287,7 +287,7 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (fieldSchema.getTag().equals(Output.TAG_INDICATOR_IDS))
 			return INDICATOR;
 
-		if (fieldSchema.getTag().equals(AbstractAnalyticalQuestion.TAG_INDICATOR_IDS))
+		if (fieldSchema.getTag().equals(AbstractAssumption.TAG_INDICATOR_IDS))
 			return INDICATOR;
 
 		if (fieldSchema.getTag().equals(RELEVANT_STRATEGY_IDS))
@@ -517,8 +517,8 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (questionClass.getSuperclass().equals(EvidenceConfidenceTypeProjectQuestion.class))
 			return !questionClass.equals(MeasurementEvidenceConfidenceQuestion.class);
 
-		if (questionClass.getSuperclass().equals(AbstractAnalyticalQuestionEvidenceConfidenceTypeQuestion.class))
-			return !questionClass.equals(AssumptionEvidenceConfidenceTypeQuestion.class);
+		if (questionClass.getSuperclass().equals(AbstractAssumptionEvidenceConfidenceTypeQuestion.class))
+			return !questionClass.equals(SubAssumptionEvidenceConfidenceTypeQuestion.class);
 
 		if (questionClass.equals(InternalQuestionWithoutValues.class))
 			return true;
@@ -596,14 +596,14 @@ public class Xmpz2XmlSchemaCreator implements Xmpz2XmlConstants
 		if (isFieldForType(baseObjectSchema, fieldSchema, OutputSchema.getObjectType(), Output.TAG_INDICATOR_IDS))
 			return createIdName(INDICATOR);
 
-		if (isFieldForType(baseObjectSchema, fieldSchema, AnalyticalQuestionSchema.getObjectType(), AnalyticalQuestion.TAG_ASSUMPTION_IDS))
-			return createIdName(ASSUMPTION);
+		if (isFieldForType(baseObjectSchema, fieldSchema, AssumptionSchema.getObjectType(), Assumption.TAG_SUB_ASSUMPTION_IDS))
+			return createIdName(SUB_ASSUMPTION);
 
-		Vector<Integer> analyticalQuestionSchemas = new Vector<Integer>();
-		analyticalQuestionSchemas.add(AnalyticalQuestionSchema.getObjectType());
-		analyticalQuestionSchemas.add(AssumptionSchema.getObjectType());
+		Vector<Integer> assumptionSchemas = new Vector<Integer>();
+		assumptionSchemas.add(AssumptionSchema.getObjectType());
+		assumptionSchemas.add(SubAssumptionSchema.getObjectType());
 
-		if (isFieldForType(baseObjectSchema, fieldSchema, analyticalQuestionSchemas, AbstractAnalyticalQuestion.TAG_INDICATOR_IDS))
+		if (isFieldForType(baseObjectSchema, fieldSchema, assumptionSchemas, AbstractAssumption.TAG_INDICATOR_IDS))
 			return createIdName(INDICATOR);
 
 		if (isFieldForType(baseObjectSchema, fieldSchema, TaskSchema.getObjectType(), Task.TAG_SUBTASK_IDS))

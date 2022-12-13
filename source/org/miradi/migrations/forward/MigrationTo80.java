@@ -81,15 +81,15 @@ public class MigrationTo80 extends AbstractMigration
     @Override
     protected String getDescription()
     {
-        return EAM.text("This migration adds Evidence Confidence and Evidence Notes fields to Analytical Questions and Assumptions.");
+        return EAM.text("This migration adds Evidence Confidence and Evidence Notes fields to Assumptions and Assumptions.");
     }
 
     private Vector<Integer> getTypesToMigrate()
     {
         Vector<Integer> typesToMigrate = new Vector<Integer>();
 
-        typesToMigrate.add(ObjectType.ANALYTICAL_QUESTION);
         typesToMigrate.add(ObjectType.ASSUMPTION);
+        typesToMigrate.add(ObjectType.SUB_ASSUMPTION);
 
         return typesToMigrate;
     }

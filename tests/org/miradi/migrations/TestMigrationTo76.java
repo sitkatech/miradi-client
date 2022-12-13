@@ -22,7 +22,7 @@ package org.miradi.migrations;
 
 import org.miradi.migrations.forward.MigrationTo76;
 import org.miradi.objecthelpers.ObjectType;
-import org.miradi.objects.Assumption;
+import org.miradi.objects.SubAssumption;
 
 public class TestMigrationTo76 extends AbstractTestMigration
 {
@@ -33,11 +33,11 @@ public class TestMigrationTo76 extends AbstractTestMigration
 
     public void testPoolRemovedAfterReverseMigration() throws Exception
     {
-        Assumption assumption = getProject().createAndPopulateAssumption();
+        SubAssumption subAssumption = getProject().createAndPopulateSubAssumption();
 
         RawProject rawProject = reverseMigrate(new VersionRange(MigrationTo76.VERSION_TO));
 
-        assertFalse("Pool should have been removed during reverse migration", rawProject.containsAnyObjectsOfType(ObjectType.ASSUMPTION));
+        assertFalse("Pool should have been removed during reverse migration", rawProject.containsAnyObjectsOfType(ObjectType.SUB_ASSUMPTION));
     }
 
     @Override

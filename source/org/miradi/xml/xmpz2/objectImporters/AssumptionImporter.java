@@ -21,13 +21,15 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.xml.xmpz2.objectImporters;
 
 import org.miradi.objecthelpers.ORef;
-import org.miradi.objects.AbstractAnalyticalQuestion;
+import org.miradi.objects.AbstractAssumption;
 import org.miradi.objects.Assumption;
 import org.miradi.project.Project;
 import org.miradi.schemas.AssumptionSchema;
+import org.miradi.schemas.SubAssumptionSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlImporter;
+import org.w3c.dom.Node;
 
-public class AssumptionImporter extends AbstractAnalyticalQuestionImporter
+public class AssumptionImporter extends AbstractAssumptionImporter
 {
     public AssumptionImporter(Xmpz2XmlImporter importerToUse)
     {
@@ -35,7 +37,23 @@ public class AssumptionImporter extends AbstractAnalyticalQuestionImporter
     }
 
     @Override
-    AbstractAnalyticalQuestion findAnalyticalQuestionOrAssumption(Project project, ORef destinationRef)
+    public void importFields(Node baseObjectNode, ORef refToUse) throws Exception
+    {
+        super.importFields(baseObjectNode, refToUse);
+        getImporter().importIds(baseObjectNode, refToUse, getBaseObjectSchema(), Assumption.TAG_SUB_ASSUMPTION_IDS, SUB_ASSUMPTION, SubAssumptionSchema.getObjectType());
+    }
+
+    @Override
+    protected boolean isCustomImportField(String tag)
+    {
+        if (tag.equals(Assumption.TAG_SUB_ASSUMPTION_IDS))
+            return true;
+
+        return super.isCustomImportField(tag);
+    }
+
+    @Override
+    AbstractAssumption findAssumptionOrSubAssumption(Project project, ORef destinationRef)
     {
         return Assumption.find(project, destinationRef);
     }

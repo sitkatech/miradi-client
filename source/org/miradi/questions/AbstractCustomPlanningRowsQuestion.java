@@ -63,14 +63,14 @@ abstract public class AbstractCustomPlanningRowsQuestion extends ProjectBasedDyn
 		choiceItems.add(createChoiceItem(ThreatReductionResultSchema.getObjectType(), ThreatReductionResultSchema.OBJECT_NAME, new ThreatReductionResultIcon()));
 		choiceItems.add(createChoiceItem(IntermediateResultSchema.getObjectType(), IntermediateResultSchema.OBJECT_NAME, new IntermediateResultIcon()));
 		choiceItems.add(createChoiceItem(StrategySchema.getObjectType(), StrategySchema.OBJECT_NAME, IconManager.getStrategyIcon()));
+		choiceItems.add(createChoiceItem(AssumptionSchema.getObjectType(), AssumptionSchema.OBJECT_NAME, new AssumptionIcon()));
 		choiceItems.add(createChoiceItem(IndicatorSchema.getObjectType(), IndicatorSchema.OBJECT_NAME, IconManager.getIndicatorIcon()));
 		choiceItems.add(createChoiceItem(MethodSchema.getObjectType(), MethodSchema.OBJECT_NAME, IconManager.getMethodIcon()));
 		choiceItems.addAll(createTaskChoiceItems());
 		choiceItems.add(createChoiceItem(OutputSchema.getObjectType(), OutputSchema.OBJECT_NAME, IconManager.getOutputIcon()));
+		choiceItems.add(createChoiceItem(SubAssumptionSchema.getObjectType(), SubAssumptionSchema.OBJECT_NAME, new SubAssumptionIcon()));
 		choiceItems.add(createChoiceItem(MeasurementSchema.getObjectType(), MeasurementSchema.OBJECT_NAME, new MeasurementIcon()));
 		choiceItems.add(createChoiceItem(FutureStatusSchema.getObjectType(), FutureStatusSchema.OBJECT_NAME, new FutureStatusIcon()));
-		choiceItems.add(createChoiceItem(AnalyticalQuestionSchema.getObjectType(), AnalyticalQuestionSchema.OBJECT_NAME, new AnalyticalQuestionIcon()));
-		choiceItems.add(createChoiceItem(AssumptionSchema.getObjectType(), AssumptionSchema.OBJECT_NAME, new AssumptionIcon()));
 
 		return choiceItems;
 	}

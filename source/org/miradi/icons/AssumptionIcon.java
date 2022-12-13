@@ -21,7 +21,7 @@ package org.miradi.icons;
 
 import org.miradi.diagram.DiagramConstants;
 import org.miradi.diagram.renderers.FactorRenderer;
-import org.miradi.diagram.renderers.RoundRectangleRenderer;
+import org.miradi.diagram.renderers.RectangleRenderer;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,14 +31,14 @@ public class AssumptionIcon extends AbstractShapeIcon
     @Override
     FactorRenderer getRenderer()
     {
-        return new RoundRectangleRenderer();
+        return new RectangleRenderer();
     }
 
     @Override
-    Color getIconColor()
-    {
-        return DiagramConstants.DEFAULT_ASSUMPTION_COLOR;
-    }
+	Color getIconColor()
+	{
+		return DiagramConstants.DEFAULT_ASSUMPTION_COLOR;
+	}
 
     static public Icon createDisabledIcon()
     {

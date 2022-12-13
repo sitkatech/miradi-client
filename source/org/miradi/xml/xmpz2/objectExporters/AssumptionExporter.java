@@ -20,14 +20,39 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 
 package org.miradi.xml.xmpz2.objectExporters;
 
+import org.miradi.objects.Assumption;
+import org.miradi.objects.BaseObject;
 import org.miradi.schemas.AssumptionSchema;
-import org.miradi.xml.xmpz2.BaseObjectExporter;
+import org.miradi.schemas.BaseObjectSchema;
 import org.miradi.xml.xmpz2.Xmpz2XmlWriter;
 
-public class AssumptionExporter extends AbstractAnalyticalQuestionExporter
+public class AssumptionExporter extends AbstractAssumptionExporter
 {
     public AssumptionExporter(Xmpz2XmlWriter writerToUse)
     {
         super(writerToUse, AssumptionSchema.getObjectType());
     }
+
+	@Override
+	protected void writeFields(BaseObject baseObject, BaseObjectSchema baseObjectSchema) throws Exception
+	{
+		super.writeFields(baseObject, baseObjectSchema);
+
+		final Assumption assumption = (Assumption) baseObject;
+		writeSubAssumptionRefs(baseObjectSchema, assumption);
+	}
+
+	@Override
+	protected boolean doesFieldRequireSpecialHandling(String tag)
+	{
+		if (tag.equals(Assumption.TAG_SUB_ASSUMPTION_IDS))
+			return true;
+
+		return super.doesFieldRequireSpecialHandling(tag);
+	}
+
+	private void writeSubAssumptionRefs(BaseObjectSchema baseObjectSchema, final Assumption assumption) throws Exception
+	{
+		getWriter().writeReflist(baseObjectSchema.getObjectName() + SUB_ASSUMPTION_IDS, SUB_ASSUMPTION, assumption.getSubAssumptionRefs());
+	}
 }

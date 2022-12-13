@@ -104,16 +104,16 @@ public class FactorSummaryCorePanel extends ObjectDataInputPanel
 		{
 			addTaxonomyFields(HumanWelfareTargetSchema.getObjectType());
 		}
-		if (factorToEdit.isAnalyticalQuestion())
+		if (factorToEdit.isAssumption())
 		{
-			addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(AnalyticalQuestionSchema.getObjectType(), AnalyticalQuestion.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditAnalyticalQuestionIndicatorRelevancyList.class), getPicker()));
+			addFieldWithEditButton(EAM.text("Indicators"), createReadOnlyObjectList(AssumptionSchema.getObjectType(), Assumption.PSEUDO_TAG_RELEVANT_INDICATOR_REFS), createObjectsActionButton(actions.getObjectsAction(ActionEditAssumptionIndicatorRelevancyList.class), getPicker()));
 
-	        addField(createMultilineField(AnalyticalQuestionSchema.getObjectType(), AbstractAnalyticalQuestion.TAG_COMMENTS));
-			addField(createRadioButtonEditorField(AnalyticalQuestionSchema.getObjectType(), BaseObject.TAG_EVIDENCE_CONFIDENCE, EvidenceConfidenceTypeQuestion.getQuestion(AnalyticalQuestionSchema.getObjectType())));
-			addField(createMultilineField(AnalyticalQuestionSchema.getObjectType(), BaseObject.TAG_EVIDENCE_NOTES));
-	        addField(createMultilineField(AnalyticalQuestionSchema.getObjectType(), AbstractAnalyticalQuestion.TAG_IMPLICATIONS));
-	        addField(createMultilineField(AnalyticalQuestionSchema.getObjectType(), AbstractAnalyticalQuestion.TAG_FUTURE_INFORMATION_NEEDS));
-			addTaxonomyFields(AnalyticalQuestionSchema.getObjectType());
+	        addField(createMultilineField(AssumptionSchema.getObjectType(), AbstractAssumption.TAG_COMMENTS));
+			addField(createRadioButtonEditorField(AssumptionSchema.getObjectType(), BaseObject.TAG_EVIDENCE_CONFIDENCE, EvidenceConfidenceTypeQuestion.getQuestion(AssumptionSchema.getObjectType())));
+			addField(createMultilineField(AssumptionSchema.getObjectType(), BaseObject.TAG_EVIDENCE_NOTES));
+	        addField(createMultilineField(AssumptionSchema.getObjectType(), AbstractAssumption.TAG_IMPLICATIONS));
+	        addField(createMultilineField(AssumptionSchema.getObjectType(), AbstractAssumption.TAG_FUTURE_INFORMATION_NEEDS));
+			addTaxonomyFields(AssumptionSchema.getObjectType());
 		}
 
 		addField(createReadOnlyObjectList(factorToEdit.getType(), Factor.PSEUDO_TAG_CONCEPTUAL_DIAGRAM_REFS));

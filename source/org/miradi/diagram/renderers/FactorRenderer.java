@@ -322,11 +322,11 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		if(thisCell.isStrategy())
 			return checkIfOwnedActivityIsSelected(diagram, (Strategy)underlyingFactor);
 
-		if(thisCell.isAssumption())
-			return checkIfOwningAnalyticalQuestionIsSelected(diagram, (Assumption)underlyingFactor);
+		if(thisCell.isSubAssumption())
+			return checkIfOwningAssumptionIsSelected(diagram, (SubAssumption)underlyingFactor);
 
-		if(thisCell.isAnalyticalQuestion())
-			return checkIfOwnedAssumptionIsSelected(diagram, (AnalyticalQuestion)underlyingFactor);
+		if(thisCell.isAssumption())
+			return checkIfOwnedSubAssumptionIsSelected(diagram, (Assumption)underlyingFactor);
 
 		return false;
 	}
@@ -351,13 +351,13 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 		return areAnyOfTheseFactorsSelected(diagram, target.getStressRefs());
 	}
 
-	private boolean checkIfOwningAnalyticalQuestionIsSelected(DiagramComponent diagram, Assumption assumption)
+	private boolean checkIfOwningAssumptionIsSelected(DiagramComponent diagram, SubAssumption subAssumption)
 	{
-		return areAnyOfTheseFactorsSelected(diagram, assumption.findObjectsThatReferToUs(AnalyticalQuestionSchema.getObjectType()));
+		return areAnyOfTheseFactorsSelected(diagram, subAssumption.findObjectsThatReferToUs(AssumptionSchema.getObjectType()));
 	}
-	private boolean checkIfOwnedAssumptionIsSelected(DiagramComponent diagram, AnalyticalQuestion analyticalQuestion)
+	private boolean checkIfOwnedSubAssumptionIsSelected(DiagramComponent diagram, Assumption assumption)
 	{
-		return areAnyOfTheseFactorsSelected(diagram, analyticalQuestion.getAssumptionRefs());
+		return areAnyOfTheseFactorsSelected(diagram, assumption.getSubAssumptionRefs());
 	}
 
 	private boolean areAnyOfTheseFactorsSelected(DiagramComponent diagram, ORefList relatedRefs)

@@ -165,7 +165,7 @@ indicate when that is the case.
 
 Notable changes in 4.6.0:
 
-- New Analytical Question / Assumption diagram factors
+- New Assumption / Subassumption diagram factors
 - New Output child collection for Strategies / Activities
 - Custom color support for diagram factor fonts, background colors (Group / Text Boxes only) and diagram links
 - Support z-index customization for diagram factors

@@ -20,15 +20,16 @@ along with Miradi.  If not, see <http://www.gnu.org/licenses/>.
 package org.miradi.objects;
 
 import org.miradi.ids.FactorId;
+import org.miradi.ids.IdList;
 import org.miradi.objecthelpers.ORef;
 import org.miradi.objecthelpers.ORefList;
 import org.miradi.objecthelpers.ObjectType;
 import org.miradi.project.ObjectManager;
 import org.miradi.project.Project;
-import org.miradi.schemas.AnalyticalQuestionSchema;
 import org.miradi.schemas.AssumptionSchema;
+import org.miradi.schemas.SubAssumptionSchema;
 
-public class Assumption extends AbstractAnalyticalQuestion
+public class Assumption extends AbstractAssumption
 {
     public Assumption(ObjectManager objectManager, FactorId idToUse)
     {
@@ -48,21 +49,8 @@ public class Assumption extends AbstractAnalyticalQuestion
     @Override
     public int[] getTypesThatCanOwnUs()
     {
-        return new int[] {
-                AnalyticalQuestionSchema.getObjectType(),
-        };
+        return NO_OWNERS;
     }
-
-	public boolean hasReferrers()
-	{
-		boolean isSuperShared = super.hasReferrers();
-		if (isSuperShared)
-			return true;
-
-		ORefList referrers = findObjectsThatReferToUs(AnalyticalQuestionSchema.getObjectType());
-
-		return referrers.size() > 0;
-	}
 
     @Override
 	public boolean isAssumption()
@@ -70,12 +58,24 @@ public class Assumption extends AbstractAnalyticalQuestion
 		return true;
 	}
 
-    public static boolean is(BaseObject object)
-    {
-        if(object == null)
-            return false;
-        return is(object.getRef());
-    }
+	public IdList getSubAssumptionIds()
+	{
+		return getSafeIdListData(TAG_SUB_ASSUMPTION_IDS);
+	}
+
+	public ORefList getSubAssumptionRefs()
+	{
+		return new ORefList(SubAssumptionSchema.getObjectType(), getSubAssumptionIds());
+	}
+
+	@Override
+	public int getAnnotationType(String tag)
+	{
+		if (tag.equals(TAG_SUB_ASSUMPTION_IDS))
+			return SubAssumptionSchema.getObjectType();
+
+		return super.getAnnotationType(tag);
+	}
 
     public static boolean is(ORef ref)
     {
@@ -87,6 +87,11 @@ public class Assumption extends AbstractAnalyticalQuestion
         return objectType == AssumptionSchema.getObjectType();
     }
 
+    public static boolean is(BaseObject object)
+    {
+        return is(object.getType());
+    }
+
     public static Assumption find(ObjectManager objectManager, ORef assumptionRef)
     {
         return (Assumption) objectManager.findObject(assumptionRef);
@@ -96,4 +101,6 @@ public class Assumption extends AbstractAnalyticalQuestion
     {
         return find(project.getObjectManager(), assumptionRef);
     }
+
+    public static final String TAG_SUB_ASSUMPTION_IDS = "SubAssumptionIds";
 }

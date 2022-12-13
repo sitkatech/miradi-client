@@ -1,7 +1,7 @@
 # $LastChangedBy: Miradi $
-# $LastChangedDate: Tue Nov 01 07:55:33 GMT 2022 $
-# $LastChangedRevision: 247 $
-namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/247'
+# $LastChangedDate: Fri Dec 02 07:56:12 GMT 2022 $
+# $LastChangedRevision: 248 $
+namespace miradi = 'http://xml.miradi.org/schema/ConservationProject/248'
 start = ConservationProject.element
 ConservationProject.element = element miradi:ConservationProject
 {
@@ -63,8 +63,8 @@ ConservationProject.element = element miradi:ConservationProject
   ExtendedProgressReportPool.element? &
   ResultReportPool.element? &
   OutputPool.element? &
+  SubAssumptionPool.element? &
   AssumptionPool.element? &
-  AnalyticalQuestionPool.element? &
   SimpleThreatRatingPool.element? &
   StressBasedThreatRatingPool.element? &
   MiradiShareProjectDataTaxonomyAssociationPool.element? &
@@ -92,8 +92,8 @@ ConservationProject.element = element miradi:ConservationProject
   ExpenseAssignmentTaxonomyAssociationPool.element? &
   ExpenseAssignmentAccountingClassificationAssociationPool.element? &
   OutputTaxonomyAssociationPool.element? &
-  AnalyticalQuestionTaxonomyAssociationPool.element? &
   AssumptionTaxonomyAssociationPool.element? &
+  SubAssumptionTaxonomyAssociationPool.element? &
   element miradi:DeletedOrphans{ text }?
 }
 
@@ -950,38 +950,38 @@ Output.element = element miradi:Output
   TaxonomyClassificationContainer.element?
 }
 
+SubAssumptionPool.element = element miradi:SubAssumptionPool { SubAssumption.element* }
+SubAssumption.element = element miradi:SubAssumption
+{
+  attribute Id {xsd:integer} &
+  element miradi:SubAssumptionComments { formatted_text }? &
+  element miradi:SubAssumptionDetails { formatted_text }? &
+  element miradi:SubAssumptionEvidenceConfidence { vocabulary_evidence_confidence_assumption }? &
+  element miradi:SubAssumptionEvidenceNotes { formatted_text }? &
+  element miradi:SubAssumptionFutureInformationNeeds { formatted_text }? &
+  element miradi:SubAssumptionIdentifier { text }? &
+  element miradi:SubAssumptionImplications { formatted_text }? &
+  element miradi:SubAssumptionName { formatted_text }? &
+  element miradi:SubAssumptionRelevantIndicatorIds { IndicatorId.element* }? &
+  element miradi:SubAssumptionUUID { uuid } &
+  TaxonomyClassificationContainer.element?
+}
+
 AssumptionPool.element = element miradi:AssumptionPool { Assumption.element* }
 Assumption.element = element miradi:Assumption
 {
   attribute Id {xsd:integer} &
   element miradi:AssumptionComments { formatted_text }? &
   element miradi:AssumptionDetails { formatted_text }? &
-  element miradi:AssumptionEvidenceConfidence { vocabulary_evidence_confidence_analytical_question }? &
+  element miradi:AssumptionEvidenceConfidence { vocabulary_evidence_confidence_assumption }? &
   element miradi:AssumptionEvidenceNotes { formatted_text }? &
   element miradi:AssumptionFutureInformationNeeds { formatted_text }? &
   element miradi:AssumptionIdentifier { text }? &
   element miradi:AssumptionImplications { formatted_text }? &
   element miradi:AssumptionName { formatted_text }? &
+  element miradi:AssumptionOrderedSubAssumptionIds { SubAssumptionId.element* }? &
   element miradi:AssumptionRelevantIndicatorIds { IndicatorId.element* }? &
   element miradi:AssumptionUUID { uuid } &
-  TaxonomyClassificationContainer.element?
-}
-
-AnalyticalQuestionPool.element = element miradi:AnalyticalQuestionPool { AnalyticalQuestion.element* }
-AnalyticalQuestion.element = element miradi:AnalyticalQuestion
-{
-  attribute Id {xsd:integer} &
-  element miradi:AnalyticalQuestionComments { formatted_text }? &
-  element miradi:AnalyticalQuestionDetails { formatted_text }? &
-  element miradi:AnalyticalQuestionEvidenceConfidence { vocabulary_evidence_confidence_analytical_question }? &
-  element miradi:AnalyticalQuestionEvidenceNotes { formatted_text }? &
-  element miradi:AnalyticalQuestionFutureInformationNeeds { formatted_text }? &
-  element miradi:AnalyticalQuestionIdentifier { text }? &
-  element miradi:AnalyticalQuestionImplications { formatted_text }? &
-  element miradi:AnalyticalQuestionName { formatted_text }? &
-  element miradi:AnalyticalQuestionOrderedAssumptionIds { AssumptionId.element* }? &
-  element miradi:AnalyticalQuestionRelevantIndicatorIds { IndicatorId.element* }? &
-  element miradi:AnalyticalQuestionUUID { uuid } &
   TaxonomyClassificationContainer.element?
 }
 
@@ -1093,18 +1093,17 @@ TaxonomyTopLevelElementCodeContainer.element = element miradi:TaxonomyTopLevelEl
 element miradi:code { uri_restricted_text } *
 }
 
-vocabulary_evidence_confidence_analytical_question = ''|'VeryConfident'|'Confident'|'NeedMoreInfo'|'NotConfident'
 vocabulary_work_plan_time_unit = 'QUARTERLY'|'YEARLY'
 vocabulary_countries = 'ZZZ'|'XXX'|'AFG'|'ALA'|'ALB'|'DZA'|'ASM'|'AND'|'AGO'|'AIA'|'ATA'|'ATG'|'ARG'|'ARM'|'ABW'|'AUS'|'AUT'|'AZE'|'BHS'|'BHR'|'BGD'|'BRB'|'BLR'|'BEL'|'BLZ'|'BEN'|'BMU'|'BTN'|'BOL'|'BIH'|'BWA'|'BVT'|'BRA'|'IOT'|'VGB'|'BRN'|'BGR'|'BFA'|'BDI'|'KHM'|'CMR'|'CAN'|'CPV'|'CYM'|'CAF'|'TCD'|'CHL'|'CHN'|'CXR'|'CCK'|'COL'|'COM'|'COG'|'COK'|'CRI'|'CIV'|'HRV'|'CUB'|'CYP'|'CZE'|'PRK'|'COD'|'DNK'|'DJI'|'DMA'|'DOM'|'ECU'|'EGY'|'SLV'|'GNQ'|'ERI'|'EST'|'ETH'|'FRO'|'FLK'|'FJI'|'FIN'|'FRA'|'FXX'|'GUF'|'PYF'|'ATF'|'GAB'|'GMB'|'GEO'|'DEU'|'GHA'|'GIB'|'GRC'|'GRL'|'GRD'|'GLP'|'GUM'|'GTM'|'GIN'|'GNB'|'GUY'|'HTI'|'HMD'|'VAT'|'HND'|'HKG'|'HUN'|'ISL'|'IND'|'IDN'|'IRN'|'IRQ'|'IRL'|'IMN'|'ISR'|'ITA'|'JAM'|'JPN'|'JOR'|'KAZ'|'KEN'|'KIR'|'KWT'|'KGZ'|'LAO'|'LVA'|'LBN'|'LSO'|'LBR'|'LBY'|'LIE'|'LTU'|'LUX'|'MAC'|'MKD'|'MDG'|'MWI'|'MYS'|'MDV'|'MLI'|'MLT'|'MHL'|'MTQ'|'MRT'|'MUS'|'MYT'|'MEX'|'FSM'|'MCO'|'MNG'|'MSR'|'MAR'|'MOZ'|'MMR'|'NAM'|'NRU'|'NPL'|'NLD'|'ANT'|'NCL'|'NZL'|'NIC'|'NER'|'NGA'|'NIU'|'NFK'|'MNP'|'NOR'|'PSE'|'OMN'|'PAK'|'PLW'|'PAN'|'PNG'|'PRY'|'PER'|'PHL'|'PCN'|'POL'|'PRT'|'PRI'|'QAT'|'KOR'|'MDA'|'REU'|'ROU'|'RUS'|'RWA'|'SHN'|'KNA'|'LCA'|'SPM'|'VCT'|'WSM'|'SMR'|'STP'|'SAU'|'SEN'|'SCG'|'SYC'|'SLE'|'SGP'|'SVK'|'SVN'|'SLB'|'SOM'|'ZAF'|'SGS'|'ESP'|'LKA'|'SDN'|'SUR'|'SJM'|'SWZ'|'SWE'|'CHE'|'SYR'|'TWN'|'TJK'|'THA'|'TLS'|'TGO'|'TKL'|'TON'|'TTO'|'TUN'|'TUR'|'TKM'|'TCA'|'TUV'|'UGA'|'UKR'|'ARE'|'GBR'|'TZA'|'UMI'|'USA'|'VIR'|'URY'|'UZB'|'VUT'|'VEN'|'VNM'|'WLF'|'PSE'|'ESH'|'YEM'|'ZMB'|'ZWE'
 vocabulary_currency_type = ''|'EUR'|'GBP'|'JPY'|'CAD'|'AUD'|'CHF'|'RUB'|'CNY'|'ZAR'|'MXN'|'???'
-vocabulary_custom_rows = 'ConceptualModel'|'ResultsChain'|'BiodiversityTarget'|'HumanWellbeingTarget'|'SubTarget'|'Goal'|'Objective'|'BiophysicalFactor'|'DirectThreat'|'ContributingFactor'|'BiophysicalResult'|'ThreatReductionResult'|'IntermediateResult'|'Strategy'|'Indicator'|'Method'|'Activity'|'MonitoringActivity'|'Task'|'Output'|'Measurement'|'FutureStatus'|'AnalyticalQuestion'|'Assumption'
-vocabulary_custom_columns = 'SpeciesLatinName'|'ThreatRating'|'Methods'|'Activities'|'Indicators'|'AssociatedFactor'|'Priority'|'LatestProjectReport'|'LatestProgressReport'|'TaxonomyCodeValue'|'AssignedWhoTotal'|'TimeframeTotal'|'Measurements'|'FutureStatuses'|'Comments'|'Details'|'EvidenceNotes'|'EvidenceConfidence'
+vocabulary_custom_rows = 'ConceptualModel'|'ResultsChain'|'BiodiversityTarget'|'HumanWellbeingTarget'|'SubTarget'|'Goal'|'Objective'|'BiophysicalFactor'|'DirectThreat'|'ContributingFactor'|'BiophysicalResult'|'ThreatReductionResult'|'IntermediateResult'|'Strategy'|'Assumption'|'Indicator'|'Method'|'Activity'|'MonitoringActivity'|'Task'|'Output'|'SubAssumption'|'Measurement'|'FutureStatus'
+vocabulary_custom_columns = 'SpeciesLatinName'|'ThreatRating'|'Methods'|'Activities'|'Indicators'|'AssociatedFactor'|'Priority'|'LatestProjectReport'|'LatestProgressReport'|'TaxonomyCodeValue'|'AssignedWhoTotal'|'TimeframeTotal'|'Measurements'|'FutureStatuses'|'Comments'|'Details'|'EvidenceNotes'|'EvidenceConfidence'|'Implications'|'FutureInformationNeeds'
 vocabulary_dashboard_row_flags = 'needsAttention'
 vocabulary_day_columns_visibility = 'ShowDayColumns'|'HideDayColumns'
 vocabulary_evidence_confidence_external = ''|'RoughGuess'|'ExpertKnowledge'|'ExternalResearch'|'OnsiteResearch'
 vocabulary_diagram_factor_font_size = '1.0'|'0.5'|'0.75'|'0.9'|'1.25'|'1.75'|'2.5'
 vocabulary_diagram_factor_font_style = ''|'Bold'|'Underline'|'StrikeThrough'
-vocabulary_hidden_types = 'Strategy'|'DraftStrategy'|'ContributingFactor'|'DirectThreat'|'Target'|'HumanWellbeingTarget'|'BiophysicalFactor'|'BiophysicalResult'|'Link'|'Goal'|'Objective'|'Indicator'|'TextBox'|'ScopeBox'|'Stress'|'Activity'|'Output'|'IntermediateResult'|'ThreatReductionResult'|'GroupBox'|'AnalyticalQuestion'|'Assumption'
+vocabulary_hidden_types = 'Strategy'|'DraftStrategy'|'ContributingFactor'|'DirectThreat'|'Target'|'HumanWellbeingTarget'|'BiophysicalFactor'|'BiophysicalResult'|'Link'|'Goal'|'Objective'|'Indicator'|'TextBox'|'ScopeBox'|'Stress'|'Activity'|'Output'|'IntermediateResult'|'ThreatReductionResult'|'GroupBox'|'Assumption'|'SubAssumption'
 vocabulary_included_diagram_types = 'AllTypes'|'IncludeConceptualModelData'|'IncludeResultsChainData'
 vocabulary_factor_mode = 'IncludeBiophysicalFactorsAndResults'|'ContributingFactorsAndIntermediateResultsOnly'
 vocabulary_fiscal_year_start_month = ''|'10'|'7'|'4'
@@ -1138,6 +1137,7 @@ vocabulary_contribution_rating = ''|'1'|'2'|'3'|'4'
 vocabulary_irreversibility_rating = ''|'1'|'2'|'3'|'4'
 vocabulary_scope_rating = ''|'1'|'2'|'3'|'4'
 vocabulary_severity_rating = ''|'1'|'2'|'3'|'4'
+vocabulary_evidence_confidence_assumption = ''|'VeryConfident'|'Confident'|'NeedMoreInfo'|'NotConfident'
 vocabulary_target_mode = 'BiologicalTargetsOnly'|'BiologicalAndHumanWellbeingTargets'
 vocabulary_target_status = ''|'1'|'2'|'3'|'4'
 vocabulary_taxonomy_classification_selection_mode = 'LeafOnly'|'AnyNode'
@@ -1207,11 +1207,11 @@ MethodId.element = element miradi:MethodId { xsd:integer }
 SubTaskId.element = element miradi:SubTaskId { xsd:integer }
 FutureStatusId.element = element miradi:FutureStatusId { xsd:integer }
 OutputId.element = element miradi:OutputId { xsd:integer }
-AnalyticalQuestionId.element = element miradi:AnalyticalQuestionId { xsd:integer }
 AssumptionId.element = element miradi:AssumptionId { xsd:integer }
+SubAssumptionId.element = element miradi:SubAssumptionId { xsd:integer }
 WrappedByDiagramFactorId.element = element miradi:WrappedByDiagramFactorId
 {
-  BiodiversityTargetId.element|  HumanWellbeingTargetId.element|  BiophysicalFactorId.element|  BiophysicalResultId.element|  CauseId.element|  StrategyId.element|  ThreatReductionResultId.element|  IntermediateResultId.element|  GroupBoxId.element|  TextBoxId.element|  ScopeBoxId.element|  ActivityId.element|  StressId.element|  AnalyticalQuestionId.element|  AssumptionId.element
+  BiodiversityTargetId.element|  HumanWellbeingTargetId.element|  BiophysicalFactorId.element|  BiophysicalResultId.element|  CauseId.element|  StrategyId.element|  ThreatReductionResultId.element|  IntermediateResultId.element|  GroupBoxId.element|  TextBoxId.element|  ScopeBoxId.element|  ActivityId.element|  StressId.element|  AssumptionId.element|  SubAssumptionId.element
 }
 
 LinkableFactorId.element = element miradi:LinkableFactorId
@@ -1389,8 +1389,8 @@ ProjectResourceTaxonomyAssociationPool.element = element miradi:ProjectResourceT
 ResourceAssignmentTaxonomyAssociationPool.element = element miradi:ResourceAssignmentTaxonomyAssociationPool { TaxonomyAssociation.element* }
 ExpenseAssignmentTaxonomyAssociationPool.element = element miradi:ExpenseAssignmentTaxonomyAssociationPool { TaxonomyAssociation.element* }
 OutputTaxonomyAssociationPool.element = element miradi:OutputTaxonomyAssociationPool { TaxonomyAssociation.element* }
-AnalyticalQuestionTaxonomyAssociationPool.element = element miradi:AnalyticalQuestionTaxonomyAssociationPool { TaxonomyAssociation.element* }
 AssumptionTaxonomyAssociationPool.element = element miradi:AssumptionTaxonomyAssociationPool { TaxonomyAssociation.element* }
+SubAssumptionTaxonomyAssociationPool.element = element miradi:SubAssumptionTaxonomyAssociationPool { TaxonomyAssociation.element* }
 TaxonomyClassificationContainer.element = element miradi:TaxonomyClassificationContainer { TaxonomyClassification.element* }
 ResourceAssignmentAccountingClassificationAssociationPool.element = element miradi:ResourceAssignmentAccountingClassificationAssociationPool { AccountingClassificationAssociation.element* }
 ExpenseAssignmentAccountingClassificationAssociationPool.element = element miradi:ExpenseAssignmentAccountingClassificationAssociationPool { AccountingClassificationAssociation.element* }

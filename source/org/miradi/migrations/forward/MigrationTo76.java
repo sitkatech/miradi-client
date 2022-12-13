@@ -43,7 +43,7 @@ public class MigrationTo76 extends AbstractMigration
     @Override
     protected MigrationResult reverseMigrate() throws Exception
     {
-        RemoveDiagramFactorVisitor visitor = new RemoveDiagramFactorVisitor(getRawProject(), ObjectType.ASSUMPTION);
+        RemoveDiagramFactorVisitor visitor = new RemoveDiagramFactorVisitor(getRawProject(), ObjectType.SUB_ASSUMPTION);
         return visitor.visit();
     }
 
@@ -62,7 +62,7 @@ public class MigrationTo76 extends AbstractMigration
     @Override
     protected String getDescription()
     {
-        return EAM.text("This migration handles the removal of assumptions.");
+        return EAM.text("This migration handles the removal of sub-assumptions.");
     }
 
     public static final int VERSION_FROM = 75;

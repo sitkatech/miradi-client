@@ -152,7 +152,7 @@ abstract public class AbstractTransferableMiradiList implements Transferable, Se
 		if (Task.is(type))
 			return false;
 		
-		if (Assumption.is(type))
+		if (SubAssumption.is(type))
 			return false;
 
 		return true;
