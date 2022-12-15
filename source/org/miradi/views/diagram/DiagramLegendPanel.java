@@ -186,12 +186,16 @@ abstract public class DiagramLegendPanel extends LegendPanel implements CommandE
 		addStressLine(jpanel);
 		addActivityLine(jpanel);
 
-		addIconLineWithCheckBox(jpanel, OutputSchema.getObjectType(), OutputSchema.OBJECT_NAME, IconManager.getOutputIcon());
+		DiagramObject diagramObject = getCurrentDiagramObject();
+		if (diagramObject != null && diagramObject.isResultsChain())
+		{
+			addIconLineWithCheckBox(jpanel, OutputSchema.getObjectType(), OutputSchema.OBJECT_NAME, IconManager.getOutputIcon());
+		}
+
 		addIconLineWithCheckBox(jpanel, SubAssumptionSchema.getObjectType(), SubAssumptionSchema.OBJECT_NAME, new SubAssumptionIcon());
 		addButtonLineWithCheckBox(jpanel, TextBoxSchema.getObjectType(), TextBoxSchema.OBJECT_NAME, actions.get(ActionInsertTextBox.class));
 		addButtonLineWithCheckBox(jpanel, GroupBoxSchema.getObjectType(), GroupBoxSchema.OBJECT_NAME, actions.get(ActionInsertGroupBox.class));
 
-		DiagramObject diagramObject = getCurrentDiagramObject();
 		if (diagramObject != null && diagramObject.isResultsChain())
 		{
 			addStatusCheckBoxToPanel(jpanel, diagramObject, DiagramObject.TAG_IS_PROGRESS_STATUS_DISPLAY_ENABLED);

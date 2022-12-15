@@ -174,7 +174,7 @@ public abstract class FactorRenderer extends MultilineCellRenderer implements Ce
 			setGoalText(diagram);
 
 			outputText = null;
-			if(diagram.areOutputsVisible())
+			if(diagram.areOutputsVisible() && model.isResultsChain())
 			{
 				ORefList outputRefs = getFactorCell().getWrappedFactor().getOutputRefs();
 				if(outputRefs.size() == 1)
