@@ -64,7 +64,7 @@ public class AboutDoer extends MainWindowDoer
 	private static String replaceMiradiVersion(String text)
 	{
 		String textToReturn = text;
-		String template = EAM.text("%s");
+		String template = "%s";
 
 		try
 		{
