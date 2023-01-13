@@ -116,16 +116,26 @@ public class Translation
 
     public static String text(String key)
     {
+		return text(key, true, false);
+    }
+
+    private static String text(String key, boolean wrapDefaultValue, boolean logNearMisses)
+    {
         String result = extractPartToDisplay(key);
         if(textTranslations != null)
         {
-            String defaultValue = "~(" + result + ")";
+            String defaultValue = wrapDefaultValue ? "~(" + result + ")": result;
             result = _TranslationFromKey(key);
             if(result == null)
                 result = defaultValue;
         }
-        return extractPartToDisplay(result);
-    }
+        String partToDisplay = extractPartToDisplay(result);
+
+		if(partToDisplay.startsWith("~") && result.length() > 100)
+			logAnyNearMisses(key);
+
+		return partToDisplay;
+	}
 
     // Assumes that fullKey begins with HTML_TRANSLATION_KEY_PREFIX
     private static String _HtmlKey(String fullKey){
@@ -170,9 +180,7 @@ public class Translation
 		String withoutComments = allOnOneLine.replaceAll("<!--.*?-->", "");
 
 		String key = "html|/resources/" + resourceFileName + "|" + withoutComments;
-		String result = text(key);
-		if(result.startsWith("~") && result.length() > 100)
-			logAnyNearMisses(key);
+		String result = text(key, false, true);
 
 		return result;
 	}
