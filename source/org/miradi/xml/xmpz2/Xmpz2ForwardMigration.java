@@ -811,6 +811,8 @@ public class Xmpz2ForwardMigration
 		copyAndRenameObjectPool(document, Xmpz2XmlConstants.LEGACY_ASSUMPTION + Xmpz2XmlConstants.TAXONOMY_ASSOCIATION, Xmpz2XmlConstants.SUB_ASSUMPTION + Xmpz2XmlConstants.TAXONOMY_ASSOCIATION);
 		renameDiagramFactorWrappedFactors(document, Xmpz2XmlConstants.LEGACY_ASSUMPTION, Xmpz2XmlConstants.SUB_ASSUMPTION);
 		renamePlanningViewConfigurations(document, Xmpz2XmlConstants.LEGACY_ASSUMPTION, Xmpz2XmlConstants.SUB_ASSUMPTION);
+		renameDiagramHiddenTypes(document, Xmpz2XmlConstants.CONCEPTUAL_MODEL, Xmpz2XmlConstants.LEGACY_ASSUMPTION, Xmpz2XmlConstants.SUB_ASSUMPTION);
+		renameDiagramHiddenTypes(document, Xmpz2XmlConstants.RESULTS_CHAIN, Xmpz2XmlConstants.LEGACY_ASSUMPTION, Xmpz2XmlConstants.SUB_ASSUMPTION);
 	}
 
 	private void renameAnalyticalQuestionFields(Document document) throws Exception
@@ -819,6 +821,8 @@ public class Xmpz2ForwardMigration
 		copyAndRenameObjectPool(document, Xmpz2XmlConstants.LEGACY_ANALYTICAL_QUESTION + Xmpz2XmlConstants.TAXONOMY_ASSOCIATION, Xmpz2XmlConstants.ASSUMPTION + Xmpz2XmlConstants.TAXONOMY_ASSOCIATION);
 		renameDiagramFactorWrappedFactors(document, Xmpz2XmlConstants.LEGACY_ANALYTICAL_QUESTION, Xmpz2XmlConstants.ASSUMPTION);
 		renamePlanningViewConfigurations(document, Xmpz2XmlConstants.LEGACY_ANALYTICAL_QUESTION, Xmpz2XmlConstants.ASSUMPTION);
+		renameDiagramHiddenTypes(document, Xmpz2XmlConstants.CONCEPTUAL_MODEL, Xmpz2XmlConstants.LEGACY_ANALYTICAL_QUESTION, Xmpz2XmlConstants.ASSUMPTION);
+		renameDiagramHiddenTypes(document, Xmpz2XmlConstants.RESULTS_CHAIN, Xmpz2XmlConstants.LEGACY_ANALYTICAL_QUESTION, Xmpz2XmlConstants.ASSUMPTION);
 	}
 
 	private Node getOrCreateObjectPool(Document document, String objectName) throws Exception
@@ -1016,6 +1020,61 @@ public class Xmpz2ForwardMigration
 								Node newNode = document.createElement(alias + COLON +  Xmpz2XmlConstants.CODE_ELEMENT_NAME);
 								newNode.setTextContent(code);
 								rowObjectTypesContainerNode.appendChild(newNode);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+
+	private void renameDiagramHiddenTypes(Document document, String diagramTypeName, String oldObjectName, String newObjectName) throws Exception
+	{
+		final String alias = getNameSpaceAliasName(document.getDocumentElement());
+
+		Element rootElement = document.getDocumentElement();
+
+		Node diagramPool = findNode(rootElement.getChildNodes(), Xmpz2XmlWriter.createPoolElementName(diagramTypeName));
+		if (diagramPool != null)
+		{
+			NodeList diagramNodes = diagramPool.getChildNodes();
+			for (int index = 0; index < diagramNodes.getLength(); ++index)
+			{
+				Node diagramNode = diagramNodes.item(index);
+				if (diagramNode != null && diagramNode.getNodeType() == Node.ELEMENT_NODE)
+				{
+					Node hiddenTypesContainerNode = findNode(diagramNode.getChildNodes(), diagramTypeName + DiagramObject.TAG_HIDDEN_TYPES + Xmpz2XmlConstants.CONTAINER_ELEMENT_TAG);
+					if (hiddenTypesContainerNode != null)
+					{
+						ArrayList<String> codesToKeep = new ArrayList<String>();
+
+						NodeList codeList = hiddenTypesContainerNode.getChildNodes();
+						int codeCount = codeList.getLength();
+
+						for (int i = 0; i < codeCount; ++i)
+						{
+							Node code = codeList.item(i);
+							String codeValue = code.getTextContent().trim().replaceAll(StringUtilities.NEW_LINE, StringUtilities.EMPTY_SPACE);
+							if (codeValue.equals(oldObjectName))
+							{
+								codesToKeep.add(newObjectName);
+							} else {
+								codesToKeep.add(codeValue);
+							}
+						}
+
+						for (int i = 0; i < codeCount; ++i)
+						{
+							removeChildren(hiddenTypesContainerNode, new String[]{Xmpz2XmlConstants.CODE_ELEMENT_NAME,});
+						}
+
+						for (String code : codesToKeep)
+						{
+							if (!code.isEmpty())
+							{
+								Node newNode = document.createElement(alias + COLON + Xmpz2XmlConstants.CODE_ELEMENT_NAME);
+								newNode.setTextContent(code);
+								hiddenTypesContainerNode.appendChild(newNode);
 							}
 						}
 					}
