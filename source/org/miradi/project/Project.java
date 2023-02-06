@@ -1323,14 +1323,14 @@ public class Project implements ProjectInterface
 		int gridSize = getGridSize();
 
 		if (value > 0 && value % gridSize == 0)
-			return value;
+			return Math.max(value, DiagramFactor.DEFAULT_FACTOR_HEIGHT);
 
 		int snappedValue = (value + gridSize) - (value + gridSize) % (gridSize);
 
 		if (snappedValue != 0)
-			return snappedValue;
+			return Math.max(snappedValue, DiagramFactor.DEFAULT_FACTOR_HEIGHT);
 
-		return gridSize;
+		return Math.max(gridSize, DiagramFactor.DEFAULT_FACTOR_HEIGHT);
 	}
 
 	public int getGridSize()
