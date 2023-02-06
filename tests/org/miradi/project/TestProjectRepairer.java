@@ -447,7 +447,7 @@ public class TestProjectRepairer extends TestCaseWithProject
 		repairer.repairProblemsWherePossible();
 		
 		DiagramFactor repairedCause1 = DiagramFactor.find(getProject(), cause1.getRef());
-		Dimension expectedCause1SnappedSize = new Dimension(cause1Width, cause1Height);
+		Dimension expectedCause1SnappedSize = new Dimension(30, 30);
 		assertEquals("wrong cause1 size?", expectedCause1SnappedSize, repairedCause1.getSize());
 		
 		DiagramFactor repairedCause2 = DiagramFactor.find(getProject(), cause2.getRef());

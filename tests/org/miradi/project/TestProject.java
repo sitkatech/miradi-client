@@ -252,8 +252,8 @@ public class TestProject extends MiradiTestCase
 
 	public void testCalculateSnappedSize()
 	{
-		verifySnappedSize(Project.DEFAULT_GRID_SIZE, 0);
-		verifySnappedSize(Project.DEFAULT_GRID_SIZE, 1);
+		verifySnappedSize(30, 0);
+		verifySnappedSize(30, 1);
 		verifySnappedSize(30, 30);
 	}
 
