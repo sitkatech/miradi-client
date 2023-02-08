@@ -693,7 +693,16 @@ public class PlanningViewMainTableModel extends PlanningViewAbstractTreeTableSyn
 		if (getColumnTag(column).equals(WorkPlanColumnConfigurationQuestion.DETAILS_COLUMN_CODE))
 			return true;
 		
-		return getColumnTag(column).equals(Desire.TAG_FULL_TEXT);
+		if (getColumnTag(column).equals(Desire.TAG_FULL_TEXT))
+			return true;
+
+		if (getColumnTag(column).equals(Factor.TAG_TEXT))
+			return true;
+
+		if (getColumnTag(column).equals(Method.TAG_DETAILS))
+			return true;
+
+		return false;
 	}
 
 	private boolean isEvidenceNotesColumn(int column)
