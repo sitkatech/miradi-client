@@ -40,7 +40,6 @@ import org.miradi.diagram.DiagramComponent;
 import org.miradi.diagram.DiagramConstants;
 import org.miradi.diagram.cells.LinkCell;
 import org.miradi.main.EAM;
-import org.miradi.project.Project;
 
 public class ArrowLineRenderer extends EdgeRenderer
 {
@@ -258,7 +257,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 			apex = apexAt;
 
 			double segmentLength = apexAt.distance(segmentStart);
-			double curveLength = Math.min(Project.DEFAULT_GRID_SIZE, segmentLength/2);
+			double curveLength = Math.min(DEFAULT_CURVE_LENGTH, segmentLength/2);
 			double curveRatio = curveLength / segmentLength;
 			
 			double startX = computeStart(apex.getX(), segmentStart.getX(), curveRatio);
@@ -340,6 +339,7 @@ public class ArrowLineRenderer extends EdgeRenderer
 	}
 
 	public static final int ARROW_STUB_LINE = 23253;
+	public static final int DEFAULT_CURVE_LENGTH = 15;
 
 	private boolean linkSelected;
 	private Color diagramLinkColor;
